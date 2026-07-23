@@ -235,17 +235,42 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
     yüzünden gerçek ürün gelmedi (bkz. yukarıdaki not).
   - `scraper/robots_kontrol.py` korunuyor — Yavuz'un yerelinde tekil URL
     hızlı kontrolü için.
+- **Yavuz'un yerelinde robots.txt kontrolü yapıldı (2026-07-23)** —
+  `robots_kontrol.py` gerçek sonuç döndürdü (bu sandbox'tan yapılamayan
+  tek adımdı). Sonuçlara göre `kaynaklar.yaml` güncellendi:
+  - **ONAY (aktif: true yapıldı):** Trendyol (gelinlik), Armut (fotoğrafçı
+    fiyatları — ama "fiyatları" sayfası tek agregat ortalama gösteriyor
+    olabilir, ilk gerçek çalıştırmada 0/az ürün dönerse bu şüphe
+    doğrulanmış olur), Ramsey (damatlık, marka mağazası), Atasay (alyans,
+    marka mağazası).
+  - **RET (durum: reddedildi, aktif kalmayacak):** Hepsiburada (gelinlik),
+    Dolap (gelinlik ikinci el), DüğünBuketi'nin 3 sayfası da (gelinlik
+    moda evleri, düğün mekanları/salon, fotoğrafçı) — hepsi robots.txt
+    tarafından engelleniyor, KULLANILAMAZ.
+  - **Sonuç — kapsam durumu (bu sandbox'ın test_motor.py kapsam raporundan):**
+    alyans (akakce+atasay, 2 aktif) OK, damatlik (akakce+ramsey, 2 aktif)
+    OK, gelinlik (akakce+trendyol, 2 aktif) OK, fotografci artık SADECE
+    armut aktif (dugunbuketi RET oldu — tek kaynağa düştü, ikincisi
+    aranmalı), **salon artık HİÇBİR aktif kaynağı yok** (tek adayı
+    dugunbuketi RET çıktı) — yeni kaynak bulunması gerekiyor,
+    gelin-ayakkabısı hâlâ tek kaynaklı (akakce).
+  - CSS seçiciler henüz hiçbir yeni kaynak için girilmedi (Ramsey,
+    Atasay, Trendyol, Armut) — motor JSON-LD/microdata katmanıyla
+    otomatik çözmeyi deneyecek, bulamazsa sağlık kontrolü karantinaya
+    alacak. Yavuz'un ilk gerçek `python motor.py` çalıştırmasında hangi
+    kaynakların karantinaya düştüğünü görüp gerekirse F12 ile CSS
+    seçici girmesi gerekebilir.
 
 ## Modüller (sırayla)
 1. **Kazıma hattı** — kaynaklar.yaml + üç katmanlı çıkarım + robots
    doğrulama + sağlık kontrolü + ÇOK KAYNAK çapraz doğrulama + log. ✅
-   Motor v0.4 hazır, sahte veriyle test edildi (35 test). Kalan:
-   (a) Yavuz'un yerelinde gerçek siteye karşı çalıştırıp Akakçe'nin 6
-   aktif kaynağının gerçekten ürün döndürdüğünü doğrulaması,
-   (b) dolap/dugunbuketi/ramsey/atasay/trendyol/hepsiburada için
-   robots.txt kontrolü yapıp uygun olanları `aktif: true` yapması —
-   bu iki adım tamamlanınca gelinlik/damatlik/alyans gerçek çapraz
-   doğrulama üretmeye başlayacak.
+   Motor v0.4 hazır, sahte veriyle test edildi (35 test). robots.txt
+   kontrolü Yavuz'un yerelinde yapıldı (bkz. Teknik Durum) — 4 yeni
+   kaynak aktifleşti. Kalan: Yavuz'un yerelinde `python motor.py`
+   çalıştırıp (a) hangi kaynakların gerçekten ürün döndürdüğünü
+   görmesi, (b) JSON-LD/microdata bulamayıp karantinaya düşenler için
+   F12 ile CSS seçici doldurması, (c) salon ve fotoğrafçı/gelin-ayakkabısı
+   kalemleri için eksik/tek kalan kaynaklara alternatif bulması.
 2. **Veri saklama** — aylık snapshot şeması (SQLite yeterli).
 3. **İlk hesaplayıcı + endeks sayfası** (düğün).
 4. **Metodoloji sayfası + schema.org işaretlemesi.**
@@ -257,16 +282,22 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
 - [x] Domain alındı
 - [ ] Cloudflare nameserver propagasyon onayı
 - [x] GitHub repo kurulumu
-- [ ] Yavuz'un yerelinde `python motor.py` çalıştırıp Akakçe
-      kaynaklarının gerçek veri döndürdüğünü doğrulaması (bu sandbox'tan
-      yapılamıyor — network kısıtı)
-- [ ] dolap.com / dugunbuketi.com / ramsey.com.tr / atasay.com /
-      trendyol.com / hepsiburada.com robots.txt kontrolü
-      (`scraper/robots_kontrol.py` ile) → uygun olanları
-      `kaynaklar.yaml`'da `aktif: true` yap
+- [x] robots.txt kontrolü yapıldı (Yavuz'un yerelinde,
+      `scraper/robots_kontrol.py` ile, 2026-07-23): Trendyol/Ramsey/
+      Atasay/Armut ONAY → aktif edildi. Hepsiburada/Dolap/DüğünBuketi
+      (3 sayfa) RET → pasif kaldı.
+- [ ] Yavuz'un yerelinde `python motor.py` çalıştırıp yeni aktif
+      kaynakların (Trendyol, Ramsey, Atasay, Armut) gerçek veri
+      döndürdüğünü doğrulaması ve karantinaya düşenler için gerekirse
+      CSS seçici doldurması (bu sandbox'tan yapılamıyor — network kısıtı)
+- [ ] "salon" kalemi için YENİ kaynak bulma (tek adayı RET oldu, şu an
+      hiç aktif kaynağı yok)
+- [ ] "fotografci" için 2. bağımsız kaynak bulma (dugunbuketi RET oldu,
+      sadece armut kaldı)
+- [ ] "gelin-ayakkabisi" ve gelinlik'in "gelinlik evi/lüks segment"i
+      için 2. bağımsız kaynak bulma (dugunbuketi RET oldu)
 - [ ] Düğün kalem listesindeki geri kalanlar için kaynak bulma: takı/
-      altın (canlı fiyat), nikah şekeri, davetiye, gelin ayakkabısı için
-      2. kaynak
+      altın (canlı fiyat), nikah şekeri, davetiye
 - [ ] TÜİK doğrulama verisi entegrasyonu (ÇOK KAYNAK KURALI 5. katman)
 - [ ] (İleride) Türk Patent marka başvurusu
 - [ ] (İleride) yakın domain varyantlarını kapat
