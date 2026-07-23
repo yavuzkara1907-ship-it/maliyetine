@@ -88,10 +88,24 @@ motorları için.
 
 ## Teknik Durum
 - GitHub repo `maliyetine` oluşturuldu, ilk commit atıldı.
-- `scraper/fiyat_endeksi.py` (v0.1) hazır: kazıma iskeleti + Türkçe fiyat
-  parse ("45.999,00 TL" → float) + IQR aykırı değer temizliği + persentil
+- `scraper/fiyat_endeksi.py` (v0.2): kazıma motoru artık `config` parametre
+  alıyor (çoklu kalem/site için yeniden kullanılabilir) + Türkçe fiyat parse
+  ("45.999,00 TL" → float) + IQR aykırı değer temizliği + persentil
   segmentleme + tarihli JSON çıktı. Mantık sahte veriyle test edildi.
-  Gerçek kaynak sitesi ve CSS seçicileri HENÜZ girilmedi.
+- **ÖNEMLİ KISIT — Claude Code sandbox network erişimi**: Bu ortamın proxy
+  politikası, hedef sitelere (dugun.com, dugunbuketi.com, armut.com,
+  trendyol.com, hepsiburada.com vb.) doğrudan bağlantıyı 403 ile
+  reddediyor (`$HTTPS_PROXY/__agentproxy/status`'ta görülebilir). Yani
+  Claude Code bu ortamdan ne robots.txt doğrulayabiliyor ne de sayfa
+  HTML'ine bakıp CSS seçici tespit edebiliyor. Bu adımlar Yavuz'un kendi
+  makinesinde (veya erişimi açık bir ortamda) yapılmalı.
+- `scraper/kaynaklar_dugun.py`: Düğün vertikali için WebSearch ile
+  bulunmuş aday kaynak siteler (gelinlik → trendyol/hepsiburada, salon →
+  dugunbuketi.com, fotoğrafçı → dugunbuketi.com/armut.com). Hepsi
+  `durum: "arastirildi"` — robots.txt VE CSS seçiciler henüz doğrulanmadı.
+- `scraper/robots_kontrol.py`: Yerelde çalıştırılacak robots.txt kontrol
+  aracı (`urllib.robotparser`, ek bağımlılık yok). Her aday URL için
+  ONAY/RET ve crawl-delay basar.
 
 ## Modüller (sırayla)
 1. **Kazıma hattı** — kaynak site seçimi, CSS seçiciler, gerekirse
@@ -107,7 +121,9 @@ motorları için.
 - [x] Domain alındı (maliyetine.com.tr)
 - [ ] Cloudflare nameserver propagasyonu onayı
 - [x] GitHub repo `maliyetine` oluştur
-- [ ] İlk vertikal için kaynak site listesi + robots.txt kontrolü
+- [ ] İlk vertikal (düğün) için aday kaynak siteler bulundu
+      (`scraper/kaynaklar_dugun.py`); robots.txt + CSS seçici doğrulaması
+      Yavuz'un yerelinde yapılmalı (`scraper/robots_kontrol.py` ile)
 - [ ] Sektörden fiyat teyidi için 2-3 temas noktası
 - [ ] (İleride) Türk Patent marka başvurusu — gelir başlayınca
 - [ ] (İleride) yakın domain varyantlarını kapat

@@ -1,11 +1,15 @@
 # -*- coding: utf-8 -*-
 """
-maliyetine.com - Fiyat Endeksi Kazima Hatti (v0.1)
-Ornek kategori: Buzdolabi
+maliyetine.com - Fiyat Endeksi Kazima Motoru (v0.2)
+Ornek kategori: Buzdolabi (CONFIG'i degistirerek herhangi bir kalem icin
+kullan - bkz. kaynaklar_dugun.py).
 
-Kullanim:
-  pip install requests beautifulsoup4
+Kullanim (tek basina, ornek CONFIG ile):
+  pip install -r requirements.txt
   python fiyat_endeksi.py
+
+Baska bir kalem icin coklu-CONFIG calistirma icin calistir() fonksiyonunu
+disaridan import edip kendi CONFIG'inle cagir (bkz. dugun_calistir.py).
 
 JS ile yuklenen siteler icin (gerekirse):
   pip install playwright && playwright install chromium
@@ -55,17 +59,17 @@ def fiyat_ayikla(metin: str):
 
 
 # ----------------------------------------------------------
-# 3) KAZIMA
+# 3) KAZIMA - config parametreli, coklu kalem/site icin yeniden kullanilabilir
 # ----------------------------------------------------------
-def sayfa_kazi(url: str):
+def sayfa_kazi(config: dict, url: str):
     r = requests.get(url, headers=HEADERS, timeout=20)
     r.raise_for_status()
     soup = BeautifulSoup(r.text, "html.parser")
 
     urunler = []
-    for kart in soup.select(CONFIG["urun_karti"]):
-        isim = kart.select_one(CONFIG["isim_secici"])
-        fiyat = kart.select_one(CONFIG["fiyat_secici"])
+    for kart in soup.select(config["urun_karti"]):
+        isim = kart.select_one(config["isim_secici"])
+        fiyat = kart.select_one(config["fiyat_secici"])
         if not (isim and fiyat):
             continue
         f = fiyat_ayikla(fiyat.get_text())
@@ -74,17 +78,17 @@ def sayfa_kazi(url: str):
     return urunler
 
 
-def tum_sayfalari_kazi():
+def tum_sayfalari_kazi(config: dict):
     hepsi = []
-    for p in range(1, CONFIG["sayfa_sayisi"] + 1):
-        url = CONFIG["url_sablonu"].format(page=p)
+    for p in range(1, config["sayfa_sayisi"] + 1):
+        url = config["url_sablonu"].format(page=p)
         try:
-            urunler = sayfa_kazi(url)
+            urunler = sayfa_kazi(config, url)
             print(f"Sayfa {p}: {len(urunler)} urun")
             hepsi.extend(urunler)
         except Exception as e:
             print(f"Sayfa {p} hata: {e}")
-        time.sleep(CONFIG["bekleme_sn"])
+        time.sleep(config["bekleme_sn"])
     return hepsi
 
 
@@ -133,11 +137,11 @@ def segmentle(urunler):
 
 
 # ----------------------------------------------------------
-# 6) CALISTIR ve KAYDET
+# 6) CALISTIR ve KAYDET - config parametreli
 # ----------------------------------------------------------
-def main():
-    print(f"== {CONFIG['kategori']} kazima basliyor ==")
-    urunler = tum_sayfalari_kazi()
+def calistir(config: dict, cikti_klasoru: Path = None):
+    print(f"== {config['kategori']} kazima basliyor ==")
+    urunler = tum_sayfalari_kazi(config)
     print(f"Toplam ham urun: {len(urunler)}")
 
     urunler = aykiri_temizle(urunler)
@@ -145,21 +149,27 @@ def main():
 
     if not urunler:
         print("Urun bulunamadi - CSS secicilerini kontrol et (F12).")
-        return
+        return None
 
     ozet = {
-        "kategori": CONFIG["kategori"],
+        "kategori": config["kategori"],
         "tarih": date.today().isoformat(),
         "toplam_urun": len(urunler),
         "segmentler": segmentle(urunler),
     }
 
-    cikti = Path(f"{CONFIG['kategori']}_{date.today().isoformat()}.json")
+    klasor = cikti_klasoru or Path(".")
+    cikti = klasor / f"{config['kategori']}_{date.today().isoformat()}.json"
     cikti.write_text(json.dumps(ozet, ensure_ascii=False, indent=2),
                      encoding="utf-8")
     print(json.dumps(ozet, ensure_ascii=False, indent=2))
     print(f"\nKaydedildi: {cikti}")
     print("Bu JSON'u her ay biriktir -> fiyat gecmisi grafigin olusur.")
+    return ozet
+
+
+def main():
+    calistir(CONFIG)
 
 
 if __name__ == "__main__":
