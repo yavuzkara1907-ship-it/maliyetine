@@ -328,14 +328,11 @@ def gecmis_guncelle(gecmis: dict, ad: str, urun_sayisi: int, en_fazla_kayit: int
 
 
 # ----------------------------------------------------------
-# TEK KAYNAK ISLEME
+# TEK YAML GIRDISI ICIN HAM VERI TOPLAMA (temizleme/segmentleme YOK -
+# o "site" grubu seviyesinde yapilir, cok kaynak birlestirmesi icin)
 # ----------------------------------------------------------
-def kaynak_isle(kaynak: dict, gecmis: dict, cikti_kok: Path) -> dict | None:
+def kaynak_ham_veri_topla(kaynak: dict):
     ad = kaynak["ad"]
-    if not kaynak.get("aktif", True):
-        logger.info("[%s] pasif, atlaniyor", ad)
-        return None
-
     sayfa_sayisi = kaynak.get("sayfa_sayisi", 1)
     bekleme_sn = kaynak.get("bekleme_sn", 2)
     tum_urunler = []
@@ -362,38 +359,130 @@ def kaynak_isle(kaynak: dict, gecmis: dict, cikti_kok: Path) -> dict | None:
         if p < sayfa_sayisi:
             time.sleep(bekleme_sn)
 
-    temiz = aykiri_temizle(tum_urunler)
+    return tum_urunler, kullanilan_katmanlar
+
+
+# ----------------------------------------------------------
+# COK KAYNAK KURALI: yaml girdilerini (vertikal, kalem, site) bazinda
+# grupla. Ayni "site" degerine sahip birden fazla girdi (ör. Akakce'nin
+# 5 alt kategorisi) TEK bagimsiz kaynak sayilir.
+# ----------------------------------------------------------
+def gruplar_halinde_topla(kaynaklar: list[dict]):
+    gruplar: dict[tuple[str, str, str], dict] = {}
+    for kaynak in kaynaklar:
+        if not kaynak.get("aktif", True):
+            logger.info("[%s] pasif, atlaniyor", kaynak["ad"])
+            continue
+
+        urunler, katmanlar = kaynak_ham_veri_topla(kaynak)
+        anahtar = (kaynak["vertikal"], kaynak["kalem"], kaynak["site"])
+        grup = gruplar.setdefault(
+            anahtar, {"urunler": [], "katmanlar": set(), "kaynak_adlari": []}
+        )
+        grup["urunler"].extend(urunler)
+        grup["katmanlar"] |= katmanlar
+        grup["kaynak_adlari"].append(kaynak["ad"])
+    return gruplar
+
+
+# ----------------------------------------------------------
+# TEK SITE GRUBUNU ISLEME (temizleme + segmentleme + saglik kontrolu + kayit)
+# ----------------------------------------------------------
+def grup_isle(vertikal: str, kalem: str, site: str, grup: dict, gecmis: dict, cikti_kok: Path) -> dict:
+    gecmis_anahtari = f"{vertikal}/{kalem}/{site}"
+
+    temiz = aykiri_temizle(grup["urunler"])
     urun_sayisi = len(temiz)
 
-    saglikli, ortalama = saglik_kontrolu(ad, urun_sayisi, gecmis)
+    saglikli, ortalama = saglik_kontrolu(gecmis_anahtari, urun_sayisi, gecmis)
 
     if not saglikli:
         logger.warning(
             "[%s] SAGLIK KONTROLU BASARISIZ: %d urun (ortalama %.0f) - KARANTINAYA ALINDI",
-            ad, urun_sayisi, ortalama,
+            gecmis_anahtari, urun_sayisi, ortalama,
         )
         hedef_klasor = cikti_kok / "karantina"
     else:
-        hedef_klasor = cikti_kok / kaynak["vertikal"]
+        hedef_klasor = cikti_kok / vertikal
     hedef_klasor.mkdir(parents=True, exist_ok=True)
 
+    genel_medyan = round(statistics.median(u["fiyat"] for u in temiz)) if temiz else None
+
     ozet = {
-        "kaynak": ad,
-        "kalem": kaynak["kalem"],
-        "vertikal": kaynak["vertikal"],
+        "site": site,
+        "kaynak_adlari": grup["kaynak_adlari"],
+        "kalem": kalem,
+        "vertikal": vertikal,
         "tarih": date.today().isoformat(),
         "toplam_urun": urun_sayisi,
         "saglikli": saglikli,
-        "kullanilan_katmanlar": sorted(kullanilan_katmanlar),
+        "kullanilan_katmanlar": sorted(grup["katmanlar"]),
+        "genel_medyan": genel_medyan,
         "segmentler": segmentle(temiz),
     }
 
-    dosya = hedef_klasor / f"{kaynak['kalem']}_{ad_slug(ad)}_{date.today().isoformat()}.json"
+    dosya = hedef_klasor / f"{kalem}_{ad_slug(site)}_{date.today().isoformat()}.json"
     dosya.write_text(json.dumps(ozet, ensure_ascii=False, indent=2), encoding="utf-8")
-    logger.info("[%s] kaydedildi: %s", ad, dosya)
+    logger.info("[%s/%s] kaydedildi: %s", kalem, site, dosya)
 
-    gecmis_guncelle(gecmis, ad, urun_sayisi)
+    gecmis_guncelle(gecmis, gecmis_anahtari, urun_sayisi)
     return ozet
+
+
+# ----------------------------------------------------------
+# CAPRAZ DOGRULAMA - ayni (vertikal, kalem) icin >=2 bagimsiz saglikli
+# site varsa genel medyanlarini karsilastirir. Fark esik_orani'ni
+# asarsa uyari (CLAUDE.md "COK KAYNAK KURALI": esik %30).
+# ----------------------------------------------------------
+CAPRAZ_DOGRULAMA_ESIGI = 0.30
+
+
+def capraz_dogrula(sonuclar: list[dict], cikti_kok: Path, esik_oran: float = CAPRAZ_DOGRULAMA_ESIGI):
+    by_kalem: dict[tuple[str, str], list[dict]] = {}
+    for s in sonuclar:
+        if not s["saglikli"] or s["genel_medyan"] is None:
+            continue
+        by_kalem.setdefault((s["vertikal"], s["kalem"]), []).append(s)
+
+    raporlar = []
+    for (vertikal, kalem), grup in by_kalem.items():
+        if len(grup) < 2:
+            continue  # tek bagimsiz kaynak varsa capraz dogrulama yapilamaz
+
+        medyanlar = {s["site"]: s["genel_medyan"] for s in grup}
+        en_dusuk = min(medyanlar.values())
+        en_yuksek = max(medyanlar.values())
+        fark_orani = (en_yuksek - en_dusuk) / en_dusuk if en_dusuk else 0.0
+        uyari = fark_orani > esik_oran
+
+        if uyari:
+            logger.warning(
+                "[%s/%s] CAPRAZ DOGRULAMA UYARISI: siteler arasi fark %%%.0f (%s)",
+                vertikal, kalem, fark_orani * 100, medyanlar,
+            )
+        else:
+            logger.info(
+                "[%s/%s] capraz dogrulama OK: fark %%%.0f (%s)",
+                vertikal, kalem, fark_orani * 100, medyanlar,
+            )
+
+        rapor = {
+            "vertikal": vertikal,
+            "kalem": kalem,
+            "tarih": date.today().isoformat(),
+            "site_medyanlari": medyanlar,
+            "fark_orani": round(fark_orani, 3),
+            "esik_orani": esik_oran,
+            "uyari": uyari,
+        }
+        raporlar.append(rapor)
+
+        klasor = cikti_kok / vertikal
+        klasor.mkdir(parents=True, exist_ok=True)
+        dosya = klasor / f"{kalem}_capraz-dogrulama_{date.today().isoformat()}.json"
+        dosya.write_text(json.dumps(rapor, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    return raporlar
 
 
 # ----------------------------------------------------------
@@ -404,19 +493,24 @@ def calistir(kaynaklar_dosyasi: Path = VARSAYILAN_KAYNAKLAR, cikti_kok: Path = V
     kaynaklar = veri.get("kaynaklar", [])
 
     gecmis = gecmisi_yukle()
-    sonuclar = []
-    for kaynak in kaynaklar:
-        sonuc = kaynak_isle(kaynak, gecmis, cikti_kok)
-        if sonuc:
-            sonuclar.append(sonuc)
+    gruplar = gruplar_halinde_topla(kaynaklar)
+
+    sonuclar = [
+        grup_isle(vertikal, kalem, site, grup, gecmis, cikti_kok)
+        for (vertikal, kalem, site), grup in gruplar.items()
+    ]
     gecmisi_kaydet(gecmis)
 
+    capraz_raporlar = capraz_dogrula(sonuclar, cikti_kok)
+
     saglikli_sayisi = sum(1 for s in sonuclar if s["saglikli"])
+    uyarili_kalem_sayisi = sum(1 for r in capraz_raporlar if r["uyari"])
     logger.info(
-        "== Bitti: %d/%d kaynak islendi, %d saglikli, %d karantinada ==",
-        len(sonuclar), len(kaynaklar), saglikli_sayisi, len(sonuclar) - saglikli_sayisi,
+        "== Bitti: %d kaynak-grubu islendi, %d saglikli, %d karantinada, "
+        "%d kalemde capraz dogrulama uyarisi ==",
+        len(sonuclar), saglikli_sayisi, len(sonuclar) - saglikli_sayisi, uyarili_kalem_sayisi,
     )
-    return sonuclar
+    return sonuclar, capraz_raporlar
 
 
 def main():

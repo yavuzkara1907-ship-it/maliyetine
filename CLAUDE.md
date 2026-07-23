@@ -38,6 +38,29 @@ motorları için.
 - Metodoloji sayfası zorunlu. Güven = tek ürün. Rakip çöp sitelerden
   tek farkımız bu.
 
+## ÇOK KAYNAK KURALI (önemli)
+- **Tek kaynağa BAĞLI KALINMAZ.** Akakçe sadece başlangıç kaynağıdır.
+- Sebep 1 (kırılganlık): tek kaynak tasarım değiştirir/engellerse endeks
+  tamamen durur.
+- Sebep 2 (güvenilirlik): tek kaynak o sitenin fiyat politikasını
+  yansıtır, piyasayı değil. "3 bağımsız kaynaktan derlendi" cümlesi hem
+  okuyucu hem AI motorları için çok daha güçlü.
+- **Hedef: kalem başına en az 2, ideal 3 kaynak.**
+- Kaynak tipleri:
+  1. Fiyat karşılaştırma siteleri (Akakçe vb.)
+  2. Markaların/mağazaların kendi siteleri (genelde daha az korumalı,
+     daha gerçekçi segment fiyatı)
+  3. İkinci el / ilan platformları (alt segment için)
+  4. Sektör platformları (düğün, tadilat vb. hizmet listeleri)
+  5. **Doğrulama katmanı: TÜİK TÜFE alt kalemleri** (giyim, lokanta,
+     kişisel bakım, mobilya). Kendi verimizle karşılaştırılır.
+- **Çapraz doğrulama uyarısı:** kaynaklar arası fark %30'u aşarsa
+  sistem uyarı versin (ya kazıma hatası ya farklı segment — ikisi de
+  bilinmesi gereken şey). TÜİK trendiyle ters düşen sıçramalar
+  karantinaya alınır.
+- Metodoloji sayfasında "resmi verilerle çapraz doğrulanmıştır" ifadesi
+  hedeflenir — ciddi güven sinyali.
+
 ## Ürün Kararları
 - Format: her kalem için düşük / orta / lüks segment (persentil:
   ≤P25 düşük, P25–P75 orta, >P75 lüks) + min/medyan/max + örneklem
@@ -48,10 +71,53 @@ motorları için.
   Sonra: ev kurma, 0 km araç, tatil, ilkokul, üniversite.
 - Her vertikal üçlüsü: hesaplayıcı + endeks sayfası + metodoloji sayfası.
 - Şehir/segment kırılımı hedeflenir.
-- UYARI: Kaynak seçimi metodolojinin kendisidir. Örn. genel e-ticaret
+- UYARI: Kaynak seçimi metodolojinin kendisidir. Genel e-ticaret
   sitesindeki 1.500 TL'lik "gelinlik" ile gelinlik evindeki 60.000 TL'lik
   gelinlik aynı ürün değil. Farklı segmentler ayrı kaynaklardan
   toplanır, karıştırılmaz.
+
+### Vertikal veri tipi ayrımı (planlama için)
+- **Ürün bazlı kalemler** (ev kurma, 0 km araç, gelinlik, alyans,
+  okul malzemesi): fiyatlar açıkta, mevcut motorla neredeyse bedava
+  gelir. Kolay.
+- **Hizmet/işçilik bazlı kalemler** (tadilat işçiliği, düğün salonu,
+  fotoğrafçı, üniversite yaşam gideri): internette listelenmez,
+  telefonla sorulur. İlan siteleri, meslek odası birim fiyat tarifeleri,
+  TÜİK verileri ve küçük elle toplanan örneklem gerekir. Zor.
+- Bu yüzden ürün bazlı vertikaller önce yayına alınır.
+
+## DÜĞÜN VERTİKALİ — Kalem Listesi (tam kapsam)
+Hesaplayıcı bu kalemleri toplar. Her kalem: segment + kaynak + tarih.
+
+**Ürün bazlı (kolay):**
+1. Gelinlik (alt kırılım: hazır giyim / gelinlik evi / ikinci el —
+   ayrı segment, karıştırılmaz)
+2. Damatlık / takım elbise
+3. Alyans
+4. Takı ve altın (canlı altın/gram fiyatından hesaplanır; en oynak
+   kalem, günlük güncellenebilir)
+5. Nikah şekeri
+6. Davetiye
+7. Gelin ayakkabısı, duvak, aksesuar
+
+**Hizmet bazlı (zor — kaynak sınırlı, "başlangıç fiyatı" uyarısı ile):**
+8. Düğün salonu / davet (kişi başı × davetli sayısı)
+9. Yemek/ikram (salona dahil değilse ayrı)
+10. Fotoğraf ve video
+11. Orkestra / DJ
+12. Gelin arabası
+13. Kuaför ve makyaj
+14. Organizasyon/süsleme (çiçek, masa düzeni)
+15. Nikah işlemleri (resmi harçlar)
+
+**Ayrı gösterilecek:**
+16. Balayı (ayrı bölüm; tatil vertikaliyle veri paylaşır — aynı kaynak
+    iki vertikali besler)
+
+- Kaynağı bulunamayan kalemler ilk sürümde tahmini değerle konur ve
+  sayfada AÇIKÇA "tahmini" olarak işaretlenir. Dürüstlük ürünün parçası.
+- Hesaplayıcı girdileri: şehir, davetli sayısı, segment (ekonomik/orta/
+  lüks), opsiyonel kalem seçimleri.
 
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
@@ -75,26 +141,38 @@ motorları için.
 - E-posta: gerekirse Cloudflare Email Routing (ücretsiz).
 - Basit tut: gereksiz framework yok, hedef ~10-20K satır toplam kod.
 
-## KAZIYICI MİMARİSİ (önemli)
+## KAZIYICI MİMARİSİ
 Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
 
 - **`kaynaklar.yaml`** — tüm kaynaklar burada tanımlanır. Yeni site
-  eklemek = birkaç satır YAML, kod değil. Alanlar: ad, url, vertikal,
-  kalem, yöntem, (gerekirse) css_secicileri, aktif/pasif.
+  eklemek = birkaç satır YAML, kod değil. Alanlar: ad, **site** (bağımsız
+  kaynak kimliği — ÇOK KAYNAK KURALI/çapraz doğrulama buna göre
+  gruplanır), url, vertikal, kalem, yöntem, (gerekirse)
+  css_secicileri, aktif/pasif. Aynı `site` değerine sahip birden fazla
+  girdi (ör. Akakçe'nin dar kategorilere bölünmüş 5 sayfası) TEK
+  bağımsız kaynak sayılır — ürünleri birleştirilir, tek dosyaya yazılır.
 - **Üç katmanlı çıkarım stratejisi, sırayla:**
   1. **JSON-LD** (`application/ld+json`, schema.org/Product) — siteler
-     arası ortak, en temiz. ÖNCE BUNU DENE.
+     arası ortak, en temiz. ÖNCE BUNU DENE. `ItemList`/`itemListElement`
+     ve `@graph` sarmalayıcıları da açılıyor.
   2. **Microdata / meta etiketleri** (`itemprop="price"`, og etiketleri)
   3. **Siteye özel CSS seçiciler** — son çare.
 - **Sağlık kontrolü zorunlu:** bir kaynak normalde ~200 ürün dönerken
   ay içinde 3 ürün dönerse SESSİZCE devam etme, uyarı ver ve o ayki
-  veriyi karantinaya al. Endeksin güvenilirliği buna bağlı.
+  veriyi karantinaya al. Geçmiş `kaynak_gecmisi.json`'da site-grubu
+  bazında (`vertikal/kalem/site`) tutulur.
+- **Çapraz doğrulama (ÇOK KAYNAK KURALI):** aynı (vertikal, kalem) için
+  ≥2 sağlıklı bağımsız site varsa genel medyanları karşılaştırılır; fark
+  %30'u aşarsa uyarı loglanır ve `{kalem}_capraz-dogrulama_{tarih}.json`
+  yazılır. TÜİK entegrasyonu henüz yok (bkz. Yapılacaklar).
 - **Nazik kazıma:** gerçekçi User-Agent, istekler arası 2+ sn bekleme,
-  retry + backoff, ayda bir çalıştırma. Amaç engellenmemek.
+  retry + backoff, ayda bir çalıştırma.
 - **robots.txt doğrulaması otomatik:** `urllib.robotparser` ile her URL
-  kazımadan önce test edilir. RET çıkan URL atlanır ve loglanır.
-- JS ile render edilen siteler için Playwright katmanı (opsiyonel,
-  sadece gerekince).
+  kazımadan önce test edilir (domain başına önbellekli). RET çıkan URL
+  atlanır ve loglanır. robots.txt okunamazsa (ağ hatası vb.) İHTİYATLA
+  RET kabul edilir — sessizce izin verilmez.
+- JS ile render edilen siteler için Playwright katmanı (sadece
+  gerekince, henüz eklenmedi).
 
 ### Bilinen kaynak kısıtı — Akakçe
 - robots.txt: `Allow: /` ama `Disallow: /*?sayfa=*` ve `/*,*,1..7.html`
@@ -110,67 +188,64 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
 ### Bilinen sandbox kısıtı — Claude Code network erişimi
 - Claude Code'un (bu sandbox) çalıştığı ortamın proxy politikası, hedef
   sitelere (akakce.com, dugun.com, dugunbuketi.com, armut.com,
-  trendyol.com, hepsiburada.com vb.) doğrudan bağlantıyı 403 ile
-  reddediyor (`$HTTPS_PROXY/__agentproxy/status`'ta doğrulanabilir).
-  PyPI (`pip install`) ise açık — bağımlılık kurulumu ve kod çalıştırma
-  sorun değil, sadece hedef sitelere HTTP isteği atmak engelli.
+  trendyol.com, hepsiburada.com, dolap.com, ramsey.com.tr, atasay.com
+  vb.) doğrudan bağlantıyı 403 ile reddediyor
+  (`$HTTPS_PROXY/__agentproxy/status`'ta doğrulanabilir). PyPI
+  (`pip install`) ise açık — bağımlılık kurulumu ve kod çalıştırma sorun
+  değil, sadece hedef sitelere HTTP isteği atmak engelli.
 - Sonuç: motor.py'nin robots.txt kontrolü ve gerçek kazıma katmanları
   BU ORTAMDAN gerçek sitelere karşı test edilemiyor. Doğrulama sahte
   HTML fixture'larıyla (`test_motor.py`) yapılıyor — mantığın doğruluğu
-  kanıtlanıyor ama gerçek sitenin JSON-LD/microdata/CSS yapısı henüz
+  kanıtlanıyor ama gerçek sitelerin JSON-LD/microdata/CSS yapısı henüz
   bilinmiyor.
 - Motor bu kısıtla güvenli davranıyor: robots.txt okunamazsa (ki bu
   ortamda hep okunamıyor) ihtiyatla RET kabul ediyor, kaynağı atlıyor,
   0 ürünle "sağlıklı" (ilk çalıştırma, henüz baseline yok) olarak
-  kaydediyor. Yani sandbox'ta çalıştırmak hataya değil sessiz-boş
-  sonuca yol açıyor — Yavuz'un yerelinde çalıştırdığında gerçek veri
-  gelecek.
+  kaydediyor. Sandbox'ta çalıştırmak hataya değil sessiz-boş sonuca yol
+  açıyor — Yavuz'un yerelinde çalıştırdığında gerçek veri gelecek.
 
 ## Teknik Durum
 - GitHub repo `maliyetine` oluşturuldu.
-- **Kazıma motoru v0.3'e refactor edildi** (KAZIYICI MİMARİSİ bölümüne
-  göre). `scraper/fiyat_endeksi.py` ve `scraper/kaynaklar_dugun.py`
-  (v0.1/v0.2, tek-CONFIG modeli) SİLİNDİ, yerine geldi:
-  - `scraper/motor.py` — tek motor: üç katmanlı çıkarım (JSON-LD →
-    microdata/meta → CSS son çare), otomatik robots.txt kapısı (domain
-    başına önbellekli), retry+exponential backoff, sağlık kontrolü
-    (geçmişe göre ani düşüşte karantina), Türkçe fiyat parse, IQR aykırı
-    değer temizliği, persentil segmentleme. `python motor.py` ile
-    `kaynaklar.yaml`'daki tüm aktif kaynakları işler.
-  - `scraper/kaynaklar.yaml` — kaynak kaydı. Akakçe için 6 aktif kaynak
-    (gelinlik genel + tesettür + korseli + kısa + a-kesim + gelin
-    ayakkabısı — WebSearch ile doğrulanmış gerçek URL'ler, sayfa_sayisi:1
-    çünkü robots pagination'ı yasaklıyor). Trendyol/Hepsiburada/
-    DüğünBuketi 4 kaynak `aktif: false` — robots.txt bu ortamdan hiç
-    doğrulanamadı, Yavuz'un yerelinde `robots_kontrol.py` ile kontrol
-    edip aktifleştirmesi gerekiyor.
-  - `scraper/test_motor.py` — 28 test, hepsi PASS (`python -m unittest
-    test_motor.py -v`). Sahte JSON-LD/microdata/CSS HTML fixture'ları,
-    robots.txt kapısı (mock), sağlık kontrolü/karantina, uçtan uca
-    `kaynak_isle()` (dosya yazma dahil), `kaynaklar.yaml` şema doğrulama.
-    Bu süreçte gerçek bir bug bulundu ve düzeltildi: JSON-LD katmanı
-    `ItemList`/`itemListElement` yapısını açmıyordu (çoğu kategori
-    listeleme sayfası bu formatı kullanır) — düzeltildi.
-  - `python motor.py --cikti /tmp/...` ile gerçek `kaynaklar.yaml`'a
-    karşı uçtan uca çalıştırıldı: 6 aktif kaynak da robots.txt
-    okunamadığı için (sandbox kısıtı) güvenli şekilde RET/atla, 0 ürün,
-    "sağlıklı" (ilk çalıştırma) olarak kaydedildi, çökme yok, exit 0.
+- **Kazıma motoru v0.4**: ÇOK KAYNAK KURALI'na göre site-bazlı gruplama +
+  çapraz doğrulama eklendi.
+  - `scraper/motor.py`: `gruplar_halinde_topla()` yaml girdilerini
+    (vertikal, kalem, **site**) bazında gruplar — aynı site'nin birden
+    fazla dar-kategori girdisi tek kaynak sayılıp birleştirilir.
+    `grup_isle()` her site-grubu için temizleme + segmentleme + sağlık
+    kontrolü + kayıt yapar (`kaynak_gecmisi.json` anahtarı artık
+    `vertikal/kalem/site`). `capraz_dogrula()` aynı kalemdeki ≥2 sağlıklı
+    sitenin genel medyanını karşılaştırıp %30 eşiğini aşan farkta uyarı
+    üretir ve `{kalem}_capraz-dogrulama_{tarih}.json` yazar.
+  - `scraper/kaynaklar.yaml`: her girdiye `site` alanı eklendi. Yeni
+    kalemler: **damatlik** (akakce + ramsey), **alyans** (akakce genel +
+    14 ayar + atasay). **gelinlik** artık 5 bağımsız site adayına sahip
+    (akakce, dolap [ikinci el], dugunbuketi [gelinlik evi/lüks segment],
+    trendyol, hepsiburada) — sadece akakce aktif, gerisi robots.txt
+    doğrulaması bekliyor. Tüm yeni URL'ler WebSearch ile doğrulandı
+    (uydurulmadı).
+  - `scraper/test_motor.py`: 35 test, hepsi PASS. Yeni testler:
+    aynı-site birleştirme, çapraz doğrulama (uyarı üretme/üretmeme,
+    sağlıksız kaynağı dışlama, kalem başına ayrı raporlama), ve
+    bilgilendirici bir "kapsam raporu" testi (hangi kalemler hâlâ tek
+    kaynaklı, stdout'a basar, başarısız olmaz).
+  - `python motor.py --cikti /tmp/...` ile gerçek yaml'a karşı tekrar
+    uçtan uca çalıştırıldı: 5 Akakçe gelinlik girdisi doğru şekilde tek
+    "akakce" grubuna birleşti (kaynak_adlari listesinde 5 ad görünüyor),
+    4 kaynak-grubu işlendi, çökme yok, exit 0. Sandbox network kısıtı
+    yüzünden gerçek ürün gelmedi (bkz. yukarıdaki not).
   - `scraper/robots_kontrol.py` korunuyor — Yavuz'un yerelinde tekil URL
-    hızlı kontrolü için (motor.py'nin otomatik kapısından bağımsız,
-    manuel ön-kontrol aracı).
-  - `.gitignore` düzeltildi: eski `*_20*.json` kuralı aylık veri
-    JSON'larını da (yanlışlıkla) gizliyordu — kaldırıldı. Aylık veri
-    (`scraper/veri/`) BİLEREK commit edilecek (fiyat geçmişi = ürün).
-    Sadece `kazima.log` ve `kaynak_gecmisi.json` (çalışma zamanı durumu)
-    gitignore'da.
+    hızlı kontrolü için.
 
 ## Modüller (sırayla)
 1. **Kazıma hattı** — kaynaklar.yaml + üç katmanlı çıkarım + robots
-   doğrulama + sağlık kontrolü + log. ✅ Motor v0.3 hazır ve sahte
-   veriyle test edildi. Kalan: Yavuz'un yerelinde gerçek siteye karşı
-   çalıştırıp (a) Akakçe'nin 6 aktif kaynağının gerçekten ürün
-   döndürdüğünü doğrulamak, (b) Trendyol/Hepsiburada/DüğünBuketi için
-   robots.txt kontrolü yapıp uygun olanları `aktif: true` yapmak.
+   doğrulama + sağlık kontrolü + ÇOK KAYNAK çapraz doğrulama + log. ✅
+   Motor v0.4 hazır, sahte veriyle test edildi (35 test). Kalan:
+   (a) Yavuz'un yerelinde gerçek siteye karşı çalıştırıp Akakçe'nin 6
+   aktif kaynağının gerçekten ürün döndürdüğünü doğrulaması,
+   (b) dolap/dugunbuketi/ramsey/atasay/trendyol/hepsiburada için
+   robots.txt kontrolü yapıp uygun olanları `aktif: true` yapması —
+   bu iki adım tamamlanınca gelinlik/damatlik/alyans gerçek çapraz
+   doğrulama üretmeye başlayacak.
 2. **Veri saklama** — aylık snapshot şeması (SQLite yeterli).
 3. **İlk hesaplayıcı + endeks sayfası** (düğün).
 4. **Metodoloji sayfası + schema.org işaretlemesi.**
@@ -185,9 +260,14 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
 - [ ] Yavuz'un yerelinde `python motor.py` çalıştırıp Akakçe
       kaynaklarının gerçek veri döndürdüğünü doğrulaması (bu sandbox'tan
       yapılamıyor — network kısıtı)
-- [ ] Trendyol/Hepsiburada/DüğünBuketi robots.txt kontrolü
+- [ ] dolap.com / dugunbuketi.com / ramsey.com.tr / atasay.com /
+      trendyol.com / hepsiburada.com robots.txt kontrolü
       (`scraper/robots_kontrol.py` ile) → uygun olanları
       `kaynaklar.yaml`'da `aktif: true` yap
+- [ ] Düğün kalem listesindeki geri kalanlar için kaynak bulma: takı/
+      altın (canlı fiyat), nikah şekeri, davetiye, gelin ayakkabısı için
+      2. kaynak
+- [ ] TÜİK doğrulama verisi entegrasyonu (ÇOK KAYNAK KURALI 5. katman)
 - [ ] (İleride) Türk Patent marka başvurusu
 - [ ] (İleride) yakın domain varyantlarını kapat
 

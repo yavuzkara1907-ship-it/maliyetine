@@ -239,8 +239,8 @@ class RobotsKapisiTestleri(unittest.TestCase):
             ornek.read.assert_called_once()
 
 
-class KaynakIsleUctanUcaTestleri(unittest.TestCase):
-    """robots + HTTP katmanlarini sahteleyip kaynak_isle'nin uctan uca
+class GrupIsleUctanUcaTestleri(unittest.TestCase):
+    """robots + HTTP katmanlarini sahteleyip grup_isle'nin uctan uca
     dogru calistigini (dosya yazma, saglik kontrolu, karantina) dogrular."""
 
     def setUp(self):
@@ -252,10 +252,11 @@ class KaynakIsleUctanUcaTestleri(unittest.TestCase):
 
     @patch("motor.robots_izin_var", return_value=True)
     @patch("motor.getir")
-    def test_saglikli_kaynak_dogru_klasore_yazar(self, sahte_getir, _sahte_robots):
+    def test_saglikli_grup_dogru_klasore_yazar(self, sahte_getir, _sahte_robots):
         sahte_getir.return_value = JSON_LD_HTML
         kaynak = {
             "ad": "Test Kaynak",
+            "site": "test-site",
             "url": "https://ornek-site.com/gelinlik.html",
             "sayfa_sayisi": 1,
             "vertikal": "dugun",
@@ -266,21 +267,50 @@ class KaynakIsleUctanUcaTestleri(unittest.TestCase):
             "css_secicileri": None,
         }
         gecmis = {}
-        sonuc = motor.kaynak_isle(kaynak, gecmis, self.cikti_kok)
+        gruplar = motor.gruplar_halinde_topla([kaynak])
+        self.assertEqual(len(gruplar), 1)
+        (vertikal, kalem, site), grup = next(iter(gruplar.items()))
+        sonuc = motor.grup_isle(vertikal, kalem, site, grup, gecmis, self.cikti_kok)
 
-        self.assertIsNotNone(sonuc)
         self.assertTrue(sonuc["saglikli"])
         self.assertEqual(sonuc["toplam_urun"], 3)
         self.assertEqual(sonuc["kullanilan_katmanlar"], ["json-ld"])
+        self.assertIsNotNone(sonuc["genel_medyan"])
 
-        beklenen_dosya = self.cikti_kok / "dugun" / "gelinlik_test-kaynak_" \
+        beklenen_dosya = self.cikti_kok / "dugun" / "gelinlik_test-site_" \
             f"{__import__('datetime').date.today().isoformat()}.json"
         self.assertTrue(beklenen_dosya.exists())
         icerik = json.loads(beklenen_dosya.read_text(encoding="utf-8"))
         self.assertEqual(icerik["toplam_urun"], 3)
 
-        self.assertIn("Test Kaynak", gecmis)
-        self.assertEqual(gecmis["Test Kaynak"]["urun_sayilari"], [3])
+        self.assertIn("dugun/gelinlik/test-site", gecmis)
+        self.assertEqual(gecmis["dugun/gelinlik/test-site"]["urun_sayilari"], [3])
+
+    @patch("motor.robots_izin_var", return_value=True)
+    @patch("motor.getir")
+    def test_ayni_site_birden_fazla_girdi_birlesir(self, sahte_getir, _sahte_robots):
+        # Akakce'nin 5 alt kategorisi gibi: ayni "site" degeriyle 2 yaml
+        # girdisi TEK kaynak grubu olarak birlesmeli.
+        sahte_getir.return_value = JSON_LD_HTML  # her cagride ayni 3 urunu doner
+        ortak = {
+            "site": "akakce",
+            "sayfa_sayisi": 1,
+            "vertikal": "dugun",
+            "kalem": "gelinlik",
+            "min_fiyat": 100,
+            "bekleme_sn": 0,
+            "aktif": True,
+            "css_secicileri": None,
+        }
+        kaynaklar = [
+            {**ortak, "ad": "Akakce - A", "url": "https://akakce.com/a.html"},
+            {**ortak, "ad": "Akakce - B", "url": "https://akakce.com/b.html"},
+        ]
+        gruplar = motor.gruplar_halinde_topla(kaynaklar)
+        self.assertEqual(len(gruplar), 1)  # iki girdi tek gruba dustu
+        grup = next(iter(gruplar.values()))
+        self.assertEqual(sorted(grup["kaynak_adlari"]), ["Akakce - A", "Akakce - B"])
+        self.assertEqual(len(grup["urunler"]), 6)  # 3 urun x 2 girdi
 
     @patch("motor.robots_izin_var", return_value=True)
     @patch("motor.getir")
@@ -288,6 +318,7 @@ class KaynakIsleUctanUcaTestleri(unittest.TestCase):
         sahte_getir.return_value = JSON_LD_HTML  # bu calistirmada 3 urun donecek
         kaynak = {
             "ad": "Test Kaynak 2",
+            "site": "test-site-2",
             "url": "https://ornek-site.com/gelinlik.html",
             "sayfa_sayisi": 1,
             "vertikal": "dugun",
@@ -298,8 +329,10 @@ class KaynakIsleUctanUcaTestleri(unittest.TestCase):
             "css_secicileri": None,
         }
         # Gecmiste normalde 200 urun donuyordu -> bu ay 3 urun ciddi dusus.
-        gecmis = {"Test Kaynak 2": {"urun_sayilari": [200, 195, 205]}}
-        sonuc = motor.kaynak_isle(kaynak, gecmis, self.cikti_kok)
+        gecmis = {"dugun/gelinlik/test-site-2": {"urun_sayilari": [200, 195, 205]}}
+        gruplar = motor.gruplar_halinde_topla([kaynak])
+        (vertikal, kalem, site), grup = next(iter(gruplar.items()))
+        sonuc = motor.grup_isle(vertikal, kalem, site, grup, gecmis, self.cikti_kok)
 
         self.assertFalse(sonuc["saglikli"])
         karantina_dosyalari = list((self.cikti_kok / "karantina").glob("*.json"))
@@ -313,6 +346,7 @@ class KaynakIsleUctanUcaTestleri(unittest.TestCase):
     def test_robots_ret_ederse_hicbir_seyi_kazimaz(self, sahte_getir, _sahte_robots):
         kaynak = {
             "ad": "Yasakli Kaynak",
+            "site": "yasakli-site",
             "url": "https://ornek-site.com/yasakli.html",
             "sayfa_sayisi": 1,
             "vertikal": "dugun",
@@ -322,17 +356,80 @@ class KaynakIsleUctanUcaTestleri(unittest.TestCase):
             "aktif": True,
             "css_secicileri": None,
         }
-        sonuc = motor.kaynak_isle(kaynak, {}, self.cikti_kok)
+        gruplar = motor.gruplar_halinde_topla([kaynak])
+        (vertikal, kalem, site), grup = next(iter(gruplar.items()))
+        sonuc = motor.grup_isle(vertikal, kalem, site, grup, {}, self.cikti_kok)
         sahte_getir.assert_not_called()
         self.assertEqual(sonuc["toplam_urun"], 0)
 
     @patch("motor.robots_izin_var", return_value=True)
     @patch("motor.getir")
     def test_pasif_kaynak_atlanir(self, sahte_getir, _sahte_robots):
-        kaynak = {"ad": "Pasif", "url": "https://x.com/y", "aktif": False}
-        sonuc = motor.kaynak_isle(kaynak, {}, self.cikti_kok)
-        self.assertIsNone(sonuc)
+        kaynak = {"ad": "Pasif", "site": "pasif-site", "url": "https://x.com/y", "aktif": False}
+        gruplar = motor.gruplar_halinde_topla([kaynak])
+        self.assertEqual(gruplar, {})
         sahte_getir.assert_not_called()
+
+
+class CaprazDogrulamaTestleri(unittest.TestCase):
+    def setUp(self):
+        self.tmp = TemporaryDirectory()
+        self.cikti_kok = Path(self.tmp.name)
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def _sonuc(self, site, kalem, medyan, saglikli=True, vertikal="dugun"):
+        return {
+            "site": site, "vertikal": vertikal, "kalem": kalem,
+            "genel_medyan": medyan, "saglikli": saglikli,
+        }
+
+    def test_tek_kaynakta_capraz_dogrulama_yapilmaz(self):
+        sonuclar = [self._sonuc("akakce", "gelinlik", 15000)]
+        raporlar = motor.capraz_dogrula(sonuclar, self.cikti_kok)
+        self.assertEqual(raporlar, [])
+
+    def test_yakin_medyanlar_uyari_uretmez(self):
+        sonuclar = [
+            self._sonuc("akakce", "gelinlik", 15000),
+            self._sonuc("dolap", "gelinlik", 17000),  # %13 fark
+        ]
+        raporlar = motor.capraz_dogrula(sonuclar, self.cikti_kok)
+        self.assertEqual(len(raporlar), 1)
+        self.assertFalse(raporlar[0]["uyari"])
+
+    def test_uzak_medyanlar_uyari_uretir(self):
+        sonuclar = [
+            self._sonuc("akakce", "gelinlik", 10000),
+            self._sonuc("dugunbuketi", "gelinlik", 60000),  # %500 fark
+        ]
+        raporlar = motor.capraz_dogrula(sonuclar, self.cikti_kok)
+        self.assertEqual(len(raporlar), 1)
+        self.assertTrue(raporlar[0]["uyari"])
+        self.assertEqual(raporlar[0]["site_medyanlari"], {"akakce": 10000, "dugunbuketi": 60000})
+
+        dosya = self.cikti_kok / "dugun" / f"gelinlik_capraz-dogrulama_{__import__('datetime').date.today().isoformat()}.json"
+        self.assertTrue(dosya.exists())
+
+    def test_saglıksiz_kaynak_karsilastirmaya_dahil_edilmez(self):
+        sonuclar = [
+            self._sonuc("akakce", "gelinlik", 10000, saglikli=True),
+            self._sonuc("dolap", "gelinlik", 500000, saglikli=False),  # karantinada, sayilmamali
+        ]
+        raporlar = motor.capraz_dogrula(sonuclar, self.cikti_kok)
+        self.assertEqual(raporlar, [])  # sadece 1 saglikli kaynak kaldi
+
+    def test_farkli_kalemler_ayri_raporlanir(self):
+        sonuclar = [
+            self._sonuc("akakce", "gelinlik", 15000),
+            self._sonuc("dolap", "gelinlik", 16000),
+            self._sonuc("akakce", "alyans", 5000),
+            self._sonuc("atasay", "alyans", 5200),
+        ]
+        raporlar = motor.capraz_dogrula(sonuclar, self.cikti_kok)
+        kalemler = {r["kalem"] for r in raporlar}
+        self.assertEqual(kalemler, {"gelinlik", "alyans"})
 
 
 class KaynaklarYamlTestleri(unittest.TestCase):
@@ -345,7 +442,7 @@ class KaynaklarYamlTestleri(unittest.TestCase):
         kaynaklar = veri["kaynaklar"]
         self.assertGreater(len(kaynaklar), 0)
 
-        zorunlu_alanlar = {"ad", "url", "vertikal", "kalem", "aktif"}
+        zorunlu_alanlar = {"ad", "site", "url", "vertikal", "kalem", "aktif"}
         adlar = set()
         for k in kaynaklar:
             eksik = zorunlu_alanlar - set(k.keys())
@@ -353,6 +450,32 @@ class KaynaklarYamlTestleri(unittest.TestCase):
             self.assertNotIn(k["ad"], adlar, f"tekrarli kaynak adi: {k['ad']}")
             adlar.add(k["ad"])
             self.assertTrue(k["url"].startswith("https://"))
+            self.assertRegex(k["site"], r"^[a-z0-9-]+$", f"{k['ad']}: site alani slug olmali")
+
+    def test_cok_kaynak_kurali_kapsam_raporu(self):
+        """Bilgilendirici: hangi kalemlerin hala tek-kaynakli oldugunu
+        gosterir (CLAUDE.md hedefi: kalem basina >=2 site). Test
+        basarisiz OLMAZ, sadece stdout'a rapor basar - bircok kalem
+        henuz robots.txt dogrulamasi bekledigi icin bu asamada
+        zorunlu kilmak erken olur."""
+        import yaml
+        from collections import defaultdict
+        dosya = Path(__file__).parent / "kaynaklar.yaml"
+        veri = yaml.safe_load(dosya.read_text(encoding="utf-8"))
+        siteler_by_kalem = defaultdict(set)
+        aktif_siteler_by_kalem = defaultdict(set)
+        for k in veri["kaynaklar"]:
+            siteler_by_kalem[(k["vertikal"], k["kalem"])].add(k["site"])
+            if k.get("aktif"):
+                aktif_siteler_by_kalem[(k["vertikal"], k["kalem"])].add(k["site"])
+
+        for anahtar, siteler in sorted(siteler_by_kalem.items()):
+            aktif = aktif_siteler_by_kalem.get(anahtar, set())
+            durum = "OK" if len(siteler) >= 2 else "TEK KAYNAK"
+            print(
+                f"  [{durum}] {anahtar[0]}/{anahtar[1]}: "
+                f"toplam {sorted(siteler)}, aktif {sorted(aktif)}"
+            )
 
     def test_akakce_kaynaklari_sayfalama_yapmiyor(self):
         import yaml

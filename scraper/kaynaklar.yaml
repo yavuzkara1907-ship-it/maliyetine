@@ -5,6 +5,12 @@
 #
 # Alanlar:
 #   ad              : benzersiz, okunabilir isim (log ve dosya adlarinda kullanilir)
+#   site            : BAGIMSIZ KAYNAK kimligi (ör. "akakce", "dolap", "atasay").
+#                      COK KAYNAK KURALI/capraz dogrulama bu alana gore
+#                      gruplanir - ayni "site" degerine sahip birden fazla
+#                      girdi (ör. Akakce'nin 5 alt kategorisi) TEK kaynak
+#                      sayilir, cunku ayni sitenin fiyat politikasini
+#                      yansitirlar. Kucuk harf, bosluksuz (slug).
 #   url             : hedef sayfa. Sayfalama varsa {page} yer tutucusu icerir.
 #   sayfa_sayisi    : kac sayfa gezilecek (varsayilan 1 - bkz. Akakce notu asagida)
 #   vertikal        : "dugun" | "tadilat" | ...
@@ -16,10 +22,20 @@
 #   aktif           : false ise motor.py bu kaynagi atlar
 #   durum           : "arastirildi" | "onaylandi" | "reddedildi" - insan gozden gecirme notu
 #   notlar          : serbest metin
+#
+# COK KAYNAK KURALI (CLAUDE.md): kalem basina en az 2, ideal 3 BAGIMSIZ
+# site hedeflenir (karsilastirma sitesi + marka magazasi + ikinci el/
+# sektor platformu gibi farkli tipler). motor.py ayni (vertikal, kalem)
+# icin >=2 saglikli site varsa medyanlarini karsilastirir, fark %30'u
+# asarsa uyari yazar (bkz. capraz_dogrula() motor.py).
 
 kaynaklar:
 
-  # --- Akakce: gelinlik ve ilgili kategoriler ---
+  # =========================================================
+  # KALEM: gelinlik  (hedef: >=3 bagimsiz site)
+  # =========================================================
+
+  # --- site: akakce (fiyat karsilastirma - kitlesel/hazir giyim segmenti) ---
   # robots.txt (Yavuz tarafindan yerelde dogrulandi, bu ortamdan tekrar
   # kontrol edilemedi - network policy engelliyor): "Allow: /" ama
   # "Disallow: /*?sayfa=*" ve "/*,*,1..7.html" -> SAYFALAMA YASAK.
@@ -28,6 +44,7 @@ kaynaklar:
   # kategori). motor.py yine de her calistirmada robots.txt'i otomatik
   # kontrol eder; bu notlar sadece insan gozden gecirmesi icindir.
   - ad: "Akakce - Gelinlik (genel)"
+    site: "akakce"
     url: "https://www.akakce.com/gelinlik.html"
     sayfa_sayisi: 1
     vertikal: "dugun"
@@ -45,6 +62,7 @@ kaynaklar:
       0 urun olarak isaretleyip karantinaya alacak.
 
   - ad: "Akakce - Tesettur Gelinlik"
+    site: "akakce"
     url: "https://www.akakce.com/gelinlik/tesettur-gelinlik.html"
     sayfa_sayisi: 1
     vertikal: "dugun"
@@ -58,6 +76,7 @@ kaynaklar:
     notlar: "Segment kirilimi icin ayri alt kategori (Urun Kararlari notu: farkli segmentler karistirilmaz)."
 
   - ad: "Akakce - Korseli Gelinlik"
+    site: "akakce"
     url: "https://www.akakce.com/gelinlik/korseli-gelinlik.html"
     sayfa_sayisi: 1
     vertikal: "dugun"
@@ -71,6 +90,7 @@ kaynaklar:
     notlar: ""
 
   - ad: "Akakce - Kisa Gelinlik"
+    site: "akakce"
     url: "https://www.akakce.com/gelinlik/kisa-gelinlik.html"
     sayfa_sayisi: 1
     vertikal: "dugun"
@@ -84,6 +104,7 @@ kaynaklar:
     notlar: ""
 
   - ad: "Akakce - A Kesim Gelinlik"
+    site: "akakce"
     url: "https://www.akakce.com/gelinlik/a-kesim.html"
     sayfa_sayisi: 1
     vertikal: "dugun"
@@ -96,7 +117,53 @@ kaynaklar:
     durum: "arastirildi"
     notlar: ""
 
+  # --- site: dolap (ikinci el / alt segment - COK KAYNAK KURALI tip 3) ---
+  - ad: "Dolap - Gelinlik (ikinci el)"
+    site: "dolap"
+    url: "https://dolap.com/gelinlik"
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "gelinlik"
+    yontem: "otomatik"
+    css_secicileri: null
+    min_fiyat: 200
+    bekleme_sn: 3
+    aktif: false
+    durum: "arastirildi"
+    notlar: >
+      WebSearch ile dogrulanan gercek URL (dolap.com/gelinlik, 277+ sayfa
+      var ama robots.txt sayfalamaya izin verip vermedigi bilinmiyor -
+      once sayfa_sayisi:1 ile baslanmali). robots.txt bu ortamdan
+      DOGRULANMADI. Ikinci el oldugu icin gelinligin "alt segment"
+      ucunu temsil eder - Akakce'nin hazir giyim segmentiyle
+      KARISTIRILMAMASI icin ayri site grubu olarak tutuluyor.
+
+  # --- site: dugunbuketi (sektor platformu - lüks/ozel dikim segmenti, COK KAYNAK KURALI tip 4) ---
+  - ad: "DugunBuketi - Istanbul Gelinlik Moda Evleri"
+    site: "dugunbuketi"
+    url: "https://dugunbuketi.com/p/gelinlik-moda-evleri/istanbul"
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "gelinlik"
+    yontem: "otomatik"
+    css_secicileri: null
+    min_fiyat: 3000
+    bekleme_sn: 3
+    aktif: false
+    durum: "arastirildi"
+    notlar: >
+      WebSearch ile dogrulanan gercek URL. Gelinlik evi/moda evi
+      vitrinleri - Akakce'nin kitlesel e-ticaret fiyatlarindan farkli,
+      daha yuksek/ozel dikim segmentini temsil eder (methodoloji notu:
+      "60.000 TL'lik gelinlik evi gelinligi ile 1.500 TL'lik hazir giyim
+      ayni urun degil"). robots.txt bu ortamdan DOGRULANMADI, lead-gen
+      sitesi - KS de ayrica okunmali.
+
+  # =========================================================
+  # KALEM: gelin-ayakkabisi  (su an tek kaynak - ikincisi aranacak)
+  # =========================================================
   - ad: "Akakce - Gelin Ayakkabisi"
+    site: "akakce"
     url: "https://www.akakce.com/gelin-ayakkabisi.html"
     sayfa_sayisi: 1
     vertikal: "dugun"
@@ -107,12 +174,107 @@ kaynaklar:
     bekleme_sn: 3
     aktif: true
     durum: "arastirildi"
-    notlar: "Arama sonucunda '750 TL'den baslayan 40 secenek' gorundu - ornekleme icin dusuk ama baslangic icin yeterli."
+    notlar: >
+      Arama sonucunda '750 TL'den baslayan 40 secenek' gorundu -
+      ornekleme icin dusuk ama baslangic icin yeterli. COK KAYNAK
+      KURALI acisindan eksik: ikinci bagimsiz site henuz bulunmadi.
 
-  # --- Onceki oturumdan devreden adaylar: robots.txt bu ortamdan hic
-  # dogrulanamadi (network policy tum bu domain'leri 403 ile reddetti).
-  # Yavuz yerelinde robots_kontrol.py ile kontrol edip aktif: true yapmali. ---
+  # =========================================================
+  # KALEM: damatlik  (hedef: >=2 bagimsiz site)
+  # =========================================================
+
+  # --- site: akakce (fiyat karsilastirma) ---
+  - ad: "Akakce - Damatlik"
+    site: "akakce"
+    url: "https://www.akakce.com/takim-elbise/damatlik.html"
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "damatlik"
+    yontem: "otomatik"
+    css_secicileri: null
+    min_fiyat: 1000
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: "WebSearch ile dogrulandi: 2.520 damatlik modeli listeleniyor (D's Damat, Altinyildiz Classics, Fabio Cassel markalari one cikan)."
+
+  # --- site: ramsey (marka magazasi - COK KAYNAK KURALI tip 2) ---
+  - ad: "Ramsey - Takim Elbise (marka magazasi)"
+    site: "ramsey"
+    url: "https://www.ramsey.com.tr/yeni/takim-elbise"
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "damatlik"
+    yontem: "otomatik"
+    css_secicileri: null
+    min_fiyat: 1000
+    bekleme_sn: 3
+    aktif: false
+    durum: "arastirildi"
+    notlar: >
+      WebSearch ile dogrulanan gercek URL. Marka kendi magazasi -
+      genelde karsilastirma sitelerinden daha az bot korumali, daha
+      "liste fiyati" gercekci. robots.txt bu ortamdan DOGRULANMADI.
+
+  # =========================================================
+  # KALEM: alyans  (hedef: >=2 bagimsiz site)
+  # =========================================================
+
+  # --- site: akakce (fiyat karsilastirma - genel sayfa TUM materyalleri
+  # (celik/gumus/altin) kapsar; bu KASITLI - dusuk/orta/luks segmentleri
+  # zaten materyal farkiyla oluşuyor, bu da butce kirilimini yansitir) ---
+  - ad: "Akakce - Alyans (genel)"
+    site: "akakce"
+    url: "https://www.akakce.com/alyans.html"
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "alyans"
+    yontem: "otomatik"
+    css_secicileri: null
+    min_fiyat: 200
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: "WebSearch ile dogrulandi: 41.504 secenek. Materyal turune gore genis fiyat araligi (gumus/celik ucuz, altin pahali)."
+
+  - ad: "Akakce - 14 Ayar Alyans"
+    site: "akakce"
+    url: "https://www.akakce.com/alyans/14-ayar-alyans.html"
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "alyans"
+    yontem: "otomatik"
+    css_secicileri: null
+    min_fiyat: 1000
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: "WebSearch ile dogrulandi: 3.199 secenek. Orta segment icin en yaygin altin ayari."
+
+  # --- site: atasay (marka kuyumcu magazasi - COK KAYNAK KURALI tip 2) ---
+  - ad: "Atasay - Alyans (marka magazasi)"
+    site: "atasay"
+    url: "https://www.atasay.com/tr/altin/alyans/"
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "alyans"
+    yontem: "otomatik"
+    css_secicileri: null
+    min_fiyat: 1000
+    bekleme_sn: 3
+    aktif: false
+    durum: "arastirildi"
+    notlar: >
+      WebSearch ile dogrulanan gercek URL. Marka kuyumcu - Akakce'nin
+      karsilastirma-listesi fiyatlarina karsi bagimsiz dogrulama saglar.
+      robots.txt bu ortamdan DOGRULANMADI.
+
+  # =========================================================
+  # KALEM: salon / fotografci  (onceki oturumdan - tek kaynak, robots
+  # dogrulanmadi, hepsi pasif)
+  # =========================================================
   - ad: "Trendyol - Gelinlik"
+    site: "trendyol"
     url: "https://www.trendyol.com/gelinlik-x-c57"
     sayfa_sayisi: 1
     vertikal: "dugun"
@@ -126,6 +288,7 @@ kaynaklar:
     notlar: "robots.txt DOGRULANMADI. Cloudflare/Akamai tipi bot korumasi olasi."
 
   - ad: "Hepsiburada - Gelinlik"
+    site: "hepsiburada"
     url: "https://www.hepsiburada.com/gelinlik-modelleri-c-12087251"
     sayfa_sayisi: 1
     vertikal: "dugun"
@@ -139,6 +302,7 @@ kaynaklar:
     notlar: "robots.txt DOGRULANMADI."
 
   - ad: "DugunBuketi - Istanbul Dugun Mekanlari"
+    site: "dugunbuketi"
     url: "https://dugunbuketi.com/c/dugun-mekanlari/istanbul"
     sayfa_sayisi: 1
     vertikal: "dugun"
@@ -152,6 +316,7 @@ kaynaklar:
     notlar: "robots.txt DOGRULANMADI. Lead-gen sitesi, KS de ayrica okunmali."
 
   - ad: "DugunBuketi - Istanbul Fotografci"
+    site: "dugunbuketi"
     url: "https://dugunbuketi.com/p/dis-cekim-dugun-fotografcisi/istanbul"
     sayfa_sayisi: 1
     vertikal: "dugun"
@@ -163,3 +328,21 @@ kaynaklar:
     aktif: false
     durum: "arastirildi"
     notlar: "robots.txt DOGRULANMADI."
+
+  - ad: "Armut - Dugun Fotografcisi Fiyatlari"
+    site: "armut"
+    url: "https://armut.com/fiyatlari/dugun-fotografcisi_194"
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "fotografci"
+    yontem: "otomatik"
+    css_secicileri: null
+    min_fiyat: 1000
+    bekleme_sn: 3
+    aktif: false
+    durum: "arastirildi"
+    notlar: >
+      robots.txt DOGRULANMADI. Bu 'fiyatlari' sayfasi tek bir agregat
+      ortalama gosteriyor olabilir - percentile segmentleme icin yeterli
+      ham fiyat noktasi saglamayabilir, aktiflestirmeden once sayfa
+      yapisi incelenmeli.
