@@ -132,7 +132,13 @@ kaynaklar:
     durum: "reddedildi"
     notlar: >
       Yavuz'un yerelinde robots_kontrol.py ile RET sonucu alindi
-      (2026-07-23). robots.txt bu sayfayi kazimaya kapatiyor - KULLANMA.
+      (2026-07-23). SUPHELI: o sirada kullanilan robots_kontrol.py
+      surumunde sonradan bulunan 3 stdlib bug'i vardi (bkz. CLAUDE.md
+      "DUZELTILDI" notu - urllib.robotparser bot-imzali User-Agent'in
+      403 almasi, coklu User-agent + bos satir grubunun dusurulmesi,
+      "*" joker karakterinin desteklenmemesi). Bu RET sonucu
+      DUZELTILMIS robots_kontrol.py (protego tabanli) ile henuz
+      TEKRAR test edilmedi - gercekte ONAY olabilir. robots.txt bu sayfayi kazimaya kapatiyor - KULLANMA.
 
   # --- site: dugunbuketi (sektor platformu - lüks/ozel dikim segmenti, COK KAYNAK KURALI tip 4) ---
   - ad: "DugunBuketi - Istanbul Gelinlik Moda Evleri"
@@ -149,7 +155,13 @@ kaynaklar:
     durum: "reddedildi"
     notlar: >
       Yavuz'un yerelinde robots_kontrol.py ile RET sonucu alindi
-      (2026-07-23). Gelinlik evi/lüks segment icin ikinci bir bagimsiz
+      (2026-07-23). SUPHELI: o sirada kullanilan robots_kontrol.py
+      surumunde sonradan bulunan 3 stdlib bug'i vardi (bkz. CLAUDE.md
+      "DUZELTILDI" notu - urllib.robotparser bot-imzali User-Agent'in
+      403 almasi, coklu User-agent + bos satir grubunun dusurulmesi,
+      "*" joker karakterinin desteklenmemesi). Bu RET sonucu
+      DUZELTILMIS robots_kontrol.py (protego tabanli) ile henuz
+      TEKRAR test edilmedi - gercekte ONAY olabilir. Gelinlik evi/lüks segment icin ikinci bir bagimsiz
       kaynak hala aranmali - bu site KULLANILAMAZ.
 
   # =========================================================
@@ -300,7 +312,13 @@ kaynaklar:
     durum: "reddedildi"
     notlar: >
       Yavuz'un yerelinde robots_kontrol.py ile RET sonucu alindi
-      (2026-07-23). KULLANMA.
+      (2026-07-23). SUPHELI: o sirada kullanilan robots_kontrol.py
+      surumunde sonradan bulunan 3 stdlib bug'i vardi (bkz. CLAUDE.md
+      "DUZELTILDI" notu - urllib.robotparser bot-imzali User-Agent'in
+      403 almasi, coklu User-agent + bos satir grubunun dusurulmesi,
+      "*" joker karakterinin desteklenmemesi). Bu RET sonucu
+      DUZELTILMIS robots_kontrol.py (protego tabanli) ile henuz
+      TEKRAR test edilmedi - gercekte ONAY olabilir. KULLANMA.
 
   - ad: "DugunBuketi - Istanbul Dugun Mekanlari"
     site: "dugunbuketi"
@@ -316,7 +334,13 @@ kaynaklar:
     durum: "reddedildi"
     notlar: >
       Yavuz'un yerelinde robots_kontrol.py ile RET sonucu alindi
-      (2026-07-23). "salon" kalemi icin baska kaynak aranmali - KULLANMA.
+      (2026-07-23). SUPHELI: o sirada kullanilan robots_kontrol.py
+      surumunde sonradan bulunan 3 stdlib bug'i vardi (bkz. CLAUDE.md
+      "DUZELTILDI" notu - urllib.robotparser bot-imzali User-Agent'in
+      403 almasi, coklu User-agent + bos satir grubunun dusurulmesi,
+      "*" joker karakterinin desteklenmemesi). Bu RET sonucu
+      DUZELTILMIS robots_kontrol.py (protego tabanli) ile henuz
+      TEKRAR test edilmedi - gercekte ONAY olabilir. "salon" kalemi icin baska kaynak aranmali - KULLANMA.
 
   - ad: "DugunBuketi - Istanbul Fotografci"
     site: "dugunbuketi"
@@ -332,7 +356,13 @@ kaynaklar:
     durum: "reddedildi"
     notlar: >
       Yavuz'un yerelinde robots_kontrol.py ile RET sonucu alindi
-      (2026-07-23). KULLANMA.
+      (2026-07-23). SUPHELI: o sirada kullanilan robots_kontrol.py
+      surumunde sonradan bulunan 3 stdlib bug'i vardi (bkz. CLAUDE.md
+      "DUZELTILDI" notu - urllib.robotparser bot-imzali User-Agent'in
+      403 almasi, coklu User-agent + bos satir grubunun dusurulmesi,
+      "*" joker karakterinin desteklenmemesi). Bu RET sonucu
+      DUZELTILMIS robots_kontrol.py (protego tabanli) ile henuz
+      TEKRAR test edilmedi - gercekte ONAY olabilir. KULLANMA.
 
   - ad: "Armut - Dugun Fotografcisi Fiyatlari"
     site: "armut"

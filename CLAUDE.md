@@ -204,10 +204,41 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
   kaydediyor. Sandbox'ta çalıştırmak hataya değil sessiz-boş sonuca yol
   açıyor — Yavuz'un yerelinde çalıştırdığında gerçek veri gelecek.
 
+### DÜZELTİLDİ — robots.txt kontrolü 3 ayrı stdlib bug'ı yüzünden yanlış sonuç veriyordu
+- Yavuz gerçek Akakçe robots.txt'ini yerelinde `curl` ile çekip paylaştı;
+  `python motor.py` çalıştırınca TÜM Akakçe URL'leri (daha önce ONAY
+  bekleniyordu) RET çıktı. Kök nedeni bu sandbox'tan da (metni elle
+  simüle ederek) doğrulandı — **`urllib.robotparser` (stdlib) 3 ayrı
+  yerde yanlış davranıyor:**
+  1. `RobotFileParser.read()` robots.txt'i varsayılan urllib User-Agent'i
+     ("Python-urllib/x.y") ile çekiyor — birçok sitenin bot koruması bunu
+     403'le reddediyor, `read()` de bunu "TÜM URL'ler RET" diye
+     yorumluyor (site aslında izin veriyor olsa bile).
+  2. `parse()`, aynı kural grubuna ait birden fazla `User-agent:`
+     satırıyla onu takip eden kurallar arasında BOŞ SATIR varsa o grubun
+     TAMAMINI sessizce düşürüyor — Akakçe'nin robots.txt formatı tam
+     olarak bu.
+  3. Disallow/Allow desenlerinde **`*` joker karakterini hiç
+     desteklemiyor** — `Disallow: /moda/*` harfi harfine "/moda/*"
+     dizesini arıyor, gerçek URL'lerde asla eşleşmiyor (kural sessizce
+     etkisiz). Akakçe kurallarının neredeyse tamamı joker karakter
+     kullanıyor.
+- **Düzeltme:** `urllib.robotparser` tamamen bırakıldı, yerine
+  `protego` (Scrapy'nin bağımlılığı, Google'ın robots.txt RFC 9309'unu
+  doğru uyguluyor) + `requests` (gerçekçi tarayıcı User-Agent'iyla
+  robots.txt'i biz çekiyoruz) kullanılıyor. Yavuz'un paylaştığı GERÇEK
+  robots.txt metniyle test edildi: `kaynaklar.yaml`'daki 9 Akakçe
+  URL'sinin hepsi artık doğru şekilde ONAY veriyor. `requirements.txt`'e
+  `protego` eklendi.
+- Ders: stdlib'in "çalışıyor gibi görünmesi" yeterli değil — gerçek
+  robots.txt formatlarına (çoklu User-agent grubu, joker karakter, bot
+  koruması) karşı test edilmeden güvenilmemeli.
+
 ## Teknik Durum
 - GitHub repo `maliyetine` oluşturuldu.
-- **Kazıma motoru v0.4**: ÇOK KAYNAK KURALI'na göre site-bazlı gruplama +
-  çapraz doğrulama eklendi.
+- **Kazıma motoru v0.5**: robots.txt kontrolü `protego`'ya taşındı (bkz.
+  yukarıdaki "DÜZELTİLDİ" notu) + ÇOK KAYNAK KURALI'na göre site-bazlı
+  gruplama + çapraz doğrulama (v0.4'ten devam).
   - `scraper/motor.py`: `gruplar_halinde_topla()` yaml girdilerini
     (vertikal, kalem, **site**) bazında gruplar — aynı site'nin birden
     fazla dar-kategori girdisi tek kaynak sayılıp birleştirilir.
@@ -223,54 +254,49 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
     trendyol, hepsiburada) — sadece akakce aktif, gerisi robots.txt
     doğrulaması bekliyor. Tüm yeni URL'ler WebSearch ile doğrulandı
     (uydurulmadı).
-  - `scraper/test_motor.py`: 35 test, hepsi PASS. Yeni testler:
-    aynı-site birleştirme, çapraz doğrulama (uyarı üretme/üretmeme,
-    sağlıksız kaynağı dışlama, kalem başına ayrı raporlama), ve
-    bilgilendirici bir "kapsam raporu" testi (hangi kalemler hâlâ tek
-    kaynaklı, stdout'a basar, başarısız olmaz).
+  - `scraper/test_motor.py`: 40 test, hepsi PASS. Yeni testler (bu
+    oturumda +5): joker karakter senaryosu, çoklu User-agent grubu +
+    boş satır senaryosu, 403/404/5xx robots.txt HTTP durumları — hepsi
+    gerçek Akakçe formatını simüle ediyor. Ayrıca: aynı-site birleştirme,
+    çapraz doğrulama (uyarı üretme/üretmeme, sağlıksız kaynağı dışlama,
+    kalem başına ayrı raporlama), bilgilendirici "kapsam raporu" testi.
   - `python motor.py --cikti /tmp/...` ile gerçek yaml'a karşı tekrar
-    uçtan uca çalıştırıldı: 5 Akakçe gelinlik girdisi doğru şekilde tek
-    "akakce" grubuna birleşti (kaynak_adlari listesinde 5 ad görünüyor),
-    4 kaynak-grubu işlendi, çökme yok, exit 0. Sandbox network kısıtı
-    yüzünden gerçek ürün gelmedi (bkz. yukarıdaki not).
-  - `scraper/robots_kontrol.py` korunuyor — Yavuz'un yerelinde tekil URL
-    hızlı kontrolü için.
-- **Yavuz'un yerelinde robots.txt kontrolü yapıldı (2026-07-23)** —
-  `robots_kontrol.py` gerçek sonuç döndürdü (bu sandbox'tan yapılamayan
-  tek adımdı). Sonuçlara göre `kaynaklar.yaml` güncellendi:
-  - **ONAY (aktif: true yapıldı):** Trendyol (gelinlik), Armut (fotoğrafçı
-    fiyatları — ama "fiyatları" sayfası tek agregat ortalama gösteriyor
-    olabilir, ilk gerçek çalıştırmada 0/az ürün dönerse bu şüphe
-    doğrulanmış olur), Ramsey (damatlık, marka mağazası), Atasay (alyans,
-    marka mağazası).
-  - **RET (durum: reddedildi, aktif kalmayacak):** Hepsiburada (gelinlik),
-    Dolap (gelinlik ikinci el), DüğünBuketi'nin 3 sayfası da (gelinlik
-    moda evleri, düğün mekanları/salon, fotoğrafçı) — hepsi robots.txt
-    tarafından engelleniyor, KULLANILAMAZ.
-  - **Sonuç — kapsam durumu (bu sandbox'ın test_motor.py kapsam raporundan):**
-    alyans (akakce+atasay, 2 aktif) OK, damatlik (akakce+ramsey, 2 aktif)
-    OK, gelinlik (akakce+trendyol, 2 aktif) OK, fotografci artık SADECE
-    armut aktif (dugunbuketi RET oldu — tek kaynağa düştü, ikincisi
-    aranmalı), **salon artık HİÇBİR aktif kaynağı yok** (tek adayı
-    dugunbuketi RET çıktı) — yeni kaynak bulunması gerekiyor,
-    gelin-ayakkabısı hâlâ tek kaynaklı (akakce).
+    uçtan uca çalıştırıldı: çökme yok, exit 0.
+  - `scraper/robots_kontrol.py` v0.2'ye güncellendi (aynı protego
+    düzeltmesi) — Yavuz'un yerelinde tekil URL hızlı kontrolü için.
+- **Yavuz'un yerelinde robots.txt kontrolü yapıldı (2026-07-23), SONRA
+  protego düzeltmesiyle DÜZELTİLDİ:**
+  - İlk turda (eski, hatalı urllib.robotparser ile) TÜM Akakçe URL'leri
+    yanlışlıkla RET çıktı — bu, gerçek bir robots.txt engeli değil,
+    yukarıdaki "DÜZELTİLDİ" notundaki 3 stdlib bug'ının sonucuydu.
+  - Yavuz gerçek robots.txt metnini paylaştı, protego ile yeniden analiz
+    edildi: **9/9 Akakçe URL'si aslında ONAY** (zaten `aktif: true`
+    olarak duruyordu, değişiklik gerekmedi — sadece motor.py'nin kendi
+    değerlendirmesi artık doğru).
+  - Aynı ilk turda Trendyol/Armut/Ramsey/Atasay ONAY, Hepsiburada/Dolap/
+    DüğünBuketi(3 sayfa) RET çıkmıştı — bunlar eski (bug'lı) motor.py
+    ile değil, doğrudan `robots_kontrol.py` ile o an test edilmişti; o
+    scriptin eski sürümü de aynı 3 bug'a sahipti, yani **bu sonuçlar da
+    şüpheli olabilir** ve protego'lu yeni `robots_kontrol.py` ile
+    TEKRAR doğrulanmalı (özellikle RET çıkanlar — belki onlar da aslında
+    ONAY'dı ve yanlışlıkla pasif bırakıldı).
   - CSS seçiciler henüz hiçbir yeni kaynak için girilmedi (Ramsey,
     Atasay, Trendyol, Armut) — motor JSON-LD/microdata katmanıyla
     otomatik çözmeyi deneyecek, bulamazsa sağlık kontrolü karantinaya
-    alacak. Yavuz'un ilk gerçek `python motor.py` çalıştırmasında hangi
-    kaynakların karantinaya düştüğünü görüp gerekirse F12 ile CSS
-    seçici girmesi gerekebilir.
+    alacak.
 
 ## Modüller (sırayla)
 1. **Kazıma hattı** — kaynaklar.yaml + üç katmanlı çıkarım + robots
-   doğrulama + sağlık kontrolü + ÇOK KAYNAK çapraz doğrulama + log. ✅
-   Motor v0.4 hazır, sahte veriyle test edildi (35 test). robots.txt
-   kontrolü Yavuz'un yerelinde yapıldı (bkz. Teknik Durum) — 4 yeni
-   kaynak aktifleşti. Kalan: Yavuz'un yerelinde `python motor.py`
-   çalıştırıp (a) hangi kaynakların gerçekten ürün döndürdüğünü
-   görmesi, (b) JSON-LD/microdata bulamayıp karantinaya düşenler için
-   F12 ile CSS seçici doldurması, (c) salon ve fotoğrafçı/gelin-ayakkabısı
-   kalemleri için eksik/tek kalan kaynaklara alternatif bulması.
+   doğrulama (protego ile, stdlib DEĞİL) + sağlık kontrolü + ÇOK KAYNAK
+   çapraz doğrulama + log. ✅ Motor v0.5 hazır, sahte veriyle VE gerçek
+   Akakçe robots.txt metniyle test edildi (40 test). Kalan: Yavuz'un
+   yerelinde (a) `git pull` ile son sürümü çekip `python motor.py`
+   çalıştırması — artık Akakçe'nin 9 URL'si de doğru ONAY vermeli,
+   (b) RET çıkan Hepsiburada/Dolap/DüğünBuketi'yi düzeltilmiş
+   `robots_kontrol.py` ile TEKRAR kontrol etmesi (eski sonuç şüpheli),
+   (c) karantinaya düşen kaynaklar için F12 ile CSS seçici doldurması,
+   (d) salon ve fotoğrafçı/gelin-ayakkabısı kalemleri için eksik/tek
+   kalan kaynaklara alternatif bulması.
 2. **Veri saklama** — aylık snapshot şeması (SQLite yeterli).
 3. **İlk hesaplayıcı + endeks sayfası** (düğün).
 4. **Metodoloji sayfası + schema.org işaretlemesi.**
@@ -282,20 +308,28 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
 - [x] Domain alındı
 - [ ] Cloudflare nameserver propagasyon onayı
 - [x] GitHub repo kurulumu
-- [x] robots.txt kontrolü yapıldı (Yavuz'un yerelinde,
+- [x] robots.txt kontrolü ilk turda yapıldı (Yavuz'un yerelinde,
       `scraper/robots_kontrol.py` ile, 2026-07-23): Trendyol/Ramsey/
       Atasay/Armut ONAY → aktif edildi. Hepsiburada/Dolap/DüğünBuketi
-      (3 sayfa) RET → pasif kaldı.
-- [ ] Yavuz'un yerelinde `python motor.py` çalıştırıp yeni aktif
+      (3 sayfa) RET → pasif kaldı. **DİKKAT:** bu turda kullanılan
+      `robots_kontrol.py` sürümü, sonradan bulunan 3 stdlib bug'ını
+      taşıyordu (bkz. Teknik Durum "DÜZELTİLDİ" notu) — RET sonuçları
+      şüpheli, doğrulanmamış olabilir.
+- [ ] Hepsiburada/Dolap/DüğünBuketi(3) RET sonuçlarını DÜZELTİLMİŞ
+      `robots_kontrol.py` (protego tabanlı) ile TEKRAR test et — belki
+      gerçekte ONAY'dırlar.
+- [ ] Yavuz'un yerelinde `git pull` + `python motor.py` çalıştırıp artık
+      doğru ONAY veren Akakçe kaynaklarının (9 URL) ve diğer aktif
       kaynakların (Trendyol, Ramsey, Atasay, Armut) gerçek veri
       döndürdüğünü doğrulaması ve karantinaya düşenler için gerekirse
       CSS seçici doldurması (bu sandbox'tan yapılamıyor — network kısıtı)
-- [ ] "salon" kalemi için YENİ kaynak bulma (tek adayı RET oldu, şu an
-      hiç aktif kaynağı yok)
+- [ ] "salon" kalemi için YENİ kaynak bulma (tek adayı RET oldu — ama
+      yukarıdaki şüpheli-RET notuna bakılırsa önce yeniden test edilmeli)
 - [ ] "fotografci" için 2. bağımsız kaynak bulma (dugunbuketi RET oldu,
-      sadece armut kaldı)
+      sadece armut kaldı — yeniden test edilmeli)
 - [ ] "gelin-ayakkabisi" ve gelinlik'in "gelinlik evi/lüks segment"i
-      için 2. bağımsız kaynak bulma (dugunbuketi RET oldu)
+      için 2. bağımsız kaynak bulma (dugunbuketi RET oldu — yeniden test
+      edilmeli)
 - [ ] Düğün kalem listesindeki geri kalanlar için kaynak bulma: takı/
       altın (canlı fiyat), nikah şekeri, davetiye
 - [ ] TÜİK doğrulama verisi entegrasyonu (ÇOK KAYNAK KURALI 5. katman)

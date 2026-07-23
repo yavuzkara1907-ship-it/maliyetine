@@ -17,6 +17,7 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 from unittest.mock import patch
 
+import requests
 from bs4 import BeautifulSoup
 
 import motor
@@ -204,39 +205,87 @@ class SaglikKontroluTestleri(unittest.TestCase):
         self.assertEqual(gecmis["k"]["urun_sayilari"][-1], 114)
 
 
+class SahteYanit:
+    def __init__(self, status_code=200, text=""):
+        self.status_code = status_code
+        self.text = text
+
+
 class RobotsKapisiTestleri(unittest.TestCase):
+    """robots_izin_var artik requests+protego kullaniyor (stdlib
+    urllib.robotparser DEGIL - bkz. motor.py'deki ayrintili not: gercek
+    Akakce robots.txt'ine karsi test edilirken 3 ayri hata bulundu:
+    bot-imzali User-Agent'in 403 alip yanlislikla "hicbir sey kazinamaz"
+    sonucuna varmasi, User-agent gruplarinda bos satirin grubu dusurmesi,
+    ve "*" joker karakterinin hic desteklenmemesi)."""
+
     def setUp(self):
         motor._robots_onbellek.clear()
 
-    def test_izin_verilen_url(self):
-        with patch("motor.RobotFileParser") as SahteRFP:
-            ornek = SahteRFP.return_value
-            ornek.can_fetch.return_value = True
-            sonuc = motor.robots_izin_var("https://ornek-site.com/kategori")
-            self.assertTrue(sonuc)
-            ornek.read.assert_called_once()
+    @patch("motor.requests.get")
+    def test_izin_verilen_url(self, sahte_get):
+        sahte_get.return_value = SahteYanit(200, "User-agent: *\nAllow: /\n")
+        sonuc = motor.robots_izin_var("https://ornek-site.com/kategori")
+        self.assertTrue(sonuc)
 
-    def test_yasakli_url(self):
-        with patch("motor.RobotFileParser") as SahteRFP:
-            ornek = SahteRFP.return_value
-            ornek.can_fetch.return_value = False
-            sonuc = motor.robots_izin_var("https://ornek-site.com/yasakli")
-            self.assertFalse(sonuc)
+    @patch("motor.requests.get")
+    def test_yasakli_url(self, sahte_get):
+        sahte_get.return_value = SahteYanit(200, "User-agent: *\nDisallow: /\n")
+        sonuc = motor.robots_izin_var("https://ornek-site.com/yasakli")
+        self.assertFalse(sonuc)
 
-    def test_robots_txt_okunamazsa_ihtiyatla_ret(self):
-        with patch("motor.RobotFileParser") as SahteRFP:
-            ornek = SahteRFP.return_value
-            ornek.read.side_effect = Exception("baglanti hatasi")
-            sonuc = motor.robots_izin_var("https://erisilemez-site.com/x")
-            self.assertFalse(sonuc)
+    @patch("motor.requests.get")
+    def test_joker_karakter_dogru_calisir(self, sahte_get):
+        # stdlib robotparser'in KACIRDIGI tam senaryo: "*" ile ozel yol engeli.
+        sahte_get.return_value = SahteYanit(
+            200, "User-agent: *\nAllow: /\nDisallow: /moda/*\nDisallow: /*?sayfa=*\n"
+        )
+        self.assertTrue(motor.robots_izin_var("https://ornek-site.com/gelinlik.html"))
+        self.assertFalse(motor.robots_izin_var("https://ornek-site.com/moda/x"))
+        self.assertFalse(motor.robots_izin_var("https://ornek-site.com/gelinlik.html?sayfa=2"))
 
-    def test_ayni_domain_icin_onbellek_tek_okuma(self):
-        with patch("motor.RobotFileParser") as SahteRFP:
-            ornek = SahteRFP.return_value
-            ornek.can_fetch.return_value = True
-            motor.robots_izin_var("https://ornek-site.com/a")
-            motor.robots_izin_var("https://ornek-site.com/b")
-            ornek.read.assert_called_once()
+    @patch("motor.requests.get")
+    def test_coklu_useragent_grubu_bos_satirla_dogru_calisir(self, sahte_get):
+        # stdlib robotparser'in KACIRDIGI ikinci senaryo: User-agent
+        # satirlari ile kurallar arasinda bos satir olan coklu grup.
+        sahte_get.return_value = SahteYanit(
+            200,
+            "User-agent:*\nUser-agent: Googlebot\n\nAllow: /\nDisallow: /moda/*\n\n"
+            "User-agent: AhrefsBot\nDisallow: /\n",
+        )
+        self.assertTrue(motor.robots_izin_var("https://ornek-site.com/gelinlik.html"))
+        self.assertFalse(motor.robots_izin_var("https://ornek-site.com/moda/x"))
+
+    @patch("motor.requests.get")
+    def test_403_erisim_yasagi_tum_urlleri_ret_eder(self, sahte_get):
+        sahte_get.return_value = SahteYanit(403, "")
+        sonuc = motor.robots_izin_var("https://ornek-site.com/x")
+        self.assertFalse(sonuc)
+
+    @patch("motor.requests.get")
+    def test_404_robots_txt_yoksa_izinli_kabul_edilir(self, sahte_get):
+        sahte_get.return_value = SahteYanit(404, "")
+        sonuc = motor.robots_izin_var("https://ornek-site.com/x")
+        self.assertTrue(sonuc)
+
+    @patch("motor.requests.get")
+    def test_5xx_ihtiyatla_ret(self, sahte_get):
+        sahte_get.return_value = SahteYanit(503, "")
+        sonuc = motor.robots_izin_var("https://ornek-site.com/x")
+        self.assertFalse(sonuc)
+
+    @patch("motor.requests.get")
+    def test_robots_txt_okunamazsa_ihtiyatla_ret(self, sahte_get):
+        sahte_get.side_effect = requests.RequestException("baglanti hatasi")
+        sonuc = motor.robots_izin_var("https://erisilemez-site.com/x")
+        self.assertFalse(sonuc)
+
+    @patch("motor.requests.get")
+    def test_ayni_domain_icin_onbellek_tek_okuma(self, sahte_get):
+        sahte_get.return_value = SahteYanit(200, "User-agent: *\nAllow: /\n")
+        motor.robots_izin_var("https://ornek-site.com/a")
+        motor.robots_izin_var("https://ornek-site.com/b")
+        sahte_get.assert_called_once()
 
 
 class GrupIsleUctanUcaTestleri(unittest.TestCase):

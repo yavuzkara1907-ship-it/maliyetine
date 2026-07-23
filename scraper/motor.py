@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-maliyetine.com - Fiyat Endeksi Kazima Motoru (v0.3)
+maliyetine.com - Fiyat Endeksi Kazima Motoru (v0.5)
 
 Tek motor + kaynak kaydi (kaynaklar.yaml). Yeni site eklemek kod
 yazmak degil, kaynaklar.yaml'a birkac satir eklemektir.
@@ -11,7 +11,8 @@ Uc katmanli cikarim stratejisi (sirayla, ilk basarili katman kullanilir):
   3. Kaynaga ozel CSS secicileri (kaynaklar.yaml -> css_secicileri)
 
 Guvenlik katmanlari:
-  - robots.txt her URL icin otomatik kontrol edilir (urllib.robotparser).
+  - robots.txt her URL icin otomatik kontrol edilir (protego kutuphanesi -
+    stdlib urllib.robotparser KASITLI KULLANILMIYOR, bkz. asagidaki not).
     RET cikan URL atlanir ve loglanir.
   - Saglik kontrolu: bir kaynagin gecmis ortalamasina gore bu ayki urun
     sayisi cok dusukse (esik: ortalamanin %30'u), veri SESSIZCE kabul
@@ -36,11 +37,11 @@ import time
 from datetime import date
 from pathlib import Path
 from urllib.parse import urlparse
-from urllib.robotparser import RobotFileParser
 
 import requests
 import yaml
 from bs4 import BeautifulSoup
+from protego import Protego
 
 BASE_DIR = Path(__file__).parent
 VARSAYILAN_KAYNAKLAR = BASE_DIR / "kaynaklar.yaml"
@@ -205,27 +206,64 @@ def uc_katman_cikar(soup: BeautifulSoup, kaynak: dict):
 
 # ----------------------------------------------------------
 # ROBOTS.TXT - otomatik dogrulama (domain basina onbellekli)
+#
+# stdlib urllib.robotparser KASITLI KULLANILMIYOR - gercek sitelere karsi
+# test ederken (Akakce) 3 ayri hata bulundu:
+#   1. RobotFileParser.read() robots.txt'i varsayilan urllib User-Agent'i
+#      ("Python-urllib/x.y") ile ceker - bircok sitenin bot korumasi bunu
+#      403 ile reddediyor, read() de bunu "disallow_all=True" yani TUM
+#      URL'leri RET olarak yorumluyor (site aslinda izin veriyor olsa bile).
+#   2. parse() ayni User-agent grubuna ait birden fazla "User-agent:"
+#      satiriyla onlari takip eden kurallar arasinda BOS SATIR varsa
+#      o grubun TUMUNU sessizce dusuruyor (Akakce'nin robots.txt formati
+#      tam olarak bu sekilde).
+#   3. Disallow/Allow desenlerinde "*" joker karakterini HIC desteklemiyor
+#      - "Disallow: /moda/*" harfi harfine "/moda/*" dizesini ariyor,
+#      pratikte hicbir gercek URL'de eslesmiyor (kural sessizce etkisiz
+#      kaliyor).
+# `protego` (Scrapy'nin bagimliligi, Google'in robots.txt RFC 9309'unu
+# dogru uyguluyor: joker karakter, coklu User-agent grubu, en-spesifik-
+# kural-kazanir onceligi) bu ucunu de dogru cozuyor - gercek robots.txt
+# metniyle karsilastirmali test edilip dogrulandi.
 # ----------------------------------------------------------
-_robots_onbellek: dict[str, RobotFileParser | None] = {}
+_robots_onbellek: dict[str, Protego | None] = {}
+
+
+def _robots_txt_getir(domain: str) -> Protego | None:
+    robots_url = f"{domain}/robots.txt"
+    try:
+        yanit = requests.get(robots_url, headers=HEADERS, timeout=10)
+    except requests.RequestException as e:
+        logger.warning("robots.txt okunamadi (%s): %s - ihtiyatla RET kabul ediliyor", domain, e)
+        return None
+
+    if yanit.status_code in (401, 403):
+        # Standart konvansiyon (RobotFileParser'in da izledigi): erisim
+        # yasagi = ihtiyatla TUM URL'leri RET kabul et.
+        return Protego.parse("User-agent: *\nDisallow: /")
+    if 400 <= yanit.status_code < 500:
+        # robots.txt yok (404 vb.) = konvansiyon geregi tum URL'lere izin var.
+        return Protego.parse("User-agent: *\nAllow: /")
+    if yanit.status_code >= 500:
+        logger.warning(
+            "robots.txt sunucu hatasi (%s): HTTP %d - ihtiyatla RET kabul ediliyor",
+            domain, yanit.status_code,
+        )
+        return None
+
+    return Protego.parse(yanit.text)
 
 
 def robots_izin_var(url: str, user_agent: str = USER_AGENT_ROBOTS) -> bool:
     parsed = urlparse(url)
     domain = f"{parsed.scheme}://{parsed.netloc}"
     if domain not in _robots_onbellek:
-        rp = RobotFileParser()
-        rp.set_url(f"{domain}/robots.txt")
-        try:
-            rp.read()
-            _robots_onbellek[domain] = rp
-        except Exception as e:
-            logger.warning("robots.txt okunamadi (%s): %s - ihtiyatla RET kabul ediliyor", domain, e)
-            _robots_onbellek[domain] = None
+        _robots_onbellek[domain] = _robots_txt_getir(domain)
 
     rp = _robots_onbellek[domain]
     if rp is None:
         return False
-    return rp.can_fetch(user_agent, url)
+    return rp.can_fetch(url, user_agent)
 
 
 # ----------------------------------------------------------
