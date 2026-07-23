@@ -236,9 +236,14 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
 
 ## Teknik Durum
 - GitHub repo `maliyetine` oluşturuldu.
-- **Kazıma motoru v0.5**: robots.txt kontrolü `protego`'ya taşındı (bkz.
+- **Kazıma motoru v0.6**: robots.txt kontrolü `protego`'ya taşındı (bkz.
   yukarıdaki "DÜZELTİLDİ" notu) + ÇOK KAYNAK KURALI'na göre site-bazlı
-  gruplama + çapraz doğrulama (v0.4'ten devam).
+  gruplama + çapraz doğrulama (v0.4'ten devam) + WAF/TLS korumalı
+  siteler için Playwright son-çare katmanı (bkz. altındaki not).
+  - `scraper/sayfa_tani.py` (yeni): CSS seçici doldurmak için F12 yerine
+    kullanılacak teşhis aracı — bir URL'i çeker, JSON-LD/microdata
+    varlığını, en sık tekrar eden class isimlerini ve "TL"/"₺" içeren
+    metinleri raporlar.
   - `scraper/motor.py`: `gruplar_halinde_topla()` yaml girdilerini
     (vertikal, kalem, **site**) bazında gruplar — aynı site'nin birden
     fazla dar-kategori girdisi tek kaynak sayılıp birleştirilir.
@@ -288,38 +293,54 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
   (2026-07-24):**
   - robots.txt tarafı artık doğru: DüğünBuketi'nin 3 sayfası da gerçekte
     **ONAY** çıktı (şüphelendiğimiz gibi, eski hatalı script yanlış RET
-    vermiş) → `kaynaklar.yaml`'da hâlâ `aktif: false` — SIRADA aktif
-    edilmeleri var. Hepsiburada/Dolap robots.txt'in KENDİSİNE erişimde
-    gerçek 403 alıyor (script hatası değil, sitenin kendi engeli) —
-    ihtiyatlı RET doğru, bunlar gerçekten kullanılamaz.
-  - **YENİ SORUN — Akakçe artık robots.txt ONAY veriyor ama
-    `python motor.py` gerçek sayfa isteğinde 403 alıyor.** Bu robots.txt
-    değil, Akakçe'nin bot koruması (WAF/Cloudflare benzeri) — muhtemelen
-    eksik tarayıcı başlıkları veya `requests` kütüphanesinin TLS parmak
-    izi yüzünden isteği bot olarak işaretleyip engelliyor.
-  - Düzeltme denendi: `motor.py`'deki `HEADERS`'a gerçek bir tarayıcının
-    gönderdiği ek başlıklar eklendi (Accept, Accept-Encoding,
-    Sec-Fetch-*, Upgrade-Insecure-Requests, Cache-Control) — ama bu
-    sandbox'tan test edilemedi (network kısıtı). **Yavuz'un yerelinde
-    tekrar denemesi gerekiyor.** Eğer bu da 403 alırsa, sorun muhtemelen
-    header değil TLS-parmak-izi tabanlı bot tespiti — bu durumda
-    `requests` yerine gerçek bir tarayıcı motoru (Playwright, headless
-    Chromium) gerekecek. Bu, CLAUDE.md'nin "KAZIYICI MİMARİSİ" bölümünde
-    zaten öngörülen bir olasılıktı ("JS ile render edilen siteler için
-    Playwright katmanı, sadece gerekince").
+    vermiş) → hepsi `aktif: true` yapıldı. Hepsiburada/Dolap robots.txt'in
+    KENDİSİNE erişimde gerçek 403 alıyor (script hatası değil, sitenin
+    kendi engeli) — ihtiyatlı RET doğru, bunlar gerçekten kullanılamaz.
+  - **SORUN — Akakçe/Trendyol robots.txt ONAY veriyor ama gerçek sayfa
+    isteğinde 403 alıyor.** Genişletilmiş tarayıcı başlıkları (Accept,
+    Sec-Fetch-*, vb.) denendi, Yavuz'un yerelinde TEKRAR test edildi:
+    **çözmedi**, hâlâ 403. Yani header eksikliği değil — TLS parmak izi
+    veya benzeri WAF seviyesinde bir tespit.
+  - **ÇÖZÜM — Playwright katmanı eklendi (motor v0.6).** `requests` yerine
+    gerçek bir Chromium ile çeken `getir_playwright()` yazıldı;
+    `kaynaklar.yaml`'da `render_gerekli: true` alanıyla seçiliyor (Akakçe'nin
+    9 URL'sine ve Trendyol'a eklendi; Ramsey/Atasay/Armut/DüğünBuketi
+    `requests` ile zaten 200 dönüyor, onlara gerek yok). Bu sandbox'ta
+    Playwright'ın kendi tarayıcı indirici sistemi de engelli (`cdn.playwright.dev`
+    "host not permitted") — ama ortamda önceden kurulu bir Chromium
+    bulundu (`/opt/pw-browsers/chromium`, farklı revizyon) ve
+    `executable_path` ile açıkça verilince ÇALIŞTI: tarayıcı gerçekten
+    açılıp sayfaya gitmeyi denedi, sadece son adımda (asıl siteye
+    bağlanma) proxy engeline takıldı (`ERR_TUNNEL_CONNECTION_FAILED`) —
+    yani mekanik olarak doğrulandı, sadece hedef siteye erişim yine
+    sandbox kısıtından dolayı test edilemedi. 44 test (4 yeni: başarılı
+    çekim, playwright kurulu değilse hata vermeden None dönmesi,
+    render_gerekli true/false dallanması) hepsi PASS.
+  - **Yavuz'un yerelinde bir kerelik ek kurulum gerekiyor:**
+    `pip install playwright && playwright install chromium`
+    (requirements.txt'e playwright eklendi, ama tarayıcı ikili dosyası
+    ayrı indirilir).
+  - **Ayrı sorun — Ramsey/Atasay/Armut 200 dönüyor ama "0 ürün (hicbiri
+    katmani)"**: bu 3 site `requests` ile erişilebilir, demek ki JSON-LD/
+    microdata/CSS'in hiçbiri eşleşmedi. CSS seçici doldurmak için F12
+    yerine yeni eklenen `scraper/sayfa_tani.py` scripti kullanılabilir —
+    sayfayı çekip JSON-LD/microdata varlığını, en sık tekrar eden class
+    isimlerini ve "TL"/"₺" içeren metinleri raporlar; çıktısı paylaşılırsa
+    css_secicileri buradan doldurulabilir.
 
 ## Modüller (sırayla)
 1. **Kazıma hattı** — kaynaklar.yaml + üç katmanlı çıkarım + robots
    doğrulama (protego ile, stdlib DEĞİL) + sağlık kontrolü + ÇOK KAYNAK
-   çapraz doğrulama + log. ✅ Motor v0.5 hazır, sahte veriyle VE gerçek
-   Akakçe robots.txt metniyle test edildi (40 test). Kalan: Yavuz'un
-   yerelinde (a) `git pull` ile son sürümü çekip `python motor.py`
-   çalıştırması — artık Akakçe'nin 9 URL'si de doğru ONAY vermeli,
-   (b) RET çıkan Hepsiburada/Dolap/DüğünBuketi'yi düzeltilmiş
-   `robots_kontrol.py` ile TEKRAR kontrol etmesi (eski sonuç şüpheli),
-   (c) karantinaya düşen kaynaklar için F12 ile CSS seçici doldurması,
-   (d) salon ve fotoğrafçı/gelin-ayakkabısı kalemleri için eksik/tek
-   kalan kaynaklara alternatif bulması.
+   çapraz doğrulama + Playwright son-çare katmanı + log. ✅ Motor v0.6
+   hazır, sahte veriyle test edildi (44 test), Playwright mekanik olarak
+   bu sandbox'ta doğrulandı (tarayıcı gerçekten açılıyor). Kalan: Yavuz'un
+   yerelinde (a) `git pull` + `pip install -r requirements.txt` +
+   `playwright install chromium` + `python motor.py` çalıştırması —
+   Akakçe/Trendyol artık gerçek tarayıcıyla çekilecek, ilk kez gerçek
+   ürün verisi gelmesi bekleniyor, (b) Ramsey/Atasay/Armut için
+   `python sayfa_tani.py <url>` çıktısını paylaşıp CSS seçici doldurması,
+   (c) salon ve gelin-ayakkabısı kalemleri için eksik ikinci kaynağa
+   alternatif bulması.
 2. **Veri saklama** — aylık snapshot şeması (SQLite yeterli).
 3. **İlk hesaplayıcı + endeks sayfası** (düğün).
 4. **Metodoloji sayfası + schema.org işaretlemesi.**
@@ -344,16 +365,19 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
       (armut+dugunbuketi, 2) — hepsi ÇOK KAYNAK KURALI hedefini
       karşılıyor. Sadece salon (1, tek aday) ve gelin-ayakkabısı (1, tek
       aday) hâlâ tek kaynaklı.
-- [ ] **YENİ SORUN:** `python motor.py` gerçek sayfa isteğinde Akakçe'den
-      403 alıyor — robots.txt izin verse de sitenin bot koruması
-      (WAF/Cloudflare benzeri) `requests` isteğini engelliyor. Daha
-      eksiksiz tarayıcı başlıkları eklendi (motor.py HEADERS,
-      2026-07-24) ama bu sandbox'tan test edilemedi. Yavuz'un yerelinde
-      `git pull` + `python motor.py` ile tekrar denemesi gerekiyor. Hâlâ
-      403 alırsa sorun muhtemelen TLS parmak izi tabanlı tespit —
-      bu durumda Playwright (headless Chromium) katmanına geçilmeli.
-- [ ] Karantinaya düşen kaynaklar için F12 ile CSS seçici doldurma
-      (motor JSON-LD/microdata ile bulamazsa gerekecek)
+- [x] Akakçe/Trendyol'un `requests`'i 403 ile reddetmesi tespit edildi;
+      genişletilmiş tarayıcı başlıkları denendi ama ÇÖZMEDİ (Yavuz'un
+      yerelinde tekrar test edildi, 2026-07-24) → Playwright katmanı
+      eklendi (motor v0.6, `render_gerekli: true`). Bu sandbox'ta
+      mekanik olarak doğrulandı (tarayıcı açılıyor), gerçek siteye karşı
+      DOĞRULANMADI (sandbox network kısıtı).
+- [ ] Yavuz'un yerelinde `pip install playwright && playwright install
+      chromium` + `python motor.py` ile Akakçe/Trendyol'un artık gerçek
+      ürün verisi döndürüp döndürmediğini doğrulaması
+- [ ] Ramsey/Atasay/Armut "0 ürün" sorunu: `python sayfa_tani.py <url>`
+      ile teşhis edip CSS seçici doldurma (F12 gerekmiyor)
+- [ ] Karantinaya düşen diğer kaynaklar için de gerekirse CSS seçici
+      doldurma
 - [ ] "salon" ve "gelin-ayakkabısı" için 2. bağımsız kaynak bulma
 - [ ] Düğün kalem listesindeki geri kalanlar için kaynak bulma: takı/
       altın (canlı fiyat), nikah şekeri, davetiye

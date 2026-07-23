@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-maliyetine.com - Fiyat Endeksi Kazima Motoru (v0.5)
+maliyetine.com - Fiyat Endeksi Kazima Motoru (v0.6)
 
 Tek motor + kaynak kaydi (kaynaklar.yaml). Yeni site eklemek kod
 yazmak degil, kaynaklar.yaml'a birkac satir eklemektir.
@@ -19,9 +19,15 @@ Guvenlik katmanlari:
     edilmez - "karantina" klasorune yazilir ve uyari basilir.
   - Nazik kazima: gercekci User-Agent, istekler arasi bekleme, basarisiz
     istekte exponential backoff ile yeniden deneme.
+  - Bazi siteler (Akakce, Trendyol - 2026-07-24'te dogrulandi) tam
+    tarayici basliklariyla bile `requests` istegini 403 ile reddediyor
+    (muhtemelen TLS parmak izi tabanli tespit). Bu kaynaklar icin
+    kaynaklar.yaml'da "render_gerekli: true" isaretlenir, motor gercek
+    bir Chromium ile ceker (bkz. getir_playwright()).
 
 Kullanim:
   pip install -r requirements.txt
+  playwright install chromium       # sadece render_gerekli:true kaynaklar icin gerekli
   python motor.py                  # kaynaklar.yaml'daki tum aktif kaynaklari isler
   python motor.py --kaynaklar test_kaynaklari.yaml --cikti /tmp/deneme
 """
@@ -299,6 +305,59 @@ def getir(url: str, deneme: int = 3, ilk_bekleme: float = 2.0):
 
 
 # ----------------------------------------------------------
+# PLAYWRIGHT - gercek tarayici motoru (TLS parmak izi / WAF korumasi
+# olan siteler icin son care). `requests` + tam tarayici basliklari
+# yetmedigi durumda (Akakce, Trendyol - 2026-07-24'te dogrulandi)
+# kullanilir. kaynaklar.yaml'da "render_gerekli: true" ile secilir.
+#
+# Bir kerelik kurulum gerekir (pip'e ek olarak):
+#   playwright install chromium
+# Not: bazi onceden-kurulu ortamlarda (ör. bu gelistirme sandbox'i)
+# PLAYWRIGHT_BROWSERS_PATH farkli bir Chromium revizyonu iceriyor olabilir
+# ve pip'in kurdugu playwright surumuyle eslesmeyebilir - bu durumda
+# `_ONCEDEN_KURULU_CHROMIUM` yolundaki tarayici acikca kullanilir.
+# ----------------------------------------------------------
+_ONCEDEN_KURULU_CHROMIUM = Path("/opt/pw-browsers/chromium")
+
+
+def getir_playwright(url: str, deneme: int = 2, ilk_bekleme: float = 2.0):
+    try:
+        from playwright.sync_api import Error as PlaywrightError
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        logger.error(
+            "playwright kurulu degil - 'pip install playwright && "
+            "playwright install chromium' calistirilmali"
+        )
+        return None
+
+    launch_ayarlari = {"headless": True}
+    if _ONCEDEN_KURULU_CHROMIUM.exists():
+        launch_ayarlari["executable_path"] = str(_ONCEDEN_KURULU_CHROMIUM)
+
+    bekleme = ilk_bekleme
+    for i in range(1, deneme + 1):
+        try:
+            with sync_playwright() as p:
+                tarayici = p.chromium.launch(**launch_ayarlari)
+                try:
+                    sayfa = tarayici.new_page(
+                        user_agent=USER_AGENT_TARAYICI,
+                        extra_http_headers={"Accept-Language": HEADERS["Accept-Language"]},
+                    )
+                    sayfa.goto(url, timeout=30_000, wait_until="domcontentloaded")
+                    return sayfa.content()
+                finally:
+                    tarayici.close()
+        except PlaywrightError as e:
+            logger.warning("Playwright deneme %d/%d basarisiz (%s): %s", i, deneme, url, e)
+            if i < deneme:
+                time.sleep(bekleme)
+                bekleme *= 2
+    return None
+
+
+# ----------------------------------------------------------
 # AYKIRI DEGER TEMIZLIGI (IQR yontemi)
 # ----------------------------------------------------------
 def aykiri_temizle(urunler):
@@ -397,7 +456,7 @@ def kaynak_ham_veri_topla(kaynak: dict):
             logger.warning("[%s] robots.txt RET: %s - atlaniyor", ad, url)
             continue
 
-        html = getir(url)
+        html = getir_playwright(url) if kaynak.get("render_gerekli") else getir(url)
         if html is None:
             logger.error("[%s] sayfa %d alinamadi (retry tukendi): %s", ad, p, url)
             continue

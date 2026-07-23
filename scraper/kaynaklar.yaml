@@ -12,6 +12,11 @@
 #                      sayilir, cunku ayni sitenin fiyat politikasini
 #                      yansitirlar. Kucuk harf, bosluksuz (slug).
 #   url             : hedef sayfa. Sayfalama varsa {page} yer tutucusu icerir.
+#   render_gerekli  : true ise sayfa `requests` yerine gercek Chromium
+#                      (Playwright) ile cekilir. Sadece WAF/TLS-parmak-izi
+#                      korumasi requests'i 403 ile reddeden sitelerde
+#                      kullan (Akakce, Trendyol - 2026-07-24'te dogrulandi).
+#                      Varsayilan false/yok. Kurulum: playwright install chromium
 #   sayfa_sayisi    : kac sayfa gezilecek (varsayilan 1 - bkz. Akakce notu asagida)
 #   vertikal        : "dugun" | "tadilat" | ...
 #   kalem           : bu vertikal icindeki alt kalem (ör. "gelinlik", "salon")
@@ -46,6 +51,7 @@ kaynaklar:
   - ad: "Akakce - Gelinlik (genel)"
     site: "akakce"
     url: "https://www.akakce.com/gelinlik.html"
+    render_gerekli: true  # requests 403 aliyor (WAF/TLS parmak izi) - Playwright gerekli
     sayfa_sayisi: 1
     vertikal: "dugun"
     kalem: "gelinlik"
@@ -64,6 +70,7 @@ kaynaklar:
   - ad: "Akakce - Tesettur Gelinlik"
     site: "akakce"
     url: "https://www.akakce.com/gelinlik/tesettur-gelinlik.html"
+    render_gerekli: true  # requests 403 aliyor (WAF/TLS parmak izi) - Playwright gerekli
     sayfa_sayisi: 1
     vertikal: "dugun"
     kalem: "gelinlik"
@@ -78,6 +85,7 @@ kaynaklar:
   - ad: "Akakce - Korseli Gelinlik"
     site: "akakce"
     url: "https://www.akakce.com/gelinlik/korseli-gelinlik.html"
+    render_gerekli: true  # requests 403 aliyor (WAF/TLS parmak izi) - Playwright gerekli
     sayfa_sayisi: 1
     vertikal: "dugun"
     kalem: "gelinlik"
@@ -92,6 +100,7 @@ kaynaklar:
   - ad: "Akakce - Kisa Gelinlik"
     site: "akakce"
     url: "https://www.akakce.com/gelinlik/kisa-gelinlik.html"
+    render_gerekli: true  # requests 403 aliyor (WAF/TLS parmak izi) - Playwright gerekli
     sayfa_sayisi: 1
     vertikal: "dugun"
     kalem: "gelinlik"
@@ -106,6 +115,7 @@ kaynaklar:
   - ad: "Akakce - A Kesim Gelinlik"
     site: "akakce"
     url: "https://www.akakce.com/gelinlik/a-kesim.html"
+    render_gerekli: true  # requests 403 aliyor (WAF/TLS parmak izi) - Playwright gerekli
     sayfa_sayisi: 1
     vertikal: "dugun"
     kalem: "gelinlik"
@@ -165,6 +175,7 @@ kaynaklar:
   - ad: "Akakce - Gelin Ayakkabisi"
     site: "akakce"
     url: "https://www.akakce.com/gelin-ayakkabisi.html"
+    render_gerekli: true  # requests 403 aliyor (WAF/TLS parmak izi) - Playwright gerekli
     sayfa_sayisi: 1
     vertikal: "dugun"
     kalem: "gelin-ayakkabisi"
@@ -187,6 +198,7 @@ kaynaklar:
   - ad: "Akakce - Damatlik"
     site: "akakce"
     url: "https://www.akakce.com/takim-elbise/damatlik.html"
+    render_gerekli: true  # requests 403 aliyor (WAF/TLS parmak izi) - Playwright gerekli
     sayfa_sayisi: 1
     vertikal: "dugun"
     kalem: "damatlik"
@@ -229,6 +241,7 @@ kaynaklar:
   - ad: "Akakce - Alyans (genel)"
     site: "akakce"
     url: "https://www.akakce.com/alyans.html"
+    render_gerekli: true  # requests 403 aliyor (WAF/TLS parmak izi) - Playwright gerekli
     sayfa_sayisi: 1
     vertikal: "dugun"
     kalem: "alyans"
@@ -243,6 +256,7 @@ kaynaklar:
   - ad: "Akakce - 14 Ayar Alyans"
     site: "akakce"
     url: "https://www.akakce.com/alyans/14-ayar-alyans.html"
+    render_gerekli: true  # requests 403 aliyor (WAF/TLS parmak izi) - Playwright gerekli
     sayfa_sayisi: 1
     vertikal: "dugun"
     kalem: "alyans"
@@ -279,6 +293,7 @@ kaynaklar:
   - ad: "Trendyol - Gelinlik"
     site: "trendyol"
     url: "https://www.trendyol.com/gelinlik-x-c57"
+    render_gerekli: true  # requests 403 aliyor (WAF/TLS parmak izi) - Playwright gerekli
     sayfa_sayisi: 1
     vertikal: "dugun"
     kalem: "gelinlik"

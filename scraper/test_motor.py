@@ -15,7 +15,7 @@ import json
 import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 
 import requests
 from bs4 import BeautifulSoup
@@ -286,6 +286,69 @@ class RobotsKapisiTestleri(unittest.TestCase):
         motor.robots_izin_var("https://ornek-site.com/a")
         motor.robots_izin_var("https://ornek-site.com/b")
         sahte_get.assert_called_once()
+
+
+class PlaywrightGetirTestleri(unittest.TestCase):
+    """getir_playwright() ve kaynak_ham_veri_topla()'nin render_gerekli
+    bayragina gore dogru fetch fonksiyonunu secmesini dogrular. Gercek
+    bir Chromium bu sandbox'ta calistirilamiyor (tarayici ikili dosyasi
+    indirilemiyor - proxy engelli), o yuzden playwright.sync_api sahte
+    (mock) nesnelerle test ediliyor."""
+
+    def test_basarili_cekim_sayfa_icerigini_dondurur(self):
+        sahte_sayfa = MagicMock()
+        sahte_sayfa.content.return_value = "<html>merhaba</html>"
+        sahte_tarayici = MagicMock()
+        sahte_tarayici.new_page.return_value = sahte_sayfa
+        sahte_pw = MagicMock()
+        sahte_pw.chromium.launch.return_value = sahte_tarayici
+
+        with patch("playwright.sync_api.sync_playwright") as sahte_sync:
+            sahte_sync.return_value.__enter__.return_value = sahte_pw
+            sonuc = motor.getir_playwright("https://ornek-site.com/x", deneme=1)
+
+        self.assertEqual(sonuc, "<html>merhaba</html>")
+        sahte_tarayici.close.assert_called_once()
+
+    def test_tarayici_kurulu_degilse_none_doner_ve_hata_vermez(self):
+        with patch.dict("sys.modules", {"playwright.sync_api": None}):
+            sonuc = motor.getir_playwright("https://ornek-site.com/x", deneme=1)
+        self.assertIsNone(sonuc)
+
+    @patch("motor.robots_izin_var", return_value=True)
+    @patch("motor.getir")
+    @patch("motor.getir_playwright")
+    def test_render_gerekli_true_ise_playwright_kullanilir(
+        self, sahte_pw_getir, sahte_requests_getir, _sahte_robots
+    ):
+        sahte_pw_getir.return_value = JSON_LD_HTML
+        kaynak = {
+            "ad": "Render Gerekli Kaynak", "site": "x",
+            "url": "https://ornek-site.com/y.html", "sayfa_sayisi": 1,
+            "vertikal": "dugun", "kalem": "gelinlik", "min_fiyat": 100,
+            "bekleme_sn": 0, "aktif": True, "css_secicileri": None,
+            "render_gerekli": True,
+        }
+        motor.kaynak_ham_veri_topla(kaynak)
+        sahte_pw_getir.assert_called_once()
+        sahte_requests_getir.assert_not_called()
+
+    @patch("motor.robots_izin_var", return_value=True)
+    @patch("motor.getir")
+    @patch("motor.getir_playwright")
+    def test_render_gerekli_false_ise_requests_kullanilir(
+        self, sahte_pw_getir, sahte_requests_getir, _sahte_robots
+    ):
+        sahte_requests_getir.return_value = JSON_LD_HTML
+        kaynak = {
+            "ad": "Normal Kaynak", "site": "x",
+            "url": "https://ornek-site.com/y.html", "sayfa_sayisi": 1,
+            "vertikal": "dugun", "kalem": "gelinlik", "min_fiyat": 100,
+            "bekleme_sn": 0, "aktif": True, "css_secicileri": None,
+        }
+        motor.kaynak_ham_veri_topla(kaynak)
+        sahte_requests_getir.assert_called_once()
+        sahte_pw_getir.assert_not_called()
 
 
 class GrupIsleUctanUcaTestleri(unittest.TestCase):
