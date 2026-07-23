@@ -1,0 +1,165 @@
+# Maliyetine.com.tr - Kaynak Kaydı
+#
+# Yeni site eklemek = buraya birkaç satır eklemek, kod yazmak degil.
+# motor.py bu dosyayi okur, her "aktif: true" kaynagi sirayla isler.
+#
+# Alanlar:
+#   ad              : benzersiz, okunabilir isim (log ve dosya adlarinda kullanilir)
+#   url             : hedef sayfa. Sayfalama varsa {page} yer tutucusu icerir.
+#   sayfa_sayisi    : kac sayfa gezilecek (varsayilan 1 - bkz. Akakce notu asagida)
+#   vertikal        : "dugun" | "tadilat" | ...
+#   kalem           : bu vertikal icindeki alt kalem (ör. "gelinlik", "salon")
+#   yontem          : "otomatik" (JSON-LD -> microdata -> css sirayla dener, onerilen)
+#   css_secicileri  : yontem css'e duserse kullanilir. null ise css katmani atlanir.
+#   min_fiyat       : bu fiyatin altindaki sonuclar cop veri sayilip elenir
+#   bekleme_sn      : bu kaynaga istekler arasi bekleme (nazik kazima)
+#   aktif           : false ise motor.py bu kaynagi atlar
+#   durum           : "arastirildi" | "onaylandi" | "reddedildi" - insan gozden gecirme notu
+#   notlar          : serbest metin
+
+kaynaklar:
+
+  # --- Akakce: gelinlik ve ilgili kategoriler ---
+  # robots.txt (Yavuz tarafindan yerelde dogrulandi, bu ortamdan tekrar
+  # kontrol edilemedi - network policy engelliyor): "Allow: /" ama
+  # "Disallow: /*?sayfa=*" ve "/*,*,1..7.html" -> SAYFALAMA YASAK.
+  # Bu yuzden her kategori tek sayfa (sayfa_sayisi: 1) olarak, dar
+  # kategorilere bolunerek tanimlandi (coklu sayfa gezmek yerine coklu dar
+  # kategori). motor.py yine de her calistirmada robots.txt'i otomatik
+  # kontrol eder; bu notlar sadece insan gozden gecirmesi icindir.
+  - ad: "Akakce - Gelinlik (genel)"
+    url: "https://www.akakce.com/gelinlik.html"
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "gelinlik"
+    yontem: "otomatik"
+    css_secicileri: null
+    min_fiyat: 1000
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: >
+      WebSearch ile dogrulanan gercek URL. JSON-LD/microdata var mi
+      bilinmiyor (sayfa HTML'i bu ortamdan goruntulenemedi) - motor
+      otomatik katman denemesiyle cozecek, bulamazsa saglik kontrolu
+      0 urun olarak isaretleyip karantinaya alacak.
+
+  - ad: "Akakce - Tesettur Gelinlik"
+    url: "https://www.akakce.com/gelinlik/tesettur-gelinlik.html"
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "gelinlik"
+    yontem: "otomatik"
+    css_secicileri: null
+    min_fiyat: 1000
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: "Segment kirilimi icin ayri alt kategori (Urun Kararlari notu: farkli segmentler karistirilmaz)."
+
+  - ad: "Akakce - Korseli Gelinlik"
+    url: "https://www.akakce.com/gelinlik/korseli-gelinlik.html"
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "gelinlik"
+    yontem: "otomatik"
+    css_secicileri: null
+    min_fiyat: 1000
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: ""
+
+  - ad: "Akakce - Kisa Gelinlik"
+    url: "https://www.akakce.com/gelinlik/kisa-gelinlik.html"
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "gelinlik"
+    yontem: "otomatik"
+    css_secicileri: null
+    min_fiyat: 500
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: ""
+
+  - ad: "Akakce - A Kesim Gelinlik"
+    url: "https://www.akakce.com/gelinlik/a-kesim.html"
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "gelinlik"
+    yontem: "otomatik"
+    css_secicileri: null
+    min_fiyat: 1000
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: ""
+
+  - ad: "Akakce - Gelin Ayakkabisi"
+    url: "https://www.akakce.com/gelin-ayakkabisi.html"
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "gelin-ayakkabisi"
+    yontem: "otomatik"
+    css_secicileri: null
+    min_fiyat: 200
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: "Arama sonucunda '750 TL'den baslayan 40 secenek' gorundu - ornekleme icin dusuk ama baslangic icin yeterli."
+
+  # --- Onceki oturumdan devreden adaylar: robots.txt bu ortamdan hic
+  # dogrulanamadi (network policy tum bu domain'leri 403 ile reddetti).
+  # Yavuz yerelinde robots_kontrol.py ile kontrol edip aktif: true yapmali. ---
+  - ad: "Trendyol - Gelinlik"
+    url: "https://www.trendyol.com/gelinlik-x-c57"
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "gelinlik"
+    yontem: "otomatik"
+    css_secicileri: null
+    min_fiyat: 1000
+    bekleme_sn: 3
+    aktif: false
+    durum: "arastirildi"
+    notlar: "robots.txt DOGRULANMADI. Cloudflare/Akamai tipi bot korumasi olasi."
+
+  - ad: "Hepsiburada - Gelinlik"
+    url: "https://www.hepsiburada.com/gelinlik-modelleri-c-12087251"
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "gelinlik"
+    yontem: "otomatik"
+    css_secicileri: null
+    min_fiyat: 1000
+    bekleme_sn: 3
+    aktif: false
+    durum: "arastirildi"
+    notlar: "robots.txt DOGRULANMADI."
+
+  - ad: "DugunBuketi - Istanbul Dugun Mekanlari"
+    url: "https://dugunbuketi.com/c/dugun-mekanlari/istanbul"
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "salon"
+    yontem: "otomatik"
+    css_secicileri: null
+    min_fiyat: 5000
+    bekleme_sn: 3
+    aktif: false
+    durum: "arastirildi"
+    notlar: "robots.txt DOGRULANMADI. Lead-gen sitesi, KS de ayrica okunmali."
+
+  - ad: "DugunBuketi - Istanbul Fotografci"
+    url: "https://dugunbuketi.com/p/dis-cekim-dugun-fotografcisi/istanbul"
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "fotografci"
+    yontem: "otomatik"
+    css_secicileri: null
+    min_fiyat: 1000
+    bekleme_sn: 3
+    aktif: false
+    durum: "arastirildi"
+    notlar: "robots.txt DOGRULANMADI."

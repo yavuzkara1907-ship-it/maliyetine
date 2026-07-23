@@ -1,4 +1,9 @@
 __pycache__/
 *.pyc
 .venv/
-*_20*.json
+
+# Kazima motoru calisma zamani durumu - aylik veri JSON'lari (scraper/veri/)
+# KASITLI OLARAK gitignore'da DEGIL: aylik biriktirilip fiyat gecmisi
+# grafikleri icin commit edilecekler (bkz. CLAUDE.md "Urun Kararlari").
+scraper/kazima.log
+scraper/kaynak_gecmisi.json

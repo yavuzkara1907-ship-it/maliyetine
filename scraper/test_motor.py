@@ -1,0 +1,371 @@
+# -*- coding: utf-8 -*-
+"""
+motor.py icin dogrulama testleri (v0.1)
+
+Bu ortamdan gercek hedef sitelere network erisimi yok (proxy policy
+engelliyor) - o yuzden sahte HTML fixture'lari ile motorun cikarim
+mantigini, robots.txt kapisini ve saglik kontrolunu dogruluyoruz.
+Gercek kaynaklara karsi calistirmak Yavuz'un yerelinde yapilmali.
+
+Calistirma:
+  python -m unittest test_motor.py -v
+"""
+
+import json
+import unittest
+from pathlib import Path
+from tempfile import TemporaryDirectory
+from unittest.mock import patch
+
+from bs4 import BeautifulSoup
+
+import motor
+
+
+# ----------------------------------------------------------
+# Sahte HTML fixture'lari
+# ----------------------------------------------------------
+JSON_LD_HTML = """
+<html><body>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": [
+    {"@type": "Product", "name": "Gelinlik A", "offers": {"@type": "Offer", "price": "12000"}},
+    {"@type": "Product", "name": "Gelinlik B", "offers": {"@type": "Offer", "price": "8500.50"}}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "Product", "name": "Gelinlik C", "offers": [{"price": 25000}]}
+</script>
+</body></html>
+"""
+
+MICRODATA_HTML = """
+<html><body>
+<div itemscope itemtype="https://schema.org/Product">
+  <span itemprop="name">Gelinlik D</span>
+  <span itemprop="price" content="15000.00">15.000,00 TL</span>
+</div>
+<div itemscope itemtype="https://schema.org/Product">
+  <span itemprop="name">Gelinlik E</span>
+  <span itemprop="price" content="9000.00">9.000,00 TL</span>
+</div>
+</body></html>
+"""
+
+OG_META_HTML = """
+<html><head>
+<meta property="og:title" content="Gelinlik F">
+<meta property="product:price:amount" content="18000">
+</head><body></body></html>
+"""
+
+CSS_HTML = """
+<html><body>
+<div class="product-card">
+  <h3 class="product-name">Gelinlik G</h3>
+  <span class="price">22.500,00 TL</span>
+</div>
+<div class="product-card">
+  <h3 class="product-name">Gelinlik H</h3>
+  <span class="price">7.000,00 TL</span>
+</div>
+</body></html>
+"""
+
+BOS_HTML = "<html><body><p>Urun yok</p></body></html>"
+
+
+class FiyatAyiklaTestleri(unittest.TestCase):
+    def test_turkce_bin_ayirici_ve_ondalik(self):
+        self.assertEqual(motor.fiyat_ayikla("45.999,00 TL"), 45999.0)
+
+    def test_tl_simgesi(self):
+        self.assertEqual(motor.fiyat_ayikla("1.250 ₺"), 1250.0)
+
+    def test_bos_metin(self):
+        self.assertIsNone(motor.fiyat_ayikla(""))
+        self.assertIsNone(motor.fiyat_ayikla(None))
+
+    def test_rakamsiz_metin(self):
+        self.assertIsNone(motor.fiyat_ayikla("Fiyat sorunuz"))
+
+
+class UcKatmanTestleri(unittest.TestCase):
+    def test_json_ld_katmani_itemlist_ve_tekli_urun(self):
+        soup = BeautifulSoup(JSON_LD_HTML, "html.parser")
+        urunler = motor.json_ld_urunler(soup, min_fiyat=100)
+        isimler = {u["isim"] for u in urunler}
+        self.assertEqual(isimler, {"Gelinlik A", "Gelinlik B", "Gelinlik C"})
+        fiyatlar = {u["isim"]: u["fiyat"] for u in urunler}
+        self.assertEqual(fiyatlar["Gelinlik A"], 12000.0)
+        self.assertEqual(fiyatlar["Gelinlik B"], 8500.5)
+        self.assertEqual(fiyatlar["Gelinlik C"], 25000.0)
+
+    def test_microdata_katmani(self):
+        soup = BeautifulSoup(MICRODATA_HTML, "html.parser")
+        urunler = motor.microdata_urunler(soup, min_fiyat=100)
+        isimler = {u["isim"] for u in urunler}
+        self.assertEqual(isimler, {"Gelinlik D", "Gelinlik E"})
+
+    def test_og_meta_yedegi(self):
+        soup = BeautifulSoup(OG_META_HTML, "html.parser")
+        urunler = motor.microdata_urunler(soup, min_fiyat=100)
+        self.assertEqual(len(urunler), 1)
+        self.assertEqual(urunler[0]["isim"], "Gelinlik F")
+        self.assertEqual(urunler[0]["fiyat"], 18000.0)
+
+    def test_css_katmani_son_care(self):
+        soup = BeautifulSoup(CSS_HTML, "html.parser")
+        secici = {
+            "urun_karti": "div.product-card",
+            "isim_secici": "h3.product-name",
+            "fiyat_secici": "span.price",
+        }
+        urunler = motor.css_urunler(soup, secici, min_fiyat=100)
+        isimler = {u["isim"] for u in urunler}
+        self.assertEqual(isimler, {"Gelinlik G", "Gelinlik H"})
+
+    def test_katman_onceligi_json_ld_kazanir(self):
+        # JSON-LD VE css ikisi de ayni sayfada olsa JSON-LD once denenir.
+        karisik_html = JSON_LD_HTML.replace("</body>", CSS_HTML.split("<body>")[1])
+        soup = BeautifulSoup(karisik_html, "html.parser")
+        kaynak = {
+            "min_fiyat": 100,
+            "css_secicileri": {
+                "urun_karti": "div.product-card",
+                "isim_secici": "h3.product-name",
+                "fiyat_secici": "span.price",
+            },
+        }
+        urunler, katman = motor.uc_katman_cikar(soup, kaynak)
+        self.assertEqual(katman, "json-ld")
+        isimler = {u["isim"] for u in urunler}
+        self.assertIn("Gelinlik A", isimler)
+        self.assertNotIn("Gelinlik G", isimler)  # css katmanindan gelen, denenmedi
+
+    def test_hicbir_katman_bulamazsa_bos_doner(self):
+        soup = BeautifulSoup(BOS_HTML, "html.parser")
+        urunler, katman = motor.uc_katman_cikar(soup, {"min_fiyat": 100, "css_secicileri": None})
+        self.assertEqual(urunler, [])
+        self.assertEqual(katman, "hicbiri")
+
+
+class AykiriVeSegmentTestleri(unittest.TestCase):
+    def test_aykiri_deger_temizligi(self):
+        normal = [{"isim": f"u{i}", "fiyat": 1000 + i * 10} for i in range(30)]
+        aykiri = [{"isim": "cok-pahali", "fiyat": 999999}]
+        temiz = motor.aykiri_temizle(normal + aykiri)
+        self.assertNotIn(aykiri[0], temiz)
+        self.assertEqual(len(temiz), 30)
+
+    def test_az_veride_aykiri_temizlik_atlanir(self):
+        az = [{"isim": f"u{i}", "fiyat": 1000 + i} for i in range(5)]
+        self.assertEqual(motor.aykiri_temizle(az), az)
+
+    def test_segmentleme_persentil(self):
+        urunler = [{"isim": f"u{i}", "fiyat": (i + 1) * 100} for i in range(20)]
+        seg = motor.segmentle(urunler)
+        self.assertIn("dusuk", seg)
+        self.assertIn("orta", seg)
+        self.assertIn("luks", seg)
+        toplam = sum(s["urun_sayisi"] for s in seg.values())
+        self.assertEqual(toplam, 20)
+
+    def test_bos_liste_segmentleme(self):
+        self.assertEqual(motor.segmentle([]), {})
+
+
+class SaglikKontroluTestleri(unittest.TestCase):
+    def test_ilk_calistirmada_her_zaman_saglikli(self):
+        saglikli, ortalama = motor.saglik_kontrolu("yeni-kaynak", 3, {})
+        self.assertTrue(saglikli)
+        self.assertIsNone(ortalama)
+
+    def test_normal_dalgalanma_saglikli(self):
+        gecmis = {"kaynak-x": {"urun_sayilari": [200, 190, 210]}}
+        saglikli, ortalama = motor.saglik_kontrolu("kaynak-x", 180, gecmis)
+        self.assertTrue(saglikli)
+
+    def test_ciddi_dusus_karantina(self):
+        gecmis = {"kaynak-x": {"urun_sayilari": [200, 190, 210]}}
+        saglikli, ortalama = motor.saglik_kontrolu("kaynak-x", 3, gecmis)
+        self.assertFalse(saglikli)
+        self.assertAlmostEqual(ortalama, 200.0, delta=0.1)
+
+    def test_gecmis_guncelle_son_12_tutar(self):
+        gecmis = {}
+        for i in range(15):
+            motor.gecmis_guncelle(gecmis, "k", 100 + i)
+        self.assertEqual(len(gecmis["k"]["urun_sayilari"]), 12)
+        self.assertEqual(gecmis["k"]["urun_sayilari"][-1], 114)
+
+
+class RobotsKapisiTestleri(unittest.TestCase):
+    def setUp(self):
+        motor._robots_onbellek.clear()
+
+    def test_izin_verilen_url(self):
+        with patch("motor.RobotFileParser") as SahteRFP:
+            ornek = SahteRFP.return_value
+            ornek.can_fetch.return_value = True
+            sonuc = motor.robots_izin_var("https://ornek-site.com/kategori")
+            self.assertTrue(sonuc)
+            ornek.read.assert_called_once()
+
+    def test_yasakli_url(self):
+        with patch("motor.RobotFileParser") as SahteRFP:
+            ornek = SahteRFP.return_value
+            ornek.can_fetch.return_value = False
+            sonuc = motor.robots_izin_var("https://ornek-site.com/yasakli")
+            self.assertFalse(sonuc)
+
+    def test_robots_txt_okunamazsa_ihtiyatla_ret(self):
+        with patch("motor.RobotFileParser") as SahteRFP:
+            ornek = SahteRFP.return_value
+            ornek.read.side_effect = Exception("baglanti hatasi")
+            sonuc = motor.robots_izin_var("https://erisilemez-site.com/x")
+            self.assertFalse(sonuc)
+
+    def test_ayni_domain_icin_onbellek_tek_okuma(self):
+        with patch("motor.RobotFileParser") as SahteRFP:
+            ornek = SahteRFP.return_value
+            ornek.can_fetch.return_value = True
+            motor.robots_izin_var("https://ornek-site.com/a")
+            motor.robots_izin_var("https://ornek-site.com/b")
+            ornek.read.assert_called_once()
+
+
+class KaynakIsleUctanUcaTestleri(unittest.TestCase):
+    """robots + HTTP katmanlarini sahteleyip kaynak_isle'nin uctan uca
+    dogru calistigini (dosya yazma, saglik kontrolu, karantina) dogrular."""
+
+    def setUp(self):
+        self.tmp = TemporaryDirectory()
+        self.cikti_kok = Path(self.tmp.name)
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    @patch("motor.robots_izin_var", return_value=True)
+    @patch("motor.getir")
+    def test_saglikli_kaynak_dogru_klasore_yazar(self, sahte_getir, _sahte_robots):
+        sahte_getir.return_value = JSON_LD_HTML
+        kaynak = {
+            "ad": "Test Kaynak",
+            "url": "https://ornek-site.com/gelinlik.html",
+            "sayfa_sayisi": 1,
+            "vertikal": "dugun",
+            "kalem": "gelinlik",
+            "min_fiyat": 100,
+            "bekleme_sn": 0,
+            "aktif": True,
+            "css_secicileri": None,
+        }
+        gecmis = {}
+        sonuc = motor.kaynak_isle(kaynak, gecmis, self.cikti_kok)
+
+        self.assertIsNotNone(sonuc)
+        self.assertTrue(sonuc["saglikli"])
+        self.assertEqual(sonuc["toplam_urun"], 3)
+        self.assertEqual(sonuc["kullanilan_katmanlar"], ["json-ld"])
+
+        beklenen_dosya = self.cikti_kok / "dugun" / "gelinlik_test-kaynak_" \
+            f"{__import__('datetime').date.today().isoformat()}.json"
+        self.assertTrue(beklenen_dosya.exists())
+        icerik = json.loads(beklenen_dosya.read_text(encoding="utf-8"))
+        self.assertEqual(icerik["toplam_urun"], 3)
+
+        self.assertIn("Test Kaynak", gecmis)
+        self.assertEqual(gecmis["Test Kaynak"]["urun_sayilari"], [3])
+
+    @patch("motor.robots_izin_var", return_value=True)
+    @patch("motor.getir")
+    def test_ani_dusus_karantinaya_yazar(self, sahte_getir, _sahte_robots):
+        sahte_getir.return_value = JSON_LD_HTML  # bu calistirmada 3 urun donecek
+        kaynak = {
+            "ad": "Test Kaynak 2",
+            "url": "https://ornek-site.com/gelinlik.html",
+            "sayfa_sayisi": 1,
+            "vertikal": "dugun",
+            "kalem": "gelinlik",
+            "min_fiyat": 100,
+            "bekleme_sn": 0,
+            "aktif": True,
+            "css_secicileri": None,
+        }
+        # Gecmiste normalde 200 urun donuyordu -> bu ay 3 urun ciddi dusus.
+        gecmis = {"Test Kaynak 2": {"urun_sayilari": [200, 195, 205]}}
+        sonuc = motor.kaynak_isle(kaynak, gecmis, self.cikti_kok)
+
+        self.assertFalse(sonuc["saglikli"])
+        karantina_dosyalari = list((self.cikti_kok / "karantina").glob("*.json"))
+        self.assertEqual(len(karantina_dosyalari), 1)
+        normal_dosyalari = list((self.cikti_kok / "dugun").glob("*.json")) \
+            if (self.cikti_kok / "dugun").exists() else []
+        self.assertEqual(len(normal_dosyalari), 0)
+
+    @patch("motor.robots_izin_var", return_value=False)
+    @patch("motor.getir")
+    def test_robots_ret_ederse_hicbir_seyi_kazimaz(self, sahte_getir, _sahte_robots):
+        kaynak = {
+            "ad": "Yasakli Kaynak",
+            "url": "https://ornek-site.com/yasakli.html",
+            "sayfa_sayisi": 1,
+            "vertikal": "dugun",
+            "kalem": "gelinlik",
+            "min_fiyat": 100,
+            "bekleme_sn": 0,
+            "aktif": True,
+            "css_secicileri": None,
+        }
+        sonuc = motor.kaynak_isle(kaynak, {}, self.cikti_kok)
+        sahte_getir.assert_not_called()
+        self.assertEqual(sonuc["toplam_urun"], 0)
+
+    @patch("motor.robots_izin_var", return_value=True)
+    @patch("motor.getir")
+    def test_pasif_kaynak_atlanir(self, sahte_getir, _sahte_robots):
+        kaynak = {"ad": "Pasif", "url": "https://x.com/y", "aktif": False}
+        sonuc = motor.kaynak_isle(kaynak, {}, self.cikti_kok)
+        self.assertIsNone(sonuc)
+        sahte_getir.assert_not_called()
+
+
+class KaynaklarYamlTestleri(unittest.TestCase):
+    """Gercek kaynaklar.yaml dosyasinin gecerli/tutarli oldugunu dogrular."""
+
+    def test_yaml_gecerli_ve_zorunlu_alanlar_var(self):
+        import yaml
+        dosya = Path(__file__).parent / "kaynaklar.yaml"
+        veri = yaml.safe_load(dosya.read_text(encoding="utf-8"))
+        kaynaklar = veri["kaynaklar"]
+        self.assertGreater(len(kaynaklar), 0)
+
+        zorunlu_alanlar = {"ad", "url", "vertikal", "kalem", "aktif"}
+        adlar = set()
+        for k in kaynaklar:
+            eksik = zorunlu_alanlar - set(k.keys())
+            self.assertFalse(eksik, f"{k.get('ad')} eksik alan(lar): {eksik}")
+            self.assertNotIn(k["ad"], adlar, f"tekrarli kaynak adi: {k['ad']}")
+            adlar.add(k["ad"])
+            self.assertTrue(k["url"].startswith("https://"))
+
+    def test_akakce_kaynaklari_sayfalama_yapmiyor(self):
+        import yaml
+        dosya = Path(__file__).parent / "kaynaklar.yaml"
+        veri = yaml.safe_load(dosya.read_text(encoding="utf-8"))
+        for k in veri["kaynaklar"]:
+            if "akakce.com" in k["url"]:
+                self.assertEqual(
+                    k.get("sayfa_sayisi", 1), 1,
+                    f"{k['ad']}: Akakce robots.txt sayfalamayi yasakliyor, sayfa_sayisi 1 olmali",
+                )
+                self.assertNotIn("{page}", k["url"])
+
+
+if __name__ == "__main__":
+    unittest.main()
