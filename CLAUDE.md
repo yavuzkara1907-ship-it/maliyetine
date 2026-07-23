@@ -284,6 +284,29 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
     Atasay, Trendyol, Armut) — motor JSON-LD/microdata katmanıyla
     otomatik çözmeyi deneyecek, bulamazsa sağlık kontrolü karantinaya
     alacak.
+- **Yavuz'un yerelinde protego'lu ikinci turda TEKRAR test edildi
+  (2026-07-24):**
+  - robots.txt tarafı artık doğru: DüğünBuketi'nin 3 sayfası da gerçekte
+    **ONAY** çıktı (şüphelendiğimiz gibi, eski hatalı script yanlış RET
+    vermiş) → `kaynaklar.yaml`'da hâlâ `aktif: false` — SIRADA aktif
+    edilmeleri var. Hepsiburada/Dolap robots.txt'in KENDİSİNE erişimde
+    gerçek 403 alıyor (script hatası değil, sitenin kendi engeli) —
+    ihtiyatlı RET doğru, bunlar gerçekten kullanılamaz.
+  - **YENİ SORUN — Akakçe artık robots.txt ONAY veriyor ama
+    `python motor.py` gerçek sayfa isteğinde 403 alıyor.** Bu robots.txt
+    değil, Akakçe'nin bot koruması (WAF/Cloudflare benzeri) — muhtemelen
+    eksik tarayıcı başlıkları veya `requests` kütüphanesinin TLS parmak
+    izi yüzünden isteği bot olarak işaretleyip engelliyor.
+  - Düzeltme denendi: `motor.py`'deki `HEADERS`'a gerçek bir tarayıcının
+    gönderdiği ek başlıklar eklendi (Accept, Accept-Encoding,
+    Sec-Fetch-*, Upgrade-Insecure-Requests, Cache-Control) — ama bu
+    sandbox'tan test edilemedi (network kısıtı). **Yavuz'un yerelinde
+    tekrar denemesi gerekiyor.** Eğer bu da 403 alırsa, sorun muhtemelen
+    header değil TLS-parmak-izi tabanlı bot tespiti — bu durumda
+    `requests` yerine gerçek bir tarayıcı motoru (Playwright, headless
+    Chromium) gerekecek. Bu, CLAUDE.md'nin "KAZIYICI MİMARİSİ" bölümünde
+    zaten öngörülen bir olasılıktı ("JS ile render edilen siteler için
+    Playwright katmanı, sadece gerekince").
 
 ## Modüller (sırayla)
 1. **Kazıma hattı** — kaynaklar.yaml + üç katmanlı çıkarım + robots
@@ -308,28 +331,30 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
 - [x] Domain alındı
 - [ ] Cloudflare nameserver propagasyon onayı
 - [x] GitHub repo kurulumu
-- [x] robots.txt kontrolü ilk turda yapıldı (Yavuz'un yerelinde,
-      `scraper/robots_kontrol.py` ile, 2026-07-23): Trendyol/Ramsey/
-      Atasay/Armut ONAY → aktif edildi. Hepsiburada/Dolap/DüğünBuketi
-      (3 sayfa) RET → pasif kaldı. **DİKKAT:** bu turda kullanılan
-      `robots_kontrol.py` sürümü, sonradan bulunan 3 stdlib bug'ını
-      taşıyordu (bkz. Teknik Durum "DÜZELTİLDİ" notu) — RET sonuçları
-      şüpheli, doğrulanmamış olabilir.
-- [ ] Hepsiburada/Dolap/DüğünBuketi(3) RET sonuçlarını DÜZELTİLMİŞ
-      `robots_kontrol.py` (protego tabanlı) ile TEKRAR test et — belki
-      gerçekte ONAY'dırlar.
-- [ ] Yavuz'un yerelinde `git pull` + `python motor.py` çalıştırıp artık
-      doğru ONAY veren Akakçe kaynaklarının (9 URL) ve diğer aktif
-      kaynakların (Trendyol, Ramsey, Atasay, Armut) gerçek veri
-      döndürdüğünü doğrulaması ve karantinaya düşenler için gerekirse
-      CSS seçici doldurması (bu sandbox'tan yapılamıyor — network kısıtı)
-- [ ] "salon" kalemi için YENİ kaynak bulma (tek adayı RET oldu — ama
-      yukarıdaki şüpheli-RET notuna bakılırsa önce yeniden test edilmeli)
-- [ ] "fotografci" için 2. bağımsız kaynak bulma (dugunbuketi RET oldu,
-      sadece armut kaldı — yeniden test edilmeli)
-- [ ] "gelin-ayakkabisi" ve gelinlik'in "gelinlik evi/lüks segment"i
-      için 2. bağımsız kaynak bulma (dugunbuketi RET oldu — yeniden test
-      edilmeli)
+- [x] robots.txt kontrolü ilk turda yapıldı (2026-07-23) — sonradan
+      hatalı çıktığı anlaşıldı (bkz. altındaki madde).
+- [x] robots.txt DÜZELTİLMİŞ protego tabanlı script ile TEKRAR test
+      edildi (2026-07-24): DüğünBuketi'nin 3 sayfası da gerçekte ONAY
+      çıktı (ilk turdaki RET, stdlib bug'ı yüzünden yanlıştı) → hepsi
+      `aktif: true` yapıldı. Hepsiburada/Dolap robots.txt'in KENDİSİNE
+      erişimde gerçek HTTP 403 alıyor (site kaynaklı, script hatası
+      değil) → RET doğru, pasif kaldı.
+      **Kapsam artık:** gelinlik (akakce+trendyol+dugunbuketi, 3 aktif),
+      alyans (akakce+atasay, 2), damatlik (akakce+ramsey, 2), fotografci
+      (armut+dugunbuketi, 2) — hepsi ÇOK KAYNAK KURALI hedefini
+      karşılıyor. Sadece salon (1, tek aday) ve gelin-ayakkabısı (1, tek
+      aday) hâlâ tek kaynaklı.
+- [ ] **YENİ SORUN:** `python motor.py` gerçek sayfa isteğinde Akakçe'den
+      403 alıyor — robots.txt izin verse de sitenin bot koruması
+      (WAF/Cloudflare benzeri) `requests` isteğini engelliyor. Daha
+      eksiksiz tarayıcı başlıkları eklendi (motor.py HEADERS,
+      2026-07-24) ama bu sandbox'tan test edilemedi. Yavuz'un yerelinde
+      `git pull` + `python motor.py` ile tekrar denemesi gerekiyor. Hâlâ
+      403 alırsa sorun muhtemelen TLS parmak izi tabanlı tespit —
+      bu durumda Playwright (headless Chromium) katmanına geçilmeli.
+- [ ] Karantinaya düşen kaynaklar için F12 ile CSS seçici doldurma
+      (motor JSON-LD/microdata ile bulamazsa gerekecek)
+- [ ] "salon" ve "gelin-ayakkabısı" için 2. bağımsız kaynak bulma
 - [ ] Düğün kalem listesindeki geri kalanlar için kaynak bulma: takı/
       altın (canlı fiyat), nikah şekeri, davetiye
 - [ ] TÜİK doğrulama verisi entegrasyonu (ÇOK KAYNAK KURALI 5. katman)

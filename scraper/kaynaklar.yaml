@@ -131,14 +131,10 @@ kaynaklar:
     aktif: false
     durum: "reddedildi"
     notlar: >
-      Yavuz'un yerelinde robots_kontrol.py ile RET sonucu alindi
-      (2026-07-23). SUPHELI: o sirada kullanilan robots_kontrol.py
-      surumunde sonradan bulunan 3 stdlib bug'i vardi (bkz. CLAUDE.md
-      "DUZELTILDI" notu - urllib.robotparser bot-imzali User-Agent'in
-      403 almasi, coklu User-agent + bos satir grubunun dusurulmesi,
-      "*" joker karakterinin desteklenmemesi). Bu RET sonucu
-      DUZELTILMIS robots_kontrol.py (protego tabanli) ile henuz
-      TEKRAR test edilmedi - gercekte ONAY olabilir. robots.txt bu sayfayi kazimaya kapatiyor - KULLANMA.
+      DUZELTILMIS protego tabanli robots_kontrol.py ile TEKRAR test
+      edildi (2026-07-24): dolap.com robots.txt'in KENDISINE erisim
+      HTTP 403 donuyor (script hatasi degil, sitenin gercek engeli) -
+      ihtiyatla RET dogru, KULLANILAMAZ.
 
   # --- site: dugunbuketi (sektor platformu - lüks/ozel dikim segmenti, COK KAYNAK KURALI tip 4) ---
   - ad: "DugunBuketi - Istanbul Gelinlik Moda Evleri"
@@ -151,18 +147,17 @@ kaynaklar:
     css_secicileri: null
     min_fiyat: 3000
     bekleme_sn: 3
-    aktif: false
-    durum: "reddedildi"
+    aktif: true
+    durum: "onaylandi"
     notlar: >
-      Yavuz'un yerelinde robots_kontrol.py ile RET sonucu alindi
-      (2026-07-23). SUPHELI: o sirada kullanilan robots_kontrol.py
-      surumunde sonradan bulunan 3 stdlib bug'i vardi (bkz. CLAUDE.md
-      "DUZELTILDI" notu - urllib.robotparser bot-imzali User-Agent'in
-      403 almasi, coklu User-agent + bos satir grubunun dusurulmesi,
-      "*" joker karakterinin desteklenmemesi). Bu RET sonucu
-      DUZELTILMIS robots_kontrol.py (protego tabanli) ile henuz
-      TEKRAR test edilmedi - gercekte ONAY olabilir. Gelinlik evi/lüks segment icin ikinci bir bagimsiz
-      kaynak hala aranmali - bu site KULLANILAMAZ.
+      Ilk turda (hatali robots_kontrol.py ile) yanlislikla RET cikmisti,
+      DUZELTILMIS protego tabanli script ile TEKRAR test edildi
+      (2026-07-24): gercekte ONAY. CSS seciciler henuz girilmedi - motor
+      JSON-LD/microdata katmaniyla otomatik cozmeyi deneyecek. Ayrica bu
+      sandbox'tan onaylanamayan bir sorun var: motor.py'nin gercek sayfa
+      istegi Akakce'de 403 aliyor (WAF/bot korumasi, robots.txt'ten
+      bagimsiz) - dugunbuketi.com icin de ayni sorun cikabilir, Yavuz'un
+      yerel calistirmasinda gorulecek.
 
   # =========================================================
   # KALEM: gelin-ayakkabisi  (su an tek kaynak - ikincisi aranacak)
@@ -311,14 +306,10 @@ kaynaklar:
     aktif: false
     durum: "reddedildi"
     notlar: >
-      Yavuz'un yerelinde robots_kontrol.py ile RET sonucu alindi
-      (2026-07-23). SUPHELI: o sirada kullanilan robots_kontrol.py
-      surumunde sonradan bulunan 3 stdlib bug'i vardi (bkz. CLAUDE.md
-      "DUZELTILDI" notu - urllib.robotparser bot-imzali User-Agent'in
-      403 almasi, coklu User-agent + bos satir grubunun dusurulmesi,
-      "*" joker karakterinin desteklenmemesi). Bu RET sonucu
-      DUZELTILMIS robots_kontrol.py (protego tabanli) ile henuz
-      TEKRAR test edilmedi - gercekte ONAY olabilir. KULLANMA.
+      DUZELTILMIS protego tabanli robots_kontrol.py ile TEKRAR test
+      edildi (2026-07-24): hepsiburada.com robots.txt'in KENDISINE
+      erisim HTTP 403 donuyor (script hatasi degil, sitenin gercek
+      engeli) - ihtiyatla RET dogru, KULLANILAMAZ.
 
   - ad: "DugunBuketi - Istanbul Dugun Mekanlari"
     site: "dugunbuketi"
@@ -330,17 +321,13 @@ kaynaklar:
     css_secicileri: null
     min_fiyat: 5000
     bekleme_sn: 3
-    aktif: false
-    durum: "reddedildi"
+    aktif: true
+    durum: "onaylandi"
     notlar: >
-      Yavuz'un yerelinde robots_kontrol.py ile RET sonucu alindi
-      (2026-07-23). SUPHELI: o sirada kullanilan robots_kontrol.py
-      surumunde sonradan bulunan 3 stdlib bug'i vardi (bkz. CLAUDE.md
-      "DUZELTILDI" notu - urllib.robotparser bot-imzali User-Agent'in
-      403 almasi, coklu User-agent + bos satir grubunun dusurulmesi,
-      "*" joker karakterinin desteklenmemesi). Bu RET sonucu
-      DUZELTILMIS robots_kontrol.py (protego tabanli) ile henuz
-      TEKRAR test edilmedi - gercekte ONAY olabilir. "salon" kalemi icin baska kaynak aranmali - KULLANMA.
+      Ilk turda (hatali robots_kontrol.py ile) yanlislikla RET cikmisti,
+      DUZELTILMIS protego tabanli script ile TEKRAR test edildi
+      (2026-07-24): gercekte ONAY. "salon" kalemi boylece tekrar bir
+      kaynaga sahip oldu. CSS seciciler henuz girilmedi.
 
   - ad: "DugunBuketi - Istanbul Fotografci"
     site: "dugunbuketi"
@@ -352,17 +339,13 @@ kaynaklar:
     css_secicileri: null
     min_fiyat: 1000
     bekleme_sn: 3
-    aktif: false
-    durum: "reddedildi"
+    aktif: true
+    durum: "onaylandi"
     notlar: >
-      Yavuz'un yerelinde robots_kontrol.py ile RET sonucu alindi
-      (2026-07-23). SUPHELI: o sirada kullanilan robots_kontrol.py
-      surumunde sonradan bulunan 3 stdlib bug'i vardi (bkz. CLAUDE.md
-      "DUZELTILDI" notu - urllib.robotparser bot-imzali User-Agent'in
-      403 almasi, coklu User-agent + bos satir grubunun dusurulmesi,
-      "*" joker karakterinin desteklenmemesi). Bu RET sonucu
-      DUZELTILMIS robots_kontrol.py (protego tabanli) ile henuz
-      TEKRAR test edilmedi - gercekte ONAY olabilir. KULLANMA.
+      Ilk turda (hatali robots_kontrol.py ile) yanlislikla RET cikmisti,
+      DUZELTILMIS protego tabanli script ile TEKRAR test edildi
+      (2026-07-24): gercekte ONAY. "fotografci" artik 2 bagimsiz kaynaga
+      sahip (armut + dugunbuketi). CSS seciciler henuz girilmedi.
 
   - ad: "Armut - Dugun Fotografcisi Fiyatlari"
     site: "armut"
