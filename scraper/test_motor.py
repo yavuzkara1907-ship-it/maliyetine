@@ -109,6 +109,24 @@ TRENDYOL_URUN_KARTI_HTML = """
 </a>
 """
 
+# Gercek Trendyol/Dugun Davetiyesi HTML'inden alinmis kucultulmus urun
+# karti ornegi (2026-07-24, sayfa_tani.py ile teshis edildi) - bu sayfada
+# fiyat .price-value DEGIL .sale-price class'inda (Trendyol'un farkli
+# kategori sayfalarinda birden fazla fiyat sablonu oldugu ortaya cikti).
+TRENDYOL_SALE_PRICE_KARTI_HTML = """
+<a class="product-card" href="/x">
+<p class="product-name" data-testid="seller-store-product-card-name"><strong class="product-brand">Linvito</strong>Yaldızlı Düğün, Nikah, Nişan Davetiyesi (50 Adet)</p>
+<div class="product-card-price" data-testid="price-div">
+<div class="discounted-price-wrapper">
+<div class="discounted-price">
+<div class="sale-price">92,50 TL</div>
+<div class="strikethrough-price">97,72 TL</div>
+</div>
+</div>
+</div>
+</a>
+"""
+
 # Gercek Beymen (Erkek Smokin) HTML'inden alinmis kucultulmus urun karti
 # ornegi (2026-07-24, sayfa_tani.py ile teshis edildi).
 BEYMEN_URUN_KARTI_HTML = """
@@ -277,12 +295,41 @@ class GercekSiteSecicileriTestleri(unittest.TestCase):
         self.assertEqual(urunler, [{"isim": "Ekru Şal Yaka Yün Smokin", "fiyat": 44950.0}])
 
     def test_dugunbuketi_secicisi_gercek_urun_kartini_dogru_cikarir(self):
-        # Salon/fotografci/gelinlik-moda-evleri ucu de ayni sablonu ve
-        # ayni css_secicileri degerlerini paylasiyor - tek ornek ucunu de temsil eder.
+        # Salon/fotografci/gelinlik-moda-evleri ayni .bg-card sablonunu
+        # paylasiyor, ama fiyat etiketi farkli olabilir (bkz. asagidaki
+        # strong-etiketli test) - bu, span.font-bold varyantini kilitler.
         secici = self._yaml_secici("DugunBuketi - Istanbul Dugun Mekanlari")
         soup = BeautifulSoup(DUGUNBUKETI_URUN_KARTI_HTML, "html.parser")
         urunler = motor.css_urunler(soup, secici, min_fiyat=200)
         self.assertEqual(urunler, [{"isim": "Boğaz Garden", "fiyat": 685.0}])
+
+    def test_dugunbuketi_strong_fiyat_varyanti_dogru_cikarir(self):
+        # fotografci/gelinlik-moda-evleri sayfalarinda fiyat class'siz
+        # bir <strong> etiketinde ARALIK olarak gosteriliyor (2026-07-24
+        # sayfa_tani.py teshisiyle bulundu) - salon'un .font-bold'undan
+        # farkli. fiyat_ayikla() aralikta en dusuk degeri almali.
+        secici = self._yaml_secici("DugunBuketi - Istanbul Fotografci")
+        html = """
+        <div class="bg-card">
+        <a class="font-semibold tracking-tight" href="#">Tasusa Fotoğrafçılık</a>
+        <strong>12.000 – 22.000 TL</strong>
+        </div>
+        """
+        soup = BeautifulSoup(html, "html.parser")
+        urunler = motor.css_urunler(soup, secici, min_fiyat=100)
+        self.assertEqual(urunler, [{"isim": "Tasusa Fotoğrafçılık", "fiyat": 12000.0}])
+
+    def test_trendyol_sale_price_varyanti_dogru_cikarir(self):
+        # Trendyol/Dugun Davetiyesi sayfasinda fiyat .price-value degil
+        # .sale-price class'inda (2026-07-24 sayfa_tani.py teshisiyle
+        # bulundu) - diger Trendyol sayfalarindan farkli sablon.
+        secici = self._yaml_secici("Trendyol - Dugun Davetiyesi")
+        soup = BeautifulSoup(TRENDYOL_SALE_PRICE_KARTI_HTML, "html.parser")
+        urunler = motor.css_urunler(soup, secici, min_fiyat=50)
+        self.assertEqual(
+            urunler,
+            [{"isim": "LinvitoYaldızlı Düğün, Nikah, Nişan Davetiyesi (50 Adet)", "fiyat": 92.5}],
+        )
 
 
 class AykiriVeSegmentTestleri(unittest.TestCase):

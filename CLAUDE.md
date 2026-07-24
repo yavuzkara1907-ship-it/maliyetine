@@ -475,31 +475,64 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
     geçerli olmayabilir. `sayfa_tani.py` ile bu iki URL'ye ÖZEL yeniden
     teşhis gerekiyor (salon'un çıktısı yeterli değil) — durum
     `arastirildi`'ye çekildi (yanlışlıkla `onaylandi` idi).
+- **Bu iki URL'ye özel `sayfa_tani.py` teşhisi Yavuz'un yerelinde
+  yapıldı (2026-07-24) — kök neden bulundu, ikisi de DÜZELTİLDİ:**
+  - `/p/...` vs `/c/...` URL deseni teorisi YANLIŞTI — ikisi de aynı
+    `.bg-card` şablonunu kullanıyor. **Gerçek sorun: bu iki sayfada
+    `.font-bold` class'ı hiç yok.** Fiyat, salon'daki gibi
+    `<span class="font-bold">` değil, class'sız düz bir
+    `<strong>12.000 – 22.000 TL</strong>` etiketinde — hem farklı
+    etiket/class hem de tek değer değil ARALIK. `fiyat_ayikla()` zaten
+    regex ile ilk sayıyı alıyor, aralığın alt sınırını doğru şekilde
+    "başlangıç fiyatı" olarak yakalıyor — ek kod değişikliği gerekmedi.
+  - Bazı işletmelerde fiyat hiç görünmüyor ("Fiyat bilgisi için üye
+    olun" — üyelik arkasında gizli). Bu kartlar `isim_el` bulunup
+    `fiyat_el` bulunamadığı için doğal olarak atlanacak — örneklem tüm
+    kart sayısından küçük olabilir, bu beklenen ve dürüst bir durum.
+  - **Düzeltme: fiyat_secici her iki girdide de `"strong, .font-bold"`
+    yapıldı** (union — salon'u etkilemiyor, sadece bu ikisine `<strong>`
+    fallback'i ekliyor). Fixture testleriyle doğrulandı (51 test PASS).
+- **Trendyol/davetiye de aynı turda teşhis edildi, DÜZELTİLDİ:** diğer
+  Trendyol sayfalarında çalışan `.price-value`/
+  `.seller-store-default-price-value` seçicisi bu sayfada eşleşmiyordu.
+  Kök neden: bu sayfanın fiyatı `.sale-price` class'ında (ör. "92,50 TL",
+  yanında `.strikethrough-price` ile eski fiyat) — Trendyol'un farklı
+  kategori/kampanya sayfalarında birden fazla fiyat şablonu kullandığı
+  ortaya çıktı. `.sale-price` fallback olarak eklendi.
+- **Boyner: kısmen ilerleme, düşük önceliğe alındı.** Düzeltilmiş
+  `sayfa_tani.py` Playwright'a başarıyla düştü ve gerçek fiyatları
+  gördü (`price_priceMain__DrVVQ` class'ında, "16.999,99 TL" gibi
+  gerçek veri — artık iskelet değil). Ama `sayfa_tani.py`'nin
+  "product"/"item"/"card" anahtar kelimeli sezgisel tarayıcısı ürünün
+  TAM kart sarmalayıcısını yakalayamadı (fiyat class'ı bu kelimeleri
+  içermiyor, kart sarmalayıcısı ilk 5 aday arasına girmedi). CSS
+  seçici hâlâ dolu değil. **Düşük önceliğe alındı** — damatlık kalemi
+  zaten 3 çalışan kaynağa sahip (Trendyol 18, Vakko 48, Beymen 46 ürün),
+  Boyner olmadan da ÇOK KAYNAK KURALI hedefi fazlasıyla aşılıyor.
 
 ## Modüller (sırayla)
 1. **Kazıma hattı** — ✅✅ **motor GERÇEK VERİ üretiyor (2026-07-24).**
    `python motor.py`'nin son çalıştırılmış hali:
-   - **Çalışan kaynaklar (10):** Trendyol/gelinlik (23, JSON-LD),
+   - **Çalışan kaynaklar (12):** Trendyol/gelinlik (23, JSON-LD),
      Trendyol/alyans (4, JSON-LD), Trendyol/damatlık (18, CSS),
      Trendyol/gelin-ayakkabısı (8, CSS), Trendyol/nikah-şekeri (6, CSS),
      Atasay/alyans (24, CSS), **Vakko/damatlık (48, JSON-LD)**,
-     **Beymen/damatlık (46, CSS)**, **DüğünBuketi/salon (8, CSS)**.
-   - **Hâlâ 0 ürün / teşhis bekliyor:** Ramsey/damatlık (fiyat JS ile
-     sonradan yükleniyor), Boyner/damatlık (kök neden bulundu — JS
-     "skeleton" yükleme hali, `sayfa_tani.py` düzeltildi ama gerçek kart
-     yapısı hâlâ görülemedi, Yavuz'un yerelinde tekrar teşhis
-     çalıştırması gerekiyor), Cimri/gelinlik (düşük öncelik, sadece 12
-     ürün, hydrate olmamış), Trendyol/davetiye (Playwright bekleme
-     süresi 2500ms→4000ms yapıldı ama hâlâ 0, henüz teşhis edilmedi),
-     DüğünBuketi/fotoğrafçı + gelinlik-moda-evleri (salon çalışıyor ama
-     bunlar çalışmıyor — URL deseni farkı `/p/...` vs `/c/...` şüpheli,
-     bu iki URL'ye özel yeni `sayfa_tani.py` teşhisi gerekiyor).
-   - **Kesin BIRAKILDI (kod sorunu değil, site yapısı):** Armut/fotoğrafçı,
-     **Beymen/gelinlik (2026-07-24 kesinleşti — CSS doğru, render_gerekli
+     **Beymen/damatlık (46, CSS)**, **DüğünBuketi/salon (8, CSS)**,
+     Trendyol/davetiye (CSS, `.sale-price` düzeltmesiyle), DüğünBuketi/
+     fotoğrafçı + gelinlik-moda-evleri (CSS, `strong` etiketi
+     düzeltmesiyle — henüz Yavuz'un yerelinde son kez doğrulanmadı).
+   - **Hâlâ 0 ürün, düşük öncelik:** Ramsey/damatlık (fiyat JS ile
+     sonradan yükleniyor), Boyner/damatlık (gerçek fiyatlar Playwright
+     ile görüldü ama `sayfa_tani.py`'nin sezgisel tarayıcısı tam kart
+     sarmalayıcısını yakalayamadı — damatlık zaten 3 kaynaklı olduğu
+     için düşük öncelik), Cimri/gelinlik (sadece 12 ürün, hydrate
+     olmamış).
+   - **Kesin BIRAKILDI (kod sorunu değil, site yapısı):**
+     Armut/fotoğrafçı (agregat tek-ürün sayfası, gerçek teklifler
+     hash'li class'lı React ile client-side render ediliyor, kolay
+     kazınabilir değil), **Beymen/gelinlik** (CSS doğru, render_gerekli
      false denendi, hâlâ 0: ham HTML'de gerçekten ürün yok VE Beymen
-     headless tarayıcıyı da engelliyor, aşılamaz).**
-     — agregat tek-ürün sayfası, gerçek teklifler hash'li class'lı
-     React ile client-side render ediliyor, kolay kazınabilir değil.
+     headless tarayıcıyı da engelliyor, aşılamaz).
    - **ÇOK KAYNAK KURALI 2 gerçek uyarı üretti:**
      - alyans: Atasay (19.405 TL) vs Trendyol (4.298 TL) — %351 fark.
      - damatlık: Vakko (71.970 TL) vs Trendyol (3.240 TL) — **%2121 fark**
@@ -575,25 +608,32 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
       yükleme halinde geliyor (`b-skeleton` class'ları), gerçek kart
       JS ile sonradan doluyor. `sayfa_tani.py` bunu artık otomatik
       tespit edip Playwright'a düşüyor (`_iskelet_mi()` eklendi).
-- [ ] Yavuz'un yerelinde düzeltilmiş `sayfa_tani.py`'yi Boyner için
-      TEKRAR çalıştırıp gerçek (iskelet-sonrası) kart HTML'ini
-      paylaşması - CSS seçici hâlâ dolu değil (min_fiyat/render_gerekli
-      düzeltmeleri sonrası da hâlâ 0 ürün dönüyor, beklenen sonuç)
-- [ ] **DüğünBuketi/fotoğrafçı + gelinlik-moda-evleri YENİ BULGU
-      (2026-07-24):** min_fiyat düzeltmesi sonrası da hâlâ 0 ürün -
-      salon (`/c/...` URL deseni) çalışırken bu ikisi (`/p/...` URL
-      deseni) çalışmıyor, muhtemelen DugunBuketi bu iki route tipi için
-      farklı şablon kullanıyor. Bu iki URL'ye ÖZEL `sayfa_tani.py`
-      teşhisi gerekiyor (salon'un çıktısını varsayımla kopyalamak
-      yetersiz kaldı).
-- [ ] Trendyol/davetiye neden 0 ürün döndürüyor teşhis et (aynı şablon
-      diğer Trendyol sayfalarında çalıştı; Playwright bekleme süresi
-      2500ms→4000ms yapıldı, hâlâ 0 - `sayfa_tani.py` ile teşhis
-      gerekiyor)
+- [x] **Boyner tekrar teşhis edildi (2026-07-24), düşük önceliğe
+      alındı:** düzeltilmiş `sayfa_tani.py` Playwright'a düştü, gerçek
+      fiyatları gördü (`price_priceMain__DrVVQ`, "16.999,99 TL" gibi)
+      ama sezgisel kart-tarayıcı tam kart sarmalayıcısını yakalayamadı.
+      CSS seçici hâlâ dolu değil — damatlık zaten 3 çalışan kaynağa
+      sahip olduğu için (Trendyol/Vakko/Beymen) bunu kovalamayı bıraktık.
+- [x] **DüğünBuketi/fotoğrafçı + gelinlik-moda-evleri ÇÖZÜLDÜ
+      (2026-07-24):** Bu iki URL'ye özel `sayfa_tani.py` teşhisi yapıldı
+      - `/p/` vs `/c/` URL deseni teorisi yanlış çıktı, gerçek sorun:
+      bu iki sayfada `.font-bold` yok, fiyat class'sız
+      `<strong>12.000 – 22.000 TL</strong>` etiketinde (aralık - alt
+      sınır otomatik alınıyor). `fiyat_secici: "strong, .font-bold"`
+      yapıldı. Bazı işletmelerde fiyat üyelik arkasında gizli olabilir
+      (doğal olarak atlanacak, örneklem küçük olabilir).
+- [x] **Trendyol/davetiye ÇÖZÜLDÜ (2026-07-24):** bu sayfanın fiyatı
+      `.price-value` değil `.sale-price` class'ında - Trendyol'un farklı
+      kategori sayfalarında birden fazla fiyat şablonu var.
+      `.sale-price` fallback olarak eklendi.
 - [x] **Armut/fotoğrafçı BIRAKILDI, kesin teşhis (2026-07-24):** agregat
       tek-ürün JSON-LD sayfası, gerçek teklifler React (hash'li
       class'lar) ile client-side render — kolay kazınabilir değil,
       `aktif: false` yapıldı.
+- [ ] **Yavuz'un yerelinde son doğrulama bekleniyor:** DüğünBuketi'nin
+      fotoğrafçı+gelinlik-moda-evleri ve Trendyol/davetiye düzeltmeleri
+      henüz gerçek `python motor.py` ile son kez test edilmedi (fixture
+      testleriyle doğrulandı ama canlı siteye karşı değil).
 - [ ] Cimri/gelinlik: Akakçe gibi Cloudflare'e mi düştü, belirsiz —
       düşük öncelik (gelinlik zaten trendyol+dugunbuketi+beymen ile
       kısmen kapsanıyor)

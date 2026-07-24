@@ -170,11 +170,11 @@ kaynaklar:
     css_secicileri:
       urun_karti: ".bg-card"
       isim_secici: "a.font-semibold.tracking-tight"
-      fiyat_secici: ".font-bold"
+      fiyat_secici: "strong, .font-bold"
     min_fiyat: 100
     bekleme_sn: 3
     aktif: true
-    durum: "arastirildi"
+    durum: "onaylandi"
     notlar: >
       Ilk turda (hatali robots_kontrol.py ile) yanlislikla RET cikmisti,
       DUZELTILMIS protego tabanli script ile TEKRAR test edildi
@@ -187,23 +187,24 @@ kaynaklar:
       isletmeler var (`ItemList` -> `LocalBusiness`) ama motor.py'nin
       json_ld katmani sadece `@type: "Product"` kabul ediyor - CSS
       katmani bu yuzden gerekli, kasitli tasarim.
-      **BUG DUZELTILDI (2026-07-24):** min_fiyat 3000'di, ama sayfadaki
+      **BUG 1 DUZELTILDI (2026-07-24):** min_fiyat 3000'di, ama sayfadaki
       "başlangıç fiyatı" rakamlari (ör. 685 TL) muhtemelen kisi basi/
-      paket baslangic fiyati - gercek toplam degil, cok dusuk. Yavuz'un
-      yerelinde `python motor.py` ile TEKRAR calistirildi: 3 DugunBuketi
-      girdisinin UCU DE "0 urun" dondu - min_fiyat esigi TUM kartlari
-      eledigi teyit edildi (fixture testiyle dogrulandi: min_fiyat=5000
-      ile ayni ornek kart 0 donuyor, min_fiyat=100 ile dogru sekilde
-      eslesiyor). min_fiyat 100'e dusuruldu.
-      **HALA COZULMEDI (2026-07-24, min_fiyat duzeltmesi SONRASI tekrar
-      test edildi):** "Istanbul Dugun Mekanlari" (salon, ayni sablondan
-      alinan seciciler, URL /c/... deseninde) 8 urunle CALISTI, ama BU
-      girdi (URL /p/... deseninde) hala "0 urun". URL deseni farkli
-      (/p/ vs /c/) - muhtemelen DugunBuketi'nin "hizmet+sehir" sayfalari
-      (`/p/...`) ile "kategori" sayfalari (`/c/...`) FARKLI bir sablon/
-      bilesen kullaniyor, salon'dan varsayimla kopyalanan seciciler bu
-      sayfada gecerli olmayabilir. sayfa_tani.py ile BU URL'YE OZEL
-      TEKRAR teshis gerekiyor (salon'un ciktisi yeterli degil).
+      paket baslangic fiyati - gercek toplam degil, cok dusuk. 100'e
+      dusuruldu (fixture testiyle dogrulandi).
+      **BUG 2 BULUNDU VE DUZELTILDI (2026-07-24):** min_fiyat duzeltmesi
+      sonrasi da hala 0 donuyordu. Bu URL'ye ozel sayfa_tani.py teshisi
+      (2026-07-24) kok nedeni ortaya cikardi: URL deseni (/p/ vs /c/)
+      alakasizdi - gercek sorun, bu sayfada `.font-bold` classi HIC
+      YOK. Fiyat, salon'daki gibi `<span class="font-bold">` degil,
+      class'siz duz bir `<strong>2.000 – 5.000 TL</strong>` etiketi
+      icinde (ARALIK olarak gosteriliyor, tek deger degil -
+      `fiyat_ayikla()` zaten en dusuk degeri aliyor, ek kod degisikligi
+      gerekmedi). Bazi isletmelerde fiyat hic gosterilmiyor ("Fiyat
+      bilgisi için üye olun" - uyelik arkasinda gizli) - bu kartlar
+      dogal olarak atlanacak, orneklem TUM kartlardan kucuk olabilir,
+      bu beklenen ve durust bir durum. fiyat_secici "strong, .font-bold"
+      yapildi (union - hem bu sayfayi hem olasi gelecekteki font-bold
+      varyantini kapsar).
 
   # --- site: beymen (luks cok markali magaza - COK KAYNAK KURALI tip 2,
   # Pronovias/Vera Wang gibi dunya markalarini tasiyor, DugunBuketi'nin
@@ -429,13 +430,25 @@ kaynaklar:
       Playwright'a dusuyordu, 200+iskelet durumunu atlıyordu). Bu
       GENEL BOSLUK `sayfa_tani.py`'ye `_iskelet_mi()` kontroluyle
       duzeltildi (2026-07-24) - artik "skeleton"/"pulse" class'i >=10
-      ise otomatik Playwright'a dusuyor. `render_gerekli: true` zaten
-      set oldugu icin motor.py'nin GERCEK calismasi (Playwright ile)
-      muhtemelen zaten calisiyordur - CSS seciciler heniz dolu degil
-      cunku iskelet-oncesi (statik) HTML'den gercek kart yapisi
-      gorulemedi. Yavuz'un yerelinde `python sayfa_tani.py` TEKRAR
-      calistirmasi gerekiyor (duzeltilmis script Playwright'a
-      dusup gercek dolu karti gosterecek).
+      ise otomatik Playwright'a dusuyor.
+      **TEKRAR TESHIS EDILDI (2026-07-24), KISMEN COZULDU:**
+      duzeltilmis `sayfa_tani.py` Playwright'a basariyla dustu ve
+      GERCEK fiyatlari gorduk (`price_priceMain__DrVVQ` class'inda,
+      ör. "16.999,99 TL", "9.999,99 TL" - iskelet degil, gercek veri).
+      AMA `sayfa_tani.py`'nin "URUN KARTI ADAYLARI" otomatik tarayicisi
+      (class adinda "product"/"item"/"card" arayan sezgisel yontem)
+      urunun TAM kartini (isim+resim+fiyat sarmalayicisini) YAKALAYAMADI
+      - fiyat class'i "price_priceMain__DrVVQ" bu anahtar kelimeleri
+      icermiyor, kart sarmalayicisi ("vertical-product_verticalProduct__*"
+      onceki turda skeleton halinde gorulmustu) bu turun ciktisinda ilk
+      5 aday arasina girmedi (muhtemelen footer/menu class'lari sayica
+      daha fazla oldugu icin one gecti). CSS secici HALA dolu degil.
+      **DUSUK ONCELIGE ALINDI** - damatlik kalemi zaten 3 calisan
+      kaynaga sahip (Trendyol 18, Vakko 48, Beymen 46 urun) - Boyner
+      olmadan da COK KAYNAK KURALI hedefi asiliyor. Ileride istenirse
+      `sayfa_tani.py`'nin sezgisel tarayicisi "price" iceren class'lari
+      da anchor noktasi olarak kullanip yukari dogru ortak ata arayacak
+      sekilde genisletilebilir - simdilik gerek yok.
 
   # --- site: vakko (luks tasarimci markasi - COK KAYNAK KURALI tip 2) ---
   - ad: "Vakko - Erkek Takim Elbise"
@@ -695,11 +708,11 @@ kaynaklar:
     css_secicileri:
       urun_karti: ".bg-card"
       isim_secici: "a.font-semibold.tracking-tight"
-      fiyat_secici: ".font-bold"
+      fiyat_secici: "strong, .font-bold"
     min_fiyat: 100
     bekleme_sn: 3
     aktif: true
-    durum: "arastirildi"
+    durum: "onaylandi"
     notlar: >
       Ilk turda (hatali robots_kontrol.py ile) yanlislikla RET cikmisti,
       DUZELTILMIS protego tabanli script ile TEKRAR test edildi
@@ -709,17 +722,20 @@ kaynaklar:
       su an "fotografci" tek kaynakli (sadece dugunbuketi). CSS seciciler
       ayni siteden ("Istanbul Dugun Mekanlari" sayfasi) dogrulanan ayni
       sablonla dolduruldu (2026-07-24) - DugunBuketi tum kategori/liste
-      sayfalarinda ayni Vue/Tailwind kart bilesenini kullaniyor
-      (`.bg-card` + `.font-bold`).
-      **BUG DUZELTILDI (2026-07-24):** min_fiyat 1000'di, salon
+      sayfalarinda ayni Vue/Tailwind kart bilesenini kullaniyor.
+      **BUG 1 DUZELTILDI (2026-07-24):** min_fiyat 1000'di, salon
       girdisindeki ayni sorun (bkz. o notlar) burada da gecerli oldugu
       icin 100'e dusuruldu.
-      **HALA COZULMEDI (2026-07-24, min_fiyat duzeltmesi SONRASI tekrar
-      test edildi):** hala "0 urun". Bu URL de "Gelinlik Moda Evleri"
-      gibi `/p/...` deseninde (salon'un `/c/...` deseninden farkli) -
-      ayni supheli sablon-farki gecerli (bkz. "Gelinlik Moda Evleri"
-      girdisinin notlari). sayfa_tani.py ile BU URL'YE OZEL TEKRAR
-      teshis gerekiyor.
+      **BUG 2 BULUNDU VE DUZELTILDI (2026-07-24):** min_fiyat duzeltmesi
+      sonrasi da hala 0 donuyordu. Bu URL'ye ozel sayfa_tani.py teshisi
+      kok nedeni ortaya cikardi (URL deseni /p/ vs /c/ alakasizdi,
+      onceki teori yanlisti - bkz. "Gelinlik Moda Evleri" girdisinin
+      ayni bulgusu): bu sayfada `.font-bold` classi yok, fiyat class'siz
+      duz bir `<strong>12.000 – 22.000 TL</strong>` etiketinde (ARALIK,
+      `fiyat_ayikla()` en dusuk degeri aliyor). Bazi fotografcilarin
+      fiyati "Fiyat bilgisi için üye olun" ile gizli - bu kartlar
+      dogal olarak atlanacak, orneklem beklenenden kucuk olabilir.
+      fiyat_secici "strong, .font-bold" yapildi.
 
   - ad: "Armut - Dugun Fotografcisi Fiyatlari"
     site: "armut"
@@ -791,11 +807,23 @@ kaynaklar:
     css_secicileri:
       urun_karti: ".product-card"
       isim_secici: ".product-name"
-      fiyat_secici: ".price-value, .seller-store-default-price-value"
+      fiyat_secici: ".price-value, .seller-store-default-price-value, .sale-price"
     min_fiyat: 50
     bekleme_sn: 3
     aktif: true
-    durum: "arastirildi"
+    durum: "onaylandi"
     notlar: >
       WebSearch ile dogrulanan gercek URL (2026-07-24). Trendyol/gelinlik
       JSON-LD ile calisiyor, ayni domain.
+      **BUG BULUNDU VE DUZELTILDI (2026-07-24):** diger Trendyol
+      sayfalarinda calisan ayni CSS secici burada "0 urun" donuyordu.
+      sayfa_tani.py ile bu URL'ye ozel teshis edildi: `.product-card`
+      ve `.product-name` dogruydu (28 eslesme, ör. "Linvito | Yaldızlı
+      Düğün, Nikah, Nişan Davetiyesi (50 Adet)"), ama fiyat bu sayfada
+      `.price-value`/`.seller-store-default-price-value` DEGIL,
+      `.sale-price` class'inda (ör. "92,50 TL", yaninda
+      `.strikethrough-price` ile eski fiyat "97,72 TL"). Trendyol'un
+      farkli kategori/kampanya sayfalarinda birden fazla fiyat sablonu
+      kullanildigi anlasiliyor. fiyat_secici'ye `.sale-price` fallback
+      olarak eklendi (union - digerlerini bozmuyor, fixture testiyle
+      dogrulandi).
