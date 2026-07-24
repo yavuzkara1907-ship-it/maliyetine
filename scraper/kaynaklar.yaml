@@ -179,6 +179,31 @@ kaynaklar:
       (200 donuyor). CSS seciciler henuz girilmedi - sayfa_tani.py ile
       teshis edilip doldurulmali.
 
+  # --- site: beymen (luks cok markali magaza - COK KAYNAK KURALI tip 2,
+  # Pronovias/Vera Wang gibi dunya markalarini tasiyor, DugunBuketi'nin
+  # "gelinlik evi" segmentine yakin ama gercek e-ticaret katalogu var) ---
+  - ad: "Beymen - Gelinlik"
+    site: "beymen"
+    url: "https://www.beymen.com/tr/gelinlik-97563"
+    render_gerekli: true  # buyuk TR moda siteleri genelde requests'i 403 ile reddediyor
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "gelinlik"
+    yontem: "otomatik"
+    css_secicileri: null
+    min_fiyat: 3000
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: >
+      WebSearch ile dogrulanan gercek URL (2026-07-24, Yavuz'un
+      hatirlatmasiyla tekrar arastirildi - ilk aramada bulunamamisti).
+      Pronovias, Vera Wang gibi dunya markalarini tasiyor - luks segment.
+      Vakko'nun aksine gercek bir urun listeleme sayfasi (Vakko'nun
+      kendi sitesinde gelinlik randevu/butik formuna yonlendiriyor,
+      gercek katalog degil - o yuzden vakko.com'a gelinlik eklenmedi).
+      robots.txt/bot korumasi bu ortamdan dogrulanamadi.
+
   # =========================================================
   # KALEM: gelin-ayakkabisi  (Akakce Cloudflare yuzunden birakildi,
   # yerine Trendyol eklendi - 2026-07-24)
