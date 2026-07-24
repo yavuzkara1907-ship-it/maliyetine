@@ -436,14 +436,13 @@ kaynaklar:
     css_secicileri: null
     min_fiyat: 1000
     bekleme_sn: 3
-    aktif: true
-    durum: "arastirildi"
+    aktif: false
+    durum: "reddedildi"
     notlar: >
-      WebSearch ile dogrulanan gercek URL (2026-07-24). robots.txt VE
-      bot korumasi bu ortamdan dogrulanamadi - Yavuz'un yerelinde
-      python motor.py calistirdiginda gorulecek. Trendyol tum
-      "urun bazli" kalemlerin cogunu tek basina tasiyor - n11 basarili
-      olursa hem yedek hem bagimsiz dogrulama kaynagi olur.
+      Yavuz'un yerelinde python motor.py ile GERCEK robots.txt RET
+      alindi (2026-07-24) - fetch hatasi degil (motor.py "robots.txt
+      okunamadi" uyarisi vermedi), site bilerek bu kategori sayfasini
+      kazimaya kapatmis. Saygi gosterilip KULLANILMIYOR.
 
   # --- site: cimri (fiyat karsilastirma motoru - Akakce ile ayni model,
   # AYNI Cloudflare riski tasiyabilir, 2026-07-24 eklendi) ---
@@ -462,11 +461,13 @@ kaynaklar:
     durum: "arastirildi"
     notlar: >
       WebSearch ile dogrulanan gercek URL (2026-07-24). Akakce ile ayni
-      is modeli (fiyat karsilastirma) - Akakce'nin dustugu Cloudflare
-      bot-dogrulama tuzagina bu da dusebilir, Playwright bile
-      asamayabilir. Bu ortamdan dogrulanamadi. Eger Akakce gibi
-      Cloudflare challenge donerse ayni "birakildi" kararina tabi
-      tutulmali - zorlamaya gerek yok.
+      is modeli (fiyat karsilastirma). Yavuz'un yerelinde python motor.py
+      ile calistirildi: robots.txt ONAY, Playwright sayfayi hatasiz
+      cekti, ama "0 urun (hicbiri katmani)" - JSON-LD/microdata yok.
+      HENUZ TESHIS EDILMEDI: Akakce gibi Cloudflare challenge donuyor mu
+      yoksa CSS secici mi eksik, sayfa_tani.py ile bakilmadan bilinmiyor.
+      Dusuk oncelikli - gelinlik zaten trendyol+dugunbuketi ile
+      kismen kapsanan bir kalem.
 
   - ad: "DugunBuketi - Istanbul Dugun Mekanlari"
     site: "dugunbuketi"
