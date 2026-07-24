@@ -37,13 +37,21 @@ jobs:
         working-directory: scraper
         run: python motor.py
 
-      - name: Kaynakları birleştir ve statik sayfaları üret
+      - name: Kaynakları birleştir (dugun)
         working-directory: scraper
-        run: |
-          for vertikal in dugun ev-kurma; do
-            python agrega.py --vertikal "$vertikal"
-            python sayfa_uret.py --vertikal "$vertikal"
-          done
+        run: python agrega.py --vertikal dugun
+
+      - name: Statik sayfayı üret (dugun)
+        working-directory: scraper
+        run: python sayfa_uret.py --vertikal dugun
+
+      - name: Kaynakları birleştir (ev-kurma)
+        working-directory: scraper
+        run: python agrega.py --vertikal ev-kurma
+
+      - name: Statik sayfayı üret (ev-kurma)
+        working-directory: scraper
+        run: python sayfa_uret.py --vertikal ev-kurma
 
       - name: Değişiklikleri commit et ve pushla
         run: |
