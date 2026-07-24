@@ -369,7 +369,17 @@ kaynaklar:
       WebSearch ile dogrulanan gercek URL (2026-07-24). Trendyol'un
       alyans kategori kimligi c103553 - birden fazla arama sonucunda
       tutarli goruldu. Trendyol/gelinlik JSON-LD ile calisiyor, ayni
-      domain.
+      domain. CSS secici ile calisiyor (2026-07-24, 4 urun).
+      **CAPRAZ DOGRULAMA UYARISI (2026-07-24):** Atasay medyani 19.405 TL,
+      bu kaynagin medyani 4.298 TL - fark %351. URL "altin-c-alyans" adiyla
+      zaten sadece altin alyansi hedefliyor ama Trendyol pazaryeri
+      butce/ince bantlar da satiyor olabilir, Atasay ise tek bir premium
+      marka - muhtemelen gercek bir segment/marka farki, veri hatasi
+      degil. min_fiyat kasten degistirilmedi (esigi zorlayip uyariyi
+      bastirmak yanlis olur - dogru cozum ya segmenti ayirmak (Akakce
+      gelinlik'te yapildigi gibi ayri "trendyol-ekonomik-alyans" /
+      "trendyol-premium-alyans" kaynagi) ya da Yavuz'un bunu bilerek kabul
+      etmesi. Karar bekliyor.
 
   # =========================================================
   # KALEM: salon / fotografci  (onceki oturumdan)

@@ -361,30 +361,34 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
     belirtmesine gerek yok.
 
 ## Modüller (sırayla)
-1. **Kazıma hattı** — kaynaklar.yaml + üç katmanlı çıkarım + robots
-   doğrulama (protego ile, stdlib DEĞİL) + sağlık kontrolü + ÇOK KAYNAK
-   çapraz doğrulama + Playwright son-çare katmanı + log. ✅ Motor v0.6,
-   **gerçek veri üretiyor** (Trendyol/gelinlik: 23 ürün, JSON-LD).
-   Network/bot engeli sorunu genel olarak çözüldü — istisna: **Akakçe
-   Cloudflare bot-doğrulaması kullanıyor, Playwright bile aşamadı;
-   Yavuz ile konuşulup şimdilik BIRAKILDI** (bkz. "Bilinen kaynak
-   kısıtı — Akakçe").
-   **KRİTİK BUG bulundu ve düzeltildi (2026-07-24):** `HEADERS`'a WAF'ı
-   aşmak için eklenen `Accept-Encoding: ...br` satırı, brotli decoder
-   kurulu olmayan ortamlarda gelen yanıtı çözülemez hale getiriyordu —
-   Ramsey/Atasay/Armut/DüğünBuketi'nin "0 ürün" sonucu CSS seçici
-   eksikliği değil, hiç okunamayan bozuk veriymiş. Düzeltildi, artık
-   `requests` kendi güvenli varsayılanını kullanıyor.
-   **Yavuz'un geri bildirimi üzerine stratejik genişleme:** Akakçe'nin
-   bıraktığı boşluk tek marka/niş sitelerle (Ramsey/Atasay/Armut) dolmaz
-   dendi — haklı. Trendyol (genel pazaryeri, zaten çalışıyor) damatlık,
-   alyans, gelin ayakkabısı için eklendi + 2 yeni kalem: nikah şekeri,
-   davetiye (ikisi de sadece Trendyol, WebSearch ile doğrulanmış gerçek
-   URL'ler). Kalan: Yavuz'un yerelinde `git pull` + `python motor.py`
-   ile brotli düzeltmesi sonrası Ramsey/Atasay/Armut/DüğünBuketi'nin
-   gerçekten ürün döndürüp döndürmediğini görmesi (belki CSS seçiciye
-   hiç gerek kalmaz), + yeni Trendyol kaynaklarının çalıştığını
-   doğrulaması.
+1. **Kazıma hattı** — ✅✅ **BÜYÜK İLERLEME (2026-07-24): motor artık
+   GERÇEK VERİ üretiyor.** `python motor.py`'nin gerçek sonucu:
+   - **Çalışan kaynaklar (7):** Trendyol/gelinlik (23 ürün, JSON-LD),
+     Trendyol/alyans (4, CSS), Trendyol/damatlık (16, CSS),
+     Trendyol/gelin-ayakkabısı (10, CSS), Trendyol/nikah-şekeri (6, CSS),
+     Atasay/alyans (24, CSS).
+   - **Hâlâ 0 ürün dönen (5):** Ramsey/damatlık (fiyat JS ile sonradan
+     yükleniyor, statik HTML'de boş), Armut/fotoğrafçı (muhtemelen
+     agregat özet sayfası, bireysel ürün listesi değil), DüğünBuketi'nin
+     3 sayfası da (gelinlik-evi, salon, fotoğrafçı — henüz teşhis
+     edilmedi), Trendyol/davetiye (aynı şablon diğer Trendyol
+     sayfalarında çalıştı ama bu birinde çalışmadı, nedeni bilinmiyor).
+   - **ÇOK KAYNAK KURALI ilk gerçek uyarısını üretti:** alyans'ta
+     Atasay (medyan 19.405 TL) ile Trendyol (medyan 4.298 TL) arası
+     %351 fark → `alyans_capraz-dogrulama_*.json` yazıldı. Bu muhtemelen
+     veri hatası değil, gerçek bir segment/marka farkı (Trendyol
+     pazaryerinde bütçe/ince alyanslar da var, Atasay tek premium
+     marka). `min_fiyat` bilerek değiştirilmedi (eşiği zorlayıp uyarıyı
+     bastırmak yanlış olur). **Karar bekliyor:** segmenti ayırmak mı
+     (Akakçe/gelinlik'te yapıldığı gibi), yoksa olduğu gibi mi bırakmak.
+   - Yol boyunca bulunan 2 kritik bug: (1) `Accept-Encoding: ...br`
+     header'ı brotli decoder kurulu olmayan ortamlarda yanıtı çözülemez
+     hale getiriyordu (düzeltildi), (2) Yavuz'un "Akakçe+Trendyol
+     olmadan bu siteler saçma" geri bildirimi haklıydı — Trendyol
+     (çalışan genel pazaryeri) damatlık/alyans/gelin-ayakkabısına
+     eklendi + nikah-şekeri/davetiye kalemleri açıldı.
+   - Kalan: Trendyol/davetiye + DüğünBuketi(3) + Ramsey + Armut teşhisi,
+     alyans segment kararı.
 2. **Veri saklama** — aylık snapshot şeması (SQLite yeterli).
 3. **İlk hesaplayıcı + endeks sayfası** (düğün).
 4. **Metodoloji sayfası + schema.org işaretlemesi.**
@@ -393,53 +397,30 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
 7. **Fiyat geçmişi grafikleri** (3+ ay veri sonrası).
 
 ## Yapılacaklar (kod dışı)
-- [x] Domain alındı
+- [x] Domain alındı, GitHub repo kuruldu
 - [ ] Cloudflare nameserver propagasyon onayı
-- [x] GitHub repo kurulumu
-- [x] robots.txt kontrolü ilk turda yapıldı (2026-07-23) — sonradan
-      hatalı çıktığı anlaşıldı (bkz. altındaki madde).
-- [x] robots.txt DÜZELTİLMİŞ protego tabanlı script ile TEKRAR test
-      edildi (2026-07-24): DüğünBuketi'nin 3 sayfası da gerçekte ONAY
-      çıktı (ilk turdaki RET, stdlib bug'ı yüzünden yanlıştı) → hepsi
-      `aktif: true` yapıldı. Hepsiburada/Dolap robots.txt'in KENDİSİNE
-      erişimde gerçek HTTP 403 alıyor (site kaynaklı, script hatası
-      değil) → RET doğru, pasif kaldı.
-      **Kapsam artık:** gelinlik (akakce+trendyol+dugunbuketi, 3 aktif),
-      alyans (akakce+atasay, 2), damatlik (akakce+ramsey, 2), fotografci
-      (armut+dugunbuketi, 2) — hepsi ÇOK KAYNAK KURALI hedefini
-      karşılıyor. Sadece salon (1, tek aday) ve gelin-ayakkabısı (1, tek
-      aday) hâlâ tek kaynaklı.
-- [x] Akakçe/Trendyol'un `requests`'i 403 ile reddetmesi tespit edildi;
-      genişletilmiş tarayıcı başlıkları denendi ama ÇÖZMEDİ (Yavuz'un
-      yerelinde tekrar test edildi, 2026-07-24) → Playwright katmanı
-      eklendi (motor v0.6, `render_gerekli: true`). Bu sandbox'ta
-      mekanik olarak doğrulandı (tarayıcı açılıyor), gerçek siteye karşı
-      DOĞRULANMADI (sandbox network kısıtı).
-- [x] Yavuz'un yerelinde `python motor.py` çalıştırıldı (2026-07-24):
-      **Trendyol/gelinlik 23 ürün ile BAŞARILI** (JSON-LD). Akakçe artık
-      403 almıyor (Playwright çalışıyor) ama JSON-LD/microdata yok.
-- [x] `sayfa_tani.py` ile Akakçe ve Ramsey teşhis edildi (2026-07-24):
-      **Akakçe Cloudflare bot-doğrulaması kullanıyor** — Playwright'a bile
-      gerçek içerik değil "Bir dakika lütfen..." challenge sayfası
-      dönüyor. Yavuz'a soruldu, **karar: Akakçe şimdilik bırakıldı**
-      (9 girdi de `aktif: false`, bkz. "Bilinen kaynak kısıtı — Akakçe").
-- [x] `sayfa_tani.py` ile Ramsey/Atasay/Armut/DüğünBuketi(2 sayfa) teşhis
-      edildi (2026-07-24): "HAM HTML" bölümü hepsinde anlamsız/bozuk
-      karakterlerdi — CSS seçici eksikliği değil, **brotli
-      Accept-Encoding bug'ı** (bkz. Teknik Durum "KRİTİK BUG"). Düzeltildi.
-- [x] Yavuz'un geri bildirimi: Akakçe+Trendyol olmadan "saçma/niş
-      siteler" kaldığı, düğün maliyeti çıkaramayacağı belirtildi —
-      haklı bulundu. Trendyol (çalışan genel pazaryeri) damatlık +
-      alyans + gelin-ayakkabısı'na eklendi, 2 yeni kalem açıldı
-      (nikah-şekeri, davetiye) — hepsi Trendyol, WebSearch ile
-      doğrulanmış gerçek URL'ler.
-- [ ] Yavuz'un yerelinde `git pull` + `python motor.py` çalıştırıp brotli
-      düzeltmesinden SONRA Ramsey/Atasay/Armut/DüğünBuketi'nin gerçekten
-      ürün döndürüp döndürmediğini ve yeni Trendyol kaynaklarının
-      (damatlık/alyans/gelin-ayakkabısı/nikah-şekeri/davetiye)
-      çalıştığını doğrulaması — CSS seçici işi ancak bundan SONRA,
-      hâlâ gerekiyorsa yapılmalı
-- [ ] "salon" için 2. bağımsız kaynak bulma (şu an tek kaynak: dugunbuketi)
+- [x] robots.txt kontrolü (protego ile düzeltilmiş script) — Hepsiburada/
+      Dolap gerçekten erişim yasağı (RET doğru), diğerleri ONAY.
+- [x] Akakçe → Cloudflare bot-doğrulaması nedeniyle BIRAKILDI (Yavuz
+      onayladı), yerine Trendyol genişletildi (5 kalem + 2 yeni kalem:
+      nikah-şekeri, davetiye).
+- [x] Kritik bug düzeltildi: `Accept-Encoding: br` header'ı brotli
+      decoder'sız ortamda yanıtı bozuyordu.
+- [x] **`python motor.py` gerçek veri üretiyor (2026-07-24):** 7 kaynak
+      çalışıyor (Trendyol×5 kalem + Atasay), alyans'ta ÇOK KAYNAK
+      KURALI ilk gerçek çapraz-doğrulama uyarısını verdi (bkz. Teknik
+      Durum). Ayrıntı için oradaki listeye bak.
+- [ ] Trendyol/davetiye neden 0 ürün döndürüyor teşhis et (aynı şablon
+      diğer Trendyol sayfalarında çalıştı)
+- [ ] DüğünBuketi'nin 3 sayfası (gelinlik-evi/salon/fotoğrafçı) `sayfa_tani.py`
+      ile teşhis edilip CSS seçici doldurulmalı
+- [ ] Ramsey (fiyat JS ile sonradan yükleniyor) ve Armut (muhtemelen
+      agregat özet, bireysel liste değil) için ayrı çözüm gerekiyor —
+      düşük öncelik, ikisi de Trendyol ile zaten kısmen kapsanan kalemler
+- [ ] alyans'taki %351 çapraz-doğrulama farkı için karar: segmenti
+      ayır mı (ekonomik/premium), olduğu gibi mi bırak
+- [ ] "salon" için 2. bağımsız kaynak bulma (şu an tek kaynak: dugunbuketi,
+      henüz çalışmıyor da)
 - [ ] Takı/altın (canlı gram fiyatı) için kaynak bulma
 - [ ] TÜİK doğrulama verisi entegrasyonu (ÇOK KAYNAK KURALI 5. katman)
 - [ ] (İleride) Türk Patent marka başvurusu
