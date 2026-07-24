@@ -1,0 +1,35 @@
+{
+  "site": "dugunbuketi",
+  "kaynak_adlari": [
+    "DugunBuketi - Istanbul Dugun Mekanlari"
+  ],
+  "kalem": "salon",
+  "vertikal": "dugun",
+  "tarih": "2026-07-24",
+  "toplam_urun": 7,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 550,
+  "segmentler": {
+    "dusuk": {
+      "min": 400,
+      "medyan": 500,
+      "max": 500,
+      "urun_sayisi": 3
+    },
+    "orta": {
+      "min": 550,
+      "medyan": 550,
+      "max": 600,
+      "urun_sayisi": 3
+    },
+    "luks": {
+      "min": 700,
+      "medyan": 700,
+      "max": 700,
+      "urun_sayisi": 1
+    }
+  }
+}

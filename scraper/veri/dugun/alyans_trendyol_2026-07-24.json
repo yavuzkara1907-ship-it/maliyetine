@@ -1,0 +1,29 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Alyans"
+  ],
+  "kalem": "alyans",
+  "vertikal": "dugun",
+  "tarih": "2026-07-24",
+  "toplam_urun": 4,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 4298,
+  "segmentler": {
+    "dusuk": {
+      "min": 1107,
+      "medyan": 1107,
+      "max": 1107,
+      "urun_sayisi": 2
+    },
+    "orta": {
+      "min": 7490,
+      "medyan": 12245,
+      "max": 17000,
+      "urun_sayisi": 2
+    }
+  }
+}

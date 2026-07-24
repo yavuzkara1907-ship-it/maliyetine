@@ -1,0 +1,35 @@
+{
+  "site": "beymen",
+  "kaynak_adlari": [
+    "Beymen - Erkek Smokin"
+  ],
+  "kalem": "damatlik",
+  "vertikal": "dugun",
+  "tarih": "2026-07-24",
+  "toplam_urun": 41,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 44950,
+  "segmentler": {
+    "dusuk": {
+      "min": 6799,
+      "medyan": 17995,
+      "max": 22995,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 23799,
+      "medyan": 46450,
+      "max": 79995,
+      "urun_sayisi": 20
+    },
+    "luks": {
+      "min": 82495,
+      "medyan": 112950,
+      "max": 164950,
+      "urun_sayisi": 10
+    }
+  }
+}

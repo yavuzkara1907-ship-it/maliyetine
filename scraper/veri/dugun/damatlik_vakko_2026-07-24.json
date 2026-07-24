@@ -1,0 +1,35 @@
+{
+  "site": "vakko",
+  "kaynak_adlari": [
+    "Vakko - Erkek Takim Elbise"
+  ],
+  "kalem": "damatlik",
+  "vertikal": "dugun",
+  "tarih": "2026-07-24",
+  "toplam_urun": 40,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 71970,
+  "segmentler": {
+    "dusuk": {
+      "min": 53970,
+      "medyan": 59970,
+      "max": 59970,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 65970,
+      "medyan": 71970,
+      "max": 71970,
+      "urun_sayisi": 20
+    },
+    "luks": {
+      "min": 74950,
+      "medyan": 83970,
+      "max": 109950,
+      "urun_sayisi": 9
+    }
+  }
+}

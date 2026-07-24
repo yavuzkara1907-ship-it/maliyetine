@@ -1,0 +1,16 @@
+{
+  "site": "cimri",
+  "kaynak_adlari": [
+    "Cimri - Gelinlik"
+  ],
+  "kalem": "gelinlik",
+  "vertikal": "dugun",
+  "tarih": "2026-07-25",
+  "toplam_urun": 0,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "hicbiri"
+  ],
+  "genel_medyan": null,
+  "segmentler": {}
+}

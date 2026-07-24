@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Nikah Sekeri"
+  ],
+  "kalem": "nikah-sekeri",
+  "vertikal": "dugun",
+  "tarih": "2026-07-24",
+  "toplam_urun": 6,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 489,
+  "segmentler": {
+    "dusuk": {
+      "min": 180,
+      "medyan": 300,
+      "max": 421,
+      "urun_sayisi": 2
+    },
+    "orta": {
+      "min": 448,
+      "medyan": 530,
+      "max": 585,
+      "urun_sayisi": 3
+    },
+    "luks": {
+      "min": 618,
+      "medyan": 618,
+      "max": 618,
+      "urun_sayisi": 1
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Dugun Davetiyesi"
+  ],
+  "kalem": "davetiye",
+  "vertikal": "dugun",
+  "tarih": "2026-07-25",
+  "toplam_urun": 9,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 146,
+  "segmentler": {
+    "dusuk": {
+      "min": 92,
+      "medyan": 94,
+      "max": 124,
+      "urun_sayisi": 3
+    },
+    "orta": {
+      "min": 132,
+      "medyan": 151,
+      "max": 159,
+      "urun_sayisi": 4
+    },
+    "luks": {
+      "min": 166,
+      "medyan": 304,
+      "max": 441,
+      "urun_sayisi": 2
+    }
+  }
+}

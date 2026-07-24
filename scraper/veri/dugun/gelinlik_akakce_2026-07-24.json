@@ -1,0 +1,20 @@
+{
+  "site": "akakce",
+  "kaynak_adlari": [
+    "Akakce - Gelinlik (genel)",
+    "Akakce - Tesettur Gelinlik",
+    "Akakce - Korseli Gelinlik",
+    "Akakce - Kisa Gelinlik",
+    "Akakce - A Kesim Gelinlik"
+  ],
+  "kalem": "gelinlik",
+  "vertikal": "dugun",
+  "tarih": "2026-07-24",
+  "toplam_urun": 0,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "hicbiri"
+  ],
+  "genel_medyan": null,
+  "segmentler": {}
+}
