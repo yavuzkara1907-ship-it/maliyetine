@@ -476,22 +476,29 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
     teşhis gerekiyor (salon'un çıktısı yeterli değil) — durum
     `arastirildi`'ye çekildi (yanlışlıkla `onaylandi` idi).
 - **Bu iki URL'ye özel `sayfa_tani.py` teşhisi Yavuz'un yerelinde
-  yapıldı (2026-07-24) — kök neden bulundu, ikisi de DÜZELTİLDİ:**
-  - `/p/...` vs `/c/...` URL deseni teorisi YANLIŞTI — ikisi de aynı
-    `.bg-card` şablonunu kullanıyor. **Gerçek sorun: bu iki sayfada
-    `.font-bold` class'ı hiç yok.** Fiyat, salon'daki gibi
-    `<span class="font-bold">` değil, class'sız düz bir
-    `<strong>12.000 – 22.000 TL</strong>` etiketinde — hem farklı
-    etiket/class hem de tek değer değil ARALIK. `fiyat_ayikla()` zaten
-    regex ile ilk sayıyı alıyor, aralığın alt sınırını doğru şekilde
-    "başlangıç fiyatı" olarak yakalıyor — ek kod değişikliği gerekmedi.
-  - Bazı işletmelerde fiyat hiç görünmüyor ("Fiyat bilgisi için üye
-    olun" — üyelik arkasında gizli). Bu kartlar `isim_el` bulunup
-    `fiyat_el` bulunamadığı için doğal olarak atlanacak — örneklem tüm
-    kart sayısından küçük olabilir, bu beklenen ve dürüst bir durum.
-  - **Düzeltme: fiyat_secici her iki girdide de `"strong, .font-bold"`
-    yapıldı** (union — salon'u etkilemiyor, sadece bu ikisine `<strong>`
-    fallback'i ekliyor). Fixture testleriyle doğrulandı (51 test PASS).
+  yapıldı (2026-07-24) — ilk teşhis YANLIŞTI, sonra KESİN sonuca
+  ulaşıldı:**
+  - `/p/...` vs `/c/...` URL deseni teorisi de, "`.font-bold` yok,
+    fiyat `<strong>` etiketinde" teorisi de İLK ETAPTA doğru sanıldı ve
+    `fiyat_secici: "strong, .font-bold"` yapıldı — ama Yavuz'un
+    yerelinde `python motor.py` ile tekrar test edildiğinde YİNE 0 ürün
+    döndü.
+  - **Kesin kanıt için geçici bir script yazıldı** (`.bg-card` kartlarının
+    her birini tek tek kontrol eden) ve Yavuz'un yerelinde çalıştırıldı:
+    **her iki sayfada da 13 karttan 0'ında (0/13) görünür fiyat var** —
+    hepsi "Fiyat bilgisi için üye olun" gösteriyor. Sayfada görülen
+    `<strong>...TL</strong>` metinleri kartların İÇİNDE değil, sayfanın
+    başka bir yerinde (muhtemelen bir filtre/slider) — kartlarla alakasız
+    bir UI elemanı.
+  - **KESİN SONUÇ: DüğünBuketi, salon (mekan) kaleminde fiyat gösterirken
+    gelinlik-moda-evleri ve fotoğrafçı kaleminde fiyatı KASITLI OLARAK
+    GİZLİYOR** (üyelik/teklif-al iş modeli) — bu bir kazıma/seçici hatası
+    değil, sitenin ürün kararı. Her iki girdi de **BIRAKILDI**
+    (`aktif: false, durum: "birakildi"`), geçici teşhis scripti silindi.
+  - **"fotoğrafçı" kalemi artık SIFIR aktif kaynaklı** (Armut da ayrı
+    bir teşhiste kesin bırakılmıştı) — bu kalem için acilen yeni bir
+    kaynak aranmalı. "gelinlik" kalemi etkilenmedi, Trendyol (23 ürün)
+    ile hâlâ kapsanıyor.
 - **Trendyol/davetiye de aynı turda teşhis edildi, DÜZELTİLDİ:** diğer
   Trendyol sayfalarında çalışan `.price-value`/
   `.seller-store-default-price-value` seçicisi bu sayfada eşleşmiyordu.
@@ -513,14 +520,12 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
 ## Modüller (sırayla)
 1. **Kazıma hattı** — ✅✅ **motor GERÇEK VERİ üretiyor (2026-07-24).**
    `python motor.py`'nin son çalıştırılmış hali:
-   - **Çalışan kaynaklar (12):** Trendyol/gelinlik (23, JSON-LD),
+   - **Çalışan kaynaklar (11):** Trendyol/gelinlik (23, JSON-LD),
      Trendyol/alyans (4, JSON-LD), Trendyol/damatlık (18, CSS),
-     Trendyol/gelin-ayakkabısı (8, CSS), Trendyol/nikah-şekeri (6, CSS),
+     Trendyol/gelin-ayakkabısı (8-10, CSS), Trendyol/nikah-şekeri
+     (6, CSS), Trendyol/davetiye (8, CSS — `.sale-price` düzeltmesiyle),
      Atasay/alyans (24, CSS), **Vakko/damatlık (48, JSON-LD)**,
-     **Beymen/damatlık (46, CSS)**, **DüğünBuketi/salon (8, CSS)**,
-     Trendyol/davetiye (CSS, `.sale-price` düzeltmesiyle), DüğünBuketi/
-     fotoğrafçı + gelinlik-moda-evleri (CSS, `strong` etiketi
-     düzeltmesiyle — henüz Yavuz'un yerelinde son kez doğrulanmadı).
+     **Beymen/damatlık (46, CSS)**, **DüğünBuketi/salon (7-8, CSS)**.
    - **Hâlâ 0 ürün, düşük öncelik:** Ramsey/damatlık (fiyat JS ile
      sonradan yükleniyor), Boyner/damatlık (gerçek fiyatlar Playwright
      ile görüldü ama `sayfa_tani.py`'nin sezgisel tarayıcısı tam kart
@@ -532,7 +537,12 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
      hash'li class'lı React ile client-side render ediliyor, kolay
      kazınabilir değil), **Beymen/gelinlik** (CSS doğru, render_gerekli
      false denendi, hâlâ 0: ham HTML'de gerçekten ürün yok VE Beymen
-     headless tarayıcıyı da engelliyor, aşılamaz).
+     headless tarayıcıyı da engelliyor, aşılamaz), **DüğünBuketi/
+     fotoğrafçı + gelinlik-moda-evleri** (2026-07-24 kesinleşti — kart/
+     isim seçicileri doğru ama site bu iki kalemde fiyatı kasıtlı
+     olarak gizliyor, 13 karttan 0'ında görünür fiyat var, üyelik/
+     teklif-al modeli — kazıma hatası değil). **"fotoğrafçı" kalemi
+     artık sıfır aktif kaynaklı, acil yeni kaynak aranmalı.**
    - **ÇOK KAYNAK KURALI 2 gerçek uyarı üretti:**
      - alyans: Atasay (19.405 TL) vs Trendyol (4.298 TL) — %351 fark.
      - damatlık: Vakko (71.970 TL) vs Trendyol (3.240 TL) — **%2121 fark**
@@ -614,32 +624,34 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
       ama sezgisel kart-tarayıcı tam kart sarmalayıcısını yakalayamadı.
       CSS seçici hâlâ dolu değil — damatlık zaten 3 çalışan kaynağa
       sahip olduğu için (Trendyol/Vakko/Beymen) bunu kovalamayı bıraktık.
-- [x] **DüğünBuketi/fotoğrafçı + gelinlik-moda-evleri ÇÖZÜLDÜ
-      (2026-07-24):** Bu iki URL'ye özel `sayfa_tani.py` teşhisi yapıldı
-      - `/p/` vs `/c/` URL deseni teorisi yanlış çıktı, gerçek sorun:
-      bu iki sayfada `.font-bold` yok, fiyat class'sız
-      `<strong>12.000 – 22.000 TL</strong>` etiketinde (aralık - alt
-      sınır otomatik alınıyor). `fiyat_secici: "strong, .font-bold"`
-      yapıldı. Bazı işletmelerde fiyat üyelik arkasında gizli olabilir
-      (doğal olarak atlanacak, örneklem küçük olabilir).
-- [x] **Trendyol/davetiye ÇÖZÜLDÜ (2026-07-24):** bu sayfanın fiyatı
-      `.price-value` değil `.sale-price` class'ında - Trendyol'un farklı
-      kategori sayfalarında birden fazla fiyat şablonu var.
-      `.sale-price` fallback olarak eklendi.
+- [x] **Trendyol/davetiye ÇÖZÜLDÜ ve DOĞRULANDI (2026-07-24):** bu
+      sayfanın fiyatı `.price-value` değil `.sale-price` class'ında -
+      Trendyol'un farklı kategori sayfalarında birden fazla fiyat
+      şablonu var. `.sale-price` fallback olarak eklendi. Yavuz'un
+      yerelinde `python motor.py` ile tekrar çalıştırıldı: **8 ürün,
+      ÇALIŞIYOR.**
+- [x] **DüğünBuketi/fotoğrafçı + gelinlik-moda-evleri KESİN BIRAKILDI
+      (2026-07-24):** İlk teşhis ("fiyat `<strong>` etiketinde")
+      YANLIŞ çıktı - düzeltme sonrası da hâlâ 0 ürün döndü. Geçici bir
+      script ile TÜM 13 kart tek tek kontrol edildi: **0/13 kartta
+      görünür fiyat var** - hepsi "Fiyat bilgisi için üye olun"
+      gösteriyor. Sayfadaki `<strong>...TL</strong>` metinleri
+      kartların DIŞINDA, alakasız bir UI elemanına ait. Site bu iki
+      kalemde fiyatı KASITLI OLARAK GİZLİYOR (üyelik/teklif-al modeli)
+      - kazıma hatası değil. `aktif: false, durum: "birakildi"` yapıldı,
+      geçici teşhis scripti silindi.
 - [x] **Armut/fotoğrafçı BIRAKILDI, kesin teşhis (2026-07-24):** agregat
       tek-ürün JSON-LD sayfası, gerçek teklifler React (hash'li
       class'lar) ile client-side render — kolay kazınabilir değil,
       `aktif: false` yapıldı.
-- [ ] **Yavuz'un yerelinde son doğrulama bekleniyor:** DüğünBuketi'nin
-      fotoğrafçı+gelinlik-moda-evleri ve Trendyol/davetiye düzeltmeleri
-      henüz gerçek `python motor.py` ile son kez test edilmedi (fixture
-      testleriyle doğrulandı ama canlı siteye karşı değil).
+- [ ] **ACİL: "fotoğrafçı" kalemi artık SIFIR aktif kaynaklı**
+      (Armut + DüğünBuketi ikisi de bırakıldı) — yeni bağımsız kaynak
+      aranmalı.
 - [ ] Cimri/gelinlik: Akakçe gibi Cloudflare'e mi düştü, belirsiz —
-      düşük öncelik (gelinlik zaten trendyol+dugunbuketi+beymen ile
-      kısmen kapsanıyor)
-- [ ] "salon" ve "fotoğrafçı" için 2. bağımsız kaynak bulma (Armut
-      bırakıldığı için fotoğrafçı artık tekrar tek kaynaklı — sadece
-      dugunbuketi)
+      düşük öncelik (gelinlik zaten trendyol+beymen ile kapsanıyor,
+      dugunbuketi/gelinlik de bırakıldığı için artık trendyol tek
+      gerçek kaynak - ikinci bir kaynak aranabilir)
+- [ ] "salon" için 2. bağımsız kaynak bulma (şu an sadece dugunbuketi)
 - [ ] Takı/altın (canlı gram fiyatı) için kaynak bulma
 - [ ] TÜİK doğrulama verisi entegrasyonu (ÇOK KAYNAK KURALI 5. katman)
 - [ ] (İleride) Türk Patent marka başvurusu

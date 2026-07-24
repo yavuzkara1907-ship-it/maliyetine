@@ -173,38 +173,32 @@ kaynaklar:
       fiyat_secici: "strong, .font-bold"
     min_fiyat: 100
     bekleme_sn: 3
-    aktif: true
-    durum: "onaylandi"
+    aktif: false  # BIRAKILDI 2026-07-24: sitenin KENDISI bu kalemde fiyat gostermiyor (asagida kesin kanit)
+    durum: "birakildi"
     notlar: >
       Ilk turda (hatali robots_kontrol.py ile) yanlislikla RET cikmisti,
       DUZELTILMIS protego tabanli script ile TEKRAR test edildi
       (2026-07-24): gercekte ONAY, `requests` ile de erisim engellenmiyor
       (200 donuyor). CSS seciciler "DugunBuketi - Istanbul Dugun
       Mekanlari" (salon) sayfasindan sayfa_tani.py ile teshis edilip
-      dogrulandi (2026-07-24) - ayni site, ayni Vue/Tailwind sablonu
-      (kart: "97 | 6 | Boğaz Garden | 5.0 | (15) | İstanbul, Beykoz |
-      500 kapasite | ₺685,00 | başlangıç fiyatı"). JSON-LD'de gercek
-      isletmeler var (`ItemList` -> `LocalBusiness`) ama motor.py'nin
-      json_ld katmani sadece `@type: "Product"` kabul ediyor - CSS
-      katmani bu yuzden gerekli, kasitli tasarim.
-      **BUG 1 DUZELTILDI (2026-07-24):** min_fiyat 3000'di, ama sayfadaki
-      "başlangıç fiyatı" rakamlari (ör. 685 TL) muhtemelen kisi basi/
-      paket baslangic fiyati - gercek toplam degil, cok dusuk. 100'e
-      dusuruldu (fixture testiyle dogrulandi).
-      **BUG 2 BULUNDU VE DUZELTILDI (2026-07-24):** min_fiyat duzeltmesi
-      sonrasi da hala 0 donuyordu. Bu URL'ye ozel sayfa_tani.py teshisi
-      (2026-07-24) kok nedeni ortaya cikardi: URL deseni (/p/ vs /c/)
-      alakasizdi - gercek sorun, bu sayfada `.font-bold` classi HIC
-      YOK. Fiyat, salon'daki gibi `<span class="font-bold">` degil,
-      class'siz duz bir `<strong>2.000 – 5.000 TL</strong>` etiketi
-      icinde (ARALIK olarak gosteriliyor, tek deger degil -
-      `fiyat_ayikla()` zaten en dusuk degeri aliyor, ek kod degisikligi
-      gerekmedi). Bazi isletmelerde fiyat hic gosterilmiyor ("Fiyat
-      bilgisi için üye olun" - uyelik arkasinda gizli) - bu kartlar
-      dogal olarak atlanacak, orneklem TUM kartlardan kucuk olabilir,
-      bu beklenen ve durust bir durum. fiyat_secici "strong, .font-bold"
-      yapildi (union - hem bu sayfayi hem olasi gelecekteki font-bold
-      varyantini kapsar).
+      dogrulandi (2026-07-24) - ayni site, ayni Vue/Tailwind sablonu.
+      **BUG 1 DUZELTILDI:** min_fiyat 3000'di, "başlangıç fiyatı"
+      rakamlarinin cok uzerindeydi - 100'e dusuruldu.
+      **BUG 2 - YANLIS TESHIS EDILMISTI, SONRA DUZELTILDI:** bu sayfada
+      `.font-bold` classi yok sanilip fiyat_secici "strong, .font-bold"
+      yapilmisti (sayfada bir yerlerde `<strong>...TL</strong>` metinleri
+      goruldugu icin) - bu YANLIS bir varsayimdi.
+      **KESIN SONUC (2026-07-24, gecici bir script ile TUM 13 karti tek
+      tek kontrol edildi):** 13 karttan HICBIRINDE (0/13) gorunur fiyat
+      yok - hepsi "Fiyat bilgisi için üye olun" gosteriyor. Sayfadaki
+      `<strong>...TL</strong>` metinleri (ör. "12.000 – 22.000 TL")
+      kartlarin İCİNDE degil, muhtemelen sayfanin baska bir yerinde
+      (filtre/slider gibi) bir UI elemanina ait - kartlarla alakasiz.
+      **SONUC: DugunBuketi, salon (mekan) kaleminde fiyat gosterirken
+      gelinlik-moda-evleri (ve fotografci) kaleminde FIYATI KASITLI
+      OLARAK GIZLIYOR** (uyelik/teklif-al modeli) - bu bir kazima/secici
+      hatasi degil, sitenin urun kararidir. BIRAKILDI. "gelinlik" kalemi
+      zaten trendyol (23 urun) ile kapsandigi icin etkilenmiyor.
 
   # --- site: beymen (luks cok markali magaza - COK KAYNAK KURALI tip 2,
   # Pronovias/Vera Wang gibi dunya markalarini tasiyor, DugunBuketi'nin
@@ -711,31 +705,31 @@ kaynaklar:
       fiyat_secici: "strong, .font-bold"
     min_fiyat: 100
     bekleme_sn: 3
-    aktif: true
-    durum: "onaylandi"
+    aktif: false  # BIRAKILDI 2026-07-24: sitenin KENDISI bu kalemde fiyat gostermiyor (asagida kesin kanit)
+    durum: "birakildi"
     notlar: >
       Ilk turda (hatali robots_kontrol.py ile) yanlislikla RET cikmisti,
       DUZELTILMIS protego tabanli script ile TEKRAR test edildi
-      (2026-07-24): gercekte ONAY. "fotografci" artik 2 bagimsiz kaynaga
-      sahip olacak sekilde tasarlandi (armut + dugunbuketi) ama armut
-      ayri bir teshiste kesin BIRAKILDI (bkz. Armut girdisinin notlari) -
-      su an "fotografci" tek kaynakli (sadece dugunbuketi). CSS seciciler
-      ayni siteden ("Istanbul Dugun Mekanlari" sayfasi) dogrulanan ayni
-      sablonla dolduruldu (2026-07-24) - DugunBuketi tum kategori/liste
-      sayfalarinda ayni Vue/Tailwind kart bilesenini kullaniyor.
-      **BUG 1 DUZELTILDI (2026-07-24):** min_fiyat 1000'di, salon
-      girdisindeki ayni sorun (bkz. o notlar) burada da gecerli oldugu
-      icin 100'e dusuruldu.
-      **BUG 2 BULUNDU VE DUZELTILDI (2026-07-24):** min_fiyat duzeltmesi
-      sonrasi da hala 0 donuyordu. Bu URL'ye ozel sayfa_tani.py teshisi
-      kok nedeni ortaya cikardi (URL deseni /p/ vs /c/ alakasizdi,
-      onceki teori yanlisti - bkz. "Gelinlik Moda Evleri" girdisinin
-      ayni bulgusu): bu sayfada `.font-bold` classi yok, fiyat class'siz
-      duz bir `<strong>12.000 – 22.000 TL</strong>` etiketinde (ARALIK,
-      `fiyat_ayikla()` en dusuk degeri aliyor). Bazi fotografcilarin
-      fiyati "Fiyat bilgisi için üye olun" ile gizli - bu kartlar
-      dogal olarak atlanacak, orneklem beklenenden kucuk olabilir.
-      fiyat_secici "strong, .font-bold" yapildi.
+      (2026-07-24): gercekte ONAY. CSS seciciler ayni siteden ("Istanbul
+      Dugun Mekanlari" sayfasi) dogrulanan ayni sablonla dolduruldu -
+      DugunBuketi tum kategori/liste sayfalarinda ayni Vue/Tailwind kart
+      bilesenini kullaniyor.
+      **BUG 1 DUZELTILDI:** min_fiyat 1000'di, "başlangıç fiyatı"
+      rakamlarinin cok uzerindeydi - 100'e dusuruldu.
+      **BUG 2 - YANLIS TESHIS EDILMISTI, SONRA DUZELTILDI:** bu sayfada
+      `.font-bold` classi yok sanilip fiyat_secici "strong, .font-bold"
+      yapilmisti - bu YANLIS bir varsayimdi.
+      **KESIN SONUC (2026-07-24, gecici bir script ile TUM 13 karti tek
+      tek kontrol edildi):** 13 karttan HICBIRINDE (0/13) gorunur fiyat
+      yok - hepsi "Fiyat bilgisi için üye olun" gosteriyor. Sayfadaki
+      `<strong>...TL</strong>` metinleri (ör. "12.000 – 22.000 TL")
+      kartlarin İCİNDE degil, muhtemelen sayfanin baska bir yerinde
+      (filtre/slider gibi) bir UI elemanina ait - kartlarla alakasiz.
+      **SONUC: DugunBuketi bu kalemde fiyati KASITLI OLARAK GIZLIYOR**
+      (uyelik/teklif-al modeli) - kazima/secici hatasi degil, sitenin
+      urun kararidir. BIRAKILDI. Armut da ayri bir teshiste kesin
+      birakilmisti (bkz. o girdinin notlari) - **"fotografci" kalemi
+      artik SIFIR aktif kaynakli, acilen yeni kaynak aranmali.**
 
   - ad: "Armut - Dugun Fotografcisi Fiyatlari"
     site: "armut"
