@@ -583,7 +583,15 @@ class KaynaklarYamlTestleri(unittest.TestCase):
 
         for anahtar, siteler in sorted(siteler_by_kalem.items()):
             aktif = aktif_siteler_by_kalem.get(anahtar, set())
-            durum = "OK" if len(siteler) >= 2 else "TEK KAYNAK"
+            # "aktif" sayisina gore etiketle - toplam tanimli kaynak sayisi
+            # degil, cunku pasif/birakilmis kaynaklar gercek kapsamayi
+            # yansitmiyor (ör. Akakce Cloudflare yuzunden birakildi).
+            if len(aktif) >= 2:
+                durum = "OK"
+            elif len(aktif) == 1:
+                durum = "TEK AKTIF KAYNAK"
+            else:
+                durum = "AKTIF KAYNAK YOK"
             print(
                 f"  [{durum}] {anahtar[0]}/{anahtar[1]}: "
                 f"toplam {sorted(siteler)}, aktif {sorted(aktif)}"

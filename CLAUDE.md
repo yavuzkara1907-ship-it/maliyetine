@@ -184,6 +184,19 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
 - Not: robots.txt ≠ kullanım şartları. Ticari yayın için sitenin
   kullanım sözleşmesine de bakılmalı; uzun vadede resmi veri anlaşması
   hedeflenir.
+- **GÜNCELLEME (2026-07-24) — Akakçe şu an BIRAKILDI:** robots.txt ONAY
+  veriyor ama site Cloudflare bot-doğrulaması ("Bir dakika lütfen...")
+  kullanıyor — gerçek bir Chromium (Playwright) ile bile GERÇEK İÇERİK
+  DEĞİL, Cloudflare'in JS-challenge sayfası dönüyor
+  (`sayfa_tani.py` ile ham HTML incelenerek doğrulandı). Bunu aşmak
+  (stealth eklentileri, captcha çözüm servisi vb.) "nazik kazıma"
+  ilkesinden uzaklaşıp aktif bot-tespiti atlatmaya kayar. Yavuz'a
+  soruldu, **karar: şimdilik bırak** — enerji çalışan kaynaklara
+  (Trendyol çalışıyor) ve CSS seçici işine yönlendirildi. `kaynaklar.yaml`'da
+  tüm 9 Akakçe girdisi `aktif: false, durum: "birakildi"`. İleride resmi
+  bir veri anlaşması olursa yeniden değerlendirilebilir.
+  **Etki:** damatlık ve alyans artık tek aktif kaynağa (sırasıyla
+  ramsey, atasay) düştü; gelin-ayakkabısı'nın hiç aktif kaynağı kalmadı.
 
 ### Bilinen sandbox kısıtı — Claude Code network erişimi
 - Claude Code'un (bu sandbox) çalıştığı ortamın proxy politikası, hedef
@@ -352,11 +365,14 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
    doğrulama (protego ile, stdlib DEĞİL) + sağlık kontrolü + ÇOK KAYNAK
    çapraz doğrulama + Playwright son-çare katmanı + log. ✅ Motor v0.6,
    **gerçek veri üretiyor** (Trendyol: 23 ürün, JSON-LD). Network/bot
-   engeli sorunu tamamen çözüldü. Kalan: sadece CSS seçici işi —
-   Akakçe/Ramsey/Atasay/Armut/DüğünBuketi sayfaya erişebiliyor ama
-   JSON-LD/microdata yok, `sayfa_tani.py` çıktısı paylaşılıp seçiciler
-   doldurulmalı. Sonra: salon ve gelin-ayakkabısı için eksik ikinci
-   kaynağa alternatif bulma.
+   engeli sorunu genel olarak çözüldü — istisna: **Akakçe Cloudflare
+   bot-doğrulaması kullanıyor, Playwright bile aşamadı; Yavuz ile
+   konuşulup şimdilik BIRAKILDI** (bkz. "Bilinen kaynak kısıtı — Akakçe").
+   Kalan: Ramsey/Atasay/Armut/DüğünBuketi sayfaya erişebiliyor ama
+   JSON-LD/microdata yok, `sayfa_tani.py` çıktısı paylaşılıp CSS
+   seçiciler doldurulmalı. Sonra: Akakçe'nin boşalttığı yerler için
+   yeni kaynak arama (damatlık/alyans tek kaynağa düştü,
+   gelin-ayakkabısı'nın hiç kaynağı kalmadı) + salon için ikinci kaynak.
 2. **Veri saklama** — aylık snapshot şeması (SQLite yeterli).
 3. **İlk hesaplayıcı + endeks sayfası** (düğün).
 4. **Metodoloji sayfası + schema.org işaretlemesi.**
@@ -390,12 +406,19 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
 - [x] Yavuz'un yerelinde `python motor.py` çalıştırıldı (2026-07-24):
       **Trendyol/gelinlik 23 ürün ile BAŞARILI** (JSON-LD). Akakçe artık
       403 almıyor (Playwright çalışıyor) ama JSON-LD/microdata yok.
-      Network/bot-engeli sorunu çözüldü — kalan tek şey CSS seçici işi.
-- [ ] `sayfa_tani.py <url>` ile Akakçe + Ramsey + Atasay + Armut +
-      DüğünBuketi(2 farklı sayfa tipi) için çıktı alıp CSS seçici
-      doldurma (v0.2'de 403 durumunda otomatik Playwright'a düşüyor,
-      ek bayrak gerekmiyor)
-- [ ] "salon" ve "gelin-ayakkabısı" için 2. bağımsız kaynak bulma
+- [x] `sayfa_tani.py` ile Akakçe ve Ramsey teşhis edildi (2026-07-24):
+      **Akakçe Cloudflare bot-doğrulaması kullanıyor** — Playwright'a bile
+      gerçek içerik değil "Bir dakika lütfen..." challenge sayfası
+      dönüyor. Yavuz'a soruldu, **karar: Akakçe şimdilik bırakıldı**
+      (9 girdi de `aktif: false`, bkz. "Bilinen kaynak kısıtı — Akakçe").
+- [ ] `sayfa_tani.py <url>` ile Ramsey + Atasay + Armut + DüğünBuketi
+      (2 farklı sayfa tipi: /p/ ve /c/) için çıktı alıp CSS seçici
+      doldurma (Ramsey çıktısı bu oturumda geldi ama kesildi — tekrar
+      paylaşılmalı; ham HTML kısmı önemli)
+- [ ] Akakçe'nin boşalttığı yerler için yeni kaynak bulma: damatlık
+      (şu an tek kaynak: ramsey), alyans (şu an tek kaynak: atasay),
+      gelin-ayakkabısı (şu an HİÇ aktif kaynağı yok)
+- [ ] "salon" için 2. bağımsız kaynak bulma (şu an tek kaynak: dugunbuketi)
 - [ ] Düğün kalem listesindeki geri kalanlar için kaynak bulma: takı/
       altın (canlı fiyat), nikah şekeri, davetiye
 - [ ] TÜİK doğrulama verisi entegrasyonu (ÇOK KAYNAK KURALI 5. katman)

@@ -25,7 +25,11 @@
 #   min_fiyat       : bu fiyatin altindaki sonuclar cop veri sayilip elenir
 #   bekleme_sn      : bu kaynaga istekler arasi bekleme (nazik kazima)
 #   aktif           : false ise motor.py bu kaynagi atlar
-#   durum           : "arastirildi" | "onaylandi" | "reddedildi" - insan gozden gecirme notu
+#   durum           : "arastirildi" | "onaylandi" | "reddedildi" | "birakildi"
+#                      ("birakildi" = teknik olarak kazinabilir olabilir ama
+#                      su an bilerek pasif birakildi, ör. Cloudflare gibi
+#                      agresif bot korumasi - reddedildi'den farki: robots.txt
+#                      ONAY veriyor, engel baska bir katmanda) - insan notu
 #   notlar          : serbest metin
 #
 # COK KAYNAK KURALI (CLAUDE.md): kalem basina en az 2, ideal 3 BAGIMSIZ
@@ -37,17 +41,26 @@
 kaynaklar:
 
   # =========================================================
-  # KALEM: gelinlik  (hedef: >=3 bagimsiz site)
+  # KALEM: gelinlik  (hedef: >=3 bagimsiz site - Akakce birakildiktan
+  # sonra su an 2 aktif: trendyol + dugunbuketi. Trendyol calisiyor,
+  # dugunbuketi CSS seciciler bekliyor.)
   # =========================================================
 
   # --- site: akakce (fiyat karsilastirma - kitlesel/hazir giyim segmenti) ---
-  # robots.txt (Yavuz tarafindan yerelde dogrulandi, bu ortamdan tekrar
-  # kontrol edilemedi - network policy engelliyor): "Allow: /" ama
-  # "Disallow: /*?sayfa=*" ve "/*,*,1..7.html" -> SAYFALAMA YASAK.
-  # Bu yuzden her kategori tek sayfa (sayfa_sayisi: 1) olarak, dar
-  # kategorilere bolunerek tanimlandi (coklu sayfa gezmek yerine coklu dar
-  # kategori). motor.py yine de her calistirmada robots.txt'i otomatik
-  # kontrol eder; bu notlar sadece insan gozden gecirmesi icindir.
+  # robots.txt ONAY veriyor (protego ile dogrulandi - "Allow: /" ama
+  # "Disallow: /*?sayfa=*" ve "/*,*,1..7.html" -> SAYFALAMA YASAK, bu
+  # yuzden her kategori tek sayfa (sayfa_sayisi: 1), dar kategorilere
+  # bolunerek tanimlandi).
+  # AMA: Akakce Cloudflare bot-dogrulamasi ("Bir dakika lutfen...") ile
+  # korunuyor - Playwright (gercek Chromium) ile bile GERCEK ICERIK
+  # DEGIL, Cloudflare'in JS-challenge sayfasi donuyor (2026-07-24,
+  # sayfa_tani.py ile ham HTML incelenerek dogrulandi). Bu robots.txt
+  # meselesi degil - WAF seviyesinde aktif bot tespiti. Bunu asmak
+  # (stealth eklentileri, captcha cozum servisi vb.) "nazik kazima"
+  # ilkesinden uzaklasip aktif tespit atlatmaya kayar - Yavuz ile
+  # konusuldu, KARAR: su an icin BIRAKILDI, tum 9 Akakce girdisi
+  # aktif:false. Ileride resmi veri anlasmasi olursa yeniden
+  # degerlendirilebilir (bkz. CLAUDE.md "Bilinen kaynak kisiti").
   - ad: "Akakce - Gelinlik (genel)"
     site: "akakce"
     url: "https://www.akakce.com/gelinlik.html"
@@ -59,8 +72,8 @@ kaynaklar:
     css_secicileri: null
     min_fiyat: 1000
     bekleme_sn: 3
-    aktif: true
-    durum: "arastirildi"
+    aktif: false  # BIRAKILDI 2026-07-24: Cloudflare bot-dogrulamasi
+    durum: "birakildi"
     notlar: >
       WebSearch ile dogrulanan gercek URL. JSON-LD/microdata var mi
       bilinmiyor (sayfa HTML'i bu ortamdan goruntulenemedi) - motor
@@ -78,8 +91,8 @@ kaynaklar:
     css_secicileri: null
     min_fiyat: 1000
     bekleme_sn: 3
-    aktif: true
-    durum: "arastirildi"
+    aktif: false  # BIRAKILDI 2026-07-24: Cloudflare bot-dogrulamasi
+    durum: "birakildi"
     notlar: "Segment kirilimi icin ayri alt kategori (Urun Kararlari notu: farkli segmentler karistirilmaz)."
 
   - ad: "Akakce - Korseli Gelinlik"
@@ -93,8 +106,8 @@ kaynaklar:
     css_secicileri: null
     min_fiyat: 1000
     bekleme_sn: 3
-    aktif: true
-    durum: "arastirildi"
+    aktif: false  # BIRAKILDI 2026-07-24: Cloudflare bot-dogrulamasi
+    durum: "birakildi"
     notlar: ""
 
   - ad: "Akakce - Kisa Gelinlik"
@@ -108,8 +121,8 @@ kaynaklar:
     css_secicileri: null
     min_fiyat: 500
     bekleme_sn: 3
-    aktif: true
-    durum: "arastirildi"
+    aktif: false  # BIRAKILDI 2026-07-24: Cloudflare bot-dogrulamasi
+    durum: "birakildi"
     notlar: ""
 
   - ad: "Akakce - A Kesim Gelinlik"
@@ -123,8 +136,8 @@ kaynaklar:
     css_secicileri: null
     min_fiyat: 1000
     bekleme_sn: 3
-    aktif: true
-    durum: "arastirildi"
+    aktif: false  # BIRAKILDI 2026-07-24: Cloudflare bot-dogrulamasi
+    durum: "birakildi"
     notlar: ""
 
   # --- site: dolap (ikinci el / alt segment - COK KAYNAK KURALI tip 3) ---
@@ -162,15 +175,13 @@ kaynaklar:
     notlar: >
       Ilk turda (hatali robots_kontrol.py ile) yanlislikla RET cikmisti,
       DUZELTILMIS protego tabanli script ile TEKRAR test edildi
-      (2026-07-24): gercekte ONAY. CSS seciciler henuz girilmedi - motor
-      JSON-LD/microdata katmaniyla otomatik cozmeyi deneyecek. Ayrica bu
-      sandbox'tan onaylanamayan bir sorun var: motor.py'nin gercek sayfa
-      istegi Akakce'de 403 aliyor (WAF/bot korumasi, robots.txt'ten
-      bagimsiz) - dugunbuketi.com icin de ayni sorun cikabilir, Yavuz'un
-      yerel calistirmasinda gorulecek.
+      (2026-07-24): gercekte ONAY, `requests` ile de erisim engellenmiyor
+      (200 donuyor). CSS seciciler henuz girilmedi - sayfa_tani.py ile
+      teshis edilip doldurulmali.
 
   # =========================================================
-  # KALEM: gelin-ayakkabisi  (su an tek kaynak - ikincisi aranacak)
+  # KALEM: gelin-ayakkabisi  (Akakce Cloudflare yuzunden birakildi -
+  # su an HICBIR aktif kaynak yok, yeni kaynak aranmali)
   # =========================================================
   - ad: "Akakce - Gelin Ayakkabisi"
     site: "akakce"
@@ -183,15 +194,18 @@ kaynaklar:
     css_secicileri: null
     min_fiyat: 200
     bekleme_sn: 3
-    aktif: true
-    durum: "arastirildi"
+    aktif: false  # BIRAKILDI 2026-07-24: Cloudflare bot-dogrulamasi
+    durum: "birakildi"
     notlar: >
       Arama sonucunda '750 TL'den baslayan 40 secenek' gorundu -
-      ornekleme icin dusuk ama baslangic icin yeterli. COK KAYNAK
-      KURALI acisindan eksik: ikinci bagimsiz site henuz bulunmadi.
+      ornekleme icin dusuk ama baslangic icin yeterli. Akakce Cloudflare
+      yuzunden birakildi (bkz. yukaridaki genel Akakce notu) - bu kalem
+      su an HICBIR aktif kaynaga sahip degil, yeni kaynak (mumkunse 2)
+      aranmali.
 
   # =========================================================
-  # KALEM: damatlik  (hedef: >=2 bagimsiz site)
+  # KALEM: damatlik  (hedef: >=2 bagimsiz site - Akakce birakildiktan
+  # sonra su an SADECE ramsey aktif, tek kaynak. Ikinci kaynak aranmali.)
   # =========================================================
 
   # --- site: akakce (fiyat karsilastirma) ---
@@ -206,8 +220,8 @@ kaynaklar:
     css_secicileri: null
     min_fiyat: 1000
     bekleme_sn: 3
-    aktif: true
-    durum: "arastirildi"
+    aktif: false  # BIRAKILDI 2026-07-24: Cloudflare bot-dogrulamasi
+    durum: "birakildi"
     notlar: "WebSearch ile dogrulandi: 2.520 damatlik modeli listeleniyor (D's Damat, Altinyildiz Classics, Fabio Cassel markalari one cikan)."
 
   # --- site: ramsey (marka magazasi - COK KAYNAK KURALI tip 2) ---
@@ -232,7 +246,8 @@ kaynaklar:
       Yavuz'un F12 ile bakip css_secicileri doldurmasi gerekecek.
 
   # =========================================================
-  # KALEM: alyans  (hedef: >=2 bagimsiz site)
+  # KALEM: alyans  (hedef: >=2 bagimsiz site - Akakce birakildiktan
+  # sonra su an SADECE atasay aktif, tek kaynak. Ikinci kaynak aranmali.)
   # =========================================================
 
   # --- site: akakce (fiyat karsilastirma - genel sayfa TUM materyalleri
@@ -249,8 +264,8 @@ kaynaklar:
     css_secicileri: null
     min_fiyat: 200
     bekleme_sn: 3
-    aktif: true
-    durum: "arastirildi"
+    aktif: false  # BIRAKILDI 2026-07-24: Cloudflare bot-dogrulamasi
+    durum: "birakildi"
     notlar: "WebSearch ile dogrulandi: 41.504 secenek. Materyal turune gore genis fiyat araligi (gumus/celik ucuz, altin pahali)."
 
   - ad: "Akakce - 14 Ayar Alyans"
@@ -264,8 +279,8 @@ kaynaklar:
     css_secicileri: null
     min_fiyat: 1000
     bekleme_sn: 3
-    aktif: true
-    durum: "arastirildi"
+    aktif: false  # BIRAKILDI 2026-07-24: Cloudflare bot-dogrulamasi
+    durum: "birakildi"
     notlar: "WebSearch ile dogrulandi: 3.199 secenek. Orta segment icin en yaygin altin ayari."
 
   # --- site: atasay (marka kuyumcu magazasi - COK KAYNAK KURALI tip 2) ---
