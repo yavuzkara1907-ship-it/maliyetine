@@ -1,0 +1,362 @@
+/* Maliyetine.com.tr - temel stil. Framework yok, saf CSS. */
+
+:root {
+  --renk-metin: #1a1a2e;
+  --renk-metin-soluk: #4a4a5a;
+  --renk-zemin: #ffffff;
+  --renk-zemin-alt: #f7f7fb;
+  --renk-vurgu: #1d4ed8;
+  --renk-vurgu-acik: #eef2ff;
+  --renk-cizgi: #e2e2ea;
+  --renk-uyari: #b45309;
+  --renk-uyari-zemin: #fef3c7;
+  --genislik-icerik: 780px;
+  --radius: 10px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--renk-metin);
+  background: var(--renk-zemin);
+  line-height: 1.55;
+}
+
+a {
+  color: var(--renk-vurgu);
+}
+
+.kapsayici {
+  max-width: var(--genislik-icerik);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---- Ust bar ---- */
+.ust-bar {
+  border-bottom: 1px solid var(--renk-cizgi);
+  padding: 16px 0;
+}
+
+.ust-bar .kapsayici {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.15rem;
+  text-decoration: none;
+  color: var(--renk-metin);
+}
+
+.logo span {
+  color: var(--renk-vurgu);
+}
+
+.ust-menu {
+  display: flex;
+  gap: 18px;
+  font-size: 0.95rem;
+}
+
+.ust-menu a {
+  text-decoration: none;
+  color: var(--renk-metin-soluk);
+}
+
+.ust-menu a:hover {
+  color: var(--renk-vurgu);
+}
+
+/* ---- Ana icerik ---- */
+main {
+  padding: 32px 0 64px;
+}
+
+h1 {
+  font-size: 1.9rem;
+  line-height: 1.25;
+  margin: 0 0 12px;
+}
+
+h2 {
+  font-size: 1.35rem;
+  margin: 36px 0 12px;
+}
+
+h3 {
+  font-size: 1.1rem;
+  margin: 24px 0 8px;
+}
+
+p {
+  margin: 0 0 14px;
+}
+
+/* ---- GEO cevap bloğu: ilk 40-60 kelimede net cevap ---- */
+.cevap-blok {
+  background: var(--renk-zemin-alt);
+  border: 1px solid var(--renk-cizgi);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  margin: 0 0 28px;
+  font-size: 1.08rem;
+}
+
+.cevap-blok strong {
+  color: var(--renk-vurgu);
+}
+
+/* ---- Guncelleme etiketi ---- */
+.guncelleme-etiketi {
+  display: inline-block;
+  font-size: 0.82rem;
+  color: var(--renk-metin-soluk);
+  background: var(--renk-zemin-alt);
+  border: 1px solid var(--renk-cizgi);
+  border-radius: 999px;
+  padding: 4px 12px;
+  margin-bottom: 18px;
+}
+
+/* ---- Tahmini/uyari etiketi ---- */
+.tahmini-etiket {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--renk-uyari);
+  background: var(--renk-uyari-zemin);
+  border-radius: 4px;
+  padding: 2px 7px;
+  margin-inline-start: 8px;
+  vertical-align: middle;
+}
+
+.uyari-kutu {
+  background: var(--renk-uyari-zemin);
+  border: 1px solid #f4d792;
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  font-size: 0.92rem;
+  color: #7a4a06;
+  margin: 18px 0;
+}
+
+/* ---- Tablo ---- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.94rem;
+  margin: 8px 0 20px;
+}
+
+th, td {
+  text-align: left;
+  padding: 9px 10px;
+  border-bottom: 1px solid var(--renk-cizgi);
+}
+
+th {
+  font-weight: 600;
+  color: var(--renk-metin-soluk);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+td.sayi {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---- Kart ---- */
+.kart {
+  border: 1px solid var(--renk-cizgi);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 16px;
+  background: var(--renk-zemin);
+}
+
+.kart-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+/* ---- Hesaplayici form ---- */
+.form-alan {
+  margin-bottom: 18px;
+}
+
+.form-alan label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.92rem;
+  margin-bottom: 6px;
+}
+
+.form-alan input[type="number"],
+.form-alan select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--renk-cizgi);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: var(--renk-zemin);
+  color: var(--renk-metin);
+}
+
+.segment-secim {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.segment-secim label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 400;
+  font-size: 0.92rem;
+  border: 1px solid var(--renk-cizgi);
+  border-radius: 999px;
+  padding: 7px 14px;
+  cursor: pointer;
+}
+
+.segment-secim input {
+  accent-color: var(--renk-vurgu);
+}
+
+.kalem-secim-liste {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 8px 16px;
+}
+
+.kalem-secim-liste label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 400;
+  font-size: 0.92rem;
+  cursor: pointer;
+}
+
+button.birincil-buton {
+  background: var(--renk-vurg, var(--renk-vurgu));
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 13px 22px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button.birincil-buton:hover {
+  opacity: 0.92;
+}
+
+/* ---- Sonuc kutusu ---- */
+.sonuc-kutu {
+  margin-top: 26px;
+  padding: 22px;
+  background: var(--renk-vurgu-acik);
+  border-radius: var(--radius);
+  border: 1px solid #c7d5fb;
+}
+
+.sonuc-toplam {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--renk-vurgu);
+  margin: 4px 0 2px;
+}
+
+.sonuc-alt-metin {
+  font-size: 0.85rem;
+  color: var(--renk-metin-soluk);
+  margin-bottom: 0;
+}
+
+/* ---- Kaynak listesi ---- */
+.kaynak-listesi {
+  font-size: 0.85rem;
+  color: var(--renk-metin-soluk);
+}
+
+.kaynak-listesi li {
+  margin-bottom: 4px;
+}
+
+/* ---- Vertikal kartlari (ana sayfa) ---- */
+.vertikal-kart {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.vertikal-kart h3 {
+  margin-top: 0;
+  color: var(--renk-vurgu);
+}
+
+.vertikal-kart p {
+  color: var(--renk-metin-soluk);
+  margin-bottom: 0;
+}
+
+.yakinda-etiket {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--renk-metin-soluk);
+  background: var(--renk-zemin-alt);
+  border-radius: 4px;
+  padding: 2px 7px;
+  margin-inline-start: 8px;
+}
+
+/* ---- Alt bilgi ---- */
+footer {
+  border-top: 1px solid var(--renk-cizgi);
+  padding: 24px 0;
+  font-size: 0.85rem;
+  color: var(--renk-metin-soluk);
+}
+
+footer nav {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+footer a {
+  color: var(--renk-metin-soluk);
+}
+
+@media (max-width: 560px) {
+  h1 {
+    font-size: 1.55rem;
+  }
+
+  .sonuc-toplam {
+    font-size: 1.6rem;
+  }
+}

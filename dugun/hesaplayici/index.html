@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Düğün Maliyeti Hesaplayıcı 2026 | Maliyetine.com.tr</title>
+<meta name="description" content="Davetli sayınızı ve segmentinizi girin, gerçek fiyat verisinden derlenmiş düğün maliyeti tahmininizi anında görün.">
+<link rel="canonical" href="https://maliyetine.com.tr/dugun/hesaplayici/">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<header class="ust-bar">
+  <div class="kapsayici">
+    <a href="/" class="logo">maliyet<span>ine</span>.com.tr</a>
+    <nav class="ust-menu">
+      <a href="/dugun/">Düğün Endeksi</a>
+      <a href="/dugun/metodoloji/">Metodoloji</a>
+    </nav>
+  </div>
+</header>
+
+<main class="kapsayici">
+
+  <h1>Düğün Maliyeti Hesaplayıcı</h1>
+  <p>Davetli sayınızı ve bütçe segmentinizi girin — gerçek fiyat
+    verisinden derlenmiş kalem kalem tahmini görün.</p>
+
+  <div id="veri-durumu" class="uyari-kutu" hidden></div>
+
+  <form id="hesaplayici-form">
+    <div class="form-alan">
+      <label for="davetli-sayisi">Davetli sayısı</label>
+      <input type="number" id="davetli-sayisi" min="0" step="10" value="150">
+    </div>
+
+    <div class="form-alan">
+      <label>Segment</label>
+      <div class="segment-secim">
+        <label><input type="radio" name="segment" value="ekonomik"> Ekonomik</label>
+        <label><input type="radio" name="segment" value="orta" checked> Orta</label>
+        <label><input type="radio" name="segment" value="luks"> Lüks</label>
+      </div>
+    </div>
+
+    <div class="form-alan">
+      <label>Dahil edilecek kalemler</label>
+      <div class="kalem-secim-liste" id="kalem-secim-liste"></div>
+    </div>
+
+    <button type="submit" class="birincil-buton">Hesapla</button>
+  </form>
+
+  <div id="sonuc-kutu" class="sonuc-kutu" hidden>
+    <p class="sonuc-alt-metin">Tahmini toplam</p>
+    <p class="sonuc-toplam" id="sonuc-toplam-deger">0 TL</p>
+    <p class="sonuc-alt-metin" id="sonuc-guncelleme"></p>
+
+    <table id="detay-tablo">
+      <thead>
+        <tr><th>Kalem</th><th class="sayi">Birim fiyat</th><th class="sayi">Tutar</th></tr>
+      </thead>
+      <tbody id="detay-tablo-govde"></tbody>
+    </table>
+
+    <div id="eksik-kalem-notu"></div>
+  </div>
+
+  <h2>Henüz veri kapsamında olmayan kalemler</h2>
+  <p>Bu kalemler için henüz güvenilir bir kaynak bulunamadı — toplama
+    dahil edilmiyor, uydurma bir rakam koyulmuyor.
+    <a href="/dugun/metodoloji/">Neden bkz.</a></p>
+  <ul id="verisiz-kalem-liste"></ul>
+
+</main>
+
+<footer>
+  <div class="kapsayici">
+    <div>© 2026 Maliyetine.com.tr</div>
+    <nav>
+      <a href="/dugun/">Düğün Endeksi</a>
+      <a href="/dugun/metodoloji/">Metodoloji</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/assets/js/dugun-kalemler.js"></script>
+<script src="/assets/js/dugun-hesapla.js"></script>
+<script>
+(function () {
+  const paraFormat = new Intl.NumberFormat("tr-TR", { maximumFractionDigits: 0 });
+  function paraYaz(n) {
+    return paraFormat.format(Math.round(n)) + " TL";
+  }
+
+  const kalemSecimListe = document.getElementById("kalem-secim-liste");
+  DUGUN_KALEMLERI.forEach(function (kalem) {
+    const label = document.createElement("label");
+    const kutu = document.createElement("input");
+    kutu.type = "checkbox";
+    kutu.value = kalem.id;
+    kutu.checked = true;
+    kutu.name = "kalem";
+    label.appendChild(kutu);
+    label.appendChild(document.createTextNode(" " + kalem.ad));
+    kalemSecimListe.appendChild(label);
+  });
+
+  const verisizListe = document.getElementById("verisiz-kalem-liste");
+  DUGUN_KALEMLERI_VERISIZ.forEach(function (kalem) {
+    const li = document.createElement("li");
+    li.textContent = kalem.ad;
+    verisizListe.appendChild(li);
+  });
+
+  let veriKalemleri = {};
+  let guncellemeTarihi = null;
+  const veriDurumu = document.getElementById("veri-durumu");
+
+  fetch("/veri/dugun.json")
+    .then(function (r) {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    })
+    .then(function (veri) {
+      veriKalemleri = veri.kalemler || {};
+      guncellemeTarihi = veri.guncelleme_tarihi;
+    })
+    .catch(function () {
+      veriDurumu.hidden = false;
+      veriDurumu.textContent =
+        "Fiyat verisi şu anda yüklenemedi. Hesaplayıcı geçici olarak " +
+        "çalışmıyor olabilir - lütfen daha sonra tekrar deneyin.";
+    });
+
+  const form = document.getElementById("hesaplayici-form");
+  const sonucKutu = document.getElementById("sonuc-kutu");
+  const detayGovde = document.getElementById("detay-tablo-govde");
+  const eksikNot = document.getElementById("eksik-kalem-notu");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const davetliSayisi = parseInt(document.getElementById("davetli-sayisi").value, 10) || 0;
+    const segment = form.querySelector('input[name="segment"]:checked').value;
+    const secilenIdler = Array.from(form.querySelectorAll('input[name="kalem"]:checked')).map(function (k) {
+      return k.value;
+    });
+
+    const sonuc = dugunHesapla.hesapla(veriKalemleri, DUGUN_KALEMLERI, secilenIdler, segment, davetliSayisi);
+
+    document.getElementById("sonuc-toplam-deger").textContent = paraYaz(sonuc.toplam);
+    document.getElementById("sonuc-guncelleme").textContent = guncellemeTarihi
+      ? "Veri güncelleme tarihi: " + guncellemeTarihi
+      : "";
+
+    detayGovde.innerHTML = "";
+    const eksikler = [];
+    sonuc.detaylar.forEach(function (satir) {
+      if (!satir.veri_var) {
+        eksikler.push(satir.ad);
+        return;
+      }
+      const tr = document.createElement("tr");
+      const birimEtiket = satir.birim === "kisi_basi" ? " / kişi" : "";
+      tr.innerHTML =
+        "<td>" + satir.ad +
+        (satir.genel_medyana_dusuldu ? ' <span class="tahmini-etiket">Genel medyan</span>' : "") +
+        "</td>" +
+        '<td class="sayi">' + paraYaz(satir.birim_fiyat) + birimEtiket + "</td>" +
+        '<td class="sayi">' + paraYaz(satir.satir_toplam) + "</td>";
+      detayGovde.appendChild(tr);
+    });
+
+    eksikNot.innerHTML = eksikler.length
+      ? '<p class="sonuc-alt-metin">Bu ay veri dönmedi, toplama dahil edilmedi: ' + eksikler.join(", ") + "</p>"
+      : "";
+
+    sonucKutu.hidden = false;
+  });
+})();
+</script>
+
+</body>
+</html>

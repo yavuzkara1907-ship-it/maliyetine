@@ -560,11 +560,69 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
      (gelinlik) + n11/Cimri (gelinlik, denendi) eklendi.
    - Kalan: yeni eklenen markaların (Beymen, Boyner, Ramsey) CSS
      seçicileri, Trendyol/davetiye + DüğünBuketi(3) + Armut teşhisi.
-2. **Veri saklama** — aylık snapshot şeması (SQLite yeterli).
-3. **İlk hesaplayıcı + endeks sayfası** (düğün).
-4. **Metodoloji sayfası + schema.org işaretlemesi.**
+2. **Veri saklama** — ✅ **SQLite'a hiç gerek kalmadı, JSON snapshot yeterli
+   (2026-07-24).** motor.py zaten `scraper/veri/{vertikal}/{kalem}_{site}_
+   {tarih}.json` şemasıyla site-başına aylık snapshot üretiyordu (backend
+   yok, statik site kararına göre bu zaten "veri saklama" katmanının
+   kendisi). Eksik olan tek şey — birden fazla kaynağı tek bir "endeks"
+   rakamına birleştirme — `scraper/agrega.py` ile bu oturumda dolduruldu
+   (bkz. Modül 3).
+3. **İlk hesaplayıcı + endeks sayfası** — ✅ **İskelet tamamlandı
+   (2026-07-24), GERÇEK VERİ bekliyor.**
+   - **`scraper/agrega.py`** (yeni, 13 test PASS): `scraper/veri/dugun/*.json`
+     dosyalarını okuyup `/veri/dugun.json`'a birleştirir. ÇOK KAYNAK
+     KURALI'na sadık: ham fiyatlar kaynaklar arası KARIŞTIRILMAZ — her
+     segment için her kaynağın KENDİ medyanı alınır, sonra bu medyanların
+     medyanı hesaplanır ("medyan-of-medyan"). Karantinadaki (sağlıksız)
+     kaynaklar otomatik dışlanır. Çapraz doğrulama raporları ilgili kaleme
+     iliştirilir.
+   - **`scraper/sayfa_uret.py`** (yeni, 9 test PASS): `/veri/dugun.json`'dan
+     `/dugun/index.html`'i (endeks sayfası) BUILD-TIME'DA üretir — client-side
+     fetch DEĞİL, çünkü GEO'nun hedeflediği AI botlarının (GPTBot vb.)
+     çoğu JavaScript çalıştırmıyor, cevap bloğundaki rakam ham HTML'de
+     olmak zorunda. FAQPage + Dataset schema.org JSON-LD üretir.
+     **Kritik bug bulundu ve düzeltildi (regresyon testiyle kilitlendi):**
+     `kalemler` sözlüğü dolu ama TÜM değerler `genel_medyan: null` olabilir
+     (ör. o ay tüm kaynaklar 0 ürün döndü) — ilk halde bu durumda "0 TL"
+     gibi yanıltıcı, güvenilir görünen bir cevap metni üretiliyordu. Artık
+     gerçekten en az bir kalemde sayısal değer var mı diye kontrol ediyor,
+     yoksa dürüst "veri toplama süreci devam ediyor" mesajı gösteriyor.
+   - **`/dugun/hesaplayici/`**: etkileşimli, client-side (`/assets/js/
+     dugun-hesapla.js`, 10 Node test PASS + `dugun-kalemler.js`).
+     `/veri/dugun.json`'ı fetch eder, davetli sayısı + segment (ekonomik/
+     orta/lüks) + kalem seçimlerine göre toplam hesaplar.
+   - **KIRMIZI ÇİZGİ karar:** CLAUDE.md'nin tam kalem listesindeki
+     (gelinlik...balayı) veri kaynağı OLMAYAN kalemler (takı/altın,
+     yemek/ikram, fotoğrafçı, orkestra/DJ, gelin arabası, kuaför/makyaj,
+     organizasyon, nikah işlemleri) için AI TARAFINDAN UYDURULMUŞ bir
+     "tahmini" rakam KONULMADI — ayrı bir "henüz veri kapsamında değil"
+     listesinde gösteriliyor, hesaplayıcı toplamına dahil edilmiyor.
+     Yavuz ileride kendi araştırmasıyla bir tahmini değer eklemek isterse
+     bu onun kararı olmalı, LLM'in değil.
+   - **Site iskeleti:** `/index.html` (ana sayfa, vertikal kartları),
+     `/assets/css/style.css` (framework yok, saf CSS), `/robots.txt`
+     (AI botlarına açık: GPTBot, ClaudeBot, PerplexityBot vb.).
+   - **Playwright ile uçtan uca duman testi yapıldı** (bu sandbox'ta,
+     `python3 -m http.server` + headless Chromium): 3 sayfa da hatasız
+     yükleniyor, hesaplayıcı formu dolduruluyor, submit ediliyor, "veri
+     yok" durumunda dürüst mesaj gösteriyor (console'da JS hatası yok).
+   - **BLOKE — gerçek veri yok:** `scraper/veri/` hiç commit edilmedi
+     (Yavuz'un yerelinde şimdiye kadarki tüm `motor.py` çalıştırmaları
+     test amaçlıydı, sonuçlar commit edilmedi). Bu yüzden `/veri/dugun.json`
+     şu an dürüstçe boş (`{"kalemler": {}}`) ve `/dugun/index.html`
+     "veri toplama süreci devam ediyor" gösteriyor. **Yavuz'un yerelinde
+     gerçek `python motor.py` çalıştırıp `scraper/veri/` klasörünü commit
+     etmesi, sonra `python agrega.py && python sayfa_uret.py` çalıştırıp
+     o çıktıları da commit etmesi gerekiyor** — bu olmadan siteye
+     GERÇEK bir rakam giremez (KIRMIZI ÇİZGİ).
+4. **Metodoloji sayfası + schema.org işaretlemesi** — ✅ **Tamamlandı
+   (2026-07-24).** `/dugun/metodoloji/` — kaynak türleri, çapraz doğrulama
+   kuralı, segment tanımı (persentil), sağlık kontrolü, nazik kazıma
+   ilkeleri, kapsanmayan kalemler notu. Statik (elle yazıldı, veriye bağımlı
+   değil) - schema.org işaretlemesi `/dugun/`'de (sayfa_uret.py) yapıldı.
 5. **Yayın** — Cloudflare Pages, custom domain, SSL.
-6. **Aylık otomasyon** — GitHub Actions cron.
+6. **Aylık otomasyon** — GitHub Actions cron. **Artık 3 adımlı olacak:**
+   `python motor.py` → `python agrega.py` → `python sayfa_uret.py` → commit.
 7. **Fiyat geçmişi grafikleri** (3+ ay veri sonrası).
 
 ## Yapılacaklar (kod dışı)
@@ -652,6 +710,19 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
       dugunbuketi/gelinlik de bırakıldığı için artık trendyol tek
       gerçek kaynak - ikinci bir kaynak aranabilir)
 - [ ] "salon" için 2. bağımsız kaynak bulma (şu an sadece dugunbuketi)
+- [x] **Site iskeleti + hesaplayıcı + endeks + metodoloji sayfaları
+      YAZILDI (2026-07-24):** `agrega.py` (13 test), `sayfa_uret.py`
+      (9 test), `/dugun/hesaplayici/` (10 Node test), `/dugun/`,
+      `/dugun/metodoloji/`, `/index.html`, `/assets/css/style.css`,
+      `/robots.txt`. Playwright ile duman testi yapıldı, JS hatası yok.
+- [ ] **ACİL/BLOKE: gerçek veri commit edilmeli.** `scraper/veri/` hiç
+      commit edilmedi (bugüne kadarki tüm `motor.py` çalıştırmaları test
+      amaçlıydı). Yavuz'un yerelinde: `python motor.py` (gerçek veri) →
+      `scraper/veri/` klasörünü commit et → `python agrega.py &&
+      python sayfa_uret.py` çalıştır → `/veri/dugun.json` ve
+      `/dugun/index.html`'i de commit et. Bu olmadan site "veri toplama
+      süreci devam ediyor" dürüst-boş halinde kalır (KIRMIZI ÇİZGİ geregi
+      sahte rakam koyulmadı).
 - [ ] Takı/altın (canlı gram fiyatı) için kaynak bulma
 - [ ] TÜİK doğrulama verisi entegrasyonu (ÇOK KAYNAK KURALI 5. katman)
 - [ ] (İleride) Türk Patent marka başvurusu
