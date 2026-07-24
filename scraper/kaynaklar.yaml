@@ -211,7 +211,10 @@ kaynaklar:
     vertikal: "dugun"
     kalem: "gelin-ayakkabisi"
     yontem: "otomatik"
-    css_secicileri: null
+    css_secicileri:
+      urun_karti: ".product-card"
+      isim_secici: ".product-name"
+      fiyat_secici: ".price-value, .seller-store-default-price-value"
     min_fiyat: 200
     bekleme_sn: 3
     aktif: true
@@ -275,7 +278,10 @@ kaynaklar:
     vertikal: "dugun"
     kalem: "damatlik"
     yontem: "otomatik"
-    css_secicileri: null
+    css_secicileri:
+      urun_karti: ".product-card"
+      isim_secici: ".product-name"
+      fiyat_secici: ".price-value, .seller-store-default-price-value"
     min_fiyat: 1000
     bekleme_sn: 3
     aktif: true
@@ -328,7 +334,10 @@ kaynaklar:
     vertikal: "dugun"
     kalem: "alyans"
     yontem: "otomatik"
-    css_secicileri: null
+    css_secicileri:
+      urun_karti: ".product-item"
+      isim_secici: ".product-item__name"
+      fiyat_secici: "pz-price"
     min_fiyat: 1000
     bekleme_sn: 3
     aktif: true
@@ -348,7 +357,10 @@ kaynaklar:
     vertikal: "dugun"
     kalem: "alyans"
     yontem: "otomatik"
-    css_secicileri: null
+    css_secicileri:
+      urun_karti: ".product-card"
+      isim_secici: ".product-name"
+      fiyat_secici: ".price-value, .seller-store-default-price-value"
     min_fiyat: 200
     bekleme_sn: 3
     aktif: true
@@ -370,7 +382,10 @@ kaynaklar:
     vertikal: "dugun"
     kalem: "gelinlik"
     yontem: "otomatik"
-    css_secicileri: null
+    css_secicileri:
+      urun_karti: ".product-card"
+      isim_secici: ".product-name"
+      fiyat_secici: ".price-value, .seller-store-default-price-value"
     min_fiyat: 1000
     bekleme_sn: 3
     aktif: true
@@ -465,7 +480,10 @@ kaynaklar:
     vertikal: "dugun"
     kalem: "nikah-sekeri"
     yontem: "otomatik"
-    css_secicileri: null
+    css_secicileri:
+      urun_karti: ".product-card"
+      isim_secici: ".product-name"
+      fiyat_secici: ".price-value, .seller-store-default-price-value"
     min_fiyat: 50
     bekleme_sn: 3
     aktif: true
@@ -487,7 +505,10 @@ kaynaklar:
     vertikal: "dugun"
     kalem: "davetiye"
     yontem: "otomatik"
-    css_secicileri: null
+    css_secicileri:
+      urun_karti: ".product-card"
+      isim_secici: ".product-name"
+      fiyat_secici: ".price-value, .seller-store-default-price-value"
     min_fiyat: 50
     bekleme_sn: 3
     aktif: true

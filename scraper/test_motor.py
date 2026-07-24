@@ -79,6 +79,36 @@ CSS_HTML = """
 
 BOS_HTML = "<html><body><p>Urun yok</p></body></html>"
 
+# Gercek Atasay/Trendyol HTML'inden alinmis kucultulmus urun karti
+# ornekleri (2026-07-24, sayfa_tani.py ile teshis edildi) - kaynaklar.yaml
+# icindeki css_secicileri degerlerinin gercekten calistigini kilitler.
+ATASAY_URUN_KARTI_HTML = """
+<div class="js-product-wrapper product-item" data-pk="47008">
+<div class="product-item__body">resim vb.</div>
+<div class="product-item__info">
+<div class="product-item__name">
+      Sarı Altın Ajda Çift Alyans
+    </div>
+<div class="product-item__price">
+<div class="flex price-least">
+<pz-price>19710</pz-price>  'den başlayan fiyatlarla
+          </div>
+</div>
+</div>
+</div>
+"""
+
+TRENDYOL_URUN_KARTI_HTML = """
+<a class="product-card" href="/x">
+<span class="product-brand">Altınyıldız Classics</span>
+<span class="product-name"> <!-- -->Erkek Lacivert Slim Fit Dar Kesim Mono Yaka Takım Elbise</span>
+<div class="product-card-price">
+<span class="price-value" data-testid="price-value">3.239,99 TL</span>
+<span class="strikethrough-price" data-testid="strikethrough-price">3.599,99 TL</span>
+</div>
+</a>
+"""
+
 
 class HeaderRegresyonTestleri(unittest.TestCase):
     """2026-07-24: HEADERS icinde 'Accept-Encoding: ...br' sabitlenmisti -
@@ -170,6 +200,37 @@ class UcKatmanTestleri(unittest.TestCase):
         urunler, katman = motor.uc_katman_cikar(soup, {"min_fiyat": 100, "css_secicileri": None})
         self.assertEqual(urunler, [])
         self.assertEqual(katman, "hicbiri")
+
+
+class GercekSiteSecicileriTestleri(unittest.TestCase):
+    """kaynaklar.yaml'daki css_secicileri degerlerinin, sayfa_tani.py ile
+    2026-07-24'te teshis edilen gercek Atasay/Trendyol urun karti HTML'ine
+    karsi hala calistigini kilitler - biri yaml'i degistirip secicileri
+    bozarsa bu test kirilir."""
+
+    def _yaml_secici(self, ad: str) -> dict:
+        import yaml
+        dosya = Path(__file__).parent / "kaynaklar.yaml"
+        veri = yaml.safe_load(dosya.read_text(encoding="utf-8"))
+        for k in veri["kaynaklar"]:
+            if k["ad"] == ad:
+                return k["css_secicileri"]
+        raise AssertionError(f"kaynaklar.yaml'da bulunamadi: {ad}")
+
+    def test_atasay_secicisi_gercek_urun_kartini_dogru_cikarir(self):
+        secici = self._yaml_secici("Atasay - Alyans (marka magazasi)")
+        soup = BeautifulSoup(ATASAY_URUN_KARTI_HTML, "html.parser")
+        urunler = motor.css_urunler(soup, secici, min_fiyat=1000)
+        self.assertEqual(urunler, [{"isim": "Sarı Altın Ajda Çift Alyans", "fiyat": 19710.0}])
+
+    def test_trendyol_secicisi_gercek_urun_kartini_dogru_cikarir(self):
+        secici = self._yaml_secici("Trendyol - Damatlik")
+        soup = BeautifulSoup(TRENDYOL_URUN_KARTI_HTML, "html.parser")
+        urunler = motor.css_urunler(soup, secici, min_fiyat=1000)
+        self.assertEqual(
+            urunler,
+            [{"isim": "Erkek Lacivert Slim Fit Dar Kesim Mono Yaka Takım Elbise", "fiyat": 3239.99}],
+        )
 
 
 class AykiriVeSegmentTestleri(unittest.TestCase):
