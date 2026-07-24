@@ -109,6 +109,44 @@ TRENDYOL_URUN_KARTI_HTML = """
 </a>
 """
 
+# Gercek Beymen (Erkek Smokin) HTML'inden alinmis kucultulmus urun karti
+# ornegi (2026-07-24, sayfa_tani.py ile teshis edildi).
+BEYMEN_URUN_KARTI_HTML = """
+<div class="m-productCard">
+<div class="m-productCard__photo">resim vb.</div>
+<div class="m-productCard__detail">
+<h3>
+<a href="/tr/brand-beymen-collection-1956">
+<span class="m-productCard__title"> Beymen Collection </span>
+</a>
+<a class="m-productCard__desc" href="/tr/p_beymen-collection-ekru-sal-yaka-yun-smokin_1030387">
+<span class="m-productCard__desc"> Ekru Şal Yaka Yün Smokin </span>
+</a>
+</h3>
+<div class="m-productCard__price">
+<span class="m-productCard__priceWrapper -onlyOnePrice">
+<span class="m-productCard__newPrice"> 44.950 TL </span>
+</span>
+</div>
+</div>
+</div>
+"""
+
+# Gercek DugunBuketi (Istanbul Dugun Mekanlari) HTML'inden alinmis
+# kucultulmus urun karti ornegi (2026-07-24, sayfa_tani.py ile teshis
+# edildi) - salon/fotografci/gelinlik-moda-evleri ucu de ayni sablonu
+# paylasiyor.
+DUGUNBUKETI_URUN_KARTI_HTML = """
+<div class="rounded-xl border bg-card text-card-foreground shadow flex overflow-hidden relative flex-col group">
+<div class="block relative overflow-hidden aspect-[3/2]">resim vb.</div>
+<div class="flex flex-col flex-1 p-4">
+<a aria-label="Boğaz Garden hakkında daha fazla bilgi al" class="font-semibold tracking-tight leading-none transition-colors text-gray hover:text-primary" href="https://dugunbuketi.com/fiyati/bogaz-garden-kir-dugunu-mekanlari-beykoz-istanbul" target="_blank">Boğaz Garden</a>
+<div class="flex overflow-hidden items-center mt-2 -ml-2 text-xs whitespace-nowrap divide-x">İstanbul, Beykoz</div>
+<span class="font-bold">₺685,00</span> başlangıç fiyatı
+</div>
+</div>
+"""
+
 
 class HeaderRegresyonTestleri(unittest.TestCase):
     """2026-07-24: HEADERS icinde 'Accept-Encoding: ...br' sabitlenmisti -
@@ -231,6 +269,20 @@ class GercekSiteSecicileriTestleri(unittest.TestCase):
             urunler,
             [{"isim": "Erkek Lacivert Slim Fit Dar Kesim Mono Yaka Takım Elbise", "fiyat": 3239.99}],
         )
+
+    def test_beymen_secicisi_gercek_urun_kartini_dogru_cikarir(self):
+        secici = self._yaml_secici("Beymen - Erkek Smokin")
+        soup = BeautifulSoup(BEYMEN_URUN_KARTI_HTML, "html.parser")
+        urunler = motor.css_urunler(soup, secici, min_fiyat=3000)
+        self.assertEqual(urunler, [{"isim": "Ekru Şal Yaka Yün Smokin", "fiyat": 44950.0}])
+
+    def test_dugunbuketi_secicisi_gercek_urun_kartini_dogru_cikarir(self):
+        # Salon/fotografci/gelinlik-moda-evleri ucu de ayni sablonu ve
+        # ayni css_secicileri degerlerini paylasiyor - tek ornek ucunu de temsil eder.
+        secici = self._yaml_secici("DugunBuketi - Istanbul Dugun Mekanlari")
+        soup = BeautifulSoup(DUGUNBUKETI_URUN_KARTI_HTML, "html.parser")
+        urunler = motor.css_urunler(soup, secici, min_fiyat=200)
+        self.assertEqual(urunler, [{"isim": "Boğaz Garden", "fiyat": 685.0}])
 
 
 class AykiriVeSegmentTestleri(unittest.TestCase):

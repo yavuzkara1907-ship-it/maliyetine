@@ -359,6 +359,64 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
     v0.2'de düzeltildi — `requests` 403 alırsa otomatik olarak
     `motor.getir_playwright()`'a düşüyor, Yavuz'un ayrı bir bayrak
     belirtmesine gerek yok.
+- **Akakçe TAMAMEN BIRAKILDI (2026-07-24):** Playwright (gerçek Chromium)
+  ile bile Akakçe'nin gerçek içeriği değil, Cloudflare'in "Bir dakika
+  lütfen..." JS-challenge sayfası döndü. Bu robots.txt meselesi değil,
+  WAF seviyesinde aktif bot tespiti — aşmak "nazik kazıma" ilkesinden
+  uzaklaşıp aktif tespit atlatmaya kayardı. Yavuz'a AskUserQuestion ile
+  soruldu, **karar: bırak**. Tüm 9 Akakçe girdisi `aktif: false,
+  durum: "birakildi"`. Boşalan yerlere Trendyol + marka mağazaları
+  (Vakko, Beymen, Ramsey, Atasay, Boyner) + sektör platformları
+  (DüğünBuketi, Armut) + Cimri eklendi.
+- **"çözmeyi deneyelim" turu (2026-07-24) — 5 kalan 0-ürün kaynağın
+  `sayfa_tani.py` çıktıları teker teker teşhis edildi:**
+  - **Beymen/damatlık (Erkek Smokin) — ÇÖZÜLDÜ.** JSON-LD sadece
+    `ItemList` (meta, ürün değil), microdata yok. CSS seçiciler ham
+    HTML'den doğrudan doğrulandı: `.m-productCard` /
+    `.m-productCard__desc` / `.m-productCard__newPrice` (48 ürün,
+    örnek "Ekru Şal Yaka Yün Smokin, 44.950 TL"). `kaynaklar.yaml` ve
+    `test_motor.py`'ye eklendi, `durum: "onaylandi"`.
+  - **DüğünBuketi'nin 3 girdisi (salon/fotoğrafçı/gelinlik-moda-evleri)
+    — ÇÖZÜLDÜ.** JSON-LD'de gerçek işletme listesi var ama
+    `@type: "LocalBusiness"` (motor sadece `"Product"` kabul ediyor —
+    kasıtlı tasarım, bu yüzden CSS katmanına düşüyor). CSS seçiciler:
+    `.bg-card` (kart) / `a.font-semibold.tracking-tight` (isim) /
+    `.font-bold` (fiyat — "başlangıç fiyatı" olduğu unutulmamalı, kesin
+    toplam değil). Üç girdi de aynı Vue/Tailwind şablonunu paylaşıyor,
+    tek örnekten (salon sayfası) doğrulanıp üçüne de uygulandı.
+    `test_motor.py`'ye eklendi.
+  - **Beymen/gelinlik — KISMEN ÇÖZÜLDÜ, doğrulanmadı.** Smokin
+    sayfasının aksine ham HTML'de HİÇBİR `m-productCard` izi yok —
+    muhtemelen ürünler AJAX/JS ile sonradan yükleniyor (smokin SSR,
+    gelinlik değil). Aynı Beymen CSS seçicileri varsayımla önceden
+    dolduruldu (`render_gerekli: true` zaten vardı, motor gerçek
+    Chromium ile deneyecek) ama gerçek sonuç doğrulanmadı.
+  - **Boyner/damatlık — KÖK NEDEN BULUNDU, henüz çözülmedi.**
+    `requests` ile çekilen HTML'de ürün kartları YÜKLENME İSKELETİ
+    (`b-skeleton` class'lı boş placeholder) halinde — gerçek isim/fiyat
+    JS ile sonradan doluyor. Bu, `sayfa_tani.py`'nin genel bir açığıydı:
+    sadece HTTP 403'te Playwright'a düşüyordu, "200 ama iskelet" halini
+    yakalamıyordu. **Düzeltme: `sayfa_tani.py`'ye `_iskelet_mi()`
+    eklendi** — sayfada `skeleton`/`pulse` class'ı ≥10 ise otomatik
+    Playwright'a düşüyor. `render_gerekli: true` zaten Boyner'de var,
+    motor.py'nin gerçek çalışması muhtemelen zaten çalışıyordur — CSS
+    seçiciler henüz dolu değil çünkü iskelet-öncesi HTML'den gerçek kart
+    yapısı görülemedi. Yavuz'un yerelinde düzeltilmiş `sayfa_tani.py`'yi
+    TEKRAR çalıştırması gerekiyor.
+  - **Armut/fotoğrafçı — BIRAKILDI, kesin sonuç.** Şüphe doğrulandı: bu
+    sayfa gerçekten TEK bir agregat `Product` JSON-LD döndürüyor (liste
+    değil). Gerçek teklif kartları React (styled-components, hash'li
+    class isimleri, ör. `sc-e484e4b8-0`) ile client-side render ediliyor
+    — `sayfa_tani.py` hiçbir "product/item/card" eşleşmesi bulamadı
+    (hash'li isimlerde bu kelimeler geçmiyor). Bu site tipi (CSS-in-JS)
+    kolay kazınabilir değil, hash'ler build'den build'e değişir. `aktif:
+    false, durum: "birakildi"` yapıldı. "fotoğrafçı" kalemi artık tek
+    kaynaklı (sadece dugunbuketi) — yeni bağımsız kaynak aranmalı.
+  - Tüm değişiklikler test edildi (49 test PASS, +2 yeni: Beymen ve
+    DüğünBuketi gerçek HTML seçici kilit testleri) ve
+    `python motor.py --cikti ...` ile uçtan uca çalıştırıldı (16
+    kaynak-grubu işlendi, çökme yok, exit 0 — bu sandbox'ta hepsi
+    robots.txt proxy engeline takılıp atlanıyor, beklenen davranış).
 
 ## Modüller (sırayla)
 1. **Kazıma hattı** — ✅✅ **motor GERÇEK VERİ üretiyor (2026-07-24).**
@@ -367,11 +425,24 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
      Trendyol/alyans (4, CSS), Trendyol/damatlık (16, CSS),
      Trendyol/gelin-ayakkabısı (10, CSS), Trendyol/nikah-şekeri (6, CSS),
      Atasay/alyans (24, CSS), **Vakko/damatlık (48, JSON-LD)**.
-   - **Hâlâ 0 ürün dönen:** Ramsey/damatlık (fiyat JS ile sonradan
-     yükleniyor), Beymen/damatlık+gelinlik, Boyner/damatlık, Cimri/gelinlik
-     (hepsi CSS seçici bekliyor veya bot korumalı olabilir — henüz
-     teşhis edilmedi), Armut/fotoğrafçı (muhtemelen agregat özet
-     sayfası), DüğünBuketi'nin 3 sayfası, Trendyol/davetiye.
+   - **CSS seçicisi 2026-07-24'te ÇÖZÜLDÜ, Yavuz'un yerelinde henüz
+     doğrulanmadı:** Beymen/damatlık (`.m-productCard`, 48 ürün ham
+     HTML'de görüldü), DüğünBuketi'nin 3 sayfası (`.bg-card`, 13 kart
+     ham HTML'de görüldü — salon/fotoğrafçı/gelinlik-moda-evleri).
+   - **CSS seçicisi tahmin edildi ama DOĞRULANMADI:** Beymen/gelinlik
+     (smokin'le aynı şablon varsayıldı, ama ham HTML'de hiç ürün kartı
+     izi yok — muhtemelen AJAX ile geç yükleniyor).
+   - **Hâlâ 0 ürün / teşhis bekliyor:** Ramsey/damatlık (fiyat JS ile
+     sonradan yükleniyor), Boyner/damatlık (kök neden bulundu — JS
+     "skeleton" yükleme hali, `sayfa_tani.py` düzeltildi ama gerçek kart
+     yapısı hâlâ görülemedi, Yavuz'un yerelinde tekrar teşhis
+     çalıştırması gerekiyor), Cimri/gelinlik (düşük öncelik, sadece 12
+     ürün, hydrate olmamış), Trendyol/davetiye (Playwright bekleme
+     süresi 2500ms→4000ms yapıldı ama henüz gerçek `motor.py` ile
+     tekrar doğrulanmadı).
+   - **Kesin BIRAKILDI (kod sorunu değil, site yapısı):** Armut/fotoğrafçı
+     — agregat tek-ürün sayfası, gerçek teklifler hash'li class'lı
+     React ile client-side render ediliyor, kolay kazınabilir değil.
    - **ÇOK KAYNAK KURALI 2 gerçek uyarı üretti:**
      - alyans: Atasay (19.405 TL) vs Trendyol (4.298 TL) — %351 fark.
      - damatlık: Vakko (71.970 TL) vs Trendyol (3.240 TL) — **%2121 fark**
@@ -413,17 +484,41 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
 - [x] Beymen/Boyner/Vakko damatlığa, Beymen gelinliğe eklendi (Yavuz'un
       önerisiyle) — Vakko damatlık hemen çalıştı (48 ürün), diğerleri
       CSS seçici bekliyor.
-- [ ] Beymen (damatlık+gelinlik), Boyner, Ramsey için `sayfa_tani.py`
-      ile teşhis + CSS seçici doldurma
+- [x] **Beymen/damatlık (Erkek Smokin) CSS seçici ÇÖZÜLDÜ (2026-07-24):**
+      `.m-productCard` / `.m-productCard__desc` / `.m-productCard__newPrice`
+      — `sayfa_tani.py` çıktısından doğrudan doğrulandı, `test_motor.py`'ye
+      kilit test eklendi. Yavuz'un yerelinde `python motor.py` ile
+      GERÇEK doğrulama bekleniyor.
+- [x] **DüğünBuketi'nin 3 sayfası CSS seçici ÇÖZÜLDÜ (2026-07-24):**
+      `.bg-card` / `a.font-semibold.tracking-tight` / `.font-bold` —
+      üçü de aynı şablonu paylaşıyor, salon sayfasından doğrulanıp
+      hepsine uygulandı. Yavuz'un yerelinde doğrulama bekleniyor.
+- [ ] Beymen/gelinlik: aynı Beymen seçicileri varsayımla dolduruldu
+      ama ham HTML'de ürün kartı izi YOK (muhtemelen AJAX ile geç
+      yükleniyor) — Yavuz'un yerelinde `python motor.py` çalıştırınca
+      0 ürün dönerse `sayfa_tani.py`'nin (artık iskelet-farkında)
+      Playwright-render edilmiş çıktısına tekrar bakılmalı.
+- [x] **Boyner kök nedeni bulundu (2026-07-24):** sayfa JS-"skeleton"
+      yükleme halinde geliyor (`b-skeleton` class'ları), gerçek kart
+      JS ile sonradan doluyor. `sayfa_tani.py` bunu artık otomatik
+      tespit edip Playwright'a düşüyor (`_iskelet_mi()` eklendi).
+- [ ] Yavuz'un yerelinde düzeltilmiş `sayfa_tani.py`'yi Boyner için
+      TEKRAR çalıştırıp gerçek (iskelet-sonrası) kart HTML'ini
+      paylaşması — CSS seçici hâlâ dolu değil
 - [ ] Trendyol/davetiye neden 0 ürün döndürüyor teşhis et (aynı şablon
-      diğer Trendyol sayfalarında çalıştı)
-- [ ] DüğünBuketi'nin 3 sayfası (gelinlik-evi/salon/fotoğrafçı) `sayfa_tani.py`
-      ile teşhis edilip CSS seçici doldurulmalı
-- [ ] Armut (muhtemelen agregat özet, bireysel liste değil) ve Cimri
-      (Akakçe gibi Cloudflare'e mi düştü, belirsiz) için ayrı çözüm
-      gerekiyor — düşük öncelik
-- [ ] "salon" için 2. bağımsız kaynak bulma (şu an tek kaynak: dugunbuketi,
-      henüz çalışmıyor da)
+      diğer Trendyol sayfalarında çalıştı; Playwright bekleme süresi
+      2500ms→4000ms yapıldı, henüz gerçek `motor.py` ile
+      doğrulanmadı)
+- [x] **Armut/fotoğrafçı BIRAKILDI, kesin teşhis (2026-07-24):** agregat
+      tek-ürün JSON-LD sayfası, gerçek teklifler React (hash'li
+      class'lar) ile client-side render — kolay kazınabilir değil,
+      `aktif: false` yapıldı.
+- [ ] Cimri/gelinlik: Akakçe gibi Cloudflare'e mi düştü, belirsiz —
+      düşük öncelik (gelinlik zaten trendyol+dugunbuketi+beymen ile
+      kısmen kapsanıyor)
+- [ ] "salon" ve "fotoğrafçı" için 2. bağımsız kaynak bulma (Armut
+      bırakıldığı için fotoğrafçı artık tekrar tek kaynaklı — sadece
+      dugunbuketi)
 - [ ] Takı/altın (canlı gram fiyatı) için kaynak bulma
 - [ ] TÜİK doğrulama verisi entegrasyonu (ÇOK KAYNAK KURALI 5. katman)
 - [ ] (İleride) Türk Patent marka başvurusu

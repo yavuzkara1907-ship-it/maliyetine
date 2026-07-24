@@ -12,6 +12,12 @@ doldurulur.
 otomatik olarak motor.py'nin Playwright katmanina dusulur - ayrica
 bir bayrak belirtmene gerek yok.
 
+`requests` 200 donse bile sayfa bir SPA'nin JS henuz doldurmamis
+"iskelet" (skeleton) hali olabilir (ör. Boyner: sayfa erisilebilir
+ama urun kartlari `*Skeleton*` class'li bos placeholder'lar) - bu
+durum da otomatik tespit edilip Playwright'a dusulur (bkz. asagidaki
+_iskelet_mi()).
+
 Kullanim:
   python sayfa_tani.py https://ORNEK-SITE.com/kategori
 """
@@ -23,6 +29,20 @@ import requests
 from bs4 import BeautifulSoup
 
 import motor
+
+
+def _iskelet_mi(html: str) -> bool:
+    """SPA'nin JS ile doldurulmamis "skeleton"/"pulse" yukleme halini
+    tespit eder (ör. Boyner: requests 200 donuyor ama urun kartlari
+    henuz bos placeholder). Bu class isimleri yaygin bir konvansiyon
+    (React/Next skeleton loader kutuphaneleri)."""
+    soup = BeautifulSoup(html, "html.parser")
+    iskelet_sayisi = 0
+    for el in soup.find_all(class_=True):
+        for c in el.get("class", []):
+            if "skeleton" in c.lower() or "pulse" in c.lower():
+                iskelet_sayisi += 1
+    return iskelet_sayisi >= 10
 
 
 def _html_getir(url: str):
@@ -48,6 +68,22 @@ def _html_getir(url: str):
     if r.status_code >= 400:
         print(f"[HATA] HTTP {r.status_code}")
         return None
+
+    if _iskelet_mi(r.text):
+        print(
+            "200 alindi ama sayfa JS-doldurulmamis 'skeleton' halinde "
+            "gorunuyor (ör. Boyner) - Playwright (gercek tarayici) ile "
+            "yeniden deniyorum..."
+        )
+        html = motor.getir_playwright(url)
+        if html is not None and not _iskelet_mi(html):
+            print("Playwright ile basarili, iskelet doldurulmus gorunuyor.")
+            return html
+        print(
+            "[UYARI] Playwright sonrasi da iskelet/bos gorunuyor (ya da "
+            "Playwright basarisiz oldu) - requests sonucuna donuluyor."
+        )
+
     return r.text
 
 

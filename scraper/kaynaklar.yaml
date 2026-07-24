@@ -167,7 +167,10 @@ kaynaklar:
     vertikal: "dugun"
     kalem: "gelinlik"
     yontem: "otomatik"
-    css_secicileri: null
+    css_secicileri:
+      urun_karti: ".bg-card"
+      isim_secici: "a.font-semibold.tracking-tight"
+      fiyat_secici: ".font-bold"
     min_fiyat: 3000
     bekleme_sn: 3
     aktif: true
@@ -176,8 +179,14 @@ kaynaklar:
       Ilk turda (hatali robots_kontrol.py ile) yanlislikla RET cikmisti,
       DUZELTILMIS protego tabanli script ile TEKRAR test edildi
       (2026-07-24): gercekte ONAY, `requests` ile de erisim engellenmiyor
-      (200 donuyor). CSS seciciler henuz girilmedi - sayfa_tani.py ile
-      teshis edilip doldurulmali.
+      (200 donuyor). CSS seciciler "DugunBuketi - Istanbul Dugun
+      Mekanlari" (salon) sayfasindan sayfa_tani.py ile teshis edilip
+      dogrulandi (2026-07-24) - ayni site, ayni Vue/Tailwind sablonu
+      (kart: "97 | 6 | Boğaz Garden | 5.0 | (15) | İstanbul, Beykoz |
+      500 kapasite | ₺685,00 | başlangıç fiyatı"). JSON-LD'de gercek
+      isletmeler var (`ItemList` -> `LocalBusiness`) ama motor.py'nin
+      json_ld katmani sadece `@type: "Product"` kabul ediyor - CSS
+      katmani bu yuzden gerekli, kasitli tasarim.
 
   # --- site: beymen (luks cok markali magaza - COK KAYNAK KURALI tip 2,
   # Pronovias/Vera Wang gibi dunya markalarini tasiyor, DugunBuketi'nin
@@ -190,7 +199,10 @@ kaynaklar:
     vertikal: "dugun"
     kalem: "gelinlik"
     yontem: "otomatik"
-    css_secicileri: null
+    css_secicileri:
+      urun_karti: ".m-productCard"
+      isim_secici: ".m-productCard__desc"
+      fiyat_secici: ".m-productCard__newPrice"
     min_fiyat: 3000
     bekleme_sn: 3
     aktif: true
@@ -202,7 +214,17 @@ kaynaklar:
       Vakko'nun aksine gercek bir urun listeleme sayfasi (Vakko'nun
       kendi sitesinde gelinlik randevu/butik formuna yonlendiriyor,
       gercek katalog degil - o yuzden vakko.com'a gelinlik eklenmedi).
-      robots.txt/bot korumasi bu ortamdan dogrulanamadi.
+      **ONEMLI FARK - Erkek Smokin sayfasindan farkli olarak requests
+      ile cekilen HAM HTML'de HICBIR `m-productCard` (ya da baska urun
+      karti izi) yok** - smokin sayfasi sunucu tarafinda (SSR) doluyken
+      bu sayfa muhtemelen urunleri AJAX/JS ile sonradan yukluyor. CSS
+      seciciler smokin sayfasiyla ayni Beymen sablonu varsayimiyla
+      (ayni site, ayni CSS class konvansiyonu) simdilik ONCEDEN
+      dolduruldu - render_gerekli zaten true oldugu icin motor.py
+      gercek Chromium ile deneyecek. Dogrulanmadi; Yavuz'un yerelinde
+      calistirdiginda 0 urun donerse ya kategori gercekten bos ya da
+      farkli bir sablon kullaniyor demektir, o zaman
+      sayfa_tani.py'nin Playwright-render edilmis ciktisina bakilmali.
 
   # =========================================================
   # KALEM: gelin-ayakkabisi  (Akakce Cloudflare yuzunden birakildi,
@@ -324,17 +346,23 @@ kaynaklar:
     vertikal: "dugun"
     kalem: "damatlik"
     yontem: "otomatik"
-    css_secicileri: null
+    css_secicileri:
+      urun_karti: ".m-productCard"
+      isim_secici: ".m-productCard__desc"
+      fiyat_secici: ".m-productCard__newPrice"
     min_fiyat: 3000
     bekleme_sn: 3
     aktif: true
-    durum: "arastirildi"
+    durum: "onaylandi"
     notlar: >
       WebSearch ile dogrulanan gercek URL (2026-07-24). Luks segment -
       Trendyol/Ramsey'in orta segmentinden farkli, dusuk/orta/luks
       kirilimini zenginlestirir. Yavuz'un yerelinde calistirildi: sayfa
-      erisilebilir ama "0 urun (hicbiri katmani)" - JSON-LD/microdata
-      yok, CSS secici gerekiyor (henuz doldurulmadi).
+      erisilebilir ama JSON-LD sadece "ItemList" (urun degil, meta),
+      microdata yok. sayfa_tani.py ciktisindan (2026-07-24) CSS
+      seciciler dogrulandi: `.m-productCard` (48 kart, ornek "Beymen
+      Collection | Ekru Sal Yaka Yun Smokin | 44.950 TL" - isim ve
+      fiyat ayni kart icinde net ayrisiyor).
 
   # --- site: boyner (orta segment genel pazaryeri - Trendyol'a benzer) ---
   - ad: "Boyner - Erkek Takim Elbise"
@@ -354,7 +382,23 @@ kaynaklar:
       WebSearch ile dogrulanan gercek URL (2026-07-24). Genel cok markali
       magaza - Trendyol'a benzer orta segment. Yavuz'un yerelinde
       calistirildi: sayfa erisilebilir ama "0 urun (hicbiri katmani)" -
-      JSON-LD/microdata yok, CSS secici gerekiyor (henuz doldurulmadi).
+      JSON-LD/microdata yok, CSS secici gerekiyor. sayfa_tani.py ile
+      teshis edildi (2026-07-24) - KOK NEDEN BULUNDU: `requests` ile
+      cekilen HTML'de urun kartlari (`vertical-product_verticalProduct__*`)
+      YUKLENME ISKELETI (skeleton loading placeholder, `b-skeleton`
+      class'lariyla) halinde donuyor, gercek isim/fiyat JS ile sonradan
+      dolduruluyor - `sayfa_tani.py`'nin kendisi bunu JS-render
+      gerektiren bir sayfa olarak yakalamiyordu (sadece HTTP 403'te
+      Playwright'a dusuyordu, 200+iskelet durumunu atlıyordu). Bu
+      GENEL BOSLUK `sayfa_tani.py`'ye `_iskelet_mi()` kontroluyle
+      duzeltildi (2026-07-24) - artik "skeleton"/"pulse" class'i >=10
+      ise otomatik Playwright'a dusuyor. `render_gerekli: true` zaten
+      set oldugu icin motor.py'nin GERCEK calismasi (Playwright ile)
+      muhtemelen zaten calisiyordur - CSS seciciler heniz dolu degil
+      cunku iskelet-oncesi (statik) HTML'den gercek kart yapisi
+      gorulemedi. Yavuz'un yerelinde `python sayfa_tani.py` TEKRAR
+      calistirmasi gerekiyor (duzeltilmis script Playwright'a
+      dusup gercek dolu karti gosterecek).
 
   # --- site: vakko (luks tasarimci markasi - COK KAYNAK KURALI tip 2) ---
   - ad: "Vakko - Erkek Takim Elbise"
@@ -573,7 +617,10 @@ kaynaklar:
     vertikal: "dugun"
     kalem: "salon"
     yontem: "otomatik"
-    css_secicileri: null
+    css_secicileri:
+      urun_karti: ".bg-card"
+      isim_secici: "a.font-semibold.tracking-tight"
+      fiyat_secici: ".font-bold"
     min_fiyat: 5000
     bekleme_sn: 3
     aktif: true
@@ -582,7 +629,15 @@ kaynaklar:
       Ilk turda (hatali robots_kontrol.py ile) yanlislikla RET cikmisti,
       DUZELTILMIS protego tabanli script ile TEKRAR test edildi
       (2026-07-24): gercekte ONAY. "salon" kalemi boylece tekrar bir
-      kaynaga sahip oldu. CSS seciciler henuz girilmedi.
+      kaynaga sahip oldu. CSS seciciler sayfa_tani.py ciktisiyla
+      dogrulandi (2026-07-24): kart `.bg-card` (13 eslesme), isim
+      `Boğaz Garden` gibi isletme adini tasiyan `<a>` etiketi
+      (`font-semibold tracking-tight ...` class'lari), fiyat
+      `.font-bold` ("₺685,00 başlangıç fiyatı" - "baslangic fiyati"
+      oldugu acikca not edilmeli, gercek toplam degil). JSON-LD'de
+      gercek isletme listesi var ama `@type: "LocalBusiness"` oldugu
+      icin motor.py'nin json_ld katmani (sadece "Product" kabul eder)
+      bunu atliyor - CSS katmani kasitli devreye giriyor.
 
   - ad: "DugunBuketi - Istanbul Fotografci"
     site: "dugunbuketi"
@@ -591,7 +646,10 @@ kaynaklar:
     vertikal: "dugun"
     kalem: "fotografci"
     yontem: "otomatik"
-    css_secicileri: null
+    css_secicileri:
+      urun_karti: ".bg-card"
+      isim_secici: "a.font-semibold.tracking-tight"
+      fiyat_secici: ".font-bold"
     min_fiyat: 1000
     bekleme_sn: 3
     aktif: true
@@ -600,7 +658,10 @@ kaynaklar:
       Ilk turda (hatali robots_kontrol.py ile) yanlislikla RET cikmisti,
       DUZELTILMIS protego tabanli script ile TEKRAR test edildi
       (2026-07-24): gercekte ONAY. "fotografci" artik 2 bagimsiz kaynaga
-      sahip (armut + dugunbuketi). CSS seciciler henuz girilmedi.
+      sahip (armut + dugunbuketi). CSS seciciler ayni siteden ("Istanbul
+      Dugun Mekanlari" sayfasi) dogrulanan ayni sablonla dolduruldu
+      (2026-07-24) - DugunBuketi tum kategori/liste sayfalarinda ayni
+      Vue/Tailwind kart bilesenini kullaniyor (`.bg-card` + `.font-bold`).
 
   - ad: "Armut - Dugun Fotografcisi Fiyatlari"
     site: "armut"
@@ -612,15 +673,26 @@ kaynaklar:
     css_secicileri: null
     min_fiyat: 1000
     bekleme_sn: 3
-    aktif: true
-    durum: "onaylandi"
+    aktif: false  # BIRAKILDI 2026-07-24: agregat tek-urun sayfasi, liste degil
+    durum: "birakildi"
     notlar: >
       Yavuz'un yerelinde robots_kontrol.py ile ONAY sonucu alindi
-      (2026-07-23). Bu 'fiyatlari' sayfasi tek bir agregat ortalama
-      gosteriyor olabilir - percentile segmentleme icin yeterli ham
-      fiyat noktasi saglamayabilir. Ilk calistirmada 0 veya cok az urun
-      donerse bu ihtimal dogrulanmis olur, o zaman kalem "fotografci"
-      icin yeni bir kaynak aranmali.
+      (2026-07-23). sayfa_tani.py ile teshis edildi (2026-07-24):
+      supheler DOGRULANDI - bu sayfa gercekten TEK bir agregat
+      `@type: "Product"` JSON-LD donduruyor (AggregateRating ile,
+      urun listesi degil, "Dugun Fotografcisi" hizmetinin kendisi tek
+      urun olarak modellenmis). Sayfadaki gercek teklif/fiyat kartlari
+      React (styled-components, hash'li class isimleri ör. "sc-e484e4b8-0")
+      ile CLIENT-SIDE render ediliyor - sayfa_tani.py'nin "URUN KARTI
+      ADAYLARI" taramasi hicbir "product/item/card" eslesmesi bulamadi
+      (hash'li class isimlerinde bu kelimeler gecmiyor). CSS secici
+      yazmak icin render edilmis DOM'a (Playwright) ihtiyac var VE o
+      zaman bile class isimleri build'den build'e degisen hash'ler
+      oldugu icin kirilgan olur - bu site tipi (CSS-in-JS/styled-
+      components) "kolay kazinabilir" degil. BIRAKILDI - "fotografci"
+      zaten dugunbuketi ile kapsanan bir kalem, tek kaynak yeterli
+      degil ama Armut'u zorlamak yerine baska bir bagimsiz kaynak
+      aranmali.
 
   # =========================================================
   # KALEM: nikah-sekeri  (yeni, 2026-07-24 - tek kaynak, ikincisi aranmali)
