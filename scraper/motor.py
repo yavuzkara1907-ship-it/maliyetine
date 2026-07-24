@@ -357,8 +357,12 @@ def getir_playwright(url: str, deneme: int = 2, ilk_bekleme: float = 2.0):
                     # SPA/JS ile render edilen siteler icin: domcontentloaded
                     # cok erken tetiklenir (urun listesi henuz JS ile
                     # doldurulmadan). Sabit bir bekleme ile hydration'in
-                    # oturmasina izin ver.
-                    sayfa.wait_for_timeout(2500)
+                    # oturmasina izin ver. 2500ms bazen yetmedi (Trendyol/
+                    # davetiye ayni sablonu kullandigi halde 0 urun donmustu,
+                    # ayni sayfa sayfa_tani.py ile hemen sonra tekrar
+                    # cekildiginde dolu geldi - zamanlama/flakiness sorunu) -
+                    # 4000ms'e cikarildi.
+                    sayfa.wait_for_timeout(4000)
                     return sayfa.content()
                 finally:
                     tarayici.close()

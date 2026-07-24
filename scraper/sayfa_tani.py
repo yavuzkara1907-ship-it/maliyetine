@@ -127,8 +127,13 @@ def tani(url: str) -> None:
     for sinif, elemanlar in sorted(adaylar.items(), key=lambda kv: -len(kv[1])):
         if not (2 <= len(elemanlar) <= 500):
             continue
-        print(f"\n--- class='{sinif}' ({len(elemanlar)} eslesme) - ilk eslesmenin HTML'i ---")
-        print(str(elemanlar[0])[:2000])
+        print(f"\n--- class='{sinif}' ({len(elemanlar)} eslesme) ---")
+        # Once TEMIZ METIN (markup gurultusu olmadan isim/fiyat sirasini
+        # gormek icin en degerli kisim), sonra kesilmis ham HTML.
+        temiz_metin = elemanlar[0].get_text(separator=" | ", strip=True)
+        print(f"  Temiz metin: {temiz_metin[:600]}")
+        print(f"  Ham HTML (ilk 3000 karakter):")
+        print(str(elemanlar[0])[:3000])
         gosterilen += 1
         if gosterilen >= 5:
             break
