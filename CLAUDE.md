@@ -327,20 +327,36 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
     sayfayı çekip JSON-LD/microdata varlığını, en sık tekrar eden class
     isimlerini ve "TL"/"₺" içeren metinleri raporlar; çıktısı paylaşılırsa
     css_secicileri buradan doldurulabilir.
+- **Yavuz'un yerelinde `python motor.py` GERÇEKTEN çalıştırıldı
+  (2026-07-24) — İLK GERÇEK VERİ:**
+  - **Trendyol/gelinlik: 23 ürün, JSON-LD katmanıyla, başarılı.**
+    Playwright'a bile gerek kalmadan `requests` + JSON-LD çalıştı
+    (`render_gerekli: true` gereksiz olabilir, ama zararı yok — sadece
+    yavaşlatır. İleride kaldırılabilir).
+  - Akakçe'nin 9 URL'si de artık 403 ALMIYOR (Playwright çalışıyor,
+    site engeli aşıldı) ama hepsi "0 ürün (hicbiri katmani)" — JSON-LD/
+    microdata yok, CSS seçici gerekiyor.
+  - Ramsey, Atasay, Armut, DüğünBuketi'nin 3 sayfası da aynı durumda:
+    erişilebiliyor, 0 ürün, CSS seçici gerekiyor.
+  - **Sonuç: network/bot-engeli sorunu tamamen çözüldü. Kalan tek şey
+    CSS seçici doldurma işi** — bu artık salt bir "F12/sayfa_tani.py
+    çalıştır, seçiciyi yaz" mekaniği, mimari sorun değil.
+  - `sayfa_tani.py` v0.1'de bir eksik bulundu: Akakçe/Trendyol gibi
+    siteler için de salt `requests` kullanıyordu, o da 403 alırdı.
+    v0.2'de düzeltildi — `requests` 403 alırsa otomatik olarak
+    `motor.getir_playwright()`'a düşüyor, Yavuz'un ayrı bir bayrak
+    belirtmesine gerek yok.
 
 ## Modüller (sırayla)
 1. **Kazıma hattı** — kaynaklar.yaml + üç katmanlı çıkarım + robots
    doğrulama (protego ile, stdlib DEĞİL) + sağlık kontrolü + ÇOK KAYNAK
-   çapraz doğrulama + Playwright son-çare katmanı + log. ✅ Motor v0.6
-   hazır, sahte veriyle test edildi (44 test), Playwright mekanik olarak
-   bu sandbox'ta doğrulandı (tarayıcı gerçekten açılıyor). Kalan: Yavuz'un
-   yerelinde (a) `git pull` + `pip install -r requirements.txt` +
-   `playwright install chromium` + `python motor.py` çalıştırması —
-   Akakçe/Trendyol artık gerçek tarayıcıyla çekilecek, ilk kez gerçek
-   ürün verisi gelmesi bekleniyor, (b) Ramsey/Atasay/Armut için
-   `python sayfa_tani.py <url>` çıktısını paylaşıp CSS seçici doldurması,
-   (c) salon ve gelin-ayakkabısı kalemleri için eksik ikinci kaynağa
-   alternatif bulması.
+   çapraz doğrulama + Playwright son-çare katmanı + log. ✅ Motor v0.6,
+   **gerçek veri üretiyor** (Trendyol: 23 ürün, JSON-LD). Network/bot
+   engeli sorunu tamamen çözüldü. Kalan: sadece CSS seçici işi —
+   Akakçe/Ramsey/Atasay/Armut/DüğünBuketi sayfaya erişebiliyor ama
+   JSON-LD/microdata yok, `sayfa_tani.py` çıktısı paylaşılıp seçiciler
+   doldurulmalı. Sonra: salon ve gelin-ayakkabısı için eksik ikinci
+   kaynağa alternatif bulma.
 2. **Veri saklama** — aylık snapshot şeması (SQLite yeterli).
 3. **İlk hesaplayıcı + endeks sayfası** (düğün).
 4. **Metodoloji sayfası + schema.org işaretlemesi.**
@@ -371,13 +387,14 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
       eklendi (motor v0.6, `render_gerekli: true`). Bu sandbox'ta
       mekanik olarak doğrulandı (tarayıcı açılıyor), gerçek siteye karşı
       DOĞRULANMADI (sandbox network kısıtı).
-- [ ] Yavuz'un yerelinde `pip install playwright && playwright install
-      chromium` + `python motor.py` ile Akakçe/Trendyol'un artık gerçek
-      ürün verisi döndürüp döndürmediğini doğrulaması
-- [ ] Ramsey/Atasay/Armut "0 ürün" sorunu: `python sayfa_tani.py <url>`
-      ile teşhis edip CSS seçici doldurma (F12 gerekmiyor)
-- [ ] Karantinaya düşen diğer kaynaklar için de gerekirse CSS seçici
-      doldurma
+- [x] Yavuz'un yerelinde `python motor.py` çalıştırıldı (2026-07-24):
+      **Trendyol/gelinlik 23 ürün ile BAŞARILI** (JSON-LD). Akakçe artık
+      403 almıyor (Playwright çalışıyor) ama JSON-LD/microdata yok.
+      Network/bot-engeli sorunu çözüldü — kalan tek şey CSS seçici işi.
+- [ ] `sayfa_tani.py <url>` ile Akakçe + Ramsey + Atasay + Armut +
+      DüğünBuketi(2 farklı sayfa tipi) için çıktı alıp CSS seçici
+      doldurma (v0.2'de 403 durumunda otomatik Playwright'a düşüyor,
+      ek bayrak gerekmiyor)
 - [ ] "salon" ve "gelin-ayakkabısı" için 2. bağımsız kaynak bulma
 - [ ] Düğün kalem listesindeki geri kalanlar için kaynak bulma: takı/
       altın (canlı fiyat), nikah şekeri, davetiye
