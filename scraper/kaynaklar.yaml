@@ -332,8 +332,9 @@ kaynaklar:
     notlar: >
       WebSearch ile dogrulanan gercek URL (2026-07-24). Luks segment -
       Trendyol/Ramsey'in orta segmentinden farkli, dusuk/orta/luks
-      kirilimini zenginlestirir. robots.txt/bot korumasi bu ortamdan
-      dogrulanamadi.
+      kirilimini zenginlestirir. Yavuz'un yerelinde calistirildi: sayfa
+      erisilebilir ama "0 urun (hicbiri katmani)" - JSON-LD/microdata
+      yok, CSS secici gerekiyor (henuz doldurulmadi).
 
   # --- site: boyner (orta segment genel pazaryeri - Trendyol'a benzer) ---
   - ad: "Boyner - Erkek Takim Elbise"
@@ -351,8 +352,9 @@ kaynaklar:
     durum: "arastirildi"
     notlar: >
       WebSearch ile dogrulanan gercek URL (2026-07-24). Genel cok markali
-      magaza - Trendyol'a benzer orta segment. robots.txt/bot korumasi bu
-      ortamdan dogrulanamadi.
+      magaza - Trendyol'a benzer orta segment. Yavuz'un yerelinde
+      calistirildi: sayfa erisilebilir ama "0 urun (hicbiri katmani)" -
+      JSON-LD/microdata yok, CSS secici gerekiyor (henuz doldurulmadi).
 
   # --- site: vakko (luks tasarimci markasi - COK KAYNAK KURALI tip 2) ---
   - ad: "Vakko - Erkek Takim Elbise"
@@ -367,10 +369,17 @@ kaynaklar:
     min_fiyat: 3000
     bekleme_sn: 3
     aktif: true
-    durum: "arastirildi"
+    durum: "onaylandi"
     notlar: >
-      WebSearch ile dogrulanan gercek URL (2026-07-24). Luks tasarimci
-      markasi. Vakko'nun gelinlik tarafi ("Vakko Wedding") randevu bazli
+      WebSearch ile dogrulanan gercek URL (2026-07-24). Yavuz'un
+      yerelinde calistirildi: **48 urun, JSON-LD katmaniyla basarili**.
+      **CAPRAZ DOGRULAMA UYARISI:** Trendyol medyani 3.240 TL, Vakko
+      medyani 71.970 TL - fark %2121. Bu veri hatasi degil, kitlesel
+      pazaryeri ile ultra-luks tasarimci markasi arasindaki gercek fark.
+      Yavuz'a soruldu, **karar: kalem BOLUNMUYOR, siteler ayri ayri
+      kendi dusuk/orta/luks segmentini gostermeye devam ediyor** (zaten
+      birlestirilmiyor). Sadece capraz dogrulama raporunda belgeleniyor.
+      Luks tasarimci markasi. Vakko'nun gelinlik tarafi ("Vakko Wedding") randevu bazli
       butik/atolye modeline benziyor (DugunBuketi'nin gelinlik evi
       kaynagina benzer) - net bir urun listeleme URL'i bulunamadigi icin
       simdilik SADECE erkek takim elbise eklendi. robots.txt/bot korumasi

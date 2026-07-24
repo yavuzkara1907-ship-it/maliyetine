@@ -361,34 +361,34 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
     belirtmesine gerek yok.
 
 ## Modüller (sırayla)
-1. **Kazıma hattı** — ✅✅ **BÜYÜK İLERLEME (2026-07-24): motor artık
-   GERÇEK VERİ üretiyor.** `python motor.py`'nin gerçek sonucu:
-   - **Çalışan kaynaklar (7):** Trendyol/gelinlik (23 ürün, JSON-LD),
+1. **Kazıma hattı** — ✅✅ **motor GERÇEK VERİ üretiyor (2026-07-24).**
+   `python motor.py`'nin son çalıştırılmış hali:
+   - **Çalışan kaynaklar (8):** Trendyol/gelinlik (23, JSON-LD),
      Trendyol/alyans (4, CSS), Trendyol/damatlık (16, CSS),
      Trendyol/gelin-ayakkabısı (10, CSS), Trendyol/nikah-şekeri (6, CSS),
-     Atasay/alyans (24, CSS).
-   - **Hâlâ 0 ürün dönen (5):** Ramsey/damatlık (fiyat JS ile sonradan
-     yükleniyor, statik HTML'de boş), Armut/fotoğrafçı (muhtemelen
-     agregat özet sayfası, bireysel ürün listesi değil), DüğünBuketi'nin
-     3 sayfası da (gelinlik-evi, salon, fotoğrafçı — henüz teşhis
-     edilmedi), Trendyol/davetiye (aynı şablon diğer Trendyol
-     sayfalarında çalıştı ama bu birinde çalışmadı, nedeni bilinmiyor).
-   - **ÇOK KAYNAK KURALI ilk gerçek uyarısını üretti:** alyans'ta
-     Atasay (medyan 19.405 TL) ile Trendyol (medyan 4.298 TL) arası
-     %351 fark → `alyans_capraz-dogrulama_*.json` yazıldı. Bu muhtemelen
-     veri hatası değil, gerçek bir segment/marka farkı (Trendyol
-     pazaryerinde bütçe/ince alyanslar da var, Atasay tek premium
-     marka). `min_fiyat` bilerek değiştirilmedi (eşiği zorlayıp uyarıyı
-     bastırmak yanlış olur). **Karar bekliyor:** segmenti ayırmak mı
-     (Akakçe/gelinlik'te yapıldığı gibi), yoksa olduğu gibi mi bırakmak.
-   - Yol boyunca bulunan 2 kritik bug: (1) `Accept-Encoding: ...br`
-     header'ı brotli decoder kurulu olmayan ortamlarda yanıtı çözülemez
-     hale getiriyordu (düzeltildi), (2) Yavuz'un "Akakçe+Trendyol
-     olmadan bu siteler saçma" geri bildirimi haklıydı — Trendyol
-     (çalışan genel pazaryeri) damatlık/alyans/gelin-ayakkabısına
-     eklendi + nikah-şekeri/davetiye kalemleri açıldı.
-   - Kalan: Trendyol/davetiye + DüğünBuketi(3) + Ramsey + Armut teşhisi,
-     alyans segment kararı.
+     Atasay/alyans (24, CSS), **Vakko/damatlık (48, JSON-LD)**.
+   - **Hâlâ 0 ürün dönen:** Ramsey/damatlık (fiyat JS ile sonradan
+     yükleniyor), Beymen/damatlık+gelinlik, Boyner/damatlık, Cimri/gelinlik
+     (hepsi CSS seçici bekliyor veya bot korumalı olabilir — henüz
+     teşhis edilmedi), Armut/fotoğrafçı (muhtemelen agregat özet
+     sayfası), DüğünBuketi'nin 3 sayfası, Trendyol/davetiye.
+   - **ÇOK KAYNAK KURALI 2 gerçek uyarı üretti:**
+     - alyans: Atasay (19.405 TL) vs Trendyol (4.298 TL) — %351 fark.
+     - damatlık: Vakko (71.970 TL) vs Trendyol (3.240 TL) — **%2121 fark**
+       (kitlesel pazaryeri vs ultra-lüks tasarımcı markası).
+     Yavuz'a soruldu: **karar — kalemler BÖLÜNMÜYOR**, her site kendi
+     düşük/orta/lüks segmentini ayrı göstermeye devam ediyor (zaten
+     birleştirilmiyor), fark sadece çapraz-doğrulama raporunda
+     belgeleniyor.
+   - Bulunan kritik bug: `Accept-Encoding: ...br` header'ı brotli
+     decoder kurulu olmayan ortamlarda yanıtı çözülemez hale
+     getiriyordu (düzeltildi).
+   - Kaynak çeşitliliği Yavuz'un "Akakçe+Trendyol olmadan bu siteler
+     saçma" geri bildirimiyle genişledi: Trendyol (5 kalem) +
+     Beymen/Boyner/Vakko (damatlık, segment çeşitliliği) + Beymen
+     (gelinlik) + n11/Cimri (gelinlik, denendi) eklendi.
+   - Kalan: yeni eklenen markaların (Beymen, Boyner, Ramsey) CSS
+     seçicileri, Trendyol/davetiye + DüğünBuketi(3) + Armut teşhisi.
 2. **Veri saklama** — aylık snapshot şeması (SQLite yeterli).
 3. **İlk hesaplayıcı + endeks sayfası** (düğün).
 4. **Metodoloji sayfası + schema.org işaretlemesi.**
@@ -406,19 +406,22 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
       nikah-şekeri, davetiye).
 - [x] Kritik bug düzeltildi: `Accept-Encoding: br` header'ı brotli
       decoder'sız ortamda yanıtı bozuyordu.
-- [x] **`python motor.py` gerçek veri üretiyor (2026-07-24):** 7 kaynak
-      çalışıyor (Trendyol×5 kalem + Atasay), alyans'ta ÇOK KAYNAK
-      KURALI ilk gerçek çapraz-doğrulama uyarısını verdi (bkz. Teknik
-      Durum). Ayrıntı için oradaki listeye bak.
+- [x] **`python motor.py` gerçek veri üretiyor (2026-07-24):** 8 kaynak
+      çalışıyor. alyans (%351) ve damatlık (%2121) çapraz-doğrulama
+      uyarısı verdi — Yavuz'a soruldu, **karar: kalemler bölünmüyor,
+      olduğu gibi belgelenip bırakılıyor** (bkz. Teknik Durum).
+- [x] Beymen/Boyner/Vakko damatlığa, Beymen gelinliğe eklendi (Yavuz'un
+      önerisiyle) — Vakko damatlık hemen çalıştı (48 ürün), diğerleri
+      CSS seçici bekliyor.
+- [ ] Beymen (damatlık+gelinlik), Boyner, Ramsey için `sayfa_tani.py`
+      ile teşhis + CSS seçici doldurma
 - [ ] Trendyol/davetiye neden 0 ürün döndürüyor teşhis et (aynı şablon
       diğer Trendyol sayfalarında çalıştı)
 - [ ] DüğünBuketi'nin 3 sayfası (gelinlik-evi/salon/fotoğrafçı) `sayfa_tani.py`
       ile teşhis edilip CSS seçici doldurulmalı
-- [ ] Ramsey (fiyat JS ile sonradan yükleniyor) ve Armut (muhtemelen
-      agregat özet, bireysel liste değil) için ayrı çözüm gerekiyor —
-      düşük öncelik, ikisi de Trendyol ile zaten kısmen kapsanan kalemler
-- [ ] alyans'taki %351 çapraz-doğrulama farkı için karar: segmenti
-      ayır mı (ekonomik/premium), olduğu gibi mi bırak
+- [ ] Armut (muhtemelen agregat özet, bireysel liste değil) ve Cimri
+      (Akakçe gibi Cloudflare'e mi düştü, belirsiz) için ayrı çözüm
+      gerekiyor — düşük öncelik
 - [ ] "salon" için 2. bağımsız kaynak bulma (şu an tek kaynak: dugunbuketi,
       henüz çalışmıyor da)
 - [ ] Takı/altın (canlı gram fiyatı) için kaynak bulma
