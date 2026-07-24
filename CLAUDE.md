@@ -149,12 +149,28 @@ Hesaplayıcı bu kalemleri toplar. Her kalem: segment + kaynak + tarih.
   hizmet/işçilik karmaşıklığı yok. Mevcut motor.py/Trendyol şablonu
   değişiklik gerektirmeden çalışıyor (yapısal olarak; gerçek kazıma
   Yavuz'un yerelinde doğrulanmayı bekliyor).
-- **14 kalem, tamamı Trendyol (tek kaynak, ilk tur):** buzdolabı,
-  çamaşır makinesi, bulaşık makinesi, fırın/ocak (ankastre set),
-  mikrodalga, koltuk takımı, yemek masası takımı, yatak (çift kişilik,
-  baza hariç), gardırop, TV ünitesi, robot süpürge, perde, aydınlatma
-  (avize), klima. Tüm URL'ler WebSearch ile doğrulandı.
+- **42 kalem, tamamı Trendyol (tek kaynak, ilk tur):** ilk 14'e (buzdolabı,
+  çamaşır makinesi, bulaşık makinesi, fırın/ocak, mikrodalga, koltuk
+  takımı, yemek masası takımı, yatak, gardırop, TV ünitesi, robot
+  süpürge, perde, aydınlatma, klima) Yavuz'un ChatGPT'den aldığı
+  kapsamlı bir "ev kurma maliyeti" listesini paylaşmasıyla 28 kalem
+  daha eklendi: davlumbaz, kurutma makinesi, karyola, komodin, şifonyer,
+  boy aynası, nevresim takımı, televizyon, dikey süpürge, airfryer,
+  kahve makinesi, su ısıtıcı, tost makinesi, blender, mutfak robotu,
+  ütü, saç kurutma makinesi, tencere seti, tava seti, çatal-kaşık-bıçak
+  takımı, yemek takımı, kahvaltı takımı, bardak takımı, havlu takımı,
+  bornoz, halı, sehpa, konsol. Tüm URL'ler WebSearch ile doğrulandı.
   `vertikal: "ev-kurma"` olarak `kaynaklar.yaml`'a eklendi.
+  **ÖNEMLİ METODOLOJİ KARARI:** ChatGPT'nin paylaştığı TL rakamları
+  (kaynaksız, aramasız, saf model tahmini) doğrudan KULLANILMADI — bu,
+  düğün'deki WebSearch-grounded "tahmini" kalemlerden bile daha zayıf
+  bir kaynaktı ve KIRMIZI ÇİZGİ'yi gerçek anlamda ihlal ederdi. Bunun
+  yerine listedeki kalemler (kategoriler olarak) referans alınıp
+  HEPSİ İÇİN gerçek Trendyol URL'si arandı — yani "tahmini" değil,
+  gerçek kaynak listesi genişletildi. Vague/paket kalemler (temizlik
+  malzemeleri, ilk yardım çantası, saklama kutuları vb.) kasıtlı olarak
+  dışarıda bırakıldı — tek bir net "ürün" karşılığı yok, dedike kazıma
+  girdisine değmez.
   **ÇOK KAYNAK KURALI henüz karşılanmıyor** (hepsi tek kaynaklı) —
   ikinci bağımsız kaynak (Hepsiburada, Vatan, Koçtaş, IKEA vb.) sonraki
   turda aranmalı.
