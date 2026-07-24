@@ -1,34 +1,34 @@
 {
   "site": "trendyol",
   "kaynak_adlari": [
-    "Trendyol - Gelinlik"
+    "Trendyol - Su Isitici (Kettle)"
   ],
-  "kalem": "gelinlik",
-  "vertikal": "dugun",
+  "kalem": "su-isitici",
+  "vertikal": "ev-kurma",
   "tarih": "2026-07-25",
   "toplam_urun": 21,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "json-ld"
   ],
-  "genel_medyan": 8999,
+  "genel_medyan": 622,
   "segmentler": {
     "dusuk": {
-      "min": 1503,
-      "medyan": 3391,
-      "max": 5299,
+      "min": 349,
+      "medyan": 399,
+      "max": 495,
       "urun_sayisi": 6
     },
     "orta": {
-      "min": 6460,
-      "medyan": 14153,
-      "max": 25000,
+      "min": 530,
+      "medyan": 626,
+      "max": 799,
       "urun_sayisi": 10
     },
     "luks": {
-      "min": 30959,
-      "medyan": 40000,
-      "max": 65000,
+      "min": 975,
+      "medyan": 1077,
+      "max": 1599,
       "urun_sayisi": 5
     }
   }

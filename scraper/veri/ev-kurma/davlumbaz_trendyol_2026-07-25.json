@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Davlumbaz"
+  ],
+  "kalem": "davlumbaz",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-07-25",
+  "toplam_urun": 17,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 3599,
+  "segmentler": {
+    "dusuk": {
+      "min": 2799,
+      "medyan": 3149,
+      "max": 3399,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 3449,
+      "medyan": 3679,
+      "max": 4230,
+      "urun_sayisi": 7
+    },
+    "luks": {
+      "min": 4489,
+      "medyan": 4650,
+      "max": 7770,
+      "urun_sayisi": 4
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Ankastre Firin Seti"
+  ],
+  "kalem": "firin-ocak",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-07-25",
+  "toplam_urun": 3,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 18199,
+  "segmentler": {
+    "dusuk": {
+      "min": 6309,
+      "medyan": 6309,
+      "max": 6309,
+      "urun_sayisi": 1
+    },
+    "orta": {
+      "min": 18199,
+      "medyan": 18249,
+      "max": 18299,
+      "urun_sayisi": 2
+    }
+  }
+}

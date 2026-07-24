@@ -6,16 +6,16 @@
   "kalem": "gelin-ayakkabisi",
   "vertikal": "dugun",
   "tarih": "2026-07-25",
-  "toplam_urun": 8,
+  "toplam_urun": 9,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "css"
   ],
-  "genel_medyan": 992,
+  "genel_medyan": 1050,
   "segmentler": {
     "dusuk": {
-      "min": 644,
-      "medyan": 841,
+      "min": 590,
+      "medyan": 644,
       "max": 859,
       "urun_sayisi": 3
     },
@@ -27,9 +27,9 @@
     },
     "luks": {
       "min": 2194,
-      "medyan": 2194,
-      "max": 2194,
-      "urun_sayisi": 1
+      "medyan": 2254,
+      "max": 2315,
+      "urun_sayisi": 2
     }
   }
 }

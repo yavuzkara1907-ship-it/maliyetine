@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Konsol"
+  ],
+  "kalem": "konsol",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-07-25",
+  "toplam_urun": 25,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 4361,
+  "segmentler": {
+    "dusuk": {
+      "min": 2736,
+      "medyan": 2807,
+      "max": 3252,
+      "urun_sayisi": 7
+    },
+    "orta": {
+      "min": 3299,
+      "medyan": 4451,
+      "max": 5156,
+      "urun_sayisi": 12
+    },
+    "luks": {
+      "min": 5685,
+      "medyan": 6206,
+      "max": 7781,
+      "urun_sayisi": 6
+    }
+  }
+}

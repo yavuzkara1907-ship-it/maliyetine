@@ -6,12 +6,12 @@
   "kalem": "damatlik",
   "vertikal": "dugun",
   "tarih": "2026-07-25",
-  "toplam_urun": 17,
+  "toplam_urun": 16,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "css"
   ],
-  "genel_medyan": 3360,
+  "genel_medyan": 3300,
   "segmentler": {
     "dusuk": {
       "min": 2508,
@@ -27,9 +27,9 @@
     },
     "luks": {
       "min": 5599,
-      "medyan": 6800,
+      "medyan": 7996,
       "max": 10392,
-      "urun_sayisi": 3
+      "urun_sayisi": 2
     }
   }
 }

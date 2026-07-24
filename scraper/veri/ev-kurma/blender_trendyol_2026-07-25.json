@@ -1,0 +1,29 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Blender"
+  ],
+  "kalem": "blender",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-07-25",
+  "toplam_urun": 8,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 8412,
+  "segmentler": {
+    "dusuk": {
+      "min": 2251,
+      "medyan": 3053,
+      "max": 5391,
+      "urun_sayisi": 3
+    },
+    "orta": {
+      "min": 8164,
+      "medyan": 11900,
+      "max": 11900,
+      "urun_sayisi": 5
+    }
+  }
+}

@@ -1,34 +1,34 @@
 {
   "site": "trendyol",
   "kaynak_adlari": [
-    "Trendyol - Gelinlik"
+    "Trendyol - Kahvalti Takimi"
   ],
-  "kalem": "gelinlik",
-  "vertikal": "dugun",
+  "kalem": "kahvalti-takimi",
+  "vertikal": "ev-kurma",
   "tarih": "2026-07-25",
   "toplam_urun": 21,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "json-ld"
   ],
-  "genel_medyan": 8999,
+  "genel_medyan": 900,
   "segmentler": {
     "dusuk": {
-      "min": 1503,
-      "medyan": 3391,
-      "max": 5299,
+      "min": 599,
+      "medyan": 679,
+      "max": 853,
       "urun_sayisi": 6
     },
     "orta": {
-      "min": 6460,
-      "medyan": 14153,
-      "max": 25000,
+      "min": 869,
+      "medyan": 900,
+      "max": 1069,
       "urun_sayisi": 10
     },
     "luks": {
-      "min": 30959,
-      "medyan": 40000,
-      "max": 65000,
+      "min": 1078,
+      "medyan": 1100,
+      "max": 1399,
       "urun_sayisi": 5
     }
   }

@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Koltuk Takimi"
+  ],
+  "kalem": "koltuk-takimi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-07-25",
+  "toplam_urun": 20,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 38306,
+  "segmentler": {
+    "dusuk": {
+      "min": 10514,
+      "medyan": 24074,
+      "max": 29589,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 30806,
+      "medyan": 38739,
+      "max": 43114,
+      "urun_sayisi": 10
+    },
+    "luks": {
+      "min": 43889,
+      "medyan": 52719,
+      "max": 62848,
+      "urun_sayisi": 4
+    }
+  }
+}
