@@ -68,7 +68,15 @@ HEADERS = {
     "User-Agent": USER_AGENT_TARAYICI,
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
     "Accept-Language": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7",
-    "Accept-Encoding": "gzip, deflate, br",
+    # DIKKAT: Accept-Encoding'i BILEREK burada BELIRTMIYORUZ. Once
+    # "gzip, deflate, br" olarak sabitlenmisti - bu sunucuya "brotli'yi de
+    # cozebilirim" diyordu ama `requests`/urllib3 brotli decoder'i
+    # KURULU DEGILSE gelen br-sikistirilmis yaniti cozemiyor, r.text
+    # cop/anlamsiz karakterlere donusuyor (Yavuz'un Ramsey/Atasay/Armut/
+    # DugunBuketi testlerinde 2026-07-24'te tam olarak bu goruldu - "0
+    # urun" aslinda CSS secici eksikligi degil, hic okunamayan bozuk
+    # veriydi). `requests` bu basligi biz vermezsek KENDI KURULU
+    # decoder'larina gore doğru ve guvenli sekilde otomatik olusturur.
     "Connection": "keep-alive",
     "Upgrade-Insecure-Requests": "1",
     "Sec-Fetch-Dest": "document",

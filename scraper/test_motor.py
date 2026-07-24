@@ -80,6 +80,23 @@ CSS_HTML = """
 BOS_HTML = "<html><body><p>Urun yok</p></body></html>"
 
 
+class HeaderRegresyonTestleri(unittest.TestCase):
+    """2026-07-24: HEADERS icinde 'Accept-Encoding: ...br' sabitlenmisti -
+    urllib3/requests brotli decoder'i kurulu degilse br-sikistirilmis
+    yanitlar cozulemeyip r.text cop karakterlere donusuyordu (Yavuz'un
+    Ramsey/Atasay/Armut/DugunBuketi testlerinde goruldu - 'CSS secici yok'
+    sanilan sorun aslinda hic okunamayan bozuk veriydi). Bir daha
+    eklenmesin diye kilitleyen test."""
+
+    def test_accept_encoding_elle_belirtilmemis(self):
+        self.assertNotIn(
+            "Accept-Encoding", motor.HEADERS,
+            "Accept-Encoding elle sabitlenirse brotli decoder kurulu "
+            "olmayan ortamlarda r.text cop karakterlere donusebilir - "
+            "requests'in kendi otomatik degerine birak.",
+        )
+
+
 class FiyatAyiklaTestleri(unittest.TestCase):
     def test_turkce_bin_ayirici_ve_ondalik(self):
         self.assertEqual(motor.fiyat_ayikla("45.999,00 TL"), 45999.0)
