@@ -56,7 +56,27 @@ def tani(url: str) -> None:
     if html is None:
         return
     print(f"Yanit uzunlugu: {len(html)} karakter\n")
+
+    print("=== HAM HTML - ilk 1500 karakter (JS-render/SPA/captcha teshisi icin) ===")
+    print(html[:1500])
+    print("=== HAM HTML - son 500 karakter ===")
+    print(html[-500:])
+    print()
+
     soup = BeautifulSoup(html, "html.parser")
+
+    # SPA/JS-render belirtileri: sayfa gercekte urun icermiyor olabilir,
+    # sadece bos bir "app" kabugu + JS bundle donuyor olabilir.
+    bos_kapsayicilar = soup.select("#root, #app, #__next, [data-reactroot]")
+    script_sayisi = len(soup.find_all("script"))
+    print(f"=== SPA/JS-render belirtileri ===")
+    print(f"  <script> etiketi sayisi: {script_sayisi}")
+    print(f"  #root/#app/#__next kapsayici sayisi: {len(bos_kapsayicilar)}")
+    for k in bos_kapsayicilar[:2]:
+        ic_uzunluk = len(k.get_text(strip=True))
+        print(f"    {k.get('id') or k.get('class')}: ic metin uzunlugu {ic_uzunluk} karakter"
+              f"{' (BOS - JS henuz doldurmamis olabilir)' if ic_uzunluk < 20 else ''}")
+    print()
 
     json_ld = soup.find_all("script", type="application/ld+json")
     print(f"=== JSON-LD script sayisi: {len(json_ld)} ===")

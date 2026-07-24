@@ -346,6 +346,11 @@ def getir_playwright(url: str, deneme: int = 2, ilk_bekleme: float = 2.0):
                         extra_http_headers={"Accept-Language": HEADERS["Accept-Language"]},
                     )
                     sayfa.goto(url, timeout=30_000, wait_until="domcontentloaded")
+                    # SPA/JS ile render edilen siteler icin: domcontentloaded
+                    # cok erken tetiklenir (urun listesi henuz JS ile
+                    # doldurulmadan). Sabit bir bekleme ile hydration'in
+                    # oturmasina izin ver.
+                    sayfa.wait_for_timeout(2500)
                     return sayfa.content()
                 finally:
                     tarayici.close()
