@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metodoloji: Ev Kurma Maliyeti Verisi Nasıl Derleniyor? | Maliyetine.com.tr</title>
+<meta name="description" content="Maliyetine.com.tr ev kurma maliyeti verisini nereden, nasıl ve hangi kurallarla topluyor? Kaynaklar, segment tanımı, sağlık kontrolü ve bilinen sınırlar.">
+<link rel="canonical" href="https://maliyetine.com.tr/ev-kurma/metodoloji/">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<header class="ust-bar">
+  <div class="kapsayici">
+    <a href="/" class="logo">maliyet<span>ine</span>.com.tr</a>
+    <nav class="ust-menu">
+      <a href="/ev-kurma/">Ev Kurma Endeksi</a>
+      <a href="/ev-kurma/hesaplayici/">Hesaplayıcı</a>
+    </nav>
+  </div>
+</header>
+
+<main class="kapsayici">
+
+  <h1>Bu Rakamlar Nereden Geliyor?</h1>
+
+  <div class="cevap-blok">
+    Ev kurma endeksindeki fiyatların <strong>tamamı</strong> gerçek
+    e-ticaret sitelerinden, robots.txt kurallarına uygun şekilde aylık
+    olarak kazınır — yapay zeka burada sadece ham veriyi temizler ve
+    kategorize eder, fiyatı asla üretmez. Bu endekste
+    <span class="tahmini-etiket">Tahmini</span> kalem <strong>yoktur</strong>:
+    42 kalemin hepsi tek tek fiziksel bir ürüne karşılık geldiği için,
+    her birinin fiyatı doğrudan gerçek ürün listelerinden ölçülebiliyor.
+  </div>
+
+  <div class="uyari-kutu">
+    <strong>Bilinen sınır — tek kaynak.</strong> Bu endeks şu an tek bir
+    bağımsız kaynaktan (Trendyol) besleniyor. Kendi
+    <a href="#cok-kaynak">çok kaynak kuralımıza</a> göre bu yeterli değil:
+    tek kaynak, o sitenin fiyat politikasını yansıtır — piyasanın
+    tamamını değil. İkinci bağımsız kaynak eklenene kadar bu rakamları
+    bir <em>gösterge</em> olarak okuyun. Bunu gizlemek yerine burada ve
+    endeks sayfasının en üstünde açıkça belirtiyoruz.
+  </div>
+
+  <h2 id="cok-kaynak">Neden tek kaynağa güvenmiyoruz?</h2>
+  <p>
+    Tek bir siteye dayanan bir rakam, aslında piyasayı değil o sitenin
+    kendi fiyat politikasını yansıtır. Ayrıca kırılgandır: site tasarımını
+    değiştirdiğinde ya da erişimi engellediğinde endeks tamamen durur.
+    Bu yüzden her kalem için mümkün olduğunca çok
+    <strong>bağımsız</strong> kaynağı (hedef: en az 2, ideal 3) bir araya
+    getirmeyi hedefliyoruz. Ev kurma vertikali bu hedefe
+    <strong>henüz ulaşmadı</strong> — düğün vertikalinde ise 10 bağımsız
+    kaynak kullanılıyor.
+  </p>
+
+  <h3>Kaynak türleri</h3>
+  <ul>
+    <li><strong>Genel e-ticaret / pazaryerleri</strong> — geniş örneklem,
+      geniş segment aralığı. (Şu an kullanılan: Trendyol.)</li>
+    <li><strong>Kategori mağazaları</strong> (beyaz eşya, mobilya,
+      yapı market) — planlanan ikinci kaynak katmanı.</li>
+    <li><strong>Marka siteleri</strong> — üst segment için daha gerçekçi
+      liste fiyatı.</li>
+  </ul>
+
+  <h2>Çapraz doğrulama</h2>
+  <p>
+    Bir kalem için ≥2 sağlıklı bağımsız kaynak olduğunda, genel
+    medyanlarını karşılaştırırız. Aradaki fark %30'u aşarsa bunu
+    <strong>gizlemeyiz</strong> — endeks sayfasında açıkça bir uyarı
+    olarak gösterilir. Ev kurma endeksinde şu an tek kaynak olduğu için
+    çapraz doğrulama <strong>çalışmıyor</strong>; ikinci kaynak eklendiğinde
+    otomatik devreye girecek.
+  </p>
+
+  <h2>Segment tanımı</h2>
+  <p>Her kalem için toplanan tüm fiyatlar üç segmente ayrılır (persentil bazlı):</p>
+  <table>
+    <thead><tr><th>Segment</th><th>Tanım</th></tr></thead>
+    <tbody>
+      <tr><td>Ekonomik</td><td>≤ 25. persentil (P25)</td></tr>
+      <tr><td>Orta</td><td>P25 – P75 arası</td></tr>
+      <tr><td>Lüks</td><td>&gt; 75. persentil (P75)</td></tr>
+    </tbody>
+  </table>
+  <p>Birden fazla kaynak olan kalemlerde, segment değeri her kaynağın
+    kendi medyanının medyanı alınarak hesaplanır — ham fiyat noktaları
+    kaynaklar arasında karıştırılmaz, tek bir sapkın kaynağın sonucu
+    domine etmesi engellenir.</p>
+
+  <h2>Sağlık kontrolü</h2>
+  <p>
+    Bir kaynak normalde belirli bir ürün sayısı döndürüyorsa ve bir ay
+    aniden çok azını döndürürse (ör. site tasarımı değişmiş, erişim
+    engellenmiş), bu veri <strong>sessizce kabul edilmez</strong> —
+    otomatik olarak karantinaya alınır ve endekse dahil edilmez.
+  </p>
+
+  <h2>Nazik kazıma ilkeleri</h2>
+  <ul>
+    <li>Her hedef URL, kazımadan önce robots.txt'e karşı otomatik kontrol edilir; izin vermeyen sayfalar kullanılmaz.</li>
+    <li>İstekler arası bekleme süresi bırakılır, agresif/paralel istek atılmaz.</li>
+    <li>Kazıma ayda bir kez çalışır — gerçek zamanlı veya sürekli değildir.</li>
+    <li>Aktif bot-tespiti (ör. Cloudflare zorlukları) atlatılmaya çalışılmaz — bir site bunu kullanıyorsa o kaynak bilerek bırakılır.</li>
+  </ul>
+
+  <h2>Neyi ölçmüyoruz?</h2>
+  <p>
+    Bu endeks <strong>taşınabilir eşyayı</strong> ölçer: beyaz eşya,
+    mobilya, elektronik, mutfak ve tekstil. Kapsam dışında kalanlar:
+  </p>
+  <ul>
+    <li>Konutun kendisi (satın alma / kira / depozito).</li>
+    <li>Tadilat, boya, tesisat, dolap gibi işçilik gerektiren kalemler —
+      bunlar ayrı bir vertikal olarak planlanıyor.</li>
+    <li>Nakliye ve montaj ücretleri.</li>
+    <li>Temizlik malzemesi, saklama kutusu gibi tek bir net ürün
+      karşılığı olmayan sarf kalemleri.</li>
+  </ul>
+  <p>Ayrıca endeks, her kalemden <strong>bir adet</strong> alındığını
+    varsayar. İki komodin ya da üç halı alacaksanız gerçek maliyetiniz
+    daha yüksek olur.</p>
+
+  <h2>Güncelleme sıklığı</h2>
+  <p>Veri ayda bir otomatik olarak yenilenir. Her sayfada son güncelleme
+    tarihi görünür. Yıl değiştikçe endeks o yılın verisini yansıtacak
+    şekilde güncellenir.</p>
+
+  <p><a href="/ev-kurma/">← Ev kurma endeksine dön</a></p>
+
+</main>
+
+<footer>
+  <div class="kapsayici">
+    <div>© 2026 Maliyetine.com.tr</div>
+    <nav>
+      <a href="/ev-kurma/">Ev Kurma Endeksi</a>
+      <a href="/ev-kurma/hesaplayici/">Hesaplayıcı</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

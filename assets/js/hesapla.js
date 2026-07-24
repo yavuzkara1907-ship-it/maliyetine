@@ -1,10 +1,10 @@
 // Saf hesaplama mantigi - DOM'a bagimli degil, hem tarayicida hem
-// Node.js testlerinde calisir (dugun-hesapla.test.js).
+// Node.js testlerinde calisir (hesapla.test.js).
 (function (root, factory) {
   if (typeof module === "object" && module.exports) {
     module.exports = factory();
   } else {
-    root.dugunHesapla = factory();
+    root.maliyetHesapla = factory();
   }
 })(typeof self !== "undefined" ? self : this, function () {
   const SEGMENT_ANAHTARI = { ekonomik: "dusuk", orta: "orta", luks: "luks" };

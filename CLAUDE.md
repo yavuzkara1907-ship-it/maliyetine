@@ -174,17 +174,27 @@ Hesaplayıcı bu kalemleri toplar. Her kalem: segment + kaynak + tarih.
   **ÇOK KAYNAK KURALI henüz karşılanmıyor** (hepsi tek kaynaklı) —
   ikinci bağımsız kaynak (Hepsiburada, Vatan, Koçtaş, IKEA vb.) sonraki
   turda aranmalı.
-- **Henüz doğrulanmadı:** Yavuz'un yerelinde `python motor.py`
-  çalıştırılıp hangi kaynakların gerçekten ürün döndürdüğü (JSON-LD/CSS
-  katmanı) görülmeli — düğün vertikalinde olduğu gibi bazı kategori
-  sayfaları farklı şablon kullanabilir (`sayfa_tani.py` gerekebilir).
-- **Frontend henüz yok** — `/ev-kurma/` sayfaları (endeks/hesaplayıcı/
-  metodoloji) bilerek ERTELENDİ, önce gerçek veri akışı doğrulanacak
-  (düğün'de yaşanan "agrega.py şema uyumsuzluğu" bug'ı tekrarlamamak
-  için — kör inşa etmek yerine gerçek veriye karşı test edilecek).
-  `sayfa_uret.py` şu an sadece "dugun" vertikaline özel (hardcoded) —
-  ev-kurma verisi geldiğinde bu script vertikal-agnostik hale
-  getirilmeli (agrega.py zaten `--vertikal` parametresiyle genel).
+- ✅ **Kazıma DOĞRULANDI (2026-07-25, Yavuz'un yerelinde):** `python
+  motor.py` çalıştırıldı, **42 kalemin 42'si de gerçek ürün döndürdü**
+  (hepsi Trendyol, JSON-LD/CSS katmanıyla). Düğün'de yaşanan "bazı
+  kategori sayfaları farklı şablon kullanıyor" sorunu ev-kurma'da HİÇ
+  çıkmadı — Trendyol kategori sayfaları tutarlı. `scraper/veri/ev-kurma/`
+  altında 42 snapshot dosyası mevcut, hepsinde segment kırılımı
+  (düşük/orta/lüks) dolu.
+- ✅ **Frontend TAMAMLANDI (2026-07-25):** `/ev-kurma/` üçlüsü
+  (endeks + hesaplayıcı + metodoloji) yayında, gerçek veriyle.
+  **Orta segment toplam: 353.827 TL** (ekonomik 188.949 / lüks 576.699).
+  Tarayıcıda uçtan uca doğrulandı (üç segmentin de bağımsız hesapla ile
+  birebir eşleştiği, 42 satırın tamamının render olduğu, console'da JS
+  hatası olmadığı, tüm sayfalardaki tüm linklerin 200 döndüğü).
+- `sayfa_uret.py` **v0.2'de vertikal-agnostik hale getirildi** —
+  vertikaller artık `VERTIKALLER` sözlüğünde tanımlanıyor (kalem listesi,
+  başlıklar, ölçek alanı, dataset meta). Yeni vertikal eklemek = bir
+  sözlük girdisi + bir kalem listesi, kod değil. Düğün sayfasının
+  refactor sonrası **byte-byte aynı** kaldığı diff ile doğrulandı
+  (regresyon yok). `assets/js/dugun-hesapla.js` → `hesapla.js` olarak
+  yeniden adlandırıldı (global: `dugunHesapla` → `maliyetHesapla`),
+  zaten tamamen jenerikti; her iki vertikal de aynı dosyayı kullanıyor.
 
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
@@ -689,11 +699,43 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
      çapraz-doğrulama şema uyumsuzluğu bulunup düzeltildi (bkz.
      Yapılacaklar'daki ilgili madde). `/dugun/` artık "414.549 TL" gibi
      gerçek, kaynaklı bir toplam gösteriyor; Yavuz doğruladı.
+   - **DÜZELTİLDİ (2026-07-25) — "N bağımsız kaynak" sayısı YANLIŞ
+     hesaplanıyordu (dürüstlük bug'ı).** Cevap bloğu, kalem başına
+     `kaynak_sayisi` alanlarını TOPLUYORDU. Aynı site birden fazla kalemi
+     besleyince her kalemde tekrar sayılıyordu: düğün "20 bağımsız
+     kaynak" diyordu ama gerçekte 10 site vardı; ev-kurma ise "42
+     bağımsız kaynak" diyecekti — oysa 42 kalemin HEPSİ tek bir siteden
+     (Trendyol) geliyor. Bu, projenin en temel güven iddiasını
+     (ÇOK KAYNAK KURALI) olduğundan güçlü gösteriyordu. Düzeltme:
+     `bagimsiz_siteler()` benzersiz `site` değerlerini sayıyor. Düğün
+     artık doğru şekilde "10", ev-kurma "1" diyor. 3 regresyon testiyle
+     kilitlendi.
+   - **Yeni: tek kaynak uyarısı.** Bir vertikal tek siteden besleniyorsa
+     endeks sayfasının en üstünde görünür bir uyarı kutusu çıkıyor
+     ("Tek kaynak, o sitenin fiyat politikasını yansıtır — piyasanın
+     tamamını değil"). ÇOK KAYNAK KURALI'nın karşılanmadığı gizlenmiyor,
+     sayfada açıkça söyleniyor (dürüstlük ürünün parçası ilkesi).
+     Ev-kurma'da şu an görünüyor, düğün'de görünmüyor (10 kaynak).
+   - **✅ EV KURMA ÜÇLÜSÜ EKLENDİ (2026-07-25):** `/ev-kurma/` (endeks,
+     `sayfa_uret.py --vertikal ev-kurma` ile üretiliyor),
+     `/ev-kurma/hesaplayici/` (42 kalem, 7 grup halinde, tümünü seç/kaldır
+     düğmeleri), `/ev-kurma/metodoloji/`. Ana sayfaya ve `sitemap.xml`'e
+     eklendi. Düğün'den yapısal farkları: davetli/ölçek girdisi YOK
+     (tüm kalemler "sabit" birimli), kalemler `grup` alanıyla
+     kategorilere ayrılıyor (Beyaz eşya, Mobilya, Yatak odası,
+     Elektronik, Küçük ev aleti, Mutfak, Tekstil), ve **hiç tahmini
+     kalem yok** — 42 kalemin tamamı gerçek kaynaklı, bu yüzden cevap
+     metni "tamamı ... bağımsız kaynaktan derlenen" diyor ve tahmini
+     kırılımı hiç kurmuyor (ayrı kod yolu, testle kilitli).
 4. **Metodoloji sayfası + schema.org işaretlemesi** — ✅ **Tamamlandı
-   (2026-07-24).** `/dugun/metodoloji/` — kaynak türleri, çapraz doğrulama
+   (2026-07-24, ev-kurma 2026-07-25).** `/dugun/metodoloji/` ve
+   `/ev-kurma/metodoloji/` — kaynak türleri, çapraz doğrulama
    kuralı, segment tanımı (persentil), sağlık kontrolü, nazik kazıma
    ilkeleri, kapsanmayan kalemler notu. Statik (elle yazıldı, veriye bağımlı
-   değil) - schema.org işaretlemesi `/dugun/`'de (sayfa_uret.py) yapıldı.
+   değil) - schema.org işaretlemesi endeks sayfalarında (sayfa_uret.py)
+   yapıldı. Ev-kurma metodolojisi ayrıca "tek kaynak" sınırını ve
+   "neyi ölçmüyoruz" bölümünü (konut, tadilat/işçilik, nakliye, sarf
+   malzemesi; her kalemden 1 adet varsayımı) açıkça anlatıyor.
 5. **Yayın** — Cloudflare Pages, custom domain, SSL. Repo build gerektirmiyor
    (statik dosyalar kökte) — Cloudflare Pages ayarı: Build command yok,
    Output directory `/`. **Yavuz'un tarafında kalan iş:** Cloudflare
@@ -702,6 +744,9 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
 6. **Aylık otomasyon** — ✅ **Tamamlandı (2026-07-24).**
    `.github/workflows/aylik-veri-guncelleme.yml`: `python motor.py` →
    `python agrega.py` → `python sayfa_uret.py` → değişiklik varsa commit+push.
+   **2026-07-25'te ev-kurma eklendi:** agrega+sayfa_uret adımı artık
+   `for vertikal in dugun ev-kurma` döngüsüyle her iki vertikali de
+   işliyor, commit'e `ev-kurma/` dizini de dahil.
    Tetikleyiciler: aylık cron (`0 6 1 * *`, sadece default branch'teki
    workflow dosyasından ateşler — bu yüzden main'e alınana kadar
    çalışmayacak) + `workflow_dispatch` (elle tetikleme, branch fark
@@ -824,6 +869,27 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
       kimlik doğrulama sorunu yaşadı (GitHub artık şifre kabul etmiyor,
       Personal Access Token gerekiyor) - PAT oluşturup Keychain'e
       kaydedilmesiyle çözüldü, artık sorunsuz push edebiliyor.
+- [x] **EV KURMA VERTİKALİ YAYINA HAZIR (2026-07-25).** Kazıma
+      doğrulandı (42/42 kalem gerçek ürün döndürdü), `agrega.py
+      --vertikal ev-kurma` çalıştırıldı (`/veri/ev-kurma.json`),
+      `sayfa_uret.py` vertikal-agnostik hale getirildi, `/ev-kurma/`
+      üçlüsü (endeks+hesaplayıcı+metodoloji) üretildi, ana sayfa +
+      sitemap + GitHub Actions güncellendi. Orta segment: **353.827 TL**.
+      Tarayıcıda uçtan uca doğrulandı. 87 Python + 15 Node testi PASS.
+- [x] **Dürüstlük bug'ı düzeltildi (2026-07-25):** "N bağımsız kaynak"
+      ifadesi kalem başına `kaynak_sayisi`'nı topluyordu, yani aynı siteyi
+      her kalemde tekrar sayıyordu (düğün "20" diyordu, gerçek 10). Artık
+      benzersiz site sayılıyor. Ayrıca tek kaynaklı vertikaller için
+      görünür "tek kaynak uyarısı" eklendi.
+- [ ] **ACİL SIRADAKİ İŞ — ev-kurma için 2. bağımsız kaynak.** 42 kalemin
+      hepsi şu an sadece Trendyol'dan geliyor, ÇOK KAYNAK KURALI
+      karşılanmıyor (sayfada dürüstçe uyarı olarak gösteriliyor ama bu
+      kalıcı bir durum olmamalı). Aday kaynaklar: Hepsiburada (robots.txt
+      403 vermişti, tekrar bakılabilir), Vatan Bilgisayar, Teknosa,
+      MediaMarkt (elektronik/beyaz eşya), Koçtaş/IKEA/Bellona/İstikbal
+      (mobilya), Karaca/English Home (mutfak/tekstil). Kaynak eklenince
+      çapraz doğrulama otomatik devreye girer ve tek-kaynak uyarısı
+      kendiliğinden kaybolur.
 - [ ] Takı/altın (canlı gram fiyatı) için kaynak bulma
 - [ ] TÜİK doğrulama verisi entegrasyonu (ÇOK KAYNAK KURALI 5. katman)
 - [x] **GitHub Actions aylık otomasyon + sitemap.xml eklendi (2026-07-24).**

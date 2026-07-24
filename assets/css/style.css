@@ -360,3 +360,35 @@ footer a {
     font-size: 1.6rem;
   }
 }
+
+/* Ev kurma gibi cok kalemli vertikallerde kalem gruplama */
+.grup-satiri td {
+  background: var(--renk-zemin-alt);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--renk-metin-soluk);
+}
+
+.kalem-grup-basligi {
+  margin: 18px 0 8px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--renk-metin-soluk);
+}
+
+.kalem-grup-basligi:first-child {
+  margin-top: 0;
+}
+
+button.metin-buton {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--renk-vurgu);
+  text-decoration: underline;
+  cursor: pointer;
+}

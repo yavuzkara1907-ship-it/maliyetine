@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-maliyetine.com - Statik Sayfa Ureteci (v0.1)
+maliyetine.com - Statik Sayfa Ureteci (v0.2)
 
 /veri/{vertikal}.json'daki (agrega.py ciktisi) GERCEK sayilari statik
 HTML'e gomer - GEO icin sart: AI botlarinin cogu (GPTBot vb.) JavaScript
@@ -9,10 +9,15 @@ calistirmaz, bu yuzden cevap bloğundaki rakam sayfa kaynagi HTML'inde
 kisitlamaya tabi degil - ama endeks sayfasi (GEO'nun hedefi) build-time'da
 uretilir.
 
+v0.2: vertikal-agnostik. Her vertikal VERTIKALLER sozlugunde tanimlanir
+(kalem listesi, basliklar, olcek alani); yeni vertikal eklemek = bir
+sozluk girdisi, kod degil.
+
 Aylik otomasyonda sirasi: motor.py -> agrega.py -> sayfa_uret.py -> commit.
 
 Kullanim:
   python sayfa_uret.py --vertikal dugun
+  python sayfa_uret.py --vertikal ev-kurma
 """
 
 from __future__ import annotations
@@ -24,10 +29,8 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).parent
 SITE_KOK = BASE_DIR.parent
-VARSAYILAN_VERI = SITE_KOK / "veri" / "dugun.json"
-VARSAYILAN_HEDEF = SITE_KOK / "dugun" / "index.html"
 
-# NOT: assets/js/dugun-kalemler.js ile ayni liste (kasitli kucuk
+# NOT: assets/js/{vertikal}-kalemler.js ile ayni liste (kasitli kucuk
 # tekrar - iki dosya arasinda build araci olmadan paylasmak, "basit tut"
 # ilkesine gore mevcut kod hacmine deger katmiyor; liste kisa ve nadiren
 # degisiyor).
@@ -100,15 +103,138 @@ DUGUN_KALEMLERI_TAHMINI = [
     },
 ]
 
+# Ev kurma vertikali TAMAMEN urun bazli - her kalem tek bir fiziksel urun,
+# hepsi gercek kazima kaynagindan (Trendyol) geliyor. Tahmini kalem YOK.
+EV_KURMA_KALEMLERI = [
+    {"id": "buzdolabi", "ad": "Buzdolabı", "birim": "sabit", "grup": "Beyaz eşya"},
+    {"id": "camasir-makinesi", "ad": "Çamaşır Makinesi", "birim": "sabit", "grup": "Beyaz eşya"},
+    {"id": "kurutma-makinesi", "ad": "Kurutma Makinesi", "birim": "sabit", "grup": "Beyaz eşya"},
+    {"id": "bulasik-makinesi", "ad": "Bulaşık Makinesi", "birim": "sabit", "grup": "Beyaz eşya"},
+    {"id": "firin-ocak", "ad": "Ankastre Fırın / Ocak Seti", "birim": "sabit", "grup": "Beyaz eşya"},
+    {"id": "davlumbaz", "ad": "Davlumbaz", "birim": "sabit", "grup": "Beyaz eşya"},
+    {"id": "mikrodalga", "ad": "Mikrodalga Fırın", "birim": "sabit", "grup": "Beyaz eşya"},
+    {"id": "klima", "ad": "Klima", "birim": "sabit", "grup": "Beyaz eşya"},
+
+    {"id": "koltuk-takimi", "ad": "Koltuk Takımı", "birim": "sabit", "grup": "Mobilya"},
+    {"id": "yemek-masasi", "ad": "Yemek Odası Takımı", "birim": "sabit", "grup": "Mobilya"},
+    {"id": "tv-unitesi", "ad": "TV Ünitesi", "birim": "sabit", "grup": "Mobilya"},
+    {"id": "sehpa", "ad": "Orta Sehpa", "birim": "sabit", "grup": "Mobilya"},
+    {"id": "konsol", "ad": "Konsol", "birim": "sabit", "grup": "Mobilya"},
+    {"id": "yatak", "ad": "Çift Kişilik Yatak", "birim": "sabit", "grup": "Yatak odası"},
+    {"id": "karyola", "ad": "Karyola / Baza", "birim": "sabit", "grup": "Yatak odası"},
+    {"id": "gardirop", "ad": "Gardırop", "birim": "sabit", "grup": "Yatak odası"},
+    {"id": "komodin", "ad": "Komodin", "birim": "sabit", "grup": "Yatak odası"},
+    {"id": "sifonyer", "ad": "Şifonyer", "birim": "sabit", "grup": "Yatak odası"},
+    {"id": "boy-aynasi", "ad": "Boy Aynası", "birim": "sabit", "grup": "Yatak odası"},
+
+    {"id": "televizyon", "ad": "Televizyon (4K)", "birim": "sabit", "grup": "Elektronik"},
+    {"id": "supurge", "ad": "Robot Süpürge", "birim": "sabit", "grup": "Elektronik"},
+    {"id": "dikey-supurge", "ad": "Dikey Süpürge", "birim": "sabit", "grup": "Elektronik"},
+
+    {"id": "airfryer", "ad": "Airfryer", "birim": "sabit", "grup": "Küçük ev aleti"},
+    {"id": "kahve-makinesi", "ad": "Kahve Makinesi", "birim": "sabit", "grup": "Küçük ev aleti"},
+    {"id": "su-isitici", "ad": "Su Isıtıcı (Kettle)", "birim": "sabit", "grup": "Küçük ev aleti"},
+    {"id": "tost-makinesi", "ad": "Tost Makinesi", "birim": "sabit", "grup": "Küçük ev aleti"},
+    {"id": "blender", "ad": "Blender", "birim": "sabit", "grup": "Küçük ev aleti"},
+    {"id": "mutfak-robotu", "ad": "Mutfak Robotu / Doğrayıcı", "birim": "sabit", "grup": "Küçük ev aleti"},
+    {"id": "utu", "ad": "Ütü", "birim": "sabit", "grup": "Küçük ev aleti"},
+    {"id": "sac-kurutma-makinesi", "ad": "Saç Kurutma Makinesi", "birim": "sabit", "grup": "Küçük ev aleti"},
+
+    {"id": "tencere-seti", "ad": "Tencere Seti", "birim": "sabit", "grup": "Mutfak"},
+    {"id": "tava-seti", "ad": "Tava Seti", "birim": "sabit", "grup": "Mutfak"},
+    {"id": "catal-kasik-bicak-takimi", "ad": "Çatal-Kaşık-Bıçak Takımı", "birim": "sabit", "grup": "Mutfak"},
+    {"id": "yemek-takimi", "ad": "Yemek Takımı", "birim": "sabit", "grup": "Mutfak"},
+    {"id": "kahvalti-takimi", "ad": "Kahvaltı Takımı", "birim": "sabit", "grup": "Mutfak"},
+    {"id": "bardak-takimi", "ad": "Bardak Takımı", "birim": "sabit", "grup": "Mutfak"},
+
+    {"id": "nevresim-takimi", "ad": "Nevresim Takımı", "birim": "sabit", "grup": "Tekstil"},
+    {"id": "havlu-takimi", "ad": "Havlu Takımı", "birim": "sabit", "grup": "Tekstil"},
+    {"id": "bornoz", "ad": "Bornoz", "birim": "sabit", "grup": "Tekstil"},
+    {"id": "perde", "ad": "Perde", "birim": "sabit", "grup": "Tekstil"},
+    {"id": "hali", "ad": "Halı", "birim": "sabit", "grup": "Tekstil"},
+    {"id": "aydinlatma", "ad": "Avize / Aydınlatma", "birim": "sabit", "grup": "Tekstil"},
+]
+
+VERTIKALLER = {
+    "dugun": {
+        "ad": "Düğün",
+        "yol": "dugun",
+        "kalemler": DUGUN_KALEMLERI,
+        "tahmini_kalemler": DUGUN_KALEMLERI_TAHMINI,
+        "baslik": "2026'da İstanbul'da Düğün Kaça Mal Olur?",
+        "soru": "2026'da İstanbul'da düğün kaça mal olur?",
+        "sayfa_basligi": "2026'da Düğün Kaça Mal Olur? | Maliyetine.com.tr",
+        "meta_aciklama": (
+            "Gerçek e-ticaret ve ilan verisinden derlenmiş, aylık güncellenen düğün "
+            "maliyeti endeksi. Gelinlik, damatlık, alyans, salon ve daha fazlası — "
+            "kaynak ve tarihiyle."
+        ),
+        "dataset_ad": "Maliyetine Düğün Maliyeti Endeksi",
+        "dataset_aciklama": (
+            "Türkiye'de düğün kalemlerinin gerçek e-ticaret ve ilan verisinden "
+            "derlenen aylık fiyat endeksi."
+        ),
+        # kisi_basi kalemleri carpan olcegi (davetli sayisi)
+        "olcek_varsayilan": 150,
+        "ornek_ifade": "{olcek} kişilik, orta segment bir düğünün",
+        "hesaplayici_daveti": "Kendi davetli sayınız ve segmentinizle hesaplayın →",
+    },
+    "ev-kurma": {
+        "ad": "Ev Kurma",
+        "yol": "ev-kurma",
+        "kalemler": EV_KURMA_KALEMLERI,
+        "tahmini_kalemler": [],
+        "baslik": "2026'da Sıfırdan Ev Kurmak Kaça Mal Olur?",
+        "soru": "2026'da sıfırdan ev kurmak kaça mal olur?",
+        "sayfa_basligi": "2026'da Ev Kurmak Kaça Mal Olur? | Maliyetine.com.tr",
+        "meta_aciklama": (
+            "Gerçek e-ticaret verisinden derlenmiş, aylık güncellenen ev kurma "
+            "maliyeti endeksi. Beyaz eşya, mobilya, mutfak, tekstil — 42 kalem, "
+            "kaynak ve tarihiyle."
+        ),
+        "dataset_ad": "Maliyetine Ev Kurma Maliyeti Endeksi",
+        "dataset_aciklama": (
+            "Türkiye'de sıfırdan ev kurmak için gereken beyaz eşya, mobilya, "
+            "mutfak ve tekstil kalemlerinin gerçek e-ticaret verisinden derlenen "
+            "aylık fiyat endeksi."
+        ),
+        "olcek_varsayilan": 1,
+        "ornek_ifade": "orta segmentte sıfırdan bir ev kurmanın",
+        "hesaplayici_daveti": "Kendi kalem seçimleriniz ve segmentinizle hesaplayın →",
+    },
+}
+
 SEGMENT_ANAHTARI = {"ekonomik": "dusuk", "orta": "orta", "luks": "luks"}
 SEGMENT_ETIKETLERI = {"dusuk": "Ekonomik", "orta": "Orta", "luks": "Lüks"}
 
-ORNEK_DAVETLI_SAYISI = 150
 ORNEK_SEGMENT = "orta"
+
+
+def vertikal_conf(vertikal: str) -> dict:
+    if vertikal not in VERTIKALLER:
+        raise ValueError(
+            f"Bilinmeyen vertikal: {vertikal}. Tanimlilar: {', '.join(VERTIKALLER)}"
+        )
+    return VERTIKALLER[vertikal]
 
 
 def _para(n: int) -> str:
     return f"{n:,.0f}".replace(",", ".") + " TL"
+
+
+def bagimsiz_siteler(kalemler: dict, kalem_idleri: set[str]) -> set[str]:
+    """Kac AYRI SITE'den veri geldigini doner.
+
+    kalem basina "kaynak_sayisi"nin toplami DEGIL: ayni site (or. Trendyol)
+    20 kalemi de beslediginde bu toplam 20 cikar ve okuyucuya 20 farkli
+    kaynak izlenimi verir. COK KAYNAK KURALI'nin olctugu sey site
+    cesitliligi, o yuzden benzersiz site sayilir.
+    """
+    siteler = set()
+    for kalem_id in kalem_idleri:
+        for kaynak in kalemler.get(kalem_id, {}).get("kaynaklar", []):
+            siteler.add(kaynak["site"])
+    return siteler
 
 
 def kalem_deger(kalem_verisi: dict | None, segment_anahtari: str) -> int | None:
@@ -120,24 +246,24 @@ def kalem_deger(kalem_verisi: dict | None, segment_anahtari: str) -> int | None:
     return kalem_verisi.get("genel_medyan")
 
 
-def ornek_toplam_hesapla(kalemler: dict, davetli_sayisi: int, segment: str) -> tuple[int, list[dict]]:
+def ornek_toplam_hesapla(conf: dict, kalemler: dict, olcek: int, segment: str) -> tuple[int, list[dict]]:
     seg_anahtari = SEGMENT_ANAHTARI[segment]
     toplam = 0
     detaylar = []
-    for tanim in DUGUN_KALEMLERI:
+    for tanim in conf["kalemler"]:
         veri = kalemler.get(tanim["id"])
         deger = kalem_deger(veri, seg_anahtari)
         if deger is None:
             detaylar.append({**tanim, "veri_var": False, "tahmini_mi": False})
             continue
-        carpan = davetli_sayisi if tanim["birim"] == "kisi_basi" else 1
+        carpan = olcek if tanim["birim"] == "kisi_basi" else 1
         satir_toplam = round(deger * carpan)
         toplam += satir_toplam
         detaylar.append({**tanim, "veri_var": True, "tahmini_mi": False, "birim_fiyat": deger, "satir_toplam": satir_toplam})
 
-    for tanim in DUGUN_KALEMLERI_TAHMINI:
+    for tanim in conf["tahmini_kalemler"]:
         deger = tanim["tahmini"][seg_anahtari]
-        carpan = davetli_sayisi if tanim["birim"] == "kisi_basi" else 1
+        carpan = olcek if tanim["birim"] == "kisi_basi" else 1
         satir_toplam = round(deger * carpan)
         toplam += satir_toplam
         detaylar.append({
@@ -149,9 +275,14 @@ def ornek_toplam_hesapla(kalemler: dict, davetli_sayisi: int, segment: str) -> t
     return toplam, detaylar
 
 
-def _kalem_satirlari_html(kalemler: dict) -> str:
+def _kalem_satirlari_html(conf: dict, kalemler: dict) -> str:
     satirlar = []
-    for tanim in DUGUN_KALEMLERI:
+    onceki_grup = None
+    for tanim in conf["kalemler"]:
+        grup = tanim.get("grup")
+        if grup and grup != onceki_grup:
+            satirlar.append(f'<tr class="grup-satiri"><td colspan="5">{grup}</td></tr>')
+            onceki_grup = grup
         veri = kalemler.get(tanim["id"])
         if not veri:
             satirlar.append(
@@ -170,7 +301,7 @@ def _kalem_satirlari_html(kalemler: dict) -> str:
             f'<td class="sayi">{_para(degerler["luks"]) if degerler["luks"] else "—"}</td>'
             f'<td class="sayi">{veri.get("kaynak_sayisi", 0)}</td></tr>'
         )
-    for tanim in DUGUN_KALEMLERI_TAHMINI:
+    for tanim in conf["tahmini_kalemler"]:
         t = tanim["tahmini"]
         satirlar.append(
             f'<tr><td>{tanim["ad"]} <span class="tahmini-etiket" title="{tanim["kaynak_notu"]}">Tahmini</span></td>'
@@ -182,9 +313,10 @@ def _kalem_satirlari_html(kalemler: dict) -> str:
     return "\n".join(satirlar)
 
 
-def _capraz_dogrulama_uyarilari_html(kalemler: dict) -> str:
+def _capraz_dogrulama_uyarilari_html(conf: dict, kalemler: dict) -> str:
     uyarilar = []
-    ad_haritasi = {t["id"]: t["ad"] for t in DUGUN_KALEMLERI}
+    ad_haritasi = {t["id"]: t["ad"] for t in conf["kalemler"]}
+    yol = conf["yol"]
     for kalem_id, veri in kalemler.items():
         uyari = veri.get("capraz_dogrulama_uyarisi")
         if uyari:
@@ -192,7 +324,7 @@ def _capraz_dogrulama_uyarilari_html(kalemler: dict) -> str:
             uyarilar.append(
                 f"<li><strong>{ad}:</strong> kaynaklar arası fark %{uyari['fark_yuzdesi']:.0f} "
                 "— farklı segment/marka aralığını yansıtıyor olabilir, "
-                '<a href="/dugun/metodoloji/">metodolojiye bakın</a>.</li>'
+                f'<a href="/{yol}/metodoloji/">metodolojiye bakın</a>.</li>'
             )
     if not uyarilar:
         return ""
@@ -202,49 +334,98 @@ def _capraz_dogrulama_uyarilari_html(kalemler: dict) -> str:
     )
 
 
-def sayfa_uret(veri_dosyasi: Path = VARSAYILAN_VERI) -> str:
+def _tek_kaynak_uyarisi_html(conf: dict, siteler: set[str]) -> str:
+    """COK KAYNAK KURALI karsilanmadiginda bunu GIZLEME - sayfada soyle.
+
+    Tek kaynak, o sitenin fiyat politikasini yansitir, piyasayi degil
+    (bkz. CLAUDE.md). Okuyucunun bunu bilmesi gerekir.
+    """
+    if len(siteler) != 1:
+        return ""
+    site = next(iter(siteler)).capitalize()
+    return (
+        '<div class="uyari-kutu"><strong>Tek kaynak uyarısı:</strong> '
+        f"Bu endeksteki fiyatların tamamı şu an tek bir kaynaktan "
+        f"(<strong>{site}</strong>) derleniyor. Tek kaynak, o sitenin fiyat "
+        "politikasını yansıtır — piyasanın tamamını değil. İkinci bağımsız "
+        "kaynak eklenene kadar bu rakamları bir <em>gösterge</em> olarak "
+        f'okuyun. <a href="/{conf["yol"]}/metodoloji/">Neden önemli, bakın.</a>'
+        "</div>"
+    )
+
+
+def _tahmini_aciklama_html(conf: dict) -> str:
+    if not conf["tahmini_kalemler"]:
+        return (
+            "<p>Bu endeksteki kalemlerin <strong>tamamı</strong> gerçek, tarihli "
+            "kaynaklardan derlenmiştir — tahmini kalem yoktur. "
+            f'<a href="/{conf["yol"]}/metodoloji/">Yöntemi görün.</a></p>'
+        )
+    return (
+        '<p><span class="tahmini-etiket">Tahmini</span> etiketli kalemler henüz\n'
+        "    kazınan bir kaynağa dayanmıyor — genel piyasa araştırmasından\n"
+        "    alınmıştır, diğerleri gerçek/tarihli kaynaklardan derlenir.\n"
+        f'    <a href="/{conf["yol"]}/metodoloji/">Fark ne, bakın.</a></p>'
+    )
+
+
+def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str:
+    conf = vertikal_conf(vertikal)
+    if veri_dosyasi is None:
+        veri_dosyasi = SITE_KOK / "veri" / f"{vertikal}.json"
+
     if veri_dosyasi.exists():
         agregali = json.loads(veri_dosyasi.read_text(encoding="utf-8"))
     else:
-        agregali = {"vertikal": "dugun", "guncelleme_tarihi": None, "kalemler": {}}
+        agregali = {"vertikal": vertikal, "guncelleme_tarihi": None, "kalemler": {}}
 
     kalemler = agregali.get("kalemler", {})
     guncelleme_tarihi = agregali.get("guncelleme_tarihi")
     bugun = date.today().isoformat()
+    yol = conf["yol"]
+    olcek = conf["olcek_varsayilan"]
 
-    ornek_toplam, ornek_detaylar = ornek_toplam_hesapla(kalemler, ORNEK_DAVETLI_SAYISI, ORNEK_SEGMENT)
+    ornek_toplam, ornek_detaylar = ornek_toplam_hesapla(conf, kalemler, olcek, ORNEK_SEGMENT)
     kapsanan_detaylar = [d for d in ornek_detaylar if d["veri_var"]]
     gercek_detaylar = [d for d in kapsanan_detaylar if not d["tahmini_mi"]]
     tahmini_detaylar = [d for d in kapsanan_detaylar if d["tahmini_mi"]]
     gercek_toplam = sum(d["satir_toplam"] for d in gercek_detaylar)
     tahmini_toplam = sum(d["satir_toplam"] for d in tahmini_detaylar)
+    ornek_ifade = conf["ornek_ifade"].format(olcek=olcek)
 
     # "kalemler" dolu ama HEPSI genel_medyan=null (ör. o ay tum kaynaklar
     # 0 urun dondu) olabilir - bu durumda "0 TL" gibi yaniltici bir cevap
     # UYDURMAMAK icin gercek kapsanan kalem olup olmadigina bakiliyor,
     # sadece kalemler sozlugunun bos olmadigina degil. Tahmini kalemler
-    # (DUGUN_KALEMLERI_TAHMINI) her zaman deger urettigi icin bu ayrim
-    # "gercek kaynak var mi" sorusuna indirgeniyor - cevap metni buna
-    # gore GERCEK ile TAHMINI kismi ACIKCA ayirir, karistirmaz.
+    # her zaman deger urettigi icin bu ayrim "gercek kaynak var mi"
+    # sorusuna indirgeniyor - cevap metni buna gore GERCEK ile TAHMINI
+    # kismi ACIKCA ayirir, karistirmaz.
+    kullanilan_siteler: set[str] = set()
     if gercek_detaylar:
         kapsanan_idler = {d["id"] for d in gercek_detaylar}
-        kaynak_sayisi_toplam = sum(
-            v.get("kaynak_sayisi", 0) for k, v in kalemler.items() if k in kapsanan_idler
-        )
+        kullanilan_siteler = bagimsiz_siteler(kalemler, kapsanan_idler)
+        site_sayisi = len(kullanilan_siteler)
         cevap_metni = (
             f"Maliyetine'ye göre {guncelleme_tarihi or bugun} itibarıyla "
-            f"{ORNEK_DAVETLI_SAYISI} kişilik, orta segment bir düğünün "
-            f"<strong>{_para(ornek_toplam)}</strong> tutması bekleniyor. "
-            f"Bunun {_para(gercek_toplam)} tutarı {len(gercek_detaylar)} kalem için "
-            f"{kaynak_sayisi_toplam} bağımsız kaynaktan derlenen güncel fiyatlara, "
-            f"{_para(tahmini_toplam)} tutarı ise henüz kazınan bir kaynağı olmayan "
-            f"{len(tahmini_detaylar)} kalem için genel piyasa araştırmasına dayanır."
+            f"{ornek_ifade} <strong>{_para(ornek_toplam)}</strong> tutması bekleniyor. "
         )
+        if tahmini_detaylar:
+            cevap_metni += (
+                f"Bunun {_para(gercek_toplam)} tutarı {len(gercek_detaylar)} kalem için "
+                f"{site_sayisi} bağımsız kaynaktan derlenen güncel fiyatlara, "
+                f"{_para(tahmini_toplam)} tutarı ise henüz kazınan bir kaynağı olmayan "
+                f"{len(tahmini_detaylar)} kalem için genel piyasa araştırmasına dayanır."
+            )
+        else:
+            cevap_metni += (
+                f"Bu rakamın tamamı {len(gercek_detaylar)} kalem için "
+                f"{site_sayisi} bağımsız kaynaktan derlenen güncel fiyatlara dayanır."
+            )
         cevap_disable = ""
     elif tahmini_detaylar:
         cevap_metni = (
-            f"{ORNEK_DAVETLI_SAYISI} kişilik, orta segment bir düğün için "
-            f"kalem kalem toplam yaklaşık <strong>{_para(ornek_toplam)}</strong> "
+            f"{ornek_ifade} kalem kalem toplamı yaklaşık "
+            f"<strong>{_para(ornek_toplam)}</strong> "
             "— ancak bu rakam şu an TAMAMEN genel piyasa araştırmasına dayanıyor, "
             "hiçbir kalem henüz kazınan/tarihli bir kaynaktan doğrulanmadı. Gerçek "
             "veri toplandıkça bu sayı kaynaklı rakamlarla güncellenecek."
@@ -272,7 +453,7 @@ def sayfa_uret(veri_dosyasi: Path = VARSAYILAN_VERI) -> str:
                 "@type": "FAQPage",
                 "mainEntity": [{
                     "@type": "Question",
-                    "name": "2026'da İstanbul'da düğün kaça mal olur?",
+                    "name": conf["soru"],
                     "acceptedAnswer": {
                         "@type": "Answer",
                         "text": cevap_metni.replace("<strong>", "").replace("</strong>", ""),
@@ -281,8 +462,8 @@ def sayfa_uret(veri_dosyasi: Path = VARSAYILAN_VERI) -> str:
             },
             {
                 "@type": "Dataset",
-                "name": "Maliyetine Düğün Maliyeti Endeksi",
-                "description": "Türkiye'de düğün kalemlerinin gerçek e-ticaret ve ilan verisinden derlenen aylık fiyat endeksi.",
+                "name": conf["dataset_ad"],
+                "description": conf["dataset_aciklama"],
                 "dateModified": guncelleme_tarihi or bugun,
                 "creator": {"@type": "Organization", "name": "Maliyetine.com.tr"},
             },
@@ -294,9 +475,9 @@ def sayfa_uret(veri_dosyasi: Path = VARSAYILAN_VERI) -> str:
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026'da Düğün Kaça Mal Olur? | Maliyetine.com.tr</title>
-<meta name="description" content="Gerçek e-ticaret ve ilan verisinden derlenmiş, aylık güncellenen düğün maliyeti endeksi. Gelinlik, damatlık, alyans, salon ve daha fazlası — kaynak ve tarihiyle.">
-<link rel="canonical" href="https://maliyetine.com.tr/dugun/">
+<title>{conf["sayfa_basligi"]}</title>
+<meta name="description" content="{conf["meta_aciklama"]}">
+<link rel="canonical" href="https://maliyetine.com.tr/{yol}/">
 <link rel="stylesheet" href="/assets/css/style.css">
 <script type="application/ld+json">
 {json.dumps(json_ld, ensure_ascii=False, indent=2)}
@@ -308,8 +489,8 @@ def sayfa_uret(veri_dosyasi: Path = VARSAYILAN_VERI) -> str:
   <div class="kapsayici">
     <a href="/" class="logo">maliyet<span>ine</span>.com.tr</a>
     <nav class="ust-menu">
-      <a href="/dugun/hesaplayici/">Hesaplayıcı</a>
-      <a href="/dugun/metodoloji/">Metodoloji</a>
+      <a href="/{yol}/hesaplayici/">Hesaplayıcı</a>
+      <a href="/{yol}/metodoloji/">Metodoloji</a>
     </nav>
   </div>
 </header>
@@ -317,32 +498,31 @@ def sayfa_uret(veri_dosyasi: Path = VARSAYILAN_VERI) -> str:
 <main class="kapsayici">
 
   {guncelleme_etiketi}
-  <h1>2026'da İstanbul'da Düğün Kaça Mal Olur?</h1>
+  <h1>{conf["baslik"]}</h1>
 
   <div class="cevap-blok"{cevap_disable}>
     {cevap_metni}
   </div>
 
-  <p><a href="/dugun/hesaplayici/">Kendi davetli sayınız ve segmentinizle hesaplayın →</a></p>
+  {_tek_kaynak_uyarisi_html(conf, kullanilan_siteler)}
+
+  <p><a href="/{yol}/hesaplayici/">{conf["hesaplayici_daveti"]}</a></p>
 
   <h2>Kalem kalem fiyatlar</h2>
-  <p><span class="tahmini-etiket">Tahmini</span> etiketli kalemler henüz
-    kazınan bir kaynağa dayanmıyor — genel piyasa araştırmasından
-    alınmıştır, diğerleri gerçek/tarihli kaynaklardan derlenir.
-    <a href="/dugun/metodoloji/">Fark ne, bakın.</a></p>
+  {_tahmini_aciklama_html(conf)}
   <table>
     <thead>
       <tr><th>Kalem</th><th class="sayi">Ekonomik</th><th class="sayi">Orta</th><th class="sayi">Lüks</th><th class="sayi">Kaynak</th></tr>
     </thead>
     <tbody>
-      {_kalem_satirlari_html(kalemler)}
+      {_kalem_satirlari_html(conf, kalemler)}
     </tbody>
   </table>
 
-  {_capraz_dogrulama_uyarilari_html(kalemler)}
+  {_capraz_dogrulama_uyarilari_html(conf, kalemler)}
 
   <p>Yöntem, kaynaklar ve örneklem büyüklükleri için
-    <a href="/dugun/metodoloji/">metodoloji sayfasına</a> bakın.</p>
+    <a href="/{yol}/metodoloji/">metodoloji sayfasına</a> bakın.</p>
 
 </main>
 
@@ -350,8 +530,8 @@ def sayfa_uret(veri_dosyasi: Path = VARSAYILAN_VERI) -> str:
   <div class="kapsayici">
     <div>© 2026 Maliyetine.com.tr</div>
     <nav>
-      <a href="/dugun/hesaplayici/">Hesaplayıcı</a>
-      <a href="/dugun/metodoloji/">Metodoloji</a>
+      <a href="/{yol}/hesaplayici/">Hesaplayıcı</a>
+      <a href="/{yol}/metodoloji/">Metodoloji</a>
     </nav>
   </div>
 </footer>
@@ -363,14 +543,16 @@ def sayfa_uret(veri_dosyasi: Path = VARSAYILAN_VERI) -> str:
 
 def main():
     ayristirici = argparse.ArgumentParser(description=__doc__)
-    ayristirici.add_argument("--veri", type=Path, default=VARSAYILAN_VERI)
-    ayristirici.add_argument("--hedef", type=Path, default=VARSAYILAN_HEDEF)
+    ayristirici.add_argument("--vertikal", default="dugun", choices=sorted(VERTIKALLER))
+    ayristirici.add_argument("--veri", type=Path, default=None)
+    ayristirici.add_argument("--hedef", type=Path, default=None)
     args = ayristirici.parse_args()
 
-    html = sayfa_uret(args.veri)
-    args.hedef.parent.mkdir(parents=True, exist_ok=True)
-    args.hedef.write_text(html, encoding="utf-8")
-    print(f"Sayfa uretildi: {args.hedef}")
+    hedef = args.hedef or SITE_KOK / VERTIKALLER[args.vertikal]["yol"] / "index.html"
+    html = sayfa_uret(args.vertikal, args.veri)
+    hedef.parent.mkdir(parents=True, exist_ok=True)
+    hedef.write_text(html, encoding="utf-8")
+    print(f"Sayfa uretildi: {hedef}")
 
 
 if __name__ == "__main__":
