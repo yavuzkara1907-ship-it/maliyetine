@@ -174,7 +174,7 @@ kaynaklar:
     min_fiyat: 100
     bekleme_sn: 3
     aktif: true
-    durum: "onaylandi"
+    durum: "arastirildi"
     notlar: >
       Ilk turda (hatali robots_kontrol.py ile) yanlislikla RET cikmisti,
       DUZELTILMIS protego tabanli script ile TEKRAR test edildi
@@ -194,10 +194,16 @@ kaynaklar:
       girdisinin UCU DE "0 urun" dondu - min_fiyat esigi TUM kartlari
       eledigi teyit edildi (fixture testiyle dogrulandi: min_fiyat=5000
       ile ayni ornek kart 0 donuyor, min_fiyat=100 ile dogru sekilde
-      eslesiyor). min_fiyat 100'e dusuruldu - bu rakamlarin "başlangıç
-      fiyatı" (kisi basi/minimum paket) oldugu, TOPLAM dugun/hizmet
-      maliyeti olmadigi hesaplayici/endeks sayfasinda ACIKCA
-      belirtilmeli (Urun Kararlari'ndaki durustluk ilkesi).
+      eslesiyor). min_fiyat 100'e dusuruldu.
+      **HALA COZULMEDI (2026-07-24, min_fiyat duzeltmesi SONRASI tekrar
+      test edildi):** "Istanbul Dugun Mekanlari" (salon, ayni sablondan
+      alinan seciciler, URL /c/... deseninde) 8 urunle CALISTI, ama BU
+      girdi (URL /p/... deseninde) hala "0 urun". URL deseni farkli
+      (/p/ vs /c/) - muhtemelen DugunBuketi'nin "hizmet+sehir" sayfalari
+      (`/p/...`) ile "kategori" sayfalari (`/c/...`) FARKLI bir sablon/
+      bilesen kullaniyor, salon'dan varsayimla kopyalanan seciciler bu
+      sayfada gecerli olmayabilir. sayfa_tani.py ile BU URL'YE OZEL
+      TEKRAR teshis gerekiyor (salon'un ciktisi yeterli degil).
 
   # --- site: beymen (luks cok markali magaza - COK KAYNAK KURALI tip 2,
   # Pronovias/Vera Wang gibi dunya markalarini tasiyor, DugunBuketi'nin
@@ -216,8 +222,8 @@ kaynaklar:
       fiyat_secici: ".m-productCard__newPrice"
     min_fiyat: 3000
     bekleme_sn: 3
-    aktif: true
-    durum: "arastirildi"
+    aktif: false  # BIRAKILDI 2026-07-24: render_gerekli:false SONRASI da "0 urun" - kesin sonuc (asagida)
+    durum: "birakildi"
     notlar: >
       WebSearch ile dogrulanan gercek URL (2026-07-24, Yavuz'un
       hatirlatmasiyla tekrar arastirildi - ilk aramada bulunamamisti).
@@ -228,23 +234,20 @@ kaynaklar:
       **ONEMLI FARK - Erkek Smokin sayfasindan farkli olarak requests
       ile cekilen HAM HTML'de HICBIR `m-productCard` (ya da baska urun
       karti izi) yok** - smokin sayfasi sunucu tarafinda (SSR) doluyken
-      bu sayfa muhtemelen urunleri AJAX/JS ile sonradan yukluyor. CSS
-      seciciler smokin sayfasiyla ayni Beymen sablonu varsayimiyla
-      (ayni site, ayni CSS class konvansiyonu) onceden dolduruldu.
-      **DURUM (2026-07-24, Yavuz'un yerelinde `python motor.py`
-      calistirildi):** "0 urun" dondu - beklenen sonuc, cunku o an
-      render_gerekli:true'ydu ve Erkek Smokin girdisinde Playwright'in
-      Beymen tarafindan engellendigi/farkli (bos) sayfa gosterdigi
-      kanitlandi (bkz. o girdinin notlari) - yani bu 0 iki sebepten
-      biri olabilirdi (gercekten bos kategori VEYA Playwright engeli),
-      ayirt edilemiyordu. render_gerekli simdi false yapildi (ayni
-      duzeltme Erkek Smokin'e uygulandi) - boylece bir sonraki
-      calistirmada SADECE `requests` ile ne donduğu net gorulecek: hala
-      0 ise (ki ham HTML'de urun izi olmadigindan beklenen budur)
-      kategori gercekten JS/AJAX ile dolduruluyor demektir ve bu durumda
-      Beymen/gelinlik muhtemelen KULLANILAMAZ (headless tarayici bu
-      sitede calismiyor) - o zaman "birakildi" olarak isaretlenip
-      gelinlik icin baska bir kaynak aranmali.
+      bu sayfa muhtemelen urunleri AJAX/JS ile sonradan yukluyor.
+      **KESIN SONUC (2026-07-24):** render_gerekli:false yapildiktan
+      SONRA Yavuz'un yerelinde `python motor.py` ile TEKRAR calistirildi
+      - Erkek Smokin'de ayni duzeltme 46 urun getirdi (CANLI kanit:
+      seciciler dogru, render_gerekli hatasi coktu) ama bu girdi HALA
+      "0 urun" dondu. Artik iki sebep de ayiklandi (Playwright engeli
+      DEGIL, yanlis secici DEGIL - Erkek Smokin ayni seciciyle
+      calisiyor) - geriye tek aciklama kaliyor: bu URL'nin ham HTML'i
+      gercekten urun karti icermiyor, sayfa muhtemelen AJAX/JS ile
+      sonradan doluyor VE Beymen bu sitede headless tarayiciyi (Erkek
+      Smokin testinde kanitlandigi gibi) engelliyor - yani Playwright
+      ile de asilamaz. BIRAKILDI. Gelinlik kalemi icin Beymen'den baska
+      bir kaynak aranmali (DugunBuketi'nin "gelinlik moda evleri" sayfasi
+      zaten kalemde mevcut, henuz calismiyor - bkz. o girdinin notlari).
 
   # =========================================================
   # KALEM: gelin-ayakkabisi  (Akakce Cloudflare yuzunden birakildi,
@@ -678,6 +681,9 @@ kaynaklar:
       dondu, esik TUM kartlari eledigi fixture testiyle dogrulandi.
       100'e dusuruldu - bu TOPLAM salon maliyeti degil, kisi basi/
       minimum baslangic fiyati oldugu yayinlanirken ACIKCA belirtilmeli.
+      **DOGRULANDI (2026-07-24):** duzeltme sonrasi Yavuz'un yerelinde
+      TEKRAR calistirildi - **8 urun, css katmani, basarili.** Bu kalem
+      artik gercek veri uretiyor.
 
   - ad: "DugunBuketi - Istanbul Fotografci"
     site: "dugunbuketi"
@@ -693,7 +699,7 @@ kaynaklar:
     min_fiyat: 100
     bekleme_sn: 3
     aktif: true
-    durum: "onaylandi"
+    durum: "arastirildi"
     notlar: >
       Ilk turda (hatali robots_kontrol.py ile) yanlislikla RET cikmisti,
       DUZELTILMIS protego tabanli script ile TEKRAR test edildi
@@ -707,8 +713,13 @@ kaynaklar:
       (`.bg-card` + `.font-bold`).
       **BUG DUZELTILDI (2026-07-24):** min_fiyat 1000'di, salon
       girdisindeki ayni sorun (bkz. o notlar) burada da gecerli oldugu
-      icin 100'e dusuruldu - Yavuz'un yerelinde "0 urun" dondu,
-      duzeltme henuz onun tarafinda TEKRAR calistirilip dogrulanmadi.
+      icin 100'e dusuruldu.
+      **HALA COZULMEDI (2026-07-24, min_fiyat duzeltmesi SONRASI tekrar
+      test edildi):** hala "0 urun". Bu URL de "Gelinlik Moda Evleri"
+      gibi `/p/...` deseninde (salon'un `/c/...` deseninden farkli) -
+      ayni supheli sablon-farki gecerli (bkz. "Gelinlik Moda Evleri"
+      girdisinin notlari). sayfa_tani.py ile BU URL'YE OZEL TEKRAR
+      teshis gerekiyor.
 
   - ad: "Armut - Dugun Fotografcisi Fiyatlari"
     site: "armut"

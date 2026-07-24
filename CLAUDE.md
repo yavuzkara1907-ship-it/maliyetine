@@ -440,13 +440,6 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
     **Düzeltme: Beymen'in hem Erkek Smokin hem Gelinlik girdisinde
     `render_gerekli: false` yapıldı** — düz `requests` zaten yeterli ve
     doğru, ayrıca daha nazik (Chromium açmıyor).
-  - **Beymen/gelinlik hâlâ belirsiz:** ham HTML'de hiç ürün kartı izi
-    yoktu (smokin'in aksine) — bu ya kategori gerçekten JS/AJAX ile
-    dolduruluyor ya da gerçekten boş. `render_gerekli: false` yapıldıktan
-    sonraki bir sonraki `motor.py` çalıştırmasında hâlâ 0 dönerse (ki ham
-    HTML kanıtı bunu destekliyor), Beymen bu URL için muhtemelen
-    KULLANILAMAZ olacak — headless tarayıcı zaten bu sitede çalışmıyor
-    (yukarıdaki BUG 2), yani AJAX içeriğine Playwright ile de erişilemez.
   - Diğerleri beklendiği gibi hâlâ 0/teşhis bekliyor: Ramsey (JS'li fiyat,
     düşük öncelik), Boyner (skeleton — düzeltilmiş `sayfa_tani.py`'nin
     TEKRAR çalıştırılması gerekiyor), Cimri (düşük öncelik),
@@ -454,30 +447,57 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
     henüz teşhis edilmedi — URL/kategori kimliği hatalı olabilir).
   - Çapraz doğrulama uyarıları (alyans %351, damatlık %2121) beklendiği
     gibi tekrar üretildi — zaten kabul edilmiş, aksiyon gerekmiyor.
+- **DÜZELTMELER SONRASI Yavuz'un yerelinde TEKRAR çalıştırıldı
+  (2026-07-24) — İLK ÇALIŞMADA git pull YAPILMADIĞI İÇİN eski koda karşı
+  test edilmiş olduğu anlaşıldı** (Beymen/DüğünBuketi çıktıları önceki
+  turla birebir aynıydı, süre analizi de Beymen'in hâlâ Playwright
+  kullandığını gösterdi — ~5.5sn, `requests`'in ~1sn'lik süresine karşı).
+  `git pull` sonrası GERÇEK sonuçlar:
+  - **Beymen/Erkek Smokin: 46 ürün, CSS katmanıyla — ÇALIŞIYOR.** Hem
+    CSS seçici hem `render_gerekli: false` düzeltmesi doğrulandı.
+  - **DüğünBuketi/salon (Istanbul Düğün Mekanları): 8 ürün, CSS
+    katmanıyla — ÇALIŞIYOR.** min_fiyat düzeltmesi doğrulandı.
+  - **Beymen/gelinlik: HÂLÂ 0 ürün, KESİN SONUÇ.** Artık iki olası sebep
+    de (Playwright engeli / yanlış seçici) ayıklandı — Erkek Smokin aynı
+    seçiciyle ve `render_gerekli: false` ile çalışıyor. Geriye tek
+    açıklama kalıyor: bu URL'nin ham HTML'i gerçekten ürün kartı
+    içermiyor (muhtemelen AJAX ile dolduruluyor) VE Beymen headless
+    tarayıcıyı da engelliyor (Playwright ile de aşılamaz). **BIRAKILDI**
+    — `aktif: false, durum: "birakildi"`. Gelinlik için Beymen'den başka
+    kaynak aranmalı.
+  - **DüğünBuketi/fotoğrafçı + gelinlik-moda-evleri: HÂLÂ 0 ürün,
+    YENİ BULGU.** Aynı site, aynı (salon'dan kopyalanan) seçiciler, aynı
+    düzeltilmiş min_fiyat — ama salon çalışırken bu ikisi çalışmıyor.
+    Fark: salonun URL'i `/c/dugun-mekanlari/istanbul` (kategori deseni),
+    bu ikisinin URL'i `/p/...` (hizmet+şehir deseni) — muhtemelen
+    DüğünBuketi bu iki route tipi için FARKLI bir şablon/bileşen
+    kullanıyor, salon'dan varsayımla kopyalanan seçiciler bu sayfalarda
+    geçerli olmayabilir. `sayfa_tani.py` ile bu iki URL'ye ÖZEL yeniden
+    teşhis gerekiyor (salon'un çıktısı yeterli değil) — durum
+    `arastirildi`'ye çekildi (yanlışlıkla `onaylandi` idi).
 
 ## Modüller (sırayla)
 1. **Kazıma hattı** — ✅✅ **motor GERÇEK VERİ üretiyor (2026-07-24).**
    `python motor.py`'nin son çalıştırılmış hali:
-   - **Çalışan kaynaklar (8):** Trendyol/gelinlik (23, JSON-LD),
-     Trendyol/alyans (4, CSS), Trendyol/damatlık (16, CSS),
-     Trendyol/gelin-ayakkabısı (10, CSS), Trendyol/nikah-şekeri (6, CSS),
-     Atasay/alyans (24, CSS), **Vakko/damatlık (48, JSON-LD)**.
-   - **CSS seçicisi 2026-07-24'te ÇÖZÜLDÜ, Yavuz'un yerelinde henüz
-     doğrulanmadı:** Beymen/damatlık (`.m-productCard`, 48 ürün ham
-     HTML'de görüldü), DüğünBuketi'nin 3 sayfası (`.bg-card`, 13 kart
-     ham HTML'de görüldü — salon/fotoğrafçı/gelinlik-moda-evleri).
-   - **CSS seçicisi tahmin edildi ama DOĞRULANMADI:** Beymen/gelinlik
-     (smokin'le aynı şablon varsayıldı, ama ham HTML'de hiç ürün kartı
-     izi yok — muhtemelen AJAX ile geç yükleniyor).
+   - **Çalışan kaynaklar (10):** Trendyol/gelinlik (23, JSON-LD),
+     Trendyol/alyans (4, JSON-LD), Trendyol/damatlık (18, CSS),
+     Trendyol/gelin-ayakkabısı (8, CSS), Trendyol/nikah-şekeri (6, CSS),
+     Atasay/alyans (24, CSS), **Vakko/damatlık (48, JSON-LD)**,
+     **Beymen/damatlık (46, CSS)**, **DüğünBuketi/salon (8, CSS)**.
    - **Hâlâ 0 ürün / teşhis bekliyor:** Ramsey/damatlık (fiyat JS ile
      sonradan yükleniyor), Boyner/damatlık (kök neden bulundu — JS
      "skeleton" yükleme hali, `sayfa_tani.py` düzeltildi ama gerçek kart
      yapısı hâlâ görülemedi, Yavuz'un yerelinde tekrar teşhis
      çalıştırması gerekiyor), Cimri/gelinlik (düşük öncelik, sadece 12
      ürün, hydrate olmamış), Trendyol/davetiye (Playwright bekleme
-     süresi 2500ms→4000ms yapıldı ama henüz gerçek `motor.py` ile
-     tekrar doğrulanmadı).
-   - **Kesin BIRAKILDI (kod sorunu değil, site yapısı):** Armut/fotoğrafçı
+     süresi 2500ms→4000ms yapıldı ama hâlâ 0, henüz teşhis edilmedi),
+     DüğünBuketi/fotoğrafçı + gelinlik-moda-evleri (salon çalışıyor ama
+     bunlar çalışmıyor — URL deseni farkı `/p/...` vs `/c/...` şüpheli,
+     bu iki URL'ye özel yeni `sayfa_tani.py` teşhisi gerekiyor).
+   - **Kesin BIRAKILDI (kod sorunu değil, site yapısı):** Armut/fotoğrafçı,
+     **Beymen/gelinlik (2026-07-24 kesinleşti — CSS doğru, render_gerekli
+     false denendi, hâlâ 0: ham HTML'de gerçekten ürün yok VE Beymen
+     headless tarayıcıyı da engelliyor, aşılamaz).**
      — agregat tek-ürün sayfası, gerçek teklifler hash'li class'lı
      React ile client-side render ediliyor, kolay kazınabilir değil.
    - **ÇOK KAYNAK KURALI 2 gerçek uyarı üretti:**
@@ -539,24 +559,37 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
       requests'ten FARKLI/BOŞ sayfa sunduğu ortaya çıktı** (muhtemelen
       headless tarayıcı tespiti) → `render_gerekli: false` yapıldı
       (Beymen'in hem smokin hem gelinlik girdisinde).
-- [ ] Beymen/gelinlik: hâlâ belirsiz. `render_gerekli: false`
-      düzeltmesinden SONRA Yavuz'un yerelinde tekrar `python motor.py`
-      çalıştırması gerekiyor — hâlâ 0 dönerse (ham HTML kanıtı bunu
-      destekliyor: hiç ürün kartı izi yok) muhtemelen bu URL için
-      Beymen KULLANILAMAZ (headless tarayıcı zaten bu sitede çalışmıyor,
-      yani AJAX içeriğine Playwright ile de erişilemez) — o zaman
-      "birakildi" yapılıp gelinlik için başka kaynak aranmalı.
+- [x] **Beymen/Erkek Smokin ve DüğünBuketi/salon DOĞRULANDI (2026-07-24):**
+      düzeltmeler sonrası Yavuz'un yerelinde `git pull` + `python motor.py`
+      ile tekrar çalıştırıldı (ilk deneme yanlışlıkla pull edilmemiş eski
+      kodla yapılmıştı) — **Beymen/Erkek Smokin: 46 ürün, ÇALIŞIYOR.**
+      **DüğünBuketi/salon: 8 ürün, ÇALIŞIYOR.**
+- [x] **Beymen/gelinlik KESİN BIRAKILDI (2026-07-24):** `render_gerekli:
+      false` sonrası da hâlâ 0 ürün - Erkek Smokin aynı seçici+ayarla
+      çalıştığı için hem "yanlış seçici" hem "Playwright engeli"
+      ihtimalleri ayıklandı. Geriye tek açıklama kalıyor: bu URL'nin ham
+      HTML'i gerçekten ürün içermiyor VE Beymen headless tarayıcıyı da
+      engelliyor. `aktif: false, durum: "birakildi"` yapıldı - gelinlik
+      için Beymen'den başka kaynak aranmalı.
 - [x] **Boyner kök nedeni bulundu (2026-07-24):** sayfa JS-"skeleton"
       yükleme halinde geliyor (`b-skeleton` class'ları), gerçek kart
       JS ile sonradan doluyor. `sayfa_tani.py` bunu artık otomatik
       tespit edip Playwright'a düşüyor (`_iskelet_mi()` eklendi).
 - [ ] Yavuz'un yerelinde düzeltilmiş `sayfa_tani.py`'yi Boyner için
       TEKRAR çalıştırıp gerçek (iskelet-sonrası) kart HTML'ini
-      paylaşması — CSS seçici hâlâ dolu değil
+      paylaşması - CSS seçici hâlâ dolu değil (min_fiyat/render_gerekli
+      düzeltmeleri sonrası da hâlâ 0 ürün dönüyor, beklenen sonuç)
+- [ ] **DüğünBuketi/fotoğrafçı + gelinlik-moda-evleri YENİ BULGU
+      (2026-07-24):** min_fiyat düzeltmesi sonrası da hâlâ 0 ürün -
+      salon (`/c/...` URL deseni) çalışırken bu ikisi (`/p/...` URL
+      deseni) çalışmıyor, muhtemelen DugunBuketi bu iki route tipi için
+      farklı şablon kullanıyor. Bu iki URL'ye ÖZEL `sayfa_tani.py`
+      teşhisi gerekiyor (salon'un çıktısını varsayımla kopyalamak
+      yetersiz kaldı).
 - [ ] Trendyol/davetiye neden 0 ürün döndürüyor teşhis et (aynı şablon
       diğer Trendyol sayfalarında çalıştı; Playwright bekleme süresi
-      2500ms→4000ms yapıldı, henüz gerçek `motor.py` ile
-      doğrulanmadı)
+      2500ms→4000ms yapıldı, hâlâ 0 - `sayfa_tani.py` ile teşhis
+      gerekiyor)
 - [x] **Armut/fotoğrafçı BIRAKILDI, kesin teşhis (2026-07-24):** agregat
       tek-ürün JSON-LD sayfası, gerçek teklifler React (hash'li
       class'lar) ile client-side render — kolay kazınabilir değil,
