@@ -2,8 +2,18 @@ const test = require("node:test");
 const assert = require("node:assert/strict");
 const { hesapla, kalemSatiriHesapla } = require("../dugun-hesapla.js");
 
-const GELINLIK_TANIMI = { id: "gelinlik", ad: "Gelinlik", birim: "sabit" };
-const SALON_TANIMI = { id: "salon", ad: "Düğün Salonu", birim: "kisi_basi" };
+const GELINLIK_TANIMI = { id: "gelinlik", ad: "Gelinlik", birim: "sabit", kaynak_tipi: "gercek" };
+const SALON_TANIMI = { id: "salon", ad: "Düğün Salonu", birim: "kisi_basi", kaynak_tipi: "gercek" };
+const TAHMINI_TANIMI = {
+  id: "fotografci", ad: "Fotoğraf ve Video", birim: "sabit", kaynak_tipi: "tahmini",
+  tahmini: { dusuk: 20000, orta: 45000, luks: 100000 },
+  kaynak_notu: "test notu", arastirma_tarihi: "2026-07-24",
+};
+const TAHMINI_KISI_BASI_TANIMI = {
+  id: "yemek-ikram", ad: "Yemek", birim: "kisi_basi", kaynak_tipi: "tahmini",
+  tahmini: { dusuk: 400, orta: 700, luks: 2000 },
+  kaynak_notu: "test notu", arastirma_tarihi: "2026-07-24",
+};
 
 const GELINLIK_VERISI = {
   genel_medyan: 5000,
@@ -94,4 +104,35 @@ test("hesapla: veri_var false olan kalem toplama eklenmez ama detayda gorunur", 
   const sonuc = hesapla({}, [GELINLIK_TANIMI], ["gelinlik"], "orta", 100);
   assert.equal(sonuc.toplam, 0);
   assert.equal(sonuc.detaylar[0].veri_var, false);
+});
+
+test("tahmini kalem: kalemVerisi olmadan (null) dogrudan tahmini degerini kullanir", () => {
+  const satir = kalemSatiriHesapla(TAHMINI_TANIMI, null, "orta", 100);
+  assert.equal(satir.veri_var, true);
+  assert.equal(satir.tahmini_mi, true);
+  assert.equal(satir.birim_fiyat, 45000);
+  assert.equal(satir.satir_toplam, 45000);
+  assert.equal(satir.kaynak_notu, "test notu");
+});
+
+test("tahmini kalem: segmente gore dogru degeri secer", () => {
+  assert.equal(kalemSatiriHesapla(TAHMINI_TANIMI, null, "ekonomik", 100).birim_fiyat, 20000);
+  assert.equal(kalemSatiriHesapla(TAHMINI_TANIMI, null, "luks", 100).birim_fiyat, 100000);
+});
+
+test("tahmini kalem: kisi basi ise davetli sayisiyla carpilir", () => {
+  const satir = kalemSatiriHesapla(TAHMINI_KISI_BASI_TANIMI, null, "orta", 150);
+  assert.equal(satir.birim_fiyat, 700);
+  assert.equal(satir.satir_toplam, 105000);
+});
+
+test("gercek kalem tahmini_mi false olarak isaretlenir", () => {
+  const satir = kalemSatiriHesapla(GELINLIK_TANIMI, GELINLIK_VERISI, "orta", 100);
+  assert.equal(satir.tahmini_mi, false);
+});
+
+test("hesapla: tahmini ve gercek kalemler birlikte dogru toplanir", () => {
+  const sonuc = hesapla({ gelinlik: GELINLIK_VERISI }, [GELINLIK_TANIMI, TAHMINI_TANIMI], ["gelinlik", "fotografci"], "orta", 100);
+  assert.equal(sonuc.toplam, 5000 + 45000);
+  assert.equal(sonuc.detaylar.find((d) => d.id === "fotografci").tahmini_mi, true);
 });

@@ -13,21 +13,44 @@
   // medyana duser) satir toplamini hesaplar. Veri hic yoksa
   // { veri_var: false } doner - toplama KATILMAZ, cagiran taraf bunu
   // "veri henuz yok" olarak gostermeli.
+  //
+  // kalemTanimi.kaynak_tipi === "tahmini" olan kalemler icin kalemVerisi
+  // gerekmez - fiyat dogrudan kalemTanimi.tahmini'den okunur (bkz.
+  // dugun-kalemler.js basindaki aciklama). Bu satirlar HER ZAMAN
+  // tahmini_mi: true ile isaretlenir - UI bunlari "gercek kaynak"
+  // verisinden ayri gostermek ZORUNDA.
   function kalemSatiriHesapla(kalemTanimi, kalemVerisi, segment, davetliSayisi) {
+    const segAnahtari = SEGMENT_ANAHTARI[segment] || "orta";
+    const carpan = kalemTanimi.birim === "kisi_basi" ? Math.max(davetliSayisi || 0, 0) : 1;
+
+    if (kalemTanimi.kaynak_tipi === "tahmini") {
+      const birimFiyat = kalemTanimi.tahmini[segAnahtari];
+      return {
+        id: kalemTanimi.id,
+        ad: kalemTanimi.ad,
+        veri_var: true,
+        tahmini_mi: true,
+        birim: kalemTanimi.birim,
+        birim_fiyat: birimFiyat,
+        satir_toplam: Math.round(birimFiyat * carpan),
+        kaynak_notu: kalemTanimi.kaynak_notu,
+        arastirma_tarihi: kalemTanimi.arastirma_tarihi,
+      };
+    }
+
     if (!kalemVerisi) {
       return { id: kalemTanimi.id, ad: kalemTanimi.ad, veri_var: false };
     }
-    const segAnahtari = SEGMENT_ANAHTARI[segment] || "orta";
     const segVeri = kalemVerisi.segmentler && kalemVerisi.segmentler[segAnahtari];
     const birimFiyat = segVeri ? segVeri.medyan : kalemVerisi.genel_medyan;
     if (birimFiyat == null) {
       return { id: kalemTanimi.id, ad: kalemTanimi.ad, veri_var: false };
     }
-    const carpan = kalemTanimi.birim === "kisi_basi" ? Math.max(davetliSayisi || 0, 0) : 1;
     return {
       id: kalemTanimi.id,
       ad: kalemTanimi.ad,
       veri_var: true,
+      tahmini_mi: false,
       birim: kalemTanimi.birim,
       birim_fiyat: birimFiyat,
       satir_toplam: Math.round(birimFiyat * carpan),

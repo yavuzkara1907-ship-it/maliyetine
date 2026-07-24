@@ -27,16 +27,35 @@ motorları için.
   karşılaştırmalar ("düğün maliyeti %X arttı") bedava basın malzemesi.
 
 ## KIRMIZI ÇİZGİ — Veri Metodolojisi
-- Fiyat verisi ASLA LLM'den üretilmez / LLM'e sorulmaz. Pazarlıksız.
-  İhlali projenin varlık sebebini yok eder.
-- Kaynak: gerçek e-ticaret/ilan/karşılaştırma sitelerinden kazıma
-  (robots.txt'e ve rate-limit'e saygılı) + gerektiğinde insan teyidi.
-- AI'ın rolü: kaynak değil RAFİNERİ — temizleme, kategorize etme,
-  aykırı değer ayıklama, özetleme.
-- Yayınlanan her rakamın yanında: kaynak, derleme tarihi, örneklem
-  büyüklüğü ("14 Temmuz'da 2.340 üründen derlendi").
+- **Varsayılan/asıl kural değişmedi:** fiyat verisi ASLA LLM'in kendi
+  bilgisinden üretilmez. Kaynak: gerçek e-ticaret/ilan/karşılaştırma
+  sitelerinden kazıma (robots.txt'e ve rate-limit'e saygılı) +
+  gerektiğinde insan teyidi. AI'ın rolü: kaynak değil RAFİNERİ —
+  temizleme, kategorize etme, aykırı değer ayıklama, özetleme.
+- Yayınlanan her GERÇEK KAYNAK rakamının yanında: kaynak, derleme tarihi,
+  örneklem büyüklüğü ("14 Temmuz'da 2.340 üründen derlendi").
 - Metodoloji sayfası zorunlu. Güven = tek ürün. Rakip çöp sitelerden
   tek farkımız bu.
+- **İSTİSNA (2026-07-24, Yavuz'un açık talimatıyla):** kazıma kaynağı
+  henüz bulunamamış kalemler (takı/altın, yemek/ikram, fotoğrafçı,
+  orkestra/DJ, gelin arabası, kuaför/makyaj, organizasyon, nikah
+  işlemleri) için WebSearch ile genel piyasa araştırmasından türetilmiş
+  TEK SEFERLİK bir tahmini değer kullanılıyor ("bunlar önemli, senin
+  bilgin dahilinde olan fiyatlandırmayı kullan" talimatı). Bu istisna
+  KATI ŞARTLARLA sınırlı, sessizce genişletilmemeli:
+  - Her tahmini kalem `assets/js/dugun-kalemler.js` ve
+    `scraper/sayfa_uret.py`'de `kaynak_tipi: "tahmini"` ile ayrı
+    tanımlanır, gerçek kaynaklı kalemlerle AYNI listeye/koda KARIŞTIRILMAZ.
+  - UI'da HER YERDE (hesaplayıcı, endeks sayfası, tablo satırı) görünür
+    bir `"Tahmini"` etiketiyle işaretlenir — gerçek kaynak rozetinden
+    (kaynak sayısı) görsel olarak ayrıdır.
+  - Cevap metni/toplam her zaman "gerçek kaynaklardan X TL, tahmini
+    kalemlerden Y TL" şeklinde kırılımı açıkça belirtir; hiçbir zaman
+    tahmini bir toplamı "N bağımsız kaynaktan derlendi" gibi göstermez.
+  - Gerçek bir kazıma kaynağı bulunduğunda o kalem tahmini listeden
+    ÇIKARILIP gerçek listeye taşınır — tahmini kalıcı bir durum değil.
+  - Metodoloji sayfası bu ayrımı (`/dugun/metodoloji/` "Gerçek kaynak vs.
+    tahmini kalemler" bölümü) açıkça anlatır, gizlemez.
 
 ## ÇOK KAYNAK KURALI (önemli)
 - **Tek kaynağa BAĞLI KALINMAZ.** Akakçe sadece başlangıç kaynağıdır.
@@ -591,14 +610,23 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
      dugun-hesapla.js`, 10 Node test PASS + `dugun-kalemler.js`).
      `/veri/dugun.json`'ı fetch eder, davetli sayısı + segment (ekonomik/
      orta/lüks) + kalem seçimlerine göre toplam hesaplar.
-   - **KIRMIZI ÇİZGİ karar:** CLAUDE.md'nin tam kalem listesindeki
-     (gelinlik...balayı) veri kaynağı OLMAYAN kalemler (takı/altın,
-     yemek/ikram, fotoğrafçı, orkestra/DJ, gelin arabası, kuaför/makyaj,
-     organizasyon, nikah işlemleri) için AI TARAFINDAN UYDURULMUŞ bir
-     "tahmini" rakam KONULMADI — ayrı bir "henüz veri kapsamında değil"
-     listesinde gösteriliyor, hesaplayıcı toplamına dahil edilmiyor.
-     Yavuz ileride kendi araştırmasıyla bir tahmini değer eklemek isterse
-     bu onun kararı olmalı, LLM'in değil.
+   - **KIRMIZI ÇİZGİ karar — SONRADAN GÜNCELLENDİ (2026-07-24):** ilk
+     halde, veri kaynağı olmayan kalemler (takı/altın, yemek/ikram,
+     fotoğrafçı, orkestra/DJ, gelin arabası, kuaför/makyaj, organizasyon,
+     nikah işlemleri) için tahmini rakam KONULMAMIŞTI — ayrı bir "henüz
+     veri kapsamında değil" listesinde gösterilip toplama dahil
+     edilmiyordu. **Yavuz açıkça bunun tersini istedi** ("bence ortalama
+     bir fiyat girelim... bunlar önemli, senin bilgin dahilinde olan
+     fiyatlandırmayı kullan") — AskUserQuestion ile netleştirmeye
+     çalışıldı ama reddedildi, talimat tekrarlandı. Karar uygulandı:
+     WebSearch ile (8 ayrı arama, güncel TR fiyat aralıkları) her kalem
+     için düşük/orta/lüks tahmini değer araştırılıp `kaynak_tipi:
+     "tahmini"` ile eklendi (bkz. yukarıdaki KIRMIZI ÇİZGİ bölümündeki
+     istisna maddesi ve şartları). UI'da her yerde `Tahmini` etiketiyle
+     gerçek kaynaktan görsel olarak ayrılıyor, toplam kırılımı ("gerçek
+     kaynaklardan X TL, tahmini kalemlerden Y TL") her zaman gösteriliyor.
+     Metodoloji sayfası bu ayrımı açıkça anlatacak şekilde güncellendi.
+     25 test (JS+Python) bu davranışı kilitliyor.
    - **Site iskeleti:** `/index.html` (ana sayfa, vertikal kartları),
      `/assets/css/style.css` (framework yok, saf CSS), `/robots.txt`
      (AI botlarına açık: GPTBot, ClaudeBot, PerplexityBot vb.).

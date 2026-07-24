@@ -41,10 +41,63 @@ DUGUN_KALEMLERI = [
     {"id": "salon", "ad": "Düğün Salonu", "birim": "kisi_basi"},
 ]
 
-DUGUN_KALEMLERI_VERISIZ = [
-    "Takı ve Altın", "Yemek / İkram (salona dahil değilse)", "Fotoğraf ve Video",
-    "Orkestra / DJ", "Gelin Arabası", "Kuaför ve Makyaj",
-    "Organizasyon / Süsleme", "Nikah İşlemleri (resmi harçlar)",
+# Henuz kazima kaynagi olmayan kalemler. Yavuz'un acik talimatiyla
+# (2026-07-24) genel piyasa arastirmasindan (WebSearch, birden fazla
+# ilan/fiyat sitesi) turetilmis TEK SEFERLIK tahmini degerler - motor.py'nin
+# surekli kazidigi, tarihli/orneklemli "gercek kaynak" ile AYNI SEY DEGIL.
+# Sayfada HER ZAMAN ayri "Tahmini" etiketiyle gosterilir (bkz. sayfa_uret,
+# metodoloji sayfasindaki aciklama). arastirma_tarihi elle tekrar
+# arastirilip gozden gecirilmedikce SABIT kalir, motor.py gibi otomatik
+# guncellenmez.
+DUGUN_KALEMLERI_TAHMINI = [
+    {
+        "id": "taki-altin", "ad": "Takı ve Altın", "birim": "sabit",
+        "tahmini": {"dusuk": 15000, "orta": 40000, "luks": 90000},
+        "kaynak_notu": "Gram altın ~6.140 TL (24 Temmuz 2026) baz alınarak tipik hediye takı seti bütçesi.",
+        "arastirma_tarihi": "2026-07-24",
+    },
+    {
+        "id": "yemek-ikram", "ad": "Yemek / İkram (salona dahil değilse)", "birim": "kisi_basi",
+        "tahmini": {"dusuk": 400, "orta": 700, "luks": 2000},
+        "kaynak_notu": "Kişi başı düğün catering fiyat araştırması.",
+        "arastirma_tarihi": "2026-07-24",
+    },
+    {
+        "id": "fotografci", "ad": "Fotoğraf ve Video", "birim": "sabit",
+        "tahmini": {"dusuk": 20000, "orta": 45000, "luks": 100000},
+        "kaynak_notu": "Düğün fotoğraf/video paket fiyat araştırması.",
+        "arastirma_tarihi": "2026-07-24",
+    },
+    {
+        "id": "orkestra-dj", "ad": "Orkestra / DJ", "birim": "sabit",
+        "tahmini": {"dusuk": 5000, "orta": 25000, "luks": 80000},
+        "kaynak_notu": "Düğün orkestra/DJ kiralama fiyat araştırması.",
+        "arastirma_tarihi": "2026-07-24",
+    },
+    {
+        "id": "gelin-arabasi", "ad": "Gelin Arabası", "birim": "sabit",
+        "tahmini": {"dusuk": 800, "orta": 3000, "luks": 8000},
+        "kaynak_notu": "Gelin arabası kiralama fiyat araştırması.",
+        "arastirma_tarihi": "2026-07-24",
+    },
+    {
+        "id": "kuafor-makyaj", "ad": "Kuaför ve Makyaj", "birim": "sabit",
+        "tahmini": {"dusuk": 1000, "orta": 5000, "luks": 15000},
+        "kaynak_notu": "Gelin saçı ve makyajı fiyat araştırması.",
+        "arastirma_tarihi": "2026-07-24",
+    },
+    {
+        "id": "organizasyon", "ad": "Organizasyon / Süsleme", "birim": "sabit",
+        "tahmini": {"dusuk": 15000, "orta": 40000, "luks": 150000},
+        "kaynak_notu": "Düğün organizasyon/dekorasyon fiyat araştırması.",
+        "arastirma_tarihi": "2026-07-24",
+    },
+    {
+        "id": "nikah-islemleri", "ad": "Nikah İşlemleri (resmi harçlar)", "birim": "sabit",
+        "tahmini": {"dusuk": 1500, "orta": 3500, "luks": 8000},
+        "kaynak_notu": "Belediye nikah/evlendirme dairesi harç ücreti araştırması (2026 tarifeleri).",
+        "arastirma_tarihi": "2026-07-24",
+    },
 ]
 
 SEGMENT_ANAHTARI = {"ekonomik": "dusuk", "orta": "orta", "luks": "luks"}
@@ -75,12 +128,24 @@ def ornek_toplam_hesapla(kalemler: dict, davetli_sayisi: int, segment: str) -> t
         veri = kalemler.get(tanim["id"])
         deger = kalem_deger(veri, seg_anahtari)
         if deger is None:
-            detaylar.append({**tanim, "veri_var": False})
+            detaylar.append({**tanim, "veri_var": False, "tahmini_mi": False})
             continue
         carpan = davetli_sayisi if tanim["birim"] == "kisi_basi" else 1
         satir_toplam = round(deger * carpan)
         toplam += satir_toplam
-        detaylar.append({**tanim, "veri_var": True, "birim_fiyat": deger, "satir_toplam": satir_toplam})
+        detaylar.append({**tanim, "veri_var": True, "tahmini_mi": False, "birim_fiyat": deger, "satir_toplam": satir_toplam})
+
+    for tanim in DUGUN_KALEMLERI_TAHMINI:
+        deger = tanim["tahmini"][seg_anahtari]
+        carpan = davetli_sayisi if tanim["birim"] == "kisi_basi" else 1
+        satir_toplam = round(deger * carpan)
+        toplam += satir_toplam
+        detaylar.append({
+            "id": tanim["id"], "ad": tanim["ad"], "birim": tanim["birim"],
+            "veri_var": True, "tahmini_mi": True,
+            "birim_fiyat": deger, "satir_toplam": satir_toplam,
+            "kaynak_notu": tanim["kaynak_notu"], "arastirma_tarihi": tanim["arastirma_tarihi"],
+        })
     return toplam, detaylar
 
 
@@ -105,6 +170,15 @@ def _kalem_satirlari_html(kalemler: dict) -> str:
             f'<td class="sayi">{_para(degerler["luks"]) if degerler["luks"] else "—"}</td>'
             f'<td class="sayi">{veri.get("kaynak_sayisi", 0)}</td></tr>'
         )
+    for tanim in DUGUN_KALEMLERI_TAHMINI:
+        t = tanim["tahmini"]
+        satirlar.append(
+            f'<tr><td>{tanim["ad"]} <span class="tahmini-etiket" title="{tanim["kaynak_notu"]}">Tahmini</span></td>'
+            f'<td class="sayi">{_para(t["dusuk"])}</td>'
+            f'<td class="sayi">{_para(t["orta"])}</td>'
+            f'<td class="sayi">{_para(t["luks"])}</td>'
+            f'<td class="sayi">Tahmini</td></tr>'
+        )
     return "\n".join(satirlar)
 
 
@@ -128,10 +202,6 @@ def _capraz_dogrulama_uyarilari_html(kalemler: dict) -> str:
     )
 
 
-def _verisiz_liste_html() -> str:
-    return "\n".join(f"<li>{ad}</li>" for ad in DUGUN_KALEMLERI_VERISIZ)
-
-
 def sayfa_uret(veri_dosyasi: Path = VARSAYILAN_VERI) -> str:
     if veri_dosyasi.exists():
         agregali = json.loads(veri_dosyasi.read_text(encoding="utf-8"))
@@ -144,27 +214,42 @@ def sayfa_uret(veri_dosyasi: Path = VARSAYILAN_VERI) -> str:
 
     ornek_toplam, ornek_detaylar = ornek_toplam_hesapla(kalemler, ORNEK_DAVETLI_SAYISI, ORNEK_SEGMENT)
     kapsanan_detaylar = [d for d in ornek_detaylar if d["veri_var"]]
+    gercek_detaylar = [d for d in kapsanan_detaylar if not d["tahmini_mi"]]
+    tahmini_detaylar = [d for d in kapsanan_detaylar if d["tahmini_mi"]]
+    gercek_toplam = sum(d["satir_toplam"] for d in gercek_detaylar)
+    tahmini_toplam = sum(d["satir_toplam"] for d in tahmini_detaylar)
 
     # "kalemler" dolu ama HEPSI genel_medyan=null (ör. o ay tum kaynaklar
     # 0 urun dondu) olabilir - bu durumda "0 TL" gibi yaniltici bir cevap
     # UYDURMAMAK icin gercek kapsanan kalem olup olmadigina bakiliyor,
-    # sadece kalemler sozlugunun bos olmadigina degil.
-    if kapsanan_detaylar:
-        kapsanan_idler = {d["id"] for d in kapsanan_detaylar}
+    # sadece kalemler sozlugunun bos olmadigina degil. Tahmini kalemler
+    # (DUGUN_KALEMLERI_TAHMINI) her zaman deger urettigi icin bu ayrim
+    # "gercek kaynak var mi" sorusuna indirgeniyor - cevap metni buna
+    # gore GERCEK ile TAHMINI kismi ACIKCA ayirir, karistirmaz.
+    if gercek_detaylar:
+        kapsanan_idler = {d["id"] for d in gercek_detaylar}
         kaynak_sayisi_toplam = sum(
             v.get("kaynak_sayisi", 0) for k, v in kalemler.items() if k in kapsanan_idler
         )
-        kapsanan_kalem_sayisi = len(kapsanan_detaylar)
         cevap_metni = (
             f"Maliyetine'ye göre {guncelleme_tarihi or bugun} itibarıyla "
             f"{ORNEK_DAVETLI_SAYISI} kişilik, orta segment bir düğünün "
-            f"<strong>{_para(ornek_toplam)}</strong> tutmasi bekleniyor. "
-            f"Bu tahmin {kapsanan_kalem_sayisi} kalem için {kaynak_sayisi_toplam} "
-            "bağımsız kaynaktan derlenen güncel fiyatlara dayanır (gelinlik, "
-            "damatlık, alyans, salon ve diğerleri). Fotoğrafçı, kuaför ve "
-            "balayı gibi henüz kaynağı doğrulanmamış kalemler dahil değildir."
+            f"<strong>{_para(ornek_toplam)}</strong> tutması bekleniyor. "
+            f"Bunun {_para(gercek_toplam)} tutarı {len(gercek_detaylar)} kalem için "
+            f"{kaynak_sayisi_toplam} bağımsız kaynaktan derlenen güncel fiyatlara, "
+            f"{_para(tahmini_toplam)} tutarı ise henüz kazınan bir kaynağı olmayan "
+            f"{len(tahmini_detaylar)} kalem için genel piyasa araştırmasına dayanır."
         )
         cevap_disable = ""
+    elif tahmini_detaylar:
+        cevap_metni = (
+            f"{ORNEK_DAVETLI_SAYISI} kişilik, orta segment bir düğün için "
+            f"kalem kalem toplam yaklaşık <strong>{_para(ornek_toplam)}</strong> "
+            "— ancak bu rakam şu an TAMAMEN genel piyasa araştırmasına dayanıyor, "
+            "hiçbir kalem henüz kazınan/tarihli bir kaynaktan doğrulanmadı. Gerçek "
+            "veri toplandıkça bu sayı kaynaklı rakamlarla güncellenecek."
+        )
+        cevap_disable = ' style="color:#7a4a06"'
     else:
         ornek_toplam = None
         cevap_metni = (
@@ -241,6 +326,10 @@ def sayfa_uret(veri_dosyasi: Path = VARSAYILAN_VERI) -> str:
   <p><a href="/dugun/hesaplayici/">Kendi davetli sayınız ve segmentinizle hesaplayın →</a></p>
 
   <h2>Kalem kalem fiyatlar</h2>
+  <p><span class="tahmini-etiket">Tahmini</span> etiketli kalemler henüz
+    kazınan bir kaynağa dayanmıyor — genel piyasa araştırmasından
+    alınmıştır, diğerleri gerçek/tarihli kaynaklardan derlenir.
+    <a href="/dugun/metodoloji/">Fark ne, bakın.</a></p>
   <table>
     <thead>
       <tr><th>Kalem</th><th class="sayi">Ekonomik</th><th class="sayi">Orta</th><th class="sayi">Lüks</th><th class="sayi">Kaynak</th></tr>
@@ -251,13 +340,6 @@ def sayfa_uret(veri_dosyasi: Path = VARSAYILAN_VERI) -> str:
   </table>
 
   {_capraz_dogrulama_uyarilari_html(kalemler)}
-
-  <h2>Henüz veri kapsamında olmayan kalemler</h2>
-  <p>Bu kalemler için henüz güvenilir bir kaynak bulunamadı, tahmini bir
-    rakam <em>uydurulmuyor</em> — kaynak doğrulandığında eklenecek.</p>
-  <ul>
-    {_verisiz_liste_html()}
-  </ul>
 
   <p>Yöntem, kaynaklar ve örneklem büyüklükleri için
     <a href="/dugun/metodoloji/">metodoloji sayfasına</a> bakın.</p>

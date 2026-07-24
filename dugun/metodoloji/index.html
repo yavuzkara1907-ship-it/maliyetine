@@ -25,11 +25,14 @@
   <h1>Bu Rakamlar Nereden Geliyor?</h1>
 
   <div class="cevap-blok">
-    Maliyetine.com.tr'deki fiyatlar <strong>hiçbir zaman yapay zekadan
-    üretilmez</strong> — gerçek e-ticaret sitelerinden, marka
-    mağazalarından ve ilan platformlarından robots.txt kurallarına uygun
-    şekilde aylık olarak kazınır. Yapay zekanın tek rolü, ham veriyi
-    temizlemek ve segmentlere ayırmaktır; fiyatın kendisini asla üretmez.
+    Maliyetine.com.tr'deki fiyatların büyük çoğunluğu gerçek e-ticaret
+    sitelerinden, marka mağazalarından ve ilan platformlarından
+    robots.txt kurallarına uygun şekilde aylık olarak kazınır — yapay
+    zeka burada sadece ham veriyi temizler, fiyatı asla üretmez. Henüz
+    kazınan bir kaynağı olmayan az sayıda kalem için ise, kaynak
+    bulunana kadar <span class="tahmini-etiket">Tahmini</span> etiketiyle
+    açıkça işaretlenmiş, genel piyasa araştırmasından türetilmiş geçici
+    bir değer kullanılır — bu ikisi hiçbir yerde karıştırılmaz.
   </div>
 
   <h2>Neden tek kaynağa güvenmiyoruz?</h2>
@@ -93,14 +96,34 @@
     <li>Aktif bot-tespiti (ör. Cloudflare zorlukları) atlatılmaya çalışılmaz — bir site bunu kullanıyorsa o kaynak bilerek bırakılır.</li>
   </ul>
 
-  <h2>Kapsanmayan kalemler</h2>
+  <h2>Gerçek kaynak vs. tahmini kalemler</h2>
   <p>
-    Bazı kalemler (ör. fotoğrafçı, kuaför, orkestra, balayı) için henüz
-    güvenilir, robots.txt uyumlu bir kaynak bulunamadı veya bulunan
-    kaynak fiyatı üyelik arkasında gizliyor. Bu kalemler hesaplayıcı
-    toplamına <strong>dahil edilmez</strong> — uydurma bir "tahmini" rakam
-    da koyulmaz. Kaynak bulunduğunda eklenir.
+    Bazı kalemler için (ör. fotoğrafçı, kuaför, orkestra, gelin arabası,
+    organizasyon, takı/altın, yemek/ikram, nikah harçları) henüz
+    güvenilir, robots.txt uyumlu, sürekli kazınabilen bir kaynak
+    bulunamadı — bazı platformlar bu tür fiyatları üyelik arkasında
+    gizliyor. Bu kalemler için, kaynak bulunana kadar,
+    <strong>tek seferlik bir genel piyasa araştırmasından</strong>
+    (birden fazla fiyat/ilan sitesi taranarak) türetilmiş bir tahmini
+    değer kullanılır.
   </p>
+  <p>Bu tahmini değerler, motor.py'nin sürekli kazıdığı "gerçek kaynak"
+    verisinden temelde farklıdır:</p>
+  <table>
+    <thead><tr><th></th><th>Gerçek kaynak</th><th>Tahmini kalem</th></tr></thead>
+    <tbody>
+      <tr><td>Kaynak</td><td>Belirli, isimli site(ler)</td><td>Genel piyasa araştırması</td></tr>
+      <tr><td>Güncelleme</td><td>Otomatik, aylık</td><td>Elle, düzensiz</td></tr>
+      <tr><td>Örneklem</td><td>Ürün sayısı belirtilir</td><td>Yok</td></tr>
+      <tr><td>Çapraz doğrulama</td><td>Evet</td><td>Hayır</td></tr>
+      <tr><td>İşaret</td><td>Kaynak sayısı</td><td><span class="tahmini-etiket">Tahmini</span> etiketi</td></tr>
+    </tbody>
+  </table>
+  <p>Hesaplayıcı ve endeks sayfasında bu iki tür kalem her zaman ayrı
+    gösterilir ve toplam tutarın ne kadarının gerçek kaynaklardan, ne
+    kadarının tahminden geldiği açıkça belirtilir. Gerçek bir kaynak
+    bulunduğunda, o kalem tahmini listeden çıkarılıp gerçek kaynak
+    listesine taşınır.</p>
 
   <div class="uyari-kutu">
     Bazı kaynaklarda gösterilen fiyatlar "başlangıç fiyatı"dır (ör. düğün

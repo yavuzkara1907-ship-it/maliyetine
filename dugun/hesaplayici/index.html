@@ -23,8 +23,11 @@
 <main class="kapsayici">
 
   <h1>Düğün Maliyeti Hesaplayıcı</h1>
-  <p>Davetli sayınızı ve bütçe segmentinizi girin — gerçek fiyat
-    verisinden derlenmiş kalem kalem tahmini görün.</p>
+  <p>Davetli sayınızı ve bütçe segmentinizi girin — kalem kalem tahmini
+    görün. <span class="tahmini-etiket">Tahmini</span> etiketli kalemler
+    henüz kazınan bir kaynağa dayanmıyor, genel piyasa araştırmasından
+    alınmıştır — diğerleri gerçek, tarihli kaynaklardan derlenir.
+    <a href="/dugun/metodoloji/">Fark ne, bakın.</a></p>
 
   <div id="veri-durumu" class="uyari-kutu" hidden></div>
 
@@ -55,6 +58,7 @@
     <p class="sonuc-alt-metin">Tahmini toplam</p>
     <p class="sonuc-toplam" id="sonuc-toplam-deger">0 TL</p>
     <p class="sonuc-alt-metin" id="sonuc-guncelleme"></p>
+    <p class="sonuc-alt-metin" id="sonuc-kirilim"></p>
 
     <table id="detay-tablo">
       <thead>
@@ -65,12 +69,6 @@
 
     <div id="eksik-kalem-notu"></div>
   </div>
-
-  <h2>Henüz veri kapsamında olmayan kalemler</h2>
-  <p>Bu kalemler için henüz güvenilir bir kaynak bulunamadı — toplama
-    dahil edilmiyor, uydurma bir rakam koyulmuyor.
-    <a href="/dugun/metodoloji/">Neden bkz.</a></p>
-  <ul id="verisiz-kalem-liste"></ul>
 
 </main>
 
@@ -103,14 +101,13 @@
     kutu.name = "kalem";
     label.appendChild(kutu);
     label.appendChild(document.createTextNode(" " + kalem.ad));
+    if (kalem.kaynak_tipi === "tahmini") {
+      const etiket = document.createElement("span");
+      etiket.className = "tahmini-etiket";
+      etiket.textContent = "Tahmini";
+      label.appendChild(etiket);
+    }
     kalemSecimListe.appendChild(label);
-  });
-
-  const verisizListe = document.getElementById("verisiz-kalem-liste");
-  DUGUN_KALEMLERI_VERISIZ.forEach(function (kalem) {
-    const li = document.createElement("li");
-    li.textContent = kalem.ad;
-    verisizListe.appendChild(li);
   });
 
   let veriKalemleri = {};
@@ -129,8 +126,8 @@
     .catch(function () {
       veriDurumu.hidden = false;
       veriDurumu.textContent =
-        "Fiyat verisi şu anda yüklenemedi. Hesaplayıcı geçici olarak " +
-        "çalışmıyor olabilir - lütfen daha sonra tekrar deneyin.";
+        "Gerçek kaynak verisi şu anda yüklenemedi - sadece tahmini " +
+        "kalemler hesaplamaya dahil edilebilir.";
     });
 
   const form = document.getElementById("hesaplayici-form");
@@ -151,26 +148,40 @@
 
     document.getElementById("sonuc-toplam-deger").textContent = paraYaz(sonuc.toplam);
     document.getElementById("sonuc-guncelleme").textContent = guncellemeTarihi
-      ? "Veri güncelleme tarihi: " + guncellemeTarihi
+      ? "Gerçek kaynak verisi güncelleme tarihi: " + guncellemeTarihi
       : "";
 
     detayGovde.innerHTML = "";
     const eksikler = [];
+    let gercekToplam = 0;
+    let tahminiToplam = 0;
     sonuc.detaylar.forEach(function (satir) {
       if (!satir.veri_var) {
         eksikler.push(satir.ad);
         return;
       }
+      if (satir.tahmini_mi) {
+        tahminiToplam += satir.satir_toplam;
+      } else {
+        gercekToplam += satir.satir_toplam;
+      }
       const tr = document.createElement("tr");
       const birimEtiket = satir.birim === "kisi_basi" ? " / kişi" : "";
+      let etiketHtml = "";
+      if (satir.tahmini_mi) {
+        etiketHtml = ' <span class="tahmini-etiket" title="' + (satir.kaynak_notu || "") + '">Tahmini</span>';
+      } else if (satir.genel_medyana_dusuldu) {
+        etiketHtml = ' <span class="tahmini-etiket">Genel medyan</span>';
+      }
       tr.innerHTML =
-        "<td>" + satir.ad +
-        (satir.genel_medyana_dusuldu ? ' <span class="tahmini-etiket">Genel medyan</span>' : "") +
-        "</td>" +
+        "<td>" + satir.ad + etiketHtml + "</td>" +
         '<td class="sayi">' + paraYaz(satir.birim_fiyat) + birimEtiket + "</td>" +
         '<td class="sayi">' + paraYaz(satir.satir_toplam) + "</td>";
       detayGovde.appendChild(tr);
     });
+
+    document.getElementById("sonuc-kirilim").textContent =
+      "Gerçek kaynaklardan: " + paraYaz(gercekToplam) + " · Tahmini kalemlerden: " + paraYaz(tahminiToplam);
 
     eksikNot.innerHTML = eksikler.length
       ? '<p class="sonuc-alt-metin">Bu ay veri dönmedi, toplama dahil edilmedi: ' + eksikler.join(", ") + "</p>"
