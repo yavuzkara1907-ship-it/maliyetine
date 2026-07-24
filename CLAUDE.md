@@ -178,13 +178,28 @@ Hesaplayıcı bu kalemleri toplar. Her kalem: segment + kaynak + tarih.
   çalıştırılıp hangi kaynakların gerçekten ürün döndürdüğü (JSON-LD/CSS
   katmanı) görülmeli — düğün vertikalinde olduğu gibi bazı kategori
   sayfaları farklı şablon kullanabilir (`sayfa_tani.py` gerekebilir).
-- **Frontend henüz yok** — `/ev-kurma/` sayfaları (endeks/hesaplayıcı/
-  metodoloji) bilerek ERTELENDİ, önce gerçek veri akışı doğrulanacak
-  (düğün'de yaşanan "agrega.py şema uyumsuzluğu" bug'ı tekrarlamamak
-  için — kör inşa etmek yerine gerçek veriye karşı test edilecek).
-  `sayfa_uret.py` şu an sadece "dugun" vertikaline özel (hardcoded) —
-  ev-kurma verisi geldiğinde bu script vertikal-agnostik hale
-  getirilmeli (agrega.py zaten `--vertikal` parametresiyle genel).
+- **Frontend YAYINDA (2026-07-25).** Yavuz'un yerelinde `python motor.py`
+  gerçekten çalıştırıldı: 42 kalemin 39'u ilk denemede çalıştı (55
+  kaynak-grubu, 55 sağlıklı, 0 karantina — sadece bilinen 3 istisna:
+  ramsey/damatlık, boyner/damatlık, cimri/gelinlik, bunlar zaten düğün
+  vertikalinde de aynı sitelerde düşük öncelikli/bilinen sorunlar).
+  Gerçek veri commit edilince `sayfa_uret.py` **v0.2'ye genelleştirildi**
+  (`VERTIKAL_KONFIG` sözlüğü ile artık hem dugun hem ev-kurma aynı
+  motoru kullanıyor, yeni vertikal eklemek = yeni bir config girdisi).
+  `/ev-kurma/` (endeks), `/ev-kurma/hesaplayici/`, `/ev-kurma/metodoloji/`
+  üretildi/yazıldı. Hesaplayıcı motoru (`dugun-hesapla.js`) zaten
+  vertikal-agnostikti, değişiklik gerekmedi — sadece yeni
+  `assets/js/ev-kurma-kalemler.js` eklendi (42 kalem, hepsi
+  `kaynak_tipi: "gercek"`, tahmini kalem yok). İlk gerçek üretim: orta
+  segment toplam **353.827 TL** (42 kalemin tamamı gerçek/tarihli
+  kaynaktan — ev-kurma'da hiç "tahmini" kalem yok, düğün'den farklı).
+  Metodoloji sayfası ev-kurma'nın düğün'den farkını (tahmini kalem yok
+  ama ÇOK KAYNAK KURALI henüz karşılanmıyor — 42 kalem de tek kaynak,
+  Trendyol) açıkça belirtiyor, gizlemiyor. Ana sayfa, sitemap.xml ve
+  aylık GitHub Actions workflow'u ev-kurma'yı kapsayacak şekilde
+  güncellendi. 77 Python + 15 Node testi PASS, Playwright ile 5 sayfa
+  duman testi yapıldı (favicon.ico eksikliği dışında hata yok — bu,
+  sitede zaten önceden var olan, ilgisiz bir eksiklik).
 
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
@@ -824,6 +839,15 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
       kimlik doğrulama sorunu yaşadı (GitHub artık şifre kabul etmiyor,
       Personal Access Token gerekiyor) - PAT oluşturup Keychain'e
       kaydedilmesiyle çözüldü, artık sorunsuz push edebiliyor.
+- [x] **Ev kurma vertikali yayında (2026-07-25):** 42 kalemin 39'u
+      Yavuz'un yerelinde gerçek veriyle doğrulandı, `sayfa_uret.py`
+      vertikal-agnostik hale getirildi (v0.2), `/ev-kurma/` üçlüsü
+      (endeks/hesaplayıcı/metodoloji) yazıldı ve commit edildi.
+- [ ] Ev kurma: ikinci bağımsız kaynak bulma (şu an 42 kalemin hepsi
+      tek kaynaklı — Trendyol). ÇOK KAYNAK KURALI henüz karşılanmıyor,
+      metodoloji sayfasında bu açıkça belirtiliyor.
+- [ ] Ramsey/damatlık, Boyner/damatlık, Cimri/gelinlik: hâlâ 0 ürün
+      (düşük öncelik, ilgili kalemler zaten çok kaynaklı).
 - [ ] Takı/altın (canlı gram fiyatı) için kaynak bulma
 - [ ] TÜİK doğrulama verisi entegrasyonu (ÇOK KAYNAK KURALI 5. katman)
 - [x] **GitHub Actions aylık otomasyon + sitemap.xml eklendi (2026-07-24).**
