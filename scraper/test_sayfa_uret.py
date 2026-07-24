@@ -127,7 +127,7 @@ class SayfaUretTestleri(unittest.TestCase):
 
         html = sayfa_uret.sayfa_uret(self.veri_dosyasi)
         self.assertIn("Güncelleme: 2026-07-24", html)
-        gercek_kismi = 5000 + 800 * sayfa_uret.ORNEK_DAVETLI_SAYISI
+        gercek_kismi = 5000 + 800 * sayfa_uret.VERTIKAL_KONFIG["dugun"]["ornek_davetli_sayisi"]
         self.assertIn(sayfa_uret._para(gercek_kismi), html)
         self.assertIn("bağımsız kaynaktan derlenen", html)
         self.assertIn("genel piyasa araştırmasına dayanır", html)
@@ -153,6 +153,53 @@ class SayfaUretTestleri(unittest.TestCase):
 
         html_uyarisiz = sayfa_uret._capraz_dogrulama_uyarilari_html({"gelinlik": GELINLIK_VERISI})
         self.assertEqual(html_uyarisiz, "")
+
+
+BUZDOLABI_VERISI = {
+    "genel_medyan": 25000,
+    "kaynak_sayisi": 1,
+    "capraz_dogrulama_uyarisi": None,
+    "segmentler": {
+        "dusuk": {"min": 8000, "medyan": 15000, "max": 20000, "urun_sayisi": 8},
+        "orta": {"min": 20001, "medyan": 25000, "max": 35000, "urun_sayisi": 10},
+        "luks": {"min": 35001, "medyan": 55000, "max": 90000, "urun_sayisi": 7},
+    },
+}
+
+
+class EvKurmaVertikaliTestleri(unittest.TestCase):
+    """sayfa_uret v0.2'nin vertikal-agnostik hale getirilmesini kilitler -
+    ev-kurma'nin dugun'den farkli ozellikleri: hic 'tahmini' kalem yok,
+    hic 'kisi_basi' birim yok, tek kaynaktan (Trendyol) uyarisi olmali."""
+
+    def setUp(self):
+        self.tmp = TemporaryDirectory()
+        self.veri_dosyasi = Path(self.tmp.name) / "ev-kurma.json"
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def test_gercek_veri_varsa_tahmini_kismi_hic_gecmez(self):
+        agregali = {
+            "vertikal": "ev-kurma",
+            "guncelleme_tarihi": "2026-07-25",
+            "kalemler": {"buzdolabi": BUZDOLABI_VERISI},
+        }
+        self.veri_dosyasi.write_text(json.dumps(agregali, ensure_ascii=False), encoding="utf-8")
+
+        html = sayfa_uret.sayfa_uret(self.veri_dosyasi, vertikal="ev-kurma")
+        self.assertIn("Sıfırdan Ev Kurmak Kaça Mal Olur", html)
+        self.assertIn(sayfa_uret._para(25000), html)
+        self.assertIn("bağımsız kaynaktan derlenen", html)
+        # Tahmini kalem hic olmadigi icin "genel piyasa arastirmasina
+        # dayanir" ayrimi (dugun'deki gibi) GEREKMEZ - govde tek parca.
+        self.assertNotIn("genel piyasa araştırmasına dayanır", html)
+        self.assertIn("tek kaynaktan", html)
+        self.assertIn('"@type": "Dataset"', html)
+
+    def test_veri_yoksa_durust_bekleme_mesaji(self):
+        html = sayfa_uret.sayfa_uret(self.veri_dosyasi, vertikal="ev-kurma")
+        self.assertIn("Veri toplama süreci devam ediyor", html)
 
 
 if __name__ == "__main__":

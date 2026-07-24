@@ -5,8 +5,8 @@
     "gelin-ayakkabisi": {
       "segmentler": {
         "dusuk": {
-          "min": 644,
-          "medyan": 841,
+          "min": 590,
+          "medyan": 644,
           "max": 859,
           "urun_sayisi": 3,
           "kaynak_sayisi": 1
@@ -20,14 +20,14 @@
         },
         "luks": {
           "min": 2194,
-          "medyan": 2194,
-          "max": 2194,
-          "urun_sayisi": 1,
+          "medyan": 2254,
+          "max": 2315,
+          "urun_sayisi": 2,
           "kaynak_sayisi": 1
         }
       },
-      "genel_medyan": 992,
-      "toplam_urun": 8,
+      "genel_medyan": 1050,
+      "toplam_urun": 9,
       "guncelleme_tarihi": "2026-07-25",
       "kaynak_sayisi": 2,
       "kaynaklar": [
@@ -46,8 +46,8 @@
             "Trendyol - Gelin Ayakkabisi"
           ],
           "tarih": "2026-07-25",
-          "toplam_urun": 8,
-          "genel_medyan": 992
+          "toplam_urun": 9,
+          "genel_medyan": 1050
         }
       ],
       "capraz_dogrulama_uyarisi": null
@@ -72,12 +72,12 @@
           "min": 5599,
           "medyan": 83970,
           "max": 164950,
-          "urun_sayisi": 22,
+          "urun_sayisi": 21,
           "kaynak_sayisi": 3
         }
       },
       "genel_medyan": 44950,
-      "toplam_urun": 98,
+      "toplam_urun": 97,
       "guncelleme_tarihi": "2026-07-25",
       "kaynak_sayisi": 6,
       "kaynaklar": [
@@ -123,8 +123,8 @@
             "Trendyol - Damatlik"
           ],
           "tarih": "2026-07-25",
-          "toplam_urun": 17,
-          "genel_medyan": 3360
+          "toplam_urun": 16,
+          "genel_medyan": 3300
         },
         {
           "site": "vakko",
@@ -137,9 +137,9 @@
         }
       ],
       "capraz_dogrulama_uyarisi": {
-        "fark_yuzdesi": 2042.0,
+        "fark_yuzdesi": 2080.9,
         "medyanlar": {
-          "trendyol": 3360,
+          "trendyol": 3300,
           "beymen": 44950,
           "vakko": 71970
         }
@@ -148,23 +148,23 @@
     "gelinlik": {
       "segmentler": {
         "dusuk": {
-          "min": 2141,
-          "medyan": 3704,
+          "min": 1503,
+          "medyan": 3391,
           "max": 5299,
           "urun_sayisi": 6,
           "kaynak_sayisi": 1
         },
         "orta": {
           "min": 6460,
-          "medyan": 8999,
-          "max": 21185,
+          "medyan": 14153,
+          "max": 25000,
           "urun_sayisi": 10,
           "kaynak_sayisi": 1
         },
         "luks": {
-          "min": 21583,
-          "medyan": 34650,
-          "max": 47677,
+          "min": 30959,
+          "medyan": 40000,
+          "max": 65000,
           "urun_sayisi": 5,
           "kaynak_sayisi": 1
         }
@@ -318,15 +318,15 @@
           "kaynak_sayisi": 1
         },
         "luks": {
-          "min": 166,
-          "medyan": 304,
+          "min": 441,
+          "medyan": 441,
           "max": 441,
-          "urun_sayisi": 2,
+          "urun_sayisi": 1,
           "kaynak_sayisi": 1
         }
       },
-      "genel_medyan": 146,
-      "toplam_urun": 9,
+      "genel_medyan": 139,
+      "toplam_urun": 8,
       "guncelleme_tarihi": "2026-07-25",
       "kaynak_sayisi": 1,
       "kaynaklar": [
@@ -336,8 +336,8 @@
             "Trendyol - Dugun Davetiyesi"
           ],
           "tarih": "2026-07-25",
-          "toplam_urun": 9,
-          "genel_medyan": 146
+          "toplam_urun": 8,
+          "genel_medyan": 139
         }
       ],
       "capraz_dogrulama_uyarisi": null
@@ -379,24 +379,24 @@
     "salon": {
       "segmentler": {
         "dusuk": {
-          "min": 200,
-          "medyan": 250,
+          "min": 300,
+          "medyan": 320,
           "max": 400,
           "urun_sayisi": 3,
           "kaynak_sayisi": 1
         },
         "orta": {
-          "min": 450,
-          "medyan": 500,
-          "max": 550,
-          "urun_sayisi": 4,
+          "min": 500,
+          "medyan": 550,
+          "max": 600,
+          "urun_sayisi": 5,
           "kaynak_sayisi": 1
         },
         "luks": {
           "min": 750,
-          "medyan": 800,
-          "max": 850,
-          "urun_sayisi": 2,
+          "medyan": 750,
+          "max": 750,
+          "urun_sayisi": 1,
           "kaynak_sayisi": 1
         }
       },

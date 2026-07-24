@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ev Kurma Maliyeti Hesaplayıcı 2026 | Maliyetine.com.tr</title>
+<meta name="description" content="Almak istediğiniz eşyaları ve bütçe segmentinizi seçin, gerçek fiyat verisinden derlenmiş ev kurma maliyeti tahmininizi anında görün.">
+<link rel="canonical" href="https://maliyetine.com.tr/ev-kurma/hesaplayici/">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<header class="ust-bar">
+  <div class="kapsayici">
+    <a href="/" class="logo">maliyet<span>ine</span>.com.tr</a>
+    <nav class="ust-menu">
+      <a href="/ev-kurma/">Ev Kurma Endeksi</a>
+      <a href="/ev-kurma/metodoloji/">Metodoloji</a>
+    </nav>
+  </div>
+</header>
+
+<main class="kapsayici">
+
+  <h1>Ev Kurma Maliyeti Hesaplayıcı</h1>
+  <p>Almak istediğiniz eşyaları işaretleyin, bütçe segmentinizi seçin —
+    kalem kalem tahmini görün. Tüm kalemler gerçek, tarihli kaynaklardan
+    (şu an için Trendyol) derlenir.
+    <a href="/ev-kurma/metodoloji/">Metodolojiye bakın.</a></p>
+
+  <div id="veri-durumu" class="uyari-kutu" hidden></div>
+
+  <form id="hesaplayici-form">
+    <div class="form-alan">
+      <label>Segment</label>
+      <div class="segment-secim">
+        <label><input type="radio" name="segment" value="ekonomik"> Ekonomik</label>
+        <label><input type="radio" name="segment" value="orta" checked> Orta</label>
+        <label><input type="radio" name="segment" value="luks"> Lüks</label>
+      </div>
+    </div>
+
+    <div class="form-alan">
+      <label>Dahil edilecek eşyalar</label>
+      <div class="kalem-secim-liste" id="kalem-secim-liste"></div>
+    </div>
+
+    <button type="submit" class="birincil-buton">Hesapla</button>
+  </form>
+
+  <div id="sonuc-kutu" class="sonuc-kutu" hidden>
+    <p class="sonuc-alt-metin">Tahmini toplam</p>
+    <p class="sonuc-toplam" id="sonuc-toplam-deger">0 TL</p>
+    <p class="sonuc-alt-metin" id="sonuc-guncelleme"></p>
+    <p class="sonuc-alt-metin" id="sonuc-kirilim"></p>
+
+    <table id="detay-tablo">
+      <thead>
+        <tr><th>Kalem</th><th class="sayi">Birim fiyat</th><th class="sayi">Tutar</th></tr>
+      </thead>
+      <tbody id="detay-tablo-govde"></tbody>
+    </table>
+
+    <div id="eksik-kalem-notu"></div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="kapsayici">
+    <div>© 2026 Maliyetine.com.tr</div>
+    <nav>
+      <a href="/ev-kurma/">Ev Kurma Endeksi</a>
+      <a href="/ev-kurma/metodoloji/">Metodoloji</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/assets/js/ev-kurma-kalemler.js"></script>
+<script src="/assets/js/dugun-hesapla.js"></script>
+<script>
+(function () {
+  const paraFormat = new Intl.NumberFormat("tr-TR", { maximumFractionDigits: 0 });
+  function paraYaz(n) {
+    return paraFormat.format(Math.round(n)) + " TL";
+  }
+
+  const kalemSecimListe = document.getElementById("kalem-secim-liste");
+  EV_KURMA_KALEMLERI.forEach(function (kalem) {
+    const label = document.createElement("label");
+    const kutu = document.createElement("input");
+    kutu.type = "checkbox";
+    kutu.value = kalem.id;
+    kutu.checked = true;
+    kutu.name = "kalem";
+    label.appendChild(kutu);
+    label.appendChild(document.createTextNode(" " + kalem.ad));
+    kalemSecimListe.appendChild(label);
+  });
+
+  let veriKalemleri = {};
+  let guncellemeTarihi = null;
+  const veriDurumu = document.getElementById("veri-durumu");
+
+  fetch("/veri/ev-kurma.json")
+    .then(function (r) {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    })
+    .then(function (veri) {
+      veriKalemleri = veri.kalemler || {};
+      guncellemeTarihi = veri.guncelleme_tarihi;
+    })
+    .catch(function () {
+      veriDurumu.hidden = false;
+      veriDurumu.textContent =
+        "Gerçek kaynak verisi şu anda yüklenemedi - hesaplama şu an için mümkün değil.";
+    });
+
+  const form = document.getElementById("hesaplayici-form");
+  const sonucKutu = document.getElementById("sonuc-kutu");
+  const detayGovde = document.getElementById("detay-tablo-govde");
+  const eksikNot = document.getElementById("eksik-kalem-notu");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const segment = form.querySelector('input[name="segment"]:checked').value;
+    const secilenIdler = Array.from(form.querySelectorAll('input[name="kalem"]:checked')).map(function (k) {
+      return k.value;
+    });
+
+    const sonuc = dugunHesapla.hesapla(veriKalemleri, EV_KURMA_KALEMLERI, secilenIdler, segment, 1);
+
+    document.getElementById("sonuc-toplam-deger").textContent = paraYaz(sonuc.toplam);
+    document.getElementById("sonuc-guncelleme").textContent = guncellemeTarihi
+      ? "Gerçek kaynak verisi güncelleme tarihi: " + guncellemeTarihi
+      : "";
+
+    detayGovde.innerHTML = "";
+    const eksikler = [];
+    let gercekToplam = 0;
+    sonuc.detaylar.forEach(function (satir) {
+      if (!satir.veri_var) {
+        eksikler.push(satir.ad);
+        return;
+      }
+      gercekToplam += satir.satir_toplam;
+      const tr = document.createElement("tr");
+      let etiketHtml = "";
+      if (satir.genel_medyana_dusuldu) {
+        etiketHtml = ' <span class="tahmini-etiket">Genel medyan</span>';
+      }
+      tr.innerHTML =
+        "<td>" + satir.ad + etiketHtml + "</td>" +
+        '<td class="sayi">' + paraYaz(satir.birim_fiyat) + "</td>" +
+        '<td class="sayi">' + paraYaz(satir.satir_toplam) + "</td>";
+      detayGovde.appendChild(tr);
+    });
+
+    document.getElementById("sonuc-kirilim").textContent =
+      "Gerçek kaynaklardan (Trendyol, tek kaynak): " + paraYaz(gercekToplam);
+
+    eksikNot.innerHTML = eksikler.length
+      ? '<p class="sonuc-alt-metin">Bu ay veri dönmedi, toplama dahil edilmedi: ' + eksikler.join(", ") + "</p>"
+      : "";
+
+    sonucKutu.hidden = false;
+  });
+})();
+</script>
+
+</body>
+</html>

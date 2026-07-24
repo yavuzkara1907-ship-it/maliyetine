@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metodoloji: Ev Kurma Maliyeti Verisi Nasıl Derleniyor? | Maliyetine.com.tr</title>
+<meta name="description" content="Maliyetine.com.tr ev kurma maliyeti verisini nereden, nasıl ve hangi kurallarla topluyor? Kaynaklar, segment tanımı, sınırlar ve tek-kaynak uyarısı.">
+<link rel="canonical" href="https://maliyetine.com.tr/ev-kurma/metodoloji/">
+<link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<header class="ust-bar">
+  <div class="kapsayici">
+    <a href="/" class="logo">maliyet<span>ine</span>.com.tr</a>
+    <nav class="ust-menu">
+      <a href="/ev-kurma/">Ev Kurma Endeksi</a>
+      <a href="/ev-kurma/hesaplayici/">Hesaplayıcı</a>
+    </nav>
+  </div>
+</header>
+
+<main class="kapsayici">
+
+  <h1>Bu Rakamlar Nereden Geliyor?</h1>
+
+  <div class="cevap-blok">
+    Maliyetine.com.tr'deki ev kurma fiyatları, gerçek e-ticaret
+    sitelerinden robots.txt kurallarına uygun şekilde aylık olarak
+    kazınır — yapay zeka burada sadece ham veriyi temizler, fiyatı asla
+    üretmez. Bu vertikaldeki 42 kalemin tamamı ürün bazlıdır (hizmet/
+    işçilik değil) ve hiçbiri "tahmini" bir değer içermez — hepsi
+    kaynaklı ve tarihlidir.
+  </div>
+
+  <h2>Neden şu an tek kaynaktan (Trendyol) besleniyor?</h2>
+  <p>
+    Ev kurma vertikali 2026-07-25'te başlatıldı ve ilk turda kalem
+    listesini genişletmek önceliklendirildi (14 → 42 kalem). Sonuç
+    olarak <strong>bu vertikaldeki kalemlerin tamamı şu an için tek
+    bağımsız kaynağa (Trendyol) dayanıyor</strong> — düğün vertikalindeki
+    "en az 2, ideal 3 bağımsız kaynak" hedefine henüz ulaşılmadı. Bunu
+    gizlemiyoruz: tek kaynaklı bir rakam, o sitenin kendi fiyat
+    politikasını yansıtır, piyasanın tamamını değil. İkinci bağımsız
+    kaynak (ör. Hepsiburada, Vatan, Koçtaş, IKEA) bir sonraki turda
+    aranacak.
+  </p>
+
+  <h3>Kaynak türleri (hedeflenen)</h3>
+  <ul>
+    <li><strong>Fiyat karşılaştırma siteleri</strong> — geniş örneklem.</li>
+    <li><strong>Marka/mağaza siteleri</strong> (şu an: Trendyol) — genellikle daha gerçekçi "liste fiyatı" verir.</li>
+    <li><strong>İkinci el / ilan platformları</strong> — alt segment için.</li>
+  </ul>
+
+  <h2>Çapraz doğrulama</h2>
+  <p>
+    Bir kalem için ≥2 sağlıklı bağımsız kaynak olduğunda, genel
+    medyanlarını karşılaştırırız. Aradaki fark %30'u aşarsa bunu
+    <strong>gizlemeyiz</strong> — endeks sayfasında açıkça bir uyarı
+    olarak gösterilir (bkz. düğün vertikalindeki damatlık/alyans
+    örnekleri). Ev kurma vertikalinde henüz ikinci bir kaynak
+    olmadığından bu kontrol şu an çalışmıyor — kaynak çeşitlendiğinde
+    otomatik olarak devreye girecek.
+  </p>
+
+  <h2>Segment tanımı</h2>
+  <p>Her kalem için toplanan tüm fiyatlar üç segmente ayrılır (persentil bazlı):</p>
+  <table>
+    <thead><tr><th>Segment</th><th>Tanım</th></tr></thead>
+    <tbody>
+      <tr><td>Ekonomik</td><td>≤ 25. persentil (P25)</td></tr>
+      <tr><td>Orta</td><td>P25 – P75 arası</td></tr>
+      <tr><td>Lüks</td><td>&gt; 75. persentil (P75)</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Sağlık kontrolü</h2>
+  <p>
+    Bir kaynak normalde belirli bir ürün sayısı döndürüyorsa ve bir ay
+    aniden çok azını döndürürse (ör. site tasarımı değişmiş, erişim
+    engellenmiş), bu veri <strong>sessizce kabul edilmez</strong> —
+    otomatik olarak karantinaya alınır ve endekse dahil edilmez.
+  </p>
+
+  <h2>Nazik kazıma ilkeleri</h2>
+  <ul>
+    <li>Her hedef URL, kazımadan önce robots.txt'e karşı otomatik kontrol edilir; izin vermeyen sayfalar kullanılmaz.</li>
+    <li>İstekler arası bekleme süresi bırakılır, agresif/paralel istek atılmaz.</li>
+    <li>Kazıma ayda bir kez çalışır — gerçek zamanlı veya sürekli değildir.</li>
+    <li>Aktif bot-tespiti (ör. Cloudflare zorlukları) atlatılmaya çalışılmaz — bir site bunu kullanıyorsa o kaynak bilerek bırakılır.</li>
+  </ul>
+
+  <h2>Kapsam dışı bırakılanlar</h2>
+  <p>
+    Elektrik tesisatı, boya-badana gibi hizmet/işçilik kalemleri ve
+    "temizlik malzemeleri", "ilk yardım çantası" gibi tek bir net ürüne
+    karşılık gelmeyen muğlak/paket kalemler bu vertikale kasıtlı olarak
+    dahil edilmedi — mevcut motor ürün bazlı kalemler için tasarlandı,
+    hizmet fiyatları için ayrı bir yöntem (telefonla teklif, meslek odası
+    birim fiyat tarifeleri) gerekir.
+  </p>
+
+  <div class="uyari-kutu">
+    Bu vertikaldeki toplam rakam, "sıfırdan minimum bir ev kurmanın"
+    kabaca maliyetidir — mutfak dolabı/tadilat gibi inşai kalemleri veya
+    dekorasyon aksesuarlarını içermez, sadece 42 kalemlik listedeki
+    beyaz eşya, mobilya, küçük ev aleti ve temel tekstil ürünlerini kapsar.
+  </div>
+
+  <h2>Güncelleme sıklığı</h2>
+  <p>Veri ayda bir otomatik olarak yenilenir. Her sayfada son güncelleme
+    tarihi görünür. Yıl değiştikçe endeks o yılın verisini yansıtacak
+    şekilde güncellenir.</p>
+
+  <p><a href="/ev-kurma/">← Ev kurma endeksine dön</a></p>
+
+</main>
+
+<footer>
+  <div class="kapsayici">
+    <div>© 2026 Maliyetine.com.tr</div>
+    <nav>
+      <a href="/ev-kurma/">Ev Kurma Endeksi</a>
+      <a href="/ev-kurma/hesaplayici/">Hesaplayıcı</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
