@@ -52,7 +52,15 @@ def kaynak_dosyalarini_oku(vertikal_klasoru: Path) -> list[dict]:
 
 
 def capraz_dogrulama_raporlarini_oku(vertikal_klasoru: Path) -> dict[str, dict]:
-    """kalem -> en guncel capraz dogrulama raporu (varsa)."""
+    """kalem -> en guncel capraz dogrulama raporu (varsa).
+
+    NOT: motor.py'nin capraz_dogrula() fonksiyonu HER coklu-kaynakli kalem
+    icin bir rapor dosyasi yazar (esigi asmasa bile, bkz. motor.py) - "uyari"
+    alani gercekten esigi asip asmadigini gosterir. Bu yuzden sadece
+    uyari=true olan raporlar aliniyor; digerleri (fark makul) sessizce
+    atlaniyor. Ham rapor semasi motor.py'de "site_medyanlari" ve "fark_orani"
+    (oran, 0-1+ araliginda - yuzde DEGIL) kullanir - agregali ciktidaki
+    "medyanlar"/"fark_yuzdesi" isimleri burada donusturuluyor."""
     raporlar: dict[str, dict] = {}
     if not vertikal_klasoru.exists():
         return raporlar
@@ -60,6 +68,8 @@ def capraz_dogrulama_raporlarini_oku(vertikal_klasoru: Path) -> dict[str, dict]:
         try:
             veri = json.loads(dosya.read_text(encoding="utf-8"))
         except (json.JSONDecodeError, OSError):
+            continue
+        if not veri.get("uyari"):
             continue
         kalem = veri.get("kalem")
         if not kalem:
@@ -148,9 +158,10 @@ def vertikal_agregali(vertikal: str, veri_kok: Path = VARSAYILAN_VERI_KOK) -> di
     for kalem, kayitlar in kalemler_gruplu.items():
         ozet = kalem_birlestir(kayitlar)
         if kalem in capraz_raporlar:
+            ham_rapor = capraz_raporlar[kalem]
             ozet["capraz_dogrulama_uyarisi"] = {
-                "fark_yuzdesi": capraz_raporlar[kalem].get("fark_yuzdesi"),
-                "medyanlar": capraz_raporlar[kalem].get("medyanlar"),
+                "fark_yuzdesi": round(ham_rapor["fark_orani"] * 100, 1),
+                "medyanlar": ham_rapor["site_medyanlari"],
             }
         else:
             ozet["capraz_dogrulama_uyarisi"] = None

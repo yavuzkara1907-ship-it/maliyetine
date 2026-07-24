@@ -147,19 +147,43 @@ class VertikalAgregaliTestleri(unittest.TestCase):
         self.assertIsNone(sonuc["guncelleme_tarihi"])
 
     def test_capraz_dogrulama_uyarisi_ilgili_kaleme_eklenir(self):
+        # Sema motor.py'nin GERCEK capraz_dogrula() ciktisiyla birebir ayni
+        # olmali (2026-07-25, Yavuz'un yerelinde gercek veriyle bulunan bug):
+        # "site_medyanlari" (medyanlar DEGIL) ve "fark_orani" (oran, 0-1+
+        # araliginda - "fark_yuzdesi" DEGIL, zaten yuzde degil).
         _kayit_yaz(self.vertikal_klasoru, "alyans", "atasay", "2026-07-24")
         _kayit_yaz(self.vertikal_klasoru, "alyans", "trendyol", "2026-07-24")
         _kayit_yaz(self.vertikal_klasoru, "gelinlik", "trendyol", "2026-07-24")
         rapor = self.vertikal_klasoru / "alyans_capraz-dogrulama_2026-07-24.json"
         rapor.write_text(json.dumps({
-            "kalem": "alyans", "tarih": "2026-07-24", "fark_yuzdesi": 351.0,
-            "medyanlar": {"atasay": 19405, "trendyol": 4298},
+            "vertikal": "dugun", "kalem": "alyans", "tarih": "2026-07-24",
+            "site_medyanlari": {"atasay": 19405, "trendyol": 4298},
+            "fark_orani": 3.51, "esik_orani": 0.3, "uyari": True,
         }), encoding="utf-8")
 
         sonuc = agrega.vertikal_agregali("dugun", self.veri_kok)
-        self.assertIsNotNone(sonuc["kalemler"]["alyans"]["capraz_dogrulama_uyarisi"])
-        self.assertEqual(sonuc["kalemler"]["alyans"]["capraz_dogrulama_uyarisi"]["fark_yuzdesi"], 351.0)
+        uyari = sonuc["kalemler"]["alyans"]["capraz_dogrulama_uyarisi"]
+        self.assertIsNotNone(uyari)
+        self.assertEqual(uyari["fark_yuzdesi"], 351.0)
+        self.assertEqual(uyari["medyanlar"], {"atasay": 19405, "trendyol": 4298})
         self.assertIsNone(sonuc["kalemler"]["gelinlik"]["capraz_dogrulama_uyarisi"])
+
+    def test_uyari_false_olan_rapor_yoksayilir(self):
+        # motor.py, esigi asmayan kalemler icin de bir rapor dosyasi yazar
+        # (bkz. capraz_dogrula() motor.py) - "uyari": false. Bu YANLISLIKLA
+        # gercek bir uyariymis gibi agregali veriye eklenmemeli (2026-07-25
+        # bug'inin bir parcasi olarak bulundu).
+        _kayit_yaz(self.vertikal_klasoru, "salon", "dugunbuketi", "2026-07-24")
+        _kayit_yaz(self.vertikal_klasoru, "salon", "trendyol", "2026-07-24")
+        rapor = self.vertikal_klasoru / "salon_capraz-dogrulama_2026-07-24.json"
+        rapor.write_text(json.dumps({
+            "vertikal": "dugun", "kalem": "salon", "tarih": "2026-07-24",
+            "site_medyanlari": {"dugunbuketi": 1000, "trendyol": 1100},
+            "fark_orani": 0.1, "esik_orani": 0.3, "uyari": False,
+        }), encoding="utf-8")
+
+        sonuc = agrega.vertikal_agregali("dugun", self.veri_kok)
+        self.assertIsNone(sonuc["kalemler"]["salon"]["capraz_dogrulama_uyarisi"])
 
     def test_karantina_klasoru_dahil_edilmez(self):
         # karantina alt klasordedir (vertikal klasorunun kendisi degil),
