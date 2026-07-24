@@ -112,6 +112,27 @@ def tani(url: str) -> None:
         if bulunan >= 10:
             break
 
+    # Urun karti adayi tahmini: class adinda "product"/"item"/"card" gecen
+    # ve makul sayida (2-500) tekrar eden konteynerlerin TAM HTML'ini
+    # dokuyor - CSS secici doldurmak icin en degerli kisim burasi.
+    print("\n=== URUN KARTI ADAYLARI - tam HTML (css_secicileri icin) ===")
+    adaylar = {}
+    for el in soup.find_all(class_=True):
+        for c in el.get("class", []):
+            cl = c.lower()
+            if any(k in cl for k in ("product", "item", "card")) and "checkbox" not in cl:
+                adaylar.setdefault(c, []).append(el)
+
+    gosterilen = 0
+    for sinif, elemanlar in sorted(adaylar.items(), key=lambda kv: -len(kv[1])):
+        if not (2 <= len(elemanlar) <= 500):
+            continue
+        print(f"\n--- class='{sinif}' ({len(elemanlar)} eslesme) - ilk eslesmenin HTML'i ---")
+        print(str(elemanlar[0])[:2000])
+        gosterilen += 1
+        if gosterilen >= 5:
+            break
+
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
