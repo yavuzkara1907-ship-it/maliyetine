@@ -821,3 +821,274 @@ kaynaklar:
       kullanildigi anlasiliyor. fiyat_secici'ye `.sale-price` fallback
       olarak eklendi (union - digerlerini bozmuyor, fixture testiyle
       dogrulandi).
+
+  # =========================================================================
+  # VERTIKAL: ev-kurma (2026-07-25 eklendi - Yavuz'un talimatiyla, urun bazli
+  # kalem oldugu icin mevcut motor/Trendyol sablonuyla neredeyse hazir).
+  # Tum URL'ler WebSearch ile dogrulanan gercek Trendyol kategori sayfalari.
+  # Ilk turda tek kaynak (Trendyol) - COK KAYNAK KURALI geregi her kalem icin
+  # 2. bagimsiz kaynak (ör. Hepsiburada, Vatan, Koctas, IKEA) sonraki turda
+  # aranmali. CSS secici duzenlik icin ayni Trendyol sablonu kullanildi
+  # (.product-card / .product-name / .price-value,.seller-store-default-
+  # price-value,.sale-price) - dugun vertikalinde zaten dogrulanmis, ama BU
+  # spesifik kategori sayfalarinda henuz test edilmedi (Yavuz'un yerelinde
+  # dogrulanmasi gerekiyor).
+  # =========================================================================
+
+  - ad: "Trendyol - Buzdolabi"
+    site: "trendyol"
+    url: "https://www.trendyol.com/buzdolabi-x-c103623"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "buzdolabi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: ".product-card"
+      isim_secici: ".product-name"
+      fiyat_secici: ".price-value, .seller-store-default-price-value, .sale-price"
+    min_fiyat: 3000
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: "WebSearch ile dogrulanan gercek URL (2026-07-25). Henuz motor.py ile test edilmedi."
+
+  - ad: "Trendyol - Camasir Makinesi"
+    site: "trendyol"
+    url: "https://www.trendyol.com/camasir-makinesi-x-c103625"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "camasir-makinesi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: ".product-card"
+      isim_secici: ".product-name"
+      fiyat_secici: ".price-value, .seller-store-default-price-value, .sale-price"
+    min_fiyat: 3000
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: "WebSearch ile dogrulanan gercek URL (2026-07-25). Henuz motor.py ile test edilmedi."
+
+  - ad: "Trendyol - Bulasik Makinesi"
+    site: "trendyol"
+    url: "https://www.trendyol.com/bulasik-makinesi-x-c103621"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "bulasik-makinesi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: ".product-card"
+      isim_secici: ".product-name"
+      fiyat_secici: ".price-value, .seller-store-default-price-value, .sale-price"
+    min_fiyat: 3000
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: "WebSearch ile dogrulanan gercek URL (2026-07-25). Henuz motor.py ile test edilmedi."
+
+  - ad: "Trendyol - Ankastre Firin Seti"
+    site: "trendyol"
+    url: "https://www.trendyol.com/ankastre-firin-seti-y-s56981"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "firin-ocak"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: ".product-card"
+      isim_secici: ".product-name"
+      fiyat_secici: ".price-value, .seller-store-default-price-value, .sale-price"
+    min_fiyat: 2000
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: >
+      WebSearch ile dogrulanan gercek URL (2026-07-25). Ankastre (ankastre)
+      firin+ocak seti - freestanding (tek parca) ocak degil, Turkiye'de
+      "ev kurma" baglaminda en yaygin secim. Henuz motor.py ile test edilmedi.
+
+  - ad: "Trendyol - Mikrodalga Firin"
+    site: "trendyol"
+    url: "https://www.trendyol.com/mikrodalga-firin-x-c103681"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "mikrodalga"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: ".product-card"
+      isim_secici: ".product-name"
+      fiyat_secici: ".price-value, .seller-store-default-price-value, .sale-price"
+    min_fiyat: 500
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: "WebSearch ile dogrulanan gercek URL (2026-07-25). Henuz motor.py ile test edilmedi."
+
+  - ad: "Trendyol - Koltuk Takimi"
+    site: "trendyol"
+    url: "https://www.trendyol.com/koltuk-takimi-x-c105457"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "koltuk-takimi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: ".product-card"
+      isim_secici: ".product-name"
+      fiyat_secici: ".price-value, .seller-store-default-price-value, .sale-price"
+    min_fiyat: 3000
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: "WebSearch ile dogrulanan gercek URL (2026-07-25). Henuz motor.py ile test edilmedi."
+
+  - ad: "Trendyol - Yemek Odasi Takimi"
+    site: "trendyol"
+    url: "https://www.trendyol.com/yemek-odasi-takimi-x-c104484"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "yemek-masasi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: ".product-card"
+      isim_secici: ".product-name"
+      fiyat_secici: ".price-value, .seller-store-default-price-value, .sale-price"
+    min_fiyat: 1000
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: "WebSearch ile dogrulanan gercek URL (2026-07-25). Henuz motor.py ile test edilmedi."
+
+  - ad: "Trendyol - Cift Kisilik Yatak"
+    site: "trendyol"
+    url: "https://www.trendyol.com/cift-kisilik-yatak-y-s7846"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "yatak"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: ".product-card"
+      isim_secici: ".product-name"
+      fiyat_secici: ".price-value, .seller-store-default-price-value, .sale-price"
+    min_fiyat: 1000
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: >
+      WebSearch ile dogrulanan gercek URL (2026-07-25). Sadece yatak
+      (baza/somya HARIC, ayri kalem olabilir ileride). Henuz motor.py
+      ile test edilmedi.
+
+  - ad: "Trendyol - Gardirop"
+    site: "trendyol"
+    url: "https://www.trendyol.com/gardirop-x-c108623"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "gardirop"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: ".product-card"
+      isim_secici: ".product-name"
+      fiyat_secici: ".price-value, .seller-store-default-price-value, .sale-price"
+    min_fiyat: 1000
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: "WebSearch ile dogrulanan gercek URL (2026-07-25). Henuz motor.py ile test edilmedi."
+
+  - ad: "Trendyol - TV Unitesi"
+    site: "trendyol"
+    url: "https://www.trendyol.com/ledli-tv-uniteleri-y-s15474"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "tv-unitesi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: ".product-card"
+      isim_secici: ".product-name"
+      fiyat_secici: ".price-value, .seller-store-default-price-value, .sale-price"
+    min_fiyat: 500
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: "WebSearch ile dogrulanan gercek URL (2026-07-25). Henuz motor.py ile test edilmedi."
+
+  - ad: "Trendyol - Robot Supurge"
+    site: "trendyol"
+    url: "https://www.trendyol.com/robot-supurge-x-c109453"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "supurge"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: ".product-card"
+      isim_secici: ".product-name"
+      fiyat_secici: ".price-value, .seller-store-default-price-value, .sale-price"
+    min_fiyat: 500
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: "WebSearch ile dogrulanan gercek URL (2026-07-25). Henuz motor.py ile test edilmedi."
+
+  - ad: "Trendyol - Perde"
+    site: "trendyol"
+    url: "https://www.trendyol.com/perde-x-c1141"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "perde"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: ".product-card"
+      isim_secici: ".product-name"
+      fiyat_secici: ".price-value, .seller-store-default-price-value, .sale-price"
+    min_fiyat: 100
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: "WebSearch ile dogrulanan gercek URL (2026-07-25). Henuz motor.py ile test edilmedi."
+
+  - ad: "Trendyol - Avize"
+    site: "trendyol"
+    url: "https://www.trendyol.com/avize-x-c1366"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "aydinlatma"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: ".product-card"
+      isim_secici: ".product-name"
+      fiyat_secici: ".price-value, .seller-store-default-price-value, .sale-price"
+    min_fiyat: 100
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: "WebSearch ile dogrulanan gercek URL (2026-07-25). Henuz motor.py ile test edilmedi."
+
+  - ad: "Trendyol - Klima"
+    site: "trendyol"
+    url: "https://www.trendyol.com/klima-x-c104080"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "klima"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: ".product-card"
+      isim_secici: ".product-name"
+      fiyat_secici: ".price-value, .seller-store-default-price-value, .sale-price"
+    min_fiyat: 3000
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: "WebSearch ile dogrulanan gercek URL (2026-07-25). Henuz motor.py ile test edilmedi."

@@ -86,8 +86,10 @@ motorları için.
   sayısı + tarih.
 - Aylık güncelleme. Aylık JSON'lar biriktirilir → fiyat geçmişi
   grafikleri (GEO + basın malzemesi).
-- Başlangıç 2 vertikal: (1) Düğün maliyeti, (2) Ev tadilatı maliyeti.
-  Sonra: ev kurma, 0 km araç, tatil, ilkokul, üniversite.
+- Başlangıç 2 vertikal: (1) Düğün maliyeti, (2) **Ev kurma maliyeti**
+  (2026-07-25'te Yavuz'un kararıyla "ev tadilatı"nın yerine geçti — ürün
+  bazlı olduğu için daha hızlı ilerliyor). Sonra: ev tadilatı, 0 km araç,
+  tatil, ilkokul, üniversite.
 - Her vertikal üçlüsü: hesaplayıcı + endeks sayfası + metodoloji sayfası.
 - Şehir/segment kırılımı hedeflenir.
 - UYARI: Kaynak seçimi metodolojinin kendisidir. Genel e-ticaret
@@ -137,6 +139,36 @@ Hesaplayıcı bu kalemleri toplar. Her kalem: segment + kaynak + tarih.
   sayfada AÇIKÇA "tahmini" olarak işaretlenir. Dürüstlük ürünün parçası.
 - Hesaplayıcı girdileri: şehir, davetli sayısı, segment (ekonomik/orta/
   lüks), opsiyonel kalem seçimleri.
+
+## EV KURMA VERTİKALİ — Kalem Listesi (2026-07-25 başlatıldı)
+- Yavuz'un talimatıyla düğün'den sonraki 2. vertikal olarak seçildi
+  (orijinal plan "ev tadilatı" idi, Yavuz bunun yerine ev kurma'yı
+  istedi — plan güncellendi).
+- **Tamamen ürün bazlı** (CLAUDE.md'nin "Vertikal veri tipi ayrımı"
+  notuna göre kolay kategori) — her kalem tek bir fiziksel üründür,
+  hizmet/işçilik karmaşıklığı yok. Mevcut motor.py/Trendyol şablonu
+  değişiklik gerektirmeden çalışıyor (yapısal olarak; gerçek kazıma
+  Yavuz'un yerelinde doğrulanmayı bekliyor).
+- **14 kalem, tamamı Trendyol (tek kaynak, ilk tur):** buzdolabı,
+  çamaşır makinesi, bulaşık makinesi, fırın/ocak (ankastre set),
+  mikrodalga, koltuk takımı, yemek masası takımı, yatak (çift kişilik,
+  baza hariç), gardırop, TV ünitesi, robot süpürge, perde, aydınlatma
+  (avize), klima. Tüm URL'ler WebSearch ile doğrulandı.
+  `vertikal: "ev-kurma"` olarak `kaynaklar.yaml`'a eklendi.
+  **ÇOK KAYNAK KURALI henüz karşılanmıyor** (hepsi tek kaynaklı) —
+  ikinci bağımsız kaynak (Hepsiburada, Vatan, Koçtaş, IKEA vb.) sonraki
+  turda aranmalı.
+- **Henüz doğrulanmadı:** Yavuz'un yerelinde `python motor.py`
+  çalıştırılıp hangi kaynakların gerçekten ürün döndürdüğü (JSON-LD/CSS
+  katmanı) görülmeli — düğün vertikalinde olduğu gibi bazı kategori
+  sayfaları farklı şablon kullanabilir (`sayfa_tani.py` gerekebilir).
+- **Frontend henüz yok** — `/ev-kurma/` sayfaları (endeks/hesaplayıcı/
+  metodoloji) bilerek ERTELENDİ, önce gerçek veri akışı doğrulanacak
+  (düğün'de yaşanan "agrega.py şema uyumsuzluğu" bug'ı tekrarlamamak
+  için — kör inşa etmek yerine gerçek veriye karşı test edilecek).
+  `sayfa_uret.py` şu an sadece "dugun" vertikaline özel (hardcoded) —
+  ev-kurma verisi geldiğinde bu script vertikal-agnostik hale
+  getirilmeli (agrega.py zaten `--vertikal` parametresiyle genel).
 
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)

@@ -616,18 +616,22 @@ def capraz_dogrula(sonuclar: list[dict], cikti_kok: Path, esik_oran: float = CAP
 # ----------------------------------------------------------
 # CALISTIR
 # ----------------------------------------------------------
-def calistir(kaynaklar_dosyasi: Path = VARSAYILAN_KAYNAKLAR, cikti_kok: Path = VARSAYILAN_CIKTI):
+def calistir(
+    kaynaklar_dosyasi: Path = VARSAYILAN_KAYNAKLAR,
+    cikti_kok: Path = VARSAYILAN_CIKTI,
+    gecmis_dosyasi: Path = GECMIS_DOSYA,
+):
     veri = yaml.safe_load(kaynaklar_dosyasi.read_text(encoding="utf-8"))
     kaynaklar = veri.get("kaynaklar", [])
 
-    gecmis = gecmisi_yukle()
+    gecmis = gecmisi_yukle(gecmis_dosyasi)
     gruplar = gruplar_halinde_topla(kaynaklar)
 
     sonuclar = [
         grup_isle(vertikal, kalem, site, grup, gecmis, cikti_kok)
         for (vertikal, kalem, site), grup in gruplar.items()
     ]
-    gecmisi_kaydet(gecmis)
+    gecmisi_kaydet(gecmis, gecmis_dosyasi)
 
     capraz_raporlar = capraz_dogrula(sonuclar, cikti_kok)
 
@@ -645,6 +649,11 @@ def main():
     ayristirici = argparse.ArgumentParser(description=__doc__)
     ayristirici.add_argument("--kaynaklar", type=Path, default=VARSAYILAN_KAYNAKLAR)
     ayristirici.add_argument("--cikti", type=Path, default=VARSAYILAN_CIKTI)
+    ayristirici.add_argument(
+        "--gecmis", type=Path, default=GECMIS_DOSYA,
+        help="saglik kontrolu gecmis dosyasi - test/deneme calistirmalarinda "
+             "gercek kaynak_gecmisi.json'u kirletmemek icin ayri bir yol verilebilir",
+    )
     ayristirici.add_argument("--log-seviyesi", default="INFO")
     args = ayristirici.parse_args()
 
@@ -656,7 +665,7 @@ def main():
             logging.FileHandler(BASE_DIR / "kazima.log", encoding="utf-8"),
         ],
     )
-    calistir(args.kaynaklar, args.cikti)
+    calistir(args.kaynaklar, args.cikti, args.gecmis)
 
 
 if __name__ == "__main__":
