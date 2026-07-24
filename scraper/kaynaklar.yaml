@@ -171,7 +171,7 @@ kaynaklar:
       urun_karti: ".bg-card"
       isim_secici: "a.font-semibold.tracking-tight"
       fiyat_secici: ".font-bold"
-    min_fiyat: 3000
+    min_fiyat: 100
     bekleme_sn: 3
     aktif: true
     durum: "onaylandi"
@@ -187,6 +187,17 @@ kaynaklar:
       isletmeler var (`ItemList` -> `LocalBusiness`) ama motor.py'nin
       json_ld katmani sadece `@type: "Product"` kabul ediyor - CSS
       katmani bu yuzden gerekli, kasitli tasarim.
+      **BUG DUZELTILDI (2026-07-24):** min_fiyat 3000'di, ama sayfadaki
+      "başlangıç fiyatı" rakamlari (ör. 685 TL) muhtemelen kisi basi/
+      paket baslangic fiyati - gercek toplam degil, cok dusuk. Yavuz'un
+      yerelinde `python motor.py` ile TEKRAR calistirildi: 3 DugunBuketi
+      girdisinin UCU DE "0 urun" dondu - min_fiyat esigi TUM kartlari
+      eledigi teyit edildi (fixture testiyle dogrulandi: min_fiyat=5000
+      ile ayni ornek kart 0 donuyor, min_fiyat=100 ile dogru sekilde
+      eslesiyor). min_fiyat 100'e dusuruldu - bu rakamlarin "başlangıç
+      fiyatı" (kisi basi/minimum paket) oldugu, TOPLAM dugun/hizmet
+      maliyeti olmadigi hesaplayici/endeks sayfasinda ACIKCA
+      belirtilmeli (Urun Kararlari'ndaki durustluk ilkesi).
 
   # --- site: beymen (luks cok markali magaza - COK KAYNAK KURALI tip 2,
   # Pronovias/Vera Wang gibi dunya markalarini tasiyor, DugunBuketi'nin
@@ -194,7 +205,7 @@ kaynaklar:
   - ad: "Beymen - Gelinlik"
     site: "beymen"
     url: "https://www.beymen.com/tr/gelinlik-97563"
-    render_gerekli: true  # buyuk TR moda siteleri genelde requests'i 403 ile reddediyor
+    render_gerekli: false  # DUZELTILDI 2026-07-24: Erkek Smokin'de Playwright'in Beymen tarafindan engellendigi/farkli sayfa gosterdigi kanitlandi (bkz. Erkek Smokin notlari) - render_gerekli:true burada da ise yaramaz, kaldirildi
     sayfa_sayisi: 1
     vertikal: "dugun"
     kalem: "gelinlik"
@@ -219,12 +230,21 @@ kaynaklar:
       karti izi) yok** - smokin sayfasi sunucu tarafinda (SSR) doluyken
       bu sayfa muhtemelen urunleri AJAX/JS ile sonradan yukluyor. CSS
       seciciler smokin sayfasiyla ayni Beymen sablonu varsayimiyla
-      (ayni site, ayni CSS class konvansiyonu) simdilik ONCEDEN
-      dolduruldu - render_gerekli zaten true oldugu icin motor.py
-      gercek Chromium ile deneyecek. Dogrulanmadi; Yavuz'un yerelinde
-      calistirdiginda 0 urun donerse ya kategori gercekten bos ya da
-      farkli bir sablon kullaniyor demektir, o zaman
-      sayfa_tani.py'nin Playwright-render edilmis ciktisina bakilmali.
+      (ayni site, ayni CSS class konvansiyonu) onceden dolduruldu.
+      **DURUM (2026-07-24, Yavuz'un yerelinde `python motor.py`
+      calistirildi):** "0 urun" dondu - beklenen sonuc, cunku o an
+      render_gerekli:true'ydu ve Erkek Smokin girdisinde Playwright'in
+      Beymen tarafindan engellendigi/farkli (bos) sayfa gosterdigi
+      kanitlandi (bkz. o girdinin notlari) - yani bu 0 iki sebepten
+      biri olabilirdi (gercekten bos kategori VEYA Playwright engeli),
+      ayirt edilemiyordu. render_gerekli simdi false yapildi (ayni
+      duzeltme Erkek Smokin'e uygulandi) - boylece bir sonraki
+      calistirmada SADECE `requests` ile ne donduğu net gorulecek: hala
+      0 ise (ki ham HTML'de urun izi olmadigindan beklenen budur)
+      kategori gercekten JS/AJAX ile dolduruluyor demektir ve bu durumda
+      Beymen/gelinlik muhtemelen KULLANILAMAZ (headless tarayici bu
+      sitede calismiyor) - o zaman "birakildi" olarak isaretlenip
+      gelinlik icin baska bir kaynak aranmali.
 
   # =========================================================
   # KALEM: gelin-ayakkabisi  (Akakce Cloudflare yuzunden birakildi,
@@ -341,7 +361,7 @@ kaynaklar:
   - ad: "Beymen - Erkek Smokin"
     site: "beymen"
     url: "https://www.beymen.com/tr/erkek-giyim-smokin-10121"
-    render_gerekli: true  # buyuk TR moda siteleri genelde requests'i 403 ile reddediyor
+    render_gerekli: false  # DUZELTILDI 2026-07-24: requests dogrudan 200+gercek HTML donuyor, Playwright GEREKSIZ (bkz. notlar)
     sayfa_sayisi: 1
     vertikal: "dugun"
     kalem: "damatlik"
@@ -363,6 +383,20 @@ kaynaklar:
       seciciler dogrulandi: `.m-productCard` (48 kart, ornek "Beymen
       Collection | Ekru Sal Yaka Yun Smokin | 44.950 TL" - isim ve
       fiyat ayni kart icinde net ayrisiyor).
+      **BUG BULUNDU VE DUZELTILDI (2026-07-24):** `render_gerekli: true`
+      YANLIS bir varsayimla konmustu ("buyuk TR moda siteleri genelde
+      403 verir" genellemesi) - ama sayfa_tani.py TESHISI zaten
+      `requests` ile ILK denemede HTTP 200 + tam urun HTML'i almisti,
+      hic Playwright'a dusmemisti. Yavuz'un yerelinde `python motor.py`
+      ile TEKRAR calistirildiginda CSS seciciler dogru olmasina ragmen
+      "0 urun" dondu - cunku render_gerekli:true oldugu icin motor.py
+      bu sefer Playwright/Chromium kullandi ve Beymen'in Playwright'a
+      (headless tarayici parmak izine) `requests`'ten FARKLI/BOS bir
+      sayfa sundugu goruldu (muhtemelen bot-tespiti otomasyon
+      isaretlerini - navigator.webdriver vb. - ayirt ediyor). Cozum:
+      render_gerekli false yapildi, sayfa_tani.py'nin zaten kanitladigi
+      gibi duz `requests` yeterli ve dogru. Ayrica daha nazik (Chromium
+      acmiyor).
 
   # --- site: boyner (orta segment genel pazaryeri - Trendyol'a benzer) ---
   - ad: "Boyner - Erkek Takim Elbise"
@@ -621,7 +655,7 @@ kaynaklar:
       urun_karti: ".bg-card"
       isim_secici: "a.font-semibold.tracking-tight"
       fiyat_secici: ".font-bold"
-    min_fiyat: 5000
+    min_fiyat: 100
     bekleme_sn: 3
     aktif: true
     durum: "onaylandi"
@@ -638,6 +672,12 @@ kaynaklar:
       gercek isletme listesi var ama `@type: "LocalBusiness"` oldugu
       icin motor.py'nin json_ld katmani (sadece "Product" kabul eder)
       bunu atliyor - CSS katmani kasitli devreye giriyor.
+      **BUG DUZELTILDI (2026-07-24):** min_fiyat 5000'di, ama sayfadaki
+      "başlangıç fiyatı" rakamlari (685 TL gibi, muhtemelen kisi basi)
+      bunun cok altinda - Yavuz'un yerelinde calistirinca "0 urun"
+      dondu, esik TUM kartlari eledigi fixture testiyle dogrulandi.
+      100'e dusuruldu - bu TOPLAM salon maliyeti degil, kisi basi/
+      minimum baslangic fiyati oldugu yayinlanirken ACIKCA belirtilmeli.
 
   - ad: "DugunBuketi - Istanbul Fotografci"
     site: "dugunbuketi"
@@ -650,7 +690,7 @@ kaynaklar:
       urun_karti: ".bg-card"
       isim_secici: "a.font-semibold.tracking-tight"
       fiyat_secici: ".font-bold"
-    min_fiyat: 1000
+    min_fiyat: 100
     bekleme_sn: 3
     aktif: true
     durum: "onaylandi"
@@ -658,10 +698,17 @@ kaynaklar:
       Ilk turda (hatali robots_kontrol.py ile) yanlislikla RET cikmisti,
       DUZELTILMIS protego tabanli script ile TEKRAR test edildi
       (2026-07-24): gercekte ONAY. "fotografci" artik 2 bagimsiz kaynaga
-      sahip (armut + dugunbuketi). CSS seciciler ayni siteden ("Istanbul
-      Dugun Mekanlari" sayfasi) dogrulanan ayni sablonla dolduruldu
-      (2026-07-24) - DugunBuketi tum kategori/liste sayfalarinda ayni
-      Vue/Tailwind kart bilesenini kullaniyor (`.bg-card` + `.font-bold`).
+      sahip olacak sekilde tasarlandi (armut + dugunbuketi) ama armut
+      ayri bir teshiste kesin BIRAKILDI (bkz. Armut girdisinin notlari) -
+      su an "fotografci" tek kaynakli (sadece dugunbuketi). CSS seciciler
+      ayni siteden ("Istanbul Dugun Mekanlari" sayfasi) dogrulanan ayni
+      sablonla dolduruldu (2026-07-24) - DugunBuketi tum kategori/liste
+      sayfalarinda ayni Vue/Tailwind kart bilesenini kullaniyor
+      (`.bg-card` + `.font-bold`).
+      **BUG DUZELTILDI (2026-07-24):** min_fiyat 1000'di, salon
+      girdisindeki ayni sorun (bkz. o notlar) burada da gecerli oldugu
+      icin 100'e dusuruldu - Yavuz'un yerelinde "0 urun" dondu,
+      duzeltme henuz onun tarafinda TEKRAR calistirilip dogrulanmadi.
 
   - ad: "Armut - Dugun Fotografcisi Fiyatlari"
     site: "armut"

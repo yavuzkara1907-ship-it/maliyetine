@@ -417,6 +417,43 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
     `python motor.py --cikti ...` ile uçtan uca çalıştırıldı (16
     kaynak-grubu işlendi, çökme yok, exit 0 — bu sandbox'ta hepsi
     robots.txt proxy engeline takılıp atlanıyor, beklenen davranış).
+- **Yavuz'un yerelinde bu turun düzeltmeleri GERÇEK `python motor.py` ile
+  test edildi (2026-07-24) — 2 YENİ BUG bulundu ve düzeltildi:**
+  - **BUG 1 — DüğünBuketi'nin 3 sayfası hâlâ 0 ürün döndü** (CSS seçiciler
+    doğru olmasına rağmen). Kök neden: `min_fiyat` eşiği ("başlangıç
+    fiyatı" rakamları — 685 TL gibi, muhtemelen kişi başı/paket
+    başlangıcı — çok üzerinde, salon 5000 TL, fotoğrafçı 1000 TL,
+    gelinlik 3000 TL) TÜM kartları eliyordu. Bu sandbox'ta fixture testiyle
+    doğrulandı (aynı örnek kart min_fiyat=5000 ile 0, min_fiyat=100 ile
+    doğru eşleşiyor). **Düzeltme: üçünün de min_fiyat'ı 100'e düşürüldü.**
+    Bu rakamların TOPLAM maliyet değil kişi başı/başlangıç fiyatı olduğu
+    yayında açıkça belirtilmeli (dürüstlük ilkesi).
+  - **BUG 2 — Beymen/Erkek Smokin CSS seçiciler DOĞRU olmasına rağmen
+    0 ürün döndü.** Kök neden: `render_gerekli: true` yanlış bir
+    varsayımla konmuştu ("büyük TR moda siteleri genelde 403 verir").
+    Ama sayfa_tani.py teşhisi zaten `requests` ile İLK denemede HTTP 200
+    + tam ürün HTML'i almıştı, hiç Playwright'a düşmemişti. `render_gerekli:
+    true` olduğu için motor.py bu sefer Playwright/Chromium kullandı ve
+    **Beymen'in Playwright'a (headless tarayıcı parmak izine) `requests`'ten
+    FARKLI/BOŞ bir sayfa sunduğu ortaya çıktı** (muhtemelen bot-tespiti
+    otomasyon işaretlerini ayırt ediyor — `navigator.webdriver` vb.).
+    **Düzeltme: Beymen'in hem Erkek Smokin hem Gelinlik girdisinde
+    `render_gerekli: false` yapıldı** — düz `requests` zaten yeterli ve
+    doğru, ayrıca daha nazik (Chromium açmıyor).
+  - **Beymen/gelinlik hâlâ belirsiz:** ham HTML'de hiç ürün kartı izi
+    yoktu (smokin'in aksine) — bu ya kategori gerçekten JS/AJAX ile
+    dolduruluyor ya da gerçekten boş. `render_gerekli: false` yapıldıktan
+    sonraki bir sonraki `motor.py` çalıştırmasında hâlâ 0 dönerse (ki ham
+    HTML kanıtı bunu destekliyor), Beymen bu URL için muhtemelen
+    KULLANILAMAZ olacak — headless tarayıcı zaten bu sitede çalışmıyor
+    (yukarıdaki BUG 2), yani AJAX içeriğine Playwright ile de erişilemez.
+  - Diğerleri beklendiği gibi hâlâ 0/teşhis bekliyor: Ramsey (JS'li fiyat,
+    düşük öncelik), Boyner (skeleton — düzeltilmiş `sayfa_tani.py`'nin
+    TEKRAR çalıştırılması gerekiyor), Cimri (düşük öncelik),
+    Trendyol/davetiye (aynı şablon başka Trendyol sayfalarında çalışıyor,
+    henüz teşhis edilmedi — URL/kategori kimliği hatalı olabilir).
+  - Çapraz doğrulama uyarıları (alyans %351, damatlık %2121) beklendiği
+    gibi tekrar üretildi — zaten kabul edilmiş, aksiyon gerekmiyor.
 
 ## Modüller (sırayla)
 1. **Kazıma hattı** — ✅✅ **motor GERÇEK VERİ üretiyor (2026-07-24).**
@@ -487,17 +524,28 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
 - [x] **Beymen/damatlık (Erkek Smokin) CSS seçici ÇÖZÜLDÜ (2026-07-24):**
       `.m-productCard` / `.m-productCard__desc` / `.m-productCard__newPrice`
       — `sayfa_tani.py` çıktısından doğrudan doğrulandı, `test_motor.py`'ye
-      kilit test eklendi. Yavuz'un yerelinde `python motor.py` ile
-      GERÇEK doğrulama bekleniyor.
+      kilit test eklendi.
 - [x] **DüğünBuketi'nin 3 sayfası CSS seçici ÇÖZÜLDÜ (2026-07-24):**
       `.bg-card` / `a.font-semibold.tracking-tight` / `.font-bold` —
       üçü de aynı şablonu paylaşıyor, salon sayfasından doğrulanıp
-      hepsine uygulandı. Yavuz'un yerelinde doğrulama bekleniyor.
-- [ ] Beymen/gelinlik: aynı Beymen seçicileri varsayımla dolduruldu
-      ama ham HTML'de ürün kartı izi YOK (muhtemelen AJAX ile geç
-      yükleniyor) — Yavuz'un yerelinde `python motor.py` çalıştırınca
-      0 ürün dönerse `sayfa_tani.py`'nin (artık iskelet-farkında)
-      Playwright-render edilmiş çıktısına tekrar bakılmalı.
+      hepsine uygulandı.
+- [x] **Yavuz'un yerelinde `python motor.py` ile GERÇEK doğrulama
+      yapıldı (2026-07-24) — 2 yeni bug bulundu ve düzeltildi:**
+      DüğünBuketi'nin 3 sayfası CSS doğru olmasına rağmen `min_fiyat`
+      eşiği (5000/3000/1000) "başlangıç fiyatı" rakamlarının (685 TL
+      gibi) çok üzerindeydi, TÜM kartları eledi → 100'e düşürüldü.
+      Beymen/Erkek Smokin CSS doğru olmasına rağmen `render_gerekli:
+      true` yüzünden Playwright kullanıyordu — **Beymen'in Playwright'a
+      requests'ten FARKLI/BOŞ sayfa sunduğu ortaya çıktı** (muhtemelen
+      headless tarayıcı tespiti) → `render_gerekli: false` yapıldı
+      (Beymen'in hem smokin hem gelinlik girdisinde).
+- [ ] Beymen/gelinlik: hâlâ belirsiz. `render_gerekli: false`
+      düzeltmesinden SONRA Yavuz'un yerelinde tekrar `python motor.py`
+      çalıştırması gerekiyor — hâlâ 0 dönerse (ham HTML kanıtı bunu
+      destekliyor: hiç ürün kartı izi yok) muhtemelen bu URL için
+      Beymen KULLANILAMAZ (headless tarayıcı zaten bu sitede çalışmıyor,
+      yani AJAX içeriğine Playwright ile de erişilemez) — o zaman
+      "birakildi" yapılıp gelinlik için başka kaynak aranmalı.
 - [x] **Boyner kök nedeni bulundu (2026-07-24):** sayfa JS-"skeleton"
       yükleme halinde geliyor (`b-skeleton` class'ları), gerçek kart
       JS ile sonradan doluyor. `sayfa_tani.py` bunu artık otomatik
