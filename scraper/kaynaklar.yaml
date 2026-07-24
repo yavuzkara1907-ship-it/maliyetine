@@ -288,6 +288,69 @@ kaynaklar:
     durum: "arastirildi"
     notlar: "WebSearch ile dogrulanan gercek URL (2026-07-24). Trendyol/gelinlik JSON-LD ile calisiyor, ayni domain."
 
+  # --- site: beymen (luks marka magazasi - COK KAYNAK KURALI tip 2,
+  # segment cesitliligi icin degerli: Trendyol'un orta segmentine karsi
+  # premium ucu temsil eder) ---
+  - ad: "Beymen - Erkek Smokin"
+    site: "beymen"
+    url: "https://www.beymen.com/tr/erkek-giyim-smokin-10121"
+    render_gerekli: true  # buyuk TR moda siteleri genelde requests'i 403 ile reddediyor
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "damatlik"
+    yontem: "otomatik"
+    css_secicileri: null
+    min_fiyat: 3000
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: >
+      WebSearch ile dogrulanan gercek URL (2026-07-24). Luks segment -
+      Trendyol/Ramsey'in orta segmentinden farkli, dusuk/orta/luks
+      kirilimini zenginlestirir. robots.txt/bot korumasi bu ortamdan
+      dogrulanamadi.
+
+  # --- site: boyner (orta segment genel pazaryeri - Trendyol'a benzer) ---
+  - ad: "Boyner - Erkek Takim Elbise"
+    site: "boyner"
+    url: "https://www.boyner.com.tr/erkek-takim-elbise-modelleri-c-20000247"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "damatlik"
+    yontem: "otomatik"
+    css_secicileri: null
+    min_fiyat: 1000
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: >
+      WebSearch ile dogrulanan gercek URL (2026-07-24). Genel cok markali
+      magaza - Trendyol'a benzer orta segment. robots.txt/bot korumasi bu
+      ortamdan dogrulanamadi.
+
+  # --- site: vakko (luks tasarimci markasi - COK KAYNAK KURALI tip 2) ---
+  - ad: "Vakko - Erkek Takim Elbise"
+    site: "vakko"
+    url: "https://www.vakko.com/erkek/takim-elbise-c-3020103"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "damatlik"
+    yontem: "otomatik"
+    css_secicileri: null
+    min_fiyat: 3000
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: >
+      WebSearch ile dogrulanan gercek URL (2026-07-24). Luks tasarimci
+      markasi. Vakko'nun gelinlik tarafi ("Vakko Wedding") randevu bazli
+      butik/atolye modeline benziyor (DugunBuketi'nin gelinlik evi
+      kaynagina benzer) - net bir urun listeleme URL'i bulunamadigi icin
+      simdilik SADECE erkek takim elbise eklendi. robots.txt/bot korumasi
+      bu ortamdan dogrulanamadi.
+
   # =========================================================
   # KALEM: alyans  (hedef: >=2 bagimsiz site - Akakce birakildiktan
   # sonra su an SADECE atasay aktif, tek kaynak. Ikinci kaynak aranmali.)
