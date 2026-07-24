@@ -180,8 +180,8 @@ kaynaklar:
       teshis edilip doldurulmali.
 
   # =========================================================
-  # KALEM: gelin-ayakkabisi  (Akakce Cloudflare yuzunden birakildi -
-  # su an HICBIR aktif kaynak yok, yeni kaynak aranmali)
+  # KALEM: gelin-ayakkabisi  (Akakce Cloudflare yuzunden birakildi,
+  # yerine Trendyol eklendi - 2026-07-24)
   # =========================================================
   - ad: "Akakce - Gelin Ayakkabisi"
     site: "akakce"
@@ -199,9 +199,30 @@ kaynaklar:
     notlar: >
       Arama sonucunda '750 TL'den baslayan 40 secenek' gorundu -
       ornekleme icin dusuk ama baslangic icin yeterli. Akakce Cloudflare
-      yuzunden birakildi (bkz. yukaridaki genel Akakce notu) - bu kalem
-      su an HICBIR aktif kaynaga sahip degil, yeni kaynak (mumkunse 2)
-      aranmali.
+      yuzunden birakildi (bkz. yukaridaki genel Akakce notu).
+
+  # --- site: trendyol (genel pazaryeri - Akakce'nin bosalttigi yeri
+  # dolduruyor, gelinlik'te zaten JSON-LD ile calistigi kanitlandi) ---
+  - ad: "Trendyol - Gelin Ayakkabisi"
+    site: "trendyol"
+    url: "https://www.trendyol.com/gelin-ayakkabisi-y-s5720"
+    render_gerekli: true  # trendyol.com genel olarak requests'i 403 ile reddediyor
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "gelin-ayakkabisi"
+    yontem: "otomatik"
+    css_secicileri: null
+    min_fiyat: 200
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: >
+      WebSearch ile dogrulanan gercek URL (2026-07-24). Trendyol/gelinlik
+      zaten JSON-LD ile basariyla calisiyor (23 urun) - ayni domain,
+      robots.txt domain genelinde ONAY verdigi icin ayrica
+      robots_kontrol.py ile tek tek dogrulanmadi (motor.py yine de her
+      URL'i calisma zamaninda otomatik kontrol eder, RET cikarsa
+      kendiliginden atlanir).
 
   # =========================================================
   # KALEM: damatlik  (hedef: >=2 bagimsiz site - Akakce birakildiktan
@@ -244,6 +265,22 @@ kaynaklar:
       CSS seciciler henuz girilmedi - JSON-LD/microdata katmani
       bulamazsa saglik kontrolu 0 urunle karantinaya alacak, o zaman
       Yavuz'un F12 ile bakip css_secicileri doldurmasi gerekecek.
+
+  # --- site: trendyol (genel pazaryeri) ---
+  - ad: "Trendyol - Damatlik"
+    site: "trendyol"
+    url: "https://www.trendyol.com/damatlik-y-s5489"
+    render_gerekli: true  # trendyol.com genel olarak requests'i 403 ile reddediyor
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "damatlik"
+    yontem: "otomatik"
+    css_secicileri: null
+    min_fiyat: 1000
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: "WebSearch ile dogrulanan gercek URL (2026-07-24). Trendyol/gelinlik JSON-LD ile calisiyor, ayni domain."
 
   # =========================================================
   # KALEM: alyans  (hedef: >=2 bagimsiz site - Akakce birakildiktan
@@ -301,6 +338,26 @@ kaynaklar:
       (2026-07-23). Marka kuyumcu - Akakce'nin karsilastirma-listesi
       fiyatlarina karsi bagimsiz dogrulama saglar. CSS seciciler henuz
       girilmedi - bkz. Ramsey notu.
+
+  # --- site: trendyol (genel pazaryeri) ---
+  - ad: "Trendyol - Alyans"
+    site: "trendyol"
+    url: "https://www.trendyol.com/altin-c-alyans-x-r1-c103553"
+    render_gerekli: true  # trendyol.com genel olarak requests'i 403 ile reddediyor
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "alyans"
+    yontem: "otomatik"
+    css_secicileri: null
+    min_fiyat: 200
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: >
+      WebSearch ile dogrulanan gercek URL (2026-07-24). Trendyol'un
+      alyans kategori kimligi c103553 - birden fazla arama sonucunda
+      tutarli goruldu. Trendyol/gelinlik JSON-LD ile calisiyor, ayni
+      domain.
 
   # =========================================================
   # KALEM: salon / fotografci  (onceki oturumdan)
@@ -396,3 +453,45 @@ kaynaklar:
       fiyat noktasi saglamayabilir. Ilk calistirmada 0 veya cok az urun
       donerse bu ihtimal dogrulanmis olur, o zaman kalem "fotografci"
       icin yeni bir kaynak aranmali.
+
+  # =========================================================
+  # KALEM: nikah-sekeri  (yeni, 2026-07-24 - tek kaynak, ikincisi aranmali)
+  # =========================================================
+  - ad: "Trendyol - Nikah Sekeri"
+    site: "trendyol"
+    url: "https://www.trendyol.com/nikah-sekeri-y-s9357"
+    render_gerekli: true  # trendyol.com genel olarak requests'i 403 ile reddediyor
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "nikah-sekeri"
+    yontem: "otomatik"
+    css_secicileri: null
+    min_fiyat: 50
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: >
+      WebSearch ile dogrulanan gercek URL (2026-07-24). min_fiyat dusuk
+      tutuldu - nikah sekeri kalemi genelde adet/paket bazli ucuz urunler
+      (100-500 TL araligi olasi). Trendyol/gelinlik JSON-LD ile calisiyor,
+      ayni domain.
+
+  # =========================================================
+  # KALEM: davetiye  (yeni, 2026-07-24 - tek kaynak, ikincisi aranmali)
+  # =========================================================
+  - ad: "Trendyol - Dugun Davetiyesi"
+    site: "trendyol"
+    url: "https://www.trendyol.com/dugun-davetiyesi-y-s69315"
+    render_gerekli: true  # trendyol.com genel olarak requests'i 403 ile reddediyor
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "davetiye"
+    yontem: "otomatik"
+    css_secicileri: null
+    min_fiyat: 50
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: >
+      WebSearch ile dogrulanan gercek URL (2026-07-24). Trendyol/gelinlik
+      JSON-LD ile calisiyor, ayni domain.
