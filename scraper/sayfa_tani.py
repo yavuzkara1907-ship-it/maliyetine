@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
 """
-Sayfa yapisi tani araci (v0.1)
+Sayfa yapisi tani araci (v0.2)
 
 CSS secici doldurmak icin F12 ile elle bakmak yerine bu script'i
 calistir - sayfayi ceker, JSON-LD/microdata/meta etiketi var mi
 kontrol eder, en cok tekrar eden class isimlerini listeler (urun
 karti adayi). Ciktiyi oldugu gibi paylas, css_secicileri oradan
 doldurulur.
+
+`requests` 403 alirsa (Akakce/Trendyol gibi WAF korumali siteler)
+otomatik olarak motor.py'nin Playwright katmanina dusulur - ayrica
+bir bayrak belirtmene gerek yok.
 
 Kullanim:
   python sayfa_tani.py https://ORNEK-SITE.com/kategori
@@ -18,25 +22,41 @@ from collections import Counter
 import requests
 from bs4 import BeautifulSoup
 
-HEADERS = {
-    "User-Agent": (
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36"
-    ),
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-    "Accept-Language": "tr-TR,tr;q=0.9,en-US;q=0.8,en;q=0.7",
-    "Accept-Encoding": "gzip, deflate, br",
-    "Connection": "keep-alive",
-    "Upgrade-Insecure-Requests": "1",
-}
+import motor
+
+
+def _html_getir(url: str):
+    try:
+        r = requests.get(url, headers=motor.HEADERS, timeout=20)
+    except requests.RequestException as e:
+        print(f"[HATA] requests ile cekilemedi: {e}")
+        return None
+
+    print(f"HTTP durumu (requests): {r.status_code}")
+    if r.status_code == 403:
+        print("403 alindi - Playwright (gercek tarayici) ile deniyorum...")
+        html = motor.getir_playwright(url)
+        if html is None:
+            print(
+                "[HATA] Playwright ile de cekilemedi. 'playwright install "
+                "chromium' calistirildi mi kontrol et."
+            )
+            return None
+        print("Playwright ile basarili.")
+        return html
+
+    if r.status_code >= 400:
+        print(f"[HATA] HTTP {r.status_code}")
+        return None
+    return r.text
 
 
 def tani(url: str) -> None:
-    r = requests.get(url, headers=HEADERS, timeout=20)
-    print(f"HTTP durumu: {r.status_code}")
-    print(f"Yanit uzunlugu: {len(r.text)} karakter\n")
-    r.raise_for_status()
-    soup = BeautifulSoup(r.text, "html.parser")
+    html = _html_getir(url)
+    if html is None:
+        return
+    print(f"Yanit uzunlugu: {len(html)} karakter\n")
+    soup = BeautifulSoup(html, "html.parser")
 
     json_ld = soup.find_all("script", type="application/ld+json")
     print(f"=== JSON-LD script sayisi: {len(json_ld)} ===")
