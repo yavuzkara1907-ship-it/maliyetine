@@ -874,13 +874,39 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
       --vertikal ev-kurma` çalıştırıldı (`/veri/ev-kurma.json`),
       `sayfa_uret.py` vertikal-agnostik hale getirildi, `/ev-kurma/`
       üçlüsü (endeks+hesaplayıcı+metodoloji) üretildi, ana sayfa +
-      sitemap + GitHub Actions güncellendi. Orta segment: **353.827 TL**.
+      sitemap + GitHub Actions güncellendi. Orta segment: **353.827 TL**
+      (ekonomik 188.949 / lüks 576.699).
       Tarayıcıda uçtan uca doğrulandı. 87 Python + 15 Node testi PASS.
 - [x] **Dürüstlük bug'ı düzeltildi (2026-07-25):** "N bağımsız kaynak"
       ifadesi kalem başına `kaynak_sayisi`'nı topluyordu, yani aynı siteyi
       her kalemde tekrar sayıyordu (düğün "20" diyordu, gerçek 10). Artık
       benzersiz site sayılıyor. Ayrıca tek kaynaklı vertikaller için
       görünür "tek kaynak uyarısı" eklendi.
+- [x] **PARALEL OTURUM ÇAKIŞMASI çözüldü (2026-07-25).** Bu oturum
+      ev-kurma frontend'ini yaparken BAŞKA bir oturum da aynı işi yapıp
+      GitHub'a push etmiş (commit'ler `9317a46`, `6c0a1e5`) — 11 dosyada
+      çakışma. Yavuz'a soruldu, **karar: bu oturumun sürümü temel alınsın,
+      diğerinin iyi kısımları graft edilsin.** Sebep: diğer sürüm
+      "N bağımsız kaynak" bug'ını içeriyordu (ev-kurma için "42 bağımsız
+      kaynaktan derlendi" diyordu, oysa hepsi Trendyol). Graft edilenler:
+      daha açıklayıcı endeks ifadesi ("sıfırdan, orta segment bir evi
+      eşyalandırmanın (beyaz eşya + mobilya + mutfak + tekstil)"),
+      hesaplayıcıda "şu an için tek kaynak: Trendyol" notu, ana sayfa
+      kart metni, ve düğün `veri/dugun.json`'ının yeniden agrega
+      edilmesi. **DERS:** `-X ours` ile merge, çakışMAYAN hunk'ları
+      yine de alır — iki sızıntı bu yüzden oldu (ana sayfada ev-kurma
+      kartı iki kez göründü ve "ev tadilatı" kartı kayboldu;
+      `sayfa_uret.py`'ye bu sürümde var olmayan bir değişkene
+      (`konfig`) atıf yapan ölü satır girdi). İkisi de yakalanıp
+      düzeltildi, ama merge sonrası diff'i satır satır okumak şart.
+- [x] **Düğün verisi tazelendi (2026-07-25):** `scraper/veri/dugun/`
+      güncellenmişti ama `agrega.py --vertikal dugun` çalıştırılmamıştı,
+      yani `/veri/dugun.json` bayattı. Çalıştırıldı — düğün orta segment
+      toplamı **414.549 → 427.203 TL** oldu (gelin-ayakkabısı örneklemi
+      8'den 9 ürüne çıkmış). **Kural: `motor.py` çalıştıktan sonra HER
+      vertikal için `agrega.py` + `sayfa_uret.py` de çalıştırılmalı** —
+      GitHub Actions bunu zaten döngüyle yapıyor, elle çalıştırmalarda
+      atlanmamalı.
 - [ ] **ACİL SIRADAKİ İŞ — ev-kurma için 2. bağımsız kaynak.** 42 kalemin
       hepsi şu an sadece Trendyol'dan geliyor, ÇOK KAYNAK KURALI
       karşılanmıyor (sayfada dürüstçe uyarı olarak gösteriliyor ama bu

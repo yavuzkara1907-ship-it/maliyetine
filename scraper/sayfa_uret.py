@@ -199,8 +199,11 @@ VERTIKALLER = {
             "aylık fiyat endeksi."
         ),
         "olcek_varsayilan": 1,
-        "ornek_ifade": "orta segmentte sıfırdan bir ev kurmanın",
-        "hesaplayici_daveti": "Kendi kalem seçimleriniz ve segmentinizle hesaplayın →",
+        "ornek_ifade": (
+            "sıfırdan, orta segment bir evi eşyalandırmanın "
+            "(beyaz eşya + mobilya + mutfak + tekstil)"
+        ),
+        "hesaplayici_daveti": "Kendi eşya listenizle ve segmentinizle hesaplayın →",
     },
 }
 

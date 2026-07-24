@@ -2,169 +2,26 @@
   "vertikal": "dugun",
   "guncelleme_tarihi": "2026-07-25",
   "kalemler": {
-    "gelin-ayakkabisi": {
-      "segmentler": {
-        "dusuk": {
-          "min": 644,
-          "medyan": 841,
-          "max": 859,
-          "urun_sayisi": 3,
-          "kaynak_sayisi": 1
-        },
-        "orta": {
-          "min": 935,
-          "medyan": 1121,
-          "max": 1795,
-          "urun_sayisi": 4,
-          "kaynak_sayisi": 1
-        },
-        "luks": {
-          "min": 2194,
-          "medyan": 2194,
-          "max": 2194,
-          "urun_sayisi": 1,
-          "kaynak_sayisi": 1
-        }
-      },
-      "genel_medyan": 992,
-      "toplam_urun": 8,
-      "guncelleme_tarihi": "2026-07-25",
-      "kaynak_sayisi": 2,
-      "kaynaklar": [
-        {
-          "site": "akakce",
-          "kaynak_adlari": [
-            "Akakce - Gelin Ayakkabisi"
-          ],
-          "tarih": "2026-07-24",
-          "toplam_urun": 0,
-          "genel_medyan": null
-        },
-        {
-          "site": "trendyol",
-          "kaynak_adlari": [
-            "Trendyol - Gelin Ayakkabisi"
-          ],
-          "tarih": "2026-07-25",
-          "toplam_urun": 8,
-          "genel_medyan": 992
-        }
-      ],
-      "capraz_dogrulama_uyarisi": null
-    },
-    "damatlik": {
-      "segmentler": {
-        "dusuk": {
-          "min": 2508,
-          "medyan": 17995,
-          "max": 59970,
-          "urun_sayisi": 27,
-          "kaynak_sayisi": 3
-        },
-        "orta": {
-          "min": 2781,
-          "medyan": 46450,
-          "max": 79995,
-          "urun_sayisi": 49,
-          "kaynak_sayisi": 3
-        },
-        "luks": {
-          "min": 5599,
-          "medyan": 83970,
-          "max": 164950,
-          "urun_sayisi": 22,
-          "kaynak_sayisi": 3
-        }
-      },
-      "genel_medyan": 44950,
-      "toplam_urun": 98,
-      "guncelleme_tarihi": "2026-07-25",
-      "kaynak_sayisi": 6,
-      "kaynaklar": [
-        {
-          "site": "akakce",
-          "kaynak_adlari": [
-            "Akakce - Damatlik"
-          ],
-          "tarih": "2026-07-24",
-          "toplam_urun": 0,
-          "genel_medyan": null
-        },
-        {
-          "site": "beymen",
-          "kaynak_adlari": [
-            "Beymen - Erkek Smokin"
-          ],
-          "tarih": "2026-07-25",
-          "toplam_urun": 41,
-          "genel_medyan": 44950
-        },
-        {
-          "site": "boyner",
-          "kaynak_adlari": [
-            "Boyner - Erkek Takim Elbise"
-          ],
-          "tarih": "2026-07-25",
-          "toplam_urun": 0,
-          "genel_medyan": null
-        },
-        {
-          "site": "ramsey",
-          "kaynak_adlari": [
-            "Ramsey - Takim Elbise (marka magazasi)"
-          ],
-          "tarih": "2026-07-25",
-          "toplam_urun": 0,
-          "genel_medyan": null
-        },
-        {
-          "site": "trendyol",
-          "kaynak_adlari": [
-            "Trendyol - Damatlik"
-          ],
-          "tarih": "2026-07-25",
-          "toplam_urun": 17,
-          "genel_medyan": 3360
-        },
-        {
-          "site": "vakko",
-          "kaynak_adlari": [
-            "Vakko - Erkek Takim Elbise"
-          ],
-          "tarih": "2026-07-25",
-          "toplam_urun": 40,
-          "genel_medyan": 71970
-        }
-      ],
-      "capraz_dogrulama_uyarisi": {
-        "fark_yuzdesi": 2042.0,
-        "medyanlar": {
-          "trendyol": 3360,
-          "beymen": 44950,
-          "vakko": 71970
-        }
-      }
-    },
     "gelinlik": {
       "segmentler": {
         "dusuk": {
-          "min": 2141,
-          "medyan": 3704,
+          "min": 1503,
+          "medyan": 3391,
           "max": 5299,
           "urun_sayisi": 6,
           "kaynak_sayisi": 1
         },
         "orta": {
           "min": 6460,
-          "medyan": 8999,
-          "max": 21185,
+          "medyan": 14153,
+          "max": 25000,
           "urun_sayisi": 10,
           "kaynak_sayisi": 1
         },
         "luks": {
-          "min": 21583,
-          "medyan": 34650,
-          "max": 47677,
+          "min": 30959,
+          "medyan": 40000,
+          "max": 65000,
           "urun_sayisi": 5,
           "kaynak_sayisi": 1
         }
@@ -301,46 +158,98 @@
         }
       }
     },
-    "davetiye": {
+    "damatlik": {
       "segmentler": {
         "dusuk": {
-          "min": 92,
-          "medyan": 94,
-          "max": 124,
-          "urun_sayisi": 3,
-          "kaynak_sayisi": 1
+          "min": 2508,
+          "medyan": 17995,
+          "max": 59970,
+          "urun_sayisi": 27,
+          "kaynak_sayisi": 3
         },
         "orta": {
-          "min": 132,
-          "medyan": 151,
-          "max": 159,
-          "urun_sayisi": 4,
-          "kaynak_sayisi": 1
+          "min": 2781,
+          "medyan": 46450,
+          "max": 79995,
+          "urun_sayisi": 49,
+          "kaynak_sayisi": 3
         },
         "luks": {
-          "min": 166,
-          "medyan": 304,
-          "max": 441,
-          "urun_sayisi": 2,
-          "kaynak_sayisi": 1
+          "min": 5599,
+          "medyan": 83970,
+          "max": 164950,
+          "urun_sayisi": 21,
+          "kaynak_sayisi": 3
         }
       },
-      "genel_medyan": 146,
-      "toplam_urun": 9,
+      "genel_medyan": 44950,
+      "toplam_urun": 97,
       "guncelleme_tarihi": "2026-07-25",
-      "kaynak_sayisi": 1,
+      "kaynak_sayisi": 6,
       "kaynaklar": [
+        {
+          "site": "akakce",
+          "kaynak_adlari": [
+            "Akakce - Damatlik"
+          ],
+          "tarih": "2026-07-24",
+          "toplam_urun": 0,
+          "genel_medyan": null
+        },
+        {
+          "site": "beymen",
+          "kaynak_adlari": [
+            "Beymen - Erkek Smokin"
+          ],
+          "tarih": "2026-07-25",
+          "toplam_urun": 41,
+          "genel_medyan": 44950
+        },
+        {
+          "site": "boyner",
+          "kaynak_adlari": [
+            "Boyner - Erkek Takim Elbise"
+          ],
+          "tarih": "2026-07-25",
+          "toplam_urun": 0,
+          "genel_medyan": null
+        },
+        {
+          "site": "ramsey",
+          "kaynak_adlari": [
+            "Ramsey - Takim Elbise (marka magazasi)"
+          ],
+          "tarih": "2026-07-25",
+          "toplam_urun": 0,
+          "genel_medyan": null
+        },
         {
           "site": "trendyol",
           "kaynak_adlari": [
-            "Trendyol - Dugun Davetiyesi"
+            "Trendyol - Damatlik"
           ],
           "tarih": "2026-07-25",
-          "toplam_urun": 9,
-          "genel_medyan": 146
+          "toplam_urun": 16,
+          "genel_medyan": 3300
+        },
+        {
+          "site": "vakko",
+          "kaynak_adlari": [
+            "Vakko - Erkek Takim Elbise"
+          ],
+          "tarih": "2026-07-25",
+          "toplam_urun": 40,
+          "genel_medyan": 71970
         }
       ],
-      "capraz_dogrulama_uyarisi": null
+      "capraz_dogrulama_uyarisi": {
+        "fark_yuzdesi": 2080.9,
+        "medyanlar": {
+          "trendyol": 3300,
+          "beymen": 44950,
+          "vakko": 71970
+        }
+      }
     },
     "nikah-sekeri": {
       "segmentler": {
@@ -376,43 +285,43 @@
       ],
       "capraz_dogrulama_uyarisi": null
     },
-    "salon": {
+    "davetiye": {
       "segmentler": {
         "dusuk": {
-          "min": 200,
-          "medyan": 250,
-          "max": 400,
+          "min": 92,
+          "medyan": 94,
+          "max": 124,
           "urun_sayisi": 3,
           "kaynak_sayisi": 1
         },
         "orta": {
-          "min": 450,
-          "medyan": 500,
-          "max": 550,
+          "min": 132,
+          "medyan": 151,
+          "max": 159,
           "urun_sayisi": 4,
           "kaynak_sayisi": 1
         },
         "luks": {
-          "min": 750,
-          "medyan": 800,
-          "max": 850,
-          "urun_sayisi": 2,
+          "min": 441,
+          "medyan": 441,
+          "max": 441,
+          "urun_sayisi": 1,
           "kaynak_sayisi": 1
         }
       },
-      "genel_medyan": 500,
-      "toplam_urun": 9,
+      "genel_medyan": 139,
+      "toplam_urun": 8,
       "guncelleme_tarihi": "2026-07-25",
       "kaynak_sayisi": 1,
       "kaynaklar": [
         {
-          "site": "dugunbuketi",
+          "site": "trendyol",
           "kaynak_adlari": [
-            "DugunBuketi - Istanbul Dugun Mekanlari"
+            "Trendyol - Dugun Davetiyesi"
           ],
           "tarih": "2026-07-25",
-          "toplam_urun": 9,
-          "genel_medyan": 500
+          "toplam_urun": 8,
+          "genel_medyan": 139
         }
       ],
       "capraz_dogrulama_uyarisi": null
@@ -441,6 +350,97 @@
           "tarih": "2026-07-24",
           "toplam_urun": 0,
           "genel_medyan": null
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "gelin-ayakkabisi": {
+      "segmentler": {
+        "dusuk": {
+          "min": 590,
+          "medyan": 644,
+          "max": 859,
+          "urun_sayisi": 3,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 935,
+          "medyan": 1121,
+          "max": 1795,
+          "urun_sayisi": 4,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 2194,
+          "medyan": 2254,
+          "max": 2315,
+          "urun_sayisi": 2,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 1050,
+      "toplam_urun": 9,
+      "guncelleme_tarihi": "2026-07-25",
+      "kaynak_sayisi": 2,
+      "kaynaklar": [
+        {
+          "site": "akakce",
+          "kaynak_adlari": [
+            "Akakce - Gelin Ayakkabisi"
+          ],
+          "tarih": "2026-07-24",
+          "toplam_urun": 0,
+          "genel_medyan": null
+        },
+        {
+          "site": "trendyol",
+          "kaynak_adlari": [
+            "Trendyol - Gelin Ayakkabisi"
+          ],
+          "tarih": "2026-07-25",
+          "toplam_urun": 9,
+          "genel_medyan": 1050
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "salon": {
+      "segmentler": {
+        "dusuk": {
+          "min": 300,
+          "medyan": 320,
+          "max": 400,
+          "urun_sayisi": 3,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 500,
+          "medyan": 550,
+          "max": 600,
+          "urun_sayisi": 5,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 750,
+          "medyan": 750,
+          "max": 750,
+          "urun_sayisi": 1,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 500,
+      "toplam_urun": 9,
+      "guncelleme_tarihi": "2026-07-25",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "dugunbuketi",
+          "kaynak_adlari": [
+            "DugunBuketi - Istanbul Dugun Mekanlari"
+          ],
+          "tarih": "2026-07-25",
+          "toplam_urun": 9,
+          "genel_medyan": 500
         }
       ],
       "capraz_dogrulama_uyarisi": null
