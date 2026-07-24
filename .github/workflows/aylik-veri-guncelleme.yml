@@ -1,0 +1,58 @@
+name: Aylık Veri Güncelleme
+
+# Kazıma -> birleştirme -> statik sayfa üretimi zincirini otomatikleştirir
+# (bkz. CLAUDE.md "Modüller" -> 6. Aylık otomasyon). Sıra:
+#   motor.py (kazıma) -> agrega.py (birleştirme) -> sayfa_uret.py (statik HTML)
+# Zamanlanmış tetikleyici SADECE varsayılan (default) branch'teki workflow
+# dosyasından çalışır - bu dosya main'e alınana kadar cron ateşlemez.
+# workflow_dispatch her zaman elle tetiklenebilir (branch fark etmeksizin).
+
+on:
+  schedule:
+    - cron: "0 6 1 * *" # her ayın 1'i, 06:00 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  guncelle:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Depoyu çek
+        uses: actions/checkout@v4
+
+      - name: Python kur
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Bağımlılıkları kur
+        run: pip install -r scraper/requirements.txt
+
+      - name: Playwright Chromium kur
+        run: playwright install --with-deps chromium
+
+      - name: Kazıma motorunu çalıştır
+        working-directory: scraper
+        run: python motor.py
+
+      - name: Kaynakları birleştir (dugun)
+        working-directory: scraper
+        run: python agrega.py --vertikal dugun
+
+      - name: Statik sayfayı üret (dugun)
+        working-directory: scraper
+        run: python sayfa_uret.py
+
+      - name: Değişiklikleri commit et ve pushla
+        run: |
+          git config user.name "maliyetine-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add scraper/veri scraper/kaynak_gecmisi.json veri dugun
+          if git diff --cached --quiet; then
+            echo "Değişiklik yok, commit atlanıyor."
+          else
+            git commit -m "Aylık veri güncellemesi $(date -u +%Y-%m-%d)"
+            git push
+          fi

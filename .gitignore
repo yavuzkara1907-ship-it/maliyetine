@@ -6,4 +6,10 @@ __pycache__/
 # KASITLI OLARAK gitignore'da DEGIL: aylik biriktirilip fiyat gecmisi
 # grafikleri icin commit edilecekler (bkz. CLAUDE.md "Urun Kararlari").
 scraper/kazima.log
-scraper/kaynak_gecmisi.json
+
+# kaynak_gecmisi.json ARTIK gitignore'da DEGIL (2026-07-24): GitHub Actions
+# runner'lari her calistirmada sifirdan basliyor, dosya commit edilmezse
+# saglik kontrolu (saglik_kontrolu() motor.py) hicbir zaman gercek bir
+# gecmis biriktiremez - her ay "ilk calistirma, varsayilan saglikli" sanip
+# anomali tespiti hic calismaz. Aylik otomasyon (.github/workflows/) bu
+# dosyayi da commit ediyor.

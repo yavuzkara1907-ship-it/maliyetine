@@ -648,9 +648,24 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
    kuralı, segment tanımı (persentil), sağlık kontrolü, nazik kazıma
    ilkeleri, kapsanmayan kalemler notu. Statik (elle yazıldı, veriye bağımlı
    değil) - schema.org işaretlemesi `/dugun/`'de (sayfa_uret.py) yapıldı.
-5. **Yayın** — Cloudflare Pages, custom domain, SSL.
-6. **Aylık otomasyon** — GitHub Actions cron. **Artık 3 adımlı olacak:**
-   `python motor.py` → `python agrega.py` → `python sayfa_uret.py` → commit.
+5. **Yayın** — Cloudflare Pages, custom domain, SSL. Repo build gerektirmiyor
+   (statik dosyalar kökte) — Cloudflare Pages ayarı: Build command yok,
+   Output directory `/`. **Yavuz'un tarafında kalan iş:** Cloudflare
+   hesabından repo'yu Pages'e bağlamak + custom domain + nameserver
+   propagasyonu (Claude Code'un Cloudflare erişimi yok).
+6. **Aylık otomasyon** — ✅ **Tamamlandı (2026-07-24).**
+   `.github/workflows/aylik-veri-guncelleme.yml`: `python motor.py` →
+   `python agrega.py` → `python sayfa_uret.py` → değişiklik varsa commit+push.
+   Tetikleyiciler: aylık cron (`0 6 1 * *`, sadece default branch'teki
+   workflow dosyasından ateşler — bu yüzden main'e alınana kadar
+   çalışmayacak) + `workflow_dispatch` (elle tetikleme, branch fark
+   etmez). **Kritik düzeltme:** `scraper/kaynak_gecmisi.json` artık
+   `.gitignore`'da DEĞİL — GitHub Actions runner'ları her seferinde
+   sıfırdan başladığı için, bu dosya commit edilmezse `saglik_kontrolu()`
+   hiçbir zaman gerçek bir geçmiş biriktiremez, her ay "ilk çalıştırma"
+   sanıp anomali tespiti hiç çalışmazdı. Workflow bu dosyayı da commit
+   ediyor. Ayrıca `/sitemap.xml` eklendi (robots.txt zaten ona işaret
+   ediyordu ama dosya yoktu).
 7. **Fiyat geçmişi grafikleri** (3+ ay veri sonrası).
 
 ## Yapılacaklar (kod dışı)
@@ -753,6 +768,18 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
       sahte rakam koyulmadı).
 - [ ] Takı/altın (canlı gram fiyatı) için kaynak bulma
 - [ ] TÜİK doğrulama verisi entegrasyonu (ÇOK KAYNAK KURALI 5. katman)
+- [x] **GitHub Actions aylık otomasyon + sitemap.xml eklendi (2026-07-24).**
+      `.github/workflows/aylik-veri-guncelleme.yml` — bkz. Modül 6.
+      `kaynak_gecmisi.json` gitignore'dan çıkarıldı (aksi halde saglik
+      kontrolü hiç geçmiş biriktiremezdi).
+- [ ] **Cloudflare Pages bağlantısı (Yavuz'un tarafında).** Repo hazır
+      (build gerektirmiyor, Output directory: `/`). DNS/nameserver
+      propagasyonu ve Pages-repo bağlantısı Cloudflare hesabından
+      yapılmalı — Claude Code'un buraya erişimi yok.
+- [ ] **Görsel tasarım kararı bekliyor, ACİL DEĞİL.** 3 yön denendi
+      (modern/premium, sıcak/samimi, minimal/editoryal) — Yavuz "hepsi
+      kötü ama gelişir, acelemiz yok" dedi, önce altyapıya odaklanılıyor.
+      Tasarım kararı ileride tekrar gündeme gelecek.
 - [ ] (İleride) Türk Patent marka başvurusu
 - [ ] (İleride) yakın domain varyantlarını kapat
 
