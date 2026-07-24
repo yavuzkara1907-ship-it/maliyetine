@@ -634,15 +634,13 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
      `python3 -m http.server` + headless Chromium): 3 sayfa da hatasız
      yükleniyor, hesaplayıcı formu dolduruluyor, submit ediliyor, "veri
      yok" durumunda dürüst mesaj gösteriyor (console'da JS hatası yok).
-   - **BLOKE — gerçek veri yok:** `scraper/veri/` hiç commit edilmedi
-     (Yavuz'un yerelinde şimdiye kadarki tüm `motor.py` çalıştırmaları
-     test amaçlıydı, sonuçlar commit edilmedi). Bu yüzden `/veri/dugun.json`
-     şu an dürüstçe boş (`{"kalemler": {}}`) ve `/dugun/index.html`
-     "veri toplama süreci devam ediyor" gösteriyor. **Yavuz'un yerelinde
-     gerçek `python motor.py` çalıştırıp `scraper/veri/` klasörünü commit
-     etmesi, sonra `python agrega.py && python sayfa_uret.py` çalıştırıp
-     o çıktıları da commit etmesi gerekiyor** — bu olmadan siteye
-     GERÇEK bir rakam giremez (KIRMIZI ÇİZGİ).
+   - **ÇÖZÜLDÜ (2026-07-25): artık GERÇEK VERİ ile yayında.** Yavuz'un
+     yerelinde `python3 motor.py` (13 kaynak-grubu, 13 sağlıklı) →
+     `scraper/veri/` commit → `agrega.py` + `sayfa_uret.py` → commit
+     zinciri tamamlandı. Bu ilk gerçek çalıştırmada `agrega.py`'nin
+     çapraz-doğrulama şema uyumsuzluğu bulunup düzeltildi (bkz.
+     Yapılacaklar'daki ilgili madde). `/dugun/` artık "414.549 TL" gibi
+     gerçek, kaynaklı bir toplam gösteriyor; Yavuz doğruladı.
 4. **Metodoloji sayfası + schema.org işaretlemesi** — ✅ **Tamamlandı
    (2026-07-24).** `/dugun/metodoloji/` — kaynak türleri, çapraz doğrulama
    kuralı, segment tanımı (persentil), sağlık kontrolü, nazik kazıma
@@ -758,14 +756,26 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
       (9 test), `/dugun/hesaplayici/` (10 Node test), `/dugun/`,
       `/dugun/metodoloji/`, `/index.html`, `/assets/css/style.css`,
       `/robots.txt`. Playwright ile duman testi yapıldı, JS hatası yok.
-- [ ] **ACİL/BLOKE: gerçek veri commit edilmeli.** `scraper/veri/` hiç
-      commit edilmedi (bugüne kadarki tüm `motor.py` çalıştırmaları test
-      amaçlıydı). Yavuz'un yerelinde: `python motor.py` (gerçek veri) →
-      `scraper/veri/` klasörünü commit et → `python agrega.py &&
-      python sayfa_uret.py` çalıştır → `/veri/dugun.json` ve
-      `/dugun/index.html`'i de commit et. Bu olmadan site "veri toplama
-      süreci devam ediyor" dürüst-boş halinde kalır (KIRMIZI ÇİZGİ geregi
-      sahte rakam koyulmadı).
+- [x] **ÇÖZÜLDÜ (2026-07-25): gerçek veri commit edildi, site artık
+      GERÇEK RAKAM gösteriyor.** Yavuz'un yerelinde `python3 motor.py`
+      çalıştırıldı (13 kaynak-grubu, 13 sağlıklı) → `scraper/veri/`
+      commit edildi → `agrega.py` + `sayfa_uret.py` çalıştırıldı.
+      **Bu ilk gerçek uçtan uca çalıştırmada kritik bir bug bulundu:**
+      `sayfa_uret.py` çöktü (`TypeError`, `None`'a format string
+      uygulanmaya çalışılıyordu) - kök neden, `agrega.py`'nin motor.py'nin
+      GERÇEK çapraz-doğrulama rapor şemasını yanlış varsaymış olmasıydı
+      (uydurma alan adları `medyanlar`/`fark_yuzdesi` kullanılmıştı,
+      gerçek şema `site_medyanlari`/`fark_orani` - ayrıca motor.py esiği
+      AŞMAYAN kalemler için de rapor yazıyor, `uyari: false` ile, bu
+      filtrelenmiyordu). Düzeltildi (75 test PASS), gerçek veriyle
+      doğrulandı: `/dugun/` artık "414.549 TL" gibi gerçek bir toplam,
+      7 gerçek kaynaklı + 8 tahmini kalem, 2 gerçek çapraz doğrulama
+      uyarısı (damatlık %2042, alyans %352) gösteriyor. Yavuz kendi
+      yerelinde doğruladı ("evet gördüm").
+      **Yan not:** Yavuz'un yerelinden GitHub'a İLK `git push` denemesi
+      kimlik doğrulama sorunu yaşadı (GitHub artık şifre kabul etmiyor,
+      Personal Access Token gerekiyor) - PAT oluşturup Keychain'e
+      kaydedilmesiyle çözüldü, artık sorunsuz push edebiliyor.
 - [ ] Takı/altın (canlı gram fiyatı) için kaynak bulma
 - [ ] TÜİK doğrulama verisi entegrasyonu (ÇOK KAYNAK KURALI 5. katman)
 - [x] **GitHub Actions aylık otomasyon + sitemap.xml eklendi (2026-07-24).**
