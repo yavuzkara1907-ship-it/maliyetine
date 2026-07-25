@@ -298,7 +298,13 @@ class GercekSiteSecicileriTestleri(unittest.TestCase):
         # Salon/fotografci/gelinlik-moda-evleri ayni .bg-card sablonunu
         # paylasiyor, ama fiyat etiketi farkli olabilir (bkz. asagidaki
         # strong-etiketli test) - bu, span.font-bold varyantini kilitler.
-        secici = self._yaml_secici("DugunBuketi - Istanbul Dugun Mekanlari")
+        # NOT: bu girdi 2026-07-25'te PASIFE alindi (detay sayfasi katmani
+        # onun yerine gecti - kategori kartindaki "baslangic fiyati" ne
+        # olcdugu belirsizdi). Seciciler yine de dogru kalmali: ayni
+        # .bg-card sablonu baska DugunBuketi sayfalarinda kullaniliyor.
+        secici = self._yaml_secici(
+            "DugunBuketi - Istanbul Dugun Mekanlari (baslangic fiyati - ESKI)"
+        )
         soup = BeautifulSoup(DUGUNBUKETI_URUN_KARTI_HTML, "html.parser")
         urunler = motor.css_urunler(soup, secici, min_fiyat=200)
         self.assertEqual(urunler, [{"isim": "Boğaz Garden", "fiyat": 685.0}])
@@ -658,6 +664,217 @@ class GrupIsleUctanUcaTestleri(unittest.TestCase):
         gruplar = motor.gruplar_halinde_topla([kaynak])
         self.assertEqual(gruplar, {})
         sahte_getir.assert_not_called()
+
+
+# Gercek DugunBuketi yapisini simule eder: kategori sayfasi mekan
+# kartlari icerir, her kartta detay sayfasina link vardir; detay
+# sayfasinda "Yemekli kisi basi" ve "Kokteyl kisi basi" AYRI yazar.
+# Kategori sayfasindaki kart ise yalnizca EN DUSUK secenegi
+# ("baslangic fiyati") gosterir - bu yuzden detay katmani gerekli.
+KATEGORI_HTML = """
+<div class="bg-card">
+  <a href="https://dugunbuketi.com/fiyati/mekan-bir?booking=true">Mekan Bir</a>
+  <span class="font-bold">₺500,00 başlangıç fiyatı</span>
+</div>
+<div class="bg-card">
+  <a href="https://dugunbuketi.com/fiyati/mekan-iki">Mekan İki</a>
+  <span class="font-bold">₺280,00 başlangıç fiyatı</span>
+</div>
+<div class="bg-card">
+  <a href="https://dugunbuketi.com/fiyati/mekan-uc">Mekan Üç</a>
+</div>
+"""
+
+DETAY_HTML = {
+    "https://dugunbuketi.com/fiyati/mekan-bir": (
+        "<div>Başlangıç Fiyatları Hafta içi Hafta sonu "
+        "Yemekli kişi başı ₺750,00 ₺750,00 Kokteyl kişi başı ₺500,00 ₺500,00</div>"
+    ),
+    "https://dugunbuketi.com/fiyati/mekan-iki": (
+        "<div>Yemekli kişi başı ₺1.200,00 Kokteyl kişi başı ₺280,00</div>"
+    ),
+    # Bu mekan kokteyl SUNMUYOR - regex eslesmezse sessizce atlanmali.
+    "https://dugunbuketi.com/fiyati/mekan-uc": (
+        "<div>Yemekli kişi başı ₺1.500,00</div>"
+    ),
+}
+
+
+class DetaySayfasiKatmaniTestleri(unittest.TestCase):
+    """Kategori sayfasindaki "baslangic fiyati" ne olcdugu belirsizdir
+    (en dusuk secenek). Detay katmani, tanimli fiyati ("Yemekli kisi
+    basi") detay sayfasindan ceker - ayni kategori sayfasi farkli
+    regex'lerle iki ayri kalemi besleyebilir."""
+
+    def _kaynak(self, regex, **ek):
+        kaynak = {
+            "ad": "DugunBuketi - Test",
+            "site": "dugunbuketi",
+            "url": "https://dugunbuketi.com/c/dugun-mekanlari/istanbul",
+            "vertikal": "dugun",
+            "kalem": "salon-yemekli",
+            "min_fiyat": 100,
+            "bekleme_sn": 0,
+            "aktif": True,
+            "detay": {
+                "link_secici": ".bg-card a[href*='/fiyati/']",
+                "fiyat_regex": regex,
+                "en_fazla_detay": 20,
+            },
+        }
+        kaynak["detay"].update(ek)
+        return kaynak
+
+    @patch("motor.robots_izin_var", return_value=True)
+    @patch("motor.getir", side_effect=lambda u, *a, **k: DETAY_HTML.get(u))
+    def test_yemekli_fiyat_detay_sayfasindan_cekilir(self, _g, _r):
+        soup = BeautifulSoup(KATEGORI_HTML, "html.parser")
+        urunler = motor.detay_urunler(
+            soup, self._kaynak(r"Yemekli kişi başı\s*₺([\d.,]+)"), bekleme_sn=0
+        )
+        self.assertEqual(
+            sorted(u["fiyat"] for u in urunler), [750.0, 1200.0, 1500.0]
+        )
+
+    @patch("motor.robots_izin_var", return_value=True)
+    @patch("motor.getir", side_effect=lambda u, *a, **k: DETAY_HTML.get(u))
+    def test_ayni_sayfa_kokteyl_icin_farkli_fiyat_verir(self, _g, _r):
+        # AYNI kategori sayfasi, SADECE regex farkli -> ayri kalem.
+        soup = BeautifulSoup(KATEGORI_HTML, "html.parser")
+        urunler = motor.detay_urunler(
+            soup, self._kaynak(r"Kokteyl kişi başı\s*₺([\d.,]+)"), bekleme_sn=0
+        )
+        # mekan-uc kokteyl sunmuyor -> sessizce atlanir, hata vermez.
+        self.assertEqual(sorted(u["fiyat"] for u in urunler), [280.0, 500.0])
+
+    @patch("motor.robots_izin_var", return_value=True)
+    @patch("motor.getir", side_effect=lambda u, *a, **k: DETAY_HTML.get(u))
+    def test_en_fazla_detay_istek_sayisini_sinirlar(self, sahte_getir, _r):
+        # Nazik kazima: kategori sayfasi yuzlerce mekan icerse bile
+        # hepsine gidilmemeli.
+        soup = BeautifulSoup(KATEGORI_HTML, "html.parser")
+        motor.detay_urunler(
+            soup,
+            self._kaynak(r"Yemekli kişi başı\s*₺([\d.,]+)", en_fazla_detay=2),
+            bekleme_sn=0,
+        )
+        self.assertEqual(sahte_getir.call_count, 2)
+
+    @patch("motor.robots_izin_var", return_value=False)
+    @patch("motor.getir")
+    def test_detay_sayfasi_robots_ret_ederse_cekilmez(self, sahte_getir, _r):
+        soup = BeautifulSoup(KATEGORI_HTML, "html.parser")
+        urunler = motor.detay_urunler(
+            soup, self._kaynak(r"Yemekli kişi başı\s*₺([\d.,]+)"), bekleme_sn=0
+        )
+        sahte_getir.assert_not_called()
+        self.assertEqual(urunler, [])
+
+    @patch("motor.robots_izin_var", return_value=True)
+    @patch("motor.getir", side_effect=lambda u, *a, **k: DETAY_HTML.get(u))
+    def test_min_fiyat_esigi_uygulanir(self, _g, _r):
+        soup = BeautifulSoup(KATEGORI_HTML, "html.parser")
+        urunler = motor.detay_urunler(
+            soup,
+            {**self._kaynak(r"Yemekli kişi başı\s*₺([\d.,]+)"), "min_fiyat": 1000},
+            bekleme_sn=0,
+        )
+        self.assertEqual(sorted(u["fiyat"] for u in urunler), [1200.0, 1500.0])
+
+    @patch("motor.robots_izin_var", return_value=True)
+    @patch("motor.getir")
+    def test_detay_konfigurasyonu_varsa_uc_katman_kullanilmaz(self, sahte_getir, _r):
+        # kaynak_ham_veri_topla, "detay" varsa JSON-LD/microdata/CSS
+        # katmanlarina DUSMEMELI - kategori sayfasindaki "baslangic
+        # fiyati" kartlari yanlis kalemi olcer.
+        sahte_getir.side_effect = lambda u, *a, **k: (
+            KATEGORI_HTML if "/c/" in u else DETAY_HTML.get(u)
+        )
+        kaynak = self._kaynak(r"Yemekli kişi başı\s*₺([\d.,]+)")
+        urunler, katmanlar = motor.kaynak_ham_veri_topla(kaynak)
+        self.assertEqual(katmanlar, {"detay"})
+        self.assertEqual(sorted(u["fiyat"] for u in urunler), [750.0, 1200.0, 1500.0])
+
+
+class DetayFarkModuTestleri(unittest.TestCase):
+    """Yemegin kisi basi bedeli, AYNI MEKANIN yemekli/kokteyl fiyat
+    farkindan olculur. Iki ayri kalemin medyanlarini cikarmak YANLIS
+    olurdu: mekan setleri farkli (bazi mekan kokteyl sunmuyor) ve
+    farklarin medyani, medyanlarin farkina esit degil - gercek veride
+    250 TL'ye karsi 300 TL."""
+
+    def _kaynak(self, **ek):
+        detay = {
+            "link_secici": ".bg-card a[href*='/fiyati/']",
+            "fiyat_regex": r"Yemekli kişi başı\s*₺([\d.,]+)",
+            "cikarilacak_regex": r"Kokteyl kişi başı\s*₺([\d.,]+)",
+            "en_fazla_detay": 20,
+        }
+        detay.update(ek.pop("detay", {}))
+        return {
+            "ad": "DugunBuketi - Yemek Bedeli",
+            "site": "dugunbuketi",
+            "url": "https://dugunbuketi.com/c/dugun-mekanlari/istanbul",
+            "vertikal": "dugun",
+            "kalem": "yemek-ikram",
+            "min_fiyat": 50,
+            "bekleme_sn": 0,
+            "aktif": True,
+            "detay": detay,
+            **ek,
+        }
+
+    @patch("motor.robots_izin_var", return_value=True)
+    @patch("motor.getir", side_effect=lambda u, *a, **k: DETAY_HTML.get(u))
+    def test_fark_ayni_sayfada_hesaplanir(self, _g, _r):
+        soup = BeautifulSoup(KATEGORI_HTML, "html.parser")
+        urunler = motor.detay_urunler(soup, self._kaynak(), bekleme_sn=0)
+        # mekan-bir: 750-500=250, mekan-iki: 1200-280=920.
+        # mekan-uc kokteyl sunmuyor -> fark hesaplanamaz, ATLANIR
+        # (yoksa 1500 TL "yemek bedeli" gibi sayilirdi).
+        self.assertEqual(sorted(u["fiyat"] for u in urunler), [250.0, 920.0])
+
+    @patch("motor.robots_izin_var", return_value=True)
+    @patch("motor.getir")
+    def test_kokteyl_yemekliden_pahaliysa_atlanir(self, sahte_getir, _r):
+        # Tutarsiz veri sessizce kabul edilmemeli.
+        sahte_getir.side_effect = lambda u, *a, **k: (
+            "<div>Yemekli kişi başı ₺500,00 Kokteyl kişi başı ₺800,00</div>"
+        )
+        soup = BeautifulSoup(KATEGORI_HTML, "html.parser")
+        urunler = motor.detay_urunler(soup, self._kaynak(), bekleme_sn=0)
+        self.assertEqual(urunler, [])
+
+    @patch("motor.robots_izin_var", return_value=True)
+    @patch("motor.getir", side_effect=lambda u, *a, **k: DETAY_HTML.get(u))
+    def test_cikarilacak_regex_yoksa_normal_fiyat_doner(self, _g, _r):
+        # Geriye uyumluluk: fark modu opsiyonel.
+        kaynak = self._kaynak()
+        del kaynak["detay"]["cikarilacak_regex"]
+        soup = BeautifulSoup(KATEGORI_HTML, "html.parser")
+        urunler = motor.detay_urunler(soup, kaynak, bekleme_sn=0)
+        self.assertEqual(sorted(u["fiyat"] for u in urunler), [750.0, 1200.0, 1500.0])
+
+    @patch("motor.robots_izin_var", return_value=True)
+    @patch("motor.getir", side_effect=lambda u, *a, **k: DETAY_HTML.get(u))
+    def test_farklarin_medyani_medyanlarin_farkindan_ayrilir(self, _g, _r):
+        # Bu testin varlik sebebi: "iki kalemin medyanini cikar" kestirmesi
+        # ayni sonucu VERMEZ. Fixture'da yemekli medyani 1200, kokteyl
+        # medyani 390 -> medyanlarin farki 810; ama gercek farklarin
+        # medyani (250, 920) -> 585. Fark modu ikincisini uretmeli.
+        import statistics as st
+        soup = BeautifulSoup(KATEGORI_HTML, "html.parser")
+        farklar = [u["fiyat"] for u in motor.detay_urunler(soup, self._kaynak(), bekleme_sn=0)]
+        self.assertEqual(st.median(farklar), 585.0)
+
+        yemekli_kaynak = self._kaynak()
+        del yemekli_kaynak["detay"]["cikarilacak_regex"]
+        yemekli = [u["fiyat"] for u in motor.detay_urunler(soup, yemekli_kaynak, bekleme_sn=0)]
+        kokteyl_kaynak = self._kaynak()
+        kokteyl_kaynak["detay"]["fiyat_regex"] = r"Kokteyl kişi başı\s*₺([\d.,]+)"
+        del kokteyl_kaynak["detay"]["cikarilacak_regex"]
+        kokteyl = [u["fiyat"] for u in motor.detay_urunler(soup, kokteyl_kaynak, bekleme_sn=0)]
+        self.assertNotEqual(st.median(yemekli) - st.median(kokteyl), st.median(farklar))
 
 
 class CaprazDogrulamaTestleri(unittest.TestCase):

@@ -136,3 +136,69 @@ test("hesapla: tahmini ve gercek kalemler birlikte dogru toplanir", () => {
   assert.equal(sonuc.toplam, 5000 + 45000);
   assert.equal(sonuc.detaylar.find((d) => d.id === "fotografci").tahmini_mi, true);
 });
+
+// ---- Salon varyantlari ve CIFT SAYIM korumasi ----
+// Salon iki tanimli varyant halinde gelir: yemekli (menu dahil kisi basi)
+// ve kokteyl (yemeksiz). Yemekli secilirken ayrica yemek/ikram eklenirse
+// ayni yemek IKI KEZ sayilir - hesaplayicinin bunu yapmadigini kilitler.
+const SALON_YEMEKLI_TANIMI = {
+  id: "salon-yemekli", ad: "Düğün Salonu — yemekli", birim: "kisi_basi",
+  kaynak_tipi: "gercek", secim_grubu: "salon", yemek_dahil: true,
+  varsayilan_dahil: true,
+};
+const SALON_KOKTEYL_TANIMI = {
+  id: "salon-kokteyl", ad: "Düğün Salonu — kokteyl", birim: "kisi_basi",
+  kaynak_tipi: "gercek", secim_grubu: "salon", yemek_dahil: false,
+  varsayilan_dahil: false,
+};
+const SALON_VERILERI = {
+  "salon-yemekli": {
+    genel_medyan: 1300, kaynak_sayisi: 1,
+    segmentler: { orta: { min: 1000, medyan: 1300, max: 1500, urun_sayisi: 6 } },
+  },
+  "salon-kokteyl": {
+    genel_medyan: 800, kaynak_sayisi: 1,
+    segmentler: { orta: { min: 280, medyan: 800, max: 990, urun_sayisi: 5 } },
+  },
+};
+const YEMEK_TANIMI = {
+  id: "yemek-ikram", ad: "Yemek / İkram", birim: "kisi_basi",
+  kaynak_tipi: "tahmini", tahmini: { dusuk: 400, orta: 700, luks: 2000 },
+  kaynak_notu: "n", arastirma_tarihi: "2026-07-24",
+  yemek_kalemi: true, varsayilan_dahil: false,
+};
+const SALON_TANIMLARI = [SALON_YEMEKLI_TANIMI, SALON_KOKTEYL_TANIMI, YEMEK_TANIMI];
+
+test("yemekli salon secilirse yemek kalemi toplama GIRMEZ (cift sayim korumasi)", () => {
+  // Hesaplayici UI'i yemekli secilince yemek kutusunu devre disi birakir,
+  // yani secilenIdler'e "yemek-ikram" HIC gelmez.
+  const sonuc = hesapla(SALON_VERILERI, SALON_TANIMLARI, ["salon-yemekli"], "orta", 150);
+  assert.equal(sonuc.toplam, 1300 * 150);
+  assert.equal(sonuc.detaylar.length, 1);
+  assert.equal(sonuc.detaylar[0].id, "salon-yemekli");
+});
+
+test("kokteyl salon secilirse yemek kalemi AYRICA eklenir", () => {
+  const sonuc = hesapla(SALON_VERILERI, SALON_TANIMLARI, ["salon-kokteyl", "yemek-ikram"], "orta", 150);
+  assert.equal(sonuc.toplam, 800 * 150 + 700 * 150);
+});
+
+test("iki salon varyanti asla ayni anda toplanmaz (radyo davranisi)", () => {
+  // Radyo grubu UI seviyesinde garanti eder; burada ikisinin AYRI AYRI
+  // farkli sonuc verdigini ve toplamin karismadigini kilitliyoruz.
+  const yemekli = hesapla(SALON_VERILERI, SALON_TANIMLARI, ["salon-yemekli"], "orta", 100);
+  const kokteyl = hesapla(SALON_VERILERI, SALON_TANIMLARI, ["salon-kokteyl"], "orta", 100);
+  assert.equal(yemekli.toplam, 130000);
+  assert.equal(kokteyl.toplam, 80000);
+  assert.notEqual(yemekli.toplam, kokteyl.toplam);
+});
+
+test("yemekli salon, kokteyl + yemek toplamindan farkli olmali (gercek veriyi yansitir)", () => {
+  // Gercek DugunBuketi verisi: yemekli medyan 1300, kokteyl 800.
+  // Bu iki senaryo esit DEGIL - "kokteyl + tahmini yemek" bir tahmindir,
+  // "yemekli" ise dogrudan olculmus tanimli fiyattir.
+  const yemekli = hesapla(SALON_VERILERI, SALON_TANIMLARI, ["salon-yemekli"], "orta", 150).toplam;
+  const kokteylArtiYemek = hesapla(SALON_VERILERI, SALON_TANIMLARI, ["salon-kokteyl", "yemek-ikram"], "orta", 150).toplam;
+  assert.equal(yemekli, 195000);
+  assert.equal(kokteylArtiYemek, 225000);
+});

@@ -22,18 +22,47 @@ const DUGUN_KALEMLERI = [
   { id: "gelin-ayakkabisi", ad: "Gelin Ayakkabısı, Duvak, Aksesuar", birim: "sabit", kaynak_tipi: "gercek" },
   { id: "nikah-sekeri", ad: "Nikah Şekeri", birim: "sabit", kaynak_tipi: "gercek" },
   { id: "davetiye", ad: "Davetiye", birim: "sabit", kaynak_tipi: "gercek" },
-  { id: "salon", ad: "Düğün Salonu", birim: "kisi_basi", kaynak_tipi: "gercek" },
+  // Salon iki TANIMLI varyant halinde gelir (bkz. kaynaklar.yaml). Ayni
+  // "secim_grubu" degerini paylasan kalemler hesaplayicida radyo gibi
+  // davranir - biri secilir, digeri toplama girmez.
+  //   yemek_dahil: true  -> menu dahil kisi basi fiyat. Bu secilince ayri
+  //                         "yemek-ikram" kalemi CIFT SAYIM olur, otomatik
+  //                         devre disi kalir.
+  //   varsayilan_dahil   -> endeks sayfasinin ve hesaplayicinin acilis
+  //                         senaryosunda toplama dahil mi. Tabloda her
+  //                         iki varyant da fiyatiyla GORUNUR, sadece
+  //                         toplama biri girer.
+  {
+    id: "salon-yemekli", ad: "Düğün Salonu — yemekli (menü dahil)",
+    birim: "kisi_basi", kaynak_tipi: "gercek",
+    secim_grubu: "salon", yemek_dahil: true, varsayilan_dahil: true,
+  },
+  {
+    id: "salon-kokteyl", ad: "Düğün Salonu — kokteyl (yemeksiz)",
+    birim: "kisi_basi", kaynak_tipi: "gercek",
+    secim_grubu: "salon", yemek_dahil: false, varsayilan_dahil: false,
+  },
+  // 2026-07-25: TAHMINI listeden GERCEK kaynaga tasindi - deger artik
+  // ayni mekanin yemekli/kokteyl fiyat farkindan OLCULUYOR (bkz.
+  // kaynaklar.yaml fark modu). Onceki tahmin 700 TL/kisi idi, gercek
+  // olcum 410 TL - 1.7 kat sapma.
+  //
+  // bilgi_amacli: TOPLAMA HIC GIRMEZ, hesaplayicida secim kutusu YOK.
+  // Sebep: "kokteyl + menu bedeli" tanim geregi "yemekli" fiyatina esit
+  // olmali (fark = yemekli - kokteyl), ayri kalem olarak toplamak ayni
+  // sayiya dolambacli yoldan gitmek olur. Ustelik esitlik pratikte
+  // bozuluyor: her kalem BAGIMSIZ segmentleniyor, "orta segment yemekli
+  // mekan" ile "orta segment kokteyl mekan" ayni mekanlar degil (%24
+  // tutarsizlik). Deger yalnizca REFERANS olarak gosterilir.
+  {
+    id: "yemek-ikram", ad: "Yemek / İkram (mekanın menü bedeli)",
+    birim: "kisi_basi", kaynak_tipi: "gercek", bilgi_amacli: true,
+  },
 
   {
     id: "taki-altin", ad: "Takı ve Altın", birim: "sabit", kaynak_tipi: "tahmini",
     tahmini: { dusuk: 15000, orta: 40000, luks: 90000 },
     kaynak_notu: "Gram altın ~6.140 TL (24 Temmuz 2026) baz alınarak tipik hediye takı seti bütçesi.",
-    arastirma_tarihi: "2026-07-24",
-  },
-  {
-    id: "yemek-ikram", ad: "Yemek / İkram (salona dahil değilse)", birim: "kisi_basi", kaynak_tipi: "tahmini",
-    tahmini: { dusuk: 400, orta: 700, luks: 2000 },
-    kaynak_notu: "Kişi başı düğün catering fiyat araştırması (açık büfe – tabldot – premium menü).",
     arastirma_tarihi: "2026-07-24",
   },
   {

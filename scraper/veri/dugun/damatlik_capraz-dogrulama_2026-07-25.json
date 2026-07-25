@@ -4,9 +4,10 @@
   "tarih": "2026-07-25",
   "site_medyanlari": {
     "trendyol": 3240,
-    "beymen": 44950
+    "beymen": 44950,
+    "vakko": 71970
   },
-  "fark_orani": 12.873,
+  "fark_orani": 21.213,
   "esik_orani": 0.3,
   "uyari": true
 }

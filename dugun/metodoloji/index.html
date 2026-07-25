@@ -99,7 +99,7 @@
   <h2>Gerçek kaynak vs. tahmini kalemler</h2>
   <p>
     Bazı kalemler için (ör. fotoğrafçı, kuaför, orkestra, gelin arabası,
-    organizasyon, takı/altın, yemek/ikram, nikah harçları) henüz
+    organizasyon, takı/altın, nikah harçları) henüz
     güvenilir, robots.txt uyumlu, sürekli kazınabilen bir kaynak
     bulunamadı — bazı platformlar bu tür fiyatları üyelik arkasında
     gizliyor. Bu kalemler için, kaynak bulunana kadar,
@@ -125,10 +125,95 @@
     bulunduğunda, o kalem tahmini listeden çıkarılıp gerçek kaynak
     listesine taşınır.</p>
 
+  <h2>Düğün salonu: yemekli mi, kokteyl mi?</h2>
+  <p>
+    Düğün mekanları fiyatı <strong>kişi başı</strong> verir ve genellikle
+    iki ayrı seçenek sunar: <strong>yemekli</strong> (menü dahil) ve
+    <strong>kokteyl</strong> (yemeksiz). Bu ikisi aynı şey değildir ve
+    karıştırılırsa toplam ciddi şekilde yanlış çıkar.
+  </p>
+  <p>
+    Önceden bu kalem için mekan listeleme sayfasındaki
+    "başlangıç fiyatı" kullanılıyordu — ancak bu rakam mekanın
+    <em>en düşük</em> seçeneğidir, çoğu mekanda yemeksiz kokteyl fiyatına
+    denk gelir ve ne ölçtüğü belirsizdir. Bunu düzelttik: artık her
+    mekanın kendi sayfasındaki
+    <strong>tanımlı iki fiyat ayrı ayrı</strong> derleniyor.
+  </p>
+  <table>
+    <thead><tr><th>Seçenek</th><th>Ne içerir</th><th>Yemek ayrıca eklenir mi?</th></tr></thead>
+    <tbody>
+      <tr><td>Yemekli kişi başı</td><td>Salon + menü</td><td>Menü fiyata dahil</td></tr>
+      <tr><td>Kokteyl kişi başı</td><td>Salon, yemek yok</td><td>Yemek toplama katılmaz</td></tr>
+    </tbody>
+  </table>
+  <p>
+    Hesaplayıcıda hangisini istediğinizi seçebilirsiniz — toplama
+    <strong>yalnızca seçtiğiniz</strong> girer. Yemekli seçerseniz menü
+    kişi başı fiyata dahildir, ayrıca yemek eklenmez. Kokteyl seçerseniz
+    yemek maliyeti toplama dahil edilmez; mekanların menü bedeli medyanı
+    (kişi başı 410 TL) size bilgi olarak gösterilir.
+  </p>
+  <p>
+    Endeks sayfasındaki tabloda her iki seçenek de fiyatıyla görünür, ama
+    toplama yalnızca biri girer; girmeyen satırlar
+    <span class="tahmini-etiket">Toplamda değil</span> ya da
+    <span class="tahmini-etiket">Bilgi amaçlı — toplamda değil</span>
+    etiketiyle işaretlenir. Böylece tablodaki satırları kendiniz
+    toplarsanız gösterdiğimiz rakama ulaşırsınız.
+  </p>
+
+  <h3>Menü bedeli: ölçülüyor, ama toplama eklenmiyor</h3>
+  <p>
+    Yemeğin kişi başı bedelini <strong>ölçüyoruz</strong>: her mekanın
+    <em>kendi</em> yemekli ve kokteyl fiyatı arasındaki fark alınır, sonra
+    bu farkların medyanı hesaplanır. 25 Temmuz 2026'da 9 mekandan derlenen
+    değer <strong>kişi başı 410 TL</strong> (orta segment). Örnek satırlar:
+  </p>
+  <table>
+    <thead><tr><th>Mekan</th><th class="sayi">Yemekli</th><th class="sayi">Kokteyl</th><th class="sayi">Yemek bedeli</th></tr></thead>
+    <tbody>
+      <tr><td>Bambi Garden</td><td class="sayi">750</td><td class="sayi">500</td><td class="sayi">250</td></tr>
+      <tr><td>Boğaz Garden</td><td class="sayi">1.200</td><td class="sayi">280</td><td class="sayi">920</td></tr>
+      <tr><td>Grand Anka Otel</td><td class="sayi">1.000</td><td class="sayi">800</td><td class="sayi">200</td></tr>
+      <tr><td>Kır Kubbe</td><td class="sayi">1.400</td><td class="sayi">990</td><td class="sayi">410</td></tr>
+      <tr><td>İncisu Yatı</td><td class="sayi">2.250</td><td class="sayi">2.000</td><td class="sayi">250</td></tr>
+    </tbody>
+  </table>
+  <p>
+    Farkı <strong>aynı mekan içinde</strong> almak önemli: iki ayrı
+    listenin medyanlarını çıkarmak yanıltıcı olurdu, çünkü her mekan
+    kokteyl seçeneği sunmuyor ve farkların medyanı, medyanların farkına
+    eşit değil.
+  </p>
+  <p>
+    Bu değer daha önce <span class="tahmini-etiket">Tahmini</span>
+    etiketliydi (genel piyasa araştırmasından 700 TL/kişi). Ölçülebilir
+    hale gelince tahminin <strong>1,7 kat yüksek</strong> olduğu ortaya
+    çıktı. Bir kalem için gerçek kaynak bulunduğunda tahmini değeri her
+    zaman böyle çıkarırız.
+  </p>
+  <p>
+    <strong>Ama bu değer toplama eklenmez</strong> — yalnızca bilgi olarak
+    gösterilir. Nedeni: menü bedeli tanım gereği "yemekli − kokteyl"
+    farkıdır, yani kokteyl fiyatına eklendiğinde zaten yemekli fiyatını
+    verir. Ayrı bir kalem gibi toplamak, aynı sayıya dolambaçlı yoldan
+    gitmek olurdu. Üstelik pratikte birebir tutmaz: her kalemin segmenti
+    <em>bağımsız</em> hesaplanır, dolayısıyla "orta segment yemekli mekan"
+    ile "orta segment kokteyl mekan" aynı mekanlar değildir. Bu yüzden
+    hesaplayıcıda yemekli ya da kokteyl fiyatından <strong>yalnızca
+    biri</strong> toplanır.
+  </p>
+  <p>
+    <strong>Sınır:</strong> bu, mekanın <em>kendi menü</em> bedelidir —
+    dışarıdan bağımsız bir catering firmasıyla çalışırsanız tutar farklı
+    olabilir. Onu henüz ölçmüyoruz.
+  </p>
+
   <div class="uyari-kutu">
-    Bazı kaynaklarda gösterilen fiyatlar "başlangıç fiyatı"dır (ör. düğün
-    salonu kişi başı asgari paket) — kesin/nihai toplam maliyeti değil,
-    alt sınırı temsil eder.
+    Mekan fiyatları <strong>başlangıç fiyatı</strong>dır: o seçeneğin
+    asgari kişi başı tutarıdır, nihai teklif değil. Tarih, gün (hafta içi
+    / hafta sonu), menü içeriği ve ek hizmetler tutarı yükseltir.
   </div>
 
   <h2>Güncelleme sıklığı</h2>

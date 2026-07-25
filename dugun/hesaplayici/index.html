@@ -28,6 +28,10 @@
     henüz kazınan bir kaynağa dayanmıyor, genel piyasa araştırmasından
     alınmıştır — diğerleri gerçek, tarihli kaynaklardan derlenir.
     <a href="/dugun/metodoloji/">Fark ne, bakın.</a></p>
+  <p>Düğün salonu için <strong>yemekli</strong> (menü dahil kişi başı) ya
+    da <strong>kokteyl</strong> (yemeksiz) seçebilirsiniz. Yemekli
+    seçerseniz ayrı yemek/ikram kalemi kendiliğinden kapanır — menü zaten
+    fiyata dahil, iki kez saymamak için.</p>
 
   <div id="veri-durumu" class="uyari-kutu" hidden></div>
 
@@ -49,6 +53,7 @@
     <div class="form-alan">
       <label>Dahil edilecek kalemler</label>
       <div class="kalem-secim-liste" id="kalem-secim-liste"></div>
+      <p class="sonuc-alt-metin" id="yemek-notu"></p>
     </div>
 
     <button type="submit" class="birincil-buton">Hesapla</button>
@@ -93,12 +98,20 @@
 
   const kalemSecimListe = document.getElementById("kalem-secim-liste");
   DUGUN_KALEMLERI.forEach(function (kalem) {
+    // bilgi_amacli kalemler (yemek-ikram) toplama girmez, secim kutusu
+    // da olmaz - degeri asagida referans notu olarak gosterilir.
+    if (kalem.bilgi_amacli) return;
     const label = document.createElement("label");
     const kutu = document.createElement("input");
-    kutu.type = "checkbox";
+    // Ayni secim_grubu'ndaki kalemler (salon-yemekli / salon-kokteyl)
+    // birbirini dislar -> radyo. Digerleri bagimsiz -> onay kutusu.
+    kutu.type = kalem.secim_grubu ? "radio" : "checkbox";
     kutu.value = kalem.id;
-    kutu.checked = true;
-    kutu.name = "kalem";
+    kutu.checked = kalem.varsayilan_dahil !== false;
+    kutu.name = kalem.secim_grubu ? "secim-" + kalem.secim_grubu : "kalem";
+    if (kalem.secim_grubu) kutu.dataset.secimGrubu = kalem.secim_grubu;
+    if (kalem.yemek_dahil) kutu.dataset.yemekDahil = "1";
+    if (kalem.yemek_kalemi) kutu.dataset.yemekKalemi = "1";
     label.appendChild(kutu);
     label.appendChild(document.createTextNode(" " + kalem.ad));
     if (kalem.kaynak_tipi === "tahmini") {
@@ -122,6 +135,8 @@
     .then(function (veri) {
       veriKalemleri = veri.kalemler || {};
       guncellemeTarihi = veri.guncelleme_tarihi;
+      // Menu bedeli ancak veri gelince bilinir - notu tazele.
+      yemekNotunuGuncelle();
     })
     .catch(function () {
       veriDurumu.hidden = false;
@@ -131,16 +146,58 @@
     });
 
   const form = document.getElementById("hesaplayici-form");
+  // Salon secimine gore bilgi notu. Yemek/ikram AYRI KALEM DEGIL:
+  // yemekli fiyat menuyu zaten iceriyor, kokteyl icermiyor. Aradaki
+  // fark (mekanin menu bedeli) olculuyor ama toplama katilmaz - sadece
+  // "yemekli secmek kisi basi ne kadar ekler" bilgisi olarak gosterilir.
+  const yemekNotu = document.getElementById("yemek-notu");
+  const yemekTanimi = DUGUN_KALEMLERI.find(function (k) { return k.bilgi_amacli; });
+  function yemekNotunuGuncelle() {
+    const secili = kalemSecimListe.querySelector('input[data-secim-grubu="salon"]:checked');
+    if (!yemekNotu || !secili) return;
+    const yemekDahil = secili.dataset.yemekDahil === "1";
+    let ek = "";
+    const veri = yemekTanimi && veriKalemleri[yemekTanimi.id];
+    if (veri) {
+      const seg = veri.segmentler && veri.segmentler[SEGMENT_ANAHTARI_UI()];
+      const bedel = seg ? seg.medyan : veri.genel_medyan;
+      if (bedel != null) {
+        ek = " Bu mekanların menü bedeli medyanı kişi başı " + paraYaz(bedel) + ".";
+      }
+    }
+    yemekNotu.textContent = yemekDahil
+      ? "Yemekli salon seçtiniz — menü kişi başı fiyata dahil, ayrıca yemek eklenmiyor." + ek
+      : "Kokteyl (yemeksiz) salon seçtiniz — yemek maliyeti toplama dahil değil." + ek;
+  }
+  function SEGMENT_ANAHTARI_UI() {
+    const s = form.querySelector('input[name="segment"]:checked');
+    return { ekonomik: "dusuk", orta: "orta", luks: "luks" }[s ? s.value : "orta"];
+  }
+  kalemSecimListe.querySelectorAll('input[data-secim-grubu="salon"]').forEach(function (r) {
+    r.addEventListener("change", yemekNotunuGuncelle);
+  });
+  form.querySelectorAll('input[name="segment"]').forEach(function (r) {
+    r.addEventListener("change", yemekNotunuGuncelle);
+  });
+
   const sonucKutu = document.getElementById("sonuc-kutu");
   const detayGovde = document.getElementById("detay-tablo-govde");
   const eksikNot = document.getElementById("eksik-kalem-notu");
+
+  yemekNotunuGuncelle();
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
 
     const davetliSayisi = parseInt(document.getElementById("davetli-sayisi").value, 10) || 0;
     const segment = form.querySelector('input[name="segment"]:checked').value;
-    const secilenIdler = Array.from(form.querySelectorAll('input[name="kalem"]:checked')).map(function (k) {
+    // Onay kutulari + secim gruplarindaki secili radyolar birlikte.
+    // (Radyolar name="secim-<grup>" tasidigi icin ayrica secilmeli.)
+    const secilenIdler = Array.from(
+      form.querySelectorAll('input[name="kalem"]:checked, input[data-secim-grubu]:checked')
+    ).filter(function (k) {
+      return !k.disabled;
+    }).map(function (k) {
       return k.value;
     });
 

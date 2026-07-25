@@ -122,8 +122,15 @@ Hesaplayıcı bu kalemleri toplar. Her kalem: segment + kaynak + tarih.
 7. Gelin ayakkabısı, duvak, aksesuar
 
 **Hizmet bazlı (zor — kaynak sınırlı, "başlangıç fiyatı" uyarısı ile):**
-8. Düğün salonu / davet (kişi başı × davetli sayısı)
-9. Yemek/ikram (salona dahil değilse ayrı)
+8. Düğün salonu / davet (kişi başı × davetli sayısı) — **2026-07-25'te
+   İKİ TANIMLI VARYANTA bölündü:** `salon-yemekli` (menü dahil kişi başı)
+   ve `salon-kokteyl` (yemeksiz). Sebep: mekan listeleme sayfasındaki
+   "başlangıç fiyatı" mekanın EN DÜŞÜK seçeneğidir (çoğunlukla yemeksiz
+   kokteyl) ve ne ölçtüğü belirsizdi. Detay sayfalarında iki fiyat ayrı
+   ayrı yazıyor, artık ayrı kalem olarak derleniyor.
+9. Yemek/ikram (salona dahil değilse ayrı) — **`salon-yemekli` seçiliyse
+   ÇİFT SAYIM olur**, hesaplayıcı otomatik devre dışı bırakır; endeks
+   sayfasının varsayılan senaryosunda da toplama girmez.
 10. Fotoğraf ve video
 11. Orkestra / DJ
 12. Gelin arabası
@@ -234,6 +241,24 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
      ve `@graph` sarmalayıcıları da açılıyor.
   2. **Microdata / meta etiketleri** (`itemprop="price"`, og etiketleri)
   3. **Siteye özel CSS seçiciler** — son çare.
+- **DETAY SAYFASI KATMANI (2026-07-25 eklendi, `detay_urunler()`).** Üç
+  katmandan bağımsız, ayrı bir yöntem: kaynakta `detay:` bloğu varsa
+  motor üç katmana HİÇ düşmez, bunun yerine kategori sayfasından detay
+  linklerini toplar ve **her detay sayfasından regex ile tanımlı fiyatı**
+  çeker. Alanlar: `link_secici`, `fiyat_regex` (1 yakalama grubu),
+  `en_fazla_detay` (nazik kazıma sınırı; detaylar arası `bekleme_sn`
+  kadar beklenir, her detay URL'i ayrıca robots.txt'ten geçer).
+  - **Neden gerekli:** hizmet kalemlerinde kategori kartı yalnızca
+    "başlangıç fiyatı" gösterir — mekanın EN DÜŞÜK seçeneği, ne ölçtüğü
+    belirsiz. Gerçek tanımlı fiyat ("Yemekli kişi başı", "Kokteyl kişi
+    başı") detay sayfasında ayrı ayrı yazıyor.
+  - **Aynı kategori sayfası, farklı regex ile İKİ AYRI kalemi besler**
+    (bkz. `salon-yemekli` / `salon-kokteyl`). Regex eşleşmezse o mekan
+    sessizce atlanır (o seçeneği sunmuyor demektir, hata değil).
+  - Gerçek DüğünBuketi'ne karşı doğrulandı: yemekli 11 mekan (orta
+    medyan 1.100 TL/kişi), kokteyl 10 mekan (orta medyan 800 TL/kişi).
+  - **Bu katman diğer hizmet kalemleri için de yol açıyor** — fotoğrafçı,
+    organizasyon vb. aynı desende çözülebilir.
 - **Sağlık kontrolü zorunlu:** bir kaynak normalde ~200 ürün dönerken
   ay içinde 3 ürün dönerse SESSİZCE devam etme, uyarı ver ve o ayki
   veriyi karantinaya al. Geçmiş `kaynak_gecmisi.json`'da site-grubu
@@ -971,6 +996,108 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
       Trendyol/Karaca/English Home'a gerçek istek atılabildi, robots.txt
       taraması ve gerçek kazıma buradan yapıldı. **Yeni kaynak araştırması
       artık Yavuz'un elle çalıştırmasını beklemek zorunda değil.**
+- [x] **SALON KALEMİ TANIMI DÜZELTİLDİ + detay sayfası katmanı eklendi
+      (2026-07-25).** Hizmet kalemleri turunun ilk işi. Bulgu: salon
+      kalemi mekan listeleme sayfasındaki "başlangıç fiyatı"nı okuyordu;
+      bu mekanın EN DÜŞÜK seçeneği, çoğu mekanda **yemeksiz kokteyl**
+      fiyatı — yani "salon" kaleminin ne ölçtüğü belirsizdi, üstüne
+      ayrıca 700 TL/kişi tahmini yemek ekleniyordu.
+      Detay sayfalarında iki fiyat **ayrı ayrı** yazıyor:
+      `Yemekli kişi başı` ve `Kokteyl kişi başı`.
+      **Yavuz'un kararı: hesaplayıcıda kullanıcı seçsin.** Uygulanan:
+      - `motor.py`'ye **detay sayfası katmanı** (bkz. Kazıyıcı Mimarisi).
+      - `salon-yemekli` (11 mekan, orta medyan **1.100 TL/kişi**) ve
+        `salon-kokteyl` (10 mekan, orta medyan **800 TL/kişi**) ayrı
+        kalemler. Eski `salon` girdisi `aktif: false, durum: degistirildi`
+        — silinmedi, eski yöntemin ne ölçtüğü kayıtlı kalsın.
+      - **ÇİFT SAYIM KORUMASI:** kalem tanımlarına `secim_grubu` (radyo
+        davranışı), `yemek_dahil`, `yemek_kalemi` ve `varsayilan_dahil`
+        alanları eklendi. Yemekli seçilince yemek/ikram kutusu kilitlenir
+        ve açıklama gösterilir; kokteyl seçilince açılır. Endeks
+        sayfasında iki varyant da fiyatıyla GÖRÜNÜR ama toplama biri
+        girer — girmeyen satır `Toplamda değil` etiketli.
+      - Cevap metnindeki "gerçek X + tahmini Y" kırılımının gösterilen
+        toplamla **aritmetik tuttuğu** ayrı bir regresyon testiyle
+        kilitlendi (toplama girmeyen kalemler kırılımda da sayılmaz).
+      - Metodoloji sayfasına "yemekli mi kokteyl mi" bölümü + tablo.
+      - Testler: motor +6, JS +4, sayfa_uret +4.
+- [x] **TAHMİNİ YEMEK DEĞERİ 2.8 KAT YANLIŞ ÇIKTI, gerçek ölçüme
+      taşındı (2026-07-25). Yavuz'un yakaladığı hata.** Salon iki
+      varyanta bölündükten sonra hesaplayıcı şunu gösteriyordu:
+      yemekli senaryo tahmini 161.500 TL, kokteyl senaryo 266.500 TL.
+      Yavuz "bir hata olabilir mi?" diye sordu — haklıydı:
+      - Yemekli salon = 1.100 TL/kişi (menü dahil).
+      - Kokteyl + ayrı tahmini yemek = 800 + 700 = 1.500 TL/kişi.
+      - Aynı düğün, **%36 fark**. Mekanın kendi menüsünü almak,
+        kokteyl alıp dışarıdan yemek getirmekten 60.000 TL ucuz
+        görünüyordu — ekonomik olarak saçma.
+      **Kök neden:** WebSearch'ten türetilen tahmin (700 TL/kişi)
+      gerçekten çok yüksekti. Artık ölçülebiliyor: AYNI mekanın kendi
+      yemekli/kokteyl fiyat farkı = o mekanda yemeğin kişi başı bedeli.
+      Gerçek veri (2026-07-25, 9 mekan): orta segment **410 TL/kişi**
+      (düşük 200, lüks 785). Tahmin **1.7 kat** sapmış.
+      **Yavuz'un kararı: gerçek veriden türet, tahmini olmaktan çıkar.**
+      Uygulanan:
+      - `motor.detay_urunler`'e **fark modu** (`cikarilacak_regex`):
+        iki fiyatın farkı AYNI SAYFADA, yani AYNI MEKAN içinde alınır.
+      - **Neden aynı-mekan şart:** "iki kalemin medyanını çıkar"
+        kestirmesi farklı sonuç verir — mekan setleri farklı (bazı
+        mekan kokteyl sunmuyor) ve farkların medyanı ≠ medyanların
+        farkı (bizim veride 250 TL'ye karşı 300 TL). Bu ayrım özel bir
+        testle kilitlendi.
+      - Kokteyl > yemekli çıkarsa (tutarsız veri) o mekan atlanır ve
+        loglanır — sessizce kabul edilmez.
+      - `yemek-ikram` KIRMIZI ÇİZGİ kuralı gereği tahmini listeden
+        çıkarılıp gerçek kaynağa taşındı (hem `sayfa_uret.py` hem
+        `dugun-kalemler.js`). Bir kalemin iki listede birden
+        bulunmadığını doğrulayan test eklendi.
+      - **SONRA DAHA DERİN BİR SORUN BULUNDU ve kalem TOPLAMDAN
+        ÇIKARILDI (`bilgi_amacli: True`).** Ölçüm sonrası hesaplayıcı
+        şunu gösterdi: yemekli 1.200 TL/kişi, kokteyl 500 + yemek 410 =
+        910 TL/kişi → **%24 tutarsızlık.** Halbuki fark tanım gereği
+        `yemekli − kokteyl` olduğu için `kokteyl + fark = yemekli`
+        **matematiksel bir kimlik olmalıydı.** Kök neden: **her kalem
+        BAĞIMSIZ segmentleniyor** — "orta segment yemekli mekan"
+        (yemekli fiyatı P25–P75 arası olanlar) ile "orta segment kokteyl
+        mekan" AYNI MEKANLAR DEĞİL. Üç ayrı mekan alt kümesinin medyanı
+        toplanıyordu. **Yavuz'un kararı: toplamdan çıkar, bilgi olarak
+        göster.** Uygulandı: `bilgi_amacli` alanı (hiçbir senaryoda
+        toplanmaz), hesaplayıcıda seçim kutusu YOK, yerine salon seçimine
+        göre dinamik not ("mekanların menü bedeli medyanı kişi başı
+        410 TL"). Endeks tablosunda `Bilgi amaçlı — toplamda değil`
+        etiketi. 2 yeni test bunu kilitliyor.
+      - **BU YAPISAL SINIR GENEL:** persentil bazlı segmentleme, aynı
+        varlığın (mekan/ürün) farklı kalemlerdeki segmentini hizalamıyor.
+        Yani **aynı varlıktan türeyen kalemler toplanmamalı.** İleride
+        benzer varyantlı kalem eklenirse (ör. otelde/kırda düğün, yazlık/
+        kışlık paket) aynı tuzak var. Doğru çözüm mekan-bazlı eşleştirme
+        olurdu (motor ham ürünleri saklasın, agrega varlık kimliğine göre
+        hizalasın) — şema değişikliği gerektiriyor, şimdilik yapılmadı.
+      **DERS:** tahmini bir kalem ölçülebilir hale geldiğinde
+      tahminin ne kadar saptığı ortaya çıkıyor — ve buradaki sapma
+      toplamı şişiriyordu. Kalan 7 tahmini kalem için de aynı riski
+      varsaymak gerekir; "makul görünen" bir tahmin doğru demek değil.
+      Ayrıca: iki senaryonun birbirini tutmaması (aynı düğün, farklı
+      yol, farklı sonuç) bu tür hatayı yakalamak için iyi bir sağlama —
+      ileride benzer varyantlı kalemlerde bu tutarlılık kontrol edilsin.
+      **SONUÇ (2026-07-25 sonu): düğün tahmini oranı %62 → %39.**
+      Toplam 414.716 TL; 253.216 TL'si (7 kalem, 10 bağımsız kaynak)
+      gerçek, 161.500 TL'si (7 kalem) tahmini.
+- [ ] **Hizmet kalemleri turu — kalan tahmini kalemler.** Öncelik sırası
+      (etki × çözülebilirlik):
+      - **taki-altin (40.000 TL) — EN KOLAY SIRADAKİ.** Gram altın fiyatı
+        tamamen halka açık; Atasay zaten CSS ile kazınıyor, yani kuyumcu
+        siteleri çalışıyor. "Tahmini"den gerçek kaynağa taşınabilir.
+      - **fotografci (45.000)** — şu an SIFIR aktif kaynak (Armut ve
+        DüğünBuketi bırakıldı). Ama artık **detay sayfası katmanı var**;
+        DüğünBuketi fotoğrafçı sayfası kartlarda fiyat gizliyordu, detay
+        sayfasında açık olabilir — TEKRAR BAKILMALI.
+      - **organizasyon (40.000)**, **orkestra-dj (25.000)** — mekanların
+        "her şey dahil paket" içeriğinde geçiyor (catering + fotoğraf +
+        DJ + ışık/ses). Ayrı kalem olarak mı, paket olarak mı ölçmek
+        doğru — metodolojik karar gerekiyor.
+      - **nikah-islemleri (3.500)** — belediye harçları, resmi kaynak,
+        kolay ama küçük etki.
 - [ ] Takı/altın (canlı gram fiyatı) için kaynak bulma
 - [ ] TÜİK doğrulama verisi entegrasyonu (ÇOK KAYNAK KURALI 5. katman)
 - [x] **GitHub Actions aylık otomasyon + sitemap.xml eklendi (2026-07-24).**

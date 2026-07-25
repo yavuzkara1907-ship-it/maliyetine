@@ -41,7 +41,40 @@ DUGUN_KALEMLERI = [
     {"id": "gelin-ayakkabisi", "ad": "Gelin Ayakkabısı, Duvak, Aksesuar", "birim": "sabit"},
     {"id": "nikah-sekeri", "ad": "Nikah Şekeri", "birim": "sabit"},
     {"id": "davetiye", "ad": "Davetiye", "birim": "sabit"},
-    {"id": "salon", "ad": "Düğün Salonu", "birim": "kisi_basi"},
+    # Salon iki TANIMLI varyant (bkz. kaynaklar.yaml salon-yemekli /
+    # salon-kokteyl). Ikisi de tabloda fiyatiyla GORUNUR ama toplama
+    # yalnizca "varsayilan_dahil" olan girer - aksi halde ayni salon iki
+    # kez sayilir. yemek_dahil=True olan varyant secildiginde ayri
+    # "yemek-ikram" tahmini kalemi de cift sayim olur, o yuzden onun
+    # varsayilan_dahil'i False.
+    {
+        "id": "salon-yemekli", "ad": "Düğün Salonu — yemekli (menü dahil)",
+        "birim": "kisi_basi", "secim_grubu": "salon", "yemek_dahil": True,
+        "varsayilan_dahil": True,
+    },
+    {
+        "id": "salon-kokteyl", "ad": "Düğün Salonu — kokteyl (yemeksiz)",
+        "birim": "kisi_basi", "secim_grubu": "salon", "yemek_dahil": False,
+        "varsayilan_dahil": False,
+    },
+    # 2026-07-25: tahmini listeden GERCEK kaynaga tasindi (deger artik
+    # ayni mekanin yemekli/kokteyl fiyat farkindan OLCULUYOR, bkz.
+    # kaynaklar.yaml fark modu). Onceki tahmin 700 TL/kisi idi, gercek
+    # olcum 410 TL - 1.7 kat sapma.
+    #
+    # AMA TOPLAMA HIC GIRMEZ (bilgi_amacli): "kokteyl + menu bedeli"
+    # tanim geregi "yemekli" fiyatina esit olmali (fark = yemekli -
+    # kokteyl), yani ayri kalem olarak toplamak ayni sayiya dolambacli
+    # yoldan gitmek olur. Ustelik esitlik pratikte BOZULUYOR: her kalem
+    # BAGIMSIZ segmentleniyor, "orta segment yemekli mekan" ile "orta
+    # segment kokteyl mekan" ayni mekanlar degil - uc ayri alt kumenin
+    # medyani toplaninca %24 tutarsizlik cikiyor. Bu yuzden deger
+    # yalnizca REFERANS olarak gosterilir: "yemekli secmek kisi basi
+    # yaklasik bu kadar ekler".
+    {
+        "id": "yemek-ikram", "ad": "Yemek / İkram (mekanın menü bedeli)",
+        "birim": "kisi_basi", "bilgi_amacli": True,
+    },
 ]
 
 # Henuz kazima kaynagi olmayan kalemler. Yavuz'un acik talimatiyla
@@ -57,12 +90,6 @@ DUGUN_KALEMLERI_TAHMINI = [
         "id": "taki-altin", "ad": "Takı ve Altın", "birim": "sabit",
         "tahmini": {"dusuk": 15000, "orta": 40000, "luks": 90000},
         "kaynak_notu": "Gram altın ~6.140 TL (24 Temmuz 2026) baz alınarak tipik hediye takı seti bütçesi.",
-        "arastirma_tarihi": "2026-07-24",
-    },
-    {
-        "id": "yemek-ikram", "ad": "Yemek / İkram (salona dahil değilse)", "birim": "kisi_basi",
-        "tahmini": {"dusuk": 400, "orta": 700, "luks": 2000},
-        "kaynak_notu": "Kişi başı düğün catering fiyat araştırması.",
         "arastirma_tarihi": "2026-07-24",
     },
     {
@@ -261,18 +288,28 @@ def ornek_toplam_hesapla(conf: dict, kalemler: dict, olcek: int, segment: str) -
             continue
         carpan = olcek if tanim["birim"] == "kisi_basi" else 1
         satir_toplam = round(deger * carpan)
-        toplam += satir_toplam
-        detaylar.append({**tanim, "veri_var": True, "tahmini_mi": False, "birim_fiyat": deger, "satir_toplam": satir_toplam})
+        # bilgi_amacli kalemler HICBIR senaryoda toplanmaz (bkz. yemek-ikram).
+        dahil = tanim.get("varsayilan_dahil", True) and not tanim.get("bilgi_amacli")
+        if dahil:
+            toplam += satir_toplam
+        detaylar.append({
+            **tanim, "veri_var": True, "tahmini_mi": False,
+            "birim_fiyat": deger, "satir_toplam": satir_toplam,
+            "toplama_dahil": dahil,
+        })
 
     for tanim in conf["tahmini_kalemler"]:
         deger = tanim["tahmini"][seg_anahtari]
         carpan = olcek if tanim["birim"] == "kisi_basi" else 1
         satir_toplam = round(deger * carpan)
-        toplam += satir_toplam
+        dahil = tanim.get("varsayilan_dahil", True)
+        if dahil:
+            toplam += satir_toplam
         detaylar.append({
             "id": tanim["id"], "ad": tanim["ad"], "birim": tanim["birim"],
             "veri_var": True, "tahmini_mi": True,
             "birim_fiyat": deger, "satir_toplam": satir_toplam,
+            "toplama_dahil": dahil,
             "kaynak_notu": tanim["kaynak_notu"], "arastirma_tarihi": tanim["arastirma_tarihi"],
         })
     return toplam, detaylar
@@ -297,8 +334,18 @@ def _kalem_satirlari_html(conf: dict, kalemler: dict) -> str:
         degerler = {
             seg: kalem_deger(veri, seg) for seg in ("dusuk", "orta", "luks")
         }
+        # Toplama girmeyen satir (salon'un secilmeyen varyanti) fiyat
+        # referansi olarak gosterilir ama toplamda olmadigi belirtilir -
+        # aksi halde tablodaki satirlari toplayan okuyucu farkli bir
+        # sonuca ulasir ve bu guveni zedeler.
+        if tanim.get("bilgi_amacli"):
+            not_etiketi = ' <span class="tahmini-etiket">Bilgi amaçlı — toplamda değil</span>'
+        elif not tanim.get("varsayilan_dahil", True):
+            not_etiketi = ' <span class="tahmini-etiket">Toplamda değil</span>'
+        else:
+            not_etiketi = ""
         satirlar.append(
-            f'<tr><td>{tanim["ad"]}</td>'
+            f'<tr><td>{tanim["ad"]}{not_etiketi}</td>'
             f'<td class="sayi">{_para(degerler["dusuk"]) if degerler["dusuk"] else "—"}</td>'
             f'<td class="sayi">{_para(degerler["orta"]) if degerler["orta"] else "—"}</td>'
             f'<td class="sayi">{_para(degerler["luks"]) if degerler["luks"] else "—"}</td>'
@@ -306,8 +353,12 @@ def _kalem_satirlari_html(conf: dict, kalemler: dict) -> str:
         )
     for tanim in conf["tahmini_kalemler"]:
         t = tanim["tahmini"]
+        not_etiketi = (
+            "" if tanim.get("varsayilan_dahil", True)
+            else ' <span class="tahmini-etiket">Toplamda değil</span>'
+        )
         satirlar.append(
-            f'<tr><td>{tanim["ad"]} <span class="tahmini-etiket" title="{tanim["kaynak_notu"]}">Tahmini</span></td>'
+            f'<tr><td>{tanim["ad"]} <span class="tahmini-etiket" title="{tanim["kaynak_notu"]}">Tahmini</span>{not_etiketi}</td>'
             f'<td class="sayi">{_para(t["dusuk"])}</td>'
             f'<td class="sayi">{_para(t["orta"])}</td>'
             f'<td class="sayi">{_para(t["luks"])}</td>'
@@ -389,7 +440,13 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
     olcek = conf["olcek_varsayilan"]
 
     ornek_toplam, ornek_detaylar = ornek_toplam_hesapla(conf, kalemler, olcek, ORNEK_SEGMENT)
-    kapsanan_detaylar = [d for d in ornek_detaylar if d["veri_var"]]
+    # Sadece TOPLAMA GIREN kalemler sayilir - salon'un secilmeyen varyanti
+    # ve yemekli salonla cift sayim olacak "yemek-ikram" tabloda gorunur
+    # ama toplama dahil degil; cevap metnindeki kirilim (gercek X TL +
+    # tahmini Y TL) ornek_toplam ile TUTMAK zorunda.
+    kapsanan_detaylar = [
+        d for d in ornek_detaylar if d["veri_var"] and d.get("toplama_dahil", True)
+    ]
     gercek_detaylar = [d for d in kapsanan_detaylar if not d["tahmini_mi"]]
     tahmini_detaylar = [d for d in kapsanan_detaylar if d["tahmini_mi"]]
     gercek_toplam = sum(d["satir_toplam"] for d in gercek_detaylar)

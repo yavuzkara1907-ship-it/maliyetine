@@ -214,6 +214,81 @@ def css_urunler(soup: BeautifulSoup, css_secicileri: dict | None, min_fiyat: flo
     return urunler
 
 
+def detay_urunler(soup: BeautifulSoup, kaynak: dict, bekleme_sn: float = 2.0):
+    """Kategori sayfasindaki HER detay sayfasina girip tanimli fiyati ceker.
+
+    Neden gerekli: hizmet kalemlerinde (dugun mekani vb.) kategori
+    sayfasindaki kart yalnizca "baslangic fiyati" gosterir - bu, mekanin
+    EN DUSUK secenegidir (ör. yemeksiz kokteyl) ve ne olcdugu belirsizdir.
+    Gercek, tanimli fiyat ("Yemekli kisi basi", "Kokteyl kisi basi") detay
+    sayfasinda ayri ayri yaziyor. Ayni kategori sayfasi, farkli regex'lerle
+    IKI AYRI kalemi besleyebilir (bkz. kaynaklar.yaml salon-yemekli /
+    salon-kokteyl).
+
+    Nazik kazima: detay sayfalari arasinda bekleme_sn kadar beklenir ve
+    en_fazla_detay ile istek sayisi sinirlanir - bir kategori sayfasi
+    yuzlerce mekan icerse bile hepsine gidilmez.
+    """
+    d = kaynak["detay"]
+    min_fiyat = kaynak.get("min_fiyat", 100)
+    desen = re.compile(d["fiyat_regex"])
+    # FARK MODU: iki fiyat arasindaki fark olculur (or. "Yemekli kisi
+    # basi" - "Kokteyl kisi basi" = yemegin kisi basi bedeli). Fark AYNI
+    # SAYFADA, yani AYNI MEKAN icinde alinir - iki ayri kalemin
+    # medyanlarini cikarmak DEGILDIR (o mekan setleri farkli oldugu icin
+    # yaniltici olur: bizim veride farklarin medyani 250 TL, medyanlarin
+    # farki 300 TL). Her iki desen de eslesmeyen sayfa atlanir.
+    cikarilacak = d.get("cikarilacak_regex")
+    cikarilacak_desen = re.compile(cikarilacak) if cikarilacak else None
+
+    linkler = sorted({
+        a["href"].split("?")[0]
+        for a in soup.select(d["link_secici"])
+        if a.get("href")
+    })[: d.get("en_fazla_detay", 20)]
+
+    urunler = []
+    for i, url in enumerate(linkler):
+        if not robots_izin_var(url):
+            logger.warning("[%s] detay robots.txt RET: %s", kaynak["ad"], url)
+            continue
+        html = getir_playwright(url) if kaynak.get("render_gerekli") else getir(url)
+        if html is None:
+            continue
+        metin = re.sub(
+            r"\s+", " ", BeautifulSoup(html, "html.parser").get_text(" ", strip=True)
+        )
+        eslesme = desen.search(metin)
+        if not eslesme:
+            # Bu mekan bu secenegi sunmuyor (ör. sadece yemekli calisiyor,
+            # kokteyl fiyati yok) - hata degil, sessizce atlanir.
+            continue
+        fiyat = fiyat_ayikla(eslesme.group(1))
+
+        if cikarilacak_desen is not None:
+            cikarilacak_eslesme = cikarilacak_desen.search(metin)
+            if not cikarilacak_eslesme or fiyat is None:
+                continue
+            cikan = fiyat_ayikla(cikarilacak_eslesme.group(1))
+            if cikan is None:
+                continue
+            fiyat = fiyat - cikan
+            if fiyat <= 0:
+                # Kokteyl yemekliden pahali cikmis - veri tutarsiz ya da
+                # sayfa farkli bir sey listeliyor. Sessizce kabul etmek
+                # yerine atla ve logla.
+                logger.warning(
+                    "[%s] fark <= 0 (%s): atlaniyor", kaynak["ad"], url
+                )
+                continue
+
+        if fiyat and fiyat > min_fiyat:
+            urunler.append({"isim": url.rstrip("/").rsplit("/", 1)[-1], "fiyat": fiyat})
+        if i < len(linkler) - 1:
+            time.sleep(bekleme_sn)
+    return urunler
+
+
 def uc_katman_cikar(soup: BeautifulSoup, kaynak: dict):
     min_fiyat = kaynak.get("min_fiyat", 100)
 
@@ -479,7 +554,10 @@ def kaynak_ham_veri_topla(kaynak: dict):
             continue
 
         soup = BeautifulSoup(html, "html.parser")
-        urunler, katman = uc_katman_cikar(soup, kaynak)
+        if kaynak.get("detay"):
+            urunler, katman = detay_urunler(soup, kaynak, bekleme_sn), "detay"
+        else:
+            urunler, katman = uc_katman_cikar(soup, kaynak)
         kullanilan_katmanlar.add(katman)
         logger.info("[%s] sayfa %d: %d urun (%s katmani)", ad, p, len(urunler), katman)
         tum_urunler.extend(urunler)

@@ -654,7 +654,62 @@ kaynaklar:
       Dusuk oncelikli - gelinlik zaten trendyol+dugunbuketi ile
       kismen kapsanan bir kalem.
 
-  - ad: "DugunBuketi - Istanbul Dugun Mekanlari"
+  # --- SALON: iki TANIMLI kalem, detay sayfasi katmaniyla (2026-07-25) ---
+  # Onceki tek "salon" girdisi kategori sayfasindaki `.font-bold`
+  # "baslangic fiyati"ni okuyordu. Bu rakam mekanin EN DUSUK secenegi -
+  # cogu mekanda YEMEKSIZ kokteyl fiyati - ve ne olcdugu belirsizdi.
+  # Detay sayfasinda "Yemekli kisi basi" ve "Kokteyl kisi basi" AYRI
+  # yaziyor; artik ikisi ayri kalem olarak cekiliyor. Ayni kategori
+  # sayfasi, sadece regex'i degisen iki girdiyi besliyor.
+  # Gercek ornek (Bambi Garden): yemekli ₺750, kokteyl ₺500.
+  - ad: "DugunBuketi - Istanbul Dugun Mekanlari (yemekli kisi basi)"
+    site: "dugunbuketi"
+    url: "https://dugunbuketi.com/c/dugun-mekanlari/istanbul"
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "salon-yemekli"
+    yontem: "otomatik"
+    detay:
+      link_secici: ".bg-card a[href*='/fiyati/']"
+      fiyat_regex: "Yemekli kişi başı\\s*₺([\\d.,]+)"
+      en_fazla_detay: 12
+    min_fiyat: 100
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+    notlar: >
+      Gercek cekimle dogrulandi (2026-07-25): 6 mekandan yemekli kisi
+      basi 750 / 1.200 / 1.000 / 1.500 / 2.250 / 1.400 TL, medyan ~1.300.
+      Bu fiyat MENU DAHIL kisi basi tutar - bu kalem secildiginde ayri
+      "yemek/ikram" kalemi eklenmemeli (cift sayim olur), hesaplayici
+      bunu engelliyor.
+
+  - ad: "DugunBuketi - Istanbul Dugun Mekanlari (kokteyl kisi basi)"
+    site: "dugunbuketi"
+    url: "https://dugunbuketi.com/c/dugun-mekanlari/istanbul"
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "salon-kokteyl"
+    yontem: "otomatik"
+    detay:
+      link_secici: ".bg-card a[href*='/fiyati/']"
+      fiyat_regex: "Kokteyl kişi başı\\s*₺([\\d.,]+)"
+      en_fazla_detay: 12
+    min_fiyat: 100
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+    notlar: >
+      Gercek cekimle dogrulandi (2026-07-25): 280 / 500 / 800 / 990 /
+      2.000 TL, medyan ~800. YEMEKSIZ kisi basi tutar - bu kalem
+      secilirse yemek/ikram AYRICA eklenmelidir. Bazi mekanlar kokteyl
+      secenegi sunmuyor (regex eslesmez, sessizce atlanir) - bu yuzden
+      orneklemi yemekliden kucuk olabilir.
+
+  # ESKI TEK "salon" GIRDISI - yukaridaki iki tanimli kalemle degistirildi.
+  # Devre disi ama silinmedi: kategori-karti yonteminin neyi olcdugu
+  # (belirsiz "baslangic fiyati") kayitli kalsin.
+  - ad: "DugunBuketi - Istanbul Dugun Mekanlari (baslangic fiyati - ESKI)"
     site: "dugunbuketi"
     url: "https://dugunbuketi.com/c/dugun-mekanlari/istanbul"
     sayfa_sayisi: 1
@@ -667,8 +722,8 @@ kaynaklar:
       fiyat_secici: ".font-bold"
     min_fiyat: 100
     bekleme_sn: 3
-    aktif: true
-    durum: "onaylandi"
+    aktif: false
+    durum: "degistirildi"
     notlar: >
       Ilk turda (hatali robots_kontrol.py ile) yanlislikla RET cikmisti,
       DUZELTILMIS protego tabanli script ile TEKRAR test edildi
@@ -1632,3 +1687,37 @@ kaynaklar:
     aktif: true
     durum: "onaylandi"
     notlar: "Gercek cekimle dogrulandi (2026-07-25): 44 urun, JSON-LD katmani, CSS secici gerekmedi. Ornek: 'Serenity Bambu Saten Carsafli Cift Kisilik Nevresim Takimi' 3.499,99 TL."
+
+  # --- YEMEK BEDELI: ayni mekanin yemekli/kokteyl fiyat farkindan olculur ---
+  # Onceden bu kalem "tahmini" idi (WebSearch'ten 700 TL/kisi). Salon
+  # detay sayfalari kazinabilir olunca ORCULEBILIR hale geldi ve tahminin
+  # 2.8 KAT sapmis oldugu ortaya cikti (gercek fark medyani ~250 TL/kisi).
+  # KIRMIZI CIZGI kurali geregi tahmini listeden cikarilip gercek kaynaga
+  # tasindi. Fark AYNI SAYFADA aliniyor (bkz. motor.detay_urunler fark
+  # modu) - iki ayri kalemin medyanini cikarmak yaniltici olurdu.
+  - ad: "DugunBuketi - Yemek Bedeli (yemekli - kokteyl farki)"
+    site: "dugunbuketi"
+    url: "https://dugunbuketi.com/c/dugun-mekanlari/istanbul"
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "yemek-ikram"
+    yontem: "otomatik"
+    detay:
+      link_secici: ".bg-card a[href*='/fiyati/']"
+      fiyat_regex: "Yemekli kişi başı\\s*₺([\\d.,]+)"
+      cikarilacak_regex: "Kokteyl kişi başı\\s*₺([\\d.,]+)"
+      en_fazla_detay: 12
+    min_fiyat: 50
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+    notlar: >
+      Mekanin KENDI iki fiyati arasindaki fark = o mekanda yemegin kisi
+      basi bedeli. Ornek (2026-07-25): Bambi Garden 750-500=250,
+      Bogaz Garden 1200-280=920, Grand Anka 1000-800=200,
+      Kir Kubbe 1400-990=410, Incisu 2250-2000=250 -> medyan 250 TL.
+      Kokteyl secenegi sunmayan mekan atlanir (fark hesaplanamaz).
+      Kokteyl > yemekli cikarsa (tutarsiz veri) atlanir ve loglanir.
+      NOT: bu, MEKANIN kendi menu bedelidir - disaridan bagimsiz catering
+      fiyati DEGIL. Kokteyl secip disaridan catering getirilirse tutar
+      farkli olabilir; metodoloji sayfasinda belirtiliyor.

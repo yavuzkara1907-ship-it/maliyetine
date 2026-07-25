@@ -27,7 +27,7 @@
     },
     "luks": {
       "min": 4946,
-      "medyan": 5495,
+      "medyan": 5530,
       "max": 5999,
       "urun_sayisi": 4
     }

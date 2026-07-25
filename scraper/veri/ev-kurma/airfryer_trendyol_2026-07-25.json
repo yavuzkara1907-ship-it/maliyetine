@@ -16,11 +16,11 @@
     "dusuk": {
       "min": 1102,
       "medyan": 1944,
-      "max": 1988,
+      "max": 1999,
       "urun_sayisi": 6
     },
     "orta": {
-      "min": 1999,
+      "min": 2000,
       "medyan": 3587,
       "max": 4250,
       "urun_sayisi": 12

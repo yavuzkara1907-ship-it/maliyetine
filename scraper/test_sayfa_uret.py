@@ -21,12 +21,12 @@ GELINLIK_VERISI = {
     },
 }
 
-SALON_VERISI = {
-    "genel_medyan": 800,
+SALON_YEMEKLI_VERISI = {
+    "genel_medyan": 1000,
     "kaynak_sayisi": 1,
     "capraz_dogrulama_uyarisi": None,
     "segmentler": {
-        "orta": {"min": 601, "medyan": 800, "max": 1200, "urun_sayisi": 4},
+        "orta": {"min": 1000, "medyan": 1100, "max": 1500, "urun_sayisi": 6},
     },
 }
 
@@ -50,14 +50,16 @@ class KalemDegerTestleri(unittest.TestCase):
 class OrnekToplamHesaplaTestleri(unittest.TestCase):
     # DUGUN_KALEMLERI_TAHMINI (Yavuz'un 2026-07-24 talimatiyla eklenen genel
     # piyasa arastirmasi degerleri) davetli_sayisi=100, segment="orta" icin.
-    TAHMINI_TOPLAM_100_ORTA = 40000 + 700 * 100 + 45000 + 25000 + 3000 + 5000 + 40000 + 3500  # 231500
+    # yemek-ikram (700 TL/kisi) KASITLI YOK: varsayilan senaryoda yemekli
+    # salon secili oldugu icin o kalem cift sayim olur ve toplama girmez.
+    TAHMINI_TOPLAM_100_ORTA = 40000 + 45000 + 25000 + 3000 + 5000 + 40000 + 3500  # 161500
 
     def test_sabit_ve_kisi_basi_kalemler_dogru_toplanir(self):
-        kalemler = {"gelinlik": GELINLIK_VERISI, "salon": SALON_VERISI}
+        kalemler = {"gelinlik": GELINLIK_VERISI, "salon-yemekli": SALON_YEMEKLI_VERISI}
         toplam, detaylar = sayfa_uret.ornek_toplam_hesapla(DUGUN, kalemler, olcek=100, segment="orta")
-        # gelinlik: 5000 (sabit, gercek) + salon: 800*100=80000 (gercek)
+        # gelinlik: 5000 (sabit, gercek) + salon-yemekli: 1100*100=110000
         # + tahmini kalemlerin toplami (her zaman dahil olur).
-        self.assertEqual(toplam, 5000 + 80000 + self.TAHMINI_TOPLAM_100_ORTA)
+        self.assertEqual(toplam, 5000 + 110000 + self.TAHMINI_TOPLAM_100_ORTA)
         gelinlik_satir = next(d for d in detaylar if d["id"] == "gelinlik")
         self.assertTrue(gelinlik_satir["veri_var"])
         self.assertFalse(gelinlik_satir["tahmini_mi"])
@@ -79,6 +81,155 @@ class OrnekToplamHesaplaTestleri(unittest.TestCase):
         fotografci = next(d for d in detaylar if d["id"] == "fotografci")
         self.assertEqual(fotografci["birim_fiyat"], 100000)
         self.assertTrue(fotografci["tahmini_mi"])
+
+
+SALON_KOKTEYL_VERISI = {
+    "genel_medyan": 550,
+    "kaynak_sayisi": 1,
+    "capraz_dogrulama_uyarisi": None,
+    "kaynaklar": [{"site": "dugunbuketi"}],
+    "segmentler": {
+        "orta": {"min": 600, "medyan": 800, "max": 990, "urun_sayisi": 3},
+    },
+}
+
+
+class CiftSayimKorumasiTestleri(unittest.TestCase):
+    """Salon iki varyantli (yemekli/kokteyl) ve "yemekli" menu dahil kisi
+    basi fiyattir. Endeks sayfasinin varsayilan senaryosunda yalnizca BIR
+    varyant ve yemekli ile cakisan "yemek-ikram" HARIC toplanmali - aksi
+    halde ayni salon iki kez, ayni yemek iki kez sayilir."""
+
+    def setUp(self):
+        self.tmp = TemporaryDirectory()
+        self.veri_dosyasi = Path(self.tmp.name) / "dugun.json"
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def test_secilmeyen_salon_varyanti_toplama_girmez(self):
+        kalemler = {
+            "salon-yemekli": SALON_YEMEKLI_VERISI,
+            "salon-kokteyl": SALON_KOKTEYL_VERISI,
+        }
+        toplam, detaylar = sayfa_uret.ornek_toplam_hesapla(DUGUN, kalemler, olcek=100, segment="orta")
+        yemekli = next(d for d in detaylar if d["id"] == "salon-yemekli")
+        kokteyl = next(d for d in detaylar if d["id"] == "salon-kokteyl")
+        # Ikisi de tabloda GORUNUR (fiyati var)...
+        self.assertTrue(yemekli["veri_var"] and kokteyl["veri_var"])
+        # ...ama toplama yalnizca yemekli girer.
+        self.assertTrue(yemekli["toplama_dahil"])
+        self.assertFalse(kokteyl["toplama_dahil"])
+        self.assertEqual(toplam, 1100 * 100 + self.__class__._tahmini())
+
+    @staticmethod
+    def _tahmini():
+        return 40000 + 45000 + 25000 + 3000 + 5000 + 40000 + 3500
+
+    def test_yemek_kalemi_varsayilan_senaryoda_toplama_girmez(self):
+        # yemek-ikram 2026-07-25'te tahminiden GERCEK kaynaga tasindi -
+        # artik degeri kazinan veriden gelir (ayni mekanin yemekli/kokteyl
+        # farki). Veri VARKEN tabloda gorunur ama varsayilan senaryoda
+        # (yemekli salon secili) toplama girmez.
+        kalemler = {
+            "yemek-ikram": {
+                "genel_medyan": 250, "kaynak_sayisi": 1,
+                "capraz_dogrulama_uyarisi": None,
+                "kaynaklar": [{"site": "dugunbuketi"}],
+                "segmentler": {"orta": {"min": 200, "medyan": 250, "max": 920, "urun_sayisi": 5}},
+            }
+        }
+        toplam, detaylar = sayfa_uret.ornek_toplam_hesapla(DUGUN, kalemler, olcek=100, segment="orta")
+        yemek = next(d for d in detaylar if d["id"] == "yemek-ikram")
+        self.assertTrue(yemek["veri_var"])          # tabloda gorunur
+        self.assertFalse(yemek["tahmini_mi"])       # artik TAHMINI DEGIL
+        self.assertFalse(yemek["toplama_dahil"])    # ama toplamda degil
+        self.assertEqual(toplam, self._tahmini())   # yemek 250*100 EKLENMEDI
+
+    def test_bilgi_amacli_kalem_HICBIR_senaryoda_toplanmaz(self):
+        # yemek-ikram olculmus bir deger tasir ama toplama girmez:
+        # "kokteyl + menu bedeli" tanim geregi "yemekli"ye esit olmali
+        # (fark = yemekli - kokteyl), ayri kalem olarak toplamak ayni
+        # sayiya dolambacli yoldan gitmektir. Ustelik segmentler bagimsiz
+        # hesaplandigi icin esitlik pratikte bozuluyor (%24).
+        yemek_verisi = {
+            "genel_medyan": 400, "kaynak_sayisi": 1,
+            "capraz_dogrulama_uyarisi": None,
+            "kaynaklar": [{"site": "dugunbuketi"}],
+            "segmentler": {"orta": {"min": 400, "medyan": 410, "max": 500, "urun_sayisi": 3}},
+        }
+        for kalemler in ({"yemek-ikram": yemek_verisi},
+                         {"yemek-ikram": yemek_verisi, "salon-kokteyl": SALON_KOKTEYL_VERISI}):
+            toplam, detaylar = sayfa_uret.ornek_toplam_hesapla(
+                DUGUN, kalemler, olcek=100, segment="orta"
+            )
+            yemek = next(d for d in detaylar if d["id"] == "yemek-ikram")
+            self.assertTrue(yemek["veri_var"])        # degeri var, tabloda gorunur
+            self.assertFalse(yemek["toplama_dahil"])  # ama ASLA toplanmaz
+            self.assertEqual(toplam, self._tahmini())
+
+    def test_bilgi_amacli_kalem_tabloda_acikca_isaretlenir(self):
+        agregali = {
+            "vertikal": "dugun", "guncelleme_tarihi": "2026-07-25",
+            "kalemler": {"yemek-ikram": {
+                "genel_medyan": 400, "kaynak_sayisi": 1, "segmentler": {},
+                "capraz_dogrulama_uyarisi": None, "kaynaklar": [{"site": "dugunbuketi"}],
+            }},
+        }
+        self.veri_dosyasi.write_text(json.dumps(agregali, ensure_ascii=False), encoding="utf-8")
+        html = sayfa_uret.sayfa_uret("dugun", self.veri_dosyasi)
+        self.assertIn("Bilgi amaçlı — toplamda değil", html)
+
+    def test_yemek_kalemi_artik_tahmini_listede_degil(self):
+        # KIRMIZI CIZGI kurali: gercek kaynak bulununca kalem tahmini
+        # listeden CIKARILIR. Ikisinde birden bulunmasi cift sayima ve
+        # "Tahmini" etiketinin yanlis gorunmesine yol acar.
+        tahmini_idler = {t["id"] for t in DUGUN["tahmini_kalemler"]}
+        gercek_idler = {t["id"] for t in DUGUN["kalemler"]}
+        self.assertIn("yemek-ikram", gercek_idler)
+        self.assertNotIn("yemek-ikram", tahmini_idler)
+        self.assertEqual(tahmini_idler & gercek_idler, set())
+
+    def test_kirilim_ornek_toplamla_TUTAR(self):
+        # Regresyon: "gercek X TL + tahmini Y TL" kirilimi, gosterilen
+        # toplamla aritmetik olarak tutmali. Toplama girmeyen kalemler
+        # kirilimda da sayilmamali - yoksa okuyucu rakamlari toplayip
+        # farkli bir sonuca ulasir ve guven zedelenir.
+        agregali = {
+            "vertikal": "dugun", "guncelleme_tarihi": "2026-07-25",
+            "kalemler": {
+                "salon-yemekli": SALON_YEMEKLI_VERISI,
+                "salon-kokteyl": SALON_KOKTEYL_VERISI,
+                "gelinlik": GELINLIK_VERISI,
+            },
+        }
+        self.veri_dosyasi.write_text(json.dumps(agregali, ensure_ascii=False), encoding="utf-8")
+        html = sayfa_uret.sayfa_uret("dugun", self.veri_dosyasi)
+
+        conf = DUGUN
+        olcek = conf["olcek_varsayilan"]
+        toplam, detaylar = sayfa_uret.ornek_toplam_hesapla(
+            conf, agregali["kalemler"], olcek, sayfa_uret.ORNEK_SEGMENT
+        )
+        dahil = [d for d in detaylar if d["veri_var"] and d.get("toplama_dahil", True)]
+        gercek = sum(d["satir_toplam"] for d in dahil if not d["tahmini_mi"])
+        tahmini = sum(d["satir_toplam"] for d in dahil if d["tahmini_mi"])
+        self.assertEqual(gercek + tahmini, toplam)
+        # Uc rakamin hepsi sayfada gorunmeli.
+        for n in (toplam, gercek, tahmini):
+            self.assertIn(sayfa_uret._para(n), html)
+
+    def test_toplama_girmeyen_satir_tabloda_isaretlenir(self):
+        agregali = {
+            "vertikal": "dugun", "guncelleme_tarihi": "2026-07-25",
+            "kalemler": {
+                "salon-yemekli": SALON_YEMEKLI_VERISI,
+                "salon-kokteyl": SALON_KOKTEYL_VERISI,
+            },
+        }
+        self.veri_dosyasi.write_text(json.dumps(agregali, ensure_ascii=False), encoding="utf-8")
+        html = sayfa_uret.sayfa_uret("dugun", self.veri_dosyasi)
+        self.assertIn("Toplamda değil", html)
 
 
 class SayfaUretTestleri(unittest.TestCase):
@@ -125,13 +276,13 @@ class SayfaUretTestleri(unittest.TestCase):
         agregali = {
             "vertikal": "dugun",
             "guncelleme_tarihi": "2026-07-24",
-            "kalemler": {"gelinlik": GELINLIK_VERISI, "salon": SALON_VERISI},
+            "kalemler": {"gelinlik": GELINLIK_VERISI, "salon-yemekli": SALON_YEMEKLI_VERISI},
         }
         self.veri_dosyasi.write_text(json.dumps(agregali, ensure_ascii=False), encoding="utf-8")
 
         html = sayfa_uret.sayfa_uret("dugun", self.veri_dosyasi)
         self.assertIn("Güncelleme: 2026-07-24", html)
-        gercek_kismi = 5000 + 800 * DUGUN["olcek_varsayilan"]
+        gercek_kismi = 5000 + 1100 * DUGUN["olcek_varsayilan"]
         self.assertIn(sayfa_uret._para(gercek_kismi), html)
         self.assertIn("bağımsız kaynaktan derlenen", html)
         self.assertIn("genel piyasa araştırmasına dayanır", html)
