@@ -252,7 +252,8 @@ def detay_urunler(soup: BeautifulSoup, kaynak: dict, bekleme_sn: float = 2.0):
         if not robots_izin_var(url):
             logger.warning("[%s] detay robots.txt RET: %s", kaynak["ad"], url)
             continue
-        html = getir_playwright(url) if kaynak.get("render_gerekli") else getir(url)
+        html = (getir_playwright(url, kaydirma=kaynak.get("kaydirma", 0))
+                if kaynak.get("render_gerekli") else getir(url))
         if html is None:
             continue
         metin = re.sub(
@@ -478,7 +479,8 @@ def getir(url: str, deneme: int = 3, ilk_bekleme: float = 2.0):
 _ONCEDEN_KURULU_CHROMIUM = Path("/opt/pw-browsers/chromium")
 
 
-def getir_playwright(url: str, deneme: int = 2, ilk_bekleme: float = 2.0):
+def getir_playwright(url: str, deneme: int = 2, ilk_bekleme: float = 2.0,
+                     kaydirma: int = 0):
     try:
         from playwright.sync_api import Error as PlaywrightError
         from playwright.sync_api import sync_playwright
@@ -513,6 +515,14 @@ def getir_playwright(url: str, deneme: int = 2, ilk_bekleme: float = 2.0):
                     # cekildiginde dolu geldi - zamanlama/flakiness sorunu) -
                     # 4000ms'e cikarildi.
                     sayfa.wait_for_timeout(4000)
+                    # LAZY LOADING: bazi siteler urunleri ancak kullanici
+                    # asagi kaydirdikca yukluyor. idefix'te ilk ekranda
+                    # YALNIZCA 1 urun fiyati vardi; 6 kaydirma sonrasi 37
+                    # oldu. Kaydirma olmadan bu kaynaklar "fiyat yok" gibi
+                    # gorunup yanlislikla eleniyordu.
+                    for _ in range(kaydirma):
+                        sayfa.mouse.wheel(0, 3000)
+                        sayfa.wait_for_timeout(1200)
                     return sayfa.content()
                 finally:
                     tarayici.close()
@@ -637,7 +647,8 @@ def kaynak_ham_veri_topla(kaynak: dict):
             logger.warning("[%s] robots.txt RET: %s - atlaniyor", ad, url)
             continue
 
-        html = getir_playwright(url) if kaynak.get("render_gerekli") else getir(url)
+        html = (getir_playwright(url, kaydirma=kaynak.get("kaydirma", 0))
+                if kaynak.get("render_gerekli") else getir(url))
         if html is None:
             logger.error("[%s] sayfa %d alinamadi (retry tukendi): %s", ad, p, url)
             continue

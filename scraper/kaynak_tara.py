@@ -54,6 +54,12 @@ VARSAYILAN_ANAHTARLAR = ["televizyon", "buzdolabi", "buzdolabı", "camasir", "ç
 
 FIYAT_DESENI = re.compile(r"[\d][\d.,]{2,}\s*(?:TL|₺)|₺\s*[\d][\d.,]{2,}")
 
+# Fiyat gibi gorunup fiyat OLMAYAN metinler. idefix ilk taramada "62 fiyat"
+# ile en umut verici aday cikmisti; sonra anlasildi ki bunlarin cogu
+# "TROY ile 200 TL Indirim" gibi promosyon rozetleriydi. Bu filtre olmadan
+# tarayici yanlis pozitif verip bir sonraki turu bosa harciyor.
+SAHTE_FIYAT = re.compile(r"indirim|kupon|kampanya|hediye|kargo|taksit|puan", re.I)
+
 
 def kategori_linkleri(ana_html: str, taban: str, anahtarlar: list[str]) -> list[str]:
     """Ana sayfadan anahtar kelime iceren kategori linklerini toplar.
@@ -93,12 +99,34 @@ def sayfa_teshis(html: str) -> dict:
             tipler = json.dumps(dugum.get("@type", ""))
             if "Product" in tipler or "ItemList" in tipler:
                 ld_urun += 1
-    metin = corba.get_text(" ", strip=True)
+    # Fiyati METIN DUGUMU bazinda say ve promosyon rozetlerini ele: tum
+    # sayfa metninde regex saymak "200 TL Indirim" gibi ifadeleri fiyat
+    # zanneder (idefix dersi).
+    gercek_fiyat = 0
+    kart_ici_fiyat = 0
+    for dugum in corba.find_all(string=FIYAT_DESENI):
+        if SAHTE_FIYAT.search(dugum):
+            continue
+        gercek_fiyat += 1
+        # Fiyatin bir urun LINKI icinde olmasi, kart<->fiyat eslesmesinin
+        # kurulabilecegini gosterir. idefix'te 97 urun linki vardi ama
+        # fiyatlarin yalnizca 1'i link icindeydi - yani fiyatlar ayri bir
+        # DOM dalinda ve hangi urune ait oldugu guvenilir sekilde
+        # belirlenemiyordu. Bu sayi dusukse kaynak kazinabilir DEGIL.
+        ata = dugum.parent
+        for _ in range(8):
+            if ata is None:
+                break
+            if ata.name == "a" and ata.get("href"):
+                kart_ici_fiyat += 1
+                break
+            ata = ata.parent
     return {
         "boyut": len(html),
         "jsonld_urun": ld_urun,
         "microdata": len(corba.select('[itemprop="price"]')),
-        "fiyat_metni": len(FIYAT_DESENI.findall(metin)),
+        "fiyat_metni": gercek_fiyat,
+        "kart_ici": kart_ici_fiyat,
     }
 
 
@@ -134,8 +162,13 @@ def adayi_tara(ad: str, taban: str, anahtarlar: list[str]) -> dict:
             sonuc["durum"] = "YESIL - JSON-LD"
         elif t["microdata"]:
             sonuc["durum"] = "YESIL - microdata"
-        elif t["fiyat_metni"] >= 5:
+        elif t["kart_ici"] >= 5:
             sonuc["durum"] = "SARI - fiyat var, CSS secici gerekir"
+        elif t["fiyat_metni"] >= 5:
+            # Fiyat var ama urun linkinin ICINDE degil - hangi urune ait
+            # oldugu guvenilir sekilde belirlenemez (idefix dersi).
+            sonuc["durum"] = "KIRMIZI - fiyat kart disinda, eslesme kurulamaz"
+            continue
         else:
             sonuc["durum"] = "KIRMIZI - fiyat yok (JS ile yukleniyor olabilir)"
             continue
@@ -161,8 +194,8 @@ def main():
             s = {"ad": ad, "taban": taban, "durum": f"HATA: {hata}", "url": "", "teshis": {}}
         sonuclar.append(s)
         t = s["teshis"]
-        ozet = (f"ld={t['jsonld_urun']} micro={t['microdata']} fiyat={t['fiyat_metni']}"
-                if t else "")
+        ozet = (f"ld={t['jsonld_urun']} micro={t['microdata']} "
+                f"fiyat={t['fiyat_metni']} kart_ici={t['kart_ici']}" if t else "")
         print(f"{s['ad']:13} {s['durum']:44} {ozet}", flush=True)
         if s["url"]:
             print(f"              {s['url']}", flush=True)

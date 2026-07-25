@@ -524,6 +524,43 @@ microdata/fiyat teşhisi. Çıktı: YEŞİL / SARI / KIRMIZI.
     TÜİK** (data.tuik.gov.tr robots ONAY, erişilebilir) — TÜFE alt
     kalemleri: ev eşyası (COICOP 05), giyim (03), lokanta (11).
 
+## IDEFIX ve TÜİK TURU — İKİSİ DE KESİN SONUÇLA KAPANDI (2026-07-26)
+
+### idefix — BIRAKILDI (kod sorunu değil, sayfa yapısı)
+- Toplu tarayıcı idefix'i "62 fiyat" ile **en umut verici aday** göstermişti.
+  **Yanlış pozitifti:** o metinler *"TROY ile 200 TL İndirim"* gibi
+  **promosyon rozetleriydi.**
+- **Lazy loading ÇÖZÜLDÜ:** ilk ekranda yalnızca 1 ürün fiyatı vardı,
+  6 kaydırma sonrası **37 gerçek fiyat** geldi. `motor.getir_playwright`'a
+  **`kaydirma` parametresi eklendi** (`kaynaklar.yaml` → `kaydirma: 6`).
+  Bu yetenek kalıcı — başka lazy-load kaynaklarda da kullanılabilir.
+- **AMA KESİN ENGEL:** sayfada 97 ürün linki var, fiyatların yalnızca
+  **1'i** bir ürün linkinin İÇİNDE. Fiyatlar ayrı bir DOM dalında duruyor;
+  hangi fiyatın hangi ürüne ait olduğu güvenilir şekilde belirlenemiyor.
+  Zorlanırsa **yanlış ürüne yanlış fiyat** atanır — bu KIRMIZI ÇİZGİ
+  ihlali olurdu. `aktif: false` bile eklenmedi, kaynak yazılmadı.
+- **`kaynak_tara.py` bu dersle güçlendirildi:** artık (a) promosyon
+  metinlerini fiyat saymıyor (`SAHTE_FIYAT` filtresi), (b) **`kart_ici`**
+  sayıyor — fiyat bir ürün linkinin içinde mi? Kart dışındaysa
+  "KIRMIZI - eşleşme kurulamaz" diyor. Bu olmadan tarayıcı gelecekte
+  aynı tuzağa tekrar yönlendirirdi.
+
+### TÜİK — API BULUNDU AMA ERİŞİLEMEDİ
+- `data.tuik.gov.tr` → **`veriportali.tuik.gov.tr`'ye 302** (React SPA).
+  Ham HTML boş kabuk (3.692b), link yok.
+- Playwright ağ dinlemesiyle **gerçek REST API yakalandı:**
+  `veriportali.tuik.gov.tr/api/tr/data/statistical-themes` ve
+  `/api/tr/data/autocomplete?text=` (ikisi de sayfa yüklenirken HTTP 200).
+- **AMA doğrudan çağrılınca 404** — hem `requests` ile hem sayfa
+  içinden `fetch` ile. API yalnızca kendi SPA route bağlamında çalışıyor.
+- **Menüde `SDMX` var** — uluslararası istatistik veri değişim standardı,
+  genelde açık endpoint sunar. Bir sonraki turda İLK bakılacak yer burası.
+- **ALTERNATİF (kesin çalışan): TCMB EVDS API.** Ücretsiz, resmî, JSON,
+  TÜFE alt kalemlerini (ev eşyası COICOP 05, giyim 03, lokanta 11)
+  veriyor. **Yalnızca API key gerekiyor — Yavuz'un 5 dakikalık işi**
+  (evds2.tcmb.gov.tr → kayıt → profilden key). Key gelirse entegrasyon
+  yazılabilir: geriye dönük seri + resmî çapraz doğrulama.
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
