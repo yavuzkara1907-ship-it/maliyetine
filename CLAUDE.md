@@ -213,9 +213,19 @@ Hesaplayıcı bu kalemleri toplar. Her kalem: segment + kaynak + tarih.
 - schema.org yapılandırılmış veri, güncelleme tarihi görünür.
 - Soru formatında başlıklar ("2026'da İstanbul'da düğün kaça mal olur?").
 - robots.txt AI bot'larına açık (GPTBot vb. engellenmez).
-- 🚨 **KRİTİK AÇIK KONU (2026-07-25 canlı tespit): Cloudflare bizim
-  robots.txt'imizin ÜSTÜNE kendi "Managed content" bloğunu ENJEKTE
-  ediyor ve tam olarak hedeflediğimiz botları ENGELLİYOR.** Canlı
+- ✅ **ÇÖZÜLDÜ (2026-07-25). Cloudflare'in robots.txt enjeksiyonu
+  kapatıldı, canlı robots.txt artık depodaki dosyayla BİREBİR AYNI.**
+  Doğrulandı: hiç `Disallow` yok, `Content-Signal` satırı yok; GPTBot,
+  ClaudeBot, PerplexityBot ve Googlebot canlı sayfaya **HTTP 200**
+  alıyor; www üzerinden de temiz; sitemap 200 ve 7 URL içeriyor.
+  Kapatma yolu (ileride tekrar gerekirse): Cloudflare Dashboard → zone →
+  **AI Crawl Control → Robots.txt → "Disable robots.txt configuration"**
+  (varsayılan "Content signals policy" idi).
+  **Aşağıdaki kayıt sorunun ne olduğunu ve nasıl teşhis edildiğini
+  belgeliyor — tarihî not, artık aktif sorun DEĞİL:**
+- 📌 **(ÇÖZÜLDÜ, tarihî kayıt) Cloudflare bizim robots.txt'imizin
+  ÜSTÜNE kendi "Managed content" bloğunu ENJEKTE ediyordu ve tam olarak
+  hedeflediğimiz botları ENGELLİYORDU.** Canlı
   `https://maliyetine.com.tr/robots.txt` çıktısında:
   - `User-agent: ClaudeBot → Disallow: /`
   - `User-agent: GPTBot → Disallow: /`
