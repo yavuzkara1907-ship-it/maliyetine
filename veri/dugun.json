@@ -29,57 +29,8 @@
       "genel_medyan": 8999,
       "toplam_urun": 21,
       "guncelleme_tarihi": "2026-07-25",
-      "kaynak_sayisi": 6,
+      "kaynak_sayisi": 1,
       "kaynaklar": [
-        {
-          "site": "akakce",
-          "kaynak_adlari": [
-            "Akakce - Gelinlik (genel)",
-            "Akakce - Tesettur Gelinlik",
-            "Akakce - Korseli Gelinlik",
-            "Akakce - Kisa Gelinlik",
-            "Akakce - A Kesim Gelinlik"
-          ],
-          "tarih": "2026-07-24",
-          "toplam_urun": 0,
-          "genel_medyan": null
-        },
-        {
-          "site": "beymen",
-          "kaynak_adlari": [
-            "Beymen - Gelinlik"
-          ],
-          "tarih": "2026-07-24",
-          "toplam_urun": 0,
-          "genel_medyan": null
-        },
-        {
-          "site": "cimri",
-          "kaynak_adlari": [
-            "Cimri - Gelinlik"
-          ],
-          "tarih": "2026-07-25",
-          "toplam_urun": 0,
-          "genel_medyan": null
-        },
-        {
-          "site": "dugunbuketi",
-          "kaynak_adlari": [
-            "DugunBuketi - Istanbul Gelinlik Moda Evleri"
-          ],
-          "tarih": "2026-07-24",
-          "toplam_urun": 0,
-          "genel_medyan": null
-        },
-        {
-          "site": "n11",
-          "kaynak_adlari": [
-            "N11 - Gelinlik"
-          ],
-          "tarih": "2026-07-24",
-          "toplam_urun": 0,
-          "genel_medyan": null
-        },
         {
           "site": "trendyol",
           "kaynak_adlari": [
@@ -119,18 +70,8 @@
       "genel_medyan": 11869,
       "toplam_urun": 27,
       "guncelleme_tarihi": "2026-07-25",
-      "kaynak_sayisi": 3,
+      "kaynak_sayisi": 2,
       "kaynaklar": [
-        {
-          "site": "akakce",
-          "kaynak_adlari": [
-            "Akakce - Alyans (genel)",
-            "Akakce - 14 Ayar Alyans"
-          ],
-          "tarih": "2026-07-24",
-          "toplam_urun": 0,
-          "genel_medyan": null
-        },
         {
           "site": "atasay",
           "kaynak_adlari": [
@@ -185,17 +126,8 @@
       "genel_medyan": 44950,
       "toplam_urun": 98,
       "guncelleme_tarihi": "2026-07-25",
-      "kaynak_sayisi": 6,
+      "kaynak_sayisi": 3,
       "kaynaklar": [
-        {
-          "site": "akakce",
-          "kaynak_adlari": [
-            "Akakce - Damatlik"
-          ],
-          "tarih": "2026-07-24",
-          "toplam_urun": 0,
-          "genel_medyan": null
-        },
         {
           "site": "beymen",
           "kaynak_adlari": [
@@ -204,24 +136,6 @@
           "tarih": "2026-07-25",
           "toplam_urun": 41,
           "genel_medyan": 44950
-        },
-        {
-          "site": "boyner",
-          "kaynak_adlari": [
-            "Boyner - Erkek Takim Elbise"
-          ],
-          "tarih": "2026-07-25",
-          "toplam_urun": 0,
-          "genel_medyan": null
-        },
-        {
-          "site": "ramsey",
-          "kaynak_adlari": [
-            "Ramsey - Takim Elbise (marka magazasi)"
-          ],
-          "tarih": "2026-07-25",
-          "toplam_urun": 0,
-          "genel_medyan": null
         },
         {
           "site": "trendyol",
@@ -331,27 +245,8 @@
       "genel_medyan": null,
       "toplam_urun": 0,
       "guncelleme_tarihi": "2026-07-24",
-      "kaynak_sayisi": 2,
-      "kaynaklar": [
-        {
-          "site": "armut",
-          "kaynak_adlari": [
-            "Armut - Dugun Fotografcisi Fiyatlari"
-          ],
-          "tarih": "2026-07-24",
-          "toplam_urun": 0,
-          "genel_medyan": null
-        },
-        {
-          "site": "dugunbuketi",
-          "kaynak_adlari": [
-            "DugunBuketi - Istanbul Fotografci"
-          ],
-          "tarih": "2026-07-24",
-          "toplam_urun": 0,
-          "genel_medyan": null
-        }
-      ],
+      "kaynak_sayisi": 0,
+      "kaynaklar": [],
       "capraz_dogrulama_uyarisi": null
     },
     "yemek-ikram": {
@@ -422,17 +317,8 @@
       "genel_medyan": 1274,
       "toplam_urun": 9,
       "guncelleme_tarihi": "2026-07-25",
-      "kaynak_sayisi": 2,
+      "kaynak_sayisi": 1,
       "kaynaklar": [
-        {
-          "site": "akakce",
-          "kaynak_adlari": [
-            "Akakce - Gelin Ayakkabisi"
-          ],
-          "tarih": "2026-07-24",
-          "toplam_urun": 0,
-          "genel_medyan": null
-        },
         {
           "site": "trendyol",
           "kaynak_adlari": [

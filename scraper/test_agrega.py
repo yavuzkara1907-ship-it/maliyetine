@@ -119,6 +119,47 @@ class KalemBirlestirTestleri(unittest.TestCase):
         self.assertEqual(ozet["kaynak_sayisi"], 2)
         self.assertEqual(len(ozet["kaynaklar"]), 2)
 
+    def test_sifir_urunlu_kaynak_SAYILMAZ_ve_LISTELENMEZ(self):
+        """Regresyon (2026-07-25): birakilmis/bozulmus kaynaklarin eski
+        0-urunlu snapshot'lari diskte kaliyor ve kaynak_sayisi'na
+        katiliyordu. Dugun/gelinlik'te 6 kaynak listeliyken gerceginde
+        yalnizca 1'i (trendyol) urun donduruyordu; vertikal genelinde
+        "10 bagimsiz kaynak" deniyordu, gercek 5'ti - COK KAYNAK KURALI
+        iki kat sisik gorunuyordu. 0-urunlu kaynak ne medyana ne segmente
+        katki yapar; sayilmasi da listelenmesi de yaniltici."""
+        calisan = {
+            "site": "trendyol", "kaynak_adlari": ["Trendyol - Gelinlik"],
+            "tarih": "2026-07-25", "toplam_urun": 21, "genel_medyan": 8999,
+            "segmentler": {"orta": {"min": 5000, "medyan": 8999, "max": 12000, "urun_sayisi": 21}},
+        }
+        birakilmis = {
+            "site": "akakce", "kaynak_adlari": ["Akakce - Gelinlik"],
+            "tarih": "2026-07-24", "toplam_urun": 0, "genel_medyan": None,
+            "segmentler": {},
+        }
+        bos_ama_tarihi_yeni = {
+            "site": "cimri", "kaynak_adlari": ["Cimri - Gelinlik"],
+            "tarih": "2026-07-25", "toplam_urun": 0, "genel_medyan": None,
+            "segmentler": {},
+        }
+        ozet = agrega.kalem_birlestir([calisan, birakilmis, bos_ama_tarihi_yeni])
+        self.assertEqual(ozet["kaynak_sayisi"], 1)
+        self.assertEqual([k["site"] for k in ozet["kaynaklar"]], ["trendyol"])
+        # Rakamlar etkilenmemeli: medyan ve toplam urun dogru kalmali.
+        self.assertEqual(ozet["genel_medyan"], 8999)
+        self.assertEqual(ozet["toplam_urun"], 21)
+
+    def test_tum_kaynaklar_bossa_kaynak_sayisi_sifir(self):
+        # Bu durumda "veri yok" denmeli, sahte bir kaynak sayisi degil.
+        bos = {
+            "site": "akakce", "kaynak_adlari": ["A"], "tarih": "2026-07-24",
+            "toplam_urun": 0, "genel_medyan": None, "segmentler": {},
+        }
+        ozet = agrega.kalem_birlestir([bos])
+        self.assertEqual(ozet["kaynak_sayisi"], 0)
+        self.assertEqual(ozet["kaynaklar"], [])
+        self.assertIsNone(ozet["genel_medyan"])
+
     def test_guncelleme_tarihi_en_yeniyi_alir(self):
         eski = {
             "site": "a", "kaynak_adlari": ["A"], "tarih": "2026-06-01",

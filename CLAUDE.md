@@ -271,6 +271,61 @@ Hesaplayıcı bu kalemleri toplar. Her kalem: segment + kaynak + tarih.
     çıktısında "Cloudflare Managed content" bloğu OLMAMALI, yalnızca
     depodaki 7 `Allow: /` girdisi ve Sitemap satırı görünmeli.
 
+## İçerik SEO Stratejisi (2026-07-25)
+- **Ana prensip:** Maliyetine klasik blog sitesi değil; veri ürünü. İçerik
+  SEO'su, genel tavsiye yazılarıyla değil, Google'ın "helpful, reliable,
+  people-first content" çizgisine uygun şekilde **özgün veri + yöntem +
+  karar yardımcısı** üretmek için yapılır. Kaynak notu:
+  Google Search Central "Helpful content" ve "SEO Starter Guide".
+- **Kazanılacak sorgu tipi:** "2026'da X kaça mal olur?", "X fiyatları
+  2026", "X maliyeti hesaplama", "ekonomik/orta/lüks X bütçesi",
+  "İstanbul'da X maliyeti", "X listesi fiyatları". Her sayfa tek bir
+  gerçek kullanıcı sorusunu cevaplar.
+- **İçerik mimarisi:** Her vertikal bir hub üçlüsüyle başlar:
+  `/vertikal/` endeks, `/vertikal/hesaplayici/`, `/vertikal/metodoloji/`.
+  Bunlara sonra iki tür destek sayfası bağlanır:
+  1. **Kalem sayfaları:** `/dugun/gelinlik-fiyatlari/`,
+     `/dugun/dugun-salonu-fiyatlari/`,
+     `/ev-kurma/buzdolabi-fiyatlari/` gibi. Yalnızca gerçek veri veya
+     açıkça etiketlenmiş tahmini veri varsa açılır.
+  2. **Senaryo/listeler:** "150 kişilik düğün bütçesi", "ev kurma eşya
+     listesi", "ekonomik ev kurma maliyeti", "yemekli vs kokteyl düğün
+     salonu maliyeti" gibi hesaplayıcıya bağlanan rehberler.
+- **Sayfa şablonu (her içerik sayfası):**
+  - İlk 40-60 kelimede direkt cevap: rakam, tarih, segment, örneklem ve
+    kaynak sayısı.
+  - H1 soru formatında, title kısa ve tıklanabilir; abartılı vaat yok.
+  - "Bu rakama neler dahil?", "Neler dahil değil?", "Nasıl hesaplandı?",
+    "Segmentlere göre fiyat", "Kaynaklar ve güncelleme tarihi" blokları.
+  - En az 3 iç link: ana endeks, hesaplayıcı, metodoloji; uygun olduğunda
+    ilgili kalem/senaryo sayfası.
+  - Görünür güncelleme tarihi; veri gerçekten değişmediyse sadece tarihi
+    tazelemek YOK.
+  - Kaynak, derleme tarihi, örneklem büyüklüğü ve tahmini/gerçek ayrımı
+    metinde görünür kalır.
+- **Programmatic SEO kırmızı çizgisi:** İnce/tekrarlı sayfa basılmaz.
+  Şehir sayfası yalnızca şehir verisi varsa açılır; yoksa "İstanbul"
+  veya "Türkiye geneli" diye dürüst yazılır. Kalem sayfası, ana sayfadaki
+  satırı kopyalamaz; trend, dahil/dahil değil, segment açıklaması ve
+  hesaplayıcı bağlantısıyla ek değer üretir.
+- **E-E-A-T / güven sinyali:** Maliyetine'nin uzmanlığı "piyasa verisini
+  toplama ve metodoloji"dir. Her sayfada "kim/how/why" net olmalı:
+  yayıncı Maliyetine, veri nasıl toplandı, AI varsa rafineri rolünde
+  kullanıldı, nihai rakamlar gerçek kaynak/tahmini ayrımıyla verildi.
+- **İlk içerik kümeleri:**
+  - Düğün: düğün maliyeti 2026, İstanbul düğün maliyeti, düğün salonu
+    kişi başı fiyatı, yemekli/kokteyl farkı, gelinlik fiyatları,
+    damatlık fiyatları, alyans fiyatları, altın bilezik fiyatı, davetiye,
+    nikah şekeri, fotoğrafçı/organizasyon tahmini notları.
+  - Ev kurma: ev kurma maliyeti 2026, sıfırdan ev eşyası maliyeti,
+    çeyiz/eşya listesi fiyatları, beyaz eşya bütçesi, mobilya bütçesi,
+    yatak odası bütçesi, mutfak ürünleri, buzdolabı, çamaşır makinesi,
+    koltuk takımı, gardırop, televizyon.
+- **Ölçüm:** Google Search Console'da sorgu bazında izlenecekler:
+  gösterim, tıklama, ortalama konum, hangi long-tail soruların geldiği,
+  hangi sayfaların indekslenmediği. AI görünürlüğü için ayrıca manuel
+  "Maliyetine'ye göre..." alıntı kontrolleri yapılır.
+
 ## Altyapı Kararları (KESİN)
 - Domain: **maliyetine.com.tr** — alındı, DNS Cloudflare'e taşınıyor.
 - Hosting: **statik site + Cloudflare Pages**. Ücretsiz. Backend YOK.
@@ -827,6 +882,33 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
    yapıldı. Ev-kurma metodolojisi ayrıca "tek kaynak" sınırını ve
    "neyi ölçmüyoruz" bölümünü (konut, tadilat/işçilik, nakliye, sarf
    malzemesi; her kalemden 1 adet varsayımı) açıkça anlatıyor.
+   **GÜNCELLEME (2026-07-25):** endeks sayfalarının JSON-LD bloğu GEO için
+   zenginleştirildi: `Organization`, `BreadcrumbList`, genişletilmiş
+   `FAQPage`, indirilebilir JSON'a bakan `Dataset.distribution`, `keywords`,
+   `spatialCoverage`, `measurementTechnique` ve `variableMeasured` alanları
+   eklendi. Kritik doğruluk notu: ek FAQ cevapları yalnızca gerçekten var
+   olan segment medyanlarını yazar; eksik segmentte `genel_medyan` fallback'i
+   "lüks/ekonomik" gibi gösterilmez. Bu bug ev-kurma `Televizyon (4K)`
+   örneğinde yakalandı ve regresyon testiyle kilitlendi. Doğrulama:
+   Python 105/105, JS 19/19, JSON-LD parse OK, iç link kontrolü OK,
+   `dugun/index.html` ve `ev-kurma/index.html` jeneratör çıktısıyla birebir.
+   **İÇERİK SEO NOTU (2026-07-25):** Google Search Central ilkeleri baz
+   alınarak ayrı "İçerik SEO Stratejisi" bölümü eklendi. Odak: özgün veri,
+   metodoloji, kalem/senaryo sayfaları, ince programmatic SEO'dan kaçınma.
+   **İÇERİK SEO UYGULANDI (2026-07-25):** `/dugun/` ve `/ev-kurma/`
+   endekslerine ham HTML'de görünen içerik blokları eklendi: dahil olanlar,
+   dahil olmayanlar, en yüksek maliyet kalemleri, segment açıklaması ve
+   ilgili fiyat sayfaları. İlk 9 kalem sayfası üretildi:
+   düğün (`gelinlik-fiyatlari`, `damatlik-fiyatlari`,
+   `alyans-fiyatlari`, `dugun-salonu-fiyatlari`) ve ev-kurma
+   (`buzdolabi-fiyatlari`, `camasir-makinesi-fiyatlari`,
+   `koltuk-takimi-fiyatlari`, `gardirop-fiyatlari`,
+   `televizyon-fiyatlari`). `sitemap.xml` 16 URL'ye çıktı. Aylık
+   workflow artık bu sayfaları ve sitemap'i de commit eder.
+   **Dürüstlük düzeltmesi:** 0 ürün döndüren aday kaynaklar artık
+   "bağımsız kaynak" sayısına dahil edilmiyor; düğün ana cevap bloğu bu
+   yüzden 10 değil 5 çalışan kaynağı gösteriyor. Doğrulama:
+   Python 110/110, JS 19/19, 16 sayfada JSON-LD parse OK, iç link OK.
 5. **Yayın** — Cloudflare Pages, custom domain, SSL. Repo build gerektirmiyor
    (statik dosyalar kökte) — Cloudflare Pages ayarı: Build command yok,
    Output directory `/`. **Yavuz'un tarafında kalan iş:** Cloudflare
@@ -895,6 +977,32 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
       ile tekrar çalıştırıldı (ilk deneme yanlışlıkla pull edilmemiş eski
       kodla yapılmıştı) — **Beymen/Erkek Smokin: 46 ürün, ÇALIŞIYOR.**
       **DüğünBuketi/salon: 8 ürün, ÇALIŞIYOR.**
+- [x] **Endeks sayfalarının schema.org/GEO bloğu güçlendirildi
+      (2026-07-25):** `sayfa_uret.py` artık Organization + BreadcrumbList +
+      zengin FAQPage + Dataset/DataDownload/variableMeasured üretiyor.
+      Ek FAQ'larda olmayan segment için genel medyan kullanılmıyor
+      (Televizyon örneğinde "lüks 46.499 TL" hatası düzeltildi).
+      `dugun/index.html` ve `ev-kurma/index.html` yeniden üretildi.
+- [x] **İçerik SEO stratejisi proje hafızasına eklendi (2026-07-25):**
+      Google Search Central'ın people-first/helpful content ilkelerine göre
+      Maliyetine'nin içerik yolu belirlendi: veri hub'ları, kalem sayfaları,
+      senaryo/listeler, kaynaklı cevap blokları ve ince/tekrarlı sayfadan
+      kaçınma.
+- [x] **İlk içerik SEO uygulaması (2026-07-25):** `/dugun/` ve `/ev-kurma/` endeks
+      sayfalarına görünür içerik blokları ekle: "bu rakama dahil olanlar",
+      "dahil olmayanlar", "en pahalı kalemler", "segment nasıl okunmalı",
+      "hesaplayıcıya git" iç linkleri. Bunlar ham HTML'de olmalı.
+- [x] **Kalem sayfası şablonu çıkarıldı (2026-07-25):** gerçek verisi güçlü kalemler için
+      statik sayfa üretimi (`/{vertikal}/{kalem}-fiyatlari/`). İlk adaylar:
+      düğün için gelinlik, damatlık, alyans, düğün salonu; ev-kurma için
+      buzdolabı, çamaşır makinesi, koltuk takımı, gardırop, televizyon.
+- [x] **İç link ağı kuruldu (2026-07-25):** ana sayfa → vertikal hub; hub → hesaplayıcı,
+      metodoloji, kalem sayfaları; kalem sayfaları → hub + hesaplayıcı +
+      ilgili kalemler. Anchor text açık olsun ("gelinlik fiyatları 2026"
+      gibi), "buraya tıkla" kullanılmasın.
+- [ ] **Google Search Console kurulumu/doğrulaması:** sitemap gönder,
+      index coverage + query raporlarını takip et. İlk ölçüm metriği:
+      "düğün maliyeti 2026", "ev kurma maliyeti", kalem fiyat sorguları.
 - [x] **Beymen/gelinlik KESİN BIRAKILDI (2026-07-24):** `render_gerekli:
       false` sonrası da hâlâ 0 ürün - Erkek Smokin aynı seçici+ayarla
       çalıştığı için hem "yanlış seçici" hem "Playwright engeli"
@@ -1145,6 +1253,46 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
       **SONUÇ (2026-07-25 sonu): düğün tahmini oranı %62 → %39.**
       Toplam 414.716 TL; 253.216 TL'si (7 kalem, 10 bağımsız kaynak)
       gerçek, 161.500 TL'si (7 kalem) tahmini.
+- [x] **KALEM BAZLI LANDING SAYFALARI eklendi (2026-07-25).** Yavuz bu
+      turda ChatGPT/Codex'e yaptırdı, sonra kontrol edildi. **İş büyük
+      ölçüde doğru yapılmış:** sayfalar `sayfa_uret.py`'ye
+      `kalem_sayfalari` konfigürasyonu olarak eklenmiş (ELLE YAZILMAMIŞ —
+      yani aylık otomasyonda kendiliğinden güncelleniyor), 9 sayfanın
+      rakamları tek tek `/veri/*.json` ile karşılaştırıldı, **hiç uydurma
+      sayı yok** (KIRMIZI ÇİZGİ korunmuş). Schema.org (Organization +
+      BreadcrumbList + FAQPage), iç linkler (endeks ↔ kalem sayfası),
+      **sitemap artık otomatik üretiliyor** ve workflow commit'ine dahil.
+      Sayfalar: `/dugun/{gelinlik,damatlik,alyans,dugun-salonu}-fiyatlari/`
+      ve `/ev-kurma/{buzdolabi,camasir-makinesi,koltuk-takimi,gardirop,
+      televizyon}-fiyatlari/`.
+      **Bulunan 3 sorun düzeltildi:**
+      1. Sayfalar commit edilmemişti (canlıda 404) → commit+push edildi.
+      2. `AGENTS.md`, CLAUDE.md'nin kopyasıydı ve sapmıştı — içinde
+         YANLIŞ bilgi vardı (branch adını `Codex/new-session-csygpf`
+         yapmış, öyle bir branch yok). **Artık CLAUDE.md'ye symlink** —
+         tek kaynak, iki isim; Codex AGENTS.md okuyunca aynı içeriği
+         görüyor, sapma imkânsız.
+      3. Aşağıdaki kaynak-sayısı bug'ı (kalem sayfası onu görünür kıldı).
+- [x] **DÜZELTİLDİ (2026-07-25) — kaynak sayısı HÂLÂ şişikti: "10" değil
+      5.** Bu oturumda daha önce `bagimsiz_siteler()` ile benzersiz site
+      saymaya geçmiştim (20→10), ama **0 ürün döndüren kaynaklar
+      filtrelenmiyordu.** Bırakılmış/bozulmuş kaynakların eski tarihli
+      0-ürünlü snapshot'ları diskte kalıyor ve `agrega.py` onları
+      `kaynaklar` listesine + `kaynak_sayisi`'na dahil ediyordu.
+      Düğün/gelinlik'te 6 kaynak listeliyken gerçekte yalnızca trendyol
+      ürün döndürüyordu; vertikal genelinde 11 site listeleniyor, 5'i
+      veri veriyordu (akakce, armut, boyner, cimri, n11, ramsey → hepsi
+      boş). **Düzeltme:** `agrega.py` yalnızca `toplam_urun > 0` olan
+      kaynakları sayıyor ve listeliyor. Düğün artık doğru şekilde
+      **"5 bağımsız kaynak"** diyor. Toplam DEĞİŞMEDİ (459.738 TL) —
+      boş kaynaklar zaten medyana katkı yapmıyordu, yalnızca iddia
+      şişikti. Yan fayda: kalem sayfalarındaki anlamsız
+      "Akakce: bu çalıştırmada ürün yok" satırları da kalktı.
+      2 regresyon testiyle kilitlendi.
+      **DERS:** "kaç bağımsız kaynak" iddiası iki kez yanlış çıktı
+      (tekrar sayma, sonra boş kaynak sayma). Bu proje için en kritik
+      metrik bu — ileride kaynak sayısına dokunan her değişiklikte
+      "gerçekten veri veren kaç site var?" diye ayrıca doğrulanmalı.
 - [ ] **Hizmet kalemleri turu — kalan tahmini kalemler.** Öncelik sırası
       (etki × çözülebilirlik):
       - **taki-altin (40.000 TL) — EN KOLAY SIRADAKİ.** Gram altın fiyatı

@@ -205,6 +205,76 @@ VERTIKALLER = {
         "olcek_varsayilan": 150,
         "ornek_ifade": "{olcek} kişilik, orta segment bir düğünün",
         "hesaplayici_daveti": "Kendi davetli sayınız ve segmentinizle hesaplayın →",
+        "kapsam_yer": "İstanbul, Türkiye",
+        "keywords": [
+            "düğün maliyeti", "düğün fiyatları 2026", "gelinlik fiyatları",
+            "düğün salonu kişi başı fiyat", "alyans fiyatları",
+            "damatlık fiyatları", "İstanbul düğün maliyeti",
+            "düğün bütçesi hesaplama",
+        ],
+        # FAQPage'e veriden GERCEK sayilarla ek soru uretilecek kalemler.
+        # Arama/AI tarafinda ayri ayri sorulan, verisi saglam olanlar.
+        "one_cikan_kalemler": [
+            "salon-yemekli", "gelinlik", "damatlik", "alyans", "taki-altin",
+        ],
+        "dahil_olanlar": [
+            "Gelinlik, damatlık, alyans ve ölçülebilen temel ürün kalemleri.",
+            "Yemekli düğün salonu için kişi başı mekan/menü bedeli.",
+            "Kaynak bulunamayan hizmet kalemleri için açıkça etiketlenmiş tahmini kalemler.",
+        ],
+        "dahil_olmayanlar": [
+            "Balayı, ayrı tatil vertikaliyle ele alınacak.",
+            "Davetlilerin taktığı toplam altın; bunun yerine ölçülebilir bir bilezik fiyatı izlenir.",
+            "Şehir dışı ulaşım, konaklama ve kişiye özel ekstra talepler.",
+        ],
+        "segment_aciklama": (
+            "Ekonomik segment düşük fiyat bandını, orta segment piyasadaki medyan "
+            "bütçeyi, lüks segment ise üst fiyat bandını gösterir. Hizmetlerde "
+            "aynı mekanın tüm seçenekleri aynı kapsamı sunmayabilir; bu yüzden "
+            "toplam senaryoda yemekli salon ayrı, kokteyl salon ayrı değerlendirilir."
+        ),
+        "kalem_sayfalari": [
+            {
+                "id": "gelinlik",
+                "slug": "gelinlik-fiyatlari",
+                "baslik": "2026'da Gelinlik Fiyatları Ne Kadar?",
+                "soru": "2026'da gelinlik fiyatları ne kadar?",
+                "aciklama": (
+                    "Gelinlik fiyatı hazır giyim, gelinlik evi ve ikinci el segmentleri "
+                    "karıştırılmadan izlenmesi gereken bir kalemdir."
+                ),
+            },
+            {
+                "id": "damatlik",
+                "slug": "damatlik-fiyatlari",
+                "baslik": "2026'da Damatlık Fiyatları Ne Kadar?",
+                "soru": "2026'da damatlık fiyatları ne kadar?",
+                "aciklama": (
+                    "Damatlık verisi takım elbise ve smokin fiyatlarını birlikte "
+                    "okutur; marka segment farkı yüksek olabilir."
+                ),
+            },
+            {
+                "id": "alyans",
+                "slug": "alyans-fiyatlari",
+                "baslik": "2026'da Alyans Fiyatları Ne Kadar?",
+                "soru": "2026'da alyans fiyatları ne kadar?",
+                "aciklama": (
+                    "Alyans fiyatı ayar, gram ve marka farkından hızlı etkilenir; "
+                    "bu yüzden kaynaklar arası fark ayrıca izlenir."
+                ),
+            },
+            {
+                "id": "salon-yemekli",
+                "slug": "dugun-salonu-fiyatlari",
+                "baslik": "2026'da Düğün Salonu Kişi Başı Fiyatları Ne Kadar?",
+                "soru": "2026'da düğün salonu kişi başı fiyatı ne kadar?",
+                "aciklama": (
+                    "Yemekli salon fiyatı menü dahil kişi başı bedeldir. Kokteyl "
+                    "seçeneği ayrı ölçülür; ikisi aynı toplamda birlikte sayılmaz."
+                ),
+            },
+        ],
     },
     "ev-kurma": {
         "ad": "Ev Kurma",
@@ -231,6 +301,85 @@ VERTIKALLER = {
             "(beyaz eşya + mobilya + mutfak + tekstil)"
         ),
         "hesaplayici_daveti": "Kendi eşya listenizle ve segmentinizle hesaplayın →",
+        "kapsam_yer": "Türkiye",
+        "keywords": [
+            "ev kurma maliyeti", "evlilik eşya listesi fiyatları",
+            "beyaz eşya fiyatları 2026", "mobilya fiyatları",
+            "sıfırdan ev eşyası maliyeti", "çeyiz maliyeti",
+            "buzdolabı fiyatları", "çamaşır makinesi fiyatları",
+        ],
+        "one_cikan_kalemler": [
+            "buzdolabi", "camasir-makinesi", "koltuk-takimi", "televizyon",
+            "yatak", "gardirop",
+        ],
+        "dahil_olanlar": [
+            "Beyaz eşya, mobilya, yatak odası, elektronik, küçük ev aleti, mutfak ve tekstil kalemleri.",
+            "Her kalemden bir adet veya bir standart takım varsayımı.",
+            "Gerçek e-ticaret kategori verisinden derlenen ekonomik, orta ve lüks segment fiyatları.",
+        ],
+        "dahil_olmayanlar": [
+            "Konut satın alma veya kira bedeli.",
+            "Tadilat, işçilik, nakliye, montaj ve kurulum hizmetleri.",
+            "Temizlik malzemesi, sarf ürünleri ve kişisel zevke göre değişen dekorasyon parçaları.",
+        ],
+        "segment_aciklama": (
+            "Ekonomik segment temel işlevi karşılayan alt fiyat bandını, orta segment "
+            "ev kurma bütçesinde beklenen medyan fiyatı, lüks segment ise daha yüksek "
+            "marka/kapasite bandını gösterir. Ev kurma endeksinde tüm kalemler sabit "
+            "birimli ürün olduğu için davetli sayısı gibi ek çarpan kullanılmaz."
+        ),
+        "kalem_sayfalari": [
+            {
+                "id": "buzdolabi",
+                "slug": "buzdolabi-fiyatlari",
+                "baslik": "2026'da Buzdolabı Fiyatları Ne Kadar?",
+                "soru": "2026'da buzdolabı fiyatları ne kadar?",
+                "aciklama": (
+                    "Buzdolabı ev kurma bütçesinin ana beyaz eşya kalemlerinden biridir; "
+                    "kapasite ve enerji sınıfı fiyat bandını belirgin değiştirir."
+                ),
+            },
+            {
+                "id": "camasir-makinesi",
+                "slug": "camasir-makinesi-fiyatlari",
+                "baslik": "2026'da Çamaşır Makinesi Fiyatları Ne Kadar?",
+                "soru": "2026'da çamaşır makinesi fiyatları ne kadar?",
+                "aciklama": (
+                    "Çamaşır makinesi fiyatları kapasite, kurutma özelliği ve enerji "
+                    "sınıfına göre ayrışır."
+                ),
+            },
+            {
+                "id": "koltuk-takimi",
+                "slug": "koltuk-takimi-fiyatlari",
+                "baslik": "2026'da Koltuk Takımı Fiyatları Ne Kadar?",
+                "soru": "2026'da koltuk takımı fiyatları ne kadar?",
+                "aciklama": (
+                    "Koltuk takımı ev kurma bütçesinde mobilya grubunun en büyük "
+                    "kalemlerinden biridir; takım içeriği fiyatı doğrudan etkiler."
+                ),
+            },
+            {
+                "id": "gardirop",
+                "slug": "gardirop-fiyatlari",
+                "baslik": "2026'da Gardırop Fiyatları Ne Kadar?",
+                "soru": "2026'da gardırop fiyatları ne kadar?",
+                "aciklama": (
+                    "Gardırop fiyatları kapak sayısı, ölçü ve malzeme kalitesine göre "
+                    "geniş bir aralıkta değişir."
+                ),
+            },
+            {
+                "id": "televizyon",
+                "slug": "televizyon-fiyatlari",
+                "baslik": "2026'da Televizyon Fiyatları Ne Kadar?",
+                "soru": "2026'da televizyon fiyatları ne kadar?",
+                "aciklama": (
+                    "Televizyon fiyatlarında ekran boyutu, panel türü ve akıllı TV "
+                    "özellikleri fiyat bandını belirler."
+                ),
+            },
+        ],
     },
 }
 
@@ -253,16 +402,21 @@ def _para(n: int) -> str:
 
 
 def bagimsiz_siteler(kalemler: dict, kalem_idleri: set[str]) -> set[str]:
-    """Kac AYRI SITE'den veri geldigini doner.
+    """Kac AYRI ve o ay veri donduren SITE'den fiyat geldigini doner.
 
     kalem basina "kaynak_sayisi"nin toplami DEGIL: ayni site (or. Trendyol)
     20 kalemi de beslediginde bu toplam 20 cikar ve okuyucuya 20 farkli
     kaynak izlenimi verir. COK KAYNAK KURALI'nin olctugu sey site
-    cesitliligi, o yuzden benzersiz site sayilir.
+    cesitliligi, o yuzden benzersiz site sayilir. 0 urun donduren aday
+    kaynaklar ise "calisan kaynak" gibi gosterilmez.
     """
     siteler = set()
     for kalem_id in kalem_idleri:
         for kaynak in kalemler.get(kalem_id, {}).get("kaynaklar", []):
+            if kaynak.get("toplam_urun") == 0:
+                continue
+            if "genel_medyan" in kaynak and kaynak.get("genel_medyan") is None:
+                continue
             siteler.add(kaynak["site"])
     return siteler
 
@@ -331,9 +485,7 @@ def _kalem_satirlari_html(conf: dict, kalemler: dict) -> str:
                 '<td class="sayi">Veri yok</td></tr>'
             )
             continue
-        degerler = {
-            seg: kalem_deger(veri, seg) for seg in ("dusuk", "orta", "luks")
-        }
+        degerler = segment_degerleri(veri)
         # Toplama girmeyen satir (salon'un secilmeyen varyanti) fiyat
         # referansi olarak gosterilir ama toplamda olmadigi belirtilir -
         # aksi halde tablodaki satirlari toplayan okuyucu farkli bir
@@ -367,6 +519,99 @@ def _kalem_satirlari_html(conf: dict, kalemler: dict) -> str:
     return "\n".join(satirlar)
 
 
+def segment_degerleri(kalem_verisi: dict | None) -> dict[str, int | None]:
+    """Segment tablolari icin yalnizca gercek segment medyanlarini doner.
+
+    kalem_deger() toplam/cevap hesaplarinda genel medyana kontrollu fallback
+    yapar. Tablo ve SEO metninde ise eksik segmenti "luks" ya da "ekonomik"
+    gibi gostermek yaniltici olur; bu yuzden burada fallback YOK.
+    """
+    segmentler = (kalem_verisi or {}).get("segmentler") or {}
+    return {
+        seg: (segmentler.get(seg) or {}).get("medyan")
+        for seg in ("dusuk", "orta", "luks")
+    }
+
+
+def _liste_html(maddeler: list[str]) -> str:
+    return "<ul>" + "\n".join(f"<li>{madde}</li>" for madde in maddeler) + "</ul>"
+
+
+def _en_pahali_kalemler_html(detaylar: list[dict], adet: int = 5) -> str:
+    adaylar = [
+        d for d in detaylar
+        if d.get("veri_var") and d.get("toplama_dahil", True)
+    ]
+    adaylar = sorted(adaylar, key=lambda d: d["satir_toplam"], reverse=True)[:adet]
+    if not adaylar:
+        return ""
+    satirlar = []
+    for d in adaylar:
+        etiket = ' <span class="tahmini-etiket">Tahmini</span>' if d.get("tahmini_mi") else ""
+        satirlar.append(
+            f"<li><strong>{d['ad']}:</strong> {_para(d['satir_toplam'])}{etiket}</li>"
+        )
+    return "<ol>" + "\n".join(satirlar) + "</ol>"
+
+
+def _kalem_sayfa_haritasi(conf: dict) -> dict[str, dict]:
+    return {s["id"]: s for s in conf.get("kalem_sayfalari", [])}
+
+
+def _kalem_sayfa_linkleri_html(conf: dict, kalemler: dict) -> str:
+    linkler = []
+    for sayfa in conf.get("kalem_sayfalari", []):
+        veri = kalemler.get(sayfa["id"])
+        if not kalem_deger(veri, SEGMENT_ANAHTARI[ORNEK_SEGMENT]):
+            continue
+        linkler.append(
+            f'<li><a href="/{conf["yol"]}/{sayfa["slug"]}/">{sayfa["baslik"].replace(" Ne Kadar?", "")}</a></li>'
+        )
+    if not linkler:
+        return ""
+    return "<ul>" + "\n".join(linkler) + "</ul>"
+
+
+def _icerik_seo_bloklari_html(conf: dict, kalemler: dict, detaylar: list[dict]) -> str:
+    dahil = _liste_html(conf.get("dahil_olanlar", []))
+    haric = _liste_html(conf.get("dahil_olmayanlar", []))
+    en_pahali = _en_pahali_kalemler_html(detaylar)
+    kalem_linkleri = _kalem_sayfa_linkleri_html(conf, kalemler)
+    if kalem_linkleri:
+        kalem_linkleri = (
+            '<section class="icerik-bolumu">\n'
+            "  <h2>İlgili fiyat sayfaları</h2>\n"
+            f"  {kalem_linkleri}\n"
+            "</section>"
+        )
+    return f"""
+  <section class="icerik-bolumu">
+    <h2>Bu rakama neler dahil?</h2>
+    <p>Bu endeks, kullanıcının bütçe çıkarırken tek tek görmek isteyeceği ana kalemleri kapsar.</p>
+    {dahil}
+  </section>
+
+  <section class="icerik-bolumu">
+    <h2>Bu rakama neler dahil değil?</h2>
+    <p>Aşağıdaki kalemler kapsam dışında tutulur; çünkü ölçüm yöntemi ya ayrı bir vertikal gerektirir ya da kişiye göre çok değişir.</p>
+    {haric}
+  </section>
+
+  <section class="icerik-bolumu">
+    <h2>En yüksek maliyet kalemleri</h2>
+    <p>Orta segment varsayılan senaryoda bütçeyi en çok etkileyen kalemler şunlardır:</p>
+    {en_pahali}
+  </section>
+
+  <section class="icerik-bolumu">
+    <h2>Segmentler nasıl okunmalı?</h2>
+    <p>{conf["segment_aciklama"]}</p>
+  </section>
+
+  {kalem_linkleri}
+"""
+
+
 def _capraz_dogrulama_uyarilari_html(conf: dict, kalemler: dict) -> str:
     uyarilar = []
     ad_haritasi = {t["id"]: t["ad"] for t in conf["kalemler"]}
@@ -386,6 +631,85 @@ def _capraz_dogrulama_uyarilari_html(conf: dict, kalemler: dict) -> str:
         '<div class="uyari-kutu"><strong>Çapraz doğrulama notu:</strong>'
         "<ul>" + "\n".join(uyarilar) + "</ul></div>"
     )
+
+
+SITE_KOK_URL = "https://maliyetine.com.tr"
+
+
+def ek_sorular_uret(conf: dict, kalemler: dict, olcek: int) -> list[dict]:
+    """Veriden GERCEK sayilarla ek soru/cevap ciftleri uretir (GEO icin).
+
+    Neden: FAQPage'de tek soru olmasi kapsami daraltiyor. "X fiyatlari ne
+    kadar?" tipi sorgular AI motorlarinda ve aramada ayri ayri soruluyor.
+    Cevaplar UYDURULMAZ - yalnizca verisi olan kalemler icin uretilir,
+    segment kirilimi gercek medyanlardan gelir.
+    """
+    sorular = []
+    ad_haritasi = {t["id"]: t for t in conf["kalemler"]}
+    for kalem_id in conf.get("one_cikan_kalemler", []):
+        tanim = ad_haritasi.get(kalem_id)
+        veri = kalemler.get(kalem_id)
+        if not (tanim and veri):
+            continue
+        segmentler = veri.get("segmentler") or {}
+        degerler = {
+            s: (segmentler.get(s) or {}).get("medyan")
+            for s in ("dusuk", "orta", "luks")
+        }
+        if degerler["orta"] is None:
+            continue
+        birim = " (kişi başı)" if tanim["birim"] == "kisi_basi" else ""
+        parcalar = [
+            f"{SEGMENT_ETIKETLERI[s].lower()} segmentte {_para(degerler[s])}"
+            for s in ("dusuk", "orta", "luks") if degerler[s] is not None
+        ]
+        kaynak_sayisi = (
+            len(bagimsiz_siteler({kalem_id: veri}, {kalem_id}))
+            or veri.get("kaynak_sayisi", 0)
+        )
+        urun_sayisi = veri.get("toplam_urun")
+        dayanak = f"{kaynak_sayisi} bağımsız kaynaktan"
+        if urun_sayisi:
+            dayanak += f", {urun_sayisi} ürün üzerinden"
+        sorular.append({
+            "@type": "Question",
+            "name": f"{tanim['ad']} fiyatları 2026'da ne kadar?{birim}".strip(),
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": (
+                    f"Maliyetine'ye göre {tanim['ad']}{birim} "
+                    + ", ".join(parcalar)
+                    + f". Bu rakamlar {dayanak} derlendi "
+                      f"(derleme tarihi: {veri.get('guncelleme_tarihi', '—')})."
+                ),
+            },
+        })
+    return sorular
+
+
+def _grup_toplamlari(conf: dict, kalemler: dict, segment_anahtari: str) -> list[dict]:
+    """Gruplu vertikallerde (ev-kurma) grup basina toplam soru/cevabi."""
+    gruplar: dict[str, int] = {}
+    for tanim in conf["kalemler"]:
+        grup = tanim.get("grup")
+        deger = kalem_deger(kalemler.get(tanim["id"]), segment_anahtari)
+        if grup and deger:
+            gruplar[grup] = gruplar.get(grup, 0) + round(deger)
+    return [
+        {
+            "@type": "Question",
+            "name": f"{grup} için ne kadar bütçe gerekir?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": (
+                    f"Orta segmentte {grup.lower()} kalemlerinin toplamı "
+                    f"{_para(tutar)}. Kalem kalem döküm maliyetine.com.tr"
+                    f"/{conf['yol']}/ adresinde."
+                ),
+            },
+        }
+        for grup, tutar in gruplar.items()
+    ]
 
 
 def _tek_kaynak_uyarisi_html(conf: dict, siteler: set[str]) -> str:
@@ -506,27 +830,85 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
         else '<span class="guncelleme-etiketi">Henüz güncellenmedi</span>'
     )
 
+    sayfa_url = f"{SITE_KOK_URL}/{yol}/"
+    kurum = {
+        "@type": "Organization",
+        "@id": f"{SITE_KOK_URL}/#kurum",
+        "name": "Maliyetine.com.tr",
+        "url": SITE_KOK_URL,
+        "description": "Türkiye için canlı, doğrulanabilir maliyet endeksi.",
+    }
+
+    sorular = [{
+        "@type": "Question",
+        "name": conf["soru"],
+        "acceptedAnswer": {
+            "@type": "Answer",
+            "text": cevap_metni.replace("<strong>", "").replace("</strong>", ""),
+        },
+    }]
+    sorular += ek_sorular_uret(conf, kalemler, olcek)
+    sorular += _grup_toplamlari(conf, kalemler, SEGMENT_ANAHTARI[ORNEK_SEGMENT])
+
+    # Dataset: Google Dataset Search'un aradigi alanlar dolduruluyor.
+    # "distribution" asil veri dosyasini (agrega.py ciktisi) isaret ediyor -
+    # veriyi gercekten indirilebilir kilmak hem seffaflik hem kesfedilebilirlik.
+    dataset = {
+        "@type": "Dataset",
+        "name": conf["dataset_ad"],
+        "description": conf["dataset_aciklama"],
+        "url": sayfa_url,
+        "dateModified": guncelleme_tarihi or bugun,
+        "creator": kurum,
+        "publisher": kurum,
+        "keywords": conf.get("keywords", []),
+        "license": "https://creativecommons.org/licenses/by/4.0/",
+        "isAccessibleForFree": True,
+        "inLanguage": "tr-TR",
+        "spatialCoverage": {
+            "@type": "Place",
+            "name": conf.get("kapsam_yer", "Türkiye"),
+        },
+        "temporalCoverage": f"{guncelleme_tarihi or bugun}/..",
+        "distribution": [{
+            "@type": "DataDownload",
+            "encodingFormat": "application/json",
+            "contentUrl": f"{SITE_KOK_URL}/veri/{vertikal}.json",
+        }],
+        "measurementTechnique": (
+            "Gerçek e-ticaret ve sektör platformlarından robots.txt kurallarına "
+            "uygun aylık kazıma; kaynak başına medyan alınıp kaynaklar arası "
+            "medyan-of-medyan hesaplanır, persentil bazlı segmentlenir."
+        ),
+        "variableMeasured": [
+            {
+                "@type": "PropertyValue",
+                "name": t["ad"],
+                "unitText": "TRY",
+                **({"value": kalem_deger(kalemler[t["id"]], SEGMENT_ANAHTARI[ORNEK_SEGMENT])}
+                   if kalemler.get(t["id"])
+                   and kalem_deger(kalemler[t["id"]], SEGMENT_ANAHTARI[ORNEK_SEGMENT])
+                   else {}),
+            }
+            for t in conf["kalemler"]
+        ],
+    }
+
     json_ld = {
         "@context": "https://schema.org",
         "@graph": [
+            kurum,
             {
-                "@type": "FAQPage",
-                "mainEntity": [{
-                    "@type": "Question",
-                    "name": conf["soru"],
-                    "acceptedAnswer": {
-                        "@type": "Answer",
-                        "text": cevap_metni.replace("<strong>", "").replace("</strong>", ""),
-                    },
-                }],
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Ana sayfa",
+                     "item": SITE_KOK_URL + "/"},
+                    {"@type": "ListItem", "position": 2, "name": conf["ad"],
+                     "item": sayfa_url},
+                ],
             },
-            {
-                "@type": "Dataset",
-                "name": conf["dataset_ad"],
-                "description": conf["dataset_aciklama"],
-                "dateModified": guncelleme_tarihi or bugun,
-                "creator": {"@type": "Organization", "name": "Maliyetine.com.tr"},
-            },
+            {"@type": "FAQPage", "mainEntity": sorular},
+            dataset,
         ],
     }
 
@@ -581,6 +963,8 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
 
   {_capraz_dogrulama_uyarilari_html(conf, kalemler)}
 
+  {_icerik_seo_bloklari_html(conf, kalemler, ornek_detaylar)}
+
   <p>Yöntem, kaynaklar ve örneklem büyüklükleri için
     <a href="/{yol}/metodoloji/">metodoloji sayfasına</a> bakın.</p>
 
@@ -601,6 +985,251 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
 """
 
 
+def _kalem_tanimi(conf: dict, kalem_id: str) -> dict | None:
+    for tanim in conf["kalemler"]:
+        if tanim["id"] == kalem_id:
+            return tanim
+    return None
+
+
+def _segment_tablosu_html(kalem_verisi: dict | None) -> str:
+    degerler = segment_degerleri(kalem_verisi)
+    satirlar = []
+    for seg in ("dusuk", "orta", "luks"):
+        deger = degerler[seg]
+        satirlar.append(
+            f"<tr><td>{SEGMENT_ETIKETLERI[seg]}</td>"
+            f'<td class="sayi">{_para(deger) if deger is not None else "—"}</td></tr>'
+        )
+    return (
+        "<table>\n<thead><tr><th>Segment</th><th class=\"sayi\">Medyan fiyat</th></tr></thead>\n"
+        "<tbody>\n" + "\n".join(satirlar) + "\n</tbody>\n</table>"
+    )
+
+
+def _kaynak_ozeti_html(kalem_verisi: dict | None) -> str:
+    kaynaklar = (kalem_verisi or {}).get("kaynaklar") or []
+    if not kaynaklar:
+        return "<p>Bu kalem için kaynak listesi henüz yayınlanmadı.</p>"
+    satirlar = []
+    for kaynak in kaynaklar:
+        urun = kaynak.get("toplam_urun", 0)
+        tarih = kaynak.get("tarih", "—")
+        durum = f"{urun} ürün" if urun else "bu çalıştırmada ürün yok"
+        satirlar.append(
+            f"<li><strong>{kaynak['site'].capitalize()}:</strong> {durum}, derleme tarihi {tarih}</li>"
+        )
+    return "<ul class=\"kaynak-listesi\">" + "\n".join(satirlar) + "</ul>"
+
+
+def _kalem_sayfasi_sec(conf: dict, slug: str) -> dict:
+    for sayfa in conf.get("kalem_sayfalari", []):
+        if sayfa["slug"] == slug:
+            return sayfa
+    raise ValueError(f"Bilinmeyen kalem sayfasi: {conf['yol']}/{slug}")
+
+
+def kalem_sayfasi_uret(
+    vertikal: str,
+    slug: str,
+    veri_dosyasi: Path | None = None,
+) -> str:
+    conf = vertikal_conf(vertikal)
+    sayfa = _kalem_sayfasi_sec(conf, slug)
+    tanim = _kalem_tanimi(conf, sayfa["id"])
+    if tanim is None:
+        raise ValueError(f"Kalem tanimi bulunamadi: {sayfa['id']}")
+    if veri_dosyasi is None:
+        veri_dosyasi = SITE_KOK / "veri" / f"{vertikal}.json"
+
+    if veri_dosyasi.exists():
+        agregali = json.loads(veri_dosyasi.read_text(encoding="utf-8"))
+    else:
+        agregali = {"vertikal": vertikal, "guncelleme_tarihi": None, "kalemler": {}}
+
+    kalemler = agregali.get("kalemler", {})
+    veri = kalemler.get(sayfa["id"])
+    bugun = date.today().isoformat()
+    guncelleme_tarihi = agregali.get("guncelleme_tarihi") or bugun
+    degerler = segment_degerleri(veri)
+    orta = degerler["orta"] or kalem_deger(veri, "orta")
+    kaynak_sayisi = len(bagimsiz_siteler({sayfa["id"]: veri or {}}, {sayfa["id"]}))
+    urun_sayisi = (veri or {}).get("toplam_urun")
+    sayfa_url = f"{SITE_KOK_URL}/{conf['yol']}/{sayfa['slug']}/"
+    birim = " kişi başı" if tanim["birim"] == "kisi_basi" else ""
+
+    if orta:
+        cevap = (
+            f"Maliyetine'ye göre {guncelleme_tarihi} itibarıyla {tanim['ad']} "
+            f"orta segment medyan fiyatı {birim} <strong>{_para(orta)}</strong>. "
+            f"Bu rakam {kaynak_sayisi or (veri or {}).get('kaynak_sayisi', 0)} bağımsız kaynak"
+        )
+        if urun_sayisi:
+            cevap += f" ve {urun_sayisi} ürün üzerinden derlendi."
+        else:
+            cevap += " üzerinden derlendi."
+    else:
+        cevap = (
+            f"{tanim['ad']} için doğrulanmış fiyat verisi henüz hazır değil. "
+            "Kaynaklı veri geldiğinde bu sayfa otomatik güncellenecek."
+        )
+
+    kurum = {
+        "@type": "Organization",
+        "@id": f"{SITE_KOK_URL}/#kurum",
+        "name": "Maliyetine.com.tr",
+        "url": SITE_KOK_URL,
+        "description": "Türkiye için canlı, doğrulanabilir maliyet endeksi.",
+    }
+    json_ld = {
+        "@context": "https://schema.org",
+        "@graph": [
+            kurum,
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Ana sayfa", "item": SITE_KOK_URL + "/"},
+                    {"@type": "ListItem", "position": 2, "name": conf["ad"], "item": f"{SITE_KOK_URL}/{conf['yol']}/"},
+                    {"@type": "ListItem", "position": 3, "name": tanim["ad"], "item": sayfa_url},
+                ],
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": sayfa["soru"],
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": cevap.replace("<strong>", "").replace("</strong>", ""),
+                        },
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Bu fiyatlar nasıl hesaplandı?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": (
+                                "Fiyatlar gerçek kaynaklardan aylık olarak derlenir; "
+                                "ürünler düşük, orta ve lüks segmentlere ayrılır."
+                            ),
+                        },
+                    },
+                ],
+            },
+        ],
+    }
+
+    return f"""<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{sayfa["baslik"]} | Maliyetine.com.tr</title>
+<meta name="description" content="{sayfa["soru"].capitalize()} Güncel fiyat aralığı, segmentler, kaynak ve derleme tarihiyle.">
+<link rel="canonical" href="{sayfa_url}">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="application/ld+json">
+{json.dumps(json_ld, ensure_ascii=False, indent=2)}
+</script>
+</head>
+<body>
+
+<header class="ust-bar">
+  <div class="kapsayici">
+    <a href="/" class="logo">maliyet<span>ine</span>.com.tr</a>
+    <nav class="ust-menu">
+      <a href="/{conf["yol"]}/">Endeks</a>
+      <a href="/{conf["yol"]}/hesaplayici/">Hesaplayıcı</a>
+      <a href="/{conf["yol"]}/metodoloji/">Metodoloji</a>
+    </nav>
+  </div>
+</header>
+
+<main class="kapsayici">
+  <span class="guncelleme-etiketi">Güncelleme: {guncelleme_tarihi}</span>
+  <h1>{sayfa["baslik"]}</h1>
+
+  <div class="cevap-blok">
+    {cevap}
+  </div>
+
+  <section class="icerik-bolumu">
+    <h2>Fiyat aralığı</h2>
+    <p>{sayfa["aciklama"]}</p>
+    {_segment_tablosu_html(veri)}
+  </section>
+
+  <section class="icerik-bolumu">
+    <h2>Bu fiyata ne dahil?</h2>
+    <p>Bu sayfa yalnızca <strong>{tanim["ad"]}</strong> kalemini ölçer. Tüm bütçeyi görmek için
+      <a href="/{conf["yol"]}/">{conf["ad"]} maliyeti endeksine</a> veya
+      <a href="/{conf["yol"]}/hesaplayici/">hesaplayıcıya</a> gidin.</p>
+  </section>
+
+  <section class="icerik-bolumu">
+    <h2>Kaynaklar ve yöntem</h2>
+    {_kaynak_ozeti_html(veri)}
+    <p>Segment tanımı, aykırı değer kontrolü ve kaynak ayrımı için
+      <a href="/{conf["yol"]}/metodoloji/">metodoloji sayfasına</a> bakın.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="kapsayici">
+    <div>© 2026 Maliyetine.com.tr</div>
+    <nav>
+      <a href="/{conf["yol"]}/">{conf["ad"]} endeksi</a>
+      <a href="/{conf["yol"]}/hesaplayici/">Hesaplayıcı</a>
+      <a href="/{conf["yol"]}/metodoloji/">Metodoloji</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+"""
+
+
+def kalem_sayfalari_yaz(vertikal: str, veri_dosyasi: Path | None = None) -> list[Path]:
+    conf = vertikal_conf(vertikal)
+    yazilanlar = []
+    for sayfa in conf.get("kalem_sayfalari", []):
+        hedef = SITE_KOK / conf["yol"] / sayfa["slug"] / "index.html"
+        hedef.parent.mkdir(parents=True, exist_ok=True)
+        hedef.write_text(kalem_sayfasi_uret(vertikal, sayfa["slug"], veri_dosyasi), encoding="utf-8")
+        yazilanlar.append(hedef)
+    return yazilanlar
+
+
+def sitemap_uret() -> str:
+    url_kayitlari = [
+        ("/", "monthly", "1.0"),
+    ]
+    for conf in VERTIKALLER.values():
+        yol = conf["yol"]
+        url_kayitlari.extend([
+            (f"/{yol}/", "monthly", "0.9"),
+            (f"/{yol}/hesaplayici/", "monthly", "0.8"),
+            (f"/{yol}/metodoloji/", "yearly", "0.5"),
+        ])
+        for sayfa in conf.get("kalem_sayfalari", []):
+            url_kayitlari.append((f"/{yol}/{sayfa['slug']}/", "monthly", "0.7"))
+
+    satirlar = ['<?xml version="1.0" encoding="UTF-8"?>',
+                '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    for yol, frekans, oncelik in url_kayitlari:
+        satirlar.extend([
+            "  <url>",
+            f"    <loc>{SITE_KOK_URL}{yol}</loc>",
+            f"    <changefreq>{frekans}</changefreq>",
+            f"    <priority>{oncelik}</priority>",
+            "  </url>",
+        ])
+    satirlar.append("</urlset>")
+    return "\n".join(satirlar) + "\n"
+
+
 def main():
     ayristirici = argparse.ArgumentParser(description=__doc__)
     ayristirici.add_argument("--vertikal", default="dugun", choices=sorted(VERTIKALLER))
@@ -613,6 +1242,11 @@ def main():
     hedef.parent.mkdir(parents=True, exist_ok=True)
     hedef.write_text(html, encoding="utf-8")
     print(f"Sayfa uretildi: {hedef}")
+    for kalem_hedef in kalem_sayfalari_yaz(args.vertikal, args.veri):
+        print(f"Kalem sayfasi uretildi: {kalem_hedef}")
+    sitemap_hedef = SITE_KOK / "sitemap.xml"
+    sitemap_hedef.write_text(sitemap_uret(), encoding="utf-8")
+    print(f"Sitemap uretildi: {sitemap_hedef}")
 
 
 if __name__ == "__main__":

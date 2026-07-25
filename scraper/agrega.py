@@ -125,12 +125,24 @@ def kalem_birlestir(kaynak_kayitlari: list[dict]) -> dict:
     toplam_urun = sum(k.get("toplam_urun", 0) for k in kaynak_kayitlari)
     en_guncel_tarih = max(k["tarih"] for k in kaynak_kayitlari)
 
+    # SADECE GERCEKTEN URUN DONDUREN kaynaklar sayilir ve listelenir.
+    # Neden: bir kaynak birakilmis/bozulmus olabilir ama eski tarihli
+    # 0-urunlu snapshot'i diskte kalir (ör. dugun/gelinlik'te akakce,
+    # beymen, cimri, n11, dugunbuketi - hepsi 0 urun). Bunlar sayilinca
+    # "10 bagimsiz kaynak" deniyordu, gerceginde 5'ti - projenin en temel
+    # guven iddiasi (COK KAYNAK KURALI) iki kat sisik gorunuyordu.
+    # 0-urunlu kaynak endekse hicbir sey katmaz: ne medyana girer ne
+    # segmente. Bu yuzden listeden de cikariliyor - aksi halde kalem
+    # sayfalari "X: bu calistirmada urun yok" diye anlamsiz satirlar
+    # gosteriyor ve birakilmis kaynaklari kullaniliyormus gibi sunuyor.
+    veri_veren = [k for k in kaynak_kayitlari if (k.get("toplam_urun") or 0) > 0]
+
     return {
         "segmentler": segmentler,
         "genel_medyan": round(statistics.median(genel_medyanlar)) if genel_medyanlar else None,
         "toplam_urun": toplam_urun,
         "guncelleme_tarihi": en_guncel_tarih,
-        "kaynak_sayisi": len(kaynak_kayitlari),
+        "kaynak_sayisi": len(veri_veren),
         "kaynaklar": [
             {
                 "site": k["site"],
@@ -139,7 +151,7 @@ def kalem_birlestir(kaynak_kayitlari: list[dict]) -> dict:
                 "toplam_urun": k.get("toplam_urun", 0),
                 "genel_medyan": k.get("genel_medyan"),
             }
-            for k in sorted(kaynak_kayitlari, key=lambda k: k["site"])
+            for k in sorted(veri_veren, key=lambda k: k["site"])
         ],
     }
 

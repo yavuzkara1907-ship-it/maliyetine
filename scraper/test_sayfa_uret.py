@@ -237,6 +237,69 @@ class CiftSayimKorumasiTestleri(unittest.TestCase):
         self.assertIn("Toplamda değil", html)
 
 
+class IcerikSeoTestleri(unittest.TestCase):
+    def setUp(self):
+        self.tmp = TemporaryDirectory()
+        self.veri_dosyasi = Path(self.tmp.name) / "ev-kurma.json"
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def test_endeks_sayfasinda_gorunur_icerik_bloklari_var(self):
+        agregali = {
+            "vertikal": "ev-kurma",
+            "guncelleme_tarihi": "2026-07-25",
+            "kalemler": {"buzdolabi": BUZDOLABI_VERISI},
+        }
+        self.veri_dosyasi.write_text(json.dumps(agregali, ensure_ascii=False), encoding="utf-8")
+        html = sayfa_uret.sayfa_uret("ev-kurma", self.veri_dosyasi)
+        self.assertIn("Bu rakama neler dahil?", html)
+        self.assertIn("Bu rakama neler dahil değil?", html)
+        self.assertIn("En yüksek maliyet kalemleri", html)
+        self.assertIn("Segmentler nasıl okunmalı?", html)
+        self.assertIn("/ev-kurma/buzdolabi-fiyatlari/", html)
+
+    def test_tabloda_eksik_segment_genel_medyana_dusmez(self):
+        televizyon = {
+            "genel_medyan": 46499,
+            "kaynak_sayisi": 1,
+            "toplam_urun": 4,
+            "guncelleme_tarihi": "2026-07-25",
+            "kaynaklar": [{"site": "trendyol", "toplam_urun": 4, "genel_medyan": 46499}],
+            "segmentler": {
+                "dusuk": {"medyan": 33999},
+                "orta": {"medyan": 87499},
+            },
+        }
+        html = sayfa_uret._kalem_satirlari_html(EV_KURMA, {"televizyon": televizyon})
+        televizyon_satiri = next(
+            satir for satir in html.splitlines() if "Televizyon (4K)" in satir
+        )
+        self.assertIn("87.499 TL", televizyon_satiri)
+        self.assertIn('<td class="sayi">—</td>', televizyon_satiri)
+        self.assertNotIn("46.499 TL</td></tr>", html)
+
+    def test_kalem_sayfasi_uretilir(self):
+        agregali = {
+            "vertikal": "ev-kurma",
+            "guncelleme_tarihi": "2026-07-25",
+            "kalemler": {"buzdolabi": BUZDOLABI_VERISI},
+        }
+        self.veri_dosyasi.write_text(json.dumps(agregali, ensure_ascii=False), encoding="utf-8")
+        html = sayfa_uret.kalem_sayfasi_uret(
+            "ev-kurma", "buzdolabi-fiyatlari", self.veri_dosyasi
+        )
+        self.assertIn("2026'da Buzdolabı Fiyatları Ne Kadar?", html)
+        self.assertIn("orta segment medyan fiyatı", html)
+        self.assertIn("28.930 TL", html)
+        self.assertIn("/ev-kurma/hesaplayici/", html)
+
+    def test_sitemap_kalem_sayfalarini_icerir(self):
+        sitemap = sayfa_uret.sitemap_uret()
+        self.assertIn("https://maliyetine.com.tr/dugun/gelinlik-fiyatlari/", sitemap)
+        self.assertIn("https://maliyetine.com.tr/ev-kurma/buzdolabi-fiyatlari/", sitemap)
+
+
 class SayfaUretTestleri(unittest.TestCase):
     def setUp(self):
         self.tmp = TemporaryDirectory()
@@ -315,6 +378,34 @@ class SayfaUretTestleri(unittest.TestCase):
         self.assertEqual(html_uyarisiz, "")
 
 
+class EkSorularTestleri(unittest.TestCase):
+    def test_eksik_segment_genel_medyani_segment_gibi_yazmaz(self):
+        # Regresyon: one_cikan_kalemler FAQ metni, kalem_deger() fallback'ini
+        # kullanirsa eksik "luks" segment yerine genel medyani "luks" diye
+        # yazabilir. FAQ'ta yalnizca gercekten var olan segmentler soylenmeli.
+        televizyon = {
+            "genel_medyan": 46499,
+            "kaynak_sayisi": 1,
+            "toplam_urun": 4,
+            "guncelleme_tarihi": "2026-07-25",
+            "segmentler": {
+                "dusuk": {"medyan": 33999},
+                "orta": {"medyan": 87499},
+            },
+        }
+        sorular = sayfa_uret.ek_sorular_uret(
+            EV_KURMA, {"televizyon": televizyon}, EV_KURMA["olcek_varsayilan"]
+        )
+        televizyon_cevabi = next(
+            s["acceptedAnswer"]["text"]
+            for s in sorular
+            if s["name"].startswith("Televizyon")
+        )
+        self.assertIn("orta segmentte 87.499 TL", televizyon_cevabi)
+        self.assertNotIn("lüks segmentte", televizyon_cevabi)
+        self.assertNotIn("46.499 TL", televizyon_cevabi)
+
+
 BUZDOLABI_VERISI = {
     "genel_medyan": 28860,
     "kaynak_sayisi": 1,
@@ -355,6 +446,18 @@ class BagimsizSitelerTestleri(unittest.TestCase):
         kalemler = {
             "gelinlik": {"kaynaklar": [{"site": "trendyol"}]},
             "salon": {"kaynaklar": [{"site": "dugunbuketi"}]},
+        }
+        siteler = sayfa_uret.bagimsiz_siteler(kalemler, {"gelinlik"})
+        self.assertEqual(siteler, {"trendyol"})
+
+    def test_urun_dondurmeyen_kaynak_sayilmaz(self):
+        kalemler = {
+            "gelinlik": {
+                "kaynaklar": [
+                    {"site": "akakce", "toplam_urun": 0, "genel_medyan": None},
+                    {"site": "trendyol", "toplam_urun": 21, "genel_medyan": 8999},
+                ]
+            }
         }
         siteler = sayfa_uret.bagimsiz_siteler(kalemler, {"gelinlik"})
         self.assertEqual(siteler, {"trendyol"})

@@ -12,6 +12,30 @@
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Organization",
+      "@id": "https://maliyetine.com.tr/#kurum",
+      "name": "Maliyetine.com.tr",
+      "url": "https://maliyetine.com.tr",
+      "description": "Türkiye için canlı, doğrulanabilir maliyet endeksi."
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Ana sayfa",
+          "item": "https://maliyetine.com.tr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Düğün",
+          "item": "https://maliyetine.com.tr/dugun/"
+        }
+      ]
+    },
+    {
       "@type": "FAQPage",
       "mainEntity": [
         {
@@ -19,7 +43,47 @@
           "name": "2026'da İstanbul'da düğün kaça mal olur?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Maliyetine'ye göre 2026-07-25 itibarıyla 150 kişilik, orta segment bir düğünün 459.738 TL tutması bekleniyor. Bunun 338.238 TL tutarı 8 kalem için 10 bağımsız kaynaktan derlenen güncel fiyatlara, 121.500 TL tutarı ise henüz kazınan bir kaynağı olmayan 6 kalem için genel piyasa araştırmasına dayanır."
+            "text": "Maliyetine'ye göre 2026-07-25 itibarıyla 150 kişilik, orta segment bir düğünün 459.738 TL tutması bekleniyor. Bunun 338.238 TL tutarı 8 kalem için 5 bağımsız kaynaktan derlenen güncel fiyatlara, 121.500 TL tutarı ise henüz kazınan bir kaynağı olmayan 6 kalem için genel piyasa araştırmasına dayanır."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Düğün Salonu — yemekli (menü dahil) fiyatları 2026'da ne kadar? (kişi başı)",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Maliyetine'ye göre Düğün Salonu — yemekli (menü dahil) (kişi başı) ekonomik segmentte 575 TL, orta segmentte 1.200 TL, lüks segmentte 2.500 TL. Bu rakamlar 1 bağımsız kaynaktan, 11 ürün üzerinden derlendi (derleme tarihi: 2026-07-25)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Gelinlik fiyatları 2026'da ne kadar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Maliyetine'ye göre Gelinlik ekonomik segmentte 4.454 TL, orta segmentte 8.999 TL, lüks segmentte 30.959 TL. Bu rakamlar 1 bağımsız kaynaktan, 21 ürün üzerinden derlendi (derleme tarihi: 2026-07-25)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Damatlık / Takım Elbise fiyatları 2026'da ne kadar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Maliyetine'ye göre Damatlık / Takım Elbise ekonomik segmentte 17.995 TL, orta segmentte 46.450 TL, lüks segmentte 83.970 TL. Bu rakamlar 3 bağımsız kaynaktan, 98 ürün üzerinden derlendi (derleme tarihi: 2026-07-25)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Alyans fiyatları 2026'da ne kadar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Maliyetine'ye göre Alyans ekonomik segmentte 8.528 TL, orta segmentte 15.920 TL, lüks segmentte 21.270 TL. Bu rakamlar 2 bağımsız kaynaktan, 27 ürün üzerinden derlendi (derleme tarihi: 2026-07-25)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Takı — Altın Bilezik (1 adet) fiyatları 2026'da ne kadar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Maliyetine'ye göre Takı — Altın Bilezik (1 adet) ekonomik segmentte 33.085 TL, orta segmentte 85.022 TL, lüks segmentte 180.340 TL. Bu rakamlar 1 bağımsız kaynaktan, 24 ürün üzerinden derlendi (derleme tarihi: 2026-07-25)."
           }
         }
       ]
@@ -28,11 +92,110 @@
       "@type": "Dataset",
       "name": "Maliyetine Düğün Maliyeti Endeksi",
       "description": "Türkiye'de düğün kalemlerinin gerçek e-ticaret ve ilan verisinden derlenen aylık fiyat endeksi.",
+      "url": "https://maliyetine.com.tr/dugun/",
       "dateModified": "2026-07-25",
       "creator": {
         "@type": "Organization",
-        "name": "Maliyetine.com.tr"
-      }
+        "@id": "https://maliyetine.com.tr/#kurum",
+        "name": "Maliyetine.com.tr",
+        "url": "https://maliyetine.com.tr",
+        "description": "Türkiye için canlı, doğrulanabilir maliyet endeksi."
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://maliyetine.com.tr/#kurum",
+        "name": "Maliyetine.com.tr",
+        "url": "https://maliyetine.com.tr",
+        "description": "Türkiye için canlı, doğrulanabilir maliyet endeksi."
+      },
+      "keywords": [
+        "düğün maliyeti",
+        "düğün fiyatları 2026",
+        "gelinlik fiyatları",
+        "düğün salonu kişi başı fiyat",
+        "alyans fiyatları",
+        "damatlık fiyatları",
+        "İstanbul düğün maliyeti",
+        "düğün bütçesi hesaplama"
+      ],
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "isAccessibleForFree": true,
+      "inLanguage": "tr-TR",
+      "spatialCoverage": {
+        "@type": "Place",
+        "name": "İstanbul, Türkiye"
+      },
+      "temporalCoverage": "2026-07-25/..",
+      "distribution": [
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://maliyetine.com.tr/veri/dugun.json"
+        }
+      ],
+      "measurementTechnique": "Gerçek e-ticaret ve sektör platformlarından robots.txt kurallarına uygun aylık kazıma; kaynak başına medyan alınıp kaynaklar arası medyan-of-medyan hesaplanır, persentil bazlı segmentlenir.",
+      "variableMeasured": [
+        {
+          "@type": "PropertyValue",
+          "name": "Gelinlik",
+          "unitText": "TRY",
+          "value": 8999
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Damatlık / Takım Elbise",
+          "unitText": "TRY",
+          "value": 46450
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Alyans",
+          "unitText": "TRY",
+          "value": 15920
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Gelin Ayakkabısı, Duvak, Aksesuar",
+          "unitText": "TRY",
+          "value": 1300
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Nikah Şekeri",
+          "unitText": "TRY",
+          "value": 408
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Davetiye",
+          "unitText": "TRY",
+          "value": 139
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Takı — Altın Bilezik (1 adet)",
+          "unitText": "TRY",
+          "value": 85022
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Düğün Salonu — yemekli (menü dahil)",
+          "unitText": "TRY",
+          "value": 1200
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Düğün Salonu — kokteyl (yemeksiz)",
+          "unitText": "TRY",
+          "value": 500
+        },
+        {
+          "@type": "PropertyValue",
+          "name": "Yemek / İkram (mekanın menü bedeli)",
+          "unitText": "TRY",
+          "value": 410
+        }
+      ]
     }
   ]
 }
@@ -56,7 +219,7 @@
   <h1>2026'da İstanbul'da Düğün Kaça Mal Olur?</h1>
 
   <div class="cevap-blok">
-    Maliyetine'ye göre 2026-07-25 itibarıyla 150 kişilik, orta segment bir düğünün <strong>459.738 TL</strong> tutması bekleniyor. Bunun 338.238 TL tutarı 8 kalem için 10 bağımsız kaynaktan derlenen güncel fiyatlara, 121.500 TL tutarı ise henüz kazınan bir kaynağı olmayan 6 kalem için genel piyasa araştırmasına dayanır.
+    Maliyetine'ye göre 2026-07-25 itibarıyla 150 kişilik, orta segment bir düğünün <strong>459.738 TL</strong> tutması bekleniyor. Bunun 338.238 TL tutarı 8 kalem için 5 bağımsız kaynaktan derlenen güncel fiyatlara, 121.500 TL tutarı ise henüz kazınan bir kaynağı olmayan 6 kalem için genel piyasa araştırmasına dayanır.
   </div>
 
   
@@ -73,11 +236,11 @@
       <tr><th>Kalem</th><th class="sayi">Ekonomik</th><th class="sayi">Orta</th><th class="sayi">Lüks</th><th class="sayi">Kaynak</th></tr>
     </thead>
     <tbody>
-      <tr><td>Gelinlik</td><td class="sayi">4.454 TL</td><td class="sayi">8.999 TL</td><td class="sayi">30.959 TL</td><td class="sayi">6</td></tr>
-<tr><td>Damatlık / Takım Elbise</td><td class="sayi">17.995 TL</td><td class="sayi">46.450 TL</td><td class="sayi">83.970 TL</td><td class="sayi">6</td></tr>
-<tr><td>Alyans</td><td class="sayi">8.528 TL</td><td class="sayi">15.920 TL</td><td class="sayi">21.270 TL</td><td class="sayi">3</td></tr>
-<tr><td>Gelin Ayakkabısı, Duvak, Aksesuar</td><td class="sayi">644 TL</td><td class="sayi">1.300 TL</td><td class="sayi">2.254 TL</td><td class="sayi">2</td></tr>
-<tr><td>Nikah Şekeri</td><td class="sayi">180 TL</td><td class="sayi">408 TL</td><td class="sayi">294 TL</td><td class="sayi">1</td></tr>
+      <tr><td>Gelinlik</td><td class="sayi">4.454 TL</td><td class="sayi">8.999 TL</td><td class="sayi">30.959 TL</td><td class="sayi">1</td></tr>
+<tr><td>Damatlık / Takım Elbise</td><td class="sayi">17.995 TL</td><td class="sayi">46.450 TL</td><td class="sayi">83.970 TL</td><td class="sayi">3</td></tr>
+<tr><td>Alyans</td><td class="sayi">8.528 TL</td><td class="sayi">15.920 TL</td><td class="sayi">21.270 TL</td><td class="sayi">2</td></tr>
+<tr><td>Gelin Ayakkabısı, Duvak, Aksesuar</td><td class="sayi">644 TL</td><td class="sayi">1.300 TL</td><td class="sayi">2.254 TL</td><td class="sayi">1</td></tr>
+<tr><td>Nikah Şekeri</td><td class="sayi">180 TL</td><td class="sayi">408 TL</td><td class="sayi">—</td><td class="sayi">1</td></tr>
 <tr><td>Davetiye</td><td class="sayi">94 TL</td><td class="sayi">139 TL</td><td class="sayi">163 TL</td><td class="sayi">1</td></tr>
 <tr><td>Takı — Altın Bilezik (1 adet)</td><td class="sayi">33.085 TL</td><td class="sayi">85.022 TL</td><td class="sayi">180.340 TL</td><td class="sayi">1</td></tr>
 <tr><td>Düğün Salonu — yemekli (menü dahil)</td><td class="sayi">575 TL</td><td class="sayi">1.200 TL</td><td class="sayi">2.500 TL</td><td class="sayi">1</td></tr>
@@ -94,6 +257,47 @@
 
   <div class="uyari-kutu"><strong>Çapraz doğrulama notu:</strong><ul><li><strong>Alyans:</strong> kaynaklar arası fark %352 — farklı segment/marka aralığını yansıtıyor olabilir, <a href="/dugun/metodoloji/">metodolojiye bakın</a>.</li>
 <li><strong>Damatlık / Takım Elbise:</strong> kaynaklar arası fark %2121 — farklı segment/marka aralığını yansıtıyor olabilir, <a href="/dugun/metodoloji/">metodolojiye bakın</a>.</li></ul></div>
+
+  
+  <section class="icerik-bolumu">
+    <h2>Bu rakama neler dahil?</h2>
+    <p>Bu endeks, kullanıcının bütçe çıkarırken tek tek görmek isteyeceği ana kalemleri kapsar.</p>
+    <ul><li>Gelinlik, damatlık, alyans ve ölçülebilen temel ürün kalemleri.</li>
+<li>Yemekli düğün salonu için kişi başı mekan/menü bedeli.</li>
+<li>Kaynak bulunamayan hizmet kalemleri için açıkça etiketlenmiş tahmini kalemler.</li></ul>
+  </section>
+
+  <section class="icerik-bolumu">
+    <h2>Bu rakama neler dahil değil?</h2>
+    <p>Aşağıdaki kalemler kapsam dışında tutulur; çünkü ölçüm yöntemi ya ayrı bir vertikal gerektirir ya da kişiye göre çok değişir.</p>
+    <ul><li>Balayı, ayrı tatil vertikaliyle ele alınacak.</li>
+<li>Davetlilerin taktığı toplam altın; bunun yerine ölçülebilir bir bilezik fiyatı izlenir.</li>
+<li>Şehir dışı ulaşım, konaklama ve kişiye özel ekstra talepler.</li></ul>
+  </section>
+
+  <section class="icerik-bolumu">
+    <h2>En yüksek maliyet kalemleri</h2>
+    <p>Orta segment varsayılan senaryoda bütçeyi en çok etkileyen kalemler şunlardır:</p>
+    <ol><li><strong>Düğün Salonu — yemekli (menü dahil):</strong> 180.000 TL</li>
+<li><strong>Takı — Altın Bilezik (1 adet):</strong> 85.022 TL</li>
+<li><strong>Damatlık / Takım Elbise:</strong> 46.450 TL</li>
+<li><strong>Fotoğraf ve Video:</strong> 45.000 TL <span class="tahmini-etiket">Tahmini</span></li>
+<li><strong>Organizasyon / Süsleme:</strong> 40.000 TL <span class="tahmini-etiket">Tahmini</span></li></ol>
+  </section>
+
+  <section class="icerik-bolumu">
+    <h2>Segmentler nasıl okunmalı?</h2>
+    <p>Ekonomik segment düşük fiyat bandını, orta segment piyasadaki medyan bütçeyi, lüks segment ise üst fiyat bandını gösterir. Hizmetlerde aynı mekanın tüm seçenekleri aynı kapsamı sunmayabilir; bu yüzden toplam senaryoda yemekli salon ayrı, kokteyl salon ayrı değerlendirilir.</p>
+  </section>
+
+  <section class="icerik-bolumu">
+  <h2>İlgili fiyat sayfaları</h2>
+  <ul><li><a href="/dugun/gelinlik-fiyatlari/">2026'da Gelinlik Fiyatları</a></li>
+<li><a href="/dugun/damatlik-fiyatlari/">2026'da Damatlık Fiyatları</a></li>
+<li><a href="/dugun/alyans-fiyatlari/">2026'da Alyans Fiyatları</a></li>
+<li><a href="/dugun/dugun-salonu-fiyatlari/">2026'da Düğün Salonu Kişi Başı Fiyatları</a></li></ul>
+</section>
+
 
   <p>Yöntem, kaynaklar ve örneklem büyüklükleri için
     <a href="/dugun/metodoloji/">metodoloji sayfasına</a> bakın.</p>

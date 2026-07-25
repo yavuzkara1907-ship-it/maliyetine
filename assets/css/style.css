@@ -155,6 +155,21 @@ p {
   margin: 18px 0;
 }
 
+/* ---- Icerik SEO bolumleri ---- */
+.icerik-bolumu {
+  margin: 34px 0;
+}
+
+.icerik-bolumu ul,
+.icerik-bolumu ol {
+  margin-top: 8px;
+  padding-left: 22px;
+}
+
+.icerik-bolumu li {
+  margin-bottom: 6px;
+}
+
 /* ---- Tablo ---- */
 table {
   width: 100%;
