@@ -213,6 +213,33 @@ Hesaplayıcı bu kalemleri toplar. Her kalem: segment + kaynak + tarih.
 - schema.org yapılandırılmış veri, güncelleme tarihi görünür.
 - Soru formatında başlıklar ("2026'da İstanbul'da düğün kaça mal olur?").
 - robots.txt AI bot'larına açık (GPTBot vb. engellenmez).
+- 🚨 **KRİTİK AÇIK KONU (2026-07-25 canlı tespit): Cloudflare bizim
+  robots.txt'imizin ÜSTÜNE kendi "Managed content" bloğunu ENJEKTE
+  ediyor ve tam olarak hedeflediğimiz botları ENGELLİYOR.** Canlı
+  `https://maliyetine.com.tr/robots.txt` çıktısında:
+  - `User-agent: ClaudeBot → Disallow: /`
+  - `User-agent: GPTBot → Disallow: /`
+  - `User-agent: Google-Extended → Disallow: /`
+  - `CCBot`, `Applebot-Extended`, `Amazonbot`, `Bytespider`,
+    `meta-externalagent` → hepsi `Disallow: /`
+  - `Content-Signal: search=yes,ai-train=no,use=reference` (AB Telif
+    Direktifi Madde 4 kapsamında hukuki hak rezervasyonu olarak
+    ifade ediliyor).
+  **Bu, projenin TEMEL STRATEJİSİNİ (AI motorlarının alıntıladığı kaynak
+  olmak) doğrudan baltalıyor.** Cloudflare'in "Content Signals Policy"
+  özelliği yeni zone'larda varsayılan olarak açık geliyor.
+  - **Hafifletici:** WAF seviyesinde gerçek blok YOK — GPTBot/ClaudeBot/
+    PerplexityBot/CCBot User-Agent'leriyle test edildi, hepsi **HTTP 200**
+    alıyor. Ayrıca bizim `Allow: /` bloğumuz Cloudflare'inkinden SONRA
+    geliyor; RFC 9309'a göre aynı user-agent'ın grupları birleştirilir ve
+    eşit uzunluklu çakışmada "least restrictive" (Allow) kazanır.
+    **Ama bu yoruma bağlı ve garanti değil** — GPTBot ve ClaudeBot
+    robots.txt'e gerçekten uyan botlardır.
+  - **YAVUZ'UN YAPMASI GEREKEN:** Cloudflare Dashboard → `maliyetine.com.tr`
+    zone'u → **AI Crawl Control** (eski adı "AI Audit") ve/veya
+    **Security → Settings** altında "managed robots.txt" / "Content
+    Signals" ayarını **KAPAT**. Kapattıktan sonra canlı robots.txt'in
+    yalnızca bizim bloğumuzu içerdiği doğrulanmalı.
 
 ## Altyapı Kararları (KESİN)
 - Domain: **maliyetine.com.tr** — alındı, DNS Cloudflare'e taşınıyor.
@@ -1109,8 +1136,33 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
       `.github/workflows/aylik-veri-guncelleme.yml` — bkz. Modül 6.
       `kaynak_gecmisi.json` gitignore'dan çıkarıldı (aksi halde saglik
       kontrolü hiç geçmiş biriktiremezdi).
-- [~] **Cloudflare: DNS TAMAM, Pages bağlantısı EKSİK (2026-07-25
-      canlı teşhis).** Yavuz "cloudflare ok" dedi, canlıdan doğrulandı:
+- [x] **SİTE CANLIDA (2026-07-25). `https://maliyetine.com.tr` çalışıyor.**
+      Yavuz Cloudflare'de projeyi deploy etti (Pages değil **Worker**
+      olarak: `maliyetine.yavuzkara-1907.workers.dev`) ve custom domain'i
+      ekledi. Canlı doğrulama yapıldı:
+      - 14 sayfa/dosya (3 düğün + 3 ev-kurma sayfası, `/veri/*.json`,
+        robots.txt, sitemap, CSS/JS) → **hepsi HTTP 200.**
+      - SSL sertifikası geçerli, DNS tüm genel resolver'larda (1.1.1.1,
+        8.8.8.8, 9.9.9.9) çözülüyor.
+      - Hesaplayıcı canlıda **gerçekten çalışıyor**: yemekli 414.716 TL /
+        kokteyl 309.716 TL, menü bedeli notu doğru, console'da hata yok.
+      - **Otomatik deploy çalışıyor** — push edilen içerik canlıda.
+      - **`www.maliyetine.com.tr` de çalışıyor** (HTTP 200, SSL geçerli).
+        Yavuz "www eklenmiyor" dedi; sebebi kaydın ZATEN var olması
+        (Cloudflare kök domain eklenirken oluşturmuş) — yapacak bir şey
+        yoktu. NOT: kök ve www aynı içeriği 200 ile veriyor
+        (duplicate content). Canonical etiketi her ikisinde de kök
+        domaini gösteriyor, bu yeterli bir sinyal; ama en temizi
+        Cloudflare → Rules → **Redirect Rules** ile `www` → kök 301
+        yönlendirmesi (ileride, acil değil).
+      - **Not:** Worker olarak deploy edilmesi işlevsel sorun değil,
+        statik dosyalar doğru servis ediliyor. Ama "Altyapı Kararları"
+        bölümündeki "Cloudflare Pages" ifadesi artık tam doğru değil.
+      - **Production branch: `claude/new-session-csygpf`** (repoda `main`
+        yok). Branch ileride `main` olarak yeniden adlandırılırsa
+        Worker'ın branch ayarı da güncellenmeli.
+- [~] **(TARİHÎ KAYIT) Cloudflare: DNS TAMAM, Pages bağlantısı EKSİK
+      (2026-07-25, sonra ÇÖZÜLDÜ — yukarıdaki maddeye bakın).** Yavuz "cloudflare ok" dedi, canlıdan doğrulandı:
       - ✅ **Domain Cloudflare'e geçmiş, zone aktif.** `dig NS` →
         `brenda.ns.cloudflare.com` / `ryan.ns.cloudflare.com`, ve zone
         SOA kaydı dönüyor. (Not: `whois` hâlâ eski `NS*.NS.TR`
