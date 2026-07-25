@@ -192,9 +192,8 @@ VERTIKALLER = {
         "soru": "2026'da İstanbul'da düğün kaça mal olur?",
         "sayfa_basligi": "2026'da Düğün Kaça Mal Olur? | Maliyetine.com.tr",
         "meta_aciklama": (
-            "Gerçek e-ticaret ve ilan verisinden derlenmiş, aylık güncellenen düğün "
-            "maliyeti endeksi. Gelinlik, damatlık, alyans, salon ve daha fazlası — "
-            "kaynak ve tarihiyle."
+            "Gelinlik, damatlık, alyans, salon ve daha fazlası: gerçek fiyat "
+            "verisinden derlenmiş, aylık güncellenen düğün maliyeti endeksi."
         ),
         "dataset_ad": "Maliyetine Düğün Maliyeti Endeksi",
         "dataset_aciklama": (
@@ -272,7 +271,7 @@ VERTIKALLER = {
             {
                 "id": "salon-yemekli",
                 "slug": "dugun-salonu-fiyatlari",
-                "baslik": "2026'da Düğün Salonu Kişi Başı Fiyatları Ne Kadar?",
+                "baslik": "Düğün Salonu Kişi Başı Fiyatları 2026",
                 "soru": "2026'da düğün salonu kişi başı fiyatı ne kadar?",
                 "aciklama": (
                     "Yemekli salon fiyatı menü dahil kişi başı bedeldir. Kokteyl "
@@ -928,6 +927,12 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
 <meta name="description" content="{conf["meta_aciklama"]}">
 <link rel="canonical" href="https://maliyetine.com.tr/{yol}/">
 <link rel="stylesheet" href="/assets/css/style.css">
+<meta property="og:title" content="{conf["baslik"]}">
+<meta property="og:description" content="{conf["meta_aciklama"]}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://maliyetine.com.tr/{yol}/">
+<meta property="og:site_name" content="Maliyetine.com.tr">
+<meta name="twitter:card" content="summary">
 <script type="application/ld+json">
 {json.dumps(json_ld, ensure_ascii=False, indent=2)}
 </script>
@@ -1014,6 +1019,99 @@ def _segment_tablosu_html(kalem_verisi: dict | None) -> str:
     )
 
 
+def _segment_detay_tablosu_html(kalem_verisi: dict | None) -> str:
+    """Medyanin yaninda min/max/orneklem de gosterir.
+
+    Neden: tek bir medyan sayisi "bu rakam nereden geldi?" sorusunu
+    cevaplamiyor. Aralik ve orneklem buyuklugu hem guven verir hem
+    sayfayi zayif icerik (thin content) olmaktan cikarir - kalem
+    sayfalari uzun kuyruk aramanin hedefi, Google'in indekslemesi icin
+    gercek icerik gerekiyor.
+    """
+    segmentler = (kalem_verisi or {}).get("segmentler") or {}
+    if not segmentler:
+        return _segment_tablosu_html(kalem_verisi)
+    satirlar = []
+    for seg in ("dusuk", "orta", "luks"):
+        s = segmentler.get(seg)
+        if not s:
+            satirlar.append(
+                f"<tr><td>{SEGMENT_ETIKETLERI[seg]}</td>"
+                '<td class="sayi">—</td><td class="sayi">—</td>'
+                '<td class="sayi">—</td><td class="sayi">—</td></tr>'
+            )
+            continue
+        satirlar.append(
+            f"<tr><td>{SEGMENT_ETIKETLERI[seg]}</td>"
+            f'<td class="sayi">{_para(s["medyan"])}</td>'
+            f'<td class="sayi">{_para(s["min"])}</td>'
+            f'<td class="sayi">{_para(s["max"])}</td>'
+            f'<td class="sayi">{s.get("urun_sayisi", "—")}</td></tr>'
+        )
+    return (
+        "<table>\n<thead><tr><th>Segment</th>"
+        '<th class="sayi">Medyan</th><th class="sayi">En düşük</th>'
+        '<th class="sayi">En yüksek</th><th class="sayi">Ürün</th></tr></thead>\n'
+        "<tbody>\n" + "\n".join(satirlar) + "\n</tbody>\n</table>"
+    )
+
+
+def kalem_butce_payi(conf: dict, kalemler: dict, kalem_id: str) -> tuple[int, float] | None:
+    """Kalemin, vertikalin ornek toplamindaki payi (tutar, yuzde).
+
+    Veriden HESAPLANIR, uydurulmaz. "Gelinlik dugun butcesinin %2'si"
+    gibi bir bilgi hem okuyucu icin degerli hem sayfaya gercek icerik
+    katiyor.
+    """
+    olcek = conf["olcek_varsayilan"]
+    toplam, detaylar = ornek_toplam_hesapla(conf, kalemler, olcek, ORNEK_SEGMENT)
+    satir = next(
+        (d for d in detaylar
+         if d["id"] == kalem_id and d["veri_var"] and d.get("toplama_dahil", True)),
+        None,
+    )
+    if not satir or not toplam:
+        return None
+    return satir["satir_toplam"], satir["satir_toplam"] / toplam * 100
+
+
+def _ilgili_kalemler_html(conf: dict, mevcut_slug: str) -> str:
+    digerleri = [s for s in conf.get("kalem_sayfalari", []) if s["slug"] != mevcut_slug]
+    if not digerleri:
+        return ""
+    ad_haritasi = {t["id"]: t["ad"].split("—")[0].strip() for t in conf["kalemler"]}
+    linkler = " · ".join(
+        f'<a href="/{conf["yol"]}/{s["slug"]}/">{ad_haritasi.get(s["id"], s["slug"])}</a>'
+        for s in digerleri
+    )
+    return (
+        '  <section class="icerik-bolumu">\n'
+        f"    <h2>Diğer {conf['ad'].lower()} kalemleri</h2>\n"
+        f"    <p>{linkler}</p>\n"
+        "  </section>\n"
+    )
+
+
+def _sss_html(sorular: list[dict]) -> str:
+    """Schema'daki FAQ'yu sayfada da GORUNUR yapar.
+
+    Google yalnizca yapilandirilmis veriye guvenmez, gorunur icerik
+    bekler; ayrica AI motorlari sayfa metnini okuyor.
+    """
+    bloklar = []
+    for q in sorular:
+        bloklar.append(
+            f"    <h3>{q['name']}</h3>\n"
+            f"    <p>{q['acceptedAnswer']['text']}</p>"
+        )
+    return (
+        '  <section class="icerik-bolumu">\n'
+        "    <h2>Sık sorulan sorular</h2>\n"
+        + "\n".join(bloklar)
+        + "\n  </section>\n"
+    )
+
+
 def _kaynak_ozeti_html(kalem_verisi: dict | None) -> str:
     kaynaklar = (kalem_verisi or {}).get("kaynaklar") or []
     if not kaynaklar:
@@ -1081,6 +1179,22 @@ def kalem_sayfasi_uret(
             "Kaynaklı veri geldiğinde bu sayfa otomatik güncellenecek."
         )
 
+    # Meta aciklama SERP'te gorunur: GERCEK RAKAM icersin, 160 karakteri
+    # asmasin (Google keser).
+    if orta:
+        meta_aciklama = (
+            f"{tanim['ad']} orta segment medyan fiyatı{birim} {_para(orta)} "
+            f"({guncelleme_tarihi}). Ekonomik, orta ve lüks fiyat aralığı; "
+            f"kaynak sayısı ve örneklem büyüklüğüyle."
+        )
+    else:
+        meta_aciklama = (
+            f"{tanim['ad']} fiyat verisi hazırlanıyor. Kaynaklı veri geldiğinde "
+            "bu sayfa otomatik güncellenecek."
+        )
+    if len(meta_aciklama) > 158:
+        meta_aciklama = meta_aciklama[:155].rsplit(" ", 1)[0] + "…"
+
     kurum = {
         "@type": "Organization",
         "@id": f"{SITE_KOK_URL}/#kurum",
@@ -1088,6 +1202,91 @@ def kalem_sayfasi_uret(
         "url": SITE_KOK_URL,
         "description": "Türkiye için canlı, doğrulanabilir maliyet endeksi.",
     }
+    # SSS: hepsi VERIDEN uretiliyor, uydurma cevap yok. Hem schema'ya hem
+    # sayfaya (gorunur) konuyor - Google yapilandirilmis veriye tek basina
+    # guvenmiyor, AI motorlari da sayfa metnini okuyor.
+    sorular = [{
+        "@type": "Question",
+        "name": sayfa["soru"],
+        "acceptedAnswer": {
+            "@type": "Answer",
+            "text": cevap.replace("<strong>", "").replace("</strong>", ""),
+        },
+    }]
+
+    pay = kalem_butce_payi(conf, kalemler, sayfa["id"])
+    if pay:
+        tutar, yuzde = pay
+        birim_notu = (
+            f" ({conf['olcek_varsayilan']} kişilik hesapla {_para(tutar)})"
+            if tanim["birim"] == "kisi_basi" else ""
+        )
+        sorular.append({
+            "@type": "Question",
+            "name": f"{tanim['ad']} toplam bütçenin ne kadarı?",
+            "acceptedAnswer": {"@type": "Answer", "text": (
+                f"Orta segmentte {tanim['ad']}, {conf['ad'].lower()} bütçesinin "
+                f"yaklaşık %{yuzde:.0f}'ini oluşturuyor{birim_notu}. "
+                f"Kalem kalem tüm döküm {conf['ad'].lower()} endeksi sayfasında."
+            )},
+        })
+
+    if degerler.get("dusuk") and degerler.get("luks"):
+        kat = degerler["luks"] / degerler["dusuk"]
+        sorular.append({
+            "@type": "Question",
+            "name": f"{tanim['ad']} fiyatları arasında ne kadar fark var?",
+            "acceptedAnswer": {"@type": "Answer", "text": (
+                f"Ekonomik segmentte {_para(degerler['dusuk'])}, lüks segmentte "
+                f"{_para(degerler['luks'])} — yaklaşık {kat:.1f} kat fark. "
+                "Segmentler persentil bazlı ayrılır: en ucuz çeyrek ekonomik, "
+                "ortadaki yarı orta, en pahalı çeyrek lüks kabul edilir."
+            )},
+        })
+
+    kaynak_adlari = [k["site"].capitalize() for k in (veri or {}).get("kaynaklar", [])]
+    sorular.append({
+        "@type": "Question",
+        "name": "Bu fiyatlar nasıl hesaplandı?",
+        "acceptedAnswer": {"@type": "Answer", "text": (
+            (f"Fiyatlar {', '.join(kaynak_adlari)} üzerinden " if kaynak_adlari
+             else "Fiyatlar gerçek kaynaklardan ")
+            + "robots.txt kurallarına uygun şekilde aylık olarak derlenir. "
+              "Her kaynağın kendi medyanı alınır, sonra kaynaklar arası medyan "
+              "hesaplanır — ham fiyatlar birbirine karıştırılmaz. Aykırı değerler "
+              "ayıklanır, ürünler persentil bazlı üç segmente ayrılır. "
+              "Yapay zeka fiyat üretmez, yalnızca ham veriyi temizler."
+        )},
+    })
+    sorular.append({
+        "@type": "Question",
+        "name": "Ne sıklıkla güncelleniyor?",
+        "acceptedAnswer": {"@type": "Answer", "text": (
+            f"Ayda bir otomatik olarak yenilenir. Bu sayfadaki veriler "
+            f"{guncelleme_tarihi} tarihinde derlendi. Bir kaynak normalde "
+            "döndürdüğü ürün sayısının çok altına düşerse veri sessizce kabul "
+            "edilmez, karantinaya alınır."
+        )},
+    })
+
+    butce_cumlesi = (
+        f" — orta segmentte {conf['ad'].lower()} bütçesinin yaklaşık %{pay[1]:.0f}'i."
+        if pay else "."
+    )
+
+    uyari = (veri or {}).get("capraz_dogrulama_uyarisi")
+    if uyari:
+        sorular.append({
+            "@type": "Question",
+            "name": "Kaynaklar arasında neden fark var?",
+            "acceptedAnswer": {"@type": "Answer", "text": (
+                f"Bu kalemde kaynaklar arası fark %{uyari['fark_yuzdesi']:.0f}. "
+                "Bu genellikle veri hatası değil, kaynakların farklı segmentleri "
+                "temsil etmesidir (ör. kitlesel pazaryeri ile lüks marka mağazası). "
+                "Farkı gizlemiyoruz, endeks sayfasında uyarı olarak gösteriyoruz."
+            )},
+        })
+
     json_ld = {
         "@context": "https://schema.org",
         "@graph": [
@@ -1100,30 +1299,7 @@ def kalem_sayfasi_uret(
                     {"@type": "ListItem", "position": 3, "name": tanim["ad"], "item": sayfa_url},
                 ],
             },
-            {
-                "@type": "FAQPage",
-                "mainEntity": [
-                    {
-                        "@type": "Question",
-                        "name": sayfa["soru"],
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": cevap.replace("<strong>", "").replace("</strong>", ""),
-                        },
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "Bu fiyatlar nasıl hesaplandı?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": (
-                                "Fiyatlar gerçek kaynaklardan aylık olarak derlenir; "
-                                "ürünler düşük, orta ve lüks segmentlere ayrılır."
-                            ),
-                        },
-                    },
-                ],
-            },
+            {"@type": "FAQPage", "mainEntity": sorular},
         ],
     }
 
@@ -1132,10 +1308,16 @@ def kalem_sayfasi_uret(
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{sayfa["baslik"]} | Maliyetine.com.tr</title>
-<meta name="description" content="{sayfa["soru"].capitalize()} Güncel fiyat aralığı, segmentler, kaynak ve derleme tarihiyle.">
+<title>{sayfa["baslik"]} | Maliyetine</title>
+<meta name="description" content="{meta_aciklama}">
 <link rel="canonical" href="{sayfa_url}">
 <link rel="stylesheet" href="/assets/css/style.css">
+<meta property="og:title" content="{sayfa["baslik"]}">
+<meta property="og:description" content="{meta_aciklama}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="{sayfa_url}">
+<meta property="og:site_name" content="Maliyetine.com.tr">
+<meta name="twitter:card" content="summary">
 <script type="application/ld+json">
 {json.dumps(json_ld, ensure_ascii=False, indent=2)}
 </script>
@@ -1162,25 +1344,30 @@ def kalem_sayfasi_uret(
   </div>
 
   <section class="icerik-bolumu">
-    <h2>Fiyat aralığı</h2>
+    <h2>Fiyat aralığı ve örneklem</h2>
     <p>{sayfa["aciklama"]}</p>
-    {_segment_tablosu_html(veri)}
+    {_segment_detay_tablosu_html(veri)}
+    <p class="sonuc-alt-metin">Segmentler persentil bazlı ayrılır: en ucuz
+      çeyrek ekonomik, ortadaki yarı orta, en pahalı çeyrek lüks. "Ürün"
+      sütunu o segmentte kaç ürünün ölçüldüğünü gösterir.</p>
   </section>
 
   <section class="icerik-bolumu">
     <h2>Bu fiyata ne dahil?</h2>
-    <p>Bu sayfa yalnızca <strong>{tanim["ad"]}</strong> kalemini ölçer. Tüm bütçeyi görmek için
+    <p>Bu sayfa yalnızca <strong>{tanim["ad"]}</strong> kalemini ölçer{butce_cumlesi} Tüm bütçeyi görmek için
       <a href="/{conf["yol"]}/">{conf["ad"]} maliyeti endeksine</a> veya
       <a href="/{conf["yol"]}/hesaplayici/">hesaplayıcıya</a> gidin.</p>
   </section>
 
+{_sss_html(sorular)}
   <section class="icerik-bolumu">
     <h2>Kaynaklar ve yöntem</h2>
     {_kaynak_ozeti_html(veri)}
     <p>Segment tanımı, aykırı değer kontrolü ve kaynak ayrımı için
       <a href="/{conf["yol"]}/metodoloji/">metodoloji sayfasına</a> bakın.</p>
   </section>
-</main>
+
+{_ilgili_kalemler_html(conf, sayfa["slug"])}</main>
 
 <footer>
   <div class="kapsayici">
@@ -1414,7 +1601,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026'da Ne Kaça Mal Olur? Düğün, Ev Kurma | Maliyetine.com.tr</title>
+<title>2026'da Ne Kaça Mal Olur? | Maliyetine</title>
 <meta name="description" content="Düğün ve ev kurma maliyeti: gerçek fiyat verisinden derlenmiş, aylık güncellenen, doğrulanabilir endeks. Kaynak, tarih ve örneklem her rakamın yanında.">
 <link rel="canonical" href="{SITE_KOK_URL}/">
 <link rel="stylesheet" href="/assets/css/style.css">
