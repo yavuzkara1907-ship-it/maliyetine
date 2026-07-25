@@ -437,6 +437,36 @@ okumaya mı giriyor araba fiyatları hakkında bilgi almaya mı? Bizim kişisel
   YALNIZCA metodoloji sayfasında olur (oraya giren zaten detay istiyor).
   Şeffaflık = tek satır künye + metodoloji linki; sayfa doldurmak değil.
 
+## KALEM SAYFALARI 9 → 59 (2026-07-25)
+Kapsam veriye göre değil elle seçilmişti: **59 ürünlük nevresim takımının
+sayfası yokken 4 ürünlük televizyonun vardı.** Ev-kurmanın 42, düğünün 8
+kaleminden yalnızca 9'unun landing sayfası vardı — uzun kuyruk trafiğinin
+tamamı buradan gelecekken. Kimse "ev kurma maliyeti" aramadan önce
+"çamaşır makinesi fiyatları" arıyor.
+- **`KALEM_SAYFA_NOTLARI`** (sayfa_uret.py): her kalem için ELLE yazılmış,
+  o kaleme özgü bir not (kapasite, kumaş cinsi, motor tipi, BTU...).
+  **Programmatic SEO kırmızı çizgisi böyle korunuyor:** sayfalar toplu
+  üretiliyor ama gövde zaten kaleme özgü gerçek ölçülmüş veriden geliyor
+  (fiyat tablosu, segment, örneklem, SSS, kaynak linkleri); tek elle
+  yazılan alan bu not. **Notu yazılamayan kaleme sayfa AÇILMAZ** (testle
+  kilitli) — şablon cümle üretmek yasak.
+- **`KALEM_SAYFASI_ASGARI_URUN = 8`**: örneklemi düşük kaleme sayfa
+  açılmaz. 3 üründen "halı fiyatları" sayfası yapmak hem okuyucuyu
+  yanıltır hem ince içerik olur. Eşik çalışma anında uygulanıyor
+  (`kalem_sayfalarini_genislet()`, main() başında) çünkü hangi kalemin
+  sayfayı hak ettiği O AYKI ölçüme bağlı.
+- **Dip bölümdeki "diğer kalemler" listesi 38 linke çıkmıştı** — sayfanın
+  kendi içeriğini bastıran link-farm görünümü. Aynı GRUPTAN (Beyaz eşya,
+  Tekstil…) en fazla 8 linkle sınırlandı; konu olarak da daha alakalı bir
+  iç link sinyali. Endeks sayfası hub olduğu için orada tam liste kalıyor.
+- **Doğrulama:** 169 segment rakamının tamamı `/veri/*.json` ile birebir
+  aynı (uydurma sayı yok), 2621 iç linkte 0 kırık, 0 yetim sayfa, 59/59
+  JSON-LD parse OK, sayfa başına 238–435 kelime, birebir aynı gövde yok.
+  sitemap 29 → **68 URL**, IndexNow ile bildirildi.
+- **Not:** `televizyon` sayfası 4 örneklemle eşiğin altında ama ZATEN
+  açık olduğu için korunuyor (URL kırmamak için). Örneklemi büyütmek
+  gerek — Trendyol televizyon kategorisi az ürün döndürüyor.
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
