@@ -6,18 +6,18 @@
   "kalem": "kahve-makinesi",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-25",
-  "toplam_urun": 19,
+  "toplam_urun": 20,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "json-ld"
   ],
-  "genel_medyan": 1949,
+  "genel_medyan": 1948,
   "segmentler": {
     "dusuk": {
-      "min": 629,
-      "medyan": 1199,
+      "min": 569,
+      "medyan": 1039,
       "max": 1277,
-      "urun_sayisi": 5
+      "urun_sayisi": 6
     },
     "orta": {
       "min": 1350,
@@ -27,7 +27,7 @@
     },
     "luks": {
       "min": 6199,
-      "medyan": 7099,
+      "medyan": 6700,
       "max": 9899,
       "urun_sayisi": 4
     }

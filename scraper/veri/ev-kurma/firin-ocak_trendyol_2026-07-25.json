@@ -6,24 +6,24 @@
   "kalem": "firin-ocak",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-25",
-  "toplam_urun": 3,
+  "toplam_urun": 2,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "css"
   ],
-  "genel_medyan": 18199,
+  "genel_medyan": 18249,
   "segmentler": {
     "dusuk": {
-      "min": 6309,
-      "medyan": 6309,
-      "max": 6309,
+      "min": 18199,
+      "medyan": 18199,
+      "max": 18199,
       "urun_sayisi": 1
     },
     "orta": {
-      "min": 18199,
-      "medyan": 18249,
+      "min": 18299,
+      "medyan": 18299,
       "max": 18299,
-      "urun_sayisi": 2
+      "urun_sayisi": 1
     }
   }
 }

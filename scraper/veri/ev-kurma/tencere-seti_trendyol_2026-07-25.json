@@ -6,12 +6,12 @@
   "kalem": "tencere-seti",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-25",
-  "toplam_urun": 10,
+  "toplam_urun": 11,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "json-ld"
   ],
-  "genel_medyan": 3149,
+  "genel_medyan": 3299,
   "segmentler": {
     "dusuk": {
       "min": 2029,
@@ -21,9 +21,9 @@
     },
     "orta": {
       "min": 2669,
-      "medyan": 3299,
+      "medyan": 3300,
       "max": 3821,
-      "urun_sayisi": 5
+      "urun_sayisi": 6
     },
     "luks": {
       "min": 5199,

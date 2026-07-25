@@ -6,30 +6,30 @@
   "kalem": "koltuk-takimi",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-25",
-  "toplam_urun": 20,
+  "toplam_urun": 22,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "json-ld"
   ],
-  "genel_medyan": 38306,
+  "genel_medyan": 32698,
   "segmentler": {
     "dusuk": {
-      "min": 10514,
-      "medyan": 24074,
-      "max": 29589,
+      "min": 7199,
+      "medyan": 13051,
+      "max": 24400,
       "urun_sayisi": 6
     },
     "orta": {
-      "min": 30806,
-      "medyan": 38739,
-      "max": 43114,
-      "urun_sayisi": 10
+      "min": 27260,
+      "medyan": 34589,
+      "max": 42689,
+      "urun_sayisi": 11
     },
     "luks": {
-      "min": 43889,
-      "medyan": 52719,
+      "min": 43328,
+      "medyan": 48350,
       "max": 62848,
-      "urun_sayisi": 4
+      "urun_sayisi": 5
     }
   }
 }

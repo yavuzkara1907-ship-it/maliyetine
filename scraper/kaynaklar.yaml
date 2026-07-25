@@ -1596,3 +1596,39 @@ kaynaklar:
     aktif: true
     durum: "arastirildi"
     notlar: "WebSearch ile dogrulanan gercek URL (2026-07-25). Henuz motor.py ile test edilmedi."
+
+  # --- EV KURMA: 2. BAGIMSIZ KAYNAK (2026-07-25) ---
+  # COK KAYNAK KURALI geregi Trendyol'un yanina ikinci bagimsiz site.
+  # Ikisi de robots.txt ONAY verdi ve JSON-LD (schema.org/Product) ile
+  # HIC CSS secici gerektirmeden calisti - gercek cekimle dogrulandi.
+  # Elenen adaylar (bu turda): hepsiburada/teknosa/koctas/n11 robots.txt RET;
+  # mediamarkt erisilebilir ama JSON-LD/microdata YOK (CSS secici gerekir,
+  # dusuk oncelige alindi); vatan/ikea/bellona denenen kategori URL'leri 404
+  # (dogru URL bulunamadi, site engeli DEGIL).
+  - ad: "Karaca - Tencere Seti"
+    site: "karaca"
+    url: "https://www.karaca.com/tencere-seti"
+    render_gerekli: false
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "tencere-seti"
+    yontem: "otomatik"
+    min_fiyat: 2000
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+    notlar: "Gercek cekimle dogrulandi (2026-07-25): 48 urun, JSON-LD katmani, CSS secici gerekmedi. Ornek: 'Emsan Karistir-Pisir-Sakla 18 Parca ... Tencere Seti' 3.499 TL."
+
+  - ad: "English Home - Nevresim Takimi"
+    site: "englishhome"
+    url: "https://www.englishhome.com/nevresim-takimi"
+    render_gerekli: false
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "nevresim-takimi"
+    yontem: "otomatik"
+    min_fiyat: 200
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+    notlar: "Gercek cekimle dogrulandi (2026-07-25): 44 urun, JSON-LD katmani, CSS secici gerekmedi. Ornek: 'Serenity Bambu Saten Carsafli Cift Kisilik Nevresim Takimi' 3.499,99 TL."

@@ -276,7 +276,16 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
   ramsey, atasay) düştü; gelin-ayakkabısı'nın hiç aktif kaynağı kalmadı.
 
 ### Bilinen sandbox kısıtı — Claude Code network erişimi
-- Claude Code'un (bu sandbox) çalıştığı ortamın proxy politikası, hedef
+> **GÜNCELLEME (2026-07-25): Bu bölüm ARTIK HER ZAMAN GEÇERLİ DEĞİL.**
+> Claude Code Yavuz'un MacBook'unda doğrudan terminalde çalıştığında
+> (bu oturumda olduğu gibi, cwd `/Users/yavuzkara/Desktop/maliyetine`)
+> hedef sitelere GERÇEK istek atılabiliyor — robots.txt taraması, gerçek
+> kazıma ve `python3 motor.py` buradan çalıştırıldı ve gerçek veri
+> döndürdü. Aşağıdaki kısıt, proxy'li/izole bir sandbox ortamında
+> çalışıldığında geçerli. **Yeni bir kaynak araştırılacaksa önce basit
+> bir `requests.get` ile network erişimi test edilsin** — varsayarak
+> Yavuz'un elle çalıştırmasını beklemeye gerek yok.
+- Claude Code'un (izole sandbox) çalıştığı ortamın proxy politikası, hedef
   sitelere (akakce.com, dugun.com, dugunbuketi.com, armut.com,
   trendyol.com, hepsiburada.com, dolap.com, ramsey.com.tr, atasay.com
   vb.) doğrudan bağlantıyı 403 ile reddediyor
@@ -907,15 +916,61 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
       vertikal için `agrega.py` + `sayfa_uret.py` de çalıştırılmalı** —
       GitHub Actions bunu zaten döngüyle yapıyor, elle çalıştırmalarda
       atlanmamalı.
-- [ ] **ACİL SIRADAKİ İŞ — ev-kurma için 2. bağımsız kaynak.** 42 kalemin
-      hepsi şu an sadece Trendyol'dan geliyor, ÇOK KAYNAK KURALI
-      karşılanmıyor (sayfada dürüstçe uyarı olarak gösteriliyor ama bu
-      kalıcı bir durum olmamalı). Aday kaynaklar: Hepsiburada (robots.txt
-      403 vermişti, tekrar bakılabilir), Vatan Bilgisayar, Teknosa,
-      MediaMarkt (elektronik/beyaz eşya), Koçtaş/IKEA/Bellona/İstikbal
-      (mobilya), Karaca/English Home (mutfak/tekstil). Kaynak eklenince
-      çapraz doğrulama otomatik devreye girer ve tek-kaynak uyarısı
-      kendiliğinden kaybolur.
+- [~] **Ev-kurma 2. bağımsız kaynak — KISMİ İLERLEME (2026-07-25), GERÇEK VERİYE ALINDI.**
+      Yavuz'un "deneyelim ama olmuyorsa zorlayıp vakit kaybetmeyelim"
+      talimatıyla zaman kutulu bir tur yapıldı. **KAZANÇ: 42 kalemden
+      2'si artık ÇOK KAYNAK KURALI'nı karşılıyor:**
+      - **Karaca/tencere-seti** — 46-48 ürün, JSON-LD, CSS seçici
+        GEREKMEDİ. `durum: onaylandi`.
+      - **English Home/nevresim-takimi** — 44 ürün, JSON-LD, CSS seçici
+        GEREKMEDİ. `durum: onaylandi`.
+      İkisi de gerçek `motor.py` çalıştırmasıyla doğrulandı ve
+      **çapraz doğrulama ev-kurma'da İLK KEZ gerçekten devreye girdi**:
+      nevresim Trendyol 619 TL vs English Home 1.280 TL (%107 fark),
+      tencere Trendyol 3.299 vs Karaca 6.249 (%89 fark). İkisi de
+      kazıma hatası DEĞİL — pazaryeri vs marka mağazası segment farkı
+      (düğün'deki Vakko/Trendyol %2042 farkının çok daha makul hali).
+      Mevcut karar geçerli: kalemler bölünmüyor, fark belgeleniyor.
+      **Tam `motor.py` çalıştırıldı (57 kaynak-grubu, 56 sağlıklı):**
+      ev-kurma artık "3 bağımsız kaynak" diyor ve **tek-kaynak uyarısı
+      sayfadan kendiliğinden kayboldu** (kod doğru davrandı, elle
+      müdahale gerekmedi). Ev-kurma orta segment toplamı 353.827 →
+      **387.035 TL** (yeni kaynaklar medyanı yukarı çekti: Karaca ve
+      English Home marka mağazası, Trendyol pazaryeri).
+      Düğün: 427.203 → **418.101 TL**.
+      **SAĞLIK KONTROLÜ İLK KEZ GERÇEKTEN DEVREYE GİRDİ:** Vakko/damatlık
+      normalde ~40 ürün dönerken 0 döndü → otomatik karantinaya alındı,
+      endekse DAHİL EDİLMEDİ (`scraper/veri/karantina/`). Vakko daha önce
+      48 ürün veriyordu, site yapısı değişmiş olabilir — düşük öncelik,
+      damatlık zaten Trendyol+Beymen ile kapsanıyor, ama bir sonraki
+      turda `sayfa_tani.py` ile bakılabilir.
+- [ ] **Kalan 40 kalem için 2. kaynak (sonraki tur).** Bu turda elenenler
+      ve SEBEPLERİ (tekrar denemeye değip değmeyeceğini bilmek için):
+      - **robots.txt RET (denenmez):** Hepsiburada, Teknosa, Koçtaş, n11.
+      - **MediaMarkt** — robots.txt ONAY, sayfa çekilebiliyor (700KB) ama
+        JSON-LD/microdata YOK → CSS seçici gerekir. Düşük öncelik ama
+        ölü değil; `sayfa_tani.py` ile teşhis edilebilir. Beyaz eşya +
+        elektronik kapsadığı için en değerli aday.
+      - **Vatan / IKEA / Bellona** — denenen kategori URL'leri 404 verdi,
+        yani **site engeli DEĞİL, sadece doğru URL bulunamadı.** robots.txt
+        üçünde de ONAY. Doğru kategori URL'si bulunursa çalışabilir.
+      - **Karaca'nın diğer kalemleri — ÖNEMLİ METODOLOJİ NOTU.**
+        `category-sitemap.xml`'de 4030 kategori URL'si var ama çoğu
+        KAMPANYA sayfası ("12 kişilik yemek takımı alana çatal bıçak
+        hediye") — bunlardan fiyat toplamak segment temsilini bozar.
+        Kampanya işaretleri filtrelenip test edilen jenerik sayfalar ise
+        MARKA SERİSİ bazlı çıktı ve sadece 5-7 ürün döndürdü
+        (`bakir-tava`, `biodiamond-tava`) — örneklem çok küçük.
+        `tencere-seti` (48 ürün) şanslı bir istisnaydı. Yani Karaca'da
+        kalem başına doğru jenerik kategori sayfası ELLE seçilmeli;
+        slug tahmini tutmuyor (`/tava-seti` 404).
+- [x] **Bu makinede network erişimi VAR (2026-07-25) — eski sandbox notu
+      artık geçerli değil.** CLAUDE.md'nin "Bilinen sandbox kısıtı"
+      bölümü, Claude Code'un hedef sitelere 403 aldığını söylüyordu. Bu
+      oturum Yavuz'un MacBook'unda doğrudan terminalde çalıştığı için
+      Trendyol/Karaca/English Home'a gerçek istek atılabildi, robots.txt
+      taraması ve gerçek kazıma buradan yapıldı. **Yeni kaynak araştırması
+      artık Yavuz'un elle çalıştırmasını beklemek zorunda değil.**
 - [ ] Takı/altın (canlı gram fiyatı) için kaynak bulma
 - [ ] TÜİK doğrulama verisi entegrasyonu (ÇOK KAYNAK KURALI 5. katman)
 - [x] **GitHub Actions aylık otomasyon + sitemap.xml eklendi (2026-07-24).**

@@ -6,24 +6,24 @@
   "kalem": "camasir-makinesi",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-25",
-  "toplam_urun": 21,
+  "toplam_urun": 22,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "json-ld"
   ],
-  "genel_medyan": 23400,
+  "genel_medyan": 24049,
   "segmentler": {
     "dusuk": {
       "min": 15999,
-      "medyan": 17192,
-      "max": 19784,
+      "medyan": 17184,
+      "max": 19699,
       "urun_sayisi": 6
     },
     "orta": {
-      "min": 19799,
-      "medyan": 24124,
-      "max": 26799,
-      "urun_sayisi": 10
+      "min": 19784,
+      "medyan": 24799,
+      "max": 26749,
+      "urun_sayisi": 11
     },
     "luks": {
       "min": 27399,

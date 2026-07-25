@@ -6,12 +6,12 @@
   "kalem": "damatlik",
   "vertikal": "dugun",
   "tarih": "2026-07-25",
-  "toplam_urun": 16,
+  "toplam_urun": 17,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "css"
   ],
-  "genel_medyan": 3300,
+  "genel_medyan": 3240,
   "segmentler": {
     "dusuk": {
       "min": 2508,
@@ -21,15 +21,15 @@
     },
     "orta": {
       "min": 2781,
-      "medyan": 3399,
-      "max": 4399,
-      "urun_sayisi": 9
+      "medyan": 3300,
+      "max": 4119,
+      "urun_sayisi": 8
     },
     "luks": {
-      "min": 5599,
-      "medyan": 7996,
+      "min": 4399,
+      "medyan": 4999,
       "max": 10392,
-      "urun_sayisi": 2
+      "urun_sayisi": 4
     }
   }
 }

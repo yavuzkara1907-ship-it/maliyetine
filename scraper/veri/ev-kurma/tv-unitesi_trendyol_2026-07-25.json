@@ -11,7 +11,7 @@
   "kullanilan_katmanlar": [
     "css"
   ],
-  "genel_medyan": 7104,
+  "genel_medyan": 6222,
   "segmentler": {
     "dusuk": {
       "min": 3788,
@@ -21,13 +21,13 @@
     },
     "orta": {
       "min": 5538,
-      "medyan": 7233,
-      "max": 8675,
+      "medyan": 6235,
+      "max": 8632,
       "urun_sayisi": 6
     },
     "luks": {
-      "min": 11794,
-      "medyan": 24772,
+      "min": 8675,
+      "medyan": 23212,
       "max": 37750,
       "urun_sayisi": 2
     }

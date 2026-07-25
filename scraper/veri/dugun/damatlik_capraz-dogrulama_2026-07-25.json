@@ -3,11 +3,10 @@
   "kalem": "damatlik",
   "tarih": "2026-07-25",
   "site_medyanlari": {
-    "trendyol": 3300,
-    "beymen": 44950,
-    "vakko": 71970
+    "trendyol": 3240,
+    "beymen": 44950
   },
-  "fark_orani": 20.809,
+  "fark_orani": 12.873,
   "esik_orani": 0.3,
   "uyari": true
 }

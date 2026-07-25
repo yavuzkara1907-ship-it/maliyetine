@@ -14,13 +14,13 @@
   "genel_medyan": 28860,
   "segmentler": {
     "dusuk": {
-      "min": 6388,
+      "min": 6460,
       "medyan": 8829,
-      "max": 15699,
+      "max": 15994,
       "urun_sayisi": 7
     },
     "orta": {
-      "min": 18589,
+      "min": 16901,
       "medyan": 28930,
       "max": 36199,
       "urun_sayisi": 12

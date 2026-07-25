@@ -5,23 +5,23 @@
     "gelinlik": {
       "segmentler": {
         "dusuk": {
-          "min": 1503,
-          "medyan": 3391,
-          "max": 5299,
+          "min": 2141,
+          "medyan": 4454,
+          "max": 6460,
           "urun_sayisi": 6,
           "kaynak_sayisi": 1
         },
         "orta": {
-          "min": 6460,
-          "medyan": 14153,
-          "max": 25000,
+          "min": 6490,
+          "medyan": 8999,
+          "max": 21185,
           "urun_sayisi": 10,
           "kaynak_sayisi": 1
         },
         "luks": {
-          "min": 30959,
-          "medyan": 40000,
-          "max": 65000,
+          "min": 21583,
+          "medyan": 30959,
+          "max": 47677,
           "urun_sayisi": 5,
           "kaynak_sayisi": 1
         }
@@ -171,19 +171,19 @@
           "min": 2781,
           "medyan": 46450,
           "max": 79995,
-          "urun_sayisi": 49,
+          "urun_sayisi": 48,
           "kaynak_sayisi": 3
         },
         "luks": {
-          "min": 5599,
+          "min": 4399,
           "medyan": 83970,
           "max": 164950,
-          "urun_sayisi": 21,
+          "urun_sayisi": 23,
           "kaynak_sayisi": 3
         }
       },
       "genel_medyan": 44950,
-      "toplam_urun": 97,
+      "toplam_urun": 98,
       "guncelleme_tarihi": "2026-07-25",
       "kaynak_sayisi": 6,
       "kaynaklar": [
@@ -229,8 +229,8 @@
             "Trendyol - Damatlik"
           ],
           "tarih": "2026-07-25",
-          "toplam_urun": 16,
-          "genel_medyan": 3300
+          "toplam_urun": 17,
+          "genel_medyan": 3240
         },
         {
           "site": "vakko",
@@ -243,11 +243,10 @@
         }
       ],
       "capraz_dogrulama_uyarisi": {
-        "fark_yuzdesi": 2080.9,
+        "fark_yuzdesi": 1287.3,
         "medyanlar": {
-          "trendyol": 3300,
-          "beymen": 44950,
-          "vakko": 71970
+          "trendyol": 3240,
+          "beymen": 44950
         }
       }
     },
@@ -290,27 +289,27 @@
         "dusuk": {
           "min": 92,
           "medyan": 94,
-          "max": 124,
+          "max": 108,
           "urun_sayisi": 3,
           "kaynak_sayisi": 1
         },
         "orta": {
-          "min": 132,
-          "medyan": 151,
-          "max": 159,
+          "min": 124,
+          "medyan": 139,
+          "max": 156,
           "urun_sayisi": 4,
           "kaynak_sayisi": 1
         },
         "luks": {
-          "min": 441,
-          "medyan": 441,
+          "min": 159,
+          "medyan": 300,
           "max": 441,
-          "urun_sayisi": 1,
+          "urun_sayisi": 2,
           "kaynak_sayisi": 1
         }
       },
-      "genel_medyan": 139,
-      "toplam_urun": 8,
+      "genel_medyan": 132,
+      "toplam_urun": 9,
       "guncelleme_tarihi": "2026-07-25",
       "kaynak_sayisi": 1,
       "kaynaklar": [
@@ -320,8 +319,8 @@
             "Trendyol - Dugun Davetiyesi"
           ],
           "tarih": "2026-07-25",
-          "toplam_urun": 8,
-          "genel_medyan": 139
+          "toplam_urun": 9,
+          "genel_medyan": 132
         }
       ],
       "capraz_dogrulama_uyarisi": null
@@ -358,28 +357,28 @@
       "segmentler": {
         "dusuk": {
           "min": 590,
-          "medyan": 644,
-          "max": 859,
-          "urun_sayisi": 3,
+          "medyan": 617,
+          "max": 644,
+          "urun_sayisi": 2,
           "kaynak_sayisi": 1
         },
         "orta": {
-          "min": 935,
-          "medyan": 1121,
-          "max": 1795,
-          "urun_sayisi": 4,
+          "min": 841,
+          "medyan": 935,
+          "max": 1969,
+          "urun_sayisi": 3,
           "kaynak_sayisi": 1
         },
         "luks": {
-          "min": 2194,
-          "medyan": 2254,
-          "max": 2315,
-          "urun_sayisi": 2,
+          "min": 3824,
+          "medyan": 3824,
+          "max": 3824,
+          "urun_sayisi": 1,
           "kaynak_sayisi": 1
         }
       },
-      "genel_medyan": 1050,
-      "toplam_urun": 9,
+      "genel_medyan": 888,
+      "toplam_urun": 6,
       "guncelleme_tarihi": "2026-07-25",
       "kaynak_sayisi": 2,
       "kaynaklar": [
@@ -398,8 +397,8 @@
             "Trendyol - Gelin Ayakkabisi"
           ],
           "tarih": "2026-07-25",
-          "toplam_urun": 9,
-          "genel_medyan": 1050
+          "toplam_urun": 6,
+          "genel_medyan": 888
         }
       ],
       "capraz_dogrulama_uyarisi": null
@@ -407,7 +406,7 @@
     "salon": {
       "segmentler": {
         "dusuk": {
-          "min": 300,
+          "min": 200,
           "medyan": 320,
           "max": 400,
           "urun_sayisi": 3,
@@ -415,16 +414,16 @@
         },
         "orta": {
           "min": 500,
-          "medyan": 550,
-          "max": 600,
-          "urun_sayisi": 5,
+          "medyan": 525,
+          "max": 550,
+          "urun_sayisi": 4,
           "kaynak_sayisi": 1
         },
         "luks": {
           "min": 750,
-          "medyan": 750,
-          "max": 750,
-          "urun_sayisi": 1,
+          "medyan": 775,
+          "max": 800,
+          "urun_sayisi": 2,
           "kaynak_sayisi": 1
         }
       },

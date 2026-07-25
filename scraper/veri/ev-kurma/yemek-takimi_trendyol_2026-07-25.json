@@ -6,12 +6,12 @@
   "kalem": "yemek-takimi",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-25",
-  "toplam_urun": 22,
+  "toplam_urun": 21,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "json-ld"
   ],
-  "genel_medyan": 2149,
+  "genel_medyan": 2000,
   "segmentler": {
     "dusuk": {
       "min": 1117,
@@ -21,9 +21,9 @@
     },
     "orta": {
       "min": 1750,
-      "medyan": 2299,
+      "medyan": 2150,
       "max": 2698,
-      "urun_sayisi": 11
+      "urun_sayisi": 10
     },
     "luks": {
       "min": 2799,

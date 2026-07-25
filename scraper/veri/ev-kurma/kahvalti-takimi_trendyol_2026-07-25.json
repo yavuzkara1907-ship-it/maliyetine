@@ -11,24 +11,24 @@
   "kullanilan_katmanlar": [
     "json-ld"
   ],
-  "genel_medyan": 900,
+  "genel_medyan": 1000,
   "segmentler": {
     "dusuk": {
       "min": 599,
-      "medyan": 679,
-      "max": 853,
+      "medyan": 783,
+      "max": 869,
       "urun_sayisi": 6
     },
     "orta": {
-      "min": 869,
-      "medyan": 900,
-      "max": 1069,
+      "min": 871,
+      "medyan": 1000,
+      "max": 1100,
       "urun_sayisi": 10
     },
     "luks": {
-      "min": 1078,
-      "medyan": 1100,
-      "max": 1399,
+      "min": 1200,
+      "medyan": 1542,
+      "max": 1904,
       "urun_sayisi": 5
     }
   }
