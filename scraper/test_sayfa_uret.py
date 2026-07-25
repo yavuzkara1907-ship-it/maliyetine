@@ -54,9 +54,10 @@ class OrnekToplamHesaplaTestleri(unittest.TestCase):
     # yemek-ikram KASITLI YOK: bilgi_amacli, hicbir senaryoda toplanmaz.
     # taki-altin da YOK: 2026-07-25'te tahminiden gercek kaynaga tasindi
     # (Atasay altin bilezik). Kalan 6 tahmini kalem:
-    # fotografci + orkestra-dj + gelin-arabasi + kuafor-makyaj +
-    # organizasyon + nikah-islemleri
-    TAHMINI_TOPLAM_100_ORTA = 45000 + 25000 + 3000 + 5000 + 40000 + 3500  # 121500
+    # 2026-07-26: fotografci, organizasyon, kuafor-makyaj ve gelin-arabasi
+    # da gercek kaynaga (dugun.com Istanbul tablolari) tasindi. Kalan 2
+    # tahmini kalem: orkestra-dj + nikah-islemleri
+    TAHMINI_TOPLAM_100_ORTA = 25000 + 3500  # 28500
 
     def test_sabit_ve_kisi_basi_kalemler_dogru_toplanir(self):
         kalemler = {"gelinlik": GELINLIK_VERISI, "salon-yemekli": SALON_YEMEKLI_VERISI}
@@ -82,9 +83,9 @@ class OrnekToplamHesaplaTestleri(unittest.TestCase):
 
     def test_tahmini_kalem_segmentine_gore_dogru_deger_verir(self):
         _, detaylar = sayfa_uret.ornek_toplam_hesapla(DUGUN, {}, olcek=1, segment="luks")
-        fotografci = next(d for d in detaylar if d["id"] == "fotografci")
-        self.assertEqual(fotografci["birim_fiyat"], 100000)
-        self.assertTrue(fotografci["tahmini_mi"])
+        orkestra = next(d for d in detaylar if d["id"] == "orkestra-dj")
+        self.assertEqual(orkestra["birim_fiyat"], 80000)
+        self.assertTrue(orkestra["tahmini_mi"])
 
 
 SALON_KOKTEYL_VERISI = {
@@ -130,7 +131,7 @@ class CiftSayimKorumasiTestleri(unittest.TestCase):
     def _tahmini():
         # OrnekToplamHesaplaTestleri.TAHMINI_TOPLAM_100_ORTA ile ayni deger
         # (taki-altin ve yemek-ikram artik tahmini degil).
-        return 45000 + 25000 + 3000 + 5000 + 40000 + 3500  # 121500
+        return 25000 + 3500  # 28500
 
     def test_yemek_kalemi_varsayilan_senaryoda_toplama_girmez(self):
         # yemek-ikram 2026-07-25'te tahminiden GERCEK kaynaga tasindi -
@@ -578,7 +579,7 @@ class AnasayfaTestleri(unittest.TestCase):
         self._yaz("dugun", {"gelinlik": GELINLIK_VERISI,
                             "salon-yemekli": SALON_YEMEKLI_VERISI})
         html = sayfa_uret.anasayfa_uret(self.veri_kok)
-        beklenen = 5000 + 1100 * DUGUN["olcek_varsayilan"] + 121500
+        beklenen = 5000 + 1100 * DUGUN["olcek_varsayilan"] + 28500
         self.assertIn(sayfa_uret._para(beklenen), html)
         self.assertIn("Güncelleme: 2026-07-25", html)
 

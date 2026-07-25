@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Orta Sehpa"
+  ],
+  "kalem": "sehpa",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-07-26",
+  "toplam_urun": 20,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 1894,
+  "segmentler": {
+    "dusuk": {
+      "min": 1036,
+      "medyan": 1313,
+      "max": 1643,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 1699,
+      "medyan": 1957,
+      "max": 2099,
+      "urun_sayisi": 10
+    },
+    "luks": {
+      "min": 2199,
+      "medyan": 2250,
+      "max": 2785,
+      "urun_sayisi": 4
+    }
+  }
+}

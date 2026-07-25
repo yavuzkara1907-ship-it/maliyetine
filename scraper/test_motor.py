@@ -1083,3 +1083,18 @@ class TabloKatmaniTestleri(unittest.TestCase):
         urunler, katmanlar = motor.kaynak_ham_veri_topla(kaynak)
         self.assertEqual(katmanlar, {"tablo"})
         self.assertEqual(len(urunler), 3)
+
+
+class TekOlcumSegmentTesti(unittest.TestCase):
+    """Tek urunlu kaynak: uc segment de ayni degeri almali."""
+
+    def test_tek_urun_uc_segmenti_de_doldurur(self):
+        seg = motor.segmentle([{"isim": "İstanbul", "fiyat": 15600}])
+        self.assertEqual(set(seg), {"dusuk", "orta", "luks"})
+        for ad in ("dusuk", "orta", "luks"):
+            self.assertEqual(seg[ad]["medyan"], 15600, f"{ad} segmenti bos/yanlis")
+
+    def test_cok_urunlu_segmentleme_bozulmadi(self):
+        urunler = [{"isim": f"u{i}", "fiyat": f} for i, f in enumerate([100, 200, 300, 400, 500])]
+        seg = motor.segmentle(urunler)
+        self.assertLess(seg["dusuk"]["medyan"], seg["luks"]["medyan"])

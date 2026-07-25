@@ -9,7 +9,13 @@ name: Aylık Veri Güncelleme
 
 on:
   schedule:
-    - cron: "0 6 1 * *" # her ayın 1'i, 06:00 UTC
+    # AYDA İKİ KEZ (2026-07-26, Yavuz'un kararı): ayın 1'i ve 15'i.
+    # Neden: zaman serisi bu projenin kopyalanamaz tek varlığı. Kaynakları
+    # gören biri aynı endeksi iki haftada kurar, ama geçmişe dönüp
+    # 2026 Temmuz'un fiyatını toplayamaz. Ölçüm sıklığını iki katına
+    # çıkarmak seriyi hem daha değerli hem enflasyona karşı daha duyarlı
+    # yapıyor — ve bir çalıştırma hata verirse ay tamamen boş kalmıyor.
+    - cron: "0 6 1,15 * *"
   workflow_dispatch: {}
 
 permissions:

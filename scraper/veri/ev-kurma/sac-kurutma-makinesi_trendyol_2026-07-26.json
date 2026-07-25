@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Sac Kurutma Makinesi"
+  ],
+  "kalem": "sac-kurutma-makinesi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-07-26",
+  "toplam_urun": 23,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 1153,
+  "segmentler": {
+    "dusuk": {
+      "min": 398,
+      "medyan": 540,
+      "max": 698,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 736,
+      "medyan": 1171,
+      "max": 1249,
+      "urun_sayisi": 12
+    },
+    "luks": {
+      "min": 1266,
+      "medyan": 1599,
+      "max": 1794,
+      "urun_sayisi": 5
+    }
+  }
+}

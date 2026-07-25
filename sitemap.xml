@@ -146,11 +146,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://maliyetine.com.tr/ev-kurma/tv-unitesi-fiyatlari/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://maliyetine.com.tr/ev-kurma/sehpa-fiyatlari/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -272,11 +267,6 @@
   </url>
   <url>
     <loc>https://maliyetine.com.tr/ev-kurma/bornoz-fiyatlari/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://maliyetine.com.tr/ev-kurma/perde-fiyatlari/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

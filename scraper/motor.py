@@ -300,15 +300,36 @@ def tablo_urunler(soup: BeautifulSoup, kaynak: dict):
     secilir; verilmezse sayfadaki ilk tablo. Baslik metnine gore secmek
     tablo sirasina bagli kalmaktan daha saglam - site araya yeni tablo
     eklerse indeks kayar ama baslik kaymaz.
+
+    `icerik_metni` alternatif tablo secme yolu: tablonun KENDI icinde gecen
+    bir metne gore secer. Bazi sayfalarda tablodan onceki baslik tabloyla
+    alakasiz oluyor (ör. dugun.com'da fiyat tablosunun ustunde "Benzersiz
+    Dugun Fotograflari Icin Ne Yapmali?" basligi var) - tablo adi ise
+    tablonun ilk satirinda yaziyor.
+
+    `satir_filtresi` verilirse yalnizca isim sutunu bu regex'e uyan satirlar
+    alinir. NEDEN: bazi tablolar il/sehir bazli - 27 ilin fiyatini birden
+    almak, cografi farki fiyat SEGMENTI gibi gostermeye yol acar. Tek bir
+    satiri (ör. Istanbul) secmek ne olctugumuzu net tutar.
     """
     t = kaynak["tablo"]
     min_fiyat = kaynak.get("min_fiyat", 100)
     isim_sutunu = t.get("isim_sutunu", 0)
     fiyat_sutunu = t.get("fiyat_sutunu", 1)
+    satir_deseni = re.compile(t["satir_filtresi"], re.I) if t.get("satir_filtresi") else None
 
     hedef = None
     baslik_metni = t.get("baslik_metni")
-    if baslik_metni:
+    icerik_metni = t.get("icerik_metni")
+    if icerik_metni:
+        def _n(x):
+            return re.sub(r"\s+", " ", x.replace("\xa0", " ")).strip()
+        ic_desen = re.compile(r"\s+".join(re.escape(k) for k in _n(icerik_metni).split()), re.I)
+        for tablo in soup.find_all("table"):
+            if ic_desen.search(_n(tablo.get_text(" ", strip=True))):
+                hedef = tablo
+                break
+    elif baslik_metni:
         # Basliklarda sik sik nbsp (\xa0) ve cok bosluk oluyor ("Sıfır\xa0Togg
         # fiyatları") - tam metin karsilastirmasi bu yuzden tutmuyordu.
         # Iki tarafi da normalize edip bosluklari esnek eslestiriyoruz.
@@ -333,6 +354,8 @@ def tablo_urunler(soup: BeautifulSoup, kaynak: dict):
         if len(hucreler) <= max(isim_sutunu, fiyat_sutunu):
             continue
         isim = hucreler[isim_sutunu].get_text(" ", strip=True)
+        if satir_deseni and not satir_deseni.search(isim):
+            continue
         fiyat = fiyat_ayikla(hucreler[fiyat_sutunu].get_text(" ", strip=True))
         # Baslik satiri ve fiyati okunamayan satirlar (ör. "-") atlanir.
         if not isim or fiyat is None or fiyat <= min_fiyat:
@@ -524,6 +547,20 @@ def segmentle(urunler):
         return {}
     fiyatlar = sorted(u["fiyat"] for u in urunler)
     n = len(fiyatlar)
+
+    # TEK OLCUM NOKTASI: persentil bolmesi anlamsiz - tek fiyat p25'in de
+    # altinda kaldigi icin yalnizca "dusuk" segmenti dolar, "orta" ve
+    # "luks" BOS kalirdi. Bu sessiz bir hata: hesaplayicida orta segment
+    # secen kullanici o kalemi hic gormezdi (bkz. dugun.com il bazli
+    # kalemler - fotografci, organizasyon, kuafor, gelin arabasi).
+    # Tek gozlem tum dagilimi temsil eder; uc segment de ayni degeri alir.
+    # Kalem tanimindaki `tek_deger` bayragi bunu kullaniciya "Tek olcum -
+    # segment kirilimi yok" etiketiyle bildiriyor.
+    if n == 1:
+        tek = {"min": round(fiyatlar[0]), "medyan": round(fiyatlar[0]),
+               "max": round(fiyatlar[0]), "urun_sayisi": 1}
+        return {"dusuk": dict(tek), "orta": dict(tek), "luks": dict(tek)}
+
     p25, p75 = fiyatlar[n // 4], fiyatlar[(3 * n) // 4]
 
     seg = {"dusuk": [], "orta": [], "luks": []}

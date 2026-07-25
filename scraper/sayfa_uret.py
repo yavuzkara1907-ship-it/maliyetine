@@ -81,6 +81,20 @@ DUGUN_KALEMLERI = [
         "id": "yemek-ikram", "ad": "Yemek / İkram (mekanın menü bedeli)",
         "birim": "kisi_basi", "bilgi_amacli": True,
     },
+    # 2026-07-26: dort hizmet kalemi tahminiden GERCEK kaynaga tasindi
+    # (dugun.com il bazli fiyat tablolari, Istanbul satiri).
+    #
+    # `tek_deger`: bu kalemlerde SEGMENT KIRILIMI YOK - kaynak tek bir
+    # Istanbul rakami veriyor, uc ayri fiyat bandi degil. Ekonomik/orta/ust
+    # secildiginde ayni rakam kullanilir ve sayfada bu ACIKCA yazilir.
+    # Neden 27 ilin tamamini alip persentille segmentlemedik: cografi fark
+    # fiyat segmenti DEGILDIR - "ekonomik fotografci" ucuz bir il demek
+    # olmaz. Salon kalemindeki "ne olctugu belirsiz" hatasini tekrarlamamak
+    # icin tek ve tanimli bir olcum tercih edildi.
+    {"id": "fotografci", "ad": "Fotoğraf ve Video", "birim": "sabit", "tek_deger": True},
+    {"id": "organizasyon", "ad": "Organizasyon / Süsleme", "birim": "sabit", "tek_deger": True},
+    {"id": "kuafor-makyaj", "ad": "Kuaför ve Makyaj", "birim": "sabit", "tek_deger": True},
+    {"id": "gelin-arabasi", "ad": "Gelin Arabası", "birim": "sabit", "tek_deger": True},
 ]
 
 # Henuz kazima kaynagi olmayan kalemler. Yavuz'un acik talimatiyla
@@ -93,33 +107,9 @@ DUGUN_KALEMLERI = [
 # guncellenmez.
 DUGUN_KALEMLERI_TAHMINI = [
     {
-        "id": "fotografci", "ad": "Fotoğraf ve Video", "birim": "sabit",
-        "tahmini": {"dusuk": 20000, "orta": 45000, "luks": 100000},
-        "kaynak_notu": "Düğün fotoğraf/video paket fiyat araştırması.",
-        "arastirma_tarihi": "2026-07-24",
-    },
-    {
         "id": "orkestra-dj", "ad": "Orkestra / DJ", "birim": "sabit",
         "tahmini": {"dusuk": 5000, "orta": 25000, "luks": 80000},
         "kaynak_notu": "Düğün orkestra/DJ kiralama fiyat araştırması.",
-        "arastirma_tarihi": "2026-07-24",
-    },
-    {
-        "id": "gelin-arabasi", "ad": "Gelin Arabası", "birim": "sabit",
-        "tahmini": {"dusuk": 800, "orta": 3000, "luks": 8000},
-        "kaynak_notu": "Gelin arabası kiralama fiyat araştırması.",
-        "arastirma_tarihi": "2026-07-24",
-    },
-    {
-        "id": "kuafor-makyaj", "ad": "Kuaför ve Makyaj", "birim": "sabit",
-        "tahmini": {"dusuk": 1000, "orta": 5000, "luks": 15000},
-        "kaynak_notu": "Gelin saçı ve makyajı fiyat araştırması.",
-        "arastirma_tarihi": "2026-07-24",
-    },
-    {
-        "id": "organizasyon", "ad": "Organizasyon / Süsleme", "birim": "sabit",
-        "tahmini": {"dusuk": 15000, "orta": 40000, "luks": 150000},
-        "kaynak_notu": "Düğün organizasyon/dekorasyon fiyat araştırması.",
         "arastirma_tarihi": "2026-07-24",
     },
     {
@@ -789,6 +779,11 @@ def _kalem_satirlari_html(conf: dict, kalemler: dict) -> str:
             not_etiketi = ' <span class="tahmini-etiket">Bilgi amaçlı — toplamda değil</span>'
         elif not tanim.get("varsayilan_dahil", True):
             not_etiketi = ' <span class="tahmini-etiket">Toplamda değil</span>'
+        elif tanim.get("tek_deger"):
+            # Kaynak tek bir Istanbul rakami veriyor, uc fiyat bandi degil.
+            # Uc sutunda ayni sayiyi gorup "segment farki yok mu?" diye
+            # soran okuyucuya cevabi satirin kendisi versin.
+            not_etiketi = ' <span class="tahmini-etiket">Tek ölçüm — segment kırılımı yok</span>'
         else:
             not_etiketi = ""
         satirlar.append(

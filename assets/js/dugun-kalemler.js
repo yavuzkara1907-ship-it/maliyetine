@@ -63,35 +63,26 @@ const DUGUN_KALEMLERI = [
     id: "yemek-ikram", ad: "Yemek / İkram (mekanın menü bedeli)",
     birim: "kisi_basi", kaynak_tipi: "gercek", bilgi_amacli: true,
   },
+  // 2026-07-26: dort hizmet kalemi TAHMINI -> GERCEK kaynak (dugun.com il
+  // bazli fiyat tablolari, Istanbul satiri). Tahminler ciddi sapmisti:
+  // fotografci 45.000 -> 15.600 (3 kat yuksek), organizasyon 40.000 ->
+  // 22.150, kuafor 5.000 -> 12.450 (2.5 kat dusuk), gelin arabasi
+  // 3.000 -> 9.800 (3 kat dusuk). Sapmalar iki yonde de cikti.
+  //
+  // tek_deger: SEGMENT KIRILIMI YOK. Kaynak tek bir Istanbul rakami
+  // veriyor; ekonomik/orta/ust secildiginde ayni deger kullanilir ve UI
+  // bunu acikca yazar. 27 ilin tamamini alip persentille segmentlemedik
+  // cunku cografi fark fiyat segmenti DEGILDIR - "ekonomik fotografci"
+  // ucuz bir il demek olmaz.
+  { id: "fotografci", ad: "Fotoğraf ve Video", birim: "sabit", kaynak_tipi: "gercek", tek_deger: true },
+  { id: "organizasyon", ad: "Organizasyon / Süsleme", birim: "sabit", kaynak_tipi: "gercek", tek_deger: true },
+  { id: "kuafor-makyaj", ad: "Kuaför ve Makyaj", birim: "sabit", kaynak_tipi: "gercek", tek_deger: true },
+  { id: "gelin-arabasi", ad: "Gelin Arabası", birim: "sabit", kaynak_tipi: "gercek", tek_deger: true },
 
-  {
-    id: "fotografci", ad: "Fotoğraf ve Video", birim: "sabit", kaynak_tipi: "tahmini",
-    tahmini: { dusuk: 20000, orta: 45000, luks: 100000 },
-    kaynak_notu: "Düğün fotoğraf/video paket fiyat araştırması (temel – standart – premium paket).",
-    arastirma_tarihi: "2026-07-24",
-  },
   {
     id: "orkestra-dj", ad: "Orkestra / DJ", birim: "sabit", kaynak_tipi: "tahmini",
     tahmini: { dusuk: 5000, orta: 25000, luks: 80000 },
     kaynak_notu: "Düğün orkestra/DJ kiralama fiyat araştırması (başlangıç – paket – tanınmış sanatçı).",
-    arastirma_tarihi: "2026-07-24",
-  },
-  {
-    id: "gelin-arabasi", ad: "Gelin Arabası", birim: "sabit", kaynak_tipi: "tahmini",
-    tahmini: { dusuk: 800, orta: 3000, luks: 8000 },
-    kaynak_notu: "Gelin arabası kiralama fiyat araştırması.",
-    arastirma_tarihi: "2026-07-24",
-  },
-  {
-    id: "kuafor-makyaj", ad: "Kuaför ve Makyaj", birim: "sabit", kaynak_tipi: "tahmini",
-    tahmini: { dusuk: 1000, orta: 5000, luks: 15000 },
-    kaynak_notu: "Gelin saçı ve makyajı fiyat araştırması.",
-    arastirma_tarihi: "2026-07-24",
-  },
-  {
-    id: "organizasyon", ad: "Organizasyon / Süsleme", birim: "sabit", kaynak_tipi: "tahmini",
-    tahmini: { dusuk: 15000, orta: 40000, luks: 150000 },
-    kaynak_notu: "Düğün organizasyon/dekorasyon fiyat araştırması.",
     arastirma_tarihi: "2026-07-24",
   },
   {

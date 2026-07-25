@@ -1,0 +1,29 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Chery"
+  ],
+  "kalem": "chery",
+  "vertikal": "arac",
+  "tarih": "2026-07-26",
+  "toplam_urun": 3,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 2605000,
+  "segmentler": {
+    "dusuk": {
+      "min": 2310000,
+      "medyan": 2310000,
+      "max": 2310000,
+      "urun_sayisi": 1
+    },
+    "orta": {
+      "min": 2605000,
+      "medyan": 2672500,
+      "max": 2740000,
+      "urun_sayisi": 2
+    }
+  }
+}

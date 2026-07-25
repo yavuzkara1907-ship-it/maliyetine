@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Yemek Takimi"
+  ],
+  "kalem": "yemek-takimi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-07-26",
+  "toplam_urun": 22,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 1990,
+  "segmentler": {
+    "dusuk": {
+      "min": 1213,
+      "medyan": 1527,
+      "max": 1720,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 1750,
+      "medyan": 2000,
+      "max": 2799,
+      "urun_sayisi": 11
+    },
+    "luks": {
+      "min": 2829,
+      "medyan": 2899,
+      "max": 3992,
+      "urun_sayisi": 5
+    }
+  }
+}

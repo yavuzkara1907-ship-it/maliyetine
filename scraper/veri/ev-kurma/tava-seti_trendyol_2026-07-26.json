@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Tava Seti"
+  ],
+  "kalem": "tava-seti",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-07-26",
+  "toplam_urun": 6,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 1692,
+  "segmentler": {
+    "dusuk": {
+      "min": 1148,
+      "medyan": 1190,
+      "max": 1232,
+      "urun_sayisi": 2
+    },
+    "orta": {
+      "min": 1583,
+      "medyan": 1802,
+      "max": 2029,
+      "urun_sayisi": 3
+    },
+    "luks": {
+      "min": 4740,
+      "medyan": 4740,
+      "max": 4740,
+      "urun_sayisi": 1
+    }
+  }
+}

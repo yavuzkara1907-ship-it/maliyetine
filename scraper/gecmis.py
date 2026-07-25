@@ -48,10 +48,15 @@ from pathlib import Path
 # Iki olcum arasinda en az bu kadar gun olmali ki "degisim" anlamli sayilsin.
 # NEDEN: 24->25 Temmuz testinde "nikah sekeri %40 dustu" ciktı - gercek bir
 # fiyat dususu degil, bir gunde kategori sayfasinda LISTELENEN URUNLERIN
-# degismesi (orneklem gurultusu). Aylik olcum tasarimimizda normal aralik
-# ~30 gun; 20 gunden yakin iki olcumu karsilastirmak yaniltici olur.
-# Boyle bir rakami "fiyat %40 dustu" diye yayinlamak KIRMIZI CIZGI ihlali.
-ASGARI_GUN_ARALIGI = 20
+# degismesi (orneklem gurultusu). Boyle bir rakami "fiyat %40 dustu" diye
+# yayinlamak KIRMIZI CIZGI ihlali olurdu.
+#
+# 2026-07-26: olcum sikligi ayda 2'ye cikinca (ayin 1'i ve 15'i) esik
+# 20 -> 10 gune indirildi. 20 kalsaydi 14 gunluk normal aralik reddedilir,
+# HICBIR degisim hesaplanamazdi. 10 gun, tasarlanan 14-15 gunluk araligi
+# kabul ederken elle tetiklenen ard arda calistirmalari (gurultu kaynagi)
+# hala eliyor.
+ASGARI_GUN_ARALIGI = 10
 
 BASE_DIR = Path(__file__).parent
 VARSAYILAN_VERI_KOK = BASE_DIR / "veri"

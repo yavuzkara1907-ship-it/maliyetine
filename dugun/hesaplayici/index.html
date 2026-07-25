@@ -125,6 +125,14 @@
       etiket.className = "tahmini-etiket";
       etiket.textContent = "Tahmini";
       label.appendChild(etiket);
+    } else if (kalem.tek_deger) {
+      // Kaynak tek bir Istanbul rakami veriyor. Segment secimini
+      // degistiren kullanici bu kalemin sabit kaldigini gormeli.
+      const etiket = document.createElement("span");
+      etiket.className = "tahmini-etiket";
+      etiket.title = "Bu kalemde segment kırılımı yok — üç segmentte de aynı değer kullanılır.";
+      etiket.textContent = "Tek ölçüm";
+      label.appendChild(etiket);
     }
     kalemSecimListe.appendChild(label);
   });

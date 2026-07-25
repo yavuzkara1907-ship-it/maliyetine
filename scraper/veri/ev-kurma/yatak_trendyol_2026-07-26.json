@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Cift Kisilik Yatak"
+  ],
+  "kalem": "yatak",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-07-26",
+  "toplam_urun": 18,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 1669,
+  "segmentler": {
+    "dusuk": {
+      "min": 1036,
+      "medyan": 1138,
+      "max": 1249,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 1249,
+      "medyan": 1707,
+      "max": 1790,
+      "urun_sayisi": 8
+    },
+    "luks": {
+      "min": 1947,
+      "medyan": 2352,
+      "max": 2899,
+      "urun_sayisi": 4
+    }
+  }
+}

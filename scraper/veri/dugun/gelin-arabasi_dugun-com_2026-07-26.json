@@ -1,0 +1,35 @@
+{
+ "site": "dugun-com",
+ "kaynak_adlari": [
+  "Dugun.com - Istanbul Gelin Arabasi"
+ ],
+ "kalem": "gelin-arabasi",
+ "vertikal": "dugun",
+ "tarih": "2026-07-26",
+ "toplam_urun": 1,
+ "saglikli": true,
+ "kullanilan_katmanlar": [
+  "tablo"
+ ],
+ "genel_medyan": 9800,
+ "segmentler": {
+  "dusuk": {
+   "min": 9800,
+   "medyan": 9800,
+   "max": 9800,
+   "urun_sayisi": 1
+  },
+  "orta": {
+   "min": 9800,
+   "medyan": 9800,
+   "max": 9800,
+   "urun_sayisi": 1
+  },
+  "luks": {
+   "min": 9800,
+   "medyan": 9800,
+   "max": 9800,
+   "urun_sayisi": 1
+  }
+ }
+}

@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Bardak Takimi"
+  ],
+  "kalem": "bardak-takimi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-07-26",
+  "toplam_urun": 19,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 259,
+  "segmentler": {
+    "dusuk": {
+      "min": 124,
+      "medyan": 186,
+      "max": 191,
+      "urun_sayisi": 7
+    },
+    "orta": {
+      "min": 239,
+      "medyan": 344,
+      "max": 590,
+      "urun_sayisi": 8
+    },
+    "luks": {
+      "min": 612,
+      "medyan": 1190,
+      "max": 1821,
+      "urun_sayisi": 4
+    }
+  }
+}

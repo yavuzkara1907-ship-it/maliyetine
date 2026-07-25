@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Bulasik Makinesi"
+  ],
+  "kalem": "bulasik-makinesi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-07-26",
+  "toplam_urun": 25,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 17499,
+  "segmentler": {
+    "dusuk": {
+      "min": 12999,
+      "medyan": 14669,
+      "max": 14999,
+      "urun_sayisi": 7
+    },
+    "orta": {
+      "min": 15499,
+      "medyan": 17999,
+      "max": 20399,
+      "urun_sayisi": 12
+    },
+    "luks": {
+      "min": 21399,
+      "medyan": 22422,
+      "max": 25789,
+      "urun_sayisi": 6
+    }
+  }
+}

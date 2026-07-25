@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Catal Kasik Bicak Takimi"
+  ],
+  "kalem": "catal-kasik-bicak-takimi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-07-26",
+  "toplam_urun": 17,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 2229,
+  "segmentler": {
+    "dusuk": {
+      "min": 605,
+      "medyan": 826,
+      "max": 1252,
+      "urun_sayisi": 5
+    },
+    "orta": {
+      "min": 1349,
+      "medyan": 2564,
+      "max": 4449,
+      "urun_sayisi": 8
+    },
+    "luks": {
+      "min": 4475,
+      "medyan": 5288,
+      "max": 5999,
+      "urun_sayisi": 4
+    }
+  }
+}

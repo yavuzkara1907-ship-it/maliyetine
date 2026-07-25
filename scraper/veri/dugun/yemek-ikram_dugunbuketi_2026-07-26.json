@@ -1,0 +1,35 @@
+{
+  "site": "dugunbuketi",
+  "kaynak_adlari": [
+    "DugunBuketi - Yemek Bedeli (yemekli - kokteyl farki)"
+  ],
+  "kalem": "yemek-ikram",
+  "vertikal": "dugun",
+  "tarih": "2026-07-26",
+  "toplam_urun": 9,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "detay"
+  ],
+  "genel_medyan": 400,
+  "segmentler": {
+    "dusuk": {
+      "min": 200,
+      "medyan": 250,
+      "max": 250,
+      "urun_sayisi": 3
+    },
+    "orta": {
+      "min": 400,
+      "medyan": 400,
+      "max": 410,
+      "urun_sayisi": 4
+    },
+    "luks": {
+      "min": 500,
+      "medyan": 710,
+      "max": 920,
+      "urun_sayisi": 2
+    }
+  }
+}

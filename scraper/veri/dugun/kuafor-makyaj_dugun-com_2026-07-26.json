@@ -1,0 +1,35 @@
+{
+ "site": "dugun-com",
+ "kaynak_adlari": [
+  "Dugun.com - Istanbul Gelin Saci ve Makyaji"
+ ],
+ "kalem": "kuafor-makyaj",
+ "vertikal": "dugun",
+ "tarih": "2026-07-26",
+ "toplam_urun": 1,
+ "saglikli": true,
+ "kullanilan_katmanlar": [
+  "tablo"
+ ],
+ "genel_medyan": 12450,
+ "segmentler": {
+  "dusuk": {
+   "min": 12450,
+   "medyan": 12450,
+   "max": 12450,
+   "urun_sayisi": 1
+  },
+  "orta": {
+   "min": 12450,
+   "medyan": 12450,
+   "max": 12450,
+   "urun_sayisi": 1
+  },
+  "luks": {
+   "min": 12450,
+   "medyan": 12450,
+   "max": 12450,
+   "urun_sayisi": 1
+  }
+ }
+}

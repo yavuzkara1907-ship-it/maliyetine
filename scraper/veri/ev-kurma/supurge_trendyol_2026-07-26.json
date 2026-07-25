@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Robot Supurge"
+  ],
+  "kalem": "supurge",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-07-26",
+  "toplam_urun": 23,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 14339,
+  "segmentler": {
+    "dusuk": {
+      "min": 5999,
+      "medyan": 6999,
+      "max": 9999,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 12263,
+      "medyan": 15844,
+      "max": 22810,
+      "urun_sayisi": 12
+    },
+    "luks": {
+      "min": 26799,
+      "medyan": 37999,
+      "max": 42999,
+      "urun_sayisi": 5
+    }
+  }
+}

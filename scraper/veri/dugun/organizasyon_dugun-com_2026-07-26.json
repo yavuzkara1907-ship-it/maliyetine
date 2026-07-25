@@ -1,0 +1,35 @@
+{
+ "site": "dugun-com",
+ "kaynak_adlari": [
+  "Dugun.com - Istanbul Dugun Organizasyon"
+ ],
+ "kalem": "organizasyon",
+ "vertikal": "dugun",
+ "tarih": "2026-07-26",
+ "toplam_urun": 1,
+ "saglikli": true,
+ "kullanilan_katmanlar": [
+  "tablo"
+ ],
+ "genel_medyan": 22150,
+ "segmentler": {
+  "dusuk": {
+   "min": 22150,
+   "medyan": 22150,
+   "max": 22150,
+   "urun_sayisi": 1
+  },
+  "orta": {
+   "min": 22150,
+   "medyan": 22150,
+   "max": 22150,
+   "urun_sayisi": 1
+  },
+  "luks": {
+   "min": 22150,
+   "medyan": 22150,
+   "max": 22150,
+   "urun_sayisi": 1
+  }
+ }
+}

@@ -2119,3 +2119,93 @@ kaynaklar:
     bekleme_sn: 3
     aktif: true
     durum: "onaylandi"
+
+  # --- dugun.com il bazli fiyat tablolari (2026-07-26 eklendi) ---
+  # Dugun'un en buyuk zayifligi kalan tahmini kalemlerdi (fotografci,
+  # organizasyon, kuafor, gelin arabasi = toplam 93.000 TL). dugun.com bu
+  # kategorilerin her birinde IL BAZLI bir fiyat tablosu yayinliyor.
+  #
+  # SATIR FILTRESI NEDEN "^Istanbul": tablo 27 ilin fiyatini iceriyor.
+  # Hepsini almak, cografi farki fiyat SEGMENTI gibi gostermeye yol acardi
+  # ("ekonomik fotografci" = ucuz il degildir). Endeksimiz Istanbul odakli
+  # oldugu icin yalnizca Istanbul satiri aliniyor - ne olctugumuz net.
+  #
+  # SUTUN BASLIGI YANILTICI: tablo "Kisi Basi Fiyat" diyor ama bu sablon
+  # hatasi - gelin arabasi kisi basi olamaz. Deger, o kalemin Istanbul'daki
+  # tipik paket fiyati.
+  # GUVEN KANITI: ayni sitenin salon tablosu Istanbul icin 500 TL kisi basi
+  # veriyor; bizim DugunBuketi'nden bagimsiz olctugumuz kokteyl medyani da
+  # 500 TL. Iki ayri kaynak ayni rakamda bulusuyor.
+  #
+  # TEK OLCUM NOKTASI: bu kalemlerde segment kirilimi YOK (tek deger).
+  # sayfa_uret/hesaplayici bunu "segmentsiz" olarak isaretliyor - ucret
+  # bandi varmis gibi gostermiyoruz.
+  - ad: "Dugun.com - Istanbul Dugun Fotografcisi"
+    site: "dugun-com"
+    url: "https://dugun.com/dugun-fotografcilari"
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "fotografci"
+    yontem: "otomatik"
+    tablo:
+      icerik_metni: "Düğün Fotoğrafçıları Fiyatları"
+      satir_filtresi: "^İstanbul"
+    min_fiyat: 1000
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+    notlar: >
+      Gercek cekimle dogrulandi (2026-07-26): 15.600 TL. Onceki TAHMINI
+      deger 45.000 TL idi - tahmin ~3 KAT YUKSEK cikti.
+
+  - ad: "Dugun.com - Istanbul Dugun Organizasyon"
+    site: "dugun-com"
+    url: "https://dugun.com/dugun-organizasyon"
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "organizasyon"
+    yontem: "otomatik"
+    tablo:
+      icerik_metni: "Düğün Organizasyon Fiyatları"
+      satir_filtresi: "^İstanbul"
+    min_fiyat: 1000
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+    notlar: >
+      Gercek cekimle dogrulandi (2026-07-26): 22.150 TL (tahmin 40.000 idi).
+
+  - ad: "Dugun.com - Istanbul Gelin Arabasi"
+    site: "dugun-com"
+    url: "https://dugun.com/gelin-arabasi"
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "gelin-arabasi"
+    yontem: "otomatik"
+    tablo:
+      icerik_metni: "Gelin Arabası Fiyatları"
+      satir_filtresi: "^İstanbul"
+    min_fiyat: 500
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+    notlar: >
+      Gercek cekimle dogrulandi (2026-07-26): 9.800 TL. Tahmin 3.000 TL idi
+      - bu kalemde tahmin 3 KAT DUSUK cikti (digerlerinin tersi yonde).
+
+  - ad: "Dugun.com - Istanbul Gelin Saci ve Makyaji"
+    site: "dugun-com"
+    url: "https://dugun.com/gelin-saci-ve-makyaji"
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "kuafor-makyaj"
+    yontem: "otomatik"
+    tablo:
+      icerik_metni: "Gelin Saçı ve Makyajı Fiyatları"
+      satir_filtresi: "^İstanbul"
+    min_fiyat: 500
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+    notlar: >
+      Gercek cekimle dogrulandi (2026-07-26): 12.450 TL (tahmin 5.000 idi).
