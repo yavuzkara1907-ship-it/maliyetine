@@ -235,11 +235,27 @@ Hesaplayıcı bu kalemleri toplar. Her kalem: segment + kaynak + tarih.
     eşit uzunluklu çakışmada "least restrictive" (Allow) kazanır.
     **Ama bu yoruma bağlı ve garanti değil** — GPTBot ve ClaudeBot
     robots.txt'e gerçekten uyan botlardır.
-  - **YAVUZ'UN YAPMASI GEREKEN:** Cloudflare Dashboard → `maliyetine.com.tr`
-    zone'u → **AI Crawl Control** (eski adı "AI Audit") ve/veya
-    **Security → Settings** altında "managed robots.txt" / "Content
-    Signals" ayarını **KAPAT**. Kapattıktan sonra canlı robots.txt'in
-    yalnızca bizim bloğumuzu içerdiği doğrulanmalı.
+  - **KESİN TEŞHİS (2026-07-25):** `maliyetine.yavuzkara-1907.workers.dev/robots.txt`
+    **TEMİZ** (Cloudflare bloğu yok), ama custom domain üzerinden gelen
+    istekte blok VAR (her iki edge IP'de ve www'da). `cf-cache-status`
+    header'ı hiç yok → enjeksiyon her istekte DİNAMİK yapılıyor, yani
+    önbellek temizlemek İŞE YARAMAZ. **Depodaki `robots.txt` dosyamız
+    doğru; sorun tamamen zone ayarında.** Cloudflare topluluk forumunda
+    doğrulanmış: **Worker ile robots.txt'i override etmek bu enjeksiyonu
+    engellemiyor** — tek çözüm zone ayarını kapatmak.
+  - **YAVUZ'UN YAPMASI GEREKEN (net yol):** Cloudflare Dashboard →
+    `maliyetine.com.tr` → sol menü **AI Crawl Control** → **Robots.txt**
+    sekmesi → ayar şu an "Content signals policy" seçili, bunu
+    **"Disable robots.txt configuration"** yap. (Ücretsiz planda bu bölüm
+    `AI Crawl Control | Robots.txt` altındadır.) Alternatif yol:
+    **Security → Settings** → "Instruct AI bot traffic with robots.txt".
+    Sadece politika metnini gizlemek isterse: zone Overview →
+    "Control AI Crawlers" → "Display Content Signals Policy" işaretini
+    kaldır — ama bu bot Disallow'larını KALDIRMAZ, tam çözüm için
+    yukarıdaki "Disable" seçeneği gerekir.
+  - Kapatıldıktan sonra doğrulama: `curl -s https://maliyetine.com.tr/robots.txt`
+    çıktısında "Cloudflare Managed content" bloğu OLMAMALI, yalnızca
+    depodaki 7 `Allow: /` girdisi ve Sitemap satırı görünmeli.
 
 ## Altyapı Kararları (KESİN)
 - Domain: **maliyetine.com.tr** — alındı, DNS Cloudflare'e taşınıyor.
