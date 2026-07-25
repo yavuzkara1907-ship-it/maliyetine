@@ -458,6 +458,11 @@ VERTIKALLER = {
             "Yola çıkarma maliyetini hesaplayın (MTV, noter, sigorta dahil) →"
         ),
         "kapsam_yer": "Türkiye",
+        # Sifir aracta fiyat, ureticinin ilan ettigi TEK liste fiyatidir -
+        # ayni model her bayide ayni. Bu yuzden "cok kaynak" kurali burada
+        # anlamsiz: ikinci bir kaynak ayni sayiyi tekrarlar. Tek kaynak
+        # uyarisi gosterilmiyor (aksi halde olmayan bir eksiklik ima eder).
+        "liste_fiyati": True,
         "keywords": [
             "sıfır araba fiyatları", "sıfır otomobil fiyatları 2026",
             "en ucuz sıfır araba", "0 km araç fiyatları",
@@ -975,6 +980,10 @@ def _kunye_html(conf: dict, kalem_verisi: dict | None, tarih: str) -> str:
 
 
 def _tek_kaynak_uyarisi_html(conf: dict, siteler: set[str]) -> str:
+    # Liste fiyatli vertikallerde (0 km arac) tek kaynak bir eksiklik
+    # DEGIL: fiyati uretici belirliyor, ikinci kaynak ayni sayiyi verir.
+    if conf.get("liste_fiyati"):
+        return ""
     """COK KAYNAK KURALI karsilanmadiginda bunu GIZLEME - sayfada soyle.
 
     Tek kaynak, o sitenin fiyat politikasini yansitir, piyasayi degil

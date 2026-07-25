@@ -1,0 +1,567 @@
+{
+ "vertikal": "arac",
+ "uretim_tarihi": "2026-07-25",
+ "olcumler": [
+  "2026-07-25"
+ ],
+ "kalemler": {
+  "togg": {
+   "seri": [
+    {
+     "tarih": "2026-07-25",
+     "medyan": 2283500,
+     "urun": 8,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-25",
+    "medyan": 2283500,
+    "urun": 8,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-25",
+    "medyan": 2283500,
+    "urun": 8,
+    "kaynak": 1
+   }
+  },
+  "toyota": {
+   "seri": [
+    {
+     "tarih": "2026-07-25",
+     "medyan": 2941500,
+     "urun": 24,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-25",
+    "medyan": 2941500,
+    "urun": 24,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-25",
+    "medyan": 2941500,
+    "urun": 24,
+    "kaynak": 1
+   }
+  },
+  "seat": {
+   "seri": [
+    {
+     "tarih": "2026-07-25",
+     "medyan": 2264500,
+     "urun": 4,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-25",
+    "medyan": 2264500,
+    "urun": 4,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-25",
+    "medyan": 2264500,
+    "urun": 4,
+    "kaynak": 1
+   }
+  },
+  "kia": {
+   "seri": [
+    {
+     "tarih": "2026-07-25",
+     "medyan": 2872500,
+     "urun": 20,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-25",
+    "medyan": 2872500,
+    "urun": 20,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-25",
+    "medyan": 2872500,
+    "urun": 20,
+    "kaynak": 1
+   }
+  },
+  "opel": {
+   "seri": [
+    {
+     "tarih": "2026-07-25",
+     "medyan": 2126000,
+     "urun": 20,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-25",
+    "medyan": 2126000,
+    "urun": 20,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-25",
+    "medyan": 2126000,
+    "urun": 20,
+    "kaynak": 1
+   }
+  },
+  "honda": {
+   "seri": [
+    {
+     "tarih": "2026-07-25",
+     "medyan": 3890000,
+     "urun": 6,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-25",
+    "medyan": 3890000,
+    "urun": 6,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-25",
+    "medyan": 3890000,
+    "urun": 6,
+    "kaynak": 1
+   }
+  },
+  "hyundai": {
+   "seri": [
+    {
+     "tarih": "2026-07-25",
+     "medyan": 2039000,
+     "urun": 28,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-25",
+    "medyan": 2039000,
+    "urun": 28,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-25",
+    "medyan": 2039000,
+    "urun": 28,
+    "kaynak": 1
+   }
+  },
+  "nissan": {
+   "seri": [
+    {
+     "tarih": "2026-07-25",
+     "medyan": 3677850,
+     "urun": 18,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-25",
+    "medyan": 3677850,
+    "urun": 18,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-25",
+    "medyan": 3677850,
+    "urun": 18,
+    "kaynak": 1
+   }
+  },
+  "byd": {
+   "seri": [
+    {
+     "tarih": "2026-07-25",
+     "medyan": 4531500,
+     "urun": 4,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-25",
+    "medyan": 4531500,
+    "urun": 4,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-25",
+    "medyan": 4531500,
+    "urun": 4,
+    "kaynak": 1
+   }
+  },
+  "citroen": {
+   "seri": [
+    {
+     "tarih": "2026-07-25",
+     "medyan": 2155000,
+     "urun": 19,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-25",
+    "medyan": 2155000,
+    "urun": 19,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-25",
+    "medyan": 2155000,
+    "urun": 19,
+    "kaynak": 1
+   }
+  },
+  "mercedes": {
+   "seri": [
+    {
+     "tarih": "2026-07-25",
+     "medyan": 9757250,
+     "urun": 42,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-25",
+    "medyan": 9757250,
+    "urun": 42,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-25",
+    "medyan": 9757250,
+    "urun": 42,
+    "kaynak": 1
+   }
+  },
+  "fiat": {
+   "seri": [
+    {
+     "tarih": "2026-07-25",
+     "medyan": 1880500,
+     "urun": 15,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-25",
+    "medyan": 1880500,
+    "urun": 15,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-25",
+    "medyan": 1880500,
+    "urun": 15,
+    "kaynak": 1
+   }
+  },
+  "mg": {
+   "seri": [
+    {
+     "tarih": "2026-07-25",
+     "medyan": 3265000,
+     "urun": 5,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-25",
+    "medyan": 3265000,
+    "urun": 5,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-25",
+    "medyan": 3265000,
+    "urun": 5,
+    "kaynak": 1
+   }
+  },
+  "volkswagen": {
+   "seri": [
+    {
+     "tarih": "2026-07-25",
+     "medyan": 3609000,
+     "urun": 40,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-25",
+    "medyan": 3609000,
+    "urun": 40,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-25",
+    "medyan": 3609000,
+    "urun": 40,
+    "kaynak": 1
+   }
+  },
+  "ford": {
+   "seri": [
+    {
+     "tarih": "2026-07-25",
+     "medyan": 2732100,
+     "urun": 17,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-25",
+    "medyan": 2732100,
+    "urun": 17,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-25",
+    "medyan": 2732100,
+    "urun": 17,
+    "kaynak": 1
+   }
+  },
+  "bmw": {
+   "seri": [
+    {
+     "tarih": "2026-07-25",
+     "medyan": 7854750,
+     "urun": 60,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-25",
+    "medyan": 7854750,
+    "urun": 60,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-25",
+    "medyan": 7854750,
+    "urun": 60,
+    "kaynak": 1
+   }
+  },
+  "en-ucuz-sifir-arac": {
+   "seri": [
+    {
+     "tarih": "2026-07-25",
+     "medyan": 2011500,
+     "urun": 22,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-25",
+    "medyan": 2011500,
+    "urun": 22,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-25",
+    "medyan": 2011500,
+    "urun": 22,
+    "kaynak": 1
+   }
+  },
+  "dacia": {
+   "seri": [
+    {
+     "tarih": "2026-07-25",
+     "medyan": 1725000,
+     "urun": 10,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-25",
+    "medyan": 1725000,
+    "urun": 10,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-25",
+    "medyan": 1725000,
+    "urun": 10,
+    "kaynak": 1
+   }
+  },
+  "peugeot": {
+   "seri": [
+    {
+     "tarih": "2026-07-25",
+     "medyan": 2637500,
+     "urun": 20,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-25",
+    "medyan": 2637500,
+    "urun": 20,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-25",
+    "medyan": 2637500,
+    "urun": 20,
+    "kaynak": 1
+   }
+  },
+  "skoda": {
+   "seri": [
+    {
+     "tarih": "2026-07-25",
+     "medyan": 3774900,
+     "urun": 41,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-25",
+    "medyan": 3774900,
+    "urun": 41,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-25",
+    "medyan": 3774900,
+    "urun": 41,
+    "kaynak": 1
+   }
+  },
+  "cupra": {
+   "seri": [
+    {
+     "tarih": "2026-07-25",
+     "medyan": 3335000,
+     "urun": 7,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-25",
+    "medyan": 3335000,
+    "urun": 7,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-25",
+    "medyan": 3335000,
+    "urun": 7,
+    "kaynak": 1
+   }
+  },
+  "tesla": {
+   "seri": [
+    {
+     "tarih": "2026-07-25",
+     "medyan": 4046400,
+     "urun": 4,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-25",
+    "medyan": 4046400,
+    "urun": 4,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-25",
+    "medyan": 4046400,
+    "urun": 4,
+    "kaynak": 1
+   }
+  },
+  "renault": {
+   "seri": [
+    {
+     "tarih": "2026-07-25",
+     "medyan": 2486000,
+     "urun": 21,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-25",
+    "medyan": 2486000,
+    "urun": 21,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-25",
+    "medyan": 2486000,
+    "urun": 21,
+    "kaynak": 1
+   }
+  },
+  "chery": {
+   "seri": [
+    {
+     "tarih": "2026-07-25",
+     "medyan": 2605000,
+     "urun": 3,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-25",
+    "medyan": 2605000,
+    "urun": 3,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-25",
+    "medyan": 2605000,
+    "urun": 3,
+    "kaynak": 1
+   }
+  },
+  "suzuki": {
+   "seri": [
+    {
+     "tarih": "2026-07-25",
+     "medyan": 2364000,
+     "urun": 18,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-25",
+    "medyan": 2364000,
+    "urun": 18,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-25",
+    "medyan": 2364000,
+    "urun": 18,
+    "kaynak": 1
+   }
+  }
+ },
+ "ozet": {
+  "kalem_sayisi": 25,
+  "karsilastirilabilir": 0,
+  "artan": 0,
+  "azalan": 0,
+  "sabit": 0,
+  "medyan_degisim_yuzde": null
+ }
+}

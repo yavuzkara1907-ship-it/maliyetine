@@ -49,6 +49,13 @@ jobs:
             python sayfa_uret.py --vertikal "$vertikal"
           done
 
+      # Zaman serisi: aylik anlik goruntuleri tarayip fiyat gecmisi uretir.
+      # Projenin kopyalanamaz varligi bu - bir ay atlanirsa seride kalici
+      # delik olusur.
+      - name: Fiyat geçmişini derle
+        working-directory: scraper
+        run: python gecmis.py
+
       - name: Değişiklikleri commit et ve pushla
         id: commit
         run: |
