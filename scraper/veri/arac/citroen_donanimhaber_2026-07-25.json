@@ -1,0 +1,35 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Citroen"
+  ],
+  "kalem": "citroen",
+  "vertikal": "arac",
+  "tarih": "2026-07-25",
+  "toplam_urun": 19,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 2155000,
+  "segmentler": {
+    "dusuk": {
+      "min": 585000,
+      "medyan": 630000,
+      "max": 1630000,
+      "urun_sayisi": 5
+    },
+    "orta": {
+      "min": 1760000,
+      "medyan": 2162500,
+      "max": 2295000,
+      "urun_sayisi": 10
+    },
+    "luks": {
+      "min": 2370000,
+      "medyan": 2540000,
+      "max": 2900000,
+      "urun_sayisi": 4
+    }
+  }
+}

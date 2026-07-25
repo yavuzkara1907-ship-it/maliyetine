@@ -1,0 +1,29 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Seat"
+  ],
+  "kalem": "seat",
+  "vertikal": "arac",
+  "tarih": "2026-07-25",
+  "toplam_urun": 4,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 2264500,
+  "segmentler": {
+    "dusuk": {
+      "min": 1857000,
+      "medyan": 1912500,
+      "max": 1968000,
+      "urun_sayisi": 2
+    },
+    "orta": {
+      "min": 2561000,
+      "medyan": 2745575,
+      "max": 2930150,
+      "urun_sayisi": 2
+    }
+  }
+}

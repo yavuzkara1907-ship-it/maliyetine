@@ -192,14 +192,32 @@ ARAC_KALEMLERI = [
         "ad": "En ucuz sıfır araç (marka giriş fiyatı)",
         "birim": "sabit",
     },
-    # Marka kalemleri TOPLAMA GIRMEZ (bilgi_amacli): bunlar birbirinin
-    # ALTERNATIFI - bir kisi hem Tesla hem Suzuki almaz. Toplamak
-    # 17,7 milyon TL gibi anlamsiz bir sayi uretiyordu. Referans olarak
-    # gosteriliyorlar; endeksin "toplam"i yalnizca marka giris medyani.
-    {"id": "tesla", "ad": "Tesla", "birim": "sabit", "grup": "Marka bazlı", "bilgi_amacli": True},
-    {"id": "byd", "ad": "BYD", "birim": "sabit", "grup": "Marka bazlı", "bilgi_amacli": True},
-    {"id": "suzuki", "ad": "Suzuki", "birim": "sabit", "grup": "Marka bazlı", "bilgi_amacli": True},
-    {"id": "cupra", "ad": "Cupra", "birim": "sabit", "grup": "Marka bazlı", "bilgi_amacli": True},
+    # 24 markanin model fiyat listeleri. TOPLAMA GIRMEZ (bilgi_amacli):
+    # birbirinin alternatifi, toplamak anlamsiz sayi uretir.
+    {"id": "togg", "ad": "Togg", "birim": "sabit", "grup": "Marka bazlı fiyatlar", "bilgi_amacli": True},
+    {"id": "renault", "ad": "Renault", "birim": "sabit", "grup": "Marka bazlı fiyatlar", "bilgi_amacli": True},
+    {"id": "chery", "ad": "Chery", "birim": "sabit", "grup": "Marka bazlı fiyatlar", "bilgi_amacli": True},
+    {"id": "dacia", "ad": "Dacia", "birim": "sabit", "grup": "Marka bazlı fiyatlar", "bilgi_amacli": True},
+    {"id": "citroen", "ad": "Citroen", "birim": "sabit", "grup": "Marka bazlı fiyatlar", "bilgi_amacli": True},
+    {"id": "opel", "ad": "Opel", "birim": "sabit", "grup": "Marka bazlı fiyatlar", "bilgi_amacli": True},
+    {"id": "peugeot", "ad": "Peugeot", "birim": "sabit", "grup": "Marka bazlı fiyatlar", "bilgi_amacli": True},
+    {"id": "ford", "ad": "Ford", "birim": "sabit", "grup": "Marka bazlı fiyatlar", "bilgi_amacli": True},
+    {"id": "hyundai", "ad": "Hyundai", "birim": "sabit", "grup": "Marka bazlı fiyatlar", "bilgi_amacli": True},
+    {"id": "kia", "ad": "Kia", "birim": "sabit", "grup": "Marka bazlı fiyatlar", "bilgi_amacli": True},
+    {"id": "skoda", "ad": "Skoda", "birim": "sabit", "grup": "Marka bazlı fiyatlar", "bilgi_amacli": True},
+    {"id": "seat", "ad": "Seat", "birim": "sabit", "grup": "Marka bazlı fiyatlar", "bilgi_amacli": True},
+    {"id": "honda", "ad": "Honda", "birim": "sabit", "grup": "Marka bazlı fiyatlar", "bilgi_amacli": True},
+    {"id": "toyota", "ad": "Toyota", "birim": "sabit", "grup": "Marka bazlı fiyatlar", "bilgi_amacli": True},
+    {"id": "fiat", "ad": "Fiat", "birim": "sabit", "grup": "Marka bazlı fiyatlar", "bilgi_amacli": True},
+    {"id": "volkswagen", "ad": "Volkswagen", "birim": "sabit", "grup": "Marka bazlı fiyatlar", "bilgi_amacli": True},
+    {"id": "nissan", "ad": "Nissan", "birim": "sabit", "grup": "Marka bazlı fiyatlar", "bilgi_amacli": True},
+    {"id": "mg", "ad": "MG", "birim": "sabit", "grup": "Marka bazlı fiyatlar", "bilgi_amacli": True},
+    {"id": "bmw", "ad": "BMW", "birim": "sabit", "grup": "Marka bazlı fiyatlar", "bilgi_amacli": True},
+    {"id": "mercedes", "ad": "Mercedes", "birim": "sabit", "grup": "Marka bazlı fiyatlar", "bilgi_amacli": True},
+    {"id": "byd", "ad": "BYD", "birim": "sabit", "grup": "Marka bazlı fiyatlar", "bilgi_amacli": True},
+    {"id": "tesla", "ad": "Tesla", "birim": "sabit", "grup": "Marka bazlı fiyatlar", "bilgi_amacli": True},
+    {"id": "suzuki", "ad": "Suzuki", "birim": "sabit", "grup": "Marka bazlı fiyatlar", "bilgi_amacli": True},
+    {"id": "cupra", "ad": "Cupra", "birim": "sabit", "grup": "Marka bazlı fiyatlar", "bilgi_amacli": True},
 ]
 
 VERTIKALLER = {
@@ -445,7 +463,7 @@ VERTIKALLER = {
             "en ucuz sıfır araba", "0 km araç fiyatları",
             "sıfır araç fiyat listesi", "Tesla fiyatları", "BYD fiyatları",
         ],
-        "one_cikan_kalemler": ["en-ucuz-sifir-arac", "tesla", "byd", "suzuki"],
+        "one_cikan_kalemler": ["en-ucuz-sifir-arac", "fiat", "renault", "togg", "dacia", "hyundai"],
         "segment_aciklama": (
             "Ekonomik segment markaların giriş seviyesi (en ucuz) modellerinin "
             "alt bandını, orta segment tipik giriş fiyatını, lüks segment ise "
@@ -471,39 +489,63 @@ VERTIKALLER = {
                 "slug": "en-ucuz-sifir-araba",
                 "baslik": "En Ucuz Sıfır Araba Fiyatları 2026",
                 "soru": "2026'da en ucuz sıfır araba kaça alınır?",
-                "aciklama": (
-                    "Her markanın giriş seviyesi (en ucuz) modelinin fiyatı. "
-                    "Tüm modellerin ortalaması değil — o rakam lüks markalar "
-                    "yüzünden gerçek alıcı davranışını yansıtmaz."
-                ),
+                "aciklama": "Her markanın giriş seviyesi (en ucuz) modelinin fiyatı. Tüm modellerin ortalaması değil.",
             },
             {
-                "id": "tesla",
-                "slug": "tesla-fiyatlari",
-                "baslik": "Tesla Fiyatları 2026",
-                "soru": "2026'da Tesla fiyatları ne kadar?",
-                "aciklama": "Tesla model fiyatları menzil ve donanım paketine göre değişir.",
+                "id": "fiat",
+                "slug": "fiat-fiyatlari",
+                "baslik": "Fiat Fiyatları 2026",
+                "soru": "2026'da Fiat fiyatları ne kadar?",
+                "aciklama": "Fiat model fiyatları donanım ve motor seçeneğine göre değişir.",
             },
             {
-                "id": "byd",
-                "slug": "byd-fiyatlari",
-                "baslik": "BYD Fiyatları 2026",
-                "soru": "2026'da BYD fiyatları ne kadar?",
-                "aciklama": "BYD model fiyatları batarya kapasitesi ve donanıma göre değişir.",
+                "id": "renault",
+                "slug": "renault-fiyatlari",
+                "baslik": "Renault Fiyatları 2026",
+                "soru": "2026'da Renault fiyatları ne kadar?",
+                "aciklama": "Renault model fiyatları donanım ve motor seçeneğine göre değişir.",
             },
             {
-                "id": "suzuki",
-                "slug": "suzuki-fiyatlari",
-                "baslik": "Suzuki Fiyatları 2026",
-                "soru": "2026'da Suzuki fiyatları ne kadar?",
-                "aciklama": "Suzuki model fiyatları motor seçeneği ve donanım seviyesine göre değişir.",
+                "id": "togg",
+                "slug": "togg-fiyatlari",
+                "baslik": "Togg Fiyatları 2026",
+                "soru": "2026'da Togg fiyatları ne kadar?",
+                "aciklama": "Togg model fiyatları batarya menzili ve donanım paketine göre değişir.",
+            },
+            {
+                "id": "dacia",
+                "slug": "dacia-fiyatlari",
+                "baslik": "Dacia Fiyatları 2026",
+                "soru": "2026'da Dacia fiyatları ne kadar?",
+                "aciklama": "Dacia model fiyatları donanım seviyesine göre değişir.",
+            },
+            {
+                "id": "hyundai",
+                "slug": "hyundai-fiyatlari",
+                "baslik": "Hyundai Fiyatları 2026",
+                "soru": "2026'da Hyundai fiyatları ne kadar?",
+                "aciklama": "Hyundai model fiyatları motor ve donanım seçeneğine göre geniş bir aralıkta değişir.",
+            },
+            {
+                "id": "toyota",
+                "slug": "toyota-fiyatlari",
+                "baslik": "Toyota Fiyatları 2026",
+                "soru": "2026'da Toyota fiyatları ne kadar?",
+                "aciklama": "Toyota model fiyatları hibrit/benzinli seçeneğe ve donanıma göre değişir.",
+            },
+            {
+                "id": "volkswagen",
+                "slug": "volkswagen-fiyatlari",
+                "baslik": "Volkswagen Fiyatları 2026",
+                "soru": "2026'da Volkswagen fiyatları ne kadar?",
+                "aciklama": "Volkswagen model fiyatları motor ve donanım paketine göre değişir.",
             },
         ],
     },
 }
 
 SEGMENT_ANAHTARI = {"ekonomik": "dusuk", "orta": "orta", "luks": "luks"}
-SEGMENT_ETIKETLERI = {"dusuk": "Ekonomik", "orta": "Orta", "luks": "Lüks"}
+SEGMENT_ETIKETLERI = {"dusuk": "Ekonomik", "orta": "Orta", "luks": "Üst"}
 
 ORNEK_SEGMENT = "orta"
 
@@ -829,6 +871,86 @@ def _grup_toplamlari(conf: dict, kalemler: dict, segment_anahtari: str) -> list[
         }
         for grup, tutar in gruplar.items()
     ]
+
+
+# Kaynak sitelerin gorunur adi ve urun sayfasi linki. Kalem sayfalarinda
+# "Nereden alabilirsiniz" bolumu bunlari kullanir.
+#
+# GELIR MODELI NOTU: su an duz link. Affiliate programlarina (Trendyol
+# Ortaklik, vb.) kabul alindiginda takip parametresi YALNIZCA buraya
+# eklenecek - sayfa sablonlarina dokunmaya gerek kalmayacak. rel=
+# degeri de o zaman "sponsored" olmali (Google zorunlu tutuyor).
+KAYNAK_SITELERI = {
+    "trendyol": {"ad": "Trendyol", "rel": "nofollow"},
+    "karaca": {"ad": "Karaca", "rel": "nofollow"},
+    "englishhome": {"ad": "English Home", "rel": "nofollow"},
+    "atasay": {"ad": "Atasay", "rel": "nofollow"},
+    "beymen": {"ad": "Beymen", "rel": "nofollow"},
+    "vakko": {"ad": "Vakko", "rel": "nofollow"},
+    "boyner": {"ad": "Boyner", "rel": "nofollow"},
+    "ramsey": {"ad": "Ramsey", "rel": "nofollow"},
+    "cimri": {"ad": "Cimri", "rel": "nofollow"},
+    "dugunbuketi": {"ad": "DüğünBuketi", "rel": "nofollow"},
+    "donanimhaber": {"ad": "DonanımHaber", "rel": "nofollow"},
+}
+
+
+def _kaynak_linkleri_yukle():
+    """kaynaklar.yaml'dan (vertikal, kalem) -> [(site, url)] haritasi.
+
+    Kalem sayfasinda "bu urunleri nerede bulursunuz" linki vermek icin.
+    Kullaniciyi bos birakmak hem kotu deneyim hem de gelir modelini
+    (affiliate) bastan imkansiz kiliyordu.
+    """
+    try:
+        import yaml
+        veri = yaml.safe_load((BASE_DIR / "kaynaklar.yaml").read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+    harita = {}
+    for k in veri.get("kaynaklar", []):
+        if not k.get("aktif", True):
+            continue
+        anahtar = (k.get("vertikal"), k.get("kalem"))
+        harita.setdefault(anahtar, [])
+        site = k.get("site")
+        if not any(s == site for s, _ in harita[anahtar]):
+            harita[anahtar].append((site, k.get("url")))
+    return harita
+
+
+_KAYNAK_LINKLERI = None
+
+
+def kalem_kaynak_linkleri(vertikal: str, kalem_id: str):
+    global _KAYNAK_LINKLERI
+    if _KAYNAK_LINKLERI is None:
+        _KAYNAK_LINKLERI = _kaynak_linkleri_yukle()
+    return _KAYNAK_LINKLERI.get((vertikal, kalem_id), [])
+
+
+def _nereden_alinir_html(vertikal: str, kalem_id: str, kalem_adi: str) -> str:
+    linkler = kalem_kaynak_linkleri(vertikal, kalem_id)
+    if not linkler:
+        return ""
+    parcalar = []
+    for site, url in linkler:
+        bilgi = KAYNAK_SITELERI.get(site, {"ad": site.capitalize(), "rel": "nofollow"})
+        parcalar.append(
+            f'<a href="{url}" rel="{bilgi["rel"]} noopener" target="_blank">'
+            f'{bilgi["ad"]}</a>'
+        )
+    return (
+        '  <section class="icerik-bolumu">\n'
+        "    <h2>Nereden bakabilirsiniz?</h2>\n"
+        f"    <p>{kalem_adi} fiyatlarını derlediğimiz kaynaklar: "
+        + " · ".join(parcalar)
+        + "</p>\n"
+        '    <p class="sonuc-alt-metin">Bu bağlantılar fiyatı derlediğimiz '
+        "kategori sayfalarına gider. Fiyatlar sayfamızdaki derleme tarihinden "
+        "sonra değişmiş olabilir.</p>\n"
+        "  </section>\n"
+    )
 
 
 def _tek_kaynak_uyarisi_html(conf: dict, siteler: set[str]) -> str:
@@ -1500,7 +1622,7 @@ def kalem_sayfasi_uret(
       <a href="/{conf["yol"]}/metodoloji/">metodoloji sayfasına</a> bakın.</p>
   </section>
 
-{_ilgili_kalemler_html(conf, sayfa["slug"])}</main>
+{_nereden_alinir_html(vertikal, sayfa['id'], tanim['ad'])}{_ilgili_kalemler_html(conf, sayfa["slug"])}</main>
 
 <footer>
   <div class="kapsayici">

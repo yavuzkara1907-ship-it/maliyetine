@@ -1,0 +1,35 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Hyundai"
+  ],
+  "kalem": "hyundai",
+  "vertikal": "arac",
+  "tarih": "2026-07-25",
+  "toplam_urun": 28,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 2039000,
+  "segmentler": {
+    "dusuk": {
+      "min": 1487000,
+      "medyan": 1699500,
+      "max": 1831000,
+      "urun_sayisi": 8
+    },
+    "orta": {
+      "min": 1840000,
+      "medyan": 2100000,
+      "max": 2721000,
+      "urun_sayisi": 14
+    },
+    "luks": {
+      "min": 2771000,
+      "medyan": 3434000,
+      "max": 3720000,
+      "urun_sayisi": 6
+    }
+  }
+}

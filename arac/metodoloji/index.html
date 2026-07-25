@@ -32,8 +32,7 @@
 
   <div class="cevap-blok">
     Sıfır araç fiyatları, aylık güncellenen bir fiyat listesi kaynağından
-    robots.txt kurallarına uygun şekilde derlenir. Yapay zeka burada
-    fiyat üretmez — yalnızca tabloyu okur, temizler ve segmentlere ayırır.
+    aylık olarak derlenir. Fiyatlar tahmin edilmez, kaynaktan ölçülür.
     Her rakamın yanında kaynak sayısı ve derleme tarihi görünür.
   </div>
 
@@ -137,7 +136,7 @@
     <tbody>
       <tr><td>Ekonomik</td><td>≤ 25. persentil (P25)</td></tr>
       <tr><td>Orta</td><td>P25 – P75 arası</td></tr>
-      <tr><td>Lüks</td><td>&gt; 75. persentil (P75)</td></tr>
+      <tr><td>Üst</td><td>&gt; 75. persentil (P75)</td></tr>
     </tbody>
   </table>
   <p>
@@ -173,20 +172,7 @@
     endeksimiz budur.
   </div>
 
-  <h2>Nazik kazıma ilkeleri</h2>
-  <ul>
-    <li>Her hedef URL, kazımadan önce robots.txt'e karşı otomatik kontrol edilir.</li>
-    <li>İstekler arası bekleme bırakılır, agresif/paralel istek atılmaz.</li>
-    <li>Kazıma ayda bir çalışır — gerçek zamanlı değildir.</li>
-    <li>Aktif bot-tespiti atlatılmaya çalışılmaz; bir site bunu kullanıyorsa o kaynak bilerek bırakılır.</li>
-  </ul>
 
-  <h2>Sağlık kontrolü</h2>
-  <p>
-    Bir kaynak normalde döndürdüğü satır sayısının çok altına düşerse (ör.
-    site tabloyu değiştirmiş), veri <strong>sessizce kabul edilmez</strong> —
-    otomatik karantinaya alınır ve endekse dahil edilmez.
-  </p>
 
   <h2>Güncelleme sıklığı</h2>
   <p>Veri ayda bir otomatik yenilenir; her sayfada son güncelleme tarihi görünür.</p>

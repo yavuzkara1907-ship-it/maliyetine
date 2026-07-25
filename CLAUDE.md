@@ -323,6 +323,52 @@ Hesaplayıcı bu kalemleri toplar. Her kalem: segment + kaynak + tarih.
   resmî/tahmini ayrımı, aritmetik tutarlılık, seçilmeyen kalemin
   hesaba girmemesi.
 
+## YAVUZ'UN ELEŞTİRİLERİ VE DÜZELTMELER (2026-07-25)
+Yavuz sitenin canlı halini inceleyip beş ciddi eleştiri getirdi. Hepsi
+haklıydı, hepsi düzeltildi:
+
+1. **"Site çok açıklayıcı, bütün sırlarımızı ortaya döküyor. Bu dürüstlük
+   değil enayilik."** → Metodoloji sayfalarından iş sırrı niteliğindeki
+   bölümler ÇIKARILDI: "nazik kazıma ilkeleri" (istek aralığı, robots.txt
+   detayı), sağlık kontrolü eşikleri, hangi kaynağın neden bırakıldığı,
+   kaynak türü listesi. "Kazıyoruz/robots.txt/karantina/motor.py" gibi
+   ifadeler metinden tamamen kaldırıldı ("derlenir", "ölçülür" oldu).
+   **Kalan:** neyi ölçtüğümüz, segment tanımı, sınırlar, güncelleme
+   sıklığı — yani güven veren kısım. Dosya boyutları ~%15 küçüldü.
+   **KURAL: metodoloji "neyi ölçüyoruz"u anlatır, "nasıl kazıyoruz"u DEĞİL.**
+
+2. **"Otomobil sekmesi çok zayıf, markalar yok, model isimleri yok."**
+   → **ÇÖZÜLDÜ: 4 marka → 24 marka, 492 model.** Kök neden: marka
+   tabloları JS ile yükleniyordu, `render_gerekli: true` eksikti.
+   Ayrıca `tablo_urunler`'de **nbsp bug'ı** vardı: başlıklar
+   "Sıfır\xa0Togg fiyatları" şeklinde geliyor, tam metin eşleşmesi
+   tutmuyordu — başlık karşılaştırması artık boşlukları normalize ediyor.
+   Togg, Renault, Dacia, Fiat, Hyundai, Toyota, VW, BMW, Mercedes dahil
+   24 marka. 8 kalem sayfası (popüler markalar).
+
+3. **"Trendyol'a bizim sitemizden gidecek insan yok, linklendirmiyoruz."**
+   → Kalem sayfalarına **"Nereden bakabilirsiniz"** bölümü eklendi;
+   `KAYNAK_SITELERI` + `kalem_kaynak_linkleri()` ile kaynaklar.yaml'dan
+   otomatik üretiliyor. Şu an düz link (`rel="nofollow noopener"`).
+   **Affiliate programına kabul alınınca takip parametresi YALNIZCA
+   `KAYNAK_SITELERI` sözlüğüne eklenecek** — sayfa şablonlarına
+   dokunmaya gerek yok, `rel` de o zaman `sponsored` olmalı.
+
+4. **"Buzdolabı 45 bin TL lüks diyoruz ama asıl lüks 80.000'den başlıyor."**
+   → Haklı: Trendyol kategori sayfasında max 62K var, gerçek premium
+   modeller listede yok. `?sst=PRICE_BY_DESC` ve `?prc=` filtreleri
+   denendi — **Trendyol tüm filtreleri JS ile uyguluyor, sunucu HTML'i
+   değişmiyor**, o yüzden pahalı ürünler çekilemiyor.
+   **Çözüm: "Lüks" → "Üst" segment.** 43K buzdolabı lüks değil, yaygın
+   ürünler içindeki üst çeyrek. Metodolojiye "örneklem sınırı" uyarısı
+   eklendi: üst segment = piyasanın en pahalısı değil, *listedeki* üst
+   çeyrek. İleride premium marka kategorileri ayrı kaynak olarak eklenebilir.
+
+5. **"Tekrar tekrar izin istiyorsun, tek seferde verdiğim izni kullan."**
+   → **KURAL: Yavuz bir yön onayladıysa, o yönün alt kararlarını sorma —
+   uygula ve sonucu bildir.** AskUserQuestion yalnızca gerçekten geri
+   dönülemez ya da ürün stratejisini değiştiren çatallarda kullanılmalı.
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)

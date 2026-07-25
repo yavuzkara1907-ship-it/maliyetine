@@ -43,7 +43,7 @@
       <div class="segment-secim">
         <label><input type="radio" name="segment" value="ekonomik"> Ekonomik</label>
         <label><input type="radio" name="segment" value="orta" checked> Orta</label>
-        <label><input type="radio" name="segment" value="luks"> Lüks</label>
+        <label><input type="radio" name="segment" value="luks"> Üst</label>
       </div>
     </div>
 
@@ -136,16 +136,13 @@
   let guncellemeTarihi = null;
   const veriDurumu = document.getElementById("veri-durumu");
 
-  fetch("/veri/ev-kurma.json")
-    .then(function (r) {
+  fetch("/veri/ev-kurma.json").then(function (r) {
       if (!r.ok) throw new Error("HTTP " + r.status);
       return r.json();
-    })
-    .then(function (veri) {
+    }).then(function (veri) {
       veriKalemleri = veri.kalemler || {};
       guncellemeTarihi = veri.guncelleme_tarihi;
-    })
-    .catch(function () {
+    }).catch(function () {
       veriDurumu.hidden = false;
       veriDurumu.textContent =
         "Fiyat verisi şu anda yüklenemedi — hesaplama yapılamıyor. " +

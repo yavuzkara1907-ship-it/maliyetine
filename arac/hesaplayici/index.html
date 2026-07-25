@@ -152,8 +152,7 @@
     e.preventDefault();
     const fiyat = parseInt(document.getElementById("arac-fiyati").value, 10) || 0;
     const cc = parseInt(document.getElementById("motor-cc").value, 10);
-    const secilen = Array.from(form.querySelectorAll('input[name="kalem"]:checked'))
-      .map(function (k) { return k.value; });
+    const secilen = Array.from(form.querySelectorAll('input[name="kalem"]:checked')).map(function (k) { return k.value; });
 
     const s = aracEkMaliyetHesapla(fiyat, cc, secilen);
 

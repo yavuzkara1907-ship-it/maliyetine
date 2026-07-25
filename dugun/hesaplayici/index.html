@@ -31,7 +31,7 @@
   <h1>Düğün Maliyeti Hesaplayıcı</h1>
   <p>Davetli sayınızı ve bütçe segmentinizi girin — kalem kalem tahmini
     görün. <span class="tahmini-etiket">Tahmini</span> etiketli kalemler
-    henüz kazınan bir kaynağa dayanmıyor, genel piyasa araştırmasından
+    henüz doğrulanmış bir kaynağa dayanmıyor, genel piyasa araştırmasından
     alınmıştır — diğerleri gerçek, tarihli kaynaklardan derlenir.
     <a href="/dugun/metodoloji/">Fark ne, bakın.</a></p>
   <p>Düğün salonu için <strong>yemekli</strong> (menü dahil kişi başı) ya
@@ -52,7 +52,7 @@
       <div class="segment-secim">
         <label><input type="radio" name="segment" value="ekonomik"> Ekonomik</label>
         <label><input type="radio" name="segment" value="orta" checked> Orta</label>
-        <label><input type="radio" name="segment" value="luks"> Lüks</label>
+        <label><input type="radio" name="segment" value="luks"> Üst</label>
       </div>
     </div>
 
@@ -133,18 +133,15 @@
   let guncellemeTarihi = null;
   const veriDurumu = document.getElementById("veri-durumu");
 
-  fetch("/veri/dugun.json")
-    .then(function (r) {
+  fetch("/veri/dugun.json").then(function (r) {
       if (!r.ok) throw new Error("HTTP " + r.status);
       return r.json();
-    })
-    .then(function (veri) {
+    }).then(function (veri) {
       veriKalemleri = veri.kalemler || {};
       guncellemeTarihi = veri.guncelleme_tarihi;
       // Menu bedeli ancak veri gelince bilinir - notu tazele.
       yemekNotunuGuncelle();
-    })
-    .catch(function () {
+    }).catch(function () {
       veriDurumu.hidden = false;
       veriDurumu.textContent =
         "Gerçek kaynak verisi şu anda yüklenemedi - sadece tahmini " +

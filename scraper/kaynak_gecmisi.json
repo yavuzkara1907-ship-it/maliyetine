@@ -692,31 +692,156 @@
   },
   "arac/en-ucuz-sifir-arac/donanimhaber": {
     "urun_sayilari": [
+      22,
       22
     ],
     "son_calisma": "2026-07-25"
   },
   "arac/tesla/donanimhaber": {
     "urun_sayilari": [
+      4,
       4
     ],
     "son_calisma": "2026-07-25"
   },
   "arac/byd/donanimhaber": {
     "urun_sayilari": [
+      4,
       4
     ],
     "son_calisma": "2026-07-25"
   },
   "arac/suzuki/donanimhaber": {
     "urun_sayilari": [
+      18,
       18
     ],
     "son_calisma": "2026-07-25"
   },
   "arac/cupra/donanimhaber": {
     "urun_sayilari": [
+      7,
       7
+    ],
+    "son_calisma": "2026-07-25"
+  },
+  "arac/togg/donanimhaber": {
+    "urun_sayilari": [
+      8
+    ],
+    "son_calisma": "2026-07-25"
+  },
+  "arac/renault/donanimhaber": {
+    "urun_sayilari": [
+      21
+    ],
+    "son_calisma": "2026-07-25"
+  },
+  "arac/chery/donanimhaber": {
+    "urun_sayilari": [
+      3
+    ],
+    "son_calisma": "2026-07-25"
+  },
+  "arac/dacia/donanimhaber": {
+    "urun_sayilari": [
+      10
+    ],
+    "son_calisma": "2026-07-25"
+  },
+  "arac/citroen/donanimhaber": {
+    "urun_sayilari": [
+      19
+    ],
+    "son_calisma": "2026-07-25"
+  },
+  "arac/opel/donanimhaber": {
+    "urun_sayilari": [
+      20
+    ],
+    "son_calisma": "2026-07-25"
+  },
+  "arac/peugeot/donanimhaber": {
+    "urun_sayilari": [
+      20
+    ],
+    "son_calisma": "2026-07-25"
+  },
+  "arac/ford/donanimhaber": {
+    "urun_sayilari": [
+      17
+    ],
+    "son_calisma": "2026-07-25"
+  },
+  "arac/hyundai/donanimhaber": {
+    "urun_sayilari": [
+      28
+    ],
+    "son_calisma": "2026-07-25"
+  },
+  "arac/kia/donanimhaber": {
+    "urun_sayilari": [
+      20
+    ],
+    "son_calisma": "2026-07-25"
+  },
+  "arac/skoda/donanimhaber": {
+    "urun_sayilari": [
+      41
+    ],
+    "son_calisma": "2026-07-25"
+  },
+  "arac/seat/donanimhaber": {
+    "urun_sayilari": [
+      4
+    ],
+    "son_calisma": "2026-07-25"
+  },
+  "arac/honda/donanimhaber": {
+    "urun_sayilari": [
+      6
+    ],
+    "son_calisma": "2026-07-25"
+  },
+  "arac/toyota/donanimhaber": {
+    "urun_sayilari": [
+      24
+    ],
+    "son_calisma": "2026-07-25"
+  },
+  "arac/fiat/donanimhaber": {
+    "urun_sayilari": [
+      15
+    ],
+    "son_calisma": "2026-07-25"
+  },
+  "arac/volkswagen/donanimhaber": {
+    "urun_sayilari": [
+      40
+    ],
+    "son_calisma": "2026-07-25"
+  },
+  "arac/nissan/donanimhaber": {
+    "urun_sayilari": [
+      18
+    ],
+    "son_calisma": "2026-07-25"
+  },
+  "arac/mg/donanimhaber": {
+    "urun_sayilari": [
+      5
+    ],
+    "son_calisma": "2026-07-25"
+  },
+  "arac/bmw/donanimhaber": {
+    "urun_sayilari": [
+      60
+    ],
+    "son_calisma": "2026-07-25"
+  },
+  "arac/mercedes/donanimhaber": {
+    "urun_sayilari": [
+      42
     ],
     "son_calisma": "2026-07-25"
   }

@@ -101,17 +101,37 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://maliyetine.com.tr/arac/tesla-fiyatlari/</loc>
+    <loc>https://maliyetine.com.tr/arac/fiat-fiyatlari/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://maliyetine.com.tr/arac/byd-fiyatlari/</loc>
+    <loc>https://maliyetine.com.tr/arac/renault-fiyatlari/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://maliyetine.com.tr/arac/suzuki-fiyatlari/</loc>
+    <loc>https://maliyetine.com.tr/arac/togg-fiyatlari/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://maliyetine.com.tr/arac/dacia-fiyatlari/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://maliyetine.com.tr/arac/hyundai-fiyatlari/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://maliyetine.com.tr/arac/toyota-fiyatlari/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://maliyetine.com.tr/arac/volkswagen-fiyatlari/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

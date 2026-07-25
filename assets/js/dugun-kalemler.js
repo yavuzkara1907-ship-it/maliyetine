@@ -106,4 +106,4 @@ const DUGUN_KALEMLERI = [
 // paylasacak) - hesaplayici toplamina hic dahil edilmiyor, ayri bolum.
 const DUGUN_BALAYI = { id: "balayi", ad: "Balayı" };
 
-const SEGMENT_ETIKETLERI = { dusuk: "Ekonomik", orta: "Orta", luks: "Lüks" };
+const SEGMENT_ETIKETLERI = { dusuk: "Ekonomik", orta: "Orta", luks: "Üst" };

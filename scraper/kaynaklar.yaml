@@ -1784,6 +1784,7 @@ kaynaklar:
   - ad: "DonanimHaber - Marka Giris Fiyatlari"
     site: "donanimhaber"
     url: "https://www.donanimhaber.com/sifir-araba-fiyatlari-kampanyalari--182165"
+    render_gerekli: true
     sayfa_sayisi: 1
     vertikal: "arac"
     kalem: "en-ucuz-sifir-arac"
@@ -1805,54 +1806,316 @@ kaynaklar:
   # tablosu var (Togg/Renault/Fiat gibi populer markalarin tablolari JS
   # ile yukleniyor, ham HTML'de YOK - 2026-07-25'te dogrulandi).
   # Populer markalar icin ikinci kaynak aranmali (bkz. Yapilacaklar).
-  - ad: "DonanimHaber - Tesla"
+
+  - ad: "DonanimHaber - Togg"
     site: "donanimhaber"
     url: "https://www.donanimhaber.com/sifir-araba-fiyatlari-kampanyalari--182165"
+    render_gerekli: true
     sayfa_sayisi: 1
     vertikal: "arac"
-    kalem: "tesla"
+    kalem: "togg"
     yontem: "otomatik"
-    tablo: {baslik_metni: "Sıfır Tesla fiyatları", isim_sutunu: 0, fiyat_sutunu: 1}
-    min_fiyat: 500000
+    tablo: {baslik_metni: "Sıfır Togg fiyatları", isim_sutunu: 0, fiyat_sutunu: 1}
+    min_fiyat: 300000
     bekleme_sn: 3
     aktif: true
     durum: "onaylandi"
-
+  - ad: "DonanimHaber - Renault"
+    site: "donanimhaber"
+    url: "https://www.donanimhaber.com/sifir-araba-fiyatlari-kampanyalari--182165"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "arac"
+    kalem: "renault"
+    yontem: "otomatik"
+    tablo: {baslik_metni: "Sıfır Renault fiyatları", isim_sutunu: 0, fiyat_sutunu: 1}
+    min_fiyat: 300000
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+  - ad: "DonanimHaber - Chery"
+    site: "donanimhaber"
+    url: "https://www.donanimhaber.com/sifir-araba-fiyatlari-kampanyalari--182165"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "arac"
+    kalem: "chery"
+    yontem: "otomatik"
+    tablo: {baslik_metni: "Sıfır Chery fiyatları", isim_sutunu: 0, fiyat_sutunu: 1}
+    min_fiyat: 300000
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+  - ad: "DonanimHaber - Dacia"
+    site: "donanimhaber"
+    url: "https://www.donanimhaber.com/sifir-araba-fiyatlari-kampanyalari--182165"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "arac"
+    kalem: "dacia"
+    yontem: "otomatik"
+    tablo: {baslik_metni: "Sıfır Dacia fiyatları", isim_sutunu: 0, fiyat_sutunu: 1}
+    min_fiyat: 300000
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+  - ad: "DonanimHaber - Citroen"
+    site: "donanimhaber"
+    url: "https://www.donanimhaber.com/sifir-araba-fiyatlari-kampanyalari--182165"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "arac"
+    kalem: "citroen"
+    yontem: "otomatik"
+    tablo: {baslik_metni: "Sıfır Citroen fiyatları", isim_sutunu: 0, fiyat_sutunu: 1}
+    min_fiyat: 300000
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+  - ad: "DonanimHaber - Opel"
+    site: "donanimhaber"
+    url: "https://www.donanimhaber.com/sifir-araba-fiyatlari-kampanyalari--182165"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "arac"
+    kalem: "opel"
+    yontem: "otomatik"
+    tablo: {baslik_metni: "Sıfır Opel fiyatları", isim_sutunu: 0, fiyat_sutunu: 1}
+    min_fiyat: 300000
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+  - ad: "DonanimHaber - Peugeot"
+    site: "donanimhaber"
+    url: "https://www.donanimhaber.com/sifir-araba-fiyatlari-kampanyalari--182165"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "arac"
+    kalem: "peugeot"
+    yontem: "otomatik"
+    tablo: {baslik_metni: "Sıfır Peugeot fiyatları", isim_sutunu: 0, fiyat_sutunu: 1}
+    min_fiyat: 300000
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+  - ad: "DonanimHaber - Ford"
+    site: "donanimhaber"
+    url: "https://www.donanimhaber.com/sifir-araba-fiyatlari-kampanyalari--182165"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "arac"
+    kalem: "ford"
+    yontem: "otomatik"
+    tablo: {baslik_metni: "Sıfır Ford fiyatları", isim_sutunu: 0, fiyat_sutunu: 1}
+    min_fiyat: 300000
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+  - ad: "DonanimHaber - Hyundai"
+    site: "donanimhaber"
+    url: "https://www.donanimhaber.com/sifir-araba-fiyatlari-kampanyalari--182165"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "arac"
+    kalem: "hyundai"
+    yontem: "otomatik"
+    tablo: {baslik_metni: "Sıfır Hyundai fiyatları", isim_sutunu: 0, fiyat_sutunu: 1}
+    min_fiyat: 300000
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+  - ad: "DonanimHaber - Kia"
+    site: "donanimhaber"
+    url: "https://www.donanimhaber.com/sifir-araba-fiyatlari-kampanyalari--182165"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "arac"
+    kalem: "kia"
+    yontem: "otomatik"
+    tablo: {baslik_metni: "Sıfır Kia fiyatları", isim_sutunu: 0, fiyat_sutunu: 1}
+    min_fiyat: 300000
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+  - ad: "DonanimHaber - Skoda"
+    site: "donanimhaber"
+    url: "https://www.donanimhaber.com/sifir-araba-fiyatlari-kampanyalari--182165"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "arac"
+    kalem: "skoda"
+    yontem: "otomatik"
+    tablo: {baslik_metni: "Sıfır Skoda fiyatları", isim_sutunu: 0, fiyat_sutunu: 1}
+    min_fiyat: 300000
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+  - ad: "DonanimHaber - Seat"
+    site: "donanimhaber"
+    url: "https://www.donanimhaber.com/sifir-araba-fiyatlari-kampanyalari--182165"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "arac"
+    kalem: "seat"
+    yontem: "otomatik"
+    tablo: {baslik_metni: "Sıfır Seat fiyatları", isim_sutunu: 0, fiyat_sutunu: 1}
+    min_fiyat: 300000
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+  - ad: "DonanimHaber - Honda"
+    site: "donanimhaber"
+    url: "https://www.donanimhaber.com/sifir-araba-fiyatlari-kampanyalari--182165"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "arac"
+    kalem: "honda"
+    yontem: "otomatik"
+    tablo: {baslik_metni: "Sıfır Honda fiyatları", isim_sutunu: 0, fiyat_sutunu: 1}
+    min_fiyat: 300000
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+  - ad: "DonanimHaber - Toyota"
+    site: "donanimhaber"
+    url: "https://www.donanimhaber.com/sifir-araba-fiyatlari-kampanyalari--182165"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "arac"
+    kalem: "toyota"
+    yontem: "otomatik"
+    tablo: {baslik_metni: "Sıfır Toyota fiyatları", isim_sutunu: 0, fiyat_sutunu: 1}
+    min_fiyat: 300000
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+  - ad: "DonanimHaber - Fiat"
+    site: "donanimhaber"
+    url: "https://www.donanimhaber.com/sifir-araba-fiyatlari-kampanyalari--182165"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "arac"
+    kalem: "fiat"
+    yontem: "otomatik"
+    tablo: {baslik_metni: "Sıfır Fiat fiyatları", isim_sutunu: 0, fiyat_sutunu: 1}
+    min_fiyat: 300000
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+  - ad: "DonanimHaber - Volkswagen"
+    site: "donanimhaber"
+    url: "https://www.donanimhaber.com/sifir-araba-fiyatlari-kampanyalari--182165"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "arac"
+    kalem: "volkswagen"
+    yontem: "otomatik"
+    tablo: {baslik_metni: "Sıfır Volkswagen fiyatları", isim_sutunu: 0, fiyat_sutunu: 1}
+    min_fiyat: 300000
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+  - ad: "DonanimHaber - Nissan"
+    site: "donanimhaber"
+    url: "https://www.donanimhaber.com/sifir-araba-fiyatlari-kampanyalari--182165"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "arac"
+    kalem: "nissan"
+    yontem: "otomatik"
+    tablo: {baslik_metni: "Sıfır Nissan fiyatları", isim_sutunu: 0, fiyat_sutunu: 1}
+    min_fiyat: 300000
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+  - ad: "DonanimHaber - MG"
+    site: "donanimhaber"
+    url: "https://www.donanimhaber.com/sifir-araba-fiyatlari-kampanyalari--182165"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "arac"
+    kalem: "mg"
+    yontem: "otomatik"
+    tablo: {baslik_metni: "Sıfır MG fiyatları", isim_sutunu: 0, fiyat_sutunu: 1}
+    min_fiyat: 300000
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+  - ad: "DonanimHaber - BMW"
+    site: "donanimhaber"
+    url: "https://www.donanimhaber.com/sifir-araba-fiyatlari-kampanyalari--182165"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "arac"
+    kalem: "bmw"
+    yontem: "otomatik"
+    tablo: {baslik_metni: "Sıfır BMW fiyatları", isim_sutunu: 0, fiyat_sutunu: 1}
+    min_fiyat: 300000
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+  - ad: "DonanimHaber - Mercedes"
+    site: "donanimhaber"
+    url: "https://www.donanimhaber.com/sifir-araba-fiyatlari-kampanyalari--182165"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "arac"
+    kalem: "mercedes"
+    yontem: "otomatik"
+    tablo: {baslik_metni: "Sıfır Mercedes fiyatları", isim_sutunu: 0, fiyat_sutunu: 1}
+    min_fiyat: 300000
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
   - ad: "DonanimHaber - BYD"
     site: "donanimhaber"
     url: "https://www.donanimhaber.com/sifir-araba-fiyatlari-kampanyalari--182165"
+    render_gerekli: true
     sayfa_sayisi: 1
     vertikal: "arac"
     kalem: "byd"
     yontem: "otomatik"
     tablo: {baslik_metni: "Sıfır BYD fiyatları", isim_sutunu: 0, fiyat_sutunu: 1}
-    min_fiyat: 500000
+    min_fiyat: 300000
     bekleme_sn: 3
     aktif: true
     durum: "onaylandi"
-
+  - ad: "DonanimHaber - Tesla"
+    site: "donanimhaber"
+    url: "https://www.donanimhaber.com/sifir-araba-fiyatlari-kampanyalari--182165"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "arac"
+    kalem: "tesla"
+    yontem: "otomatik"
+    tablo: {baslik_metni: "Sıfır Tesla fiyatları", isim_sutunu: 0, fiyat_sutunu: 1}
+    min_fiyat: 300000
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
   - ad: "DonanimHaber - Suzuki"
     site: "donanimhaber"
     url: "https://www.donanimhaber.com/sifir-araba-fiyatlari-kampanyalari--182165"
+    render_gerekli: true
     sayfa_sayisi: 1
     vertikal: "arac"
     kalem: "suzuki"
     yontem: "otomatik"
     tablo: {baslik_metni: "Sıfır Suzuki fiyatları", isim_sutunu: 0, fiyat_sutunu: 1}
-    min_fiyat: 500000
+    min_fiyat: 300000
     bekleme_sn: 3
     aktif: true
     durum: "onaylandi"
-
   - ad: "DonanimHaber - Cupra"
     site: "donanimhaber"
     url: "https://www.donanimhaber.com/sifir-araba-fiyatlari-kampanyalari--182165"
+    render_gerekli: true
     sayfa_sayisi: 1
     vertikal: "arac"
     kalem: "cupra"
     yontem: "otomatik"
     tablo: {baslik_metni: "Sıfır Cupra fiyatları", isim_sutunu: 0, fiyat_sutunu: 1}
-    min_fiyat: 500000
+    min_fiyat: 300000
     bekleme_sn: 3
     aktif: true
     durum: "onaylandi"

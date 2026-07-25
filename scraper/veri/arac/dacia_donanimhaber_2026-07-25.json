@@ -1,0 +1,35 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Dacia"
+  ],
+  "kalem": "dacia",
+  "vertikal": "arac",
+  "tarih": "2026-07-25",
+  "toplam_urun": 10,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 1725000,
+  "segmentler": {
+    "dusuk": {
+      "min": 1299000,
+      "medyan": 1433000,
+      "max": 1600000,
+      "urun_sayisi": 3
+    },
+    "orta": {
+      "min": 1709000,
+      "medyan": 1740000,
+      "max": 1784000,
+      "urun_sayisi": 5
+    },
+    "luks": {
+      "min": 1821000,
+      "medyan": 1825500,
+      "max": 1830000,
+      "urun_sayisi": 2
+    }
+  }
+}

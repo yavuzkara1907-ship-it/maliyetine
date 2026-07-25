@@ -309,9 +309,16 @@ def tablo_urunler(soup: BeautifulSoup, kaynak: dict):
     hedef = None
     baslik_metni = t.get("baslik_metni")
     if baslik_metni:
-        desen = re.compile(re.escape(baslik_metni), re.I)
+        # Basliklarda sik sik nbsp (\xa0) ve cok bosluk oluyor ("Sıfır\xa0Togg
+        # fiyatları") - tam metin karsilastirmasi bu yuzden tutmuyordu.
+        # Iki tarafi da normalize edip bosluklari esnek eslestiriyoruz.
+        def _norm(x):
+            return re.sub(r"\s+", " ", x.replace("\xa0", " ")).strip()
+        desen = re.compile(
+            r"\s+".join(re.escape(k) for k in _norm(baslik_metni).split()), re.I
+        )
         for etiket in soup.find_all(["h1", "h2", "h3", "h4"]):
-            if desen.search(etiket.get_text(" ", strip=True)):
+            if desen.search(_norm(etiket.get_text(" ", strip=True))):
                 hedef = etiket.find_next("table")
                 break
     else:

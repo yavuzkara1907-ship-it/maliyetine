@@ -1,0 +1,35 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Peugeot"
+  ],
+  "kalem": "peugeot",
+  "vertikal": "arac",
+  "tarih": "2026-07-25",
+  "toplam_urun": 20,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 2637500,
+  "segmentler": {
+    "dusuk": {
+      "min": 1573500,
+      "medyan": 2038250,
+      "max": 2308500,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 2353000,
+      "medyan": 2773000,
+      "max": 3318000,
+      "urun_sayisi": 10
+    },
+    "luks": {
+      "min": 3502000,
+      "medyan": 3530000,
+      "max": 3644000,
+      "urun_sayisi": 4
+    }
+  }
+}

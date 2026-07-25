@@ -32,9 +32,8 @@
 
   <div class="cevap-blok">
     Ev kurma endeksindeki fiyatların <strong>tamamı</strong> gerçek
-    e-ticaret sitelerinden, robots.txt kurallarına uygun şekilde aylık
-    olarak kazınır — yapay zeka burada sadece ham veriyi temizler ve
-    kategorize eder, fiyatı asla üretmez. Bu endekste
+    e-ticaret sitelerinden,  aylık
+    olarak derlenir — fiyatlar tahmin edilmez, kaynaktan ölçülür. Bu endekste
     <span class="tahmini-etiket">Tahmini</span> kalem <strong>yoktur</strong>:
     42 kalemin hepsi tek tek fiziksel bir ürüne karşılık geldiği için,
     her birinin fiyatı doğrudan gerçek ürün listelerinden ölçülebiliyor.
@@ -62,15 +61,6 @@
     kaynak kullanılıyor.
   </p>
 
-  <h3>Kaynak türleri</h3>
-  <ul>
-    <li><strong>Genel e-ticaret / pazaryerleri</strong> — geniş örneklem,
-      geniş segment aralığı. (Şu an kullanılan: Trendyol.)</li>
-    <li><strong>Kategori mağazaları</strong> (beyaz eşya, mobilya,
-      yapı market) — planlanan ikinci kaynak katmanı.</li>
-    <li><strong>Marka siteleri</strong> — üst segment için daha gerçekçi
-      liste fiyatı.</li>
-  </ul>
 
   <h2>Çapraz doğrulama</h2>
   <p>
@@ -89,7 +79,7 @@
     <tbody>
       <tr><td>Ekonomik</td><td>≤ 25. persentil (P25)</td></tr>
       <tr><td>Orta</td><td>P25 – P75 arası</td></tr>
-      <tr><td>Lüks</td><td>&gt; 75. persentil (P75)</td></tr>
+      <tr><td>Üst</td><td>&gt; 75. persentil (P75)</td></tr>
     </tbody>
   </table>
   <p>Birden fazla kaynak olan kalemlerde, segment değeri her kaynağın
@@ -97,21 +87,15 @@
     kaynaklar arasında karıştırılmaz, tek bir sapkın kaynağın sonucu
     domine etmesi engellenir.</p>
 
-  <h2>Sağlık kontrolü</h2>
-  <p>
-    Bir kaynak normalde belirli bir ürün sayısı döndürüyorsa ve bir ay
-    aniden çok azını döndürürse (ör. site tasarımı değişmiş, erişim
-    engellenmiş), bu veri <strong>sessizce kabul edilmez</strong> —
-    otomatik olarak karantinaya alınır ve endekse dahil edilmez.
-  </p>
 
-  <h2>Nazik kazıma ilkeleri</h2>
-  <ul>
-    <li>Her hedef URL, kazımadan önce robots.txt'e karşı otomatik kontrol edilir; izin vermeyen sayfalar kullanılmaz.</li>
-    <li>İstekler arası bekleme süresi bırakılır, agresif/paralel istek atılmaz.</li>
-    <li>Kazıma ayda bir kez çalışır — gerçek zamanlı veya sürekli değildir.</li>
-    <li>Aktif bot-tespiti (ör. Cloudflare zorlukları) atlatılmaya çalışılmaz — bir site bunu kullanıyorsa o kaynak bilerek bırakılır.</li>
-  </ul>
+
+  <div class="uyari-kutu">
+    <strong>Örneklem sınırı:</strong> fiyatlar kategori listelerindeki
+    yaygın modellerden derlenir. Niş, ithal ya da üst-premium modeller
+    bu listelere girmeyebilir; dolayısıyla "üst segment" rakamı
+    piyasadaki en pahalı ürünü değil, <em>yaygın ürünler içindeki üst
+    çeyreği</em> gösterir.
+  </div>
 
   <h2>Neyi ölçmüyoruz?</h2>
   <p>
