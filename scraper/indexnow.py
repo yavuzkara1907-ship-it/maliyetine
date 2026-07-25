@@ -54,11 +54,23 @@ def sitemap_urlleri(sitemap: Path | None = None) -> list[str]:
     return re.findall(r"<loc>(.*?)</loc>", sitemap.read_text(encoding="utf-8"))
 
 
+# urllib'in varsayilan User-Agent'i ("Python-urllib/x.y") Cloudflare gibi
+# katmanlarda 403 alabiliyor - motor.py'de robots.txt cekerken ayni sorun
+# yasandi (bkz. CLAUDE.md "DUZELTILDI" notu). Gercekci bir UA sart.
+TARAYICI_UA = (
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/120.0 Safari/537.36"
+)
+
+
 def key_dosyasi_yayinda_mi(key: str) -> bool:
     """Key dosyasi sitede erisilebilir mi? Erisilemezse IndexNow reddeder."""
-    url = f"https://{SITE_HOST}/{key}.txt"
+    istek = urllib.request.Request(
+        f"https://{SITE_HOST}/{key}.txt",
+        headers={"User-Agent": TARAYICI_UA},
+    )
     try:
-        with urllib.request.urlopen(url, timeout=15) as yanit:
+        with urllib.request.urlopen(istek, timeout=15) as yanit:
             return yanit.status == 200 and yanit.read().decode().strip() == key
     except (urllib.error.URLError, urllib.error.HTTPError):
         return False

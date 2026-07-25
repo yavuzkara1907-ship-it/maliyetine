@@ -207,6 +207,43 @@ Hesaplayıcı bu kalemleri toplar. Her kalem: segment + kaynak + tarih.
   yeniden adlandırıldı (global: `dugunHesapla` → `maliyetHesapla`),
   zaten tamamen jenerikti; her iki vertikal de aynı dosyayı kullanıyor.
 
+## SEO / Keşfedilebilirlik Durumu (2026-07-25)
+- **Google şu an bizi GÖRMÜYOR.** `site:maliyetine.com.tr` sorgusu boş —
+  beklenen, site 2026-07-25'te yayına girdi ve sitemap hiçbir arama
+  motoruna gönderilmedi. (Arama sırasında **rakip tespit edildi:**
+  `maliyeti.com.tr` — "Her Şeyin Maliyetini Öğrenin!", indeksli, "Havuz
+  Maliyeti 2025" gibi sayfaları var. İncelemeye değer, bkz. Yapılacaklar.)
+- **Teknik SEO denetimi yapıldı, düzeltildi:**
+  - **THIN CONTENT (en ciddiydi):** 9 kalem sayfası ~100 kelimeydi.
+    Google zayıf içerik sayıp indekslemeyebilirdi — halbuki uzun kuyruk
+    trafiğini onlar getirecek. **Artık 330-390 kelime.** Eklenenlerin
+    hepsi VERİDEN üretiliyor (uydurma yok): görünür SSS bölümü, segment
+    detay tablosu (medyan+min+max+örneklem), bütçe payı hesabı, ekonomik/
+    lüks kat farkı, çapraz doğrulama açıklaması, ilgili kalem linkleri.
+  - **Görünür SSS neden önemli:** schema.org'da FAQ vardı ama HTML'de
+    yoktu. Google yalnızca yapılandırılmış veriye güvenmiyor, AI motorları
+    da sayfa metnini okuyor.
+  - Open Graph + Twitter Card hiçbir sayfada yoktu → hepsine eklendi.
+  - 6 sayfanın title'ı 60+ karakterdi (SERP'te kesilir) → hepsi 60 altı.
+  - Meta description'lar artık gerçek rakam içeriyor (tıklanma oranı).
+- **IndexNow kuruldu ve İLK BİLDİRİM GÖNDERİLDİ (202 = kabul, 16 URL).**
+  `scraper/indexnow.py` + kök dizinde `{key}.txt` (key gizli değil,
+  sahiplik kanıtı — depoda durması normal).
+  - **Neden GEO için değerli: ChatGPT'nin web araması Bing altyapısını
+    kullanıyor.** Bing indeksine hızlı girmek doğrudan GEO kazancı.
+    Yandex de destekliyor.
+  - **Google IndexNow'u DESTEKLEMİYOR** — onun için Search Console'a
+    sitemap gönderimi şart (Yavuz'un tarafında).
+  - Script key dosyasının yayında olduğunu doğruluyor; değilse sessizce
+    devam etmiyor, uyarıyor.
+  - **Bulunan bug (düzeltildi):** doğrulama `urllib`'in varsayılan
+    User-Agent'ıyla istek atıyordu ve Cloudflare'e takılıp "key yayında
+    değil" diye yanlış alarm veriyordu — motor.py'de robots.txt çekerken
+    yaşanan sorunun aynısı. Gerçekçi tarayıcı UA'sı eklendi.
+  - **Aylık otomasyona EKLENEMEDİ:** workflow dosyasına PAT'ta `workflow`
+    scope olmadığı için dokunulamıyor. Scope eklenince workflow'un sonuna
+    `python indexnow.py` adımı eklenmeli. O zamana kadar elle çalıştırılır.
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
