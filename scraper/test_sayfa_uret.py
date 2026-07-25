@@ -50,9 +50,12 @@ class KalemDegerTestleri(unittest.TestCase):
 class OrnekToplamHesaplaTestleri(unittest.TestCase):
     # DUGUN_KALEMLERI_TAHMINI (Yavuz'un 2026-07-24 talimatiyla eklenen genel
     # piyasa arastirmasi degerleri) davetli_sayisi=100, segment="orta" icin.
-    # yemek-ikram (700 TL/kisi) KASITLI YOK: varsayilan senaryoda yemekli
-    # salon secili oldugu icin o kalem cift sayim olur ve toplama girmez.
-    TAHMINI_TOPLAM_100_ORTA = 40000 + 45000 + 25000 + 3000 + 5000 + 40000 + 3500  # 161500
+    # yemek-ikram KASITLI YOK: bilgi_amacli, hicbir senaryoda toplanmaz.
+    # taki-altin da YOK: 2026-07-25'te tahminiden gercek kaynaga tasindi
+    # (Atasay altin bilezik). Kalan 6 tahmini kalem:
+    # fotografci + orkestra-dj + gelin-arabasi + kuafor-makyaj +
+    # organizasyon + nikah-islemleri
+    TAHMINI_TOPLAM_100_ORTA = 45000 + 25000 + 3000 + 5000 + 40000 + 3500  # 121500
 
     def test_sabit_ve_kisi_basi_kalemler_dogru_toplanir(self):
         kalemler = {"gelinlik": GELINLIK_VERISI, "salon-yemekli": SALON_YEMEKLI_VERISI}
@@ -124,7 +127,9 @@ class CiftSayimKorumasiTestleri(unittest.TestCase):
 
     @staticmethod
     def _tahmini():
-        return 40000 + 45000 + 25000 + 3000 + 5000 + 40000 + 3500
+        # OrnekToplamHesaplaTestleri.TAHMINI_TOPLAM_100_ORTA ile ayni deger
+        # (taki-altin ve yemek-ikram artik tahmini degil).
+        return 45000 + 25000 + 3000 + 5000 + 40000 + 3500  # 121500
 
     def test_yemek_kalemi_varsayilan_senaryoda_toplama_girmez(self):
         # yemek-ikram 2026-07-25'te tahminiden GERCEK kaynaga tasindi -

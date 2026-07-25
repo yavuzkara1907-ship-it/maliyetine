@@ -115,8 +115,12 @@ Hesaplayıcı bu kalemleri toplar. Her kalem: segment + kaynak + tarih.
    ayrı segment, karıştırılmaz)
 2. Damatlık / takım elbise
 3. Alyans
-4. Takı ve altın (canlı altın/gram fiyatından hesaplanır; en oynak
-   kalem, günlük güncellenebilir)
+4. Takı ve altın — **2026-07-25'te GERÇEK KAYNAĞA taşındı.** Kalem adı
+   bilinçli olarak DARALTILDI: `Takı — Altın Bilezik (1 adet)`. Sebep:
+   düğünde takılan TOPLAM altın ölçülemez (davetli sayısı/gelenek
+   değişkeni), ama bir bileziğin fiyatı ölçülebilir. Kaynak: Atasay
+   (alyansla aynı CSS seçiciler). En oynak kalem — gram altın fiyatı
+   değiştikçe ay içinde değişir.
 5. Nikah şekeri
 6. Davetiye
 7. Gelin ayakkabısı, duvak, aksesuar
@@ -1156,7 +1160,33 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
         doğru — metodolojik karar gerekiyor.
       - **nikah-islemleri (3.500)** — belediye harçları, resmi kaynak,
         kolay ama küçük etki.
-- [ ] Takı/altın (canlı gram fiyatı) için kaynak bulma
+- [x] **Takı/altın GERÇEK KAYNAĞA TAŞINDI (2026-07-25).** Yavuz'un
+      "altını da ekleyelim" talimatıyla. Kaynak: **Atasay altın bilezik**
+      (`/tr/altin/bilezik/`), 24 ürün, CSS katmanı — alyansla aynı
+      seçiciler çalıştı, yeni seçici gerekmedi.
+      **Tahmin ~2 KAT DÜŞÜKMÜŞ:** düşük 15.000 → gerçek 33.085,
+      orta 40.000 → **85.022**, lüks 90.000 → 180.340. (Gram altın
+      6.140 TL bandında ~13 gramlık bileziğe denk, makul.)
+      - **Kalem adı daraltıldı:** `Takı — Altın Bilezik (1 adet)`.
+        Salon kalemindeki "ne ölçtüğü belirsiz" hatasını tekrarlamamak
+        için — toplam takılan altın ölçülemez, tek kalem ölçülebilir.
+      - **min_fiyat: 10.000.** Gram altın 6.140 TL olduğu için altındaki
+        bir "altın bilezik" gerçekçi değil.
+      - **Trendyol REDDEDİLDİ:** `altin-bilezik` kategorisi 2.591 TL
+        medyanla *"Pierre Cardin Kozmetik Çeyiz Seti"* döndürüyordu —
+        alakasız ürün, eklenirse endeksi bozardı. Veri kalitesi kontrolü
+        işe yaradı.
+      - **Altınbaş / Zen:** robots.txt ONAY veriyor ama denenen kategori
+        URL'leri 404 (site engeli DEĞİL, doğru URL bulunamadı). Slug
+        avına çıkılmadı (Karaca dersi). Sonraki turda ikinci — daha
+        ekonomik — kuyumcu kaynağı aranmalı; Atasay premium marka olduğu
+        için şu an üst segmenti temsil ediyor.
+      - Metodoloji sayfasına "Takı ve altın: neyi ölçüyoruz?" bölümü
+        eklendi (neden daraltıldığı ve tek kaynak sınırı açıklanıyor).
+      - **SONUÇ: düğün tahmini oranı %39 → %26.** Toplam 459.738 TL;
+        338.238 TL'si (8 kalem, 10 bağımsız kaynak) gerçek,
+        121.500 TL'si (6 kalem) tahmini.
+        **Oturum başında bu oran %62 idi.**
 - [ ] TÜİK doğrulama verisi entegrasyonu (ÇOK KAYNAK KURALI 5. katman)
 - [x] **GitHub Actions aylık otomasyon + sitemap.xml eklendi (2026-07-24).**
       `.github/workflows/aylik-veri-guncelleme.yml` — bkz. Modül 6.

@@ -22,6 +22,11 @@ const DUGUN_KALEMLERI = [
   { id: "gelin-ayakkabisi", ad: "Gelin Ayakkabısı, Duvak, Aksesuar", birim: "sabit", kaynak_tipi: "gercek" },
   { id: "nikah-sekeri", ad: "Nikah Şekeri", birim: "sabit", kaynak_tipi: "gercek" },
   { id: "davetiye", ad: "Davetiye", birim: "sabit", kaynak_tipi: "gercek" },
+  // 2026-07-25: TAHMINI -> GERCEK kaynak (Atasay altin bilezik, 24 urun).
+  // Onceki tahmin orta 40.000 TL, gercek olcum ~81.000 - tahmin dusuktu.
+  // Kalem adi daraltildi: toplam takilan altin olculemez, bir bilezigin
+  // fiyati olculebilir.
+  { id: "taki-altin", ad: "Takı — Altın Bilezik (1 adet)", birim: "sabit", kaynak_tipi: "gercek" },
   // Salon iki TANIMLI varyant halinde gelir (bkz. kaynaklar.yaml). Ayni
   // "secim_grubu" degerini paylasan kalemler hesaplayicida radyo gibi
   // davranir - biri secilir, digeri toplama girmez.
@@ -59,12 +64,6 @@ const DUGUN_KALEMLERI = [
     birim: "kisi_basi", kaynak_tipi: "gercek", bilgi_amacli: true,
   },
 
-  {
-    id: "taki-altin", ad: "Takı ve Altın", birim: "sabit", kaynak_tipi: "tahmini",
-    tahmini: { dusuk: 15000, orta: 40000, luks: 90000 },
-    kaynak_notu: "Gram altın ~6.140 TL (24 Temmuz 2026) baz alınarak tipik hediye takı seti bütçesi.",
-    arastirma_tarihi: "2026-07-24",
-  },
   {
     id: "fotografci", ad: "Fotoğraf ve Video", birim: "sabit", kaynak_tipi: "tahmini",
     tahmini: { dusuk: 20000, orta: 45000, luks: 100000 },

@@ -1,0 +1,35 @@
+{
+  "site": "atasay",
+  "kaynak_adlari": [
+    "Atasay - Altin Bilezik (marka magazasi)"
+  ],
+  "kalem": "taki-altin",
+  "vertikal": "dugun",
+  "tarih": "2026-07-25",
+  "toplam_urun": 24,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 81058,
+  "segmentler": {
+    "dusuk": {
+      "min": 30600,
+      "medyan": 33085,
+      "max": 36835,
+      "urun_sayisi": 7
+    },
+    "orta": {
+      "min": 64970,
+      "medyan": 85022,
+      "max": 128330,
+      "urun_sayisi": 12
+    },
+    "luks": {
+      "min": 135720,
+      "medyan": 180340,
+      "max": 243765,
+      "urun_sayisi": 5
+    }
+  }
+}

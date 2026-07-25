@@ -486,6 +486,47 @@
       ],
       "capraz_dogrulama_uyarisi": null
     },
+    "taki-altin": {
+      "segmentler": {
+        "dusuk": {
+          "min": 30600,
+          "medyan": 33085,
+          "max": 36835,
+          "urun_sayisi": 7,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 64970,
+          "medyan": 85022,
+          "max": 128330,
+          "urun_sayisi": 12,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 135720,
+          "medyan": 180340,
+          "max": 243765,
+          "urun_sayisi": 5,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 81058,
+      "toplam_urun": 24,
+      "guncelleme_tarihi": "2026-07-25",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "atasay",
+          "kaynak_adlari": [
+            "Atasay - Altin Bilezik (marka magazasi)"
+          ],
+          "tarih": "2026-07-25",
+          "toplam_urun": 24,
+          "genel_medyan": 81058
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
     "salon-yemekli": {
       "segmentler": {
         "dusuk": {

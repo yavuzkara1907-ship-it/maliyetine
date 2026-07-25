@@ -1721,3 +1721,46 @@ kaynaklar:
       NOT: bu, MEKANIN kendi menu bedelidir - disaridan bagimsiz catering
       fiyati DEGIL. Kokteyl secip disaridan catering getirilirse tutar
       farkli olabilir; metodoloji sayfasinda belirtiliyor.
+
+  # --- TAKI/ALTIN: tahminiden GERCEK kaynaga (2026-07-25) ---
+  # Onceden tahmini idi (orta 40.000 TL, "gram altin ~6.140 TL baz alinarak
+  # tipik hediye taki seti butcesi"). Atasay alyansta zaten calisiyordu,
+  # ayni CSS seciciler bilezik kategorisinde de calisiyor -> gercek olcume
+  # gecildi. Gercek cekim: 24 urun, medyan ~81.000 TL (min 30.600,
+  # max 243.765) - yani tahmin DUSUKTU (gram altin 6.140 TL'yken ~13
+  # gramlik bilezige denk geliyor, makul).
+  #
+  # KALEM TANIMI NET TUTULDU: "bir altin bilezik". Dugunde takilan TOPLAM
+  # altin davetli sayisina ve gelenege gore degisir, olculemez; olculebilen
+  # sey tipik bir hediye kaleminin fiyatidir. (Salon kalemindeki
+  # "ne olctugu belirsiz" hatasini tekrarlamamak icin.)
+  #
+  # min_fiyat 10000: gram altin 6.140 TL oldugu icin bunun altindaki bir
+  # "altin bilezik" gercekci degil (kaplama ya da alakasiz urun). Trendyol'un
+  # altin-bilezik kategorisi bu yuzden REDDEDILDI - 2.591 TL medyanla
+  # "Pierre Cardin Kozmetik Ceyiz Seti" donduruyordu.
+  #
+  # TEK KAYNAK: Altinbas ve Zen robots.txt ONAY veriyor ama denenen
+  # kategori URL'leri 404 (dogru URL bulunamadi, site engeli DEGIL).
+  # Sonraki turda ikinci kaynak aranmali; o zamana kadar sayfada
+  # tek-kaynak uyarisi gorunuyor.
+  - ad: "Atasay - Altin Bilezik (marka magazasi)"
+    site: "atasay"
+    url: "https://www.atasay.com/tr/altin/bilezik/"
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "taki-altin"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: ".product-item"
+      isim_secici: ".product-item__name"
+      fiyat_secici: "pz-price"
+    min_fiyat: 10000
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+    notlar: >
+      Gercek cekimle dogrulandi (2026-07-25): 24 urun, CSS katmani,
+      medyan ~81.000 TL. Alyans girdisiyle ayni seciciler.
+      Atasay premium bir marka - ust segmenti temsil eder; ikinci
+      (daha ekonomik) kaynak eklenince segment dagilimi genisleyecek.
