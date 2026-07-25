@@ -204,6 +204,11 @@ VERTIKALLER = {
         # kisi_basi kalemleri carpan olcegi (davetli sayisi)
         "olcek_varsayilan": 150,
         "ornek_ifade": "{olcek} kişilik, orta segment bir düğünün",
+        # Ana sayfada "... X TL tutuyor" kalibiyla kullanilir, o yuzden
+        # YALIN hal (endeks sayfasindaki genitifli ifade orada "tutmasi
+        # bekleniyor" ile kullaniliyor).
+        "anasayfa_ifade": "{olcek} kişilik, orta segment bir düğün",
+        "kart_alt": "{olcek} kişilik, orta segment",
         "hesaplayici_daveti": "Kendi davetli sayınız ve segmentinizle hesaplayın →",
         "kapsam_yer": "İstanbul, Türkiye",
         "keywords": [
@@ -300,6 +305,8 @@ VERTIKALLER = {
             "sıfırdan, orta segment bir evi eşyalandırmanın "
             "(beyaz eşya + mobilya + mutfak + tekstil)"
         ),
+        "anasayfa_ifade": "sıfırdan bir evi eşyalandırmak (orta segment)",
+        "kart_alt": "orta segment, tüm eşya",
         "hesaplayici_daveti": "Kendi eşya listenizle ve segmentinizle hesaplayın →",
         "kapsam_yer": "Türkiye",
         "keywords": [
@@ -1230,6 +1237,250 @@ def sitemap_uret() -> str:
     return "\n".join(satirlar) + "\n"
 
 
+def vertikal_ozeti(vertikal: str, veri_kok: Path | None = None) -> dict | None:
+    """Bir vertikalin ana sayfada gosterilecek ozeti (toplam, kaynak, tarih).
+
+    Veri yoksa ya da hicbir kalemde gercek deger yoksa None doner -
+    ana sayfa o zaman rakam UYDURMAZ, "hazirlaniyor" der.
+    """
+    conf = vertikal_conf(vertikal)
+    dosya = (veri_kok or SITE_KOK / "veri") / f"{vertikal}.json"
+    if not dosya.exists():
+        return None
+    agregali = json.loads(dosya.read_text(encoding="utf-8"))
+    kalemler = agregali.get("kalemler", {})
+    olcek = conf["olcek_varsayilan"]
+    toplam, detaylar = ornek_toplam_hesapla(conf, kalemler, olcek, ORNEK_SEGMENT)
+    dahil = [d for d in detaylar if d["veri_var"] and d.get("toplama_dahil", True)]
+    gercek = [d for d in dahil if not d["tahmini_mi"]]
+    if not gercek:
+        return None
+    return {
+        "vertikal": vertikal,
+        "ad": conf["ad"],
+        "yol": conf["yol"],
+        "soru": conf["soru"],
+        "toplam": toplam,
+        "gercek_toplam": sum(d["satir_toplam"] for d in gercek),
+        "tahmini_toplam": sum(d["satir_toplam"] for d in dahil if d["tahmini_mi"]),
+        "gercek_kalem": len(gercek),
+        "tahmini_kalem": len([d for d in dahil if d["tahmini_mi"]]),
+        "site_sayisi": len(bagimsiz_siteler(kalemler, {d["id"] for d in gercek})),
+        "guncelleme_tarihi": agregali.get("guncelleme_tarihi"),
+        "ornek_ifade": conf["ornek_ifade"].format(olcek=olcek),
+        "anasayfa_ifade": conf.get("anasayfa_ifade", conf["ornek_ifade"]).format(olcek=olcek),
+        "kart_alt": conf.get("kart_alt", "").format(olcek=olcek),
+        # Ana sayfadaki hizli linkler icin kisa etiket: kalem adinin
+        # "—"den onceki kismi ("Düğün Salonu — yemekli (menü dahil)" ->
+        # "Düğün Salonu"). kalem_sayfalari girdilerinde kisa bir ad alani
+        # yok, uzun basliklar ana sayfa kartinda tasiyor.
+        "kalem_sayfalari": [
+            {
+                **k,
+                "kisa_ad": next(
+                    (t["ad"].split("—")[0].strip() for t in conf["kalemler"]
+                     if t["id"] == k["id"]),
+                    k["slug"].replace("-fiyatlari", "").replace("-", " ").capitalize(),
+                ),
+            }
+            for k in conf.get("kalem_sayfalari", [])
+        ],
+    }
+
+
+def anasayfa_uret(veri_kok: Path | None = None) -> str:
+    """Ana sayfayi GERCEK rakamlarla build-time'da uretir.
+
+    Neden build-time: ana sayfa GEO'nun ilk temas noktasi. Onceki hali
+    elle yazilmisti ve HIC RAKAM ICERMIYORDU - AI motorlari icin
+    alintilanabilir bir sey yoktu, kullanici da once bir sayi gormek
+    istiyor. Simdi iki endeksin guncel toplami hem cevap blogunda hem
+    kartlarda gorunuyor, kalem sayfalarina ic link veriyor.
+    """
+    bugun = date.today().isoformat()
+    ozetler = [o for o in (vertikal_ozeti(v, veri_kok) for v in VERTIKALLER) if o]
+
+    if ozetler:
+        cumleler = [
+            f"{o['anasayfa_ifade']} <strong>{_para(o['toplam'])}</strong>"
+            for o in ozetler
+        ]
+        tarih = max(o["guncelleme_tarihi"] or bugun for o in ozetler)
+        cevap = (
+            f"Maliyetine'ye göre {tarih} itibarıyla "
+            + "; ".join(cumleler)
+            + " tutuyor. Rakamlar gerçek e-ticaret ve sektör "
+              "platformlarından aylık derlenir; her kalemin yanında kaynak "
+              "sayısı ve derleme tarihi görünür."
+        )
+        cevap_stil = ""
+    else:
+        cevap = (
+            "Veri toplama süreci devam ediyor — bu sayfa aylık güncellenen "
+            "gerçek fiyat verisiyle otomatik olarak dolacak."
+        )
+        cevap_stil = ' style="color:#7a4a06"'
+        tarih = bugun
+
+    # Endeks kartlari: verisi olan vertikaller rakamiyla, olmayanlar "Yakinda".
+    kartlar = []
+    for o in ozetler:
+        alt_linkler = "".join(
+            f'<a href="/{o["yol"]}/{k["slug"]}/">{k["kisa_ad"]}</a>'
+            for k in o["kalem_sayfalari"]
+        )
+        kartlar.append(f"""    <div class="vertikal-kart kart">
+      <h3><a href="/{o['yol']}/">{o['ad']} maliyeti</a></h3>
+      <p class="kart-rakam">{_para(o['toplam'])}</p>
+      <p class="kart-alt">{o['kart_alt']} · {o['gercek_kalem']} kalem
+        {o['site_sayisi']} bağımsız kaynaktan{", " + str(o['tahmini_kalem']) + " kalem tahmini" if o['tahmini_kalem'] else " (tamamı gerçek kaynaklı)"}</p>
+      <p class="kart-linkler">{alt_linkler}</p>
+    </div>""")
+
+    for ad, aciklama in (("Ev tadilatı", "Hazırlanıyor."), ("0 km araç", "Hazırlanıyor.")):
+        kartlar.append(f"""    <div class="kart">
+      <h3>{ad} maliyeti <span class="yakinda-etiket">Yakında</span></h3>
+      <p>{aciklama}</p>
+    </div>""")
+
+    kurum = {
+        "@type": "Organization",
+        "@id": f"{SITE_KOK_URL}/#kurum",
+        "name": "Maliyetine.com.tr",
+        "url": SITE_KOK_URL,
+        "description": "Türkiye için canlı, doğrulanabilir maliyet endeksi.",
+    }
+    json_ld = {
+        "@context": "https://schema.org",
+        "@graph": [
+            kurum,
+            {
+                "@type": "WebSite",
+                "name": "Maliyetine.com.tr",
+                "url": SITE_KOK_URL + "/",
+                "description": "Türkiye için canlı, doğrulanabilir maliyet endeksi.",
+                "inLanguage": "tr-TR",
+                "publisher": {"@id": f"{SITE_KOK_URL}/#kurum"},
+            },
+            {
+                "@type": "ItemList",
+                "name": "Maliyet endeksleri",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem", "position": i + 1,
+                        "name": f"{o['ad']} maliyeti",
+                        "url": f"{SITE_KOK_URL}/{o['yol']}/",
+                    }
+                    for i, o in enumerate(ozetler)
+                ],
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": o["soru"],
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": (
+                                f"Maliyetine'ye göre {o['guncelleme_tarihi'] or bugun} "
+                                f"itibarıyla {o['anasayfa_ifade']} "
+                                f"{_para(o['toplam'])} tutuyor. "
+                                + (
+                                    f"Bunun {_para(o['gercek_toplam'])} tutarı "
+                                    f"{o['gercek_kalem']} kalem için {o['site_sayisi']} "
+                                    f"bağımsız kaynaktan derlenen güncel fiyatlara, "
+                                    f"{_para(o['tahmini_toplam'])} tutarı ise henüz "
+                                    f"kazınan bir kaynağı olmayan {o['tahmini_kalem']} "
+                                    f"kalem için genel piyasa araştırmasına dayanır."
+                                    if o["tahmini_kalem"] else
+                                    f"Rakamın tamamı {o['gercek_kalem']} kalem için "
+                                    f"{o['site_sayisi']} bağımsız kaynaktan derlenen "
+                                    f"güncel fiyatlara dayanır."
+                                )
+                            ),
+                        },
+                    }
+                    for o in ozetler
+                ],
+            },
+        ],
+    }
+
+    menu = "".join(f'\n      <a href="/{o["yol"]}/">{o["ad"]}</a>' for o in ozetler)
+
+    return f"""<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026'da Ne Kaça Mal Olur? Düğün, Ev Kurma | Maliyetine.com.tr</title>
+<meta name="description" content="Düğün ve ev kurma maliyeti: gerçek fiyat verisinden derlenmiş, aylık güncellenen, doğrulanabilir endeks. Kaynak, tarih ve örneklem her rakamın yanında.">
+<link rel="canonical" href="{SITE_KOK_URL}/">
+<link rel="stylesheet" href="/assets/css/style.css">
+<meta property="og:title" content="2026'da ne kaça mal olur? | Maliyetine.com.tr">
+<meta property="og:description" content="Gerçek fiyat verisinden derlenmiş, doğrulanabilir maliyet endeksi.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{SITE_KOK_URL}/">
+<script type="application/ld+json">
+{json.dumps(json_ld, ensure_ascii=False, indent=2)}
+</script>
+</head>
+<body>
+
+<header class="ust-bar">
+  <div class="kapsayici">
+    <a href="/" class="logo">maliyet<span>ine</span>.com.tr</a>
+    <nav class="ust-menu">{menu}
+    </nav>
+  </div>
+</header>
+
+<main class="kapsayici">
+
+  <span class="guncelleme-etiketi">Güncelleme: {tarih}</span>
+  <h1>2026'da bir şey kaça mal olur?</h1>
+
+  <div class="cevap-blok"{cevap_stil}>
+    {cevap}
+  </div>
+
+  <h2>Endeksler</h2>
+
+  <div class="kart-grid">
+{chr(10).join(kartlar)}
+  </div>
+
+  <h2>Neden farklı?</h2>
+  <p>
+    Rakip fiyat listelerinin çoğu tek bir kaynağa dayanır — o sitenin
+    kendi fiyat politikasını yansıtır, piyasayı değil. Maliyetine her
+    kalem için mümkün olduğunca çok bağımsız kaynağı (fiyat karşılaştırma
+    siteleri, marka mağazaları, sektör platformları) çapraz doğrulayıp
+    birleştirir. Kaynaklar arası fark %30'u aşarsa bunu gizlemeyiz, uyarı
+    olarak gösteririz. Henüz kazınan bir kaynağı olmayan kalemler
+    <span class="tahmini-etiket">Tahmini</span> etiketiyle ayrılır ve
+    toplamın ne kadarının gerçek veriden geldiği her zaman belirtilir.
+  </p>
+  <p>Yöntemin tamamı için
+    {" ve ".join(f'<a href="/{o["yol"]}/metodoloji/">{o["ad"].lower()} metodolojisine</a>' for o in ozetler) if ozetler else "metodoloji sayfalarına"}
+    bakabilirsiniz.</p>
+
+</main>
+
+<footer>
+  <div class="kapsayici">
+    <div>© 2026 Maliyetine.com.tr</div>
+    <nav>{menu}
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+"""
+
+
 def main():
     ayristirici = argparse.ArgumentParser(description=__doc__)
     ayristirici.add_argument("--vertikal", default="dugun", choices=sorted(VERTIKALLER))
@@ -1247,6 +1498,13 @@ def main():
     sitemap_hedef = SITE_KOK / "sitemap.xml"
     sitemap_hedef.write_text(sitemap_uret(), encoding="utf-8")
     print(f"Sitemap uretildi: {sitemap_hedef}")
+
+    # Ana sayfa TUM vertikallerin verisini okur, yani hangi vertikalle
+    # cagirilirsa cagirilsin ayni (dogru) sonucu uretir - sitemap ile ayni
+    # desen. Boylece workflow'a ek bir adim eklemek gerekmiyor.
+    anasayfa_hedef = SITE_KOK / "index.html"
+    anasayfa_hedef.write_text(anasayfa_uret(), encoding="utf-8")
+    print(f"Ana sayfa uretildi: {anasayfa_hedef}")
 
 
 if __name__ == "__main__":

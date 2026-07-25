@@ -1293,6 +1293,28 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
       (tekrar sayma, sonra boş kaynak sayma). Bu proje için en kritik
       metrik bu — ileride kaynak sayısına dokunan her değişiklikte
       "gerçekten veri veren kaç site var?" diye ayrıca doğrulanmalı.
+- [x] **ANA SAYFA BUILD-TIME ÜRETİLİYOR, canlı rakamlarla (2026-07-25).**
+      Önceki hali elle yazılmıştı ve **hiç rakam içermiyordu** — GEO'nun
+      ilk temas noktası olmasına rağmen alıntılanabilir tek sayı yoktu.
+      Artık `sayfa_uret.anasayfa_uret()`:
+      - Cevap bloğunda iki endeksin güncel toplamı ("...bir düğün
+        459.738 TL; sıfırdan bir evi eşyalandırmak 385.730 TL tutuyor").
+      - Endeks kartlarında büyük rakam + kaynak/kalem kırılımı.
+      - **Kalem sayfalarına iç link** (etiket şeklinde) — yetim sayfa
+        riskini azaltır, sitemap tek başına zayıf sinyaldir.
+      - schema.org: Organization + WebSite + ItemList + FAQPage (her
+        vertikal için veriden üretilen soru/cevap).
+      - **Verisi olmayan vertikal "Yakında" kartı olur, rakam
+        UYDURULMAZ** (testle kilitli).
+      **Workflow'a ek adım GEREKMEDİ:** ana sayfa tüm vertikallerin
+      verisini okuduğu için hangi vertikalle çağrılırsa aynı doğru
+      sonucu üretir — sitemap ile aynı desen. (PAT'ta `workflow` scope
+      olmadığı için workflow dosyasına dokunulamıyor, bu yüzden bu desen
+      şart oldu.)
+      Türkçe notu: endeks sayfası "...bir düğünün X tutması bekleniyor"
+      (genitif) kalıbını kullanıyor; ana sayfa "...bir düğün X tutuyor"
+      (yalın) kalıbı istediği için conf'a ayrı `anasayfa_ifade` ve kısa
+      `kart_alt` alanları eklendi. 6 yeni test.
 - [ ] **Hizmet kalemleri turu — kalan tahmini kalemler.** Öncelik sırası
       (etki × çözülebilirlik):
       - **taki-altin (40.000 TL) — EN KOLAY SIRADAKİ.** Gram altın fiyatı

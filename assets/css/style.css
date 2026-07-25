@@ -407,3 +407,48 @@ button.metin-buton {
   text-decoration: underline;
   cursor: pointer;
 }
+
+/* Ana sayfa endeks kartlari: rakam one cikar, alt bilgi ve kalem linkleri */
+.kart-rakam {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--renk-vurgu);
+  margin: 6px 0 4px;
+  letter-spacing: -0.01em;
+}
+
+.kart-alt {
+  font-size: 0.85rem;
+  color: var(--renk-metin-soluk);
+  margin: 0 0 10px;
+}
+
+.kart-linkler {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+}
+
+.kart-linkler a {
+  font-size: 0.8rem;
+  background: var(--renk-vurgu-acik);
+  color: var(--renk-vurgu);
+  padding: 3px 9px;
+  border-radius: 999px;
+  text-decoration: none;
+}
+
+.kart-linkler a:hover {
+  text-decoration: underline;
+}
+
+/* Ana sayfada kart basligindaki link, kartin kendisi gibi davranmali */
+.vertikal-kart h3 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.vertikal-kart h3 a:hover {
+  text-decoration: underline;
+}

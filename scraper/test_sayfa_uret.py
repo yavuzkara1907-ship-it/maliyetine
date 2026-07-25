@@ -3,6 +3,7 @@
 ve veri yokken UYDURULMUS bir rakam gostermedigini dogrular (KIRMIZI CIZGI)."""
 
 import json
+import re
 import unittest
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -546,3 +547,66 @@ class EvKurmaVertikaliTestleri(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class AnasayfaTestleri(unittest.TestCase):
+    """Ana sayfa GEO'nun ilk temas noktasi. Onceki hali elle yazilmisti ve
+    HIC RAKAM ICERMIYORDU. Artik build-time'da uretiliyor - ama veri yoksa
+    rakam UYDURMAMALI (KIRMIZI CIZGI)."""
+
+    def setUp(self):
+        self.tmp = TemporaryDirectory()
+        self.veri_kok = Path(self.tmp.name)
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def _yaz(self, vertikal, kalemler, tarih="2026-07-25"):
+        (self.veri_kok / f"{vertikal}.json").write_text(
+            json.dumps({"vertikal": vertikal, "guncelleme_tarihi": tarih,
+                        "kalemler": kalemler}, ensure_ascii=False),
+            encoding="utf-8",
+        )
+
+    def test_veri_yoksa_rakam_UYDURULMAZ(self):
+        html = sayfa_uret.anasayfa_uret(self.veri_kok)
+        self.assertIn("Veri toplama süreci devam ediyor", html)
+        cevap = html.split('class="cevap-blok"')[1].split("</div>")[0]
+        self.assertNotIn("TL", cevap)
+
+    def test_gercek_veri_varsa_rakam_cevap_blogunda_gorunur(self):
+        self._yaz("dugun", {"gelinlik": GELINLIK_VERISI,
+                            "salon-yemekli": SALON_YEMEKLI_VERISI})
+        html = sayfa_uret.anasayfa_uret(self.veri_kok)
+        beklenen = 5000 + 1100 * DUGUN["olcek_varsayilan"] + 121500
+        self.assertIn(sayfa_uret._para(beklenen), html)
+        self.assertIn("Güncelleme: 2026-07-25", html)
+
+    def test_kalem_sayfalarina_ic_link_verir(self):
+        # Yetim sayfa riskini azaltir: sitemap tek basina zayif sinyal.
+        self._yaz("dugun", {"gelinlik": GELINLIK_VERISI})
+        html = sayfa_uret.anasayfa_uret(self.veri_kok)
+        for slug in ("gelinlik-fiyatlari", "damatlik-fiyatlari",
+                     "alyans-fiyatlari", "dugun-salonu-fiyatlari"):
+            self.assertIn(f'href="/dugun/{slug}/"', html)
+
+    def test_schema_org_dogru_tipleri_icerir(self):
+        self._yaz("dugun", {"gelinlik": GELINLIK_VERISI})
+        html = sayfa_uret.anasayfa_uret(self.veri_kok)
+        blok = re.findall(r'<script type="application/ld\+json">(.*?)</script>',
+                          html, re.S)[0]
+        tipler = {n.get("@type") for n in json.loads(blok)["@graph"]}
+        self.assertEqual(tipler, {"Organization", "WebSite", "ItemList", "FAQPage"})
+
+    def test_verisi_olmayan_vertikal_yakinda_olarak_gosterilir(self):
+        # ev-kurma verisi YOK -> rakam gosterilmemeli, kart "Yakinda"
+        # olmali; ama dugun verisi varsa o normal gorunmeli.
+        self._yaz("dugun", {"gelinlik": GELINLIK_VERISI})
+        html = sayfa_uret.anasayfa_uret(self.veri_kok)
+        self.assertIn("Düğün maliyeti", html)
+        self.assertNotIn('href="/ev-kurma/"', html)
+
+    def test_tahmini_kalemi_olmayan_vertikal_tamami_gercek_der(self):
+        self._yaz("ev-kurma", {"buzdolabi": BUZDOLABI_VERISI})
+        html = sayfa_uret.anasayfa_uret(self.veri_kok)
+        self.assertIn("tamamı gerçek kaynaklı", html)
