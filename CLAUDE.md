@@ -369,6 +369,46 @@ haklıydı, hepsi düzeltildi:
    uygula ve sonucu bildir.** AskUserQuestion yalnızca gerçekten geri
    dönülemez ya da ürün stratejisini değiştiren çatallarda kullanılmalı.
 
+## SEO/GEO — E-E-A-T VE EKSİKLER (2026-07-25)
+Yavuz "daha önemli gördüğün bir eksik var mı?" diye sordu. Ölçüldü,
+üç ciddi eksik bulundu ve kapatıldı:
+
+1. **E-E-A-T YOKTU — en kritik olanı.** Sitede hakkımızda/iletişim/
+   yayıncı kimliği hiç yoktu. **Neden kritik:** maliyet-fiyat içeriği
+   Google'ın **YMYL** (Your Money or Your Life) kategorisine giriyor;
+   bu kategoride kimliği belirsiz siteler kasıtlı olarak bastırılıyor.
+   AI motorları da kaynak seçerken yayıncı kimliğine bakıyor —
+   "Maliyetine'ye göre" diye alıntılanmak istiyorsak "Maliyetine kim?"
+   sorusunun cevabı sitede olmalı.
+   → `/hakkimizda/` (neden kurduk, veriyi nasıl elde ediyoruz,
+   **bağımsızlık beyanı**, gelir modeli şeffaflığı, **düzeltme
+   politikası**) ve `/iletisim/` (hata bildirimi, basın, veri iş birliği)
+   yazıldı. Organization schema'ya `contactPoint` eklendi, footer'a
+   kurumsal linkler kondu. E-posta: **info@maliyetine.com.tr** —
+   Cloudflare Email Routing ile ücretsiz kurulmalı (Yavuz'un tarafında).
+2. **`og:image` hiçbir sayfada yoktu** → 1200×630 PNG üretildi
+   (`assets/og-gorsel.png`), tüm şablonlara + `twitter:card` =
+   `summary_large_image`. Paylaşımda artık boş kutu çıkmıyor.
+3. **`www` duplicate content** → hâlâ AÇIK. Kök ve www ikisi de 200
+   dönüyor. Canonical var ama 301 daha güçlü sinyal.
+   **Yavuz'un tarafında:** Cloudflare → Rules → Redirect Rules ile
+   `www.maliyetine.com.tr/*` → `maliyetine.com.tr/$1` (301).
+
+**Ayrıca eklendi:**
+- **Product/AggregateOffer schema** kalem sayfalarına (fiyat rich
+  result adayı). Tek ürün değil ölçülen küme temsil edildiği için
+  `AggregateOffer` + `lowPrice`/`highPrice`/`offerCount`.
+- **`llms.txt`** — AI motorları için yapılandırılmış özet (endeksler,
+  ham JSON bağlantıları, segment tanımı, "alıntılarken tarih belirtin"
+  notu). Yeni ve deneysel bir standart ama maliyeti sıfır, GEO
+  iddiamıza doğrudan uygun.
+- **Özel `404.html`** — vertikal kartlarıyla, `noindex`.
+
+**KAPATILAMAYAN EN BÜYÜK EKSİK: backlink yok (sıfır dış link).**
+Teknik bir iş değil; zamanla ve içerikle gelir. Yıllık karşılaştırma
+haberleri ("düğün maliyeti %X arttı") tam bu işe yarayacak — o yüzden
+aylık veri birikimini kesintisiz sürdürmek stratejik öncelik.
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)

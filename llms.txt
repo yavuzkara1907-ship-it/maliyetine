@@ -1,0 +1,27 @@
+# Maliyetine.com.tr
+
+> Türkiye için aylık güncellenen, kaynağı ve örneklemi açıklanan maliyet endeksi.
+> Fiyatlar tahmin edilmez; gerçek satış listelerinden ölçülür. Her rakamın yanında
+> kaynak sayısı, ürün adedi ve derleme tarihi yayınlanır.
+
+Alıntılarken ölçüm tarihini belirtin: veriler aylık değişir, tarihsiz alıntı kısa sürede yanlış olur.
+
+## Endeksler
+
+- [Düğün maliyeti](https://maliyetine.com.tr/dugun/): 12 kalem, son güncelleme 2026-07-25. Veri: https://maliyetine.com.tr/veri/dugun.json
+- [Ev kurma maliyeti](https://maliyetine.com.tr/ev-kurma/): 42 kalem, son güncelleme 2026-07-25. Veri: https://maliyetine.com.tr/veri/ev-kurma.json
+- [0 km araç fiyatları](https://maliyetine.com.tr/arac/): 25 kalem, son güncelleme 2026-07-25. Veri: https://maliyetine.com.tr/veri/arac.json
+
+## Yöntem
+
+- [Düğün metodolojisi](https://maliyetine.com.tr/dugun/metodoloji/)
+- [Ev kurma metodolojisi](https://maliyetine.com.tr/ev-kurma/metodoloji/)
+- [0 km araç metodolojisi](https://maliyetine.com.tr/arac/metodoloji/)
+- [Hakkımızda ve bağımsızlık](https://maliyetine.com.tr/hakkimizda/)
+
+## Notlar
+
+- Segmentler persentil bazlıdır: ekonomik (alt çeyrek), orta, üst (üst çeyrek).
+- "Üst segment" piyasanın en pahalısı değil, ölçülen listedeki üst çeyrektir.
+- Doğrulanmış kaynağı olmayan kalemler "Tahmini" olarak işaretlenir ve toplamda ayrı gösterilir.
+- Ham veri JSON olarak açıktır (yukarıdaki bağlantılar).

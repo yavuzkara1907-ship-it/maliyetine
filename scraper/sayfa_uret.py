@@ -1179,7 +1179,8 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://maliyetine.com.tr/{yol}/">
 <meta property="og:site_name" content="Maliyetine.com.tr">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://maliyetine.com.tr/assets/og-gorsel.png">
+<meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {json.dumps(json_ld, ensure_ascii=False, indent=2)}
 </script>
@@ -1231,7 +1232,7 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
 
 <footer>
   <div class="kapsayici">
-    <div>© 2026 Maliyetine.com.tr</div>
+    <div>© 2026 Maliyetine.com.tr · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a></div>
     <nav>
       {hesaplayici_menu}
       <a href="/{yol}/metodoloji/">Metodoloji</a>
@@ -1558,6 +1559,25 @@ def kalem_sayfasi_uret(
         ],
     }
 
+    # Product/AggregateOffer: fiyat araligi olan kalemler icin zengin sonuc
+    # adayi. Tek bir urun degil, olculen urun kumesini temsil ediyor -
+    # o yuzden AggregateOffer ve lowPrice/highPrice kullaniliyor.
+    if orta and degerler.get("dusuk") and degerler.get("luks"):
+        json_ld["@graph"].append({
+            "@type": "Product",
+            "name": f"{tanim['ad']} fiyatları ({guncelleme_tarihi})",
+            "description": sayfa["aciklama"],
+            "category": conf["ad"],
+            "offers": {
+                "@type": "AggregateOffer",
+                "priceCurrency": "TRY",
+                "lowPrice": degerler["dusuk"],
+                "highPrice": degerler["luks"],
+                "offerCount": urun_sayisi or (veri or {}).get("toplam_urun") or 1,
+                "availability": "https://schema.org/InStock",
+            },
+        })
+
     return f"""<!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -1572,7 +1592,8 @@ def kalem_sayfasi_uret(
 <meta property="og:type" content="article">
 <meta property="og:url" content="{sayfa_url}">
 <meta property="og:site_name" content="Maliyetine.com.tr">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://maliyetine.com.tr/assets/og-gorsel.png">
+<meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {json.dumps(json_ld, ensure_ascii=False, indent=2)}
 </script>
@@ -1626,7 +1647,7 @@ def kalem_sayfasi_uret(
 
 <footer>
   <div class="kapsayici">
-    <div>© 2026 Maliyetine.com.tr</div>
+    <div>© 2026 Maliyetine.com.tr · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a></div>
     <nav>
       <a href="/{conf["yol"]}/">{conf["ad"]} endeksi</a>
       {kalem_hesaplayici_menu}
@@ -1654,6 +1675,8 @@ def kalem_sayfalari_yaz(vertikal: str, veri_dosyasi: Path | None = None) -> list
 def sitemap_uret() -> str:
     url_kayitlari = [
         ("/", "monthly", "1.0"),
+        ("/hakkimizda/", "yearly", "0.6"),
+        ("/iletisim/", "yearly", "0.4"),
     ]
     for conf in VERTIKALLER.values():
         yol = conf["yol"]
@@ -1865,6 +1888,8 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
 <meta property="og:description" content="Gerçek fiyat verisinden derlenmiş, doğrulanabilir maliyet endeksi.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{SITE_KOK_URL}/">
+<meta property="og:image" content="https://maliyetine.com.tr/assets/og-gorsel.png">
+<meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {json.dumps(json_ld, ensure_ascii=False, indent=2)}
 </script>
@@ -1913,7 +1938,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
 
 <footer>
   <div class="kapsayici">
-    <div>© 2026 Maliyetine.com.tr</div>
+    <div>© 2026 Maliyetine.com.tr · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a></div>
     <nav>{menu}
     </nav>
   </div>
