@@ -782,9 +782,14 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
    `for vertikal in dugun ev-kurma` döngüsüyle her iki vertikali de
    işliyor, commit'e `ev-kurma/` dizini de dahil.
    Tetikleyiciler: aylık cron (`0 6 1 * *`, sadece default branch'teki
-   workflow dosyasından ateşler — bu yüzden main'e alınana kadar
-   çalışmayacak) + `workflow_dispatch` (elle tetikleme, branch fark
-   etmez). **Kritik düzeltme:** `scraper/kaynak_gecmisi.json` artık
+   workflow dosyasından ateşler) + `workflow_dispatch` (elle tetikleme).
+   **DÜZELTME (2026-07-25):** eskiden burada "main'e alınana kadar
+   çalışmayacak" yazıyordu — bu YANLIŞ. Repoda `main` diye ayrı bir dal
+   YOK; **default branch zaten `claude/new-session-csygpf`**
+   (`origin/HEAD` bunu gösteriyor). Yani cron ateşlenecek durumda.
+   Not: bu branch adı bir üretim dalı için tuhaf; Yavuz istediğinde
+   GitHub'dan `main` olarak yeniden adlandırılabilir (Pages'in production
+   branch ayarı da o zaman güncellenmeli). **Kritik düzeltme:** `scraper/kaynak_gecmisi.json` artık
    `.gitignore`'da DEĞİL — GitHub Actions runner'ları her seferinde
    sıfırdan başladığı için, bu dosya commit edilmezse `saglik_kontrolu()`
    hiçbir zaman gerçek bir geçmiş biriktiremez, her ay "ilk çalıştırma"
@@ -795,7 +800,7 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
 
 ## Yapılacaklar (kod dışı)
 - [x] Domain alındı, GitHub repo kuruldu
-- [ ] Cloudflare nameserver propagasyon onayı
+- [x] Cloudflare nameserver propagasyonu TAMAM (2026-07-25 doğrulandı: zone aktif, SOA dönüyor)
 - [x] robots.txt kontrolü (protego ile düzeltilmiş script) — Hepsiburada/
       Dolap gerçekten erişim yasağı (RET doğru), diğerleri ONAY.
 - [x] Akakçe → Cloudflare bot-doğrulaması nedeniyle BIRAKILDI (Yavuz
@@ -1104,10 +1109,30 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
       `.github/workflows/aylik-veri-guncelleme.yml` — bkz. Modül 6.
       `kaynak_gecmisi.json` gitignore'dan çıkarıldı (aksi halde saglik
       kontrolü hiç geçmiş biriktiremezdi).
-- [ ] **Cloudflare Pages bağlantısı (Yavuz'un tarafında).** Repo hazır
-      (build gerektirmiyor, Output directory: `/`). DNS/nameserver
-      propagasyonu ve Pages-repo bağlantısı Cloudflare hesabından
-      yapılmalı — Claude Code'un buraya erişimi yok.
+- [~] **Cloudflare: DNS TAMAM, Pages bağlantısı EKSİK (2026-07-25
+      canlı teşhis).** Yavuz "cloudflare ok" dedi, canlıdan doğrulandı:
+      - ✅ **Domain Cloudflare'e geçmiş, zone aktif.** `dig NS` →
+        `brenda.ns.cloudflare.com` / `ryan.ns.cloudflare.com`, ve zone
+        SOA kaydı dönüyor. (Not: `whois` hâlâ eski `NS*.NS.TR`
+        kayıtlarını gösteriyor — nic.tr registry görünümü gecikmeli,
+        gerçek delegasyon Cloudflare'de.)
+      - ❌ **Zone BOŞ: hiç A/AAAA/CNAME kaydı yok** (ne kök ne `www`,
+        Cloudflare NS'ine doğrudan sorulup doğrulandı). Bu yüzden
+        `https://maliyetine.com.tr/` DNS çözümlemiyor (curl 000,
+        "Could not resolve host").
+      - **Teşhis: Pages projesi ile custom domain bağlantısı henüz
+        yapılmamış.** A kaydı elle eklenmez, Pages'e custom domain
+        eklenince otomatik oluşur (bkz. Altyapı Kararları).
+      - **Yavuz'un yapması gerekenler:** Cloudflare Dashboard →
+        Workers & Pages → Create application → Pages → Connect to Git →
+        `maliyetine` reposu → **Production branch:
+        `claude/new-session-csygpf`** (default branch bu, `main` yok) →
+        **Build command: BOŞ**, **Build output directory: `/`** →
+        Save and Deploy. Deploy bitince Pages projesinde
+        **Custom domains → Set up a custom domain → `maliyetine.com.tr`**
+        (istenirse `www` de) — A kaydı o an oluşur.
+      - Repo private olduğu için Cloudflare'e GitHub erişim izni
+        verilmesi gerekebilir.
 - [ ] **Görsel tasarım kararı bekliyor, ACİL DEĞİL.** 3 yön denendi
       (modern/premium, sıcak/samimi, minimal/editoryal) — Yavuz "hepsi
       kötü ama gelişir, acelemiz yok" dedi, önce altyapıya odaklanılıyor.
