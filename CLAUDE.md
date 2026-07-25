@@ -467,6 +467,63 @@ tamamı buradan gelecekken. Kimse "ev kurma maliyeti" aramadan önce
   açık olduğu için korunuyor (URL kırmamak için). Örneklemi büyütmek
   gerek — Trendyol televizyon kategorisi az ürün döndürüyor.
 
+## TAHMİNİ ORAN %26 → %7 (2026-07-26)
+Dört hizmet kalemi gerçek kaynağa taşındı. Kaynak: **dugun.com'un kategori
+sayfalarındaki il bazlı fiyat tabloları** (İstanbul satırı).
+- `motor.tablo_urunler`'e iki yetenek: **`icerik_metni`** (tabloyu kendi
+  içeriğine göre seçer — bu sayfalarda tablonun üstündeki başlık tabloyla
+  alakasız) ve **`satir_filtresi`** (yalnızca eşleşen satır alınır).
+- **Tahminler İKİ YÖNE BİRDEN sapmış:** fotoğrafçı 45.000→15.600 (3× yüksek),
+  organizasyon 40.000→22.150, kuaför 5.000→**12.450** (2,5× düşük),
+  gelin arabası 3.000→**9.800** (3,3× düşük). Ders pekişti: "makul görünen"
+  tahmin doğru demek değil, ve sapmanın yönü tahmin edilemiyor.
+- **METODOLOJİ — neden 27 ilin tamamı alınmadı:** hepsini alıp persentille
+  segmentlemek **coğrafi farkı fiyat segmenti gibi gösterirdi**. "Ekonomik
+  fotoğrafçı" ucuz bir ilde çalışan fotoğrafçı demek olmaz. Dört kalem de
+  `tek_deger` bayrağıyla işaretli, UI'da **"Tek ölçüm — segment kırılımı
+  yok"** etiketi taşıyor, metodolojide ayrı bölüm var.
+- **GÜVEN KANITI:** aynı sitenin salon tablosu İstanbul için 500 TL/kişi
+  veriyor; bizim DüğünBuketi'nden **bağımsız** ölçtüğümüz kokteyl medyanı
+  da 500 TL. İki ayrı kaynak aynı rakamda buluşuyor.
+- **BULUNAN BUG (sessiz olurdu):** tek ürünlü kaynakta `segmentle()`
+  yalnızca `dusuk` segmentini dolduruyordu — orta segment seçen kullanıcı
+  bu kalemleri **hiç görmeyecekti**. `n == 1`'de üç segment de aynı değeri
+  alır (2 test).
+- Düğün toplamı **396.877 TL**; 368.377 TL'si (12 kalem, 6 bağımsız kaynak)
+  gerçek, 28.500 TL'si (2 kalem) tahmini. Kalan tahminiler: orkestra-dj
+  (Yavuz: "salla, çoğu salonda fiyata dahil") ve nikah-işlemleri 3.500 TL
+  (ölçüldü: 2025 ilçe medyanı ~2.500, 2026 için doğru bantta).
+
+## ÖLÇÜM SIKLIĞI: AYDA 2 KEZ (2026-07-26, Yavuz'un kararı)
+Cron `0 6 1,15 * *`. Zaman serisi projenin kopyalanamaz tek varlığı.
+- **`gecmis.ASGARI_GUN_ARALIGI` 20 → 10** yapılmak ZORUNDAYDI: 20 kalsaydı
+  14 günlük normal aralık reddedilir, hiçbir değişim hesaplanamazdı.
+- **`_fiyat_gecmisi_html`** kalem sayfalarına eklendi: zaman serisi tablosu
+  + "X'ten Y'ye medyan %Z arttı" özeti. Yeterince uzak iki ölçüm yoksa
+  bölüm **hiç render edilmiyor** (boş "geçmiş" başlığı veri varmış
+  izlenimi verir). **15 Ağustos'taki ölçümde kendiliğinden açılacak.**
+
+## KAYNAK ARAMA ARTIK TOPLU: `scraper/kaynak_tara.py` (2026-07-26)
+Yeni kaynak aramak en pahalı işti — her aday için ayrı robots kontrolü,
+URL tahmini, çekilebilirlik testi. Adayların çoğu boş çıkıyordu ve her
+404 bir tur kaybıydı. Script hepsini tek turda yapıp tablo döner:
+robots → **ana sayfadan kategori linki avlama** (URL tahmin etmek yerine —
+Vatan/IKEA/Bellona/Altınbaş derslerinin panzehiri) → çekme → JSON-LD/
+microdata/fiyat teşhisi. Çıktı: YEŞİL / SARI / KIRMIZI.
+- **İlk tur sonucu (Yavuz'un önerdiği 10 site, ~2 dakika):**
+  - **SARI (fiyat var, CSS seçici gerekir):** **idefix** (62 fiyat, en
+    değerli aday — geniş kategori), bosch, profilo.
+  - **robots RET:** epttavm, arçelik, beko.
+  - **KIRMIZI/erişilemedi:** lg (JS), çiçeksepeti, samsung (kategori değil
+    tek ürün sayfasına düşüyor).
+  - **epey:** düz `requests` ile çekilemiyor ama **Playwright ile
+    çekilebiliyor** (212KB). Fiyat geçmişi grafiği **canvasjs canvas'ına**
+    çiziliyor — veri HTML'de YOK, ayrı AJAX endpoint keşfi gerekir.
+    Üstelik tek ürün bazlı (belirli bir TV modeli), bizim kalem
+    medyanımıza karşılık gelmiyor. **Geriye dönük seri için doğru kaynak
+    TÜİK** (data.tuik.gov.tr robots ONAY, erişilebilir) — TÜFE alt
+    kalemleri: ev eşyası (COICOP 05), giyim (03), lokanta (11).
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
