@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sıfır Araç Maliyet Hesaplama 2026 | Maliyetine</title>
+<meta name="description" content="Sıfır araç almanın gerçek maliyeti: etiket fiyatına ek olarak MTV, noter, tescil, plaka, trafik sigortası ve kasko. Resmi tarifelerle hesaplayın.">
+<link rel="canonical" href="https://maliyetine.com.tr/arac/hesaplayici/">
+<link rel="stylesheet" href="/assets/css/style.css">
+<meta property="og:title" content="Sıfır Araç Maliyet Hesaplama 2026">
+<meta property="og:description" content="Etiket fiyatı yetmez: MTV, noter, tescil, sigorta ve kasko dahil gerçek maliyeti hesaplayın.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://maliyetine.com.tr/arac/hesaplayici/">
+<meta property="og:site_name" content="Maliyetine.com.tr">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+
+<header class="ust-bar">
+  <div class="kapsayici">
+    <a href="/" class="logo">maliyet<span>ine</span>.com.tr</a>
+    <nav class="ust-menu">
+      <a href="/arac/">0 km Araç Endeksi</a>
+      <a href="/arac/metodoloji/">Metodoloji</a>
+    </nav>
+  </div>
+</header>
+
+<main class="kapsayici">
+
+  <h1>Sıfır Araç Maliyet Hesaplayıcı</h1>
+  <p>Etiket fiyatı, aracın size maliyeti değildir. Bir sıfır aracı yola
+    çıkarmak için ayrıca <strong>MTV, noter ve tescil harcı, plaka,
+    zorunlu trafik sigortası</strong> ödersiniz; çoğu kişi buna
+    <strong>kasko</strong> da ekler. Bu hesaplayıcı ikisini birden gösterir.</p>
+
+  <div class="uyari-kutu">
+    <strong>Kaynak ayrımı:</strong> <span class="tahmini-etiket">Resmî</span>
+    etiketli kalemler Resmî Gazete'de yayımlanan tarifeye ya da mevzuattaki
+    formüle dayanır. <span class="tahmini-etiket">Tahmini</span> etiketliler
+    piyasa araştırmasından türetilmiştir — şirkete, ile ve sürücü profiline
+    göre değişir. Toplamın ne kadarının hangi türden geldiği aşağıda ayrıca
+    belirtilir.
+  </div>
+
+  <form id="hesaplayici-form">
+    <div class="form-alan">
+      <label for="arac-fiyati">Aracın etiket fiyatı (TL)</label>
+      <input type="number" id="arac-fiyati" min="0" step="1" value="2069000"
+        inputmode="numeric">
+      <p class="sonuc-alt-metin">Varsayılan değer, endeksimizdeki marka
+        giriş fiyatlarının medyanıdır.</p>
+    </div>
+
+    <div class="form-alan">
+      <label for="motor-cc">Motor silindir hacmi</label>
+      <select id="motor-cc">
+        <option value="1300">1300 cc'ye kadar</option>
+        <option value="1500" selected>1301 – 1600 cc</option>
+        <option value="1700">1601 – 1800 cc</option>
+        <option value="2000">1801 cc ve üzeri</option>
+      </select>
+      <p class="sonuc-alt-metin">MTV bu kademeye göre belirlenir.
+        Elektrikli araçlarda MTV motor gücüne (kW) göre hesaplanır —
+        bu hesaplayıcı içten yanmalı motorları kapsar.</p>
+    </div>
+
+    <div class="form-alan">
+      <label>Dahil edilecek kalemler</label>
+      <div class="kalem-secim-liste" id="kalem-secim-liste"></div>
+    </div>
+
+    <button type="submit" class="birincil-buton">Hesapla</button>
+  </form>
+
+  <div id="sonuc-kutu" class="sonuc-kutu" hidden>
+    <p class="sonuc-alt-metin">Yola çıkarma maliyeti (araç + ek kalemler)</p>
+    <p class="sonuc-toplam" id="sonuc-toplam-deger">0 TL</p>
+    <p class="sonuc-alt-metin" id="sonuc-kirilim"></p>
+
+    <table id="detay-tablo">
+      <thead>
+        <tr><th>Kalem</th><th class="sayi">Tutar</th></tr>
+      </thead>
+      <tbody id="detay-tablo-govde"></tbody>
+    </table>
+
+    <p class="sonuc-alt-metin" id="sonuc-not"></p>
+  </div>
+
+  <section class="icerik-bolumu">
+    <h2>Bu hesaba neler dahil değil?</h2>
+    <ul>
+      <li>Yakıt, bakım, lastik ve otopark gibi kullanım giderleri.</li>
+      <li>Kredi/taksit faizi ve dosya masrafları.</li>
+      <li>Opsiyonel donanım paketleri ve bayi kampanyaları.</li>
+      <li>İkinci ve sonraki yılların MTV, sigorta ve kasko tutarları —
+        bu hesap <strong>ilk yılı</strong> kapsar.</li>
+    </ul>
+    <p>Yöntemin tamamı ve kaynaklar için
+      <a href="/arac/metodoloji/">metodoloji sayfasına</a> bakın.</p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="kapsayici">
+    <div>© 2026 Maliyetine.com.tr</div>
+    <nav>
+      <a href="/arac/">0 km Araç Endeksi</a>
+      <a href="/arac/metodoloji/">Metodoloji</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/assets/js/arac-ek-maliyetler.js"></script>
+<script>
+(function () {
+  const paraFormat = new Intl.NumberFormat("tr-TR", { maximumFractionDigits: 0 });
+  function paraYaz(n) { return paraFormat.format(Math.round(n)) + " TL"; }
+
+  const KALEMLER = [
+    { id: "mtv", ad: "MTV (ilk yıl)", tip: "resmi" },
+    { id: "noter_tescil", ad: "Noter + ilk tescil harcı", tip: "resmi" },
+    { id: "plaka_ruhsat", ad: "Plaka + ruhsat", tip: "tahmini" },
+    { id: "trafik_sigortasi", ad: "Zorunlu trafik sigortası", tip: "tahmini" },
+    { id: "kasko", ad: "Kasko (ilk yıl)", tip: "tahmini" },
+  ];
+
+  const liste = document.getElementById("kalem-secim-liste");
+  KALEMLER.forEach(function (k) {
+    const label = document.createElement("label");
+    const kutu = document.createElement("input");
+    kutu.type = "checkbox";
+    kutu.value = k.id;
+    kutu.checked = true;
+    kutu.name = "kalem";
+    label.appendChild(kutu);
+    label.appendChild(document.createTextNode(" " + k.ad));
+    const etiket = document.createElement("span");
+    etiket.className = "tahmini-etiket";
+    etiket.textContent = k.tip === "resmi" ? "Resmî" : "Tahmini";
+    label.appendChild(etiket);
+    liste.appendChild(label);
+  });
+
+  const form = document.getElementById("hesaplayici-form");
+  const sonucKutu = document.getElementById("sonuc-kutu");
+  const govde = document.getElementById("detay-tablo-govde");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const fiyat = parseInt(document.getElementById("arac-fiyati").value, 10) || 0;
+    const cc = parseInt(document.getElementById("motor-cc").value, 10);
+    const secilen = Array.from(form.querySelectorAll('input[name="kalem"]:checked'))
+      .map(function (k) { return k.value; });
+
+    const s = aracEkMaliyetHesapla(fiyat, cc, secilen);
+
+    document.getElementById("sonuc-toplam-deger").textContent = paraYaz(s.genelToplam);
+    document.getElementById("sonuc-kirilim").textContent =
+      "Araç: " + paraYaz(fiyat) + " · Ek kalemler: " + paraYaz(s.ekToplam) +
+      " (resmî " + paraYaz(s.resmiToplam) + ", tahmini " + paraYaz(s.tahminiToplam) + ")";
+
+    govde.innerHTML = "";
+    const aracSatiri = document.createElement("tr");
+    aracSatiri.innerHTML = "<td><strong>Araç etiket fiyatı</strong></td>" +
+      '<td class="sayi"><strong>' + paraYaz(fiyat) + "</strong></td>";
+    govde.appendChild(aracSatiri);
+
+    s.detaylar.forEach(function (d) {
+      const tr = document.createElement("tr");
+      const etiket = ' <span class="tahmini-etiket" title="' + (d.not || "") + '">' +
+        (d.kaynak_tipi === "resmi" ? "Resmî" : "Tahmini") + "</span>";
+      tr.innerHTML = "<td>" + d.ad + etiket + "</td>" +
+        '<td class="sayi">' + paraYaz(d.tutar) + "</td>";
+      govde.appendChild(tr);
+    });
+
+    const oran = fiyat > 0 ? (s.ekToplam / fiyat * 100) : 0;
+    document.getElementById("sonuc-not").textContent =
+      "Ek kalemler, aracın etiket fiyatının yaklaşık %" + oran.toFixed(1) +
+      "'i kadar. Bu hesap ilk yılı kapsar; MTV, sigorta ve kasko her yıl tekrarlar.";
+
+    sonucKutu.hidden = false;
+  });
+})();
+</script>
+
+</body>
+</html>

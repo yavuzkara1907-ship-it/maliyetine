@@ -430,8 +430,15 @@ VERTIKALLER = {
         "ornek_ifade": "bir markanın en ucuz sıfır aracının medyan fiyatının",
         "anasayfa_ifade": "bir markanın en ucuz sıfır aracı medyan",
         "kart_alt": "24 marka giriş fiyatı",
-        "hesaplayici_var": False,
-        "hesaplayici_daveti": "Marka bazlı fiyat listelerine bakın →",
+        # 2026-07-25: Yavuz'un onerisiyle hesaplayici EKLENDI. Ilk tasarimda
+        # "kalemler birbirinin alternatifi, toplama hesabi anlamsiz" diye
+        # atlanmisti - dogruydu ama EKSIK dusunulmustu: asil deger arac
+        # fiyatinin UZERINE binen maliyetlerde (MTV, noter/tescil harci,
+        # plaka, trafik sigortasi, kasko). Etiket fiyati aracin gercek
+        # maliyeti degil ve bu toplami kimse tek yerde vermiyor.
+        "hesaplayici_daveti": (
+            "Yola çıkarma maliyetini hesaplayın (MTV, noter, sigorta dahil) →"
+        ),
         "kapsam_yer": "Türkiye",
         "keywords": [
             "sıfır araba fiyatları", "sıfır otomobil fiyatları 2026",

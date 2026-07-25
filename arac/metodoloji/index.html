@@ -84,6 +84,52 @@
     etiketiyle işaretlenir ve endeksin toplamına katılmaz.
   </p>
 
+  <h2>Yola çıkarma maliyeti: etiket fiyatı yetmez</h2>
+  <p>
+    Bir sıfır aracın etiket fiyatı, o aracın size maliyeti değildir.
+    Yola çıkarmak için ayrıca <strong>MTV, noter ve ilk tescil harcı,
+    plaka/ruhsat ve zorunlu trafik sigortası</strong> ödersiniz; çoğu kişi
+    buna kasko da ekler.
+    <a href="/arac/hesaplayici/">Hesaplayıcı</a> bu toplamı gösterir.
+  </p>
+  <p>Bu kalemlerin bir kısmı <strong>resmî tarife</strong>, bir kısmı
+    tahminidir — ikisi karıştırılmaz, toplamda ayrı ayrı belirtilir:</p>
+  <table>
+    <thead><tr><th>Kalem</th><th>Nasıl hesaplanır</th><th>Tür</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>MTV (ilk yıl)</td>
+        <td>Motor silindir hacmi kademesine göre: 1300 cc'ye kadar 6.903 TL,
+          1301–1600 cc 12.028 TL, 1601–1800 cc 21.252 TL</td>
+        <td><strong>Resmî</strong></td>
+      </tr>
+      <tr>
+        <td>Noter + ilk tescil harcı</td>
+        <td>Satış bedelinin binde 2'si (asgari 1.000 TL) + sabit noter ücreti</td>
+        <td><strong>Resmî</strong></td>
+      </tr>
+      <tr><td>Plaka + ruhsat</td><td>Sabit tutar</td><td>Tahmini</td></tr>
+      <tr><td>Zorunlu trafik sigortası</td><td>Ortalama profil varsayımı</td><td>Tahmini</td></tr>
+      <tr><td>Kasko (ilk yıl)</td><td>Araç değerinin ~%3'ü</td><td>Tahmini</td></tr>
+    </tbody>
+  </table>
+  <p>
+    <strong>Kaynak:</strong> MTV tutarları 58 Seri No.lu MTV Genel Tebliği
+    (31.12.2025 tarihli Resmî Gazete). Noter harcı, 2026'da yürürlüğe giren
+    nispi harç düzenlemesine dayanır. Bu tarifeler yılda bir kez, genellikle
+    31 Aralık'ta güncellenir; yeni tarife yayımlandığında bu sayfa ve
+    hesaplayıcı elle güncellenir.
+  </p>
+  <p>
+    <strong>Sınırlar:</strong> MTV'nin gerçek tarifesi motor hacmi
+    <em>ve</em> araç değeri kademelidir; hesaplayıcı her hacim için yaygın
+    değer kademesini kullanır, üst değer kademelerinde MTV daha yüksek
+    olur. Elektrikli araçlarda MTV motor gücüne (kW) göre hesaplanır —
+    hesaplayıcı içten yanmalı motorları kapsar. Trafik sigortası ve kasko
+    ile; araç tipine, hasarsızlık basamağına ve sürücü profiline göre
+    ciddi değişir.
+  </p>
+
   <h2>Segment tanımı</h2>
   <p>Her kalem için toplanan fiyatlar üç segmente ayrılır (persentil bazlı):</p>
   <table>
@@ -100,16 +146,22 @@
     değil, marka içi aralığı görmek içindir.
   </p>
 
-  <h2>Fiyata neler dahil değil?</h2>
+  <h2>Endeks fiyatına neler dahil değil?</h2>
+  <p>
+    <strong>Endeks sayfasındaki</strong> rakamlar aracın liste fiyatıdır.
+    Şunları içermez:
+  </p>
   <ul>
-    <li>Trafik sigortası, kasko, MTV ve tescil masrafları.</li>
+    <li>MTV, noter/tescil harcı, plaka, trafik sigortası ve kasko —
+      bunlar <a href="/arac/hesaplayici/">hesaplayıcıda</a> ayrıca eklenir.</li>
     <li>Bayi kampanyaları, kredi/taksit farkları, opsiyonel donanım paketleri.</li>
     <li>İkinci el araç fiyatları — bu endeks yalnızca sıfır kilometre araçları kapsar.</li>
-    <li>Yakıt, bakım, lastik gibi kullanım giderleri.</li>
+    <li>Yakıt, bakım, lastik ve otopark gibi kullanım giderleri (hesaplayıcıya da dahil değil).</li>
   </ul>
   <p>
-    Yani bu rakamlar <strong>araç sahibi olmanın toplam maliyeti değil</strong>,
-    aracın liste fiyatıdır.
+    Kısacası: <strong>endeks</strong> etiket fiyatını,
+    <strong>hesaplayıcı</strong> yola çıkarma maliyetini gösterir.
+    İkisi de kullanım giderlerini kapsamaz.
   </p>
 
   <div class="uyari-kutu">
