@@ -228,12 +228,12 @@ VERTIKALLER = {
         "tahmini_kalemler": DUGUN_KALEMLERI_TAHMINI,
         "baslik": "2026'da İstanbul'da Düğün Kaça Mal Olur?",
         "soru": "2026'da İstanbul'da düğün kaça mal olur?",
-        "sayfa_basligi": "2026'da Düğün Kaça Mal Olur? | Maliyetine.com.tr",
+        "sayfa_basligi": "2026'da Düğün Kaça Mal Olur? | Maliyeti Ne?",
         "meta_aciklama": (
             "Gelinlik, damatlık, alyans, salon ve daha fazlası: gerçek fiyat "
             "verisinden derlenmiş, aylık güncellenen düğün maliyeti endeksi."
         ),
-        "dataset_ad": "Maliyetine Düğün Maliyeti Endeksi",
+        "dataset_ad": "Maliyeti Ne? Düğün Maliyeti Endeksi",
         "dataset_aciklama": (
             "Türkiye'de düğün kalemlerinin gerçek e-ticaret ve ilan verisinden "
             "derlenen aylık fiyat endeksi."
@@ -325,13 +325,13 @@ VERTIKALLER = {
         "tahmini_kalemler": [],
         "baslik": "2026'da Sıfırdan Ev Kurmak Kaça Mal Olur?",
         "soru": "2026'da sıfırdan ev kurmak kaça mal olur?",
-        "sayfa_basligi": "2026'da Ev Kurmak Kaça Mal Olur? | Maliyetine.com.tr",
+        "sayfa_basligi": "2026'da Ev Kurmak Kaça Mal Olur? | Maliyeti Ne?",
         "meta_aciklama": (
             "Gerçek e-ticaret verisinden derlenmiş, aylık güncellenen ev kurma "
             "maliyeti endeksi. Beyaz eşya, mobilya, mutfak, tekstil — 42 kalem, "
             "kaynak ve tarihiyle."
         ),
-        "dataset_ad": "Maliyetine Ev Kurma Maliyeti Endeksi",
+        "dataset_ad": "Maliyeti Ne? Ev Kurma Maliyeti Endeksi",
         "dataset_aciklama": (
             "Türkiye'de sıfırdan ev kurmak için gereken beyaz eşya, mobilya, "
             "mutfak ve tekstil kalemlerinin gerçek e-ticaret verisinden derlenen "
@@ -432,12 +432,12 @@ VERTIKALLER = {
         "tahmini_kalemler": [],
         "baslik": "2026'da Sıfır Araba Kaça Alınır?",
         "soru": "2026'da en ucuz sıfır araba kaça alınır?",
-        "sayfa_basligi": "Sıfır Araba Fiyatları 2026 | Maliyetine",
+        "sayfa_basligi": "Sıfır Araba Fiyatları 2026 | Maliyeti Ne?",
         "meta_aciklama": (
             "Sıfır araba fiyatları 2026: markaların giriş fiyatları ve marka "
             "bazlı model listeleri, kaynak ve derleme tarihiyle."
         ),
-        "dataset_ad": "Maliyetine 0 km Araç Fiyat Endeksi",
+        "dataset_ad": "Maliyeti Ne? 0 km Araç Fiyat Endeksi",
         "dataset_aciklama": (
             "Türkiye'de satılan sıfır kilometre otomobillerin marka giriş "
             "fiyatları ve marka bazlı model fiyatlarından derlenen aylık endeks."
@@ -838,7 +838,7 @@ def ek_sorular_uret(conf: dict, kalemler: dict, olcek: int) -> list[dict]:
             "acceptedAnswer": {
                 "@type": "Answer",
                 "text": (
-                    f"Maliyetine'ye göre {tanim['ad']}{birim} "
+                    f"Maliyeti Ne? verilerine göre {tanim['ad']}{birim} "
                     + ", ".join(parcalar)
                     + f". Bu rakamlar {dayanak} derlendi "
                       f"(derleme tarihi: {veri.get('guncelleme_tarihi', '—')})."
@@ -953,6 +953,27 @@ def _nereden_alinir_html(vertikal: str, kalem_id: str, kalem_adi: str) -> str:
     )
 
 
+def _kunye_html(conf: dict, kalem_verisi: dict | None, tarih: str) -> str:
+    """Sayfa altinda TEK SATIR kunye.
+
+    Onceden burada "Kaynaklar ve yontem" diye ayri bir bolum vardi ve
+    hangi siteden kac urun cekildigini tek tek listeliyordu. Yavuz'un
+    tespiti: kullanici araba/urun fiyati ogrenmeye geliyor, bizim is
+    yapma seklimizi okumaya degil. Seffaflik icin gereken bilgi (kac
+    urun, ne zaman, yontem linki) tek satira sigar.
+    """
+    v = kalem_verisi or {}
+    urun = v.get("toplam_urun")
+    parca = []
+    if urun:
+        parca.append(f"{urun} üründen derlendi")
+    parca.append(tarih)
+    return (
+        '  <p class="kunye">' + " · ".join(parca)
+        + f' · <a href="/{conf["yol"]}/metodoloji/">Yöntem</a></p>\n'
+    )
+
+
 def _tek_kaynak_uyarisi_html(conf: dict, siteler: set[str]) -> str:
     """COK KAYNAK KURALI karsilanmadiginda bunu GIZLEME - sayfada soyle.
 
@@ -1031,7 +1052,7 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
         kullanilan_siteler = bagimsiz_siteler(kalemler, kapsanan_idler)
         site_sayisi = len(kullanilan_siteler)
         cevap_metni = (
-            f"Maliyetine'ye göre {guncelleme_tarihi or bugun} itibarıyla "
+            f"Maliyeti Ne? verilerine göre {guncelleme_tarihi or bugun} itibarıyla "
             f"{ornek_ifade} <strong>{_para(ornek_toplam)}</strong> tutması bekleniyor. "
         )
         if tahmini_detaylar:
@@ -1087,7 +1108,7 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
     kurum = {
         "@type": "Organization",
         "@id": f"{SITE_KOK_URL}/#kurum",
-        "name": "Maliyetine.com.tr",
+        "name": "Maliyeti Ne?",
         "url": SITE_KOK_URL,
         "description": "Türkiye için canlı, doğrulanabilir maliyet endeksi.",
     }
@@ -1178,7 +1199,7 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
 <meta property="og:description" content="{conf["meta_aciklama"]}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://maliyetine.com.tr/{yol}/">
-<meta property="og:site_name" content="Maliyetine.com.tr">
+<meta property="og:site_name" content="Maliyeti Ne?">
 <meta property="og:image" content="https://maliyetine.com.tr/assets/og-gorsel.png">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
@@ -1189,7 +1210,7 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
 
 <header class="ust-bar">
   <div class="kapsayici">
-    <a href="/" class="logo">maliyet<span>ine</span>.com.tr</a>
+    <a href="/" class="logo">Maliyeti <span>Ne?</span></a>
     <nav class="ust-menu">
       {hesaplayici_menu}
       <a href="/{yol}/metodoloji/">Metodoloji</a>
@@ -1232,7 +1253,7 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
 
 <footer>
   <div class="kapsayici">
-    <div>© 2026 Maliyetine.com.tr · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a></div>
+    <div>© 2026 Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a></div>
     <nav>
       {hesaplayici_menu}
       <a href="/{yol}/metodoloji/">Metodoloji</a>
@@ -1421,7 +1442,7 @@ def kalem_sayfasi_uret(
 
     if orta:
         cevap = (
-            f"Maliyetine'ye göre {guncelleme_tarihi} itibarıyla {tanim['ad']} "
+            f"Maliyeti Ne? verilerine göre {guncelleme_tarihi} itibarıyla {tanim['ad']} "
             f"orta segment medyan fiyatı {birim} <strong>{_para(orta)}</strong>. "
             f"Bu rakam {kaynak_sayisi or (veri or {}).get('kaynak_sayisi', 0)} bağımsız kaynak"
         )
@@ -1454,7 +1475,7 @@ def kalem_sayfasi_uret(
     kurum = {
         "@type": "Organization",
         "@id": f"{SITE_KOK_URL}/#kurum",
-        "name": "Maliyetine.com.tr",
+        "name": "Maliyeti Ne?",
         "url": SITE_KOK_URL,
         "description": "Türkiye için canlı, doğrulanabilir maliyet endeksi.",
     }
@@ -1500,28 +1521,12 @@ def kalem_sayfasi_uret(
             )},
         })
 
-    kaynak_adlari = [k["site"].capitalize() for k in (veri or {}).get("kaynaklar", [])]
     sorular.append({
         "@type": "Question",
-        "name": "Bu fiyatlar nasıl hesaplandı?",
+        "name": "Fiyatlar ne zaman güncellendi?",
         "acceptedAnswer": {"@type": "Answer", "text": (
-            (f"Fiyatlar {', '.join(kaynak_adlari)} üzerinden " if kaynak_adlari
-             else "Fiyatlar gerçek kaynaklardan ")
-            + "robots.txt kurallarına uygun şekilde aylık olarak derlenir. "
-              "Her kaynağın kendi medyanı alınır, sonra kaynaklar arası medyan "
-              "hesaplanır — ham fiyatlar birbirine karıştırılmaz. Aykırı değerler "
-              "ayıklanır, ürünler persentil bazlı üç segmente ayrılır. "
-              "Yapay zeka fiyat üretmez, yalnızca ham veriyi temizler."
-        )},
-    })
-    sorular.append({
-        "@type": "Question",
-        "name": "Ne sıklıkla güncelleniyor?",
-        "acceptedAnswer": {"@type": "Answer", "text": (
-            f"Ayda bir otomatik olarak yenilenir. Bu sayfadaki veriler "
-            f"{guncelleme_tarihi} tarihinde derlendi. Bir kaynak normalde "
-            "döndürdüğü ürün sayısının çok altına düşerse veri sessizce kabul "
-            "edilmez, karantinaya alınır."
+            f"Bu sayfadaki fiyatlar {guncelleme_tarihi} tarihinde ölçüldü ve "
+            "ayda bir yenilenir."
         )},
     })
 
@@ -1536,10 +1541,9 @@ def kalem_sayfasi_uret(
             "@type": "Question",
             "name": "Kaynaklar arasında neden fark var?",
             "acceptedAnswer": {"@type": "Answer", "text": (
-                f"Bu kalemde kaynaklar arası fark %{uyari['fark_yuzdesi']:.0f}. "
-                "Bu genellikle veri hatası değil, kaynakların farklı segmentleri "
-                "temsil etmesidir (ör. kitlesel pazaryeri ile lüks marka mağazası). "
-                "Farkı gizlemiyoruz, endeks sayfasında uyarı olarak gösteriyoruz."
+                f"Kaynaklar arası fark %{uyari['fark_yuzdesi']:.0f}. Bu genellikle "
+                "farklı segmentlerin (pazaryeri ile marka mağazası) karşılaştırılmasından "
+                "kaynaklanır."
             )},
         })
 
@@ -1583,7 +1587,7 @@ def kalem_sayfasi_uret(
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{sayfa["baslik"]} | Maliyetine</title>
+<title>{sayfa["baslik"]} | Maliyeti Ne?</title>
 <meta name="description" content="{meta_aciklama}">
 <link rel="canonical" href="{sayfa_url}">
 <link rel="stylesheet" href="/assets/css/style.css">
@@ -1591,7 +1595,7 @@ def kalem_sayfasi_uret(
 <meta property="og:description" content="{meta_aciklama}">
 <meta property="og:type" content="article">
 <meta property="og:url" content="{sayfa_url}">
-<meta property="og:site_name" content="Maliyetine.com.tr">
+<meta property="og:site_name" content="Maliyeti Ne?">
 <meta property="og:image" content="https://maliyetine.com.tr/assets/og-gorsel.png">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
@@ -1602,7 +1606,7 @@ def kalem_sayfasi_uret(
 
 <header class="ust-bar">
   <div class="kapsayici">
-    <a href="/" class="logo">maliyet<span>ine</span>.com.tr</a>
+    <a href="/" class="logo">Maliyeti <span>Ne?</span></a>
     <nav class="ust-menu">
       <a href="/{conf["yol"]}/">Endeks</a>
       {kalem_hesaplayici_menu}
@@ -1636,18 +1640,11 @@ def kalem_sayfasi_uret(
   </section>
 
 {_sss_html(sorular)}
-  <section class="icerik-bolumu">
-    <h2>Kaynaklar ve yöntem</h2>
-    {_kaynak_ozeti_html(veri)}
-    <p>Segment tanımı, aykırı değer kontrolü ve kaynak ayrımı için
-      <a href="/{conf["yol"]}/metodoloji/">metodoloji sayfasına</a> bakın.</p>
-  </section>
-
-{_nereden_alinir_html(vertikal, sayfa['id'], tanim['ad'])}{_ilgili_kalemler_html(conf, sayfa["slug"])}</main>
+{_nereden_alinir_html(vertikal, sayfa['id'], tanim['ad'])}{_kunye_html(conf, veri, guncelleme_tarihi)}{_ilgili_kalemler_html(conf, sayfa["slug"])}</main>
 
 <footer>
   <div class="kapsayici">
-    <div>© 2026 Maliyetine.com.tr · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a></div>
+    <div>© 2026 Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a></div>
     <nav>
       <a href="/{conf["yol"]}/">{conf["ad"]} endeksi</a>
       {kalem_hesaplayici_menu}
@@ -1773,7 +1770,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
         ]
         tarih = max(o["guncelleme_tarihi"] or bugun for o in ozetler)
         cevap = (
-            f"Maliyetine'ye göre {tarih} itibarıyla "
+            f"Maliyeti Ne? verilerine göre {tarih} itibarıyla "
             + "; ".join(cumleler)
             + " tutuyor. Rakamlar gerçek e-ticaret ve sektör "
               "platformlarından aylık derlenir; her kalemin yanında kaynak "
@@ -1812,7 +1809,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
     kurum = {
         "@type": "Organization",
         "@id": f"{SITE_KOK_URL}/#kurum",
-        "name": "Maliyetine.com.tr",
+        "name": "Maliyeti Ne?",
         "url": SITE_KOK_URL,
         "description": "Türkiye için canlı, doğrulanabilir maliyet endeksi.",
     }
@@ -1822,7 +1819,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
             kurum,
             {
                 "@type": "WebSite",
-                "name": "Maliyetine.com.tr",
+                "name": "Maliyeti Ne?",
                 "url": SITE_KOK_URL + "/",
                 "description": "Türkiye için canlı, doğrulanabilir maliyet endeksi.",
                 "inLanguage": "tr-TR",
@@ -1849,7 +1846,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
                         "acceptedAnswer": {
                             "@type": "Answer",
                             "text": (
-                                f"Maliyetine'ye göre {o['guncelleme_tarihi'] or bugun} "
+                                f"Maliyeti Ne? verilerine göre {o['guncelleme_tarihi'] or bugun} "
                                 f"itibarıyla {o['anasayfa_ifade']} "
                                 f"{_para(o['toplam'])} tutuyor. "
                                 + (
@@ -1880,11 +1877,11 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026'da Ne Kaça Mal Olur? | Maliyetine</title>
+<title>2026'da Ne Kaça Mal Olur? | Maliyeti Ne?</title>
 <meta name="description" content="Düğün ve ev kurma maliyeti: gerçek fiyat verisinden derlenmiş, aylık güncellenen, doğrulanabilir endeks. Kaynak, tarih ve örneklem her rakamın yanında.">
 <link rel="canonical" href="{SITE_KOK_URL}/">
 <link rel="stylesheet" href="/assets/css/style.css">
-<meta property="og:title" content="2026'da ne kaça mal olur? | Maliyetine.com.tr">
+<meta property="og:title" content="2026'da ne kaça mal olur? | Maliyeti Ne?">
 <meta property="og:description" content="Gerçek fiyat verisinden derlenmiş, doğrulanabilir maliyet endeksi.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{SITE_KOK_URL}/">
@@ -1898,7 +1895,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
 
 <header class="ust-bar">
   <div class="kapsayici">
-    <a href="/" class="logo">maliyet<span>ine</span>.com.tr</a>
+    <a href="/" class="logo">Maliyeti <span>Ne?</span></a>
     <nav class="ust-menu">{menu}
     </nav>
   </div>
@@ -1922,7 +1919,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
   <h2>Neden farklı?</h2>
   <p>
     Rakip fiyat listelerinin çoğu tek bir kaynağa dayanır — o sitenin
-    kendi fiyat politikasını yansıtır, piyasayı değil. Maliyetine her
+    kendi fiyat politikasını yansıtır, piyasayı değil. Maliyeti Ne? her
     kalem için mümkün olduğunca çok bağımsız kaynağı (fiyat karşılaştırma
     siteleri, marka mağazaları, sektör platformları) çapraz doğrulayıp
     birleştirir. Kaynaklar arası fark %30'u aşarsa bunu gizlemeyiz, uyarı
@@ -1938,7 +1935,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
 
 <footer>
   <div class="kapsayici">
-    <div>© 2026 Maliyetine.com.tr · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a></div>
+    <div>© 2026 Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a></div>
     <nav>{menu}
     </nav>
   </div>

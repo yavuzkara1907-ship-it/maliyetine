@@ -11,6 +11,14 @@
 - Python bilir, HTML/CSS'e hakim. Dağıtım/içerik tarafı güçlü.
 - Soğuk satış YOK. Self-serve model.
 
+## MARKA ADI: "Maliyeti Ne?" (2026-07-25 Yavuz'un kararı)
+- Görünen marka adı **"Maliyeti Ne?"**. Domain `maliyetine.com.tr`
+  olarak KALIYOR — sadece görünen ad değişti.
+- Logo: `Maliyeti <span>Ne?</span>`. Alıntı kalıbı:
+  **"Maliyeti Ne? verilerine göre 2026'da ... X TL"**
+  (eskiden "Maliyetine'ye göre" idi).
+- Title kalıbı: `... | Maliyeti Ne?`. Organization schema `name` alanı da bu.
+
 ## Vizyon (tek cümle)
 Türkiye için canlı, doğrulanabilir maliyet endeksi: "2026'da X kaça mal
 olur?" sorusunun güvenilir tek kaynağı olmak — hem insanlar hem AI
@@ -408,6 +416,26 @@ Yavuz "daha önemli gördüğün bir eksik var mı?" diye sordu. Ölçüldü,
 Teknik bir iş değil; zamanla ve içerikle gelir. Yıllık karşılaştırma
 haberleri ("düğün maliyeti %X arttı") tam bu işe yarayacak — o yüzden
 aylık veri birikimini kesintisiz sürdürmek stratejik öncelik.
+
+## KALEM SAYFALARI: "ŞOV" DEĞİL FİYAT (2026-07-25 Yavuz'un ikinci uyarısı)
+Yavuz `/arac/fiat-fiyatlari/` sayfasına girip şunu söyledi: *"donanımhaber'den
+veriyi nasıl çektiğimiz yazıyor, kaynaklar ve yöntem yazıyor. İnsanlar bunları
+okumaya mı giriyor araba fiyatları hakkında bilgi almaya mı? Bizim kişisel
+şovumuzu mu okuyacaklar?"* — haklıydı.
+- **KALDIRILDI:** kalem sayfalarındaki "Kaynaklar ve yöntem" bölümü (hangi
+  siteden kaç ürün çekildiğini tek tek listeliyordu) ve SSS'deki uzun
+  metodoloji anlatımı ("her kaynağın kendi medyanı alınır, sonra kaynaklar
+  arası medyan hesaplanır, aykırı değerler ayıklanır…").
+- **YERİNE:** sayfanın en altında **tek satır künye** —
+  `15 üründen derlendi · 2026-07-25 · Yöntem` (metodoloji linki).
+  Şeffaflık için gereken bilgi tek satıra sığıyor.
+- SSS'de kalan: "X fiyatları ne kadar?", "aralarında ne kadar fark var?",
+  "fiyatlar ne zaman güncellendi?" — hepsi KULLANICININ sorusu.
+- Sonuç: kalem sayfası 324 → 249 kelime, içeriğin ağırlığı fiyat tablosuna
+  ve "nereden bakabilirsiniz" bölümüne kaydı.
+- **KURAL:** kalem sayfası ürünün fiyatını anlatır. Yöntem anlatımı
+  YALNIZCA metodoloji sayfasında olur (oraya giren zaten detay istiyor).
+  Şeffaflık = tek satır künye + metodoloji linki; sayfa doldurmak değil.
 
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)

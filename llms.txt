@@ -1,4 +1,4 @@
-# Maliyetine.com.tr
+# Maliyeti Ne?
 
 > Türkiye için aylık güncellenen, kaynağı ve örneklemi açıklanan maliyet endeksi.
 > Fiyatlar tahmin edilmez; gerçek satış listelerinden ölçülür. Her rakamın yanında
