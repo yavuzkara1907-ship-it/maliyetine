@@ -240,9 +240,13 @@ Hesaplayıcı bu kalemleri toplar. Her kalem: segment + kaynak + tarih.
     User-Agent'ıyla istek atıyordu ve Cloudflare'e takılıp "key yayında
     değil" diye yanlış alarm veriyordu — motor.py'de robots.txt çekerken
     yaşanan sorunun aynısı. Gerçekçi tarayıcı UA'sı eklendi.
-  - **Aylık otomasyona EKLENEMEDİ:** workflow dosyasına PAT'ta `workflow`
-    scope olmadığı için dokunulamıyor. Scope eklenince workflow'un sonuna
-    `python indexnow.py` adımı eklenmeli. O zamana kadar elle çalıştırılır.
+  - ✅ **AYLIK OTOMASYONA EKLENDİ (2026-07-25).** Yavuz PAT'a `workflow`
+    scope'unu ekledi, workflow push edilebildi. Aylık cron artık:
+    `motor.py` → her vertikal için (`dugun`, `ev-kurma`, `arac`)
+    `agrega.py` + `sayfa_uret.py` → commit+push → **IndexNow bildirimi**.
+    IndexNow adımı yalnızca gerçekten değişiklik olduysa çalışır (boş
+    bildirim motorlarda güven kaybettirir) ve deploy tamamlansın diye
+    90 sn bekler.
 
 ## 0 KM ARAÇ VERTİKALİ (2026-07-25 başlatıldı, YAYINDA)
 - **Kaynak:** donanimhaber'in aylık güncellenen sıfır araç fiyat dosyası.
@@ -280,6 +284,44 @@ Hesaplayıcı bu kalemleri toplar. Her kalem: segment + kaynak + tarih.
 - `/arac/metodoloji/` yazıldı: "neden ortalama araç fiyatı vermiyoruz",
   "marka kalemleri neden toplanmıyor", fiyata dahil olmayanlar (sigorta/
   MTV/tescil/yakıt), tek kaynak ve oynaklık uyarısı.
+
+## ARAÇ SAHİP OLMA MALİYETİ HESAPLAYICISI (2026-07-25, Yavuz'un önerisi)
+- **Bir tasarım hatası düzeltildi.** İlk turda "araç vertikalinde
+  hesaplayıcı anlamsız" demiştim — kalemler birbirinin alternatifi
+  olduğu için TOPLAMA hesabı gerçekten anlamsız, o kısmı doğruydu. Ama
+  **eksik düşünülmüştü:** asıl değer araç fiyatının ÜZERİNE binen
+  maliyetlerde. Etiket fiyatı aracın gerçek maliyeti değil ve bu toplamı
+  kimse tek yerde vermiyor. Yavuz bunu fark etti.
+- `assets/js/arac-ek-maliyetler.js` + `/arac/hesaplayici/`.
+  **Her kalem `kaynak_tipi` taşır, resmî ile tahmini KARIŞTIRILMAZ:**
+  - **RESMÎ — MTV (ilk yıl):** motor hacmi kademesine göre (1300cc'ye
+    kadar 6.903, 1301–1600 12.028, 1601–1800 21.252 TL). Kaynak: 58 Seri
+    No.lu MTV Genel Tebliği, 31.12.2025 R.G.
+  - **RESMÎ — Noter + ilk tescil:** satış bedelinin binde 2'si (asgari
+    1.000 TL) + sabit noter ücreti. 2026 nispi harç düzenlemesi.
+  - **TAHMİNİ:** plaka/ruhsat, zorunlu trafik sigortası, kasko
+    (araç değerinin ~%3'ü).
+  - Sonuç ekranı resmî ve tahmini toplamı AYRI gösterir.
+  - Örnek: 2.069.000 TL araç → 92.656 TL ek (18.086 resmî + 74.570
+    tahmini) → 2.161.656 TL.
+- **YILLIK GÜNCELLEME GEREKİR:** MTV ve harçlar her 31 Aralık'ta Resmî
+  Gazete'de yeniden değerleme oranıyla artıyor. `arac-ek-maliyetler.js`
+  içindeki `yil` alanı ve tutarlar elle güncellenmeli — bu kalemler
+  kazınmıyor (yılda bir değiştiği için kazımaya değmez, ama TAHMİNİ de
+  değil: kaynağı belli resmî tarife).
+- **TARAYICI TESTİNDE GERÇEK BUG YAKALANDI:** `<input step="50000">`
+  yüzünden kullanıcı 1.295.000 gibi gerçek bir araç fiyatı yazınca HTML5
+  validation formu sessizce bloke ediyordu — sayfa **varsayılan değerle
+  bile** submit olmuyordu. `step="1"` yapıldı.
+  **DERS:** `step` niteliği "artış miktarı" değil, GEÇERLİLİK KISITI.
+  Serbest sayı girilen alanlarda `step="1"` (veya `any`) kullanılmalı.
+  Bu bug yalnızca gerçek tarayıcıda `requestSubmit()` denenince ortaya
+  çıktı; `dispatchEvent(submit)` validation'ı atladığı için "çalışıyor"
+  gösteriyordu — form testlerinde validation'ı ATLAYAN yöntem kullanmak
+  yanıltıcı.
+- 12 JS testi: kademe sınırları (1300/1301), asgari harç tabanı,
+  resmî/tahmini ayrımı, aritmetik tutarlılık, seçilmeyen kalemin
+  hesaba girmemesi.
 
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
