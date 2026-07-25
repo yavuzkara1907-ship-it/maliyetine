@@ -610,3 +610,58 @@ class AnasayfaTestleri(unittest.TestCase):
         self._yaz("ev-kurma", {"buzdolabi": BUZDOLABI_VERISI})
         html = sayfa_uret.anasayfa_uret(self.veri_kok)
         self.assertIn("tamamı gerçek kaynaklı", html)
+
+
+class EkKalemSayfalariTesti(unittest.TestCase):
+    """Kalem sayfalarinin veriden genisletilmesi (uzun kuyruk SEO)."""
+
+    def _conf(self):
+        return {
+            "ad": "Ev kurma",
+            "yol": "ev-kurma",
+            "kalemler": [
+                {"id": "nevresim-takimi", "ad": "Nevresim Takımı", "birim": "sabit", "grup": "Tekstil"},
+                {"id": "hali", "ad": "Halı", "birim": "sabit", "grup": "Tekstil"},
+                {"id": "buzdolabi", "ad": "Buzdolabı", "birim": "sabit", "grup": "Beyaz eşya"},
+            ],
+            "kalem_sayfalari": [{"id": "buzdolabi", "slug": "buzdolabi-fiyatlari",
+                                 "baslik": "b", "soru": "s", "aciklama": "a"}],
+        }
+
+    def test_asgari_orneklem_altindaki_kaleme_sayfa_acilmaz(self):
+        """3 urunden 'X fiyatlari' sayfasi yapmak ince icerik olur."""
+        veri = {
+            "nevresim-takimi": {"genel_medyan": 950, "toplam_urun": 59},
+            "hali": {"genel_medyan": 900, "toplam_urun": 3},
+        }
+        idler = {s["id"] for s in sayfa_uret._ek_kalem_sayfalari(self._conf(), veri)}
+        self.assertIn("nevresim-takimi", idler)
+        self.assertNotIn("hali", idler)
+
+    def test_elle_tanimli_sayfa_tekrarlanmaz(self):
+        veri = {"buzdolabi": {"genel_medyan": 28860, "toplam_urun": 25}}
+        self.assertEqual(sayfa_uret._ek_kalem_sayfalari(self._conf(), veri), [])
+
+    def test_verisi_olmayan_kaleme_sayfa_acilmaz(self):
+        veri = {"nevresim-takimi": {"genel_medyan": None, "toplam_urun": 59}}
+        self.assertEqual(sayfa_uret._ek_kalem_sayfalari(self._conf(), veri), [])
+
+    def test_not_yazilmamis_kaleme_sayfa_acilmaz(self):
+        """KALEM_SAYFA_NOTLARI'nda olmayan kalem = ozgun icerik yok = sayfa yok."""
+        conf = self._conf()
+        conf["kalemler"].append({"id": "uydurma-kalem", "ad": "Uydurma", "birim": "sabit"})
+        veri = {"uydurma-kalem": {"genel_medyan": 100, "toplam_urun": 50}}
+        self.assertEqual(sayfa_uret._ek_kalem_sayfalari(conf, veri), [])
+
+    def test_ilgili_kalemler_sinirli_ve_ayni_gruba_oncelikli(self):
+        conf = self._conf()
+        conf["kalem_sayfalari"] = [
+            {"id": f"d{i}", "slug": f"d{i}-fiyatlari"} for i in range(20)
+        ] + [{"id": "nevresim-takimi", "slug": "nevresim-takimi-fiyatlari"},
+             {"id": "hali", "slug": "hali-fiyatlari"}]
+        conf["kalemler"] += [{"id": f"d{i}", "ad": f"D{i}", "birim": "sabit", "grup": "Mutfak"}
+                             for i in range(20)]
+        html = sayfa_uret._ilgili_kalemler_html(conf, "nevresim-takimi-fiyatlari")
+        self.assertLessEqual(html.count("<a "), sayfa_uret.EN_FAZLA_ILGILI_KALEM)
+        # Ayni gruptaki (Tekstil) hali one gelmeli
+        self.assertIn("hali-fiyatlari", html)

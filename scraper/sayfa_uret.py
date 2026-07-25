@@ -549,6 +549,107 @@ VERTIKALLER = {
     },
 }
 
+# --- Ek kalem sayfalari -----------------------------------------------------
+# Her kalem icin ayri bir landing sayfasi ("2026'da X fiyatlari ne kadar?").
+# Uzun kuyruk aramalarinin tamami buradan geliyor: kimse "ev kurma maliyeti"
+# aramadan once "camasir makinesi fiyatlari" ariyor.
+#
+# PROGRAMMATIC SEO KIRMIZI CIZGISI (bkz. CLAUDE.md): sayfalar toplu
+# uretiliyor ama INCE/TEKRARLI DEGIL. Sayfanin govdesi zaten kaleme ozgu
+# gercek olculmus veriden geliyor (fiyat tablosu, segment kirilimi, orneklem,
+# SSS, kaynak linkleri). Asagidaki not ise ELLE yaziliyor ve her kalemde
+# gercekten farkli bir bilgi veriyor - sablon cumle uretilmiyor. Yeni kalem
+# eklerken bu kurala uyulmali; not yazilamiyorsa sayfa acilmaz.
+KALEM_SAYFA_NOTLARI = {
+    # -- dugun --
+    "taki-altin": "Altın bilezik fiyatı gram altına bağlı olarak ay içinde bile değişir; bu yüzden endeksin en oynak kalemidir.",
+    "salon-kokteyl": "Kokteyl düzeninde mekan bedeli menü içermez; yemek ayrı bir kalem olarak bütçeye eklenir.",
+    "davetiye": "Davetiye adet fiyatı kağıt cinsi ve baskı tekniğine göre ayrışır; toplam tutar davetli sayısıyla çarpılır.",
+    "gelin-ayakkabisi": "Gelin ayakkabısı fiyatı topuk yüksekliği ve malzemeden çok markaya göre ayrışır.",
+    "yemek-ikram": "Mekanın yemekli ve kokteyl fiyatı arasındaki fark, o mekanda menünün kişi başı bedelini verir.",
+    # -- ev kurma: beyaz esya --
+    "bulasik-makinesi": "Bulaşık makinesi fiyatı kişilik kapasitesi, kurutma tipi ve enerji sınıfına göre ayrışır.",
+    "kurutma-makinesi": "Kurutma makinesinde ısı pompalı modeller elektrik gideri düşük olduğu için üst fiyat bandını oluşturur.",
+    "firin-ocak": "Ankastre fırın ve ocak çoğu zaman set olarak alınır; tekil fiyatlar set fiyatının altında kalır.",
+    "davlumbaz": "Davlumbaz fiyatı emiş gücü (m³/saat) ve bacalı/bacasız oluşuna göre değişir.",
+    "mikrodalga": "Mikrodalga fırında hacim ve ızgara özelliği fiyatı belirleyen iki ana etkendir.",
+    "klima": "Klima fiyatı BTU değerine göre ayrışır; montaj bedeli bu rakama dahil değildir.",
+    # -- ev kurma: mobilya --
+    "yemek-masasi": "Yemek masası takımı fiyatı sandalye sayısına ve masanın açılır olup olmamasına göre değişir.",
+    "sehpa": "Sehpa fiyatı orta sehpa, zigon takım veya yan sehpa oluşuna göre geniş bir bantta dağılır.",
+    "konsol": "Konsol fiyatı genişlik ve çekmece sayısına göre ayrışır; ayna dahil setler üst banttadır.",
+    "tv-unitesi": "TV ünitesi fiyatı uzunluk ve dolaplı/duvara asılır oluşuna göre değişir.",
+    # -- ev kurma: yatak odasi --
+    "yatak": "Yatak fiyatı yay tipi (yaylı, visco, hibrit) ve ölçüye göre ayrışır; baza ve başlık ayrı kalemlerdir.",
+    "karyola": "Karyola fiyatı baza tipine (sandıklı/sandıksız) ve başlık dahil olup olmamasına göre değişir.",
+    "komodin": "Komodin genelde çift alınır; buradaki fiyat tek adet içindir.",
+    "sifonyer": "Şifonyer fiyatı çekmece sayısı ve aynalı olup olmamasına göre ayrışır.",
+    "boy-aynasi": "Boy aynası fiyatı çerçeve malzemesi ve ölçüsüne göre değişir.",
+    # -- ev kurma: kucuk ev aleti --
+    "supurge": "Robot süpürgede paspas özelliği ve otomatik boşaltma istasyonu fiyatı belirgin yükseltir.",
+    "dikey-supurge": "Dikey süpürgede şarjlı modeller kablolulardan pahalı; batarya süresi fiyatın ana belirleyicisi.",
+    "airfryer": "Airfryer fiyatı hazne litresi ve çift hazneli olup olmamasına göre ayrışır.",
+    "kahve-makinesi": "Kahve makinesi fiyatı Türk kahvesi, filtre ve espresso tiplerine göre çok farklı bantlarda dağılır.",
+    "su-isitici": "Su ısıtıcıda cam gövdeli ve sıcaklık ayarlı modeller üst fiyat bandını oluşturur.",
+    "tost-makinesi": "Tost makinesinde çıkarılabilir plakalı ve ızgara özellikli modeller daha pahalıdır.",
+    "blender": "Blender fiyatı el blenderı ile sürahi tipi arasında büyük fark gösterir; set halinde satılanlar üst banttadır.",
+    "mutfak-robotu": "Mutfak robotu fiyatı motor gücü ve hamur yoğurma kapasitesine göre ayrışır.",
+    "utu": "Ütüde buhar kazanlı modeller normal buharlı ütülerin belirgin üzerindedir.",
+    "sac-kurutma-makinesi": "Saç kurutma makinesi fiyatı motor tipine (AC/DC, dijital) göre ayrışır.",
+    # -- ev kurma: mutfak --
+    "tencere-seti": "Tencere seti fiyatı parça sayısına ve malzemeye (granit, çelik, döküm) göre ayrışır.",
+    "tava-seti": "Tava setinde yapışmaz kaplama cinsi ve indüksiyon uyumu fiyatı belirler.",
+    "yemek-takimi": "Yemek takımı fiyatı kişilik sayısına ve porselen/stoneware ayrımına göre değişir.",
+    "kahvalti-takimi": "Kahvaltı takımı fiyatı parça sayısına göre ayrışır; 6 ve 12 kişilik setler ayrı bantlardadır.",
+    "bardak-takimi": "Bardak takımı fiyatı cam cinsine ve adet sayısına göre değişir.",
+    "catal-kasik-bicak-takimi": "Çatal kaşık bıçak takımı fiyatı çelik kalitesi (18/10) ve kişilik sayısına göre ayrışır.",
+    # -- ev kurma: tekstil --
+    "nevresim-takimi": "Nevresim takımı fiyatı kumaş cinsine (ranforce, pamuk saten) ve tek/çift kişilik oluşuna göre ayrışır.",
+    "havlu-takimi": "Havlu takımı fiyatı gramaj ve parça sayısına göre değişir.",
+    "bornoz": "Bornoz fiyatı kumaş cinsine (havlu, pamuk) ve beden aralığına göre ayrışır.",
+    "perde": "Perde fiyatı metrekare üzerinden değişir; buradaki rakam hazır perde içindir, ısmarlama dikim ayrı hesaplanır.",
+    "hali": "Halı fiyatı ölçüye göre ayrışır; buradaki rakam salon ölçüsü hazır halı içindir.",
+    "aydinlatma": "Aydınlatma fiyatı avize, sarkıt ve spot arasında geniş bir bantta dağılır; montaj dahil değildir.",
+}
+
+# Bir kalemin kendi sayfasini hak etmesi icin gereken asgari orneklem.
+# Bunun altinda sayfa ACILMAZ - 3 urunden "X fiyatlari" sayfasi yapmak hem
+# okuyucuyu yaniltir hem ince icerik olur.
+KALEM_SAYFASI_ASGARI_URUN = 8
+
+
+def _slugify_kalem(kalem_id: str) -> str:
+    return f"{kalem_id}-fiyatlari"
+
+
+def _ek_kalem_sayfalari(conf: dict, kalem_verisi: dict) -> list[dict]:
+    """KALEM_SAYFA_NOTLARI'ndaki kalemler icin sayfa girdisi uretir.
+
+    Elle tanimlanmis `kalem_sayfalari` girdileri onceliklidir - ayni kalem
+    icin ikinci bir girdi uretilmez.
+    """
+    mevcut = {s["id"] for s in conf.get("kalem_sayfalari", [])}
+    uretilen = []
+    for kalem in conf["kalemler"]:
+        kid = kalem["id"]
+        if kid in mevcut or kid not in KALEM_SAYFA_NOTLARI:
+            continue
+        veri = kalem_verisi.get(kid) or {}
+        if not veri.get("genel_medyan"):
+            continue
+        if (veri.get("toplam_urun") or 0) < KALEM_SAYFASI_ASGARI_URUN:
+            continue
+        ad = kalem["ad"]
+        uretilen.append({
+            "id": kid,
+            "slug": _slugify_kalem(kid),
+            "baslik": f"2026'da {ad} Fiyatları Ne Kadar?",
+            "soru": f"2026'da {ad.lower()} fiyatları ne kadar?",
+            "aciklama": KALEM_SAYFA_NOTLARI[kid],
+        })
+    return uretilen
+
+
 SEGMENT_ANAHTARI = {"ekonomik": "dusuk", "orta": "orta", "luks": "luks"}
 SEGMENT_ETIKETLERI = {"dusuk": "Ekonomik", "orta": "Orta", "luks": "Üst"}
 
@@ -561,6 +662,34 @@ def vertikal_conf(vertikal: str) -> dict:
             f"Bilinmeyen vertikal: {vertikal}. Tanimlilar: {', '.join(VERTIKALLER)}"
         )
     return VERTIKALLER[vertikal]
+
+
+def kalem_sayfalarini_genislet(veri_kok: Path | None = None) -> dict[str, int]:
+    """VERTIKALLER'deki `kalem_sayfalari` listelerini veriden genisletir.
+
+    Neden calisma aninda ve modul yuklenirken DEGIL: hangi kalemin kendi
+    sayfasini hak ettigi o AYKI olcume bagli (bkz. KALEM_SAYFASI_ASGARI_URUN).
+    Orneklem dusen bir kalem icin yeni sayfa acilmaz; zaten acilmis sayfa ise
+    elle tanimli listede olmadigi surece sessizce sitemap disinda kalir.
+
+    main() bastan cagirir, boylece sitemap ve ana sayfa da genisletilmis
+    listeyi gorur. Idempotent - iki kez cagrilmasi girdiyi tekrarlamaz.
+    """
+    kok = veri_kok or SITE_KOK / "veri"
+    eklenen: dict[str, int] = {}
+    for vertikal, conf in VERTIKALLER.items():
+        dosya = kok / f"{vertikal}.json"
+        if not dosya.exists():
+            continue
+        try:
+            kalem_verisi = json.loads(dosya.read_text(encoding="utf-8")).get("kalemler", {})
+        except (json.JSONDecodeError, OSError):
+            continue
+        yeni = _ek_kalem_sayfalari(conf, kalem_verisi)
+        if yeni:
+            conf.setdefault("kalem_sayfalari", []).extend(yeni)
+            eklenen[vertikal] = len(yeni)
+    return eklenen
 
 
 def _para(n: int) -> str:
@@ -1353,14 +1482,32 @@ def kalem_butce_payi(conf: dict, kalemler: dict, kalem_id: str) -> tuple[int, fl
     return satir["satir_toplam"], satir["satir_toplam"] / toplam * 100
 
 
+# Bir kalem sayfasinin dibinde gosterilecek en fazla ilgili kalem linki.
+# NEDEN SINIR VAR: kalem sayfasi sayisi 9'dan 59'a cikinca bu bolum 38 link
+# uretiyordu - sayfanin kendi icerigini bastiran, link-farm gorunumlu bir
+# blok. Ayni GRUPTAN (Beyaz esya, Tekstil...) kalemleri onceliklendirmek
+# hem okunabilir hem konu olarak daha alakali bir ic link sinyali veriyor.
+EN_FAZLA_ILGILI_KALEM = 8
+
+
 def _ilgili_kalemler_html(conf: dict, mevcut_slug: str) -> str:
-    digerleri = [s for s in conf.get("kalem_sayfalari", []) if s["slug"] != mevcut_slug]
+    sayfalar = conf.get("kalem_sayfalari", [])
+    digerleri = [s for s in sayfalar if s["slug"] != mevcut_slug]
     if not digerleri:
         return ""
+    tanimlar = {t["id"]: t for t in conf["kalemler"]}
+    mevcut_id = next((s["id"] for s in sayfalar if s["slug"] == mevcut_slug), None)
+    mevcut_grup = (tanimlar.get(mevcut_id) or {}).get("grup")
+
+    # Once ayni grup, sonra digerleri - ikisi de kendi icinde tanim sirasinda.
+    def sira(sayfa):
+        return 0 if mevcut_grup and (tanimlar.get(sayfa["id"]) or {}).get("grup") == mevcut_grup else 1
+
+    secilenler = sorted(digerleri, key=sira)[:EN_FAZLA_ILGILI_KALEM]
     ad_haritasi = {t["id"]: t["ad"].split("—")[0].strip() for t in conf["kalemler"]}
     linkler = " · ".join(
         f'<a href="/{conf["yol"]}/{s["slug"]}/">{ad_haritasi.get(s["id"], s["slug"])}</a>'
-        for s in digerleri
+        for s in secilenler
     )
     return (
         '  <section class="icerik-bolumu">\n'
@@ -1961,6 +2108,12 @@ def main():
     ayristirici.add_argument("--veri", type=Path, default=None)
     ayristirici.add_argument("--hedef", type=Path, default=None)
     args = ayristirici.parse_args()
+
+    # Yeterli orneklemi olan kalemlere kendi sayfasini ac. sitemap ve ana
+    # sayfa da bu genisletilmis listeyi gormeli, o yuzden en basta.
+    eklenen = kalem_sayfalarini_genislet()
+    if eklenen:
+        print("Ek kalem sayfasi: " + ", ".join(f"{v} +{n}" for v, n in eklenen.items()))
 
     hedef = args.hedef or SITE_KOK / VERTIKALLER[args.vertikal]["yol"] / "index.html"
     html = sayfa_uret(args.vertikal, args.veri)
