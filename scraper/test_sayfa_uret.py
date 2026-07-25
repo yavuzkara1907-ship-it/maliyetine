@@ -666,3 +666,58 @@ class EkKalemSayfalariTesti(unittest.TestCase):
         self.assertLessEqual(html.count("<a "), sayfa_uret.EN_FAZLA_ILGILI_KALEM)
         # Ayni gruptaki (Tekstil) hali one gelmeli
         self.assertIn("hali-fiyatlari", html)
+
+
+class FiyatGecmisiTesti(unittest.TestCase):
+    """Zaman serisi bolumu - projenin kopyalanamaz varligi."""
+
+    def _yaz(self, tmp, kalemler):
+        (tmp / "dugun.json").write_text(
+            json.dumps({"vertikal": "dugun", "kalemler": kalemler}, ensure_ascii=False),
+            encoding="utf-8")
+        return tmp
+
+    def test_yeterli_olcum_yoksa_bolum_hic_render_edilmez(self):
+        """Bos bir 'gecmis' basligi veri varmis izlenimi verir."""
+        with TemporaryDirectory() as d:
+            kok = self._yaz(Path(d), {"gelinlik": {
+                "seri": [{"tarih": "2026-07-25", "medyan": 8999, "urun": 21, "kaynak": 1}],
+            }})
+            self.assertEqual(sayfa_uret._fiyat_gecmisi_html("dugun", "gelinlik", kok), "")
+
+    def test_degisim_yuzdesi_yoksa_render_edilmez(self):
+        """gecmis.py, olcumler birbirine cok yakinsa degisim yazmaz."""
+        with TemporaryDirectory() as d:
+            kok = self._yaz(Path(d), {"gelinlik": {
+                "seri": [{"tarih": "2026-07-25", "medyan": 8999, "urun": 21, "kaynak": 1},
+                         {"tarih": "2026-07-26", "medyan": 9500, "urun": 21, "kaynak": 1}],
+            }})
+            self.assertEqual(sayfa_uret._fiyat_gecmisi_html("dugun", "gelinlik", kok), "")
+
+    def test_gercek_seri_ozet_ve_tablo_uretir(self):
+        with TemporaryDirectory() as d:
+            kok = self._yaz(Path(d), {"gelinlik": {
+                "seri": [{"tarih": "2026-07-01", "medyan": 8000, "urun": 20, "kaynak": 1},
+                         {"tarih": "2026-08-15", "medyan": 9200, "urun": 22, "kaynak": 1}],
+                "degisim_yuzde": 15.0,
+            }})
+            html = sayfa_uret._fiyat_gecmisi_html("dugun", "gelinlik", kok)
+            self.assertIn("Fiyat geçmişi", html)
+            self.assertIn("%15.0 arttı", html)
+            self.assertIn("8.000 TL", html)
+            self.assertIn("9.200 TL", html)
+
+    def test_dusus_dogru_ifade_edilir(self):
+        with TemporaryDirectory() as d:
+            kok = self._yaz(Path(d), {"gelinlik": {
+                "seri": [{"tarih": "2026-07-01", "medyan": 9200, "urun": 20, "kaynak": 1},
+                         {"tarih": "2026-08-15", "medyan": 8000, "urun": 22, "kaynak": 1}],
+                "degisim_yuzde": -13.0,
+            }})
+            html = sayfa_uret._fiyat_gecmisi_html("dugun", "gelinlik", kok)
+            self.assertIn("azaldı", html)
+            self.assertNotIn("-13", html)  # isaret ayri, mutlak deger yazilir
+
+    def test_veri_dosyasi_yoksa_sessizce_bos_doner(self):
+        html = sayfa_uret._fiyat_gecmisi_html("dugun", "gelinlik", Path("/olmayan/yol"))
+        self.assertEqual(html, "")

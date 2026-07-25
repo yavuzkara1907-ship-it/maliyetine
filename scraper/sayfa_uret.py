@@ -1103,6 +1103,56 @@ def _kunye_html(conf: dict, kalem_verisi: dict | None, tarih: str) -> str:
     )
 
 
+def _fiyat_gecmisi_html(vertikal: str, kalem_id: str, gecmis_kok: Path | None = None) -> str:
+    """Kalem sayfasinda fiyat gecmisi bolumu.
+
+    Veri kaynagi: /veri/gecmis/{vertikal}.json (gecmis.py uretir).
+    Yeterince uzak iki olcum yoksa (bkz. gecmis.ASGARI_GUN_ARALIGI) bolum
+    HIC RENDER EDILMEZ - bos bir "gecmis" basligi gostermek, veri varmis
+    izlenimi verir. 15 Agustos'taki ikinci olcumde kendiliginden acilir.
+
+    NEDEN DEGERLI: zaman serisi bu projenin kopyalanamaz varligi. "Gelinlik
+    fiyatlari son X ayda %Y artti" cumlesini kurabilen tek kaynak olmak hem
+    dogal baglanti hem AI alintisi getiriyor.
+    """
+    kok = gecmis_kok or SITE_KOK / "veri" / "gecmis"
+    dosya = kok / f"{vertikal}.json"
+    if not dosya.exists():
+        return ""
+    try:
+        veri = json.loads(dosya.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return ""
+    kayit = (veri.get("kalemler") or {}).get(kalem_id) or {}
+    seri = kayit.get("seri") or []
+    degisim = kayit.get("degisim_yuzde")
+    if degisim is None or len(seri) < 2:
+        return ""
+
+    yon = "arttı" if degisim > 0 else ("azaldı" if degisim < 0 else "değişmedi")
+    ilk, son = seri[0], seri[-1]
+    satirlar = "".join(
+        f'<tr><td>{n["tarih"]}</td><td class="sayi">{_para(n["medyan"])}</td>'
+        f'<td class="sayi">{n["urun"]}</td></tr>'
+        for n in seri
+    )
+    ozet = (
+        f'{ilk["tarih"]} tarihinden {son["tarih"]} tarihine kadar medyan fiyat '
+        f'{_para(ilk["medyan"])} → {_para(son["medyan"])}, yani '
+        f'<strong>%{abs(degisim):.1f} {yon}</strong>.'
+    )
+    return (
+        '  <section class="icerik-bolumu">\n'
+        "    <h2>Fiyat geçmişi</h2>\n"
+        f"    <p>{ozet}</p>\n"
+        '    <div class="tablo-sarmal"><table>\n'
+        "      <thead><tr><th>Ölçüm tarihi</th><th>Medyan</th><th>Örneklem</th></tr></thead>\n"
+        f"      <tbody>{satirlar}</tbody>\n"
+        "    </table></div>\n"
+        "  </section>\n"
+    )
+
+
 def _tek_kaynak_uyarisi_html(conf: dict, siteler: set[str]) -> str:
     # Liste fiyatli vertikallerde (0 km arac) tek kaynak bir eksiklik
     # DEGIL: fiyati uretici belirliyor, ikinci kaynak ayni sayiyi verir.
@@ -1791,7 +1841,7 @@ def kalem_sayfasi_uret(
   </section>
 
 {_sss_html(sorular)}
-{_nereden_alinir_html(vertikal, sayfa['id'], tanim['ad'])}{_kunye_html(conf, veri, guncelleme_tarihi)}{_ilgili_kalemler_html(conf, sayfa["slug"])}</main>
+{_fiyat_gecmisi_html(vertikal, sayfa['id'])}{_nereden_alinir_html(vertikal, sayfa['id'], tanim['ad'])}{_kunye_html(conf, veri, guncelleme_tarihi)}{_ilgili_kalemler_html(conf, sayfa["slug"])}</main>
 
 <footer>
   <div class="kapsayici">
