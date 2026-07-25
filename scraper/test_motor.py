@@ -1006,3 +1006,80 @@ class KaynaklarYamlTestleri(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+TABLO_HTML = """
+<h2>En Ucuz Sıfır Araba Fiyatları</h2>
+<table>
+  <tr><th>Marka</th><th>Başlangıç Fiyatları</th></tr>
+  <tr><td>Dacia</td><td>1.295.000 TL</td></tr>
+  <tr><td>Renault</td><td>1.750.000 TL</td></tr>
+  <tr><td>Togg</td><td>1.870.000 TL</td></tr>
+  <tr><td>Bilgi yok</td><td>-</td></tr>
+</table>
+<h2>Sıfır Tesla fiyatları</h2>
+<table>
+  <tr><th>Model</th><th>Fiyat</th></tr>
+  <tr><td>Tesla Model Y Standart</td><td>2.474.985 TL</td></tr>
+  <tr><td>Tesla Model Y Long Range</td><td>2.899.000 TL</td></tr>
+</table>
+"""
+
+
+class TabloKatmaniTestleri(unittest.TestCase):
+    """Bazi kaynaklar (arac fiyat listeleri) veriyi urun karti olarak degil
+    DUZ TABLO olarak yayinliyor - ne JSON-LD ne urun-karti CSS deseni ise
+    yariyor. Tablo katmani basliga gore dogru tabloyu secmeli."""
+
+    def _kaynak(self, **tablo):
+        t = {"isim_sutunu": 0, "fiyat_sutunu": 1}
+        t.update(tablo)
+        return {"ad": "Test", "min_fiyat": 500000, "tablo": t}
+
+    def test_baslik_metnine_gore_dogru_tablo_secilir(self):
+        soup = BeautifulSoup(TABLO_HTML, "html.parser")
+        u = motor.tablo_urunler(soup, self._kaynak(baslik_metni="En Ucuz Sıfır Araba"))
+        self.assertEqual([x["isim"] for x in u], ["Dacia", "Renault", "Togg"])
+        self.assertEqual(sorted(x["fiyat"] for x in u), [1295000.0, 1750000.0, 1870000.0])
+
+    def test_ikinci_tablo_ayri_secilebilir(self):
+        # AYNI sayfa, farkli baslik -> farkli kalem. Tablo sirasina degil
+        # baslik metnine bagli oldugu icin araya tablo eklenirse kaymaz.
+        soup = BeautifulSoup(TABLO_HTML, "html.parser")
+        u = motor.tablo_urunler(soup, self._kaynak(baslik_metni="Sıfır Tesla"))
+        self.assertEqual(len(u), 2)
+        self.assertTrue(all("Tesla" in x["isim"] for x in u))
+
+    def test_baslik_satiri_ve_okunamayan_fiyat_atlanir(self):
+        # "Marka/Başlangıç Fiyatları" baslik satiri ve "-" fiyatli satir
+        # urun sayilmamali.
+        soup = BeautifulSoup(TABLO_HTML, "html.parser")
+        u = motor.tablo_urunler(soup, self._kaynak(baslik_metni="En Ucuz Sıfır Araba"))
+        self.assertNotIn("Marka", [x["isim"] for x in u])
+        self.assertNotIn("Bilgi yok", [x["isim"] for x in u])
+
+    def test_min_fiyat_esigi_uygulanir(self):
+        soup = BeautifulSoup(TABLO_HTML, "html.parser")
+        kaynak = self._kaynak(baslik_metni="En Ucuz Sıfır Araba")
+        kaynak["min_fiyat"] = 1800000
+        u = motor.tablo_urunler(soup, kaynak)
+        self.assertEqual([x["isim"] for x in u], ["Togg"])
+
+    def test_baslik_bulunamazsa_bos_doner(self):
+        # Site basligi degistirirse sessizce YANLIS tablo secilmemeli.
+        soup = BeautifulSoup(TABLO_HTML, "html.parser")
+        u = motor.tablo_urunler(soup, self._kaynak(baslik_metni="Olmayan Baslik"))
+        self.assertEqual(u, [])
+
+    @patch("motor.robots_izin_var", return_value=True)
+    @patch("motor.getir", return_value=TABLO_HTML)
+    def test_tablo_konfigurasyonu_varsa_uc_katman_kullanilmaz(self, _g, _r):
+        kaynak = {
+            "ad": "Test", "site": "test", "url": "https://x.com/liste",
+            "vertikal": "arac", "kalem": "en-ucuz", "min_fiyat": 500000,
+            "bekleme_sn": 0, "aktif": True,
+            "tablo": {"baslik_metni": "En Ucuz Sıfır Araba", "isim_sutunu": 0, "fiyat_sutunu": 1},
+        }
+        urunler, katmanlar = motor.kaynak_ham_veri_topla(kaynak)
+        self.assertEqual(katmanlar, {"tablo"})
+        self.assertEqual(len(urunler), 3)

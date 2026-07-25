@@ -182,6 +182,26 @@ EV_KURMA_KALEMLERI = [
     {"id": "aydinlatma", "ad": "Avize / Aydınlatma", "birim": "sabit", "grup": "Tekstil"},
 ]
 
+# 0 km arac vertikali (2026-07-25). Kalemler NET TANIMLI tutuldu: tum
+# modellerin ham medyani YANILTICI olurdu (listede Porsche ile Fiat esit
+# agirlikta, medyan ~3.2M cikiyor ama gercekte alinan arac 1.5-2M bandinda
+# - liste agirligi satis agirligi DEGIL). Bkz. kaynaklar.yaml.
+ARAC_KALEMLERI = [
+    {
+        "id": "en-ucuz-sifir-arac",
+        "ad": "En ucuz sıfır araç (marka giriş fiyatı)",
+        "birim": "sabit",
+    },
+    # Marka kalemleri TOPLAMA GIRMEZ (bilgi_amacli): bunlar birbirinin
+    # ALTERNATIFI - bir kisi hem Tesla hem Suzuki almaz. Toplamak
+    # 17,7 milyon TL gibi anlamsiz bir sayi uretiyordu. Referans olarak
+    # gosteriliyorlar; endeksin "toplam"i yalnizca marka giris medyani.
+    {"id": "tesla", "ad": "Tesla", "birim": "sabit", "grup": "Marka bazlı", "bilgi_amacli": True},
+    {"id": "byd", "ad": "BYD", "birim": "sabit", "grup": "Marka bazlı", "bilgi_amacli": True},
+    {"id": "suzuki", "ad": "Suzuki", "birim": "sabit", "grup": "Marka bazlı", "bilgi_amacli": True},
+    {"id": "cupra", "ad": "Cupra", "birim": "sabit", "grup": "Marka bazlı", "bilgi_amacli": True},
+]
+
 VERTIKALLER = {
     "dugun": {
         "ad": "Düğün",
@@ -384,6 +404,92 @@ VERTIKALLER = {
                     "Televizyon fiyatlarında ekran boyutu, panel türü ve akıllı TV "
                     "özellikleri fiyat bandını belirler."
                 ),
+            },
+        ],
+    },
+    "arac": {
+        "ad": "0 km Araç",
+        "yol": "arac",
+        "kalemler": ARAC_KALEMLERI,
+        "tahmini_kalemler": [],
+        "baslik": "2026'da Sıfır Araba Kaça Alınır?",
+        "soru": "2026'da en ucuz sıfır araba kaça alınır?",
+        "sayfa_basligi": "Sıfır Araba Fiyatları 2026 | Maliyetine",
+        "meta_aciklama": (
+            "Sıfır araba fiyatları 2026: markaların giriş fiyatları ve marka "
+            "bazlı model listeleri, kaynak ve derleme tarihiyle."
+        ),
+        "dataset_ad": "Maliyetine 0 km Araç Fiyat Endeksi",
+        "dataset_aciklama": (
+            "Türkiye'de satılan sıfır kilometre otomobillerin marka giriş "
+            "fiyatları ve marka bazlı model fiyatlarından derlenen aylık endeks."
+        ),
+        # Bu vertikalde kalemler TOPLANMAZ (marka kalemleri bilgi_amacli),
+        # "toplam" = marka giris fiyatlarinin medyani.
+        "olcek_varsayilan": 1,
+        "ornek_ifade": "bir markanın en ucuz sıfır aracının medyan fiyatının",
+        "anasayfa_ifade": "bir markanın en ucuz sıfır aracı medyan",
+        "kart_alt": "24 marka giriş fiyatı",
+        "hesaplayici_var": False,
+        "hesaplayici_daveti": "Marka bazlı fiyat listelerine bakın →",
+        "kapsam_yer": "Türkiye",
+        "keywords": [
+            "sıfır araba fiyatları", "sıfır otomobil fiyatları 2026",
+            "en ucuz sıfır araba", "0 km araç fiyatları",
+            "sıfır araç fiyat listesi", "Tesla fiyatları", "BYD fiyatları",
+        ],
+        "one_cikan_kalemler": ["en-ucuz-sifir-arac", "tesla", "byd", "suzuki"],
+        "segment_aciklama": (
+            "Ekonomik segment markaların giriş seviyesi (en ucuz) modellerinin "
+            "alt bandını, orta segment tipik giriş fiyatını, lüks segment ise "
+            "premium markaların giriş modellerini gösterir. Marka bazlı "
+            "kalemlerde segmentler o markanın kendi model yelpazesi içindeki "
+            "dağılımı yansıtır — markalar arası kıyas için değil, marka içi "
+            "aralığı görmek içindir."
+        ),
+        "dahil_olanlar": [
+            "Markaların Türkiye'de satılan sıfır kilometre modellerinin liste fiyatları.",
+            "Marka giriş fiyatı: her markanın en ucuz modelinin anahtar teslim fiyatı.",
+            "Marka bazlı model listeleri (donanım/motor seçeneğine göre ayrı satırlar).",
+        ],
+        "dahil_olmayanlar": [
+            "Trafik sigortası, kasko, MTV ve tescil masrafları.",
+            "Bayi kampanyaları, kredi/taksit farkları ve opsiyonel donanım paketleri.",
+            "İkinci el araç fiyatları — bu endeks yalnızca sıfır kilometre araçları kapsar.",
+            "Yakıt, bakım, lastik gibi kullanım giderleri.",
+        ],
+        "kalem_sayfalari": [
+            {
+                "id": "en-ucuz-sifir-arac",
+                "slug": "en-ucuz-sifir-araba",
+                "baslik": "En Ucuz Sıfır Araba Fiyatları 2026",
+                "soru": "2026'da en ucuz sıfır araba kaça alınır?",
+                "aciklama": (
+                    "Her markanın giriş seviyesi (en ucuz) modelinin fiyatı. "
+                    "Tüm modellerin ortalaması değil — o rakam lüks markalar "
+                    "yüzünden gerçek alıcı davranışını yansıtmaz."
+                ),
+            },
+            {
+                "id": "tesla",
+                "slug": "tesla-fiyatlari",
+                "baslik": "Tesla Fiyatları 2026",
+                "soru": "2026'da Tesla fiyatları ne kadar?",
+                "aciklama": "Tesla model fiyatları menzil ve donanım paketine göre değişir.",
+            },
+            {
+                "id": "byd",
+                "slug": "byd-fiyatlari",
+                "baslik": "BYD Fiyatları 2026",
+                "soru": "2026'da BYD fiyatları ne kadar?",
+                "aciklama": "BYD model fiyatları batarya kapasitesi ve donanıma göre değişir.",
+            },
+            {
+                "id": "suzuki",
+                "slug": "suzuki-fiyatlari",
+                "baslik": "Suzuki Fiyatları 2026",
+                "soru": "2026'da Suzuki fiyatları ne kadar?",
+                "aciklama": "Suzuki model fiyatları motor seçeneği ve donanım seviyesine göre değişir.",
             },
         ],
     },
@@ -830,6 +936,18 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
         )
         cevap_disable = ' style="color:#7a4a06"'
 
+    # Hesaplayicisi olmayan vertikalde (arac) o linkler gosterilmez -
+    # aksi halde sitemap ve menude 404 olusur.
+    _h_var = conf.get("hesaplayici_var", True)
+    hesaplayici_menu = (
+        f'<a href="/{yol}/hesaplayici/">Hesaplayıcı</a>' if _h_var else ""
+    )
+    hesaplayici_link = (
+        f'<a href="/{yol}/hesaplayici/">{conf["hesaplayici_daveti"]}</a>'
+        if _h_var else
+        f'<a href="/{yol}/metodoloji/">{conf["hesaplayici_daveti"]}</a>'
+    )
+
     guncelleme_etiketi = (
         f'<span class="guncelleme-etiketi">Güncelleme: {guncelleme_tarihi}</span>'
         if guncelleme_tarihi
@@ -943,7 +1061,7 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
   <div class="kapsayici">
     <a href="/" class="logo">maliyet<span>ine</span>.com.tr</a>
     <nav class="ust-menu">
-      <a href="/{yol}/hesaplayici/">Hesaplayıcı</a>
+      {hesaplayici_menu}
       <a href="/{yol}/metodoloji/">Metodoloji</a>
     </nav>
   </div>
@@ -960,7 +1078,7 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
 
   {_tek_kaynak_uyarisi_html(conf, kullanilan_siteler)}
 
-  <p><a href="/{yol}/hesaplayici/">{conf["hesaplayici_daveti"]}</a></p>
+  <p>{hesaplayici_link}</p>
 
   <h2>Kalem kalem fiyatlar</h2>
   {_tahmini_aciklama_html(conf)}
@@ -986,7 +1104,7 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
   <div class="kapsayici">
     <div>© 2026 Maliyetine.com.tr</div>
     <nav>
-      <a href="/{yol}/hesaplayici/">Hesaplayıcı</a>
+      {hesaplayici_menu}
       <a href="/{yol}/metodoloji/">Metodoloji</a>
     </nav>
   </div>
@@ -1161,6 +1279,14 @@ def kalem_sayfasi_uret(
     kaynak_sayisi = len(bagimsiz_siteler({sayfa["id"]: veri or {}}, {sayfa["id"]}))
     urun_sayisi = (veri or {}).get("toplam_urun")
     sayfa_url = f"{SITE_KOK_URL}/{conf['yol']}/{sayfa['slug']}/"
+    _kh = conf.get("hesaplayici_var", True)
+    kalem_hesaplayici_menu = (
+        f'<a href="/{conf["yol"]}/hesaplayici/">Hesaplayıcı</a>' if _kh else ""
+    )
+    kalem_hesaplayici_govde = (
+        f'<a href="/{conf["yol"]}/hesaplayici/">hesaplayıcıya</a> gidin.'
+        if _kh else "endeks sayfasına gidin."
+    )
     birim = " kişi başı" if tanim["birim"] == "kisi_basi" else ""
 
     if orta:
@@ -1329,7 +1455,7 @@ def kalem_sayfasi_uret(
     <a href="/" class="logo">maliyet<span>ine</span>.com.tr</a>
     <nav class="ust-menu">
       <a href="/{conf["yol"]}/">Endeks</a>
-      <a href="/{conf["yol"]}/hesaplayici/">Hesaplayıcı</a>
+      {kalem_hesaplayici_menu}
       <a href="/{conf["yol"]}/metodoloji/">Metodoloji</a>
     </nav>
   </div>
@@ -1356,7 +1482,7 @@ def kalem_sayfasi_uret(
     <h2>Bu fiyata ne dahil?</h2>
     <p>Bu sayfa yalnızca <strong>{tanim["ad"]}</strong> kalemini ölçer{butce_cumlesi} Tüm bütçeyi görmek için
       <a href="/{conf["yol"]}/">{conf["ad"]} maliyeti endeksine</a> veya
-      <a href="/{conf["yol"]}/hesaplayici/">hesaplayıcıya</a> gidin.</p>
+      {kalem_hesaplayici_govde}</p>
   </section>
 
 {_sss_html(sorular)}
@@ -1374,7 +1500,7 @@ def kalem_sayfasi_uret(
     <div>© 2026 Maliyetine.com.tr</div>
     <nav>
       <a href="/{conf["yol"]}/">{conf["ad"]} endeksi</a>
-      <a href="/{conf["yol"]}/hesaplayici/">Hesaplayıcı</a>
+      {kalem_hesaplayici_menu}
       <a href="/{conf["yol"]}/metodoloji/">Metodoloji</a>
     </nav>
   </div>
@@ -1404,7 +1530,8 @@ def sitemap_uret() -> str:
         yol = conf["yol"]
         url_kayitlari.extend([
             (f"/{yol}/", "monthly", "0.9"),
-            (f"/{yol}/hesaplayici/", "monthly", "0.8"),
+            *([(f"/{yol}/hesaplayici/", "monthly", "0.8")]
+              if conf.get("hesaplayici_var", True) else []),
             (f"/{yol}/metodoloji/", "yearly", "0.5"),
         ])
         for sayfa in conf.get("kalem_sayfalari", []):

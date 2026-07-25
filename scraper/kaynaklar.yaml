@@ -1764,3 +1764,95 @@ kaynaklar:
       medyan ~81.000 TL. Alyans girdisiyle ayni seciciler.
       Atasay premium bir marka - ust segmenti temsil eder; ikinci
       (daha ekonomik) kaynak eklenince segment dagilimi genisleyecek.
+
+  # ============================================================
+  # 0 KM ARAC VERTIKALI (2026-07-25 baslatildi)
+  # ============================================================
+  # KAYNAK YAPISI: donanimhaber'in aylik guncellenen sifir arac fiyat
+  # dosyasi. Sayfa MARKA BAZLI tablolar iceriyor; motor.py'ye eklenen
+  # "tablo katmani" basliga gore dogru tabloyu seciyor (bkz. tablo_urunler).
+  #
+  # METODOLOJI KARARI (Yavuz, 2026-07-25 - hibrit yapi):
+  # Tum modellerin ham medyanini almak YANILTICI olurdu: listede Porsche
+  # ile Fiat esit agirlikta ve medyan ~3.2M cikiyor, oysa gercekte alinan
+  # arac 1.5-2M bandinda (liste agirligi != satis agirligi). Bunun yerine
+  # NET TANIMLI kalemler kuruldu.
+  #
+  # "en-ucuz-sifir-arac": her markanin GIRIS (en ucuz) modelinin fiyati.
+  # 24 marka -> medyan ~2.1M, en ucuz Dacia 1.295.000. Bu net tanimli bir
+  # olcum ve "en ucuz sifir araba kac para?" en cok sorulan sorulardan.
+  - ad: "DonanimHaber - Marka Giris Fiyatlari"
+    site: "donanimhaber"
+    url: "https://www.donanimhaber.com/sifir-araba-fiyatlari-kampanyalari--182165"
+    sayfa_sayisi: 1
+    vertikal: "arac"
+    kalem: "en-ucuz-sifir-arac"
+    yontem: "otomatik"
+    tablo:
+      baslik_metni: "En Ucuz Sıfır Araba Fiyatları"
+      isim_sutunu: 0
+      fiyat_sutunu: 1
+    min_fiyat: 500000
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+    notlar: >
+      Gercek cekimle dogrulandi (2026-07-25): 24 marka, tablo katmani,
+      medyan 2.100.250 TL (min Dacia 1.295.000, max 4.077.000).
+      Ayni sayfa iki kez cekilip icerigin TUTARLI oldugu dogrulandi.
+
+  # Marka bazli kalemler: sayfada HTML olarak yalnizca bu dort markanin
+  # tablosu var (Togg/Renault/Fiat gibi populer markalarin tablolari JS
+  # ile yukleniyor, ham HTML'de YOK - 2026-07-25'te dogrulandi).
+  # Populer markalar icin ikinci kaynak aranmali (bkz. Yapilacaklar).
+  - ad: "DonanimHaber - Tesla"
+    site: "donanimhaber"
+    url: "https://www.donanimhaber.com/sifir-araba-fiyatlari-kampanyalari--182165"
+    sayfa_sayisi: 1
+    vertikal: "arac"
+    kalem: "tesla"
+    yontem: "otomatik"
+    tablo: {baslik_metni: "Sıfır Tesla fiyatları", isim_sutunu: 0, fiyat_sutunu: 1}
+    min_fiyat: 500000
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+
+  - ad: "DonanimHaber - BYD"
+    site: "donanimhaber"
+    url: "https://www.donanimhaber.com/sifir-araba-fiyatlari-kampanyalari--182165"
+    sayfa_sayisi: 1
+    vertikal: "arac"
+    kalem: "byd"
+    yontem: "otomatik"
+    tablo: {baslik_metni: "Sıfır BYD fiyatları", isim_sutunu: 0, fiyat_sutunu: 1}
+    min_fiyat: 500000
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+
+  - ad: "DonanimHaber - Suzuki"
+    site: "donanimhaber"
+    url: "https://www.donanimhaber.com/sifir-araba-fiyatlari-kampanyalari--182165"
+    sayfa_sayisi: 1
+    vertikal: "arac"
+    kalem: "suzuki"
+    yontem: "otomatik"
+    tablo: {baslik_metni: "Sıfır Suzuki fiyatları", isim_sutunu: 0, fiyat_sutunu: 1}
+    min_fiyat: 500000
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+
+  - ad: "DonanimHaber - Cupra"
+    site: "donanimhaber"
+    url: "https://www.donanimhaber.com/sifir-araba-fiyatlari-kampanyalari--182165"
+    sayfa_sayisi: 1
+    vertikal: "arac"
+    kalem: "cupra"
+    yontem: "otomatik"
+    tablo: {baslik_metni: "Sıfır Cupra fiyatları", isim_sutunu: 0, fiyat_sutunu: 1}
+    min_fiyat: 500000
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"

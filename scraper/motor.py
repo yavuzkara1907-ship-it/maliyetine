@@ -289,6 +289,51 @@ def detay_urunler(soup: BeautifulSoup, kaynak: dict, bekleme_sn: float = 2.0):
     return urunler
 
 
+def tablo_urunler(soup: BeautifulSoup, kaynak: dict):
+    """HTML tablosundan isim/fiyat cikarir.
+
+    Neden gerekli: bazi kaynaklar (ör. arac fiyat listeleri) veriyi urun
+    karti olarak degil DUZ TABLO olarak yayinliyor - ne JSON-LD ne de
+    urun-karti CSS deseni ise yariyor.
+
+    `baslik_metni` verilirse, o metni iceren baslikten SONRAKI ilk tablo
+    secilir; verilmezse sayfadaki ilk tablo. Baslik metnine gore secmek
+    tablo sirasina bagli kalmaktan daha saglam - site araya yeni tablo
+    eklerse indeks kayar ama baslik kaymaz.
+    """
+    t = kaynak["tablo"]
+    min_fiyat = kaynak.get("min_fiyat", 100)
+    isim_sutunu = t.get("isim_sutunu", 0)
+    fiyat_sutunu = t.get("fiyat_sutunu", 1)
+
+    hedef = None
+    baslik_metni = t.get("baslik_metni")
+    if baslik_metni:
+        desen = re.compile(re.escape(baslik_metni), re.I)
+        for etiket in soup.find_all(["h1", "h2", "h3", "h4"]):
+            if desen.search(etiket.get_text(" ", strip=True)):
+                hedef = etiket.find_next("table")
+                break
+    else:
+        hedef = soup.find("table")
+
+    if hedef is None:
+        return []
+
+    urunler = []
+    for satir in hedef.find_all("tr"):
+        hucreler = satir.find_all(["td", "th"])
+        if len(hucreler) <= max(isim_sutunu, fiyat_sutunu):
+            continue
+        isim = hucreler[isim_sutunu].get_text(" ", strip=True)
+        fiyat = fiyat_ayikla(hucreler[fiyat_sutunu].get_text(" ", strip=True))
+        # Baslik satiri ve fiyati okunamayan satirlar (ör. "-") atlanir.
+        if not isim or fiyat is None or fiyat <= min_fiyat:
+            continue
+        urunler.append({"isim": isim, "fiyat": fiyat})
+    return urunler
+
+
 def uc_katman_cikar(soup: BeautifulSoup, kaynak: dict):
     min_fiyat = kaynak.get("min_fiyat", 100)
 
@@ -556,6 +601,8 @@ def kaynak_ham_veri_topla(kaynak: dict):
         soup = BeautifulSoup(html, "html.parser")
         if kaynak.get("detay"):
             urunler, katman = detay_urunler(soup, kaynak, bekleme_sn), "detay"
+        elif kaynak.get("tablo"):
+            urunler, katman = tablo_urunler(soup, kaynak), "tablo"
         else:
             urunler, katman = uc_katman_cikar(soup, kaynak)
         kullanilan_katmanlar.add(katman)

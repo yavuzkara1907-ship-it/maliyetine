@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sıfır Araç Fiyat Metodolojisi | Maliyetine</title>
+<meta name="description" content="Sıfır araç fiyat verisi nereden, nasıl ve hangi kurallarla derleniyor? Neden ortalama araç fiyatı vermiyoruz, marka giriş fiyatı ne anlama geliyor?">
+<link rel="canonical" href="https://maliyetine.com.tr/arac/metodoloji/">
+<link rel="stylesheet" href="/assets/css/style.css">
+<meta property="og:title" content="Sıfır Araç Fiyat Metodolojisi">
+<meta property="og:description" content="Sıfır araç fiyat verisi nereden, nasıl ve hangi kurallarla derleniyor? Neden ortalama araç fiyatı vermiyoruz?">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maliyetine.com.tr/arac/metodoloji/">
+<meta property="og:site_name" content="Maliyetine.com.tr">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+
+<header class="ust-bar">
+  <div class="kapsayici">
+    <a href="/" class="logo">maliyet<span>ine</span>.com.tr</a>
+    <nav class="ust-menu">
+      <a href="/arac/">0 km Araç Endeksi</a>
+      <a href="/">Ana sayfa</a>
+    </nav>
+  </div>
+</header>
+
+<main class="kapsayici">
+
+  <h1>Sıfır Araç Fiyatları: Bu Rakamlar Nereden Geliyor?</h1>
+
+  <div class="cevap-blok">
+    Sıfır araç fiyatları, aylık güncellenen bir fiyat listesi kaynağından
+    robots.txt kurallarına uygun şekilde derlenir. Yapay zeka burada
+    fiyat üretmez — yalnızca tabloyu okur, temizler ve segmentlere ayırır.
+    Her rakamın yanında kaynak sayısı ve derleme tarihi görünür.
+  </div>
+
+  <h2>Neden "ortalama araç fiyatı" vermiyoruz?</h2>
+  <p>
+    Bu, bu endeksin en önemli metodoloji kararı. Piyasadaki tüm sıfır
+    model fiyatlarının ortalamasını ya da medyanını almak
+    <strong>yanıltıcı olurdu</strong>: böyle bir listede Porsche ile Fiat
+    eşit ağırlıkta sayılır. Bizim ölçümümüzde tüm modellerin ham medyanı
+    <strong>3,2 milyon TL</strong> çıkıyordu — oysa Türkiye'de gerçekte
+    satın alınan araçların büyük çoğunluğu bunun çok altında.
+  </p>
+  <p>
+    Sorun şu: <strong>liste ağırlığı, satış ağırlığı değildir.</strong>
+    Bir markanın 40 modeli listede olması, o modellerin 40 kat daha çok
+    satıldığı anlamına gelmez. Satış adedine göre ağırlıklandırma yapmadan
+    tek bir "ortalama araç fiyatı" yayınlamak, okuyucuyu yanlış yönlendirir.
+  </p>
+
+  <h2>Bunun yerine ne ölçüyoruz?</h2>
+  <table>
+    <thead><tr><th>Kalem</th><th>Ne ölçer</th><th>Toplama girer mi?</th></tr></thead>
+    <tbody>
+      <tr>
+        <td>En ucuz sıfır araç</td>
+        <td>Her markanın <strong>giriş seviyesi</strong> (en ucuz) modelinin fiyatı — 24 marka</td>
+        <td><strong>Evet</strong></td>
+      </tr>
+      <tr>
+        <td>Marka bazlı kalemler</td>
+        <td>O markanın kendi model yelpazesindeki fiyat dağılımı</td>
+        <td>Hayır — bilgi amaçlı</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    "En ucuz sıfır araç" net tanımlı bir ölçüdür: her markanın giriş
+    modelinin fiyatını alıp bunların dağılımına bakarız. "Bir marka sıfır
+    araca başlamak için en az ne ister?" sorusunun cevabıdır.
+  </p>
+
+  <h2>Marka kalemleri neden toplanmıyor?</h2>
+  <p>
+    Çünkü <strong>birbirinin alternatifidir</strong>. Bir kişi hem Tesla
+    hem Suzuki almaz. Bunları toplamak 17,7 milyon TL gibi anlamsız bir
+    sayı üretirdi. Bu yüzden marka kalemleri tabloda
+    <span class="tahmini-etiket">Bilgi amaçlı — toplamda değil</span>
+    etiketiyle işaretlenir ve endeksin toplamına katılmaz.
+  </p>
+
+  <h2>Segment tanımı</h2>
+  <p>Her kalem için toplanan fiyatlar üç segmente ayrılır (persentil bazlı):</p>
+  <table>
+    <thead><tr><th>Segment</th><th>Tanım</th></tr></thead>
+    <tbody>
+      <tr><td>Ekonomik</td><td>≤ 25. persentil (P25)</td></tr>
+      <tr><td>Orta</td><td>P25 – P75 arası</td></tr>
+      <tr><td>Lüks</td><td>&gt; 75. persentil (P75)</td></tr>
+    </tbody>
+  </table>
+  <p>
+    Marka bazlı kalemlerde segmentler <em>o markanın kendi</em> model
+    yelpazesi içindeki dağılımı yansıtır — markalar arası kıyas için
+    değil, marka içi aralığı görmek içindir.
+  </p>
+
+  <h2>Fiyata neler dahil değil?</h2>
+  <ul>
+    <li>Trafik sigortası, kasko, MTV ve tescil masrafları.</li>
+    <li>Bayi kampanyaları, kredi/taksit farkları, opsiyonel donanım paketleri.</li>
+    <li>İkinci el araç fiyatları — bu endeks yalnızca sıfır kilometre araçları kapsar.</li>
+    <li>Yakıt, bakım, lastik gibi kullanım giderleri.</li>
+  </ul>
+  <p>
+    Yani bu rakamlar <strong>araç sahibi olmanın toplam maliyeti değil</strong>,
+    aracın liste fiyatıdır.
+  </p>
+
+  <div class="uyari-kutu">
+    <strong>Tek kaynak uyarısı:</strong> bu endeks şu an tek bir bağımsız
+    kaynaktan besleniyor. Tek kaynak, o kaynağın derleme tercihlerini
+    yansıtır. İkinci bağımsız kaynak eklenene kadar bu rakamları bir
+    <em>gösterge</em> olarak okuyun. Ayrıca sıfır araç fiyatları kur, vergi
+    (ÖTV/MTV) ve kampanya değişikliklerinden çok hızlı etkilenir — en oynak
+    endeksimiz budur.
+  </div>
+
+  <h2>Nazik kazıma ilkeleri</h2>
+  <ul>
+    <li>Her hedef URL, kazımadan önce robots.txt'e karşı otomatik kontrol edilir.</li>
+    <li>İstekler arası bekleme bırakılır, agresif/paralel istek atılmaz.</li>
+    <li>Kazıma ayda bir çalışır — gerçek zamanlı değildir.</li>
+    <li>Aktif bot-tespiti atlatılmaya çalışılmaz; bir site bunu kullanıyorsa o kaynak bilerek bırakılır.</li>
+  </ul>
+
+  <h2>Sağlık kontrolü</h2>
+  <p>
+    Bir kaynak normalde döndürdüğü satır sayısının çok altına düşerse (ör.
+    site tabloyu değiştirmiş), veri <strong>sessizce kabul edilmez</strong> —
+    otomatik karantinaya alınır ve endekse dahil edilmez.
+  </p>
+
+  <h2>Güncelleme sıklığı</h2>
+  <p>Veri ayda bir otomatik yenilenir; her sayfada son güncelleme tarihi görünür.</p>
+
+  <p><a href="/arac/">← 0 km araç endeksine dön</a></p>
+
+</main>
+
+<footer>
+  <div class="kapsayici">
+    <div>© 2026 Maliyetine.com.tr</div>
+    <nav>
+      <a href="/arac/">0 km Araç Endeksi</a>
+      <a href="/">Ana sayfa</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>

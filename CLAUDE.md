@@ -244,6 +244,43 @@ Hesaplayıcı bu kalemleri toplar. Her kalem: segment + kaynak + tarih.
     scope olmadığı için dokunulamıyor. Scope eklenince workflow'un sonuna
     `python indexnow.py` adımı eklenmeli. O zamana kadar elle çalıştırılır.
 
+## 0 KM ARAÇ VERTİKALİ (2026-07-25 başlatıldı, YAYINDA)
+- **Kaynak:** donanimhaber'in aylık güncellenen sıfır araç fiyat dosyası.
+  robots.txt ONAY. İki kez çekilip içeriğin TUTARLI olduğu doğrulandı.
+  - Elenen adaylar: sahibinden/Fiat/VW robots.txt RET; Toyota, Hyundai,
+    arabam, arabalar.com.tr denenen URL'ler 404; Renault ve sifirfiyatlar
+    erişilebilir ama fiyatlar JS ile yükleniyor (ham HTML'de yok).
+- **motor.py'ye TABLO KATMANI eklendi** (`tablo_urunler`). Bazı kaynaklar
+  veriyi ürün kartı değil DÜZ TABLO olarak yayınlıyor — ne JSON-LD ne
+  ürün-kartı CSS deseni işe yarıyor. `baslik_metni` ile başlığa göre
+  tablo seçiliyor (tablo sırasına bağlı kalmaktan sağlam: site araya
+  tablo eklerse indeks kayar, başlık kaymaz). Başlık bulunamazsa sessizce
+  yanlış tablo seçmek yerine boş döner. 6 test.
+- **METODOLOJİ KARARI (Yavuz, hibrit yapı) — bu vertikalin en kritik
+  noktası:** tüm modellerin ham medyanı YANILTICI olurdu. Ölçtük:
+  **3,2 milyon TL** çıkıyor, oysa Türkiye'de gerçekte alınan araç çok
+  daha ucuz. Sebep: **liste ağırlığı, satış ağırlığı değil** — listede
+  Porsche ile Fiat eşit sayılıyor. Bunun yerine:
+  - **`en-ucuz-sifir-arac`**: her markanın giriş (en ucuz) modelinin
+    fiyatı, 24 marka → **medyan 2.069.000 TL** (en ucuz Dacia 1.295.000).
+    Net tanımlı ve "en ucuz sıfır araba kaç para?" en çok sorulan
+    sorulardan. TOPLAMA GİREN tek kalem.
+  - **Marka kalemleri** (Tesla, BYD, Suzuki, Cupra): `bilgi_amacli`,
+    TOPLANMAZ. Sebep: birbirinin ALTERNATİFİ — bir kişi hem Tesla hem
+    Suzuki almaz. Toplandığında 17,7 milyon TL gibi anlamsız bir sayı
+    çıkıyordu (ilk çalıştırmada bu görüldü ve düzeltildi).
+- **Popüler markalar (Togg/Renault/Fiat) EKSİK:** o markaların tabloları
+  sayfada JS ile yükleniyor, ham HTML'de yok — yalnızca Tesla/BYD/Suzuki/
+  Cupra tabloları mevcut. Popüler markalar için ikinci kaynak aranmalı.
+- **Bu vertikalde HESAPLAYICI YOK** (`hesaplayici_var: False`): kalemler
+  alternatif olduğu için toplama hesabı anlamsız. sayfa_uret.py artık bu
+  bayrağa göre sitemap'e ve menülere hesaplayıcı linki eklemiyor —
+  **aksi halde sitemap'te 404 oluşuyordu ve sitemap Search Console'a
+  gönderilmişti.**
+- `/arac/metodoloji/` yazıldı: "neden ortalama araç fiyatı vermiyoruz",
+  "marka kalemleri neden toplanmıyor", fiyata dahil olmayanlar (sigorta/
+  MTV/tescil/yakıt), tek kaynak ve oynaklık uyarısı.
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)

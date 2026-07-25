@@ -689,5 +689,35 @@
       24
     ],
     "son_calisma": "2026-07-25"
+  },
+  "arac/en-ucuz-sifir-arac/donanimhaber": {
+    "urun_sayilari": [
+      22
+    ],
+    "son_calisma": "2026-07-25"
+  },
+  "arac/tesla/donanimhaber": {
+    "urun_sayilari": [
+      4
+    ],
+    "son_calisma": "2026-07-25"
+  },
+  "arac/byd/donanimhaber": {
+    "urun_sayilari": [
+      4
+    ],
+    "son_calisma": "2026-07-25"
+  },
+  "arac/suzuki/donanimhaber": {
+    "urun_sayilari": [
+      18
+    ],
+    "son_calisma": "2026-07-25"
+  },
+  "arac/cupra/donanimhaber": {
+    "urun_sayilari": [
+      7
+    ],
+    "son_calisma": "2026-07-25"
   }
 }
