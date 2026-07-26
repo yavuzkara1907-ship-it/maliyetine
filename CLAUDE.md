@@ -597,6 +597,24 @@ bırakıldı; tablo başlıkları, cevap blokları ve meta açıklamalar artık
 - schema.org `measurementTechnique` alanında teknik terim KALDI (orası
   AI motorlarına metodolojiyi anlatan teknik alan, kullanıcıya görünmüyor).
 
+## BAYAT SAYFA SORUNU + HİSTEREZİS (2026-07-26)
+Kalem sayfası sayısı 9→59'a çıkarken sessiz bir sorun birikti: bir sayfa
+üretim listesinden düştüğünde **diskteki dosya olduğu gibi kalıyordu.**
+Sonuç: canlıda 200 dönen, günler önce ölçülmüş rakamları gösteren,
+sitemap'te olmayan yetim sayfalar. 6 tane birikmişti —
+`/arac/tesla-fiyatlari/` hâlâ 07-25 verisini gösteriyordu.
+- **`bayat_kalem_sayfalarini_temizle()`**: üretimde artık geçerli olmayan
+  `{kalem}-fiyatlari` dizinlerini siler. `hesaplayici` ve `metodoloji`
+  asla silinmez (testli).
+- **`KALEM_SAYFASI_KAPATMA_ESIGI = 5`** (açma eşiği 8): örneklem ay ay
+  dalgalanıyor (9→7→10). Tek eşikle aynı sayfa açılıp kapanıyor, her
+  kapanışta canlı bir URL bayatlıyordu. Açmak için 8, kapatmak için 5.
+- Sonuç: tesla/byd/suzuki (hiç geçerli listede olmamışlardı) silindi →
+  canlıda 404; yemek-ikram, gelin-ayakkabısı, perde histerezisle korundu.
+- **Yan bulgu:** araç kalem sayfaları 25 Temmuz'dan beri üretilmiyordu —
+  bir tur çıktı `>/dev/null`'a basıldığı için fark edilmemişti.
+  **DERS: üretim komutlarının çıktısını bastırma.**
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
