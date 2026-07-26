@@ -733,3 +733,66 @@ button.metin-buton {
   color: var(--renk-metin-soluk);
   margin: 0;
 }
+
+/* ---- Mobil dokunma hedefleri ----
+   Olculdu: 375px genislikte ana sayfada 69 tiklanabilir ogenin yuksekligi
+   32px'in altindaydi - en cok da kalem etiketleri (.kart-linkler a, 39
+   adet, ~22px). Parmakla isabet ettirmek zor ve Google'in mobil
+   dostuluk kriterinde dusuk puan. Paragraf ICI linklere dokunulmuyor;
+   onlar metin akisinin parcasi, buyutulurse satir araligi bozulur. */
+@media (max-width: 560px) {
+  .kart-linkler {
+    gap: 8px;
+  }
+
+  .kart-linkler a {
+    padding: 9px 13px;
+    font-size: 0.85rem;
+    line-height: 1.2;
+  }
+
+  .ust-menu a {
+    display: inline-block;
+    padding: 8px 2px;
+  }
+
+  .kirinti a {
+    display: inline-block;
+    padding: 4px 0;
+  }
+
+  .segment-secim label {
+    padding: 8px 10px;
+    border: 1px solid var(--renk-cizgi);
+    border-radius: 8px;
+    background: var(--renk-zemin);
+  }
+
+  .segment-secim input {
+    width: 18px;
+    height: 18px;
+  }
+
+  footer nav a {
+    display: inline-block;
+    padding: 8px 0;
+  }
+
+  /* Metin ici link listeleri ("ilgili sayfalar", " · " ile ayrilmis).
+     Pill yapmak metin akisini bozardi; satir yuksekligini acmak hem
+     dokunma hedefini 32px'in uzerine cikariyor hem dar ekranda
+     okunabilirligi artiriyor. */
+  .icerik-bolumu p a,
+  .icerik-bolumu li a,
+  .uyari-kutu a {
+    display: inline-block;
+    line-height: 2.1;
+  }
+
+  /* Tablo icindeki linkler (veri sayfasindaki CSV/JSON indirme
+     baglantilari dahil) - tiklanmak icin varlar, isabet ettirilebilmeli. */
+  td a {
+    display: inline-block;
+    padding: 6px 0;
+  }
+}
