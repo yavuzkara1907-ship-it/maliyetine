@@ -75,6 +75,13 @@ jobs:
             echo "EVDS_KEY tanımlı değil - TÜFE adımı atlandı."
           fi
 
+      # Senaryo sayfalari (100 kisilik dugun, beyaz esya butcesi...).
+      # sayfa_uret'ten SONRA: endeks sayfalari bu dosyalarin varligina
+      # bakip ic link veriyor, sitemap de oyle.
+      - name: Senaryo sayfalarını üret
+        working-directory: scraper
+        run: python senaryo.py
+
       # Rehber (blog) yazilari: metin elle yazili, RAKAMLAR veriden gelir.
       # Her olcumde yeniden uretiliyor ki yazidaki tutarlar bayatlamasin.
       # sayfa_uret'ten SONRA calismali - sitemap ve ana sayfa rehber

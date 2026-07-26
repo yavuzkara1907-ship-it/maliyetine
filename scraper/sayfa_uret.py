@@ -1177,6 +1177,7 @@ def _icerik_seo_bloklari_html(conf: dict, kalemler: dict, detaylar: list[dict]) 
             f"  {kalem_linkleri}\n"
             "</section>"
         )
+    kalem_linkleri = _senaryo_linkleri_html(conf) + kalem_linkleri
     return f"""
   <section class="icerik-bolumu">
     <h2>Bu rakama neler dahil?</h2>
@@ -2484,6 +2485,39 @@ def sss_sayfasi_uret(veri_kok: Path | None = None, tarih: str | None = None) -> 
 """
 
 
+
+def _senaryo_linkleri_html(conf: dict) -> str:
+    """Endeks sayfasindan senaryo sayfalarina ic link.
+
+    Senaryo sayfalari gercek arama niyetini hedefliyor ("100 kisilik
+    dugun"); endeksten link almazlarsa yetim kalirlar ve sitemap tek
+    basina zayif sinyal.
+    """
+    try:
+        import senaryo
+    except ImportError:
+        return ""
+    vertikal = next((v for v, c in VERTIKALLER.items() if c is conf), None)
+    if not vertikal:
+        return ""
+    kayitlar = []
+    for grup in (senaryo.OLCEK_SENARYOLARI, senaryo.GRUP_SENARYOLARI):
+        for s in grup.get(vertikal, []):
+            if (SITE_KOK / conf["yol"] / s["slug"] / "index.html").exists():
+                kayitlar.append((s["slug"], s["baslik"]))
+    if not kayitlar:
+        return ""
+    linkler = " · ".join(
+        f'<a href="/{conf["yol"]}/{slug}/">{baslik}</a>' for slug, baslik in kayitlar
+    )
+    return (
+        '  <section class="icerik-bolumu">\n'
+        "    <h2>Hazır senaryolar</h2>\n"
+        f"    <p>{linkler}</p>\n"
+        "  </section>\n"
+    )
+
+
 def sitemap_uret() -> str:
     url_kayitlari = [
         ("/", "monthly", "1.0"),
@@ -2495,6 +2529,15 @@ def sitemap_uret() -> str:
         url_kayitlari.append(("/veri/", "monthly", "0.8"))
     if (SITE_KOK / "sss" / "index.html").exists():
         url_kayitlari.append(("/sss/", "monthly", "0.6"))
+    # Senaryo sayfalari (100 kisilik dugun, beyaz esya butcesi...) -
+    # gercek arama niyetini hedefliyorlar, oncelik kalem sayfasi kadar.
+    try:
+        import senaryo
+        for vert, slug in senaryo.tum_slugler():
+            if (SITE_KOK / VERTIKALLER[vert]["yol"] / slug / "index.html").exists():
+                url_kayitlari.append((f"/{VERTIKALLER[vert]['yol']}/{slug}/", "monthly", "0.7"))
+    except ImportError:
+        pass
     # Rehber (blog) sayfalari - rehber.py uretir, sitemap buradan besleniyor.
     # Import fonksiyon icinde: rehber.py sayfa_uret'i import ediyor, modul
     # seviyesinde karsilikli import olurdu.
