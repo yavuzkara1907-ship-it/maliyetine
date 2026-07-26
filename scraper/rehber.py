@@ -38,7 +38,7 @@ SITE_KOK_URL = su.SITE_KOK_URL
 def _veriler(veri_kok: Path | None = None) -> dict:
     kok = veri_kok or SITE_KOK / "veri"
     cikti = {}
-    for v in ("dugun", "ev-kurma", "arac"):
+    for v in ("dugun", "ev-kurma", "arac", "enflasyon"):
         dosya = kok / f"{v}.json"
         if dosya.exists():
             try:
@@ -57,6 +57,39 @@ def _kalem(veri: dict, kalem_id: str, segment: str = "orta"):
 
 def _p(n) -> str:
     return su._para(n) if n else "—"
+
+
+def _tufe(v: dict, vertikal: str) -> str:
+    """Resmi TUFE referansi cumlesi. Veri yoksa BOS doner (uydurma yok).
+
+    Neden degerli: bizim olcumumuz 2026 Temmuz'da basladi. "Ocak'tan bu
+    yana ne oldu?" sorusuna ancak resmi endeksle cevap verebiliyoruz.
+    KIRMIZI CIZGI: TUFE bir ENDEKS, TL fiyat degil - bizim tutarlarimizla
+    karistirilmaz, ayri cumlede ve kaynak adiyla verilir.
+    """
+    e = v.get("enflasyon")
+    if not e:
+        return ""
+    ilgili = [g for g in (e.get("gruplar") or {}).values() if g.get("vertikal") == vertikal]
+    genel = next((g for g in (e.get("gruplar") or {}).values() if g.get("vertikal") is None), None)
+    if not ilgili or not genel:
+        return ""
+    olcumler = e.get("olcumler") or []
+    if len(olcumler) < 2:
+        return ""
+    parcalar = ", ".join(
+        f"{g['ad'].lower()} %{g['degisim_yuzde']:.1f}" for g in ilgili
+    )
+    return (
+        "  <h2>Resmî enflasyonla karşılaştırma</h2>\n"
+        f"    <p>TÜİK'in tüketici fiyat endeksine göre {olcumler[0]} — {olcumler[-1]} "
+        f"arasında genel enflasyon %{genel['degisim_yuzde']:.1f} oldu; bu bütçeyi "
+        f"doğrudan ilgilendiren gruplarda {parcalar}. Bizim ölçümümüz TL cinsinden "
+        "gerçek fiyatları izler, bu endeks ise resmî sepetin değişimini — ikisi aynı "
+        "şey değil, ama birlikte okununca fiyatın nereye gittiği daha net görünür.</p>\n"
+        "    <p class=\"sonuc-alt-metin\">Kaynak: TCMB EVDS, TÜİK Tüketici Fiyat "
+        "Endeksi (2025=100).</p>\n"
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -146,6 +179,7 @@ def _govde_dugun_150(v: dict) -> str | None:
     rakamlara değil, tarihi belli ölçümlere bakın.
   </p>
 
+{_tufe(v, "dugun")}
   <h2>Kendi düğününüzü hesaplayın</h2>
   <p>
     Davetli sayınızı ve segment tercihinizi girerek kendi tablonuzu
@@ -308,6 +342,7 @@ def _govde_ev_kurma(v: dict) -> str | None:
     kalemlerini çoğaltmanız gerekir.
   </p>
 
+{_tufe(v, "ev-kurma")}
   <h2>Fiyatlar nereden geliyor?</h2>
   <p>
     Kalemlerin fiyatı büyük e-ticaret sitelerinden ve marka mağazalarından

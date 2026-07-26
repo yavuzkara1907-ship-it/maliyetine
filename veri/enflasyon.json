@@ -1,0 +1,211 @@
+{
+ "kaynak": "TCMB EVDS (TÜİK Tüketici Fiyat Endeksi, 2025=100)",
+ "kaynak_url": "https://evds3.tcmb.gov.tr/",
+ "yil": 2026,
+ "uretim_tarihi": "2026-07-26",
+ "olcumler": [
+  "2026-01",
+  "2026-02",
+  "2026-03",
+  "2026-04",
+  "2026-05",
+  "2026-06"
+ ],
+ "gruplar": {
+  "TP.FE25.OKTG01": {
+   "ad": "TÜFE (genel)",
+   "vertikal": null,
+   "seri": [
+    {
+     "tarih": "2026-01",
+     "endeks": 115.73
+    },
+    {
+     "tarih": "2026-02",
+     "endeks": 119.16
+    },
+    {
+     "tarih": "2026-03",
+     "endeks": 121.47
+    },
+    {
+     "tarih": "2026-04",
+     "endeks": 126.55
+    },
+    {
+     "tarih": "2026-05",
+     "endeks": 128.72
+    },
+    {
+     "tarih": "2026-06",
+     "endeks": 129.99
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-01",
+    "endeks": 115.73
+   },
+   "son": {
+    "tarih": "2026-06",
+    "endeks": 129.99
+   },
+   "degisim_yuzde": 12.3
+  },
+  "TP.FE25.OKTG19": {
+   "ad": "Giyim ve ayakkabı",
+   "vertikal": "dugun",
+   "seri": [
+    {
+     "tarih": "2026-01",
+     "endeks": 103.39
+    },
+    {
+     "tarih": "2026-02",
+     "endeks": 97.77
+    },
+    {
+     "tarih": "2026-03",
+     "endeks": 95.65
+    },
+    {
+     "tarih": "2026-04",
+     "endeks": 104.29
+    },
+    {
+     "tarih": "2026-05",
+     "endeks": 116.18
+    },
+    {
+     "tarih": "2026-06",
+     "endeks": 115.93
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-01",
+    "endeks": 103.39
+   },
+   "son": {
+    "tarih": "2026-06",
+    "endeks": 115.93
+   },
+   "degisim_yuzde": 12.1
+  },
+  "TP.FE25.OKTG20": {
+   "ad": "Dayanıklı mallar (altın hariç)",
+   "vertikal": "ev-kurma",
+   "seri": [
+    {
+     "tarih": "2026-01",
+     "endeks": 110.59
+    },
+    {
+     "tarih": "2026-02",
+     "endeks": 111.74
+    },
+    {
+     "tarih": "2026-03",
+     "endeks": 112.64
+    },
+    {
+     "tarih": "2026-04",
+     "endeks": 113.94
+    },
+    {
+     "tarih": "2026-05",
+     "endeks": 115.43
+    },
+    {
+     "tarih": "2026-06",
+     "endeks": 117.03
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-01",
+    "endeks": 110.59
+   },
+   "son": {
+    "tarih": "2026-06",
+    "endeks": 117.03
+   },
+   "degisim_yuzde": 5.8
+  },
+  "TP.FE25.OKTG25": {
+   "ad": "Lokanta ve oteller",
+   "vertikal": "dugun",
+   "seri": [
+    {
+     "tarih": "2026-01",
+     "endeks": 116.72
+    },
+    {
+     "tarih": "2026-02",
+     "endeks": 120.01
+    },
+    {
+     "tarih": "2026-03",
+     "endeks": 121.42
+    },
+    {
+     "tarih": "2026-04",
+     "endeks": 125.67
+    },
+    {
+     "tarih": "2026-05",
+     "endeks": 128.02
+    },
+    {
+     "tarih": "2026-06",
+     "endeks": 130.72
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-01",
+    "endeks": 116.72
+   },
+   "son": {
+    "tarih": "2026-06",
+    "endeks": 130.72
+   },
+   "degisim_yuzde": 12.0
+  },
+  "TP.FE25.OKTG22": {
+   "ad": "Alkollü içecekler, tütün ve altın",
+   "vertikal": "dugun",
+   "seri": [
+    {
+     "tarih": "2026-01",
+     "endeks": 116.42
+    },
+    {
+     "tarih": "2026-02",
+     "endeks": 120.81
+    },
+    {
+     "tarih": "2026-03",
+     "endeks": 124.83
+    },
+    {
+     "tarih": "2026-04",
+     "endeks": 125.09
+    },
+    {
+     "tarih": "2026-05",
+     "endeks": 125.0
+    },
+    {
+     "tarih": "2026-06",
+     "endeks": 127.97
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-01",
+    "endeks": 116.42
+   },
+   "son": {
+    "tarih": "2026-06",
+    "endeks": 127.97
+   },
+   "degisim_yuzde": 9.9
+  }
+ }
+}

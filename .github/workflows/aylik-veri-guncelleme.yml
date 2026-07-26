@@ -55,6 +55,23 @@ jobs:
             python sayfa_uret.py --vertikal "$vertikal"
           done
 
+      # Resmi TUFE verisi (TCMB EVDS). Rehber yazilari bunu okuyup
+      # "resmi enflasyonla karsilastirma" bolumunu uretiyor, o yuzden
+      # rehber.py'den ONCE calismali. Anahtar repoda DEGIL - GitHub
+      # Secrets'tan geliyor; yoksa adim sessizce atlanir ve sayfalarda
+      # o bolum hic gorunmez (uydurma rakam yok).
+      - name: Resmî enflasyon verisini çek
+        working-directory: scraper
+        env:
+          EVDS_KEY: ${{ secrets.EVDS_KEY }}
+        run: |
+          if [ -n "$EVDS_KEY" ]; then
+            printf '%s' "$EVDS_KEY" > .evds-key
+            python enflasyon.py || echo "TÜFE çekilemedi, devam ediliyor."
+          else
+            echo "EVDS_KEY tanımlı değil - TÜFE adımı atlandı."
+          fi
+
       # Rehber (blog) yazilari: metin elle yazili, RAKAMLAR veriden gelir.
       # Her olcumde yeniden uretiliyor ki yazidaki tutarlar bayatlamasin.
       # sayfa_uret'ten SONRA calismali - sitemap ve ana sayfa rehber
