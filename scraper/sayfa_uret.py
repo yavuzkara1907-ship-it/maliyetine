@@ -525,6 +525,7 @@ VERTIKALLER = {
         # fiyatinin UZERINE binen maliyetlerde (MTV, noter/tescil harci,
         # plaka, trafik sigortasi, kasko). Etiket fiyati aracin gercek
         # maliyeti degil ve bu toplami kimse tek yerde vermiyor.
+        "hizli_hesap": False,
         "hesaplayici_daveti": (
             "Yola çıkarma maliyetini hesaplayın (MTV, noter, sigorta dahil) →"
         ),
@@ -896,6 +897,92 @@ def _segment_grafigi(degerler: dict, birim_notu: str = "") -> str:
         f'    </svg>\n'
         f'  </figure>\n'
     )
+
+
+
+def _hizli_hesap_katsayilari(veri_kok: Path | None = None) -> dict:
+    """Ana sayfa hesaplayicisi icin vertikal/segment katsayilari.
+
+    NEDEN KATSAYI: ana sayfaya dort vertikalin kalem listesini birden
+    yuklemek (4 ayri JS dosyasi + 4 JSON fetch) agir olurdu. Toplam her
+    olcekte LINEER oldugu icin iki noktadan (olcek=1 ve 2) sabit ve
+    kisi-basi bilesenleri cikariliyor: toplam = sabit + kisi_basi * olcek.
+    50/80/100/150/200/300 olceklerinde gercek hesapla BIREBIR ayni sonucu
+    verdigi dogrulandi (testle kilitli) - yani ana sayfadaki rakam endeks
+    sayfasindakiyle ayni.
+
+    Arac disarida: orada "segment" marka giris fiyatlarinin persentili,
+    gercek bir "ekonomik arac" degil - segment secimiyle sunmak yaniltici.
+    """
+    kok = veri_kok or SITE_KOK / "veri"
+    cikti = {}
+    for vertikal, conf in VERTIKALLER.items():
+        if not conf.get("hesaplayici_var", True) or not conf.get("hizli_hesap", True):
+            continue
+        dosya = kok / f"{vertikal}.json"
+        if not dosya.exists():
+            continue
+        try:
+            kalemler = json.loads(dosya.read_text(encoding="utf-8")).get("kalemler") or {}
+        except (json.JSONDecodeError, OSError):
+            continue
+        segmentler = {}
+        for seg in ("ekonomik", "orta", "luks"):
+            t1, _ = ornek_toplam_hesapla(conf, kalemler, olcek=1, segment=seg)
+            t2, _ = ornek_toplam_hesapla(conf, kalemler, olcek=2, segment=seg)
+            if not t1:
+                continue
+            kisi = t2 - t1
+            segmentler[seg] = {"sabit": t1 - kisi, "kisi_basi": kisi}
+        if len(segmentler) == 3:
+            cikti[vertikal] = {
+                "ad": conf["ad"],
+                "yol": conf["yol"],
+                "olcek_var": any(k.get("birim") == "kisi_basi" for k in conf["kalemler"]),
+                "segmentler": segmentler,
+            }
+    return cikti
+
+
+HIZLI_HESAP_JS_GOVDE = """
+(function () {
+  var VERI = __VERI__;
+  var bicim = new Intl.NumberFormat("tr-TR", { maximumFractionDigits: 0 });
+  var secim = document.getElementById("hh-vertikal");
+  var olcekSatir = document.getElementById("hh-olcek-satir");
+  var olcek = document.getElementById("hh-olcek");
+  var sonuc = document.getElementById("hh-sonuc");
+  var alt = document.getElementById("hh-alt");
+  if (!secim || !sonuc) return;
+  function segment() {
+    var s = document.querySelector('input[name="hh-seg"]:checked');
+    return s ? s.value : "orta";
+  }
+  function hesapla() {
+    var v = VERI[secim.value];
+    if (!v) return;
+    var seg = v.segmentler[segment()];
+    olcekSatir.hidden = !v.olcek_var;
+    var n = v.olcek_var ? Math.max(0, parseInt(olcek.value, 10) || 0) : 1;
+    var toplam = seg.sabit + seg.kisi_basi * n;
+    sonuc.textContent = bicim.format(Math.round(toplam)) + " TL";
+    alt.innerHTML = (v.olcek_var ? n + " kişilik · " : "") +
+      "ölçülen güncel fiyatlarla · " +
+      '<a href="/' + v.yol + '/hesaplayici/">kalem kalem hesaplayın →</a>';
+  }
+  secim.addEventListener("change", hesapla);
+  olcek.addEventListener("input", hesapla);
+  document.getElementById("hh-segment").addEventListener("change", hesapla);
+  hesapla();
+})();
+"""
+
+
+def _hizli_hesap_js(hizli: dict) -> str:
+    """JS f-string DISINDA uretiliyor: JS'in susli parantezleri ana sayfa
+    sablonunun f-string'iyle catisiyor."""
+    govde = HIZLI_HESAP_JS_GOVDE.replace("__VERI__", json.dumps(hizli, ensure_ascii=False))
+    return "<script>" + govde + "</script>\n"
 
 
 def _para(n: int) -> str:
@@ -2299,6 +2386,11 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
     # Rehber linkleri: yalnizca gercekten URETILMIS olanlar. Veri yoksa
     # rehber.py sayfayi yazmiyor - burada da linki verilmemeli, aksi
     # halde ana sayfadan 404'e link cikar.
+    hizli = _hizli_hesap_katsayilari(veri_kok)
+    hizli_secenekler = "".join(
+        f'<option value="{v}">{d["ad"]}</option>' for v, d in hizli.items()
+    )
+    hizli_hesap_js = _hizli_hesap_js(hizli) if hizli else ""
     rehber_linkleri = ""
     anasayfa_yazi = ""
     try:
@@ -2477,6 +2569,34 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
     {cevap}
   </div>
 
+  <section class="hizli-hesap">
+    <h2>Kendi hesabınızı yapın</h2>
+    <p class="hizli-alt">Ölçtüğümüz güncel fiyatlarla, anında.</p>
+    <div class="hizli-form">
+      <div class="hizli-satir">
+        <label for="hh-vertikal">Ne hesaplayalım?</label>
+        <select id="hh-vertikal">{hizli_secenekler}</select>
+      </div>
+      <div class="hizli-satir" id="hh-olcek-satir">
+        <label for="hh-olcek">Davetli sayısı</label>
+        <input type="number" id="hh-olcek" min="0" step="1" value="150">
+      </div>
+      <div class="hizli-satir">
+        <label>Bütçe</label>
+        <div class="segment-secim" id="hh-segment">
+          <label><input type="radio" name="hh-seg" value="ekonomik"> Ekonomik</label>
+          <label><input type="radio" name="hh-seg" value="orta" checked> Orta</label>
+          <label><input type="radio" name="hh-seg" value="luks"> Üst</label>
+        </div>
+      </div>
+    </div>
+    <div class="hizli-sonuc">
+      <p class="hizli-sonuc-etiket">Tahmini toplam</p>
+      <p class="hizli-sonuc-deger" id="hh-sonuc" aria-live="polite">—</p>
+      <p class="hizli-sonuc-alt" id="hh-alt"></p>
+    </div>
+  </section>
+
   <h2>Endeksler</h2>
 
   <div class="kart-grid">
@@ -2512,7 +2632,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
   </div>
 </footer>
 
-</body>
+{hizli_hesap_js}</body>
 </html>
 """
 

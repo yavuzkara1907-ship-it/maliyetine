@@ -642,3 +642,94 @@ button.metin-buton {
   font-size: 12px;
   font-family: inherit;
 }
+
+/* ---- Ana sayfa hizli hesap ---- */
+.hizli-hesap {
+  background: var(--renk-zemin-alt);
+  border: 1px solid var(--renk-cizgi);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  margin: 0 0 34px;
+}
+
+.hizli-hesap h2 {
+  margin: 0 0 4px;
+  font-size: 1.25rem;
+}
+
+.hizli-alt {
+  color: var(--renk-metin-soluk);
+  font-size: 0.9rem;
+  margin: 0 0 18px;
+}
+
+.hizli-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 14px 20px;
+  margin-bottom: 18px;
+}
+
+.hizli-satir label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+  color: var(--renk-metin-soluk);
+}
+
+.hizli-satir select,
+.hizli-satir input[type="number"] {
+  width: 100%;
+  padding: 9px 11px;
+  font: inherit;
+  color: var(--renk-metin);
+  background: var(--renk-zemin);
+  border: 1px solid var(--renk-cizgi-koyu);
+  border-radius: 8px;
+}
+
+.hizli-satir .segment-secim {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+}
+
+.hizli-satir .segment-secim label {
+  font-weight: 400;
+  font-size: 0.95rem;
+  color: var(--renk-metin);
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.hizli-sonuc {
+  border-top: 1px solid var(--renk-cizgi);
+  padding-top: 16px;
+}
+
+.hizli-sonuc-etiket {
+  font-size: 0.8rem;
+  color: var(--renk-metin-soluk);
+  margin: 0 0 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.hizli-sonuc-deger {
+  font-size: clamp(1.9rem, 1.2rem + 3vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--renk-vurgu);
+  margin: 0 0 4px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+.hizli-sonuc-alt {
+  font-size: 0.88rem;
+  color: var(--renk-metin-soluk);
+  margin: 0;
+}

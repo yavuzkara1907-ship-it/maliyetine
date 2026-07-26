@@ -891,3 +891,45 @@ class ResmiGecmisTesti(unittest.TestCase):
             self.assertIn("endeks", h.lower())
             self.assertIn("aynı şey değil", h)
             self.assertNotIn("5.8 TL", h)
+
+
+class HizliHesapTesti(unittest.TestCase):
+    """Ana sayfa hesaplayicisi - rakam endeks sayfasiyla AYNI olmali."""
+
+    def test_katsayi_her_olcekte_gercek_hesapla_ayni(self):
+        """Lineerlik varsayimi: toplam = sabit + kisi_basi * olcek.
+        Tutmazsa ana sayfa endeks sayfasindan farkli rakam gosterir."""
+        hizli = sayfa_uret._hizli_hesap_katsayilari()
+        self.assertTrue(hizli, "katsayi uretilmedi")
+        for vertikal, d in hizli.items():
+            conf = sayfa_uret.VERTIKALLER[vertikal]
+            veri = json.loads(
+                (sayfa_uret.SITE_KOK / "veri" / f"{vertikal}.json").read_text(encoding="utf-8")
+            )["kalemler"]
+            for seg, kat in d["segmentler"].items():
+                for olcek in (1, 50, 80, 150, 300):
+                    gercek, _ = sayfa_uret.ornek_toplam_hesapla(
+                        conf, veri, olcek=olcek, segment=seg)
+                    formul = kat["sabit"] + kat["kisi_basi"] * olcek
+                    self.assertEqual(gercek, formul,
+                                     f"{vertikal}/{seg}/olcek={olcek} sapti")
+
+    def test_arac_hizli_hesapta_yok(self):
+        """Aracta 'segment' marka giris fiyatlarinin dilimi - yaniltici."""
+        self.assertNotIn("arac", sayfa_uret._hizli_hesap_katsayilari())
+
+    def test_olcek_var_bayragi_dogru(self):
+        hizli = sayfa_uret._hizli_hesap_katsayilari()
+        self.assertTrue(hizli["dugun"]["olcek_var"])      # kisi basi salon
+        self.assertFalse(hizli["ev-kurma"]["olcek_var"])  # hepsi sabit
+
+    def test_js_gecerli_json_gomer(self):
+        hizli = sayfa_uret._hizli_hesap_katsayilari()
+        js = sayfa_uret._hizli_hesap_js(hizli)
+        ham = js.split("var VERI = ", 1)[1].split(";\n", 1)[0]
+        self.assertEqual(json.loads(ham).keys(), hizli.keys())
+
+    def test_anasayfada_hesaplayici_var(self):
+        html = sayfa_uret.anasayfa_uret()
+        for parca in ['id="hh-vertikal"', 'id="hh-sonuc"', "hizli-hesap", "var VERI ="]:
+            self.assertIn(parca, html)

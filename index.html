@@ -128,6 +128,34 @@
     Maliyeti Ne? verilerine göre 2026-07-26 itibarıyla 150 kişilik, orta segment bir düğün <strong>411.670 TL</strong>; sıfırdan bir evi eşyalandırmak (orta segment) <strong>356.698 TL</strong>; bir öğrencinin okul masrafı <strong>5.596 TL</strong>; bir markanın en ucuz sıfır aracı ortalama <strong>2.069.000 TL</strong> tutuyor. Rakamlar gerçek e-ticaret ve sektör platformlarından aylık derlenir; her kalemin yanında kaynak sayısı ve derleme tarihi görünür.
   </div>
 
+  <section class="hizli-hesap">
+    <h2>Kendi hesabınızı yapın</h2>
+    <p class="hizli-alt">Ölçtüğümüz güncel fiyatlarla, anında.</p>
+    <div class="hizli-form">
+      <div class="hizli-satir">
+        <label for="hh-vertikal">Ne hesaplayalım?</label>
+        <select id="hh-vertikal"><option value="dugun">Düğün</option><option value="ev-kurma">Ev Kurma</option><option value="okul">Okul</option></select>
+      </div>
+      <div class="hizli-satir" id="hh-olcek-satir">
+        <label for="hh-olcek">Davetli sayısı</label>
+        <input type="number" id="hh-olcek" min="0" step="1" value="150">
+      </div>
+      <div class="hizli-satir">
+        <label>Bütçe</label>
+        <div class="segment-secim" id="hh-segment">
+          <label><input type="radio" name="hh-seg" value="ekonomik"> Ekonomik</label>
+          <label><input type="radio" name="hh-seg" value="orta" checked> Orta</label>
+          <label><input type="radio" name="hh-seg" value="luks"> Üst</label>
+        </div>
+      </div>
+    </div>
+    <div class="hizli-sonuc">
+      <p class="hizli-sonuc-etiket">Tahmini toplam</p>
+      <p class="hizli-sonuc-deger" id="hh-sonuc" aria-live="polite">—</p>
+      <p class="hizli-sonuc-alt" id="hh-alt"></p>
+    </div>
+  </section>
+
   <h2>Endeksler</h2>
 
   <div class="kart-grid">
@@ -214,5 +242,37 @@
   </div>
 </footer>
 
+<script>
+(function () {
+  var VERI = {"dugun": {"ad": "Düğün", "yol": "dugun", "olcek_var": true, "segmentler": {"ekonomik": {"sabit": 131577, "kisi_basi": 750}, "orta": {"sabit": 246670, "kisi_basi": 1100}, "luks": {"sabit": 481745, "kisi_basi": 2000}}}, "ev-kurma": {"ad": "Ev Kurma", "yol": "ev-kurma", "olcek_var": false, "segmentler": {"ekonomik": {"sabit": 187220, "kisi_basi": 0}, "orta": {"sabit": 356698, "kisi_basi": 0}, "luks": {"sabit": 617700, "kisi_basi": 0}}}, "okul": {"ad": "Okul", "yol": "okul", "olcek_var": false, "segmentler": {"ekonomik": {"sabit": 2861, "kisi_basi": 0}, "orta": {"sabit": 5596, "kisi_basi": 0}, "luks": {"sabit": 9207, "kisi_basi": 0}}}};
+  var bicim = new Intl.NumberFormat("tr-TR", { maximumFractionDigits: 0 });
+  var secim = document.getElementById("hh-vertikal");
+  var olcekSatir = document.getElementById("hh-olcek-satir");
+  var olcek = document.getElementById("hh-olcek");
+  var sonuc = document.getElementById("hh-sonuc");
+  var alt = document.getElementById("hh-alt");
+  if (!secim || !sonuc) return;
+  function segment() {
+    var s = document.querySelector('input[name="hh-seg"]:checked');
+    return s ? s.value : "orta";
+  }
+  function hesapla() {
+    var v = VERI[secim.value];
+    if (!v) return;
+    var seg = v.segmentler[segment()];
+    olcekSatir.hidden = !v.olcek_var;
+    var n = v.olcek_var ? Math.max(0, parseInt(olcek.value, 10) || 0) : 1;
+    var toplam = seg.sabit + seg.kisi_basi * n;
+    sonuc.textContent = bicim.format(Math.round(toplam)) + " TL";
+    alt.innerHTML = (v.olcek_var ? n + " kişilik · " : "") +
+      "ölçülen güncel fiyatlarla · " +
+      '<a href="/' + v.yol + '/hesaplayici/">kalem kalem hesaplayın →</a>';
+  }
+  secim.addEventListener("change", hesapla);
+  olcek.addEventListener("input", hesapla);
+  document.getElementById("hh-segment").addEventListener("change", hesapla);
+  hesapla();
+})();
+</script>
 </body>
 </html>
