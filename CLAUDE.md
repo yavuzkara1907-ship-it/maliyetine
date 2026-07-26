@@ -770,6 +770,38 @@ tamamı tek kaynaklıydı (Trendyol).
   çamaşır makinesi 24.799 / 28.000 (+%13). **Çapraz doğrulama eşiğinin
   (%30) altında — iki kaynak birbirini teyit ediyor.**
 
+## VERİ AÇIKLIĞI KATMANI (2026-07-26) — rekabet kozu
+*"Veriler herkese açık, kullanabilirsiniz"* yazıyorduk ama **indirilebilir
+dosya yoktu** — yalnızca iç şemalı JSON vardı. Gazeteci, araştırmacı ya da
+blogcu alıntılamak istediğinde elle kopyalamak zorundaydı.
+**Alıntılanabilirlik bu işin merkezinde:** doğal bağlantının en güçlü
+kaynağı "şu siteden veri aldık" cümlesi.
+
+- **`scraper/veri_disa_aktar.py`** — 96 kalemin tamamı CSV:
+  `/veri/csv/{vertikal}.csv` (sabit URL, linklenebilir) + tarihli arşiv
+  sürümü + `tum-kalemler.csv`. **Tarihli sürüm neden var:** "2026
+  Temmuz'da şöyleydi" diyen bir yazının bağlantısı, veri güncellenince
+  ölü bağlantıya dönüşmesin.
+- **UTF-8 BOM ŞART:** Excel BOM'suz UTF-8 CSV'yi Windows-1254 sanıp Türkçe
+  karakterleri bozuyor ("Buzdolabı" → "BuzdolabÄ±"). Dosyayı açanın ilk
+  izlenimi bozuk metin olmamalı.
+- Her satırda **kaynak listesi + ölçüm tarihi** → rakam bağımsız
+  doğrulanabilir. Güven iddiasının kanıtı bu.
+- **`/veri/` indirme merkezi:** DataCatalog + Dataset + DataDownload
+  schema, **CC BY 4.0** lisans, sütun açıklamaları, atıf ricası
+  ("sadece ölçüm tarihini belirtin").
+- **`llms.txt` artık ÜRETİLİYOR.** Elle yazılmıştı ve bayatlamıştı: okul
+  vertikali listede yoktu, tarihler eskiydi, CSV hiç geçmiyordu.
+  **AI motoruna bayat bilgi vermek hiçbir şey vermemekten kötü** — yanlış
+  kalem sayısı doğrudan yanlış alıntıya dönüşür.
+
+**YENİ REHBER — kimsenin veremeyeceği içerik:**
+`/rehber/trendyol-mu-amazon-mu-ucuz/` — 45 kalemde iki kaynağı da
+ölçtüğümüz için elimizde olan karşılaştırma. **DÜRÜST ÇERÇEVE:** bu
+"hangi site ucuz" listesi DEĞİL; aynı ürünü değil kategori listelerindeki
+**ürün karmasını** karşılaştırıyoruz ve yazı bunu açıkça söylüyor.
+34 kalemde bir liste, 10 kalemde diğeri aşağıda.
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
