@@ -1343,7 +1343,11 @@ def _fiyat_gecmisi_html(vertikal: str, kalem_id: str, gecmis_kok: Path | None = 
     seri = kayit.get("seri") or []
     degisim = kayit.get("degisim_yuzde")
     if degisim is None or len(seri) < 2:
-        return ""
+        # Kendi serimiz henuz yok (ilk karsilastirma 15 Agustos'ta).
+        # Bolumu bos birakmak yerine RESMI seriyi gosteriyoruz - okuyucu
+        # "bu kalem ne kadar zamlandi" sorusuna bugun de cevap alsin.
+        # KIRMIZI CIZGI: bu bizim olcumumuz DEGIL, ayri ve kaynak adiyla.
+        return _resmi_gecmis_html(vertikal)
 
     yon = "arttı" if degisim > 0 else ("azaldı" if degisim < 0 else "değişmedi")
     ilk, son = seri[0], seri[-1]
@@ -1365,6 +1369,51 @@ def _fiyat_gecmisi_html(vertikal: str, kalem_id: str, gecmis_kok: Path | None = 
         "      <thead><tr><th>Ölçüm tarihi</th><th>Ortalama</th><th>Örneklem</th></tr></thead>\n"
         f"      <tbody>{satirlar}</tbody>\n"
         "    </table></div>\n"
+        "  </section>\n"
+    )
+
+
+
+def _resmi_gecmis_html(vertikal: str, veri_kok: Path | None = None) -> str:
+    """Kendi zaman serimiz olusana kadar RESMI (TUFE) referans.
+
+    Kendi olcumumuz 2026 Temmuz'da basladi; "Ocak'tan bu yana ne oldu?"
+    sorusuna ancak resmi endeksle cevap verilebiliyor. Veri yoksa bos
+    doner - uydurma rakam yazilmaz.
+    """
+    dosya = (veri_kok or SITE_KOK / "veri") / "enflasyon.json"
+    if not dosya.exists():
+        return ""
+    try:
+        e = json.loads(dosya.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return ""
+    ilgili = [
+        g for g in (e.get("gruplar") or {}).values()
+        if vertikal in (g.get("vertikaller") or [g.get("vertikal")])
+    ]
+    olcumler = e.get("olcumler") or []
+    if not ilgili or len(olcumler) < 2:
+        return ""
+    satirlar = "".join(
+        f'<tr><td>{g["ad"]}</td><td class="sayi">%{g["degisim_yuzde"]:+.1f}</td></tr>'
+        for g in ilgili
+    )
+    return (
+        '  <section class="icerik-bolumu">\n'
+        "    <h2>Fiyat geçmişi</h2>\n"
+        "    <p>Kendi ölçümümüz yeni başladı; ilk karşılaştırmalı rakamlar "
+        "bir sonraki ölçümde burada görünecek. O zamana kadar resmî veriye "
+        "bakabilirsiniz: TÜİK'in tüketici fiyat endeksinde bu kalemi "
+        f"kapsayan gruplar {olcumler[0]} — {olcumler[-1]} arasında şöyle "
+        "değişti.</p>\n"
+        '    <div class="tablo-sarmal"><table>\n'
+        '      <thead><tr><th>TÜİK grubu</th><th class="sayi">Değişim</th></tr></thead>\n'
+        f"      <tbody>{satirlar}</tbody>\n"
+        "    </table></div>\n"
+        '    <p class="sonuc-alt-metin">Bu bir <strong>endeks</strong> değişimi; '
+        "bizim TL cinsinden ölçtüğümüz fiyatlarla aynı şey değil. "
+        "Kaynak: TCMB EVDS, TÜİK Tüketici Fiyat Endeksi (2025=100).</p>\n"
         "  </section>\n"
     )
 

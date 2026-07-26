@@ -677,22 +677,31 @@ class FiyatGecmisiTesti(unittest.TestCase):
             encoding="utf-8")
         return tmp
 
-    def test_yeterli_olcum_yoksa_bolum_hic_render_edilmez(self):
-        """Bos bir 'gecmis' basligi veri varmis izlenimi verir."""
+    def test_yeterli_olcum_yoksa_KENDI_rakamlarimiz_gosterilmez(self):
+        """Tek olcumden 'degisim' uretilemez.
+
+        2026-07-26'dan beri bolum bos donmuyor, RESMI (TUFE) referansa
+        dusuyor - ama bizim olcumumuzden bir rakam SIZMAMALI.
+        """
         with TemporaryDirectory() as d:
             kok = self._yaz(Path(d), {"gelinlik": {
                 "seri": [{"tarih": "2026-07-25", "medyan": 8999, "urun": 21, "kaynak": 1}],
             }})
-            self.assertEqual(sayfa_uret._fiyat_gecmisi_html("dugun", "gelinlik", kok), "")
+            html = sayfa_uret._fiyat_gecmisi_html("dugun", "gelinlik", kok)
+            self.assertNotIn("8.999", html)
+            self.assertNotIn("2026-07-25", html)
 
-    def test_degisim_yuzdesi_yoksa_render_edilmez(self):
-        """gecmis.py, olcumler birbirine cok yakinsa degisim yazmaz."""
+    def test_degisim_yuzdesi_yoksa_KENDI_serimiz_cizilmez(self):
+        """Olcumler birbirine cok yakinsa gecmis.py degisim yazmaz;
+        sayfa da bizim rakamlarimizi tablolamaz (gurultu yayinlanmaz)."""
         with TemporaryDirectory() as d:
             kok = self._yaz(Path(d), {"gelinlik": {
                 "seri": [{"tarih": "2026-07-25", "medyan": 8999, "urun": 21, "kaynak": 1},
                          {"tarih": "2026-07-26", "medyan": 9500, "urun": 21, "kaynak": 1}],
             }})
-            self.assertEqual(sayfa_uret._fiyat_gecmisi_html("dugun", "gelinlik", kok), "")
+            html = sayfa_uret._fiyat_gecmisi_html("dugun", "gelinlik", kok)
+            for sizinti in ["8.999", "9.500", "2026-07-25", "Ölçüm tarihi"]:
+                self.assertNotIn(sizinti, html, f"kendi olcumumuz sizdi: {sizinti}")
 
     def test_gercek_seri_ozet_ve_tablo_uretir(self):
         with TemporaryDirectory() as d:
@@ -837,3 +846,48 @@ class BreadcrumbTesti(unittest.TestCase):
         self.assertIn('href="/okul/"', h)
         self.assertIn("Okul Çantası", h)
         self.assertIn('aria-label="Sayfa yolu"', h)
+
+
+class ResmiGecmisTesti(unittest.TestCase):
+    """Kendi serimiz olusana kadar TUFE referansi - ama karistirilmadan."""
+
+    def _kok(self, d):
+        kok = Path(d)
+        (kok / "enflasyon.json").write_text(json.dumps({
+            "olcumler": ["2026-01", "2026-06"],
+            "gruplar": {
+                "A": {"ad": "Giyim ve ayakkabı", "vertikal": "dugun",
+                      "vertikaller": ["dugun", "okul"], "degisim_yuzde": 12.1},
+                "B": {"ad": "Dayanıklı mallar", "vertikal": "ev-kurma",
+                      "vertikaller": ["ev-kurma"], "degisim_yuzde": 5.8},
+            },
+        }), encoding="utf-8")
+        return kok
+
+    def test_ilgili_grup_gosterilir(self):
+        with TemporaryDirectory() as d:
+            h = sayfa_uret._resmi_gecmis_html("ev-kurma", self._kok(d))
+            self.assertIn("Dayanıklı mallar", h)
+            self.assertIn("%+5.8", h)
+            self.assertNotIn("Giyim", h)
+
+    def test_bir_grup_birden_fazla_vertikale_bakabilir(self):
+        with TemporaryDirectory() as d:
+            kok = self._kok(d)
+            self.assertIn("Giyim", sayfa_uret._resmi_gecmis_html("dugun", kok))
+            self.assertIn("Giyim", sayfa_uret._resmi_gecmis_html("okul", kok))
+
+    def test_eslesen_grup_yoksa_bos(self):
+        with TemporaryDirectory() as d:
+            self.assertEqual(sayfa_uret._resmi_gecmis_html("arac", self._kok(d)), "")
+
+    def test_veri_dosyasi_yoksa_bos(self):
+        self.assertEqual(sayfa_uret._resmi_gecmis_html("dugun", Path("/olmayan")), "")
+
+    def test_endeks_TL_gibi_sunulmaz(self):
+        """KIRMIZI CIZGI: TUFE endeks, bizim TL fiyatimiz degil."""
+        with TemporaryDirectory() as d:
+            h = sayfa_uret._resmi_gecmis_html("ev-kurma", self._kok(d))
+            self.assertIn("endeks", h.lower())
+            self.assertIn("aynı şey değil", h)
+            self.assertNotIn("5.8 TL", h)
