@@ -694,6 +694,21 @@ giriyor) + `OKTG19` *Giyim ve ayakkabı*. Bir TÜFE grubunun birden fazla
 vertikali ilgilendirebilmesi için şemaya `vertikaller` listesi eklendi
 (giyim: hem düğün hem okul).
 
+## ANA SAYFA YAZISI (2026-07-26, Yavuz'un talebi)
+Ana sayfanın en altına "Bu rakamlar ne anlama geliyor?" bölümü eklendi
+(`rehber.anasayfa_yazisi()`). **Neden ana sayfada yazı:** ana sayfa
+GEO'nun ilk temas noktası ve en çok dış link alacak sayfa; üstteki
+kartlar rakamı veriyor ama BAĞLAM vermiyor.
+- İçerik: dört endeksin toplamı bir arada (iç linkli) · TÜFE ile
+  "bu rakamlar hızlı eskiyor" bağlantısı · "neyi ölçmüyoruz" (konut,
+  kira, işçilik — tek sayıya sığmadığı için kapsam dışı) · tahminlerin
+  iki yönde birden saptığı itirafı · veriyi kullanma daveti (ham JSON +
+  "ölçüm tarihini belirtin" ricası).
+- Rakamlar veriden gelir, metne gömülü DEĞİL.
+- **BULUNAN BUG (test yakaladı):** yazı `veri_kok` parametresini yok
+  sayıp her zaman canlı dosyaları okuyordu — `anasayfa_uret(veri_kok=X)`
+  çağrısı yazıda yanlış veriyi gösterirdi. Aktarıldı, 2 test eklendi.
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
