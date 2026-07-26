@@ -93,12 +93,38 @@ logger = logging.getLogger("maliyetine.motor")
 # FIYAT TEMIZLEME - "45.999,00 TL" -> 45999.0
 # ----------------------------------------------------------
 def fiyat_ayikla(metin: str):
+    """Fiyat metnini float'a cevirir. TR ve EN sayi formatini AYIRT EDER.
+
+    NEDEN GEREKLI (2026-07-26'da yakalandi): Madame Coco fiyatlari
+    INGILIZCE formatta yaziyor - "2,414.99 TL" (virgul binlik, nokta
+    ondalik). Eski kod her zaman TR formati (nokta binlik, virgul ondalik)
+    varsayip once noktalari siliyor, sonra virgulu noktaya ceviriyordu:
+    "2,414.99" -> "2,41499" -> "2.41499" = 2,41 TL. Yani gercek fiyatin
+    BINDE BIRI. Bu sessiz bir hataydi: rakam makul gorunuyor, sadece
+    yanlis. Endekse girseydi o kalemi tamamen bozardi.
+
+    Ayrim kurali: SON ayiricidan sonra tam 2 hane varsa o ayirici ONDALIK,
+    degilse binlik ayiricidir. "1.234,56"->1234.56  "1,234.99"->1234.99
+    "1.234"->1234  "1,234"->1234  "45.999,00"->45999.0
+    """
     if not metin:
         return None
     metin = metin.replace("TL", "").replace("₺", "").strip()
-    metin = metin.replace(".", "").replace(",", ".")
-    sayilar = re.findall(r"\d+(?:\.\d+)?", metin)
-    return float(sayilar[0]) if sayilar else None
+    eslesme = re.search(r"\d[\d.,]*", metin)
+    if not eslesme:
+        return None
+    ham = eslesme.group(0).rstrip(".,")
+
+    son_ayirici = max(ham.rfind("."), ham.rfind(","))
+    if son_ayirici == -1:
+        return float(ham)
+
+    ondalik_hane = len(ham) - son_ayirici - 1
+    if ondalik_hane == 2 and ham.count(ham[son_ayirici]) == 1:
+        tam = re.sub(r"[.,]", "", ham[:son_ayirici])
+        return float(f"{tam}.{ham[son_ayirici + 1:]}")
+    # Ayirici(lar) binlik: hepsini at.
+    return float(re.sub(r"[.,]", "", ham))
 
 
 def ad_slug(ad: str) -> str:

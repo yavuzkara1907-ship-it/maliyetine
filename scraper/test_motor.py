@@ -1098,3 +1098,28 @@ class TekOlcumSegmentTesti(unittest.TestCase):
         urunler = [{"isim": f"u{i}", "fiyat": f} for i, f in enumerate([100, 200, 300, 400, 500])]
         seg = motor.segmentle(urunler)
         self.assertLess(seg["dusuk"]["medyan"], seg["luks"]["medyan"])
+
+
+class FiyatFormatTesti(unittest.TestCase):
+    """TR/EN sayi formati ayrimi - sessizce 1000 kat hataya yol acmisti."""
+
+    def test_tr_format(self):
+        self.assertEqual(motor.fiyat_ayikla("45.999,00 TL"), 45999.0)
+        self.assertEqual(motor.fiyat_ayikla("1.234,56"), 1234.56)
+        self.assertEqual(motor.fiyat_ayikla("2.414,99 TL"), 2414.99)
+
+    def test_en_format(self):
+        """Madame Coco boyle yaziyor - eski kod bunu 2.41 okuyordu."""
+        self.assertEqual(motor.fiyat_ayikla("2,414.99 TL"), 2414.99)
+        self.assertEqual(motor.fiyat_ayikla("1,234.56"), 1234.56)
+        self.assertEqual(motor.fiyat_ayikla("₺33,910.90"), 33910.90)
+
+    def test_ayirici_yok_veya_binlik(self):
+        self.assertEqual(motor.fiyat_ayikla("1500 TL"), 1500.0)
+        self.assertEqual(motor.fiyat_ayikla("1.500 TL"), 1500.0)
+        self.assertEqual(motor.fiyat_ayikla("1,500 TL"), 1500.0)
+        self.assertEqual(motor.fiyat_ayikla("1.295.000 TL"), 1295000.0)
+
+    def test_bos_ve_bozuk(self):
+        self.assertIsNone(motor.fiyat_ayikla(""))
+        self.assertIsNone(motor.fiyat_ayikla("Fiyat bilgisi için üye olun"))

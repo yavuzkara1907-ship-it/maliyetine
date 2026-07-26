@@ -2209,3 +2209,46 @@ kaynaklar:
     durum: "onaylandi"
     notlar: >
       Gercek cekimle dogrulandi (2026-07-26): 12.450 TL (tahmin 5.000 idi).
+
+  # --- Madame Coco (2026-07-26) — ev-kurma icin UCUNCU bagimsiz kaynak ---
+  # Toplu tarayici once "KIRMIZI - fiyat yok" demisti: site urunleri Algolia
+  # InstantSearch ile JS'te render ediyor, duz `requests` bos donuyor.
+  # render_gerekli + kaydirma ile 245 urun karti geldi.
+  #
+  # KART YAPISI: li.ais-Hits-item (Algolia) > a.wis-is-hit-link (isim) +
+  # .wis-item-price (fiyat). Fiyat kart ICINDE - idefix'te eslesmeyi
+  # imkansiz kilan sorun burada yok.
+  #
+  # NEDEN DEGERLI: ev-kurmanin tekstil ve mutfak kalemleri (nevresim, havlu,
+  # catal-kasik-bicak, yemek takimi) su ana kadar tek kaynakliydi. Marka
+  # magazasi olmasi Trendyol pazaryeriyle segment farki da veriyor.
+  - ad: "Madame Coco - Tencere Tava ve Sahan Setleri"
+    site: "madamecoco"
+    url: "https://www.madamecoco.com/tencere-tava-ve-sahan-setleri/"
+    render_gerekli: true
+    kaydirma: 5
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "tencere-seti"
+    yontem: "otomatik"
+    # CSS secicileri BILEREK YOK (null): motor JSON-LD katmaninda dogru
+    # kategori urunlerini buluyor. CSS'e dusulurse site geneli "populer
+    # urunler" listesi geliyor - bkz. asagidaki not.
+    css_secicileri: null
+    min_fiyat: 1000
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    durum: "onaylandi"
+    notlar: >
+      Gercek cekimle dogrulandi (2026-07-26): 24 urun, JSON-LD katmani.
+      DIKKAT 1: kategori tencere + tava + sahan KARISIK. Yalnizca
+      tencere-seti kalemine baglandi; tava-seti'ne AYNI sayfa verilmedi -
+      ayni urunleri iki ayri kaleme yazmak endeksi bozardi.
+      DIKKAT 2 (onemli): bu sitede CSS KATMANI KULLANILMAMALI.
+      li.ais-Hits-item kartlari kategori DEGIL, site geneli "populer
+      urunler" listesi - nevresim kategorisinde valiz/su bardagi/yastik
+      cikiyor ve iki farkli kategorinin urun listesi %100 AYNI (161/161
+      ortak, olculdu). Nevresim ve catal-kasik-bicak kalemleri icin bu
+      sitede JSON-LD YOK, o yuzden o kalemler EKLENMEDI - CSS'e duserlerse
+      yanlis urunlerin fiyatini yazarlardi.
