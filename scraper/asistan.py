@@ -217,44 +217,59 @@ ASISTAN_JS = """
       }
     }
 
-    // 2) Olcekli hesap: "200 kisilik dugun"
+    // 2-4) Hesap / grup / kalem YARISIYOR - en SPESIFIK eslesme kazanir.
+    // Onceki surumde hesap once bakiliyordu ve "okul cantasi kac para"
+    // sorusu OKUL BUTCESINI donduruyordu ("okul" kelimesi endeks adiyla
+    // eslesip kalem kontrolune hic gelmiyordu). Artik eslesme uzunlugu
+    // karsilastiriliyor: "okul cantasi" (12) > "okul" (4).
     var sayi = q.match(/(\\d{2,4})\\s*(kisi|kişi|davetli)?/);
     var segment = q.indexOf("ekonomik") !== -1 ? "ekonomik"
                 : (q.indexOf("luks") !== -1 || q.indexOf("ust segment") !== -1) ? "luks" : "orta";
+
+    var aday = null, puan = 0;
+
     for (var v in D.hesaplar) {
-      var h = D.hesaplar[v];
-      if (q.indexOf(sade(h.ad)) === -1) continue;
-      var olcek = (sayi && h.olcek_var) ? parseInt(sayi[1], 10) : h.varsayilan;
-      return hesapCevabi(h, olcek, segment);
+      var h = D.hesaplar[v], ha = sade(h.ad);
+      if (q.indexOf(ha) === -1) continue;
+      // Sayi varsa hesap niyeti guclu ("200 kisilik dugun")
+      var hp = ha.length + (sayi && h.olcek_var ? 20 : 0);
+      if (hp > puan) {
+        puan = hp;
+        aday = { tip: "hesap", h: h,
+                 olcek: (sayi && h.olcek_var) ? parseInt(sayi[1], 10) : h.varsayilan };
+      }
     }
 
-    // 3) Grup butcesi: "beyaz esya", "mobilya"
     for (var g = 0; g < D.gruplar.length; g++) {
       var gr = D.gruplar[g];
       for (var a = 0; a < gr.anahtar.length; a++) {
-        if (q.indexOf(sade(gr.anahtar[a])) !== -1) {
-          return "<strong>" + gr.ad + "</strong> orta segmentte <strong>" +
-            para(gr.toplam) + "</strong>." +
-            "<a class='as-link' href='" + gr.yol + "'>Kalem kalem gör →</a>";
+        var ga = sade(gr.anahtar[a]);
+        if (q.indexOf(ga) !== -1 && ga.length > puan) {
+          puan = ga.length; aday = { tip: "grup", g: gr };
         }
       }
     }
 
-    // 4) Kalem fiyati - en uzun eslesen kazanir ("okul cantasi" > "canta")
-    var enIyi = null, enUzun = 0;
     for (var m = 0; m < D.kalemler.length; m++) {
       var k = D.kalemler[m], ka = sade(k.ad);
       var parcalar = ka.split(/[\\s\\/(),-]+/).filter(function (x) { return x.length > 2; });
-      var puan = 0;
-      if (q.indexOf(ka) !== -1) puan = ka.length + 10;
+      var kp = 0;
+      if (q.indexOf(ka) !== -1) kp = ka.length + 10;
       else {
         for (var pz = 0; pz < parcalar.length; pz++) {
-          if (q.indexOf(parcalar[pz]) !== -1) puan = Math.max(puan, parcalar[pz].length);
+          if (q.indexOf(parcalar[pz]) !== -1) kp = Math.max(kp, parcalar[pz].length);
         }
       }
-      if (puan > enUzun) { enUzun = puan; enIyi = k; }
+      if (kp >= 4 && kp > puan) { puan = kp; aday = { tip: "kalem", k: k }; }
     }
-    if (enIyi && enUzun >= 4) return kalemCevabi(enIyi);
+
+    if (aday) {
+      if (aday.tip === "hesap") return hesapCevabi(aday.h, aday.olcek, segment);
+      if (aday.tip === "kalem") return kalemCevabi(aday.k);
+      return "<strong>" + aday.g.ad + "</strong> orta segmentte <strong>" +
+        para(aday.g.toplam) + "</strong>." +
+        "<a class='as-link' href='" + aday.g.yol + "'>Kalem kalem gör →</a>";
+    }
 
     // 5) Yontem sorulari
     for (var y = 0; y < D.yontem.length; y++) {

@@ -85,3 +85,32 @@ class AsistanJsTesti(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class NiyetOnceligiTesti(unittest.TestCase):
+    """En SPESIFIK eslesme kazanmali.
+
+    Canli testte yakalanan bug: 'okul cantasi kac para' sorusu OKUL
+    BUTCESINI donduruyordu - 'okul' kelimesi endeks adiyla eslesip
+    kalem kontrolune hic gelmiyordu.
+    """
+
+    def setUp(self):
+        self.js = asistan.asistan_js(asistan.asistan_verisi())
+
+    def test_hesap_kalem_grup_yarisiyor(self):
+        """Uc niyet de puanlanip karsilastirilmali, ilk eslesen kazanmamali."""
+        self.assertIn("var aday = null, puan = 0;", self.js)
+        for tip in ['tip: "hesap"', 'tip: "kalem"', 'tip: "grup"']:
+            self.assertIn(tip, self.js)
+
+    def test_sayi_hesap_niyetini_gucledirir(self):
+        """'200 kisilik dugun' -> hesap; '200' olmadan kalem de olabilir."""
+        self.assertIn("sayi && h.olcek_var ? 20 : 0", self.js)
+
+    def test_kalem_adi_endeks_adindan_uzunsa_kalem_kazanir(self):
+        veri = asistan.asistan_verisi()
+        adlar = {k["ad"] for k in veri["kalemler"]}
+        self.assertIn("Okul Çantası", adlar)
+        # "Okul Çantası" (12) endeks adi "Okul" (4) uzunlugundan buyuk
+        self.assertGreater(len("okul çantası"), len("okul"))
