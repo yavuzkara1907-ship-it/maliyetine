@@ -15,6 +15,9 @@
   "TP.FE25.OKTG01": {
    "ad": "TÜFE (genel)",
    "vertikal": null,
+   "vertikaller": [
+    null
+   ],
    "seri": [
     {
      "tarih": "2026-01",
@@ -54,6 +57,10 @@
   "TP.FE25.OKTG19": {
    "ad": "Giyim ve ayakkabı",
    "vertikal": "dugun",
+   "vertikaller": [
+    "dugun",
+    "okul"
+   ],
    "seri": [
     {
      "tarih": "2026-01",
@@ -93,6 +100,9 @@
   "TP.FE25.OKTG20": {
    "ad": "Dayanıklı mallar (altın hariç)",
    "vertikal": "ev-kurma",
+   "vertikaller": [
+    "ev-kurma"
+   ],
    "seri": [
     {
      "tarih": "2026-01",
@@ -132,6 +142,9 @@
   "TP.FE25.OKTG25": {
    "ad": "Lokanta ve oteller",
    "vertikal": "dugun",
+   "vertikaller": [
+    "dugun"
+   ],
    "seri": [
     {
      "tarih": "2026-01",
@@ -171,6 +184,9 @@
   "TP.FE25.OKTG22": {
    "ad": "Alkollü içecekler, tütün ve altın",
    "vertikal": "dugun",
+   "vertikaller": [
+    "dugun"
+   ],
    "seri": [
     {
      "tarih": "2026-01",
@@ -206,6 +222,48 @@
     "endeks": 127.97
    },
    "degisim_yuzde": 9.9
+  },
+  "TP.FE25.OKTG21": {
+   "ad": "Diğer temel mallar",
+   "vertikal": "okul",
+   "vertikaller": [
+    "okul"
+   ],
+   "seri": [
+    {
+     "tarih": "2026-01",
+     "endeks": 110.36
+    },
+    {
+     "tarih": "2026-02",
+     "endeks": 110.54
+    },
+    {
+     "tarih": "2026-03",
+     "endeks": 112.97
+    },
+    {
+     "tarih": "2026-04",
+     "endeks": 117.95
+    },
+    {
+     "tarih": "2026-05",
+     "endeks": 119.09
+    },
+    {
+     "tarih": "2026-06",
+     "endeks": 121.48
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-01",
+    "endeks": 110.36
+   },
+   "son": {
+    "tarih": "2026-06",
+    "endeks": 121.48
+   },
+   "degisim_yuzde": 10.1
   }
  }
 }

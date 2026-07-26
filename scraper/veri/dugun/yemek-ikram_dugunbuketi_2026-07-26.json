@@ -6,7 +6,7 @@
   "kalem": "yemek-ikram",
   "vertikal": "dugun",
   "tarih": "2026-07-26",
-  "toplam_urun": 7,
+  "toplam_urun": 8,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "detay"
@@ -14,16 +14,16 @@
   "genel_medyan": 400,
   "segmentler": {
     "dusuk": {
-      "min": 250,
+      "min": 150,
       "medyan": 250,
       "max": 250,
       "urun_sayisi": 3
     },
     "orta": {
       "min": 400,
-      "medyan": 410,
+      "medyan": 405,
       "max": 500,
-      "urun_sayisi": 3
+      "urun_sayisi": 4
     },
     "luks": {
       "min": 920,

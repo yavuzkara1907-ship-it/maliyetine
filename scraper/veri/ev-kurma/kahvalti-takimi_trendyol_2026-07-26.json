@@ -6,12 +6,12 @@
   "kalem": "kahvalti-takimi",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-26",
-  "toplam_urun": 20,
+  "toplam_urun": 21,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "json-ld"
   ],
-  "genel_medyan": 925,
+  "genel_medyan": 950,
   "segmentler": {
     "dusuk": {
       "min": 599,
@@ -27,9 +27,9 @@
     },
     "luks": {
       "min": 1100,
-      "medyan": 1299,
-      "max": 1586,
-      "urun_sayisi": 4
+      "medyan": 1399,
+      "max": 1600,
+      "urun_sayisi": 5
     }
   }
 }

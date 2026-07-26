@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Okul Cantasi"
+  ],
+  "kalem": "okul-cantasi",
+  "vertikal": "okul",
+  "tarih": "2026-07-26",
+  "toplam_urun": 23,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 1234,
+  "segmentler": {
+    "dusuk": {
+      "min": 500,
+      "medyan": 710,
+      "max": 984,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 1044,
+      "medyan": 1234,
+      "max": 1424,
+      "urun_sayisi": 12
+    },
+    "luks": {
+      "min": 1480,
+      "medyan": 1519,
+      "max": 1699,
+      "urun_sayisi": 5
+    }
+  }
+}

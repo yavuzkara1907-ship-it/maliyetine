@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Spor Ayakkabi (okul)"
+  ],
+  "kalem": "ayakkabi",
+  "vertikal": "okul",
+  "tarih": "2026-07-26",
+  "toplam_urun": 21,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 730,
+  "segmentler": {
+    "dusuk": {
+      "min": 446,
+      "medyan": 502,
+      "max": 540,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 542,
+      "medyan": 739,
+      "max": 950,
+      "urun_sayisi": 10
+    },
+    "luks": {
+      "min": 1090,
+      "medyan": 1980,
+      "max": 2099,
+      "urun_sayisi": 5
+    }
+  }
+}

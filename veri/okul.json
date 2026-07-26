@@ -1,0 +1,580 @@
+{
+  "vertikal": "okul",
+  "guncelleme_tarihi": "2026-07-26",
+  "kalemler": {
+    "calisma-masasi": {
+      "segmentler": {
+        "dusuk": {
+          "min": 1014,
+          "medyan": 1128,
+          "max": 1200,
+          "urun_sayisi": 6,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 1330,
+          "medyan": 1955,
+          "max": 2977,
+          "urun_sayisi": 10,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 3495,
+          "medyan": 4071,
+          "max": 4609,
+          "urun_sayisi": 4,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 1756,
+      "toplam_urun": 20,
+      "guncelleme_tarihi": "2026-07-26",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "trendyol",
+          "kaynak_adlari": [
+            "Trendyol - Calisma Masasi"
+          ],
+          "tarih": "2026-07-26",
+          "toplam_urun": 20,
+          "genel_medyan": 1756
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "resim-malzemeleri": {
+      "segmentler": {
+        "dusuk": {
+          "min": 73,
+          "medyan": 148,
+          "max": 249,
+          "urun_sayisi": 6,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 269,
+          "medyan": 443,
+          "max": 545,
+          "urun_sayisi": 12,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 650,
+          "medyan": 750,
+          "max": 1050,
+          "urun_sayisi": 5,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 441,
+      "toplam_urun": 23,
+      "guncelleme_tarihi": "2026-07-26",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "trendyol",
+          "kaynak_adlari": [
+            "Trendyol - Resim ve Sanat Malzemeleri"
+          ],
+          "tarih": "2026-07-26",
+          "toplam_urun": 23,
+          "genel_medyan": 441
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "kalem-kutusu": {
+      "segmentler": {
+        "dusuk": {
+          "min": 74,
+          "medyan": 133,
+          "max": 133,
+          "urun_sayisi": 7,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 133,
+          "medyan": 288,
+          "max": 313,
+          "urun_sayisi": 13,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 359,
+          "medyan": 379,
+          "max": 475,
+          "urun_sayisi": 5,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 286,
+      "toplam_urun": 25,
+      "guncelleme_tarihi": "2026-07-26",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "trendyol",
+          "kaynak_adlari": [
+            "Trendyol - Kalem Kutusu"
+          ],
+          "tarih": "2026-07-26",
+          "toplam_urun": 25,
+          "genel_medyan": 286
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "sozluk": {
+      "segmentler": {
+        "dusuk": {
+          "min": 118,
+          "medyan": 130,
+          "max": 155,
+          "urun_sayisi": 7,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 196,
+          "medyan": 376,
+          "max": 790,
+          "urun_sayisi": 12,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 843,
+          "medyan": 898,
+          "max": 1590,
+          "urun_sayisi": 6,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 352,
+      "toplam_urun": 25,
+      "guncelleme_tarihi": "2026-07-26",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "trendyol",
+          "kaynak_adlari": [
+            "Trendyol - Sozluk ve Imla Kilavuzu"
+          ],
+          "tarih": "2026-07-26",
+          "toplam_urun": 25,
+          "genel_medyan": 352
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "ders-kitabi": {
+      "segmentler": {
+        "dusuk": {
+          "min": 134,
+          "medyan": 199,
+          "max": 220,
+          "urun_sayisi": 6,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 239,
+          "medyan": 255,
+          "max": 299,
+          "urun_sayisi": 11,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 300,
+          "medyan": 349,
+          "max": 420,
+          "urun_sayisi": 5,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 253,
+      "toplam_urun": 22,
+      "guncelleme_tarihi": "2026-07-26",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "trendyol",
+          "kaynak_adlari": [
+            "Trendyol - Ders ve Yardimci Kitaplar"
+          ],
+          "tarih": "2026-07-26",
+          "toplam_urun": 22,
+          "genel_medyan": 253
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "beslenme-cantasi": {
+      "segmentler": {
+        "dusuk": {
+          "min": 177,
+          "medyan": 200,
+          "max": 200,
+          "urun_sayisi": 8,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 237,
+          "medyan": 386,
+          "max": 500,
+          "urun_sayisi": 10,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 541,
+          "medyan": 585,
+          "max": 899,
+          "urun_sayisi": 5,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 299,
+      "toplam_urun": 23,
+      "guncelleme_tarihi": "2026-07-26",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "trendyol",
+          "kaynak_adlari": [
+            "Trendyol - Beslenme Cantasi"
+          ],
+          "tarih": "2026-07-26",
+          "toplam_urun": 23,
+          "genel_medyan": 299
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "tablet": {
+      "segmentler": {
+        "dusuk": {
+          "min": 2500,
+          "medyan": 4249,
+          "max": 5299,
+          "urun_sayisi": 6,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 5470,
+          "medyan": 6524,
+          "max": 8410,
+          "urun_sayisi": 10,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 8449,
+          "medyan": 9499,
+          "max": 13499,
+          "urun_sayisi": 5,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 6098,
+      "toplam_urun": 21,
+      "guncelleme_tarihi": "2026-07-26",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "trendyol",
+          "kaynak_adlari": [
+            "Trendyol - Tablet"
+          ],
+          "tarih": "2026-07-26",
+          "toplam_urun": 21,
+          "genel_medyan": 6098
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "ayakkabi": {
+      "segmentler": {
+        "dusuk": {
+          "min": 446,
+          "medyan": 502,
+          "max": 540,
+          "urun_sayisi": 6,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 542,
+          "medyan": 739,
+          "max": 950,
+          "urun_sayisi": 10,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 1090,
+          "medyan": 1980,
+          "max": 2099,
+          "urun_sayisi": 5,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 730,
+      "toplam_urun": 21,
+      "guncelleme_tarihi": "2026-07-26",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "trendyol",
+          "kaynak_adlari": [
+            "Trendyol - Spor Ayakkabi (okul)"
+          ],
+          "tarih": "2026-07-26",
+          "toplam_urun": 21,
+          "genel_medyan": 730
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "calisma-sandalyesi": {
+      "segmentler": {
+        "dusuk": {
+          "min": 1509,
+          "medyan": 1629,
+          "max": 1709,
+          "urun_sayisi": 7,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 1757,
+          "medyan": 2080,
+          "max": 3250,
+          "urun_sayisi": 12,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 3487,
+          "medyan": 4132,
+          "max": 4768,
+          "urun_sayisi": 5,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 1922,
+      "toplam_urun": 24,
+      "guncelleme_tarihi": "2026-07-26",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "trendyol",
+          "kaynak_adlari": [
+            "Trendyol - Calisma Sandalyesi"
+          ],
+          "tarih": "2026-07-26",
+          "toplam_urun": 24,
+          "genel_medyan": 1922
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "matara": {
+      "segmentler": {
+        "dusuk": {
+          "min": 75,
+          "medyan": 149,
+          "max": 159,
+          "urun_sayisi": 7,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 170,
+          "medyan": 220,
+          "max": 308,
+          "urun_sayisi": 12,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 340,
+          "medyan": 470,
+          "max": 510,
+          "urun_sayisi": 5,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 200,
+      "toplam_urun": 24,
+      "guncelleme_tarihi": "2026-07-26",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "trendyol",
+          "kaynak_adlari": [
+            "Trendyol - Suluk ve Matara"
+          ],
+          "tarih": "2026-07-26",
+          "toplam_urun": 24,
+          "genel_medyan": 200
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "defter": {
+      "segmentler": {
+        "dusuk": {
+          "min": 59,
+          "medyan": 159,
+          "max": 195,
+          "urun_sayisi": 6,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 200,
+          "medyan": 296,
+          "max": 349,
+          "urun_sayisi": 11,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 350,
+          "medyan": 389,
+          "max": 579,
+          "urun_sayisi": 5,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 293,
+      "toplam_urun": 22,
+      "guncelleme_tarihi": "2026-07-26",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "trendyol",
+          "kaynak_adlari": [
+            "Trendyol - Defter"
+          ],
+          "tarih": "2026-07-26",
+          "toplam_urun": 22,
+          "genel_medyan": 293
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "boya-seti": {
+      "segmentler": {
+        "dusuk": {
+          "min": 58,
+          "medyan": 117,
+          "max": 191,
+          "urun_sayisi": 6,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 191,
+          "medyan": 312,
+          "max": 395,
+          "urun_sayisi": 10,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 398,
+          "medyan": 400,
+          "max": 538,
+          "urun_sayisi": 5,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 293,
+      "toplam_urun": 21,
+      "guncelleme_tarihi": "2026-07-26",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "trendyol",
+          "kaynak_adlari": [
+            "Trendyol - Boya Seti"
+          ],
+          "tarih": "2026-07-26",
+          "toplam_urun": 21,
+          "genel_medyan": 293
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "kalem": {
+      "segmentler": {
+        "dusuk": {
+          "min": 28,
+          "medyan": 60,
+          "max": 145,
+          "urun_sayisi": 6,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 148,
+          "medyan": 230,
+          "max": 299,
+          "urun_sayisi": 10,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 305,
+          "medyan": 384,
+          "max": 455,
+          "urun_sayisi": 5,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 200,
+      "toplam_urun": 21,
+      "guncelleme_tarihi": "2026-07-26",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "trendyol",
+          "kaynak_adlari": [
+            "Trendyol - Kalem"
+          ],
+          "tarih": "2026-07-26",
+          "toplam_urun": 21,
+          "genel_medyan": 200
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "okul-cantasi": {
+      "segmentler": {
+        "dusuk": {
+          "min": 500,
+          "medyan": 710,
+          "max": 984,
+          "urun_sayisi": 6,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 1044,
+          "medyan": 1234,
+          "max": 1424,
+          "urun_sayisi": 12,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 1480,
+          "medyan": 1519,
+          "max": 1699,
+          "urun_sayisi": 5,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 1234,
+      "toplam_urun": 23,
+      "guncelleme_tarihi": "2026-07-26",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "trendyol",
+          "kaynak_adlari": [
+            "Trendyol - Okul Cantasi"
+          ],
+          "tarih": "2026-07-26",
+          "toplam_urun": 23,
+          "genel_medyan": 1234
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    }
+  }
+}

@@ -772,3 +772,28 @@ class BayatSayfaTemizligiTesti(unittest.TestCase):
                 self.assertEqual(sayfa_uret._ek_kalem_sayfalari(conf, veri), [])
             finally:
                 sayfa_uret.SITE_KOK = eski_kok
+
+
+class AnasayfaYazisiTesti(unittest.TestCase):
+    """Ana sayfa yazisi verilen veri kokunu kullanmali, canliyi degil."""
+
+    def test_veri_kok_aktarilir(self):
+        with TemporaryDirectory() as d:
+            kok = Path(d)
+            (kok / "dugun.json").write_text(json.dumps({
+                "guncelleme_tarihi": "2026-08-01",
+                "kalemler": {"gelinlik": {"genel_medyan": 9000, "toplam_urun": 20,
+                                          "segmentler": {"orta": {"medyan": 9000}}}},
+            }), encoding="utf-8")
+            html = sayfa_uret.anasayfa_uret(veri_kok=kok)
+            # Yalnizca dugun verisi var -> yazida ev-kurma/okul/arac satiri OLMAMALI
+            self.assertIn('<a href="/dugun/">150 kişilik bir düğün</a>', html)
+            for yok in ["sıfırdan bir evi eşyalandırmak",
+                        "bir öğrencinin okul alışverişi",
+                        "bir markanın giriş seviyesi sıfır aracı"]:
+                self.assertNotIn(yok, html, f"canli veriden sizinti: {yok}")
+
+    def test_yazi_bolumu_ana_sayfada_var(self):
+        html = sayfa_uret.anasayfa_uret()
+        self.assertIn("Bu rakamlar ne anlama geliyor?", html)
+        self.assertIn("Neyi ölçmüyoruz", html)

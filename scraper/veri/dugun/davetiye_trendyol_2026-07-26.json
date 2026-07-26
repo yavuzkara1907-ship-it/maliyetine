@@ -6,12 +6,12 @@
   "kalem": "davetiye",
   "vertikal": "dugun",
   "tarih": "2026-07-26",
-  "toplam_urun": 9,
+  "toplam_urun": 8,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "css"
   ],
-  "genel_medyan": 132,
+  "genel_medyan": 128,
   "segmentler": {
     "dusuk": {
       "min": 92,
@@ -26,10 +26,10 @@
       "urun_sayisi": 4
     },
     "luks": {
-      "min": 159,
-      "medyan": 163,
+      "min": 166,
+      "medyan": 166,
       "max": 166,
-      "urun_sayisi": 2
+      "urun_sayisi": 1
     }
   }
 }

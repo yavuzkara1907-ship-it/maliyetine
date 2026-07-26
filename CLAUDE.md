@@ -659,6 +659,41 @@ görünmüyor (uydurma rakam yok).
   değeri EVDS anahtarı. Bu yapılmazsa aylık otomasyonda TÜFE bölümü
   üretilmez (site çalışmaya devam eder, sadece o blok çıkmaz).
 
+## OKUL VERTİKALİ — 4. vertikal (2026-07-26)
+**Neden şimdi:** Ağustos'ta "okul alışverişi ne kadar" aramaları başlıyor,
+Eylül'de zirve yapıyor. İndekslenme 3-4 hafta aldığı için pencere şimdi.
+Diğer adaylar elendi: ev tadilatı işçilik ağırlıklı (fiyatlar internette
+yok), tatil dinamik fiyatlı (aylık ölçüm modelimize uymuyor).
+
+**14 kalem, 5 grup:** Çanta ve beslenme (okul çantası, beslenme çantası,
+suluk) · Kırtasiye (kalem kutusu, defter, kalem, boya seti, resim
+malzemeleri) · Kitap (ders/yardımcı kitap, sözlük) · Giyim (spor ayakkabı)
+· Teknoloji + Çalışma alanı (tablet, çalışma masası, sandalyesi).
+
+**`varsayilan_dahil: False` — önemli tasarım kararı:** tablet, çalışma
+masası ve sandalyesi HER YIL alınmaz, bir kez alınıp yıllarca kullanılır.
+Varsayılan toplam bunları İÇERMEZ; kullanıcı hesaplayıcıdan ekler. Aksi
+halde tek seferlik harcamalar yıllık masrafmış gibi görünüp rakamı
+yanıltıcı şişirirdi.
+
+**KATEGORİ URL'LERİ NASIL BULUNDU (yöntem notu):** Trendyol'un
+**"Okula Dönüş" koleksiyon sayfasından** (`/s/okul-alisverisi`, robots
+ONAY) 61 temiz kategori linki toplandı. URL TAHMİN EDİLMEDİ.
+- Denenip elenen yollar: Trendyol **arama sayfası (`/sr?q=`) robots.txt'te
+  YASAK**; `sitemap.xml` yok, robots.txt'te sitemap satırı da yok;
+  kategori sayfalarından gezinme JS yüzünden sayfa başına 2-6 link
+  veriyor (verimsiz). Koleksiyon sayfası hepsini tek yerde topluyor —
+  **yeni vertikal açarken önce böyle bir hub sayfası aranmalı.**
+- Bulunamayan kalemler: **okul forması/önlüğü** (kategori yok),
+  çocuk bedeni ayakkabı (genel "spor ayakkabı" kullanıldı, kaynakta
+  not düşüldü).
+
+**TÜFE eşlemesi:** TÜİK'te "kırtasiye/eğitim malzemesi" diye ayrı grup
+YOK. En yakın karşılık `OKTG21` *Diğer temel mallar* (kırtasiye buraya
+giriyor) + `OKTG19` *Giyim ve ayakkabı*. Bir TÜFE grubunun birden fazla
+vertikali ilgilendirebilmesi için şemaya `vertikaller` listesi eklendi
+(giyim: hem düğün hem okul).
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)

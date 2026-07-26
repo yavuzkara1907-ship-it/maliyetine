@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Okul Masrafı Hesaplama 2026 | Maliyeti Ne?</title>
+<meta name="description" content="Alacağınız eşyaları ve bütçe segmentinizi seçin: gerçek fiyat verisinden derlenmiş okul maliyeti hesabınızı anında görün.">
+<link rel="canonical" href="https://maliyetine.com.tr/okul/hesaplayici/">
+<link rel="stylesheet" href="/assets/css/style.css">
+<meta property="og:title" content="Okul Masrafı Hesaplama 2026">
+<meta property="og:description" content="Alacağınız eşyaları ve bütçe segmentinizi seçin: gerçek fiyat verisinden derlenmiş okul maliyeti hesabınızı anında görün.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maliyetine.com.tr/okul/hesaplayici/">
+<meta property="og:site_name" content="Maliyeti Ne?">
+<meta name="twitter:card" content="summary">
+</head>
+<body>
+
+<header class="ust-bar">
+  <div class="kapsayici">
+    <a href="/" class="logo">Maliyeti <span>Ne?</span></a>
+    <nav class="ust-menu">
+      <a href="/okul/">Okul Endeksi</a>
+      <a href="/okul/metodoloji/">Metodoloji</a>
+    </nav>
+  </div>
+</header>
+
+<main class="kapsayici">
+
+  <h1>Okul Maliyeti Hesaplayıcı</h1>
+  <p>Sıfırdan ev kurarken alacağınız kalemleri seçin, bütçe segmentinizi
+    belirleyin — kalem kalem tahmini görün. Buradaki
+    <strong>tüm fiyatlar</strong> gerçek, tarihli e-ticaret verisinden
+    (şu an için tek kaynak: Trendyol) derlenmiştir; tahmini kalem yoktur.
+    <a href="/okul/metodoloji/">Yöntemi ve tek kaynak sınırını görün.</a></p>
+
+  <div id="veri-durumu" class="uyari-kutu" hidden></div>
+
+  <form id="hesaplayici-form">
+    <div class="form-alan">
+      <label>Segment</label>
+      <div class="segment-secim">
+        <label><input type="radio" name="segment" value="ekonomik"> Ekonomik</label>
+        <label><input type="radio" name="segment" value="orta" checked> Orta</label>
+        <label><input type="radio" name="segment" value="luks"> Üst</label>
+      </div>
+    </div>
+
+    <div class="form-alan">
+      <label>Dahil edilecek kalemler</label>
+      <p class="sonuc-alt-metin">
+        <button type="button" id="tumunu-sec" class="metin-buton">Tümünü seç</button> ·
+        <button type="button" id="tumunu-kaldir" class="metin-buton">Tümünü kaldır</button>
+      </p>
+      <div id="kalem-secim-liste"></div>
+    </div>
+
+    <button type="submit" class="birincil-buton">Hesapla</button>
+  </form>
+
+  <div id="sonuc-kutu" class="sonuc-kutu" hidden>
+    <p class="sonuc-alt-metin">Tahmini toplam</p>
+    <p class="sonuc-toplam" id="sonuc-toplam-deger">0 TL</p>
+    <p class="sonuc-alt-metin" id="sonuc-guncelleme"></p>
+    <p class="sonuc-alt-metin" id="sonuc-kirilim"></p>
+
+    <table id="detay-tablo">
+      <thead>
+        <tr><th>Kalem</th><th class="sayi">Birim fiyat</th><th class="sayi">Tutar</th></tr>
+      </thead>
+      <tbody id="detay-tablo-govde"></tbody>
+    </table>
+
+    <div id="eksik-kalem-notu"></div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="kapsayici">
+    <div>© 2026 Maliyeti Ne?</div>
+    <nav>
+      <a href="/okul/">Okul Endeksi</a>
+      <a href="/okul/metodoloji/">Metodoloji</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/assets/js/okul-kalemler.js"></script>
+<script src="/assets/js/hesapla.js"></script>
+<script>
+(function () {
+  const paraFormat = new Intl.NumberFormat("tr-TR", { maximumFractionDigits: 0 });
+  function paraYaz(n) {
+    return paraFormat.format(Math.round(n)) + " TL";
+  }
+
+  const kalemSecimListe = document.getElementById("kalem-secim-liste");
+  let onceki = null;
+  let aktifGrupKutusu = null;
+  OKUL_KALEMLERI.forEach(function (kalem) {
+    if (kalem.grup !== onceki) {
+      const baslik = document.createElement("h4");
+      baslik.className = "kalem-grup-basligi";
+      baslik.textContent = kalem.grup;
+      kalemSecimListe.appendChild(baslik);
+      aktifGrupKutusu = document.createElement("div");
+      aktifGrupKutusu.className = "kalem-secim-liste";
+      kalemSecimListe.appendChild(aktifGrupKutusu);
+      onceki = kalem.grup;
+    }
+    const label = document.createElement("label");
+    const kutu = document.createElement("input");
+    kutu.type = "checkbox";
+    kutu.value = kalem.id;
+    kutu.checked = true;
+    kutu.name = "kalem";
+    label.appendChild(kutu);
+    label.appendChild(document.createTextNode(" " + kalem.ad));
+    aktifGrupKutusu.appendChild(label);
+  });
+
+  const form = document.getElementById("hesaplayici-form");
+  function tumKutular() {
+    return Array.from(form.querySelectorAll('input[name="kalem"]'));
+  }
+  document.getElementById("tumunu-sec").addEventListener("click", function () {
+    tumKutular().forEach(function (k) { k.checked = true; });
+  });
+  document.getElementById("tumunu-kaldir").addEventListener("click", function () {
+    tumKutular().forEach(function (k) { k.checked = false; });
+  });
+
+  let veriKalemleri = {};
+  let guncellemeTarihi = null;
+  const veriDurumu = document.getElementById("veri-durumu");
+
+  fetch("/veri/okul.json").then(function (r) {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    }).then(function (veri) {
+      veriKalemleri = veri.kalemler || {};
+      guncellemeTarihi = veri.guncelleme_tarihi;
+    }).catch(function () {
+      veriDurumu.hidden = false;
+      veriDurumu.textContent =
+        "Fiyat verisi şu anda yüklenemedi — hesaplama yapılamıyor. " +
+        "Sayfayı yenilemeyi deneyin.";
+    });
+
+  const sonucKutu = document.getElementById("sonuc-kutu");
+  const detayGovde = document.getElementById("detay-tablo-govde");
+  const eksikNot = document.getElementById("eksik-kalem-notu");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const segment = form.querySelector('input[name="segment"]:checked').value;
+    const secilenIdler = tumKutular().filter(function (k) {
+      return k.checked;
+    }).map(function (k) {
+      return k.value;
+    });
+
+    // Ev kurma kalemlerinin hepsi "sabit" birimli - olcek carpani yok.
+    const sonuc = maliyetHesapla.hesapla(veriKalemleri, OKUL_KALEMLERI, secilenIdler, segment, 1);
+
+    document.getElementById("sonuc-toplam-deger").textContent = paraYaz(sonuc.toplam);
+    document.getElementById("sonuc-guncelleme").textContent = guncellemeTarihi
+      ? "Fiyat verisi güncelleme tarihi: " + guncellemeTarihi
+      : "";
+
+    detayGovde.innerHTML = "";
+    const eksikler = [];
+    let kalemSayisi = 0;
+    sonuc.detaylar.forEach(function (satir) {
+      if (!satir.veri_var) {
+        eksikler.push(satir.ad);
+        return;
+      }
+      kalemSayisi += 1;
+      const tr = document.createElement("tr");
+      const etiketHtml = satir.genel_medyana_dusuldu
+        ? ' <span class="tahmini-etiket">Genel ortalama</span>'
+        : "";
+      tr.innerHTML =
+        "<td>" + satir.ad + etiketHtml + "</td>" +
+        '<td class="sayi">' + paraYaz(satir.birim_fiyat) + "</td>" +
+        '<td class="sayi">' + paraYaz(satir.satir_toplam) + "</td>";
+      detayGovde.appendChild(tr);
+    });
+
+    document.getElementById("sonuc-kirilim").textContent =
+      kalemSayisi + " kalem, tamamı gerçek kaynaklardan derlendi.";
+
+    eksikNot.innerHTML = eksikler.length
+      ? '<p class="sonuc-alt-metin">Bu ay veri dönmedi, toplama dahil edilmedi: ' + eksikler.join(", ") + "</p>"
+      : "";
+
+    sonucKutu.hidden = false;
+  });
+})();
+</script>
+
+</body>
+</html>

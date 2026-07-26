@@ -210,6 +210,32 @@ ARAC_KALEMLERI = [
     {"id": "cupra", "ad": "Cupra", "birim": "sabit", "grup": "Marka bazlı fiyatlar", "bilgi_amacli": True},
 ]
 
+
+# Okul vertikali (2026-07-26) - 4. vertikal, tamamen urun bazli.
+# Agustos-Eylul arama zirvesine yetismek icin acildi.
+#
+# `varsayilan_dahil: False` olanlar: tablet, calisma masasi ve sandalyesi
+# HER YIL alinmaz - bir kez alinip yillarca kullanilir. Yillik okul
+# masrafi sorusuna cevap veren toplam bunlari ICERMEZ; kullanici
+# hesaplayicidan isterse ekler. Aksi halde "okul masrafi 60.000 TL" gibi
+# yaniltici bir rakam cikardi.
+OKUL_KALEMLERI = [
+    {"id": "okul-cantasi", "ad": "Okul Çantası", "birim": "sabit", "grup": "Çanta ve beslenme"},
+    {"id": "beslenme-cantasi", "ad": "Beslenme Çantası", "birim": "sabit", "grup": "Çanta ve beslenme"},
+    {"id": "matara", "ad": "Suluk / Matara", "birim": "sabit", "grup": "Çanta ve beslenme"},
+    {"id": "kalem-kutusu", "ad": "Kalem Kutusu", "birim": "sabit", "grup": "Kırtasiye"},
+    {"id": "defter", "ad": "Defter", "birim": "sabit", "grup": "Kırtasiye"},
+    {"id": "kalem", "ad": "Kalem", "birim": "sabit", "grup": "Kırtasiye"},
+    {"id": "boya-seti", "ad": "Boya Seti", "birim": "sabit", "grup": "Kırtasiye"},
+    {"id": "resim-malzemeleri", "ad": "Resim ve Sanat Malzemeleri", "birim": "sabit", "grup": "Kırtasiye"},
+    {"id": "ders-kitabi", "ad": "Ders ve Yardımcı Kitap", "birim": "sabit", "grup": "Kitap"},
+    {"id": "sozluk", "ad": "Sözlük", "birim": "sabit", "grup": "Kitap"},
+    {"id": "ayakkabi", "ad": "Spor Ayakkabı", "birim": "sabit", "grup": "Giyim"},
+    {"id": "tablet", "ad": "Tablet", "birim": "sabit", "grup": "Teknoloji", "varsayilan_dahil": False},
+    {"id": "calisma-masasi", "ad": "Çalışma Masası", "birim": "sabit", "grup": "Çalışma alanı", "varsayilan_dahil": False},
+    {"id": "calisma-sandalyesi", "ad": "Çalışma Sandalyesi", "birim": "sabit", "grup": "Çalışma alanı", "varsayilan_dahil": False},
+]
+
 VERTIKALLER = {
     "dugun": {
         "ad": "Düğün",
@@ -415,6 +441,61 @@ VERTIKALLER = {
             },
         ],
     },
+    "okul": {
+        "ad": "Okul",
+        "yol": "okul",
+        "kalemler": OKUL_KALEMLERI,
+        "tahmini_kalemler": [],
+        "baslik": "2026'da Okul Masrafı Ne Kadar?",
+        "soru": "2026'da bir öğrencinin okul masrafı ne kadar?",
+        "sayfa_basligi": "Okul Masrafı 2026: Ne Kadar Tutuyor? | Maliyeti Ne?",
+        "meta_aciklama": (
+            "Çanta, kırtasiye, kitap, ayakkabı: bir öğrencinin okul masrafı "
+            "kalem kalem. Gerçek fiyat verisinden, aylık güncellenen endeks."
+        ),
+        "dataset_ad": "Maliyeti Ne? Okul Masrafı Endeksi",
+        "dataset_aciklama": (
+            "Türkiye'de bir öğrencinin okul alışverişi kalemlerinin gerçek "
+            "e-ticaret verisinden derlenen aylık fiyat endeksi."
+        ),
+        "olcek_varsayilan": 1,
+        "ornek_ifade": "bir öğrencinin okul masrafının",
+        "anasayfa_ifade": "bir öğrencinin okul masrafı",
+        "kart_alt": "bir öğrenci, yıllık",
+        "hesaplayici_daveti": "Kendi listenizi seçip hesaplayın →",
+        "dahil_olanlar": [
+            "Okul çantası, beslenme çantası ve suluk.",
+            "Kırtasiye: kalem kutusu, defter, kalem, boya ve resim malzemeleri.",
+            "Ders ve yardımcı kitaplar, sözlük.",
+            "Spor ayakkabı.",
+        ],
+        "dahil_olmayanlar": [
+            "Okul kayıt ücreti, bağış ve özel okul taksiti.",
+            "Servis ve yemek ücreti — bunlar okula ve şehre göre çok değişiyor.",
+            "Kurs, etüt ve özel ders.",
+            "Okul forması ve önlük — kategori bazlı ölçülebilir bir kaynak bulunamadı.",
+            "Tablet, çalışma masası ve sandalyesi varsayılan toplamda yok: "
+            "her yıl değil, bir kez alınıyor. Hesaplayıcıdan ekleyebilirsiniz.",
+        ],
+        "segment_aciklama": (
+            "Ekonomik segment temel ihtiyacı karşılayan alt fiyat bandını, orta "
+            "segment yaygın tercih edilen ürünleri, üst segment ise marka ve "
+            "kapasite olarak daha yüksek bandı gösterir. Rakamlar tek öğrenci "
+            "içindir; iki çocuklu bir ailede tutar yaklaşık iki katına çıkar."
+        ),
+        "kalem_sayfalari": [
+            {
+                "id": "okul-cantasi",
+                "slug": "okul-cantasi-fiyatlari",
+                "baslik": "2026'da Okul Çantası Fiyatları Ne Kadar?",
+                "soru": "2026'da okul çantası fiyatları ne kadar?",
+                "aciklama": (
+                    "Okul çantası fiyatı sırt desteği, hacim ve markaya göre "
+                    "ayrışır; ilkokul ve lise modelleri farklı bantlardadır."
+                ),
+            },
+        ],
+    },
     "arac": {
         "ad": "0 km Araç",
         "yol": "arac",
@@ -593,6 +674,20 @@ KALEM_SAYFA_NOTLARI = {
     "kahvalti-takimi": "Kahvaltı takımı fiyatı parça sayısına göre ayrışır; 6 ve 12 kişilik setler ayrı bantlardadır.",
     "bardak-takimi": "Bardak takımı fiyatı cam cinsine ve adet sayısına göre değişir.",
     "catal-kasik-bicak-takimi": "Çatal kaşık bıçak takımı fiyatı çelik kalitesi (18/10) ve kişilik sayısına göre ayrışır.",
+    # -- okul --
+    "beslenme-cantasi": "Beslenme çantası fiyatı ısı yalıtımı ve hacme göre ayrışır; suluk bölmeli modeller üst banttadır.",
+    "matara": "Suluk fiyatı malzemeye (çelik, tritan, alüminyum) ve litreye göre değişir.",
+    "kalem-kutusu": "Kalem kutusu fiyatı tek/çift bölmeli oluşuna ve dolu satılıp satılmadığına göre ayrışır.",
+    "defter": "Defter fiyatı yaprak sayısı, kapak cinsi ve spiralli olup olmamasına göre değişir; toplu alımda birim fiyat düşer.",
+    "kalem": "Kalem fiyatı kurşun, tükenmez ve jel tipleri arasında geniş bir bantta dağılır; setler tekil fiyatın altında kalır.",
+    "boya-seti": "Boya seti fiyatı renk sayısına ve türüne (kuru, pastel, sulu) göre ayrışır.",
+    "resim-malzemeleri": "Resim malzemeleri fiyatı defter, fırça ve tuval gibi farklı ürünleri kapsadığı için geniş dağılır.",
+    "ders-kitabi": "Devlet okullarında ders kitapları ücretsiz dağıtılır; buradaki fiyat yardımcı kaynak ve test kitapları içindir.",
+    "sozluk": "Sözlük fiyatı Türkçe, İngilizce ve ansiklopedik baskılar arasında değişir.",
+    "ayakkabi": "Spor ayakkabı fiyatı markaya göre belirgin ayrışır; kategori çocuk bedeniyle sınırlı değildir.",
+    "tablet": "Tablet fiyatı ekran boyutu, depolama ve kalem desteğine göre ayrışır.",
+    "calisma-masasi": "Çalışma masası fiyatı genişlik ve raflı/çekmeceli oluşuna göre değişir.",
+    "calisma-sandalyesi": "Çalışma sandalyesi fiyatı bel desteği ve ayarlanabilirlik özelliklerine göre ayrışır.",
     # -- ev kurma: tekstil --
     "nevresim-takimi": "Nevresim takımı fiyatı kumaş cinsine (ranforce, pamuk saten) ve tek/çift kişilik oluşuna göre ayrışır.",
     "havlu-takimi": "Havlu takımı fiyatı gramaj ve parça sayısına göre değişir.",
@@ -2028,8 +2123,12 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
     # rehber.py sayfayi yazmiyor - burada da linki verilmemeli, aksi
     # halde ana sayfadan 404'e link cikar.
     rehber_linkleri = ""
+    anasayfa_yazi = ""
     try:
         import rehber
+        # veri_kok'u AKTAR: aksi halde yazi her zaman canli dosyalari
+        # okur, cagirana verilen veri kokunu yok sayar (test bunu yakaladi).
+        anasayfa_yazi = rehber.anasayfa_yazisi(rehber._veriler(veri_kok))
         rehber_linkleri = "".join(
             f'<a href="/rehber/{r["slug"]}/">{r["baslik"]}</a>'
             for r in rehber.REHBERLER
@@ -2209,6 +2308,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
     {" ve ".join(f'<a href="/{o["yol"]}/metodoloji/">{o["ad"].lower()} metodolojisine</a>' for o in ozetler) if ozetler else "metodoloji sayfalarına"}
     bakabilirsiniz.</p>
 
+{anasayfa_yazi}
 </main>
 
 <footer>

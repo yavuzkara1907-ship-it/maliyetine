@@ -58,10 +58,19 @@ USER_AGENT = (
 # yayinlarken "ilgili TUFE grubu" diye sunulur, "ayni sey" diye degil.
 SERILER = {
     "TP.FE25.OKTG01": {"ad": "TÜFE (genel)", "vertikal": None},
-    "TP.FE25.OKTG19": {"ad": "Giyim ve ayakkabı", "vertikal": "dugun"},
+    # Giyim serisi iki vertikali de ilgilendiriyor (gelinlik/damatlik ve
+    # okul ayakkabisi). `vertikaller` listesi tekil `vertikal`in yerine
+    # gecer; ikisi de destekleniyor.
+    "TP.FE25.OKTG19": {"ad": "Giyim ve ayakkabı", "vertikal": "dugun",
+                       "vertikaller": ["dugun", "okul"]},
     "TP.FE25.OKTG20": {"ad": "Dayanıklı mallar (altın hariç)", "vertikal": "ev-kurma"},
     "TP.FE25.OKTG25": {"ad": "Lokanta ve oteller", "vertikal": "dugun"},
     "TP.FE25.OKTG22": {"ad": "Alkollü içecekler, tütün ve altın", "vertikal": "dugun"},
+    # Okul: TUFE'de "kirtasiye/egitim malzemesi" diye ayri grup YOK.
+    # En yakin karsilik "Diger temel mallar" (giyim/gida/enerji disi
+    # dayaniksiz mallar) - kirtasiye buraya giriyor. Giyim ayakkabi
+    # zaten ayri seri, o da okul sepetinin parcasi.
+    "TP.FE25.OKTG21": {"ad": "Diğer temel mallar", "vertikal": "okul"},
 }
 
 
@@ -151,6 +160,10 @@ def derle(yil: int, anahtar: str | None = None) -> dict:
         gruplar[kod] = {
             "ad": meta["ad"],
             "vertikal": meta["vertikal"],
+            # Bir TUFE grubu birden fazla vertikali ilgilendirebilir
+            # (giyim: hem dugun hem okul). Cikti semasina tasinmazsa
+            # rehber tarafi goremez.
+            "vertikaller": meta.get("vertikaller") or [meta["vertikal"]],
             "seri": seri,
             "ilk": ilk,
             "son": son,

@@ -6,29 +6,29 @@
   "kalem": "utu",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-26",
-  "toplam_urun": 24,
+  "toplam_urun": 22,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "json-ld"
   ],
-  "genel_medyan": 1687,
+  "genel_medyan": 1399,
   "segmentler": {
     "dusuk": {
       "min": 719,
-      "medyan": 761,
-      "max": 995,
-      "urun_sayisi": 7
+      "medyan": 750,
+      "max": 899,
+      "urun_sayisi": 6
     },
     "orta": {
-      "min": 1099,
-      "medyan": 1822,
-      "max": 3279,
-      "urun_sayisi": 12
+      "min": 995,
+      "medyan": 1399,
+      "max": 2281,
+      "urun_sayisi": 11
     },
     "luks": {
-      "min": 3321,
-      "medyan": 4770,
-      "max": 5925,
+      "min": 2300,
+      "medyan": 3279,
+      "max": 4000,
       "urun_sayisi": 5
     }
   }

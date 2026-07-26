@@ -6,24 +6,24 @@
   "kalem": "tava-seti",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-26",
-  "toplam_urun": 6,
+  "toplam_urun": 5,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "css"
   ],
-  "genel_medyan": 1692,
+  "genel_medyan": 1802,
   "segmentler": {
     "dusuk": {
-      "min": 1148,
-      "medyan": 1190,
-      "max": 1232,
+      "min": 1232,
+      "medyan": 1407,
+      "max": 1583,
       "urun_sayisi": 2
     },
     "orta": {
-      "min": 1583,
-      "medyan": 1802,
+      "min": 1802,
+      "medyan": 1916,
       "max": 2029,
-      "urun_sayisi": 3
+      "urun_sayisi": 2
     },
     "luks": {
       "min": 4740,

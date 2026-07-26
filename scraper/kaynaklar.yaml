@@ -2252,3 +2252,198 @@ kaynaklar:
       ortak, olculdu). Nevresim ve catal-kasik-bicak kalemleri icin bu
       sitede JSON-LD YOK, o yuzden o kalemler EKLENMEDI - CSS'e duserlerse
       yanlis urunlerin fiyatini yazarlardi.
+
+  # ============ OKUL VERTIKALI (2026-07-26) ============
+  # 4. vertikal. Agustos-Eylul arama zirvesine yetismek icin acildi.
+  # Tamamen urun bazli (CLAUDE.md "vertikal veri tipi ayrimi" -> kolay
+  # kategori), mevcut Trendyol sablonu degisiklik gerektirmeden calisiyor.
+  #
+  # KATEGORI URL'LERI NASIL BULUNDU: Trendyol'un "Okula Donus" koleksiyon
+  # sayfasindan (/s/okul-alisverisi, robots ONAY) 61 temiz kategori linki
+  # toplandi. URL TAHMIN EDILMEDI - onceki turlarda tahmin edilen
+  # kategorilerin cogu 404 vermisti. Trendyol arama sayfasi (/sr?q=)
+  # robots.txt'te YASAK, o yuzden kategori sayfalari kullaniliyor.
+  - ad: "Trendyol - Okul Cantasi"
+    site: "trendyol"
+    url: "https://www.trendyol.com/okul-cantasi-x-c104204"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "okul"
+    kalem: "okul-cantasi"
+    yontem: "otomatik"
+    min_fiyat: 200
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Trendyol - Beslenme Cantasi"
+    site: "trendyol"
+    url: "https://www.trendyol.com/beslenme-cantasi-x-c104040"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "okul"
+    kalem: "beslenme-cantasi"
+    yontem: "otomatik"
+    min_fiyat: 100
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Trendyol - Suluk ve Matara"
+    site: "trendyol"
+    url: "https://www.trendyol.com/suluk-ve-matara-x-c103714"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "okul"
+    kalem: "matara"
+    yontem: "otomatik"
+    min_fiyat: 50
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Trendyol - Kalem Kutusu"
+    site: "trendyol"
+    url: "https://www.trendyol.com/kalem-kutusu-x-c1081"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "okul"
+    kalem: "kalem-kutusu"
+    yontem: "otomatik"
+    min_fiyat: 50
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Trendyol - Defter"
+    site: "trendyol"
+    url: "https://www.trendyol.com/defter-x-c1233"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "okul"
+    kalem: "defter"
+    yontem: "otomatik"
+    min_fiyat: 20
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Trendyol - Kalem"
+    site: "trendyol"
+    url: "https://www.trendyol.com/kalem-x-c1080"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "okul"
+    kalem: "kalem"
+    yontem: "otomatik"
+    min_fiyat: 20
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Trendyol - Boya Seti"
+    site: "trendyol"
+    url: "https://www.trendyol.com/boya-seti-x-c106339"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "okul"
+    kalem: "boya-seti"
+    yontem: "otomatik"
+    min_fiyat: 50
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Trendyol - Resim ve Sanat Malzemeleri"
+    site: "trendyol"
+    url: "https://www.trendyol.com/sanatsal-malzemeler-x-c103785"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "okul"
+    kalem: "resim-malzemeleri"
+    yontem: "otomatik"
+    min_fiyat: 30
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Trendyol - Ders ve Yardimci Kitaplar"
+    site: "trendyol"
+    url: "https://www.trendyol.com/ders-ve-yardimci-kitaplar-x-c104420"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "okul"
+    kalem: "ders-kitabi"
+    yontem: "otomatik"
+    min_fiyat: 30
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Trendyol - Sozluk ve Imla Kilavuzu"
+    site: "trendyol"
+    url: "https://www.trendyol.com/sozluk-ve-imla-kilavuzu-x-c104361"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "okul"
+    kalem: "sozluk"
+    yontem: "otomatik"
+    min_fiyat: 30
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Trendyol - Spor Ayakkabi (okul)"
+    site: "trendyol"
+    url: "https://www.trendyol.com/spor-ayakkabi-x-c109"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "okul"
+    kalem: "ayakkabi"
+    yontem: "otomatik"
+    min_fiyat: 300
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+    notlar: >
+      DIKKAT: kategori genel spor ayakkabi - yalnizca okul modelleri degil.
+      Cocuk bedenine ozel bir kategori bulunamadi.
+
+  - ad: "Trendyol - Tablet"
+    site: "trendyol"
+    url: "https://www.trendyol.com/tablet-x-c103665"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "okul"
+    kalem: "tablet"
+    yontem: "otomatik"
+    min_fiyat: 2000
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Trendyol - Calisma Masasi"
+    site: "trendyol"
+    url: "https://www.trendyol.com/calisma-masasi-x-c104497"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "okul"
+    kalem: "calisma-masasi"
+    yontem: "otomatik"
+    min_fiyat: 1000
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Trendyol - Calisma Sandalyesi"
+    site: "trendyol"
+    url: "https://www.trendyol.com/calisma-koltugu-x-c104496"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "okul"
+    kalem: "calisma-sandalyesi"
+    yontem: "otomatik"
+    min_fiyat: 500
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"

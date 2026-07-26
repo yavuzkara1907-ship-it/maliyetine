@@ -84,3 +84,37 @@ class RehberTesti(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class GrupYuzdesiTesti(unittest.TestCase):
+    """Varsayilan-kapali kalemler grup yuzdelerini sismemeli."""
+
+    def test_okul_grup_toplami_yillik_toplami_asmaz(self):
+        import sayfa_uret as su
+        conf = su.VERTIKALLER["okul"]
+        veri = {k["id"]: {"genel_medyan": 1000, "toplam_urun": 20,
+                          "segmentler": {"orta": {"medyan": 1000},
+                                         "dusuk": {"medyan": 500},
+                                         "luks": {"medyan": 2000}}}
+                for k in conf["kalemler"]}
+        html = rehber.rehber_uret(
+            next(r for r in rehber.REHBERLER if r["slug"] == "okul-masrafi-ne-kadar"),
+            {"okul": {"kalemler": veri, "guncelleme_tarihi": "2026-08-01"}})
+        self.assertIsNotNone(html)
+        yuzdeler = [int(x) for x in re.findall(r'class="sayi">%(\d+)</td>', html)]
+        self.assertTrue(yuzdeler, "grup tablosu uretilmedi")
+        self.assertLessEqual(sum(yuzdeler), 101, f"grup yuzdeleri %100'u asiyor: {yuzdeler}")
+
+    def test_tek_seferlik_kalemler_gruplarda_yok(self):
+        import sayfa_uret as su
+        conf = su.VERTIKALLER["okul"]
+        veri = {k["id"]: {"genel_medyan": 1000, "toplam_urun": 20,
+                          "segmentler": {"orta": {"medyan": 1000}}}
+                for k in conf["kalemler"]}
+        html = rehber.rehber_uret(
+            next(r for r in rehber.REHBERLER if r["slug"] == "okul-masrafi-ne-kadar"),
+            {"okul": {"kalemler": veri, "guncelleme_tarihi": "2026-08-01"}})
+        # Teknoloji ve Calisma alani gruplari toplam tablosunda OLMAMALI
+        tablo = re.search(r'<h2>Para nereye gidiyor\?</h2>(.*?)</table>', html, re.S).group(1)
+        self.assertNotIn("Teknoloji", tablo)
+        self.assertNotIn("Çalışma alanı", tablo)

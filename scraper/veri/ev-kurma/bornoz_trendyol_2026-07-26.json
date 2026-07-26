@@ -6,12 +6,12 @@
   "kalem": "bornoz",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-26",
-  "toplam_urun": 21,
+  "toplam_urun": 22,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "json-ld"
   ],
-  "genel_medyan": 628,
+  "genel_medyan": 659,
   "segmentler": {
     "dusuk": {
       "min": 368,
@@ -27,9 +27,9 @@
     },
     "luks": {
       "min": 914,
-      "medyan": 1128,
+      "medyan": 985,
       "max": 1453,
-      "urun_sayisi": 4
+      "urun_sayisi": 5
     }
   }
 }

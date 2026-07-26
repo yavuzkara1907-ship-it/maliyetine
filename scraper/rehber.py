@@ -38,7 +38,7 @@ SITE_KOK_URL = su.SITE_KOK_URL
 def _veriler(veri_kok: Path | None = None) -> dict:
     kok = veri_kok or SITE_KOK / "veri"
     cikti = {}
-    for v in ("dugun", "ev-kurma", "arac", "enflasyon"):
+    for v in ("dugun", "ev-kurma", "okul", "arac", "enflasyon"):
         dosya = kok / f"{v}.json"
         if dosya.exists():
             try:
@@ -70,7 +70,8 @@ def _tufe(v: dict, vertikal: str) -> str:
     e = v.get("enflasyon")
     if not e:
         return ""
-    ilgili = [g for g in (e.get("gruplar") or {}).values() if g.get("vertikal") == vertikal]
+    ilgili = [g for g in (e.get("gruplar") or {}).values()
+              if vertikal in (g.get("vertikaller") or [g.get("vertikal")])]
     genel = next((g for g in (e.get("gruplar") or {}).values() if g.get("vertikal") is None), None)
     if not ilgili or not genel:
         return ""
@@ -286,7 +287,10 @@ def _govde_ev_kurma(v: dict) -> str | None:
     # Gruplara gore toplam - veriden
     gruplar: dict[str, int] = {}
     for x in detaylar:
-        if not x.get("satir_toplam"):
+        # toplama_dahil kontrolu: su an ev-kurmada varsayilan-kapali kalem
+        # yok ama eklenirse grup yuzdeleri sessizce bozulurdu (okul
+        # vertikalinde bu tam olarak yasandi).
+        if not x.get("satir_toplam") or not x.get("toplama_dahil"):
             continue
         tanim = next((t for t in conf["kalemler"] if t["id"] == x["id"]), {})
         grup = tanim.get("grup") or "Diğer"
@@ -435,7 +439,99 @@ def _govde_arac(v: dict) -> str | None:
 """
 
 
+
+# ---------------------------------------------------------------------------
+# 5. Okul masrafi
+# ---------------------------------------------------------------------------
+def _govde_okul(v: dict) -> str | None:
+    o = v.get("okul")
+    if not o:
+        return None
+    conf = su.VERTIKALLER["okul"]
+    kalemler = o.get("kalemler") or {}
+    toplam, detaylar = su.ornek_toplam_hesapla(conf, kalemler, olcek=1, segment="orta")
+    ekonomik, _ = su.ornek_toplam_hesapla(conf, kalemler, olcek=1, segment="ekonomik")
+    if not toplam:
+        return None
+
+    gruplar: dict[str, int] = {}
+    for x in detaylar:
+        # `toplama_dahil` SART: tablet/masa/sandalye satir_toplam tasir ama
+        # yillik toplama girmez. Sadece satir_toplam'a bakilirsa grup
+        # yuzdeleri %100'u asar.
+        if not x.get("satir_toplam") or not x.get("toplama_dahil"):
+            continue
+        tanim = next((t for t in conf["kalemler"] if t["id"] == x["id"]), {})
+        g = tanim.get("grup") or "Diğer"
+        gruplar[g] = gruplar.get(g, 0) + x["satir_toplam"]
+    grup_satir = "".join(
+        f'<tr><td>{g}</td><td class="sayi">{_p(t)}</td>'
+        f'<td class="sayi">%{t / toplam * 100:.0f}</td></tr>'
+        for g, t in sorted(gruplar.items(), key=lambda x: -x[1])
+    )
+    canta = _kalem(o, "okul-cantasi")
+    ayakkabi = _kalem(o, "ayakkabi")
+    tablet = _kalem(o, "tablet")
+
+    return f"""
+  <p class="cevap-blok">
+    Bir öğrencinin okul alışverişi orta segmentte <strong>{_p(toplam)}</strong>
+    tutuyor. Ekonomik tercihlerle {_p(ekonomik)}. İki çocuklu bir ailede bu
+    rakam neredeyse ikiye katlanıyor — kırtasiyede toplu alım biraz indirim
+    getirse de çanta, ayakkabı ve kitap kişi başı.
+  </p>
+
+  <h2>Para nereye gidiyor?</h2>
+  <div class="tablo-sarmal"><table>
+    <thead><tr><th>Grup</th><th class="sayi">Tutar</th><th class="sayi">Pay</th></tr></thead>
+    <tbody>{grup_satir}</tbody>
+  </table></div>
+  <p>
+    Listeye tek tek bakınca kırtasiye ucuz görünür; defter 50 lira, kalem 30
+    lira. Ama kalem sayısı fazla olduğu için toplamda ciddi yer tutuyor.
+    Çanta ({_p(canta)}) ve ayakkabı ({_p(ayakkabi)}) ise tek kalemde
+    bütçenin büyük dilimini alıyor.
+  </p>
+
+  <h2>Bu toplamda ne yok?</h2>
+  <p>
+    Kayıt ücreti, bağış, servis ve yemek bu rakamın dışında. Bunlar okula ve
+    şehre göre o kadar değişiyor ki tek bir sayı vermek yanıltıcı olurdu.
+    Devlet okullarında ders kitapları ücretsiz dağıtılıyor; buradaki kitap
+    kalemi yardımcı kaynak ve test kitapları için.
+  </p>
+  <p>
+    Tablet ({_p(tablet)}), çalışma masası ve sandalyesi de varsayılan
+    toplamda yok. Bunlar her yıl değil, bir kez alınıp yıllarca kullanılıyor.
+    İlk kez alacaksanız hesaplayıcıdan işaretleyebilirsiniz.
+  </p>
+
+  <h2>Nereden tasarruf edilir?</h2>
+  <p>
+    Geçen yıldan kalanları ayırmak en hızlı yöntem — kalem kutusu, cetvel,
+    boya seti çoğu zaman bir yıl daha dayanıyor. Defter ve kalemde toplu
+    alım birim fiyatı düşürüyor. Çantada ise ucuza kaçmak genelde pahalıya
+    geliyor: sırt desteği zayıf bir çanta yıl ortasında değişiyor.
+  </p>
+{_tufe(v, "okul")}
+  <h2>Kendi listenizi hesaplayın</h2>
+  <p>
+    Hangi kalemleri alacağınızı seçip kendi tutarınızı çıkarabilirsiniz:
+    <a href="/okul/hesaplayici/">okul masrafı hesaplayıcısı</a>.
+    Kalem kalem güncel fiyatlar <a href="/okul/">okul masrafı endeksinde</a>.
+  </p>
+"""
+
+
 REHBERLER = [
+    {
+        "slug": "okul-masrafi-ne-kadar",
+        "baslik": "Okul Alışverişi Bir Öğrenciye Ne Kadara Mal Oluyor?",
+        "meta": "Çanta, kırtasiye, kitap ve ayakkabı: bir öğrencinin okul "
+                "masrafı kalem kalem. Aylık güncellenen gerçek fiyatlarla.",
+        "govde": _govde_okul,
+        "vertikal": "okul",
+    },
     {
         "slug": "150-kisilik-dugun-maliyeti",
         "baslik": "150 Kişilik Düğün Ne Kadar Tutuyor?",
@@ -469,6 +565,79 @@ REHBERLER = [
         "vertikal": "arac",
     },
 ]
+
+
+def anasayfa_yazisi(veriler: dict | None = None) -> str:
+    """Ana sayfanin en altindaki yazi bolumu.
+
+    NEDEN ANA SAYFADA YAZI: ana sayfa GEO'nun ilk temas noktasi ve en cok
+    dis link alan sayfa. Ustteki kartlar rakami veriyor ama BAGLAM
+    vermiyor - AI motorlari ve okuyucu icin "bu rakamlar ne anlama
+    geliyor" kismi burada.
+
+    Rakamlar veriden gelir, metne GOMULMEZ (rehber yazilariyla ayni kural).
+    Veri yoksa ilgili satir atlanir; hicbiri yoksa bolum bos doner.
+    """
+    v = veriler if veriler is not None else _veriler()
+    satirlar = []
+    for vertikal, ad, yol in [("dugun", "150 kişilik bir düğün", "/dugun/"),
+                              ("ev-kurma", "sıfırdan bir evi eşyalandırmak", "/ev-kurma/"),
+                              ("okul", "bir öğrencinin okul alışverişi", "/okul/"),
+                              ("arac", "bir markanın giriş seviyesi sıfır aracı", "/arac/")]:
+        d = v.get(vertikal)
+        if not d:
+            continue
+        conf = su.VERTIKALLER[vertikal]
+        toplam, _ = su.ornek_toplam_hesapla(
+            conf, d.get("kalemler") or {}, olcek=conf["olcek_varsayilan"], segment="orta")
+        if toplam:
+            satirlar.append(f'<li><a href="{yol}">{ad}</a>: <strong>{_p(toplam)}</strong></li>')
+    if not satirlar:
+        return ""
+
+    e = v.get("enflasyon") or {}
+    genel = next((g for g in (e.get("gruplar") or {}).values() if not g.get("vertikal")), None)
+    olcumler = e.get("olcumler") or []
+    enf = ""
+    if genel and len(olcumler) >= 2:
+        enf = (
+            "    <p>Bu rakamlar hızlı eskiyor. TÜİK'in tüketici fiyat endeksine göre "
+            f"{olcumler[0]} — {olcumler[-1]} arasında genel enflasyon "
+            f"%{genel['degisim_yuzde']:.1f} oldu. Altı ay önce sorulmuş bir "
+            "&quot;ne kadar tutar&quot; sorusunun cevabı bugün geçerli değil; bu yüzden "
+            "ölçümü ayda iki kez tekrarlıyoruz.</p>\n"
+        )
+
+    return (
+        '  <section class="icerik-bolumu">\n'
+        "    <h2>Bu rakamlar ne anlama geliyor?</h2>\n"
+        "    <p>Türkiye'de bir şeyin kaça mal olduğunu öğrenmek şaşırtıcı derecede "
+        "zor. Forumlarda dolaşan rakamların tarihi belirsiz, haberlerdeki sayıların "
+        "kaynağı yok, yapay zekaya sorduğunuzda aldığınız cevap aylar önceki "
+        "fiyatlara dayanıyor. Bu boşluğu kapatmak için kurduk: her kalemin fiyatını "
+        "gerçek satış sayfalarından ölçüyoruz, kaç üründen derlendiğini ve hangi "
+        "tarihte ölçüldüğünü yanına yazıyoruz.</p>\n"
+        "    <p>Bugün itibarıyla ölçtüğümüz toplamlar:</p>\n"
+        f"    <ul>{''.join(satirlar)}</ul>\n"
+        + enf +
+        "    <h3>Neyi ölçmüyoruz</h3>\n"
+        "    <p>Konut fiyatı, kira, işçilik ve hizmet bedelleri bu endekslerde yok. "
+        "Sebebi basit: bunlar tek bir sayıya sığmıyor. Aynı şehirde iki mahalle "
+        "arasında kira ikiye katlanabiliyor. Ölçemediğimiz şeye rakam uydurmaktansa "
+        "kapsam dışı bırakmayı tercih ediyoruz.</p>\n"
+        "    <p>Bir de şu var: bazı kalemleri uzun süre tahminle taşıdık ve gerçek "
+        "kaynak bulunca tahminlerin ne kadar saptığını gördük. Düğün fotoğrafçısı "
+        "için öngördüğümüz rakam gerçeğin üç katıymış; gelin arabası içinse üçte "
+        "biri kadarmış. Sapma iki yönde de çıkabiliyor — makul görünen bir tahmin "
+        "doğru demek değil. Bugün düğün endeksinin yalnızca küçük bir dilimi "
+        "tahmine dayanıyor, gerisi ölçüm.</p>\n"
+        "    <h3>Rakamları kullanabilirsiniz</h3>\n"
+        "    <p>Veriler herkese açık: her endeksin ham JSON dosyası indirilebilir "
+        "durumda, yöntem sayfalarında neyi nasıl ölçtüğümüz yazıyor. Haber, rapor ya "
+        "da araştırmada kullanırken ölçüm tarihini de belirtmenizi rica ediyoruz — "
+        "fiyat verisi tarihsiz olduğunda yanıltıcı hale geliyor.</p>\n"
+        "  </section>\n"
+    )
 
 
 def rehber_uret(rehber: dict, veriler: dict, tarih: str | None = None) -> str | None:
