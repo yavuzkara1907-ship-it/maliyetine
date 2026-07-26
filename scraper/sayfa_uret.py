@@ -1701,7 +1701,7 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
 
 <footer>
   <div class="kapsayici">
-    <div>© 2026 Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a></div>
+    <div>© 2026 Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/veri/">Veri</a></div>
     <nav>
       {hesaplayici_menu}
       <a href="/{yol}/metodoloji/">Metodoloji</a>
@@ -2111,7 +2111,7 @@ def kalem_sayfasi_uret(
 
 <footer>
   <div class="kapsayici">
-    <div>© 2026 Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a></div>
+    <div>© 2026 Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/veri/">Veri</a></div>
     <nav>
       <a href="/{conf["yol"]}/">{conf["ad"]} endeksi</a>
       {kalem_hesaplayici_menu}
@@ -2178,6 +2178,9 @@ def sitemap_uret() -> str:
         ("/hakkimizda/", "yearly", "0.6"),
         ("/iletisim/", "yearly", "0.4"),
     ]
+    # Veri indirme merkezi - alintilanabilirligin merkezi sayfasi.
+    if (SITE_KOK / "veri" / "index.html").exists():
+        url_kayitlari.append(("/veri/", "monthly", "0.8"))
     # Rehber (blog) sayfalari - rehber.py uretir, sitemap buradan besleniyor.
     # Import fonksiyon icinde: rehber.py sayfa_uret'i import ediyor, modul
     # seviyesinde karsilikli import olurdu.
@@ -2503,7 +2506,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
 
 <footer>
   <div class="kapsayici">
-    <div>© 2026 Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a></div>
+    <div>© 2026 Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/veri/">Veri</a></div>
     <nav>{menu}
     </nav>
   </div>

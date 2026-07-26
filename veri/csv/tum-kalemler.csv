@@ -1,0 +1,97 @@
+﻿vertikal,kalem_id,kalem_adi,grup,birim,ekonomik_tl,orta_tl,ust_tl,en_dusuk_tl,en_yuksek_tl,urun_sayisi,kaynak_sayisi,kaynaklar,olcum_tarihi
+dugun,alyans,Alyans,,sabit,8528,16045,21270,1107,21460,27,2,atasay; trendyol,2026-07-26
+dugun,damatlik,Damatlık / Takım Elbise,,sabit,17995,46450,83970,2508,164950,97,3,beymen; trendyol; vakko,2026-07-26
+dugun,davetiye,Davetiye,,sabit,124,199,402,89,770,28,2,amazon; trendyol,2026-07-26
+dugun,salon-kokteyl,Düğün Salonu — kokteyl (yemeksiz),,kisi_basi,500,725,1420,280,1850,11,1,dugunbuketi,2026-07-26
+dugun,salon-yemekli,Düğün Salonu — yemekli (menü dahil),,kisi_basi,750,1100,2000,750,2500,11,1,dugunbuketi,2026-07-26
+dugun,fotografci,Fotoğraf ve Video,,sabit,15600,15600,15600,15600,15600,1,1,dugun-com,2026-07-26
+dugun,gelin-arabasi,Gelin Arabası,,sabit,9800,9800,9800,9800,9800,1,1,dugun-com,2026-07-26
+dugun,gelin-ayakkabisi,"Gelin Ayakkabısı, Duvak, Aksesuar",,sabit,733,1298,3114,590,3824,49,2,amazon; trendyol,2026-07-26
+dugun,gelinlik,Gelinlik,,sabit,4425,8699,43839,2956,65000,20,1,trendyol,2026-07-26
+dugun,kuafor-makyaj,Kuaför ve Makyaj,,sabit,12450,12450,12450,12450,12450,1,1,dugun-com,2026-07-26
+dugun,nikah-sekeri,Nikah Şekeri,,sabit,187,457,810,169,980,34,2,amazon; trendyol,2026-07-26
+dugun,organizasyon,Organizasyon / Süsleme,,sabit,22150,22150,22150,22150,22150,1,1,dugun-com,2026-07-26
+dugun,taki-altin,Takı — Altın Bilezik (1 adet),,sabit,33085,85022,180340,30600,243765,24,1,atasay,2026-07-26
+dugun,yemek-ikram,Yemek / İkram (mekanın menü bedeli),,kisi_basi,250,410,710,150,920,9,1,dugunbuketi,2026-07-26
+dugun,salon,salon,,,320,525,775,200,800,9,1,dugunbuketi,2026-07-26
+ev-kurma,firin-ocak,Ankastre Fırın / Ocak Seti,Beyaz eşya,sabit,6974,18556,26219,3750,42899,31,2,amazon; trendyol,2026-07-26
+ev-kurma,bulasik-makinesi,Bulaşık Makinesi,Beyaz eşya,sabit,17182,20912,25738,4333,34499,40,2,amazon; trendyol,2026-07-26
+ev-kurma,buzdolabi,Buzdolabı,Beyaz eşya,sabit,15196,30552,47734,6299,61990,53,2,amazon; trendyol,2026-07-26
+ev-kurma,davlumbaz,Davlumbaz,Beyaz eşya,sabit,2890,4560,9806,1291,17850,42,2,amazon; trendyol,2026-07-26
+ev-kurma,klima,Klima,Beyaz eşya,sabit,7954,28740,46304,3299,67599,51,2,amazon; trendyol,2026-07-26
+ev-kurma,kurutma-makinesi,Kurutma Makinesi,Beyaz eşya,sabit,10575,16772,29650,3751,44877,44,2,amazon; trendyol,2026-07-26
+ev-kurma,mikrodalga,Mikrodalga Fırın,Beyaz eşya,sabit,2902,5016,6486,999,9199,49,2,amazon; trendyol,2026-07-26
+ev-kurma,camasir-makinesi,Çamaşır Makinesi,Beyaz eşya,sabit,17653,24799,30230,15999,32399,22,1,trendyol,2026-07-26
+ev-kurma,dikey-supurge,Dikey Süpürge,Elektronik,sabit,1820,5706,12284,933,26299,70,2,amazon; trendyol,2026-07-26
+ev-kurma,supurge,Robot Süpürge,Elektronik,sabit,6999,15079,37999,5999,42999,23,1,trendyol,2026-07-26
+ev-kurma,televizyon,Televizyon (4K),Elektronik,sabit,25499,51999,119999,20999,119999,7,1,trendyol,2026-07-26
+ev-kurma,airfryer,Airfryer,Küçük ev aleti,sabit,1922,3406,6250,999,9499,57,2,amazon; trendyol,2026-07-26
+ev-kurma,blender,Blender,Küçük ev aleti,sabit,2074,5524,4762,949,5998,55,2,amazon; trendyol,2026-07-26
+ev-kurma,kahve-makinesi,Kahve Makinesi,Küçük ev aleti,sabit,977,3470,11452,319,23868,63,2,amazon; trendyol,2026-07-26
+ev-kurma,mutfak-robotu,Mutfak Robotu / Doğrayıcı,Küçük ev aleti,sabit,1764,3238,5772,1074,9999,63,2,amazon; trendyol,2026-07-26
+ev-kurma,sac-kurutma-makinesi,Saç Kurutma Makinesi,Küçük ev aleti,sabit,634,1274,2079,353,3799,57,2,amazon; trendyol,2026-07-26
+ev-kurma,su-isitici,Su Isıtıcı (Kettle),Küçük ev aleti,sabit,606,1219,2274,349,4974,74,2,amazon; trendyol,2026-07-26
+ev-kurma,tost-makinesi,Tost Makinesi,Küçük ev aleti,sabit,1528,2688,4734,569,8649,79,2,amazon; trendyol,2026-07-26
+ev-kurma,utu,Ütü,Küçük ev aleti,sabit,930,2480,6366,719,9999,65,2,amazon; trendyol,2026-07-26
+ev-kurma,koltuk-takimi,Koltuk Takımı,Mobilya,sabit,18239,36000,43889,10514,62848,22,1,trendyol,2026-07-26
+ev-kurma,konsol,Konsol,Mobilya,sabit,2807,4202,6206,2736,7781,25,1,trendyol,2026-07-26
+ev-kurma,sehpa,Orta Sehpa,Mobilya,sabit,1232,2156,3460,750,5990,66,2,amazon; trendyol,2026-07-26
+ev-kurma,tv-unitesi,TV Ünitesi,Mobilya,sabit,3371,5702,21706,1349,38249,52,2,amazon; trendyol,2026-07-26
+ev-kurma,yemek-masasi,Yemek Odası Takımı,Mobilya,sabit,11499,23420,38319,9250,49999,25,1,trendyol,2026-07-26
+ev-kurma,bardak-takimi,Bardak Takımı,Mutfak,sabit,171,278,1228,124,1821,18,1,trendyol,2026-07-26
+ev-kurma,kahvalti-takimi,Kahvaltı Takımı,Mutfak,sabit,758,1150,2344,400,3771,64,2,amazon; trendyol,2026-07-26
+ev-kurma,tava-seti,Tava Seti,Mutfak,sabit,1124,1658,4010,294,4740,43,2,amazon; trendyol,2026-07-26
+ev-kurma,tencere-seti,Tencere Seti,Mutfak,sabit,2899,5399,8765,1399,28000,118,4,amazon; karaca; madamecoco; trendyol,2026-07-26
+ev-kurma,yemek-takimi,Yemek Takımı,Mutfak,sabit,1613,2356,4054,1000,4999,64,2,amazon; trendyol,2026-07-26
+ev-kurma,catal-kasik-bicak-takimi,Çatal-Kaşık-Bıçak Takımı,Mutfak,sabit,934,2425,5264,490,6949,60,2,amazon; trendyol,2026-07-26
+ev-kurma,aydinlatma,Avize / Aydınlatma,Tekstil,sabit,562,1146,2299,157,5050,66,2,amazon; trendyol,2026-07-26
+ev-kurma,bornoz,Bornoz,Tekstil,sabit,557,942,1342,368,2350,69,2,amazon; trendyol,2026-07-26
+ev-kurma,hali,Halı,Tekstil,sabit,737,1590,3144,179,4494,49,2,amazon; trendyol,2026-07-26
+ev-kurma,havlu-takimi,Havlu Takımı,Tekstil,sabit,340,583,1062,194,1637,67,2,amazon; trendyol,2026-07-26
+ev-kurma,nevresim-takimi,Nevresim Takımı,Tekstil,sabit,550,948,1600,268,2990,120,3,amazon; englishhome; trendyol,2026-07-26
+ev-kurma,perde,Perde,Tekstil,sabit,301,580,1582,126,1794,47,2,amazon; trendyol,2026-07-26
+ev-kurma,boy-aynasi,Boy Aynası,Yatak odası,sabit,1674,2425,4566,578,8812,55,2,amazon; trendyol,2026-07-26
+ev-kurma,gardirop,Gardırop,Yatak odası,sabit,4369,6007,9819,2800,13659,24,1,trendyol,2026-07-26
+ev-kurma,karyola,Karyola / Baza,Yatak odası,sabit,2479,4067,5580,2051,5980,23,1,trendyol,2026-07-26
+ev-kurma,komodin,Komodin,Yatak odası,sabit,669,1623,2558,556,2799,19,1,trendyol,2026-07-26
+ev-kurma,yatak,Çift Kişilik Yatak,Yatak odası,sabit,1618,2303,3813,1000,6779,65,2,amazon; trendyol,2026-07-26
+ev-kurma,sifonyer,Şifonyer,Yatak odası,sabit,2638,3748,4952,1100,6329,25,1,trendyol,2026-07-26
+okul,ayakkabi,Spor Ayakkabı,Giyim,sabit,774,1144,2082,446,2839,69,2,amazon; trendyol,2026-07-26
+okul,ders-kitabi,Ders ve Yardımcı Kitap,Kitap,sabit,170,302,499,100,958,63,2,amazon; trendyol,2026-07-26
+okul,sozluk,Sözlük,Kitap,sabit,113,281,713,56,1590,62,2,amazon; trendyol,2026-07-26
+okul,boya-seti,Boya Seti,Kırtasiye,sabit,122,288,528,58,980,74,2,amazon; trendyol,2026-07-26
+okul,defter,Defter,Kırtasiye,sabit,100,217,334,50,539,68,2,amazon; trendyol,2026-07-26
+okul,kalem,Kalem,Kırtasiye,sabit,74,212,356,28,455,65,2,amazon; trendyol,2026-07-26
+okul,kalem-kutusu,Kalem Kutusu,Kırtasiye,sabit,212,486,768,74,1399,77,2,amazon; trendyol,2026-07-26
+okul,resim-malzemeleri,Resim ve Sanat Malzemeleri,Kırtasiye,sabit,148,443,750,73,1050,23,1,trendyol,2026-07-26
+okul,tablet,Tablet,Teknoloji,sabit,4972,8598,16710,2500,34999,61,2,amazon; trendyol,2026-07-26
+okul,calisma-masasi,Çalışma Masası,Çalışma alanı,sabit,1452,2199,3732,1014,7159,64,2,amazon; trendyol,2026-07-26
+okul,calisma-sandalyesi,Çalışma Sandalyesi,Çalışma alanı,sabit,1650,2080,4476,1530,4768,24,1,trendyol,2026-07-26
+okul,beslenme-cantasi,Beslenme Çantası,Çanta ve beslenme,sabit,214,621,769,165,1330,66,2,amazon; trendyol,2026-07-26
+okul,okul-cantasi,Okul Çantası,Çanta ve beslenme,sabit,804,1382,1938,424,2759,71,2,amazon; trendyol,2026-07-26
+okul,matara,Suluk / Matara,Çanta ve beslenme,sabit,130,220,470,75,510,23,1,trendyol,2026-07-26
+arac,bmw,BMW,Marka bazlı fiyatlar,sabit,4468450,8159300,15799000,3724500,21870500,60,1,donanimhaber,2026-07-26
+arac,byd,BYD,Marka bazlı fiyatlar,sabit,4133500,5145500,,4077000,,4,1,donanimhaber,2026-07-26
+arac,chery,Chery,Marka bazlı fiyatlar,sabit,2310000,2672500,,2310000,,3,1,donanimhaber,2026-07-26
+arac,citroen,Citroen,Marka bazlı fiyatlar,sabit,630000,2162500,2540000,585000,2900000,19,1,donanimhaber,2026-07-26
+arac,cupra,Cupra,Marka bazlı fiyatlar,sabit,2700000,3502500,4520000,2650000,4520000,7,1,donanimhaber,2026-07-26
+arac,dacia,Dacia,Marka bazlı fiyatlar,sabit,1433000,1740000,1825500,1299000,1830000,10,1,donanimhaber,2026-07-26
+arac,fiat,Fiat,Marka bazlı fiyatlar,sabit,1104900,1915500,2090500,684900,2249900,15,1,donanimhaber,2026-07-26
+arac,ford,Ford,Marka bazlı fiyatlar,sabit,2158700,2736050,3779850,2131500,4266600,17,1,donanimhaber,2026-07-26
+arac,honda,Honda,Marka bazlı fiyatlar,sabit,2592000,4970000,6160000,2525000,6160000,6,1,donanimhaber,2026-07-26
+arac,hyundai,Hyundai,Marka bazlı fiyatlar,sabit,1699500,2100000,3434000,1487000,3720000,28,1,donanimhaber,2026-07-26
+arac,kia,Kia,Marka bazlı fiyatlar,sabit,2015000,3192500,7205000,1435000,7870000,20,1,donanimhaber,2026-07-26
+arac,mg,MG,Marka bazlı fiyatlar,sabit,2676000,3282500,3450000,2655000,3450000,5,1,donanimhaber,2026-07-26
+arac,mercedes,Mercedes,Marka bazlı fiyatlar,sabit,4873000,10108500,22726500,3222000,30448000,42,1,donanimhaber,2026-07-26
+arac,nissan,Nissan,Marka bazlı fiyatlar,sabit,2707100,3736900,4714250,2229400,5615600,18,1,donanimhaber,2026-07-26
+arac,opel,Opel,Marka bazlı fiyatlar,sabit,1845500,2166500,3319500,1535000,3570000,20,1,donanimhaber,2026-07-26
+arac,peugeot,Peugeot,Marka bazlı fiyatlar,sabit,2038250,2773000,3530000,1573500,3644000,20,1,donanimhaber,2026-07-26
+arac,renault,Renault,Marka bazlı fiyatlar,sabit,1937500,2528000,3399000,1750000,3748000,21,1,donanimhaber,2026-07-26
+arac,seat,Seat,Marka bazlı fiyatlar,sabit,1912500,2745575,,1857000,,4,1,donanimhaber,2026-07-26
+arac,skoda,Skoda,Marka bazlı fiyatlar,sabit,2344900,3812400,6924900,1874900,7224900,41,1,donanimhaber,2026-07-26
+arac,suzuki,Suzuki,Marka bazlı fiyatlar,sabit,2109000,2382000,2759000,2069000,2759000,18,1,donanimhaber,2026-07-26
+arac,tesla,Tesla,Marka bazlı fiyatlar,sabit,3078892,4583000,,2474985,,4,1,donanimhaber,2026-07-26
+arac,togg,Togg,Marka bazlı fiyatlar,sabit,1886000,2371000,,1870000,,8,1,donanimhaber,2026-07-26
+arac,toyota,Toyota,Marka bazlı fiyatlar,sabit,2609000,2961000,3556000,2245000,4300000,24,1,donanimhaber,2026-07-26
+arac,volkswagen,Volkswagen,Marka bazlı fiyatlar,sabit,2755000,3642500,6617000,2165000,7375000,40,1,donanimhaber,2026-07-26
+arac,en-ucuz-sifir-arac,En ucuz sıfır araç (marka giriş fiyatı),,sabit,1517450,2069000,2650000,1295000,3159000,22,1,donanimhaber,2026-07-26

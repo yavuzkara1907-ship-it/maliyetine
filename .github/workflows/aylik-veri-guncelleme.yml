@@ -85,6 +85,12 @@ jobs:
           python rehber.py
           python sayfa_uret.py --vertikal dugun   # sitemap + ana sayfa tazelensin
 
+      # CSV disa aktarim + /veri/ indirme merkezi. Alintilanabilirligin
+      # merkezi: gazeteci/arastirmaci hazir dosya ariyor.
+      - name: Veriyi CSV olarak dışa aktar
+        working-directory: scraper
+        run: python veri_disa_aktar.py
+
       # Zaman serisi: aylik anlik goruntuleri tarayip fiyat gecmisi uretir.
       # Projenin kopyalanamaz varligi bu - bir ay atlanirsa seride kalici
       # delik olusur.
@@ -98,7 +104,7 @@ jobs:
           git config user.name "maliyetine-bot"
           git config user.email "actions@users.noreply.github.com"
           git add scraper/veri scraper/kaynak_gecmisi.json veri \
-                  index.html sitemap.xml dugun ev-kurma okul arac rehber
+                  index.html sitemap.xml llms.txt dugun ev-kurma okul arac rehber
           if git diff --cached --quiet; then
             echo "Değişiklik yok, commit atlanıyor."
             echo "degisti=false" >> "$GITHUB_OUTPUT"

@@ -1,0 +1,26 @@
+﻿vertikal,kalem_id,kalem_adi,grup,birim,ekonomik_tl,orta_tl,ust_tl,en_dusuk_tl,en_yuksek_tl,urun_sayisi,kaynak_sayisi,kaynaklar,olcum_tarihi
+arac,bmw,BMW,Marka bazlı fiyatlar,sabit,4468450,8159300,15799000,3724500,21870500,60,1,donanimhaber,2026-07-26
+arac,byd,BYD,Marka bazlı fiyatlar,sabit,4133500,5145500,,4077000,,4,1,donanimhaber,2026-07-26
+arac,chery,Chery,Marka bazlı fiyatlar,sabit,2310000,2672500,,2310000,,3,1,donanimhaber,2026-07-26
+arac,citroen,Citroen,Marka bazlı fiyatlar,sabit,630000,2162500,2540000,585000,2900000,19,1,donanimhaber,2026-07-26
+arac,cupra,Cupra,Marka bazlı fiyatlar,sabit,2700000,3502500,4520000,2650000,4520000,7,1,donanimhaber,2026-07-26
+arac,dacia,Dacia,Marka bazlı fiyatlar,sabit,1433000,1740000,1825500,1299000,1830000,10,1,donanimhaber,2026-07-26
+arac,fiat,Fiat,Marka bazlı fiyatlar,sabit,1104900,1915500,2090500,684900,2249900,15,1,donanimhaber,2026-07-26
+arac,ford,Ford,Marka bazlı fiyatlar,sabit,2158700,2736050,3779850,2131500,4266600,17,1,donanimhaber,2026-07-26
+arac,honda,Honda,Marka bazlı fiyatlar,sabit,2592000,4970000,6160000,2525000,6160000,6,1,donanimhaber,2026-07-26
+arac,hyundai,Hyundai,Marka bazlı fiyatlar,sabit,1699500,2100000,3434000,1487000,3720000,28,1,donanimhaber,2026-07-26
+arac,kia,Kia,Marka bazlı fiyatlar,sabit,2015000,3192500,7205000,1435000,7870000,20,1,donanimhaber,2026-07-26
+arac,mg,MG,Marka bazlı fiyatlar,sabit,2676000,3282500,3450000,2655000,3450000,5,1,donanimhaber,2026-07-26
+arac,mercedes,Mercedes,Marka bazlı fiyatlar,sabit,4873000,10108500,22726500,3222000,30448000,42,1,donanimhaber,2026-07-26
+arac,nissan,Nissan,Marka bazlı fiyatlar,sabit,2707100,3736900,4714250,2229400,5615600,18,1,donanimhaber,2026-07-26
+arac,opel,Opel,Marka bazlı fiyatlar,sabit,1845500,2166500,3319500,1535000,3570000,20,1,donanimhaber,2026-07-26
+arac,peugeot,Peugeot,Marka bazlı fiyatlar,sabit,2038250,2773000,3530000,1573500,3644000,20,1,donanimhaber,2026-07-26
+arac,renault,Renault,Marka bazlı fiyatlar,sabit,1937500,2528000,3399000,1750000,3748000,21,1,donanimhaber,2026-07-26
+arac,seat,Seat,Marka bazlı fiyatlar,sabit,1912500,2745575,,1857000,,4,1,donanimhaber,2026-07-26
+arac,skoda,Skoda,Marka bazlı fiyatlar,sabit,2344900,3812400,6924900,1874900,7224900,41,1,donanimhaber,2026-07-26
+arac,suzuki,Suzuki,Marka bazlı fiyatlar,sabit,2109000,2382000,2759000,2069000,2759000,18,1,donanimhaber,2026-07-26
+arac,tesla,Tesla,Marka bazlı fiyatlar,sabit,3078892,4583000,,2474985,,4,1,donanimhaber,2026-07-26
+arac,togg,Togg,Marka bazlı fiyatlar,sabit,1886000,2371000,,1870000,,8,1,donanimhaber,2026-07-26
+arac,toyota,Toyota,Marka bazlı fiyatlar,sabit,2609000,2961000,3556000,2245000,4300000,24,1,donanimhaber,2026-07-26
+arac,volkswagen,Volkswagen,Marka bazlı fiyatlar,sabit,2755000,3642500,6617000,2165000,7375000,40,1,donanimhaber,2026-07-26
+arac,en-ucuz-sifir-arac,En ucuz sıfır araç (marka giriş fiyatı),,sabit,1517450,2069000,2650000,1295000,3159000,22,1,donanimhaber,2026-07-26

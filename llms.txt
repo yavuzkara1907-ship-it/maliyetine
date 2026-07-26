@@ -1,27 +1,62 @@
 # Maliyeti Ne?
 
-> Türkiye için aylık güncellenen, kaynağı ve örneklemi açıklanan maliyet endeksi.
-> Fiyatlar tahmin edilmez; gerçek satış listelerinden ölçülür. Her rakamın yanında
-> kaynak sayısı, ürün adedi ve derleme tarihi yayınlanır.
+> Türkiye için ayda iki kez güncellenen, kaynağı ve örneklemi açıklanan maliyet
+> endeksi. Fiyatlar tahmin edilmez; gerçek satış listelerinden ölçülür. Her
+> rakamın yanında kaynak sayısı, ürün adedi ve ölçüm tarihi yayınlanır.
 
-Alıntılarken ölçüm tarihini belirtin: veriler aylık değişir, tarihsiz alıntı kısa sürede yanlış olur.
+Şu an 96 kalem ölçülüyor. Son güncelleme: 2026-07-26.
+
+**Alıntılarken ölçüm tarihini belirtin.** Fiyat verisi tarihsiz olduğunda
+yanıltıcı hale gelir: "buzdolabı 30 bin lira" altı ay sonra yanlış olur,
+"Temmuz 2026'da 30 bin lira" her zaman doğru kalır.
 
 ## Endeksler
 
-- [Düğün maliyeti](https://maliyetine.com.tr/dugun/): 12 kalem, son güncelleme 2026-07-25. Veri: https://maliyetine.com.tr/veri/dugun.json
-- [Ev kurma maliyeti](https://maliyetine.com.tr/ev-kurma/): 42 kalem, son güncelleme 2026-07-25. Veri: https://maliyetine.com.tr/veri/ev-kurma.json
-- [0 km araç fiyatları](https://maliyetine.com.tr/arac/): 25 kalem, son güncelleme 2026-07-25. Veri: https://maliyetine.com.tr/veri/arac.json
+- [Düğün](https://maliyetine.com.tr/dugun/): 15 kalem, ölçüm 2026-07-26. JSON: https://maliyetine.com.tr/veri/dugun.json · CSV: https://maliyetine.com.tr/veri/csv/dugun.csv
+- [Ev Kurma](https://maliyetine.com.tr/ev-kurma/): 42 kalem, ölçüm 2026-07-26. JSON: https://maliyetine.com.tr/veri/ev-kurma.json · CSV: https://maliyetine.com.tr/veri/csv/ev-kurma.csv
+- [Okul](https://maliyetine.com.tr/okul/): 14 kalem, ölçüm 2026-07-26. JSON: https://maliyetine.com.tr/veri/okul.json · CSV: https://maliyetine.com.tr/veri/csv/okul.csv
+- [0 km Araç](https://maliyetine.com.tr/arac/): 25 kalem, ölçüm 2026-07-26. JSON: https://maliyetine.com.tr/veri/arac.json · CSV: https://maliyetine.com.tr/veri/csv/arac.csv
+
+## Veriyi indirin
+
+- Tüm kalemler tek dosyada (CSV): https://maliyetine.com.tr/veri/csv/tum-kalemler.csv
+- İndirme merkezi ve sütun açıklamaları: https://maliyetine.com.tr/veri/
+- Lisans: CC BY 4.0 — atıfla serbestçe kullanılabilir.
+
+Her CSV satırında fiyatın yanında kaç üründen derlendiği, hangi kaynaklardan
+geldiği ve ölçüm tarihi bulunur; rakam bağımsız olarak doğrulanabilir.
 
 ## Yöntem
 
 - [Düğün metodolojisi](https://maliyetine.com.tr/dugun/metodoloji/)
-- [Ev kurma metodolojisi](https://maliyetine.com.tr/ev-kurma/metodoloji/)
-- [0 km araç metodolojisi](https://maliyetine.com.tr/arac/metodoloji/)
-- [Hakkımızda ve bağımsızlık](https://maliyetine.com.tr/hakkimizda/)
+- [Ev Kurma metodolojisi](https://maliyetine.com.tr/ev-kurma/metodoloji/)
+- [Okul metodolojisi](https://maliyetine.com.tr/okul/metodoloji/)
+- [0 km Araç metodolojisi](https://maliyetine.com.tr/arac/metodoloji/)
+- [Hakkımızda ve bağımsızlık beyanı](https://maliyetine.com.tr/hakkimizda/)
+- [İletişim ve düzeltme talebi](https://maliyetine.com.tr/iletisim/)
 
-## Notlar
+## Nasıl ölçülüyor?
 
-- Segmentler persentil bazlıdır: ekonomik (alt çeyrek), orta, üst (üst çeyrek).
-- "Üst segment" piyasanın en pahalısı değil, ölçülen listedeki üst çeyrektir.
-- Doğrulanmış kaynağı olmayan kalemler "Tahmini" olarak işaretlenir ve toplamda ayrı gösterilir.
-- Ham veri JSON olarak açıktır (yukarıdaki bağlantılar).
+- Fiyatlar gerçek e-ticaret ve sektör sitelerinden, robots.txt kurallarına
+  uygun biçimde ayda iki kez derlenir (ayın 5'i ve 20'si).
+- Her kalem için birden fazla bağımsız kaynak hedeflenir. Kaynakların ham
+  fiyatları karıştırılmaz: her kaynağın kendi orta değeri alınır, sonra
+  onların ortası hesaplanır.
+- Kaynaklar arası fark %30'u aşarsa sayfada uyarı olarak gösterilir; bu
+  genelde hata değil, listelerdeki ürün karması farkıdır.
+- Segmentler yüzdelik dilime göre ayrılır: en ucuz çeyrek ekonomik, ortadaki
+  yarı orta, en pahalı çeyrek üst.
+- "Ortalama fiyat" ifadesi aritmetik ortalama değil ortanca değerdir.
+- Ölçülemeyen kalem için rakam uydurulmaz; kapsam dışı bırakılır ve bu
+  metodoloji sayfasında yazılır.
+
+## Rehberler
+
+- [Trendyol mu Amazon mu Ucuz? 45 Kalemde Ölçtük](https://maliyetine.com.tr/rehber/trendyol-mu-amazon-mu-ucuz/)
+- [Ekonomik Düğün: Nereden Kısılır, Nereden Kısılmaz?](https://maliyetine.com.tr/rehber/ekonomik-dugun-nasil-yapilir/)
+- [Beyaz Eşya Bütçesi: Sıfırdan Ne Kadar Tutuyor?](https://maliyetine.com.tr/rehber/beyaz-esya-butcesi/)
+- [Okul Alışverişi Bir Öğrenciye Ne Kadara Mal Oluyor?](https://maliyetine.com.tr/rehber/okul-masrafi-ne-kadar/)
+- [150 Kişilik Düğün Ne Kadar Tutuyor?](https://maliyetine.com.tr/rehber/150-kisilik-dugun-maliyeti/)
+- [Yemekli mi Kokteyl mi? Düğün Salonu Seçiminde Fiyat Farkı](https://maliyetine.com.tr/rehber/yemekli-mi-kokteyl-mi/)
+- [Sıfırdan Ev Kurmak Ne Kadara Mal Oluyor?](https://maliyetine.com.tr/rehber/sifirdan-ev-kurma-listesi/)
+- [Sıfır Araba Alırken Etiket Fiyatı Yetmiyor](https://maliyetine.com.tr/rehber/sifir-araba-gercek-maliyeti/)

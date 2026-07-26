@@ -677,7 +677,132 @@ def _govde_beyaz_esya(v: dict) -> str | None:
 """
 
 
+
+# ---------------------------------------------------------------------------
+# 8. Kaynak karsilastirmasi (Trendyol vs Amazon)
+# ---------------------------------------------------------------------------
+def _govde_kaynak_karsilastirma(v: dict) -> str | None:
+    """Iki kaynagi da olctugumuz kalemlerde fiyat bandi karsilastirmasi.
+
+    DURUST CERCEVE: bu "hangi site ucuz" listesi DEGIL. Olctugumuz sey
+    kategori sayfalarindaki URUN KARMASI - Amazon'da markali urunler,
+    pazaryerinde jenerik urunler agirlikta olabiliyor. Ayni urunun iki
+    sitedeki fiyatini karsilastirmiyoruz; oyle bir iddiada bulunmak
+    yaniltici olur ve yazi bunu acikca soyluyor.
+    """
+    import statistics
+    kayitlar = []
+    for vert in ("ev-kurma", "okul", "dugun"):
+        d = v.get(vert)
+        if not d:
+            continue
+        tanimlar = {t["id"]: t for t in su.VERTIKALLER[vert]["kalemler"]}
+        for kid, k in (d.get("kalemler") or {}).items():
+            ks = {
+                x["site"]: x.get("genel_medyan")
+                for x in (k.get("kaynaklar") or [])
+                if (x.get("toplam_urun") or 0) > 0 and x.get("genel_medyan")
+            }
+            if "trendyol" in ks and "amazon" in ks:
+                t, a = ks["trendyol"], ks["amazon"]
+                kayitlar.append({
+                    "ad": (tanimlar.get(kid) or {}).get("ad", kid),
+                    "t": t, "a": a, "fark": (a - t) / t * 100,
+                })
+    if len(kayitlar) < 10:
+        return None
+
+    pazar_ucuz = [x for x in kayitlar if x["fark"] > 5]
+    amazon_ucuz = [x for x in kayitlar if x["fark"] < -5]
+    medyan_fark = statistics.median([x["fark"] for x in kayitlar])
+
+    def tablo(kayit_listesi, ters=False):
+        secili = sorted(kayit_listesi, key=lambda x: x["fark"], reverse=ters)[:6]
+        return "".join(
+            f'<tr><td>{x["ad"]}</td><td class="sayi">{_p(round(x["t"]))}</td>'
+            f'<td class="sayi">{_p(round(x["a"]))}</td>'
+            f'<td class="sayi">%{abs(x["fark"]):.0f}</td></tr>'
+            for x in secili
+        )
+
+    return f"""
+  <p class="cevap-blok">
+    Aynı {len(kayitlar)} kalemi iki büyük siteden ayrı ayrı ölçtük. Kategori
+    listelerinin orta değeri arasındaki fark çoğu kalemde
+    <strong>%{abs(medyan_fark):.0f} civarında</strong>. Ama bu "şu site
+    ucuz" demek değil — sebebi fiyat politikası değil, listelerdeki ürün
+    karması.
+  </p>
+
+  <h2>Önce şunu açıklayalım: aynı ürünü karşılaştırmıyoruz</h2>
+  <p>
+    Buradaki rakamlar, iki sitenin aynı kategori sayfasında listelediği
+    ürünlerin orta değeri. Aynı marka ve modelin iki sitedeki fiyatını
+    kıyaslamıyoruz — öyle bir iddiada bulunmak yanıltıcı olurdu.
+  </p>
+  <p>
+    Fark şuradan geliyor: bir kategoride bir sitenin listesinde tanınmış
+    markalar öne çıkarken diğerinde isimsiz, ucuz modeller ağırlıkta
+    oluyor. İki liste de gerçek; farklı bir rafı gösteriyorlar.
+  </p>
+
+  <h2>Pazaryeri listesinin daha ucuz kaldığı kalemler</h2>
+  <div class="tablo-sarmal"><table>
+    <thead><tr><th>Kalem</th><th class="sayi">Trendyol</th><th class="sayi">Amazon</th><th class="sayi">Fark</th></tr></thead>
+    <tbody>{tablo(pazar_ucuz, ters=True)}</tbody>
+  </table></div>
+  <p>
+    Küçük ev aletlerinde ve kırtasiyede tablo genelde böyle. Bu kategorilerde
+    pazaryeri listesi isimsiz üreticilerle dolu; giriş fiyatı çok aşağı
+    çekiliyor. Marka aramıyorsanız burada gerçekten ucuza alırsınız —
+    ama garanti ve servis konusunu ayrıca sormakta fayda var.
+  </p>
+
+  <h2>Diğer sitenin daha ucuz kaldığı kalemler</h2>
+  <div class="tablo-sarmal"><table>
+    <thead><tr><th>Kalem</th><th class="sayi">Trendyol</th><th class="sayi">Amazon</th><th class="sayi">Fark</th></tr></thead>
+    <tbody>{tablo(amazon_ucuz)}</tbody>
+  </table></div>
+  <p>
+    Kitap, defter ve bazı mobilya kalemlerinde yön tersine dönüyor.
+    Toplamda {len(pazar_ucuz)} kalemde bir liste, {len(amazon_ucuz)} kalemde
+    diğeri daha aşağıda kalıyor — yani tek bir siteyi "ucuz site" diye
+    işaretlemek mümkün değil.
+  </p>
+
+  <h2>Pratikte ne işe yarar?</h2>
+  <p>
+    Bir kalem için bütçe ayırıyorsanız iki listeye de bakın; aradaki fark
+    tek bir üründe bile dört haneli tutabiliyor. Marka önemliyse ucuz
+    listedeki orta değer sizi yanıltır — o rakam isimsiz modellerden
+    geliyor olabilir. Marka önemli değilse tersi geçerli.
+  </p>
+
+  <h2>Biz bu farkı ne yapıyoruz?</h2>
+  <p>
+    Endekste iki kaynağın ham fiyatlarını birbirine karıştırmıyoruz. Her
+    kaynağın kendi orta değerini alıp <em>onların</em> ortasını
+    hesaplıyoruz. Böylece tek bir sitenin ürün karması sonucu tek başına
+    belirlemiyor. Fark %30'u aştığında da bunu gizlemeyip sayfada uyarı
+    olarak gösteriyoruz.
+  </p>
+  <p>
+    Ölçümün tamamını indirebilirsiniz: <a href="/veri/">veri sayfası</a>.
+    Her satırda hangi kaynaklardan geldiği ve kaç üründen derlendiği yazıyor.
+  </p>
+"""
+
+
 REHBERLER = [
+    {
+        "slug": "trendyol-mu-amazon-mu-ucuz",
+        "baslik": "Trendyol mu Amazon mu Ucuz? 45 Kalemde Ölçtük",
+        "seo_baslik": "Trendyol mu Amazon mu Ucuz?",
+        "meta": "Aynı kalemleri iki siteden ayrı ayrı ölçtük. Hangi kategoride "
+                "hangi liste daha aşağıda kalıyor ve bu neden 'ucuz site' demek değil?",
+        "govde": _govde_kaynak_karsilastirma,
+        "vertikal": "ev-kurma",
+    },
     {
         "slug": "ekonomik-dugun-nasil-yapilir",
         "baslik": "Ekonomik Düğün: Nereden Kısılır, Nereden Kısılmaz?",
@@ -910,7 +1035,7 @@ def rehber_uret(rehber: dict, veriler: dict, tarih: str | None = None) -> str | 
 
 <footer>
   <div class="kapsayici">
-    <div>© {tarih[:4]} Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a></div>
+    <div>© {tarih[:4]} Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/veri/">Veri</a></div>
     <nav>
       <a href="/dugun/">Düğün</a>
       <a href="/ev-kurma/">Ev Kurma</a>
@@ -971,7 +1096,7 @@ def rehber_dizini_uret(yazilanlar: list[dict], tarih: str | None = None) -> str:
 
 <footer>
   <div class="kapsayici">
-    <div>© {tarih[:4]} Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a></div>
+    <div>© {tarih[:4]} Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/veri/">Veri</a></div>
   </div>
 </footer>
 
