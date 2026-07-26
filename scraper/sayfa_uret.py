@@ -2284,6 +2284,16 @@ def bayat_kalem_sayfalarini_temizle(vertikal: str) -> list[Path]:
     """
     conf = vertikal_conf(vertikal)
     gecerli = {s["slug"] for s in conf.get("kalem_sayfalari", [])}
+    # SENARYO SAYFALARI KORUNMALI: bunlar kalem sayfasi degil ama ayni
+    # dizin duzeninde duruyor ("beyaz-esya-fiyatlari"). Korunmazsa
+    # temizleyici onlari "artik uretilmeyen kalem sayfasi" sanip SILIYOR -
+    # 2026-07-26'da dugun senaryolari (100/200/300 kisilik) tam olarak
+    # boyle silindi ve endeks sayfasindaki linkler kirildi.
+    try:
+        import senaryo
+        gecerli |= {slug for v, slug in senaryo.tum_slugler() if v == vertikal}
+    except ImportError:
+        pass
     korunan = {"hesaplayici", "metodoloji"}
     kok = SITE_KOK / conf["yol"]
     silinen = []

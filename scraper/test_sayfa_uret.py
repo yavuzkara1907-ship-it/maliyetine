@@ -982,3 +982,29 @@ class SssTesti(unittest.TestCase):
         html = sayfa_uret.sss_sayfasi_uret()
         for q in sayfa_uret.sss_sorulari():
             self.assertIn(q["s"], html)
+
+
+class SenaryoKorumaTesti(unittest.TestCase):
+    """Bayat sayfa temizleyicisi senaryo sayfalarini SILMEMELI."""
+
+    def test_senaryo_sayfalari_temizlikte_korunur(self):
+        import senaryo
+        with TemporaryDirectory() as d:
+            kok = Path(d)
+            eski = sayfa_uret.SITE_KOK
+            try:
+                sayfa_uret.SITE_KOK = kok
+                senaryo.SITE_KOK = kok
+                yol = kok / "dugun"
+                slugler = [s for v, s in senaryo.tum_slugler() if v == "dugun"]
+                self.assertTrue(slugler, "dugun senaryosu tanimli degil")
+                for ad in slugler + ["uydurma-fiyatlari", "hesaplayici"]:
+                    (yol / ad).mkdir(parents=True)
+                    (yol / ad / "index.html").write_text("x", encoding="utf-8")
+                silinen = {p.name for p in sayfa_uret.bayat_kalem_sayfalarini_temizle("dugun")}
+                self.assertEqual(silinen, {"uydurma-fiyatlari"})
+                for s in slugler:
+                    self.assertTrue((yol / s / "index.html").exists(), s)
+            finally:
+                sayfa_uret.SITE_KOK = eski
+                senaryo.SITE_KOK = eski
