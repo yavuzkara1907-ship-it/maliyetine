@@ -721,3 +721,54 @@ class FiyatGecmisiTesti(unittest.TestCase):
     def test_veri_dosyasi_yoksa_sessizce_bos_doner(self):
         html = sayfa_uret._fiyat_gecmisi_html("dugun", "gelinlik", Path("/olmayan/yol"))
         self.assertEqual(html, "")
+
+
+class BayatSayfaTemizligiTesti(unittest.TestCase):
+    """Listeden dusen kalem sayfalari diskte BAYAT kalmamali."""
+
+    def test_gecerli_sayfa_silinmez_bayat_silinir(self):
+        with TemporaryDirectory() as d:
+            kok = Path(d)
+            conf = sayfa_uret.VERTIKALLER["arac"]
+            eski_kok = sayfa_uret.SITE_KOK
+            try:
+                sayfa_uret.SITE_KOK = kok
+                yol = kok / conf["yol"]
+                gecerli = {s["slug"] for s in conf["kalem_sayfalari"]}
+                bir_gecerli = sorted(gecerli)[0]
+                for ad in [bir_gecerli, "tesla-fiyatlari", "hesaplayici", "metodoloji"]:
+                    (yol / ad).mkdir(parents=True)
+                    (yol / ad / "index.html").write_text("x", encoding="utf-8")
+                silinen = sayfa_uret.bayat_kalem_sayfalarini_temizle("arac")
+                self.assertEqual([p.name for p in silinen], ["tesla-fiyatlari"])
+                self.assertTrue((yol / bir_gecerli / "index.html").exists())
+                self.assertTrue((yol / "hesaplayici" / "index.html").exists())
+                self.assertTrue((yol / "metodoloji" / "index.html").exists())
+                self.assertFalse((yol / "tesla-fiyatlari" / "index.html").exists())
+            finally:
+                sayfa_uret.SITE_KOK = eski_kok
+
+    def test_histerezis_acik_sayfayi_dusuk_orneklemde_kapatmaz(self):
+        conf = {
+            "ad": "Ev kurma", "yol": "ev-kurma",
+            "kalemler": [{"id": "perde", "ad": "Perde", "birim": "sabit"}],
+            "kalem_sayfalari": [],
+        }
+        veri = {"perde": {"genel_medyan": 400, "toplam_urun": 6}}  # 8'in altinda
+        with TemporaryDirectory() as d:
+            eski_kok = sayfa_uret.SITE_KOK
+            try:
+                sayfa_uret.SITE_KOK = Path(d)
+                # Sayfa YOKKEN: acilmaz (6 < 8)
+                self.assertEqual(sayfa_uret._ek_kalem_sayfalari(conf, veri), [])
+                # Sayfa VARKEN: kapanmaz (6 >= 5)
+                hedef = Path(d) / "ev-kurma" / "perde-fiyatlari"
+                hedef.mkdir(parents=True)
+                (hedef / "index.html").write_text("x", encoding="utf-8")
+                self.assertEqual(
+                    [s["id"] for s in sayfa_uret._ek_kalem_sayfalari(conf, veri)], ["perde"])
+                # Kapatma esiginin de altinda: kapanir
+                veri["perde"]["toplam_urun"] = 3
+                self.assertEqual(sayfa_uret._ek_kalem_sayfalari(conf, veri), [])
+            finally:
+                sayfa_uret.SITE_KOK = eski_kok

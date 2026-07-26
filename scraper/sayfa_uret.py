@@ -607,6 +607,13 @@ KALEM_SAYFA_NOTLARI = {
 # okuyucuyu yaniltir hem ince icerik olur.
 KALEM_SAYFASI_ASGARI_URUN = 8
 
+# Zaten ACIK bir sayfa, orneklem bu sayinin altina dusmedikce kapanmaz.
+# NEDEN HISTEREZIS: orneklem ay ay dalgalaniyor (9 -> 7 -> 10). Tek esikle
+# calisirsak ayni sayfa acilip kapaniyor; her kapanista canli bir URL
+# bayatliyor ve sitemap'ten dusuyor. Acmak icin 8, kapatmak icin 5 =
+# sinirdaki kalemler istikrarli kaliyor.
+KALEM_SAYFASI_KAPATMA_ESIGI = 5
+
 
 def _slugify_kalem(kalem_id: str) -> str:
     return f"{kalem_id}-fiyatlari"
@@ -627,7 +634,11 @@ def _ek_kalem_sayfalari(conf: dict, kalem_verisi: dict) -> list[dict]:
         veri = kalem_verisi.get(kid) or {}
         if not veri.get("genel_medyan"):
             continue
-        if (veri.get("toplam_urun") or 0) < KALEM_SAYFASI_ASGARI_URUN:
+        urun = veri.get("toplam_urun") or 0
+        # Sayfa daha once acildiysa histerezis esigi gecerli (bkz. yukarisi).
+        zaten_var = (SITE_KOK / conf["yol"] / _slugify_kalem(kid) / "index.html").exists()
+        esik = KALEM_SAYFASI_KAPATMA_ESIGI if zaten_var else KALEM_SAYFASI_ASGARI_URUN
+        if urun < esik:
             continue
         ad = kalem["ad"]
         uretilen.append({
@@ -1870,6 +1881,42 @@ def kalem_sayfalari_yaz(vertikal: str, veri_dosyasi: Path | None = None) -> list
     return yazilanlar
 
 
+def bayat_kalem_sayfalarini_temizle(vertikal: str) -> list[Path]:
+    """Artik uretilmeyen kalem sayfalarini SILER.
+
+    NEDEN GEREKLI: bir kalem sayfasi listeden dustugunde (orneklem
+    kapanma esigin altina indi, ya da kalem tanimi degisti) diskteki
+    dosya OLDUGU GIBI KALIYORDU. Sonuc: canlida 200 donen, aylar once
+    olculmus rakamlari gosteren, sitemap'te olmayan yetim sayfalar.
+    2026-07-26'da 6 tane birikmisti (ör. /arac/tesla-fiyatlari/ hala
+    07-25 verisini gosteriyordu). Bayat icerik hem okuyucuyu yaniltir
+    hem arama motorunda guven kaybettirir.
+
+    Yalnizca `{kalem}-fiyatlari` deseni ve bilinen sabit sayfalar disi
+    dizinlere dokunur - hesaplayici/metodoloji asla silinmez.
+    """
+    conf = vertikal_conf(vertikal)
+    gecerli = {s["slug"] for s in conf.get("kalem_sayfalari", [])}
+    korunan = {"hesaplayici", "metodoloji"}
+    kok = SITE_KOK / conf["yol"]
+    silinen = []
+    if not kok.exists():
+        return silinen
+    for dizin in sorted(kok.iterdir()):
+        if not dizin.is_dir() or dizin.name in korunan or dizin.name in gecerli:
+            continue
+        sayfa = dizin / "index.html"
+        if not sayfa.exists():
+            continue
+        sayfa.unlink()
+        try:
+            dizin.rmdir()
+        except OSError:
+            pass  # icinde baska dosya varsa dizini birak
+        silinen.append(dizin)
+    return silinen
+
+
 def sitemap_uret() -> str:
     url_kayitlari = [
         ("/", "monthly", "1.0"),
@@ -2195,6 +2242,8 @@ def main():
     hedef.parent.mkdir(parents=True, exist_ok=True)
     hedef.write_text(html, encoding="utf-8")
     print(f"Sayfa uretildi: {hedef}")
+    for silinen in bayat_kalem_sayfalarini_temizle(args.vertikal):
+        print(f"Bayat kalem sayfasi SILINDI: {silinen}")
     for kalem_hedef in kalem_sayfalari_yaz(args.vertikal, args.veri):
         print(f"Kalem sayfasi uretildi: {kalem_hedef}")
     sitemap_hedef = SITE_KOK / "sitemap.xml"

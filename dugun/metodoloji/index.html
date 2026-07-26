@@ -53,7 +53,7 @@
 
   <h2>Çapraz doğrulama</h2>
   <p>
-    Bir kalem için ≥2 sağlıklı bağımsız kaynak varsa, genel medyanlarını
+    Bir kalem için ≥2 sağlıklı bağımsız kaynak varsa, genel ortalamalarını
     karşılaştırırız. Aradaki fark %30'u aşarsa bunu <strong>gizlemeyiz</strong>
     — endeks sayfasında açıkça bir uyarı olarak gösterilir. Böyle bir fark
     genellikle veri hatası değil, kaynakların farklı segmentleri (ör.
@@ -72,7 +72,7 @@
     </tbody>
   </table>
   <p>Birden fazla kaynak olan kalemlerde, segment değeri her kaynağın
-    kendi medyanının medyanı alınarak hesaplanır — ham fiyat noktaları
+    kendi orta değerinin ortası alınarak hesaplanır — ham fiyat noktaları
     kaynaklar arasında karıştırılmaz, tek bir sapkın kaynağın sonucu
     domine etmesi engellenir.</p>
 
@@ -133,7 +133,7 @@
     Hesaplayıcıda hangisini istediğinizi seçebilirsiniz — toplama
     <strong>yalnızca seçtiğiniz</strong> girer. Yemekli seçerseniz menü
     kişi başı fiyata dahildir, ayrıca yemek eklenmez. Kokteyl seçerseniz
-    yemek maliyeti toplama dahil edilmez; mekanların menü bedeli medyanı
+    yemek maliyeti toplama dahil edilmez; mekanların menü bedeli ortalaması
     (kişi başı 410 TL) size bilgi olarak gösterilir.
   </p>
   <p>
@@ -157,7 +157,7 @@
     Bu kalem daha önce <span class="tahmini-etiket">Tahmini</span>
     etiketliydi (gram altın fiyatından türetilmiş 40.000 TL). Gerçek
     ölçüme geçince tahminin <strong>düşük</strong> olduğu görüldü —
-    marka mağazası verisinde medyan bunun yaklaşık iki katı. Gram altın
+    marka mağazası verisinde ortalama bunun yaklaşık iki katı. Gram altın
     6.000 TL bandındayken bu, 13 gram civarı bir bileziğe denk geliyor.
   </p>
   <p>
@@ -173,7 +173,7 @@
   <p>
     Yemeğin kişi başı bedelini <strong>ölçüyoruz</strong>: her mekanın
     <em>kendi</em> yemekli ve kokteyl fiyatı arasındaki fark alınır, sonra
-    bu farkların medyanı hesaplanır. 25 Temmuz 2026'da 9 mekandan derlenen
+    bu farkların ortası hesaplanır. 25 Temmuz 2026'da 9 mekandan derlenen
     değer <strong>kişi başı 410 TL</strong> (orta segment). Örnek satırlar:
   </p>
   <table>
@@ -188,8 +188,8 @@
   </table>
   <p>
     Farkı <strong>aynı mekan içinde</strong> almak önemli: iki ayrı
-    listenin medyanlarını çıkarmak yanıltıcı olurdu, çünkü her mekan
-    kokteyl seçeneği sunmuyor ve farkların medyanı, medyanların farkına
+    listenin ortalamalarını çıkarmak yanıltıcı olurdu, çünkü her mekan
+    kokteyl seçeneği sunmuyor ve farkların ortası, ortalamaların farkına
     eşit değil.
   </p>
   <p>
