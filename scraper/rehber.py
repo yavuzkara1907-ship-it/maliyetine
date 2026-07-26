@@ -523,7 +523,177 @@ def _govde_okul(v: dict) -> str | None:
 """
 
 
+
+# ---------------------------------------------------------------------------
+# 6. Ekonomik dugun
+# ---------------------------------------------------------------------------
+def _govde_ekonomik_dugun(v: dict) -> str | None:
+    d = v.get("dugun")
+    if not d:
+        return None
+    conf = su.VERTIKALLER["dugun"]
+    kalemler = d.get("kalemler") or {}
+    orta, _ = su.ornek_toplam_hesapla(conf, kalemler, olcek=150, segment="orta")
+    eko, detay_eko = su.ornek_toplam_hesapla(conf, kalemler, olcek=150, segment="ekonomik")
+    eko80, _ = su.ornek_toplam_hesapla(conf, kalemler, olcek=80, segment="ekonomik")
+    if not (orta and eko):
+        return None
+
+    kokteyl = _kalem(d, "salon-kokteyl", "dusuk")
+    yemekli = _kalem(d, "salon-yemekli", "dusuk")
+    gelinlik_e = _kalem(d, "gelinlik", "dusuk")
+    gelinlik_o = _kalem(d, "gelinlik", "orta")
+    fark = orta - eko
+    return f"""
+  <p class="cevap-blok">
+    150 kişilik bir düğün orta segmentte {_p(orta)}, ekonomik tercihlerle
+    <strong>{_p(eko)}</strong>. Aradaki {_p(fark)} fark tek bir fedakârlıktan
+    değil, her kalemde alt banda inmekten geliyor. Davetliyi 80 kişiye
+    düşürürseniz tutar {_p(eko80)} oluyor.
+  </p>
+
+  <h2>En büyük tasarruf davetli listesinde</h2>
+  <p>
+    Düğün bütçesinin çoğu kişi başı ödenen salon bedeli. Kişi başı
+    {_p(kokteyl)} olan ekonomik bir kokteyl düzende 150 yerine 80 kişi
+    çağırmak, tek başına yüz binlerce liralık farka denk geliyor. Hiçbir
+    kalemde pazarlıkla bu kadar hızlı sonuç alınmıyor.
+  </p>
+  <p>
+    Liste kısaltmak zor bir konu, biliyoruz. Ama rakamı görmek kararı
+    kolaylaştırıyor: her 10 kişi, ekonomik salonda bile dört haneli bir
+    tutar demek.
+  </p>
+
+  <h2>Yemekli mi, kokteyl mi?</h2>
+  <p>
+    Ekonomik bantta yemekli salon kişi başı {_p(yemekli)}, kokteyl
+    {_p(kokteyl)}. Kokteyl ucuz görünüyor ama misafirleri aç
+    ağırlamayacaksanız yemeği dışarıdan almanız gerekiyor ve mekanın kendi
+    mutfağı genelde daha ucuza çalışıyor. Ayrıntısını
+    <a href="/rehber/yemekli-mi-kokteyl-mi/">ayrı bir yazıda</a> ölçtük.
+  </p>
+
+  <h2>Gelinlikte kiralama farkı</h2>
+  <p>
+    Ekonomik segmentte gelinlik {_p(gelinlik_e)}, orta segmentte
+    {_p(gelinlik_o)}. Ölçtüğümüz fiyatlar satış fiyatı; kiralama bunun
+    belirgin altında kalıyor ama kategori bazında düzenli izlenebilen bir
+    kaynak bulamadığımız için endekse koymuyoruz. Tek günlük bir kıyafet
+    için satın almak zorunda olmadığınızı hatırlatalım.
+  </p>
+
+  <h2>Kısmayacağınız kalemler</h2>
+  <p>
+    Fotoğraf ve video, geriye kalan tek somut şey. Ölçtüğümüz İstanbul
+    ortalaması makul bir bantta ve burada en ucuza gitmek çoğu çiftin
+    pişman olduğu tercih. Alyansta da benzer bir durum var: gramaj
+    düşürmek mantıklı, ama günlük takılan bir eşyada kaliteden inmek
+    uzun vadede daha pahalı.
+  </p>
+{_tufe(v, "dugun")}
+  <h2>Kendi senaryonuzu deneyin</h2>
+  <p>
+    Davetli sayısını ve segmenti değiştirerek farkı kendiniz görebilirsiniz:
+    <a href="/dugun/hesaplayici/">düğün maliyeti hesaplayıcısı</a>.
+    Kalem kalem fiyatlar <a href="/dugun/">düğün endeksinde</a>.
+  </p>
+"""
+
+
+# ---------------------------------------------------------------------------
+# 7. Beyaz esya butcesi
+# ---------------------------------------------------------------------------
+def _govde_beyaz_esya(v: dict) -> str | None:
+    e = v.get("ev-kurma")
+    if not e:
+        return None
+    beyaz = ["buzdolabi", "camasir-makinesi", "bulasik-makinesi", "firin-ocak",
+             "davlumbaz", "kurutma-makinesi", "mikrodalga", "klima"]
+    satirlar, toplam = [], 0
+    for kid in beyaz:
+        deger = _kalem(e, kid)
+        if not deger:
+            continue
+        tanim = next((t for t in su.VERTIKALLER["ev-kurma"]["kalemler"] if t["id"] == kid), {})
+        ad = tanim.get("ad", kid)
+        eko = _kalem(e, kid, "dusuk")
+        ust = _kalem(e, kid, "luks")
+        satirlar.append(
+            f'<tr><td>{ad}</td><td class="sayi">{_p(eko)}</td>'
+            f'<td class="sayi">{_p(deger)}</td><td class="sayi">{_p(ust)}</td></tr>'
+        )
+        toplam += deger
+    if len(satirlar) < 4:
+        return None
+
+    buzdolabi = _kalem(e, "buzdolabi")
+    kurutma = _kalem(e, "kurutma-makinesi")
+    return f"""
+  <p class="cevap-blok">
+    Bir evin beyaz eşyasını sıfırdan almak orta segmentte
+    <strong>{_p(toplam)}</strong> tutuyor. Bu, tüm ev kurma bütçesinin en
+    büyük kalemi — mobilyadan da mutfaktan da fazla.
+  </p>
+
+  <h2>Kalem kalem</h2>
+  <div class="tablo-sarmal"><table>
+    <thead><tr><th>Ürün</th><th class="sayi">Ekonomik</th><th class="sayi">Orta</th><th class="sayi">Üst</th></tr></thead>
+    <tbody>{''.join(satirlar)}</tbody>
+  </table></div>
+
+  <h2>Hepsini birden almak zorunda değilsiniz</h2>
+  <p>
+    Taşındığınız gün çalışması gerekenler kısa: buzdolabı ({_p(buzdolabi)})
+    ve çamaşır makinesi. Bulaşık makinesi, kurutma makinesi ({_p(kurutma)})
+    ve mikrodalga sonraya bırakılabilir. Bu sıralama tek başına bütçeyi
+    ikiye bölüyor.
+  </p>
+
+  <h2>Enerji sınıfı fiyata değer mi?</h2>
+  <p>
+    Üst segmentteki modellerin çoğu daha iyi enerji sınıfında. Aradaki fark
+    elektrik faturasında yıllara yayılıp kendini amorti edebiliyor —
+    özellikle çamaşır ve bulaşık makinesi gibi sık çalışan cihazlarda.
+    Bunu biz ölçmüyoruz; ürünün enerji etiketindeki yıllık tüketim
+    değerini kendi tarifenizle çarpmak en doğrusu.
+  </p>
+
+  <h2>Bu rakamların sınırı</h2>
+  <p>
+    Fiyatlar kategori listelerindeki yaygın modellerden derleniyor. Ankastre
+    setler, gardırop tipi buzdolapları ve premium markalar bu listelere
+    girmiyor; dolayısıyla "üst" sütunu piyasanın en pahalısını değil,
+    yaygın ürünler içindeki üst çeyreği gösteriyor. Montaj ve nakliye de
+    dahil değil.
+  </p>
+{_tufe(v, "ev-kurma")}
+  <h2>Kendi listenizi hesaplayın</h2>
+  <p>
+    <a href="/ev-kurma/hesaplayici/">Ev kurma hesaplayıcısında</a> yalnızca
+    beyaz eşyaları işaretleyip kendi toplamınızı çıkarabilirsiniz. Kalem
+    kalem güncel fiyatlar <a href="/ev-kurma/">ev kurma endeksinde</a>.
+  </p>
+"""
+
+
 REHBERLER = [
+    {
+        "slug": "ekonomik-dugun-nasil-yapilir",
+        "baslik": "Ekonomik Düğün: Nereden Kısılır, Nereden Kısılmaz?",
+        "meta": "150 kişilik düğünde orta ve ekonomik segment arasındaki fark "
+                "ne kadar? Hangi kalemde tasarruf işe yarıyor, hangisinde geri tepiyor?",
+        "govde": _govde_ekonomik_dugun,
+        "vertikal": "dugun",
+    },
+    {
+        "slug": "beyaz-esya-butcesi",
+        "baslik": "Beyaz Eşya Bütçesi: Sıfırdan Ne Kadar Tutuyor?",
+        "meta": "Buzdolabı, çamaşır ve bulaşık makinesi, fırın, klima: bir evin "
+                "beyaz eşyası kalem kalem, ekonomik-orta-üst fiyatlarıyla.",
+        "govde": _govde_beyaz_esya,
+        "vertikal": "ev-kurma",
+    },
     {
         "slug": "okul-masrafi-ne-kadar",
         "baslik": "Okul Alışverişi Bir Öğrenciye Ne Kadara Mal Oluyor?",

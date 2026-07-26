@@ -21,6 +21,16 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://maliyetine.com.tr/rehber/ekonomik-dugun-nasil-yapilir/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://maliyetine.com.tr/rehber/beyaz-esya-butcesi/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://maliyetine.com.tr/rehber/okul-masrafi-ne-kadar/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

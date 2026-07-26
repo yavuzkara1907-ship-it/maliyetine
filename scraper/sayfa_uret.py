@@ -746,6 +746,9 @@ def _ek_kalem_sayfalari(conf: dict, kalem_verisi: dict) -> list[dict]:
     return uretilen
 
 
+# Ana sayfa endeks kartinda gosterilecek en fazla kalem linki.
+ANASAYFA_KART_LINK_SINIRI = 8
+
 SEGMENT_ANAHTARI = {"ekonomik": "dusuk", "orta": "orta", "luks": "luks"}
 SEGMENT_ETIKETLERI = {"dusuk": "Ekonomik", "orta": "Orta", "luks": "Üst"}
 
@@ -786,6 +789,20 @@ def kalem_sayfalarini_genislet(veri_kok: Path | None = None) -> dict[str, int]:
             conf.setdefault("kalem_sayfalari", []).extend(yeni)
             eklenen[vertikal] = len(yeni)
     return eklenen
+
+
+def _kisa_kalem_adi(ad: str) -> str:
+    """Kart etiketi icin kisa kalem adi.
+
+    "Düğün Salonu — yemekli (menü dahil)" -> "Düğün Salonu (yemekli)"
+    Varyant bilgisi ATILMAZ: salon iki varyanta bolundugu icin varyanti
+    dusuren kisaltma iki ayri sayfayi ayni etiketle gosteriyordu.
+    """
+    if "—" not in ad:
+        return ad.split("(")[0].strip()
+    ana, varyant = ad.split("—", 1)
+    varyant = varyant.split("(")[0].strip()
+    return f"{ana.strip()} ({varyant})" if varyant else ana.strip()
 
 
 def _para(n: int) -> str:
@@ -2096,8 +2113,12 @@ def vertikal_ozeti(vertikal: str, veri_kok: Path | None = None) -> dict | None:
         "kalem_sayfalari": [
             {
                 **k,
+                # Kisa ad em-dash'ten kesiliyor ("Dugun Salonu - yemekli"
+                # -> "Dugun Salonu"). AMA salon iki varyanta bolundugu icin
+                # iki AYRI sayfa ayni etiketle gorunuyordu. Varyant kismi
+                # parantezle korunuyor: "Dugun Salonu (yemekli)".
                 "kisa_ad": next(
-                    (t["ad"].split("—")[0].strip() for t in conf["kalemler"]
+                    (_kisa_kalem_adi(t["ad"]) for t in conf["kalemler"]
                      if t["id"] == k["id"]),
                     k["slug"].replace("-fiyatlari", "").replace("-", " ").capitalize(),
                 ),
@@ -2162,10 +2183,19 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
     # Endeks kartlari: verisi olan vertikaller rakamiyla, olmayanlar "Yakinda".
     kartlar = []
     for o in ozetler:
+        # Kart basina en fazla ANASAYFA_KART_LINK_SINIRI kalem linki.
+        # Sinirsizken ev-kurma karti 42 link uretiyor, digerlerinin uc
+        # katina cikip grid'i eziyordu - kartlar yan yana dururken biri
+        # ekran boyu uzun, digerleri bir avuc. Kalan kalemlere endeks
+        # sayfasindan zaten ulasiliyor.
+        gosterilen = o["kalem_sayfalari"][:ANASAYFA_KART_LINK_SINIRI]
         alt_linkler = "".join(
             f'<a href="/{o["yol"]}/{k["slug"]}/">{k["kisa_ad"]}</a>'
-            for k in o["kalem_sayfalari"]
+            for k in gosterilen
         )
+        kalan = len(o["kalem_sayfalari"]) - len(gosterilen)
+        if kalan > 0:
+            alt_linkler += f'<a href="/{o["yol"]}/" class="kart-link-tum">+{kalan} kalem</a>' 
         kartlar.append(f"""    <div class="vertikal-kart kart">
       <h3><a href="/{o['yol']}/">{o['ad']} maliyeti</a></h3>
       <p class="kart-rakam">{_para(o['toplam'])}</p>
@@ -2174,10 +2204,17 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
       <p class="kart-linkler">{alt_linkler}</p>
     </div>""")
 
-    for ad, aciklama in (("Ev tadilatı", "Hazırlanıyor."), ("0 km araç", "Hazırlanıyor.")):
-        kartlar.append(f"""    <div class="kart">
+    # "Yakinda" kartlari SABIT LISTE DEGIL: yayina giren vertikal bu
+    # listeden dusmeli. Onceden sabitti ve 0 km arac yayina girdikten
+    # sonra da "Yakinda" kartiyla gorunmeye devam ediyordu - ayni endeks
+    # sayfada hem gercek rakamla hem "hazirlaniyor" diye iki kez cikti.
+    yayindaki = {o["yol"] for o in ozetler}
+    for yol, ad in (("ev-tadilati", "Ev tadilatı"), ("tatil", "Tatil")):
+        if yol in yayindaki:
+            continue
+        kartlar.append(f"""    <div class="kart kart-yakinda">
       <h3>{ad} maliyeti <span class="yakinda-etiket">Yakında</span></h3>
-      <p>{aciklama}</p>
+      <p>Hazırlanıyor.</p>
     </div>""")
 
     kurum = {
