@@ -802,6 +802,28 @@ kaynağı "şu siteden veri aldık" cümlesi.
 **ürün karmasını** karşılaştırıyoruz ve yazı bunu açıkça söylüyor.
 34 kalemde bir liste, 10 kalemde diğeri aşağıda.
 
+## SENARYO SAYFALARI (2026-07-26) — gerçek arama niyeti
+Mevcut 59 kalem sayfası tek bir sorgu kalıbını hedefliyordu: *"X fiyatı"*.
+Ama insanların aradığı şey **kendi durumları**: "100 kişilik düğün
+maliyeti", "sadece beyaz eşya bütçesi". Bu sorguların hepsinde veri
+elimizdeydi ama sayfa yoktu.
+- **`scraper/senaryo.py`** — iki tip: **ölçek senaryoları** (düğün
+  100/200/300 kişilik) ve **grup senaryoları** (ev-kurma: beyaz eşya /
+  mobilya / mutfak).
+- **İNCE İÇERİK KIRMIZI ÇİZGİSİ:** her sayfa farklı RAKAM, farklı kalem
+  listesi ve o senaryoya özgü yorum taşıyor (100 kişi → minimum kişi
+  şartı; 300 kişi → salon kapasitesi ayrışması). Test 6/6 gövdenin
+  benzersiz olduğunu doğruluyor. **Kombinasyon sayısı KASITLA düşük
+  tutuldu** — "her sayı için bir sayfa" tam olarak Google'ın
+  cezalandırdığı şey.
+- **TESTLER İKİ BUG YAKALADI:** (1) tabloda kalem adı yerine ham id
+  görünüyordu (`orkestra-dj`) — tahmini kalemler ayrı listede olduğu için
+  tanım bulunamıyordu; (2) gerçek ölçüm olmadan da sayfa üretiliyordu:
+  yalnızca tahmini kalemlerle "100 kişilik düğün 28.500 TL" çıkardı ve
+  **tahminler sabit olduğu için üç senaryoda da AYNI rakam** görünürdü.
+  Artık en az 2 gerçek ölçülmüş kalem şartı var.
+- Endeks sayfalarına "Hazır senaryolar" iç link bölümü. sitemap **102 URL**.
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
