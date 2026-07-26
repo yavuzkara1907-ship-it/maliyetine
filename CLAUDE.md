@@ -709,6 +709,43 @@ kartlar rakamı veriyor ama BAĞLAM vermiyor.
   sayıp her zaman canlı dosyaları okuyordu — `anasayfa_uret(veri_kok=X)`
   çağrısı yazıda yanlış veriyi gösterirdi. Aktarıldı, 2 test eklendi.
 
+## TASARIM ELDEN GEÇİRİLDİ (2026-07-26)
+Daha önce "hepsi kötü ama acelemiz yok" denip ertelenmişti. **Kör
+çalışılmadı:** Playwright ile ekran görüntüsü alınıp bakılarak yapıldı —
+sorunların çoğu ancak görünce fark edildi.
+- Ana sayfa **3244px → 2532px**. Kartlar dengelendi.
+- Renk: jenerik mavi → sakin teal-mavi (`#0f5c8c`); rakamın yanında link
+  mavisiyle karışmıyor. **Karanlık mod** eklendi (`prefers-color-scheme`).
+- Gövde **780 → 880px**: 5 sütunlu fiyat tabloları sıkışıyordu.
+- Tablolar (sitenin asıl ürünü): zebra satır, hover, kalın başlık çizgisi,
+  ilk sütun vurgusu, dar ekranda kendi içinde kaydırma.
+- Cevap bloğu sol kenar vurgusu aldı (GEO'nun en önemli bloğu).
+- **MOBİL:** üst bar kırılıyordu — logo *"Maliyeti / Ne?"* diye iki satıra,
+  menü öğeleri sarkıyordu. Logo üstte tek satır, menü altta yatay kaydırmalı.
+
+**Ekran görüntüsü iki bug ortaya çıkardı:**
+1. **"Yakında" kartları SABİT LİSTEYDİ.** 0 km araç yayına girdikten sonra
+   da "Yakında — Hazırlanıyor" kartıyla görünüyordu; aynı endeks sayfada
+   hem gerçek rakamla hem "hazırlanıyor" diye **iki kez** çıkıyordu.
+   Artık yayındaki vertikaller listeden düşüyor.
+2. **Kart etiketinde "Düğün Salonu" iki kez.** Kısa ad em-dash'ten
+   kesildiği için `salon-yemekli` ve `salon-kokteyl` aynı etikete
+   dönüşüyordu. `_kisa_kalem_adi()` varyantı parantezle koruyor:
+   "Düğün Salonu (yemekli)" / "(kokteyl)".
+
+**`ANASAYFA_KART_LINK_SINIRI = 8`:** ev-kurma kartı 42 kalem linki üretip
+diğerlerinin üç katına çıkıyor, grid'i eziyordu. Fazlası "+N kalem"
+etiketiyle endekse yönlendiriliyor.
+
+**DERS: tasarım işinde ekran görüntüsü almadan çalışmak körlük.** İki bug
+da CSS'le ilgisizdi ama ancak sayfaya bakınca görüldü.
+
+## REHBER YAZILARI: 7 (2026-07-26)
+`/rehber/` altında: 150 kişilik düğün · yemekli mi kokteyl mi · sıfırdan
+ev kurma · sıfır araba gerçek maliyeti · okul masrafı ·
+**ekonomik düğün nasıl yapılır** · **beyaz eşya bütçesi**.
+336–445 kelime, rakamlar veriden, klişe-kalıp testinden geçiyor.
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
