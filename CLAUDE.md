@@ -615,6 +615,50 @@ sitemap'te olmayan yetim sayfalar. 6 tane birikmişti —
   bir tur çıktı `>/dev/null`'a basıldığı için fark edilmemişti.
   **DERS: üretim komutlarının çıktısını bastırma.**
 
+## RESMÎ TÜFE ENTEGRASYONU — `scraper/enflasyon.py` (2026-07-26)
+ÇOK KAYNAK KURALI'nın 5. katmanı (TÜİK doğrulaması) nihayet kuruldu.
+Yavuz EVDS'ye üye olup API anahtarını verdi.
+
+**EVDS API'sine erişim — yol uzundu, tekrar yaşanmasın diye kayıt:**
+- `evds2` → **`evds3`'e taşınmış**. Klasik `/service/evds/series=...&key=...`
+  yolu **artık çalışmıyor**: SPA her yolu `index.html`'e düşürüyor ve
+  **geçersiz anahtarla bile aynı yanıtı veriyor** — yani hata mesajı da
+  alamıyorsunuz, sessizce HTML dönüyor. Teşhis `allow_redirects=False`
+  ile yapıldı (302 → evds3 göründü).
+- **Yeni yol: `POST https://evds3.tcmb.gov.tr/igmevdsms-dis/fe`**, JSON
+  gövde. Gövdede **`groupSeperator` ve `isRaporSayfasi` ZORUNLU** —
+  eksikse sunucu 500 döner (bilinen çalışan seriyle bile).
+- Arama: `GET /igmevdsms-dis/searchResults?searchVal=`
+- Endpoint'ler Playwright ağ dinlemesiyle bulundu (arayüzün kendi
+  isteklerini yakalayarak).
+
+**SERİ KODLARI DOĞRULANDI, TAHMİN EDİLMEDİ — kritik:**
+İnternette yaygın olan `TP.FG.J*` kodları **arşiv serisi** çıktı; 2026
+Ocak'ta duruyorlar. Güncel seriler **`TP.FE25.*`** (2025=100 bazlı).
+Arama endpoint'inden 28 seri adı çekilip eşlendi. Bu adım atlanıp
+"01=genel, 02=gıda…" diye varsayılsaydı **"ev eşyası %12 arttı" derken
+bambaşka bir grup gösterilecekti** — KIRMIZI ÇİZGİ ihlali.
+- `TP.FE25.OKTG01` TÜFE genel · `OKTG19` Giyim ve ayakkabı (→ düğün) ·
+  `OKTG20` Dayanıklı mallar, altın hariç (→ ev-kurma) · `OKTG25` Lokanta
+  ve oteller (→ düğün) · `OKTG22` Alkollü içecek, tütün ve altın (→ düğün)
+- 2026 Ocak–Haziran: genel **%12,3**, giyim %12,1, lokanta %12,0,
+  dayanıklı mallar %5,8.
+
+**KIRMIZI ÇİZGİ — TÜFE bizim fiyatımızın yerine GEÇMEZ.** TÜFE bir
+ENDEKS (2025=100), TL cinsinden fiyat değil. Rehber yazılarında ayrı
+bölümde, kaynak adıyla ve *"bizim ölçümümüz TL cinsinden gerçek
+fiyatları izler"* cümlesiyle veriliyor. Bir test endeks değerinin TL
+gibi sunulmadığını doğruluyor.
+
+**Anahtar güvenliği:** `scraper/.evds-key` **gitignore'da**, dosya izni
+600. Workflow anahtarı **GitHub Secrets'tan** (`EVDS_KEY`) okuyor.
+Secret yoksa adım sessizce atlanıyor ve sayfalarda o bölüm hiç
+görünmüyor (uydurma rakam yok).
+- **YAVUZ'UN YAPMASI GEREKEN:** GitHub → repo → Settings → Secrets and
+  variables → Actions → New repository secret → adı `EVDS_KEY`,
+  değeri EVDS anahtarı. Bu yapılmazsa aylık otomasyonda TÜFE bölümü
+  üretilmez (site çalışmaya devam eder, sadece o blok çıkmaz).
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
