@@ -75,6 +75,12 @@ jobs:
             echo "EVDS_KEY tanımlı değil - TÜFE adımı atlandı."
           fi
 
+      # Paylasim gorseli: uzerinde vertikal adlari ve kalem sayisi var,
+      # veri degisince bayatlamamali. PIL yoksa adim sessizce geciyor.
+      - name: Paylaşım görselini güncelle
+        working-directory: scraper
+        run: python og_gorsel.py || echo "OG gorseli guncellenemedi, devam."
+
       # Senaryo sayfalari (100 kisilik dugun, beyaz esya butcesi...).
       # sayfa_uret'ten SONRA: endeks sayfalari bu dosyalarin varligina
       # bakip ic link veriyor, sitemap de oyle.
@@ -111,7 +117,7 @@ jobs:
           git config user.name "maliyetine-bot"
           git config user.email "actions@users.noreply.github.com"
           git add scraper/veri scraper/kaynak_gecmisi.json veri \
-                  index.html sitemap.xml llms.txt dugun ev-kurma okul arac rehber
+                  index.html sitemap.xml llms.txt assets/og-gorsel.png dugun ev-kurma okul arac rehber
           if git diff --cached --quiet; then
             echo "Değişiklik yok, commit atlanıyor."
             echo "degisti=false" >> "$GITHUB_OUTPUT"

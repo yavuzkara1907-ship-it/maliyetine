@@ -2656,6 +2656,27 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
     # Rehber linkleri: yalnizca gercekten URETILMIS olanlar. Veri yoksa
     # rehber.py sayfayi yazmiyor - burada da linki verilmemeli, aksi
     # halde ana sayfadan 404'e link cikar.
+    # Paylasim aciklamasi: soyut "guvenilir veri" iddiasi yerine
+    # olculebilir kanit. X/WhatsApp kartinda gorunen tek cumle bu.
+    _og_kalem = sum(len((o.get("kalemler") or {})) for o in [
+        json.loads((( veri_kok or SITE_KOK / "veri") / f"{v}.json").read_text(encoding="utf-8"))
+        for v in VERTIKALLER
+        if (( veri_kok or SITE_KOK / "veri") / f"{v}.json").exists()
+    ])
+    _og_siteler = set()
+    for v in VERTIKALLER:
+        d = (veri_kok or SITE_KOK / "veri") / f"{v}.json"
+        if not d.exists():
+            continue
+        for k in (json.loads(d.read_text(encoding="utf-8")).get("kalemler") or {}).values():
+            for kay in k.get("kaynaklar") or []:
+                if (kay.get("toplam_urun") or 0) > 0 and kay.get("site"):
+                    _og_siteler.add(kay["site"])
+    og_aciklama = (
+        f"{_og_kalem} kalem, {len(_og_siteler)} bağımsız kaynaktan ayda iki kez "
+        "ölçülüyor. Her rakamın yanında kaynak ve ölçüm tarihi var."
+    ) if _og_kalem else "Gerçek fiyat verisinden derlenmiş maliyet endeksi."
+
     hizli = _hizli_hesap_katsayilari(veri_kok)
     hizli_secenekler = "".join(
         f'<option value="{v}">{d["ad"]}</option>' for v, d in hizli.items()
@@ -2811,7 +2832,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
 <link rel="canonical" href="{SITE_KOK_URL}/">
 <link rel="stylesheet" href="/assets/css/style.css">
 <meta property="og:title" content="2026'da ne kaça mal olur? | Maliyeti Ne?">
-<meta property="og:description" content="Gerçek fiyat verisinden derlenmiş, doğrulanabilir maliyet endeksi.">
+<meta property="og:description" content="{og_aciklama}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{SITE_KOK_URL}/">
 <meta property="og:image" content="https://maliyetine.com.tr/assets/og-gorsel.png">
