@@ -933,3 +933,42 @@ class HizliHesapTesti(unittest.TestCase):
         html = sayfa_uret.anasayfa_uret()
         for parca in ['id="hh-vertikal"', 'id="hh-sonuc"', "hizli-hesap", "var VERI ="]:
             self.assertIn(parca, html)
+
+
+class SssTesti(unittest.TestCase):
+    """Genel SSS - cevaplar VERIDEN beslenmeli, bayatlamasin."""
+
+    def test_kalem_ve_kaynak_sayisi_veriden(self):
+        with TemporaryDirectory() as d:
+            kok = Path(d)
+            (kok / "dugun.json").write_text(json.dumps({
+                "guncelleme_tarihi": "2026-08-05",
+                "kalemler": {
+                    "a": {"kaynaklar": [{"site": "x", "toplam_urun": 5},
+                                        {"site": "y", "toplam_urun": 3}]},
+                    "b": {"kaynaklar": [{"site": "x", "toplam_urun": 2},
+                                        {"site": "z", "toplam_urun": 0}]},
+                },
+            }), encoding="utf-8")
+            q = sayfa_uret.sss_sorulari(kok)
+            metin = " ".join(x["c"] for x in q)
+            self.assertIn("2 kalem", metin)
+            self.assertIn("2 farklı siteden", metin)   # z sayilmaz (0 urun)
+            self.assertIn("2026-08-05", metin)
+
+    def test_soru_cevap_bos_degil(self):
+        for q in sayfa_uret.sss_sorulari():
+            self.assertTrue(q["s"].strip() and q["c"].strip())
+
+    def test_faqpage_schema_uretilir(self):
+        html = sayfa_uret.sss_sayfasi_uret()
+        blok = html.split('<script type="application/ld+json">')[1].split("</script>")[0]
+        graf = json.loads(blok)["@graph"]
+        self.assertEqual(graf[0]["@type"], "FAQPage")
+        self.assertEqual(len(graf[0]["mainEntity"]), len(sayfa_uret.sss_sorulari()))
+
+    def test_gorunur_metin_ve_schema_ayni(self):
+        """Google yalnizca schema'ya guvenmiyor; ikisi ortusmeli."""
+        html = sayfa_uret.sss_sayfasi_uret()
+        for q in sayfa_uret.sss_sorulari():
+            self.assertIn(q["s"], html)

@@ -1788,7 +1788,7 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
 
 <footer>
   <div class="kapsayici">
-    <div>© 2026 Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/veri/">Veri</a></div>
+    <div>© 2026 Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/sss/">SSS</a> · <a href="/veri/">Veri</a></div>
     <nav>
       {hesaplayici_menu}
       <a href="/{yol}/metodoloji/">Metodoloji</a>
@@ -2198,7 +2198,7 @@ def kalem_sayfasi_uret(
 
 <footer>
   <div class="kapsayici">
-    <div>© 2026 Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/veri/">Veri</a></div>
+    <div>© 2026 Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/sss/">SSS</a> · <a href="/veri/">Veri</a></div>
     <nav>
       <a href="/{conf["yol"]}/">{conf["ad"]} endeksi</a>
       {kalem_hesaplayici_menu}
@@ -2259,6 +2259,231 @@ def bayat_kalem_sayfalarini_temizle(vertikal: str) -> list[Path]:
     return silinen
 
 
+
+# --- Genel SSS sayfasi ---------------------------------------------------
+# NEDEN AYRI SAYFA: kalem sayfalarindaki SSS o kaleme ozgu. Site geneline
+# dair sorular ("veri nereden geliyor", "ne siklikla guncelleniyor",
+# "kullanabilir miyim") her sayfada tekrarlanamaz. FAQPage schema ile
+# zengin sonuc adayi; ayrica AI motorlari bu tur sayfalari kaynak
+# gosterirken tercih ediyor.
+#
+# CEVAPLAR VERIDEN BESLENIYOR: kalem/kaynak sayilari elle yazilmaz,
+# bayatlamasin.
+def sss_sorulari(veri_kok: Path | None = None) -> list[dict]:
+    kok = veri_kok or SITE_KOK / "veri"
+    toplam_kalem = 0
+    siteler: set[str] = set()
+    tarih = ""
+    for vertikal in VERTIKALLER:
+        dosya = kok / f"{vertikal}.json"
+        if not dosya.exists():
+            continue
+        try:
+            veri = json.loads(dosya.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            continue
+        kalemler = veri.get("kalemler") or {}
+        toplam_kalem += len(kalemler)
+        tarih = max(tarih, veri.get("guncelleme_tarihi") or "")
+        for k in kalemler.values():
+            for kaynak in k.get("kaynaklar") or []:
+                if (kaynak.get("toplam_urun") or 0) > 0 and kaynak.get("site"):
+                    siteler.add(kaynak["site"])
+
+    return [
+        {
+            "s": "Bu fiyatlar nereden geliyor?",
+            "c": (
+                f"Gerçek satış sayfalarından. Şu an {toplam_kalem} kalem, "
+                f"{len(siteler)} farklı siteden ölçülüyor: e-ticaret siteleri, "
+                "marka mağazaları ve sektör platformları. Fiyat tahmin edilmiyor, "
+                "yayınlanan listelerden okunuyor. Her kalemin yanında kaç üründen "
+                "derlendiği ve hangi tarihte ölçüldüğü yazıyor."
+            ),
+        },
+        {
+            "s": "Ne sıklıkla güncelleniyor?",
+            "c": (
+                "Ayda iki kez, her ayın 5'i ve 20'sinde otomatik olarak. "
+                f"Son ölçüm: {tarih}. Her sayfada güncelleme tarihi görünür; "
+                "veri değişmediyse tarihi yenilemiyoruz."
+            ),
+        },
+        {
+            "s": "\"Ortalama fiyat\" derken neyi kastediyorsunuz?",
+            "c": (
+                "Aritmetik ortalamayı değil, ortanca değeri. Fiyatları küçükten "
+                "büyüğe sıralayıp tam ortadakini alıyoruz. Nedeni: tek bir çok "
+                "pahalı ürün aritmetik ortalamayı yukarı çeker ve gerçekte "
+                "kimsenin ödemediği bir rakam çıkar."
+            ),
+        },
+        {
+            "s": "Ekonomik, orta ve üst segment nasıl belirleniyor?",
+            "c": (
+                "Yüzdelik dilime göre: en ucuz çeyrek ekonomik, ortadaki yarı "
+                "orta, en pahalı çeyrek üst. Bir uyarı: bu rakamlar kategori "
+                "listelerinden geliyor, yani \"üst\" piyasanın en pahalısı değil, "
+                "yaygın ürünler içindeki üst çeyrek."
+            ),
+        },
+        {
+            "s": "Aynı ürün iki sitede farklı fiyatta, hangisi doğru?",
+            "c": (
+                "İkisi de. Kaynaklar arası fark genelde fiyat politikası değil, "
+                "listelerdeki ürün karması farkı: bir sitede markalı ürünler, "
+                "diğerinde isimsiz modeller öne çıkabiliyor. Bu yüzden ham "
+                "fiyatları karıştırmıyoruz; her kaynağın kendi orta değerini "
+                "alıp onların ortasını hesaplıyoruz. Fark %30'u aşarsa sayfada "
+                "uyarı olarak gösteriyoruz."
+            ),
+        },
+        {
+            "s": "Verileri kullanabilir miyim?",
+            "c": (
+                "Evet. Tüm veri CSV ve JSON olarak indirilebilir (CC BY 4.0). "
+                "Tek ricamız ölçüm tarihini de belirtmeniz — fiyat verisi "
+                "tarihsiz olduğunda yanıltıcı hale geliyor."
+            ),
+        },
+        {
+            "s": "Neden kira, konut ve işçilik yok?",
+            "c": (
+                "Çünkü tek bir sayıya sığmıyorlar. Aynı şehirde iki mahalle "
+                "arasında kira ikiye katlanabiliyor. Ölçemediğimiz şeye rakam "
+                "uydurmaktansa kapsam dışı bırakmayı tercih ediyoruz."
+            ),
+        },
+        {
+            "s": "Reklam veriyor musunuz, bağımsız mısınız?",
+            "c": (
+                "Fiyatlar hiçbir ticari ilişkiden etkilenmiyor: kaynak seçimi ve "
+                "ölçüm otomatik, bir markanın ödeme yapması rakamı değiştirmiyor. "
+                "Gelir modelimiz ve bağımsızlık beyanımız hakkımızda sayfasında."
+            ),
+        },
+        {
+            "s": "Bir hata görürsem ne yapmalıyım?",
+            "c": (
+                "İletişim sayfasından yazın. Düzeltir ve neyi düzelttiğimizi "
+                "yazarız — hatayı sessizce silmiyoruz."
+            ),
+        },
+    ]
+
+
+
+def sss_sayfasi_uret(veri_kok: Path | None = None, tarih: str | None = None) -> str:
+    tarih = tarih or date.today().isoformat()
+    sorular = sss_sorulari(veri_kok)
+    url = f"{SITE_KOK_URL}/sss/"
+    govde = "".join(
+        f'    <h2>{q["s"]}</h2>\n    <p>{q["c"]}</p>\n' for q in sorular
+    )
+    json_ld = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {"@type": "Question", "name": q["s"],
+                     "acceptedAnswer": {"@type": "Answer", "text": q["c"]}}
+                    for q in sorular
+                ],
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": 1, "name": "Ana sayfa",
+                     "item": SITE_KOK_URL + "/"},
+                    {"@type": "ListItem", "position": 2, "name": "Sık sorulan sorular",
+                     "item": url},
+                ],
+            },
+        ],
+    }
+    return f"""<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sık Sorulan Sorular | Maliyeti Ne?</title>
+<meta name="description" content="Fiyatlar nereden geliyor, ne sıklıkla güncelleniyor, veriyi kullanabilir miyim? Maliyeti Ne? hakkında sık sorulan sorular ve yanıtları.">
+<link rel="canonical" href="{url}">
+<link rel="stylesheet" href="/assets/css/style.css">
+<meta property="og:title" content="Sık Sorulan Sorular | Maliyeti Ne?">
+<meta property="og:description" content="Fiyatlar nereden geliyor, ne sıklıkla güncelleniyor, veriyi kullanabilir miyim?">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{url}">
+<meta property="og:image" content="{SITE_KOK_URL}/assets/og-gorsel.png">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{json.dumps(json_ld, ensure_ascii=False, indent=2)}
+</script>
+</head>
+<body>
+
+<header class="ust-bar">
+  <div class="kapsayici">
+    <a href="/" class="logo">Maliyeti <span>Ne?</span></a>
+    <nav class="ust-menu">
+      <a href="/dugun/">Düğün</a>
+      <a href="/ev-kurma/">Ev Kurma</a>
+      <a href="/okul/">Okul</a>
+      <a href="/arac/">0 km Araç</a>
+    </nav>
+  </div>
+</header>
+
+<main class="kapsayici">
+
+  <nav class="kirinti" aria-label="Sayfa yolu">
+    <a href="/">Ana sayfa</a> <span aria-hidden="true">›</span> <span>Sık sorulan sorular</span>
+  </nav>
+
+  <h1>Sık Sorulan Sorular</h1>
+
+  <div class="cevap-blok">
+    Fiyatları nereden aldığımız, ne sıklıkla ölçtüğümüz ve veriyi nasıl
+    kullanabileceğiniz — hepsi burada. Yöntemin ayrıntısı için her endeksin
+    kendi metodoloji sayfası var.
+  </div>
+
+  <section class="icerik-bolumu">
+{govde}  </section>
+
+  <section class="icerik-bolumu">
+    <h2>Başka sorunuz varsa</h2>
+    <p>
+      <a href="/iletisim/">İletişim sayfasından</a> yazabilirsiniz. Veriyi
+      indirmek için <a href="/veri/">veri sayfasına</a>, yöntemin tamamı için
+      metodoloji sayfalarına bakabilirsiniz:
+      <a href="/dugun/metodoloji/">düğün</a>,
+      <a href="/ev-kurma/metodoloji/">ev kurma</a>,
+      <a href="/okul/metodoloji/">okul</a>,
+      <a href="/arac/metodoloji/">0 km araç</a>.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="kapsayici">
+    <div>© {tarih[:4]} Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/sss/">SSS</a> · <a href="/veri/">Veri</a></div>
+    <nav>
+      <a href="/dugun/">Düğün</a>
+      <a href="/ev-kurma/">Ev Kurma</a>
+      <a href="/okul/">Okul</a>
+      <a href="/arac/">0 km Araç</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
+"""
+
+
 def sitemap_uret() -> str:
     url_kayitlari = [
         ("/", "monthly", "1.0"),
@@ -2268,6 +2493,8 @@ def sitemap_uret() -> str:
     # Veri indirme merkezi - alintilanabilirligin merkezi sayfasi.
     if (SITE_KOK / "veri" / "index.html").exists():
         url_kayitlari.append(("/veri/", "monthly", "0.8"))
+    if (SITE_KOK / "sss" / "index.html").exists():
+        url_kayitlari.append(("/sss/", "monthly", "0.6"))
     # Rehber (blog) sayfalari - rehber.py uretir, sitemap buradan besleniyor.
     # Import fonksiyon icinde: rehber.py sayfa_uret'i import ediyor, modul
     # seviyesinde karsilikli import olurdu.
@@ -2626,7 +2853,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
 
 <footer>
   <div class="kapsayici">
-    <div>© 2026 Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/veri/">Veri</a></div>
+    <div>© 2026 Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/sss/">SSS</a> · <a href="/veri/">Veri</a></div>
     <nav>{menu}
     </nav>
   </div>
@@ -2659,6 +2886,11 @@ def main():
         print(f"Bayat kalem sayfasi SILINDI: {silinen}")
     for kalem_hedef in kalem_sayfalari_yaz(args.vertikal, args.veri):
         print(f"Kalem sayfasi uretildi: {kalem_hedef}")
+    sss = SITE_KOK / "sss" / "index.html"
+    sss.parent.mkdir(parents=True, exist_ok=True)
+    sss.write_text(sss_sayfasi_uret(), encoding="utf-8")
+    print(f"SSS sayfasi uretildi: {sss}")
+
     sitemap_hedef = SITE_KOK / "sitemap.xml"
     sitemap_hedef.write_text(sitemap_uret(), encoding="utf-8")
     print(f"Sitemap uretildi: {sitemap_hedef}")

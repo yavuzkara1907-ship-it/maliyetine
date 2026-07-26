@@ -1035,7 +1035,7 @@ def rehber_uret(rehber: dict, veriler: dict, tarih: str | None = None) -> str | 
 
 <footer>
   <div class="kapsayici">
-    <div>© {tarih[:4]} Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/veri/">Veri</a></div>
+    <div>© {tarih[:4]} Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/sss/">SSS</a> · <a href="/veri/">Veri</a></div>
     <nav>
       <a href="/dugun/">Düğün</a>
       <a href="/ev-kurma/">Ev Kurma</a>
@@ -1096,7 +1096,7 @@ def rehber_dizini_uret(yazilanlar: list[dict], tarih: str | None = None) -> str:
 
 <footer>
   <div class="kapsayici">
-    <div>© {tarih[:4]} Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/veri/">Veri</a></div>
+    <div>© {tarih[:4]} Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/sss/">SSS</a> · <a href="/veri/">Veri</a></div>
   </div>
 </footer>
 

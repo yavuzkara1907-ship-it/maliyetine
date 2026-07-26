@@ -33,6 +33,7 @@ geldiği ve ölçüm tarihi bulunur; rakam bağımsız olarak doğrulanabilir.
 - [Okul metodolojisi](https://maliyetine.com.tr/okul/metodoloji/)
 - [0 km Araç metodolojisi](https://maliyetine.com.tr/arac/metodoloji/)
 - [Hakkımızda ve bağımsızlık beyanı](https://maliyetine.com.tr/hakkimizda/)
+- [Sık sorulan sorular](https://maliyetine.com.tr/sss/)
 - [İletişim ve düzeltme talebi](https://maliyetine.com.tr/iletisim/)
 
 ## Nasıl ölçülüyor?
