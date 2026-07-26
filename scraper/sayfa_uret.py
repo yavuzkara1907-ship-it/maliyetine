@@ -847,6 +847,57 @@ def _breadcrumb_html(conf: dict, kalem_adi: str) -> str:
     )
 
 
+
+# --- Fiyat grafigi (SVG) -----------------------------------------------
+# NEDEN: sitede HIC gorsel yoktu - <img> etiketi bile. Uc kazanc:
+# (1) sayfa kalite sinyali, (2) paylasildiginda goze carpma,
+# (3) fiyat dagiliminin tabloya gore anlik okunmasi.
+# HARICI DOSYA YOK: SVG sayfaya gomulu, ek istek acmiyor ve veriyle
+# birlikte kendiliginden guncelleniyor. Renkler CSS degiskenlerinden
+# geliyor, karanlik modda da dogru gorunuyor.
+GRAFIK_GENISLIK = 620
+GRAFIK_YUKSEKLIK = 190
+
+
+def _segment_grafigi(degerler: dict, birim_notu: str = "") -> str:
+    """Ekonomik/orta/ust segment karsilastirma cubuk grafigi.
+
+    Veri eksikse (segmentlerden biri yoksa) BOS doner - yarim grafik
+    cizmek yaniltici olur.
+    """
+    sira = [("dusuk", "Ekonomik"), ("orta", "Orta"), ("luks", "Üst")]
+    veri = [(ad, degerler.get(k)) for k, ad in sira]
+    if not all(d for _, d in veri):
+        return ""
+    en_buyuk = max(d for _, d in veri)
+    if not en_buyuk:
+        return ""
+
+    sol, ust, cubuk_y, aralik = 88, 22, 30, 52
+    cubuk_alan = GRAFIK_GENISLIK - sol - 96
+    parcalar = []
+    for i, (ad, deger) in enumerate(veri):
+        y = ust + i * aralik
+        genislik = max(3, round(cubuk_alan * deger / en_buyuk))
+        parcalar.append(
+            f'<text x="{sol - 10}" y="{y + 19}" text-anchor="end" class="g-etiket">{ad}</text>'
+            f'<rect x="{sol}" y="{y}" width="{genislik}" height="{cubuk_y}" rx="4" class="g-cubuk g-{i}"/>'
+            f'<text x="{sol + genislik + 10}" y="{y + 19}" class="g-deger">{_para(deger)}</text>'
+        )
+    kat = veri[2][1] / veri[0][1] if veri[0][1] else 0
+    alt = (f'<text x="{sol}" y="{ust + 3 * aralik + 6}" class="g-alt">'
+           f'Üst segment, ekonomiğin {kat:.1f} katı{birim_notu}</text>') if kat else ""
+    return (
+        f'  <figure class="fiyat-grafik">\n'
+        f'    <svg viewBox="0 0 {GRAFIK_GENISLIK} {GRAFIK_YUKSEKLIK}" '
+        f'role="img" aria-label="Segmentlere göre fiyat karşılaştırması: '
+        + ", ".join(f"{ad} {_para(d)}" for ad, d in veri) + '">\n'
+        f'      {"".join(parcalar)}{alt}\n'
+        f'    </svg>\n'
+        f'  </figure>\n'
+    )
+
+
 def _para(n: int) -> str:
     return f"{n:,.0f}".replace(",", ".") + " TL"
 
@@ -1992,6 +2043,7 @@ def kalem_sayfasi_uret(
   <section class="icerik-bolumu">
     <h2>Fiyat aralığı ve örneklem</h2>
     <p>{sayfa["aciklama"]}</p>
+{_segment_grafigi(degerler, " (kişi başı)" if tanim["birim"] == "kisi_basi" else "")}
     {_segment_detay_tablosu_html(veri)}
     <p class="sonuc-alt-metin">Segmentler persentil bazlı ayrılır: en ucuz
       çeyrek ekonomik, ortadaki yarı orta, en pahalı çeyrek lüks. "Ürün"

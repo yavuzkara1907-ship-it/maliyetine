@@ -797,3 +797,43 @@ class AnasayfaYazisiTesti(unittest.TestCase):
         html = sayfa_uret.anasayfa_uret()
         self.assertIn("Bu rakamlar ne anlama geliyor?", html)
         self.assertIn("Neyi ölçmüyoruz", html)
+
+
+class FiyatGrafigiTesti(unittest.TestCase):
+    """SVG fiyat grafigi - eksik veriyle yarim grafik cizilmemeli."""
+
+    def test_uc_segment_varsa_grafik_uretilir(self):
+        g = sayfa_uret._segment_grafigi({"dusuk": 8829, "orta": 28930, "luks": 43299})
+        self.assertIn("<svg", g)
+        self.assertEqual(g.count("<rect"), 3)
+        self.assertIn("8.829 TL", g)
+        self.assertIn("43.299 TL", g)
+
+    def test_eksik_segmentte_grafik_cizilmez(self):
+        """Yarim grafik yaniltici olur - hic cizme."""
+        for eksik in [{"dusuk": 100, "orta": None, "luks": 300},
+                      {"dusuk": None, "orta": 200, "luks": 300},
+                      {}, {"orta": 500}]:
+            self.assertEqual(sayfa_uret._segment_grafigi(eksik), "", str(eksik))
+
+    def test_alt_metin_rakamlari_icerir(self):
+        """Gorseli goremeyene ayni bilgi metin olarak ulasmali."""
+        g = sayfa_uret._segment_grafigi({"dusuk": 1000, "orta": 2000, "luks": 4000})
+        m = re.search(r'aria-label="([^"]*)"', g)
+        self.assertIsNotNone(m)
+        for beklenen in ["1.000 TL", "2.000 TL", "4.000 TL"]:
+            self.assertIn(beklenen, m.group(1))
+
+    def test_kat_farki_dogru_hesaplanir(self):
+        g = sayfa_uret._segment_grafigi({"dusuk": 1000, "orta": 2000, "luks": 3000})
+        self.assertIn("3.0 katı", g)
+
+
+class BreadcrumbTesti(unittest.TestCase):
+    def test_kirinti_ana_sayfa_ve_vertikale_link_verir(self):
+        conf = sayfa_uret.VERTIKALLER["okul"]
+        h = sayfa_uret._breadcrumb_html(conf, "Okul Çantası")
+        self.assertIn('href="/"', h)
+        self.assertIn('href="/okul/"', h)
+        self.assertIn("Okul Çantası", h)
+        self.assertIn('aria-label="Sayfa yolu"', h)

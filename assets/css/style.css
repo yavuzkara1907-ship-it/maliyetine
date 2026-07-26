@@ -601,3 +601,44 @@ button.metin-buton {
   margin: 0 6px;
   opacity: 0.6;
 }
+
+/* ---- Fiyat grafigi (sayfaya gomulu SVG) ---- */
+.fiyat-grafik {
+  margin: 4px 0 18px;
+}
+
+.fiyat-grafik svg {
+  width: 100%;
+  height: auto;
+  max-width: 620px;
+  display: block;
+}
+
+.fiyat-grafik .g-cubuk {
+  fill: var(--renk-vurgu);
+}
+
+/* Segmentler ayirt edilsin: ekonomikten uste dogru koyulasiyor. */
+.fiyat-grafik .g-0 { opacity: 0.45; }
+.fiyat-grafik .g-1 { opacity: 0.7; }
+.fiyat-grafik .g-2 { opacity: 1; }
+
+.fiyat-grafik .g-etiket {
+  fill: var(--renk-metin-soluk);
+  font-size: 13px;
+  font-family: inherit;
+}
+
+.fiyat-grafik .g-deger {
+  fill: var(--renk-metin);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  font-variant-numeric: tabular-nums;
+}
+
+.fiyat-grafik .g-alt {
+  fill: var(--renk-metin-soluk);
+  font-size: 12px;
+  font-family: inherit;
+}
