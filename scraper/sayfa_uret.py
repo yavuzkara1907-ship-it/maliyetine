@@ -260,7 +260,7 @@ VERTIKALLER = {
             "Şehir dışı ulaşım, konaklama ve kişiye özel ekstra talepler.",
         ],
         "segment_aciklama": (
-            "Ekonomik segment düşük fiyat bandını, orta segment piyasadaki medyan "
+            "Ekonomik segment düşük fiyat bandını, orta segment piyasadaki ortalama "
             "bütçeyi, lüks segment ise üst fiyat bandını gösterir. Hizmetlerde "
             "aynı mekanın tüm seçenekleri aynı kapsamı sunmayabilir; bu yüzden "
             "toplam senaryoda yemekli salon ayrı, kokteyl salon ayrı değerlendirilir."
@@ -358,7 +358,7 @@ VERTIKALLER = {
         ],
         "segment_aciklama": (
             "Ekonomik segment temel işlevi karşılayan alt fiyat bandını, orta segment "
-            "ev kurma bütçesinde beklenen medyan fiyatı, lüks segment ise daha yüksek "
+            "ev kurma bütçesinde beklenen ortalama fiyatı, lüks segment ise daha yüksek "
             "marka/kapasite bandını gösterir. Ev kurma endeksinde tüm kalemler sabit "
             "birimli ürün olduğu için davetli sayısı gibi ek çarpan kullanılmaz."
         ),
@@ -435,8 +435,8 @@ VERTIKALLER = {
         # Bu vertikalde kalemler TOPLANMAZ (marka kalemleri bilgi_amacli),
         # "toplam" = marka giris fiyatlarinin medyani.
         "olcek_varsayilan": 1,
-        "ornek_ifade": "bir markanın en ucuz sıfır aracının medyan fiyatının",
-        "anasayfa_ifade": "bir markanın en ucuz sıfır aracı medyan",
+        "ornek_ifade": "bir markanın en ucuz sıfır aracının ortalama fiyatının",
+        "anasayfa_ifade": "bir markanın en ucuz sıfır aracı ortalama",
         "kart_alt": "24 marka giriş fiyatı",
         # 2026-07-25: Yavuz'un onerisiyle hesaplayici EKLENDI. Ilk tasarimda
         # "kalemler birbirinin alternatifi, toplama hesabi anlamsiz" diye
@@ -1137,7 +1137,7 @@ def _fiyat_gecmisi_html(vertikal: str, kalem_id: str, gecmis_kok: Path | None = 
         for n in seri
     )
     ozet = (
-        f'{ilk["tarih"]} tarihinden {son["tarih"]} tarihine kadar medyan fiyat '
+        f'{ilk["tarih"]} tarihinden {son["tarih"]} tarihine kadar ortalama fiyat '
         f'{_para(ilk["medyan"])} → {_para(son["medyan"])}, yani '
         f'<strong>%{abs(degisim):.1f} {yon}</strong>.'
     )
@@ -1146,7 +1146,7 @@ def _fiyat_gecmisi_html(vertikal: str, kalem_id: str, gecmis_kok: Path | None = 
         "    <h2>Fiyat geçmişi</h2>\n"
         f"    <p>{ozet}</p>\n"
         '    <div class="tablo-sarmal"><table>\n'
-        "      <thead><tr><th>Ölçüm tarihi</th><th>Medyan</th><th>Örneklem</th></tr></thead>\n"
+        "      <thead><tr><th>Ölçüm tarihi</th><th>Ortalama</th><th>Örneklem</th></tr></thead>\n"
         f"      <tbody>{satirlar}</tbody>\n"
         "    </table></div>\n"
         "  </section>\n"
@@ -1466,7 +1466,7 @@ def _segment_tablosu_html(kalem_verisi: dict | None) -> str:
             f'<td class="sayi">{_para(deger) if deger is not None else "—"}</td></tr>'
         )
     return (
-        "<table>\n<thead><tr><th>Segment</th><th class=\"sayi\">Medyan fiyat</th></tr></thead>\n"
+        "<table>\n<thead><tr><th>Segment</th><th class=\"sayi\">Ortalama fiyat</th></tr></thead>\n"
         "<tbody>\n" + "\n".join(satirlar) + "\n</tbody>\n</table>"
     )
 
@@ -1502,7 +1502,7 @@ def _segment_detay_tablosu_html(kalem_verisi: dict | None) -> str:
         )
     return (
         "<table>\n<thead><tr><th>Segment</th>"
-        '<th class="sayi">Medyan</th><th class="sayi">En düşük</th>'
+        '<th class="sayi">Ortalama</th><th class="sayi">En düşük</th>'
         '<th class="sayi">En yüksek</th><th class="sayi">Ürün</th></tr></thead>\n'
         "<tbody>\n" + "\n".join(satirlar) + "\n</tbody>\n</table>"
     )
@@ -1644,7 +1644,7 @@ def kalem_sayfasi_uret(
     if orta:
         cevap = (
             f"Maliyeti Ne? verilerine göre {guncelleme_tarihi} itibarıyla {tanim['ad']} "
-            f"orta segment medyan fiyatı {birim} <strong>{_para(orta)}</strong>. "
+            f"orta segment ortalama fiyatı {birim} <strong>{_para(orta)}</strong>. "
             f"Bu rakam {kaynak_sayisi or (veri or {}).get('kaynak_sayisi', 0)} bağımsız kaynak"
         )
         if urun_sayisi:
@@ -1661,7 +1661,7 @@ def kalem_sayfasi_uret(
     # asmasin (Google keser).
     if orta:
         meta_aciklama = (
-            f"{tanim['ad']} orta segment medyan fiyatı{birim} {_para(orta)} "
+            f"{tanim['ad']} orta segment ortalama fiyatı{birim} {_para(orta)} "
             f"({guncelleme_tarihi}). Ekonomik, orta ve lüks fiyat aralığı; "
             f"kaynak sayısı ve örneklem büyüklüğüyle."
         )
@@ -1876,6 +1876,19 @@ def sitemap_uret() -> str:
         ("/hakkimizda/", "yearly", "0.6"),
         ("/iletisim/", "yearly", "0.4"),
     ]
+    # Rehber (blog) sayfalari - rehber.py uretir, sitemap buradan besleniyor.
+    # Import fonksiyon icinde: rehber.py sayfa_uret'i import ediyor, modul
+    # seviyesinde karsilikli import olurdu.
+    try:
+        import rehber
+        if (SITE_KOK / "rehber" / "index.html").exists():
+            url_kayitlari.append(("/rehber/", "monthly", "0.7"))
+            for r in rehber.REHBERLER:
+                if (SITE_KOK / "rehber" / r["slug"] / "index.html").exists():
+                    url_kayitlari.append((f"/rehber/{r['slug']}/", "monthly", "0.7"))
+    except ImportError:
+        pass
+
     for conf in VERTIKALLER.values():
         yol = conf["yol"]
         url_kayitlari.extend([
@@ -1963,6 +1976,20 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
     """
     bugun = date.today().isoformat()
     ozetler = [o for o in (vertikal_ozeti(v, veri_kok) for v in VERTIKALLER) if o]
+
+    # Rehber linkleri: yalnizca gercekten URETILMIS olanlar. Veri yoksa
+    # rehber.py sayfayi yazmiyor - burada da linki verilmemeli, aksi
+    # halde ana sayfadan 404'e link cikar.
+    rehber_linkleri = ""
+    try:
+        import rehber
+        rehber_linkleri = "".join(
+            f'<a href="/rehber/{r["slug"]}/">{r["baslik"]}</a>'
+            for r in rehber.REHBERLER
+            if (SITE_KOK / "rehber" / r["slug"] / "index.html").exists()
+        )
+    except ImportError:
+        pass
 
     if ozetler:
         cumleler = [
@@ -2116,6 +2143,9 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
   <div class="kart-grid">
 {chr(10).join(kartlar)}
   </div>
+
+  <h2>Rehberler</h2>
+  <p class="kart-linkler">{rehber_linkleri}</p>
 
   <h2>Neden farklı?</h2>
   <p>

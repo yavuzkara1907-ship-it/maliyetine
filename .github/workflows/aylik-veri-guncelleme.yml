@@ -55,6 +55,16 @@ jobs:
             python sayfa_uret.py --vertikal "$vertikal"
           done
 
+      # Rehber (blog) yazilari: metin elle yazili, RAKAMLAR veriden gelir.
+      # Her olcumde yeniden uretiliyor ki yazidaki tutarlar bayatlamasin.
+      # sayfa_uret'ten SONRA calismali - sitemap ve ana sayfa rehber
+      # dosyalarinin varligina bakiyor.
+      - name: Rehber yazılarını üret
+        working-directory: scraper
+        run: |
+          python rehber.py
+          python sayfa_uret.py --vertikal dugun   # sitemap + ana sayfa tazelensin
+
       # Zaman serisi: aylik anlik goruntuleri tarayip fiyat gecmisi uretir.
       # Projenin kopyalanamaz varligi bu - bir ay atlanirsa seride kalici
       # delik olusur.
@@ -68,7 +78,7 @@ jobs:
           git config user.name "maliyetine-bot"
           git config user.email "actions@users.noreply.github.com"
           git add scraper/veri scraper/kaynak_gecmisi.json veri \
-                  index.html sitemap.xml dugun ev-kurma arac
+                  index.html sitemap.xml dugun ev-kurma arac rehber
           if git diff --cached --quiet; then
             echo "Değişiklik yok, commit atlanıyor."
             echo "degisti=false" >> "$GITHUB_OUTPUT"

@@ -16,6 +16,31 @@
     <priority>0.4</priority>
   </url>
   <url>
+    <loc>https://maliyetine.com.tr/rehber/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://maliyetine.com.tr/rehber/150-kisilik-dugun-maliyeti/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://maliyetine.com.tr/rehber/yemekli-mi-kokteyl-mi/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://maliyetine.com.tr/rehber/sifirdan-ev-kurma-listesi/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://maliyetine.com.tr/rehber/sifir-araba-gercek-maliyeti/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://maliyetine.com.tr/dugun/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>

@@ -292,7 +292,7 @@ class IcerikSeoTestleri(unittest.TestCase):
             "ev-kurma", "buzdolabi-fiyatlari", self.veri_dosyasi
         )
         self.assertIn("2026'da Buzdolabı Fiyatları Ne Kadar?", html)
-        self.assertIn("orta segment medyan fiyatı", html)
+        self.assertIn("orta segment ortalama fiyatı", html)
         self.assertIn("28.930 TL", html)
         self.assertIn("/ev-kurma/hesaplayici/", html)
 
