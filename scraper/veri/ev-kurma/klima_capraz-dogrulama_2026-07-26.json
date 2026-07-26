@@ -1,0 +1,12 @@
+{
+  "vertikal": "ev-kurma",
+  "kalem": "klima",
+  "tarih": "2026-07-26",
+  "site_medyanlari": {
+    "trendyol": 25725,
+    "amazon": 31125
+  },
+  "fark_orani": 0.21,
+  "esik_orani": 0.3,
+  "uyari": false
+}

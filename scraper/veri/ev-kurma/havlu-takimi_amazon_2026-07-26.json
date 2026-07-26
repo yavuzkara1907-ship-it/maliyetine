@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Havlu Takımı"
+  ],
+  "kalem": "havlu-takimi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-07-26",
+  "toplam_urun": 48,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 676,
+  "segmentler": {
+    "dusuk": {
+      "min": 194,
+      "medyan": 430,
+      "max": 460,
+      "urun_sayisi": 13
+    },
+    "orta": {
+      "min": 469,
+      "medyan": 749,
+      "max": 1090,
+      "urun_sayisi": 25
+    },
+    "luks": {
+      "min": 1100,
+      "medyan": 1314,
+      "max": 1637,
+      "urun_sayisi": 10
+    }
+  }
+}

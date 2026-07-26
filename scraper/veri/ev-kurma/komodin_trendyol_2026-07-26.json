@@ -6,21 +6,21 @@
   "kalem": "komodin",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-26",
-  "toplam_urun": 20,
+  "toplam_urun": 19,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "json-ld"
   ],
-  "genel_medyan": 1424,
+  "genel_medyan": 1549,
   "segmentler": {
     "dusuk": {
       "min": 556,
-      "medyan": 686,
-      "max": 911,
-      "urun_sayisi": 6
+      "medyan": 669,
+      "max": 786,
+      "urun_sayisi": 5
     },
     "orta": {
-      "min": 952,
+      "min": 911,
       "medyan": 1623,
       "max": 2250,
       "urun_sayisi": 10

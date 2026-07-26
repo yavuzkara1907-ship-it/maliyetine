@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Çatal Kaşık Bıçak Takımı"
+  ],
+  "kalem": "catal-kasik-bicak-takimi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-07-26",
+  "toplam_urun": 43,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 2099,
+  "segmentler": {
+    "dusuk": {
+      "min": 490,
+      "medyan": 868,
+      "max": 1129,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 1169,
+      "medyan": 2149,
+      "max": 3849,
+      "urun_sayisi": 22
+    },
+    "luks": {
+      "min": 3999,
+      "medyan": 4999,
+      "max": 6949,
+      "urun_sayisi": 10
+    }
+  }
+}

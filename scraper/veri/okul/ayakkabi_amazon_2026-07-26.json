@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Çocuk Spor Ayakkabı"
+  ],
+  "kalem": "ayakkabi",
+  "vertikal": "okul",
+  "tarih": "2026-07-26",
+  "toplam_urun": 47,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 1538,
+  "segmentler": {
+    "dusuk": {
+      "min": 756,
+      "medyan": 1077,
+      "max": 1281,
+      "urun_sayisi": 12
+    },
+    "orta": {
+      "min": 1291,
+      "medyan": 1539,
+      "max": 1923,
+      "urun_sayisi": 24
+    },
+    "luks": {
+      "min": 1961,
+      "medyan": 2337,
+      "max": 2839,
+      "urun_sayisi": 11
+    }
+  }
+}

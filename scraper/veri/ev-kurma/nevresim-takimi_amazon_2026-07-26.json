@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Nevresim Takımı"
+  ],
+  "kalem": "nevresim-takimi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-07-26",
+  "toplam_urun": 57,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 930,
+  "segmentler": {
+    "dusuk": {
+      "min": 400,
+      "medyan": 550,
+      "max": 704,
+      "urun_sayisi": 15
+    },
+    "orta": {
+      "min": 748,
+      "medyan": 948,
+      "max": 1659,
+      "urun_sayisi": 28
+    },
+    "luks": {
+      "min": 1727,
+      "medyan": 1884,
+      "max": 2990,
+      "urun_sayisi": 14
+    }
+  }
+}

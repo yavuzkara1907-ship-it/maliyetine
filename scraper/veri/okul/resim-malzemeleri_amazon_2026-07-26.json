@@ -1,0 +1,16 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Resim Defteri Seti"
+  ],
+  "kalem": "resim-malzemeleri",
+  "vertikal": "okul",
+  "tarih": "2026-07-26",
+  "toplam_urun": 0,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "hicbiri"
+  ],
+  "genel_medyan": null,
+  "segmentler": {}
+}

@@ -6,7 +6,7 @@
   "kalem": "matara",
   "vertikal": "okul",
   "tarih": "2026-07-26",
-  "toplam_urun": 24,
+  "toplam_urun": 23,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "json-ld"
@@ -15,18 +15,18 @@
   "segmentler": {
     "dusuk": {
       "min": 75,
-      "medyan": 149,
+      "medyan": 130,
       "max": 159,
-      "urun_sayisi": 7
+      "urun_sayisi": 6
     },
     "orta": {
       "min": 170,
       "medyan": 220,
-      "max": 308,
+      "max": 300,
       "urun_sayisi": 12
     },
     "luks": {
-      "min": 340,
+      "min": 308,
       "medyan": 470,
       "max": 510,
       "urun_sayisi": 5

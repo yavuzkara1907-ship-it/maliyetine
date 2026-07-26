@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Mutfak Robotu"
+  ],
+  "kalem": "mutfak-robotu",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-07-26",
+  "toplam_urun": 45,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 4207,
+  "segmentler": {
+    "dusuk": {
+      "min": 1199,
+      "medyan": 2253,
+      "max": 2649,
+      "urun_sayisi": 12
+    },
+    "orta": {
+      "min": 2766,
+      "medyan": 4228,
+      "max": 5998,
+      "urun_sayisi": 22
+    },
+    "luks": {
+      "min": 6399,
+      "medyan": 8426,
+      "max": 9999,
+      "urun_sayisi": 11
+    }
+  }
+}

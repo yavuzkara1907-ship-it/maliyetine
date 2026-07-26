@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Kuru Boya Seti"
+  ],
+  "kalem": "boya-seti",
+  "vertikal": "okul",
+  "tarih": "2026-07-26",
+  "toplam_urun": 53,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 233,
+  "segmentler": {
+    "dusuk": {
+      "min": 75,
+      "medyan": 126,
+      "max": 150,
+      "urun_sayisi": 14
+    },
+    "orta": {
+      "min": 158,
+      "medyan": 240,
+      "max": 368,
+      "urun_sayisi": 26
+    },
+    "luks": {
+      "min": 385,
+      "medyan": 549,
+      "max": 980,
+      "urun_sayisi": 13
+    }
+  }
+}

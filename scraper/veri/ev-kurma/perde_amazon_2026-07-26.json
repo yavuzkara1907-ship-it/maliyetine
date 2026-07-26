@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Perde"
+  ],
+  "kalem": "perde",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-07-26",
+  "toplam_urun": 41,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 700,
+  "segmentler": {
+    "dusuk": {
+      "min": 220,
+      "medyan": 345,
+      "max": 518,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 533,
+      "medyan": 700,
+      "max": 1100,
+      "urun_sayisi": 20
+    },
+    "luks": {
+      "min": 1250,
+      "medyan": 1453,
+      "max": 1794,
+      "urun_sayisi": 10
+    }
+  }
+}

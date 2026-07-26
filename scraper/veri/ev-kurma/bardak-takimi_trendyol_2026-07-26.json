@@ -6,29 +6,29 @@
   "kalem": "bardak-takimi",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-26",
-  "toplam_urun": 17,
+  "toplam_urun": 18,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "json-ld"
   ],
-  "genel_medyan": 239,
+  "genel_medyan": 249,
   "segmentler": {
     "dusuk": {
       "min": 124,
-      "medyan": 188,
+      "medyan": 171,
       "max": 191,
       "urun_sayisi": 6
     },
     "orta": {
       "min": 198,
-      "medyan": 259,
-      "max": 345,
-      "urun_sayisi": 7
+      "medyan": 278,
+      "max": 590,
+      "urun_sayisi": 8
     },
     "luks": {
-      "min": 531,
-      "medyan": 601,
-      "max": 956,
+      "min": 612,
+      "medyan": 1228,
+      "max": 1821,
       "urun_sayisi": 4
     }
   }

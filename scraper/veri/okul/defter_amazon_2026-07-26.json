@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Okul Defteri"
+  ],
+  "kalem": "defter",
+  "vertikal": "okul",
+  "tarih": "2026-07-26",
+  "toplam_urun": 46,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 132,
+  "segmentler": {
+    "dusuk": {
+      "min": 50,
+      "medyan": 76,
+      "max": 87,
+      "urun_sayisi": 12
+    },
+    "orta": {
+      "min": 89,
+      "medyan": 141,
+      "max": 282,
+      "urun_sayisi": 23
+    },
+    "luks": {
+      "min": 289,
+      "medyan": 300,
+      "max": 539,
+      "urun_sayisi": 11
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Gelin Ayakkabısı"
+  ],
+  "kalem": "gelin-ayakkabisi",
+  "vertikal": "dugun",
+  "tarih": "2026-07-26",
+  "toplam_urun": 42,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 1595,
+  "segmentler": {
+    "dusuk": {
+      "min": 700,
+      "medyan": 849,
+      "max": 1149,
+      "urun_sayisi": 13
+    },
+    "orta": {
+      "min": 1156,
+      "medyan": 1604,
+      "max": 2300,
+      "urun_sayisi": 21
+    },
+    "luks": {
+      "min": 2300,
+      "medyan": 2404,
+      "max": 3499,
+      "urun_sayisi": 8
+    }
+  }
+}

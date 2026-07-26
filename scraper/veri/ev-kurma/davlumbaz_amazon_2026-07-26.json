@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Davlumbaz"
+  ],
+  "kalem": "davlumbaz",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-07-26",
+  "toplam_urun": 25,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 5400,
+  "segmentler": {
+    "dusuk": {
+      "min": 1291,
+      "medyan": 2980,
+      "max": 3599,
+      "urun_sayisi": 7
+    },
+    "orta": {
+      "min": 3729,
+      "medyan": 5550,
+      "max": 9990,
+      "urun_sayisi": 12
+    },
+    "luks": {
+      "min": 10258,
+      "medyan": 13187,
+      "max": 17850,
+      "urun_sayisi": 6
+    }
+  }
+}

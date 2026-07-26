@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Nikah Şekeri"
+  ],
+  "kalem": "nikah-sekeri",
+  "vertikal": "dugun",
+  "tarih": "2026-07-26",
+  "toplam_urun": 31,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 275,
+  "segmentler": {
+    "dusuk": {
+      "min": 169,
+      "medyan": 194,
+      "max": 199,
+      "urun_sayisi": 10
+    },
+    "orta": {
+      "min": 200,
+      "medyan": 342,
+      "max": 501,
+      "urun_sayisi": 14
+    },
+    "luks": {
+      "min": 559,
+      "medyan": 810,
+      "max": 980,
+      "urun_sayisi": 7
+    }
+  }
+}

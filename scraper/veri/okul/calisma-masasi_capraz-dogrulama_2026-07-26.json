@@ -1,0 +1,12 @@
+{
+  "vertikal": "okul",
+  "kalem": "calisma-masasi",
+  "tarih": "2026-07-26",
+  "site_medyanlari": {
+    "trendyol": 1549,
+    "amazon": 2750
+  },
+  "fark_orani": 0.775,
+  "esik_orani": 0.3,
+  "uyari": true
+}

@@ -1,0 +1,16 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Yemek Masası Takımı"
+  ],
+  "kalem": "yemek-masasi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-07-26",
+  "toplam_urun": 0,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "hicbiri"
+  ],
+  "genel_medyan": null,
+  "segmentler": {}
+}

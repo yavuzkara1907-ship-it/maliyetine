@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Çalışma Masası"
+  ],
+  "kalem": "calisma-masasi",
+  "vertikal": "okul",
+  "tarih": "2026-07-26",
+  "toplam_urun": 46,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 2750,
+  "segmentler": {
+    "dusuk": {
+      "min": 1099,
+      "medyan": 1799,
+      "max": 2299,
+      "urun_sayisi": 13
+    },
+    "orta": {
+      "min": 2499,
+      "medyan": 2849,
+      "max": 4000,
+      "urun_sayisi": 22
+    },
+    "luks": {
+      "min": 4490,
+      "medyan": 4800,
+      "max": 7159,
+      "urun_sayisi": 11
+    }
+  }
+}

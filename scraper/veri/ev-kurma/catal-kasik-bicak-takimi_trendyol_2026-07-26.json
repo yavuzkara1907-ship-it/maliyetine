@@ -6,28 +6,28 @@
   "kalem": "catal-kasik-bicak-takimi",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-26",
-  "toplam_urun": 18,
+  "toplam_urun": 17,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "json-ld"
   ],
-  "genel_medyan": 3097,
+  "genel_medyan": 2503,
   "segmentler": {
     "dusuk": {
       "min": 605,
-      "medyan": 1252,
-      "max": 1709,
+      "medyan": 999,
+      "max": 1252,
       "urun_sayisi": 5
     },
     "orta": {
-      "min": 1729,
-      "medyan": 3295,
-      "max": 4475,
-      "urun_sayisi": 9
+      "min": 1709,
+      "medyan": 2701,
+      "max": 4449,
+      "urun_sayisi": 8
     },
     "luks": {
-      "min": 5081,
-      "medyan": 5737,
+      "min": 4475,
+      "medyan": 5530,
       "max": 5999,
       "urun_sayisi": 4
     }

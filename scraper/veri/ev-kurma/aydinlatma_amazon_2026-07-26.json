@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Avize   Aydınlatma"
+  ],
+  "kalem": "aydinlatma",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-07-26",
+  "toplam_urun": 43,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 1809,
+  "segmentler": {
+    "dusuk": {
+      "min": 530,
+      "medyan": 884,
+      "max": 1282,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 1400,
+      "medyan": 1809,
+      "max": 2799,
+      "urun_sayisi": 22
+    },
+    "luks": {
+      "min": 2899,
+      "medyan": 3399,
+      "max": 5050,
+      "urun_sayisi": 10
+    }
+  }
+}

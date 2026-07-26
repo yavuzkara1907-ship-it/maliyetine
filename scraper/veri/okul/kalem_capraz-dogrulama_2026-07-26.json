@@ -1,0 +1,12 @@
+{
+  "vertikal": "okul",
+  "kalem": "kalem",
+  "tarih": "2026-07-26",
+  "site_medyanlari": {
+    "trendyol": 200,
+    "amazon": 159
+  },
+  "fark_orani": 0.258,
+  "esik_orani": 0.3,
+  "uyari": false
+}

@@ -75,7 +75,6 @@
   },
   "dugun/gelinlik/trendyol": {
     "urun_sayilari": [
-      20,
       19,
       19,
       20,
@@ -86,7 +85,8 @@
       21,
       19,
       21,
-      21
+      21,
+      20
     ],
     "son_calisma": "2026-07-26"
   },
@@ -157,7 +157,6 @@
   },
   "dugun/gelin-ayakkabisi/trendyol": {
     "urun_sayilari": [
-      10,
       8,
       8,
       8,
@@ -168,13 +167,13 @@
       9,
       8,
       7,
+      7,
       7
     ],
     "son_calisma": "2026-07-26"
   },
   "dugun/damatlik/trendyol": {
     "urun_sayilari": [
-      17,
       18,
       18,
       18,
@@ -185,6 +184,7 @@
       17,
       16,
       17,
+      16,
       16
     ],
     "son_calisma": "2026-07-26"
@@ -212,11 +212,11 @@
       6,
       6,
       6,
-      6,
       2,
       2,
       2,
       2,
+      3,
       3,
       3,
       3
@@ -228,7 +228,6 @@
       0,
       0,
       0,
-      0,
       8,
       9,
       8,
@@ -236,6 +235,7 @@
       9,
       10,
       9,
+      8,
       8
     ],
     "son_calisma": "2026-07-26"
@@ -267,7 +267,7 @@
     "urun_sayilari": [
       0,
       0,
-      0,
+      41,
       41,
       41,
       41,
@@ -305,8 +305,8 @@
       40,
       40,
       40,
-      40,
       0,
+      40,
       40,
       40,
       40,
@@ -330,6 +330,7 @@
       25,
       25,
       25,
+      25,
       25
     ],
     "son_calisma": "2026-07-26"
@@ -341,12 +342,14 @@
       22,
       22,
       22,
-      21
+      21,
+      22
     ],
     "son_calisma": "2026-07-26"
   },
   "ev-kurma/bulasik-makinesi/trendyol": {
     "urun_sayilari": [
+      25,
       25,
       25,
       25,
@@ -363,12 +366,14 @@
       3,
       3,
       3,
+      3,
       3
     ],
     "son_calisma": "2026-07-26"
   },
   "ev-kurma/mikrodalga/trendyol": {
     "urun_sayilari": [
+      22,
       22,
       22,
       22,
@@ -385,7 +390,8 @@
       22,
       20,
       21,
-      23
+      23,
+      22
     ],
     "son_calisma": "2026-07-26"
   },
@@ -396,12 +402,14 @@
       25,
       23,
       24,
-      24
+      24,
+      25
     ],
     "son_calisma": "2026-07-26"
   },
   "ev-kurma/yatak/trendyol": {
     "urun_sayilari": [
+      18,
       18,
       18,
       18,
@@ -418,6 +426,7 @@
       23,
       23,
       24,
+      24,
       24
     ],
     "son_calisma": "2026-07-26"
@@ -428,6 +437,7 @@
       11,
       11,
       6,
+      11,
       11,
       11
     ],
@@ -440,7 +450,8 @@
       23,
       23,
       22,
-      22
+      22,
+      23
     ],
     "son_calisma": "2026-07-26"
   },
@@ -451,6 +462,7 @@
       8,
       6,
       5,
+      6,
       6
     ],
     "son_calisma": "2026-07-26"
@@ -462,7 +474,8 @@
       25,
       25,
       22,
-      25
+      25,
+      23
     ],
     "son_calisma": "2026-07-26"
   },
@@ -473,7 +486,8 @@
       25,
       22,
       25,
-      13
+      13,
+      25
     ],
     "son_calisma": "2026-07-26"
   },
@@ -484,6 +498,7 @@
       17,
       17,
       18,
+      17,
       17
     ],
     "son_calisma": "2026-07-26"
@@ -495,7 +510,8 @@
       23,
       22,
       23,
-      23
+      23,
+      22
     ],
     "son_calisma": "2026-07-26"
   },
@@ -505,6 +521,7 @@
       22,
       22,
       22,
+      23,
       23,
       23
     ],
@@ -517,7 +534,8 @@
       19,
       18,
       20,
-      20
+      20,
+      19
     ],
     "son_calisma": "2026-07-26"
   },
@@ -527,6 +545,7 @@
       25,
       25,
       24,
+      25,
       25,
       25
     ],
@@ -539,6 +558,7 @@
       14,
       11,
       11,
+      12,
       12
     ],
     "son_calisma": "2026-07-26"
@@ -550,6 +570,7 @@
       20,
       25,
       23,
+      24,
       24
     ],
     "son_calisma": "2026-07-26"
@@ -560,6 +581,7 @@
       4,
       4,
       5,
+      7,
       7,
       7
     ],
@@ -572,6 +594,7 @@
       24,
       25,
       23,
+      24,
       24
     ],
     "son_calisma": "2026-07-26"
@@ -581,6 +604,7 @@
       22,
       23,
       23,
+      22,
       22,
       22,
       22
@@ -594,6 +618,7 @@
       20,
       19,
       20,
+      20,
       20
     ],
     "son_calisma": "2026-07-26"
@@ -605,7 +630,8 @@
       20,
       21,
       22,
-      21
+      21,
+      20
     ],
     "son_calisma": "2026-07-26"
   },
@@ -616,12 +642,14 @@
       24,
       22,
       22,
+      22,
       22
     ],
     "son_calisma": "2026-07-26"
   },
   "ev-kurma/blender/trendyol": {
     "urun_sayilari": [
+      8,
       8,
       8,
       8,
@@ -638,7 +666,8 @@
       19,
       19,
       19,
-      19
+      19,
+      18
     ],
     "son_calisma": "2026-07-26"
   },
@@ -649,7 +678,8 @@
       23,
       24,
       24,
-      22
+      22,
+      24
     ],
     "son_calisma": "2026-07-26"
   },
@@ -660,7 +690,8 @@
       23,
       23,
       23,
-      23
+      23,
+      22
     ],
     "son_calisma": "2026-07-26"
   },
@@ -671,7 +702,8 @@
       11,
       10,
       10,
-      10
+      10,
+      11
     ],
     "son_calisma": "2026-07-26"
   },
@@ -682,6 +714,7 @@
       5,
       6,
       6,
+      5,
       5
     ],
     "son_calisma": "2026-07-26"
@@ -693,7 +726,8 @@
       19,
       17,
       18,
-      18
+      18,
+      17
     ],
     "son_calisma": "2026-07-26"
   },
@@ -704,7 +738,8 @@
       21,
       22,
       22,
-      21
+      21,
+      22
     ],
     "son_calisma": "2026-07-26"
   },
@@ -715,7 +750,8 @@
       21,
       21,
       20,
-      21
+      21,
+      20
     ],
     "son_calisma": "2026-07-26"
   },
@@ -726,7 +762,8 @@
       20,
       19,
       17,
-      17
+      17,
+      18
     ],
     "son_calisma": "2026-07-26"
   },
@@ -737,7 +774,8 @@
       19,
       22,
       22,
-      22
+      22,
+      19
     ],
     "son_calisma": "2026-07-26"
   },
@@ -748,6 +786,7 @@
       23,
       21,
       21,
+      22,
       22
     ],
     "son_calisma": "2026-07-26"
@@ -759,13 +798,15 @@
       3,
       3,
       3,
-      4
+      4,
+      3
     ],
     "son_calisma": "2026-07-26"
   },
   "ev-kurma/sehpa/trendyol": {
     "urun_sayilari": [
       19,
+      20,
       20,
       20,
       20,
@@ -781,6 +822,7 @@
       25,
       25,
       25,
+      25,
       25
     ],
     "son_calisma": "2026-07-26"
@@ -791,12 +833,14 @@
       40,
       41,
       41,
-      41
+      41,
+      40
     ],
     "son_calisma": "2026-07-26"
   },
   "ev-kurma/nevresim-takimi/englishhome": {
     "urun_sayilari": [
+      39,
       39,
       39,
       39,
@@ -810,7 +854,8 @@
       11,
       11,
       9,
-      10
+      10,
+      11
     ],
     "son_calisma": "2026-07-26"
   },
@@ -819,7 +864,8 @@
       10,
       9,
       8,
-      10
+      10,
+      11
     ],
     "son_calisma": "2026-07-26"
   },
@@ -828,12 +874,14 @@
       9,
       9,
       7,
-      8
+      8,
+      9
     ],
     "son_calisma": "2026-07-26"
   },
   "dugun/taki-altin/atasay": {
     "urun_sayilari": [
+      24,
       24,
       24,
       24,
@@ -843,6 +891,7 @@
   },
   "arac/en-ucuz-sifir-arac/donanimhaber": {
     "urun_sayilari": [
+      22,
       22,
       22,
       22,
@@ -857,12 +906,14 @@
       4,
       4,
       4,
+      4,
       4
     ],
     "son_calisma": "2026-07-26"
   },
   "arac/byd/donanimhaber": {
     "urun_sayilari": [
+      4,
       4,
       4,
       4,
@@ -877,6 +928,7 @@
       18,
       18,
       18,
+      18,
       18
     ],
     "son_calisma": "2026-07-26"
@@ -887,12 +939,14 @@
       7,
       7,
       7,
-      7
+      7,
+      0
     ],
     "son_calisma": "2026-07-26"
   },
   "arac/togg/donanimhaber": {
     "urun_sayilari": [
+      8,
       8,
       8,
       8,
@@ -905,12 +959,14 @@
       21,
       21,
       21,
+      21,
       21
     ],
     "son_calisma": "2026-07-26"
   },
   "arac/chery/donanimhaber": {
     "urun_sayilari": [
+      3,
       3,
       3,
       3,
@@ -923,12 +979,14 @@
       10,
       10,
       10,
+      10,
       10
     ],
     "son_calisma": "2026-07-26"
   },
   "arac/citroen/donanimhaber": {
     "urun_sayilari": [
+      19,
       19,
       19,
       19,
@@ -941,12 +999,14 @@
       20,
       20,
       20,
+      20,
       20
     ],
     "son_calisma": "2026-07-26"
   },
   "arac/peugeot/donanimhaber": {
     "urun_sayilari": [
+      20,
       20,
       20,
       20,
@@ -959,12 +1019,14 @@
       17,
       17,
       17,
+      17,
       17
     ],
     "son_calisma": "2026-07-26"
   },
   "arac/hyundai/donanimhaber": {
     "urun_sayilari": [
+      28,
       28,
       28,
       28,
@@ -977,12 +1039,14 @@
       20,
       20,
       20,
+      20,
       20
     ],
     "son_calisma": "2026-07-26"
   },
   "arac/skoda/donanimhaber": {
     "urun_sayilari": [
+      41,
       41,
       41,
       41,
@@ -995,12 +1059,14 @@
       4,
       4,
       4,
+      4,
       4
     ],
     "son_calisma": "2026-07-26"
   },
   "arac/honda/donanimhaber": {
     "urun_sayilari": [
+      6,
       6,
       6,
       6,
@@ -1013,12 +1079,14 @@
       24,
       24,
       24,
+      24,
       24
     ],
     "son_calisma": "2026-07-26"
   },
   "arac/fiat/donanimhaber": {
     "urun_sayilari": [
+      15,
       15,
       15,
       15,
@@ -1031,12 +1099,14 @@
       40,
       40,
       40,
+      40,
       40
     ],
     "son_calisma": "2026-07-26"
   },
   "arac/nissan/donanimhaber": {
     "urun_sayilari": [
+      18,
       18,
       18,
       18,
@@ -1049,12 +1119,14 @@
       5,
       5,
       5,
+      5,
       5
     ],
     "son_calisma": "2026-07-26"
   },
   "arac/bmw/donanimhaber": {
     "urun_sayilari": [
+      60,
       60,
       60,
       60,
@@ -1067,6 +1139,7 @@
       42,
       42,
       42,
+      42,
       42
     ],
     "son_calisma": "2026-07-26"
@@ -1075,7 +1148,8 @@
     "urun_sayilari": [
       1,
       1,
-      1
+      1,
+      0
     ],
     "son_calisma": "2026-07-26"
   },
@@ -1083,7 +1157,8 @@
     "urun_sayilari": [
       1,
       1,
-      1
+      1,
+      0
     ],
     "son_calisma": "2026-07-26"
   },
@@ -1091,7 +1166,8 @@
     "urun_sayilari": [
       1,
       1,
-      1
+      1,
+      0
     ],
     "son_calisma": "2026-07-26"
   },
@@ -1099,98 +1175,468 @@
     "urun_sayilari": [
       1,
       1,
-      1
+      1,
+      0
     ],
     "son_calisma": "2026-07-26"
   },
   "ev-kurma/tencere-seti/madamecoco": {
     "urun_sayilari": [
       24,
-      24
+      24,
+      0
     ],
     "son_calisma": "2026-07-26"
   },
   "okul/okul-cantasi/trendyol": {
     "urun_sayilari": [
-      23
+      23,
+      0
     ],
     "son_calisma": "2026-07-26"
   },
   "okul/beslenme-cantasi/trendyol": {
     "urun_sayilari": [
+      23,
       23
     ],
     "son_calisma": "2026-07-26"
   },
   "okul/matara/trendyol": {
     "urun_sayilari": [
-      24
+      24,
+      23
     ],
     "son_calisma": "2026-07-26"
   },
   "okul/kalem-kutusu/trendyol": {
     "urun_sayilari": [
+      25,
       25
     ],
     "son_calisma": "2026-07-26"
   },
   "okul/defter/trendyol": {
     "urun_sayilari": [
+      22,
       22
     ],
     "son_calisma": "2026-07-26"
   },
   "okul/kalem/trendyol": {
     "urun_sayilari": [
+      21,
       21
     ],
     "son_calisma": "2026-07-26"
   },
   "okul/boya-seti/trendyol": {
     "urun_sayilari": [
+      21,
       21
     ],
     "son_calisma": "2026-07-26"
   },
   "okul/resim-malzemeleri/trendyol": {
     "urun_sayilari": [
-      23
+      23,
+      0
     ],
     "son_calisma": "2026-07-26"
   },
   "okul/ders-kitabi/trendyol": {
     "urun_sayilari": [
-      22
+      22,
+      23
     ],
     "son_calisma": "2026-07-26"
   },
   "okul/sozluk/trendyol": {
     "urun_sayilari": [
+      25,
       25
     ],
     "son_calisma": "2026-07-26"
   },
   "okul/ayakkabi/trendyol": {
     "urun_sayilari": [
-      21
+      21,
+      22
     ],
     "son_calisma": "2026-07-26"
   },
   "okul/tablet/trendyol": {
     "urun_sayilari": [
+      21,
       21
     ],
     "son_calisma": "2026-07-26"
   },
   "okul/calisma-masasi/trendyol": {
     "urun_sayilari": [
-      20
+      20,
+      18
     ],
     "son_calisma": "2026-07-26"
   },
   "okul/calisma-sandalyesi/trendyol": {
     "urun_sayilari": [
+      24,
       24
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/buzdolabi/amazon": {
+    "urun_sayilari": [
+      28
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/camasir-makinesi/amazon": {
+    "urun_sayilari": [
+      0
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/kurutma-makinesi/amazon": {
+    "urun_sayilari": [
+      22
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/bulasik-makinesi/amazon": {
+    "urun_sayilari": [
+      15
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/firin-ocak/amazon": {
+    "urun_sayilari": [
+      28
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/davlumbaz/amazon": {
+    "urun_sayilari": [
+      25
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/mikrodalga/amazon": {
+    "urun_sayilari": [
+      27
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/klima/amazon": {
+    "urun_sayilari": [
+      26
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/koltuk-takimi/amazon": {
+    "urun_sayilari": [
+      0
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/yemek-masasi/amazon": {
+    "urun_sayilari": [
+      0
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/tv-unitesi/amazon": {
+    "urun_sayilari": [
+      41
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/sehpa/amazon": {
+    "urun_sayilari": [
+      46
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/konsol/amazon": {
+    "urun_sayilari": [
+      0
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/yatak/amazon": {
+    "urun_sayilari": [
+      47
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/karyola/amazon": {
+    "urun_sayilari": [
+      0
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/gardirop/amazon": {
+    "urun_sayilari": [
+      0
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/komodin/amazon": {
+    "urun_sayilari": [
+      0
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/sifonyer/amazon": {
+    "urun_sayilari": [
+      0
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/boy-aynasi/amazon": {
+    "urun_sayilari": [
+      43
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/televizyon/amazon": {
+    "urun_sayilari": [
+      0
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/supurge/amazon": {
+    "urun_sayilari": [
+      0
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/dikey-supurge/amazon": {
+    "urun_sayilari": [
+      46
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/airfryer/amazon": {
+    "urun_sayilari": [
+      35
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/kahve-makinesi/amazon": {
+    "urun_sayilari": [
+      43
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/su-isitici/amazon": {
+    "urun_sayilari": [
+      54
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/tost-makinesi/amazon": {
+    "urun_sayilari": [
+      57
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/blender/amazon": {
+    "urun_sayilari": [
+      47
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/mutfak-robotu/amazon": {
+    "urun_sayilari": [
+      45
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/utu/amazon": {
+    "urun_sayilari": [
+      41
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/sac-kurutma-makinesi/amazon": {
+    "urun_sayilari": [
+      35
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/tencere-seti/amazon": {
+    "urun_sayilari": [
+      43
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/tava-seti/amazon": {
+    "urun_sayilari": [
+      38
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/catal-kasik-bicak-takimi/amazon": {
+    "urun_sayilari": [
+      43
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/yemek-takimi/amazon": {
+    "urun_sayilari": [
+      42
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/kahvalti-takimi/amazon": {
+    "urun_sayilari": [
+      44
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/bardak-takimi/amazon": {
+    "urun_sayilari": [
+      0
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/nevresim-takimi/amazon": {
+    "urun_sayilari": [
+      57
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/havlu-takimi/amazon": {
+    "urun_sayilari": [
+      48
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/bornoz/amazon": {
+    "urun_sayilari": [
+      47
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/perde/amazon": {
+    "urun_sayilari": [
+      41
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/hali/amazon": {
+    "urun_sayilari": [
+      46
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "ev-kurma/aydinlatma/amazon": {
+    "urun_sayilari": [
+      43
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "okul/okul-cantasi/amazon": {
+    "urun_sayilari": [
+      48
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "okul/beslenme-cantasi/amazon": {
+    "urun_sayilari": [
+      43
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "okul/matara/amazon": {
+    "urun_sayilari": [
+      0
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "okul/kalem-kutusu/amazon": {
+    "urun_sayilari": [
+      52
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "okul/defter/amazon": {
+    "urun_sayilari": [
+      46
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "okul/kalem/amazon": {
+    "urun_sayilari": [
+      44
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "okul/boya-seti/amazon": {
+    "urun_sayilari": [
+      53
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "okul/resim-malzemeleri/amazon": {
+    "urun_sayilari": [
+      0
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "okul/ders-kitabi/amazon": {
+    "urun_sayilari": [
+      40
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "okul/sozluk/amazon": {
+    "urun_sayilari": [
+      37
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "okul/ayakkabi/amazon": {
+    "urun_sayilari": [
+      47
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "okul/tablet/amazon": {
+    "urun_sayilari": [
+      40
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "okul/calisma-masasi/amazon": {
+    "urun_sayilari": [
+      46
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "okul/calisma-sandalyesi/amazon": {
+    "urun_sayilari": [
+      0
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "dugun/gelin-ayakkabisi/amazon": {
+    "urun_sayilari": [
+      42
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "dugun/nikah-sekeri/amazon": {
+    "urun_sayilari": [
+      31
+    ],
+    "son_calisma": "2026-07-26"
+  },
+  "dugun/davetiye/amazon": {
+    "urun_sayilari": [
+      20
     ],
     "son_calisma": "2026-07-26"
   }

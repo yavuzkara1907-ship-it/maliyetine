@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Klima"
+  ],
+  "kalem": "klima",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-07-26",
+  "toplam_urun": 26,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 31125,
+  "segmentler": {
+    "dusuk": {
+      "min": 5200,
+      "medyan": 6291,
+      "max": 13616,
+      "urun_sayisi": 7
+    },
+    "orta": {
+      "min": 18900,
+      "medyan": 31625,
+      "max": 37999,
+      "urun_sayisi": 14
+    },
+    "luks": {
+      "min": 39299,
+      "medyan": 53999,
+      "max": 67599,
+      "urun_sayisi": 5
+    }
+  }
+}

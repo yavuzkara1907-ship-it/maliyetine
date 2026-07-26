@@ -6,7 +6,7 @@
   "kalem": "hali",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-26",
-  "toplam_urun": 4,
+  "toplam_urun": 3,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "json-ld"
@@ -14,10 +14,10 @@
   "genel_medyan": 960,
   "segmentler": {
     "dusuk": {
-      "min": 530,
+      "min": 960,
       "medyan": 960,
       "max": 960,
-      "urun_sayisi": 4
+      "urun_sayisi": 3
     }
   }
 }

@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Kahvaltı Takımı"
+  ],
+  "kalem": "kahvalti-takimi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-07-26",
+  "toplam_urun": 44,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 1299,
+  "segmentler": {
+    "dusuk": {
+      "min": 400,
+      "medyan": 684,
+      "max": 984,
+      "urun_sayisi": 12
+    },
+    "orta": {
+      "min": 999,
+      "medyan": 1300,
+      "max": 2825,
+      "urun_sayisi": 22
+    },
+    "luks": {
+      "min": 2920,
+      "medyan": 3196,
+      "max": 3771,
+      "urun_sayisi": 10
+    }
+  }
+}

@@ -6,12 +6,12 @@
   "kalem": "su-isitici",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-26",
-  "toplam_urun": 21,
+  "toplam_urun": 20,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "json-ld"
   ],
-  "genel_medyan": 689,
+  "genel_medyan": 654,
   "segmentler": {
     "dusuk": {
       "min": 349,
@@ -27,9 +27,9 @@
     },
     "luks": {
       "min": 987,
-      "medyan": 1077,
+      "medyan": 1049,
       "max": 1599,
-      "urun_sayisi": 5
+      "urun_sayisi": 4
     }
   }
 }

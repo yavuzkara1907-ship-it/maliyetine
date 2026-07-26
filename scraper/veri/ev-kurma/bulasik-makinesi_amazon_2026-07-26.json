@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Bulaşık Makinesi"
+  ],
+  "kalem": "bulasik-makinesi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-07-26",
+  "toplam_urun": 15,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 22699,
+  "segmentler": {
+    "dusuk": {
+      "min": 4333,
+      "medyan": 19694,
+      "max": 21799,
+      "urun_sayisi": 4
+    },
+    "orta": {
+      "min": 21999,
+      "medyan": 23824,
+      "max": 28499,
+      "urun_sayisi": 8
+    },
+    "luks": {
+      "min": 28499,
+      "medyan": 29054,
+      "max": 34499,
+      "urun_sayisi": 3
+    }
+  }
+}

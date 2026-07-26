@@ -3,10 +3,11 @@
   "kalem": "nevresim-takimi",
   "tarih": "2026-07-26",
   "site_medyanlari": {
-    "trendyol": 650,
-    "englishhome": 1280
+    "trendyol": 662,
+    "englishhome": 1280,
+    "amazon": 930
   },
-  "fark_orani": 0.969,
+  "fark_orani": 0.934,
   "esik_orani": 0.3,
   "uyari": true
 }

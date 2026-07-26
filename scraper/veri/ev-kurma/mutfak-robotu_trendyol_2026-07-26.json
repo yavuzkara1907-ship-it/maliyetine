@@ -6,12 +6,12 @@
   "kalem": "mutfak-robotu",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-26",
-  "toplam_urun": 19,
+  "toplam_urun": 18,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "json-ld"
   ],
-  "genel_medyan": 2145,
+  "genel_medyan": 2197,
   "segmentler": {
     "dusuk": {
       "min": 1074,
@@ -20,15 +20,15 @@
       "urun_sayisi": 5
     },
     "orta": {
-      "min": 1670,
-      "medyan": 2197,
+      "min": 1767,
+      "medyan": 2249,
       "max": 2499,
-      "urun_sayisi": 10
+      "urun_sayisi": 9
     },
     "luks": {
-      "min": 2966,
-      "medyan": 3305,
-      "max": 4999,
+      "min": 2948,
+      "medyan": 3118,
+      "max": 3340,
       "urun_sayisi": 4
     }
   }

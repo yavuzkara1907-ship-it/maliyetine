@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Boy Aynası"
+  ],
+  "kalem": "boy-aynasi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-07-26",
+  "toplam_urun": 43,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 2999,
+  "segmentler": {
+    "dusuk": {
+      "min": 578,
+      "medyan": 1903,
+      "max": 2527,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 2580,
+      "medyan": 3050,
+      "max": 4368,
+      "urun_sayisi": 22
+    },
+    "luks": {
+      "min": 5250,
+      "medyan": 6383,
+      "max": 8812,
+      "urun_sayisi": 10
+    }
+  }
+}

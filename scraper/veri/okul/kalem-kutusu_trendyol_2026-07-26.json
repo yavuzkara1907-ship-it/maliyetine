@@ -11,7 +11,7 @@
   "kullanilan_katmanlar": [
     "json-ld"
   ],
-  "genel_medyan": 286,
+  "genel_medyan": 293,
   "segmentler": {
     "dusuk": {
       "min": 74,
@@ -21,7 +21,7 @@
     },
     "orta": {
       "min": 133,
-      "medyan": 288,
+      "medyan": 296,
       "max": 313,
       "urun_sayisi": 13
     },

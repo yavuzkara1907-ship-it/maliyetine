@@ -1,0 +1,12 @@
+{
+  "vertikal": "okul",
+  "kalem": "ders-kitabi",
+  "tarih": "2026-07-26",
+  "site_medyanlari": {
+    "trendyol": 249,
+    "amazon": 349
+  },
+  "fark_orani": 0.402,
+  "esik_orani": 0.3,
+  "uyari": true
+}

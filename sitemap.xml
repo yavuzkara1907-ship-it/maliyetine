@@ -166,6 +166,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://maliyetine.com.tr/ev-kurma/firin-ocak-fiyatlari/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://maliyetine.com.tr/ev-kurma/davlumbaz-fiyatlari/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -281,6 +286,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://maliyetine.com.tr/ev-kurma/tava-seti-fiyatlari/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://maliyetine.com.tr/ev-kurma/catal-kasik-bicak-takimi-fiyatlari/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -317,6 +327,11 @@
   </url>
   <url>
     <loc>https://maliyetine.com.tr/ev-kurma/perde-fiyatlari/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://maliyetine.com.tr/ev-kurma/hali-fiyatlari/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

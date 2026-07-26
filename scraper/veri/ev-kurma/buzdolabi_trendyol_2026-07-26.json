@@ -22,11 +22,11 @@
     "orta": {
       "min": 21875,
       "medyan": 29500,
-      "max": 37898,
+      "max": 36990,
       "urun_sayisi": 12
     },
     "luks": {
-      "min": 40794,
+      "min": 37898,
       "medyan": 42596,
       "max": 61990,
       "urun_sayisi": 6

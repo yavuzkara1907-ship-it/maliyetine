@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Tost Makinesi"
+  ],
+  "kalem": "tost-makinesi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-07-26",
+  "toplam_urun": 57,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 3317,
+  "segmentler": {
+    "dusuk": {
+      "min": 569,
+      "medyan": 2394,
+      "max": 2549,
+      "urun_sayisi": 16
+    },
+    "orta": {
+      "min": 2689,
+      "medyan": 3377,
+      "max": 4872,
+      "urun_sayisi": 27
+    },
+    "luks": {
+      "min": 4999,
+      "medyan": 6369,
+      "max": 8649,
+      "urun_sayisi": 14
+    }
+  }
+}
