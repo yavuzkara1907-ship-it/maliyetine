@@ -824,6 +824,42 @@ elimizdeydi ama sayfa yoktu.
   Artık en az 2 gerçek ölçülmüş kalem şartı var.
 - Endeks sayfalarına "Hazır senaryolar" iç link bölümü. sitemap **102 URL**.
 
+## SOHBET ASİSTANI — `scraper/asistan.py` (2026-07-26)
+Yavuz "canlı chat koyabilir miyiz, referral link atsak" diye sordu. İlk
+turda "halüsinasyon riski" deyip chat'i tamamen eledim; **"çok güvenli
+liman" eleştirisi haklıydı.** Doğru iş riski elemek değil, riski
+imkânsız kılan yapıyı kurmak.
+
+**NASIL — en kritik tasarım kararı:** asistan cevap ÜRETMİYOR, cevabı
+VERİDEN SEÇİYOR. Dil modeli yok, dışarı istek yok, `eval` yok (testle
+kilitli). Rakamlar doğrudan `/veri/*.json`'dan; cümleler sabit şablon,
+değişken yalnızca rakam/kalem adı/tarih. Yani halüsinasyon "dikkatli
+prompt" meselesi değil — **model yok ki uydursun.**
+
+Beş niyet, kural tabanlı: kalem fiyatı · ölçekli hesap · grup bütçesi ·
+kapsam dışı konular · yöntem soruları. Eşleşme yoksa uydurmuyor:
+*"Bunu ölçmüyorum — yalnızca kendi ölçtüğüm kalemler hakkında
+konuşabiliyorum, tahmin yürütmüyorum."*
+- Her kalem cevabında **kaynak + ürün sayısı + tarih** var.
+- Segment tutarsız kalemde (blender) asistan da segment SÖYLEMİYOR.
+- **CANLI TESTTE BUG YAKALANDI:** niyet tanıma sıralı çalışıyordu,
+  "okul çantası kaç para" → okul BÜTÇESİNİ döndürüyordu. Artık üç niyet
+  puanlanıp yarışıyor, en spesifik eşleşme kazanıyor.
+
+**AFFILIATE ALTYAPISI:** `KAYNAK_SITELERI`'ne `takip` alanı eklendi.
+Ortaklık yapılınca yalnızca oraya parametre yazılır; link otomatik
+`rel="sponsored"` alır ve sayfada **görünür açıklama** çıkar ("ölçtüğümüz
+fiyatlar ve kaynak sıralaması bundan etkilenmez"). Açıklama hem yasal
+yükümlülük hem de asıl sermayeyi — güveni — koruyor.
+**"Sana şunu al" formatı bilinçli olarak YAPILMADI:** o tavsiye satmaktır
+ve bağımsızlık beyanıyla çelişir. Doğru format zaten var: "bu fiyatı şu
+sitelerde bulabilirsiniz."
+
+## SİTE İÇİ ARAMA (2026-07-26)
+Ana sayfada 95 ölçülmüş kalem içinde arama. Türkçe karakter duyarsız.
+Kalem sayfası olmayan kalem endekse yönlendiriliyor (kırık link yok).
+Fiyat endeks sayfasındakiyle aynı — ikisi de testli.
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
