@@ -805,6 +805,48 @@ def _kisa_kalem_adi(ad: str) -> str:
     return f"{ana.strip()} ({varyant})" if varyant else ana.strip()
 
 
+
+# Google SERP'te baslik ~60 karakterden sonra kesiliyor. Sablon uzun kalem
+# adlarinda tasiyordu ("2026'da Yemek / Ikram (mekanin menu bedeli)
+# Fiyatlari Ne Kadar? | Maliyeti Ne?" = 78). H1 tam kalir, yalnizca
+# <title> kisalir - sayfadaki baslik bilgi kaybetmesin.
+SEO_TITLE_SINIRI = 60
+MARKA_SONEKI = " | Maliyeti Ne?"
+
+
+def _seo_title(kalem_adi: str, yil: str = "2026") -> str:
+    """60 karaktere sigan <title>. Sirayla kisaltir, son care ad + marka."""
+    kisa = _kisa_kalem_adi(kalem_adi)
+    adaylar = [
+        f"{yil}'da {kisa} Fiyatları Ne Kadar?",
+        f"{kisa} Fiyatları {yil}",
+        f"{kisa} Fiyatları",
+        kisa,
+    ]
+    for a in adaylar:
+        if len(a) + len(MARKA_SONEKI) <= SEO_TITLE_SINIRI:
+            return a + MARKA_SONEKI
+    return adaylar[-1] + MARKA_SONEKI
+
+
+
+def _breadcrumb_html(conf: dict, kalem_adi: str) -> str:
+    """Gorunur kirinti navigasyonu.
+
+    BreadcrumbList schema zaten vardi ama HTML'de karsiligi YOKTU. Google
+    yalnizca yapilandirilmis veriye guvenmiyor; SERP'te kirinti gostermesi
+    icin sayfada da gorunur olmasi isine yariyor. Ayrica derin sayfadan
+    ust kategoriye tek tikla donus - kullanici icin de faydali.
+    """
+    return (
+        '  <nav class="kirinti" aria-label="Sayfa yolu">\n'
+        '    <a href="/">Ana sayfa</a> <span aria-hidden="true">›</span> '
+        f'<a href="/{conf["yol"]}/">{conf["ad"]}</a> '
+        f'<span aria-hidden="true">›</span> <span>{kalem_adi}</span>\n'
+        "  </nav>\n"
+    )
+
+
 def _para(n: int) -> str:
     return f"{n:,.0f}".replace(",", ".") + " TL"
 
@@ -1911,7 +1953,7 @@ def kalem_sayfasi_uret(
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{sayfa["baslik"]} | Maliyeti Ne?</title>
+<title>{_seo_title(tanim["ad"])}</title>
 <meta name="description" content="{meta_aciklama}">
 <link rel="canonical" href="{sayfa_url}">
 <link rel="stylesheet" href="/assets/css/style.css">
@@ -1940,7 +1982,7 @@ def kalem_sayfasi_uret(
 </header>
 
 <main class="kapsayici">
-  <span class="guncelleme-etiketi">Güncelleme: {guncelleme_tarihi}</span>
+{_breadcrumb_html(conf, tanim["ad"])}  <span class="guncelleme-etiketi">Güncelleme: {guncelleme_tarihi}</span>
   <h1>{sayfa["baslik"]}</h1>
 
   <div class="cevap-blok">
@@ -2062,9 +2104,19 @@ def sitemap_uret() -> str:
     satirlar = ['<?xml version="1.0" encoding="UTF-8"?>',
                 '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for yol, frekans, oncelik in url_kayitlari:
+        # lastmod: sayfanin GERCEK dosya tarihi. Onceden hic yoktu ve
+        # arama motoru hangi sayfanin tazelendigini bilemiyordu - ayda
+        # iki kez guncellenen bir sitede bu dogrudan tarama butcesi
+        # kaybi. Uydurma tarih YAZILMAZ: dosya yoksa alan atlanir.
+        dosya = SITE_KOK / yol.strip("/") / "index.html" if yol != "/" else SITE_KOK / "index.html"
+        lastmod = ""
+        if dosya.exists():
+            lastmod = date.fromtimestamp(dosya.stat().st_mtime).isoformat()
+        satirlar.append("  <url>")
+        satirlar.append(f"    <loc>{SITE_KOK_URL}{yol}</loc>")
+        if lastmod:
+            satirlar.append(f"    <lastmod>{lastmod}</lastmod>")
         satirlar.extend([
-            "  <url>",
-            f"    <loc>{SITE_KOK_URL}{yol}</loc>",
             f"    <changefreq>{frekans}</changefreq>",
             f"    <priority>{oncelik}</priority>",
             "  </url>",

@@ -681,6 +681,7 @@ REHBERLER = [
     {
         "slug": "ekonomik-dugun-nasil-yapilir",
         "baslik": "Ekonomik Düğün: Nereden Kısılır, Nereden Kısılmaz?",
+        "seo_baslik": "Ekonomik Düğün: Nereden Kısılır?",
         "meta": "150 kişilik düğünde orta ve ekonomik segment arasındaki fark "
                 "ne kadar? Hangi kalemde tasarruf işe yarıyor, hangisinde geri tepiyor?",
         "govde": _govde_ekonomik_dugun,
@@ -689,6 +690,7 @@ REHBERLER = [
     {
         "slug": "beyaz-esya-butcesi",
         "baslik": "Beyaz Eşya Bütçesi: Sıfırdan Ne Kadar Tutuyor?",
+        "seo_baslik": "Beyaz Eşya Bütçesi Ne Kadar Tutuyor?",
         "meta": "Buzdolabı, çamaşır ve bulaşık makinesi, fırın, klima: bir evin "
                 "beyaz eşyası kalem kalem, ekonomik-orta-üst fiyatlarıyla.",
         "govde": _govde_beyaz_esya,
@@ -697,6 +699,7 @@ REHBERLER = [
     {
         "slug": "okul-masrafi-ne-kadar",
         "baslik": "Okul Alışverişi Bir Öğrenciye Ne Kadara Mal Oluyor?",
+        "seo_baslik": "Okul Alışverişi Ne Kadara Mal Oluyor?",
         "meta": "Çanta, kırtasiye, kitap ve ayakkabı: bir öğrencinin okul "
                 "masrafı kalem kalem. Aylık güncellenen gerçek fiyatlarla.",
         "govde": _govde_okul,
@@ -713,6 +716,7 @@ REHBERLER = [
     {
         "slug": "yemekli-mi-kokteyl-mi",
         "baslik": "Yemekli mi Kokteyl mi? Düğün Salonu Seçiminde Fiyat Farkı",
+        "seo_baslik": "Düğün Salonu: Yemekli mi Kokteyl mi?",
         "meta": "Yemekli ve kokteyl düğün salonu arasındaki kişi başı fark ne kadar, "
                 "menünün gerçek bedeli nasıl hesaplanır?",
         "govde": _govde_yemekli_kokteyl,
@@ -861,7 +865,7 @@ def rehber_uret(rehber: dict, veriler: dict, tarih: str | None = None) -> str | 
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{rehber["baslik"]} | Maliyeti Ne?</title>
+<title>{rehber.get("seo_baslik") or rehber["baslik"]} | Maliyeti Ne?</title>
 <meta name="description" content="{rehber["meta"]}">
 <link rel="canonical" href="{url}">
 <link rel="stylesheet" href="/assets/css/style.css">

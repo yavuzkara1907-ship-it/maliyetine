@@ -579,3 +579,25 @@ button.metin-buton {
 .vertikal-kart h3 a:hover {
   text-decoration: underline;
 }
+
+/* ---- Kirinti navigasyonu (breadcrumb) ---- */
+.kirinti {
+  font-size: 0.85rem;
+  color: var(--renk-metin-soluk);
+  margin-bottom: 14px;
+}
+
+.kirinti a {
+  color: var(--renk-metin-soluk);
+  text-decoration: none;
+}
+
+.kirinti a:hover {
+  color: var(--renk-vurgu);
+  text-decoration: underline;
+}
+
+.kirinti span[aria-hidden] {
+  margin: 0 6px;
+  opacity: 0.6;
+}
