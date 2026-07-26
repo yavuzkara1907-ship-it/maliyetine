@@ -23,13 +23,13 @@
       "min": 1200,
       "medyan": 1280,
       "max": 1400,
-      "urun_sayisi": 21
+      "urun_sayisi": 20
     },
     "luks": {
       "min": 1500,
       "medyan": 1600,
       "max": 1800,
-      "urun_sayisi": 8
+      "urun_sayisi": 9
     }
   }
 }

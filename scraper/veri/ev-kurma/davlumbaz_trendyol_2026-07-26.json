@@ -6,12 +6,12 @@
   "kalem": "davlumbaz",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-26",
-  "toplam_urun": 17,
+  "toplam_urun": 18,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "json-ld"
   ],
-  "genel_medyan": 3539,
+  "genel_medyan": 3569,
   "segmentler": {
     "dusuk": {
       "min": 2489,
@@ -21,13 +21,13 @@
     },
     "orta": {
       "min": 3169,
-      "medyan": 3569,
-      "max": 3899,
-      "urun_sayisi": 8
+      "medyan": 3599,
+      "max": 4230,
+      "urun_sayisi": 9
     },
     "luks": {
-      "min": 4230,
-      "medyan": 4949,
+      "min": 4499,
+      "medyan": 5045,
       "max": 7770,
       "urun_sayisi": 4
     }

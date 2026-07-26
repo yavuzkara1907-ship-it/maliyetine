@@ -21,15 +21,15 @@
     },
     "orta": {
       "min": 1590,
-      "medyan": 2225,
-      "max": 2700,
-      "urun_sayisi": 6
+      "medyan": 1608,
+      "max": 2650,
+      "urun_sayisi": 5
     },
     "luks": {
-      "min": 2750,
-      "medyan": 2750,
+      "min": 2700,
+      "medyan": 2725,
       "max": 2750,
-      "urun_sayisi": 1
+      "urun_sayisi": 2
     }
   }
 }

@@ -51,8 +51,8 @@
     },
     {
      "tarih": "2026-07-26",
-     "medyan": 1000,
-     "urun": 11,
+     "medyan": 1200,
+     "urun": 9,
      "kaynak": 1
     }
    ],
@@ -64,8 +64,8 @@
    },
    "son": {
     "tarih": "2026-07-26",
-    "medyan": 1000,
-    "urun": 11,
+    "medyan": 1200,
+    "urun": 9,
     "kaynak": 1
    }
   },
@@ -85,8 +85,8 @@
     },
     {
      "tarih": "2026-07-26",
-     "medyan": 7899,
-     "urun": 19,
+     "medyan": 8399,
+     "urun": 21,
      "kaynak": 1
     }
    ],
@@ -98,8 +98,8 @@
    },
    "son": {
     "tarih": "2026-07-26",
-    "medyan": 7899,
-    "urun": 19,
+    "medyan": 8399,
+    "urun": 21,
     "kaynak": 1
    }
   },
@@ -113,8 +113,8 @@
     },
     {
      "tarih": "2026-07-26",
-     "medyan": 500,
-     "urun": 9,
+     "medyan": 550,
+     "urun": 8,
      "kaynak": 1
     }
    ],
@@ -126,8 +126,8 @@
    },
    "son": {
     "tarih": "2026-07-26",
-    "medyan": 500,
-    "urun": 9,
+    "medyan": 550,
+    "urun": 8,
     "kaynak": 1
    }
   },
@@ -204,7 +204,7 @@
     {
      "tarih": "2026-07-26",
      "medyan": 44950,
-     "urun": 97,
+     "urun": 98,
      "kaynak": 3
     }
    ],
@@ -217,7 +217,7 @@
    "son": {
     "tarih": "2026-07-26",
     "medyan": 44950,
-    "urun": 97,
+    "urun": 98,
     "kaynak": 3
    }
   },
@@ -281,8 +281,8 @@
     },
     {
      "tarih": "2026-07-26",
-     "medyan": 138,
-     "urun": 10,
+     "medyan": 132,
+     "urun": 9,
      "kaynak": 1
     }
    ],
@@ -294,8 +294,8 @@
    },
    "son": {
     "tarih": "2026-07-26",
-    "medyan": 138,
-    "urun": 10,
+    "medyan": 132,
+    "urun": 9,
     "kaynak": 1
    }
   },
@@ -343,8 +343,8 @@
     },
     {
      "tarih": "2026-07-26",
-     "medyan": 1535,
-     "urun": 8,
+     "medyan": 935,
+     "urun": 7,
      "kaynak": 1
     }
    ],
@@ -356,8 +356,8 @@
    },
    "son": {
     "tarih": "2026-07-26",
-    "medyan": 1535,
-    "urun": 8,
+    "medyan": 935,
+    "urun": 7,
     "kaynak": 1
    }
   },
@@ -372,7 +372,7 @@
     {
      "tarih": "2026-07-26",
      "medyan": 400,
-     "urun": 9,
+     "urun": 7,
      "kaynak": 1
     }
    ],
@@ -385,7 +385,7 @@
    "son": {
     "tarih": "2026-07-26",
     "medyan": 400,
-    "urun": 9,
+    "urun": 7,
     "kaynak": 1
    }
   },

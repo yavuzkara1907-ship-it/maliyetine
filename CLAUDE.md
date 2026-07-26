@@ -561,6 +561,42 @@ microdata/fiyat teşhisi. Çıktı: YEŞİL / SARI / KIRMIZI.
   (evds2.tcmb.gov.tr → kayıt → profilden key). Key gelirse entegrasyon
   yazılabilir: geriye dönük seri + resmî çapraz doğrulama.
 
+## REHBER (BLOG) SAYFALARI — `scraper/rehber.py` (2026-07-26)
+Yavuz'un talimatı: *"SEO ve GEO tarafını çok mutlu edecek bloglar yaz.
+Ama yapay zeka gibi değil, gerçekçi."*
+- 4 yazı: `/rehber/150-kisilik-dugun-maliyeti/`, `/rehber/yemekli-mi-kokteyl-mi/`,
+  `/rehber/sifirdan-ev-kurma-listesi/`, `/rehber/sifir-araba-gercek-maliyeti/`
+  + `/rehber/` dizini. 315–354 kelime.
+- **METİN elle yazılı, RAKAMLAR veriden.** Gövde fonksiyonları `/veri/*.json`
+  okur; aylık ölçümde yazılar da kendiliğinden güncellenir. **Bayat rakamlı
+  blog yazısı, güven kaybının en hızlı yolu** — bu yüzden hiçbir tutar
+  metne gömülmedi.
+- **Veri yoksa sayfa ÜRETİLMEZ** (testle kilitli). Boş/rakamsız yazı
+  yayınlamıyoruz; ana sayfa ve sitemap de yalnızca gerçekten yazılmış
+  dosyalara link veriyor (404'e link çıkmasın).
+- **YAZIM KURALI dosyanın başında kayıtlı:** rakamla başla, girizgah yapma;
+  cümle uzunlukları değişsin; her şey madde listesi olmasın; "Unutmayın ki /
+  Sonuç olarak / Peki ya / Kısacası" gibi dolgu kalıpları YOK; kendi
+  ölçümümüzden çıkan şaşırtıcı şeyi söyle; bir şey ters gittiyse onu da
+  söyle. **Bir test bu klişe kalıpları arayıp bulursa başarısız oluyor.**
+- Article + BreadcrumbList schema, ana sayfada "Rehberler" bölümü,
+  yazılar birbirine iç link veriyor (kendine link vermiyor — testli).
+  sitemap 66 → **71 URL**, IndexNow'a bildirildi.
+- Workflow'a eklendi: `rehber.py` → ardından `sayfa_uret.py` (sitemap ve
+  ana sayfa rehber dosyalarının varlığına baktığı için SIRA ÖNEMLİ).
+
+## "MEDYAN" → "ORTALAMA" (2026-07-26, Yavuz'un kararı)
+*"Medyan çok istatistik kelimesi kalıyor."* Görünür metinlerde terim
+bırakıldı; tablo başlıkları, cevap blokları ve meta açıklamalar artık
+"ortalama fiyat" diyor.
+- **AMA metodolojide açıkça yazıyor** (üç metodoloji sayfasına
+  `"Ortalama fiyat" derken` bölümü eklendi): kullandığımız değer
+  aritmetik ortalama değil **ortanca**, ve nedeni — tek bir çok pahalı
+  ürün aritmetik ortalamayı yukarı çekip kimsenin ödemediği bir rakam
+  üretir. Bunu yazmadan "ortalama" demek yanıltıcı olurdu.
+- schema.org `measurementTechnique` alanında teknik terim KALDI (orası
+  AI motorlarına metodolojiyi anlatan teknik alan, kullanıcıya görünmüyor).
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)

@@ -1,35 +1,35 @@
 {
- "site": "dugun-com",
- "kaynak_adlari": [
-  "Dugun.com - Istanbul Dugun Fotografcisi"
- ],
- "kalem": "fotografci",
- "vertikal": "dugun",
- "tarih": "2026-07-26",
- "toplam_urun": 1,
- "saglikli": true,
- "kullanilan_katmanlar": [
-  "tablo"
- ],
- "genel_medyan": 15600,
- "segmentler": {
-  "dusuk": {
-   "min": 15600,
-   "medyan": 15600,
-   "max": 15600,
-   "urun_sayisi": 1
-  },
-  "orta": {
-   "min": 15600,
-   "medyan": 15600,
-   "max": 15600,
-   "urun_sayisi": 1
-  },
-  "luks": {
-   "min": 15600,
-   "medyan": 15600,
-   "max": 15600,
-   "urun_sayisi": 1
+  "site": "dugun-com",
+  "kaynak_adlari": [
+    "Dugun.com - Istanbul Dugun Fotografcisi"
+  ],
+  "kalem": "fotografci",
+  "vertikal": "dugun",
+  "tarih": "2026-07-26",
+  "toplam_urun": 1,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 15600,
+  "segmentler": {
+    "dusuk": {
+      "min": 15600,
+      "medyan": 15600,
+      "max": 15600,
+      "urun_sayisi": 1
+    },
+    "orta": {
+      "min": 15600,
+      "medyan": 15600,
+      "max": 15600,
+      "urun_sayisi": 1
+    },
+    "luks": {
+      "min": 15600,
+      "medyan": 15600,
+      "max": 15600,
+      "urun_sayisi": 1
+    }
   }
- }
 }

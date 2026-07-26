@@ -173,7 +173,7 @@
       const seg = veri.segmentler && veri.segmentler[SEGMENT_ANAHTARI_UI()];
       const bedel = seg ? seg.medyan : veri.genel_medyan;
       if (bedel != null) {
-        ek = " Bu mekanların menü bedeli medyanı kişi başı " + paraYaz(bedel) + ".";
+        ek = " Bu mekanların menü bedeli ortalama kişi başı " + paraYaz(bedel) + ".";
       }
     }
     yemekNotu.textContent = yemekDahil
@@ -239,7 +239,7 @@
       if (satir.tahmini_mi) {
         etiketHtml = ' <span class="tahmini-etiket" title="' + (satir.kaynak_notu || "") + '">Tahmini</span>';
       } else if (satir.genel_medyana_dusuldu) {
-        etiketHtml = ' <span class="tahmini-etiket">Genel medyan</span>';
+        etiketHtml = ' <span class="tahmini-etiket">Genel ortalama</span>';
       }
       tr.innerHTML =
         "<td>" + satir.ad + etiketHtml + "</td>" +

@@ -6,29 +6,29 @@
   "kalem": "salon-yemekli",
   "vertikal": "dugun",
   "tarih": "2026-07-26",
-  "toplam_urun": 11,
+  "toplam_urun": 9,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "detay"
   ],
-  "genel_medyan": 1000,
+  "genel_medyan": 1200,
   "segmentler": {
     "dusuk": {
-      "min": 650,
-      "medyan": 750,
-      "max": 750,
-      "urun_sayisi": 3
+      "min": 750,
+      "medyan": 875,
+      "max": 1000,
+      "urun_sayisi": 4
     },
     "orta": {
-      "min": 900,
-      "medyan": 1000,
-      "max": 1200,
-      "urun_sayisi": 6
+      "min": 1200,
+      "medyan": 1400,
+      "max": 1500,
+      "urun_sayisi": 3
     },
     "luks": {
-      "min": 1400,
-      "medyan": 1450,
-      "max": 1500,
+      "min": 1750,
+      "medyan": 2125,
+      "max": 2500,
       "urun_sayisi": 2
     }
   }

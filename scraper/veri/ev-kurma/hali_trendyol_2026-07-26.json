@@ -14,9 +14,9 @@
   "genel_medyan": 960,
   "segmentler": {
     "dusuk": {
-      "min": 900,
-      "medyan": 900,
-      "max": 900,
+      "min": 530,
+      "medyan": 530,
+      "max": 530,
       "urun_sayisi": 1
     },
     "orta": {

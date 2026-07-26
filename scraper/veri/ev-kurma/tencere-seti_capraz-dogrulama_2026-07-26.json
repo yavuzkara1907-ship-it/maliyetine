@@ -3,10 +3,11 @@
   "kalem": "tencere-seti",
   "tarih": "2026-07-26",
   "site_medyanlari": {
-    "trendyol": 3149,
-    "karaca": 6999
+    "trendyol": 3343,
+    "karaca": 6499,
+    "madamecoco": 11000
   },
-  "fark_orani": 1.223,
+  "fark_orani": 2.29,
   "esik_orani": 0.3,
   "uyari": true
 }

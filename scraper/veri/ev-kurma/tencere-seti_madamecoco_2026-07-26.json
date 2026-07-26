@@ -1,0 +1,35 @@
+{
+  "site": "madamecoco",
+  "kaynak_adlari": [
+    "Madame Coco - Tencere Tava ve Sahan Setleri"
+  ],
+  "kalem": "tencere-seti",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-07-26",
+  "toplam_urun": 24,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 11000,
+  "segmentler": {
+    "dusuk": {
+      "min": 3100,
+      "medyan": 4300,
+      "max": 6300,
+      "urun_sayisi": 7
+    },
+    "orta": {
+      "min": 6500,
+      "medyan": 13000,
+      "max": 22000,
+      "urun_sayisi": 14
+    },
+    "luks": {
+      "min": 28000,
+      "medyan": 28000,
+      "max": 28000,
+      "urun_sayisi": 3
+    }
+  }
+}

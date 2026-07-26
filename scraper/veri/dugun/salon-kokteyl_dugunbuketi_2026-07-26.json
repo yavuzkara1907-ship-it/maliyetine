@@ -6,30 +6,30 @@
   "kalem": "salon-kokteyl",
   "vertikal": "dugun",
   "tarih": "2026-07-26",
-  "toplam_urun": 9,
+  "toplam_urun": 8,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "detay"
   ],
-  "genel_medyan": 500,
+  "genel_medyan": 550,
   "segmentler": {
     "dusuk": {
       "min": 280,
       "medyan": 500,
       "max": 500,
-      "urun_sayisi": 6
+      "urun_sayisi": 4
     },
     "orta": {
       "min": 600,
-      "medyan": 600,
-      "max": 600,
-      "urun_sayisi": 1
+      "medyan": 990,
+      "max": 1500,
+      "urun_sayisi": 3
     },
     "luks": {
-      "min": 800,
-      "medyan": 895,
-      "max": 990,
-      "urun_sayisi": 2
+      "min": 2500,
+      "medyan": 2500,
+      "max": 2500,
+      "urun_sayisi": 1
     }
   }
 }

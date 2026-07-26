@@ -6,29 +6,29 @@
   "kalem": "yemek-masasi",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-26",
-  "toplam_urun": 23,
+  "toplam_urun": 24,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "json-ld"
   ],
-  "genel_medyan": 22661,
+  "genel_medyan": 23420,
   "segmentler": {
     "dusuk": {
       "min": 9250,
-      "medyan": 11301,
-      "max": 16062,
-      "urun_sayisi": 6
+      "medyan": 11499,
+      "max": 19649,
+      "urun_sayisi": 7
     },
     "orta": {
       "min": 20000,
-      "medyan": 22693,
-      "max": 27245,
+      "medyan": 24557,
+      "max": 33489,
       "urun_sayisi": 12
     },
     "luks": {
-      "min": 28825,
-      "medyan": 37000,
-      "max": 38990,
+      "min": 37000,
+      "medyan": 38990,
+      "max": 49999,
       "urun_sayisi": 5
     }
   }
