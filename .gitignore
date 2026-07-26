@@ -13,3 +13,6 @@ scraper/kazima.log
 # gecmis biriktiremez - her ay "ilk calistirma, varsayilan saglikli" sanip
 # anomali tespiti hic calismaz. Aylik otomasyon (.github/workflows/) bu
 # dosyayi da commit ediyor.
+
+# EVDS (TCMB) API anahtari - ASLA commit edilmez
+scraper/.evds-key
