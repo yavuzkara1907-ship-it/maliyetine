@@ -2846,6 +2846,18 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
         "ölçülüyor. Her rakamın yanında kaynak ve ölçüm tarihi var."
     ) if _og_kalem else "Gerçek fiyat verisinden derlenmiş maliyet endeksi."
 
+    # Sohbet asistani: cevaplari VERIDEN secen, uydurma yapamayan yapi
+    # (bkz. asistan.py - LLM yok, cumleler sabit sablon).
+    asistan_blok, asistan_js_kod = "", ""
+    try:
+        import asistan as _asistan
+        _av = _asistan.asistan_verisi(veri_kok)
+        if _av["kalemler"]:
+            asistan_blok = _asistan.asistan_html(_av)
+            asistan_js_kod = _asistan.asistan_js(_av)
+    except ImportError:
+        pass
+
     arama_kayitlari = _arama_verisi(veri_kok)
     arama_js = _arama_js(arama_kayitlari) if arama_kayitlari else ""
     hizli = _hizli_hesap_katsayilari(veri_kok)
@@ -3069,6 +3081,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
     </div>
   </section>
 
+{asistan_blok}
   <h2>Endeksler</h2>
 
   <div class="kart-grid">
@@ -3104,7 +3117,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
   </div>
 </footer>
 
-{arama_js}{hizli_hesap_js}</body>
+{arama_js}{hizli_hesap_js}{asistan_js_kod}</body>
 </html>
 """
 

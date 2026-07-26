@@ -885,3 +885,119 @@ button.metin-buton {
   color: var(--renk-metin-soluk);
   font-size: 0.92rem;
 }
+
+/* ---- Sohbet asistani ---- */
+.asistan {
+  border: 1px solid var(--renk-cizgi);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  margin: 0 0 34px;
+}
+
+.asistan h2 {
+  margin: 0 0 4px;
+  font-size: 1.25rem;
+}
+
+.asistan-alt {
+  color: var(--renk-metin-soluk);
+  font-size: 0.9rem;
+  margin: 0 0 16px;
+}
+
+.as-akis {
+  max-height: 340px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+  padding-right: 4px;
+}
+
+.as-balon {
+  padding: 12px 15px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  max-width: 88%;
+}
+
+.as-asistan {
+  background: var(--renk-zemin-alt);
+  border: 1px solid var(--renk-cizgi);
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+}
+
+.as-ben {
+  background: var(--renk-vurgu);
+  color: #fff;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+
+.as-kaynak {
+  display: block;
+  margin-top: 7px;
+  font-size: 0.78rem;
+  color: var(--renk-metin-soluk);
+}
+
+.as-link {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.as-oneriler {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-bottom: 14px;
+}
+
+.as-oneri {
+  font: inherit;
+  font-size: 0.83rem;
+  padding: 7px 13px;
+  border-radius: 999px;
+  border: 1px solid var(--renk-cizgi-koyu);
+  background: var(--renk-zemin);
+  color: var(--renk-vurgu);
+  cursor: pointer;
+}
+
+.as-oneri:hover {
+  background: var(--renk-vurgu-acik);
+}
+
+.asistan form {
+  display: flex;
+  gap: 9px;
+}
+
+.asistan input {
+  flex: 1;
+  padding: 12px 15px;
+  font: inherit;
+  color: var(--renk-metin);
+  background: var(--renk-zemin);
+  border: 1px solid var(--renk-cizgi-koyu);
+  border-radius: 10px;
+}
+
+.asistan input:focus {
+  outline: 2px solid var(--renk-vurgu);
+  outline-offset: 1px;
+}
+
+.asistan .birincil-buton {
+  padding: 12px 22px;
+}
+
+@media (max-width: 560px) {
+  .as-balon { max-width: 96%; }
+  .asistan { padding: 18px 16px; }
+}
