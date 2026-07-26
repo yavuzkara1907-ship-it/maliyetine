@@ -750,6 +750,16 @@ def _ek_kalem_sayfalari(conf: dict, kalem_verisi: dict) -> list[dict]:
 # Ana sayfa endeks kartinda gosterilecek en fazla kalem linki.
 ANASAYFA_KART_LINK_SINIRI = 8
 
+
+# Footer'daki GLOBAL endeks listesi.
+# NEDEN: vertikal sayfalarinin menusu ve footer'i yalnizca KENDI
+# vertikalini gosteriyordu; olculdu, 85 sayfadan diger endekslere hicbir
+# link yoktu. Kullanici dugun kalem sayfasindayken ev-kurmaya ancak ana
+# sayfaya donup gidebiliyordu - hem gezinme hem ic link akisi kaybi.
+TUM_ENDEKS_LINKLERI = "".join(
+    f'\n      <a href="/{c["yol"]}/">{c["ad"]}</a>' for c in VERTIKALLER.values()
+)
+
 SEGMENT_ANAHTARI = {"ekonomik": "dusuk", "orta": "orta", "luks": "luks"}
 SEGMENT_ETIKETLERI = {"dusuk": "Ekonomik", "orta": "Orta", "luks": "Üst"}
 
@@ -1119,11 +1129,39 @@ def segment_degerleri(kalem_verisi: dict | None) -> dict[str, int | None]:
     yapar. Tablo ve SEO metninde ise eksik segmenti "luks" ya da "ekonomik"
     gibi gostermek yaniltici olur; bu yuzden burada fallback YOK.
     """
+    # SEGMENT TUTARSIZSA hicbiri gosterilmez: agrega.py, segmentler
+    # kaynaklar arasinda bagimsiz hesaplandigi icin siralanmanin
+    # bozulabildigi kalemleri isaretliyor ("orta segment, ustten pahali").
+    # Boyle bir tabloyu yayinlamak okuyucuyu yaniltir - yalnizca genel
+    # ortalama gosterilir ve nedeni yazilir.
+    if (kalem_verisi or {}).get("segment_tutarsiz"):
+        return {"dusuk": None, "orta": None, "luks": None}
     segmentler = (kalem_verisi or {}).get("segmentler") or {}
     return {
         seg: (segmentler.get(seg) or {}).get("medyan")
         for seg in ("dusuk", "orta", "luks")
     }
+
+
+
+def _segment_tutarsiz_notu(kalem_verisi: dict | None) -> str:
+    """Segment kirilimi gizlendiginde NEDENINI yazar.
+
+    Tabloyu sessizce gizlemek "veri eksik" izlenimi verir; asil sebep
+    olcum yonteminin siniri ve bunu soylemek guveni artiriyor.
+    """
+    if not (kalem_verisi or {}).get("segment_tutarsiz"):
+        return ""
+    return (
+        '    <div class="uyari-kutu">\n'
+        "      <strong>Bu kalemde segment kırılımı gösterilmiyor.</strong> "
+        "Kaynaklardan birinin örneklemi küçük olduğu için üst segment yalnızca "
+        "tek kaynaktan hesaplanıyor ve sıralama tutarsız çıkıyor (orta segment, "
+        "üst segmentten pahalı görünüyor). Yanlış bir tablo göstermektense "
+        "yalnızca genel ortalamayı veriyoruz; örneklem büyüdüğünde kırılım "
+        "kendiliğinden geri gelecek.\n"
+        "    </div>\n"
+    )
 
 
 def _liste_html(maddeler: list[str]) -> str:
@@ -1794,6 +1832,7 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
       {hesaplayici_menu}
       <a href="/{yol}/metodoloji/">Metodoloji</a>
     </nav>
+    <nav class="footer-endeksler" aria-label="Tüm endeksler">{TUM_ENDEKS_LINKLERI}</nav>
   </div>
 </footer>
 
@@ -1833,6 +1872,9 @@ def _segment_detay_tablosu_html(kalem_verisi: dict | None) -> str:
     sayfalari uzun kuyruk aramanin hedefi, Google'in indekslemesi icin
     gercek icerik gerekiyor.
     """
+    # Tutarsiz kirilim gosterilmez (bkz. _segment_tutarsiz_notu).
+    if (kalem_verisi or {}).get("segment_tutarsiz"):
+        return ""
     segmentler = (kalem_verisi or {}).get("segmentler") or {}
     if not segmentler:
         return _segment_tablosu_html(kalem_verisi)
@@ -1997,7 +2039,7 @@ def kalem_sayfasi_uret(
     if orta:
         cevap = (
             f"Maliyeti Ne? verilerine göre {guncelleme_tarihi} itibarıyla {tanim['ad']} "
-            f"orta segment ortalama fiyatı {birim} <strong>{_para(orta)}</strong>. "
+            f"{'ortalama fiyatı' if (veri or {}).get('segment_tutarsiz') else 'orta segment ortalama fiyatı'} {birim} <strong>{_para(orta)}</strong>. "
             f"Bu rakam {kaynak_sayisi or (veri or {}).get('kaynak_sayisi', 0)} bağımsız kaynak"
         )
         if urun_sayisi:
@@ -2014,7 +2056,7 @@ def kalem_sayfasi_uret(
     # asmasin (Google keser).
     if orta:
         meta_aciklama = (
-            f"{tanim['ad']} orta segment ortalama fiyatı{birim} {_para(orta)} "
+            f"{tanim['ad']} {'ortalama fiyatı' if (veri or {}).get('segment_tutarsiz') else 'orta segment ortalama fiyatı'}{birim} {_para(orta)} "
             f"({guncelleme_tarihi}). Ekonomik, orta ve lüks fiyat aralığı; "
             f"kaynak sayısı ve örneklem büyüklüğüyle."
         )
@@ -2180,6 +2222,7 @@ def kalem_sayfasi_uret(
   <section class="icerik-bolumu">
     <h2>Fiyat aralığı ve örneklem</h2>
     <p>{sayfa["aciklama"]}</p>
+{_segment_tutarsiz_notu(veri)}
 {_segment_grafigi(degerler, " (kişi başı)" if tanim["birim"] == "kisi_basi" else "")}
     {_segment_detay_tablosu_html(veri)}
     <p class="sonuc-alt-metin">Segmentler persentil bazlı ayrılır: en ucuz
@@ -2205,6 +2248,7 @@ def kalem_sayfasi_uret(
       {kalem_hesaplayici_menu}
       <a href="/{conf["yol"]}/metodoloji/">Metodoloji</a>
     </nav>
+    <nav class="footer-endeksler" aria-label="Tüm endeksler">{TUM_ENDEKS_LINKLERI}</nav>
   </div>
 </footer>
 

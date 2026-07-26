@@ -1013,6 +1013,7 @@ def rehber_uret(rehber: dict, veriler: dict, tarih: str | None = None) -> str | 
     <nav class="ust-menu">
       <a href="/dugun/">Düğün</a>
       <a href="/ev-kurma/">Ev Kurma</a>
+      <a href="/okul/">Okul</a>
       <a href="/arac/">0 km Araç</a>
     </nav>
   </div>
@@ -1039,6 +1040,7 @@ def rehber_uret(rehber: dict, veriler: dict, tarih: str | None = None) -> str | 
     <nav>
       <a href="/dugun/">Düğün</a>
       <a href="/ev-kurma/">Ev Kurma</a>
+      <a href="/okul/">Okul</a>
       <a href="/arac/">0 km Araç</a>
     </nav>
   </div>
@@ -1080,6 +1082,7 @@ def rehber_dizini_uret(yazilanlar: list[dict], tarih: str | None = None) -> str:
     <nav class="ust-menu">
       <a href="/dugun/">Düğün</a>
       <a href="/ev-kurma/">Ev Kurma</a>
+      <a href="/okul/">Okul</a>
       <a href="/arac/">0 km Araç</a>
     </nav>
   </div>

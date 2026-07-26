@@ -121,6 +121,27 @@ def kalem_birlestir(kaynak_kayitlari: list[dict]) -> dict:
                 "kaynak_sayisi": len(medyanlar),
             }
 
+    # SEGMENT TUTARLILIGI KONTROLU
+    # Segmentler kaynaklar arasinda BAGIMSIZ hesaplaniyor: "ust segment"
+    # medyani, o segmenti dolduran kaynaklarin medyanindan geliyor. Bir
+    # kaynagin orneklemi kucukse (ör. 8 urun) ust segmenti hic olusmaz ve
+    # o segment TEK kaynaktan hesaplanir. Sonuc: siralamanin bozulmasi.
+    #
+    # Gercek ornek (blender, 2026-07-26): Amazon 47 urun (1.399/2.389/
+    # 4.762), Trendyol 8 urun (2.749/8.659, ust YOK). Medyan-of-medyan:
+    # dusuk 2.074, orta 5.524, ust 4.762 -> ORTA, USTTEN PAHALI cikti.
+    # Sayfada "orta 5.524, ust 4.762" gormek okuyucuyu hakli olarak
+    # "ust segment neden ucuz?" diye sordurur.
+    #
+    # Boyle bir kalemde segment kirilimi GUVENILIR DEGIL. Sessizce
+    # duzeltmek (siralamayi zorlamak) veriyi carpitmak olurdu; bunun
+    # yerine isaretliyoruz - sayfa segmentleri gostermeyip yalnizca genel
+    # ortalamayi veriyor ve nedenini yaziyor.
+    sirali_degerler = [
+        segmentler[ad]["medyan"] for ad in SEGMENT_ADLARI if ad in segmentler
+    ]
+    segment_tutarsiz = sirali_degerler != sorted(sirali_degerler)
+
     genel_medyanlar = [k["genel_medyan"] for k in kaynak_kayitlari if k.get("genel_medyan") is not None]
     toplam_urun = sum(k.get("toplam_urun", 0) for k in kaynak_kayitlari)
     en_guncel_tarih = max(k["tarih"] for k in kaynak_kayitlari)
@@ -139,6 +160,9 @@ def kalem_birlestir(kaynak_kayitlari: list[dict]) -> dict:
 
     return {
         "segmentler": segmentler,
+        # True ise segment kirilimi guvenilir degil (bkz. yukarisi) -
+        # sayfa segmentleri gostermez, yalnizca genel ortalamayi verir.
+        **({"segment_tutarsiz": True} if segment_tutarsiz else {}),
         "genel_medyan": round(statistics.median(genel_medyanlar)) if genel_medyanlar else None,
         "toplam_urun": toplam_urun,
         "guncelleme_tarihi": en_guncel_tarih,

@@ -796,3 +796,11 @@ button.metin-buton {
     padding: 6px 0;
   }
 }
+
+/* Footer'daki global endeks listesi - vertikal ici menuden ayri dursun. */
+.footer-endeksler {
+  margin-top: 6px;
+  padding-top: 8px;
+  border-top: 1px solid var(--renk-cizgi);
+  opacity: 0.85;
+}

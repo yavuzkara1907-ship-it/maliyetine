@@ -535,11 +535,21 @@ class EvKurmaVertikaliTestleri(unittest.TestCase):
         self.assertIn("Mutfak", html)
 
     def test_linkler_ve_kanonik_url_vertikale_gore_uretilir(self):
+        """Vertikal izolasyonu: ICERIK linkleri baska vertikale sizmamali.
+
+        Footer'daki global endeks listesi (2026-07-26'da eklendi) BILINCLI
+        bir istisna - 85 sayfadan diger endekslere hicbir link yoktu,
+        kullanici dugun sayfasindan ev-kurmaya gecemiyordu. Bu yuzden
+        kontrol footer disindaki govdede yapiliyor.
+        """
         html = sayfa_uret.sayfa_uret("ev-kurma", self.veri_dosyasi)
         self.assertIn('href="https://maliyetine.com.tr/ev-kurma/"', html)
         self.assertIn('href="/ev-kurma/hesaplayici/"', html)
         self.assertIn('href="/ev-kurma/metodoloji/"', html)
-        self.assertNotIn("/dugun/", html)
+        govde = html.split("<footer>")[0]
+        self.assertNotIn("/dugun/", govde)
+        # Global gezinme footer'da OLMALI
+        self.assertIn('href="/dugun/"', html.split("<footer>")[1])
 
     def test_bilinmeyen_vertikal_hata_verir(self):
         with self.assertRaises(ValueError):

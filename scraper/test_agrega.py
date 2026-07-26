@@ -256,3 +256,38 @@ class YazTestleri(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class SegmentTutarliligiTesti(unittest.TestCase):
+    """Segmentler kaynaklar arasinda BAGIMSIZ hesaplandigi icin siralanma
+    bozulabiliyor - bu tespit edilmezse 'orta segment ustten pahali' gibi
+    bir tablo yayinlanir."""
+
+    def _kayit(self, site, segmentler, urun):
+        return {"site": site, "kaynak_adlari": [site], "tarih": "2026-08-05",
+                "toplam_urun": urun, "genel_medyan": 1000, "saglikli": True,
+                "segmentler": {
+                    ad: {"min": v, "medyan": v, "max": v, "urun_sayisi": 5}
+                    for ad, v in segmentler.items()
+                }}
+
+    def test_ust_segment_ortadan_ucuzsa_isaretlenir(self):
+        """Gercek vaka (blender, 2026-07-26): bir kaynagin orneklemi
+        kucuk oldugu icin ust segmenti hic olusmamis."""
+        birlesik = agrega.kalem_birlestir([
+            self._kayit("amazon", {"dusuk": 1399, "orta": 2389, "luks": 4762}, 47),
+            self._kayit("trendyol", {"dusuk": 2749, "orta": 8659}, 8),  # luks YOK
+        ])
+        self.assertTrue(birlesik.get("segment_tutarsiz"))
+
+    def test_duzgun_siralamada_isaret_yok(self):
+        birlesik = agrega.kalem_birlestir([
+            self._kayit("a", {"dusuk": 100, "orta": 200, "luks": 300}, 20),
+            self._kayit("b", {"dusuk": 120, "orta": 220, "luks": 320}, 20),
+        ])
+        self.assertNotIn("segment_tutarsiz", birlesik)
+
+    def test_eksik_segment_tek_basina_tutarsizlik_degil(self):
+        """Bazi kalemlerde yalnizca bir segment var - bu bozukluk degil."""
+        birlesik = agrega.kalem_birlestir([self._kayit("a", {"orta": 500}, 1)])
+        self.assertNotIn("segment_tutarsiz", birlesik)
