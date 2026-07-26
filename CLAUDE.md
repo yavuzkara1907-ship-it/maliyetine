@@ -746,6 +746,30 @@ ev kurma · sıfır araba gerçek maliyeti · okul masrafı ·
 **ekonomik düğün nasıl yapılır** · **beyaz eşya bütçesi**.
 336–445 kelime, rakamlar veriden, klişe-kalıp testinden geçiyor.
 
+## AMAZON — ev-kurma/okul/düğüne İKİNCİ KAYNAK (2026-07-26)
+Yavuz'un önerisiyle denendi. **Çalışıyor** ve ÇOK KAYNAK KURALI'nın en
+büyük boşluğunu kapatıyor: ev-kurmanın 42 kaleminin 40'ı, okulun 14'ünün
+tamamı tek kaynaklıydı (Trendyol).
+- **robots.txt ARAMA sayfasına bile ONAY veriyor** (`/s?k=`) — kategori
+  URL'i avlamaya gerek kalmadı, Trendyol/okul turundaki en pahalı iş buydu.
+- **Düz `requests` ile ÇALIŞMIYOR:** 2.186 byte'lık boş kabuk dönüyor,
+  başlık bile yok. `render_gerekli: true` + `kaydirma: 3` şart.
+- Kart yapısı: `div[data-asin]` > `h2` (isim) + `.a-price .a-offscreen`
+  (fiyat). **Fiyat kartın İÇİNDE** — idefix'i eleyen eşleşme sorunu yok.
+- Fiyat formatı "21.999,00 TL" (TR); daha önce düzelttiğimiz TR/EN format
+  ayrımı burada işe yaradı.
+- **59 kalem eklendi:** ev-kurma 42 · okul 14 · düğün 3.
+- **KAPSAM DIŞI:** araç (Amazon'da satılmıyor), tüm hizmet kalemleri,
+  ve **gelinlik/damatlık/alyans/takı** — bunlarda Amazon'un ürün karması
+  bizim ölçtüğümüz segmentle örtüşmüyor, endeksi bozma riski yüksek.
+- **Sorgu kalitesi ölçüldü, varsayılmadı:** en riskli 4 sorgu (kalem,
+  defter, perde, nikah şekeri) tek tek çalıştırılıp dönen ürün adları
+  okundu — hepsi alakalı çıktı. Genel sorgular (`kalem`) yerine
+  daraltılmış sorgular (`kurşun kalem seti`) kullanılıyor.
+- İlk karşılaştırma: buzdolabı Trendyol 29.000 / Amazon 32.299 (+%11),
+  çamaşır makinesi 24.799 / 28.000 (+%13). **Çapraz doğrulama eşiğinin
+  (%30) altında — iki kaynak birbirini teyit ediyor.**
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)

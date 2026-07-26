@@ -2447,3 +2447,1085 @@ kaynaklar:
     bekleme_sn: 3
     aktif: true
     durum: "arastirildi"
+
+  # ============ AMAZON (2026-07-26) ============
+  # Ev-kurma, okul ve dugun kalemlerine IKINCI BAGIMSIZ KAYNAK.
+  # Yavuz'un onerisiyle denendi ve calisti.
+  #
+  # NEDEN DEGERLI: ev-kurmanin 42 kaleminin 40'i, okulun 14'unun tamami
+  # tek kaynakliydi (Trendyol). COK KAYNAK KURALI'nin karsilanmadigi en
+  # buyuk bosluk buydu.
+  #
+  # TEKNIK NOT: robots.txt ARAMA sayfasina bile ONAY veriyor (/s?k=), bu
+  # yuzden kategori URL'i avlamaya gerek kalmadi. AMA duz `requests` ile
+  # calismiyor: 2.186 byte'lik bos kabuk donuyor. render_gerekli + kaydirma
+  # sart. Kart yapisi: div[data-asin] > h2 (isim) + .a-price .a-offscreen
+  # (fiyat) - fiyat kartin ICINDE, yani idefix'i eleyen eslesme sorunu
+  # burada YOK.
+  #
+  # KAPSAM DISI BIRAKILANLAR: arac vertikali (Amazon'da satilmiyor), tum
+  # hizmet kalemleri (salon, fotografci, organizasyon...), ve
+  # gelinlik/damatlik/alyans/taki - bunlarda Amazon'un urun karmasi bizim
+  # olctugumuz segmentle ortusmuyor, endeksi bozma riski yuksek.
+
+  - ad: "Amazon - Buzdolabı"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=buzdolab%C4%B1"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "buzdolabi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 4350
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Çamaşır Makinesi"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=%C3%A7ama%C5%9F%C4%B1r%20makinesi"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "camasir-makinesi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 3719
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Kurutma Makinesi"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=kurutma%20makinesi"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "kurutma-makinesi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 2798
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Bulaşık Makinesi"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=bula%C5%9F%C4%B1k%20makinesi"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "bulasik-makinesi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 2624
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Ankastre Fırın"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=ankastre%20f%C4%B1r%C4%B1n"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "firin-ocak"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 2729
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Davlumbaz"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=davlumbaz"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "davlumbaz"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 539
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Mikrodalga Fırın"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=mikrodalga%20f%C4%B1r%C4%B1n"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "mikrodalga"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 688
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Klima"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=klima"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "klima"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 5129
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Koltuk Takımı"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=koltuk%20tak%C4%B1m%C4%B1"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "koltuk-takimi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 5400
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Yemek Masası Takımı"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=yemek%20masas%C4%B1%20tak%C4%B1m%C4%B1"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "yemek-masasi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 3403
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Tv Ünitesi"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=tv%20%C3%BCnitesi"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "tv-unitesi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 1065
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Orta Sehpa"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=orta%20sehpa"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "sehpa"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 282
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Konsol"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=konsol"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "konsol"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 681
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Yatak Şilte"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=yatak%20%C5%9Filte"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "yatak"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 256
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Karyola Baza"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=karyola%20baza"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "karyola"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 602
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Gardırop"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=gard%C4%B1rop"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "gardirop"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 858
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Komodin"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=komodin"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "komodin"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 213
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Şifonyer"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=%C5%9Fifonyer"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "sifonyer"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 560
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Boy Aynası"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=boy%20aynas%C4%B1"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "boy-aynasi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 240
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - 4K Televizyon"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=4k%20televizyon"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "televizyon"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 7349
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Robot Süpürge"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=robot%20s%C3%BCp%C3%BCrge"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "supurge"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 2376
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Dikey Süpürge"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=dikey%20s%C3%BCp%C3%BCrge"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "dikey-supurge"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 483
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Airfryer"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=airfryer"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "airfryer"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 448
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Kahve Makinesi"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=kahve%20makinesi"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "kahve-makinesi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 291
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Su Isıtıcı Kettle"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=su%20%C4%B1s%C4%B1t%C4%B1c%C4%B1%20kettle"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "su-isitici"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 103
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Tost Makinesi"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=tost%20makinesi"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "tost-makinesi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 285
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Blender"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=blender"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "blender"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 883
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Mutfak Robotu"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=mutfak%20robotu"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "mutfak-robotu"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 321
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Ütü"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=%C3%BCt%C3%BC"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "utu"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 209
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Saç Kurutma Makinesi"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=sa%C3%A7%20kurutma%20makinesi"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "sac-kurutma-makinesi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 161
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Tencere Seti"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=tencere%20seti"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "tencere-seti"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 974
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Tava Seti"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=tava%20seti"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "tava-seti"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 270
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Çatal Kaşık Bıçak Takımı"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=%C3%A7atal%20ka%C5%9F%C4%B1k%20b%C4%B1%C3%A7ak%20tak%C4%B1m%C4%B1"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "catal-kasik-bicak-takimi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 464
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Yemek Takımı"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=yemek%20tak%C4%B1m%C4%B1"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "yemek-takimi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 300
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Kahvaltı Takımı"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=kahvalt%C4%B1%20tak%C4%B1m%C4%B1"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "kahvalti-takimi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 142
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Bardak Takımı"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=bardak%20tak%C4%B1m%C4%B1"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "bardak-takimi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 35
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Nevresim Takımı"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=nevresim%20tak%C4%B1m%C4%B1"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "nevresim-takimi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 144
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Havlu Takımı"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=havlu%20tak%C4%B1m%C4%B1"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "havlu-takimi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 79
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Bornoz"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=bornoz"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "bornoz"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 98
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Perde"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=perde"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "perde"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 59
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Halı"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=hal%C4%B1"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "hali"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 144
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Avize   Aydınlatma"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=avize%20%20%20ayd%C4%B1nlatma"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "ev-kurma"
+    kalem: "aydinlatma"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 75
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Okul Çantası"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=okul%20%C3%A7antas%C4%B1"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "okul"
+    kalem: "okul-cantasi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 185
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Beslenme Çantası"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=beslenme%20%C3%A7antas%C4%B1"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "okul"
+    kalem: "beslenme-cantasi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 44
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Çelik Matara Suluk"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=%C3%A7elik%20matara%20suluk"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "okul"
+    kalem: "matara"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 30
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Okul Kalem Kutusu"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=okul%20kalem%20kutusu"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "okul"
+    kalem: "kalem-kutusu"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 42
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Okul Defteri"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=okul%20defteri"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "okul"
+    kalem: "defter"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 43
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Kurşun Kalem Seti"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=kur%C5%9Fun%20kalem%20seti"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "okul"
+    kalem: "kalem"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 30
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Kuru Boya Seti"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=kuru%20boya%20seti"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "okul"
+    kalem: "boya-seti"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 43
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Resim Defteri Seti"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=resim%20defteri%20seti"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "okul"
+    kalem: "resim-malzemeleri"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 66
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Yardımcı Ders Kitabı"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=yard%C4%B1mc%C4%B1%20ders%20kitab%C4%B1"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "okul"
+    kalem: "ders-kitabi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 37
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Türkçe Sözlük"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=t%C3%BCrk%C3%A7e%20s%C3%B6zl%C3%BCk"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "okul"
+    kalem: "sozluk"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 52
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Çocuk Spor Ayakkabı"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=%C3%A7ocuk%20spor%20ayakkab%C4%B1"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "okul"
+    kalem: "ayakkabi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 109
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Tablet"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=tablet"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "okul"
+    kalem: "tablet"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 914
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Çalışma Masası"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=%C3%A7al%C4%B1%C5%9Fma%20masas%C4%B1"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "okul"
+    kalem: "calisma-masasi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 263
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Çalışma Sandalyesi"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=%C3%A7al%C4%B1%C5%9Fma%20sandalyesi"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "okul"
+    kalem: "calisma-sandalyesi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 288
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Gelin Ayakkabısı"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=gelin%20ayakkab%C4%B1s%C4%B1"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "gelin-ayakkabisi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 140
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Nikah Şekeri"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=nikah%20%C5%9Fekeri"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "nikah-sekeri"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 84
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
+
+  - ad: "Amazon - Düğün Davetiyesi"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=d%C3%BC%C4%9F%C3%BCn%20davetiyesi"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "dugun"
+    kalem: "davetiye"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 20
+    bekleme_sn: 3
+    aktif: true
+    durum: "arastirildi"
