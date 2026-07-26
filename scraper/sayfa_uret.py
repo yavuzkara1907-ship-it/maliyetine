@@ -995,6 +995,87 @@ def _hizli_hesap_js(hizli: dict) -> str:
     return "<script>" + govde + "</script>\n"
 
 
+
+def _arama_verisi(veri_kok: Path | None = None) -> list[dict]:
+    """Site ici arama icin kalem dizini.
+
+    NEDEN ARAMA, NEDEN CHAT DEGIL: kullanicinin gercek ihtiyaci "bana
+    buzdolabi bul" - yani dogru sayfaya ulasmak. Bunu bir sohbet botuyla
+    yapmak ISE YARAMAZ, hatta zararli: bot rakam uydurursa ("buzdolabi
+    25.000") sitenin tum degeri olan "fiyat uydurmuyoruz" iddiasi coker.
+    Arama ise YALNIZCA olctugumuz kalemleri doner; uydurabilecegi bir sey
+    yok, her sonuc gercek bir sayfaya gidiyor.
+    """
+    kok = veri_kok or SITE_KOK / "veri"
+    kayitlar = []
+    for vertikal, conf in VERTIKALLER.items():
+        dosya = kok / f"{vertikal}.json"
+        if not dosya.exists():
+            continue
+        try:
+            kalemler = json.loads(dosya.read_text(encoding="utf-8")).get("kalemler") or {}
+        except (json.JSONDecodeError, OSError):
+            continue
+        sayfalar = {s["id"]: s["slug"] for s in conf.get("kalem_sayfalari", [])}
+        for t in conf["kalemler"]:
+            veri = kalemler.get(t["id"])
+            if not veri or not veri.get("genel_medyan"):
+                continue
+            slug = sayfalar.get(t["id"])
+            kayitlar.append({
+                "ad": _kisa_kalem_adi(t["ad"]),
+                "grup": t.get("grup") or conf["ad"],
+                "fiyat": kalem_deger(veri, "orta") or veri["genel_medyan"],
+                # Kalem sayfasi yoksa endekse gonder - kirik link olmasin.
+                "yol": f"/{conf['yol']}/{slug}/" if slug else f"/{conf['yol']}/",
+                "endeks": conf["ad"],
+            })
+    return sorted(kayitlar, key=lambda x: x["ad"])
+
+
+ARAMA_JS_GOVDE = """
+(function () {
+  var VERI = __VERI__;
+  var kutu = document.getElementById("kalem-ara");
+  var liste = document.getElementById("arama-sonuc");
+  if (!kutu || !liste) return;
+  var bicim = new Intl.NumberFormat("tr-TR", { maximumFractionDigits: 0 });
+  function sadelestir(s) {
+    return s.toLocaleLowerCase("tr")
+      .replace(/ı/g, "i").replace(/ş/g, "s").replace(/ğ/g, "g")
+      .replace(/ü/g, "u").replace(/ö/g, "o").replace(/ç/g, "c");
+  }
+  var dizin = VERI.map(function (k) {
+    return { k: k, a: sadelestir(k.ad + " " + k.grup + " " + k.endeks) };
+  });
+  function ara() {
+    var q = sadelestir(kutu.value.trim());
+    if (q.length < 2) { liste.innerHTML = ""; liste.hidden = true; return; }
+    var bulunan = dizin.filter(function (x) { return x.a.indexOf(q) !== -1; }).slice(0, 8);
+    if (!bulunan.length) {
+      liste.innerHTML = '<li class="arama-bos">Bu isimde ölçtüğümüz bir kalem yok.' +
+        ' <a href="/veri/">Tüm kalemlere bakın</a></li>';
+      liste.hidden = false; return;
+    }
+    liste.innerHTML = bulunan.map(function (x) {
+      return '<li><a href="' + x.k.yol + '"><span>' + x.k.ad + '</span>' +
+        '<span class="arama-fiyat">' + bicim.format(x.k.fiyat) + ' TL</span></a>' +
+        '<span class="arama-grup">' + x.k.endeks + '</span></li>';
+    }).join("");
+    liste.hidden = false;
+  }
+  kutu.addEventListener("input", ara);
+  kutu.addEventListener("focus", ara);
+})();
+"""
+
+
+def _arama_js(kayitlar: list[dict]) -> str:
+    return "<script>" + ARAMA_JS_GOVDE.replace(
+        "__VERI__", json.dumps(kayitlar, ensure_ascii=False)
+    ) + "</script>\n"
+
+
 def _para(n: int) -> str:
     return f"{n:,.0f}".replace(",", ".") + " TL"
 
@@ -1351,8 +1432,24 @@ def _grup_toplamlari(conf: dict, kalemler: dict, segment_anahtari: str) -> list[
 # Ortaklik, vb.) kabul alindiginda takip parametresi YALNIZCA buraya
 # eklenecek - sayfa sablonlarina dokunmaya gerek kalmayacak. rel=
 # degeri de o zaman "sponsored" olmali (Google zorunlu tutuyor).
+# Kalem sayfasindaki "Nereden bakabilirsiniz" linkleri.
+#
+# AFFILIATE HAZIRLIGI: bir siteyle ortaklik anlasmasi yapildiginda
+# yalnizca buraya `takip` parametresi eklenir; sablonlara dokunulmaz.
+# `takip` dolu olan link otomatik olarak rel="sponsored" aliyor (Google'in
+# ucretli/komisyonlu baglanti icin zorunlu tuttugu isaret) ve sayfada
+# gorunur bir aciklama cikiyor.
+#
+# NEDEN BOYLE: bu sitenin tum degeri bagimsiz olcum iddiasinda. Komisyonlu
+# link koyup bunu SOYLEMEMEK hem yasal sorun (reklam aciklama
+# yukumlulugu) hem de guven kaybi. Fiyat siralamasi ve olcum komisyondan
+# ETKILENMIYOR - link yalnizca "nereden bakabilirsiniz" bilgisi; sirayi
+# komisyon degil kaynak sayisi belirliyor.
 KAYNAK_SITELERI = {
     "trendyol": {"ad": "Trendyol", "rel": "nofollow"},
+    "amazon": {"ad": "Amazon", "rel": "nofollow"},
+    "madamecoco": {"ad": "Madame Coco", "rel": "nofollow"},
+    "dugun-com": {"ad": "Düğün.com", "rel": "nofollow"},
     "karaca": {"ad": "Karaca", "rel": "nofollow"},
     "englishhome": {"ad": "English Home", "rel": "nofollow"},
     "atasay": {"ad": "Atasay", "rel": "nofollow"},
@@ -1407,9 +1504,26 @@ def _nereden_alinir_html(vertikal: str, kalem_id: str, kalem_adi: str) -> str:
     parcalar = []
     for site, url in linkler:
         bilgi = KAYNAK_SITELERI.get(site, {"ad": site.capitalize(), "rel": "nofollow"})
+        takip = bilgi.get("takip")
+        if takip:
+            url = url + ("&" if "?" in url else "?") + takip
+        rel = "sponsored" if takip else bilgi["rel"]
         parcalar.append(
-            f'<a href="{url}" rel="{bilgi["rel"]} noopener" target="_blank">'
+            f'<a href="{url}" rel="{rel} noopener" target="_blank">'
             f'{bilgi["ad"]}</a>'
+        )
+    # Komisyonlu link varsa ACIKCA soylenir: hem yasal aciklama
+    # yukumlulugu hem guven. Sirayi komisyon degil kaynak sayisi
+    # belirliyor ve olcum bundan etkilenmiyor - bunu da yaziyoruz.
+    sponsor_notu = ""
+    if any(KAYNAK_SITELERI.get(site, {}).get("takip") for site, _ in linkler):
+        sponsor_notu = (
+            '    <p class="sonuc-alt-metin"><strong>Açıklama:</strong> bu '
+            "bağlantıların bazıları ortaklık (affiliate) bağlantısıdır; "
+            "üzerinden alışveriş yapılırsa siteye komisyon kalabilir. "
+            "Ölçtüğümüz fiyatlar ve kaynak sıralaması bundan etkilenmez — "
+            "hangi sitenin listeleneceğini komisyon değil, o kalemi "
+            "gerçekten ölçebildiğimiz kaynaklar belirler.</p>\n"
         )
     return (
         '  <section class="icerik-bolumu">\n'
@@ -1417,7 +1531,8 @@ def _nereden_alinir_html(vertikal: str, kalem_id: str, kalem_adi: str) -> str:
         f"    <p>{kalem_adi} fiyatlarını derlediğimiz kaynaklar: "
         + " · ".join(parcalar)
         + "</p>\n"
-        '    <p class="sonuc-alt-metin">Bu bağlantılar fiyatı derlediğimiz '
+        + sponsor_notu
+        + '    <p class="sonuc-alt-metin">Bu bağlantılar fiyatı derlediğimiz '
         "kategori sayfalarına gider. Fiyatlar sayfamızdaki derleme tarihinden "
         "sonra değişmiş olabilir.</p>\n"
         "  </section>\n"
@@ -2731,6 +2846,8 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
         "ölçülüyor. Her rakamın yanında kaynak ve ölçüm tarihi var."
     ) if _og_kalem else "Gerçek fiyat verisinden derlenmiş maliyet endeksi."
 
+    arama_kayitlari = _arama_verisi(veri_kok)
+    arama_js = _arama_js(arama_kayitlari) if arama_kayitlari else ""
     hizli = _hizli_hesap_katsayilari(veri_kok)
     hizli_secenekler = "".join(
         f'<option value="{v}">{d["ad"]}</option>' for v, d in hizli.items()
@@ -2914,6 +3031,16 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
     {cevap}
   </div>
 
+  <section class="kalem-arama">
+    <label for="kalem-ara">Bir ürünün fiyatını arayın</label>
+    <input type="search" id="kalem-ara" autocomplete="off"
+           placeholder="buzdolabı, gelinlik, okul çantası…"
+           aria-describedby="arama-not">
+    <ul id="arama-sonuc" hidden></ul>
+    <p class="sonuc-alt-metin" id="arama-not">Yalnızca ölçtüğümüz kalemler
+      çıkar — uydurma sonuç yok.</p>
+  </section>
+
   <section class="hizli-hesap">
     <h2>Kendi hesabınızı yapın</h2>
     <p class="hizli-alt">Ölçtüğümüz güncel fiyatlarla, anında.</p>
@@ -2977,7 +3104,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
   </div>
 </footer>
 
-{hizli_hesap_js}</body>
+{arama_js}{hizli_hesap_js}</body>
 </html>
 """
 

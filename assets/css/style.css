@@ -804,3 +804,84 @@ button.metin-buton {
   border-top: 1px solid var(--renk-cizgi);
   opacity: 0.85;
 }
+
+/* ---- Kalem arama (ana sayfa) ---- */
+.kalem-arama {
+  position: relative;
+  margin: 0 0 22px;
+}
+
+.kalem-arama label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 7px;
+}
+
+.kalem-arama input {
+  width: 100%;
+  padding: 13px 15px;
+  font: inherit;
+  font-size: 1.02rem;
+  color: var(--renk-metin);
+  background: var(--renk-zemin);
+  border: 1px solid var(--renk-cizgi-koyu);
+  border-radius: 10px;
+}
+
+.kalem-arama input:focus {
+  outline: 2px solid var(--renk-vurgu);
+  outline-offset: 1px;
+}
+
+#arama-sonuc {
+  list-style: none;
+  margin: 6px 0 0;
+  padding: 0;
+  border: 1px solid var(--renk-cizgi);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--renk-zemin);
+}
+
+#arama-sonuc li {
+  border-bottom: 1px solid var(--renk-cizgi);
+}
+
+#arama-sonuc li:last-child {
+  border-bottom: 0;
+}
+
+#arama-sonuc a {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 15px;
+  text-decoration: none;
+  color: var(--renk-metin);
+}
+
+#arama-sonuc a:hover {
+  background: var(--renk-vurgu-acik);
+}
+
+.arama-fiyat {
+  font-weight: 600;
+  color: var(--renk-vurgu);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.arama-grup {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--renk-metin-soluk);
+  padding: 0 15px 9px;
+  margin-top: -6px;
+}
+
+.arama-bos {
+  padding: 13px 15px;
+  color: var(--renk-metin-soluk);
+  font-size: 0.92rem;
+}

@@ -1008,3 +1008,92 @@ class SenaryoKorumaTesti(unittest.TestCase):
             finally:
                 sayfa_uret.SITE_KOK = eski
                 senaryo.SITE_KOK = eski
+
+
+class AffiliateTesti(unittest.TestCase):
+    """Komisyonlu link ACIKCA belirtilmeli - yasal yukumluluk ve guven."""
+
+    def _gecici_site(self, takip=None):
+        kayit = {"ad": "TestSite", "rel": "nofollow"}
+        if takip:
+            kayit["takip"] = takip
+        return {"testsite": kayit}
+
+    def test_takip_yoksa_sponsored_ve_aciklama_yok(self):
+        eski = sayfa_uret.KAYNAK_SITELERI
+        eski_link = sayfa_uret._KAYNAK_LINKLERI
+        try:
+            sayfa_uret.KAYNAK_SITELERI = self._gecici_site()
+            sayfa_uret._KAYNAK_LINKLERI = {("v", "k"): [("testsite", "https://x.com/a")]}
+            h = sayfa_uret._nereden_alinir_html("v", "k", "Ürün")
+            self.assertIn('rel="nofollow noopener"', h)
+            self.assertNotIn("sponsored", h)
+            self.assertNotIn("affiliate", h)
+        finally:
+            sayfa_uret.KAYNAK_SITELERI = eski
+            sayfa_uret._KAYNAK_LINKLERI = eski_link
+
+    def test_takip_varsa_sponsored_ve_aciklama_cikar(self):
+        eski = sayfa_uret.KAYNAK_SITELERI
+        eski_link = sayfa_uret._KAYNAK_LINKLERI
+        try:
+            sayfa_uret.KAYNAK_SITELERI = self._gecici_site("ref=maliyetine")
+            sayfa_uret._KAYNAK_LINKLERI = {("v", "k"): [("testsite", "https://x.com/a")]}
+            h = sayfa_uret._nereden_alinir_html("v", "k", "Ürün")
+            self.assertIn('rel="sponsored noopener"', h)
+            self.assertIn("ref=maliyetine", h)
+            self.assertIn("ortaklık (affiliate) bağlantısıdır", h)
+            self.assertIn("bundan etkilenmez", h)
+        finally:
+            sayfa_uret.KAYNAK_SITELERI = eski
+            sayfa_uret._KAYNAK_LINKLERI = eski_link
+
+    def test_takip_parametresi_mevcut_query_ile_birlesir(self):
+        eski = sayfa_uret.KAYNAK_SITELERI
+        eski_link = sayfa_uret._KAYNAK_LINKLERI
+        try:
+            sayfa_uret.KAYNAK_SITELERI = self._gecici_site("ref=m")
+            sayfa_uret._KAYNAK_LINKLERI = {("v", "k"): [("testsite", "https://x.com/a?q=1")]}
+            h = sayfa_uret._nereden_alinir_html("v", "k", "Ürün")
+            self.assertIn("https://x.com/a?q=1&ref=m", h)
+        finally:
+            sayfa_uret.KAYNAK_SITELERI = eski
+            sayfa_uret._KAYNAK_LINKLERI = eski_link
+
+
+class KalemAramaTesti(unittest.TestCase):
+    """Site ici arama: uydurma sonuc URETEMEZ, her sonuc gercek sayfa."""
+
+    def test_yalnizca_olculmus_kalemler(self):
+        with TemporaryDirectory() as d:
+            kok = Path(d)
+            (kok / "ev-kurma.json").write_text(json.dumps({
+                "kalemler": {
+                    "buzdolabi": {"genel_medyan": 30000,
+                                  "segmentler": {"orta": {"medyan": 30552}}},
+                    "hali": {"genel_medyan": None},   # olculmemis
+                },
+            }), encoding="utf-8")
+            k = sayfa_uret._arama_verisi(kok)
+            adlar = {x["ad"] for x in k}
+            self.assertIn("Buzdolabı", adlar)
+            self.assertNotIn("Halı", adlar)
+
+    def test_her_sonuc_var_olan_sayfaya_gider(self):
+        """Kalem sayfasi yoksa endekse yonlendirmeli - kirik link olmasin."""
+        for k in sayfa_uret._arama_verisi():
+            yol = sayfa_uret.SITE_KOK / k["yol"].strip("/") / "index.html"
+            self.assertTrue(yol.exists(), f"{k['ad']} -> {k['yol']} yok")
+
+    def test_fiyat_endeks_sayfasiyla_ayni(self):
+        veri = json.loads(
+            (sayfa_uret.SITE_KOK / "veri" / "ev-kurma.json").read_text(encoding="utf-8")
+        )["kalemler"]
+        kayit = next(x for x in sayfa_uret._arama_verisi() if x["ad"] == "Buzdolabı")
+        beklenen = sayfa_uret.kalem_deger(veri["buzdolabi"], "orta")
+        self.assertEqual(kayit["fiyat"], beklenen)
+
+    def test_js_gecerli_json_gomer(self):
+        k = sayfa_uret._arama_verisi()
+        ham = sayfa_uret._arama_js(k).split("var VERI = ", 1)[1].split(";\n", 1)[0]
+        self.assertEqual(len(json.loads(ham)), len(k))
