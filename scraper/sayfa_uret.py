@@ -1325,7 +1325,7 @@ def _fiyat_gecmisi_html(vertikal: str, kalem_id: str, gecmis_kok: Path | None = 
     Veri kaynagi: /veri/gecmis/{vertikal}.json (gecmis.py uretir).
     Yeterince uzak iki olcum yoksa (bkz. gecmis.ASGARI_GUN_ARALIGI) bolum
     HIC RENDER EDILMEZ - bos bir "gecmis" basligi gostermek, veri varmis
-    izlenimi verir. 15 Agustos'taki ikinci olcumde kendiliginden acilir.
+    izlenimi verir. 5 Agustos'taki ikinci olcumde kendiliginden acilir.
 
     NEDEN DEGERLI: zaman serisi bu projenin kopyalanamaz varligi. "Gelinlik
     fiyatlari son X ayda %Y artti" cumlesini kurabilen tek kaynak olmak hem
@@ -1343,7 +1343,7 @@ def _fiyat_gecmisi_html(vertikal: str, kalem_id: str, gecmis_kok: Path | None = 
     seri = kayit.get("seri") or []
     degisim = kayit.get("degisim_yuzde")
     if degisim is None or len(seri) < 2:
-        # Kendi serimiz henuz yok (ilk karsilastirma 15 Agustos'ta).
+        # Kendi serimiz henuz yok (ilk karsilastirma 5 Agustos'ta).
         # Bolumu bos birakmak yerine RESMI seriyi gosteriyoruz - okuyucu
         # "bu kalem ne kadar zamlandi" sorusuna bugun de cevap alsin.
         # KIRMIZI CIZGI: bu bizim olcumumuz DEGIL, ayri ve kaynak adiyla.

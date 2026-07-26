@@ -9,13 +9,16 @@ name: Aylık Veri Güncelleme
 
 on:
   schedule:
-    # AYDA İKİ KEZ (2026-07-26, Yavuz'un kararı): ayın 1'i ve 15'i.
+    # AYDA İKİ KEZ (2026-07-26, Yavuz'un kararı): ayın 5'i ve 20'si.
     # Neden: zaman serisi bu projenin kopyalanamaz tek varlığı. Kaynakları
     # gören biri aynı endeksi iki haftada kurar, ama geçmişe dönüp
     # 2026 Temmuz'un fiyatını toplayamaz. Ölçüm sıklığını iki katına
     # çıkarmak seriyi hem daha değerli hem enflasyona karşı daha duyarlı
     # yapıyor — ve bir çalıştırma hata verirse ay tamamen boş kalmıyor.
-    - cron: "0 6 1,15 * *"
+    # Ayın 5'i bilinçli: TÜİK enflasyon verisini her ayın 3'ünde
+    # açıklıyor, 5'inde çekince o ayın resmî rakamı taze geliyor.
+    # Aralık 15-16 gün — gecmis.py'nin 10 günlük eşiğinin üstünde.
+    - cron: "0 6 5,20 * *"
   workflow_dispatch: {}
 
 permissions:

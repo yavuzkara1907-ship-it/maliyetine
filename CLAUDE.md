@@ -495,13 +495,13 @@ sayfalarındaki il bazlı fiyat tabloları** (İstanbul satırı).
   (ölçüldü: 2025 ilçe medyanı ~2.500, 2026 için doğru bantta).
 
 ## ÖLÇÜM SIKLIĞI: AYDA 2 KEZ (2026-07-26, Yavuz'un kararı)
-Cron `0 6 1,15 * *`. Zaman serisi projenin kopyalanamaz tek varlığı.
+Cron `0 6 5,20 * *`. Zaman serisi projenin kopyalanamaz tek varlığı.
 - **`gecmis.ASGARI_GUN_ARALIGI` 20 → 10** yapılmak ZORUNDAYDI: 20 kalsaydı
   14 günlük normal aralık reddedilir, hiçbir değişim hesaplanamazdı.
 - **`_fiyat_gecmisi_html`** kalem sayfalarına eklendi: zaman serisi tablosu
   + "X'ten Y'ye medyan %Z arttı" özeti. Yeterince uzak iki ölçüm yoksa
   bölüm **hiç render edilmiyor** (boş "geçmiş" başlığı veri varmış
-  izlenimi verir). **15 Ağustos'taki ölçümde kendiliğinden açılacak.**
+  izlenimi verir). **5 Ağustos'taki ölçümde kendiliğinden açılacak.**
 
 ## KAYNAK ARAMA ARTIK TOPLU: `scraper/kaynak_tara.py` (2026-07-26)
 Yeni kaynak aramak en pahalı işti — her aday için ayrı robots kontrolü,

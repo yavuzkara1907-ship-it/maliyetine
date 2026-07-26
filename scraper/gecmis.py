@@ -51,9 +51,9 @@ from pathlib import Path
 # degismesi (orneklem gurultusu). Boyle bir rakami "fiyat %40 dustu" diye
 # yayinlamak KIRMIZI CIZGI ihlali olurdu.
 #
-# 2026-07-26: olcum sikligi ayda 2'ye cikinca (ayin 1'i ve 15'i) esik
+# 2026-07-26: olcum sikligi ayda 2'ye cikinca (ayin 5'i ve 20'si) esik
 # 20 -> 10 gune indirildi. 20 kalsaydi 14 gunluk normal aralik reddedilir,
-# HICBIR degisim hesaplanamazdi. 10 gun, tasarlanan 14-15 gunluk araligi
+# HICBIR degisim hesaplanamazdi. 10 gun, tasarlanan 15-16 gunluk araligi
 # kabul ederken elle tetiklenen ard arda calistirmalari (gurultu kaynagi)
 # hala eliyor.
 ASGARI_GUN_ARALIGI = 10
