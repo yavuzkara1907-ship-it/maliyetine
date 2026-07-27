@@ -1377,6 +1377,34 @@ sitemap 132 → **140**. 20 hesaplayıcının tamamı gerçek tarayıcıda
 doğrulandı: hepsi sonuç üretiyor, 0 konsol hatası, 20/20 analitik kodu
 içeriyor.
 
+## WORKFLOW DENETİMİ (2026-07-27) — `sss/` commit edilmiyordu
+5 Ağustos'ta **ilk zaman serisi ölçümü** var. O gün workflow eksik
+çalışırsa seride kalıcı delik oluşur. Bugün 8 yeni sayfa ve 3 yeni
+script eklendiği için motor hariç tüm zincir baştan sona kuru
+çalıştırıldı — zincir sorunsuz, ama bir eksik çıktı:
+
+**`sss/` sayfası workflow'un `git add` listesinde YOKTU.** Sayfa veriye
+göre değişiyor (testle doğrulandı) ama commit edilmediği için 5
+Ağustos'ta her şey güncellenirken o sayfa 26 Temmuz verisinde donup
+kalacaktı. **Sessiz hata:** canlıda 200 döner, hata vermez, sadece
+rakamları bayattır — ve workflow yılda 24 kez çalışıp arada kimse
+bakmadığı için aylarca sürebilirdi.
+
+**`scraper/test_workflow.py` (6 test)** — workflow artık testle kilitli:
+- **Üretilen her kök yol commit listesinde mi?** Kaynak koddan
+  `SITE_KOK / "..."` yazımlarını çıkarıp `git add` listesiyle
+  karşılaştırıyor. Yeni bir çıktı eklenip listeye yazılmazsa test patlar.
+  (Doğrulandı: `sss` listeden çıkarılınca gerçekten patlıyor.)
+- Çağrılan her script diskte var mı?
+- Vertikal döngüsü `VERTIKALLER` ile aynı mı? (okul eklenirken
+  `gecmis.py`'de yaşanan unutma hatasının workflow karşılığı)
+- Kodun import ettiği üçüncü taraf paketler `requirements.txt`'te mi?
+- Cron ayın 5'i ve 20'si mi? · IndexNow yalnızca değişiklik varsa mı?
+
+**DERS:** üretim boru hattına yeni bir çıktı eklemek iki yerde iş
+demek — üreten kod ve **onu yayına taşıyan liste.** İkincisi unutulunca
+hiçbir şey kırılmıyor, sadece sessizce eskiyor.
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
