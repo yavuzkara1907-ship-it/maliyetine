@@ -1457,6 +1457,28 @@ SITE_KOK_URL = "https://maliyetine.com.tr"
 # guvenip yanlis kirpma yapar). Bir test uretilen PNG'nin gercek
 # boyutunun beyanla ayni oldugunu dogruluyor.
 # ----------------------------------------------------------
+# ----------------------------------------------------------
+# ANALITIK (Google Analytics 4)
+#
+# Tek yerde: OG etiketlerinde ogrendigimiz ders - sekiz sablonda ayri
+# ayri duran bir seyi guncellemek unutuluyor. Olcum kodu da oyle.
+#
+# NOT (Yavuz'a): GA4 cerez yaziyor. KVKK acisindan sitede cerez/analitik
+# kullanildiginin YAZILI olmasi gerekiyor; /hakkimizda/ sayfasina kisa
+# bir "Cerezler ve olcum" bolumu eklendi. Cerez ONAY BANNER'i eklenmedi -
+# o ayri bir urun karari (banner tiklama oranini dusurur) ve senin
+# tercihine bagli.
+# ----------------------------------------------------------
+ANALITIK_ID = "G-JP07XQLV0L"
+
+ANALITIK = f"""<script async src="https://www.googletagmanager.com/gtag/js?id={ANALITIK_ID}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag('js', new Date());
+  gtag('config', '{ANALITIK_ID}');
+</script>"""
+
 OG_GENISLIK, OG_YUKSEKLIK = 1200, 630
 OG_GORSEL_URL = f"{SITE_KOK_URL}/assets/og-gorsel.png"
 
@@ -2035,6 +2057,7 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
 <script type="application/ld+json">
 {json.dumps(json_ld, ensure_ascii=False, indent=2)}
 </script>
+{ANALITIK}
 </head>
 <body>
 
@@ -2452,6 +2475,7 @@ def kalem_sayfasi_uret(
 <script type="application/ld+json">
 {json.dumps(json_ld, ensure_ascii=False, indent=2)}
 </script>
+{ANALITIK}
 </head>
 <body>
 
@@ -2730,6 +2754,7 @@ def sss_sayfasi_uret(veri_kok: Path | None = None, tarih: str | None = None) -> 
 <script type="application/ld+json">
 {json.dumps(json_ld, ensure_ascii=False, indent=2)}
 </script>
+{ANALITIK}
 </head>
 <body>
 
@@ -3189,6 +3214,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
 <script type="application/ld+json">
 {json.dumps(json_ld, ensure_ascii=False, indent=2)}
 </script>
+{ANALITIK}
 </head>
 <body>
 

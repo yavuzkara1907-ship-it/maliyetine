@@ -1024,6 +1024,7 @@ def rehber_uret(rehber: dict, veriler: dict, tarih: str | None = None) -> str | 
 <script type="application/ld+json">
 {json.dumps(json_ld, ensure_ascii=False, indent=2)}
 </script>
+{su.ANALITIK}
 </head>
 <body>
 
@@ -1093,6 +1094,7 @@ def rehber_dizini_uret(yazilanlar: list[dict], tarih: str | None = None) -> str:
 <meta property="og:url" content="{SITE_KOK_URL}/rehber/">
 {su.OG_ETIKETLERI}
 <meta name="twitter:card" content="summary_large_image">
+{su.ANALITIK}
 </head>
 <body>
 

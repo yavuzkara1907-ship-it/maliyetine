@@ -259,6 +259,7 @@ def _sayfa_html(baslik: str, soru: str, aciklama_blok: str, govde: str,
 <script type="application/ld+json">
 {json.dumps(json_ld, ensure_ascii=False, indent=2)}
 </script>
+{su.ANALITIK}
 </head>
 <body>
 

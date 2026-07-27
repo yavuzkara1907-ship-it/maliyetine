@@ -218,6 +218,7 @@ def veri_sayfasi(ozet: dict, tarih: str | None = None) -> str:
 <script type="application/ld+json">
 {json.dumps(json_ld, ensure_ascii=False, indent=2)}
 </script>
+{su.ANALITIK}
 </head>
 <body>
 

@@ -566,6 +566,388 @@ HESAPLAYICILAR = [
         ],
     },
     {
+        "id": "bilesik-faiz",
+        "slug": "bilesik-faiz-hesaplama",
+        "ad": "Bileşik Faiz Hesaplama",
+        "baslik": "Bileşik Faiz ve Birikim Hesaplama",
+        "soru": "Bileşik faizle param ne kadar büyür?",
+        "meta": "Anapara, aylık düzenli katkı ve yıllık getiri oranıyla bileşik faiz hesabı. Kaç yılda ne kadar birikir?",
+        "ozet": (
+            "Bileşik faizde getiri anaparaya eklenir ve sonraki dönemde o da "
+            "kazandırır. Düzenli aylık katkı varsa <strong>süre, orandan daha "
+            "belirleyici</strong> olur — hesabı iki senaryoyla karşılaştırarak "
+            "bunu görebilirsiniz."
+        ),
+        "formul": "Gelecek değer = A × (1+i)ⁿ + K × ((1+i)ⁿ − 1) ÷ i &nbsp;— i: aylık oran, n: ay",
+        "kaynaklar": ["Bileşik faiz ve annüite gelecek değeri formülü — finansal matematik"],
+        "alanlar": [
+            {"id": "anapara", "etiket": "Başlangıç tutarı (TL)", "tip": "number", "varsayilan": "100000", "adim": "0.01"},
+            {"id": "katki", "etiket": "Aylık düzenli katkı (TL)", "tip": "number", "varsayilan": "5000", "adim": "0.01"},
+            {"id": "oran", "etiket": "Yıllık getiri oranı (%)", "tip": "number", "varsayilan": "40", "adim": "0.01"},
+            {"id": "yil", "etiket": "Süre (yıl)", "tip": "number", "varsayilan": "10", "adim": "1"},
+        ],
+        "alan_notu": (
+            "Hesap nominal getiriyi verir; enflasyon düşülmemiştir. Paranın "
+            "gerçek alım gücündeki değişim için "
+            "<a href=\"/hesap/alim-gucu-hesaplama/\">alım gücü hesaplayıcısına</a> bakın."
+        ),
+        "js": """
+      const s = bilesikFaizHesapla(sayi("anapara"), sayi("katki"), sayi("oran"), sayi("yil"));
+      if (!s) return null;
+      return [
+        ["Toplam birikim", s.toplam, true],
+        ["Yatırdığınız para", s.yatirilan, false],
+        ["Getiri", s.kazanc, false],
+        ["Süre", null, false, "not", s.ay + " ay"],
+      ];""",
+        "sss": [
+            ("Bileşik faiz basit faizden nasıl farklı?",
+             "Basit faiz her dönem sadece anaparadan hesaplanır; bileşik faizde kazanılan getiri anaparaya eklenir ve sonraki dönem o da kazandırır. Fark kısa vadede küçük, uzun vadede belirleyicidir."),
+            ("Yıllık oranı 12'ye bölmek doğru mu?",
+             "Bu hesap öyle yapar (nominal aylık oran). Efektif yıllık getiri bileşiklenme yüzünden biraz daha yüksek çıkar: aylık %3, yıllık %42,6 eder — 12 × 3 = %36 değil."),
+            ("Enflasyon hesaba dahil mi?",
+             "Hayır, sonuç nominaldir. %40 getiri, enflasyon %40 ise alım gücünüz aynı kalmış demektir. Reel değişim için alım gücü hesaplayıcısını kullanın."),
+        ],
+    },
+    {
+        "id": "birikim",
+        "slug": "birikim-hedefi-hesaplama",
+        "ad": "Birikim Hedefi Hesaplama",
+        "baslik": "Birikim Hedefi: Ayda Ne Kadar Biriktirmeliyim?",
+        "soru": "Hedefime ulaşmak için ayda ne kadar biriktirmeliyim?",
+        "meta": "Hedef tutar, süre ve getiri oranına göre aylık biriktirmeniz gereken tutar. Bileşik faizin tersi hesap.",
+        "ozet": (
+            "Bir hedefe belirli sürede ulaşmak için ayda ne kadar ayırmanız "
+            "gerektiğini hesaplar. Elinizde başlangıç sermayesi varsa onun "
+            "getirisi de düşülür."
+        ),
+        "formul": "Aylık = (hedef − başlangıç×(1+i)ⁿ) ÷ ((1+i)ⁿ − 1) ÷ i",
+        "kaynaklar": ["Annüite formülünün tersi — finansal matematik"],
+        "alanlar": [
+            {"id": "hedef", "etiket": "Hedef tutar (TL)", "tip": "number", "varsayilan": "500000", "adim": "0.01"},
+            {"id": "baslangic", "etiket": "Şu an elinizdeki (TL)", "tip": "number", "varsayilan": "50000", "adim": "0.01"},
+            {"id": "oran", "etiket": "Yıllık getiri oranı (%)", "tip": "number", "varsayilan": "40", "adim": "0.01"},
+            {"id": "ay", "etiket": "Süre (ay)", "tip": "number", "varsayilan": "24", "adim": "1"},
+        ],
+        "js": """
+      const s = birikimHedefiHesapla(sayi("hedef"), sayi("baslangic"), sayi("oran"), sayi("ay"));
+      if (!s) return null;
+      if (s.zaten_yeterli) {
+        return [["Elinizdeki para bu sürede hedefi zaten geçiyor", s.baslangic_getirisi, true]];
+      }
+      return [
+        ["Ayda biriktirmeniz gereken", s.aylik, true],
+        ["Başlangıç sermayenizin getirisi", s.baslangic_getirisi, false],
+        ["Toplam yatıracağınız", s.toplam_yatirilacak, false],
+        ["Hedef", s.hedef, false],
+      ];""",
+        "sss": [
+            ("Getiri oranını kaç girmeliyim?",
+             "Riski olmayan bir getiri varsaymak yanıltıcı olur. Mevduat, fon ve borsa getirileri farklıdır ve geçmiş getiri geleceği garanti etmez. İhtiyatlı bir oranla hesaplayıp sonucu iyimser senaryoyla karşılaştırmak daha sağlıklı."),
+            ("Enflasyonu nasıl hesaba katarım?",
+             "Hedefiniz bugünün fiyatlarıyla belirlenmişse, süre sonunda o tutar aynı şeyi almaya yetmez. Hedefi enflasyona göre büyütmek için alım gücü hesaplayıcısını kullanabilirsiniz."),
+            ("Aylık katkıyı artırırsam ne değişir?",
+             "Kısa vadede süre ve katkı miktarı, getiri oranından daha belirleyicidir. 24 ayda hedefe ulaşmakta oranı iki katına çıkarmak, katkıyı %20 artırmak kadar bile etki etmeyebilir."),
+        ],
+    },
+    {
+        "id": "hisse-maliyet",
+        "slug": "hisse-maliyet-hesaplama",
+        "ad": "Hisse Maliyet Ortalama Hesaplama",
+        "baslik": "Hisse Maliyet Ortalaması Hesaplama",
+        "soru": "Hisse alınca ortalama maliyetim ne olur?",
+        "meta": "Mevcut pozisyona ekleme yapınca yeni ortalama maliyet ve başa baş fiyat. Maliyet düşürme hesabı.",
+        "ozet": (
+            "Mevcut pozisyonunuza ekleme yaptığınızda yeni ortalama maliyetiniz "
+            "<strong>toplam tutar ÷ toplam adet</strong> olur. Sonuç aynı zamanda "
+            "<strong>başa baş fiyatınızdır</strong> — bu fiyatın altında satarsanız "
+            "zarardasınız."
+        ),
+        "formul": "Yeni maliyet = (eski adet × eski maliyet + yeni adet × yeni fiyat) ÷ toplam adet",
+        "kaynaklar": ["Ağırlıklı ortalama — temel aritmetik"],
+        "alanlar": [
+            {"id": "madet", "etiket": "Mevcut adet", "tip": "number", "varsayilan": "1000", "adim": "1"},
+            {"id": "mmaliyet", "etiket": "Mevcut ortalama maliyet (TL)", "tip": "number", "varsayilan": "50", "adim": "0.01"},
+            {"id": "yadet", "etiket": "Alınacak adet", "tip": "number", "varsayilan": "500", "adim": "1"},
+            {"id": "yfiyat", "etiket": "Alış fiyatı (TL)", "tip": "number", "varsayilan": "35", "adim": "0.01"},
+        ],
+        "alan_notu": (
+            "Bu bir hesap aracıdır, yatırım tavsiyesi değildir. Maliyet düşürmek "
+            "zararı azaltmaz — yalnızca başa baş fiyatını aşağı çeker ve pozisyon "
+            "büyüklüğünüzü artırır."
+        ),
+        "js": """
+      const s = hisseMaliyetHesapla(sayi("madet"), sayi("mmaliyet"), sayi("yadet"), sayi("yfiyat"));
+      if (!s) return null;
+      return [
+        ["Yeni ortalama maliyet", s.yeni_maliyet, true],
+        ["Toplam adet", null, false, "not", String(s.toplam_adet)],
+        ["Toplam yatırılan", s.toplam_tutar, false],
+        ["Eski maliyet", s.eski_maliyet, false],
+        ["Maliyetteki değişim", s.degisim, false],
+      ];""",
+        "sss": [
+            ("Maliyet düşürmek zararı kapatır mı?",
+             "Hayır. Zararınız aynı kalır; sadece başa baş fiyatınız düşer ve pozisyonunuz büyür. Düşmeye devam eden bir varlıkta ekleme yapmak zararı büyütür."),
+            ("Başa baş fiyat nedir?",
+             "Yeni ortalama maliyetinizin kendisi. Bu fiyattan satarsanız (komisyon hariç) ne kâr ne zarar edersiniz."),
+            ("Komisyon hesaba dahil mi?",
+             "Bu hesapta değil. Komisyonlu kâr/zarar için kâr-zarar hesaplayıcısını kullanın."),
+        ],
+    },
+    {
+        "id": "kar-zarar",
+        "slug": "kar-zarar-hesaplama",
+        "ad": "Kâr Zarar Hesaplama",
+        "baslik": "Alış Satış Kâr Zarar Hesaplama",
+        "soru": "Bu alım satımdan ne kadar kâr ettim?",
+        "meta": "Alış ve satış fiyatına göre kâr/zarar, yüzde getiri ve komisyon dahil başa baş fiyat.",
+        "ozet": (
+            "Kâr, satış hasılatından alış maliyetinin çıkarılmasıyla bulunur; "
+            "komisyon <strong>iki tarafta da</strong> ödendiği için başa baş "
+            "fiyat alış fiyatının biraz üzerindedir."
+        ),
+        "formul": "Kâr = satış×adet×(1−k) − alış×adet×(1+k) &nbsp;·&nbsp; Başa baş = alış×(1+k) ÷ (1−k)",
+        "kaynaklar": ["Kâr/zarar ve yüzde getiri — temel aritmetik"],
+        "alanlar": [
+            {"id": "alis", "etiket": "Alış fiyatı (TL)", "tip": "number", "varsayilan": "50", "adim": "0.01"},
+            {"id": "satis", "etiket": "Satış fiyatı (TL)", "tip": "number", "varsayilan": "65", "adim": "0.01"},
+            {"id": "adet", "etiket": "Adet", "tip": "number", "varsayilan": "1000", "adim": "1"},
+            {"id": "komisyon", "etiket": "Komisyon oranı (%)", "tip": "number", "varsayilan": "0.2", "adim": "0.01"},
+        ],
+        "js": """
+      const s = karZararHesapla(sayi("alis"), sayi("satis"), sayi("adet"), sayi("komisyon"));
+      if (!s) return null;
+      return [
+        ["Kâr / zarar", s.kar_zarar, true],
+        ["Getiri", null, false, "not", "%" + s.getiri_yuzde],
+        ["Alış maliyeti (komisyon dahil)", s.alis_maliyeti, false],
+        ["Satış neti (komisyon düşülmüş)", s.satis_neti, false],
+        ["Ödenen komisyon", s.komisyon, false],
+        ["Başa baş satış fiyatı", s.basa_bas_fiyat, false],
+      ];""",
+        "sss": [
+            ("Başa baş fiyat neden alış fiyatından yüksek?",
+             "Komisyonu hem alırken hem satarken ödersiniz. Alış fiyatına eşit satmak, iki komisyon kadar zarar demektir."),
+            ("Yüzde getiri neye göre hesaplanıyor?",
+             "Komisyon dahil alış maliyetine göre. Ham alış fiyatına bölmek getiriyi olduğundan yüksek gösterir."),
+            ("Vergi dahil mi?",
+             "Hayır. Hisse senedinde stopaj ve beyan kuralları araca ve elde tutma süresine göre değişir; bu hesap yalnızca alım satım sonucunu verir."),
+        ],
+    },
+    {
+        "id": "temettu",
+        "slug": "temettu-verimi-hesaplama",
+        "ad": "Temettü Verimi Hesaplama",
+        "baslik": "Temettü Verimi Hesaplama",
+        "soru": "Temettü verimi nasıl hesaplanır?",
+        "meta": "Hisse fiyatı ve hisse başına temettüye göre temettü verimi, yıllık temettü geliri ve geri dönüş süresi.",
+        "ozet": (
+            "Temettü verimi = <strong>hisse başına temettü ÷ hisse fiyatı</strong>. "
+            "Yüksek verim her zaman iyi haber değildir: fiyat düştüğü için de "
+            "yükselmiş olabilir."
+        ),
+        "formul": "Verim (%) = (hisse başına temettü ÷ hisse fiyatı) × 100",
+        "kaynaklar": ["Temettü verimi tanımı — temel aritmetik"],
+        "alanlar": [
+            {"id": "fiyat", "etiket": "Hisse fiyatı (TL)", "tip": "number", "varsayilan": "50", "adim": "0.01"},
+            {"id": "temettu", "etiket": "Hisse başına yıllık temettü (TL)", "tip": "number", "varsayilan": "4", "adim": "0.01"},
+            {"id": "adet", "etiket": "Adet", "tip": "number", "varsayilan": "1000", "adim": "1"},
+        ],
+        "alan_notu": (
+            "Temettü şirketin kararına bağlıdır; geçmişte ödenmiş olması gelecekte "
+            "ödeneceğini göstermez. Ayrıca temettüde stopaj kesintisi vardır, bu "
+            "hesap brüt tutarı verir."
+        ),
+        "js": """
+      const s = temettuVerimiHesapla(sayi("fiyat"), sayi("temettu"), sayi("adet"));
+      if (!s) return null;
+      return [
+        ["Temettü verimi", null, true, "not", "%" + s.verim_yuzde],
+        ["Yıllık temettü geliri (brüt)", s.yillik_temettu, false],
+        ["Yatırım tutarı", s.yatirim, false],
+        ["Yatırımın temettüyle geri dönüşü", null, false, "not", s.geri_donus_yili + " yıl"],
+      ];""",
+        "sss": [
+            ("Yüksek temettü verimi iyi midir?",
+             "Her zaman değil. Verim bir orandır: payda olan hisse fiyatı düştüğünde de yükselir. Şirketin kârı azalırken verimin artması uyarı işareti olabilir."),
+            ("Temettüden vergi kesilir mi?",
+             "Evet, temettü ödemesinde stopaj yapılır ve tutara göre beyan yükümlülüğü doğabilir. Bu hesap brüt temettüyü gösterir."),
+            ("Geri dönüş süresi ne anlama geliyor?",
+             "Fiyat ve temettü sabit kalsaydı, yatırdığınız paranın yalnızca temettüyle geri gelmesi kaç yıl sürerdi. İkisi de sabit kalmadığı için bu bir karşılaştırma ölçüsüdür, tahmin değil."),
+        ],
+    },
+    {
+        "id": "kart-borcu",
+        "slug": "kredi-karti-borcu-hesaplama",
+        "ad": "Kredi Kartı Borcu Hesaplama",
+        "baslik": "Kredi Kartı Borcu Kaç Ayda Biter?",
+        "soru": "Kredi kartı borcum bu ödemeyle kaç ayda biter?",
+        "meta": "Borç, aylık faiz ve ödeme tutarına göre borcun kaç ayda biteceği ve toplam ödenecek faiz. Asgari ödeme tuzağı.",
+        "ozet": (
+            "Aylık ödemeniz o ayın faizinden düşükse <strong>borç hiç bitmez</strong> "
+            "— her ay ödediğiniz para faize gider, anapara aynı kalır. Bu hesap "
+            "önce onu kontrol eder, sonra süreyi verir."
+        ),
+        "formul": "Her ay: kalan = kalan + kalan×faiz − ödeme &nbsp;(ödeme ≤ kalan×faiz ise borç azalmaz)",
+        "kaynaklar": ["Bileşik faizli borç itfası — finansal matematik"],
+        "alanlar": [
+            {"id": "borc", "etiket": "Toplam borç (TL)", "tip": "number", "varsayilan": "50000", "adim": "0.01"},
+            {"id": "faiz", "etiket": "Aylık akdi faiz oranı (%)", "tip": "number", "varsayilan": "4", "adim": "0.01"},
+            {"id": "odeme", "etiket": "Aylık ödeyeceğiniz tutar (TL)", "tip": "number", "varsayilan": "5000", "adim": "0.01"},
+        ],
+        "alan_notu": (
+            "Kredi kartı faiz oranları TCMB tarafından azami sınırla belirlenir ve "
+            "dönem dönem değişir; kendi kartınızın güncel oranını ekstrenizden "
+            "girin. Gecikme faizi ve kart aidatı bu hesaba dahil değildir."
+        ),
+        "js": """
+      const s = kartBorcuHesapla(sayi("borc"), sayi("faiz"), sayi("odeme"));
+      if (!s) return null;
+      if (s.bitmez) {
+        return [
+          ["Bu ödemeyle borç BİTMEZ", null, true, "not", "aylık ödeme faizi karşılamıyor"],
+          ["Ayda işleyen faiz", s.aylik_faiz_tutari, false],
+          ["Sizin ödemeniz", s.aylik_odeme, false],
+          ["Borcun azalmaya başlaması için en az", s.gereken_asgari, false],
+        ];
+      }
+      return [
+        ["Borç bitiş süresi", null, true, "not", s.ay + " ay"],
+        ["Toplam ödeyeceğiniz", s.toplam_odeme, false],
+        ["Bunun faiz kısmı", s.toplam_faiz, false],
+        ["Anapara", s.anapara, false],
+      ];""",
+        "sss": [
+            ("Asgari ödeme yaparsam borç ne olur?",
+             "Asgari ödeme genellikle işleyen faizi ancak karşılar. Bu durumda anapara neredeyse hiç azalmaz ve borç yıllarca sürebilir. Hesaplayıcı bu durumu ayrıca uyarır."),
+            ("Toplam faiz neden bu kadar yüksek çıkıyor?",
+             "Kredi kartında faiz her ay kalan borç üzerinden yeniden işler. Süre uzadıkça ödediğiniz toplam faiz anaparayı geçebilir."),
+            ("Borcu kredi ile kapatmak mantıklı mı?",
+             "İhtiyaç kredisinin aylık faizi kart faizinden düşükse toplam maliyet azalır. İki senaryoyu karşılaştırmak için kredi taksit hesaplayıcısını kullanabilirsiniz."),
+        ],
+    },
+    {
+        "id": "freelancer",
+        "slug": "serbest-meslek-vergi-hesaplama",
+        "ad": "Serbest Meslek Vergi Hesaplama",
+        "baslik": "Freelancer Vergi Hesaplama (2026)",
+        "soru": "Freelancer olarak ne kadar vergi öderim?",
+        "meta": "Serbest meslek kazancında stopaj, KDV ve gelir vergisi. 2026 genç girişimci istisnası 400.000 TL dahil.",
+        "ozet": (
+            "Serbest meslek makbuzunda <strong>%20 stopaj</strong> kesilir ve "
+            "<strong>%20 KDV</strong> eklenir. Yıllık beyanda kazancınızdan giderler "
+            "düşülür, varsa <strong>genç girişimci istisnası (2026: 400.000 TL)</strong> "
+            "uygulanır; yıl içinde kesilen stopaj hesaplanan vergiden <strong>mahsup "
+            "edilir</strong> — çoğu hesaplayıcının atladığı kısım budur ve iade "
+            "doğurabilir."
+        ),
+        "formul": "Matrah = hasılat − gider − istisna &nbsp;·&nbsp; Ödenecek = tarife(matrah) − yıl içinde kesilen stopaj",
+        "kaynaklar": [
+            "193 sayılı Gelir Vergisi Kanunu md. 94 (serbest meslek stopajı)",
+            "193 sayılı GVK mükerrer md. 20 — genç girişimci kazanç istisnası",
+            "332 Seri No.lu Gelir Vergisi Genel Tebliği — 2026 istisna tutarı 400.000 TL",
+            "3065 sayılı KDV Kanunu",
+        ],
+        "alanlar": [
+            {"id": "hasilat", "etiket": "Yıllık brüt hasılat (TL)", "tip": "number", "varsayilan": "600000", "adim": "0.01"},
+            {"id": "gider", "etiket": "Belgelendirilen yıllık gider (TL)", "tip": "number", "varsayilan": "100000", "adim": "0.01"},
+            {"id": "genc", "etiket": "Genç girişimci istisnasından yararlanıyor musunuz?", "tip": "select",
+             "secenekler": [("hayir", "Hayır"), ("evet", "Evet (29 yaş altı, ilk 3 dönem)")]},
+        ],
+        "alan_notu": (
+            "Genç girişimci istisnası, faaliyete başlanan dönemden itibaren üç "
+            "vergilendirme dönemi ve 29 yaşını doldurmamış olmak şartıyla "
+            "uygulanır. Bu hesap yıllık beyanı modellemektedir; geçici vergi, "
+            "Bağ-Kur primi ve KDV beyanı ayrıca yürütülür."
+        ),
+        "js": """
+      const s = serbestMeslekVergiHesapla(sayi("hasilat"), sayi("gider"), deger("genc") === "evet");
+      if (!s) return null;
+      const satirlar = [
+        ["Brüt hasılat", s.brut_hasilat, false],
+        ["Müşteriden tahsil edilen KDV (%20)", s.kdv, false, "not"],
+        ["Yıl içinde kesilen stopaj (%20)", s.stopaj, false],
+        ["Belgelendirilen gider", -s.gider, false],
+        ["Kazanç", s.kazanc, false],
+      ];
+      if (s.istisna > 0) satirlar.push(["Genç girişimci istisnası", -s.istisna, false]);
+      satirlar.push(["Vergi matrahı", s.matrah, false]);
+      satirlar.push(["Hesaplanan gelir vergisi", s.hesaplanan_vergi, false]);
+      if (s.iade > 0) {
+        satirlar.push(["Stopaj mahsubu sonrası İADE", s.iade, true]);
+      } else {
+        satirlar.push(["Ödenecek gelir vergisi", s.odenecek_vergi, true]);
+      }
+      return satirlar;""",
+        "sss": [
+            ("Freelancer olarak hangi vergileri öderim?",
+             "Serbest meslek kazancınız gelir vergisine tabidir. Kuruma fatura kesiyorsanız ödemede %20 stopaj kesilir ve bu yıllık beyanda mahsup edilir. Ayrıca %20 KDV hesaplar ve beyan edersiniz — KDV sizin geliriniz değildir, müşteriden tahsil edip devlete aktarırsınız."),
+            ("2026 genç girişimci istisnası ne kadar?",
+             "400.000 TL. Faaliyete başlanan dönemden itibaren üç vergilendirme dönemi boyunca, 29 yaşını doldurmamış olmak şartıyla uygulanır. Kazancınızın bu tutara kadar olan kısmı gelir vergisinden istisnadır."),
+            ("Kesilen stopajı geri alabilir miyim?",
+             "Hesaplanan gelir verginiz kesilen stopajdan düşükse aradaki fark size iade edilir. Genç girişimci istisnasından yararlanan freelancer'larda bu sık görülür — hesaplayıcı bu durumu ayrıca gösterir."),
+            ("Hangi giderleri düşebilirim?",
+             "Faaliyetle doğrudan ilgili ve belgelendirilen giderler: işyeri kirası, internet, bilgisayar amortismanı, mesleki yazılım abonelikleri, ulaşım. Belgesiz gider düşülemez."),
+        ],
+    },
+    {
+        "id": "website",
+        "slug": "web-sitesi-gelir-hesaplama",
+        "ad": "Web Sitesi Gelir Hesaplama",
+        "baslik": "Web Sitesi Ne Kadar Kazandırır?",
+        "soru": "Web sitesi reklamdan aylık ne kadar kazandırır?",
+        "meta": "Sayfa görüntülenmesi ve RPM'e göre web sitesi reklam geliri. Tek bir uydurma rakam değil, RPM'e göre aralık.",
+        "ozet": (
+            "Formül basit: <strong>(sayfa görüntülenme ÷ 1000) × RPM</strong>. "
+            "Ama sonucu belirleyen RPM ve <strong>RPM'in yayınlanmış bir değeri "
+            "yok</strong> — konuya, ziyaretçinin ülkesine ve reklam sezonuna göre "
+            "kat kat değişir. Tek rakam vermiyoruz; kendi RPM'inizi girin ya da "
+            "tablodan okuyun."
+        ),
+        "formul": "Aylık gelir = (aylık sayfa görüntülenme ÷ 1000) × RPM × kur",
+        "kaynaklar": [
+            "Hesap saf aritmetiktir. RPM değeri kullanıcıdan alınır — resmî bir "
+            "kaynağı olmadığı için tarafımızdan varsayılmaz.",
+        ],
+        "alanlar": [
+            {"id": "izlenme", "etiket": "Aylık sayfa görüntülenme", "tip": "number",
+             "varsayilan": "100000", "adim": "1"},
+            {"id": "rpm", "etiket": "RPM (1000 gösterim başına gelir, boş bırakabilirsiniz)",
+             "tip": "number", "varsayilan": "", "adim": "0.01", "zorunlu": False},
+            {"id": "kur", "etiket": "Kur (RPM dolarsa güncel USD/TRY, TL ise 1)",
+             "tip": "number", "varsayilan": "1", "adim": "0.01"},
+        ],
+        "alan_notu": (
+            "RPM'inizi AdSense panelinden görebilirsiniz. Bu hesap yalnızca "
+            "görüntüleme bazlı reklam gelirini modeller; affiliate, sponsorlu "
+            "içerik ve doğrudan reklam satışı dahil değildir."
+        ),
+        "js": """
+      const s = icerikGeliriHesapla(sayi("izlenme"), sayi("rpm"), sayi("kur"));
+      if (!s) return null;
+      const satirlar = [];
+      if (s.secilen_rpm) {
+        satirlar.push(["Girdiğiniz RPM ile aylık", s.secilen_aylik, true]);
+        satirlar.push(["Yıllık", s.secilen_yillik, false]);
+        satirlar.push(["RPM bilinmiyorsa cevap bir aralıktır:", null, false, "not"]);
+      } else {
+        satirlar.push(["RPM girmediniz — cevap tek sayı değil, aralık:", null, false, "not"]);
+      }
+      s.duyarlilik.forEach(function (d) {
+        satirlar.push(["RPM " + d.rpm + " ise aylık", d.aylik, false]);
+      });
+      return satirlar;""",
+        "sss": [
+            ("Neden tek bir rakam vermiyorsunuz?",
+             "Çünkü veremeyiz. Gelirin tamamı RPM'e bağlı ve RPM'in resmî, yayınlanmış bir değeri yok; finans ve sigorta gibi konularda yüksek, genel içerikte düşüktür. Tek sayı vermek uydurma olurdu."),
+            ("RPM ile CPM farkı ne?",
+             "CPM reklamverenin 1000 gösterim için ödediği tutar; RPM ise yayıncı payı düşüldükten sonra size kalan tutardır. Kazancınızı belirleyen RPM'dir."),
+            ("Trafik iki katına çıkarsa gelir de iki katına çıkar mı?",
+             "Yaklaşık olarak, RPM sabit kalırsa. Ancak trafiğin geldiği ülke ve konu değişirse RPM de değişir; sırf trafik büyüdü diye gelir orantılı büyümeyebilir."),
+        ],
+    },
+    {
         "id": "kredi",
         "slug": "kredi-taksit-hesaplama",
         "ad": "Kredi Taksit Hesaplama",
@@ -907,6 +1289,7 @@ def _kabuk(baslik_etiketi: str, meta: str, kanonik: str, schema: str,
 <script type="application/ld+json">
 {schema}
 </script>
+{su.ANALITIK}
 </head>
 <body>
 

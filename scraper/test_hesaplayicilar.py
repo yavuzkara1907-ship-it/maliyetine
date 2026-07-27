@@ -33,9 +33,12 @@ class TanimTesti(unittest.TestCase):
     # Her hesaplayici UC tipten birine girer ve tipi kaynak bicimini
     # belirler. Bu ayrim projenin can damari: bir hesabin cevabi nereden
     # geliyor sorusunun uc mesru cevabi var, dorduncusu (uydurma) yok.
-    MEVZUAT = {"kdv", "maas", "kidem", "tapu", "issizlik", "kira", "izin", "mesai"}
-    SAF_MATEMATIK = {"kredi", "yuzde"}
-    KULLANICI_PARAMETRESI = {"icerik"}   # RPM resmi olarak yayinlanmiyor
+    MEVZUAT = {"kdv", "maas", "kidem", "tapu", "issizlik", "kira", "izin",
+               "mesai", "freelancer"}
+    SAF_MATEMATIK = {"kredi", "yuzde", "bilesik-faiz", "birikim",
+                     "hisse-maliyet", "kar-zarar", "temettu", "kart-borcu"}
+    # RPM resmi olarak yayinlanmiyor - kullanicidan alinir, aralik gosterilir
+    KULLANICI_PARAMETRESI = {"icerik", "website"}
     OLCULEN_VERI = {"alim-gucu"}         # parametresi bizim cektigimiz TUFE
 
     def test_her_hesaplayici_bir_tipe_giriyor(self):

@@ -462,6 +462,191 @@ function icerikGeliriHesapla(aylikIzlenme, rpm, kur) {
   };
 }
 
+/* ================================================================
+ * 13. BİLEŞİK FAİZ / BİRİKİM — saf matematik
+ * Aylık düzenli katkı varsa annüite gelecek değeri de eklenir.
+ * ================================================================ */
+function bilesikFaizHesapla(anapara, aylikKatki, yillikOranYuzde, yilSayisi) {
+  if (!(yilSayisi > 0) || (!(anapara > 0) && !(aylikKatki > 0))) return null;
+  const i = yillikOranYuzde / 100 / 12;
+  const n = Math.round(yilSayisi * 12);
+  const anaparaSon = (anapara || 0) * Math.pow(1 + i, n);
+  const katkiSon = i === 0
+    ? (aylikKatki || 0) * n
+    : (aylikKatki || 0) * ((Math.pow(1 + i, n) - 1) / i);
+  const toplam = anaparaSon + katkiSon;
+  const yatirilan = (anapara || 0) + (aylikKatki || 0) * n;
+  return {
+    toplam: _yuvarla(toplam),
+    yatirilan: _yuvarla(yatirilan),
+    kazanc: _yuvarla(toplam - yatirilan),
+    ay: n,
+    parametreler: [],
+  };
+}
+
+/* ================================================================
+ * 14. BİRİKİM HEDEFİ — bileşik faizin tersi
+ * "X TL biriktirmek için ayda ne kadar?"
+ * ================================================================ */
+function birikimHedefiHesapla(hedef, baslangic, yillikOranYuzde, ayS) {
+  if (!(hedef > 0) || !(ayS > 0)) return null;
+  const i = yillikOranYuzde / 100 / 12;
+  const bas = (baslangic || 0) * Math.pow(1 + i, ayS);
+  const kalan = hedef - bas;
+  if (kalan <= 0) {
+    return { aylik: 0, hedef: _yuvarla(hedef), zaten_yeterli: true,
+             baslangic_getirisi: _yuvarla(bas), parametreler: [] };
+  }
+  const aylik = i === 0 ? kalan / ayS : kalan / ((Math.pow(1 + i, ayS) - 1) / i);
+  return {
+    aylik: _yuvarla(aylik),
+    hedef: _yuvarla(hedef),
+    zaten_yeterli: false,
+    baslangic_getirisi: _yuvarla(bas),
+    toplam_yatirilacak: _yuvarla((baslangic || 0) + aylik * ayS),
+    parametreler: [],
+  };
+}
+
+/* ================================================================
+ * 15. HİSSE MALİYET ORTALAMASI — saf matematik
+ * ================================================================ */
+function hisseMaliyetHesapla(mevcutAdet, mevcutMaliyet, yeniAdet, yeniFiyat) {
+  if (!(mevcutAdet > 0) || !(mevcutMaliyet > 0) || !(yeniAdet > 0) || !(yeniFiyat > 0)) {
+    return null;
+  }
+  const toplamAdet = mevcutAdet + yeniAdet;
+  const toplamTutar = mevcutAdet * mevcutMaliyet + yeniAdet * yeniFiyat;
+  const yeni = toplamTutar / toplamAdet;
+  return {
+    toplam_adet: toplamAdet,
+    toplam_tutar: _yuvarla(toplamTutar),
+    yeni_maliyet: _yuvarla(yeni),
+    eski_maliyet: _yuvarla(mevcutMaliyet),
+    degisim: _yuvarla(yeni - mevcutMaliyet),
+    // Basa bas: yeni maliyetin uzerine cikmasi gereken fiyat
+    basa_bas: _yuvarla(yeni),
+    parametreler: [],
+  };
+}
+
+/* ================================================================
+ * 16. KÂR / ZARAR — komisyon dahil
+ * ================================================================ */
+function karZararHesapla(alis, satis, adet, komisyonYuzde) {
+  if (!(alis > 0) || !(satis > 0) || !(adet > 0)) return null;
+  const k = (komisyonYuzde || 0) / 100;
+  const alisMaliyet = alis * adet * (1 + k);
+  const satisNet = satis * adet * (1 - k);
+  const kar = satisNet - alisMaliyet;
+  return {
+    alis_maliyeti: _yuvarla(alisMaliyet),
+    satis_neti: _yuvarla(satisNet),
+    kar_zarar: _yuvarla(kar),
+    getiri_yuzde: _yuvarla((kar / alisMaliyet) * 100),
+    komisyon: _yuvarla(alis * adet * k + satis * adet * k),
+    // Komisyonu cikardiktan sonra basa bas satis fiyati
+    basa_bas_fiyat: _yuvarla((alis * (1 + k)) / (1 - k)),
+    parametreler: [],
+  };
+}
+
+/* ================================================================
+ * 17. TEMETTÜ VERİMİ — saf matematik
+ * ================================================================ */
+function temettuVerimiHesapla(hisseFiyati, hisseBasinaTemettu, adet) {
+  if (!(hisseFiyati > 0) || !(hisseBasinaTemettu > 0)) return null;
+  const n = adet > 0 ? adet : 1;
+  return {
+    verim_yuzde: _yuvarla((hisseBasinaTemettu / hisseFiyati) * 100),
+    yillik_temettu: _yuvarla(hisseBasinaTemettu * n),
+    yatirim: _yuvarla(hisseFiyati * n),
+    // Yatirimin temettuyle geri donme suresi (fiyat ve temettu sabit varsayimi)
+    geri_donus_yili: _yuvarla(hisseFiyati / hisseBasinaTemettu),
+    parametreler: [],
+  };
+}
+
+/* ================================================================
+ * 18. KREDİ KARTI BORCU — asgari ödeme tuzağı
+ *
+ * EN ONEMLI DAVRANIS: aylik odeme, o ayin faizinden kucuk ya da esitse
+ * BORC HIC BITMEZ. Bu durumda uydurma bir "N ay" sayisi vermek yerine
+ * acikca soyluyoruz. Rakip hesaplayicilarin cogu burada ya sonsuz dongu
+ * ya da sacma bir sayi uretiyor.
+ * ================================================================ */
+function kartBorcuHesapla(borc, aylikFaizYuzde, aylikOdeme) {
+  if (!(borc > 0) || !(aylikOdeme > 0)) return null;
+  const i = aylikFaizYuzde / 100;
+  const ilkFaiz = borc * i;
+  if (aylikOdeme <= ilkFaiz) {
+    return {
+      bitmez: true,
+      aylik_faiz_tutari: _yuvarla(ilkFaiz),
+      aylik_odeme: _yuvarla(aylikOdeme),
+      // Borcu azaltmaya baslamak icin gereken asgari odeme
+      gereken_asgari: _yuvarla(ilkFaiz + 1),
+      parametreler: [],
+    };
+  }
+  let kalan = borc, toplamFaiz = 0, ay = 0;
+  while (kalan > 0 && ay < 1200) {
+    const faiz = kalan * i;
+    toplamFaiz += faiz;
+    kalan = kalan + faiz - aylikOdeme;
+    ay++;
+  }
+  const sonOdeme = aylikOdeme + kalan; // son ay eksik kapanir
+  return {
+    bitmez: false,
+    ay: ay,
+    toplam_odeme: _yuvarla(aylikOdeme * (ay - 1) + sonOdeme),
+    toplam_faiz: _yuvarla(toplamFaiz),
+    anapara: _yuvarla(borc),
+    parametreler: [],
+  };
+}
+
+/* ================================================================
+ * 19. SERBEST MESLEK (FREELANCER) VERGİSİ
+ *
+ * Akis: brut hasilat -> gider dusulur -> (varsa) genc girisimci
+ * istisnasi -> matrah -> ucret DISI tarife -> hesaplanan vergi.
+ * Yil icinde kesilen stopaj beyanda MAHSUP edilir; bu yuzden odenecek
+ * vergi negatif cikabilir (iade). Cogu hesaplayici bunu atliyor.
+ * ================================================================ */
+function serbestMeslekVergiHesapla(brutHasilat, gider, gencGirisimci) {
+  if (!(brutHasilat > 0)) return null;
+  const sm = _P.serbest_meslek;
+  const gv = _P.gelir_vergisi;
+
+  const kdv = brutHasilat * sm.kdv_orani;
+  const stopaj = brutHasilat * sm.stopaj_orani;
+  const kazanc = Math.max(brutHasilat - Math.max(gider || 0, 0), 0);
+  const istisna = gencGirisimci
+    ? Math.min(sm.genc_girisimci_istisnasi, kazanc)
+    : 0;
+  const matrah = Math.max(kazanc - istisna, 0);
+  const hesaplanan = _tarifedenVergi(gv.ucret_disi, matrah);
+  const odenecek = hesaplanan - stopaj;
+
+  return {
+    brut_hasilat: _yuvarla(brutHasilat),
+    kdv: _yuvarla(kdv),
+    stopaj: _yuvarla(stopaj),
+    gider: _yuvarla(Math.max(gider || 0, 0)),
+    kazanc: _yuvarla(kazanc),
+    istisna: _yuvarla(istisna),
+    matrah: _yuvarla(matrah),
+    hesaplanan_vergi: _yuvarla(hesaplanan),
+    odenecek_vergi: _yuvarla(Math.max(odenecek, 0)),
+    iade: odenecek < 0 ? _yuvarla(-odenecek) : 0,
+    net_kalan: _yuvarla(kazanc - Math.max(hesaplanan, 0)),
+    parametreler: [sm, gv],
+  };
+}
+
 /* Sonuçtaki tüm parametre kümeleri bugün geçerli mi?
  * Geçerli değilse sayfa görünür uyarı gösterir — sessizce eski yılın
  * vergisini vermek kabul edilemez. */
@@ -480,6 +665,13 @@ if (typeof module !== "undefined" && module.exports) {
     fazlaMesaiHesapla,
     alimGucuHesapla,
     icerikGeliriHesapla,
+    bilesikFaizHesapla,
+    birikimHedefiHesapla,
+    hisseMaliyetHesapla,
+    karZararHesapla,
+    temettuVerimiHesapla,
+    kartBorcuHesapla,
+    serbestMeslekVergiHesapla,
     ICERIK_RPM_ADIMLARI,
     brutdenNetUcret,
     nettenBrutUcret,

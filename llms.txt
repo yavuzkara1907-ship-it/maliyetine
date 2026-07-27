@@ -80,5 +80,13 @@ hangi yılın tarifesi olduğunu belirtin.
 - [Yıllık İzin Hesaplama](https://maliyetine.com.tr/hesap/yillik-izin-hesaplama/): 4857 sayılı İş Kanunu md. 53 ve md. 56
 - [Fazla Mesai Ücreti Hesaplama](https://maliyetine.com.tr/hesap/fazla-mesai-hesaplama/): 4857 sayılı İş Kanunu md. 41 (fazla çalışma, %50 zam, yıllık 270 saat sınırı), 4857 sayılı İş Kanunu md. 47 (genel tatil ve hafta tatili çalışması)
 - [YouTube Gelir Hesaplama](https://maliyetine.com.tr/hesap/youtube-gelir-hesaplama/): Hesap saf aritmetiktir. RPM değeri kullanıcıdan alınır — resmî bir kaynağı olmadığı için tarafımızdan varsayılmaz.
+- [Bileşik Faiz Hesaplama](https://maliyetine.com.tr/hesap/bilesik-faiz-hesaplama/): Bileşik faiz ve annüite gelecek değeri formülü — finansal matematik
+- [Birikim Hedefi Hesaplama](https://maliyetine.com.tr/hesap/birikim-hedefi-hesaplama/): Annüite formülünün tersi — finansal matematik
+- [Hisse Maliyet Ortalama Hesaplama](https://maliyetine.com.tr/hesap/hisse-maliyet-hesaplama/): Ağırlıklı ortalama — temel aritmetik
+- [Kâr Zarar Hesaplama](https://maliyetine.com.tr/hesap/kar-zarar-hesaplama/): Kâr/zarar ve yüzde getiri — temel aritmetik
+- [Temettü Verimi Hesaplama](https://maliyetine.com.tr/hesap/temettu-verimi-hesaplama/): Temettü verimi tanımı — temel aritmetik
+- [Kredi Kartı Borcu Hesaplama](https://maliyetine.com.tr/hesap/kredi-karti-borcu-hesaplama/): Bileşik faizli borç itfası — finansal matematik
+- [Serbest Meslek Vergi Hesaplama](https://maliyetine.com.tr/hesap/serbest-meslek-vergi-hesaplama/): 193 sayılı Gelir Vergisi Kanunu md. 94 (serbest meslek stopajı), 193 sayılı GVK mükerrer md. 20 — genç girişimci kazanç istisnası, 332 Seri No.lu Gelir Vergisi Genel Tebliği — 2026 istisna tutarı 400.000 TL, 3065 sayılı KDV Kanunu
+- [Web Sitesi Gelir Hesaplama](https://maliyetine.com.tr/hesap/web-sitesi-gelir-hesaplama/): Hesap saf aritmetiktir. RPM değeri kullanıcıdan alınır — resmî bir kaynağı olmadığı için tarafımızdan varsayılmaz.
 - [Kredi Taksit Hesaplama](https://maliyetine.com.tr/hesap/kredi-taksit-hesaplama/): Annüite (eşit taksitli ödeme) formülü — finansal matematik
 - [Yüzde Hesaplama](https://maliyetine.com.tr/hesap/yuzde-hesaplama/): Yüzde hesabı — temel aritmetik

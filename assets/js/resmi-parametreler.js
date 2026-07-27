@@ -195,6 +195,24 @@ const RESMI_PARAMETRELER = {
   },
 
   // --------------------------------------------------------------
+  // SERBEST MESLEK / FREELANCER
+  // Genç girişimci istisnası: faaliyete başlanan dönemden itibaren
+  // ÜÇ vergilendirme dönemi, 29 yaşını doldurmamış olmak şartıyla.
+  // --------------------------------------------------------------
+  serbest_meslek: {
+    yil: 2026,
+    kaynak: "193 sayılı GVK md. 94 (stopaj) ve mükerrer md. 20 (genç girişimci); " +
+            "332 Seri No.lu Gelir Vergisi Genel Tebliği",
+    gecerli_baslangic: "2026-01-01",
+    gecerli_bitis: "2026-12-31",
+    stopaj_orani: 0.20,
+    kdv_orani: 0.20,
+    genc_girisimci_istisnasi: 400000.0,
+    genc_girisimci_yil: 3,
+    genc_girisimci_yas: 29,
+  },
+
+  // --------------------------------------------------------------
   // KDV ORANLARI
   // --------------------------------------------------------------
   kdv: {
