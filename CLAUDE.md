@@ -1458,6 +1458,68 @@ tekrar yok · görsel alt'ı eksik yok · jenerik anchor yok · sitemap ile
 disk birebir · JSON-LD zorunlu alan eksiği yok · birebir aynı gövde yok ·
 `lang="tr"` her sayfada · yalnızca 404 `noindex`.
 
+## TASARIM DENETİMİ (2026-07-27) — global menü, tipografi, tablet
+Yavuz: *"header inanılmaz küçük... ne var ben anlamıyorum sitede. en
+önemlisi google indekslemezse hesaplayıcılar da kayıp — ne headerda var
+ne sitede görünür."* Hepsi haklıydı. **Ekran görüntüsü alarak
+çalışıldı** — bu projede tasarıma bakmadan dokunmak körlük.
+
+**1. HESAPLAYICILAR HİÇBİR SAYFANIN HEADER'INDA YOKTU.** Üst menüde
+yalnızca 5 vertikal vardı; **20 hesaplayıcı, 8 rehber ve veri merkezi**
+hiçbir yerden erişilemiyordu. Hesaplayıcılar bölümü ana sayfada
+**4.581 px** aşağıdaydı (mobilde ~5,4 ekran). İç link, arama motoru için
+keşif yolunun kendisi.
+→ `sayfa_uret.genel_menu()`: **8 öğeli tek menü, 141 sayfanın hepsinde
+aynı.** Elle yazılan 13 sayfa eski menüde kalmıştı, onlar da geçirildi.
+Bulunulan bölüm `aria-current` ile işaretli.
+
+**2. "NE VAR BEN ANLAMIYORUM SİTEDE".** H1 *"2026'da bir şey kaça mal
+olur?"* idi. → *"2026'da Ne Kaça Mal Olur?"* + veriden üretilen kapsam
+satırı: **"5 maliyet endeksi · 107 kalem · 20 hesaplayıcı."**
+İlk hesap 78 veriyordu (yalnızca varsayılan toplama girenler) — `ai.txt`
+107 diyordu. **Sitede iki farklı sayı dolaşması, güveni rakam
+tutarlılığına dayanan bir sitede kabul edilemez;** ikisi de aynı yerden
+sayılıyor artık.
+
+**3. TİPOGRAFİ.** Logo 18,4 → 23,2px · gövde 16 → 17px · mobil h1
+24,8 → 30,4px (mobil kuralındaki `1.55rem` ezmesi `clamp`'i boğuyordu).
+Header sticky — ana sayfa 8.900px.
+
+**4. TABLET TAŞMASI — en ciddi bulgu.** Menü 5 öğeden 8'e çıkınca
+673px'e ulaştı; logoyla birlikte 838px istiyor. Mobil kırılımı 560px'ti,
+yani **561–900px arasındaki HER genişlikte sayfa yatay taşıyordu** —
+tablet, katlanır telefon, küçük pencere. **390 ve 1440 test ediliyordu,
+arası hiç bakılmamıştı.** Kırılım 900px'e çekildi.
+Ardından 320px'te ikinci taşma: asistan formunda `flex: 1` yetmiyordu —
+flex öğesinin varsayılan `min-width: auto` değeri girdiyi içeriği kadar
+büyük tutup butonu dışarı itiyordu. `min-width: 0`.
+**DERS: kırılım noktası "telefon/masaüstü" diye değil, İÇERİĞİN GERÇEK
+GENİŞLİĞİNE göre seçilir; doğrulama birden çok genişlikte yapılır.**
+
+**5. DOKUNMA HEDEFLERİ.** Kalem seçim kutuları ve segment butonları
+23px'ti (WCAG 40px). Ev-kurma hesaplayıcısında 42 kalem alt alta —
+bu yoğunlukta yanlış kutuya basmak kaçınılmaz. 40/42px'e çıkarıldı.
+
+### `scraper/test_gorsel.py` (5 test, ~8 sn, gerçek tarayıcı)
+14 genişlik × 9 sayfa yatay taşma taraması · menü bütünlüğü · konsol
+hatası · karanlık mod · dokunma hedefleri.
+
+**İKİ TESTİN KENDİ HATASI ÖLÇEREK BULUNDU:**
+- Dokunma hedefi testi `input` yüksekliğine bakıyordu; bir onay kutusu
+  doğal olarak 18px'tir, **asıl hedef onu saran etiket.** Etiket
+  ölçülünce çoğunun 41px olduğu, sorunun yalnızca kalem ve segment
+  seçimlerinde olduğu görüldü.
+- "Sınıf dışında kalmış test" kontrolü önce **yanlış pozitif** verdi:
+  `if __name__` satırından sonra gelen bir `class` normaldir ve testleri
+  çalışır (test_asistan 12/12 koşarak doğrulandı). Gerçek hata biçimine
+  daraltıldı.
+
+Vertikal izolasyon testleri header/footer'ı dışarıda bırakacak şekilde
+**daraltıldı — gevşetilmedi;** gövdeye sızan link hâlâ yakalanır.
+
+Python **14 suite**, Node 80/80. 135 genişlik-sayfa kombinasyonunda
+yatay taşma yok; canlıda doğrulandı.
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
