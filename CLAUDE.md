@@ -860,6 +860,123 @@ Ana sayfada 95 ölçülmüş kalem içinde arama. Türkçe karakter duyarsız.
 Kalem sayfası olmayan kalem endekse yönlendiriliyor (kırık link yok).
 Fiyat endeks sayfasındakiyle aynı — ikisi de testli.
 
+## BEBEK VERTİKALİ — 5. vertikal (2026-07-27)
+**Neden bu:** Yavuz "yeni bir ölçüm eklesek bu ne olmalı?" diye sordu.
+Seçim kriterleri: (1) tamamen **ürün bazlı** — hizmet kalemlerinde
+aylarca tahminle uğraştık, burada her kalem somut ürün; (2) **kaynak avı
+gerekmedi** — Amazon'un arama sayfası robots'ta serbest, Trendyol
+kategorileri aramayla doğrulandı, okul turundaki en pahalı iş (kategori
+URL'i bulma) hiç yaşanmadı; (3) **yaşam döngüsü zinciri** — düğün → ev
+kurma → bebek aynı kullanıcının sıradaki adımı, iç link ve kullanıcı
+tutma değeri var; (4) **sürekli talep** — okul mevsimsel, düğün yazın
+yoğun, bebek yıl boyu sabit.
+
+**11 kalem, 5 grup.** Orta segment tek seferlik hazırlık **34.829 TL**
+(ekonomik 16.507 / üst 63.039). **Baştan çok kaynaklı kuruldu:** 4 kalem
+(bebek arabası, beşik, oto koltuğu, mama sandalyesi) hem Trendyol hem
+Amazon'dan ölçülüyor. 14 sayfa, sitemap 105 → 119 URL.
+
+**`bebek-bezi` `varsayilan_dahil: False`** — bez SARF malzemesi, aylık
+tekrarlıyor; diğerleri tek seferlik kurulum. İkisini tek toplama katmak
+"bebek maliyeti 45 bin" gibi ne olduğu belirsiz bir rakam üretirdi.
+Toplam = tek seferlik hazırlık, bez ayrıca gösteriliyor.
+
+**STERİLİZATÖR KAPSAM DIŞI BIRAKILDI.** 7 ürünün 3'ü sterilizatör değil
+(temizleme sıvısı, kurutma ünitesi, biberon hediye seti); ad filtresinden
+sonra ~3 ürün kalıyor, güvenilir medyan için çok az. Kaynak pasif, kalem
+listesinden çıkarıldı, **metodolojide neden ölçemediğimiz yazıyor** —
+gizlemek yerine söylüyoruz.
+
+## AD FİLTRESİ KATMANI — sessiz bir segment bozulması (2026-07-27)
+Bebek vertikalini kurarken bulundu, **tüm vertikalleri ilgilendiriyor.**
+Pazaryeri kategorileri ve arama sayfaları, ölçülen ürünün
+**AKSESUARLARINI** da listeliyor ve bunlar hep **ALT segmentte**
+toplanıyor — yani ekonomik segmenti sistematik olarak aşağı çekiyorlar.
+Ölçüldü: "beşik" aramasında 403 TL cibinlik, 409 TL alez, 737 TL
+salıncak; "mama sandalyesi"nde 585 TL minder; "park yatak"ta park
+yatağın kendisi değil **şiltesi**.
+- **`min_fiyat`'ı yükseltmek bunu çözmez, ÖRTBAS EDER:** gerçek ekonomik
+  segmenti de keser ve "ekonomik beşik 1.500 TL" derken alt ucu bilerek
+  atmış oluruz. Doğru çözüm ürünü ADIYLA elemek.
+- **`ad_gerekli` / `ad_dislama`** alanları (`tablo` katmanındaki
+  `satir_filtresi` ile aynı ilke, ürün kartının adına uygulanıyor).
+- **`SAYFA_MOBILYASI`** — her kaynakta geçerli, kaynakta filtre tanımlı
+  olmasa bile eler. Trendyol'da *"Bebek Beşik & Karyola Modelleri ve
+  Fiyatları 2026"* **başlığı ürün kartı olarak yakalanıp** yanındaki
+  fiyatla eşleşiyordu: tamamen uydurma bir satır.
+- **`_ad_norm`** — Python'da `"BEŞİK".lower()` → `"beşi̇k"` (i + U+0307
+  birleşik nokta), düz `re.I` "beşik" desenini **TUTMUYOR**; noktasız ı
+  ile noktalı i de ayrı karakter. i ailesi tek forma indiriliyor (s/ş,
+  c/ç katlanmıyor — "kaş"ı "kas"a eşitlerdi).
+- Filtre örneklemin yarısından fazlasını yerse **görünür uyarı** (sessizce
+  küçük örneklemle devam etmek "0 ürün ama sağlıklı" tuzağının aynı türü).
+
+**İLK DESEN YANLIŞTI, ölçüp düzeltildi — asıl ders bu.** Düz `cibinlik`
+deseni gerçek ürünleri de eledi (*"Cibinlikli Anne Yanı Beşik"* — beşik,
+cibinliği dahil) ve beşik medyanını **1.755'ten 2.978'e ÇIKARDI**: filtre
+veriyi düzeltmek yerine bozdu. Aynı şey mama sandalyesinde *"mindersiz"*
+ve *"4in1 ... Mama Oturağı"* ile yaşandı. **İyelik eki ile sıfat
+ayrılmak zorunda:** `cibinlik(?!li)` — *cibinlikLİ beşik* ürün, *beşik
+cibinliĞİ* aksesuar. **Filtre yazıp neyin elendiğine bakmamak, filtre
+yazmamaktan kötü.**
+
+**SABİT VERTİKAL LİSTELERİ KALDIRILDI.** `gecmis.py` ve `rehber.py` elle
+yazılmış vertikal listesi tutuyordu — okul eklenince unutulmuş, zaman
+serisi o vertikal için **hiç üretilmemişti** ve kimse fark etmemişti;
+bebek'te aynısı olacaktı. İkisi de artık `sayfa_uret.VERTIKALLER` okuyor.
+`motor.py`'ye **`--vertikal`** filtresi eklendi (tam tur 196 kaynakla
+~50 dk; tek vertikal ~4 dk).
+
+## SOSYAL MEDYA OTOMASYONU — `scraper/sosyal.py` (2026-07-27)
+Yavuz'un sorusu: *"Sosyal medyada otomasyon kurabilir miyiz?"*
+Paylaşılacak şey görüş değil **ölçüm sonucu** — sitenin en doğal tanıtım
+biçimi bu.
+
+**KIRMIZI ÇİZGİ, `asistan.py` ile aynı ilke:** metin ÜRETİLMİYOR,
+veriden KURULUYOR. Dil modeli yok, dışarı istek yok. Cümleler sabit
+şablon; değişen yalnızca rakam, kalem adı, tarih ve örneklem sayısı.
+*"Fiyatlar uçtu"* gibi bir cümleyi bu kod **yazamaz**. **Sosyal medya bu
+ilkeyi kırmak için en tehlikeli yer** — dikkat çekmek için abartma
+basıncının en yüksek olduğu mecra, ve o iddia dışında satacak bir şeyimiz
+yok.
+
+**SUSMAK VARSAYILAN DAVRANIŞ.** Üç kapı, üçü de geçilmezse çıktı boş:
+1. **Yeterli aralık** — `gecmis.ASGARI_GUN_ARALIGI` tek kaynaktan
+   okunuyor (iki yerde ayrı eşik tutmak, birini güncelleyip ötekini
+   unutmak olur). 24→25 Temmuz testinde "nikah şekeri %40 düştü" çıkmıştı;
+   fiyat düşüşü değil, listelenen ürünlerin değişmesi.
+2. **Örneklem kararlılığı** — ürün sayısı %35'ten fazla oynadıysa
+   medyandaki değişim FİYATTAN değil ölçülen kümeden geliyor olabilir;
+   hangisi olduğunu ayırt edemediğimiz için susuyoruz.
+3. **Anlamlı büyüklük** — %3 altı paylaşılmaz.
+Ayrıca ölçüm başına en fazla 3 gönderi (40 kalem değiştiyse 40 tweet
+spam'dir).
+
+**Değişim yoksa:** ayın 5'inde tek bir ölçüm özeti, vertikal **aya göre
+dönüşümlü** (durum tutmadan deterministik — aynı ay iki kez çalıştırmak
+yeni gönderi üretmez). Özet, sitedeki toplamla **aynı kuralı** uyguluyor:
+`varsayilan_dahil: False` (bebek bezi) ve `bilgi_amacli` kalemler
+toplama girmiyor — aksi halde sitede 34.829 yazarken sosyalde başka bir
+rakam paylaşılmış olurdu (bir test bunu kilitliyor).
+
+**GÖNDERİM — anahtar Yavuz'un kararı.** Varsayılan deneme modu.
+`--gonder` verili ama secret yoksa hiçbir yere gönderilmez, yalnızca
+`veri/sosyal/onizleme.md` yazılır ve commit'e girer. Yani otomasyon
+anahtar eklenene kadar **"provayı" görünür şekilde yapıyor**; anahtarı
+eklemek yayına alma kararının kendisi (EVDS'deki desenin aynısı).
+- **X:** API v2 + OAuth 1.0a, ücretsiz katman ayda ~500 gönderi
+  (bizim ihtiyacımız ayda 2-6). Secret'lar: `X_API_KEY`, `X_API_SECRET`,
+  `X_ACCESS_TOKEN`, `X_ACCESS_SECRET` (developer.x.com → app → keys).
+- **Bluesky:** en kolayı — onay/inceleme yok, app password yeter.
+  Secret'lar: `BLUESKY_HANDLE`, `BLUESKY_SIFRE`.
+- **Threads ve LinkedIn KURULMADI:** ikisi de Meta/LinkedIn uygulama
+  incelemesi gerektiriyor (haftalar sürebilir, reddedilebilir).
+  İleride değerlendirilebilir.
+- 17 test: üç kapının gerçekten kapattığı, **ham kalem id'sinin gönderiye
+  sızmadığı** (senaryo sayfalarında yaşanmıştı), rakamsız özet
+  üretilmediği, karakter sınırı (X 280'e göre), anahtar yoksa atlanma,
+  ve kaynak dosyasında hiçbir LLM çağrısı olmadığı.
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
