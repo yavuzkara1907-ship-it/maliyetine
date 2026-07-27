@@ -1323,6 +1323,60 @@ doğru ve tek kaynağı bir eksiklik olmaktan çıkarıyor
 Üçü de metodoloji, ölçüm tarihi, örneklem ve indirilebilir veri
 tarafında bizden geride.
 
+## ANALYTICS (2026-07-27)
+Yavuz GA4 etiketini verdi (`G-JP07XQLV0L`). **133 sayfanın tamamına**
+eklendi, tek yerde tanımlı (`sayfa_uret.ANALITIK`) — OG etiketlerinde
+öğrenilen ders: sekiz şablonda ayrı ayrı duran bir şeyi güncellemek
+unutuluyor. Üretilen sayfalar sabiti kullanıyor; elle yazılan 13 sayfa
+ayrıca yamandı.
+
+**KVKK notu:** GA4 çerez yazıyor ve bunun sitede **yazılı** olması
+gerekiyor. `/hakkimizda/` sayfasına "Çerezler ve ölçüm" bölümü eklendi
+(ne topladığımız, çerezin engellenebileceği, üyelik/e-posta/form
+olmadığı). **Çerez onay banner'ı EKLENMEDİ** — o ayrı bir ürün kararı
+(tıklama oranını düşürür), Yavuz'un tercihine bağlı.
+
+## HESAPLAYICILAR 12 → 20 (2026-07-27, üçüncü tur)
+Yavuz: *"bu hesaplama toolları çok değerli, o noktada cimrilik yapma."*
+
+**FICAL İNCELEMESİ — "çok tıklanıyor" ama sebebi derinlik değil.**
+Sitemap'te 146 URL var; gerçekte **yalnızca 4 hesaplayıcı** (bileşik
+faiz, gelişmiş bileşik faiz, hisse maliyet, Kelly kriteri) + 3
+istatistik sayfası, **13 dile kopyalanmış.** Çok dillilik bize uymuyor —
+TR'ye özgü olmak savunma hendeğimiz, dağıtmak onu zayıflatır. Ama o dört
+hesap alınmaya değerdi.
+
+**Yeni 8:** bileşik faiz/birikim · birikim hedefi · hisse maliyet
+ortalaması · kâr-zarar (komisyon dahil başa baş fiyat) · temettü verimi ·
+kredi kartı borcu · **serbest meslek (freelancer) vergisi** · web sitesi
+geliri.
+
+**İKİ TASARIM KARARI — rakiplerin atladığı yerler:**
+1. **Kredi kartı:** aylık ödeme o ayın faizinden küçükse **borç hiç
+   bitmez.** Rakiplerin çoğu burada ya sonsuz döngüye giriyor ya saçma
+   bir sayı üretiyor. Biz uydurma bir "N ay" vermek yerine açıkça
+   söylüyoruz ve borcun azalmaya başlaması için gereken asgari ödemeyi
+   veriyoruz.
+2. **Freelancer:** yıl içinde kesilen stopaj beyanda **mahsup edilir**;
+   çoğu hesaplayıcı bunu atlıyor. Genç girişimci istisnasından
+   yararlanan bir freelancer'da ödenecek vergi değil **iade** çıkabiliyor.
+   Canlı örnek: 600k hasılat, 100k gider, genç girişimci → 120k stopaj
+   kesilmiş, hesaplanan vergi 15k, **105.000 TL iade.**
+
+**Doğrulanan parametreler:** genç girişimci istisnası 2026 = **400.000
+TL** (GVK mük. md.20, 332 Seri No.lu GVGT, ilk 3 vergilendirme dönemi,
+29 yaş sınırı) · serbest meslek stopajı %20 (GVK md.94) · KDV %20.
+
+**TEST YİNE BUG YAKALADI — `step` bug'ının ÜÇÜNCÜ tekrarı.** Bileşik
+faiz ve birikim sayfalarında getiri oranı alanında `step="0.1"` vardı;
+kullanıcı %40,25 yazamayacaktı. Test gevşetilmedi, alanlar düzeltildi.
+**Bu hata artık kalıcı bir desen: form nitelikleri görünüm değil
+geçerlilik kısıtı, ve her yeni hesaplayıcıda tekrar kontrol edilmeli.**
+
+sitemap 132 → **140**. 20 hesaplayıcının tamamı gerçek tarayıcıda
+doğrulandı: hepsi sonuç üretiyor, 0 konsol hatası, 20/20 analitik kodu
+içeriyor.
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
