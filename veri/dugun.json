@@ -5,28 +5,28 @@
     "gelinlik": {
       "segmentler": {
         "dusuk": {
-          "min": 2956,
-          "medyan": 4425,
+          "min": 2250,
+          "medyan": 3704,
           "max": 5043,
           "urun_sayisi": 6,
           "kaynak_sayisi": 1
         },
         "orta": {
           "min": 6023,
-          "medyan": 8699,
-          "max": 34650,
+          "medyan": 18172,
+          "max": 30959,
           "urun_sayisi": 10,
           "kaynak_sayisi": 1
         },
         "luks": {
-          "min": 35000,
+          "min": 34650,
           "medyan": 43839,
           "max": 65000,
           "urun_sayisi": 4,
           "kaynak_sayisi": 1
         }
       },
-      "genel_medyan": 7444,
+      "genel_medyan": 17033,
       "toplam_urun": 20,
       "guncelleme_tarihi": "2026-07-26",
       "kaynak_sayisi": 1,
@@ -38,7 +38,7 @@
           ],
           "tarih": "2026-07-26",
           "toplam_urun": 20,
-          "genel_medyan": 7444
+          "genel_medyan": 17033
         }
       ],
       "capraz_dogrulama_uyarisi": null
@@ -102,7 +102,7 @@
     "salon-yemekli": {
       "segmentler": {
         "dusuk": {
-          "min": 750,
+          "min": 700,
           "medyan": 750,
           "max": 750,
           "urun_sayisi": 3,
@@ -110,9 +110,9 @@
         },
         "orta": {
           "min": 900,
-          "medyan": 1100,
+          "medyan": 1000,
           "max": 1400,
-          "urun_sayisi": 6,
+          "urun_sayisi": 5,
           "kaynak_sayisi": 1
         },
         "luks": {
@@ -124,7 +124,7 @@
         }
       },
       "genel_medyan": 1000,
-      "toplam_urun": 11,
+      "toplam_urun": 10,
       "guncelleme_tarihi": "2026-07-26",
       "kaynak_sayisi": 1,
       "kaynaklar": [
@@ -134,7 +134,7 @@
             "DugunBuketi - Istanbul Dugun Mekanlari (yemekli kisi basi)"
           ],
           "tarih": "2026-07-26",
-          "toplam_urun": 11,
+          "toplam_urun": 10,
           "genel_medyan": 1000
         }
       ],
@@ -153,19 +153,19 @@
           "min": 2781,
           "medyan": 46450,
           "max": 79995,
-          "urun_sayisi": 49,
+          "urun_sayisi": 48,
           "kaynak_sayisi": 3
         },
         "luks": {
-          "min": 5599,
+          "min": 4399,
           "medyan": 83970,
           "max": 164950,
-          "urun_sayisi": 21,
+          "urun_sayisi": 23,
           "kaynak_sayisi": 3
         }
       },
       "genel_medyan": 44950,
-      "toplam_urun": 97,
+      "toplam_urun": 98,
       "guncelleme_tarihi": "2026-07-26",
       "kaynak_sayisi": 3,
       "kaynaklar": [
@@ -184,7 +184,7 @@
             "Trendyol - Damatlik"
           ],
           "tarih": "2026-07-26",
-          "toplam_urun": 16,
+          "toplam_urun": 17,
           "genel_medyan": 3240
         },
         {
@@ -209,7 +209,7 @@
     "salon-kokteyl": {
       "segmentler": {
         "dusuk": {
-          "min": 280,
+          "min": 250,
           "medyan": 500,
           "max": 500,
           "urun_sayisi": 7,
@@ -217,9 +217,9 @@
         },
         "orta": {
           "min": 600,
-          "medyan": 725,
-          "max": 850,
-          "urun_sayisi": 2,
+          "medyan": 600,
+          "max": 600,
+          "urun_sayisi": 1,
           "kaynak_sayisi": 1
         },
         "luks": {
@@ -231,7 +231,7 @@
         }
       },
       "genel_medyan": 500,
-      "toplam_urun": 11,
+      "toplam_urun": 10,
       "guncelleme_tarihi": "2026-07-26",
       "kaynak_sayisi": 1,
       "kaynaklar": [
@@ -241,7 +241,7 @@
             "DugunBuketi - Istanbul Dugun Mekanlari (kokteyl kisi basi)"
           ],
           "tarih": "2026-07-26",
-          "toplam_urun": 11,
+          "toplam_urun": 10,
           "genel_medyan": 500
         }
       ],
@@ -292,28 +292,28 @@
       "segmentler": {
         "dusuk": {
           "min": 169,
-          "medyan": 187,
-          "max": 199,
+          "medyan": 250,
+          "max": 421,
           "urun_sayisi": 11,
           "kaynak_sayisi": 2
         },
         "orta": {
           "min": 200,
-          "medyan": 457,
+          "medyan": 440,
           "max": 585,
-          "urun_sayisi": 16,
+          "urun_sayisi": 19,
           "kaynak_sayisi": 2
         },
         "luks": {
-          "min": 559,
-          "medyan": 810,
+          "min": 618,
+          "medyan": 714,
           "max": 980,
           "urun_sayisi": 7,
-          "kaynak_sayisi": 1
+          "kaynak_sayisi": 2
         }
       },
-      "genel_medyan": 418,
-      "toplam_urun": 34,
+      "genel_medyan": 390,
+      "toplam_urun": 37,
       "guncelleme_tarihi": "2026-07-26",
       "kaynak_sayisi": 2,
       "kaynaklar": [
@@ -332,14 +332,14 @@
             "Trendyol - Nikah Sekeri"
           ],
           "tarih": "2026-07-26",
-          "toplam_urun": 3,
-          "genel_medyan": 560
+          "toplam_urun": 6,
+          "genel_medyan": 504
         }
       ],
       "capraz_dogrulama_uyarisi": {
-        "fark_yuzdesi": 103.6,
+        "fark_yuzdesi": 83.3,
         "medyanlar": {
-          "trendyol": 560,
+          "trendyol": 504,
           "amazon": 275
         }
       }
@@ -437,21 +437,21 @@
         },
         "orta": {
           "min": 124,
-          "medyan": 199,
+          "medyan": 196,
           "max": 500,
-          "urun_sayisi": 14,
+          "urun_sayisi": 15,
           "kaynak_sayisi": 2
         },
         "luks": {
-          "min": 166,
-          "medyan": 402,
+          "min": 153,
+          "medyan": 398,
           "max": 770,
-          "urun_sayisi": 5,
+          "urun_sayisi": 6,
           "kaynak_sayisi": 2
         }
       },
-      "genel_medyan": 189,
-      "toplam_urun": 28,
+      "genel_medyan": 190,
+      "toplam_urun": 30,
       "guncelleme_tarihi": "2026-07-26",
       "kaynak_sayisi": 2,
       "kaynaklar": [
@@ -470,14 +470,14 @@
             "Trendyol - Dugun Davetiyesi"
           ],
           "tarih": "2026-07-26",
-          "toplam_urun": 8,
-          "genel_medyan": 128
+          "toplam_urun": 10,
+          "genel_medyan": 129
         }
       ],
       "capraz_dogrulama_uyarisi": {
-        "fark_yuzdesi": 95.3,
+        "fark_yuzdesi": 93.8,
         "medyanlar": {
-          "trendyol": 128,
+          "trendyol": 129,
           "amazon": 250
         }
       }
@@ -527,28 +527,28 @@
       "segmentler": {
         "dusuk": {
           "min": 590,
-          "medyan": 733,
+          "medyan": 734,
           "max": 1149,
-          "urun_sayisi": 15,
+          "urun_sayisi": 16,
           "kaynak_sayisi": 2
         },
         "orta": {
-          "min": 841,
-          "medyan": 1298,
-          "max": 2315,
-          "urun_sayisi": 25,
+          "min": 935,
+          "medyan": 1550,
+          "max": 2300,
+          "urun_sayisi": 23,
           "kaynak_sayisi": 2
         },
         "luks": {
           "min": 2300,
-          "medyan": 3114,
-          "max": 3824,
-          "urun_sayisi": 9,
-          "kaynak_sayisi": 2
+          "medyan": 2788,
+          "max": 3499,
+          "urun_sayisi": 6,
+          "kaynak_sayisi": 1
         }
       },
-      "genel_medyan": 1265,
-      "toplam_urun": 49,
+      "genel_medyan": 1190,
+      "toplam_urun": 45,
       "guncelleme_tarihi": "2026-07-26",
       "kaynak_sayisi": 2,
       "kaynaklar": [
@@ -558,8 +558,8 @@
             "Amazon - Gelin Ayakkabısı"
           ],
           "tarih": "2026-07-26",
-          "toplam_urun": 42,
-          "genel_medyan": 1595
+          "toplam_urun": 41,
+          "genel_medyan": 1590
         },
         {
           "site": "trendyol",
@@ -567,37 +567,37 @@
             "Trendyol - Gelin Ayakkabisi"
           ],
           "tarih": "2026-07-26",
-          "toplam_urun": 7,
-          "genel_medyan": 935
+          "toplam_urun": 4,
+          "genel_medyan": 789
         }
       ],
       "capraz_dogrulama_uyarisi": {
-        "fark_yuzdesi": 70.6,
+        "fark_yuzdesi": 101.5,
         "medyanlar": {
-          "trendyol": 935,
-          "amazon": 1595
+          "trendyol": 789,
+          "amazon": 1590
         }
       }
     },
     "yemek-ikram": {
       "segmentler": {
         "dusuk": {
-          "min": 150,
+          "min": 200,
           "medyan": 250,
           "max": 250,
-          "urun_sayisi": 4,
+          "urun_sayisi": 3,
           "kaynak_sayisi": 1
         },
         "orta": {
           "min": 400,
-          "medyan": 410,
-          "max": 450,
-          "urun_sayisi": 3,
+          "medyan": 405,
+          "max": 500,
+          "urun_sayisi": 4,
           "kaynak_sayisi": 1
         },
         "luks": {
-          "min": 500,
-          "medyan": 710,
+          "min": 650,
+          "medyan": 785,
           "max": 920,
           "urun_sayisi": 2,
           "kaynak_sayisi": 1

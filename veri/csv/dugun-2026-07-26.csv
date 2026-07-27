@@ -1,16 +1,16 @@
 ﻿vertikal,kalem_id,kalem_adi,grup,birim,ekonomik_tl,orta_tl,ust_tl,en_dusuk_tl,en_yuksek_tl,urun_sayisi,kaynak_sayisi,kaynaklar,olcum_tarihi
 dugun,alyans,Alyans,,sabit,8528,16045,21270,1107,21460,27,2,atasay; trendyol,2026-07-26
-dugun,damatlik,Damatlık / Takım Elbise,,sabit,17995,46450,83970,2508,164950,97,3,beymen; trendyol; vakko,2026-07-26
-dugun,davetiye,Davetiye,,sabit,124,199,402,89,770,28,2,amazon; trendyol,2026-07-26
-dugun,salon-kokteyl,Düğün Salonu — kokteyl (yemeksiz),,kisi_basi,500,725,1420,280,1850,11,1,dugunbuketi,2026-07-26
-dugun,salon-yemekli,Düğün Salonu — yemekli (menü dahil),,kisi_basi,750,1100,2000,750,2500,11,1,dugunbuketi,2026-07-26
+dugun,damatlik,Damatlık / Takım Elbise,,sabit,17995,46450,83970,2508,164950,98,3,beymen; trendyol; vakko,2026-07-26
+dugun,davetiye,Davetiye,,sabit,124,196,398,89,770,30,2,amazon; trendyol,2026-07-26
+dugun,salon-kokteyl,Düğün Salonu — kokteyl (yemeksiz),,kisi_basi,500,600,1420,250,1850,10,1,dugunbuketi,2026-07-26
+dugun,salon-yemekli,Düğün Salonu — yemekli (menü dahil),,kisi_basi,750,1000,2000,700,2500,10,1,dugunbuketi,2026-07-26
 dugun,fotografci,Fotoğraf ve Video,,sabit,15600,15600,15600,15600,15600,1,1,dugun-com,2026-07-26
 dugun,gelin-arabasi,Gelin Arabası,,sabit,9800,9800,9800,9800,9800,1,1,dugun-com,2026-07-26
-dugun,gelin-ayakkabisi,"Gelin Ayakkabısı, Duvak, Aksesuar",,sabit,733,1298,3114,590,3824,49,2,amazon; trendyol,2026-07-26
-dugun,gelinlik,Gelinlik,,sabit,4425,8699,43839,2956,65000,20,1,trendyol,2026-07-26
+dugun,gelin-ayakkabisi,"Gelin Ayakkabısı, Duvak, Aksesuar",,sabit,734,1550,2788,590,3499,45,2,amazon; trendyol,2026-07-26
+dugun,gelinlik,Gelinlik,,sabit,3704,18172,43839,2250,65000,20,1,trendyol,2026-07-26
 dugun,kuafor-makyaj,Kuaför ve Makyaj,,sabit,12450,12450,12450,12450,12450,1,1,dugun-com,2026-07-26
-dugun,nikah-sekeri,Nikah Şekeri,,sabit,187,457,810,169,980,34,2,amazon; trendyol,2026-07-26
+dugun,nikah-sekeri,Nikah Şekeri,,sabit,250,440,714,169,980,37,2,amazon; trendyol,2026-07-26
 dugun,organizasyon,Organizasyon / Süsleme,,sabit,22150,22150,22150,22150,22150,1,1,dugun-com,2026-07-26
 dugun,taki-altin,Takı — Altın Bilezik (1 adet),,sabit,33085,85022,180340,30600,243765,24,1,atasay,2026-07-26
-dugun,yemek-ikram,Yemek / İkram (mekanın menü bedeli),,kisi_basi,250,410,710,150,920,9,1,dugunbuketi,2026-07-26
+dugun,yemek-ikram,Yemek / İkram (mekanın menü bedeli),,kisi_basi,250,405,785,200,920,9,1,dugunbuketi,2026-07-26
 dugun,salon,salon,,,320,525,775,200,800,9,1,dugunbuketi,2026-07-26

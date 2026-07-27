@@ -1,11 +1,5 @@
 # Sosyal medya önizleme — 2026-07-27
 
-## 1. (ozet, 146 karakter)
+Bu ölçümde paylaşılacak bir şey yok.
 
-```
-2026'da Okul Masrafı Ne Kadar?
-
-Orta segmentte 5.596 TL. 11 kalem, 661 ürün, 2 bağımsız kaynak. Ölçüm: 2026-07-27.
-https://maliyetine.com.tr/okul/
-```
-
+Sebep: yeterince uzak iki ölçüm arasında, örneklemi kararlı ve %3'ten büyük bir değişim bulunamadı. Susmak varsayılan davranış.

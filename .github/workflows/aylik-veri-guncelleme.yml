@@ -155,8 +155,14 @@ jobs:
         run: |
           git config user.name "maliyetine-bot"
           git config user.email "actions@users.noreply.github.com"
+          # DIKKAT: uretilen HER yol burada olmali. `sss/` bir kez
+          # unutulmustu - sayfa veriye gore degistigi halde commit
+          # edilmedigi icin canlida bayat kalirdi (sessiz bayatlama,
+          # bu projede daha once yasanan hata sinifi).
           git add scraper/veri scraper/kaynak_gecmisi.json veri \
-                  index.html sitemap.xml llms.txt ai.txt assets/og-gorsel.png assets/css assets/js dugun ev-kurma okul bebek arac rehber hesap
+                  index.html sitemap.xml llms.txt ai.txt robots.txt \
+                  assets \
+                  dugun ev-kurma okul bebek arac rehber hesap sss
           if git diff --cached --quiet; then
             echo "Değişiklik yok, commit atlanıyor."
             echo "degisti=false" >> "$GITHUB_OUTPUT"

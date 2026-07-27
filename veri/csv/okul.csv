@@ -1,15 +1,15 @@
 ﻿vertikal,kalem_id,kalem_adi,grup,birim,ekonomik_tl,orta_tl,ust_tl,en_dusuk_tl,en_yuksek_tl,urun_sayisi,kaynak_sayisi,kaynaklar,olcum_tarihi
-okul,ayakkabi,Spor Ayakkabı,Giyim,sabit,774,1144,2082,446,2839,69,2,amazon; trendyol,2026-07-26
-okul,ders-kitabi,Ders ve Yardımcı Kitap,Kitap,sabit,170,302,499,100,958,63,2,amazon; trendyol,2026-07-26
-okul,sozluk,Sözlük,Kitap,sabit,113,281,713,56,1590,62,2,amazon; trendyol,2026-07-26
-okul,boya-seti,Boya Seti,Kırtasiye,sabit,122,288,528,58,980,74,2,amazon; trendyol,2026-07-26
-okul,defter,Defter,Kırtasiye,sabit,100,217,334,50,539,68,2,amazon; trendyol,2026-07-26
-okul,kalem,Kalem,Kırtasiye,sabit,74,212,356,28,455,65,2,amazon; trendyol,2026-07-26
-okul,kalem-kutusu,Kalem Kutusu,Kırtasiye,sabit,212,486,768,74,1399,77,2,amazon; trendyol,2026-07-26
-okul,resim-malzemeleri,Resim ve Sanat Malzemeleri,Kırtasiye,sabit,148,443,750,73,1050,23,1,trendyol,2026-07-26
-okul,tablet,Tablet,Teknoloji,sabit,4972,8598,16710,2500,34999,61,2,amazon; trendyol,2026-07-26
-okul,calisma-masasi,Çalışma Masası,Çalışma alanı,sabit,1452,2199,3732,1014,7159,64,2,amazon; trendyol,2026-07-26
-okul,calisma-sandalyesi,Çalışma Sandalyesi,Çalışma alanı,sabit,1650,2080,4476,1530,4768,24,1,trendyol,2026-07-26
-okul,beslenme-cantasi,Beslenme Çantası,Çanta ve beslenme,sabit,214,621,769,165,1330,66,2,amazon; trendyol,2026-07-26
-okul,okul-cantasi,Okul Çantası,Çanta ve beslenme,sabit,804,1382,1938,424,2759,71,2,amazon; trendyol,2026-07-26
-okul,matara,Suluk / Matara,Çanta ve beslenme,sabit,130,220,470,75,510,23,1,trendyol,2026-07-26
+okul,ayakkabi,Spor Ayakkabı,Giyim,sabit,774,1120,1514,435,2580,65,2,amazon; trendyol,2026-07-26
+okul,ders-kitabi,Ders ve Yardımcı Kitap,Kitap,sabit,176,308,602,72,958,65,2,amazon; trendyol,2026-07-26
+okul,sozluk,Sözlük,Kitap,sabit,113,232,688,56,965,61,2,amazon; trendyol,2026-07-26
+okul,boya-seti,Boya Seti,Kırtasiye,sabit,121,318,719,58,1310,75,2,amazon; trendyol,2026-07-26
+okul,defter,Defter,Kırtasiye,sabit,105,218,344,50,579,69,2,amazon; trendyol,2026-07-26
+okul,kalem,Kalem,Kırtasiye,sabit,69,213,426,28,675,69,2,amazon; trendyol,2026-07-26
+okul,kalem-kutusu,Kalem Kutusu,Kırtasiye,sabit,212,513,782,73,1399,65,2,amazon; trendyol,2026-07-26
+okul,resim-malzemeleri,Resim ve Sanat Malzemeleri,Kırtasiye,sabit,172,458,850,125,1050,24,1,trendyol,2026-07-26
+okul,tablet,Tablet,Teknoloji,sabit,4394,9271,16532,2500,34999,66,2,amazon; trendyol,2026-07-26
+okul,calisma-masasi,Çalışma Masası,Çalışma alanı,sabit,1536,2422,4684,1014,7159,60,2,amazon; trendyol,2026-07-26
+okul,calisma-sandalyesi,Çalışma Sandalyesi,Çalışma alanı,sabit,2490,3946,6486,1530,10033,62,2,amazon; trendyol,2026-07-26
+okul,beslenme-cantasi,Beslenme Çantası,Çanta ve beslenme,sabit,339,666,1138,168,1700,83,2,amazon; trendyol,2026-07-26
+okul,okul-cantasi,Okul Çantası,Çanta ve beslenme,sabit,800,1378,1950,424,2759,73,2,amazon; trendyol,2026-07-26
+okul,matara,Suluk / Matara,Çanta ve beslenme,sabit,150,200,400,75,479,24,1,trendyol,2026-07-26
