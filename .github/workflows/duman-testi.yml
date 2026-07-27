@@ -1,0 +1,133 @@
+name: Duman Testi (veriye dokunmaz)
+
+# NEDEN VAR
+# ---------
+# Aylık üretim workflow'u 5 Ağustos'ta İLK KEZ çalışacak ve o çalıştırma
+# aynı zamanda ilk zaman serisi karşılaştırmasını üretecek. Bugüne kadar
+# hiç koşmadı: repoda tek Actions çalışması 23 Temmuz'daki bir Dependabot
+# işi. Yani üretim hattı GitHub runner'ında hiç denenmedi.
+#
+# NEDEN "ÖNCE BİR DENEYELİM" DEMİYORUZ
+# ------------------------------------
+# Son ölçüm 2026-07-26; 5 Ağustos'a tam 10 gün var ve
+# `gecmis.ASGARI_GUN_ARALIGI` de 10. Sıfır pay. Üretim workflow'unu
+# deneme amaçlı çalıştırmak yeni bir anlık görüntü yazar, saati sıfırlar
+# ve 5 Ağustos ölçümü 10 günün ALTINDA kalıp hiçbir karşılaştırma
+# üretmez — yani provanın bedeli, beklediğimiz ilk sonucun kendisi olur.
+#
+# Bu workflow o yüzden VERİYE HİÇ DOKUNMAZ:
+#   - motor.py çıktısını /tmp'ye yazar (--cikti / --gecmis)
+#   - yalnızca birkaç kaynağı dener
+#   - commit/push YAPMAZ, IndexNow'a bildirim GÖNDERMEZ
+#
+# NEYİ KANITLAR (üretimde ilk kez denenecek olan her şeyi):
+#   - pip install ve Playwright/Chromium kurulumu runner'da çalışıyor mu
+#   - HEDEF SİTELER GITHUB IP'SİNDEN ERİŞİLEBİLİYOR MU  ← en büyük risk;
+#     Trendyol ve Amazon veri merkezi IP'lerine ev bağlantısından farklı
+#     davranabilir ve bu YALNIZCA gerçek çalıştırmayla anlaşılır
+#   - EVDS anahtarı Secret olarak gerçekten tanımlı mı
+#   - sayfa üretim zinciri runner ortamında hatasız koşuyor mu
+#   - test paketinin tamamı geçiyor mu
+
+on:
+  workflow_dispatch: {}
+  # Üretim koşusundan 3 gün önce kendiliğinden çalışır: bir şey bozuksa
+  # 5/20'sinden önce haberimiz olur, düzeltmek için vakit kalır.
+  schedule:
+    - cron: "0 6 2,17 * *"
+
+permissions:
+  contents: read
+
+jobs:
+  duman:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Depoyu çek
+        uses: actions/checkout@v4
+
+      - name: Python kur
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Bağımlılıkları kur
+        run: pip install -r scraper/requirements.txt
+
+      - name: Playwright Chromium kur
+        run: playwright install --with-deps chromium
+
+      - name: Testler
+        working-directory: scraper
+        run: |
+          hata=0
+          for t in test_*.py; do
+            python -m unittest "${t%.py}" || hata=1
+          done
+          exit $hata
+
+      - name: JS testleri
+        run: node --test "assets/js/test/*.test.js"
+
+      # EN KRITIK ADIM: gercek sitelere GitHub IP'sinden erisim.
+      # Kucuk bir vertikal seciliyor (arac: tek kaynak, hizli) ve cikti
+      # /tmp'ye yaziliyor - gercek veri KIRLENMIYOR.
+      - name: Kazıma erişimi (veri /tmp'ye, gerçek veriye dokunulmaz)
+        working-directory: scraper
+        run: |
+          python motor.py --vertikal arac \
+            --cikti /tmp/duman-veri \
+            --gecmis /tmp/duman-gecmis.json 2>&1 | tail -30
+          echo "--- sonuc ---"
+          bulunan=$(find /tmp/duman-veri -name '*.json' 2>/dev/null | wc -l)
+          echo "yazilan anlik goruntu: $bulunan"
+          if [ "$bulunan" -eq 0 ]; then
+            echo "::error::Hicbir anlik goruntu yazilamadi - hedef siteler"
+            echo "::error::GitHub IP'sinden erisilemiyor olabilir."
+            exit 1
+          fi
+          urun=$(python - <<'PY'
+          import json, glob
+          print(sum(json.load(open(f)).get("toplam_urun", 0)
+                    for f in glob.glob("/tmp/duman-veri/**/*.json", recursive=True)
+                    if "capraz" not in f))
+          PY
+          )
+          echo "toplanan urun: $urun"
+          if [ "$urun" -eq 0 ]; then
+            echo "::error::Sayfalar cekildi ama 0 urun ayiklandi -"
+            echo "::error::site yapisi degismis ya da bot korumasi devrede."
+            exit 1
+          fi
+
+      - name: EVDS anahtarı tanımlı mı
+        env:
+          EVDS_KEY: ${{ secrets.EVDS_KEY }}
+        run: |
+          if [ -n "$EVDS_KEY" ]; then
+            echo "EVDS_KEY tanımlı (${#EVDS_KEY} karakter)."
+          else
+            echo "::warning::EVDS_KEY Secret'ı YOK - resmî TÜFE bölümü üretilmeyecek."
+          fi
+
+      # Sayfa uretim zinciri: gercek veriyle calisir ama ciktiyi
+      # COMMIT ETMEZ. Amac zincirin runner'da coktugunu gormek.
+      - name: Sayfa üretim zinciri (commit edilmez)
+        working-directory: scraper
+        run: |
+          for v in dugun ev-kurma okul bebek arac; do
+            python sayfa_uret.py --vertikal "$v" >/dev/null
+          done
+          python senaryo.py >/dev/null
+          python rehber.py >/dev/null
+          python hesaplayicilar.py >/dev/null
+          python veri_disa_aktar.py >/dev/null
+          python gecmis.py --cikti-kok /tmp/duman-gecmis >/dev/null
+          python sosyal.py >/dev/null
+          echo "Zincir tamam."
+
+      - name: Özet
+        if: always()
+        run: |
+          echo "### Duman testi tamamlandı" >> "$GITHUB_STEP_SUMMARY"
+          echo "Gerçek veri ve site dosyaları DEĞİŞTİRİLMEDİ." >> "$GITHUB_STEP_SUMMARY"
