@@ -972,6 +972,32 @@ eklemek yayına alma kararının kendisi (EVDS'deki desenin aynısı).
 - **Threads ve LinkedIn KURULMADI:** ikisi de Meta/LinkedIn uygulama
   incelemesi gerektiriyor (haftalar sürebilir, reddedilebilir).
 
+### İLK TRAFİK ÖLÇÜMÜ (2026-07-27) — kanal seçimini veri belirledi
+Yavuz'un analitiği, son 24 saat referans: **m.facebook.com 20**,
+**www.yandex.ru 1**. İki çıkarım:
+- **Facebook birinci kaynak ve trafiğin tamamı mobil.** Yavuz'un
+  "Facebook ve Instagram önemli olabilir" sezgisi artık tahmin değil,
+  ölçüm. Bu kanalda **paylaşım kartı doğrudan tıklama oranının kendisi.**
+- **Yandex'ten gelen tek ziyaret bir ARAMA SONUCU tıklaması** — yani
+  Yandex bizi indekslemiş. IndexNow yatırımının ilk somut karşılığı;
+  Google henüz görmezken oradan organik ziyaret geliyor.
+- Not: 20 ziyaret Yavuz'un kendi paylaşımından geliyor, organik keşif
+  değil. Söylediği şey "Facebook kitlesi ulaşılabilir", "Facebook bizi
+  kendiliğinden buluyor" DEĞİL.
+
+**Bu ölçüm üzerine yapılan iş:** `og:image:width/height` hiçbir sayfada
+yoktu (bkz. Paylaşım kartı maddesi). Facebook ilk taramada boyutu
+bilmediği için küçük/boş kart gösterebiliyordu — ilk paylaşım en çok
+tıklanan paylaşım olduğu için pahalı bir kayıptı. Ayrıca elle yazılan
+12 sayfada (hesaplayıcılar dahil) `og:image` **hiç yoktu**.
+
+**AÇIK KALAN, EN YÜKSEK KALDIRAÇLI İŞ:** her sayfa aynı jenerik görseli
+paylaşıyor. `/bebek/besik-fiyatlari/` paylaşıldığında kartta
+*"2026'da bir şey kaça mal olur?"* yazıyor, *"Beşik 4.315 TL"* yazmıyor.
+Facebook birinci kanal olduğuna göre **sayfa başına ölçüm kartı görseli**
+en çok getirisi olan bir sonraki iş — ve zaten Instagram için de zorunlu
+(aşağı bkz.). Tek iş, iki kanal.
+
 ### SONRAKİ AŞAMA — X, Facebook, Instagram (2026-07-27 Yavuz'un yönü)
 Yavuz: *"bir sonraki aşamaya bırakalım. X, Facebook ve Instagram önemli
 olabilir."* Kod yazmadan önce bilinmesi gereken **tasarım kısıtı:**
