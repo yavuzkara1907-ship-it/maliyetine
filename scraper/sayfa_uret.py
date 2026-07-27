@@ -3176,7 +3176,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>2026'da Ne Kaça Mal Olur? | Maliyeti Ne?</title>
+<title>Maliyet Hesaplama ve 2026 Fiyat Endeksleri | Maliyeti Ne?</title>
 <meta name="description" content="Düğün ve ev kurma maliyeti: gerçek fiyat verisinden derlenmiş, aylık güncellenen, doğrulanabilir endeks. Kaynak, tarih ve örneklem her rakamın yanında.">
 <link rel="canonical" href="{SITE_KOK_URL}/">
 <link rel="stylesheet" href="/assets/css/style.css">

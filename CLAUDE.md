@@ -1252,6 +1252,77 @@ Affiliate ayrı ve Yavuz'un kararı.
 Dört vertikal hesaplayıcısında var (araç hariç — orada kalemler
 birbirinin alternatifi, toplam hesabı zaten yok). Node 80/80.
 
+## SEO BAŞLIK YAPISI VE KONU KÜMESİ (2026-07-27)
+Yavuz, Claude ve ChatGPT'den aldığı önerileri paylaştı. Uygulananlar ve
+**uygulanmayanların sebebi:**
+
+**1. ANAHTAR KELİME ÖNCE — ama asıl sorun öneride yoktu.**
+Öneri rehber başlıklarını hedef alıyordu. Ölçünce daha büyük bir sorun
+çıktı: **hub sayfalarının başlıklarında hedef ifade hiç geçmiyordu.**
+`/ev-kurma/` başlığı *"2026'da Ev Kurmak Kaça Mal Olur?"* idi — "ev
+kurma maliyeti" ifadesi yok. Senaryo sayfalarında ("Beyaz Eşya Seti
+Fiyatları 2026") doğru yapılmış, hub'larda yapılmamıştı.
+- `/ev-kurma/` → **Ev Kurma Maliyeti 2026 — Kalem Kalem**
+- `/dugun/` → **Düğün Maliyeti 2026 — Kalem Kalem**
+- `/okul/`, `/bebek/` aynı desen · ana sayfa → **Maliyet Hesaplama ve
+  2026 Fiyat Endeksleri**
+- **H1'lerde soru formu KORUNDU**, sadece başa hedef ifade alındı:
+  *"2026 Ev Kurma Maliyeti: Sıfırdan Kaça Mal Olur?"* — SEO title'ı,
+  GEO soru formunu ister; ikisi birden alınabiliyor.
+
+**ÖNERİDEKİ TUZAK — kendi sayfamızı kendimizle yarıştırma.** Öneri
+rehberi de *"2026 Ev Kurma Maliyeti"* yapmayı söylüyordu; ama o ifadeyi
+zaten `/ev-kurma/` hedefliyor. İkisine aynı ifadeyi vermek
+**cannibalization** olurdu. Her rehbere hub'la çakışmayan ayrı uzun
+kuyruk verildi:
+| hub | rehber |
+|---|---|
+| ev kurma maliyeti | ev kurarken alınacaklar listesi |
+| okul masrafı | okul alışverişi maliyeti |
+| sıfır araba fiyatları | sıfır araba masrafları |
+
+**Title uzunluğu:** Google ~60 karakterde kesiyor, `" | Maliyeti Ne?"`
+eki 15 karakter yiyor. `_title()` uzun başlıklarda marka ekini
+kısaltıyor (tamamen atmıyor — marka tanınırlığı da sinyal). **Sitede 62
+karakterden uzun title kalmadı.**
+
+**2. KONU KÜMESİ.** Ölçüldü: en yüksek niyetli sorguları hedefleyen
+senaryo sayfaları ("beyaz eşya fiyatları", "mobilya fiyatları") **her
+biri yalnızca 1 iç link** veriyordu — küme değil, yalnız ada.
+`senaryo._konu_kumesi_html()` eklendi: aynı vertikaldeki diğer
+senaryolar + kalem sayfaları. **1 → 13 iç link.** Yalnızca diskte var
+olan sayfalara link veriliyor, 12 ile sınırlı (link-farm görünümü
+olmasın).
+
+**3. ARAÇ ÇERÇEVESİ — önerinin ifadesi KULLANILMADI, sebebi kayda geçsin.**
+Öneri: *"1 bağımsız kaynak" yerine "resmî üretici liste fiyatı" ya da
+"doğrudan markaların yayınladığı liste fiyatlarından" yaz.*
+**Kullanılamaz:** kaynağımız donanimhaber'in sıfır araç fiyat dosyası —
+üretici DEĞİL, liste fiyatlarını derleyen bir kaynak. Öyle yazmak
+**kaynağı olduğundan başka göstermek** olurdu.
+
+Ama önerinin altındaki tespit doğru: perakende ürünlerde çoklu kaynak
+piyasayı temsil eder çünkü her satıcı kendi fiyatını koyar; 0 km araçta
+fiyatı **üretici belirler ve bayiden bayiye değişmez** — orada ikinci
+kaynak aynı sayıyı verir, hiçbir şey kanıtlamaz. *"1 bağımsız kaynak"
+zayıf değil, YANLIŞ ÇERÇEVE.*
+**Doğru çözüm: kaynağı değil FİYATIN NİTELİĞİNİ anlatmak** →
+*"üreticilerin belirlediği liste fiyatlarından derlenen"*. Bu cümle
+doğru ve tek kaynağı bir eksiklik olmaktan çıkarıyor
+(`_dayanak_ifadesi()`, `liste_fiyati` bayrağına bağlı).
+
+**4. ÜÇ YENİ RAKİP — alınacak teknik bir şey yok.**
+- **maliyetbul.com**: inşaat/geometri hesaplayıcıları. Schema YOK,
+  sitemap YOK, H1 YOK, 0 iç link, 181 kelime.
+- **hesaplamaci.com**: geniş hesaplayıcı sitesi, yalnızca Organization
+  schema. **Alınmaya değer fikir:** "arabam ne kadar yakar" / akaryakıt
+  hesapları — yakıt fiyatı ölçülebilir, tam bizim işimiz. (Sıraya alındı.)
+- **fical.net**: finansal hesaplayıcılar, çok dilli; yalnızca
+  BreadcrumbList. **Çok dillilik bize uymuyor** — TR'ye özgü olmak
+  savunma hendeğimiz, dağıtmak onu zayıflatır.
+Üçü de metodoloji, ölçüm tarihi, örneklem ve indirilebilir veri
+tarafında bizden geride.
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
