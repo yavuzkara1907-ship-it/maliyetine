@@ -1031,12 +1031,7 @@ def rehber_uret(rehber: dict, veriler: dict, tarih: str | None = None) -> str | 
 <header class="ust-bar">
   <div class="kapsayici">
     <a href="/" class="logo">Maliyeti <span>Ne?</span></a>
-    <nav class="ust-menu">
-      <a href="/dugun/">Düğün</a>
-      <a href="/ev-kurma/">Ev Kurma</a>
-      <a href="/okul/">Okul</a>
-      <a href="/arac/">0 km Araç</a>
-    </nav>
+    <nav class="ust-menu">{su.genel_menu('rehber')}</nav>
   </div>
 </header>
 
@@ -1101,12 +1096,7 @@ def rehber_dizini_uret(yazilanlar: list[dict], tarih: str | None = None) -> str:
 <header class="ust-bar">
   <div class="kapsayici">
     <a href="/" class="logo">Maliyeti <span>Ne?</span></a>
-    <nav class="ust-menu">
-      <a href="/dugun/">Düğün</a>
-      <a href="/ev-kurma/">Ev Kurma</a>
-      <a href="/okul/">Okul</a>
-      <a href="/arac/">0 km Araç</a>
-    </nav>
+    <nav class="ust-menu">{su.genel_menu('rehber')}</nav>
   </div>
 </header>
 

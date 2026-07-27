@@ -198,6 +198,35 @@ class SiteDenetimi(unittest.TestCase):
         self.assertNotIn("Disallow: /", m, "robots.txt genel Disallow iceriyor")
         for bot in ("GPTBot", "ClaudeBot", "PerplexityBot"):
             self.assertIn(bot, m, f"{bot} robots.txt'te tanimli degil")
+    def test_global_menu_her_sayfada_ayni(self):
+        """2026-07-27 TASARIM DENETIMI - Yavuz: "google indekslemezse
+        hesaplayicilar da kayip. ne headerda var ne sitede gorunur."
+
+        Olculdu: ust menude yalnizca 5 vertikal vardi; 20 hesaplayici,
+        8 rehber ve veri merkezi HICBIR sayfanin header'indan
+        erisilemiyordu. Ic link, arama motoru icin kesif yolunun
+        kendisi - header'da olmayan bolum sitenin uzak kosesinde kalir.
+
+        Bu test menunun her sayfada AYNI oldugunu dogruluyor; elle
+        yazilan sayfalar (hesaplayici, metodoloji, hakkimizda) daha once
+        eski menude kalmisti."""
+        beklenen = None
+        for p in self.sayfalar:
+            m = re.search(r'<nav class="ust-menu">(.*?)</nav>', _oku(p), re.S)
+            self.assertIsNotNone(m, f"{_yol(p)}: ust menu yok")
+            ogeler = tuple(re.findall(r">([^<>]+)</a>", m.group(1)))
+            if beklenen is None:
+                beklenen = ogeler
+                self.assertGreaterEqual(len(ogeler), 7,
+                                        f"menu cok dar: {ogeler}")
+            self.assertEqual(ogeler, beklenen, f"{_yol(p)}: menu farkli")
+
+    def test_hesaplayicilar_ve_rehber_menude(self):
+        """Sitenin en genis iki bolumu menude gorunmek ZORUNDA."""
+        h = _oku(self.sayfalar[0])
+        menu = re.search(r'<nav class="ust-menu">(.*?)</nav>', h, re.S).group(1)
+        for beklenen in ('href="/hesap/"', 'href="/rehber/"', 'href="/veri/"'):
+            self.assertIn(beklenen, menu, f"menude {beklenen} yok")
 
 
 if __name__ == "__main__":

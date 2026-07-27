@@ -64,9 +64,18 @@ a {
 }
 
 /* ---- Ust bar ---- */
+/* 2026-07-27 TASARIM DENETIMI: header 62px yuksekligindeydi, logo
+   18,4px - sayfanin geri kalaninin yaninda "sonradan eklenmis" gibi
+   duruyordu. Marka ve gezinme sitenin ilk izlenimi; zayif birakmak
+   guven de kaybettiriyor. */
 .ust-bar {
-  border-bottom: 1px solid var(--renk-cizgi);
-  padding: 16px 0;
+  border-bottom: 1px solid var(--renk-cizgi-koyu);
+  padding: 14px 0;
+  background: var(--renk-zemin);
+  position: sticky;   /* uzun sayfalarda (ana sayfa 8.500px) gezinme
+                         her an elin altinda kalsin */
+  top: 0;
+  z-index: 20;
 }
 
 .ust-bar .kapsayici {
@@ -77,10 +86,12 @@ a {
 }
 
 .logo {
-  font-weight: 700;
-  font-size: 1.15rem;
+  font-weight: 800;
+  font-size: 1.45rem;
+  letter-spacing: -0.02em;
   text-decoration: none;
   color: var(--renk-metin);
+  flex-shrink: 0;
 }
 
 .logo span {
@@ -89,17 +100,37 @@ a {
 
 .ust-menu {
   display: flex;
-  gap: 18px;
-  font-size: 0.95rem;
+  gap: 6px;
+  font-size: 1rem;
+  align-items: center;
 }
 
 .ust-menu a {
   text-decoration: none;
-  color: var(--renk-metin-soluk);
+  color: var(--renk-metin);
+  padding: 7px 11px;
+  border-radius: 8px;
+  white-space: nowrap;
+  font-weight: 500;
 }
 
 .ust-menu a:hover {
   color: var(--renk-vurgu);
+  background: var(--renk-zemin-alt);
+}
+
+/* Bulunulan bolum - hem yon duygusu hem erisilebilirlik */
+.ust-menu a[aria-current="page"] {
+  color: var(--renk-vurgu);
+  background: var(--renk-vurgu-acik);
+  font-weight: 700;
+}
+
+/* Hesaplayicilar en yeni ve en genis bolum; menude kaybolmasin diye
+   ayirt edilebilir ama bagirmayan bir vurgu. */
+.ust-menu a.menu-one-cikan {
+  color: var(--renk-vurgu);
+  font-weight: 700;
 }
 
 /* ---- Ana icerik ---- */
@@ -107,8 +138,18 @@ main {
   padding: 32px 0 64px;
 }
 
+/* TIPOGRAFI OLCEGI (2026-07-27 denetimi): mobilde h1 24,8px'ti -
+   bir maliyet rakaminin yaninda basligin kaybolmasi demek. Govde
+   16 -> 17px: uzun veri sayfalari ekranda okunuyor, satir yuksekligi
+   ve punto okunabilirligi dogrudan etkiliyor. */
+body {
+  font-size: 17px;
+}
+
 h1 {
-  font-size: clamp(1.75rem, 1.2rem + 2vw, 2.3rem);
+  /* Alt sinir 1,75 -> 2rem: mobilde baslik rakamlarin yaninda
+     kayboluyordu (olculdu: 24,8px). */
+  font-size: clamp(2rem, 1.3rem + 2.2vw, 2.5rem);
   line-height: 1.2;
   letter-spacing: -0.02em;
   margin: 0 0 14px;
@@ -331,10 +372,13 @@ tbody td:first-child {
   align-items: center;
   gap: 6px;
   font-weight: 400;
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   border: 1px solid var(--renk-cizgi);
   border-radius: 999px;
-  padding: 7px 14px;
+  /* 23 px olculdu - dokunma hedefi icin cok kucuktu (WCAG 40 px).
+     Segment secimi hesaplayicinin en cok kullanilan kontrolu. */
+  min-height: 42px;
+  padding: 8px 16px;
   cursor: pointer;
 }
 
@@ -351,10 +395,26 @@ tbody td:first-child {
 .kalem-secim-liste label {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-weight: 400;
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   cursor: pointer;
+  /* 23 px olculdu. Ev-kurma hesaplayicisinda 42 kalem alt alta
+     duruyor; bu yogunlukta 23 px'lik hedefte yanlis kutuya basmak
+     kacinilmaz. WCAG hedef boyutu 40 px. */
+  min-height: 40px;
+  padding: 2px 4px;
+  border-radius: 6px;
+}
+
+.kalem-secim-liste label:hover {
+  background: var(--renk-zemin-alt);
+}
+
+.kalem-secim-liste input {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
 }
 
 button.birincil-buton {
@@ -452,7 +512,10 @@ footer a {
 
 @media (max-width: 560px) {
   h1 {
-    font-size: 1.55rem;
+    /* 1,55rem = 24,8px olculdu - mobilde baslik, altindaki fiyat
+       rakaminin yaninda kayboluyordu. clamp zaten dar ekranda alt
+       sinira iniyor; bu ezme gereksizdi ve zarar veriyordu. */
+    font-size: 1.9rem;
   }
 
   .sonuc-toplam {
@@ -474,10 +537,14 @@ footer a {
 
   .ust-menu {
     display: flex;
-    gap: 16px;
+    gap: 4px;
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
+    /* Menu 8 ogeye cikti; sagda icerik oldugu KAYDIRMA GOLGESIYLE
+       belli olsun - aksi halde kullanici son ogeleri hic gormuyor. */
+    -webkit-mask-image: linear-gradient(to right, #000 88%, transparent);
+    mask-image: linear-gradient(to right, #000 88%, transparent);
     scrollbar-width: none;
     padding-bottom: 2px;
   }
@@ -979,7 +1046,12 @@ button.metin-buton {
 }
 
 .asistan input {
-  flex: 1;
+  /* `flex: 1` dar ekranda YETMIYOR: flex ogesinin varsayilan
+     `min-width: auto` degeri, girdiyi kendi icerigi kadar buyuk
+     tutuyor ve yanindaki butonu disari itiyordu (320 px'te olculdu:
+     buton 16 px tasiyordu). `min-width: 0` bu varsayilani kaldirir. */
+  flex: 1 1 0;
+  min-width: 0;
   padding: 12px 15px;
   font: inherit;
   color: var(--renk-metin);
@@ -1000,6 +1072,7 @@ button.metin-buton {
 @media (max-width: 560px) {
   .as-balon { max-width: 96%; }
   .asistan { padding: 18px 16px; }
+  .asistan .birincil-buton { padding: 12px 14px; }
 }
 
 /* ---------------------------------------------------------------
@@ -1113,4 +1186,48 @@ button.metin-buton {
   border-left: 3px solid var(--renk-uyari);
   background: var(--renk-uyari-zemin);
   border-radius: 4px;
+}
+
+/* Ana sayfa: "bu sitede ne var" ozeti (2026-07-27 tasarim denetimi).
+   Yavuz: "ne var ben anlamiyorum sitede." Baslikla cevap blogu
+   arasinda, kapsamı tek satirda soyleyen serit. */
+.site-ozeti {
+  font-size: 1.05rem;
+  color: var(--renk-metin-soluk);
+  margin: -4px 0 20px;
+  line-height: 1.55;
+}
+.site-ozeti strong { color: var(--renk-metin); font-weight: 600; }
+.site-ozeti a { color: var(--renk-vurgu); }
+
+/* ---------------------------------------------------------------
+   TABLET TASMASI (2026-07-27 denetiminde bulundu)
+   Menu 5 ogeden 8'e cikinca 673 px genisledi; logo ile birlikte
+   838 px yer istiyor. Mobil kirilimi 560 px'ti, yani 561-900 px
+   arasindaki HER genislikte sayfa yatay tasiyordu - tablet, katlanir
+   telefon, kucuk pencere.
+   Ders: kirilim noktasi "telefon/masaustu" diye degil, ICERIGIN
+   GERCEK GENISLIGINE gore secilir. Sadece 390 ve 1440'a bakmak
+   korluktu.
+   --------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .ust-bar .kapsayici {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .logo { white-space: nowrap; }
+
+  .ust-menu {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(to right, #000 92%, transparent);
+    mask-image: linear-gradient(to right, #000 92%, transparent);
+    padding-bottom: 2px;
+  }
+
+  .ust-menu::-webkit-scrollbar { display: none; }
 }

@@ -94,6 +94,42 @@ class WorkflowTesti(unittest.TestCase):
     def test_indexnow_yalnizca_degisiklik_varsa(self):
         """Bos bildirim gondermek arama motorlarinda guven kaybettirir."""
         self.assertIn("steps.commit.outputs.degisti == 'true'", _metin())
+    def test_hicbir_test_sessizce_calismiyor_durumda_degil(self):
+        """BUGUN IKI KEZ YASANDI: dosya sonuna eklenen bir test
+        `if __name__ == "__main__":` blogunun ICINE dustu; hic
+        calismadigi halde suite YESIL gorunuyordu.
+
+        DIKKAT - ilk yazimda bu test YANLIS POZITIF veriyordu:
+        `if __name__` satirindan SONRA gelen her `def test_`i hata
+        sayiyordu. Oysa arada yeni bir `class` varsa (test_asistan.py'de
+        oldugu gibi) sinif modul seviyesinde tanimlanir ve testler
+        NORMAL calisir - 12/12 kosarak dogrulandi.
+
+        Gercek hata bicimi: `def test_` ile son `class` satiri arasinda
+        bir `if __name__` var. Yani test hicbir sinifa ait degil.
+        """
+        for dosya in sorted(BASE.glob("test_*.py")):
+            satirlar = dosya.read_text(encoding="utf-8").splitlines()
+            son_class = -1
+            son_main = -1
+            for i, satir in enumerate(satirlar):
+                if satir.startswith("class "):
+                    son_class = i
+                elif satir.startswith("if __name__ =="):
+                    son_main = i
+                elif re.match(r"\s+def test_", satir) and son_main > son_class:
+                    self.fail(
+                        f"{dosya.name}:{i+1} — bu test hicbir sinifa ait degil "
+                        f"(`if __name__` blogunun icinde kalmis), hic "
+                        f"calismiyor: {satir.strip()[:60]}")
+
+    def test_her_test_dosyasi_en_az_bir_test_kosuyor(self):
+        """Bir dosya import hatasi yuzunden sessizce bos kalabilir."""
+        import unittest as ut
+        for dosya in sorted(BASE.glob("test_*.py")):
+            paket = ut.defaultTestLoader.loadTestsFromName(dosya.stem)
+            self.assertGreater(paket.countTestCases(), 0,
+                               f"{dosya.name}: hic test kosmuyor")
 
 
 if __name__ == "__main__":

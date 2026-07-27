@@ -206,7 +206,8 @@ def _title(baslik: str) -> str:
 
 def _sayfa_html(baslik: str, soru: str, aciklama_blok: str, govde: str,
                 url: str, meta: str, breadcrumb: list, tarih: str,
-                sorular: list[dict], konu_kumesi: str = "") -> str:
+                sorular: list[dict], konu_kumesi: str = "",
+                vertikal: str = "") -> str:
     json_ld = {
         "@context": "https://schema.org",
         "@graph": [
@@ -266,12 +267,7 @@ def _sayfa_html(baslik: str, soru: str, aciklama_blok: str, govde: str,
 <header class="ust-bar">
   <div class="kapsayici">
     <a href="/" class="logo">Maliyeti <span>Ne?</span></a>
-    <nav class="ust-menu">
-      <a href="/dugun/">Düğün</a>
-      <a href="/ev-kurma/">Ev Kurma</a>
-      <a href="/okul/">Okul</a>
-      <a href="/arac/">0 km Araç</a>
-    </nav>
+    <nav class="ust-menu">{su.genel_menu(vertikal)}</nav>
   </div>
 </header>
 
@@ -401,6 +397,7 @@ def olcek_sayfasi(vertikal: str, senaryo: dict, veri: dict, tarih: str) -> str |
                     (senaryo["baslik"], None)],
         tarih=tarih, sorular=sorular,
         konu_kumesi=_konu_kumesi_html(vertikal, senaryo["slug"]),
+        vertikal=vertikal,
     )
 
 
@@ -498,6 +495,7 @@ def grup_sayfasi(vertikal: str, senaryo: dict, veri: dict, tarih: str) -> str | 
                     (senaryo["baslik"], None)],
         tarih=tarih, sorular=sorular,
         konu_kumesi=_konu_kumesi_html(vertikal, senaryo["slug"]),
+        vertikal=vertikal,
     )
 
 

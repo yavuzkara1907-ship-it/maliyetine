@@ -1296,7 +1296,7 @@ def _kabuk(baslik_etiketi: str, meta: str, kanonik: str, schema: str,
 <header class="ust-bar">
   <div class="kapsayici">
     <a href="/" class="logo">Maliyeti <span>Ne?</span></a>
-    <nav class="ust-menu">{HESAP_MENU}</nav>
+    <nav class="ust-menu">{su.genel_menu('hesap')}</nav>
   </div>
 </header>
 

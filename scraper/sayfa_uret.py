@@ -846,6 +846,40 @@ ANASAYFA_KART_LINK_SINIRI = 8
 # vertikalini gosteriyordu; olculdu, 85 sayfadan diger endekslere hicbir
 # link yoktu. Kullanici dugun kalem sayfasindayken ev-kurmaya ancak ana
 # sayfaya donup gidebiliyordu - hem gezinme hem ic link akisi kaybi.
+# ----------------------------------------------------------
+# GLOBAL GEZINME
+#
+# 2026-07-27 TASARIM DENETIMI: ust menude YALNIZCA 5 vertikal vardi.
+# 20 hesaplayici, 8 rehber ve veri merkezi hicbir sayfanin
+# header'indan erisilemiyordu. Hesaplayicilar ana sayfada 4.581 px
+# asagidaydi (mobilde ~5,4 ekran) - pratikte gorunmez.
+#
+# Yavuz: "en onemlisi google indekslemezse hesaplayicilar da kayip.
+# ne headerda var ne sitede gorunur."
+#
+# Ic link, arama motoru icin kesif yolunun kendisi: header'da olmayan
+# bir bolum hem kullanici hem bot icin sitenin uzak kosesinde kalir.
+# ----------------------------------------------------------
+def genel_menu(aktif: str = "") -> str:
+    """Her sayfada AYNI ust menu. `aktif` o an bulunulan bolumu isaretler
+    (aria-current) - hem erisilebilirlik hem yon duygusu."""
+    ogeler = [(conf["ad"], f'/{conf["yol"]}/', v) for v, conf in VERTIKALLER.items()]
+    ogeler += [
+        ("Hesaplayıcılar", "/hesap/", "hesap"),
+        ("Rehber", "/rehber/", "rehber"),
+        ("Veri", "/veri/", "veri"),
+    ]
+    parcalar = []
+    for ad, url, anahtar in ogeler:
+        # Diskte yoksa link verilmez - 404'e link cikmasin.
+        hedef = SITE_KOK / url.strip("/") / "index.html"
+        if not hedef.exists():
+            continue
+        ek = ' aria-current="page"' if anahtar == aktif else ""
+        vurgu = ' class="menu-one-cikan"' if anahtar == "hesap" else ""
+        parcalar.append(f'<a href="{url}"{ek}{vurgu}>{ad}</a>')
+    return "".join(parcalar)
+
 TUM_ENDEKS_LINKLERI = "".join(
     f'\n      <a href="/{c["yol"]}/">{c["ad"]}</a>' for c in VERTIKALLER.values()
 )
@@ -2072,10 +2106,7 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
 <header class="ust-bar">
   <div class="kapsayici">
     <a href="/" class="logo">Maliyeti <span>Ne?</span></a>
-    <nav class="ust-menu">
-      {hesaplayici_menu}
-      <a href="/{yol}/metodoloji/">Metodoloji</a>
-    </nav>
+    <nav class="ust-menu">{genel_menu(vertikal)}</nav>
   </div>
 </header>
 
@@ -2516,11 +2547,7 @@ def kalem_sayfasi_uret(
 <header class="ust-bar">
   <div class="kapsayici">
     <a href="/" class="logo">Maliyeti <span>Ne?</span></a>
-    <nav class="ust-menu">
-      <a href="/{conf["yol"]}/">Endeks</a>
-      {kalem_hesaplayici_menu}
-      <a href="/{conf["yol"]}/metodoloji/">Metodoloji</a>
-    </nav>
+    <nav class="ust-menu">{genel_menu(vertikal)}</nav>
   </div>
 </header>
 
@@ -2795,12 +2822,7 @@ def sss_sayfasi_uret(veri_kok: Path | None = None, tarih: str | None = None) -> 
 <header class="ust-bar">
   <div class="kapsayici">
     <a href="/" class="logo">Maliyeti <span>Ne?</span></a>
-    <nav class="ust-menu">
-      <a href="/dugun/">Düğün</a>
-      <a href="/ev-kurma/">Ev Kurma</a>
-      <a href="/okul/">Okul</a>
-      <a href="/arac/">0 km Araç</a>
-    </nav>
+    <nav class="ust-menu">{genel_menu()}</nav>
   </div>
 </header>
 
@@ -3034,6 +3056,48 @@ def _hesap_linkleri_html() -> str:
     return " · ".join(parcalar)
 
 
+def _site_ozeti(ozetler: list[dict], veri_kok: Path | None = None) -> str:
+    """Ana sayfada "bu sitede ne var" sorusunun tek satirlik cevabi.
+
+    2026-07-27 TASARIM DENETIMI - Yavuz: "ne var ben anlamiyorum
+    sitede." Hakliydi: ana sayfa dogrudan bir cevap blogu ve
+    hesaplayiciyla basliyordu; sitenin KAPSAMINI hicbir yerde
+    soylemiyordu. Hesaplayicilar bolumu mobilde 4.581 px asagidaydi.
+
+    Rakamlar VERIDEN gelir, elle yazilmaz - kalem/kaynak sayisi
+    degistikce cumle de degisir (llms.txt'in bayatlama dersi).
+    """
+    # KALEM SAYISI TEK KAYNAKTAN: `gercek_kalem + tahmini_kalem` yalnizca
+    # VARSAYILAN TOPLAMA GIREN kalemleri sayiyor (78); oysa ai.txt ve OG
+    # gorseli OLCULEN TUM kalemleri sayiyor (107). Sitede iki farkli sayi
+    # dolasmasi, guven iddiasi rakamlarin tutarliligina dayanan bir sitede
+    # kabul edilemez - ikisi de ayni yerden sayiliyor.
+    kok = veri_kok or SITE_KOK / "veri"
+    kalem = 0
+    for v in VERTIKALLER:
+        dosya = kok / f"{v}.json"
+        if not dosya.exists():
+            continue
+        try:
+            kalem += len(json.loads(dosya.read_text(encoding="utf-8")).get("kalemler") or {})
+        except (json.JSONDecodeError, OSError):
+            pass
+    try:
+        import hesaplayicilar as hs
+        hesap = len(hs.tum_hesaplayicilar())
+    except ImportError:
+        hesap = 0
+    parcalar = [f"<strong>{len(ozetler)} maliyet endeksi</strong>",
+                f"<strong>{kalem} kalem</strong>"]
+    if hesap:
+        parcalar.append(f'<strong><a href="/hesap/">{hesap} hesaplayıcı</a></strong>')
+    return (
+        " · ".join(parcalar)
+        + ". Fiyatlar gerçek kaynaklardan ayda iki kez ölçülür; her rakamın "
+        "yanında kaynak sayısı ve ölçüm tarihi yazar."
+    )
+
+
 def anasayfa_uret(veri_kok: Path | None = None) -> str:
     """Ana sayfayi GERCEK rakamlarla build-time'da uretir.
 
@@ -3091,6 +3155,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
     hizli_hesap_js = _hizli_hesap_js(hizli) if hizli else ""
     rehber_linkleri = ""
     hesap_linkleri = _hesap_linkleri_html()
+    site_ozeti = _site_ozeti(ozetler, veri_kok)
     anasayfa_yazi = ""
     try:
         import rehber
@@ -3261,15 +3326,15 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
 <header class="ust-bar">
   <div class="kapsayici">
     <a href="/" class="logo">Maliyeti <span>Ne?</span></a>
-    <nav class="ust-menu">{menu}
-    </nav>
+    <nav class="ust-menu">{genel_menu()}</nav>
   </div>
 </header>
 
 <main class="kapsayici">
 
   <span class="guncelleme-etiketi">Güncelleme: {tarih}</span>
-  <h1>2026'da bir şey kaça mal olur?</h1>
+  <h1>2026'da Ne Kaça Mal Olur?</h1>
+  <p class="site-ozeti">{site_ozeti}</p>
 
   <div class="cevap-blok"{cevap_stil}>
     {cevap}
@@ -3320,15 +3385,16 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
 {chr(10).join(kartlar)}
   </div>
 
-  <h2>Rehberler</h2>
-  <p class="kart-linkler">{rehber_linkleri}</p>
-  <p><a href="/rehber/">Tüm rehberler →</a></p>
-
   <h2>Hesaplayıcılar</h2>
   <p>Ölçüm değil <em>türetme</em>: vergi, maaş, tazminat ve kredi hesapları.
     Kullanılan her resmî parametrenin kaynağı ve geçerlilik dönemi ilgili
     sayfada yazılı.</p>
   <p class="kart-linkler">{hesap_linkleri}</p>
+
+  <h2>Rehberler</h2>
+  <p class="kart-linkler">{rehber_linkleri}</p>
+  <p><a href="/rehber/">Tüm rehberler →</a></p>
+
 
 {anasayfa_sss}
   <h2>Neden farklı?</h2>

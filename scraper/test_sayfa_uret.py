@@ -36,6 +36,21 @@ DUGUN = sayfa_uret.VERTIKALLER["dugun"]
 EV_KURMA = sayfa_uret.VERTIKALLER["ev-kurma"]
 
 
+def _icerik(html: str) -> str:
+    """Sayfanin ICERIK govdesi - header ve footer haric.
+
+    NEDEN GEREKLI (2026-07-27): ust menu GLOBAL hale geldi; artik her
+    sayfa tum vertikallere link veriyor (hesaplayicilar header'da
+    gorunmuyordu, kesfedilemiyordu). Vertikal izolasyonu testleri
+    "icerik linkleri baska vertikale sizmamali" diyor - menu icerik
+    degil. Testler GEVSETILMEDI, kapsamlari dogru yere daraltildi:
+    govdeye sizan bir link hala yakalanir.
+    """
+    govde = re.sub(r"<header.*?</header>", "", html, flags=re.S)
+    return re.sub(r"<footer.*?</footer>", "", govde, flags=re.S)
+
+
+
 class KalemDegerTestleri(unittest.TestCase):
     def test_veri_yoksa_none_doner(self):
         self.assertIsNone(sayfa_uret.kalem_deger(None, "orta"))
@@ -537,19 +552,24 @@ class EvKurmaVertikaliTestleri(unittest.TestCase):
     def test_linkler_ve_kanonik_url_vertikale_gore_uretilir(self):
         """Vertikal izolasyonu: ICERIK linkleri baska vertikale sizmamali.
 
-        Footer'daki global endeks listesi (2026-07-26'da eklendi) BILINCLI
-        bir istisna - 85 sayfadan diger endekslere hicbir link yoktu,
-        kullanici dugun sayfasindan ev-kurmaya gecemiyordu. Bu yuzden
-        kontrol footer disindaki govdede yapiliyor.
+        IKI BILINCLI ISTISNA, ikisi de olculmus bir eksigi kapatiyor:
+        - Footer'daki global endeks listesi (2026-07-26): 85 sayfadan
+          diger endekslere hicbir link yoktu.
+        - Header'daki global menu (2026-07-27): 20 hesaplayici, 8 rehber
+          ve veri merkezi hicbir sayfanin header'indan erisilemiyordu;
+          hesaplayicilar ana sayfada 4.581 px asagidaydi.
+        Kontrol bu yuzden header ve footer DISINDAKI govdede yapiliyor -
+        govdeye sizan bir link hala yakalanir.
         """
         html = sayfa_uret.sayfa_uret("ev-kurma", self.veri_dosyasi)
         self.assertIn('href="https://maliyetine.com.tr/ev-kurma/"', html)
         self.assertIn('href="/ev-kurma/hesaplayici/"', html)
         self.assertIn('href="/ev-kurma/metodoloji/"', html)
-        govde = html.split("<footer>")[0]
-        self.assertNotIn("/dugun/", govde)
-        # Global gezinme footer'da OLMALI
+        self.assertNotIn("/dugun/", _icerik(html))
+        # Global gezinme header ve footer'da OLMALI
         self.assertIn('href="/dugun/"', html.split("<footer>")[1])
+        import re as _re
+        self.assertIn('href="/dugun/"', _re.search(r"<header.*?</header>", html, _re.S).group(0))
 
     def test_bilinmeyen_vertikal_hata_verir(self):
         with self.assertRaises(ValueError):
@@ -615,7 +635,8 @@ class AnasayfaTestleri(unittest.TestCase):
         self._yaz("dugun", {"gelinlik": GELINLIK_VERISI})
         html = sayfa_uret.anasayfa_uret(self.veri_kok)
         self.assertIn("Düğün maliyeti", html)
-        self.assertNotIn('href="/ev-kurma/"', html)
+        # Kart alaninda link olmamali; global menude olmasi normal.
+        self.assertNotIn('href="/ev-kurma/"', _icerik(html))
 
     def test_tahmini_kalemi_olmayan_vertikal_tamami_gercek_der(self):
         self._yaz("ev-kurma", {"buzdolabi": BUZDOLABI_VERISI})

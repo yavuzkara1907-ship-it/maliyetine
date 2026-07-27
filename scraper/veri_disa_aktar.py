@@ -225,12 +225,7 @@ def veri_sayfasi(ozet: dict, tarih: str | None = None) -> str:
 <header class="ust-bar">
   <div class="kapsayici">
     <a href="/" class="logo">Maliyeti <span>Ne?</span></a>
-    <nav class="ust-menu">
-      <a href="/dugun/">Düğün</a>
-      <a href="/ev-kurma/">Ev Kurma</a>
-      <a href="/okul/">Okul</a>
-      <a href="/arac/">0 km Araç</a>
-    </nav>
+    <nav class="ust-menu">{su.genel_menu('veri')}</nav>
   </div>
 </header>
 
