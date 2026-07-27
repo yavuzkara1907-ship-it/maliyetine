@@ -264,9 +264,9 @@ VERTIKALLER = {
         "yol": "dugun",
         "kalemler": DUGUN_KALEMLERI,
         "tahmini_kalemler": DUGUN_KALEMLERI_TAHMINI,
-        "baslik": "2026'da İstanbul'da Düğün Kaça Mal Olur?",
+        "baslik": "2026 Düğün Maliyeti: İstanbul'da Kaça Mal Olur?",
         "soru": "2026'da İstanbul'da düğün kaça mal olur?",
-        "sayfa_basligi": "2026'da Düğün Kaça Mal Olur? | Maliyeti Ne?",
+        "sayfa_basligi": "Düğün Maliyeti 2026 — Kalem Kalem | Maliyeti Ne?",
         "meta_aciklama": (
             "Gelinlik, damatlık, alyans, salon ve daha fazlası: gerçek fiyat "
             "verisinden derlenmiş, aylık güncellenen düğün maliyeti endeksi."
@@ -361,9 +361,9 @@ VERTIKALLER = {
         "yol": "ev-kurma",
         "kalemler": EV_KURMA_KALEMLERI,
         "tahmini_kalemler": [],
-        "baslik": "2026'da Sıfırdan Ev Kurmak Kaça Mal Olur?",
+        "baslik": "2026 Ev Kurma Maliyeti: Sıfırdan Kaça Mal Olur?",
         "soru": "2026'da sıfırdan ev kurmak kaça mal olur?",
-        "sayfa_basligi": "2026'da Ev Kurmak Kaça Mal Olur? | Maliyeti Ne?",
+        "sayfa_basligi": "Ev Kurma Maliyeti 2026 — Kalem Kalem | Maliyeti Ne?",
         "meta_aciklama": (
             "Gerçek e-ticaret verisinden derlenmiş, aylık güncellenen ev kurma "
             "maliyeti endeksi. Beyaz eşya, mobilya, mutfak, tekstil — 42 kalem, "
@@ -468,9 +468,9 @@ VERTIKALLER = {
         "yol": "okul",
         "kalemler": OKUL_KALEMLERI,
         "tahmini_kalemler": [],
-        "baslik": "2026'da Okul Masrafı Ne Kadar?",
+        "baslik": "2026 Okul Masrafı: Bir Öğrenci Ne Kadar Tutuyor?",
         "soru": "2026'da bir öğrencinin okul masrafı ne kadar?",
-        "sayfa_basligi": "Okul Masrafı 2026: Ne Kadar Tutuyor? | Maliyeti Ne?",
+        "sayfa_basligi": "Okul Masrafı 2026 — Kalem Kalem | Maliyeti Ne?",
         "meta_aciklama": (
             "Çanta, kırtasiye, kitap, ayakkabı: bir öğrencinin okul masrafı "
             "kalem kalem. Gerçek fiyat verisinden, aylık güncellenen endeks."
@@ -523,9 +523,9 @@ VERTIKALLER = {
         "yol": "bebek",
         "kalemler": BEBEK_KALEMLERI,
         "tahmini_kalemler": [],
-        "baslik": "2026'da Bebek Hazırlığı Kaça Mal Olur?",
+        "baslik": "2026 Bebek Masrafı: Hazırlık Kaça Mal Olur?",
         "soru": "2026'da bebek hazırlığı kaça mal olur?",
-        "sayfa_basligi": "Bebek Maliyeti 2026: Ne Kadar Tutuyor? | Maliyeti Ne?",
+        "sayfa_basligi": "Bebek Masrafı 2026 — Kalem Kalem | Maliyeti Ne?",
         "meta_aciklama": (
             "Bebek arabası, beşik, oto koltuğu, biberon: yeni doğan hazırlığı "
             "kalem kalem. Gerçek fiyat verisinden, ayda iki kez ölçülen endeks."
@@ -579,7 +579,7 @@ VERTIKALLER = {
         "yol": "arac",
         "kalemler": ARAC_KALEMLERI,
         "tahmini_kalemler": [],
-        "baslik": "2026'da Sıfır Araba Kaça Alınır?",
+        "baslik": "2026 Sıfır Araba Fiyatları: En Ucuz Kaça Alınır?",
         "soru": "2026'da en ucuz sıfır araba kaça alınır?",
         "sayfa_basligi": "Sıfır Araba Fiyatları 2026 | Maliyeti Ne?",
         "meta_aciklama": (
@@ -1502,7 +1502,7 @@ def ek_sorular_uret(conf: dict, kalemler: dict, olcek: int) -> list[dict]:
             or veri.get("kaynak_sayisi", 0)
         )
         urun_sayisi = veri.get("toplam_urun")
-        dayanak = f"{kaynak_sayisi} bağımsız kaynaktan"
+        dayanak = _dayanak_ifadesi(conf, kaynak_sayisi)
         if urun_sayisi:
             dayanak += f", {urun_sayisi} ürün üzerinden"
         sorular.append({
@@ -1780,6 +1780,27 @@ def _resmi_gecmis_html(vertikal: str, veri_kok: Path | None = None) -> str:
     )
 
 
+def _dayanak_ifadesi(conf: dict, site_sayisi: int) -> str:
+    """Fiyatin dayanagini anlatan ifade.
+
+    NEDEN VERTIKALE GORE DEGISIYOR: "N bagimsiz kaynak" ifadesi perakende
+    urunlerde guclu bir sinyal - her satici kendi fiyatini koyuyor, coklu
+    kaynak piyasayi temsil ediyor. Ama 0 km aracta fiyati URETICI
+    belirliyor ve bayiden bayiye degismiyor; orada ikinci kaynak ayni
+    sayiyi verir, yani coklu kaynak bir sey KANITLAMAZ. "1 bagimsiz
+    kaynak" yazmak bu yuzden zayif degil, YANLIS CERCEVE.
+
+    DIKKAT - kaynagi oldugundan baska gostermiyoruz: fiyatlari yayinlayan
+    site ureticinin kendisi DEGIL, liste fiyatlarini derleyen bir kaynak.
+    Bu yuzden "markalarin yayinladigi liste fiyatlari" demiyoruz;
+    FIYATIN NITELIGINI (uretici liste fiyati, bayiden bayiye degismez)
+    anlatiyoruz. Ikisi ayri sey.
+    """
+    if conf.get("liste_fiyati"):
+        return "üreticilerin belirlediği liste fiyatlarından"
+    return f"{site_sayisi} bağımsız kaynaktan"
+
+
 def _tek_kaynak_uyarisi_html(conf: dict, siteler: set[str]) -> str:
     # Liste fiyatli vertikallerde (0 km arac) tek kaynak bir eksiklik
     # DEGIL: fiyati uretici belirliyor, ikinci kaynak ayni sayiyi verir.
@@ -1868,14 +1889,14 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
         if tahmini_detaylar:
             cevap_metni += (
                 f"Bunun {_para(gercek_toplam)} tutarı {len(gercek_detaylar)} kalem için "
-                f"{site_sayisi} bağımsız kaynaktan derlenen güncel fiyatlara, "
+                f"{_dayanak_ifadesi(conf, site_sayisi)} derlenen güncel fiyatlara, "
                 f"{_para(tahmini_toplam)} tutarı ise henüz kazınan bir kaynağı olmayan "
                 f"{len(tahmini_detaylar)} kalem için genel piyasa araştırmasına dayanır."
             )
         else:
             cevap_metni += (
                 f"Bu rakamın tamamı {len(gercek_detaylar)} kalem için "
-                f"{site_sayisi} bağımsız kaynaktan derlenen güncel fiyatlara dayanır."
+                f"{_dayanak_ifadesi(conf, site_sayisi)} derlenen güncel fiyatlara dayanır."
             )
         cevap_disable = ""
     elif tahmini_detaylar:

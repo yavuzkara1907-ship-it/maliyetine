@@ -799,8 +799,8 @@ def _govde_kaynak_karsilastirma(v: dict) -> str | None:
 REHBERLER = [
     {
         "slug": "trendyol-mu-amazon-mu-ucuz",
-        "baslik": "Trendyol mu Amazon mu Ucuz? 45 Kalemde Ölçtük",
-        "seo_baslik": "Trendyol mu Amazon mu Ucuz?",
+        "baslik": "Trendyol mu Amazon mu Daha Ucuz? 45 Kalemde Ölçtük",
+        "seo_baslik": "Trendyol mu Amazon mu Daha Ucuz? 45 Ürün Karşılaştırması",
         "meta": "Aynı kalemleri iki siteden ayrı ayrı ölçtük. Hangi kategoride "
                 "hangi liste daha aşağıda kalıyor ve bu neden 'ucuz site' demek değil?",
         "govde": _govde_kaynak_karsilastirma,
@@ -808,8 +808,8 @@ REHBERLER = [
     },
     {
         "slug": "ekonomik-dugun-nasil-yapilir",
-        "baslik": "Ekonomik Düğün: Nereden Kısılır, Nereden Kısılmaz?",
-        "seo_baslik": "Ekonomik Düğün: Nereden Kısılır?",
+        "baslik": "Ekonomik Düğün Nasıl Yapılır? Nereden Kısılır, Nereden Kısılmaz",
+        "seo_baslik": "Ekonomik Düğün Nasıl Yapılır? 2026 Bütçesi",
         "meta": "150 kişilik düğünde orta ve ekonomik segment arasındaki fark "
                 "ne kadar? Hangi kalemde tasarruf işe yarıyor, hangisinde geri tepiyor?",
         "govde": _govde_ekonomik_dugun,
@@ -817,8 +817,8 @@ REHBERLER = [
     },
     {
         "slug": "beyaz-esya-butcesi",
-        "baslik": "Beyaz Eşya Bütçesi: Sıfırdan Ne Kadar Tutuyor?",
-        "seo_baslik": "Beyaz Eşya Bütçesi Ne Kadar Tutuyor?",
+        "baslik": "2026 Beyaz Eşya Bütçesi: Sıfırdan Bir Eve Ne Kadar?",
+        "seo_baslik": "Beyaz Eşya Bütçesi 2026 — Toplam Maliyet",
         "meta": "Buzdolabı, çamaşır ve bulaşık makinesi, fırın, klima: bir evin "
                 "beyaz eşyası kalem kalem, ekonomik-orta-üst fiyatlarıyla.",
         "govde": _govde_beyaz_esya,
@@ -826,8 +826,8 @@ REHBERLER = [
     },
     {
         "slug": "okul-masrafi-ne-kadar",
-        "baslik": "Okul Alışverişi Bir Öğrenciye Ne Kadara Mal Oluyor?",
-        "seo_baslik": "Okul Alışverişi Ne Kadara Mal Oluyor?",
+        "baslik": "2026 Okul Alışverişi Maliyeti: Bir Öğrenciye Ne Kadar?",
+        "seo_baslik": "Okul Alışverişi Maliyeti 2026 — Liste ve Fiyatlar",
         "meta": "Çanta, kırtasiye, kitap ve ayakkabı: bir öğrencinin okul "
                 "masrafı kalem kalem. Aylık güncellenen gerçek fiyatlarla.",
         "govde": _govde_okul,
@@ -835,7 +835,8 @@ REHBERLER = [
     },
     {
         "slug": "150-kisilik-dugun-maliyeti",
-        "baslik": "150 Kişilik Düğün Ne Kadar Tutuyor?",
+        "baslik": "2026 150 Kişilik Düğün Maliyeti",
+        "seo_baslik": "150 Kişilik Düğün Maliyeti 2026 — Kalem Kalem",
         "meta": "150 kişilik düğünün kalem kalem maliyeti: salon, gelinlik, takı, "
                 "fotoğrafçı. Gerçek fiyat ölçümlerinden, aylık güncellenen rakamlarla.",
         "govde": _govde_dugun_150,
@@ -843,8 +844,8 @@ REHBERLER = [
     },
     {
         "slug": "yemekli-mi-kokteyl-mi",
-        "baslik": "Yemekli mi Kokteyl mi? Düğün Salonu Seçiminde Fiyat Farkı",
-        "seo_baslik": "Düğün Salonu: Yemekli mi Kokteyl mi?",
+        "baslik": "Düğün Salonu Fiyatları: Yemekli mi Kokteyl mi?",
+        "seo_baslik": "Düğün Salonu Yemekli mi Kokteyl mi? Kişi Başı Fark",
         "meta": "Yemekli ve kokteyl düğün salonu arasındaki kişi başı fark ne kadar, "
                 "menünün gerçek bedeli nasıl hesaplanır?",
         "govde": _govde_yemekli_kokteyl,
@@ -852,7 +853,8 @@ REHBERLER = [
     },
     {
         "slug": "sifirdan-ev-kurma-listesi",
-        "baslik": "Sıfırdan Ev Kurmak Ne Kadara Mal Oluyor?",
+        "baslik": "Ev Kurarken Alınacaklar Listesi ve 2026 Maliyeti",
+        "seo_baslik": "Ev Kurarken Alınacaklar Listesi 2026 — Fiyatlarıyla",
         "meta": "Beyaz eşyadan tekstile, sıfırdan ev kurmanın kalem kalem maliyeti "
                 "ve bütçe dağılımı. Aylık güncellenen gerçek fiyatlarla.",
         "govde": _govde_ev_kurma,
@@ -860,7 +862,8 @@ REHBERLER = [
     },
     {
         "slug": "sifir-araba-gercek-maliyeti",
-        "baslik": "Sıfır Araba Alırken Etiket Fiyatı Yetmiyor",
+        "baslik": "2026 Sıfır Araba Masrafları: Etiket Fiyatı Yetmiyor",
+        "seo_baslik": "Sıfır Araba Masrafları 2026 — MTV, Noter, Kasko",
         "meta": "MTV, noter, tescil, kasko ve trafik sigortası: sıfır aracın etiket "
                 "fiyatının üstüne binen maliyetler ve toplam tutar.",
         "govde": _govde_arac,
@@ -942,6 +945,21 @@ def anasayfa_yazisi(veriler: dict | None = None) -> str:
     )
 
 
+def _title(rehber: dict) -> str:
+    """SERP'te kesilmeyen baslik.
+
+    Google basligi ~60 karakterde kesiyor ve " | Maliyeti Ne?" eki 15
+    karakter yiyor. Uzun basliklarda marka ekini kisaltiyoruz; tamamen
+    atmiyoruz cunku marka taninirligi da bir sinyal. Hedef ifade her
+    zaman BASTA kaliyor - baslik kesilse bile anahtar kelime gorunur.
+    """
+    ana = rehber.get("seo_baslik") or rehber["baslik"]
+    for ek in (" | Maliyeti Ne?", " · Maliyeti Ne?", ""):
+        if len(ana + ek) <= 60:
+            return ana + ek
+    return ana
+
+
 def rehber_uret(rehber: dict, veriler: dict, tarih: str | None = None) -> str | None:
     """Tek bir rehber sayfasi. Veri yoksa None - bos sayfa YAYINLANMAZ."""
     govde = rehber["govde"](veriler)
@@ -993,7 +1011,7 @@ def rehber_uret(rehber: dict, veriler: dict, tarih: str | None = None) -> str | 
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{rehber.get("seo_baslik") or rehber["baslik"]} | Maliyeti Ne?</title>
+<title>{_title(rehber)}</title>
 <meta name="description" content="{rehber["meta"]}">
 <link rel="canonical" href="{url}">
 <link rel="stylesheet" href="/assets/css/style.css">

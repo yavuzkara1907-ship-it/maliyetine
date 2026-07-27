@@ -134,9 +134,79 @@ def _kalem_satirlari(conf: dict, kalemler: dict, detaylar: list, olcek: int) -> 
     return "".join(satirlar)
 
 
+def _konu_kumesi_html(vertikal: str, mevcut_slug: str) -> str:
+    """Ayni vertikaldeki diger senaryo ve kalem sayfalarina baglar.
+
+    NEDEN: senaryo sayfalari ("beyaz esya fiyatlari", "mobilya
+    fiyatlari") en yuksek niyetli sorgulari hedefliyor ama olculdugunde
+    her biri yalnizca 1 ic link veriyordu - kume degil, yalniz ada.
+    Google'in bir siteyi bir konuda otorite saymasi, o konudaki
+    sayfalarin BIRBIRINE baglanmasindan gecer.
+
+    Yalnizca DISKTE VAR OLAN sayfalara link verilir - kirik link
+    uretmek, hic link vermemekten kotu (rehber.py'deki ayni kural).
+    """
+    conf = su.VERTIKALLER[vertikal]
+    yol = conf["yol"]
+    parcalar = []
+
+    # 1) Ayni vertikalin diger senaryolari
+    for kaynak in (OLCEK_SENARYOLARI, GRUP_SENARYOLARI):
+        for sen in kaynak.get(vertikal, []):
+            if sen["slug"] == mevcut_slug:
+                continue
+            if (SITE_KOK / yol / sen["slug"] / "index.html").exists():
+                parcalar.append((sen["slug"], sen["baslik"]))
+
+    # 2) Ilgili kalem sayfalari
+    for sayfa in su._ek_kalem_sayfalari(conf, {}) if False else conf.get("kalem_sayfalari", []):
+        if (SITE_KOK / yol / sayfa["slug"] / "index.html").exists():
+            parcalar.append((sayfa["slug"], sayfa["baslik"]))
+
+    # Diskteki tum {kalem}-fiyatlari sayfalarini da topla (kalem sayfalari
+    # veriye gore acilip kapaniyor, sabit listede olmayabilirler)
+    for dizin in sorted((SITE_KOK / yol).glob("*-fiyatlari")):
+        slug = dizin.name
+        if slug == mevcut_slug or any(p[0] == slug for p in parcalar):
+            continue
+        if not (dizin / "index.html").exists():
+            continue
+        ad = slug.replace("-fiyatlari", "").replace("-", " ")
+        parcalar.append((slug, ad[:1].upper() + ad[1:] + " fiyatları"))
+
+    if not parcalar:
+        return ""
+    # Cok uzun liste sayfanin kendi icerigini bastirir (link-farm
+    # gorunumu) - 12 ile sinirli, gerisi endekse yonlendiriliyor.
+    gosterilen = parcalar[:12]
+    linkler = "".join(
+        f'<a href="/{yol}/{slug}/">{ad}</a>' for slug, ad in gosterilen
+    )
+    fazla = ""
+    if len(parcalar) > len(gosterilen):
+        fazla = (f' <a href="/{yol}/">+{len(parcalar) - len(gosterilen)} kalem '
+                 f'daha ({conf["ad"].lower()} endeksi)</a>')
+    return (
+        '  <section class="icerik-bolumu konu-kumesi">\n'
+        f'    <h2>{conf["ad"]} ile ilgili diğer fiyatlar</h2>\n'
+        f'    <p class="kart-linkler">{linkler}{fazla}</p>\n'
+        '  </section>\n'
+    )
+
+
+def _title(baslik: str) -> str:
+    """SERP'te kesilmeyen baslik. Google ~60 karakterde kesiyor;
+    marka eki uzun basliklarda kisaltiliyor, hedef ifade basta kaliyor."""
+    ana = f"{baslik} 2026"
+    for ek in (" | Maliyeti Ne?", " · Maliyeti Ne?", ""):
+        if len(ana + ek) <= 60:
+            return ana + ek
+    return ana
+
+
 def _sayfa_html(baslik: str, soru: str, aciklama_blok: str, govde: str,
                 url: str, meta: str, breadcrumb: list, tarih: str,
-                sorular: list[dict]) -> str:
+                sorular: list[dict], konu_kumesi: str = "") -> str:
     json_ld = {
         "@context": "https://schema.org",
         "@graph": [
@@ -176,7 +246,7 @@ def _sayfa_html(baslik: str, soru: str, aciklama_blok: str, govde: str,
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{baslik} 2026 | Maliyeti Ne?</title>
+<title>{_title(baslik)}</title>
 <meta name="description" content="{meta}">
 <link rel="canonical" href="{url}">
 <link rel="stylesheet" href="/assets/css/style.css">
@@ -218,6 +288,7 @@ def _sayfa_html(baslik: str, soru: str, aciklama_blok: str, govde: str,
     <h2>Sık sorulan sorular</h2>
 {sss_html}  </section>
 
+{konu_kumesi}
   <p class="kunye">{tarih} tarihli ölçümlerden · <a href="/sss/">Sık sorulan sorular</a> · <a href="/veri/">Veriyi indir</a></p>
 
 </main>
@@ -328,6 +399,7 @@ def olcek_sayfasi(vertikal: str, senaryo: dict, veri: dict, tarih: str) -> str |
                     (conf["ad"], f"{SITE_KOK_URL}/{conf['yol']}/"),
                     (senaryo["baslik"], None)],
         tarih=tarih, sorular=sorular,
+        konu_kumesi=_konu_kumesi_html(vertikal, senaryo["slug"]),
     )
 
 
@@ -424,6 +496,7 @@ def grup_sayfasi(vertikal: str, senaryo: dict, veri: dict, tarih: str) -> str | 
                     (conf["ad"], f"{SITE_KOK_URL}/{conf['yol']}/"),
                     (senaryo["baslik"], None)],
         tarih=tarih, sorular=sorular,
+        konu_kumesi=_konu_kumesi_html(vertikal, senaryo["slug"]),
     )
 
 
