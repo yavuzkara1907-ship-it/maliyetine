@@ -1405,6 +1405,59 @@ bakmadığı için aylarca sürebilirdi.
 demek — üreten kod ve **onu yayına taşıyan liste.** İkincisi unutulunca
 hiçbir şey kırılmıyor, sadece sessizce eskiyor.
 
+## SEO/GEO DENETİMİ (2026-07-27) — 5 gerçek sorun
+Yavuz: *"bir körlük olmasın."* Üretilmiş **sitenin tamamına** karşı 17
+ayrı kontrol çalıştırıldı. Beşi de aynı cinsten çıktı: **bir yerde
+düzeltip her yerde düzeldiğini varsaymak.**
+
+**1. EN AĞIRI — FAQ şeması var ama sorular sayfada görünmüyor (6 sayfa).**
+Beş hub sayfası + ana sayfa JSON-LD'de **14 soruya kadar** taşıyor ama
+sayfada hiç görünmüyordu. Google'ın kuralı net: *"FAQ içeriği kullanıcıya
+görünür olmalı."* Ayrıca AI motorları sayfa metnini de okuyor — yalnızca
+şemaya güvenmek GEO kaybı.
+
+*Körlüğün anatomisi:* `_sss_html()` fonksiyonu **zaten vardı** ve kalem
+sayfalarında doğru çalışıyordu. CLAUDE.md'de "görünür SSS eklendi"
+yazıyordu. Ama yalnızca **bir sayfa tipinde** çağrılıyordu.
+**Fonksiyonun doğru olması, her yerde çağrıldığı anlamına gelmiyor.**
+
+Düzeltme: şema ve görünür içerik **aynı listeden** besleniyor. Şemaya 14
+koyup sayfada 10 göstermek de ihlal olduğu için kırpma tek yerde
+(`sorular = sorular[:10]`).
+
+**2. `/rehber/` tam yetim sayfa.** Sitemap'te vardı, sitede **hiçbir
+sayfadan link almıyordu** — ana sayfa doğrudan yazılara gidip dizini
+atlıyordu. Ana sayfa linki + her sayfanın footer'ı: **0 → 128 link.**
+
+**3. Başlık hiyerarşisinde atlama** — `rehber/index.html` ve `404.html`
+h1 → h3 atlıyordu.
+
+**4. İç link dağılımı çarpık.** Ölçüldü: `okul/tablet-fiyatlari` ve
+`bebek/bebek-bezi-fiyatlari`, 39 kalem sayfası varken **yalnızca 1 iç
+link** alıyordu. Kök neden: "ilgili kalemler" listesi her sayfada
+**baştan** dolduruluyordu, geç tanımlananlar hiç seçilmiyordu. Liste
+artık mevcut sayfanın sırasına göre kaydırılıyor — **deterministik
+kalıyor** (rastgelelik olsa her üretimde gereksiz diff olurdu) ama akış
+eşit dağılıyor. En az link alan sayfa **1 → 3**, ortalama 21.
+
+**5.** Elle yazılan sayfalarda footer kurumsal linki eksikti.
+
+### `scraper/test_seo_denetim.py` (14 test)
+Diğer testler tek tek fonksiyonları doğruluyor; **bu dosya üretilmiş
+siteye bakıyor** — çünkü bu projedeki en sinsi hatalar birim
+testlerinden geçip sayfa seviyesinde ortaya çıkanlar:
+FAQ şeması/görünür içerik eşitliği · yetim sayfa · başlık hiyerarşisi ·
+tek h1 · canonical kendine işaret ediyor mu · title+description
+benzersizliği · title 62 karakter · paylaşım etiketleri · analitik ·
+kırık iç link · jenerik anchor metni · cevap bloğu · **rakamların ham
+HTML'de olması** (AI botları JS çalıştırmıyor) · AI botlarının
+robots.txt'te engellenmediği.
+
+**Temiz çıkanlar:** canonical 141/141 · title ve description'da hiç
+tekrar yok · görsel alt'ı eksik yok · jenerik anchor yok · sitemap ile
+disk birebir · JSON-LD zorunlu alan eksiği yok · birebir aynı gövde yok ·
+`lang="tr"` her sayfada · yalnızca 404 `noindex`.
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
