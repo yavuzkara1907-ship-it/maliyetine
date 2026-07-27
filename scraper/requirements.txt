@@ -3,3 +3,6 @@ beautifulsoup4
 pyyaml
 protego
 playwright
+# X (Twitter) API v2 OAuth 1.0a imzasi icin - yalnizca sosyal.py
+# gercekten gonderim yapacaksa gerekiyor.
+requests-oauthlib

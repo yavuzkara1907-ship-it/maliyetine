@@ -111,6 +111,37 @@ jobs:
         working-directory: scraper
         run: python gecmis.py
 
+      # Sosyal medya: bu olcumde paylasilacak GERCEK bir sey var mi?
+      #
+      # Metin uretilmiyor, veriden kuruluyor (asistan.py ile ayni ilke) ve
+      # SUSMAK VARSAYILAN DAVRANIS - orneklem gurultusunu "fiyat %40 dustu"
+      # diye paylasmak, sitenin tum guven iddiasini yakardi.
+      #
+      # `--gonder` verili ama X/Bluesky secret'lari yoksa hicbir yere
+      # gonderilmez; yalnizca veri/sosyal/onizleme.md yazilir ve commit'e
+      # girer. Yani otomasyon, Yavuz secret ekleyene kadar haftalarca
+      # "provayi" gorunur sekilde yapiyor - anahtari eklemek yayina alma
+      # kararinin kendisi (EVDS'deki desenin aynisi).
+      #
+      # Ozet gonderisi yalnizca ayin 5'inde: ayni ay icinde vertikal
+      # rotasyonu deterministik oldugu icin 20'sinde de calistirilsa AYNI
+      # ozeti ikinci kez atardi.
+      - name: Sosyal medya gönderisi
+        working-directory: scraper
+        env:
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_SECRET: ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_SECRET: ${{ secrets.X_ACCESS_SECRET }}
+          BLUESKY_HANDLE: ${{ secrets.BLUESKY_HANDLE }}
+          BLUESKY_SIFRE: ${{ secrets.BLUESKY_SIFRE }}
+        run: |
+          if [ "$(date -u +%d)" = "05" ]; then
+            python sosyal.py --gonder --ozet-vertikali auto
+          else
+            python sosyal.py --gonder
+          fi
+
       - name: Değişiklikleri commit et ve pushla
         id: commit
         run: |
