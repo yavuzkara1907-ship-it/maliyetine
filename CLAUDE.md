@@ -1124,6 +1124,62 @@ kuruşun altında kaçırması (33.029,99 → 33.030). Test yöntemi: gerçek
 için yanıltıcı olur (araç hesaplayıcısındaki `step` bug'ı tam bu yüzden
 gözden kaçmıştı).
 
+### HESAPLAYICILAR 5 → 12 (2026-07-27, ikinci tur)
+Yavuz: *"korkak gitmeyelim ve tüm hesaplayıcıları görünür hale
+getirelim."* Haklıydı — kapsamı fazla dar çizmiştim.
+
+**AYRIM YENİDEN TANIMLANDI: tehlikeli olan formül değil PARAMETRE.**
+Her hesaplayıcı artık dört tipten birine giriyor ve tipi kaynak biçimini
+belirliyor (bir test bunu zorunlu kılıyor — sınıflandırılmamış
+hesaplayıcı eklenemiyor):
+1. **Mevzuat** — kaynak tebliğ/kanun adı + R.G. tarih ve sayı
+2. **Saf matematik** — formülün kendisi kaynaktır; sahte resmî atıf YASAK
+3. **Kullanıcı parametresi** — parametrenin resmî kaynağı yok;
+   kullanıcıdan alınır ve **belirsizlik görünür kılınır**
+4. **Ölçülen veri** — parametresi bizim çektiğimiz resmî seri
+
+**Beşinci tip (uydurma) yok.** Kural: her parametre ya kaynaklı ya
+kullanıcıdan sorulan; arada boşluk bırakılmıyor. Bu kural genişlemeyi
+engellemiyor, **güvenli kılıyor.**
+
+**Yeni 7:** tapu harcı · işsizlik maaşı · kira gelir vergisi · yıllık
+izin · fazla mesai · **alım gücü** · **YouTube geliri**.
+
+- **Alım gücü en güçlüsü:** parametresi sabit değil, ayda iki kez
+  çektiğimiz **resmî TÜFE serisi** (TCMB EVDS). Rakiplerin hiçbirinde
+  yok çünkü hiçbiri resmî endeksi çekmiyor. Seri sayfaya **gömülü**
+  (build-time), client-side fetch değil — yenibirhesap'ı AI motorları
+  için görünmez yapan şey tam olarak fetch kullanması. Veri yoksa sayfa
+  hiç üretilmiyor.
+- **YouTube geliri — kuralı kırmadan yapılabildi.** Gelirin tamamı
+  RPM'e bağlı ve RPM resmî olarak yayınlanmıyor. Rakipler oraya uydurma
+  bir sabit koyup tek rakam basıyor. Çözüm kaçmak değil, **belirsizliği
+  görünür kılmak**: RPM kullanıcıdan alınıyor, beş RPM değeri için
+  duyarlılık tablosu dönüyor. "Cevap tek bir sayı değil" zaten bu sitenin
+  üslubu — segment yapısının aynısı. Bir test hem parametrenin kaynaksız
+  olduğunun söylendiğini hem aralık gösterildiğini doğruluyor.
+
+**Doğrulamalar:** tapu 10M → alıcı 200.000 / satıcı 200.000 (kaynaktaki
+örnekle birebir) · işsizlik tavanı 33.030×%80=26.424 brüt, damga sonrası
+**26.223,44 net** = açıklanan 2026 tavanıyla birebir.
+
+**TARAYICI TESTİ BİR BUG DAHA YAKALADI — araç `step` bug'ının aynı
+sınıfı.** YouTube sayfası hiç sonuç üretmiyordu: RPM alanı "boş
+bırakabilirsiniz" diyor ama form her sayı alanına `required` koyuyordu,
+HTML5 validation submit'i **sessizce** blokluyordu. **Form nitelikleri
+görünüm değil GEÇERLİLİK KISITI** — bu ders ikinci kez alındı.
+
+**İkinci sessiz hata:** eklenen bir test dosyanın sonunda `if __name__`
+bloğunun **içine** düşmüştü — hiç çalışmıyordu ama suite yeşil
+görünüyordu. **Ders: yeni test eklendiğinde test SAYISININ arttığını
+doğrula**, sadece "OK" görmek yetmez.
+
+**KAPSAM KARARI:** burç/astroloji/matematik yok. hesapsonuc'un "juno
+lilith hesaplama" ile seyreldiği yer orası; marka bir **maliyet** sitesi
+olarak kalıyor.
+
+sitemap 125 → **132**. Node 70/70, Python 11 suite.
+
 **`ai.txt` EKLENDİ** (hesapsonuc'ta vardı, bizde yoktu). `llms.txt`'ten
 farkı: llms.txt bir **içerik haritası**, ai.txt **yayıncı künyesi ve
 kullanım koşulu** (veri nereden geliyor, nasıl atıf verilir, neyi
