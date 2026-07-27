@@ -3,10 +3,10 @@
   "kalem": "buzdolabi",
   "tarih": "2026-07-26",
   "site_medyanlari": {
-    "trendyol": 29000,
-    "amazon": 30454
+    "trendyol": 28999,
+    "amazon": 29149
   },
-  "fark_orani": 0.05,
+  "fark_orani": 0.005,
   "esik_orani": 0.3,
   "uyari": false
 }

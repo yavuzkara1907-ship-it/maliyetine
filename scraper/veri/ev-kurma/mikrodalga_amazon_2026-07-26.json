@@ -6,24 +6,24 @@
   "kalem": "mikrodalga",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-26",
-  "toplam_urun": 27,
+  "toplam_urun": 26,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "css"
   ],
-  "genel_medyan": 5299,
+  "genel_medyan": 5349,
   "segmentler": {
     "dusuk": {
-      "min": 999,
+      "min": 1500,
       "medyan": 3000,
-      "max": 3499,
+      "max": 3599,
       "urun_sayisi": 7
     },
     "orta": {
-      "min": 3599,
-      "medyan": 5349,
+      "min": 3799,
+      "medyan": 5399,
       "max": 6299,
-      "urun_sayisi": 14
+      "urun_sayisi": 13
     },
     "luks": {
       "min": 6469,

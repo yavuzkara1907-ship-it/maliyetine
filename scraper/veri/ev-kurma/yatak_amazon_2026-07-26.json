@@ -15,21 +15,21 @@
   "segmentler": {
     "dusuk": {
       "min": 1000,
-      "medyan": 2099,
-      "max": 2400,
+      "medyan": 2114,
+      "max": 2469,
       "urun_sayisi": 12
     },
     "orta": {
-      "min": 2469,
-      "medyan": 2899,
+      "min": 2499,
+      "medyan": 2920,
       "max": 3899,
-      "urun_sayisi": 24
+      "urun_sayisi": 25
     },
     "luks": {
       "min": 4699,
       "medyan": 5299,
-      "max": 6779,
-      "urun_sayisi": 11
+      "max": 5900,
+      "urun_sayisi": 10
     }
   }
 }

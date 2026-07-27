@@ -3,10 +3,10 @@
   "kalem": "beslenme-cantasi",
   "tarih": "2026-07-26",
   "site_medyanlari": {
-    "trendyol": 408,
-    "amazon": 760
+    "trendyol": 429,
+    "amazon": 800
   },
-  "fark_orani": 0.863,
+  "fark_orani": 0.865,
   "esik_orani": 0.3,
   "uyari": true
 }

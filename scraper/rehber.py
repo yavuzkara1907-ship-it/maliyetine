@@ -38,7 +38,10 @@ SITE_KOK_URL = su.SITE_KOK_URL
 def _veriler(veri_kok: Path | None = None) -> dict:
     kok = veri_kok or SITE_KOK / "veri"
     cikti = {}
-    for v in ("dugun", "ev-kurma", "okul", "arac", "enflasyon"):
+    # Vertikal listesi su.VERTIKALLER'den geliyor - elle yazilan liste yeni
+    # vertikal eklenince sessizce eksik kaliyordu ("enflasyon" vertikal degil,
+    # ayri bir veri dosyasi, o yuzden elle ekli).
+    for v in (*su.VERTIKALLER, "enflasyon"):
         dosya = kok / f"{v}.json"
         if dosya.exists():
             try:

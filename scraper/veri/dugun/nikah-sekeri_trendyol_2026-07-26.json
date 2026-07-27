@@ -6,24 +6,30 @@
   "kalem": "nikah-sekeri",
   "vertikal": "dugun",
   "tarih": "2026-07-26",
-  "toplam_urun": 3,
+  "toplam_urun": 6,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "css"
   ],
-  "genel_medyan": 560,
+  "genel_medyan": 504,
   "segmentler": {
     "dusuk": {
       "min": 180,
-      "medyan": 180,
-      "max": 180,
-      "urun_sayisi": 1
+      "medyan": 300,
+      "max": 421,
+      "urun_sayisi": 2
     },
     "orta": {
-      "min": 560,
-      "medyan": 572,
+      "min": 448,
+      "medyan": 560,
       "max": 585,
-      "urun_sayisi": 2
+      "urun_sayisi": 3
+    },
+    "luks": {
+      "min": 618,
+      "medyan": 618,
+      "max": 618,
+      "urun_sayisi": 1
     }
   }
 }

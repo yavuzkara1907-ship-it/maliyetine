@@ -1123,3 +1123,70 @@ class FiyatFormatTesti(unittest.TestCase):
     def test_bos_ve_bozuk(self):
         self.assertIsNone(motor.fiyat_ayikla(""))
         self.assertIsNone(motor.fiyat_ayikla("Fiyat bilgisi için üye olun"))
+
+
+class AdFiltresiTesti(unittest.TestCase):
+    """Urun adina gore ayiklama.
+
+    NEDEN: pazaryeri kategorileri ve arama sayfalari olculen urunun
+    AKSESUARLARINI da listeliyor; bunlar hep alt segmentte toplandigi icin
+    ekonomik segmenti sistematik olarak asagi cekiyorlar. Bebek vertikalinde
+    olculdu: "besik" aramasi 403 TL cibinlik, 409 TL alez dondurdu.
+    """
+
+    def _u(self, *ciftler):
+        return [{"isim": i, "fiyat": f} for i, f in ciftler]
+
+    def test_gerekli_kelime_yoksa_elenir(self):
+        urunler = self._u(("Sepet Beşik Portatif", 1500), ("Bebek Hamağı Gri", 1420))
+        kalan = motor.ad_filtrele(urunler, {"ad_gerekli": "beşi[kğ]|karyola"})
+        self.assertEqual([u["isim"] for u in kalan], ["Sepet Beşik Portatif"])
+
+    def test_dislama_kelimesi_varsa_elenir(self):
+        urunler = self._u(("Bebek Beşik Cibinliği", 499), ("Ahşap Anne Yanı Beşik", 5441))
+        kalan = motor.ad_filtrele(urunler, {"ad_dislama": "cibinliğ"})
+        self.assertEqual([u["isim"] for u in kalan], ["Ahşap Anne Yanı Beşik"])
+
+    def test_sifat_ile_isim_ayrimi(self):
+        """EN KRITIK DAVRANIS. "cibinlikLI besik" URUN, "besik cibinliGI"
+        AKSESUAR. Ilk denemede duz "cibinlik" deseni gercek besikleri de
+        eledi ve medyani 1.755'ten 2.978'e CIKARDI - yani filtre veriyi
+        duzeltmek yerine bozdu. Iyelik eki ile sifat ayrilmak zorunda."""
+        urunler = self._u(
+            ("Sozzy Anne Yanı Cibinlikli Beşik Sallanır", 1890),   # gercek urun
+            ("Mobee Tül Cibinlik Bebek Beşik Cibinliği", 499),     # aksesuar
+        )
+        kalan = motor.ad_filtrele(urunler, {"ad_dislama": "cibinlik(?!li)|cibinliğ"})
+        self.assertEqual([u["isim"] for u in kalan], ["Sozzy Anne Yanı Cibinlikli Beşik Sallanır"])
+
+    def test_turkce_buyuk_harf(self):
+        """Python'da "BEŞİK".lower() -> "beşi̇k" (i + U+0307), duz re.I ile
+        "beşik" deseni TUTMAZ. Ayrica noktasiz i ile noktali i ayri karakter."""
+        urunler = self._u(("AHŞAP BEŞİK KARYOLA", 3000), ("BEBEK ISITICI", 500))
+        kalan = motor.ad_filtrele(urunler, {"ad_gerekli": "beşi[kğ]"})
+        self.assertEqual(len(kalan), 1)
+        kalan2 = motor.ad_filtrele(self._u(("MAMA ISITICISI", 500)), {"ad_gerekli": "ısıtıcı"})
+        self.assertEqual(len(kalan2), 1)
+
+    def test_sayfa_mobilyasi_her_zaman_elenir(self):
+        """Trendyol kategori sayfasinda "Bebek Beşik & Karyola Modelleri ve
+        Fiyatları 2026" basligi URUN KARTI olarak yakalanmisti - yanindaki
+        ilk urunun fiyatiyla eslesip tamamen uydurma bir satir uretiyordu.
+        Kaynakta filtre tanimli olmasa bile elenmeli."""
+        urunler = self._u(("Bebek Beşik & Karyola Modelleri ve Fiyatları 2026", 1420),
+                          ("Özbay Sallanır Sepet Beşik", 1475))
+        kalan = motor.ad_filtrele(urunler, {})
+        self.assertEqual([u["isim"] for u in kalan], ["Özbay Sallanır Sepet Beşik"])
+
+    def test_filtre_yoksa_hicbir_sey_degismez(self):
+        urunler = self._u(("A", 100), ("B", 200))
+        self.assertEqual(motor.ad_filtrele(urunler, {}), urunler)
+
+    def test_yarisindan_fazlasi_elenirse_uyarir(self):
+        """Sessizce kucuk orneklemle devam etmek, bu projede daha once
+        yasanan "0 urun ama saglikli" tuzaginin ayni turu."""
+        urunler = self._u(("Beşik", 1000), ("Cibinlik", 100), ("Alez", 120))
+        with self.assertLogs(motor.logger, level="WARNING") as kayit:
+            kalan = motor.ad_filtrele(urunler, {"ad_dislama": "cibinlik|alez"}, "test")
+        self.assertEqual(len(kalan), 1)
+        self.assertTrue(any("AD FILTRESI UYARISI" in m for m in kayit.output))

@@ -6,28 +6,28 @@
   "kalem": "nevresim-takimi",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-26",
-  "toplam_urun": 57,
+  "toplam_urun": 58,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "css"
   ],
-  "genel_medyan": 930,
+  "genel_medyan": 999,
   "segmentler": {
     "dusuk": {
       "min": 400,
       "medyan": 550,
-      "max": 704,
+      "max": 748,
       "urun_sayisi": 15
     },
     "orta": {
-      "min": 748,
-      "medyan": 948,
-      "max": 1659,
-      "urun_sayisi": 28
+      "min": 750,
+      "medyan": 999,
+      "max": 1747,
+      "urun_sayisi": 29
     },
     "luks": {
-      "min": 1727,
-      "medyan": 1884,
+      "min": 1800,
+      "medyan": 2044,
       "max": 2990,
       "urun_sayisi": 14
     }

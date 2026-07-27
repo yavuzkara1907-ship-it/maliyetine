@@ -6,11 +6,30 @@
   "kalem": "karyola",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-26",
-  "toplam_urun": 0,
+  "toplam_urun": 29,
   "saglikli": true,
   "kullanilan_katmanlar": [
-    "hicbiri"
+    "css"
   ],
-  "genel_medyan": null,
-  "segmentler": {}
+  "genel_medyan": 5830,
+  "segmentler": {
+    "dusuk": {
+      "min": 2740,
+      "medyan": 4200,
+      "max": 4550,
+      "urun_sayisi": 9
+    },
+    "orta": {
+      "min": 4980,
+      "medyan": 5914,
+      "max": 8150,
+      "urun_sayisi": 14
+    },
+    "luks": {
+      "min": 8400,
+      "medyan": 9760,
+      "max": 12620,
+      "urun_sayisi": 6
+    }
+  }
 }

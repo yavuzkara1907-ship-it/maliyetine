@@ -6,7 +6,7 @@
   "kalem": "klima",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-26",
-  "toplam_urun": 26,
+  "toplam_urun": 24,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "css"
@@ -14,22 +14,22 @@
   "genel_medyan": 31125,
   "segmentler": {
     "dusuk": {
-      "min": 5200,
-      "medyan": 6291,
-      "max": 13616,
+      "min": 5199,
+      "medyan": 11061,
+      "max": 21739,
       "urun_sayisi": 7
     },
     "orta": {
-      "min": 18900,
-      "medyan": 31625,
+      "min": 21900,
+      "medyan": 32000,
       "max": 37999,
-      "urun_sayisi": 14
+      "urun_sayisi": 13
     },
     "luks": {
       "min": 39299,
-      "medyan": 53999,
-      "max": 67599,
-      "urun_sayisi": 5
+      "medyan": 42650,
+      "max": 53999,
+      "urun_sayisi": 4
     }
   }
 }

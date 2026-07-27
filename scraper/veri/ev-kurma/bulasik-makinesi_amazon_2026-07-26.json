@@ -6,30 +6,30 @@
   "kalem": "bulasik-makinesi",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-26",
-  "toplam_urun": 15,
+  "toplam_urun": 19,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "css"
   ],
-  "genel_medyan": 22699,
+  "genel_medyan": 22499,
   "segmentler": {
     "dusuk": {
       "min": 4333,
-      "medyan": 19694,
+      "medyan": 18489,
       "max": 21799,
-      "urun_sayisi": 4
+      "urun_sayisi": 5
     },
     "orta": {
       "min": 21999,
-      "medyan": 23824,
-      "max": 28499,
-      "urun_sayisi": 8
+      "medyan": 22499,
+      "max": 28332,
+      "urun_sayisi": 10
     },
     "luks": {
       "min": 28499,
-      "medyan": 29054,
+      "medyan": 29527,
       "max": 34499,
-      "urun_sayisi": 3
+      "urun_sayisi": 4
     }
   }
 }

@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Beşik (bebek)"
+  ],
+  "kalem": "besik",
+  "vertikal": "bebek",
+  "tarih": "2026-07-26",
+  "toplam_urun": 20,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 1744,
+  "segmentler": {
+    "dusuk": {
+      "min": 1475,
+      "medyan": 1570,
+      "max": 1590,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 1599,
+      "medyan": 2340,
+      "max": 3549,
+      "urun_sayisi": 10
+    },
+    "luks": {
+      "min": 4299,
+      "medyan": 5513,
+      "max": 6177,
+      "urun_sayisi": 4
+    }
+  }
+}

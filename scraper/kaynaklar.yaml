@@ -3529,3 +3529,296 @@ kaynaklar:
     bekleme_sn: 3
     aktif: true
     durum: "arastirildi"
+
+  # ============ BEBEK VERTIKALI (2026-07-26) ============
+  # 5. vertikal. Tamamen urun bazli; dugun -> ev kurma -> bebek dogal bir
+  # yasam dongusu zinciri olusturuyor (ayni kullanicinin sonraki adimi).
+  #
+  # BASTAN COK KAYNAKLI kuruldu: Trendyol kategorileri + Amazon aramalari.
+  # Amazon'un arama sayfasi robots'ta serbest oldugu icin kategori URL'i
+  # avlamaya gerek kalmadi - okul turunda en pahali is buydu.
+  #
+  # Trendyol kategori URL'leri aramayla dogrulandi (tahmin edilmedi);
+  # gezinme JS yuzunden yine sinirli kaldi.
+
+  - ad: "Trendyol - Bebek Arabası (bebek)"
+    site: "trendyol"
+    url: "https://www.trendyol.com/bebek-arabasi-x-c103126"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "bebek"
+    kalem: "bebek-arabasi"
+    yontem: "otomatik"
+    min_fiyat: 800
+    bekleme_sn: 3
+    ad_dislama: "hamağı|kardeş hamak|cibinliğ|puset minderi|araba örtüsü"
+    aktif: true
+    durum: "onaylandi"
+
+  - ad: "Trendyol - Beşik (bebek)"
+    site: "trendyol"
+    url: "https://www.trendyol.com/besik-x-c104511"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "bebek"
+    kalem: "besik"
+    yontem: "otomatik"
+    min_fiyat: 400
+    bekleme_sn: 3
+    ad_gerekli: "beşi[kğ]|karyola"
+    ad_dislama: "cibinlik(?!li)|cibinliğ|alez|salıncak|salıncağ|şilte|beşik yatağı|yatak koruy|nevresim|uyku seti"
+    aktif: true
+    durum: "onaylandi"
+
+  - ad: "Trendyol - Mama Sandalyesi (bebek)"
+    site: "trendyol"
+    url: "https://www.trendyol.com/mama-sandalyesi-x-c1111"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "bebek"
+    kalem: "mama-sandalyesi"
+    yontem: "otomatik"
+    min_fiyat: 300
+    bekleme_sn: 3
+    ad_gerekli: "mama sandalye"
+    ad_dislama: "minderi|minder seti|kılıf|örtü|ayak koyma|dayama destek|puf"
+    aktif: true
+    durum: "onaylandi"
+
+  - ad: "Trendyol - Oto Koltuğu (bebek)"
+    site: "trendyol"
+    url: "https://www.trendyol.com/oto-koltugu-x-c103738"
+    render_gerekli: true
+    sayfa_sayisi: 1
+    vertikal: "bebek"
+    kalem: "oto-koltugu"
+    yontem: "otomatik"
+    min_fiyat: 500
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+
+  - ad: "Amazon - Bebek Arabası"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=bebek%20arabas%C4%B1"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "bebek"
+    kalem: "bebek-arabasi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 800
+    bekleme_sn: 3
+    ad_dislama: "hamağı|kardeş hamak|cibinliğ|puset minderi|araba örtüsü"
+    aktif: true
+    durum: "onaylandi"
+
+  - ad: "Amazon - Bebek Beşiği"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=bebek%20be%C5%9Fi%C4%9Fi"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "bebek"
+    kalem: "besik"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 400
+    bekleme_sn: 3
+    ad_gerekli: "beşi[kğ]|karyola"
+    ad_dislama: "cibinlik(?!li)|cibinliğ|alez|salıncak|salıncağ|şilte|beşik yatağı|yatak koruy|nevresim|uyku seti"
+    aktif: true
+    durum: "onaylandi"
+
+  - ad: "Amazon - Mama Sandalyesi"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=mama%20sandalyesi"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "bebek"
+    kalem: "mama-sandalyesi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 300
+    bekleme_sn: 3
+    ad_gerekli: "mama sandalye"
+    ad_dislama: "minderi|minder seti|kılıf|örtü|ayak koyma|dayama destek|puf"
+    aktif: true
+    durum: "onaylandi"
+
+  - ad: "Amazon - Bebek Oto Koltuğu"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=bebek%20oto%20koltu%C4%9Fu"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "bebek"
+    kalem: "oto-koltugu"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 500
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+
+  - ad: "Amazon - Bebek Park Yatak Oyun Parkı"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=bebek%20park%20yatak%20oyun%20park%C4%B1"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "bebek"
+    kalem: "park-yatak"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 800
+    bekleme_sn: 3
+    ad_gerekli: "oyun park|park yatak|seyahat yatağ|portatif beşik"
+    ad_dislama: "yatak yatağı|süngerli|aloe|alez|cibinlik(?!li)|nevresim|şilte|çarşaf|uyku seti|bedding"
+    aktif: true
+    durum: "onaylandi"
+
+  - ad: "Amazon - Biberon Seti"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=biberon%20seti"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "bebek"
+    kalem: "biberon-seti"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 100
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+
+  - ad: "Amazon - Göğüs Pompası"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=g%C3%B6%C4%9F%C3%BCs%20pompas%C4%B1"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "bebek"
+    kalem: "gogus-pompasi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 300
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+
+  - ad: "Amazon - Biberon Sterilizatörü"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=biberon%20sterilizat%C3%B6r%C3%BC"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "bebek"
+    kalem: "sterilizator"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 300
+    bekleme_sn: 3
+    aktif: false
+    durum: "birakildi"  # 7 urunun 3u sterilizator degil (temizleme sivisi,
+                        # kurutma unitesi, biberon hediye seti). Ad filtresinden
+                        # sonra ~3 urun kaliyor - guvenilir medyan icin cok az.
+
+  - ad: "Amazon - Bebek Küveti"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=bebek%20k%C3%BCveti"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "bebek"
+    kalem: "bebek-kuveti"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 150
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+
+  - ad: "Amazon - Bebek Bezi Fırsat Paketi"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=bebek%20bezi%20f%C4%B1rsat%20paketi"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "bebek"
+    kalem: "bebek-bezi"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 150
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+
+  - ad: "Amazon - Bebek Zıbın Body Seti"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=bebek%20z%C4%B1b%C4%B1n%20body%20seti"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "bebek"
+    kalem: "zibin-seti"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 100
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"
+
+  - ad: "Amazon - Bebek Uyku Tulumu"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=bebek%20uyku%20tulumu"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "bebek"
+    kalem: "uyku-tulumu"
+    yontem: "otomatik"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    min_fiyat: 150
+    bekleme_sn: 3
+    aktif: true
+    durum: "onaylandi"

@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Oto Koltuğu (bebek)"
+  ],
+  "kalem": "oto-koltugu",
+  "vertikal": "bebek",
+  "tarih": "2026-07-26",
+  "toplam_urun": 24,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 5947,
+  "segmentler": {
+    "dusuk": {
+      "min": 849,
+      "medyan": 1605,
+      "max": 3762,
+      "urun_sayisi": 7
+    },
+    "orta": {
+      "min": 3799,
+      "medyan": 6364,
+      "max": 8236,
+      "urun_sayisi": 12
+    },
+    "luks": {
+      "min": 8379,
+      "medyan": 9498,
+      "max": 11999,
+      "urun_sayisi": 5
+    }
+  }
+}

@@ -3,10 +3,10 @@
   "kalem": "mutfak-robotu",
   "tarih": "2026-07-26",
   "site_medyanlari": {
-    "trendyol": 2197,
-    "amazon": 4207
+    "trendyol": 2029,
+    "amazon": 4249
   },
-  "fark_orani": 0.915,
+  "fark_orani": 1.094,
   "esik_orani": 0.3,
   "uyari": true
 }

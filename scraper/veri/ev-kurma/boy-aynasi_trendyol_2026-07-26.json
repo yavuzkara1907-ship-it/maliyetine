@@ -6,30 +6,30 @@
   "kalem": "boy-aynasi",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-26",
-  "toplam_urun": 12,
+  "toplam_urun": 14,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "css"
   ],
-  "genel_medyan": 1604,
+  "genel_medyan": 1594,
   "segmentler": {
     "dusuk": {
-      "min": 1390,
-      "medyan": 1444,
-      "max": 1490,
+      "min": 1202,
+      "medyan": 1394,
+      "max": 1450,
       "urun_sayisi": 4
     },
     "orta": {
-      "min": 1590,
-      "medyan": 1800,
-      "max": 2700,
+      "min": 1490,
+      "medyan": 1599,
+      "max": 2650,
       "urun_sayisi": 7
     },
     "luks": {
-      "min": 2750,
-      "medyan": 2750,
+      "min": 2700,
+      "medyan": 2700,
       "max": 2750,
-      "urun_sayisi": 1
+      "urun_sayisi": 3
     }
   }
 }

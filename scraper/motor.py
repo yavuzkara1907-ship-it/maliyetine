@@ -240,6 +240,83 @@ def css_urunler(soup: BeautifulSoup, css_secicileri: dict | None, min_fiyat: flo
     return urunler
 
 
+# ----------------------------------------------------------
+# AD FILTRESI - urun adina gore ayiklama
+#
+# NEDEN GEREKLI: hem pazaryeri kategorileri hem arama sayfalari, olctugumuz
+# urunun AKSESUARLARINI da listeliyor ve bunlar hep ALT segmentte toplaniyor
+# - yani ekonomik segmenti sistematik olarak asagi cekiyorlar. Bebek
+# vertikalinde olculdu: "besik" aramasinda 403 TL cibinlik, 409 TL alez,
+# 737 TL salincak; "mama sandalyesi"nde 585 TL minder; "park yatak"ta park
+# yatagin kendisi degil SILTESI. Fiyatlar dogru, urunler yanlis.
+#
+# min_fiyat'i yukseltmek bu isi cozmez, ORTBAS EDER: gercek ekonomik
+# segmenti de keser ve "ekonomik besik 1.500 TL" derken aslinda alt ucu
+# bilerek atmis oluruz. Dogru cozum urunu ADIYLA elemek.
+#
+# `tablo` katmanindaki `satir_filtresi` ile ayni ilke - orada satirin isim
+# sutununa, burada urun kartinin adina uygulaniyor.
+# ----------------------------------------------------------
+
+# Her kaynakta gecerli: bunlar urun DEGIL, sayfa mobilyasi. Trendyol
+# kategori sayfalarinda "Bebek Beşik & Karyola Modelleri ve Fiyatları 2026"
+# basligi urun karti olarak yakalanmisti - fiyati da yanindaki ilk urunden
+# aliyordu, yani tamamen uydurma bir satir uretiyordu.
+SAYFA_MOBILYASI = re.compile(
+    r"modelleri ve fiyatlar|fiyatları ve modelleri|çeşitleri ve fiyatlar"
+    r"|en (ucuz|iyi) .{0,30}(modelleri|fiyatlar)",
+    re.I,
+)
+
+
+def _ad_norm(metin: str) -> str:
+    """Turkce buyuk/kucuk harf tuzagini duzleyerek karsilastirmaya hazirlar.
+
+    Python'da "BEŞİK".lower() -> "beşi̇k" (i + U+0307 birlesik nokta), yani
+    duz bir re.I eslesmesi "beşik" desenini TUTMUYOR. Ayrica noktasiz "ı"
+    ile noktali "i" ayri karakterler; "ISITICI".lower() "isitici" verirken
+    desen "ısıtıcı" yazilmis olabilir. Ikisini de tek forma indiriyoruz.
+    Yalnizca i ailesi katlaniyor - s/ş, c/ç gibi harfleri katlamak
+    "kaş"i "kas"a esitler, bu istenmez.
+    """
+    return metin.lower().replace("̇", "").replace("ı", "i")
+
+
+def ad_filtrele(urunler: list[dict], kaynak: dict, ad: str = "") -> list[dict]:
+    gerekli = kaynak.get("ad_gerekli")
+    dislama = kaynak.get("ad_dislama")
+
+    g_desen = re.compile(_ad_norm(gerekli), re.I) if gerekli else None
+    d_desen = re.compile(_ad_norm(dislama), re.I) if dislama else None
+
+    kalan, elenen = [], []
+    for u in urunler:
+        n = _ad_norm(u.get("isim") or "")
+        if SAYFA_MOBILYASI.search(n):
+            elenen.append(u)
+            continue
+        if g_desen and not g_desen.search(n):
+            elenen.append(u)
+            continue
+        if d_desen and d_desen.search(n):
+            elenen.append(u)
+            continue
+        kalan.append(u)
+
+    if elenen:
+        logger.info("[%s] ad filtresi %d urun eledi (%d kaldi)", ad, len(elenen), len(kalan))
+        # Filtre orneklemin yarisindan fazlasini yiyorsa ya desen yanlis ya
+        # sayfa yapisi degismis. Sessizce kucuk bir orneklemle devam etmek,
+        # bu projede daha once yasanan "0 urun ama saglikli" tuzaginin ayni
+        # turu - o yuzden gorunur uyari.
+        if urunler and len(elenen) > len(urunler) / 2:
+            logger.warning(
+                "[%s] AD FILTRESI UYARISI: %d/%d urun elendi - desen fazla dar olabilir",
+                ad, len(elenen), len(urunler),
+            )
+    return kalan
+
+
 def detay_urunler(soup: BeautifulSoup, kaynak: dict, bekleme_sn: float = 2.0):
     """Kategori sayfasindaki HER detay sayfasina girip tanimli fiyati ceker.
 
@@ -688,7 +765,7 @@ def kaynak_ham_veri_topla(kaynak: dict):
             urunler, katman = uc_katman_cikar(soup, kaynak)
         kullanilan_katmanlar.add(katman)
         logger.info("[%s] sayfa %d: %d urun (%s katmani)", ad, p, len(urunler), katman)
-        tum_urunler.extend(urunler)
+        tum_urunler.extend(ad_filtrele(urunler, kaynak, ad))
 
         if p < sayfa_sayisi:
             time.sleep(bekleme_sn)
@@ -826,9 +903,13 @@ def calistir(
     kaynaklar_dosyasi: Path = VARSAYILAN_KAYNAKLAR,
     cikti_kok: Path = VARSAYILAN_CIKTI,
     gecmis_dosyasi: Path = GECMIS_DOSYA,
+    vertikal_filtresi: str | None = None,
 ):
     veri = yaml.safe_load(kaynaklar_dosyasi.read_text(encoding="utf-8"))
     kaynaklar = veri.get("kaynaklar", [])
+    if vertikal_filtresi:
+        kaynaklar = [k for k in kaynaklar if k.get("vertikal") == vertikal_filtresi]
+        logger.info("Vertikal filtresi: %s (%d kaynak)", vertikal_filtresi, len(kaynaklar))
 
     gecmis = gecmisi_yukle(gecmis_dosyasi)
     gruplar = gruplar_halinde_topla(kaynaklar)
@@ -860,6 +941,11 @@ def main():
         help="saglik kontrolu gecmis dosyasi - test/deneme calistirmalarinda "
              "gercek kaynak_gecmisi.json'u kirletmemek icin ayri bir yol verilebilir",
     )
+    ayristirici.add_argument(
+        "--vertikal", default=None,
+        help="yalnizca bu vertikalin kaynaklarini calistir. Tam tur 196 kaynakla "
+             "~50 dakika suruyor; tek vertikali tazelemek icin bunu kullan.",
+    )
     ayristirici.add_argument("--log-seviyesi", default="INFO")
     args = ayristirici.parse_args()
 
@@ -871,7 +957,7 @@ def main():
             logging.FileHandler(BASE_DIR / "kazima.log", encoding="utf-8"),
         ],
     )
-    calistir(args.kaynaklar, args.cikti, args.gecmis)
+    calistir(args.kaynaklar, args.cikti, args.gecmis, args.vertikal)
 
 
 if __name__ == "__main__":

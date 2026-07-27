@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Göğüs Pompası"
+  ],
+  "kalem": "gogus-pompasi",
+  "vertikal": "bebek",
+  "tarih": "2026-07-26",
+  "toplam_urun": 36,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 1324,
+  "segmentler": {
+    "dusuk": {
+      "min": 330,
+      "medyan": 449,
+      "max": 871,
+      "urun_sayisi": 10
+    },
+    "orta": {
+      "min": 875,
+      "medyan": 1374,
+      "max": 2095,
+      "urun_sayisi": 18
+    },
+    "luks": {
+      "min": 2199,
+      "medyan": 2474,
+      "max": 4500,
+      "urun_sayisi": 8
+    }
+  }
+}

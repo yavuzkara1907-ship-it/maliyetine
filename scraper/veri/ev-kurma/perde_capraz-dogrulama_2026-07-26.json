@@ -3,10 +3,10 @@
   "kalem": "perde",
   "tarih": "2026-07-26",
   "site_medyanlari": {
-    "trendyol": 430,
-    "amazon": 700
+    "trendyol": 485,
+    "amazon": 622
   },
-  "fark_orani": 0.628,
+  "fark_orani": 0.282,
   "esik_orani": 0.3,
-  "uyari": true
+  "uyari": false
 }

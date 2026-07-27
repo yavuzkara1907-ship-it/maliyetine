@@ -6,12 +6,12 @@
   "kalem": "ayakkabi",
   "vertikal": "okul",
   "tarih": "2026-07-26",
-  "toplam_urun": 47,
+  "toplam_urun": 45,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "css"
   ],
-  "genel_medyan": 1538,
+  "genel_medyan": 1518,
   "segmentler": {
     "dusuk": {
       "min": 756,
@@ -20,15 +20,15 @@
       "urun_sayisi": 12
     },
     "orta": {
-      "min": 1291,
-      "medyan": 1539,
-      "max": 1923,
-      "urun_sayisi": 24
+      "min": 1300,
+      "medyan": 1519,
+      "max": 1684,
+      "urun_sayisi": 22
     },
     "luks": {
-      "min": 1961,
-      "medyan": 2337,
-      "max": 2839,
+      "min": 1750,
+      "medyan": 2024,
+      "max": 2580,
       "urun_sayisi": 11
     }
   }

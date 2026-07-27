@@ -6,24 +6,24 @@
   "kalem": "karyola",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-26",
-  "toplam_urun": 23,
+  "toplam_urun": 22,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "json-ld"
   ],
-  "genel_medyan": 4019,
+  "genel_medyan": 3884,
   "segmentler": {
     "dusuk": {
       "min": 2051,
-      "medyan": 2479,
+      "medyan": 2699,
       "max": 3200,
       "urun_sayisi": 6
     },
     "orta": {
       "min": 3331,
-      "medyan": 4067,
+      "medyan": 4019,
       "max": 4799,
-      "urun_sayisi": 12
+      "urun_sayisi": 11
     },
     "luks": {
       "min": 5000,

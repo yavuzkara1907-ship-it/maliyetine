@@ -6,30 +6,30 @@
   "kalem": "bornoz",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-26",
-  "toplam_urun": 47,
+  "toplam_urun": 55,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "css"
   ],
-  "genel_medyan": 1189,
+  "genel_medyan": 1100,
   "segmentler": {
     "dusuk": {
       "min": 440,
-      "medyan": 706,
-      "max": 850,
-      "urun_sayisi": 12
+      "medyan": 699,
+      "max": 729,
+      "urun_sayisi": 14
     },
     "orta": {
-      "min": 850,
-      "medyan": 1194,
+      "min": 790,
+      "medyan": 1104,
       "max": 1608,
-      "urun_sayisi": 24
+      "urun_sayisi": 28
     },
     "luks": {
       "min": 1635,
-      "medyan": 1699,
-      "max": 2350,
-      "urun_sayisi": 11
+      "medyan": 1695,
+      "max": 2400,
+      "urun_sayisi": 13
     }
   }
 }

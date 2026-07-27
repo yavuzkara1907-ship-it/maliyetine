@@ -6,30 +6,30 @@
   "kalem": "kalem",
   "vertikal": "okul",
   "tarih": "2026-07-26",
-  "toplam_urun": 21,
+  "toplam_urun": 25,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "json-ld"
   ],
-  "genel_medyan": 200,
+  "genel_medyan": 260,
   "segmentler": {
     "dusuk": {
       "min": 28,
-      "medyan": 60,
-      "max": 145,
-      "urun_sayisi": 6
+      "medyan": 50,
+      "max": 67,
+      "urun_sayisi": 7
     },
     "orta": {
-      "min": 148,
-      "medyan": 260,
-      "max": 305,
-      "urun_sayisi": 11
+      "min": 69,
+      "medyan": 262,
+      "max": 319,
+      "urun_sayisi": 12
     },
     "luks": {
-      "min": 319,
-      "medyan": 402,
-      "max": 455,
-      "urun_sayisi": 4
+      "min": 384,
+      "medyan": 544,
+      "max": 675,
+      "urun_sayisi": 6
     }
   }
 }

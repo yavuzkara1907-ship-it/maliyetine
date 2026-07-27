@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Mama Sandalyesi"
+  ],
+  "kalem": "mama-sandalyesi",
+  "vertikal": "bebek",
+  "tarih": "2026-07-26",
+  "toplam_urun": 42,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 1699,
+  "segmentler": {
+    "dusuk": {
+      "min": 623,
+      "medyan": 1300,
+      "max": 1429,
+      "urun_sayisi": 12
+    },
+    "orta": {
+      "min": 1438,
+      "medyan": 1699,
+      "max": 2500,
+      "urun_sayisi": 20
+    },
+    "luks": {
+      "min": 2999,
+      "medyan": 3899,
+      "max": 5849,
+      "urun_sayisi": 10
+    }
+  }
+}

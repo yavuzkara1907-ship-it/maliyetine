@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Veriyi İndir | Maliyeti Ne?</title>
-<meta name="description" content="Düğün, ev kurma, okul ve sıfır araç fiyat verisi CSV ve JSON olarak indirilebilir. 96 kalem, kaynak ve ölçüm tarihiyle birlikte.">
+<meta name="description" content="Düğün, ev kurma, okul ve sıfır araç fiyat verisi CSV ve JSON olarak indirilebilir. 107 kalem, kaynak ve ölçüm tarihiyle birlikte.">
 <link rel="canonical" href="https://maliyetine.com.tr/veri/">
 <link rel="stylesheet" href="/assets/css/style.css">
 <meta property="og:title" content="Veriyi İndir | Maliyeti Ne?">
-<meta property="og:description" content="96 kalemlik fiyat verisi, CSV ve JSON olarak açık.">
+<meta property="og:description" content="107 kalemlik fiyat verisi, CSV ve JSON olarak açık.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://maliyetine.com.tr/veri/">
 <meta property="og:image" content="https://maliyetine.com.tr/assets/og-gorsel.png">
@@ -92,6 +92,26 @@
         },
         {
           "@type": "Dataset",
+          "name": "Bebek fiyat endeksi",
+          "description": "Türkiye'de yeni doğan bebek hazırlığı kalemlerinin gerçek e-ticaret verisinden derlenen fiyat endeksi.",
+          "url": "https://maliyetine.com.tr/bebek/",
+          "dateModified": "2026-07-26",
+          "isAccessibleForFree": true,
+          "distribution": [
+            {
+              "@type": "DataDownload",
+              "encodingFormat": "text/csv",
+              "contentUrl": "https://maliyetine.com.tr/veri/csv/bebek.csv"
+            },
+            {
+              "@type": "DataDownload",
+              "encodingFormat": "application/json",
+              "contentUrl": "https://maliyetine.com.tr/veri/bebek.json"
+            }
+          ]
+        },
+        {
+          "@type": "Dataset",
           "name": "0 km Araç fiyat endeksi",
           "description": "Türkiye'de satılan sıfır kilometre otomobillerin marka giriş fiyatları ve marka bazlı model fiyatlarından derlenen aylık endeks.",
           "url": "https://maliyetine.com.tr/arac/",
@@ -135,6 +155,12 @@
           "encodingFormat": "text/csv",
           "contentUrl": "https://maliyetine.com.tr/veri/csv/okul.csv",
           "name": "Okul (CSV)"
+        },
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "text/csv",
+          "contentUrl": "https://maliyetine.com.tr/veri/csv/bebek.csv",
+          "name": "Bebek (CSV)"
         },
         {
           "@type": "DataDownload",
@@ -188,7 +214,7 @@
   <h1>Veriyi İndir</h1>
 
   <div class="cevap-blok">
-    Ölçtüğümüz 96 kalemin tamamı CSV ve JSON olarak indirilebilir.
+    Ölçtüğümüz 107 kalemin tamamı CSV ve JSON olarak indirilebilir.
     Her satırda fiyatın yanında <strong>kaç üründen derlendiği, hangi
     kaynaklardan geldiği ve hangi tarihte ölçüldüğü</strong> yazıyor —
     rakamı kendiniz doğrulayabilirsiniz.
@@ -197,7 +223,7 @@
   <h2>Dosyalar</h2>
   <div class="tablo-sarmal"><table>
     <thead><tr><th>Endeks</th><th class="sayi">Kalem</th><th>Ölçüm</th><th>İndir</th></tr></thead>
-    <tbody><tr><td><a href="/dugun/">Düğün</a></td><td class="sayi">15</td><td>2026-07-26</td><td><a href="/veri/csv/dugun.csv" download>CSV</a> · <a href="/veri/dugun.json" download>JSON</a></td></tr><tr><td><a href="/ev-kurma/">Ev Kurma</a></td><td class="sayi">42</td><td>2026-07-26</td><td><a href="/veri/csv/ev-kurma.csv" download>CSV</a> · <a href="/veri/ev-kurma.json" download>JSON</a></td></tr><tr><td><a href="/okul/">Okul</a></td><td class="sayi">14</td><td>2026-07-26</td><td><a href="/veri/csv/okul.csv" download>CSV</a> · <a href="/veri/okul.json" download>JSON</a></td></tr><tr><td><a href="/arac/">0 km Araç</a></td><td class="sayi">25</td><td>2026-07-26</td><td><a href="/veri/csv/arac.csv" download>CSV</a> · <a href="/veri/arac.json" download>JSON</a></td></tr></tbody>
+    <tbody><tr><td><a href="/dugun/">Düğün</a></td><td class="sayi">15</td><td>2026-07-26</td><td><a href="/veri/csv/dugun.csv" download>CSV</a> · <a href="/veri/dugun.json" download>JSON</a></td></tr><tr><td><a href="/ev-kurma/">Ev Kurma</a></td><td class="sayi">42</td><td>2026-07-26</td><td><a href="/veri/csv/ev-kurma.csv" download>CSV</a> · <a href="/veri/ev-kurma.json" download>JSON</a></td></tr><tr><td><a href="/okul/">Okul</a></td><td class="sayi">14</td><td>2026-07-26</td><td><a href="/veri/csv/okul.csv" download>CSV</a> · <a href="/veri/okul.json" download>JSON</a></td></tr><tr><td><a href="/bebek/">Bebek</a></td><td class="sayi">11</td><td>2026-07-26</td><td><a href="/veri/csv/bebek.csv" download>CSV</a> · <a href="/veri/bebek.json" download>JSON</a></td></tr><tr><td><a href="/arac/">0 km Araç</a></td><td class="sayi">25</td><td>2026-07-26</td><td><a href="/veri/csv/arac.csv" download>CSV</a> · <a href="/veri/arac.json" download>JSON</a></td></tr></tbody>
   </table></div>
   <p>
     Hepsi tek dosyada: <a href="/veri/csv/tum-kalemler.csv" download><strong>tum-kalemler.csv</strong></a>
@@ -231,7 +257,7 @@
   <p>
     Sabit bağlantılar (<code>/veri/csv/ev-kurma.csv</code>) her zaman en
     güncel ölçümü verir. Belirli bir tarihi referans göstermek isterseniz
-    tarihli sürümü kullanın: <code>/veri/csv/ev-kurma-2026-07-26.csv</code>.
+    tarihli sürümü kullanın: <code>/veri/csv/ev-kurma-2026-07-27.csv</code>.
     Böylece yazınızdaki bağlantı, veri güncellense de aynı rakamı
     göstermeye devam eder.
   </p>

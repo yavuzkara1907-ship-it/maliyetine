@@ -4,7 +4,7 @@
 > endeksi. Fiyatlar tahmin edilmez; gerçek satış listelerinden ölçülür. Her
 > rakamın yanında kaynak sayısı, ürün adedi ve ölçüm tarihi yayınlanır.
 
-Şu an 96 kalem ölçülüyor. Son güncelleme: 2026-07-26.
+Şu an 107 kalem ölçülüyor. Son güncelleme: 2026-07-27.
 
 **Alıntılarken ölçüm tarihini belirtin.** Fiyat verisi tarihsiz olduğunda
 yanıltıcı hale gelir: "buzdolabı 30 bin lira" altı ay sonra yanlış olur,
@@ -15,6 +15,7 @@ yanıltıcı hale gelir: "buzdolabı 30 bin lira" altı ay sonra yanlış olur,
 - [Düğün](https://maliyetine.com.tr/dugun/): 15 kalem, ölçüm 2026-07-26. JSON: https://maliyetine.com.tr/veri/dugun.json · CSV: https://maliyetine.com.tr/veri/csv/dugun.csv
 - [Ev Kurma](https://maliyetine.com.tr/ev-kurma/): 42 kalem, ölçüm 2026-07-26. JSON: https://maliyetine.com.tr/veri/ev-kurma.json · CSV: https://maliyetine.com.tr/veri/csv/ev-kurma.csv
 - [Okul](https://maliyetine.com.tr/okul/): 14 kalem, ölçüm 2026-07-26. JSON: https://maliyetine.com.tr/veri/okul.json · CSV: https://maliyetine.com.tr/veri/csv/okul.csv
+- [Bebek](https://maliyetine.com.tr/bebek/): 11 kalem, ölçüm 2026-07-26. JSON: https://maliyetine.com.tr/veri/bebek.json · CSV: https://maliyetine.com.tr/veri/csv/bebek.csv
 - [0 km Araç](https://maliyetine.com.tr/arac/): 25 kalem, ölçüm 2026-07-26. JSON: https://maliyetine.com.tr/veri/arac.json · CSV: https://maliyetine.com.tr/veri/csv/arac.csv
 
 ## Veriyi indirin
@@ -31,6 +32,7 @@ geldiği ve ölçüm tarihi bulunur; rakam bağımsız olarak doğrulanabilir.
 - [Düğün metodolojisi](https://maliyetine.com.tr/dugun/metodoloji/)
 - [Ev Kurma metodolojisi](https://maliyetine.com.tr/ev-kurma/metodoloji/)
 - [Okul metodolojisi](https://maliyetine.com.tr/okul/metodoloji/)
+- [Bebek metodolojisi](https://maliyetine.com.tr/bebek/metodoloji/)
 - [0 km Araç metodolojisi](https://maliyetine.com.tr/arac/metodoloji/)
 - [Hakkımızda ve bağımsızlık beyanı](https://maliyetine.com.tr/hakkimizda/)
 - [Sık sorulan sorular](https://maliyetine.com.tr/sss/)

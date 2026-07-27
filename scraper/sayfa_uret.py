@@ -236,6 +236,28 @@ OKUL_KALEMLERI = [
     {"id": "calisma-sandalyesi", "ad": "Çalışma Sandalyesi", "birim": "sabit", "grup": "Çalışma alanı", "varsayilan_dahil": False},
 ]
 
+
+# Bebek vertikali (2026-07-26) - 5. vertikal.
+#
+# `varsayilan_dahil: False` -> bebek bezi. NEDEN: bez SARF malzemesi,
+# aylik tekrarliyor; digerleri tek seferlik kurulum. Ikisini tek toplama
+# katmak "bebek maliyeti 45.000 TL" gibi ne oldugu belirsiz bir rakam
+# uretirdi. Toplam = tek seferlik hazirlik; bez ayrica gosteriliyor.
+BEBEK_KALEMLERI = [
+    {"id": "bebek-arabasi", "ad": "Bebek Arabası", "birim": "sabit", "grup": "Uyku ve taşıma"},
+    {"id": "besik", "ad": "Beşik", "birim": "sabit", "grup": "Uyku ve taşıma"},
+    {"id": "park-yatak", "ad": "Park Yatak / Oyun Parkı", "birim": "sabit", "grup": "Uyku ve taşıma"},
+    {"id": "oto-koltugu", "ad": "Oto Koltuğu", "birim": "sabit", "grup": "Uyku ve taşıma"},
+    {"id": "mama-sandalyesi", "ad": "Mama Sandalyesi", "birim": "sabit", "grup": "Beslenme"},
+    {"id": "biberon-seti", "ad": "Biberon Seti", "birim": "sabit", "grup": "Beslenme"},
+    {"id": "gogus-pompasi", "ad": "Göğüs Pompası", "birim": "sabit", "grup": "Beslenme"},
+    {"id": "bebek-kuveti", "ad": "Bebek Küveti", "birim": "sabit", "grup": "Bakım"},
+    {"id": "zibin-seti", "ad": "Zıbın / Body Seti", "birim": "sabit", "grup": "Tekstil"},
+    {"id": "uyku-tulumu", "ad": "Uyku Tulumu", "birim": "sabit", "grup": "Tekstil"},
+    {"id": "bebek-bezi", "ad": "Bebek Bezi (aylık)", "birim": "sabit", "grup": "Aylık sarf",
+     "varsayilan_dahil": False},
+]
+
 VERTIKALLER = {
     "dugun": {
         "ad": "Düğün",
@@ -496,6 +518,62 @@ VERTIKALLER = {
             },
         ],
     },
+    "bebek": {
+        "ad": "Bebek",
+        "yol": "bebek",
+        "kalemler": BEBEK_KALEMLERI,
+        "tahmini_kalemler": [],
+        "baslik": "2026'da Bebek Hazırlığı Kaça Mal Olur?",
+        "soru": "2026'da bebek hazırlığı kaça mal olur?",
+        "sayfa_basligi": "Bebek Maliyeti 2026: Ne Kadar Tutuyor? | Maliyeti Ne?",
+        "meta_aciklama": (
+            "Bebek arabası, beşik, oto koltuğu, biberon: yeni doğan hazırlığı "
+            "kalem kalem. Gerçek fiyat verisinden, ayda iki kez ölçülen endeks."
+        ),
+        "dataset_ad": "Maliyeti Ne? Bebek Hazırlığı Endeksi",
+        "dataset_aciklama": (
+            "Türkiye'de yeni doğan bebek hazırlığı kalemlerinin gerçek "
+            "e-ticaret verisinden derlenen fiyat endeksi."
+        ),
+        "olcek_varsayilan": 1,
+        "ornek_ifade": "bebek hazırlığının",
+        "anasayfa_ifade": "bebek hazırlığı",
+        "kart_alt": "tek seferlik hazırlık",
+        "hesaplayici_daveti": "Kendi listenizi seçip hesaplayın →",
+        "dahil_olanlar": [
+            "Uyku ve taşıma: bebek arabası, beşik, park yatak, oto koltuğu.",
+            "Beslenme: mama sandalyesi, biberon seti, göğüs pompası.",
+            "Bakım ve tekstil: küvet, zıbın seti, uyku tulumu.",
+        ],
+        "dahil_olmayanlar": [
+            "Doğum masrafı, hastane ve doktor ücretleri.",
+            "Bebek bezi ve mama gibi aylık sarf giderleri varsayılan toplamda "
+            "yok — tek seferlik hazırlıkla karıştırmamak için ayrı gösteriliyor.",
+            "Bebek odası mobilyası (dolap, komodin) — ev kurma endeksinde.",
+            "Kreş, bakıcı ve sağlık sigortası.",
+            "Biberon sterilizatörü — ölçmeyi denedik, kaynakta sterilizatör "
+            "ile temizleme sıvısı ve kurutma ünitesi birbirine karışıyor; "
+            "güvenilir bir örneklem kuramadığımız için kapsam dışı bıraktık.",
+        ],
+        "segment_aciklama": (
+            "Ekonomik segment temel ihtiyacı karşılayan alt fiyat bandını, orta "
+            "segment yaygın tercih edilen ürünleri, üst segment ise marka ve "
+            "özellik olarak daha yüksek bandı gösterir. Rakamlar tek bebek "
+            "içindir ve ikinci el ya da devralınan eşyayı kapsamaz."
+        ),
+        "kalem_sayfalari": [
+            {
+                "id": "bebek-arabasi",
+                "slug": "bebek-arabasi-fiyatlari",
+                "baslik": "2026'da Bebek Arabası Fiyatları Ne Kadar?",
+                "soru": "2026'da bebek arabası fiyatları ne kadar?",
+                "aciklama": (
+                    "Bebek arabası fiyatı travel sistem (oto koltuğu dahil) olup "
+                    "olmamasına, katlanma mekanizmasına ve markaya göre ayrışır."
+                ),
+            },
+        ],
+    },
     "arac": {
         "ad": "0 km Araç",
         "yol": "arac",
@@ -639,6 +717,18 @@ KALEM_SAYFA_NOTLARI = {
     "davetiye": "Davetiye adet fiyatı kağıt cinsi ve baskı tekniğine göre ayrışır; toplam tutar davetli sayısıyla çarpılır.",
     "gelin-ayakkabisi": "Gelin ayakkabısı fiyatı topuk yüksekliği ve malzemeden çok markaya göre ayrışır.",
     "yemek-ikram": "Mekanın yemekli ve kokteyl fiyatı arasındaki fark, o mekanda menünün kişi başı bedelini verir.",
+    # -- bebek --
+    "bebek-arabasi": "Bebek arabası fiyatı travel sistem (oto koltuğu dahil) olup olmamasına, çift yönlü kullanıma ve katlanma mekanizmasına göre ayrışır.",
+    "mama-sandalyesi": "Mama sandalyesi fiyatı yükseklik ayarına, katlanabilirliğe ve masaya takılan/ayaklı tipine göre değişir.",
+    "besik": "Beşik fiyatı sallanır/sabit oluşuna ve anne yanı (yan açılır) modeline göre değişir.",
+    "park-yatak": "Park yatak fiyatı kat sayısına, oyun parkına dönüşüp dönüşmediğine göre ayrışır.",
+    "oto-koltugu": "Oto koltuğu fiyatı ağırlık grubuna (0+, I, II-III) ve ISOFIX bağlantısına göre değişir; güvenlik sertifikası olmayan ürün alınmamalı.",
+    "biberon-seti": "Biberon seti fiyatı parça sayısına ve cam/PP malzemesine göre ayrışır.",
+    "gogus-pompasi": "Göğüs pompası fiyatı manuel, elektrikli ve giyilebilir tipler arasında büyük fark gösterir.",
+    "bebek-kuveti": "Bebek küveti fiyatı katlanabilir olup olmamasına ve destek aparatına göre ayrışır.",
+    "zibin-seti": "Zıbın ve body seti fiyatı parça sayısına ve pamuk kalitesine göre değişir; bedenler hızlı geçildiği için çok sayıda alınır.",
+    "uyku-tulumu": "Uyku tulumu fiyatı mevsime (tog değeri) ve bedene göre ayrışır.",
+    "bebek-bezi": "Bebek bezi aylık tekrarlayan bir giderdir; fiyat paket adedine ve bedene göre değişir. Tek seferlik hazırlık toplamına dahil edilmez.",
     # -- ev kurma: beyaz esya --
     "bulasik-makinesi": "Bulaşık makinesi fiyatı kişilik kapasitesi, kurutma tipi ve enerji sınıfına göre ayrışır.",
     "kurutma-makinesi": "Kurutma makinesinde ısı pompalı modeller elektrik gideri düşük olduğu için üst fiyat bandını oluşturur.",

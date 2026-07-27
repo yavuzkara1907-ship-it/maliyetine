@@ -6,11 +6,30 @@
   "kalem": "yemek-masasi",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-26",
-  "toplam_urun": 0,
+  "toplam_urun": 34,
   "saglikli": true,
   "kullanilan_katmanlar": [
-    "hicbiri"
+    "css"
   ],
-  "genel_medyan": null,
-  "segmentler": {}
+  "genel_medyan": 12238,
+  "segmentler": {
+    "dusuk": {
+      "min": 3450,
+      "medyan": 4321,
+      "max": 5800,
+      "urun_sayisi": 9
+    },
+    "orta": {
+      "min": 9282,
+      "medyan": 12482,
+      "max": 13795,
+      "urun_sayisi": 17
+    },
+    "luks": {
+      "min": 13995,
+      "medyan": 15948,
+      "max": 21469,
+      "urun_sayisi": 8
+    }
+  }
 }

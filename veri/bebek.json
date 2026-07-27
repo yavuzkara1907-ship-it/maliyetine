@@ -1,0 +1,511 @@
+{
+  "vertikal": "bebek",
+  "guncelleme_tarihi": "2026-07-26",
+  "kalemler": {
+    "bebek-bezi": {
+      "segmentler": {
+        "dusuk": {
+          "min": 240,
+          "medyan": 314,
+          "max": 380,
+          "urun_sayisi": 12,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 390,
+          "medyan": 565,
+          "max": 899,
+          "urun_sayisi": 22,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 930,
+          "medyan": 1239,
+          "max": 1349,
+          "urun_sayisi": 10,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 550,
+      "toplam_urun": 44,
+      "guncelleme_tarihi": "2026-07-26",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Bebek Bezi Fırsat Paketi"
+          ],
+          "tarih": "2026-07-26",
+          "toplam_urun": 44,
+          "genel_medyan": 550
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "oto-koltugu": {
+      "segmentler": {
+        "dusuk": {
+          "min": 849,
+          "medyan": 3202,
+          "max": 7192,
+          "urun_sayisi": 17,
+          "kaynak_sayisi": 2
+        },
+        "orta": {
+          "min": 3799,
+          "medyan": 9608,
+          "max": 23274,
+          "urun_sayisi": 31,
+          "kaynak_sayisi": 2
+        },
+        "luks": {
+          "min": 8379,
+          "medyan": 17600,
+          "max": 44151,
+          "urun_sayisi": 12,
+          "kaynak_sayisi": 2
+        }
+      },
+      "genel_medyan": 8573,
+      "toplam_urun": 60,
+      "guncelleme_tarihi": "2026-07-26",
+      "kaynak_sayisi": 2,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Bebek Oto Koltuğu"
+          ],
+          "tarih": "2026-07-26",
+          "toplam_urun": 36,
+          "genel_medyan": 11199
+        },
+        {
+          "site": "trendyol",
+          "kaynak_adlari": [
+            "Trendyol - Oto Koltuğu (bebek)"
+          ],
+          "tarih": "2026-07-26",
+          "toplam_urun": 24,
+          "genel_medyan": 5947
+        }
+      ],
+      "capraz_dogrulama_uyarisi": {
+        "fark_yuzdesi": 88.3,
+        "medyanlar": {
+          "trendyol": 5947,
+          "amazon": 11199
+        }
+      }
+    },
+    "bebek-kuveti": {
+      "segmentler": {
+        "dusuk": {
+          "min": 493,
+          "medyan": 724,
+          "max": 929,
+          "urun_sayisi": 10,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 1035,
+          "medyan": 1628,
+          "max": 2500,
+          "urun_sayisi": 21,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 2659,
+          "medyan": 3499,
+          "max": 3834,
+          "urun_sayisi": 8,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 1370,
+      "toplam_urun": 39,
+      "guncelleme_tarihi": "2026-07-26",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Bebek Küveti"
+          ],
+          "tarih": "2026-07-26",
+          "toplam_urun": 39,
+          "genel_medyan": 1370
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "park-yatak": {
+      "segmentler": {
+        "dusuk": {
+          "min": 2298,
+          "medyan": 3920,
+          "max": 5199,
+          "urun_sayisi": 6,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 5729,
+          "medyan": 7249,
+          "max": 9499,
+          "urun_sayisi": 11,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 10999,
+          "medyan": 10999,
+          "max": 14639,
+          "urun_sayisi": 3,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 6849,
+      "toplam_urun": 20,
+      "guncelleme_tarihi": "2026-07-26",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Bebek Park Yatak Oyun Parkı"
+          ],
+          "tarih": "2026-07-26",
+          "toplam_urun": 20,
+          "genel_medyan": 6849
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "gogus-pompasi": {
+      "segmentler": {
+        "dusuk": {
+          "min": 330,
+          "medyan": 449,
+          "max": 871,
+          "urun_sayisi": 10,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 875,
+          "medyan": 1374,
+          "max": 2095,
+          "urun_sayisi": 18,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 2199,
+          "medyan": 2474,
+          "max": 4500,
+          "urun_sayisi": 8,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 1324,
+      "toplam_urun": 36,
+      "guncelleme_tarihi": "2026-07-26",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Göğüs Pompası"
+          ],
+          "tarih": "2026-07-26",
+          "toplam_urun": 36,
+          "genel_medyan": 1324
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "zibin-seti": {
+      "segmentler": {
+        "dusuk": {
+          "min": 250,
+          "medyan": 368,
+          "max": 450,
+          "urun_sayisi": 14,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 450,
+          "medyan": 552,
+          "max": 749,
+          "urun_sayisi": 23,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 799,
+          "medyan": 825,
+          "max": 999,
+          "urun_sayisi": 11,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 550,
+      "toplam_urun": 48,
+      "guncelleme_tarihi": "2026-07-26",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Bebek Zıbın Body Seti"
+          ],
+          "tarih": "2026-07-26",
+          "toplam_urun": 48,
+          "genel_medyan": 550
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "bebek-arabasi": {
+      "segmentler": {
+        "dusuk": {
+          "min": 2999,
+          "medyan": 4411,
+          "max": 7890,
+          "urun_sayisi": 17,
+          "kaynak_sayisi": 2
+        },
+        "orta": {
+          "min": 3270,
+          "medyan": 7110,
+          "max": 13499,
+          "urun_sayisi": 31,
+          "kaynak_sayisi": 2
+        },
+        "luks": {
+          "min": 5456,
+          "medyan": 12319,
+          "max": 23000,
+          "urun_sayisi": 15,
+          "kaynak_sayisi": 2
+        }
+      },
+      "genel_medyan": 7054,
+      "toplam_urun": 63,
+      "guncelleme_tarihi": "2026-07-26",
+      "kaynak_sayisi": 2,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Bebek Arabası"
+          ],
+          "tarih": "2026-07-26",
+          "toplam_urun": 42,
+          "genel_medyan": 10510
+        },
+        {
+          "site": "trendyol",
+          "kaynak_adlari": [
+            "Trendyol - Bebek Arabası (bebek)"
+          ],
+          "tarih": "2026-07-26",
+          "toplam_urun": 21,
+          "genel_medyan": 3599
+        }
+      ],
+      "capraz_dogrulama_uyarisi": {
+        "fark_yuzdesi": 192.0,
+        "medyanlar": {
+          "trendyol": 3599,
+          "amazon": 10510
+        }
+      }
+    },
+    "besik": {
+      "segmentler": {
+        "dusuk": {
+          "min": 876,
+          "medyan": 1584,
+          "max": 4569,
+          "urun_sayisi": 13,
+          "kaynak_sayisi": 2
+        },
+        "orta": {
+          "min": 1599,
+          "medyan": 4315,
+          "max": 10233,
+          "urun_sayisi": 22,
+          "kaynak_sayisi": 2
+        },
+        "luks": {
+          "min": 4299,
+          "medyan": 9256,
+          "max": 14639,
+          "urun_sayisi": 10,
+          "kaynak_sayisi": 2
+        }
+      },
+      "genel_medyan": 4017,
+      "toplam_urun": 45,
+      "guncelleme_tarihi": "2026-07-26",
+      "kaynak_sayisi": 2,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Bebek Beşiği"
+          ],
+          "tarih": "2026-07-26",
+          "toplam_urun": 25,
+          "genel_medyan": 6290
+        },
+        {
+          "site": "trendyol",
+          "kaynak_adlari": [
+            "Trendyol - Beşik (bebek)"
+          ],
+          "tarih": "2026-07-26",
+          "toplam_urun": 20,
+          "genel_medyan": 1744
+        }
+      ],
+      "capraz_dogrulama_uyarisi": {
+        "fark_yuzdesi": 260.7,
+        "medyanlar": {
+          "trendyol": 1744,
+          "amazon": 6290
+        }
+      }
+    },
+    "mama-sandalyesi": {
+      "segmentler": {
+        "dusuk": {
+          "min": 623,
+          "medyan": 1120,
+          "max": 1429,
+          "urun_sayisi": 17,
+          "kaynak_sayisi": 2
+        },
+        "orta": {
+          "min": 1339,
+          "medyan": 1664,
+          "max": 2500,
+          "urun_sayisi": 29,
+          "kaynak_sayisi": 2
+        },
+        "luks": {
+          "min": 2439,
+          "medyan": 3868,
+          "max": 5999,
+          "urun_sayisi": 14,
+          "kaynak_sayisi": 2
+        }
+      },
+      "genel_medyan": 1607,
+      "toplam_urun": 60,
+      "guncelleme_tarihi": "2026-07-26",
+      "kaynak_sayisi": 2,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Mama Sandalyesi"
+          ],
+          "tarih": "2026-07-26",
+          "toplam_urun": 42,
+          "genel_medyan": 1699
+        },
+        {
+          "site": "trendyol",
+          "kaynak_adlari": [
+            "Trendyol - Mama Sandalyesi (bebek)"
+          ],
+          "tarih": "2026-07-26",
+          "toplam_urun": 18,
+          "genel_medyan": 1515
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "uyku-tulumu": {
+      "segmentler": {
+        "dusuk": {
+          "min": 314,
+          "medyan": 329,
+          "max": 349,
+          "urun_sayisi": 12,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 399,
+          "medyan": 499,
+          "max": 700,
+          "urun_sayisi": 22,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 700,
+          "medyan": 750,
+          "max": 1395,
+          "urun_sayisi": 11,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 499,
+      "toplam_urun": 45,
+      "guncelleme_tarihi": "2026-07-26",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Bebek Uyku Tulumu"
+          ],
+          "tarih": "2026-07-26",
+          "toplam_urun": 45,
+          "genel_medyan": 499
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "biberon-seti": {
+      "segmentler": {
+        "dusuk": {
+          "min": 199,
+          "medyan": 400,
+          "max": 515,
+          "urun_sayisi": 11,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 589,
+          "medyan": 830,
+          "max": 1120,
+          "urun_sayisi": 20,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 1150,
+          "medyan": 1449,
+          "max": 1999,
+          "urun_sayisi": 10,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 819,
+      "toplam_urun": 41,
+      "guncelleme_tarihi": "2026-07-26",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Biberon Seti"
+          ],
+          "tarih": "2026-07-26",
+          "toplam_urun": 41,
+          "genel_medyan": 819
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    }
+  }
+}

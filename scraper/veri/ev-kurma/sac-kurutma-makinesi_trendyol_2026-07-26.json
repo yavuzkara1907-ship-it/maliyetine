@@ -6,24 +6,24 @@
   "kalem": "sac-kurutma-makinesi",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-26",
-  "toplam_urun": 22,
+  "toplam_urun": 23,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "json-ld"
   ],
-  "genel_medyan": 1114,
+  "genel_medyan": 999,
   "segmentler": {
     "dusuk": {
       "min": 353,
-      "medyan": 468,
-      "max": 599,
+      "medyan": 569,
+      "max": 698,
       "urun_sayisi": 6
     },
     "orta": {
-      "min": 698,
-      "medyan": 1150,
+      "min": 736,
+      "medyan": 1039,
       "max": 1249,
-      "urun_sayisi": 11
+      "urun_sayisi": 12
     },
     "luks": {
       "min": 1266,

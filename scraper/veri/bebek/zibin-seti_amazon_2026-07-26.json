@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Bebek Zıbın Body Seti"
+  ],
+  "kalem": "zibin-seti",
+  "vertikal": "bebek",
+  "tarih": "2026-07-26",
+  "toplam_urun": 48,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 550,
+  "segmentler": {
+    "dusuk": {
+      "min": 250,
+      "medyan": 368,
+      "max": 450,
+      "urun_sayisi": 14
+    },
+    "orta": {
+      "min": 450,
+      "medyan": 552,
+      "max": 749,
+      "urun_sayisi": 23
+    },
+    "luks": {
+      "min": 799,
+      "medyan": 825,
+      "max": 999,
+      "urun_sayisi": 11
+    }
+  }
+}

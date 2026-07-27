@@ -6,7 +6,7 @@
   "kalem": "okul-cantasi",
   "vertikal": "okul",
   "tarih": "2026-07-26",
-  "toplam_urun": 23,
+  "toplam_urun": 25,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "json-ld"
@@ -15,21 +15,21 @@
   "segmentler": {
     "dusuk": {
       "min": 500,
-      "medyan": 710,
+      "medyan": 700,
       "max": 984,
-      "urun_sayisi": 6
+      "urun_sayisi": 7
     },
     "orta": {
       "min": 1044,
-      "medyan": 1234,
-      "max": 1424,
+      "medyan": 1246,
+      "max": 1472,
       "urun_sayisi": 12
     },
     "luks": {
       "min": 1480,
-      "medyan": 1519,
+      "medyan": 1543,
       "max": 1699,
-      "urun_sayisi": 5
+      "urun_sayisi": 6
     }
   }
 }

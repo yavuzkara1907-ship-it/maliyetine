@@ -6,29 +6,29 @@
   "kalem": "ders-kitabi",
   "vertikal": "okul",
   "tarih": "2026-07-26",
-  "toplam_urun": 23,
+  "toplam_urun": 24,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "json-ld"
   ],
-  "genel_medyan": 249,
+  "genel_medyan": 257,
   "segmentler": {
     "dusuk": {
-      "min": 134,
-      "medyan": 196,
-      "max": 200,
-      "urun_sayisi": 6
+      "min": 199,
+      "medyan": 209,
+      "max": 247,
+      "urun_sayisi": 7
     },
     "orta": {
-      "min": 209,
-      "medyan": 251,
-      "max": 299,
+      "min": 248,
+      "medyan": 273,
+      "max": 420,
       "urun_sayisi": 13
     },
     "luks": {
-      "min": 300,
-      "medyan": 367,
-      "max": 420,
+      "min": 529,
+      "medyan": 582,
+      "max": 600,
       "urun_sayisi": 4
     }
   }

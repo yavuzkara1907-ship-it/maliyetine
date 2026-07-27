@@ -1,0 +1,12 @@
+{
+  "vertikal": "bebek",
+  "kalem": "bebek-arabasi",
+  "tarih": "2026-07-26",
+  "site_medyanlari": {
+    "trendyol": 3599,
+    "amazon": 10510
+  },
+  "fark_orani": 1.92,
+  "esik_orani": 0.3,
+  "uyari": true
+}

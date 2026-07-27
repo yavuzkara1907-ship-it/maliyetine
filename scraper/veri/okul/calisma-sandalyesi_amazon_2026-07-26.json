@@ -6,9 +6,30 @@
   "kalem": "calisma-sandalyesi",
   "vertikal": "okul",
   "tarih": "2026-07-26",
-  "toplam_urun": 0,
+  "toplam_urun": 38,
   "saglikli": true,
-  "kullanilan_katmanlar": [],
-  "genel_medyan": null,
-  "segmentler": {}
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 5390,
+  "segmentler": {
+    "dusuk": {
+      "min": 2790,
+      "medyan": 3350,
+      "max": 4059,
+      "urun_sayisi": 10
+    },
+    "orta": {
+      "min": 4267,
+      "medyan": 5490,
+      "max": 6390,
+      "urun_sayisi": 19
+    },
+    "luks": {
+      "min": 6490,
+      "medyan": 8839,
+      "max": 10033,
+      "urun_sayisi": 9
+    }
+  }
 }

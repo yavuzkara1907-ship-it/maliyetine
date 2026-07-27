@@ -3,10 +3,10 @@
   "kalem": "sehpa",
   "tarih": "2026-07-26",
   "site_medyanlari": {
-    "trendyol": 1886,
-    "amazon": 2332
+    "trendyol": 1834,
+    "amazon": 2800
   },
-  "fark_orani": 0.236,
+  "fark_orani": 0.527,
   "esik_orani": 0.3,
-  "uyari": false
+  "uyari": true
 }

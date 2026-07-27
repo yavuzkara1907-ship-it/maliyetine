@@ -8,7 +8,9 @@
   "tarih": "2026-07-26",
   "toplam_urun": 0,
   "saglikli": true,
-  "kullanilan_katmanlar": [],
+  "kullanilan_katmanlar": [
+    "hicbiri"
+  ],
   "genel_medyan": null,
   "segmentler": {}
 }

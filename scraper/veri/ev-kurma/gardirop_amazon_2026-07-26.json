@@ -6,9 +6,30 @@
   "kalem": "gardirop",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-26",
-  "toplam_urun": 0,
+  "toplam_urun": 31,
   "saglikli": true,
-  "kullanilan_katmanlar": [],
-  "genel_medyan": null,
-  "segmentler": {}
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 5050,
+  "segmentler": {
+    "dusuk": {
+      "min": 965,
+      "medyan": 1130,
+      "max": 2599,
+      "urun_sayisi": 8
+    },
+    "orta": {
+      "min": 2849,
+      "medyan": 5122,
+      "max": 7120,
+      "urun_sayisi": 16
+    },
+    "luks": {
+      "min": 7619,
+      "medyan": 7999,
+      "max": 12320,
+      "urun_sayisi": 7
+    }
+  }
 }

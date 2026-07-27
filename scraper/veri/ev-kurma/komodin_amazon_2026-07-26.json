@@ -6,11 +6,30 @@
   "kalem": "komodin",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-26",
-  "toplam_urun": 0,
+  "toplam_urun": 41,
   "saglikli": true,
   "kullanilan_katmanlar": [
-    "hicbiri"
+    "css"
   ],
-  "genel_medyan": null,
-  "segmentler": {}
+  "genel_medyan": 1490,
+  "segmentler": {
+    "dusuk": {
+      "min": 479,
+      "medyan": 799,
+      "max": 899,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 900,
+      "medyan": 1491,
+      "max": 2499,
+      "urun_sayisi": 21
+    },
+    "luks": {
+      "min": 2600,
+      "medyan": 3590,
+      "max": 4250,
+      "urun_sayisi": 9
+    }
+  }
 }

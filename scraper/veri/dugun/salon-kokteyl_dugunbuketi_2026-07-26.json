@@ -6,7 +6,7 @@
   "kalem": "salon-kokteyl",
   "vertikal": "dugun",
   "tarih": "2026-07-26",
-  "toplam_urun": 11,
+  "toplam_urun": 10,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "detay"
@@ -14,16 +14,16 @@
   "genel_medyan": 500,
   "segmentler": {
     "dusuk": {
-      "min": 280,
+      "min": 250,
       "medyan": 500,
       "max": 500,
       "urun_sayisi": 7
     },
     "orta": {
       "min": 600,
-      "medyan": 725,
-      "max": 850,
-      "urun_sayisi": 2
+      "medyan": 600,
+      "max": 600,
+      "urun_sayisi": 1
     },
     "luks": {
       "min": 990,

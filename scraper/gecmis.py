@@ -184,9 +184,15 @@ def main():
     a.add_argument("--cikti-kok", type=Path, default=VARSAYILAN_CIKTI_KOK)
     args = a.parse_args()
 
-    # Yeni vertikal eklenince BURAYA da eklenmeli - okul vertikali
-    # eklendiginde unutuldu ve zaman serisi hic uretilmedi.
-    vertikaller = [args.vertikal] if args.vertikal else ["dugun", "ev-kurma", "okul", "arac"]
+    # SABIT LISTE KULLANILMIYOR. Onceki hali elle yazilmis bir listeydi ve
+    # okul vertikali eklendiginde unutuldu - zaman serisi o vertikal icin
+    # HIC uretilmedi, kimse fark etmedi. Ayni sey bebek eklenirken de
+    # olacakti. Tek dogru kaynak sayfa_uret.VERTIKALLER.
+    if args.vertikal:
+        vertikaller = [args.vertikal]
+    else:
+        import sayfa_uret
+        vertikaller = list(sayfa_uret.VERTIKALLER)
     for v in vertikaller:
         veri = vertikal_gecmisi(v, args.veri_kok)
         hedef = yaz(veri, args.cikti_kok)

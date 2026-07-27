@@ -6,16 +6,16 @@
   "kalem": "blender",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-26",
-  "toplam_urun": 8,
+  "toplam_urun": 10,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "css"
   ],
-  "genel_medyan": 5887,
+  "genel_medyan": 7574,
   "segmentler": {
     "dusuk": {
-      "min": 2251,
-      "medyan": 2749,
+      "min": 2020,
+      "medyan": 2251,
       "max": 3053,
       "urun_sayisi": 3
     },
@@ -23,7 +23,7 @@
       "min": 5391,
       "medyan": 8659,
       "max": 11900,
-      "urun_sayisi": 5
+      "urun_sayisi": 7
     }
   }
 }

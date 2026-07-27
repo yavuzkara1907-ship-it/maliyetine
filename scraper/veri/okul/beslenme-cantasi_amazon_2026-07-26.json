@@ -6,30 +6,30 @@
   "kalem": "beslenme-cantasi",
   "vertikal": "okul",
   "tarih": "2026-07-26",
-  "toplam_urun": 43,
+  "toplam_urun": 60,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "css"
   ],
-  "genel_medyan": 760,
+  "genel_medyan": 800,
   "segmentler": {
     "dusuk": {
-      "min": 165,
-      "medyan": 228,
-      "max": 549,
-      "urun_sayisi": 11
+      "min": 168,
+      "medyan": 478,
+      "max": 644,
+      "urun_sayisi": 16
     },
     "orta": {
-      "min": 550,
-      "medyan": 760,
-      "max": 849,
-      "urun_sayisi": 22
+      "min": 683,
+      "medyan": 849,
+      "max": 1200,
+      "urun_sayisi": 32
     },
     "luks": {
-      "min": 850,
-      "medyan": 939,
-      "max": 1330,
-      "urun_sayisi": 10
+      "min": 1300,
+      "medyan": 1628,
+      "max": 1700,
+      "urun_sayisi": 12
     }
   }
 }

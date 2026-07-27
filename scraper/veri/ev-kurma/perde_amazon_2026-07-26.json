@@ -6,29 +6,29 @@
   "kalem": "perde",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-26",
-  "toplam_urun": 41,
+  "toplam_urun": 43,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "css"
   ],
-  "genel_medyan": 700,
+  "genel_medyan": 622,
   "segmentler": {
     "dusuk": {
       "min": 220,
       "medyan": 345,
-      "max": 518,
+      "max": 464,
       "urun_sayisi": 11
     },
     "orta": {
-      "min": 533,
-      "medyan": 700,
-      "max": 1100,
-      "urun_sayisi": 20
+      "min": 518,
+      "medyan": 630,
+      "max": 823,
+      "urun_sayisi": 22
     },
     "luks": {
-      "min": 1250,
-      "medyan": 1453,
-      "max": 1794,
+      "min": 955,
+      "medyan": 1264,
+      "max": 1530,
       "urun_sayisi": 10
     }
   }

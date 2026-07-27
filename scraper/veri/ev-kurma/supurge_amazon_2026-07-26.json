@@ -6,11 +6,30 @@
   "kalem": "supurge",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-26",
-  "toplam_urun": 0,
+  "toplam_urun": 41,
   "saglikli": true,
   "kullanilan_katmanlar": [
-    "hicbiri"
+    "css"
   ],
-  "genel_medyan": null,
-  "segmentler": {}
+  "genel_medyan": 21744,
+  "segmentler": {
+    "dusuk": {
+      "min": 5304,
+      "medyan": 9849,
+      "max": 13799,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 14199,
+      "medyan": 21863,
+      "max": 33499,
+      "urun_sayisi": 20
+    },
+    "luks": {
+      "min": 37059,
+      "medyan": 44999,
+      "max": 62999,
+      "urun_sayisi": 10
+    }
+  }
 }

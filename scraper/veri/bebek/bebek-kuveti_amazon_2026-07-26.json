@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Bebek Küveti"
+  ],
+  "kalem": "bebek-kuveti",
+  "vertikal": "bebek",
+  "tarih": "2026-07-26",
+  "toplam_urun": 39,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 1370,
+  "segmentler": {
+    "dusuk": {
+      "min": 493,
+      "medyan": 724,
+      "max": 929,
+      "urun_sayisi": 10
+    },
+    "orta": {
+      "min": 1035,
+      "medyan": 1628,
+      "max": 2500,
+      "urun_sayisi": 21
+    },
+    "luks": {
+      "min": 2659,
+      "medyan": 3499,
+      "max": 3834,
+      "urun_sayisi": 8
+    }
+  }
+}

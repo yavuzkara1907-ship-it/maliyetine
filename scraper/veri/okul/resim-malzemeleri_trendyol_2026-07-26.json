@@ -6,28 +6,28 @@
   "kalem": "resim-malzemeleri",
   "vertikal": "okul",
   "tarih": "2026-07-26",
-  "toplam_urun": 23,
+  "toplam_urun": 24,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "json-ld"
   ],
-  "genel_medyan": 441,
+  "genel_medyan": 428,
   "segmentler": {
     "dusuk": {
-      "min": 73,
-      "medyan": 148,
-      "max": 249,
-      "urun_sayisi": 6
+      "min": 125,
+      "medyan": 172,
+      "max": 269,
+      "urun_sayisi": 7
     },
     "orta": {
-      "min": 269,
-      "medyan": 443,
-      "max": 545,
+      "min": 318,
+      "medyan": 458,
+      "max": 717,
       "urun_sayisi": 12
     },
     "luks": {
-      "min": 650,
-      "medyan": 750,
+      "min": 726,
+      "medyan": 850,
       "max": 1050,
       "urun_sayisi": 5
     }

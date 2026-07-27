@@ -6,30 +6,30 @@
   "kalem": "havlu-takimi",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-26",
-  "toplam_urun": 48,
+  "toplam_urun": 60,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "css"
   ],
-  "genel_medyan": 676,
+  "genel_medyan": 724,
   "segmentler": {
     "dusuk": {
       "min": 194,
       "medyan": 430,
-      "max": 460,
-      "urun_sayisi": 13
+      "max": 469,
+      "urun_sayisi": 16
     },
     "orta": {
-      "min": 469,
-      "medyan": 749,
+      "min": 470,
+      "medyan": 750,
       "max": 1090,
-      "urun_sayisi": 25
+      "urun_sayisi": 32
     },
     "luks": {
       "min": 1100,
       "medyan": 1314,
       "max": 1637,
-      "urun_sayisi": 10
+      "urun_sayisi": 12
     }
   }
 }

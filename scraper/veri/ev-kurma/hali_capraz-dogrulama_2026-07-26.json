@@ -4,9 +4,9 @@
   "tarih": "2026-07-26",
   "site_medyanlari": {
     "trendyol": 960,
-    "amazon": 1560
+    "amazon": 1344
   },
-  "fark_orani": 0.625,
+  "fark_orani": 0.4,
   "esik_orani": 0.3,
   "uyari": true
 }

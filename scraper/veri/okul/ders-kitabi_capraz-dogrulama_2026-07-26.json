@@ -3,10 +3,10 @@
   "kalem": "ders-kitabi",
   "tarih": "2026-07-26",
   "site_medyanlari": {
-    "trendyol": 249,
-    "amazon": 349
+    "trendyol": 257,
+    "amazon": 338
   },
-  "fark_orani": 0.402,
+  "fark_orani": 0.315,
   "esik_orani": 0.3,
   "uyari": true
 }

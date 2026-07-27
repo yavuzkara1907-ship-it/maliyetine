@@ -6,30 +6,30 @@
   "kalem": "kurutma-makinesi",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-26",
-  "toplam_urun": 22,
+  "toplam_urun": 13,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "css"
   ],
-  "genel_medyan": 12768,
+  "genel_medyan": 14500,
   "segmentler": {
     "dusuk": {
-      "min": 3751,
-      "medyan": 4903,
-      "max": 5559,
-      "urun_sayisi": 6
+      "min": 3579,
+      "medyan": 5697,
+      "max": 9325,
+      "urun_sayisi": 4
     },
     "orta": {
-      "min": 5834,
-      "medyan": 14500,
-      "max": 25226,
-      "urun_sayisi": 11
+      "min": 10143,
+      "medyan": 17000,
+      "max": 24885,
+      "urun_sayisi": 6
     },
     "luks": {
-      "min": 25777,
-      "medyan": 29110,
-      "max": 44877,
-      "urun_sayisi": 5
+      "min": 25226,
+      "medyan": 27218,
+      "max": 39100,
+      "urun_sayisi": 3
     }
   }
 }

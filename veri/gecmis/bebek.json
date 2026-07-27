@@ -1,0 +1,259 @@
+{
+ "vertikal": "bebek",
+ "uretim_tarihi": "2026-07-27",
+ "olcumler": [
+  "2026-07-26"
+ ],
+ "kalemler": {
+  "bebek-bezi": {
+   "seri": [
+    {
+     "tarih": "2026-07-26",
+     "medyan": 550,
+     "urun": 44,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-26",
+    "medyan": 550,
+    "urun": 44,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-26",
+    "medyan": 550,
+    "urun": 44,
+    "kaynak": 1
+   }
+  },
+  "oto-koltugu": {
+   "seri": [
+    {
+     "tarih": "2026-07-26",
+     "medyan": 8573,
+     "urun": 60,
+     "kaynak": 2
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-26",
+    "medyan": 8573,
+    "urun": 60,
+    "kaynak": 2
+   },
+   "son": {
+    "tarih": "2026-07-26",
+    "medyan": 8573,
+    "urun": 60,
+    "kaynak": 2
+   }
+  },
+  "bebek-kuveti": {
+   "seri": [
+    {
+     "tarih": "2026-07-26",
+     "medyan": 1370,
+     "urun": 39,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-26",
+    "medyan": 1370,
+    "urun": 39,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-26",
+    "medyan": 1370,
+    "urun": 39,
+    "kaynak": 1
+   }
+  },
+  "park-yatak": {
+   "seri": [
+    {
+     "tarih": "2026-07-26",
+     "medyan": 6849,
+     "urun": 20,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-26",
+    "medyan": 6849,
+    "urun": 20,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-26",
+    "medyan": 6849,
+    "urun": 20,
+    "kaynak": 1
+   }
+  },
+  "gogus-pompasi": {
+   "seri": [
+    {
+     "tarih": "2026-07-26",
+     "medyan": 1324,
+     "urun": 36,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-26",
+    "medyan": 1324,
+    "urun": 36,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-26",
+    "medyan": 1324,
+    "urun": 36,
+    "kaynak": 1
+   }
+  },
+  "zibin-seti": {
+   "seri": [
+    {
+     "tarih": "2026-07-26",
+     "medyan": 550,
+     "urun": 48,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-26",
+    "medyan": 550,
+    "urun": 48,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-26",
+    "medyan": 550,
+    "urun": 48,
+    "kaynak": 1
+   }
+  },
+  "bebek-arabasi": {
+   "seri": [
+    {
+     "tarih": "2026-07-26",
+     "medyan": 7054,
+     "urun": 63,
+     "kaynak": 2
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-26",
+    "medyan": 7054,
+    "urun": 63,
+    "kaynak": 2
+   },
+   "son": {
+    "tarih": "2026-07-26",
+    "medyan": 7054,
+    "urun": 63,
+    "kaynak": 2
+   }
+  },
+  "besik": {
+   "seri": [
+    {
+     "tarih": "2026-07-26",
+     "medyan": 4017,
+     "urun": 45,
+     "kaynak": 2
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-26",
+    "medyan": 4017,
+    "urun": 45,
+    "kaynak": 2
+   },
+   "son": {
+    "tarih": "2026-07-26",
+    "medyan": 4017,
+    "urun": 45,
+    "kaynak": 2
+   }
+  },
+  "mama-sandalyesi": {
+   "seri": [
+    {
+     "tarih": "2026-07-26",
+     "medyan": 1607,
+     "urun": 60,
+     "kaynak": 2
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-26",
+    "medyan": 1607,
+    "urun": 60,
+    "kaynak": 2
+   },
+   "son": {
+    "tarih": "2026-07-26",
+    "medyan": 1607,
+    "urun": 60,
+    "kaynak": 2
+   }
+  },
+  "uyku-tulumu": {
+   "seri": [
+    {
+     "tarih": "2026-07-26",
+     "medyan": 499,
+     "urun": 45,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-26",
+    "medyan": 499,
+    "urun": 45,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-26",
+    "medyan": 499,
+    "urun": 45,
+    "kaynak": 1
+   }
+  },
+  "biberon-seti": {
+   "seri": [
+    {
+     "tarih": "2026-07-26",
+     "medyan": 819,
+     "urun": 41,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-26",
+    "medyan": 819,
+    "urun": 41,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-26",
+    "medyan": 819,
+    "urun": 41,
+    "kaynak": 1
+   }
+  }
+ },
+ "ozet": {
+  "kalem_sayisi": 11,
+  "karsilastirilabilir": 0,
+  "artan": 0,
+  "azalan": 0,
+  "sabit": 0,
+  "medyan_degisim_yuzde": null
+ }
+}

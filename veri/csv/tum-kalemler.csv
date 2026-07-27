@@ -70,6 +70,17 @@ okul,calisma-sandalyesi,Çalışma Sandalyesi,Çalışma alanı,sabit,1650,2080,
 okul,beslenme-cantasi,Beslenme Çantası,Çanta ve beslenme,sabit,214,621,769,165,1330,66,2,amazon; trendyol,2026-07-26
 okul,okul-cantasi,Okul Çantası,Çanta ve beslenme,sabit,804,1382,1938,424,2759,71,2,amazon; trendyol,2026-07-26
 okul,matara,Suluk / Matara,Çanta ve beslenme,sabit,130,220,470,75,510,23,1,trendyol,2026-07-26
+bebek,bebek-bezi,Bebek Bezi (aylık),Aylık sarf,sabit,314,565,1239,240,1349,44,1,amazon,2026-07-26
+bebek,bebek-kuveti,Bebek Küveti,Bakım,sabit,724,1628,3499,493,3834,39,1,amazon,2026-07-26
+bebek,biberon-seti,Biberon Seti,Beslenme,sabit,400,830,1449,199,1999,41,1,amazon,2026-07-26
+bebek,gogus-pompasi,Göğüs Pompası,Beslenme,sabit,449,1374,2474,330,4500,36,1,amazon,2026-07-26
+bebek,mama-sandalyesi,Mama Sandalyesi,Beslenme,sabit,1120,1664,3868,623,5999,60,2,amazon; trendyol,2026-07-26
+bebek,uyku-tulumu,Uyku Tulumu,Tekstil,sabit,329,499,750,314,1395,45,1,amazon,2026-07-26
+bebek,zibin-seti,Zıbın / Body Seti,Tekstil,sabit,368,552,825,250,999,48,1,amazon,2026-07-26
+bebek,bebek-arabasi,Bebek Arabası,Uyku ve taşıma,sabit,4411,7110,12319,2999,23000,63,2,amazon; trendyol,2026-07-26
+bebek,besik,Beşik,Uyku ve taşıma,sabit,1584,4315,9256,876,14639,45,2,amazon; trendyol,2026-07-26
+bebek,oto-koltugu,Oto Koltuğu,Uyku ve taşıma,sabit,3202,9608,17600,849,44151,60,2,amazon; trendyol,2026-07-26
+bebek,park-yatak,Park Yatak / Oyun Parkı,Uyku ve taşıma,sabit,3920,7249,10999,2298,14639,20,1,amazon,2026-07-26
 arac,bmw,BMW,Marka bazlı fiyatlar,sabit,4468450,8159300,15799000,3724500,21870500,60,1,donanimhaber,2026-07-26
 arac,byd,BYD,Marka bazlı fiyatlar,sabit,4133500,5145500,,4077000,,4,1,donanimhaber,2026-07-26
 arac,chery,Chery,Marka bazlı fiyatlar,sabit,2310000,2672500,,2310000,,3,1,donanimhaber,2026-07-26

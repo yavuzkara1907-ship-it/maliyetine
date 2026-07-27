@@ -6,29 +6,29 @@
   "kalem": "mikrodalga",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-26",
-  "toplam_urun": 22,
+  "toplam_urun": 23,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "json-ld"
   ],
-  "genel_medyan": 4592,
+  "genel_medyan": 4680,
   "segmentler": {
     "dusuk": {
       "min": 2508,
-      "medyan": 2805,
-      "max": 3240,
+      "medyan": 2828,
+      "max": 3300,
       "urun_sayisi": 6
     },
     "orta": {
-      "min": 3300,
-      "medyan": 4684,
-      "max": 5349,
-      "urun_sayisi": 11
+      "min": 3319,
+      "medyan": 4814,
+      "max": 5750,
+      "urun_sayisi": 12
     },
     "luks": {
-      "min": 5750,
-      "medyan": 5799,
-      "max": 6279,
+      "min": 5799,
+      "medyan": 6049,
+      "max": 6799,
       "urun_sayisi": 5
     }
   }

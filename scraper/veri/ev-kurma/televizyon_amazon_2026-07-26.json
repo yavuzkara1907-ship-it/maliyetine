@@ -6,11 +6,30 @@
   "kalem": "televizyon",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-26",
-  "toplam_urun": 0,
+  "toplam_urun": 44,
   "saglikli": true,
   "kullanilan_katmanlar": [
-    "hicbiri"
+    "css"
   ],
-  "genel_medyan": null,
-  "segmentler": {}
+  "genel_medyan": 29729,
+  "segmentler": {
+    "dusuk": {
+      "min": 9119,
+      "medyan": 16487,
+      "max": 20860,
+      "urun_sayisi": 12
+    },
+    "orta": {
+      "min": 21999,
+      "medyan": 30199,
+      "max": 42999,
+      "urun_sayisi": 22
+    },
+    "luks": {
+      "min": 43299,
+      "medyan": 55999,
+      "max": 70915,
+      "urun_sayisi": 10
+    }
+  }
 }

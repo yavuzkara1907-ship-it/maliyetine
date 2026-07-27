@@ -6,11 +6,30 @@
   "kalem": "sifonyer",
   "vertikal": "ev-kurma",
   "tarih": "2026-07-26",
-  "toplam_urun": 0,
+  "toplam_urun": 35,
   "saglikli": true,
   "kullanilan_katmanlar": [
-    "hicbiri"
+    "css"
   ],
-  "genel_medyan": null,
-  "segmentler": {}
+  "genel_medyan": 3650,
+  "segmentler": {
+    "dusuk": {
+      "min": 899,
+      "medyan": 1699,
+      "max": 2329,
+      "urun_sayisi": 9
+    },
+    "orta": {
+      "min": 2339,
+      "medyan": 4075,
+      "max": 5897,
+      "urun_sayisi": 18
+    },
+    "luks": {
+      "min": 5999,
+      "medyan": 6690,
+      "max": 9990,
+      "urun_sayisi": 8
+    }
+  }
 }

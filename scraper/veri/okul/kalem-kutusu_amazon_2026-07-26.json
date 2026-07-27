@@ -6,30 +6,30 @@
   "kalem": "kalem-kutusu",
   "vertikal": "okul",
   "tarih": "2026-07-26",
-  "toplam_urun": 52,
+  "toplam_urun": 40,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "css"
   ],
-  "genel_medyan": 655,
+  "genel_medyan": 708,
   "segmentler": {
     "dusuk": {
-      "min": 102,
+      "min": 103,
       "medyan": 290,
-      "max": 399,
-      "urun_sayisi": 15
+      "max": 439,
+      "urun_sayisi": 11
     },
     "orta": {
-      "min": 400,
-      "medyan": 677,
-      "max": 839,
-      "urun_sayisi": 25
+      "min": 459,
+      "medyan": 739,
+      "max": 895,
+      "urun_sayisi": 20
     },
     "luks": {
-      "min": 869,
-      "medyan": 1156,
+      "min": 899,
+      "medyan": 1185,
       "max": 1399,
-      "urun_sayisi": 12
+      "urun_sayisi": 9
     }
   }
 }
