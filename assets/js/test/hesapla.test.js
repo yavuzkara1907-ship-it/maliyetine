@@ -1,6 +1,6 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
-const { hesapla, kalemSatiriHesapla } = require("../hesapla.js");
+const { hesapla, kalemSatiriHesapla, butceyiDengele } = require("../hesapla.js");
 
 const GELINLIK_TANIMI = { id: "gelinlik", ad: "Gelinlik", birim: "sabit", kaynak_tipi: "gercek" };
 const SALON_TANIMI = { id: "salon", ad: "Düğün Salonu", birim: "kisi_basi", kaynak_tipi: "gercek" };
@@ -201,4 +201,94 @@ test("yemekli salon, kokteyl + yemek toplamindan farkli olmali (gercek veriyi ya
   const kokteylArtiYemek = hesapla(SALON_VERILERI, SALON_TANIMLARI, ["salon-kokteyl", "yemek-ikram"], "orta", 150).toplam;
   assert.equal(yemekli, 195000);
   assert.equal(kokteylArtiYemek, 225000);
+});
+
+/* ================= BÜTÇE DENGELEYİCİ =================
+ * Öneriler UYDURULMUYOR, ölçülmüş segment fiyatlarından çıkarılıyor.
+ * Bu testler o sınırı koruyor. */
+
+const _veri = {
+  salon: { segmentler: { dusuk: { medyan: 500 }, orta: { medyan: 1100 }, luks: { medyan: 2000 } } },
+  taki: { segmentler: { dusuk: { medyan: 33085 }, orta: { medyan: 85022 }, luks: { medyan: 180340 } } },
+  davetiye: { segmentler: { dusuk: { medyan: 20 }, orta: { medyan: 40 }, luks: { medyan: 90 } } },
+  bozuk: { segment_tutarsiz: true,
+           segmentler: { dusuk: { medyan: 100 }, orta: { medyan: 5524 }, luks: { medyan: 4762 } } },
+};
+const _tanim = [
+  { id: "salon", ad: "Salon", birim: "kisi_basi" },
+  { id: "taki", ad: "Takı", birim: "sabit" },
+  { id: "davetiye", ad: "Davetiye", birim: "kisi_basi" },
+];
+
+test("butce yeterliyse hamle onerilmez", () => {
+  const s = butceyiDengele(
+    10000000, _veri, _tanim, ["salon", "taki", "davetiye"], "orta", 150);
+  assert.equal(s.yeterli, true);
+  assert.equal(s.hamleler.length, 0);
+  assert.ok(s.pay > 0);
+});
+
+test("acik varsa EN BUYUK tasarruftan baslanir", () => {
+  const s = butceyiDengele(
+    150000, _veri, _tanim, ["salon", "taki", "davetiye"], "orta", 150);
+  assert.equal(s.yeterli, false);
+  assert.ok(s.hamleler.length > 0);
+  for (let i = 1; i < s.hamleler.length; i++) {
+    assert.ok(s.hamleler[i - 1].tasarruf >= s.hamleler[i].tasarruf, "sirali degil");
+  }
+});
+
+test("kisi basi kalemlerde tasarruf davetli sayisiyla carpiliyor", () => {
+  const s = butceyiDengele(
+    1000, _veri, _tanim, ["salon"], "orta", 150);
+  const salon = s.hamleler.find((h) => h.kalem_id === "salon");
+  // (1100 - 500) x 150
+  assert.equal(salon.tasarruf, 90000);
+});
+
+test("ayni kalem icin TEK hamle onerilir (cift sayim yok)", () => {
+  const s = butceyiDengele(
+    1000, _veri, _tanim, ["salon", "taki", "davetiye"], "orta", 150);
+  const idler = s.hamleler.map((h) => h.kalem_id);
+  assert.equal(idler.length, new Set(idler).size);
+});
+
+test("tasarruf toplami yeni toplamla ARITMETIK tutuyor", () => {
+  const s = butceyiDengele(
+    150000, _veri, _tanim, ["salon", "taki", "davetiye"], "orta", 150);
+  assert.equal(s.yeni_toplam, s.mevcut - s.toplam_tasarruf);
+});
+
+test("SEGMENT TUTARSIZ kalemden tasarruf ONERILMEZ", () => {
+  // Blender ornegi: orta 5.524 > ust 4.762. Tutarsiz veriden "tasarruf"
+  // cikarmak kullaniciyi yanlis yonlendirir - o kalem atlanir.
+  const tanim = _tanim.concat([{ id: "bozuk", ad: "Bozuk", birim: "sabit" }]);
+  const s = butceyiDengele(
+    1000, _veri, tanim, ["bozuk"], "orta", 1);
+  assert.equal(s.hamleler.length, 0);
+});
+
+test("TAHMINI kalemden tasarruf onerilmez", () => {
+  const tanim = [{ id: "t", ad: "T", birim: "sabit", kaynak_tipi: "tahmini",
+                   tahmini: { dusuk: 100, orta: 500, luks: 900 } }];
+  const s = butceyiDengele(100, {}, tanim, ["t"], "orta", 1);
+  assert.equal(s.hamleler.length, 0);
+});
+
+test("hedefe ULASILAMIYORSA acikca soylenir, uydurma yol gosterilmez", () => {
+  const s = butceyiDengele(
+    100, _veri, _tanim, ["salon", "taki", "davetiye"], "orta", 150);
+  assert.ok(s.kalan_acik > 0, "kapanmayan acik bildirilmeli");
+  assert.ok(s.en_dusuk_mumkun > s.hedef, "olculen kalemlerle inilebilecek dip");
+});
+
+test("gecersiz hedefte null - 0 TL gibi sonuc uretmez", () => {
+  assert.equal(butceyiDengele(0, _veri, _tanim, ["salon"], "orta", 150), null);
+  assert.equal(butceyiDengele(-5, _veri, _tanim, ["salon"], "orta", 150), null);
+});
+
+test("ekonomik segmentteyken indirilecek yer kalmaz", () => {
+  const s = butceyiDengele(
+    1000, _veri, _tanim, ["salon", "taki", "davetiye"], "ekonomik", 150);
+  assert.equal(s.hamleler.length, 0);
 });

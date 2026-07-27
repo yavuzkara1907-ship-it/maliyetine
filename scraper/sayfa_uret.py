@@ -634,7 +634,7 @@ VERTIKALLER = {
         ],
         "dahil_olmayanlar": [
             "Trafik sigortası, kasko, MTV ve tescil masrafları.",
-            "Bayi kampanyaları, kredi/taksit farkları ve opsiyonel donanım paketleri.",
+            "Bayi kampanyaları, kredi/taksit farkları ve opsiyonel donanım paketleri. Taksitli alacaksanız <a href=\"/hesap/kredi-taksit-hesaplama/\">kredi taksit hesaplayıcısıyla</a> aylık yükü ve toplam faizi görebilirsiniz.",
             "İkinci el araç fiyatları — bu endeks yalnızca sıfır kilometre araçları kapsar.",
             "Yakıt, bakım, lastik gibi kullanım giderleri.",
         ],

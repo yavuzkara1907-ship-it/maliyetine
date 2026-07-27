@@ -101,6 +101,13 @@
       <div id="kalem-secim-liste"></div>
     </div>
 
+
+    <div class="form-alan butce-alan">
+      <label for="hedef-butce">Bütçeniz belli mi? (opsiyonel)</label>
+      <input type="number" id="hedef-butce" min="0" step="1000" placeholder="örn. 300000">
+      <p class="sonuc-alt-metin">Bir tutar girerseniz, hesap sonucunda hedefe
+        ulaşmak için hangi kalemde ne değiştirmeniz gerektiğini gösteririz.</p>
+    </div>
     <button type="submit" class="birincil-buton">Hesapla</button>
   </form>
 
@@ -109,6 +116,8 @@
     <p class="sonuc-toplam" id="sonuc-toplam-deger">0 TL</p>
     <p class="sonuc-alt-metin" id="sonuc-guncelleme"></p>
     <p class="sonuc-alt-metin" id="sonuc-kirilim"></p>
+    <div id="butce-plani" class="butce-plani" hidden></div>
+
 
     <table id="detay-tablo">
       <thead>
@@ -143,6 +152,57 @@
 <script>
 (function () {
   const paraFormat = new Intl.NumberFormat("tr-TR", { maximumFractionDigits: 0 });
+  // ---------------- BÜTÇE DENGELEYİCİ ----------------
+  // Öneriler ölçülmüş segment fiyatlarından çıkarılıyor; "pazarlık yap"
+  // gibi ölçmediğimiz bir tasarruf ASLA önerilmez. Hedefe ulaşılamıyorsa
+  // uydurma yol gösterilmez, ölçülebilir dip söylenir.
+  function butcePlaniYaz(veriKalemleri, tanimlar, secilenIdler, segment, olcek) {
+    const kutu = document.getElementById("butce-plani");
+    if (!kutu) return;
+    const alan = document.getElementById("hedef-butce");
+    const hedef = alan ? parseFloat(alan.value) : NaN;
+    if (!(hedef > 0)) { kutu.hidden = true; kutu.innerHTML = ""; return; }
+
+    const p = maliyetHesapla.butceyiDengele(
+      hedef, veriKalemleri, tanimlar, secilenIdler, segment, olcek);
+    if (!p) { kutu.hidden = true; return; }
+
+    let html = '<h3>Bütçe planı</h3>';
+    if (p.yeterli) {
+      html += '<p>Bu seçimlerle hesap <strong>' + paraYaz(p.mevcut) +
+              '</strong>; bütçenizin altında kalıyor. Elinizde <strong>' +
+              paraYaz(p.pay) + '</strong> pay var.</p>';
+    } else if (!p.hamleler.length) {
+      html += '<p>Bu seçimlerle hesap <strong>' + paraYaz(p.mevcut) +
+              '</strong>. Ölçtüğümüz kalemlerde indirilecek bir segment ' +
+              'kalmadığı için bütçeye ulaşacak bir değişiklik öneremiyoruz.</p>';
+    } else {
+      html += '<p>Hesap <strong>' + paraYaz(p.mevcut) + '</strong>, bütçeniz <strong>' +
+              paraYaz(p.hedef) + '</strong>. Aradaki <strong>' + paraYaz(p.acik) +
+              '</strong> için ölçtüğümüz fiyatlara göre en büyük etkiyi ' +
+              'şunlar yapar:</p><ul class="butce-hamleler">';
+      p.hamleler.forEach(function (h) {
+        html += '<li><strong>' + h.ad + '</strong>: ' + h.from + ' → ' + h.to +
+                ' <span class="tasarruf">−' + paraYaz(h.tasarruf) + '</span></li>';
+      });
+      html += '</ul><p>Bu değişikliklerle toplam <strong>' + paraYaz(p.yeni_toplam) +
+              '</strong> olur.</p>';
+      if (p.kalan_acik > 0) {
+        // DÜRÜSTLÜK: hedef tutmuyorsa uydurma yol gösterilmez.
+        html += '<p class="uyari">Bütçeye yine de <strong>' + paraYaz(p.kalan_acik) +
+                '</strong> kalıyor. Ölçtüğümüz kalemlerin hepsini ekonomik segmente ' +
+                'indirseniz bile bu seçimlerle inilebilecek en düşük tutar <strong>' +
+                paraYaz(p.en_dusuk_mumkun) + '</strong>. Daha aşağısı için kalem ' +
+                'çıkarmanız ya da ölçeği küçültmeniz gerekir.</p>';
+      }
+    }
+    html += '<p class="sonuc-alt-metin">Öneriler ölçülmüş segment fiyatlarından ' +
+            'çıkarılır. Pazarlık, kampanya ya da tanıdık indirimi gibi ' +
+            'ölçemediğimiz tasarruflar bu listede yer almaz.</p>';
+    kutu.innerHTML = html;
+    kutu.hidden = false;
+  }
+
   function paraYaz(n) {
     return paraFormat.format(Math.round(n)) + " TL";
   }
@@ -216,6 +276,7 @@
 
     // Ev kurma kalemlerinin hepsi "sabit" birimli - olcek carpani yok.
     const sonuc = maliyetHesapla.hesapla(veriKalemleri, BEBEK_KALEMLERI, secilenIdler, segment, 1);
+    butcePlaniYaz(veriKalemleri, BEBEK_KALEMLERI, secilenIdler, segment, 1);
 
     document.getElementById("sonuc-toplam-deger").textContent = paraYaz(sonuc.toplam);
     document.getElementById("sonuc-guncelleme").textContent = guncellemeTarihi

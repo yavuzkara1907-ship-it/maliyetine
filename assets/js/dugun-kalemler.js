@@ -98,3 +98,7 @@ const DUGUN_KALEMLERI = [
 const DUGUN_BALAYI = { id: "balayi", ad: "Balayı" };
 
 const SEGMENT_ETIKETLERI = { dusuk: "Ekonomik", orta: "Orta", luks: "Üst" };
+
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = { DUGUN_KALEMLERI, DUGUN_BALAYI, SEGMENT_ETIKETLERI };
+}
