@@ -971,7 +971,26 @@ eklemek yayına alma kararının kendisi (EVDS'deki desenin aynısı).
   Secret'lar: `BLUESKY_HANDLE`, `BLUESKY_SIFRE`.
 - **Threads ve LinkedIn KURULMADI:** ikisi de Meta/LinkedIn uygulama
   incelemesi gerektiriyor (haftalar sürebilir, reddedilebilir).
-  İleride değerlendirilebilir.
+
+### SONRAKİ AŞAMA — X, Facebook, Instagram (2026-07-27 Yavuz'un yönü)
+Yavuz: *"bir sonraki aşamaya bırakalım. X, Facebook ve Instagram önemli
+olabilir."* Kod yazmadan önce bilinmesi gereken **tasarım kısıtı:**
+- **Instagram metin gönderisi KABUL ETMİYOR.** Graph API'de içerik
+  yayınlamak için görsel/video zorunlu; ayrıca açıklamadaki linkler
+  tıklanabilir değil. **Şu anki "metin + link" formatı Instagram'da hiç
+  çalışmaz.** Facebook Sayfası da görselle belirgin şekilde daha iyi.
+- **Sonuç: Meta tarafına geçmek ÖLÇÜM KARTI GÖRSELİ üretmeyi zorunlu
+  kılıyor** — rakam + kalem adı + örneklem + tarih taşıyan PNG.
+  Altyapı hazır: `og_gorsel.py` PIL ile 1200×630 üretiyor, 1080×1080
+  kart onun üzerine kurulur. Bu görsel X gönderisini de güçlendirir
+  (veri kartları düz metinden çok daha fazla etkileşim alıyor).
+- **Hesap/izin bürokrasisi (build anında teyit edilmeli):** Instagram
+  için **işletme/içerik üretici hesabı + bağlı Facebook Sayfası** şart,
+  kişisel hesaba API ile atılamıyor. Facebook Sayfası'na göndermek
+  `pages_manage_posts` izni istiyor, bu izin uygulama incelemesinden
+  geçiyor. X ve Bluesky'de bu bürokrasi YOK.
+- **Doğru sıra:** (1) X'i aç — kod hazır, yalnızca 4 secret; (2) ölçüm
+  kartı görseli üreticisi; (3) Facebook + Instagram.
 - 17 test: üç kapının gerçekten kapattığı, **ham kalem id'sinin gönderiye
   sızmadığı** (senaryo sayfalarında yaşanmıştı), rakamsız özet
   üretilmediği, karakter sınırı (X 280'e göre), anahtar yoksa atlanma,
