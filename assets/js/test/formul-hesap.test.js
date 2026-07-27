@@ -3,6 +3,9 @@ const assert = require("node:assert");
 const {
   kdvHesapla, brutdenNetUcret, nettenBrutUcret, kidemIhbarHesapla,
   krediTaksitHesapla, yuzdeHesapla, sonucParametreleriGecerliMi,
+  tapuHarciHesapla, issizlikOdenegiHesapla, kiraGelirVergisiHesapla,
+  yillikIzinHesapla, fazlaMesaiHesapla, alimGucuHesapla,
+  icerikGeliriHesapla, ICERIK_RPM_ADIMLARI,
 } = require("../formul-hesap.js");
 const { RESMI_PARAMETRELER, tarifedenVergi, parametreGecerliMi } =
   require("../resmi-parametreler.js");
@@ -207,4 +210,116 @@ test("kidem tavani en kisa omurlu parametre - 6 aylik pencere", () => {
   const k = RESMI_PARAMETRELER.kidem_tavani;
   assert.equal(parametreGecerliMi(k, new Date("2026-08-15")), true);
   assert.equal(parametreGecerliMi(k, new Date("2027-01-15")), false);
+});
+
+/* ============ İKİNCİ PARTİ ============ */
+test("tapu harci: alici ve satici AYRI AYRI binde 20", () => {
+  const s = tapuHarciHesapla(10000000, "alici");
+  yakin(s.alici, 200000); yakin(s.satici, 200000); yakin(s.toplam, 400000);
+  yakin(s.odenecek, 200000);
+  yakin(tapuHarciHesapla(10000000, "ikisi").odenecek, 400000);
+});
+
+test("issizlik odenegi tavani resmi tutarla BIREBIR", () => {
+  // Tavan = brut asgari x %80 = 26.424 brut; damga sonrasi 26.223,44 net.
+  // Bu, aciklanan 2026 tavaniyla birebir - oran ve tavan mantigi teyidi.
+  const s = issizlikOdenegiHesapla(200000, 1080);
+  assert.equal(s.tavan_uygulandi, true);
+  yakin(s.odenek_brut, 26424, 0.05);
+  yakin(s.odenek_net, 26223.44, 0.05);
+  assert.equal(s.sure_ay, 10);
+});
+
+test("issizlik: tavan altinda kalan ucrette oran %40", () => {
+  const s = issizlikOdenegiHesapla(50000, 600);
+  assert.equal(s.tavan_uygulandi, false);
+  yakin(s.odenek_brut, 20000);
+  assert.equal(s.sure_ay, 6);
+});
+
+test("issizlik: 600 gun altinda hak dogmaz", () => {
+  const s = issizlikOdenegiHesapla(50000, 500);
+  assert.equal(s.hak_kazanildi, false);
+  assert.equal(s.toplam, 0);
+});
+
+test("kira: mesken istisnasi yalnizca KONUTTA", () => {
+  const konut = kiraGelirVergisiHesapla(120000, "konut", "goturu", 0);
+  const isyeri = kiraGelirVergisiHesapla(120000, "isyeri", "goturu", 0);
+  yakin(konut.istisna, 58000);
+  yakin(isyeri.istisna, 0);
+  assert.ok(isyeri.vergi > konut.vergi, "isyerinde vergi daha yuksek olmali");
+});
+
+test("kira: goturu gider istisna SONRASI tutardan %15", () => {
+  const s = kiraGelirVergisiHesapla(120000, "konut", "goturu", 0);
+  yakin(s.gider, (120000 - 58000) * 0.15);
+  yakin(s.matrah, 120000 - 58000 - s.gider);
+});
+
+test("kira UCRET DISI tarifeden vergilendirilir", () => {
+  // 1.200.000 matrahta ucret tarifesi %27, ucret disi %35 dilimine girer.
+  const s = kiraGelirVergisiHesapla(2000000, "isyeri", "gercek", 0);
+  const ucretle = tarifedenVergi(RESMI_PARAMETRELER.gelir_vergisi.ucret, s.matrah);
+  assert.ok(s.vergi > ucretle, "kira ucret disi tarifeden hesaplanmali");
+});
+
+test("yillik izin kademeleri Is K. md.53", () => {
+  assert.equal(yillikIzinHesapla(3, 35).gun, 14);
+  assert.equal(yillikIzinHesapla(10, 35).gun, 20);
+  assert.equal(yillikIzinHesapla(20, 35).gun, 26);
+});
+
+test("yillik izin yas istisnasi: 18 alti / 50 ustu en az 20 gun", () => {
+  assert.equal(yillikIzinHesapla(2, 17).gun, 20);
+  assert.equal(yillikIzinHesapla(2, 55).gun, 20);
+  assert.equal(yillikIzinHesapla(2, 35).gun, 14);
+  // 15+ yil calisanda zaten 26 - yas istisnasi DUSURMEZ
+  assert.equal(yillikIzinHesapla(20, 60).gun, 26);
+});
+
+test("fazla mesai %50, tatil %100 zamli", () => {
+  const s = fazlaMesaiHesapla(45000, 10, 10);
+  const saatlik = 45000 / 225;
+  yakin(s.saatlik_ucret, saatlik);
+  yakin(s.fazla_mesai, saatlik * 1.5 * 10);
+  yakin(s.tatil_mesaisi, saatlik * 2 * 10);
+});
+
+test("fazla mesai yillik 270 saat siniri uyarisi", () => {
+  assert.equal(fazlaMesaiHesapla(45000, 30, 0).yillik_limit_asildi, true);
+  assert.equal(fazlaMesaiHesapla(45000, 10, 0).yillik_limit_asildi, false);
+});
+
+test("alim gucu: endeks orani ve erime yuzdesi", () => {
+  const s = alimGucuHesapla(50000, 100, 130);
+  yakin(s.bugunku_karsilik, 65000);
+  yakin(s.enflasyon_yuzde, 30);
+  // Erime = 1 - 1/1.3 = %23,08 (enflasyondan FARKLI - sik karistirilir)
+  yakin(s.erime_yuzde, 23.08, 0.05);
+});
+
+test("alim gucu: endeks yoksa null - uydurma yok", () => {
+  assert.equal(alimGucuHesapla(50000, 0, 130), null);
+  assert.equal(alimGucuHesapla(50000, 100, 0), null);
+});
+
+test("icerik geliri: RPM verilmese bile ARALIK doner, tek sayi degil", () => {
+  const s = icerikGeliriHesapla(500000, 0, 1);
+  assert.equal(s.secilen_aylik, null, "RPM yoksa tek sayi verilmemeli");
+  assert.equal(s.duyarlilik.length, ICERIK_RPM_ADIMLARI.length);
+  yakin(s.duyarlilik[0].aylik, (500000 / 1000) * ICERIK_RPM_ADIMLARI[0]);
+});
+
+test("icerik geliri: RPM verilirse hem tek sonuc hem aralik", () => {
+  const s = icerikGeliriHesapla(1000000, 2, 1);
+  yakin(s.secilen_aylik, 2000);
+  yakin(s.secilen_yillik, 24000);
+  assert.ok(s.duyarlilik.length > 1, "aralik yine de gosterilmeli");
+});
+
+test("icerik geliri: kur carpani uygulaniyor", () => {
+  const tl = icerikGeliriHesapla(1000000, 2, 1).secilen_aylik;
+  const usd = icerikGeliriHesapla(1000000, 2, 40).secilen_aylik;
+  yakin(usd, tl * 40);
 });

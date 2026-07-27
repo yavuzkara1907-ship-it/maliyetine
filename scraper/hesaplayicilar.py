@@ -254,6 +254,318 @@ HESAPLAYICILAR = [
         ],
     },
     {
+        "id": "tapu",
+        "slug": "tapu-harci-hesaplama",
+        "ad": "Tapu Harcı Hesaplama",
+        "baslik": "Tapu Harcı Hesaplama (2026)",
+        "soru": "Tapu harcı nasıl hesaplanır, kim ne kadar öder?",
+        "meta": "Satış bedeline göre tapu harcı: alıcı ve satıcı ayrı ayrı binde 20 öder. 492 sayılı Harçlar Kanunu (4) sayılı tarife.",
+        "ozet": (
+            "Tapu harcı, beyan edilen satış bedelinin <strong>binde 20'si</strong> "
+            "kadardır ve <strong>alıcı ile satıcı bunu ayrı ayrı öder</strong> — "
+            "yani devlete giden toplam binde 40, yani %4."
+        ),
+        "formul": "Bir tarafın harcı = satış bedeli × 0,02 &nbsp;·&nbsp; Toplam = satış bedeli × 0,04",
+        "kaynaklar": ["492 sayılı Harçlar Kanunu — (4) sayılı tarife, 20/a bendi"],
+        "alanlar": [
+            {"id": "bedel", "etiket": "Beyan edilen satış bedeli (TL)", "tip": "number",
+             "varsayilan": "5000000", "adim": "1"},
+            {"id": "taraf", "etiket": "Kim için hesaplansın?", "tip": "select",
+             "secenekler": [("alici", "Yalnızca alıcı"), ("satici", "Yalnızca satıcı"),
+                            ("ikisi", "İkisinin toplamı")]},
+        ],
+        "alan_notu": (
+            "Harç, gerçek satış bedeli üzerinden hesaplanır. Emlak vergisi değerinin "
+            "altında beyan yapılamaz; düşük beyan tespit edilirse harç farkı ve "
+            "vergi ziyaı cezası doğar. Döner sermaye ve ipotek harcı bu hesaba dahil değildir."
+        ),
+        "js": """
+      const s = tapuHarciHesapla(sayi("bedel"), deger("taraf"));
+      if (!s) return null;
+      return [
+        ["Satış bedeli", s.satis_bedeli, false],
+        ["Alıcının harcı (binde 20)", s.alici, false],
+        ["Satıcının harcı (binde 20)", s.satici, false],
+        ["Ödenecek tutar", s.odenecek, true],
+      ];""",
+        "sss": [
+            ("Tapu harcını alıcı mı satıcı mı öder?",
+             "Kanunen ikisi de öder: alıcı binde 20, satıcı binde 20. Uygulamada tarafların anlaşıp tamamını bir tarafa yüklediği görülür ama bu kanuni yükümlülüğü değiştirmez."),
+            ("Harç hangi tutar üzerinden hesaplanır?",
+             "Beyan edilen gerçek satış bedeli üzerinden. Beyan, taşınmazın emlak vergisi değerinin altında olamaz. Düşük beyan tespit edilirse eksik harç ile birlikte vergi ziyaı cezası istenir."),
+            ("Tapuda ödenen tek masraf harç mı?",
+             "Hayır. Harcın yanında döner sermaye hizmet bedeli alınır; kredili alımda ayrıca ipotek harcı ve ekspertiz ücreti doğar. Bu hesaplayıcı yalnızca tapu harcını verir."),
+        ],
+    },
+    {
+        "id": "issizlik",
+        "slug": "issizlik-maasi-hesaplama",
+        "ad": "İşsizlik Maaşı Hesaplama",
+        "baslik": "İşsizlik Maaşı Hesaplama (2026)",
+        "soru": "2026'da işsizlik maaşı ne kadar, kaç ay ödenir?",
+        "meta": "Son 4 ayın ortalama brüt kazancına göre işsizlik ödeneği ve ödeme süresi. 2026 tavanı 26.223,44 TL net.",
+        "ozet": (
+            "İşsizlik ödeneği, son dört ayın <strong>ortalama brüt kazancının "
+            "%40'ı</strong>dır ve brüt asgari ücretin %80'ini aşamaz — 2026'da "
+            "tavan <strong>26.223,44 TL net</strong>. Gelir vergisi kesilmez, "
+            "yalnızca damga vergisi düşülür."
+        ),
+        "formul": "Ödenek = min(son 4 ay ortalama brüt × 0,40 ; brüt asgari ücret × 0,80) − damga vergisi",
+        "kaynaklar": [
+            "4447 sayılı İşsizlik Sigortası Kanunu md. 50",
+            "2026 Asgari Ücret Tespit Komisyonu Kararı (tavan hesabı için)",
+            "488 sayılı Damga Vergisi Kanunu",
+        ],
+        "alanlar": [
+            {"id": "brut", "etiket": "Son 4 ayın ortalama brüt ücreti (TL)", "tip": "number",
+             "varsayilan": "50000", "adim": "0.01"},
+            {"id": "gun", "etiket": "Son 3 yıldaki prim gün sayısı", "tip": "select",
+             "secenekler": [("600", "600 gün → 6 ay ödeme"), ("900", "900 gün → 8 ay ödeme"),
+                            ("1080", "1080 gün ve üzeri → 10 ay ödeme")]},
+        ],
+        "alan_notu": (
+            "Ödenek almak için son 120 gün kesintisiz hizmet akdine tabi olmak ve "
+            "son 3 yılda en az 600 gün prim ödemiş olmak gerekir. İstifa eden "
+            "ya da haklı nedenle işten çıkarılan çalışan ödenek alamaz."
+        ),
+        "js": """
+      const s = issizlikOdenegiHesapla(sayi("brut"), parseInt(deger("gun"), 10));
+      if (!s) return null;
+      const satirlar = [
+        ["Ortalama brüt kazanç", s.ortalama_brut, false],
+        ["Aylık ödenek (brüt)", s.odenek_brut, false],
+        ["Damga vergisi", -s.damga, false],
+        ["Aylık ödenek (net)", s.odenek_net, true],
+        ["Ödeme süresi", null, false, "not", s.sure_ay + " ay"],
+        ["Toplam alacağınız", s.toplam, false],
+      ];
+      if (s.tavan_uygulandi) {
+        satirlar.splice(2, 0, ["— tavan uygulandı (brüt asgari ücretin %80'i)", s.tavan_brut, false, "not"]);
+      }
+      return satirlar;""",
+        "sss": [
+            ("İşsizlik maaşı 2026'da en fazla ne kadar?",
+             "Net 26.223,44 TL. Tavan, brüt asgari ücretin %80'i olarak hesaplanır: 33.030 × 0,80 = 26.424 TL brüt, binde 7,59 damga vergisi düşülünce 26.223,44 TL net kalır."),
+            ("Kaç ay ödenir?",
+             "Son üç yıldaki prim gün sayısına göre: 600 gün için 6 ay, 900 gün için 8 ay, 1080 gün ve üzeri için 10 ay."),
+            ("İşsizlik ödeneğinden vergi kesilir mi?",
+             "Gelir vergisi kesilmez. Yalnızca binde 7,59 damga vergisi düşülür."),
+            ("İstifa edersem işsizlik maaşı alabilir miyim?",
+             "Hayır. Ödenek, kendi isteği ve kusuru dışında işini kaybedenlere ödenir. İstifa ya da işverenin haklı nedenle feshi durumunda hak doğmaz."),
+        ],
+    },
+    {
+        "id": "kira",
+        "slug": "kira-gelir-vergisi-hesaplama",
+        "ad": "Kira Gelir Vergisi Hesaplama",
+        "baslik": "Kira Gelir Vergisi Hesaplama (2026)",
+        "soru": "2026'da kira gelirinden ne kadar vergi ödenir?",
+        "meta": "Konut ve işyeri kira geliri vergisi: 58.000 TL mesken istisnası, götürü veya gerçek gider yöntemi, 2026 tarifesi.",
+        "ozet": (
+            "Konut kira gelirinin <strong>58.000 TL'si istisna</strong>dır (2026). "
+            "Kalan tutardan gider düşülür — <strong>götürü yöntemde %15</strong>, "
+            "gerçek yöntemde belgelendirilen giderler. Kalan matraha ücret dışı "
+            "gelir vergisi tarifesi uygulanır."
+        ),
+        "formul": "Matrah = (yıllık kira − istisna) − gider &nbsp;·&nbsp; Vergi = artan oranlı tarife(matrah)",
+        "kaynaklar": [
+            "332 Seri No.lu Gelir Vergisi Genel Tebliği — 2026 mesken istisnası 58.000 TL",
+            "193 sayılı Gelir Vergisi Kanunu md. 21 (mesken istisnası) ve md. 74 (götürü gider %15)",
+        ],
+        "alanlar": [
+            {"id": "kira", "etiket": "Yıllık toplam kira geliri (TL)", "tip": "number",
+             "varsayilan": "180000", "adim": "0.01"},
+            {"id": "tur", "etiket": "Taşınmaz türü", "tip": "select",
+             "secenekler": [("konut", "Konut (mesken istisnası var)"),
+                            ("isyeri", "İşyeri (istisna yok)")]},
+            {"id": "yontem", "etiket": "Gider yöntemi", "tip": "select",
+             "secenekler": [("goturu", "Götürü gider (%15)"), ("gercek", "Gerçek gider")]},
+            {"id": "gercek", "etiket": "Gerçek gider tutarı (TL)", "tip": "number",
+             "varsayilan": "0", "adim": "0.01"},
+        ],
+        "alan_notu": (
+            "Mesken istisnası yalnızca konut kirasında geçerlidir ve ticari/zirai "
+            "kazancı olanlar ile beyan etmesi gerekip etmeyenler için istisnadan "
+            "yararlanma şartları farklıdır. Götürü gider seçen mükellef iki yıl "
+            "geçmeden gerçek gider yöntemine dönemez."
+        ),
+        "js": """
+      const s = kiraGelirVergisiHesapla(sayi("kira"), deger("tur"), deger("yontem"), sayi("gercek"));
+      if (!s) return null;
+      const satirlar = [["Yıllık kira geliri", s.yillik_kira, false]];
+      if (s.istisna_uygulandi) satirlar.push(["Mesken istisnası", -s.istisna, false]);
+      satirlar.push(["Gider", -s.gider, false]);
+      satirlar.push(["Vergi matrahı", s.matrah, false]);
+      satirlar.push(["Ödenecek gelir vergisi", s.vergi, true]);
+      satirlar.push(["Vergi sonrası kalan", s.kalan, false]);
+      return satirlar;""",
+        "sss": [
+            ("2026 kira geliri istisnası ne kadar?",
+             "Konut kira gelirinde 58.000 TL. Bu tutarın altında konut kira geliri elde eden ve başka beyan gerektiren geliri olmayan kişi beyanname vermez. İşyeri kirasında mesken istisnası uygulanmaz."),
+            ("Götürü gider mi gerçek gider mi avantajlı?",
+             "Götürü yöntem, istisna sonrası kalan tutarın %15'ini belge aramadan düşer. Gerçek giderleriniz (faiz, amortisman, tamir, sigorta) bu oranın üzerindeyse gerçek gider daha avantajlıdır. Götürü seçen mükellef iki yıl geçmeden gerçek yönteme dönemez."),
+            ("Kira geliri hangi tarifeden vergilendirilir?",
+             "Ücret dışı gelir tarifesinden. Ücret tarifesiyle ilk iki dilimi aynıdır, üçüncü dilimde ayrışır: kirada 1.000.000 TL, ücrette 1.500.000 TL."),
+            ("Kirayı elden aldım, yine de beyan etmem gerekir mi?",
+             "Evet. Ayrıca konutlarda tutarı ne olursa olsun kira tahsilatının banka veya PTT üzerinden yapılması zorunludur; aksi halde ceza uygulanır."),
+        ],
+    },
+    {
+        "id": "izin",
+        "slug": "yillik-izin-hesaplama",
+        "ad": "Yıllık İzin Hesaplama",
+        "baslik": "Yıllık Ücretli İzin Süresi Hesaplama",
+        "soru": "Kaç gün yıllık iznim var?",
+        "meta": "Hizmet sürenize göre yıllık ücretli izin gün sayısı. 4857 sayılı İş Kanunu md. 53 kademeleri.",
+        "ozet": (
+            "Yıllık izin hizmet süresine bağlıdır: <strong>1–5 yıl arası 14 gün, "
+            "5–15 yıl arası 20 gün, 15 yıl ve üzeri 26 gün</strong>. 18 yaşından "
+            "küçük ve 50 yaşından büyük çalışanlarda izin 20 günden az olamaz."
+        ),
+        "formul": "İzin günü = İş Kanunu md. 53 kademesi (yaş istisnası saklı)",
+        "kaynaklar": ["4857 sayılı İş Kanunu md. 53 ve md. 56"],
+        "alanlar": [
+            {"id": "yil", "etiket": "Hizmet süresi (yıl)", "tip": "number",
+             "varsayilan": "6", "adim": "1"},
+            {"id": "yas", "etiket": "Yaşınız", "tip": "number", "varsayilan": "35", "adim": "1"},
+        ],
+        "alan_notu": (
+            "İzin hakkı için en az bir yıl çalışmış olmak gerekir; deneme süresi bu "
+            "bir yılın içinde sayılır. İzin günleri iş günü olarak hesaplanır — "
+            "hafta tatili ve genel tatil günleri izinden düşülmez."
+        ),
+        "js": """
+      const s = yillikIzinHesapla(sayi("yil"), sayi("yas"));
+      if (!s) return null;
+      const satirlar = [
+        ["Hizmet süresi kademesi", null, false, "not", s.kademe],
+        ["Yıllık izin hakkı", null, true, "not", s.gun + " iş günü"],
+      ];
+      if (s.yas_istisnasi) {
+        satirlar.push(["— yaş istisnası uygulandı (18 altı / 50 üstü en az 20 gün)", null, false, "not"]);
+      }
+      return satirlar;""",
+        "sss": [
+            ("Yıllık izin iş günü mü takvim günü mü?",
+             "İş günü. İzin süresine rastlayan hafta tatili, ulusal bayram ve genel tatil günleri izinden sayılmaz, izne eklenir."),
+            ("Kullanılmayan izin ne olur?",
+             "Yıllık izin ücreti ancak iş sözleşmesi sona erdiğinde ödenir. Çalışırken iznin parayla değiştirilmesi kanunen mümkün değildir; hak kaybolmaz, birikir."),
+            ("İzin hakkı ne zaman doğar?",
+             "İşe başladığı günden itibaren, deneme süresi de dahil, en az bir yıl çalışmış olan işçi yıllık izne hak kazanır."),
+        ],
+    },
+    {
+        "id": "mesai",
+        "slug": "fazla-mesai-hesaplama",
+        "ad": "Fazla Mesai Ücreti Hesaplama",
+        "baslik": "Fazla Mesai Ücreti Hesaplama",
+        "soru": "Fazla mesai ücreti nasıl hesaplanır?",
+        "meta": "Saatlik ücret üzerinden %50 zamlı fazla çalışma ve %100 zamlı tatil mesaisi hesabı. İş Kanunu md. 41 ve 47.",
+        "ozet": (
+            "Haftalık 45 saati aşan çalışma fazla çalışmadır ve saat ücreti "
+            "<strong>%50 zamlı</strong> ödenir. Hafta tatili ve genel tatil "
+            "çalışması <strong>%100 zamlı</strong>dır. Fazla çalışma yılda "
+            "270 saati aşamaz."
+        ),
+        "formul": "Fazla mesai = (aylık brüt ÷ 225) × 1,50 × saat &nbsp;·&nbsp; Tatil mesaisi = (aylık brüt ÷ 225) × 2,00 × saat",
+        "kaynaklar": [
+            "4857 sayılı İş Kanunu md. 41 (fazla çalışma, %50 zam, yıllık 270 saat sınırı)",
+            "4857 sayılı İş Kanunu md. 47 (genel tatil ve hafta tatili çalışması)",
+        ],
+        "alanlar": [
+            {"id": "brut", "etiket": "Aylık brüt ücret (TL)", "tip": "number",
+             "varsayilan": "50000", "adim": "0.01"},
+            {"id": "fazla", "etiket": "Aylık fazla çalışma (saat)", "tip": "number",
+             "varsayilan": "20", "adim": "1"},
+            {"id": "tatil", "etiket": "Tatil günü çalışması (saat)", "tip": "number",
+             "varsayilan": "0", "adim": "1"},
+        ],
+        "alan_notu": (
+            "Saatlik ücret, aylık brüt ücretin 225'e bölünmesiyle bulunur "
+            "(30 gün × 7,5 saat). Sonuç brüt tutardır; ele geçen tutar için "
+            "SGK ve vergi kesintileri ayrıca düşülür."
+        ),
+        "js": """
+      const s = fazlaMesaiHesapla(sayi("brut"), sayi("fazla"), sayi("tatil"));
+      if (!s) return null;
+      const satirlar = [
+        ["Saatlik brüt ücret", s.saatlik_ucret, false],
+        ["Fazla çalışma (%50 zamlı)", s.fazla_mesai, false],
+        ["Tatil mesaisi (%100 zamlı)", s.tatil_mesaisi, false],
+        ["Toplam (brüt)", s.toplam_brut, true],
+      ];
+      if (s.yillik_limit_asildi) {
+        satirlar.push(["— bu tempo yıllık " + s.yillik_azami + " saat sınırını aşar", null, false, "not"]);
+      }
+      return satirlar;""",
+        "sss": [
+            ("Fazla mesai ücreti ne kadar zamlı ödenir?",
+             "Haftalık 45 saati aşan çalışmada saat ücretinin %50 fazlası ödenir. Hafta tatili ve genel tatil günlerindeki çalışmada zam %100'dür."),
+            ("Fazla çalışmanın yıllık sınırı var mı?",
+             "Evet, yılda 270 saat. Ayrıca fazla çalışma için işçinin yazılı onayı gerekir ve bu onay her yıl yenilenmelidir."),
+            ("Zam yerine izin verilebilir mi?",
+             "Evet. İşçi isterse her fazla çalışma saati karşılığında 1 saat 30 dakika serbest zaman kullanabilir; bu hakkı altı ay içinde kullanması gerekir."),
+        ],
+    },
+    {
+        "id": "icerik",
+        "slug": "youtube-gelir-hesaplama",
+        "ad": "YouTube Gelir Hesaplama",
+        "baslik": "YouTube Kanalı Ne Kadar Kazandırır?",
+        "soru": "YouTube kanalı aylık ne kadar kazandırır?",
+        "meta": "İzlenme sayısına ve RPM'e göre YouTube geliri. Tek bir uydurma rakam değil, RPM'e göre duyarlılık tablosu.",
+        "ozet": (
+            "Formül basit: <strong>(izlenme ÷ 1000) × RPM</strong>. Ama cevabı "
+            "belirleyen şey RPM ve <strong>RPM resmî olarak yayınlanmıyor</strong> — "
+            "kanala, izleyicinin ülkesine ve döneme göre kat kat değişiyor. "
+            "Bu yüzden size tek bir rakam vermiyoruz: kendi RPM'inizi girin, "
+            "ya da aşağıdaki tablodan hangi RPM'de ne kazanılacağını okuyun."
+        ),
+        "formul": "Aylık gelir = (aylık izlenme ÷ 1000) × RPM × kur",
+        "kaynaklar": [
+            "Hesap saf aritmetiktir. RPM değeri kullanıcıdan alınır — resmî bir "
+            "kaynağı olmadığı için tarafımızdan varsayılmaz.",
+        ],
+        "alanlar": [
+            {"id": "izlenme", "etiket": "Aylık izlenme", "tip": "number",
+             "varsayilan": "500000", "adim": "1"},
+            {"id": "rpm", "etiket": "RPM (1000 izlenme başına gelir, boş bırakabilirsiniz)",
+             "tip": "number", "varsayilan": "", "adim": "0.01", "zorunlu": False},
+            {"id": "kur", "etiket": "Kur (RPM dolarsa güncel USD/TRY, TL ise 1)",
+             "tip": "number", "varsayilan": "1", "adim": "0.01"},
+        ],
+        "alan_notu": (
+            "RPM'inizi YouTube Studio → Analizler → Gelir sekmesinde görebilirsiniz. "
+            "Bu hesap yalnızca reklam gelirini modellerken sponsorluk, üyelik ve "
+            "ürün satışını içermez — çoğu kanalda asıl gelir oralardan gelir."
+        ),
+        "js": """
+      const s = icerikGeliriHesapla(sayi("izlenme"), sayi("rpm"), sayi("kur"));
+      if (!s) return null;
+      const satirlar = [];
+      if (s.secilen_rpm) {
+        satirlar.push(["Girdiğiniz RPM ile aylık", s.secilen_aylik, true]);
+        satirlar.push(["Yıllık", s.secilen_yillik, false]);
+        satirlar.push(["RPM bilinmiyorsa cevap bir aralıktır:", null, false, "not"]);
+      } else {
+        satirlar.push(["RPM girmediniz — cevap tek sayı değil, aralık:", null, false, "not"]);
+      }
+      s.duyarlilik.forEach(function (d) {
+        satirlar.push(["RPM " + d.rpm + " ise aylık", d.aylik, false]);
+      });
+      return satirlar;""",
+        "sss": [
+            ("Neden tek bir rakam vermiyorsunuz?",
+             "Çünkü veremeyiz. Gelirin tamamı RPM'e bağlı ve RPM'in resmî, yayınlanmış bir değeri yok; kanalın konusuna, izleyicinin bulunduğu ülkeye ve reklam sezonuna göre kat kat değişiyor. Tek bir sayı vermek uydurma olurdu; onun yerine RPM'e göre nasıl değiştiğini gösteriyoruz."),
+            ("RPM ile CPM aynı şey mi?",
+             "Değil. CPM reklamverenin 1000 gösterim için ödediği tutar; RPM ise YouTube payı düşüldükten sonra size 1000 izlenme başına kalan tutardır. Kazancınızı belirleyen RPM'dir."),
+            ("Kendi RPM'imi nereden öğrenirim?",
+             "YouTube Studio → Analizler → Gelir sekmesinde geçmiş dönem RPM'iniz yazar. Hesaplamayı o değerle yaparsanız sonuç size özel olur."),
+            ("Reklam geliri kanalın tek geliri mi?",
+             "Hayır ve çoğu kanalda en büyüğü de değil. Sponsorluk, kanal üyeliği, süper sohbet ve ürün satışı genellikle reklamdan daha büyük kalem olur. Bu hesap yalnızca reklam tarafını modeller."),
+        ],
+    },
+    {
         "id": "kredi",
         "slug": "kredi-taksit-hesaplama",
         "ad": "Kredi Taksit Hesaplama",
@@ -342,6 +654,109 @@ HESAPLAYICILAR = [
 ]
 
 
+# ----------------------------------------------------------
+# ALIM GUCU HESABI - digerlerinden FARKLI
+#
+# Parametresi sabit bir mevzuat degeri degil, bizim ayda iki kez
+# cektigimiz RESMI TUFE SERISI (TCMB EVDS). Rakiplerin hicbirinde bu
+# hesap yok cunku hicbiri resmi endeksi cekmiyor.
+#
+# VERI YOKSA SAYFA URETILMEZ (rehber.py ile ayni kural): EVDS anahtari
+# tanimli degilse enflasyon.json olusmaz; o durumda uydurma endeksle
+# sayfa acmak yerine hic acmiyoruz.
+# ----------------------------------------------------------
+def _tufe_serisi(veri_kok: Path | None = None) -> dict | None:
+    dosya = (veri_kok or SITE_KOK / "veri") / "enflasyon.json"
+    if not dosya.exists():
+        return None
+    try:
+        veri = json.loads(dosya.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return None
+    genel = next((g for g in (veri.get("gruplar") or {}).values()
+                  if g.get("vertikal") is None and g.get("seri")), None)
+    if not genel or len(genel.get("seri") or []) < 2:
+        return None
+    return {
+        "ad": genel["ad"],
+        "seri": [{"tarih": n["tarih"], "endeks": n["endeks"]} for n in genel["seri"]],
+        "kaynak": veri.get("kaynak") or "TCMB EVDS — TÜİK Tüketici Fiyat Endeksi",
+    }
+
+
+def alim_gucu_tanimi(veri_kok: Path | None = None) -> dict | None:
+    t = _tufe_serisi(veri_kok)
+    if not t:
+        return None
+    ilk, son = t["seri"][0], t["seri"][-1]
+    degisim = (son["endeks"] / ilk["endeks"] - 1) * 100
+    aylar = [n["tarih"] for n in t["seri"]]
+    return {
+        "id": "alim-gucu",
+        "slug": "alim-gucu-hesaplama",
+        "ad": "Alım Gücü Hesaplama",
+        "baslik": "Paranızın Alım Gücü Ne Kadar Eridi?",
+        "soru": "Geçmişteki bir tutar bugün ne kadara denk geliyor?",
+        "meta": (
+            f"Resmî TÜFE ile alım gücü hesabı. {ilk['tarih']} — {son['tarih']} "
+            f"arasında genel enflasyon %{degisim:.1f}. Kaynak: TCMB EVDS."
+        ),
+        "ozet": (
+            f"<strong>{ilk['tarih']}</strong> ile <strong>{son['tarih']}</strong> "
+            f"arasında resmî tüketici fiyat endeksi <strong>%{degisim:.1f}</strong> "
+            "arttı. Bu hesap, geçmişteki bir tutarın bugün kaç liraya denk geldiğini "
+            "ve alım gücünün ne kadar eridiğini gösterir."
+        ),
+        "formul": "Bugünkü karşılık = tutar × (son endeks ÷ ilk endeks)",
+        "kaynaklar": [
+            "TCMB EVDS — TÜİK Tüketici Fiyat Endeksi (2025=100), seri TP.FE25.OKTG01",
+            f"Kullanılan seri: {aylar[0]} – {aylar[-1]}, ayda iki kez güncelleniyor",
+        ],
+        "alanlar": [
+            {"id": "tutar", "etiket": "Tutar (TL)", "tip": "number",
+             "varsayilan": "50000", "adim": "0.01"},
+            {"id": "ilk", "etiket": "Hangi tarihteki tutar?", "tip": "select",
+             "secenekler": [(n["tarih"], n["tarih"]) for n in t["seri"]]},
+            {"id": "son", "etiket": "Hangi tarihe göre?", "tip": "select",
+             "secenekler": [(n["tarih"], n["tarih"]) for n in reversed(t["seri"])]},
+        ],
+        "alan_notu": (
+            "TÜFE bir ENDEKS'tir, TL cinsinden fiyat değil — sepetin ortalama "
+            "değişimini ölçer. Sizin harcama sepetiniz farklıysa hissettiğiniz "
+            "enflasyon bu rakamdan sapabilir. Sitedeki ölçülmüş fiyat endeksleri "
+            "ise gerçek TL tutarları izler; ikisi ayrı şeydir."
+        ),
+        "js": """
+      const seri = TUFE_SERISI;
+      const bul = (t) => (seri.find((x) => x.tarih === t) || {}).endeks;
+      const s = alimGucuHesapla(sayi("tutar"), bul(deger("ilk")), bul(deger("son")));
+      if (!s) return null;
+      return [
+        [deger("ilk") + " tarihindeki tutar", s.tutar, false],
+        [deger("son") + " tarihindeki karşılığı", s.bugunku_karsilik, true],
+        ["Aradaki fark", s.fark, false],
+        ["Bu dönemde enflasyon", null, false, "not", "%" + s.enflasyon_yuzde],
+        ["Aynı parayla alım gücü kaybı", null, false, "not", "%" + s.erime_yuzde],
+      ];""",
+        "sss": [
+            ("TÜFE ile kendi hissettiğim enflasyon neden farklı?",
+             "TÜFE, hane halkının ortalama harcama sepetini ölçer. Sizin sepetiniz "
+             "farklıysa — kira ağırlıklıysa, çocuğunuz varsa, araç kullanıyorsanız — "
+             "hissettiğiniz oran resmî ortalamadan sapar. Bu yüzden bu sitede ayrıca "
+             "düğün, ev kurma, okul, bebek gibi somut sepetlerin TL fiyatını ölçüyoruz."),
+            ("Bu rakam nereden geliyor?",
+             "TCMB'nin EVDS sisteminden çekilen TÜİK Tüketici Fiyat Endeksi (2025=100). "
+             "Seriyi ayda iki kez tazeliyoruz; hesapta kullanılan dönem sayfada yazılı."),
+            ("Maaşıma enflasyon kadar zam alırsam alım gücüm korunur mu?",
+             "Tam olarak değil. Zam yıl sonunda gelirse yıl boyunca eski maaşla daha "
+             "pahalı fiyatlara alışveriş yapmış olursunuz; o kayıp geriye dönük "
+             "telafi edilmez. Ayrıca zam brütten verilir, artan oranlı vergi nedeniyle "
+             "nete yansıması daha düşük olur."),
+        ],
+        "_tufe": t,
+    }
+
+
 def _slug_haritasi() -> dict[str, dict]:
     return {h["slug"]: h for h in HESAPLAYICILAR}
 
@@ -361,9 +776,16 @@ def _form_html(h: dict) -> str:
             # step="1" / step="0.01" ONEMLI: `step` bir GECERLILIK KISITI.
             # Arac hesaplayicisinda step="50000" yuzunden kullanici gercek
             # bir tutar yazinca form SESSIZCE bloke oluyordu.
+            # `required` VARSAYILAN AMA MECBURI DEGIL: YouTube hesabinda
+            # RPM alani "bos birakabilirsiniz" diyor; ona da required
+            # konunca HTML5 validation submit'i SESSIZCE blokluyordu ve
+            # sayfa hic sonuc uretmiyordu. Bu, arac hesaplayicisindaki
+            # step="50000" bug'inin ayni sinifi - form nitelikleri
+            # "gorunum" degil GECERLILIK KISITI. Tarayici testi yakaladi.
+            zorunlu = " required" if a.get("zorunlu", True) else ""
             girdi = (
                 f'<input type="number" id="{a["id"]}" name="{a["id"]}" '
-                f'value="{a.get("varsayilan", "")}" step="{a.get("adim", "0.01")}" min="0" required>'
+                f'value="{a.get("varsayilan", "")}" step="{a.get("adim", "0.01")}" min="0"{zorunlu}>'
             )
         parcalar.append(
             f'    <div class="alan"><label for="{a["id"]}">{a["etiket"]}</label>{girdi}</div>'
@@ -454,7 +876,7 @@ def _schema(h: dict) -> str:
 def _diger_hesaplar(h: dict) -> str:
     linkler = "".join(
         f'<li><a href="/{HESAP_KOK}/{d["slug"]}/">{d["ad"]}</a></li>'
-        for d in HESAPLAYICILAR if d["id"] != h["id"]
+        for d in tum_hesaplayicilar() if d["id"] != h["id"]
     )
     return f'<section><h2>Diğer hesaplayıcılar</h2><ul class="hesap-liste">{linkler}</ul></section>'
 
@@ -573,10 +995,18 @@ HESAP_JS_KALIP = """
 
 
 def _hesap_js(h: dict) -> str:
+    onek = ""
+    if h.get("_tufe"):
+        # Seri sayfaya GOMULUYOR (build-time). Client-side fetch DEGIL:
+        # AI botlarinin cogu JS calistirmiyor ve yenibirhesap'i AI
+        # motorlari icin gorunmez yapan sey tam olarak bu.
+        onek = ("<script>const TUFE_SERISI = "
+                + json.dumps(h["_tufe"]["seri"], ensure_ascii=False)
+                + ";</script>\n")
     param = "RESMI_PARAMETRELER ? Object.values(RESMI_PARAMETRELER) : []"
     if not any("Kanunu" in k or "Tebliğ" in k or "Bakanlığı" in k for k in h["kaynaklar"]):
         param = "[]"  # saf matematik - mevzuata bagli degil
-    return HESAP_JS_KALIP % {"GOVDE": h["js"], "PARAM": param}
+    return onek + HESAP_JS_KALIP % {"GOVDE": h["js"], "PARAM": param}
 
 
 def sayfa_uret(h: dict) -> str:
@@ -617,7 +1047,7 @@ def dizin_uret() -> str:
     kartlar = "".join(
         f'    <a class="hesap-kart" href="/{HESAP_KOK}/{h["slug"]}/">'
         f'<strong>{h["ad"]}</strong><span>{re.sub(r"<[^>]+>", "", h["ozet"])[:110]}…</span></a>\n'
-        for h in HESAPLAYICILAR
+        for h in tum_hesaplayicilar()
     )
     schema = json.dumps({
         "@context": "https://schema.org",
@@ -629,7 +1059,7 @@ def dizin_uret() -> str:
             {"@type": "ItemList", "itemListElement": [
                 {"@type": "ListItem", "position": i, "name": h["ad"],
                  "url": f"{SITE_KOK_URL}/{HESAP_KOK}/{h['slug']}/"}
-                for i, h in enumerate(HESAPLAYICILAR, start=1)]},
+                for i, h in enumerate(tum_hesaplayicilar(), start=1)]},
             {"@type": "BreadcrumbList", "itemListElement": [
                 {"@type": "ListItem", "position": 1, "name": "Ana sayfa", "item": SITE_KOK_URL + "/"},
                 {"@type": "ListItem", "position": 2, "name": "Hesaplayıcılar", "item": url}]},
@@ -670,13 +1100,23 @@ def dizin_uret() -> str:
         url, schema, govde)
 
 
+def tum_hesaplayicilar(veri_kok: Path | None = None) -> list[dict]:
+    """Sabit liste + (veri varsa) alim gucu. Veri yoksa o sayfa hic
+    uretilmez ve sitemap'e de girmez."""
+    liste = list(HESAPLAYICILAR)
+    ag = alim_gucu_tanimi(veri_kok)
+    if ag:
+        liste.insert(0, ag)
+    return liste
+
+
 def yaz() -> list[Path]:
     yazilan = []
     dizin = SITE_KOK / HESAP_KOK / "index.html"
     dizin.parent.mkdir(parents=True, exist_ok=True)
     dizin.write_text(dizin_uret(), encoding="utf-8")
     yazilan.append(dizin)
-    for h in HESAPLAYICILAR:
+    for h in tum_hesaplayicilar():
         hedef = SITE_KOK / HESAP_KOK / h["slug"] / "index.html"
         hedef.parent.mkdir(parents=True, exist_ok=True)
         hedef.write_text(sayfa_uret(h), encoding="utf-8")
@@ -687,13 +1127,13 @@ def yaz() -> list[Path]:
 def sitemap_yollari() -> list[str]:
     """sayfa_uret.py sitemap uretirken buradan okuyor - elle liste
     tutulmuyor ki yeni hesaplayici eklenince unutulmasin."""
-    return [f"{HESAP_KOK}/"] + [f"{HESAP_KOK}/{h['slug']}/" for h in HESAPLAYICILAR]
+    return [f"{HESAP_KOK}/"] + [f"{HESAP_KOK}/{h['slug']}/" for h in tum_hesaplayicilar()]
 
 
 def main():
     for p in yaz():
         print("Hesap sayfasi:", str(p).replace(str(SITE_KOK), ""))
-    print(f"Toplam {len(HESAPLAYICILAR)} hesaplayici + dizin.")
+    print(f"Toplam {len(tum_hesaplayicilar())} hesaplayici + dizin.")
     return 0
 
 

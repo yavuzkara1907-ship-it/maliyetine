@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>KDV Hesaplama: Dahil ve Hariç Tutar | Maliyeti Ne?</title>
-<meta name="description" content="KDV dahil ve hariç tutarı %1, %10 ve %20 oranlarıyla anında hesaplayın. Oranların dayandığı mevzuat sayfada yazılı.">
-<link rel="canonical" href="https://maliyetine.com.tr/hesap/kdv-hesaplama/">
-<meta property="og:title" content="KDV Hesaplama: Dahil ve Hariç Tutar | Maliyeti Ne?">
-<meta property="og:description" content="KDV dahil ve hariç tutarı %1, %10 ve %20 oranlarıyla anında hesaplayın. Oranların dayandığı mevzuat sayfada yazılı.">
+<title>İşsizlik Maaşı Hesaplama (2026) | Maliyeti Ne?</title>
+<meta name="description" content="Son 4 ayın ortalama brüt kazancına göre işsizlik ödeneği ve ödeme süresi. 2026 tavanı 26.223,44 TL net.">
+<link rel="canonical" href="https://maliyetine.com.tr/hesap/issizlik-maasi-hesaplama/">
+<meta property="og:title" content="İşsizlik Maaşı Hesaplama (2026) | Maliyeti Ne?">
+<meta property="og:description" content="Son 4 ayın ortalama brüt kazancına göre işsizlik ödeneği ve ödeme süresi. 2026 tavanı 26.223,44 TL net.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://maliyetine.com.tr/hesap/kdv-hesaplama/">
+<meta property="og:url" content="https://maliyetine.com.tr/hesap/issizlik-maasi-hesaplama/">
 <meta property="og:image" content="https://maliyetine.com.tr/assets/og-gorsel.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -24,8 +24,8 @@
  "@graph": [
   {
    "@type": "WebApplication",
-   "name": "KDV Hesaplama",
-   "url": "https://maliyetine.com.tr/hesap/kdv-hesaplama/",
+   "name": "İşsizlik Maaşı Hesaplama",
+   "url": "https://maliyetine.com.tr/hesap/issizlik-maasi-hesaplama/",
    "applicationCategory": "FinanceApplication",
    "operatingSystem": "Web",
    "browserRequirements": "JavaScript",
@@ -44,33 +44,27 @@
   },
   {
    "@type": "HowTo",
-   "name": "KDV Hesaplama: Dahil ve Hariç Tutar",
-   "description": "KDV hariç tutara oranı uygulayıp eklersiniz; dahil tutardan geri gitmek için dahil ÷ (1 + oran) yaparsınız. Yürürlükteki üç oran %1, %10 ve %20.",
+   "name": "İşsizlik Maaşı Hesaplama (2026)",
+   "description": "İşsizlik ödeneği, son dört ayın ortalama brüt kazancının %40'ıdır ve brüt asgari ücretin %80'ini aşamaz — 2026'da tavan 26.223,44 TL net. Gelir vergisi kesilmez, yalnızca damga vergisi düşülür.",
    "inLanguage": "tr-TR",
    "step": [
     {
      "@type": "HowToStep",
      "position": 1,
-     "name": "Tutar (TL)",
-     "text": "Tutar (TL) alanını doldurun."
+     "name": "Son 4 ayın ortalama brüt ücreti (TL)",
+     "text": "Son 4 ayın ortalama brüt ücreti (TL) alanını doldurun."
     },
     {
      "@type": "HowToStep",
      "position": 2,
-     "name": "KDV oranı",
-     "text": "KDV oranı alanını doldurun."
+     "name": "Son 3 yıldaki prim gün sayısı",
+     "text": "Son 3 yıldaki prim gün sayısı alanını doldurun."
     },
     {
      "@type": "HowToStep",
      "position": 3,
-     "name": "Hesaplama yönü",
-     "text": "Hesaplama yönü alanını doldurun."
-    },
-    {
-     "@type": "HowToStep",
-     "position": 4,
      "name": "Hesapla",
-     "text": "Sonuç şu formülle bulunur: KDV = matrah × oran  ·  Hariç tutar = dahil tutar ÷ (1 + oran)"
+     "text": "Sonuç şu formülle bulunur: Ödenek = min(son 4 ay ortalama brüt × 0,40 ; brüt asgari ücret × 0,80) − damga vergisi"
     }
    ]
   },
@@ -79,26 +73,34 @@
    "mainEntity": [
     {
      "@type": "Question",
-     "name": "KDV dahil tutardan hariç tutar nasıl bulunur?",
+     "name": "İşsizlik maaşı 2026'da en fazla ne kadar?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Dahil tutarı (1 + oran)'a bölersiniz. %20 KDV'li 1.200 TL'nin hariç tutarı 1.200 ÷ 1,20 = 1.000 TL, KDV 200 TL'dir."
+      "text": "Net 26.223,44 TL. Tavan, brüt asgari ücretin %80'i olarak hesaplanır: 33.030 × 0,80 = 26.424 TL brüt, binde 7,59 damga vergisi düşülünce 26.223,44 TL net kalır."
      }
     },
     {
      "@type": "Question",
-     "name": "Hangi üründe hangi KDV oranı uygulanır?",
+     "name": "Kaç ay ödenir?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Oranlar 2007/13033 sayılı Bakanlar Kurulu Kararı'na ekli listelerle belirlenir: I. listede %1, II. listede %10, listelerde yer almayan her şeyde genel oran %20 uygulanır."
+      "text": "Son üç yıldaki prim gün sayısına göre: 600 gün için 6 ay, 900 gün için 8 ay, 1080 gün ve üzeri için 10 ay."
      }
     },
     {
      "@type": "Question",
-     "name": "KDV'yi tutardan çıkarırken oranı doğrudan düşmek neden yanlış?",
+     "name": "İşsizlik ödeneğinden vergi kesilir mi?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "1.200 TL'den %20 düşmek 960 TL verir; doğrusu 1.000 TL. Çünkü oran hariç tutar üzerinden hesaplanır, dahil tutar üzerinden değil. En sık yapılan hata bu."
+      "text": "Gelir vergisi kesilmez. Yalnızca binde 7,59 damga vergisi düşülür."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "İstifa edersem işsizlik maaşı alabilir miyim?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Hayır. Ödenek, kendi isteği ve kusuru dışında işini kaybedenlere ödenir. İstifa ya da işverenin haklı nedenle feshi durumunda hak doğmaz."
      }
     }
    ]
@@ -121,8 +123,8 @@
     {
      "@type": "ListItem",
      "position": 3,
-     "name": "KDV Hesaplama",
-     "item": "https://maliyetine.com.tr/hesap/kdv-hesaplama/"
+     "name": "İşsizlik Maaşı Hesaplama",
+     "item": "https://maliyetine.com.tr/hesap/issizlik-maasi-hesaplama/"
     }
    ]
   }
@@ -141,44 +143,45 @@
 
 <main class="kapsayici">
   <nav class="kirinti" aria-label="Sayfa yolu">
-    <a href="/">Ana sayfa</a> › <a href="/hesap/">Hesaplayıcılar</a> › <span>KDV Hesaplama</span>
+    <a href="/">Ana sayfa</a> › <a href="/hesap/">Hesaplayıcılar</a> › <span>İşsizlik Maaşı Hesaplama</span>
   </nav>
 
-  <h1>KDV Hesaplama: Dahil ve Hariç Tutar</h1>
+  <h1>İşsizlik Maaşı Hesaplama (2026)</h1>
 
   <div class="cevap-blok">
-    KDV hariç tutara oranı uygulayıp eklersiniz; dahil tutardan geri gitmek için <strong>dahil ÷ (1 + oran)</strong> yaparsınız. Yürürlükteki üç oran %1, %10 ve %20.
+    İşsizlik ödeneği, son dört ayın <strong>ortalama brüt kazancının %40'ı</strong>dır ve brüt asgari ücretin %80'ini aşamaz — 2026'da tavan <strong>26.223,44 TL net</strong>. Gelir vergisi kesilmez, yalnızca damga vergisi düşülür.
   </div>
 
   <form id="hesap-formu" class="hesap-formu">
   <div class="alan-izgara">
-    <div class="alan"><label for="tutar">Tutar (TL)</label><input type="number" id="tutar" name="tutar" value="1000" step="0.01" min="0" required></div>
-    <div class="alan"><label for="oran">KDV oranı</label><select id="oran" name="oran"><option value="0.20">%20 — genel oran</option><option value="0.10">%10 — gıda, tekstil, konaklama</option><option value="0.01">%1 — temel gıda, gazete</option></select></div>
-    <div class="alan"><label for="yon">Hesaplama yönü</label><select id="yon" name="yon"><option value="haricten-dahile">KDV hariç → dahil</option><option value="dahilden-harice">KDV dahil → hariç</option></select></div>
+    <div class="alan"><label for="brut">Son 4 ayın ortalama brüt ücreti (TL)</label><input type="number" id="brut" name="brut" value="50000" step="0.01" min="0" required></div>
+    <div class="alan"><label for="gun">Son 3 yıldaki prim gün sayısı</label><select id="gun" name="gun"><option value="600">600 gün → 6 ay ödeme</option><option value="900">900 gün → 8 ay ödeme</option><option value="1080">1080 gün ve üzeri → 10 ay ödeme</option></select></div>
   </div>
+  <p class="alan-notu">Ödenek almak için son 120 gün kesintisiz hizmet akdine tabi olmak ve son 3 yılda en az 600 gün prim ödemiş olmak gerekir. İstifa eden ya da haklı nedenle işten çıkarılan çalışan ödenek alamaz.</p>
   <button type="submit">Hesapla</button>
 </form>
 <div id="sonuc" class="hesap-sonuc" hidden></div>
 
   <section>
     <h2>Nasıl hesaplanır?</h2>
-    <p class="formul">KDV = matrah × oran &nbsp;·&nbsp; Hariç tutar = dahil tutar ÷ (1 + oran)</p>
+    <p class="formul">Ödenek = min(son 4 ay ortalama brüt × 0,40 ; brüt asgari ücret × 0,80) − damga vergisi</p>
   </section>
 
   <section class="kaynak-kunye">
   <h2>Hesapta kullanılan mevzuat</h2>
-  <ul><li>3065 sayılı KDV Kanunu</li><li>2007/13033 sayılı BKK ekli listeler</li></ul>
+  <ul><li>4447 sayılı İşsizlik Sigortası Kanunu md. 50</li><li>2026 Asgari Ücret Tespit Komisyonu Kararı (tavan hesabı için)</li><li>488 sayılı Damga Vergisi Kanunu</li></ul>
   <p class="sonuc-alt-metin">Vergi tarifesi ve hadler her 31 Aralık'ta Resmî Gazete'de yeniden değerleme oranıyla değişir; kıdem tazminatı tavanı yılda iki kez (Ocak ve Temmuz) güncellenir. Bu sayfadaki parametreler geçerlilik dönemiyle birlikte tutulur — dönem geçtiğinde sayfa uyarı gösterir.</p>
 </section>
 
   <section class="sss">
   <h2>Sıkça sorulan sorular</h2>
-  <details><summary>KDV dahil tutardan hariç tutar nasıl bulunur?</summary><p>Dahil tutarı (1 + oran)'a bölersiniz. %20 KDV'li 1.200 TL'nin hariç tutarı 1.200 ÷ 1,20 = 1.000 TL, KDV 200 TL'dir.</p></details>
-  <details><summary>Hangi üründe hangi KDV oranı uygulanır?</summary><p>Oranlar 2007/13033 sayılı Bakanlar Kurulu Kararı'na ekli listelerle belirlenir: I. listede %1, II. listede %10, listelerde yer almayan her şeyde genel oran %20 uygulanır.</p></details>
-  <details><summary>KDV'yi tutardan çıkarırken oranı doğrudan düşmek neden yanlış?</summary><p>1.200 TL'den %20 düşmek 960 TL verir; doğrusu 1.000 TL. Çünkü oran hariç tutar üzerinden hesaplanır, dahil tutar üzerinden değil. En sık yapılan hata bu.</p></details>
+  <details><summary>İşsizlik maaşı 2026'da en fazla ne kadar?</summary><p>Net 26.223,44 TL. Tavan, brüt asgari ücretin %80'i olarak hesaplanır: 33.030 × 0,80 = 26.424 TL brüt, binde 7,59 damga vergisi düşülünce 26.223,44 TL net kalır.</p></details>
+  <details><summary>Kaç ay ödenir?</summary><p>Son üç yıldaki prim gün sayısına göre: 600 gün için 6 ay, 900 gün için 8 ay, 1080 gün ve üzeri için 10 ay.</p></details>
+  <details><summary>İşsizlik ödeneğinden vergi kesilir mi?</summary><p>Gelir vergisi kesilmez. Yalnızca binde 7,59 damga vergisi düşülür.</p></details>
+  <details><summary>İstifa edersem işsizlik maaşı alabilir miyim?</summary><p>Hayır. Ödenek, kendi isteği ve kusuru dışında işini kaybedenlere ödenir. İstifa ya da işverenin haklı nedenle feshi durumunda hak doğmaz.</p></details>
 </section>
 
-  <section><h2>Diğer hesaplayıcılar</h2><ul class="hesap-liste"><li><a href="/hesap/alim-gucu-hesaplama/">Alım Gücü Hesaplama</a></li><li><a href="/hesap/brutten-nete-maas-hesaplama/">Brütten Nete Maaş Hesaplama</a></li><li><a href="/hesap/kidem-tazminati-hesaplama/">Kıdem ve İhbar Tazminatı Hesaplama</a></li><li><a href="/hesap/tapu-harci-hesaplama/">Tapu Harcı Hesaplama</a></li><li><a href="/hesap/issizlik-maasi-hesaplama/">İşsizlik Maaşı Hesaplama</a></li><li><a href="/hesap/kira-gelir-vergisi-hesaplama/">Kira Gelir Vergisi Hesaplama</a></li><li><a href="/hesap/yillik-izin-hesaplama/">Yıllık İzin Hesaplama</a></li><li><a href="/hesap/fazla-mesai-hesaplama/">Fazla Mesai Ücreti Hesaplama</a></li><li><a href="/hesap/youtube-gelir-hesaplama/">YouTube Gelir Hesaplama</a></li><li><a href="/hesap/kredi-taksit-hesaplama/">Kredi Taksit Hesaplama</a></li><li><a href="/hesap/yuzde-hesaplama/">Yüzde Hesaplama</a></li></ul></section>
+  <section><h2>Diğer hesaplayıcılar</h2><ul class="hesap-liste"><li><a href="/hesap/alim-gucu-hesaplama/">Alım Gücü Hesaplama</a></li><li><a href="/hesap/kdv-hesaplama/">KDV Hesaplama</a></li><li><a href="/hesap/brutten-nete-maas-hesaplama/">Brütten Nete Maaş Hesaplama</a></li><li><a href="/hesap/kidem-tazminati-hesaplama/">Kıdem ve İhbar Tazminatı Hesaplama</a></li><li><a href="/hesap/tapu-harci-hesaplama/">Tapu Harcı Hesaplama</a></li><li><a href="/hesap/kira-gelir-vergisi-hesaplama/">Kira Gelir Vergisi Hesaplama</a></li><li><a href="/hesap/yillik-izin-hesaplama/">Yıllık İzin Hesaplama</a></li><li><a href="/hesap/fazla-mesai-hesaplama/">Fazla Mesai Ücreti Hesaplama</a></li><li><a href="/hesap/youtube-gelir-hesaplama/">YouTube Gelir Hesaplama</a></li><li><a href="/hesap/kredi-taksit-hesaplama/">Kredi Taksit Hesaplama</a></li><li><a href="/hesap/yuzde-hesaplama/">Yüzde Hesaplama</a></li></ul></section>
 
   <p class="sonuc-alt-metin">Bu sayfa bir hesap aracıdır, mali ya da hukuki
     danışmanlık değildir. Ölçülmüş gerçek fiyat verileri için
@@ -222,13 +225,20 @@
 
   function hesapla() {
 
-      const s = kdvHesapla(sayi("tutar"), parseFloat(deger("oran")), deger("yon"));
+      const s = issizlikOdenegiHesapla(sayi("brut"), parseInt(deger("gun"), 10));
       if (!s) return null;
-      return [
-        ["KDV hariç tutar", s.haric, false],
-        ["KDV (" + (s.oran * 100).toFixed(0) + "%)", s.kdv, false],
-        ["KDV dahil tutar", s.dahil, true],
+      const satirlar = [
+        ["Ortalama brüt kazanç", s.ortalama_brut, false],
+        ["Aylık ödenek (brüt)", s.odenek_brut, false],
+        ["Damga vergisi", -s.damga, false],
+        ["Aylık ödenek (net)", s.odenek_net, true],
+        ["Ödeme süresi", null, false, "not", s.sure_ay + " ay"],
+        ["Toplam alacağınız", s.toplam, false],
       ];
+      if (s.tavan_uygulandi) {
+        satirlar.splice(2, 0, ["— tavan uygulandı (brüt asgari ücretin %80'i)", s.tavan_brut, false, "not"]);
+      }
+      return satirlar;
   }
 
   form.addEventListener("submit", function (e) {

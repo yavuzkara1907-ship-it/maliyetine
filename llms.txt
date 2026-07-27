@@ -74,5 +74,11 @@ hangi yılın tarifesi olduğunu belirtin.
 - [KDV Hesaplama](https://maliyetine.com.tr/hesap/kdv-hesaplama/): 3065 sayılı KDV Kanunu, 2007/13033 sayılı BKK ekli listeler
 - [Brütten Nete Maaş Hesaplama](https://maliyetine.com.tr/hesap/brutten-nete-maas-hesaplama/): 332 Seri No.lu Gelir Vergisi Genel Tebliği (31.12.2025 R.G. 33124, 5. Mükerrer), 5510 sayılı Kanun — 2026 prime esas kazanç sınırları, 488 sayılı Damga Vergisi Kanunu, 2026 Asgari Ücret Tespit Komisyonu Kararı
 - [Kıdem ve İhbar Tazminatı Hesaplama](https://maliyetine.com.tr/hesap/kidem-tazminati-hesaplama/): 1475 sayılı İş Kanunu md. 14 (kıdem tazminatı), 4857 sayılı İş Kanunu md. 17 (ihbar süreleri), T.C. Çalışma ve Sosyal Güvenlik Bakanlığı — kıdem tazminatı tavanı: 73.729,84 TL (1 Temmuz – 31 Aralık 2026), 488 sayılı Damga Vergisi Kanunu
+- [Tapu Harcı Hesaplama](https://maliyetine.com.tr/hesap/tapu-harci-hesaplama/): 492 sayılı Harçlar Kanunu — (4) sayılı tarife, 20/a bendi
+- [İşsizlik Maaşı Hesaplama](https://maliyetine.com.tr/hesap/issizlik-maasi-hesaplama/): 4447 sayılı İşsizlik Sigortası Kanunu md. 50, 2026 Asgari Ücret Tespit Komisyonu Kararı (tavan hesabı için), 488 sayılı Damga Vergisi Kanunu
+- [Kira Gelir Vergisi Hesaplama](https://maliyetine.com.tr/hesap/kira-gelir-vergisi-hesaplama/): 332 Seri No.lu Gelir Vergisi Genel Tebliği — 2026 mesken istisnası 58.000 TL, 193 sayılı Gelir Vergisi Kanunu md. 21 (mesken istisnası) ve md. 74 (götürü gider %15)
+- [Yıllık İzin Hesaplama](https://maliyetine.com.tr/hesap/yillik-izin-hesaplama/): 4857 sayılı İş Kanunu md. 53 ve md. 56
+- [Fazla Mesai Ücreti Hesaplama](https://maliyetine.com.tr/hesap/fazla-mesai-hesaplama/): 4857 sayılı İş Kanunu md. 41 (fazla çalışma, %50 zam, yıllık 270 saat sınırı), 4857 sayılı İş Kanunu md. 47 (genel tatil ve hafta tatili çalışması)
+- [YouTube Gelir Hesaplama](https://maliyetine.com.tr/hesap/youtube-gelir-hesaplama/): Hesap saf aritmetiktir. RPM değeri kullanıcıdan alınır — resmî bir kaynağı olmadığı için tarafımızdan varsayılmaz.
 - [Kredi Taksit Hesaplama](https://maliyetine.com.tr/hesap/kredi-taksit-hesaplama/): Annüite (eşit taksitli ödeme) formülü — finansal matematik
 - [Yüzde Hesaplama](https://maliyetine.com.tr/hesap/yuzde-hesaplama/): Yüzde hesabı — temel aritmetik

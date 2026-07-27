@@ -275,6 +275,193 @@ function yuzdeHesapla(tur, a, b) {
   return null;
 }
 
+/* ================================================================
+ * 6. TAPU HARCI — 492 s. Harçlar K. (4) sayılı tarife
+ * Alici ve satici AYRI AYRI binde 20; toplam binde 40. En sik yapilan
+ * hata toplami tek tarafa yazmak.
+ * ================================================================ */
+function tapuHarciHesapla(satisBedeli, taraf) {
+  if (!(satisBedeli > 0)) return null;
+  const t = _P.tapu_harci;
+  const tekTaraf = satisBedeli * t.taraf_orani;
+  return {
+    satis_bedeli: _yuvarla(satisBedeli),
+    alici: _yuvarla(tekTaraf),
+    satici: _yuvarla(tekTaraf),
+    toplam: _yuvarla(tekTaraf * 2),
+    odenecek: _yuvarla(taraf === "ikisi" ? tekTaraf * 2 : tekTaraf),
+    parametreler: [t],
+  };
+}
+
+/* ================================================================
+ * 7. İŞSİZLİK ÖDENEĞİ — 4447 s. K. md. 50
+ * Son 4 ayin ortalama brut kazancinin %40'i; tavan brut asgari
+ * ucretin %80'i. Gelir vergisi YOK, yalnizca damga vergisi.
+ * ================================================================ */
+function issizlikOdenegiHesapla(ortalamaBrut, primGunu) {
+  if (!(ortalamaBrut > 0)) return null;
+  const io = _P.issizlik_odenegi;
+  const av = _P.asgari_ucret;
+  const dv = _P.damga_vergisi;
+
+  const hamBrut = ortalamaBrut * io.oran;
+  const tavanBrut = av.brut_aylik * io.tavan_orani;
+  const brut = Math.min(hamBrut, tavanBrut);
+  const damga = brut * dv.ucret_orani;
+
+  // Odeme suresi prim gun sayisina gore; esigi tutturamayan hak kazanmaz.
+  let sure = null;
+  for (const k of io.sure_kademeleri) {
+    if (primGunu >= k.asgari_gun) sure = k;
+  }
+
+  return {
+    ortalama_brut: _yuvarla(ortalamaBrut),
+    odenek_brut: _yuvarla(brut),
+    tavan_uygulandi: hamBrut > tavanBrut,
+    tavan_brut: _yuvarla(tavanBrut),
+    damga: _yuvarla(damga),
+    odenek_net: _yuvarla(brut - damga),
+    sure_ay: sure ? sure.ay : 0,
+    hak_kazanildi: !!sure,
+    toplam: sure ? _yuvarla((brut - damga) * sure.ay) : 0,
+    parametreler: [io, av, dv],
+  };
+}
+
+/* ================================================================
+ * 8. KİRA GELİR VERGİSİ — GVK md. 21 / 74
+ * Mesken istisnasi yalnizca KONUT kirasinda; isyerinde yok.
+ * ================================================================ */
+function kiraGelirVergisiHesapla(yillikKira, tur, giderYontemi, gercekGider) {
+  if (!(yillikKira > 0)) return null;
+  const kg = _P.kira_geliri;
+  const gv = _P.gelir_vergisi;
+
+  const istisna = tur === "konut" ? Math.min(kg.mesken_istisnasi, yillikKira) : 0;
+  const kalan = yillikKira - istisna;
+  const gider =
+    giderYontemi === "gercek"
+      ? Math.min(Math.max(gercekGider || 0, 0), kalan)
+      : kalan * kg.goturu_gider_orani;
+  const matrah = Math.max(kalan - gider, 0);
+  // Kira UCRET DISI gelir - tarifesi ucretten farkli (3. dilim 1.000.000).
+  const vergi = _tarifedenVergi(gv.ucret_disi, matrah);
+
+  return {
+    yillik_kira: _yuvarla(yillikKira),
+    istisna: _yuvarla(istisna),
+    gider: _yuvarla(gider),
+    matrah: _yuvarla(matrah),
+    vergi: _yuvarla(vergi),
+    kalan: _yuvarla(yillikKira - vergi),
+    istisna_uygulandi: istisna > 0,
+    parametreler: [kg, gv],
+  };
+}
+
+/* ================================================================
+ * 9. YILLIK İZİN — İş K. md. 53
+ * ================================================================ */
+function yillikIzinHesapla(hizmetYili, yas) {
+  if (!(hizmetYili >= 1)) return null;
+  const yi = _P.yillik_izin;
+  const kademe =
+    yi.kademeler.find((k) => k.max_yil !== null && hizmetYili <= k.max_yil) ||
+    yi.kademeler[yi.kademeler.length - 1];
+  let gun = kademe.gun;
+  const yasIstisnasi = (yas && (yas < 18 || yas > 50)) && gun < yi.yas_asgari_gun;
+  if (yasIstisnasi) gun = yi.yas_asgari_gun;
+  return {
+    hizmet_yili: hizmetYili,
+    kademe: kademe.etiket,
+    gun: gun,
+    yas_istisnasi: yasIstisnasi,
+    parametreler: [yi],
+  };
+}
+
+/* ================================================================
+ * 10. FAZLA MESAİ — İş K. md. 41 / 47
+ * ================================================================ */
+function fazlaMesaiHesapla(aylikBrut, fazlaSaat, tatilSaat) {
+  if (!(aylikBrut > 0)) return null;
+  const fm = _P.fazla_mesai;
+  // Aylik 30 gun, gunluk 7,5 saat -> 225 saat kabulu (yerlesik uygulama)
+  const aylikSaat = 225;
+  const saatlik = aylikBrut / aylikSaat;
+  const fazla = saatlik * (1 + fm.fazla_calisma_zam) * (fazlaSaat || 0);
+  const tatil = saatlik * (1 + fm.tatil_zam) * (tatilSaat || 0);
+  return {
+    saatlik_ucret: _yuvarla(saatlik),
+    fazla_mesai: _yuvarla(fazla),
+    tatil_mesaisi: _yuvarla(tatil),
+    toplam_brut: _yuvarla(fazla + tatil),
+    yillik_limit_asildi: (fazlaSaat || 0) * 12 > fm.yillik_azami_saat,
+    yillik_azami: fm.yillik_azami_saat,
+    parametreler: [fm],
+  };
+}
+
+/* ================================================================
+ * 11. ALIM GÜCÜ (TÜFE) — parametresi RESMÎ TÜFE, veri EVDS'den
+ *
+ * Bu hesabin parametresi bir sabit degil, bizim ayda iki kez cektigimiz
+ * resmi seri. Rakiplerin hicbirinde yok cunku hicbiri resmi endeksi
+ * cekmiyor. Endeks disaridan veriliyor - modul veri UYDURMAZ, veri
+ * yoksa null doner ve sayfa hic render edilmez.
+ * ================================================================ */
+function alimGucuHesapla(tutar, ilkEndeks, sonEndeks) {
+  if (!(tutar > 0) || !(ilkEndeks > 0) || !(sonEndeks > 0)) return null;
+  const carpan = sonEndeks / ilkEndeks;
+  const bugunku = tutar * carpan;
+  return {
+    tutar: _yuvarla(tutar),
+    bugunku_karsilik: _yuvarla(bugunku),
+    fark: _yuvarla(bugunku - tutar),
+    enflasyon_yuzde: _yuvarla((carpan - 1) * 100),
+    // Ayni parayla bugun alinabilecek: alim gucunun eridigi oran
+    erime_yuzde: _yuvarla((1 - 1 / carpan) * 100),
+    parametreler: [],
+  };
+}
+
+/* ================================================================
+ * 12. İÇERİK GELİRİ (YouTube vb.)
+ *
+ * NEDEN FARKLI TASARLANDI: bu hesabin formulu onemsiz (izlenme x RPM
+ * / 1000); butun mesele RPM'de ve RPM RESMÎ OLARAK YAYINLANMIYOR -
+ * kanala, izleyici ulkesine ve donemine gore kat kat degisiyor.
+ *
+ * Rakipler oraya uydurma bir sabit koyup TEK BIR RAKAM basiyor. Biz
+ * uyduramayiz. Cozum kacmak degil, belirsizligi GORUNUR kilmak:
+ * kullanicidan kendi RPM'ini aliyoruz ve birden fazla RPM degeri icin
+ * duyarlilik tablosu donuyoruz. "Cevap tek bir sayi degil" zaten bu
+ * sitenin uslubu (segment yapisinin aynisi).
+ * ================================================================ */
+const ICERIK_RPM_ADIMLARI = [0.5, 1, 2, 4, 8];
+
+function icerikGeliriHesapla(aylikIzlenme, rpm, kur) {
+  if (!(aylikIzlenme > 0)) return null;
+  const d = kur > 0 ? kur : 1;
+  const hesapla = (r) => (aylikIzlenme / 1000) * r * d;
+  return {
+    aylik_izlenme: aylikIzlenme,
+    kur: d,
+    secilen_rpm: rpm > 0 ? rpm : null,
+    secilen_aylik: rpm > 0 ? _yuvarla(hesapla(rpm)) : null,
+    secilen_yillik: rpm > 0 ? _yuvarla(hesapla(rpm) * 12) : null,
+    // Duyarlilik: RPM bilinmiyorsa cevap bir ARALIK'tir, tek sayi degil.
+    duyarlilik: ICERIK_RPM_ADIMLARI.map((r) => ({
+      rpm: r,
+      aylik: _yuvarla(hesapla(r)),
+      yillik: _yuvarla(hesapla(r) * 12),
+    })),
+    parametreler: [],
+  };
+}
+
 /* Sonuçtaki tüm parametre kümeleri bugün geçerli mi?
  * Geçerli değilse sayfa görünür uyarı gösterir — sessizce eski yılın
  * vergisini vermek kabul edilemez. */
@@ -286,6 +473,14 @@ function sonucParametreleriGecerliMi(sonuc, bugun) {
 if (typeof module !== "undefined" && module.exports) {
   module.exports = {
     kdvHesapla,
+    tapuHarciHesapla,
+    issizlikOdenegiHesapla,
+    kiraGelirVergisiHesapla,
+    yillikIzinHesapla,
+    fazlaMesaiHesapla,
+    alimGucuHesapla,
+    icerikGeliriHesapla,
+    ICERIK_RPM_ADIMLARI,
     brutdenNetUcret,
     nettenBrutUcret,
     kidemIhbarHesapla,

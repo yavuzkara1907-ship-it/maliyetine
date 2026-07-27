@@ -15,6 +15,7 @@ import json
 import re
 import unittest
 from pathlib import Path
+from tempfile import TemporaryDirectory
 
 import hesaplayicilar as hc
 
@@ -29,27 +30,59 @@ class TanimTesti(unittest.TestCase):
             for k in h["kaynaklar"]:
                 self.assertGreater(len(k), 10, f"{h['id']}: kaynak cok kisa: {k}")
 
+    # Her hesaplayici UC tipten birine girer ve tipi kaynak bicimini
+    # belirler. Bu ayrim projenin can damari: bir hesabin cevabi nereden
+    # geliyor sorusunun uc mesru cevabi var, dorduncusu (uydurma) yok.
+    MEVZUAT = {"kdv", "maas", "kidem", "tapu", "issizlik", "kira", "izin", "mesai"}
+    SAF_MATEMATIK = {"kredi", "yuzde"}
+    KULLANICI_PARAMETRESI = {"icerik"}   # RPM resmi olarak yayinlanmiyor
+    OLCULEN_VERI = {"alim-gucu"}         # parametresi bizim cektigimiz TUFE
+
+    def test_her_hesaplayici_bir_tipe_giriyor(self):
+        """Siniflandirilmamis hesaplayici olmasin - yenisi eklenirken
+        kaynagin nereden gelecegine karar verilmis olmali."""
+        tanimli = self.MEVZUAT | self.SAF_MATEMATIK | self.KULLANICI_PARAMETRESI | self.OLCULEN_VERI
+        for h in hc.tum_hesaplayicilar():
+            self.assertIn(h["id"], tanimli, f"{h['id']} siniflandirilmamis")
+
     def test_mevzuata_bagli_hesaplarda_resmi_atif_var(self):
         """Vergi/tazminat hesaplarinda kanun ya da teblig adi gecmek
         ZORUNDA; 'internetten baktim' seviyesinde kaynak kabul edilmez."""
         for h in hc.HESAPLAYICILAR:
-            if h["id"] in ("kredi", "yuzde"):
-                continue  # saf matematik - mevzuata bagli degil
+            if h["id"] not in self.MEVZUAT:
+                continue
             metin = " ".join(h["kaynaklar"])
             self.assertTrue(
                 any(x in metin for x in ("Kanun", "Tebliğ", "Bakanlığı", "BKK")),
                 f"{h['id']}: resmi atif yok -> {metin}",
             )
 
-    def test_saf_matematik_hesaplarda_yanlis_resmi_iddia_yok(self):
-        """Kredi ve yuzde hesaplari mevzuata dayanmiyor; onlara teblig
-        atfi yazmak YANLIS BIR GUVEN iddiasi olurdu."""
+    def test_mevzuata_dayanmayan_hesapta_yanlis_resmi_iddia_yok(self):
+        """Kredi, yuzde ve YouTube hesaplari mevzuata dayanmiyor; onlara
+        teblig atfi yazmak YANLIS BIR GUVEN iddiasi olurdu."""
         for h in hc.HESAPLAYICILAR:
-            if h["id"] not in ("kredi", "yuzde"):
+            if h["id"] not in (self.SAF_MATEMATIK | self.KULLANICI_PARAMETRESI):
                 continue
             metin = " ".join(h["kaynaklar"])
             for yasak in ("Tebliğ", "Resmî Gazete", "Kanunu"):
                 self.assertNotIn(yasak, metin, f"{h['id']}: yanlis resmi atif")
+
+    def test_kullanici_parametreli_hesap_belirsizligi_ACIKCA_soyluyor(self):
+        """EN ONEMLI YENI KURAL. YouTube gelirinin tamami RPM'e bagli ve
+        RPM resmi olarak yayinlanmiyor. Rakipler oraya uydurma bir sabit
+        koyup TEK RAKAM basiyor. Biz uyduramayiz - o yuzden sayfa hem
+        parametrenin bizden gelmedigini soylemek hem tek sayi yerine
+        ARALIK gostermek ZORUNDA."""
+        for h in hc.HESAPLAYICILAR:
+            if h["id"] not in self.KULLANICI_PARAMETRESI:
+                continue
+            metin = (h["ozet"] + " ".join(h["kaynaklar"])).lower()
+            self.assertTrue(
+                "yayınlanmıyor" in metin or "varsayılmaz" in metin,
+                f"{h['id']}: parametrenin kaynaksiz oldugu soylenmemis",
+            )
+            self.assertIn("duyarlilik", h["js"].lower(),
+                          f"{h['id']}: tek sayi yerine aralik gosterilmeli")
 
     def test_slug_ve_id_benzersiz(self):
         sluglar = [h["slug"] for h in hc.HESAPLAYICILAR]
@@ -82,7 +115,7 @@ class TanimTesti(unittest.TestCase):
 
 class SayfaTesti(unittest.TestCase):
     def setUp(self):
-        self.sayfalar = {h["slug"]: hc.sayfa_uret(h) for h in hc.HESAPLAYICILAR}
+        self.sayfalar = {h["slug"]: hc.sayfa_uret(h) for h in hc.tum_hesaplayicilar()}
 
     def test_json_ld_gecerli_ve_zorunlu_tipleri_iceriyor(self):
         for slug, html in self.sayfalar.items():
@@ -97,7 +130,7 @@ class SayfaTesti(unittest.TestCase):
     def test_kaynaklar_sayfada_GORUNUR(self):
         """Schema'ya gomulu olmasi yetmez - kullanici ve AI motoru sayfa
         metnini okuyor. Bu ders daha once SSS'te ogrenildi."""
-        for h in hc.HESAPLAYICILAR:
+        for h in hc.tum_hesaplayicilar():
             html = self.sayfalar[h["slug"]]
             for k in h["kaynaklar"]:
                 self.assertIn(k, html, f"{h['id']}: kaynak metinde gorunmuyor")
@@ -127,7 +160,7 @@ class SayfaTesti(unittest.TestCase):
         parametredir. Rakip maliyeti.com.tr tam tersini yapiyor: 6.500.000
         TL gibi rakamlar var, sayfada 'kaynak' kelimesi hic gecmiyor."""
         parametre_metni = (JS_KOK / "resmi-parametreler.js").read_text(encoding="utf-8")
-        for h in hc.HESAPLAYICILAR:
+        for h in hc.tum_hesaplayicilar():
             html = self.sayfalar[h["slug"]]
             govde = re.sub(r"<script.*?</script>", "", html, flags=re.S)
             for ham in re.findall(r"([0-9]{1,3}(?:\.[0-9]{3})+(?:,[0-9]+)?) TL", govde):
@@ -141,7 +174,7 @@ class SayfaTesti(unittest.TestCase):
 
     def test_dizin_tum_hesaplayicilara_link_veriyor(self):
         dizin = hc.dizin_uret()
-        for h in hc.HESAPLAYICILAR:
+        for h in hc.tum_hesaplayicilar():
             self.assertIn(f'/{hc.HESAP_KOK}/{h["slug"]}/', dizin)
 
     def test_olcum_ile_turetme_ayrimi_sayfada_yaziyor(self):
@@ -153,8 +186,44 @@ class SayfaTesti(unittest.TestCase):
     def test_sitemap_yollari_gercek_dosyalarla_ayni(self):
         yollar = set(hc.sitemap_yollari())
         beklenen = {f"{hc.HESAP_KOK}/"} | {
-            f"{hc.HESAP_KOK}/{h['slug']}/" for h in hc.HESAPLAYICILAR}
+            f"{hc.HESAP_KOK}/{h['slug']}/" for h in hc.tum_hesaplayicilar()}
         self.assertEqual(yollar, beklenen)
+
+    def test_alim_gucu_VERI_YOKSA_uretilmez(self):
+        """rehber.py ile ayni kural: TUFE verisi yoksa uydurma endeksle
+        sayfa acmiyoruz, sayfayi hic acmiyoruz. EVDS anahtari tanimli
+        degilse enflasyon.json olusmaz."""
+        with TemporaryDirectory() as gecici:
+            self.assertIsNone(hc.alim_gucu_tanimi(Path(gecici)))
+            # ...ve o durumda sitemap'e de girmez
+            liste = [h["id"] for h in hc.tum_hesaplayicilar(Path(gecici))]
+            self.assertNotIn("alim-gucu", liste)
+
+    def test_alim_gucu_serisi_sayfaya_GOMULU(self):
+        """Client-side fetch DEGIL: AI botlarinin cogu JS calistirmiyor.
+        Rakip yenibirhesap'i AI motorlari icin gorunmez yapan sey tam
+        olarak canli veriyi fetch ile yuklemesi."""
+        ag = hc.alim_gucu_tanimi()
+        if not ag:
+            self.skipTest("TUFE verisi yok")
+        html = hc.sayfa_uret(ag)
+        self.assertIn("TUFE_SERISI", html)
+        self.assertIn(ag["_tufe"]["seri"][0]["tarih"], html)
+
+    def test_opsiyonel_alanda_required_YOK(self):
+        """GERCEK BUG (tarayici testi yakaladi): YouTube hesabinda RPM
+        alani "bos birakabilirsiniz" diyordu ama required tasidigi icin
+        HTML5 validation submit'i SESSIZCE bloke ediyordu - sayfa hic
+        sonuc uretmiyordu. Arac hesaplayicisindaki step bug'inin ayni
+        sinifi: form nitelikleri gorunum degil GECERLILIK KISITI."""
+        for h in hc.tum_hesaplayicilar():
+            html = hc.sayfa_uret(h)
+            for a in h["alanlar"]:
+                if a["tip"] != "number" or a.get("zorunlu", True):
+                    continue
+                girdi = re.search(rf'<input[^>]*id="{a["id"]}"[^>]*>', html).group(0)
+                self.assertNotIn("required", girdi,
+                                 f"{h['id']}/{a['id']}: opsiyonel alanda required var")
 
 
 class ParametreDosyasiTesti(unittest.TestCase):
@@ -175,7 +244,6 @@ class ParametreDosyasiTesti(unittest.TestCase):
         blok = metin[metin.index("kidem_tavani"):metin.index("ihbar:")]
         self.assertIn('gecerli_baslangic: "2026-07-01"', blok)
         self.assertIn('gecerli_bitis: "2026-12-31"', blok)
-
 
 if __name__ == "__main__":
     unittest.main()

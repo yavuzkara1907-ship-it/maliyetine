@@ -121,6 +121,80 @@ const RESMI_PARAMETRELER = {
   },
 
   // --------------------------------------------------------------
+  // TAPU HARCI — 492 sayılı Harçlar Kanunu (4) sayılı tarife
+  // Alıcı ve satıcı AYRI AYRI binde 20 öder; toplam binde 40.
+  // --------------------------------------------------------------
+  tapu_harci: {
+    kaynak: "492 sayılı Harçlar Kanunu — (4) sayılı tarife",
+    gecerli_baslangic: "2013-01-01",
+    gecerli_bitis: null,
+    taraf_orani: 0.02, // her taraf ayrı ayrı
+  },
+
+  // --------------------------------------------------------------
+  // İŞSİZLİK ÖDENEĞİ — 4447 sayılı İşsizlik Sigortası Kanunu md. 50
+  // Doğrulama: tavan = 33.030 × %80 = 26.424 brüt; damga binde 7,59
+  // düşünce 26.223,44 net → açıklanan 2026 tavanıyla BİREBİR. Yani
+  // hem oran hem tavan mantığı teyit edildi.
+  // --------------------------------------------------------------
+  issizlik_odenegi: {
+    kaynak: "4447 sayılı İşsizlik Sigortası Kanunu md. 50",
+    gecerli_baslangic: "2026-01-01",
+    gecerli_bitis: "2026-12-31",
+    oran: 0.40,               // son 4 ay ortalama brüt kazancın %40'ı
+    tavan_orani: 0.80,        // brüt asgari ücretin %80'i
+    // Prim gün sayısına göre ödeme süresi (ay)
+    sure_kademeleri: [
+      { etiket: "600 gün", asgari_gun: 600, ay: 6 },
+      { etiket: "900 gün", asgari_gun: 900, ay: 8 },
+      { etiket: "1080 gün", asgari_gun: 1080, ay: 10 },
+    ],
+  },
+
+  // --------------------------------------------------------------
+  // KİRA GELİRİ — GVK md. 21 (mesken istisnası), md. 74 (götürü gider)
+  // --------------------------------------------------------------
+  kira_geliri: {
+    yil: 2026,
+    kaynak: "332 Seri No.lu Gelir Vergisi Genel Tebliği; GVK md. 21 ve md. 74",
+    gecerli_baslangic: "2026-01-01",
+    gecerli_bitis: "2026-12-31",
+    mesken_istisnasi: 58000.0,
+    goturu_gider_orani: 0.15,
+  },
+
+  // --------------------------------------------------------------
+  // YILLIK ÜCRETLİ İZİN — 4857 sayılı İş Kanunu md. 53
+  // Kanunla sabit, yıllık değişmez. Yaş istisnası: 18 yaşından küçük
+  // ve 50 yaşından büyük çalışanlarda izin 20 günden az olamaz.
+  // --------------------------------------------------------------
+  yillik_izin: {
+    kaynak: "4857 sayılı İş Kanunu md. 53",
+    gecerli_baslangic: "2003-06-10",
+    gecerli_bitis: null,
+    kademeler: [
+      { etiket: "1 – 5 yıl", max_yil: 5, gun: 14 },
+      { etiket: "5 – 15 yıl", max_yil: 15, gun: 20 },
+      { etiket: "15 yıl ve üzeri", max_yil: null, gun: 26 },
+    ],
+    yas_asgari_gun: 20, // 18 altı / 50 üstü
+  },
+
+  // --------------------------------------------------------------
+  // FAZLA ÇALIŞMA — 4857 sayılı İş Kanunu md. 41 ve md. 47
+  // --------------------------------------------------------------
+  fazla_mesai: {
+    kaynak: "4857 sayılı İş Kanunu md. 41 (fazla çalışma) ve md. 47 (tatil çalışması)",
+    gecerli_baslangic: "2003-06-10",
+    gecerli_bitis: null,
+    haftalik_normal_saat: 45,
+    fazla_calisma_zam: 0.50,   // %50 zamlı
+    fazla_sure_zam: 0.25,      // haftalık 45 saatin altı sözleşmelerde %25
+    tatil_zam: 1.00,           // hafta tatili / genel tatil
+    yillik_azami_saat: 270,
+  },
+
+  // --------------------------------------------------------------
   // KDV ORANLARI
   // --------------------------------------------------------------
   kdv: {
