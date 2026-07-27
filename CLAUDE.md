@@ -1022,6 +1022,116 @@ olabilir."* Kod yazmadan önce bilinmesi gereken **tasarım kısıtı:**
   üretilmediği, karakter sınırı (X 280'e göre), anahtar yoksa atlanma,
   ve kaynak dosyasında hiçbir LLM çağrısı olmadığı.
 
+## RAKİP ANALİZİ (2026-07-27) — dört site ölçüldü
+Yavuz dört benzer site paylaşıp *"bizde eksik onlarda olan, onlarda
+eksik bizde olanları çıkar; nasıl önlerine geçeriz"* dedi. Hepsi
+gerçekten çekilip incelendi (spekülasyon değil, ölçüm):
+
+| | nekadar | yenibirhesap | hesapsonuc | maliyeti.com.tr |
+|---|---|---|---|---|
+| Sayfa | 220 | 1.885 | 258 | **2.400** |
+| Son güncelleme | tek build, 24 Haz | bugün | 22 Tem | **Ocak 2026** |
+| İçerik | formül hesap | formül + canlı kur | formül hesap | maliyet yazısı |
+| Kaynak/örneklem/tarih | — | — | mevzuat atfı | **hiç** |
+| llms.txt / ai.txt | var / — | — / — | var / **var** | — / — |
+
+**Dördünde de `/metodoloji` ve `/veri` 404.** Hiçbirinde ölçüm tarihi,
+örneklem büyüklüğü, zaman serisi ya da indirilebilir veri yok.
+
+**maliyeti.com.tr — en yakın isim benzerimiz, en zayıf site.** 2.400
+sayfanın tamamı 9–21 Ocak arasında (12 günde) yayınlanmış, o günden beri
+hiç dokunulmamış. Yazar "admin". "Futbol kulübü kurma maliyeti" sayfasında
+6.500.000 TL gibi çok spesifik rakamlar var; sayfada geçen "kaynak"
+kelimesi sayısı **0**, "TÜİK" **0**. Üretilmiş rakamlar, gerçek gibi
+sunulmuş, sonra terk edilmiş. Google'ın helpful-content sistemi tam bu
+profili eliyor.
+
+**hesapsonuc.com'u küçümsemek hata olur** — teknik olarak bizden ileride
+olduğu yer var: 15 schema tipi (HowTo/HowToStep dahil), sayfa içinde
+"Metodoloji" başlığı, mevzuat atıfları, hem `llms.txt` hem `ai.txt`.
+Bilinçli yapılmış iş.
+
+**Sömürülecek zaafiyetler:**
+- **yenibirhesap'ın canlı fiyatları JS ile yükleniyor** — ham HTML'de tek
+  TL rakamı yok, 4 `fetch` izi var. AI motorları JS çalıştırmıyor, yani
+  en güçlü kozları GPTBot/ClaudeBot için **görünmez.** Biz bu sorunu
+  build-time üretimle en başta çözdük.
+- nekadar'ın tüm sitesi tek lastmod taşıyor → tazelik sinyali yok.
+
+**KARAR — kapsamı genişletmiyoruz.** hesapsonuc'ta "juno lilith
+hesaplama" var; kendini seyrelttiği yer orası. Biz maliyet + ona komşu
+resmî hesaplarda kalıyoruz.
+
+**X'E ÇIKMA ZAMANLAMASI (Yavuz'a verilen tavsiye):** şu an değil, **5–20
+Ağustos.** Sebep teknik yetersizlik değil — dördünden de sağlamız. Google
+henüz indekslemedi; şimdi atmak anlık sıçrama yapar, arkasında bir şey
+kalmaz. Ağustos'ta iki şey birden elde olacak: ilk gerçek zaman serisi
+sonucu ve indeksleme. O zaman paylaşılan şey "bir site yaptım" değil
+**"şunu ölçtüm"** olur — kanıt, vaat değil.
+
+## FORMÜL HESAPLAYICILARI — `/hesap/` (2026-07-27)
+Rakip analizinin doğrudan sonucu: dördünün de trafiği formül
+hesaplayıcılarından geliyor ve bizde bu kategoride **sıfır sayfa** vardı.
+"kdv hesaplama" araması "düğün maliyeti"nden kat kat büyük.
+
+**5 hesaplayıcı:** KDV · brütten nete maaş · kıdem+ihbar tazminatı ·
+kredi taksiti · yüzde. sitemap 119 → **125**.
+
+**KIRMIZI ÇİZGİ İHLAL EDİLMİYOR — ayrım şu:** bu sayılar fiyat değil
+**mevzuat**. Bir ürünün kaça satıldığını *ölçmek* gerekir; bir verginin ne
+olduğunu ise mevzuat *söyler*. Kıdem bir kanun formülü, gelir vergisi bir
+tebliğ tarifesi, taksit bir annüite denklemi — cevap türetilebilir ve
+doğrulanabilir.
+
+**PARAMETRELER KENDİ BİLGİMDEN YAZILMADI, resmî kaynaktan doğrulandı**
+(`assets/js/resmi-parametreler.js`):
+- 2026 gelir vergisi tarifesi — **332 Seri No.lu GVGT, 31.12.2025 R.G.
+  33124 (5. Mükerrer)**. Ücret ve ücret dışı tarife ayrı; fark 3. dilimde
+  başlıyor (1.500.000 / 1.000.000).
+- Asgari ücret 33.030 brüt / 28.075,50 net · SGK tavanı 297.270 (2026'da
+  günlük asgari ücretin 7,5 katından **9 katına** çıktı) · işçi %14 + %1 ·
+  damga binde 7,59 · **kıdem tavanı 73.729,84** (1 Tem–31 Ara 2026, ÇSGB).
+
+**İKİ BAĞIMSIZ DOĞRULAMA:**
+1. Tarifenin kümülatif tutarları aritmetikle birebir tutuyor
+   (190.000×%15=28.500; +210.000×%20=70.500; …). Bir test bunu kontrol
+   ediyor — yanlış kopyalanmış bir sayı orada patlar.
+2. Hesabımız **resmî açıklanan net asgari ücreti birebir üretiyor**
+   (33.030 → 28.075,50), tarayıcıda da doğrulandı. Tutmasaydı ya bir oran
+   ya istisna mantığı yanlıştı ve hata tüm maaş hesaplarına yayılırdı.
+
+**RAKİPLERDEN KASITLI ÜÇ AYRIM:**
+1. Her parametrenin kaynağı sayfada **görünür** (tebliğ adı + R.G. tarih
+   ve sayı). hesapsonuc metin içinde atıf yapıyor ama hangi sayının
+   nereden geldiği belli değil; diğer ikisi hiç kaynak vermiyor.
+2. Her parametre **geçerlilik dönemi** taşıyor. Süresi geçmişse sayfa
+   görünür uyarı basar, sessizce eski yılın vergisini **vermez**. Bir test
+   de dönem geçmişse başarısız olur — yani site bize haber veriyor.
+   1 Ocak 2027'de bu dosya güncellenmezse testler patlar.
+3. Maaş hesabı **AY soruyor**: gelir vergisi artan oranlı, matrah yıl
+   içinde birikiyor. Ayı sormayan hesap yılın ilk ayı dışında yanlış.
+
+**MTV HESAPLAYICISI BİLİNÇLİ OLARAK YOK.** Doğrulanmış kademelerimiz
+1800 cc'ye kadar; 2.0 motorlu araca yanlış rakam vermek yerine kalemi hiç
+açmıyoruz. **Eksik vergi tarifesi yayınlamak, hiç yayınlamamaktan kötü.**
+Bir test bu kararı kilitliyor — MTV eklenecekse kademeler önce tam
+doğrulanmalı.
+
+**Tarayıcı testinde üç kusur bulunup düzeltildi:** "-0 TL" (sıfır vergi
+satırında), "4.624,2 TL" (kuruş eksik), ve netten brüte hesabının hedefi
+kuruşun altında kaçırması (33.029,99 → 33.030). Test yöntemi: gerçek
+`requestSubmit()` — `dispatchEvent(submit)` HTML5 validation'ı atladığı
+için yanıltıcı olur (araç hesaplayıcısındaki `step` bug'ı tam bu yüzden
+gözden kaçmıştı).
+
+**`ai.txt` EKLENDİ** (hesapsonuc'ta vardı, bizde yoktu). `llms.txt`'ten
+farkı: llms.txt bir **içerik haritası**, ai.txt **yayıncı künyesi ve
+kullanım koşulu** (veri nereden geliyor, nasıl atıf verilir, neyi
+yapmayın). Elle yazılmıyor, veriden üretiliyor — llms.txt elle yazıldığı
+için bir kez bayatlamıştı.
+
+Testler: 18 yeni Python + 23 yeni Node. Toplam 11 Python suite, Node 54.
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
