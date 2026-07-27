@@ -1097,3 +1097,47 @@ class KalemAramaTesti(unittest.TestCase):
         k = sayfa_uret._arama_verisi()
         ham = sayfa_uret._arama_js(k).split("var VERI = ", 1)[1].split(";\n", 1)[0]
         self.assertEqual(len(json.loads(ham)), len(k))
+
+
+class OgEtiketleriTesti(unittest.TestCase):
+    """Paylasim karti - 2026-07-27 analitiginde m.facebook.com birinci
+    referans kaynagi. Bu kanalda kart, tiklama oraninin kendisi."""
+
+    def test_beyan_edilen_boyut_gercek_gorselle_ayni(self):
+        """EN KRITIK: yanlis boyut beyani, hic beyan etmemekten KOTU -
+        Facebook beyana guvenip yanlis kirpma yapar. Boyut iki yerde
+        (HTML meta + PIL uretimi) tutuluyor, ayrismalari yasak."""
+        import og_gorsel
+        self.assertEqual((og_gorsel.GENISLIK, og_gorsel.YUKSEKLIK),
+                         (sayfa_uret.OG_GENISLIK, sayfa_uret.OG_YUKSEKLIK))
+
+    def test_uretilen_png_beyanla_ayni_boyutta(self):
+        try:
+            from PIL import Image
+        except ImportError:
+            self.skipTest("PIL kurulu degil")
+        yol = sayfa_uret.SITE_KOK / "assets" / "og-gorsel.png"
+        if not yol.exists():
+            self.skipTest("gorsel henuz uretilmemis")
+        with Image.open(yol) as g:
+            self.assertEqual(g.size, (sayfa_uret.OG_GENISLIK, sayfa_uret.OG_YUKSEKLIK))
+
+    def test_zorunlu_etiketler_var(self):
+        for anahtar in ("og:image", "og:image:width", "og:image:height",
+                        "og:image:alt", "og:site_name", "og:locale"):
+            self.assertIn(anahtar, sayfa_uret.OG_ETIKETLERI)
+
+    def test_gorsel_url_mutlak(self):
+        """Goreli og:image URL'i klasik hata - Facebook bos kart gosterir."""
+        self.assertTrue(sayfa_uret.OG_GORSEL_URL.startswith("https://"))
+
+    def test_sablonlarda_elle_yazilmis_og_image_yok(self):
+        """Sekiz sablonda ayri ayri yaziliydi; biri guncellenip otekiler
+        kalirsa sayfalar farkli kart gosterir. Tek kaynak: OG_ETIKETLERI."""
+        for ad in ("sayfa_uret.py", "senaryo.py", "rehber.py", "veri_disa_aktar.py"):
+            kaynak = (Path(__file__).parent / ad).read_text(encoding="utf-8")
+            # OG_ETIKETLERI sabitinin kendi tanimi haric hicbir yerde
+            # elle yazilmis og:image satiri olmamali.
+            elle = [s for s in kaynak.splitlines()
+                    if 'property="og:image"' in s and "OG_GORSEL_URL" not in s]
+            self.assertEqual(elle, [], f"{ad} icinde elle yazilmis og:image var")

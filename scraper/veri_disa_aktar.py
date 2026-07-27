@@ -213,7 +213,7 @@ def veri_sayfasi(ozet: dict, tarih: str | None = None) -> str:
 <meta property="og:description" content="{toplam_kalem} kalemlik fiyat verisi, CSV ve JSON olarak açık.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{su.SITE_KOK_URL}/assets/og-gorsel.png">
+{su.OG_ETIKETLERI}
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {json.dumps(json_ld, ensure_ascii=False, indent=2)}

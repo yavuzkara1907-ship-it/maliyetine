@@ -1001,8 +1001,7 @@ def rehber_uret(rehber: dict, veriler: dict, tarih: str | None = None) -> str | 
 <meta property="og:description" content="{rehber["meta"]}">
 <meta property="og:type" content="article">
 <meta property="og:url" content="{url}">
-<meta property="og:site_name" content="Maliyeti Ne?">
-<meta property="og:image" content="{SITE_KOK_URL}/assets/og-gorsel.png">
+{su.OG_ETIKETLERI}
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {json.dumps(json_ld, ensure_ascii=False, indent=2)}
@@ -1074,7 +1073,7 @@ def rehber_dizini_uret(yazilanlar: list[dict], tarih: str | None = None) -> str:
 <meta property="og:description" content="Gerçek fiyat ölçümlerine dayanan bütçe rehberleri.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{SITE_KOK_URL}/rehber/">
-<meta property="og:image" content="{SITE_KOK_URL}/assets/og-gorsel.png">
+{su.OG_ETIKETLERI}
 <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>

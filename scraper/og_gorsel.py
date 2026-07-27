@@ -25,7 +25,10 @@ import sayfa_uret as su
 SITE_KOK = su.SITE_KOK
 HEDEF = SITE_KOK / "assets" / "og-gorsel.png"
 
-GENISLIK, YUKSEKLIK = 1200, 630
+# Boyut sayfa_uret'ten geliyor - HTML'deki og:image:width/height ile
+# ayni olmak ZORUNDA. Iki yerde ayri tutulsa biri degisip oteki kalir ve
+# Facebook'a YANLIS boyut beyan edilir; bir test bunu dogruluyor.
+GENISLIK, YUKSEKLIK = su.OG_GENISLIK, su.OG_YUKSEKLIK
 
 
 def _ozet(veri_kok: Path | None = None) -> dict:

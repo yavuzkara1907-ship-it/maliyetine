@@ -1438,6 +1438,37 @@ def _capraz_dogrulama_uyarilari_html(conf: dict, kalemler: dict) -> str:
 
 SITE_KOK_URL = "https://maliyetine.com.tr"
 
+# ----------------------------------------------------------
+# PAYLASIM (Open Graph) ETIKETLERI
+#
+# NEDEN TEK YERDE: 8 sayfa sablonunda ayri ayri yaziliydi.
+#
+# `og:image:width/height` NEDEN GEREKLI: bu ikisi olmadan Facebook linki
+# ILK gordugunde gorselin boyutunu bilmiyor ve buyuk kart yerine kucuk
+# (ya da bos) kart gosterebiliyor; ancak sonradan yeniden tarayinca
+# duzeltiyor. Ilk paylasim en cok tiklanan paylasim oldugu icin bu
+# kayip pahali. 2026-07-27 analitiginde m.facebook.com birinci referans
+# kaynagi (24 saatte 20 ziyaret) - bu kanalda kart, tiklama oraninin
+# kendisi.
+#
+# Boyutlar BURADA tanimli ve `og_gorsel.py` bunlari kullaniyor - iki
+# yerde ayri tutulsa biri degisip oteki kalir ve YANLIS boyut beyan
+# edilir. Yanlis beyan, hic beyan etmemekten kotu (Facebook beyana
+# guvenip yanlis kirpma yapar). Bir test uretilen PNG'nin gercek
+# boyutunun beyanla ayni oldugunu dogruluyor.
+# ----------------------------------------------------------
+OG_GENISLIK, OG_YUKSEKLIK = 1200, 630
+OG_GORSEL_URL = f"{SITE_KOK_URL}/assets/og-gorsel.png"
+
+OG_ETIKETLERI = (
+    f'<meta property="og:image" content="{OG_GORSEL_URL}">\n'
+    f'<meta property="og:image:width" content="{OG_GENISLIK}">\n'
+    f'<meta property="og:image:height" content="{OG_YUKSEKLIK}">\n'
+    '<meta property="og:image:alt" content="Maliyeti Ne? — 2026 maliyet endeksleri">\n'
+    '<meta property="og:site_name" content="Maliyeti Ne?">\n'
+    '<meta property="og:locale" content="tr_TR">'
+)
+
 
 def ek_sorular_uret(conf: dict, kalemler: dict, olcek: int) -> list[dict]:
     """Veriden GERCEK sayilarla ek soru/cevap ciftleri uretir (GEO icin).
@@ -1978,8 +2009,7 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
 <meta property="og:description" content="{conf["meta_aciklama"]}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://maliyetine.com.tr/{yol}/">
-<meta property="og:site_name" content="Maliyeti Ne?">
-<meta property="og:image" content="https://maliyetine.com.tr/assets/og-gorsel.png">
+{OG_ETIKETLERI}
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {json.dumps(json_ld, ensure_ascii=False, indent=2)}
@@ -2396,8 +2426,7 @@ def kalem_sayfasi_uret(
 <meta property="og:description" content="{meta_aciklama}">
 <meta property="og:type" content="article">
 <meta property="og:url" content="{sayfa_url}">
-<meta property="og:site_name" content="Maliyeti Ne?">
-<meta property="og:image" content="https://maliyetine.com.tr/assets/og-gorsel.png">
+{OG_ETIKETLERI}
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {json.dumps(json_ld, ensure_ascii=False, indent=2)}
@@ -2675,7 +2704,7 @@ def sss_sayfasi_uret(veri_kok: Path | None = None, tarih: str | None = None) -> 
 <meta property="og:description" content="Fiyatlar nereden geliyor, ne sıklıkla güncelleniyor, veriyi kullanabilir miyim?">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{SITE_KOK_URL}/assets/og-gorsel.png">
+{OG_ETIKETLERI}
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {json.dumps(json_ld, ensure_ascii=False, indent=2)}
@@ -3108,7 +3137,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
 <meta property="og:description" content="{og_aciklama}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{SITE_KOK_URL}/">
-<meta property="og:image" content="https://maliyetine.com.tr/assets/og-gorsel.png">
+{OG_ETIKETLERI}
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {json.dumps(json_ld, ensure_ascii=False, indent=2)}

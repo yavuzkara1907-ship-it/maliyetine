@@ -184,8 +184,7 @@ def _sayfa_html(baslik: str, soru: str, aciklama_blok: str, govde: str,
 <meta property="og:description" content="{meta}">
 <meta property="og:type" content="article">
 <meta property="og:url" content="{url}">
-<meta property="og:site_name" content="Maliyeti Ne?">
-<meta property="og:image" content="{SITE_KOK_URL}/assets/og-gorsel.png">
+{su.OG_ETIKETLERI}
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {json.dumps(json_ld, ensure_ascii=False, indent=2)}
