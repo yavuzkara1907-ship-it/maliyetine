@@ -296,7 +296,7 @@ def _sayfa_html(baslik: str, soru: str, aciklama_blok: str, govde: str,
 
 <footer>
   <div class="kapsayici">
-    <div>© {tarih[:4]} Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/sss/">SSS</a> · <a href="/veri/">Veri</a></div>
+    <div>© {tarih[:4]} Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/sss/">SSS</a> · <a href="/rehber/">Rehber</a> · <a href="/veri/">Veri</a></div>
     <nav>
       <a href="/dugun/">Düğün</a>
       <a href="/ev-kurma/">Ev Kurma</a>

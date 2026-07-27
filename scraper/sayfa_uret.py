@@ -1977,6 +1977,14 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
     sorular += ek_sorular_uret(conf, kalemler, olcek)
     sorular += _grup_toplamlari(conf, kalemler, SEGMENT_ANAHTARI[ORNEK_SEGMENT])
 
+    # SEMA ILE GORUNUR ICERIK AYNI LISTEDEN BESLENIR.
+    # Google'in kurali net: FAQ icerigi kullaniciya gorunur olmali.
+    # Semaya 14 soru koyup sayfada 10 gostermek de ihlal - o yuzden
+    # kirpma TEK YERDE yapiliyor ve iki taraf ayni listeyi kullaniyor.
+    # (Ust sinir: hub sayfasi bir SSS sayfasi degil; 10'dan fazlasi
+    # sayfanin kendi icerigini bastirir.)
+    sorular = sorular[:10]
+
     # Dataset: Google Dataset Search'un aradigi alanlar dolduruluyor.
     # "distribution" asil veri dosyasini (agrega.py ciktisi) isaret ediyor -
     # veriyi gercekten indirilebilir kilmak hem seffaflik hem kesfedilebilirlik.
@@ -2099,6 +2107,7 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
 
   {_icerik_seo_bloklari_html(conf, kalemler, ornek_detaylar)}
 
+{_sss_html(sorular)}
   <p>Yöntem, kaynaklar ve örneklem büyüklükleri için
     <a href="/{yol}/metodoloji/">metodoloji sayfasına</a> bakın.</p>
 
@@ -2106,7 +2115,7 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
 
 <footer>
   <div class="kapsayici">
-    <div>© 2026 Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/sss/">SSS</a> · <a href="/veri/">Veri</a></div>
+    <div>© 2026 Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/sss/">SSS</a> · <a href="/rehber/">Rehber</a> · <a href="/veri/">Veri</a></div>
     <nav>
       {hesaplayici_menu}
       <a href="/{yol}/metodoloji/">Metodoloji</a>
@@ -2218,11 +2227,28 @@ def _ilgili_kalemler_html(conf: dict, mevcut_slug: str) -> str:
     mevcut_id = next((s["id"] for s in sayfalar if s["slug"] == mevcut_slug), None)
     mevcut_grup = (tanimlar.get(mevcut_id) or {}).get("grup")
 
-    # Once ayni grup, sonra digerleri - ikisi de kendi icinde tanim sirasinda.
-    def sira(sayfa):
-        return 0 if mevcut_grup and (tanimlar.get(sayfa["id"]) or {}).get("grup") == mevcut_grup else 1
+    # Once ayni grup (konu yakinligi), sonra digerleri.
+    def ayni_grupta(sayfa):
+        return bool(mevcut_grup) and (tanimlar.get(sayfa["id"]) or {}).get("grup") == mevcut_grup
 
-    secilenler = sorted(digerleri, key=sira)[:EN_FAZLA_ILGILI_KALEM]
+    yakin = [s for s in digerleri if ayni_grupta(s)]
+    uzak = [s for s in digerleri if not ayni_grupta(s)]
+
+    # ROTASYON - 2026-07-27 denetiminde bulundu: "uzak" liste her sayfada
+    # BASTAN dolduruluyordu, yani gec tanimlanan kalemler hicbir sayfadan
+    # link ALMIYORDU. Olculdu: okul/tablet-fiyatlari ve
+    # bebek/bebek-bezi-fiyatlari yalnizca 1 ic link aliyordu (yalnizca
+    # hub'dan), 39 kalem sayfasi varken.
+    #
+    # Listeyi mevcut sayfanin sirasina gore kaydirmak, ic link akisini
+    # deterministik kalarak esit dagitiyor (rastgelelik yok - ayni girdi
+    # ayni cikti, aksi halde her uretimde diff olurdu).
+    if uzak:
+        kaydirma = [s["slug"] for s in sayfalar].index(mevcut_slug) if mevcut_id else 0
+        kaydirma %= len(uzak)
+        uzak = uzak[kaydirma:] + uzak[:kaydirma]
+
+    secilenler = (yakin + uzak)[:EN_FAZLA_ILGILI_KALEM]
     ad_haritasi = {t["id"]: t["ad"].split("—")[0].strip() for t in conf["kalemler"]}
     linkler = " · ".join(
         f'<a href="/{conf["yol"]}/{s["slug"]}/">{ad_haritasi.get(s["id"], s["slug"])}</a>'
@@ -2241,6 +2267,14 @@ def _sss_html(sorular: list[dict]) -> str:
 
     Google yalnizca yapilandirilmis veriye guvenmez, gorunur icerik
     bekler; ayrica AI motorlari sayfa metnini okuyor.
+
+    2026-07-27 DENETIMI: bu fonksiyon YALNIZCA kalem sayfalarinda
+    cagriliyordu. Hub sayfalari (5 vertikal + ana sayfa) JSON-LD'de
+    14 soruya kadar tasiyor ama sayfada HIC gorunmuyordu - Google'in
+    yapilandirilmis veri politikasinin acik ihlali ("FAQ icerigi
+    kullaniciya gorunur olmali"). Bir sayfa tipinde duzeltip hepsinde
+    duzeldigini varsaymak klasik korluk; artik bir test bunu kontrol
+    ediyor.
     """
     bloklar = []
     for q in sorular:
@@ -2521,7 +2555,7 @@ def kalem_sayfasi_uret(
 
 <footer>
   <div class="kapsayici">
-    <div>© 2026 Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/sss/">SSS</a> · <a href="/veri/">Veri</a></div>
+    <div>© 2026 Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/sss/">SSS</a> · <a href="/rehber/">Rehber</a> · <a href="/veri/">Veri</a></div>
     <nav>
       <a href="/{conf["yol"]}/">{conf["ad"]} endeksi</a>
       {kalem_hesaplayici_menu}
@@ -2804,7 +2838,7 @@ def sss_sayfasi_uret(veri_kok: Path | None = None, tarih: str | None = None) -> 
 
 <footer>
   <div class="kapsayici">
-    <div>© {tarih[:4]} Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/sss/">SSS</a> · <a href="/veri/">Veri</a></div>
+    <div>© {tarih[:4]} Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/sss/">SSS</a> · <a href="/rehber/">Rehber</a> · <a href="/veri/">Veri</a></div>
     <nav>
       <a href="/dugun/">Düğün</a>
       <a href="/ev-kurma/">Ev Kurma</a>
@@ -3163,6 +3197,8 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
             },
             {
                 "@type": "FAQPage",
+                # GORUNUR ICERIKLE AYNI LISTE (bkz. _sss_html) - semaya
+                # koyup sayfada gostermemek Google politikasi ihlali.
                 "mainEntity": [
                     {
                         "@type": "Question",
@@ -3193,6 +3229,10 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
             },
         ],
     }
+    anasayfa_sorulari = next(
+        (b["mainEntity"] for b in json_ld["@graph"] if b.get("@type") == "FAQPage"), []
+    )
+    anasayfa_sss = _sss_html(anasayfa_sorulari)
 
     menu = "".join(f'\n      <a href="/{o["yol"]}/">{o["ad"]}</a>' for o in ozetler)
 
@@ -3282,6 +3322,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
 
   <h2>Rehberler</h2>
   <p class="kart-linkler">{rehber_linkleri}</p>
+  <p><a href="/rehber/">Tüm rehberler →</a></p>
 
   <h2>Hesaplayıcılar</h2>
   <p>Ölçüm değil <em>türetme</em>: vergi, maaş, tazminat ve kredi hesapları.
@@ -3289,6 +3330,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
     sayfada yazılı.</p>
   <p class="kart-linkler">{hesap_linkleri}</p>
 
+{anasayfa_sss}
   <h2>Neden farklı?</h2>
   <p>
     Rakip fiyat listelerinin çoğu tek bir kaynağa dayanır — o sitenin
@@ -3309,7 +3351,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
 
 <footer>
   <div class="kapsayici">
-    <div>© 2026 Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/sss/">SSS</a> · <a href="/veri/">Veri</a></div>
+    <div>© 2026 Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/sss/">SSS</a> · <a href="/rehber/">Rehber</a> · <a href="/veri/">Veri</a></div>
     <nav>{menu}
     </nav>
   </div>

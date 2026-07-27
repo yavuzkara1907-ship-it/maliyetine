@@ -1306,7 +1306,7 @@ def _kabuk(baslik_etiketi: str, meta: str, kanonik: str, schema: str,
 
 <footer>
   <div class="kapsayici">
-    <div>© 2026 Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/sss/">SSS</a> · <a href="/veri/">Veri</a></div>
+    <div>© 2026 Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/sss/">SSS</a> · <a href="/rehber/">Rehber</a> · <a href="/veri/">Veri</a></div>
     <nav class="footer-endeksler" aria-label="Tüm endeksler">{su.TUM_ENDEKS_LINKLERI}</nav>
   </div>
 </footer>

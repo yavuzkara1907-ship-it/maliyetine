@@ -1057,7 +1057,7 @@ def rehber_uret(rehber: dict, veriler: dict, tarih: str | None = None) -> str | 
 
 <footer>
   <div class="kapsayici">
-    <div>© {tarih[:4]} Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/sss/">SSS</a> · <a href="/veri/">Veri</a></div>
+    <div>© {tarih[:4]} Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/sss/">SSS</a> · <a href="/rehber/">Rehber</a> · <a href="/veri/">Veri</a></div>
     <nav>
       <a href="/dugun/">Düğün</a>
       <a href="/ev-kurma/">Ev Kurma</a>
@@ -1075,7 +1075,7 @@ def rehber_uret(rehber: dict, veriler: dict, tarih: str | None = None) -> str | 
 def rehber_dizini_uret(yazilanlar: list[dict], tarih: str | None = None) -> str:
     tarih = tarih or date.today().isoformat()
     kartlar = "".join(
-        f'<div class="kart"><h3><a href="/rehber/{r["slug"]}/">{r["baslik"]}</a></h3>'
+        f'<div class="kart"><h2><a href="/rehber/{r["slug"]}/">{r["baslik"]}</a></h2>'
         f'<p>{r["meta"]}</p></div>'
         for r in yazilanlar
     )
@@ -1121,7 +1121,7 @@ def rehber_dizini_uret(yazilanlar: list[dict], tarih: str | None = None) -> str:
 
 <footer>
   <div class="kapsayici">
-    <div>© {tarih[:4]} Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/sss/">SSS</a> · <a href="/veri/">Veri</a></div>
+    <div>© {tarih[:4]} Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/sss/">SSS</a> · <a href="/rehber/">Rehber</a> · <a href="/veri/">Veri</a></div>
   </div>
 </footer>
 
