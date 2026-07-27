@@ -111,6 +111,14 @@ jobs:
         working-directory: scraper
         run: python gecmis.py
 
+      # Formul hesaplayicilari (/hesap/...). Olculmus fiyattan bagimsiz -
+      # mevzuat parametreleri assets/js/resmi-parametreler.js'te sabit
+      # duruyor. Yine de her turda yeniden uretiliyor cunku sayfa kabugu
+      # (OG etiketleri, footer, endeks linkleri) sayfa_uret'ten geliyor.
+      - name: Formül hesaplayıcılarını üret
+        working-directory: scraper
+        run: python hesaplayicilar.py
+
       # Sosyal medya: bu olcumde paylasilacak GERCEK bir sey var mi?
       #
       # Metin uretilmiyor, veriden kuruluyor (asistan.py ile ayni ilke) ve
@@ -148,7 +156,7 @@ jobs:
           git config user.name "maliyetine-bot"
           git config user.email "actions@users.noreply.github.com"
           git add scraper/veri scraper/kaynak_gecmisi.json veri \
-                  index.html sitemap.xml llms.txt assets/og-gorsel.png dugun ev-kurma okul bebek arac rehber
+                  index.html sitemap.xml llms.txt ai.txt assets/og-gorsel.png assets/css assets/js dugun ev-kurma okul bebek arac rehber hesap
           if git diff --cached --quiet; then
             echo "Değişiklik yok, commit atlanıyor."
             echo "degisti=false" >> "$GITHUB_OUTPUT"

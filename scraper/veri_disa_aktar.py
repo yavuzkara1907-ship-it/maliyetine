@@ -339,6 +339,16 @@ def llms_txt(ozet: dict, tarih: str | None = None) -> str:
         f"ölçüm {o['tarih']}. JSON: {kok}/veri/{v}.json · CSV: {kok}{o['dosya']}"
         for v, o in ozet.items()
     )
+    try:
+        import hesaplayicilar as hs
+        hesaplar = "\n".join(
+            f"- [{h['ad']}]({kok}/{hs.HESAP_KOK}/{h['slug']}/): "
+            + ", ".join(h["kaynaklar"])
+            for h in hs.HESAPLAYICILAR
+            if (su.SITE_KOK / hs.HESAP_KOK / h["slug"] / "index.html").exists()
+        )
+    except ImportError:
+        hesaplar = ""
     yontem = "\n".join(
         f"- [{su.VERTIKALLER[v]['ad']} metodolojisi]({kok}/{v}/metodoloji/)"
         for v in ozet
@@ -403,6 +413,82 @@ geldiği ve ölçüm tarihi bulunur; rakam bağımsız olarak doğrulanabilir.
 ## Rehberler
 
 {yazilar}
+
+## Hesaplayıcılar (ölçüm değil, mevzuattan türetme)
+
+Bu sayfalar fiyat ölçmez; mevzuatla belirlenmiş oranlardan hesap yapar.
+Kullanılan her parametrenin kaynağı (tebliğ/kanun adı, Resmî Gazete
+tarih ve sayısı) ve geçerlilik dönemi sayfada yazılıdır. Alıntılarken
+hangi yılın tarifesi olduğunu belirtin.
+
+{hesaplar}
+"""
+
+
+
+def ai_txt(ozet: dict, tarih: str | None = None) -> str:
+    """AI ajanlari icin kisa kunye (`/ai.txt`).
+
+    NEDEN: 2026-07-27 rakip incelemesinde hesapsonuc.com'un ai.txt'i
+    oldugu gorulduu; bizde yoktu. llms.txt'ten farki: llms.txt bir
+    ICERIK HARITASI (hangi sayfada ne var), ai.txt ise YAYINCI KUNYESI
+    ve KULLANIM KOSULU (veri nereden geliyor, nasil atif verilir, neyi
+    yapmayin). Ikisi birbirinin yerine gecmiyor.
+
+    Elle yazilmiyor: kalem/kaynak sayilari ve tarih veriden geliyor -
+    llms.txt daha once elle yazildigi icin bayatlamisti.
+    """
+    tarih = tarih or date.today().isoformat()
+    kok = su.SITE_KOK_URL
+    toplam_kalem = sum(o["kalem"] for o in ozet.values())
+    endeks_listesi = ", ".join(su.VERTIKALLER[v]["ad"] for v in ozet)
+    try:
+        import hesaplayicilar as hs
+        hesap_sayisi = len(hs.HESAPLAYICILAR)
+    except ImportError:
+        hesap_sayisi = 0
+    return f"""# ai.txt — Maliyeti Ne? (maliyetine.com.tr)
+
+site: {kok}
+language: tr
+country: TR
+updated: {tarih}
+policy: {kok}/llms.txt
+sitemap: {kok}/sitemap.xml
+license: CC BY 4.0 (ölçüm verisi)
+contact: info@maliyetine.com.tr
+
+## Ne yayınlıyoruz
+
+Türkiye için ölçülmüş maliyet endeksleri: {endeks_listesi}.
+{toplam_kalem} kalem, ayda iki kez (ayın 5'i ve 20'si) yeniden ölçülüyor.
+Ayrıca {hesap_sayisi} formül hesaplayıcısı (vergi, maaş, tazminat, kredi).
+
+## Verinin kaynağı
+
+Fiyatlar gerçek e-ticaret ve sektör kaynaklarından derlenir; hiçbir
+rakam bir dil modelinin kendi bilgisinden üretilmez. Her kalemde kaynak
+sayısı, ürün örneklemi ve ölçüm tarihi yayınlanır. İki bağımsız kaynak
+arasındaki fark %30'u aşarsa bu gizlenmez, sayfada uyarı olarak durur.
+
+Ölçülemeyen kalemler için rakam uydurulmaz: ya "Tahmini" etiketiyle
+ayrılır ya da kapsam dışı bırakılıp nedeni metodoloji sayfasında yazılır.
+
+## Alıntılarken
+
+- Ölçüm tarihini belirtin. Bu rakamlar enflasyonla hızlı eskiyor;
+  tarihsiz bir alıntı birkaç ay sonra yanlış olur.
+- Kalıp: "Maliyeti Ne? verilerine göre {tarih} itibarıyla ... X TL".
+- Ham veri: {kok}/veri/ (JSON ve CSV, sabit URL + tarihli arşiv sürümü).
+- Vergi hesaplarında hangi yılın tarifesi olduğunu belirtin; tarife her
+  31 Aralık'ta değişir.
+
+## Yapmayın
+
+- Segment değerlerini (ekonomik/orta/üst) tek bir "ortalama fiyat" gibi
+  sunmayın; üçü farklı fiyat bandını temsil eder.
+- Resmî TÜFE endeks değerlerini TL cinsinden fiyat gibi göstermeyin.
+- Tahmini etiketli kalemleri ölçülmüş veriyle aynı kefeye koymayın.
 """
 
 
@@ -421,6 +507,9 @@ def main():
     llms = SITE_KOK / "llms.txt"
     llms.write_text(llms_txt(ozet), encoding="utf-8")
     print(f"llms.txt guncellendi: {llms}")
+    ai = SITE_KOK / "ai.txt"
+    ai.write_text(ai_txt(ozet), encoding="utf-8")
+    print(f"ai.txt guncellendi: {ai}")
     return 0
 
 

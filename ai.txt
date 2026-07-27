@@ -1,0 +1,42 @@
+# ai.txt — Maliyeti Ne? (maliyetine.com.tr)
+
+site: https://maliyetine.com.tr
+language: tr
+country: TR
+updated: 2026-07-27
+policy: https://maliyetine.com.tr/llms.txt
+sitemap: https://maliyetine.com.tr/sitemap.xml
+license: CC BY 4.0 (ölçüm verisi)
+contact: info@maliyetine.com.tr
+
+## Ne yayınlıyoruz
+
+Türkiye için ölçülmüş maliyet endeksleri: Düğün, Ev Kurma, Okul, Bebek, 0 km Araç.
+107 kalem, ayda iki kez (ayın 5'i ve 20'si) yeniden ölçülüyor.
+Ayrıca 5 formül hesaplayıcısı (vergi, maaş, tazminat, kredi).
+
+## Verinin kaynağı
+
+Fiyatlar gerçek e-ticaret ve sektör kaynaklarından derlenir; hiçbir
+rakam bir dil modelinin kendi bilgisinden üretilmez. Her kalemde kaynak
+sayısı, ürün örneklemi ve ölçüm tarihi yayınlanır. İki bağımsız kaynak
+arasındaki fark %30'u aşarsa bu gizlenmez, sayfada uyarı olarak durur.
+
+Ölçülemeyen kalemler için rakam uydurulmaz: ya "Tahmini" etiketiyle
+ayrılır ya da kapsam dışı bırakılıp nedeni metodoloji sayfasında yazılır.
+
+## Alıntılarken
+
+- Ölçüm tarihini belirtin. Bu rakamlar enflasyonla hızlı eskiyor;
+  tarihsiz bir alıntı birkaç ay sonra yanlış olur.
+- Kalıp: "Maliyeti Ne? verilerine göre 2026-07-27 itibarıyla ... X TL".
+- Ham veri: https://maliyetine.com.tr/veri/ (JSON ve CSV, sabit URL + tarihli arşiv sürümü).
+- Vergi hesaplarında hangi yılın tarifesi olduğunu belirtin; tarife her
+  31 Aralık'ta değişir.
+
+## Yapmayın
+
+- Segment değerlerini (ekonomik/orta/üst) tek bir "ortalama fiyat" gibi
+  sunmayın; üçü farklı fiyat bandını temsil eder.
+- Resmî TÜFE endeks değerlerini TL cinsinden fiyat gibi göstermeyin.
+- Tahmini etiketli kalemleri ölçülmüş veriyle aynı kefeye koymayın.

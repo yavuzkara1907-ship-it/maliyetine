@@ -2838,6 +2838,16 @@ def sitemap_uret() -> str:
                     url_kayitlari.append((f"/rehber/{r['slug']}/", "monthly", "0.7"))
     except ImportError:
         pass
+    # Formul hesaplayicilari (/hesap/...). Elle liste tutulmuyor -
+    # hesaplayicilar.py'den okunuyor ki yeni hesaplayici eklenince
+    # sitemap'te unutulmasin (okul vertikali gecmis.py'de unutulmustu).
+    try:
+        import hesaplayicilar
+        for yol_ in hesaplayicilar.sitemap_yollari():
+            if (SITE_KOK / yol_ / "index.html").exists():
+                url_kayitlari.append((f"/{yol_}", "yearly", "0.8"))
+    except ImportError:
+        pass
 
     for conf in VERTIKALLER.values():
         yol = conf["yol"]
@@ -2929,6 +2939,21 @@ def vertikal_ozeti(vertikal: str, veri_kok: Path | None = None) -> dict | None:
     }
 
 
+def _hesap_linkleri_html() -> str:
+    """Formul hesaplayicilarina ana sayfa linkleri. Dosya diskte yoksa
+    link verilmez - 404'e link cikmasin (rehber sayfalarindaki ayni kural)."""
+    try:
+        import hesaplayicilar
+    except ImportError:
+        return ""
+    parcalar = [
+        f'<a href="/{hesaplayicilar.HESAP_KOK}/{h["slug"]}/">{h["ad"]}</a>'
+        for h in hesaplayicilar.HESAPLAYICILAR
+        if (SITE_KOK / hesaplayicilar.HESAP_KOK / h["slug"] / "index.html").exists()
+    ]
+    return " · ".join(parcalar)
+
+
 def anasayfa_uret(veri_kok: Path | None = None) -> str:
     """Ana sayfayi GERCEK rakamlarla build-time'da uretir.
 
@@ -2985,6 +3010,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
     )
     hizli_hesap_js = _hizli_hesap_js(hizli) if hizli else ""
     rehber_linkleri = ""
+    hesap_linkleri = _hesap_linkleri_html()
     anasayfa_yazi = ""
     try:
         import rehber
@@ -3209,6 +3235,12 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
 
   <h2>Rehberler</h2>
   <p class="kart-linkler">{rehber_linkleri}</p>
+
+  <h2>Hesaplayıcılar</h2>
+  <p>Ölçüm değil <em>türetme</em>: vergi, maaş, tazminat ve kredi hesapları.
+    Kullanılan her resmî parametrenin kaynağı ve geçerlilik dönemi ilgili
+    sayfada yazılı.</p>
+  <p class="kart-linkler">{hesap_linkleri}</p>
 
   <h2>Neden farklı?</h2>
   <p>
