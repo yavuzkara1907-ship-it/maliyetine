@@ -1188,6 +1188,70 @@ için bir kez bayatlamıştı.
 
 Testler: 18 yeni Python + 23 yeni Node. Toplam 11 Python suite, Node 54.
 
+## GOOGLE AI ÖNERİLERİ — değerlendirme (2026-07-27)
+Yavuz Google'ın yapay zekasından aldığı beş öneriyi paylaştı. Ölçülüp
+tek tek değerlendirildi; **üçü zaten yapılmıştı.**
+
+- **Dinamik sitemap** ✓ zaten var: 132 URL, build-time üretiliyor,
+  workflow her ölçümde tazeliyor.
+- **Schema markup** ✓ zaten var: sitede **26 farklı tip** kullanılıyor
+  (WebApplication, HowTo, Dataset, DataCatalog, AggregateOffer,
+  FAQPage, BreadcrumbList…).
+- **Affiliate linkleri** ✓ altyapı hazır: `KAYNAK_SITELERI.takip`
+  doldurulduğu an link `rel="sponsored"` alıp görünür açıklama
+  gösteriyor. Kod işi yok, **programlara kabul alınması gerekiyor.**
+- **DÜZELTME:** öneri "indeksli değilseniz sitemap ve schema
+  yaptırın" diyordu. İndekslenmememizin sebebi o değil — ikisi de tam;
+  site 3 günlük ve dış bağlantısı yok. O ikisini yeniden yapmak boşa
+  emek olurdu.
+
+**E-POSTA DUVARI ÖNERİSİ UYGULANMADI — sebebi kayda geçsin.** Öneri
+"PDF indirmek için e-posta iste, sonra finans/sigorta reklamı at"
+diyordu. Üç sorun: (1) ham veriyi CSV olarak CC BY 4.0 ile bedava
+veriyoruz ve `/veri/` sayfası "alın kullanın" diyor — aynı rakamların
+PDF'ini e-posta karşılığı vermek **tutarsız** olurdu ve ilk fark eden
+bunu yazar; (2) Türkiye'de ticari e-posta **İYS kaydı ve açık rıza**
+gerektiriyor; (3) statik sitede backend yok, e-posta toplamak üçüncü
+taraf servis + KVKK sorumluluğu demek. **PDF/paylaşılabilir rapor
+yapılabilir ama duvarsız.**
+
+## BÜTÇE DENGELEYİCİ (2026-07-27) — önerinin en iyisi
+*"Bütçem 411.670 değil 300.000"* diyen kullanıcıya hangi kalemde ne
+yapması gerektiğini söylüyor. `hesapla.js` → `butceyiDengele()`.
+
+**NEDEN BU BİR TAVSİYE MOTORU DEĞİL, ARİTMETİK:** öneriler
+uydurulmuyor, **ölçülmüş segment fiyatlarından çıkarılıyor.** "Salon:
+orta → ekonomik, −52.500 TL" diyebiliyoruz çünkü iki segmentin de
+medyanı elimizde. **"Pazarlık yap, %10 indirim al" gibi ölçmediğimiz
+bir tasarruf önerilmiyor** — o tavsiye olurdu, veri değil. Sayfada da
+bu cümle yazılı.
+
+**HEDEFE ULAŞILAMIYORSA SÖYLENİYOR.** Gerçek veriyle:
+- hedef 300.000 → 3 hamle, yeni toplam 278.778, açık kapanıyor
+- hedef 200.000 → 8 hamle, 266.077'de duruyor ve dürüstçe diyor ki
+  *"bütçeye yine de 66.077 TL kalıyor; ölçtüğümüz kalemlerin hepsini
+  ekonomiğe indirseniz bile inilebilecek en düşük tutar 266.077 TL"*
+
+**Korunan sınırlar (testli):** `segment_tutarsiz` kalemden tasarruf
+önerilmez (blender örneği — tutarsız veriden "tasarruf" çıkarmak
+yanıltır) · tahmini kalemden önerilmez · aynı kalem için tek hamle
+(çift sayım yok) · geçersiz hedefte `null`.
+
+**Test gerçek bug yakaladı:** bütçe yeterliyken `pay` hesabı **tersti**
+(mevcut − hedef) ve bütçesi bol kullanıcıya negatif pay gösteriyordu.
+
+**Yan düzeltme:** `dugun-kalemler.js`'te `module.exports` **yoktu**
+(diğer üç kalem dosyasında vardı) — bu yüzden dengeleyici gerçek veriye
+karşı node ile test edilemiyordu. Eklendi.
+
+**Araç → kredi bağlantısı:** öneri "banka affiliate butonu koy"
+diyordu; önce **kendi** kredi hesaplayıcımıza bağlamak daha doğru —
+kullanıcı siteden çıkmıyor ve rakam bizim hesabımızdan geliyor.
+Affiliate ayrı ve Yavuz'un kararı.
+
+Dört vertikal hesaplayıcısında var (araç hariç — orada kalemler
+birbirinin alternatifi, toplam hesabı zaten yok). Node 80/80.
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
