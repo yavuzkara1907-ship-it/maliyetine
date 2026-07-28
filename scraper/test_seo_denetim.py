@@ -19,9 +19,12 @@ Bu testler gercek dosyalari okur; site uretilmemisse atlanir.
 from __future__ import annotations
 
 import json
+
 import re
 import unittest
 from pathlib import Path
+
+import sayfa_uret
 
 SITE = Path(__file__).parent.parent
 
@@ -198,6 +201,60 @@ class SiteDenetimi(unittest.TestCase):
         self.assertNotIn("Disallow: /", m, "robots.txt genel Disallow iceriyor")
         for bot in ("GPTBot", "ClaudeBot", "PerplexityBot"):
             self.assertIn(bot, m, f"{bot} robots.txt'te tanimli degil")
+    def test_yayindaki_rakamlar_GUNCEL_veriyle_ayni(self):
+        """Yayindaki her toplam, SU ANKI veriden turetilebilir olmali.
+
+        2026-07-28'de Yavuz gercek bir tutarsizlik yakaladi: bir sayfa
+        411.670 TL derken digeri 406.375 TL diyordu ve IKISI DE
+        "2026-07-26" tarihini gosteriyordu.
+
+        KOK NEDEN - yapisal degil ZAMANSAL: ana sayfa ve endeks sayfasi
+        ayni fonksiyondan (`vertikal_ozeti` -> `ornek_toplam_hesapla`)
+        beslendigi icin ayni anda uretildiklerinde ayrisamazlar. Ama
+        26 Temmuz 23:09'da motor AYNI GUN ikinci kez kostu ve o gunun
+        olcumunun uzerine yazdi (gelinlik 8.699 -> 18.172, salon
+        1.100 -> 1.000). Sayfalarin bir kismi eski veriyle uretilmis
+        halde kalirsa iki farkli rakam ayni tarih etiketiyle yayinda
+        durur - kullanici hangisine guvenecegini bilemez.
+
+        Bu test yayindaki rakamlari veriye karsi dogruluyor: veri
+        degisip sayfalar yeniden uretilmezse PATLAR.
+        """
+        for vertikal, conf in sayfa_uret.VERTIKALLER.items():
+            dosya = SITE / "veri" / f"{vertikal}.json"
+            sayfa = SITE / vertikal / "index.html"
+            if not (dosya.exists() and sayfa.exists()):
+                continue
+            veri = json.loads(dosya.read_text(encoding="utf-8"))
+            toplam, _ = sayfa_uret.ornek_toplam_hesapla(
+                conf, veri.get("kalemler") or {},
+                conf.get("olcek_varsayilan", 1), "orta")
+            if not toplam:
+                continue
+            beklenen = f"{toplam:,}".replace(",", ".")
+            self.assertIn(beklenen, _govde(_oku(sayfa)),
+                          f"{vertikal}/index.html guncel veriden ({beklenen} TL) "
+                          f"farkli bir toplam gosteriyor - sayfa bayat.")
+            # Ana sayfa da AYNI rakami gostermek zorunda
+            self.assertIn(beklenen, _govde(_oku(SITE / "index.html")),
+                          f"ana sayfa {vertikal} icin {beklenen} TL gostermiyor - "
+                          f"iki sayfa ayni seye farkli deger veriyor.")
+
+    def test_uretilen_sayfalar_veriden_YENI(self):
+        """Sayfa, besledigi veriden eski olamaz.
+
+        Yukaridaki tutarsizligin mekanik kontrolu: veri dosyasi
+        sayfadan sonra degismisse sayfa bayattir ve rakam yanlistir."""
+        import os
+        for vertikal in sayfa_uret.VERTIKALLER:
+            veri = SITE / "veri" / f"{vertikal}.json"
+            sayfa = SITE / vertikal / "index.html"
+            if not (veri.exists() and sayfa.exists()):
+                continue
+            self.assertGreaterEqual(
+                os.path.getmtime(sayfa), os.path.getmtime(veri) - 1,
+                f"{vertikal}/index.html verisinden ESKI - yeniden uretilmeli")
+
     def test_global_menu_her_sayfada_ayni(self):
         """2026-07-27 TASARIM DENETIMI - Yavuz: "google indekslemezse
         hesaplayicilar da kayip. ne headerda var ne sitede gorunur."
