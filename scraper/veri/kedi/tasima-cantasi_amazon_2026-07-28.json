@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Taşıma Çantası"
+  ],
+  "kalem": "tasima-cantasi",
+  "vertikal": "kedi",
+  "tarih": "2026-07-28",
+  "toplam_urun": 46,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 1037,
+  "segmentler": {
+    "dusuk": {
+      "min": 199,
+      "medyan": 300,
+      "max": 550,
+      "urun_sayisi": 12
+    },
+    "orta": {
+      "min": 580,
+      "medyan": 1050,
+      "max": 1259,
+      "urun_sayisi": 23
+    },
+    "luks": {
+      "min": 1499,
+      "medyan": 1789,
+      "max": 2250,
+      "urun_sayisi": 11
+    }
+  }
+}

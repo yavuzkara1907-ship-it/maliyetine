@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Veriyi İndir | Maliyeti Ne?</title>
-<meta name="description" content="Düğün, ev kurma, okul ve sıfır araç fiyat verisi CSV ve JSON olarak indirilebilir. 107 kalem, kaynak ve ölçüm tarihiyle birlikte.">
+<meta name="description" content="Düğün, ev kurma, okul ve sıfır araç fiyat verisi CSV ve JSON olarak indirilebilir. 115 kalem, kaynak ve ölçüm tarihiyle birlikte.">
 <link rel="canonical" href="https://maliyetine.com.tr/veri/">
 <link rel="stylesheet" href="/assets/css/style.css">
 <meta property="og:title" content="Veriyi İndir | Maliyeti Ne?">
-<meta property="og:description" content="107 kalemlik fiyat verisi, CSV ve JSON olarak açık.">
+<meta property="og:description" content="115 kalemlik fiyat verisi, CSV ve JSON olarak açık.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://maliyetine.com.tr/veri/">
 <meta property="og:image" content="https://maliyetine.com.tr/assets/og-gorsel.png">
@@ -117,6 +117,26 @@
         },
         {
           "@type": "Dataset",
+          "name": "Kedi fiyat endeksi",
+          "description": "Türkiye'de kedi bakımı kalemlerinin gerçek e-ticaret verisinden derlenen fiyat endeksi.",
+          "url": "https://maliyetine.com.tr/kedi/",
+          "dateModified": "2026-07-28",
+          "isAccessibleForFree": true,
+          "distribution": [
+            {
+              "@type": "DataDownload",
+              "encodingFormat": "text/csv",
+              "contentUrl": "https://maliyetine.com.tr/veri/csv/kedi.csv"
+            },
+            {
+              "@type": "DataDownload",
+              "encodingFormat": "application/json",
+              "contentUrl": "https://maliyetine.com.tr/veri/kedi.json"
+            }
+          ]
+        },
+        {
+          "@type": "Dataset",
           "name": "0 km Araç fiyat endeksi",
           "description": "Türkiye'de satılan sıfır kilometre otomobillerin marka giriş fiyatları ve marka bazlı model fiyatlarından derlenen aylık endeks.",
           "url": "https://maliyetine.com.tr/arac/",
@@ -170,6 +190,12 @@
         {
           "@type": "DataDownload",
           "encodingFormat": "text/csv",
+          "contentUrl": "https://maliyetine.com.tr/veri/csv/kedi.csv",
+          "name": "Kedi (CSV)"
+        },
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "text/csv",
           "contentUrl": "https://maliyetine.com.tr/veri/csv/arac.csv",
           "name": "0 km Araç (CSV)"
         }
@@ -208,7 +234,7 @@
 <header class="ust-bar">
   <div class="kapsayici">
     <a href="/" class="logo">Maliyeti <span>Ne?</span></a>
-    <nav class="ust-menu"><a href="/dugun/">Düğün</a><a href="/ev-kurma/">Ev Kurma</a><a href="/okul/">Okul</a><a href="/bebek/">Bebek</a><a href="/arac/">0 km Araç</a><a href="/hesap/" class="menu-one-cikan">Hesaplayıcılar</a><a href="/rehber/">Rehber</a><a href="/veri/" aria-current="page">Veri</a></nav>
+    <nav class="ust-menu"><a href="/dugun/">Düğün</a><a href="/ev-kurma/">Ev Kurma</a><a href="/okul/">Okul</a><a href="/bebek/">Bebek</a><a href="/kedi/">Kedi</a><a href="/arac/">0 km Araç</a><a href="/hesap/" class="menu-one-cikan">Hesaplayıcılar</a><a href="/rehber/">Rehber</a><a href="/veri/" aria-current="page">Veri</a></nav>
   </div>
 </header>
 
@@ -221,7 +247,7 @@
   <h1>Veriyi İndir</h1>
 
   <div class="cevap-blok">
-    Ölçtüğümüz 107 kalemin tamamı CSV ve JSON olarak indirilebilir.
+    Ölçtüğümüz 115 kalemin tamamı CSV ve JSON olarak indirilebilir.
     Her satırda fiyatın yanında <strong>kaç üründen derlendiği, hangi
     kaynaklardan geldiği ve hangi tarihte ölçüldüğü</strong> yazıyor —
     rakamı kendiniz doğrulayabilirsiniz.
@@ -230,7 +256,7 @@
   <h2>Dosyalar</h2>
   <div class="tablo-sarmal"><table>
     <thead><tr><th>Endeks</th><th class="sayi">Kalem</th><th>Ölçüm</th><th>İndir</th></tr></thead>
-    <tbody><tr><td><a href="/dugun/">Düğün</a></td><td class="sayi">15</td><td>2026-07-26</td><td><a href="/veri/csv/dugun.csv" download>CSV</a> · <a href="/veri/dugun.json" download>JSON</a></td></tr><tr><td><a href="/ev-kurma/">Ev Kurma</a></td><td class="sayi">42</td><td>2026-07-26</td><td><a href="/veri/csv/ev-kurma.csv" download>CSV</a> · <a href="/veri/ev-kurma.json" download>JSON</a></td></tr><tr><td><a href="/okul/">Okul</a></td><td class="sayi">14</td><td>2026-07-26</td><td><a href="/veri/csv/okul.csv" download>CSV</a> · <a href="/veri/okul.json" download>JSON</a></td></tr><tr><td><a href="/bebek/">Bebek</a></td><td class="sayi">11</td><td>2026-07-26</td><td><a href="/veri/csv/bebek.csv" download>CSV</a> · <a href="/veri/bebek.json" download>JSON</a></td></tr><tr><td><a href="/arac/">0 km Araç</a></td><td class="sayi">25</td><td>2026-07-26</td><td><a href="/veri/csv/arac.csv" download>CSV</a> · <a href="/veri/arac.json" download>JSON</a></td></tr></tbody>
+    <tbody><tr><td><a href="/dugun/">Düğün</a></td><td class="sayi">15</td><td>2026-07-26</td><td><a href="/veri/csv/dugun.csv" download>CSV</a> · <a href="/veri/dugun.json" download>JSON</a></td></tr><tr><td><a href="/ev-kurma/">Ev Kurma</a></td><td class="sayi">42</td><td>2026-07-26</td><td><a href="/veri/csv/ev-kurma.csv" download>CSV</a> · <a href="/veri/ev-kurma.json" download>JSON</a></td></tr><tr><td><a href="/okul/">Okul</a></td><td class="sayi">14</td><td>2026-07-26</td><td><a href="/veri/csv/okul.csv" download>CSV</a> · <a href="/veri/okul.json" download>JSON</a></td></tr><tr><td><a href="/bebek/">Bebek</a></td><td class="sayi">11</td><td>2026-07-26</td><td><a href="/veri/csv/bebek.csv" download>CSV</a> · <a href="/veri/bebek.json" download>JSON</a></td></tr><tr><td><a href="/kedi/">Kedi</a></td><td class="sayi">8</td><td>2026-07-28</td><td><a href="/veri/csv/kedi.csv" download>CSV</a> · <a href="/veri/kedi.json" download>JSON</a></td></tr><tr><td><a href="/arac/">0 km Araç</a></td><td class="sayi">25</td><td>2026-07-26</td><td><a href="/veri/csv/arac.csv" download>CSV</a> · <a href="/veri/arac.json" download>JSON</a></td></tr></tbody>
   </table></div>
   <p>
     Hepsi tek dosyada: <a href="/veri/csv/tum-kalemler.csv" download><strong>tum-kalemler.csv</strong></a>

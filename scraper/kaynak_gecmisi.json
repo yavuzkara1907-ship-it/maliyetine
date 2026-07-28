@@ -1901,5 +1901,53 @@
       45
     ],
     "son_calisma": "2026-07-26"
+  },
+  "kedi/kedi-tuvaleti/amazon": {
+    "urun_sayilari": [
+      46
+    ],
+    "son_calisma": "2026-07-28"
+  },
+  "kedi/tasima-cantasi/amazon": {
+    "urun_sayilari": [
+      46
+    ],
+    "son_calisma": "2026-07-28"
+  },
+  "kedi/tirmalama/amazon": {
+    "urun_sayilari": [
+      42
+    ],
+    "son_calisma": "2026-07-28"
+  },
+  "kedi/kedi-yatagi/amazon": {
+    "urun_sayilari": [
+      37
+    ],
+    "son_calisma": "2026-07-28"
+  },
+  "kedi/mama-su-kabi/amazon": {
+    "urun_sayilari": [
+      41
+    ],
+    "son_calisma": "2026-07-28"
+  },
+  "kedi/kedi-oyuncagi/amazon": {
+    "urun_sayilari": [
+      43
+    ],
+    "son_calisma": "2026-07-28"
+  },
+  "kedi/kedi-mamasi/amazon": {
+    "urun_sayilari": [
+      50
+    ],
+    "son_calisma": "2026-07-28"
+  },
+  "kedi/kedi-kumu/amazon": {
+    "urun_sayilari": [
+      37
+    ],
+    "son_calisma": "2026-07-28"
   }
 }

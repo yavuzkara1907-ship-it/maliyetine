@@ -81,6 +81,14 @@ bebek,bebek-arabasi,Bebek Arabası,Uyku ve taşıma,sabit,4411,7110,12319,2999,2
 bebek,besik,Beşik,Uyku ve taşıma,sabit,1584,4315,9256,876,14639,45,2,amazon; trendyol,2026-07-26
 bebek,oto-koltugu,Oto Koltuğu,Uyku ve taşıma,sabit,3202,9608,17600,849,44151,60,2,amazon; trendyol,2026-07-26
 bebek,park-yatak,Park Yatak / Oyun Parkı,Uyku ve taşıma,sabit,3920,7249,10999,2298,14639,20,1,amazon,2026-07-26
+kedi,kedi-kumu,Kedi Kumu (aylık),Aylık sarf,sabit,160,260,380,104,600,37,1,amazon,2026-07-28
+kedi,kedi-mamasi,Kedi Maması (aylık),Aylık sarf,sabit,274,1070,1846,118,3599,50,1,amazon,2026-07-28
+kedi,mama-su-kabi,Mama ve Su Kabı,Beslenme,sabit,130,307,417,59,589,41,1,amazon,2026-07-28
+kedi,tasima-cantasi,Taşıma Çantası,Taşıma,sabit,300,1050,1789,199,2250,46,1,amazon,2026-07-28
+kedi,kedi-tuvaleti,Kedi Tuvaleti,Tuvalet,sabit,599,2761,17099,300,27999,46,1,amazon,2026-07-28
+kedi,kedi-oyuncagi,Kedi Oyuncağı,Yaşam alanı,sabit,98,167,308,60,447,43,1,amazon,2026-07-28
+kedi,kedi-yatagi,Kedi Yatağı,Yaşam alanı,sabit,299,432,899,199,1199,37,1,amazon,2026-07-28
+kedi,tirmalama,Tırmalama Tahtası,Yaşam alanı,sabit,299,550,1109,127,2202,42,1,amazon,2026-07-28
 arac,bmw,BMW,Marka bazlı fiyatlar,sabit,4468450,8159300,15799000,3724500,21870500,60,1,donanimhaber,2026-07-26
 arac,byd,BYD,Marka bazlı fiyatlar,sabit,4133500,5145500,,4077000,,4,1,donanimhaber,2026-07-26
 arac,chery,Chery,Marka bazlı fiyatlar,sabit,2310000,2672500,,2310000,,3,1,donanimhaber,2026-07-26

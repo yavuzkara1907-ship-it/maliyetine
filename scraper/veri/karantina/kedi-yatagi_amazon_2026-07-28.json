@@ -1,0 +1,16 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Kedi Yatağı"
+  ],
+  "kalem": "kedi-yatagi",
+  "vertikal": "kedi",
+  "tarih": "2026-07-28",
+  "toplam_urun": 0,
+  "saglikli": false,
+  "kullanilan_katmanlar": [
+    "hicbiri"
+  ],
+  "genel_medyan": null,
+  "segmentler": {}
+}

@@ -3822,3 +3822,176 @@ kaynaklar:
     bekleme_sn: 3
     aktif: true
     durum: "onaylandi"
+
+  # ------------------------------------------------------------------
+  # KEDI VERTIKALI (2026-07-28) - 6. vertikal
+  #
+  # Tamamen urun bazli. KEDI ve KOPEK BILINCLI OLARAK AYRILDI:
+  # kimse hem kedi hem kopek mamasi almiyor, ikisini toplamak arac
+  # vertikalindeki 'marka kalemleri toplanmaz' hatasinin aynisi olurdu.
+  # Kopek ayri bir vertikal olarak eklenebilir.
+  #
+  # Amazon aramasi kullaniliyor - kategori URL'i avlamaya gerek yok
+  # (Trendyol kategori slug'lari tahmin edildi ve 4'u de 404 verdi;
+  # okul turundeki 'URL TAHMIN EDILMEZ' dersinin tekrari).
+  # ------------------------------------------------------------------
+
+  - ad: "Amazon - Kedi Tuvaleti"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=kedi%20tuvaleti"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "kedi"
+    kalem: "kedi-tuvaleti"
+    yontem: "otomatik"
+    min_fiyat: 200
+    bekleme_sn: 3
+    ad_gerekli: "tuvalet|kum kabı|litter"
+    ad_dislama: "kürek|torba|poşet|kum$"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    aktif: true
+    durum: "onaylandi"
+
+  - ad: "Amazon - Taşıma Çantası"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=kedi%20ta%C5%9F%C4%B1ma%20%C3%A7antas%C4%B1"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "kedi"
+    kalem: "tasima-cantasi"
+    yontem: "otomatik"
+    min_fiyat: 150
+    bekleme_sn: 3
+    ad_gerekli: "taşıma|taşima|çanta|kafes"
+    ad_dislama: "tekerlek seti|kılıf"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    aktif: true
+    durum: "onaylandi"
+
+  - ad: "Amazon - Tırmalama Tahtası"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=kedi%20t%C4%B1rmalama"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "kedi"
+    kalem: "tirmalama"
+    yontem: "otomatik"
+    min_fiyat: 100
+    bekleme_sn: 3
+    ad_gerekli: "tırmalama"
+    ad_dislama: "sprey|catnip$"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    aktif: true
+    durum: "onaylandi"
+
+  - ad: "Amazon - Kedi Yatağı"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=kedi%20yata%C4%9F%C4%B1"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "kedi"
+    kalem: "kedi-yatagi"
+    yontem: "otomatik"
+    min_fiyat: 100
+    bekleme_sn: 3
+    ad_gerekli: "yata[kğ]|yuva|minder"
+    ad_dislama: "kum|mama"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    aktif: true
+    durum: "onaylandi"
+
+  - ad: "Amazon - Mama ve Su Kabı"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=mama%20su%20kab%C4%B1"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "kedi"
+    kalem: "mama-su-kabi"
+    yontem: "otomatik"
+    min_fiyat: 50
+    bekleme_sn: 3
+    ad_gerekli: "ka[pb]ı|mama ka[pb]|su ka[pb]|kase|çanak"
+    ad_dislama: "mama$|otomatik.*3"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    aktif: true
+    durum: "onaylandi"
+
+  - ad: "Amazon - Kedi Oyuncağı"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=kedi%20oyunca%C4%9F%C4%B1"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "kedi"
+    kalem: "kedi-oyuncagi"
+    yontem: "otomatik"
+    min_fiyat: 50
+    bekleme_sn: 3
+    ad_gerekli: "oyunca[kğ]|catnip|kedi nanesi|top|fare|olta"
+    ad_dislama: "tırmalama tahtası"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    aktif: true
+    durum: "onaylandi"
+
+  - ad: "Amazon - Kedi Maması (aylık)"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=kedi%20mamas%C4%B1"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "kedi"
+    kalem: "kedi-mamasi"
+    yontem: "otomatik"
+    min_fiyat: 80
+    bekleme_sn: 3
+    ad_gerekli: "mama"
+    ad_dislama: "kap|kase|saklama"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    aktif: true
+    durum: "onaylandi"
+
+  - ad: "Amazon - Kedi Kumu (aylık)"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=kedi%20kumu"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "kedi"
+    kalem: "kedi-kumu"
+    yontem: "otomatik"
+    min_fiyat: 80
+    bekleme_sn: 3
+    ad_gerekli: "kum"
+    ad_dislama: "kürek|kap|torba|mat"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    aktif: true
+    durum: "onaylandi"

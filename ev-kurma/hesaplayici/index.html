@@ -71,7 +71,7 @@
 <header class="ust-bar">
   <div class="kapsayici">
     <a href="/" class="logo">Maliyeti <span>Ne?</span></a>
-    <nav class="ust-menu"><a href="/dugun/">Düğün</a><a href="/ev-kurma/" aria-current="page">Ev Kurma</a><a href="/okul/">Okul</a><a href="/bebek/">Bebek</a><a href="/arac/">0 km Araç</a><a href="/hesap/" class="menu-one-cikan">Hesaplayıcılar</a><a href="/rehber/">Rehber</a><a href="/veri/">Veri</a></nav>
+    <nav class="ust-menu"><a href="/dugun/">Düğün</a><a href="/ev-kurma/" aria-current="page">Ev Kurma</a><a href="/okul/">Okul</a><a href="/bebek/">Bebek</a><a href="/kedi/">Kedi</a><a href="/arac/">0 km Araç</a><a href="/hesap/" class="menu-one-cikan">Hesaplayıcılar</a><a href="/rehber/">Rehber</a><a href="/veri/">Veri</a></nav>
   </div>
 </header>
 
@@ -229,7 +229,13 @@
     const kutu = document.createElement("input");
     kutu.type = "checkbox";
     kutu.value = kalem.id;
-    kutu.checked = true;
+    // `varsayilan_dahil: false` olan kalemler (bebek bezi, kedi mamasi,
+    // kedi kumu) AYLIK SARF - tek seferlik kurulumla ayni toplama
+    // girmiyorlar. Endeks sayfasi bunlari toplamdan cikariyordu ama
+    // hesaplayici HEPSINI isaretli getiriyordu: ayni sey icin iki
+    // farkli rakam (bebek 34.829 vs 35.394, kedi 5.267 vs 6.597).
+    // Kullanici bu tutarsizlik sinifini 2026-07-28'de bildirdi.
+    kutu.checked = kalem.varsayilan_dahil !== false;
     kutu.name = "kalem";
     label.appendChild(kutu);
     label.appendChild(document.createTextNode(" " + kalem.ad));

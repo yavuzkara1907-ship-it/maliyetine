@@ -1,0 +1,334 @@
+{
+  "vertikal": "kedi",
+  "guncelleme_tarihi": "2026-07-28",
+  "kalemler": {
+    "kedi-mamasi": {
+      "segmentler": {
+        "dusuk": {
+          "min": 118,
+          "medyan": 274,
+          "max": 549,
+          "urun_sayisi": 13,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 576,
+          "medyan": 1070,
+          "max": 1452,
+          "urun_sayisi": 25,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 1535,
+          "medyan": 1846,
+          "max": 3599,
+          "urun_sayisi": 12,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 1059,
+      "toplam_urun": 50,
+      "guncelleme_tarihi": "2026-07-28",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Kedi Maması (aylık)"
+          ],
+          "tarih": "2026-07-28",
+          "toplam_urun": 50,
+          "genel_medyan": 1059
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "mama-su-kabi": {
+      "segmentler": {
+        "dusuk": {
+          "min": 59,
+          "medyan": 130,
+          "max": 188,
+          "urun_sayisi": 11,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 199,
+          "medyan": 307,
+          "max": 399,
+          "urun_sayisi": 20,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 400,
+          "medyan": 417,
+          "max": 589,
+          "urun_sayisi": 10,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 300,
+      "toplam_urun": 41,
+      "guncelleme_tarihi": "2026-07-28",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Mama ve Su Kabı"
+          ],
+          "tarih": "2026-07-28",
+          "toplam_urun": 41,
+          "genel_medyan": 300
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "tasima-cantasi": {
+      "segmentler": {
+        "dusuk": {
+          "min": 199,
+          "medyan": 300,
+          "max": 550,
+          "urun_sayisi": 12,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 580,
+          "medyan": 1050,
+          "max": 1259,
+          "urun_sayisi": 23,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 1499,
+          "medyan": 1789,
+          "max": 2250,
+          "urun_sayisi": 11,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 1037,
+      "toplam_urun": 46,
+      "guncelleme_tarihi": "2026-07-28",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Taşıma Çantası"
+          ],
+          "tarih": "2026-07-28",
+          "toplam_urun": 46,
+          "genel_medyan": 1037
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "kedi-tuvaleti": {
+      "segmentler": {
+        "dusuk": {
+          "min": 300,
+          "medyan": 599,
+          "max": 1199,
+          "urun_sayisi": 12,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 1349,
+          "medyan": 2761,
+          "max": 12490,
+          "urun_sayisi": 24,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 12595,
+          "medyan": 17099,
+          "max": 27999,
+          "urun_sayisi": 10,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 2699,
+      "toplam_urun": 46,
+      "guncelleme_tarihi": "2026-07-28",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Kedi Tuvaleti"
+          ],
+          "tarih": "2026-07-28",
+          "toplam_urun": 46,
+          "genel_medyan": 2699
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "kedi-yatagi": {
+      "segmentler": {
+        "dusuk": {
+          "min": 199,
+          "medyan": 299,
+          "max": 300,
+          "urun_sayisi": 11,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 350,
+          "medyan": 432,
+          "max": 690,
+          "urun_sayisi": 20,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 750,
+          "medyan": 899,
+          "max": 1199,
+          "urun_sayisi": 6,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 398,
+      "toplam_urun": 37,
+      "guncelleme_tarihi": "2026-07-28",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Kedi Yatağı"
+          ],
+          "tarih": "2026-07-28",
+          "toplam_urun": 37,
+          "genel_medyan": 398
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "kedi-kumu": {
+      "segmentler": {
+        "dusuk": {
+          "min": 104,
+          "medyan": 160,
+          "max": 185,
+          "urun_sayisi": 10,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 185,
+          "medyan": 260,
+          "max": 300,
+          "urun_sayisi": 21,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 309,
+          "medyan": 380,
+          "max": 600,
+          "urun_sayisi": 6,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 246,
+      "toplam_urun": 37,
+      "guncelleme_tarihi": "2026-07-28",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Kedi Kumu (aylık)"
+          ],
+          "tarih": "2026-07-28",
+          "toplam_urun": 37,
+          "genel_medyan": 246
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "kedi-oyuncagi": {
+      "segmentler": {
+        "dusuk": {
+          "min": 60,
+          "medyan": 98,
+          "max": 115,
+          "urun_sayisi": 11,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 129,
+          "medyan": 167,
+          "max": 252,
+          "urun_sayisi": 22,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 271,
+          "medyan": 308,
+          "max": 447,
+          "urun_sayisi": 10,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 164,
+      "toplam_urun": 43,
+      "guncelleme_tarihi": "2026-07-28",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Kedi Oyuncağı"
+          ],
+          "tarih": "2026-07-28",
+          "toplam_urun": 43,
+          "genel_medyan": 164
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "tirmalama": {
+      "segmentler": {
+        "dusuk": {
+          "min": 127,
+          "medyan": 299,
+          "max": 300,
+          "urun_sayisi": 11,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 330,
+          "medyan": 550,
+          "max": 749,
+          "urun_sayisi": 21,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 768,
+          "medyan": 1109,
+          "max": 2202,
+          "urun_sayisi": 10,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 549,
+      "toplam_urun": 42,
+      "guncelleme_tarihi": "2026-07-28",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Tırmalama Tahtası"
+          ],
+          "tarih": "2026-07-28",
+          "toplam_urun": 42,
+          "genel_medyan": 549
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    }
+  }
+}

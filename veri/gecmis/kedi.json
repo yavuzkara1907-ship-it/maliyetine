@@ -1,0 +1,193 @@
+{
+ "vertikal": "kedi",
+ "uretim_tarihi": "2026-07-28",
+ "olcumler": [
+  "2026-07-28"
+ ],
+ "kalemler": {
+  "kedi-mamasi": {
+   "seri": [
+    {
+     "tarih": "2026-07-28",
+     "medyan": 1059,
+     "urun": 50,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-28",
+    "medyan": 1059,
+    "urun": 50,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-28",
+    "medyan": 1059,
+    "urun": 50,
+    "kaynak": 1
+   }
+  },
+  "mama-su-kabi": {
+   "seri": [
+    {
+     "tarih": "2026-07-28",
+     "medyan": 300,
+     "urun": 41,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-28",
+    "medyan": 300,
+    "urun": 41,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-28",
+    "medyan": 300,
+    "urun": 41,
+    "kaynak": 1
+   }
+  },
+  "tasima-cantasi": {
+   "seri": [
+    {
+     "tarih": "2026-07-28",
+     "medyan": 1037,
+     "urun": 46,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-28",
+    "medyan": 1037,
+    "urun": 46,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-28",
+    "medyan": 1037,
+    "urun": 46,
+    "kaynak": 1
+   }
+  },
+  "kedi-tuvaleti": {
+   "seri": [
+    {
+     "tarih": "2026-07-28",
+     "medyan": 2699,
+     "urun": 46,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-28",
+    "medyan": 2699,
+    "urun": 46,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-28",
+    "medyan": 2699,
+    "urun": 46,
+    "kaynak": 1
+   }
+  },
+  "kedi-yatagi": {
+   "seri": [
+    {
+     "tarih": "2026-07-28",
+     "medyan": 398,
+     "urun": 37,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-28",
+    "medyan": 398,
+    "urun": 37,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-28",
+    "medyan": 398,
+    "urun": 37,
+    "kaynak": 1
+   }
+  },
+  "kedi-kumu": {
+   "seri": [
+    {
+     "tarih": "2026-07-28",
+     "medyan": 246,
+     "urun": 37,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-28",
+    "medyan": 246,
+    "urun": 37,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-28",
+    "medyan": 246,
+    "urun": 37,
+    "kaynak": 1
+   }
+  },
+  "kedi-oyuncagi": {
+   "seri": [
+    {
+     "tarih": "2026-07-28",
+     "medyan": 164,
+     "urun": 43,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-28",
+    "medyan": 164,
+    "urun": 43,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-28",
+    "medyan": 164,
+    "urun": 43,
+    "kaynak": 1
+   }
+  },
+  "tirmalama": {
+   "seri": [
+    {
+     "tarih": "2026-07-28",
+     "medyan": 549,
+     "urun": 42,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-28",
+    "medyan": 549,
+    "urun": 42,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-07-28",
+    "medyan": 549,
+    "urun": 42,
+    "kaynak": 1
+   }
+  }
+ },
+ "ozet": {
+  "kalem_sayisi": 8,
+  "karsilastirilabilir": 0,
+  "artan": 0,
+  "azalan": 0,
+  "sabit": 0,
+  "medyan_degisim_yuzde": null
+ }
+}

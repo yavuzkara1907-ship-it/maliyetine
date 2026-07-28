@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Kedi Kumu (aylık)"
+  ],
+  "kalem": "kedi-kumu",
+  "vertikal": "kedi",
+  "tarih": "2026-07-28",
+  "toplam_urun": 37,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 246,
+  "segmentler": {
+    "dusuk": {
+      "min": 104,
+      "medyan": 160,
+      "max": 185,
+      "urun_sayisi": 10
+    },
+    "orta": {
+      "min": 185,
+      "medyan": 260,
+      "max": 300,
+      "urun_sayisi": 21
+    },
+    "luks": {
+      "min": 309,
+      "medyan": 380,
+      "max": 600,
+      "urun_sayisi": 6
+    }
+  }
+}

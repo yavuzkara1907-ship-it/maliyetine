@@ -258,6 +258,31 @@ BEBEK_KALEMLERI = [
      "varsayilan_dahil": False},
 ]
 
+# Kedi vertikali (2026-07-28) - 6. vertikal.
+#
+# KEDI ve KOPEK BILINCLI OLARAK AYRILDI: kimse hem kedi hem kopek
+# mamasi almiyor. Ikisini tek toplama katmak, arac vertikalindeki
+# "marka kalemleri birbirinin alternatifi, toplanmaz" hatasinin
+# aynisi olurdu. Kopek ayri vertikal olarak eklenebilir.
+#
+# `varsayilan_dahil: False` -> mama ve kum. Bebek bezindeki ayrimin
+# aynisi: bunlar AYLIK SARF, digerleri tek seferlik kurulum. Ikisini
+# tek toplama katmak "kedi masrafi 5.000 TL" gibi ne oldugu belirsiz
+# bir rakam uretirdi. Toplam = kurulum; mama ve kum ayrica gosteriliyor
+# ve rehber yazisinda yillik karsiligi veriliyor.
+KEDI_KALEMLERI = [
+    {"id": "kedi-tuvaleti", "ad": "Kedi Tuvaleti", "birim": "sabit", "grup": "Tuvalet"},
+    {"id": "tasima-cantasi", "ad": "Taşıma Çantası", "birim": "sabit", "grup": "Taşıma"},
+    {"id": "tirmalama", "ad": "Tırmalama Tahtası", "birim": "sabit", "grup": "Yaşam alanı"},
+    {"id": "kedi-yatagi", "ad": "Kedi Yatağı", "birim": "sabit", "grup": "Yaşam alanı"},
+    {"id": "mama-su-kabi", "ad": "Mama ve Su Kabı", "birim": "sabit", "grup": "Beslenme"},
+    {"id": "kedi-oyuncagi", "ad": "Kedi Oyuncağı", "birim": "sabit", "grup": "Yaşam alanı"},
+    {"id": "kedi-mamasi", "ad": "Kedi Maması (aylık)", "birim": "sabit",
+     "grup": "Aylık sarf", "varsayilan_dahil": False},
+    {"id": "kedi-kumu", "ad": "Kedi Kumu (aylık)", "birim": "sabit",
+     "grup": "Aylık sarf", "varsayilan_dahil": False},
+]
+
 VERTIKALLER = {
     "dugun": {
         "ad": "Düğün",
@@ -574,6 +599,60 @@ VERTIKALLER = {
             },
         ],
     },
+    "kedi": {
+        "ad": "Kedi",
+        "yol": "kedi",
+        "kalemler": KEDI_KALEMLERI,
+        "tahmini_kalemler": [],
+        "baslik": "2026 Kedi Masrafı: Bir Kediye Ne Kadar Gider?",
+        "soru": "2026'da kedi bakım masrafı ne kadar?",
+        "sayfa_basligi": "Kedi Masrafı 2026 — Kalem Kalem | Maliyeti Ne?",
+        "meta_aciklama": (
+            "Kedi tuvaleti, taşıma çantası, mama ve kum: kedi bakım masrafı "
+            "kalem kalem. Kurulum ile aylık sarf ayrı ayrı, ölçülmüş fiyatlarla."
+        ),
+        "dataset_ad": "Maliyeti Ne? Kedi Bakım Masrafı Endeksi",
+        "dataset_aciklama": (
+            "Türkiye'de kedi bakımı kalemlerinin gerçek e-ticaret verisinden "
+            "derlenen fiyat endeksi."
+        ),
+        "olcek_varsayilan": 1,
+        "ornek_ifade": "kedi kurulumunun",
+        "anasayfa_ifade": "bir kediye başlangıç kurulumu",
+        "kart_alt": "tek seferlik kurulum",
+        "hesaplayici_daveti": "Kendi listenizi seçip hesaplayın →",
+        "dahil_olanlar": [
+            "Tuvalet ve taşıma: kedi tuvaleti, taşıma çantası.",
+            "Yaşam alanı: tırmalama tahtası, yatak, oyuncak.",
+            "Beslenme donanımı: mama ve su kabı.",
+        ],
+        "dahil_olmayanlar": [
+            "Mama ve kum gibi aylık sarf giderleri varsayılan toplamda yok — "
+            "tek seferlik kurulumla karıştırmamak için ayrı gösteriliyor.",
+            "Veteriner, aşı, kısırlaştırma ve mikroçip masrafları.",
+            "Kedinin kendisi (sahiplenme ücretsizdir; satın alma fiyatı "
+            "ölçmediğimiz ve teşvik etmediğimiz bir şey).",
+            "Pet kuaförü, pansiyon ve seyahat giderleri.",
+        ],
+        "segment_aciklama": (
+            "Ekonomik segment temel ihtiyacı karşılayan alt fiyat bandını, orta "
+            "segment yaygın tercih edilen ürünleri, üst segment ise marka ve "
+            "özellik olarak daha yüksek bandı gösterir. Rakamlar tek kedi "
+            "içindir."
+        ),
+        "kalem_sayfalari": [
+            {
+                "id": "kedi-mamasi",
+                "slug": "kedi-mamasi-fiyatlari",
+                "baslik": "2026'da Kedi Maması Fiyatları Ne Kadar?",
+                "soru": "2026'da kedi maması fiyatları ne kadar?",
+                "aciklama": (
+                    "Kedi maması fiyatı kuru/yaş oluşuna, tahılsız formüle ve "
+                    "paket boyutuna göre ayrışır; büyük paket kilo başına ucuzlar."
+                ),
+            },
+        ],
+    },
     "arac": {
         "ad": "0 km Araç",
         "yol": "arac",
@@ -717,6 +796,15 @@ KALEM_SAYFA_NOTLARI = {
     "davetiye": "Davetiye adet fiyatı kağıt cinsi ve baskı tekniğine göre ayrışır; toplam tutar davetli sayısıyla çarpılır.",
     "gelin-ayakkabisi": "Gelin ayakkabısı fiyatı topuk yüksekliği ve malzemeden çok markaya göre ayrışır.",
     "yemek-ikram": "Mekanın yemekli ve kokteyl fiyatı arasındaki fark, o mekanda menünün kişi başı bedelini verir.",
+    # -- kedi --
+    "kedi-tuvaleti": "Kedi tuvaleti fiyatı açık/kapalı oluşuna ve elek sistemine göre değişir; kapalı modeller koku kontrolünde daha iyi.",
+    "tasima-cantasi": "Taşıma çantası fiyatı sert kafes mi yumuşak çanta mı olduğuna ve uçuş uygunluğuna göre ayrışır.",
+    "tirmalama": "Tırmalama tahtası fiyatı sisal halat, karton ya da halı kaplamasına ve boyuna göre değişir.",
+    "kedi-yatagi": "Kedi yatağı fiyatı kapalı yuva ya da açık minder oluşuna ve kumaş cinsine göre ayrışır.",
+    "mama-su-kabi": "Mama ve su kabı fiyatı seramik, çelik ve plastik arasında belirgin fark gösterir; bıyık dostu geniş tabanlılar daha pahalı.",
+    "kedi-oyuncagi": "Kedi oyuncağı fiyatı tekli ürün ile set arasında ayrışır; kedi nanesi içerenler biraz daha üstte.",
+    "kedi-mamasi": "Kedi maması aylık tekrarlayan bir giderdir; kilo fiyatı büyük pakette belirgin düşer. Tek seferlik kurulum toplamına dahil edilmez.",
+    "kedi-kumu": "Kedi kumu aylık tekrarlayan bir giderdir; bentonit, silika ve doğal kum arasında hem fiyat hem tüketim farkı var. Kurulum toplamına dahil edilmez.",
     # -- bebek --
     "bebek-arabasi": "Bebek arabası fiyatı travel sistem (oto koltuğu dahil) olup olmamasına, çift yönlü kullanıma ve katlanma mekanizmasına göre ayrışır.",
     "mama-sandalyesi": "Mama sandalyesi fiyatı yükseklik ayarına, katlanabilirliğe ve masaya takılan/ayaklı tipine göre değişir.",
@@ -871,10 +959,22 @@ def genel_menu(aktif: str = "") -> str:
     ]
     parcalar = []
     for ad, url, anahtar in ogeler:
-        # Diskte yoksa link verilmez - 404'e link cikmasin.
-        hedef = SITE_KOK / url.strip("/") / "index.html"
-        if not hedef.exists():
-            continue
+        # SIRALAMA BUG'I (2026-07-28, kedi vertikali eklenirken bulundu):
+        # burada "sayfa diskte var mi" diye bakiliyordu. Yeni bir vertikal
+        # eklenince o vertikalin sayfasi HENUZ URETILMEMIS oluyor ve ondan
+        # ONCE uretilen sayfalar yeni vertikali menude GOREMIYORDU -
+        # 154 sayfanin 81'i eski menude kaldi ve testler yakaladi.
+        #
+        # Dogru olcut vertikaller icin VERININ varligi: veri varsa sayfa
+        # ayni kosuda mutlaka uretilir. Vertikal disi bolumler (/hesap/,
+        # /rehber/, /veri/) icin dosya kontrolu dogru kalir - onlar ayri
+        # scriptlerle uretiliyor ve gercekten yok olabilirler.
+        if anahtar in VERTIKALLER:
+            if not (SITE_KOK / "veri" / f"{anahtar}.json").exists():
+                continue
+        else:
+            if not (SITE_KOK / url.strip("/") / "index.html").exists():
+                continue
         ek = ' aria-current="page"' if anahtar == aktif else ""
         vurgu = ' class="menu-one-cikan"' if anahtar == "hesap" else ""
         parcalar.append(f'<a href="{url}"{ek}{vurgu}>{ad}</a>')

@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Mama ve Su Kabı"
+  ],
+  "kalem": "mama-su-kabi",
+  "vertikal": "kedi",
+  "tarih": "2026-07-28",
+  "toplam_urun": 41,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 300,
+  "segmentler": {
+    "dusuk": {
+      "min": 59,
+      "medyan": 130,
+      "max": 188,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 199,
+      "medyan": 307,
+      "max": 399,
+      "urun_sayisi": 20
+    },
+    "luks": {
+      "min": 400,
+      "medyan": 417,
+      "max": 589,
+      "urun_sayisi": 10
+    }
+  }
+}

@@ -1168,6 +1168,25 @@ class AdFiltresiTesti(unittest.TestCase):
         kalan2 = motor.ad_filtrele(self._u(("MAMA ISITICISI", 500)), {"ad_gerekli": "ısıtıcı"})
         self.assertEqual(len(kalan2), 1)
 
+    def test_turkce_unsuz_yumusamasi(self):
+        """GERCEK BUG (2026-07-28, kedi vertikali): desenler "yatak",
+        "kap", "oyuncak" yaziliyordu ama urun adlarinda ek alinca
+        YATAGI, KABI, OYUNCAGI oluyor - Turkce'de son sessiz k->g,
+        p->b, t->d, c->c yumusuyor. Filtre DOGRU urunleri eledi:
+        kedi yataginda 49 urunun 39'u, mama kabinda 48'in 42'si.
+
+        Ders: sonu k/p/t/c ile biten bir kelimeyi desene yazarken
+        yumusamis halini de kapsamak gerekiyor ([kg], [pb] gibi)."""
+        u = [{"isim": "Beyaz Polar Kedi Yatağı", "fiyat": 199},
+             {"isim": "Mama ve Su Kabı 400 ML", "fiyat": 59},
+             {"isim": "Kedi Oyuncağı Fare Şekilli", "fiyat": 62}]
+        # Yumusamayi kapsamayan desen HEPSINI eler - hatanin kendisi
+        dar = motor.ad_filtrele(u, {"ad_gerekli": "yatak|kap|oyuncak"})
+        self.assertEqual(dar, [], "yumusamasiz desen zaten eslesmemeli")
+        # Kapsayan desen hepsini tutar
+        genis = motor.ad_filtrele(u, {"ad_gerekli": "yata[kğ]|ka[pb]ı|oyunca[kğ]"})
+        self.assertEqual(len(genis), 3)
+
     def test_sayfa_mobilyasi_her_zaman_elenir(self):
         """Trendyol kategori sayfasinda "Bebek Beşik & Karyola Modelleri ve
         Fiyatları 2026" basligi URUN KARTI olarak yakalanmisti - yanindaki

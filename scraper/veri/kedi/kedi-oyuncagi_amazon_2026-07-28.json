@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Kedi Oyuncağı"
+  ],
+  "kalem": "kedi-oyuncagi",
+  "vertikal": "kedi",
+  "tarih": "2026-07-28",
+  "toplam_urun": 43,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 164,
+  "segmentler": {
+    "dusuk": {
+      "min": 60,
+      "medyan": 98,
+      "max": 115,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 129,
+      "medyan": 167,
+      "max": 252,
+      "urun_sayisi": 22
+    },
+    "luks": {
+      "min": 271,
+      "medyan": 308,
+      "max": 447,
+      "urun_sayisi": 10
+    }
+  }
+}

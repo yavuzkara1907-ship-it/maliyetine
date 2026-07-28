@@ -100,6 +100,44 @@ class GorselDenetim(unittest.TestCase):
             s.close()
             self.assertGreaterEqual(n, 7, f"{g}px: menude {n} oge")
 
+    def test_hesaplayici_varsayilani_endeksle_AYNI(self):
+        """Ayni sey icin iki farkli rakam olmamali.
+
+        2026-07-28'de Yavuz bu hata sinifini bildirdi. Hesaplayici
+        `varsayilan_dahil: false` bayragini YOK SAYIP her kalemi isaretli
+        getiriyordu; endeks sayfasi ise aylik sarf kalemlerini toplamdan
+        cikariyordu. Sonuc: bebek 34.829 (endeks) vs 35.394 (hesaplayici),
+        kedi 5.267 vs 6.597. Ikisi de "orta segment" diyordu.
+
+        Bebek vertikali yayina gireli beri canlidaydi ve kimse fark
+        etmemisti - cunku iki sayfaya ayni anda bakmak gerekiyor.
+
+        ARAC HARIC: oradaki hesaplayici arac fiyatini degil SAHIP OLMA
+        maliyetini (MTV, noter, kasko) hesapliyor - farkli sey olcuyor,
+        farkli rakam vermesi dogru."""
+        import json
+        import sayfa_uret as su
+        for vertikal, conf in su.VERTIKALLER.items():
+            if not conf.get("hesaplayici_var", True) or vertikal == "arac":
+                continue
+            dosya = SITE / "veri" / f"{vertikal}.json"
+            if not dosya.exists():
+                continue
+            veri = json.loads(dosya.read_text(encoding="utf-8"))
+            beklenen, _ = su.ornek_toplam_hesapla(
+                conf, veri.get("kalemler") or {},
+                conf.get("olcek_varsayilan", 1), "orta")
+            s = self._ac(f"/{vertikal}/hesaplayici/")
+            s.eval_on_selector("#hesaplayici-form", "f => f.requestSubmit()")
+            s.wait_for_timeout(400)
+            metin = s.inner_text("#sonuc-toplam-deger")
+            s.close()
+            bulunan = int(metin.replace(" TL", "").replace(".", ""))
+            self.assertEqual(
+                bulunan, beklenen,
+                f"{vertikal}: hesaplayici {bulunan:,} diyor, endeks {beklenen:,} - "
+                f"ayni sey icin iki farkli rakam.".replace(",", "."))
+
     def test_konsol_hatasi_yok(self):
         for yol in SAYFALAR:
             s = self._ac(yol)
