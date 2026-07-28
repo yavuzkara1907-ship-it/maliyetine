@@ -1569,6 +1569,50 @@ bu doğru — orada hesaplayıcı *sahip olma* maliyetini ölçüyor.)
 `test_hesaplayici_varsayilani_endeksle_AYNI` gerçek tarayıcıda
 kilitliyor; bug geri konarak doğrulandı.
 
+## EVCİL HAYVAN: HUB + İKİ YATAY (2026-07-28)
+Yavuz: *"köpek de olsun ama evcil hayvan vertikalinin içinde kedi ve
+köpek iki ayrı yatay olsun."*
+
+**Yapı:** `/evcil-hayvan/` hub (ikisini yan yana gösterir, **asla
+toplamaz**) + `/kedi/` ve `/kopek/` kendi toplamı, hesaplayıcısı ve
+sayfasıyla. Menüde tek "Evcil Hayvan" girdisi — ayrı gösterilse menü
+10 öğeye çıkıp dar ekranda kullanılamaz olurdu.
+
+**NEDEN TEK VERTİKALDE BİRLEŞTİRİLMEDİ:**
+1. **Toplam anlamsız olurdu.** Kimse hem kedi hem köpek maması almıyor;
+   bu iki liste birbirinin **alternatifi**. Toplamak, araç vertikalinde
+   yaşadığımız *"marka kalemleri toplanmaz"* hatasının aynısı olurdu.
+2. **"kedi masrafı" ve "köpek masrafı" ayrı arama sorguları.** Tek
+   sayfada birleştirmek her ikisinde de zayıflatırdı.
+Hub sayfası bu gerekçeyi okuyucuya da yazıyor.
+
+**Köpek:** 7 kalem, kurulum **3.921 TL**, aylık sarf **1.911 TL**, ilk
+yıl **26.853 TL**. Veriden çıkan ilginç sonuç: **kedi kurulumu daha
+pahalı (5.267 vs 3.921) ama köpeğin aylık gideri daha yüksek (1.911 vs
+1.330)** — ilk yılda köpek öne geçiyor. Rehber yazısı için hazır malzeme.
+
+### Bu turda bulunan dört sorun (hepsi testlerden)
+1. **Ad çakışması:** "Amazon - Mama ve Su Kabı" hem kedide hem köpekte;
+   iki kalem sayfası aynı title'ı üretiyordu.
+2. **Header kapsayıcısı — viewport'tan bağımsız taşma.** Gövde 880px'lik
+   okuma sütununda; menü 9 öğeye çıkınca logo+menü **923px** istedi ve
+   880px'lik kapsayıcıdan taştı — 1024'te de 1440'ta da. **Kırılım
+   noktası değiştirmek çözmezdi.** Header bir gezinme çubuğu, okuma
+   sütununa hizalanmak zorunda değil → kapsayıcı 1180px.
+3. **flex + overflow = `min-width: 0` (aynı tuzağa İKİNCİ düşüş).**
+   Menüye `overflow-x: auto` verildi ama menü bir flex öğesi ve
+   varsayılan `min-width: auto` onu içeriği kadar büyük tutup overflow'u
+   etkisiz kıldı. **Asistan formunda da aynı hata yaşanmıştı.**
+4. **Footer nav:** kural `.footer-endeksler` sınıfına yazılmıştı ama
+   footer'da **sınıfsız** bir `<nav>` daha var ve 320px'te sayfayı
+   taşıran oydu. Kural sınıfa göre değil **yapıya göre** yazıldı
+   (`footer nav`). *Ders: bir düzen kuralını tek sınıfa bağlamak, aynı
+   yapıdaki diğerlerini dışarıda bırakıyor.*
+
+**Doğrulama:** 176 genişlik-sayfa kombinasyonu (16 genişlik × 11 sayfa),
+yatay taşma hiçbirinde yok. 165 sayfada aynı menü, 0 kırık iç link.
+sitemap 154 → **165**.
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
