@@ -682,6 +682,215 @@ def _govde_beyaz_esya(v: dict) -> str | None:
 
 
 # ---------------------------------------------------------------------------
+# 9. Bebek masraflari - ILK YIL
+#
+# NEDEN AYRI BIR YAZI: bebek endeksi TEK SEFERLIK hazirligi olcuyor;
+# bez `varsayilan_dahil: False` oldugu icin toplama girmiyor. "Ilk yil ne
+# kadar?" sorusunun cevabi ise ikisinin TOPLAMI - ve bu ayrimi yapan
+# baska bir kaynak yok. Rakiplerin verdigi tek rakam ikisini karistirir.
+# ---------------------------------------------------------------------------
+def _govde_bebek_ilk_yil(v: dict) -> str | None:
+    b = v.get("bebek")
+    if not b:
+        return None
+    conf = su.VERTIKALLER["bebek"]
+    kalemler = b.get("kalemler") or {}
+    tek_seferlik, _ = su.ornek_toplam_hesapla(conf, kalemler, 1, "orta")
+    bez = _kalem(b, "bebek-bezi")
+    if not (tek_seferlik and bez):
+        return None
+    yillik_bez = bez * 12
+    toplam = tek_seferlik + yillik_bez
+    eko, _ = su.ornek_toplam_hesapla(conf, kalemler, 1, "ekonomik")
+    bez_eko = _kalem(b, "bebek-bezi", "dusuk")
+
+    en_pahali = sorted(
+        ((t["ad"], _kalem(b, t["id"])) for t in conf["kalemler"]
+         if t.get("varsayilan_dahil", True) and _kalem(b, t["id"])),
+        key=lambda x: -x[1])[:4]
+    satirlar = "".join(
+        f'<tr><td>{ad}</td><td class="sayi">{_p(d)}</td>'
+        f'<td class="sayi">%{d / tek_seferlik * 100:.0f}</td></tr>'
+        for ad, d in en_pahali)
+
+    return f"""
+  <p class="cevap-blok">
+    Bir bebeğin ilk yılı, ölçtüğümüz kalemlerle orta segmentte
+    <strong>{_p(toplam)}</strong> tutuyor. Bunun {_p(tek_seferlik)} kadarı
+    <strong>tek seferlik hazırlık</strong> (araba, beşik, oto koltuğu,
+    mama sandalyesi), {_p(yillik_bez)} kadarı ise <strong>yalnızca bezin
+    yıllık tutarı</strong>.
+  </p>
+
+  <h2>Neden iki rakamı ayrı tutuyoruz?</h2>
+  <p>
+    Bebek masrafı sorulduğunda verilen tek rakamlar genelde bu ikisini
+    karıştırır. Beşik bir kez alınır; bez her ay tekrar eder. İkisini
+    toplayıp tek sayı vermek, ikinci yılı planlayan biri için yanıltıcı
+    olur — ikinci yılda beşiği yeniden almazsınız ama bezi almaya devam
+    edersiniz. Bu yüzden endeksimizde bez varsayılan toplama girmez,
+    ayrıca gösterilir.
+  </p>
+
+  <h2>Hazırlığın en büyük dört kalemi</h2>
+  <div class="tablo-sarmal"><table>
+    <thead><tr><th>Kalem</th><th class="sayi">Orta segment</th><th class="sayi">Payı</th></tr></thead>
+    <tbody>{satirlar}</tbody>
+  </table></div>
+  <p>
+    Ekonomik tercihlerle tek seferlik hazırlık {_p(eko)} seviyesine
+    iniyor; bez tarafında ekonomik paket aylık {_p(bez_eko)} demek, yani
+    yılda {_p(bez_eko * 12 if bez_eko else None)}.
+  </p>
+
+  <h2>Bu rakama neler dahil değil</h2>
+  <p>
+    Doğum ve hastane masrafı, mama ve ek gıda, sağlık harcamaları,
+    kreş ve bakıcı bu hesapta yok. İkinci el ya da devralınan eşya da
+    hesaba katılmıyor — pratikte beşik ve araba sıkça el değiştirir ve
+    bu, hazırlık tutarını belirgin düşürür.
+  </p>
+
+{_tufe(v, "bebek")}
+  <p>
+    Kalem kalem güncel fiyatlar <a href="/bebek/">bebek endeksinde</a>;
+    kendi listenizi <a href="/bebek/hesaplayici/">hesaplayıcıdan</a>
+    çıkarabilirsiniz.
+  </p>
+"""
+
+
+# ---------------------------------------------------------------------------
+# 10. Ceyiz masraflari
+# ---------------------------------------------------------------------------
+def _govde_ceyiz(v: dict) -> str | None:
+    e = v.get("ev-kurma")
+    if not e:
+        return None
+    gruplar = {"Tekstil": [], "Mutfak": [], "Küçük ev aleti": []}
+    for t in su.VERTIKALLER["ev-kurma"]["kalemler"]:
+        if t.get("grup") in gruplar and _kalem(e, t["id"]):
+            gruplar[t["grup"]].append((t["ad"], _kalem(e, t["id"])))
+    if sum(len(x) for x in gruplar.values()) < 10:
+        return None
+
+    satirlar, toplam = [], 0
+    for grup, ks in gruplar.items():
+        alt = sum(d for _, d in ks)
+        toplam += alt
+        satirlar.append(
+            f'<tr><td>{grup}</td><td class="sayi">{len(ks)} kalem</td>'
+            f'<td class="sayi">{_p(alt)}</td></tr>')
+    nevresim = _kalem(e, "nevresim-takimi")
+    tencere = _kalem(e, "tencere-seti")
+
+    return f"""
+  <p class="cevap-blok">
+    Geleneksel çeyiz kapsamına giren kalemler — tekstil, mutfak eşyası ve
+    küçük ev aletleri — orta segmentte toplam <strong>{_p(toplam)}</strong>
+    tutuyor. Beyaz eşya ve mobilya bu rakamın dışında; onlar ayrı ve çok
+    daha büyük kalemler.
+  </p>
+
+  <h2>Çeyiz üç grupta toplanıyor</h2>
+  <div class="tablo-sarmal"><table>
+    <thead><tr><th>Grup</th><th class="sayi">Kalem</th><th class="sayi">Orta segment</th></tr></thead>
+    <tbody>{"".join(satirlar)}</tbody>
+  </table></div>
+
+  <h2>Ölçerken şaşırtan yer</h2>
+  <p>
+    Çeyiz denince akla önce tekstil gelir ama tutarı belirleyen küçük ev
+    aletleri. Bir nevresim takımının orta segment fiyatı {_p(nevresim)},
+    bir tencere seti {_p(tencere)} — buna karşılık robot süpürge,
+    airfryer, kahve makinesi gibi kalemler tek başına bu ikisinin
+    toplamını geçiyor.
+  </p>
+
+  <h2>Marka mağazası mı pazaryeri mi?</h2>
+  <p>
+    Nevresim ve tencerede iki ayrı kaynağı birlikte ölçüyoruz ve aradaki
+    fark küçük değil: aynı kategoride marka mağazası ile pazaryeri
+    arasında iki kata varan ayrım çıkabiliyor. Bu bir "ucuz site" listesi
+    değil — iki listedeki ürün karması farklı. Ayrıntısı
+    <a href="/rehber/trendyol-mu-amazon-mu-ucuz/">kaynak karşılaştırması</a>
+    yazısında.
+  </p>
+
+{_tufe(v, "ev-kurma")}
+  <p>
+    Kalem kalem fiyatlar <a href="/ev-kurma/">ev kurma endeksinde</a>;
+    yalnızca mutfak tarafı için
+    <a href="/ev-kurma/mutfak-esyalari-fiyatlari/">mutfak eşyaları sayfasına</a>
+    bakabilirsiniz.
+  </p>
+"""
+
+
+# ---------------------------------------------------------------------------
+# 11. Yatak odasi masraflari
+# ---------------------------------------------------------------------------
+def _govde_yatak_odasi(v: dict) -> str | None:
+    e = v.get("ev-kurma")
+    if not e:
+        return None
+    ks = [(t["ad"], _kalem(e, t["id"]), _kalem(e, t["id"], "dusuk"),
+           _kalem(e, t["id"], "luks"))
+          for t in su.VERTIKALLER["ev-kurma"]["kalemler"]
+          if t.get("grup") == "Yatak odası" and _kalem(e, t["id"])]
+    if len(ks) < 4:
+        return None
+    toplam = sum(x[1] for x in ks)
+    eko = sum(x[2] or x[1] for x in ks)
+    ust = sum(x[3] or x[1] for x in ks)
+    satirlar = "".join(
+        f'<tr><td>{ad}</td><td class="sayi">{_p(d)}</td>'
+        f'<td class="sayi">{_p(o)}</td><td class="sayi">{_p(u)}</td></tr>'
+        for ad, o, d, u in [(a, b, c, d2) for a, b, c, d2 in ks])
+    yatak = _kalem(e, "yatak")
+
+    return f"""
+  <p class="cevap-blok">
+    Bir yatak odasını sıfırdan kurmak orta segmentte
+    <strong>{_p(toplam)}</strong> tutuyor. Ekonomik tercihlerle
+    {_p(eko)}, üst segmentte {_p(ust)} — yani aradaki fark
+    {ust / eko:.1f} kat.
+  </p>
+
+  <h2>Kalem kalem</h2>
+  <div class="tablo-sarmal"><table>
+    <thead><tr><th>Kalem</th><th class="sayi">Ekonomik</th><th class="sayi">Orta</th><th class="sayi">Üst</th></tr></thead>
+    <tbody>{satirlar}</tbody>
+  </table></div>
+
+  <h2>Bütçeyi tek kalem belirliyor</h2>
+  <p>
+    Yatağın orta segment fiyatı {_p(yatak)} ve odanın toplamının
+    yaklaşık %{(yatak or 0) / toplam * 100:.0f}'ini tek başına o
+    oluşturuyor. Gardırop, komodin ve şifonyer birlikte bile yatağın
+    altında kalıyor. Bütçeyi kısmak isteyen için sıra bellidir; ama
+    her gün sekiz saat kullanılan tek eşya da odur.
+  </p>
+
+  <h2>Yatak odası, ev kurma bütçesinin neresi?</h2>
+  <p>
+    Sıfırdan ev kurmanın orta segment toplamı içinde yatak odası görece
+    küçük bir dilim — beyaz eşya ve mobilya çok daha ağır basıyor.
+    Karşılaştırmak için
+    <a href="/rehber/beyaz-esya-butcesi/">beyaz eşya bütçesine</a> ve
+    <a href="/ev-kurma/mobilya-fiyatlari/">mobilya fiyatlarına</a>
+    bakabilirsiniz.
+  </p>
+
+{_tufe(v, "ev-kurma")}
+  <p>
+    Kendi listenizi <a href="/ev-kurma/hesaplayici/">ev kurma
+    hesaplayıcısından</a> çıkarabilirsiniz.
+  </p>
+"""
+
+
+# ---------------------------------------------------------------------------
 # 8. Kaynak karsilastirmasi (Trendyol vs Amazon)
 # ---------------------------------------------------------------------------
 def _govde_kaynak_karsilastirma(v: dict) -> str | None:
@@ -797,6 +1006,33 @@ def _govde_kaynak_karsilastirma(v: dict) -> str | None:
 
 
 REHBERLER = [
+    {
+        "slug": "bebek-masraflari-ilk-yil",
+        "baslik": "Bebek Masrafları: İlk Yıl Ne Kadar Tutuyor?",
+        "seo_baslik": "Bebek Masrafları 2026 — İlk Yıl Toplamı",
+        "meta": "Tek seferlik hazırlık ile aylık tekrarlayan bez masrafı ayrı ayrı, "
+                "ölçülmüş fiyatlarla. İlk yılın gerçek toplamı.",
+        "govde": _govde_bebek_ilk_yil,
+        "vertikal": "bebek",
+    },
+    {
+        "slug": "ceyiz-masraflari",
+        "baslik": "Çeyiz Masrafları: Tekstil, Mutfak ve Küçük Ev Aletleri",
+        "seo_baslik": "Çeyiz Masrafları 2026 — Kalem Kalem Liste",
+        "meta": "Çeyiz kapsamındaki tekstil, mutfak eşyası ve küçük ev aletleri "
+                "kalem kalem, ekonomik-orta-üst fiyatlarıyla.",
+        "govde": _govde_ceyiz,
+        "vertikal": "ev-kurma",
+    },
+    {
+        "slug": "yatak-odasi-masraflari",
+        "baslik": "Yatak Odası Masrafları: Sıfırdan Kurmak Ne Kadar?",
+        "seo_baslik": "Yatak Odası Masrafları 2026 — Kalem Kalem",
+        "meta": "Yatak, gardırop, komodin, şifonyer: bir yatak odasını sıfırdan "
+                "kurmanın ekonomik, orta ve üst segment maliyeti.",
+        "govde": _govde_yatak_odasi,
+        "vertikal": "ev-kurma",
+    },
     {
         "slug": "trendyol-mu-amazon-mu-ucuz",
         "baslik": "Trendyol mu Amazon mu Daha Ucuz? 45 Kalemde Ölçtük",

@@ -4,7 +4,7 @@
 > endeksi. Fiyatlar tahmin edilmez; gerçek satış listelerinden ölçülür. Her
 > rakamın yanında kaynak sayısı, ürün adedi ve ölçüm tarihi yayınlanır.
 
-Şu an 107 kalem ölçülüyor. Son güncelleme: 2026-07-27.
+Şu an 107 kalem ölçülüyor. Son güncelleme: 2026-07-28.
 
 **Alıntılarken ölçüm tarihini belirtin.** Fiyat verisi tarihsiz olduğunda
 yanıltıcı hale gelir: "buzdolabı 30 bin lira" altı ay sonra yanlış olur,
@@ -55,6 +55,9 @@ geldiği ve ölçüm tarihi bulunur; rakam bağımsız olarak doğrulanabilir.
 
 ## Rehberler
 
+- [Bebek Masrafları: İlk Yıl Ne Kadar Tutuyor?](https://maliyetine.com.tr/rehber/bebek-masraflari-ilk-yil/)
+- [Çeyiz Masrafları: Tekstil, Mutfak ve Küçük Ev Aletleri](https://maliyetine.com.tr/rehber/ceyiz-masraflari/)
+- [Yatak Odası Masrafları: Sıfırdan Kurmak Ne Kadar?](https://maliyetine.com.tr/rehber/yatak-odasi-masraflari/)
 - [Trendyol mu Amazon mu Daha Ucuz? 45 Kalemde Ölçtük](https://maliyetine.com.tr/rehber/trendyol-mu-amazon-mu-ucuz/)
 - [Ekonomik Düğün Nasıl Yapılır? Nereden Kısılır, Nereden Kısılmaz](https://maliyetine.com.tr/rehber/ekonomik-dugun-nasil-yapilir/)
 - [2026 Beyaz Eşya Bütçesi: Sıfırdan Bir Eve Ne Kadar?](https://maliyetine.com.tr/rehber/beyaz-esya-butcesi/)
