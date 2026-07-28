@@ -1520,6 +1520,55 @@ Vertikal izolasyon testleri header/footer'ı dışarıda bırakacak şekilde
 Python **14 suite**, Node 80/80. 135 genişlik-sayfa kombinasyonunda
 yatay taşma yok; canlıda doğrulandı.
 
+## KEDİ VERTİKALİ — 6. vertikal (2026-07-28)
+Tamamen ürün bazlı. **8 kalem**, orta segment kurulum **5.267 TL**,
+aylık sarf **1.330 TL**, ilk yıl **21.227 TL**. sitemap 143 → **154**.
+
+**İKİ BİLİNÇLİ KAPSAM KARARI:**
+1. **Kedi ve köpek AYRILDI.** Kimse hem kedi hem köpek maması almıyor;
+   ikisini tek toplama katmak, araç vertikalindeki *"marka kalemleri
+   birbirinin alternatifi, toplanmaz"* hatasının aynısı olurdu. Köpek
+   ayrı vertikal olarak eklenebilir.
+2. **mama ve kum `varsayilan_dahil: False`** — bebek bezindeki ayrımın
+   aynısı. Toplam = tek seferlik kurulum; aylık sarf ayrıca gösteriliyor.
+
+**Kaynak:** 8 Amazon araması. Trendyol kategori slug'ları önce **tahmin
+edildi ve 4'ü de 0 ürün döndürdü** — okul turundaki *"URL TAHMİN
+EDİLMEZ"* dersinin tekrarı.
+
+### Bu turda bulunan üç bug
+
+**1. TÜRKÇE ÜNSÜZ YUMUŞAMASI — ad filtresinde yeni bir hata sınıfı.**
+Desenler `yatak`, `kap`, `oyuncak` yazıyordu; ürün adlarında ek alınca
+**yatağı, kabı, oyuncağı** oluyor (k→ğ, p→b). Filtre **doğru ürünleri
+eledi**: kedi yatağında 49'un 39'u, mama kabında 48'in 42'si. Desenler
+`[kğ]`/`[pb]` ile düzeltildi + regresyon testi. **Sonu k/p/t/ç ile biten
+her kelimede bu risk var.**
+
+**2. `genel_menu()` sıralama bug'ı.** "Sayfa diskte var mı" diye
+bakıyordu; yeni vertikalin sayfası henüz üretilmemiş olduğu için ondan
+önce üretilen sayfalar onu menüde göremiyordu — 154 sayfanın 81'i eski
+menüde kaldı, test yakaladı. Vertikaller için ölçüt artık **verinin
+varlığı** (veri varsa sayfa aynı koşuda mutlaka üretilir).
+
+**3. HESAPLAYICI ENDEKSTEN FARKLI RAKAM VERİYORDU — en önemlisi.**
+Hesaplayıcı `varsayilan_dahil: false` bayrağını **yok sayıp** her kalemi
+işaretli getiriyordu:
+
+| vertikal | endeks | hesaplayıcı | fark |
+|---|---|---|---|
+| bebek | 34.829 | 35.394 | bez |
+| kedi | 5.267 | 6.597 | mama + kum |
+
+İkisi de "orta segment" diyordu. **Bu, Yavuz'un bildirdiği "aynı şeyin
+iki farklı değeri" sınıfının ta kendisi ve bebek vertikali yayına
+gireli beri canlıdaydı** — iki sayfaya aynı anda bakmak gerektiği için
+kimse fark etmemişti. Dört hesaplayıcıda da düzeltildi; beş vertikalde
+hesaplayıcı varsayılanı artık endeksle **birebir aynı**. (Araç hariç ve
+bu doğru — orada hesaplayıcı *sahip olma* maliyetini ölçüyor.)
+`test_hesaplayici_varsayilani_endeksle_AYNI` gerçek tarayıcıda
+kilitliyor; bug geri konarak doğrulandı.
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
