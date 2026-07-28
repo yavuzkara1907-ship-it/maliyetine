@@ -16,3 +16,10 @@ scraper/kazima.log
 
 # EVDS (TCMB) API anahtari - ASLA commit edilmez
 scraper/.evds-key
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
