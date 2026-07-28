@@ -1613,6 +1613,48 @@ pahalı (5.267 vs 3.921) ama köpeğin aylık gideri daha yüksek (1.911 vs
 yatay taşma hiçbirinde yok. 165 sayfada aynı menü, 0 kırık iç link.
 sitemap 154 → **165**.
 
+## SON DENETİM (2026-07-28) — veri yüklenmeden uydurma rakam
+Yavuz'un istediği son hata kontrolünde **bir gerçek bug** çıktı.
+
+**Yavaş ya da kopuk bağlantıda "Hesapla"ya fetch bitmeden basan
+kullanıcıya güvenilir görünen yanlış bir rakam gösteriliyordu:**
+
+| vertikal | gösterilen |
+|---|---|
+| ev-kurma / okul / bebek / kedi / köpek | **0 TL** |
+| düğün | **28.500 TL** |
+
+**İkincisi daha tehlikeli:** 0 TL bariz yanlışken 28.500 makul görünüyor.
+Sebebi tahmini kalemlerin değerinin **JS'e gömülü** olması — onlar veri
+beklemiyor, gerçek kalemler bekliyor; sonuç yalnızca tahminlerin toplamı
+çıkıyor.
+
+Bu, projenin her yerde uyguladığı kuralın doğrudan ihlaliydi: *cevabı
+olmayan durumda uydurma sayı gösterme.* Aynı ilke `motor.py`'de
+(0 ürün → karantina), `sosyal.py`'de (söylenecek şey yoksa sus),
+`asistan.py`'de (eşleşme yoksa uydurma) ve hesaplayıcıların **geçersiz
+girdi** yolunda zaten uygulanıyordu — yalnızca **bu yol atlanmıştı.**
+
+**Düzeltme:** altı hesaplayıcıda `veriYuklendi` bayrağı. Veri gelmeden
+sonuç kutusu açılmıyor, yerine açık mesaj çıkıyor.
+`test_veri_yuklenmeden_rakam_gosterilmiyor` veri isteğini bilerek
+düşürüp kontrol ediyor; bug geri konarak doğrulandı. **Araç hariç ve bu
+doğru** — araç hesaplayıcısı veri çekmiyor, MTV ve harçları resmî
+sabitlerden alıyor; test bu ayrımı kaynak koddan yapıyor.
+
+### Denetimin geri kalanı temiz
+- 14 Python suite + 80 Node testi
+- **sitemap'teki 165 URL'nin tamamı canlıda 200**
+- 7 vertikalin yayındaki toplamı güncel veriyle birebir; ana sayfa da
+  aynı rakamları gösteriyor
+- title/description tekrarı 0 · 62+ karakter title yok · canonical
+  165/165 · OG etiketleri ve analitik 165/165
+- 5 genişlik × 9 sayfa canlı tarama: yatay taşma yok, konsol hatası 0
+- kedi/köpek her yere işlenmiş: llms.txt, ai.txt, sitemap, CSV, geçmiş,
+  asistan (121 kalem), sosyal rotasyonu
+- Sayfalardaki "veride bulunmayan" 35 rakam tek tek doğrulandı: hepsi
+  meşru grup alt toplamı (köpek 2.141 = 597+1.544 Gezdirme)
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
