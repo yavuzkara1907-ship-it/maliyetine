@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Köpek Yatağı"
+  ],
+  "kalem": "kopek-yatagi",
+  "vertikal": "kopek",
+  "tarih": "2026-07-28",
+  "toplam_urun": 42,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 1130,
+  "segmentler": {
+    "dusuk": {
+      "min": 209,
+      "medyan": 396,
+      "max": 500,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 644,
+      "medyan": 1140,
+      "max": 1875,
+      "urun_sayisi": 21
+    },
+    "luks": {
+      "min": 1878,
+      "medyan": 2277,
+      "max": 2940,
+      "urun_sayisi": 10
+    }
+  }
+}

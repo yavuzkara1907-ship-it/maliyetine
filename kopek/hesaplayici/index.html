@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Köpek Masrafı Hesaplama 2026 | Maliyeti Ne?</title>
+<meta name="description" content="Alacağınız eşyaları ve bütçe segmentinizi seçin: gerçek fiyat verisinden derlenmiş köpek masrafı maliyeti hesabınızı anında görün.">
+<link rel="canonical" href="https://maliyetine.com.tr/kopek/hesaplayici/">
+<link rel="stylesheet" href="/assets/css/style.css">
+<meta property="og:title" content="Köpek Masrafı Hesaplama 2026">
+<meta property="og:description" content="Alacağınız eşyaları ve bütçe segmentinizi seçin: gerçek fiyat verisinden derlenmiş köpek masrafı maliyeti hesabınızı anında görün.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://maliyetine.com.tr/kopek/hesaplayici/">
+<meta property="og:image" content="https://maliyetine.com.tr/assets/og-gorsel.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Maliyeti Ne? — 2026 maliyet endeksleri">
+<meta property="og:site_name" content="Maliyeti Ne?">
+<meta property="og:locale" content="tr_TR">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Köpek maliyeti nasıl hesaplanır?",
+  "description": "Köpek bütçenizi ölçülmüş güncel fiyatlarla, kalem kalem hesaplayın.",
+  "totalTime": "PT2M",
+  "inLanguage": "tr-TR",
+  "supply": [],
+  "tool": [
+    {
+      "@type": "HowToTool",
+      "name": "Maliyeti Ne? hesaplayıcısı"
+    }
+  ],
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Bütçe segmentini seçin",
+      "text": "Ekonomik, orta veya üst. Segmentler yüzdelik dilime göre ayrılır: en ucuz çeyrek ekonomik, ortadaki yarı orta, en pahalı çeyrek üst.",
+      "url": "https://maliyetine.com.tr/kopek/hesaplayici/#adim1"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "İstemediğiniz kalemleri çıkarın",
+      "text": "Listede almayacağınız kalemlerin işaretini kaldırın; toplam anında yeniden hesaplanır.",
+      "url": "https://maliyetine.com.tr/kopek/hesaplayici/#adim2"
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Sonucu kalem kalem görün",
+      "text": "Toplam tutarın yanında her kalemin birim fiyatı, kaç üründen derlendiği ve ölçüm tarihi görünür.",
+      "url": "https://maliyetine.com.tr/kopek/hesaplayici/#adim3"
+    }
+  ]
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JP07XQLV0L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JP07XQLV0L');
+</script>
+</head>
+<body>
+
+<header class="ust-bar">
+  <div class="kapsayici">
+    <a href="/" class="logo">Maliyeti <span>Ne?</span></a>
+    <nav class="ust-menu"><a href="/dugun/">Düğün</a><a href="/ev-kurma/">Ev Kurma</a><a href="/okul/">Okul</a><a href="/bebek/">Bebek</a><a href="/evcil-hayvan/">Evcil Hayvan</a><a href="/arac/">0 km Araç</a><a href="/hesap/" class="menu-one-cikan">Hesaplayıcılar</a><a href="/rehber/">Rehber</a><a href="/veri/">Veri</a></nav>
+  </div>
+</header>
+
+<main class="kapsayici">
+
+  <h1>Köpek Masrafı Hesaplayıcı</h1>
+  <p>Sıfırdan ev kurarken alacağınız kalemleri seçin, bütçe segmentinizi
+    belirleyin — kalem kalem tahmini görün. Buradaki
+    <strong>tüm fiyatlar</strong> gerçek, tarihli e-ticaret verisinden
+    (şu an için tek kaynak: Trendyol) derlenmiştir; tahmini kalem yoktur.
+    <a href="/kopek/metodoloji/">Yöntemi ve tek kaynak sınırını görün.</a></p>
+
+  <div id="veri-durumu" class="uyari-kutu" hidden></div>
+
+  <form id="hesaplayici-form">
+    <div class="form-alan">
+      <label>Segment</label>
+      <div class="segment-secim">
+        <label><input type="radio" name="segment" value="ekonomik"> Ekonomik</label>
+        <label><input type="radio" name="segment" value="orta" checked> Orta</label>
+        <label><input type="radio" name="segment" value="luks"> Üst</label>
+      </div>
+    </div>
+
+    <div class="form-alan">
+      <label>Dahil edilecek kalemler</label>
+      <p class="sonuc-alt-metin">
+        <button type="button" id="tumunu-sec" class="metin-buton">Tümünü seç</button> ·
+        <button type="button" id="tumunu-kaldir" class="metin-buton">Tümünü kaldır</button>
+      </p>
+      <div id="kalem-secim-liste"></div>
+    </div>
+
+
+    <div class="form-alan butce-alan">
+      <label for="hedef-butce">Bütçeniz belli mi? (opsiyonel)</label>
+      <input type="number" id="hedef-butce" min="0" step="1000" placeholder="örn. 300000">
+      <p class="sonuc-alt-metin">Bir tutar girerseniz, hesap sonucunda hedefe
+        ulaşmak için hangi kalemde ne değiştirmeniz gerektiğini gösteririz.</p>
+    </div>
+    <button type="submit" class="birincil-buton">Hesapla</button>
+  </form>
+
+  <div id="sonuc-kutu" class="sonuc-kutu" hidden>
+    <p class="sonuc-alt-metin">Tahmini toplam</p>
+    <p class="sonuc-toplam" id="sonuc-toplam-deger">0 TL</p>
+    <p class="sonuc-alt-metin" id="sonuc-guncelleme"></p>
+    <p class="sonuc-alt-metin" id="sonuc-kirilim"></p>
+    <div id="butce-plani" class="butce-plani" hidden></div>
+
+
+    <table id="detay-tablo">
+      <thead>
+        <tr><th>Kalem</th><th class="sayi">Birim fiyat</th><th class="sayi">Tutar</th></tr>
+      </thead>
+      <tbody id="detay-tablo-govde"></tbody>
+    </table>
+
+    <div id="eksik-kalem-notu"></div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="kapsayici">
+    <div>© 2026 Maliyeti Ne?</div>
+    <nav>
+      <a href="/kopek/">Köpek Endeksi</a>
+      <a href="/kopek/metodoloji/">Metodoloji</a>
+    </nav>
+    <nav class="footer-endeksler" aria-label="Tüm endeksler">
+      <a href="/dugun/">Düğün</a>
+      <a href="/ev-kurma/">Ev Kurma</a>
+      <a href="/kopek/">Köpek</a>
+      <a href="/arac/">0 km Araç</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="/assets/js/kopek-kalemler.js"></script>
+<script src="/assets/js/hesapla.js"></script>
+<script>
+(function () {
+  const paraFormat = new Intl.NumberFormat("tr-TR", { maximumFractionDigits: 0 });
+  // ---------------- BÜTÇE DENGELEYİCİ ----------------
+  // Öneriler ölçülmüş segment fiyatlarından çıkarılıyor; "pazarlık yap"
+  // gibi ölçmediğimiz bir tasarruf ASLA önerilmez. Hedefe ulaşılamıyorsa
+  // uydurma yol gösterilmez, ölçülebilir dip söylenir.
+  function butcePlaniYaz(veriKalemleri, tanimlar, secilenIdler, segment, olcek) {
+    const kutu = document.getElementById("butce-plani");
+    if (!kutu) return;
+    const alan = document.getElementById("hedef-butce");
+    const hedef = alan ? parseFloat(alan.value) : NaN;
+    if (!(hedef > 0)) { kutu.hidden = true; kutu.innerHTML = ""; return; }
+
+    const p = maliyetHesapla.butceyiDengele(
+      hedef, veriKalemleri, tanimlar, secilenIdler, segment, olcek);
+    if (!p) { kutu.hidden = true; return; }
+
+    let html = '<h3>Bütçe planı</h3>';
+    if (p.yeterli) {
+      html += '<p>Bu seçimlerle hesap <strong>' + paraYaz(p.mevcut) +
+              '</strong>; bütçenizin altında kalıyor. Elinizde <strong>' +
+              paraYaz(p.pay) + '</strong> pay var.</p>';
+    } else if (!p.hamleler.length) {
+      html += '<p>Bu seçimlerle hesap <strong>' + paraYaz(p.mevcut) +
+              '</strong>. Ölçtüğümüz kalemlerde indirilecek bir segment ' +
+              'kalmadığı için bütçeye ulaşacak bir değişiklik öneremiyoruz.</p>';
+    } else {
+      html += '<p>Hesap <strong>' + paraYaz(p.mevcut) + '</strong>, bütçeniz <strong>' +
+              paraYaz(p.hedef) + '</strong>. Aradaki <strong>' + paraYaz(p.acik) +
+              '</strong> için ölçtüğümüz fiyatlara göre en büyük etkiyi ' +
+              'şunlar yapar:</p><ul class="butce-hamleler">';
+      p.hamleler.forEach(function (h) {
+        html += '<li><strong>' + h.ad + '</strong>: ' + h.from + ' → ' + h.to +
+                ' <span class="tasarruf">−' + paraYaz(h.tasarruf) + '</span></li>';
+      });
+      html += '</ul><p>Bu değişikliklerle toplam <strong>' + paraYaz(p.yeni_toplam) +
+              '</strong> olur.</p>';
+      if (p.kalan_acik > 0) {
+        // DÜRÜSTLÜK: hedef tutmuyorsa uydurma yol gösterilmez.
+        html += '<p class="uyari">Bütçeye yine de <strong>' + paraYaz(p.kalan_acik) +
+                '</strong> kalıyor. Ölçtüğümüz kalemlerin hepsini ekonomik segmente ' +
+                'indirseniz bile bu seçimlerle inilebilecek en düşük tutar <strong>' +
+                paraYaz(p.en_dusuk_mumkun) + '</strong>. Daha aşağısı için kalem ' +
+                'çıkarmanız ya da ölçeği küçültmeniz gerekir.</p>';
+      }
+    }
+    html += '<p class="sonuc-alt-metin">Öneriler ölçülmüş segment fiyatlarından ' +
+            'çıkarılır. Pazarlık, kampanya ya da tanıdık indirimi gibi ' +
+            'ölçemediğimiz tasarruflar bu listede yer almaz.</p>';
+    kutu.innerHTML = html;
+    kutu.hidden = false;
+  }
+
+  function paraYaz(n) {
+    return paraFormat.format(Math.round(n)) + " TL";
+  }
+
+  const kalemSecimListe = document.getElementById("kalem-secim-liste");
+  let onceki = null;
+  let aktifGrupKutusu = null;
+  KOPEK_KALEMLERI.forEach(function (kalem) {
+    if (kalem.grup !== onceki) {
+      const baslik = document.createElement("h4");
+      baslik.className = "kalem-grup-basligi";
+      baslik.textContent = kalem.grup;
+      kalemSecimListe.appendChild(baslik);
+      aktifGrupKutusu = document.createElement("div");
+      aktifGrupKutusu.className = "kalem-secim-liste";
+      kalemSecimListe.appendChild(aktifGrupKutusu);
+      onceki = kalem.grup;
+    }
+    const label = document.createElement("label");
+    const kutu = document.createElement("input");
+    kutu.type = "checkbox";
+    kutu.value = kalem.id;
+    // `varsayilan_dahil: false` olan kalemler (bebek bezi, köpek mamasi,
+    // köpek kumu) AYLIK SARF - tek seferlik kurulumla ayni toplama
+    // girmiyorlar. Endeks sayfasi bunlari toplamdan cikariyordu ama
+    // hesaplayici HEPSINI isaretli getiriyordu: ayni sey icin iki
+    // farkli rakam (bebek 34.829 vs 35.394, köpek 5.267 vs 6.597).
+    // Kullanici bu tutarsizlik sinifini 2026-07-28'de bildirdi.
+    kutu.checked = kalem.varsayilan_dahil !== false;
+    kutu.name = "kalem";
+    label.appendChild(kutu);
+    label.appendChild(document.createTextNode(" " + kalem.ad));
+    aktifGrupKutusu.appendChild(label);
+  });
+
+  const form = document.getElementById("hesaplayici-form");
+  function tumKutular() {
+    return Array.from(form.querySelectorAll('input[name="kalem"]'));
+  }
+  document.getElementById("tumunu-sec").addEventListener("click", function () {
+    tumKutular().forEach(function (k) { k.checked = true; });
+  });
+  document.getElementById("tumunu-kaldir").addEventListener("click", function () {
+    tumKutular().forEach(function (k) { k.checked = false; });
+  });
+
+  let veriKalemleri = {};
+  let guncellemeTarihi = null;
+  const veriDurumu = document.getElementById("veri-durumu");
+
+  fetch("/veri/kopek.json").then(function (r) {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return r.json();
+    }).then(function (veri) {
+      veriKalemleri = veri.kalemler || {};
+      guncellemeTarihi = veri.guncelleme_tarihi;
+    }).catch(function () {
+      veriDurumu.hidden = false;
+      veriDurumu.textContent =
+        "Fiyat verisi şu anda yüklenemedi — hesaplama yapılamıyor. " +
+        "Sayfayı yenilemeyi deneyin.";
+    });
+
+  const sonucKutu = document.getElementById("sonuc-kutu");
+  const detayGovde = document.getElementById("detay-tablo-govde");
+  const eksikNot = document.getElementById("eksik-kalem-notu");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const segment = form.querySelector('input[name="segment"]:checked').value;
+    const secilenIdler = tumKutular().filter(function (k) {
+      return k.checked;
+    }).map(function (k) {
+      return k.value;
+    });
+
+    // Ev kurma kalemlerinin hepsi "sabit" birimli - olcek carpani yok.
+    const sonuc = maliyetHesapla.hesapla(veriKalemleri, KOPEK_KALEMLERI, secilenIdler, segment, 1);
+    butcePlaniYaz(veriKalemleri, KOPEK_KALEMLERI, secilenIdler, segment, 1);
+
+    document.getElementById("sonuc-toplam-deger").textContent = paraYaz(sonuc.toplam);
+    document.getElementById("sonuc-guncelleme").textContent = guncellemeTarihi
+      ? "Fiyat verisi güncelleme tarihi: " + guncellemeTarihi
+      : "";
+
+    detayGovde.innerHTML = "";
+    const eksikler = [];
+    let kalemSayisi = 0;
+    sonuc.detaylar.forEach(function (satir) {
+      if (!satir.veri_var) {
+        eksikler.push(satir.ad);
+        return;
+      }
+      kalemSayisi += 1;
+      const tr = document.createElement("tr");
+      const etiketHtml = satir.genel_medyana_dusuldu
+        ? ' <span class="tahmini-etiket">Genel ortalama</span>'
+        : "";
+      tr.innerHTML =
+        "<td>" + satir.ad + etiketHtml + "</td>" +
+        '<td class="sayi">' + paraYaz(satir.birim_fiyat) + "</td>" +
+        '<td class="sayi">' + paraYaz(satir.satir_toplam) + "</td>";
+      detayGovde.appendChild(tr);
+    });
+
+    document.getElementById("sonuc-kirilim").textContent =
+      kalemSayisi + " kalem, tamamı gerçek kaynaklardan derlendi.";
+
+    eksikNot.innerHTML = eksikler.length
+      ? '<p class="sonuc-alt-metin">Bu ay veri dönmedi, toplama dahil edilmedi: ' + eksikler.join(", ") + "</p>"
+      : "";
+
+    sonucKutu.hidden = false;
+  });
+})();
+</script>
+
+</body>
+</html>

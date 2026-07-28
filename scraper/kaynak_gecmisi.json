@@ -1949,5 +1949,47 @@
       37
     ],
     "son_calisma": "2026-07-28"
+  },
+  "kopek/kopek-mamasi/amazon": {
+    "urun_sayilari": [
+      44
+    ],
+    "son_calisma": "2026-07-28"
+  },
+  "kopek/kopek-tasmasi/amazon": {
+    "urun_sayilari": [
+      44
+    ],
+    "son_calisma": "2026-07-28"
+  },
+  "kopek/kopek-yatagi/amazon": {
+    "urun_sayilari": [
+      42
+    ],
+    "son_calisma": "2026-07-28"
+  },
+  "kopek/kopek-tasima/amazon": {
+    "urun_sayilari": [
+      42
+    ],
+    "son_calisma": "2026-07-28"
+  },
+  "kopek/kopek-oyuncagi/amazon": {
+    "urun_sayilari": [
+      49
+    ],
+    "son_calisma": "2026-07-28"
+  },
+  "kopek/kopek-mama-kabi/amazon": {
+    "urun_sayilari": [
+      48
+    ],
+    "son_calisma": "2026-07-28"
+  },
+  "kopek/cis-pedi/amazon": {
+    "urun_sayilari": [
+      45
+    ],
+    "son_calisma": "2026-07-28"
   }
 }

@@ -89,6 +89,13 @@ kedi,kedi-tuvaleti,Kedi Tuvaleti,Tuvalet,sabit,599,2761,17099,300,27999,46,1,ama
 kedi,kedi-oyuncagi,Kedi Oyuncağı,Yaşam alanı,sabit,98,167,308,60,447,43,1,amazon,2026-07-28
 kedi,kedi-yatagi,Kedi Yatağı,Yaşam alanı,sabit,299,432,899,199,1199,37,1,amazon,2026-07-28
 kedi,tirmalama,Tırmalama Tahtası,Yaşam alanı,sabit,299,550,1109,127,2202,42,1,amazon,2026-07-28
+kopek,kopek-mamasi,Köpek Maması (aylık),Aylık sarf,sabit,509,1534,4103,135,4635,44,1,amazon,2026-07-28
+kopek,cis-pedi,Çiş Pedi (aylık),Aylık sarf,sabit,242,377,1108,195,1470,45,1,amazon,2026-07-28
+kopek,kopek-mama-kabi,Mama ve Su Kabı,Beslenme,sabit,129,390,670,89,899,48,1,amazon,2026-07-28
+kopek,kopek-tasmasi,Köpek Tasması,Gezdirme,sabit,300,597,1349,120,1834,44,1,amazon,2026-07-28
+kopek,kopek-tasima,Taşıma Çantası / Kafes,Gezdirme,sabit,750,1544,2870,300,4187,42,1,amazon,2026-07-28
+kopek,kopek-oyuncagi,Köpek Oyuncağı,Yaşam alanı,sabit,105,250,540,59,790,49,1,amazon,2026-07-28
+kopek,kopek-yatagi,Köpek Yatağı,Yaşam alanı,sabit,396,1140,2277,209,2940,42,1,amazon,2026-07-28
 arac,bmw,BMW,Marka bazlı fiyatlar,sabit,4468450,8159300,15799000,3724500,21870500,60,1,donanimhaber,2026-07-26
 arac,byd,BYD,Marka bazlı fiyatlar,sabit,4133500,5145500,,4077000,,4,1,donanimhaber,2026-07-26
 arac,chery,Chery,Marka bazlı fiyatlar,sabit,2310000,2672500,,2310000,,3,1,donanimhaber,2026-07-26

@@ -283,6 +283,28 @@ KEDI_KALEMLERI = [
      "grup": "Aylık sarf", "varsayilan_dahil": False},
 ]
 
+# Kopek vertikali (2026-07-28). Kedi ile birlikte /evcil-hayvan/ hub'i
+# altinda IKI AYRI YATAY olarak sunuluyor.
+#
+# NEDEN AYRI VERTIKAL, TEK VERTIKALDE IKI GRUP DEGIL: kimse hem kedi
+# hem kopek mamasi almiyor - ikisini tek toplama katmak arac
+# vertikalindeki "marka kalemleri birbirinin alternatifi, toplanmaz"
+# hatasinin aynisi olurdu. Ayri vertikal olunca her hayvanin kendi
+# toplami, kendi hesaplayicisi ve kendi arama sorgusu icin kendi
+# sayfasi oluyor ("kedi masrafi" ve "kopek masrafi" ayri sorgular).
+# Hub sayfasi ikisini yan yana gosterir ama ASLA TOPLAMAZ.
+KOPEK_KALEMLERI = [
+    {"id": "kopek-tasmasi", "ad": "Köpek Tasması", "birim": "sabit", "grup": "Gezdirme"},
+    {"id": "kopek-tasima", "ad": "Taşıma Çantası / Kafes", "birim": "sabit", "grup": "Gezdirme"},
+    {"id": "kopek-yatagi", "ad": "Köpek Yatağı", "birim": "sabit", "grup": "Yaşam alanı"},
+    {"id": "kopek-oyuncagi", "ad": "Köpek Oyuncağı", "birim": "sabit", "grup": "Yaşam alanı"},
+    {"id": "kopek-mama-kabi", "ad": "Köpek Mama ve Su Kabı", "birim": "sabit", "grup": "Beslenme"},
+    {"id": "kopek-mamasi", "ad": "Köpek Maması (aylık)", "birim": "sabit",
+     "grup": "Aylık sarf", "varsayilan_dahil": False},
+    {"id": "cis-pedi", "ad": "Çiş Pedi (aylık)", "birim": "sabit",
+     "grup": "Aylık sarf", "varsayilan_dahil": False},
+]
+
 VERTIKALLER = {
     "dugun": {
         "ad": "Düğün",
@@ -604,6 +626,7 @@ VERTIKALLER = {
         "yol": "kedi",
         "kalemler": KEDI_KALEMLERI,
         "tahmini_kalemler": [],
+        "evcil_hayvan": True,
         "baslik": "2026 Kedi Masrafı: Bir Kediye Ne Kadar Gider?",
         "soru": "2026'da kedi bakım masrafı ne kadar?",
         "sayfa_basligi": "Kedi Masrafı 2026 — Kalem Kalem | Maliyeti Ne?",
@@ -649,6 +672,60 @@ VERTIKALLER = {
                 "aciklama": (
                     "Kedi maması fiyatı kuru/yaş oluşuna, tahılsız formüle ve "
                     "paket boyutuna göre ayrışır; büyük paket kilo başına ucuzlar."
+                ),
+            },
+        ],
+    },
+    "kopek": {
+        "ad": "Köpek",
+        "yol": "kopek",
+        "kalemler": KOPEK_KALEMLERI,
+        "tahmini_kalemler": [],
+        "evcil_hayvan": True,
+        "baslik": "2026 Köpek Masrafı: Bir Köpeğe Ne Kadar Gider?",
+        "soru": "2026'da köpek bakım masrafı ne kadar?",
+        "sayfa_basligi": "Köpek Masrafı 2026 — Kalem Kalem | Maliyeti Ne?",
+        "meta_aciklama": (
+            "Tasma, yatak, mama ve çiş pedi: köpek bakım masrafı kalem kalem. "
+            "Kurulum ile aylık sarf ayrı ayrı, ölçülmüş fiyatlarla."
+        ),
+        "dataset_ad": "Maliyeti Ne? Köpek Bakım Masrafı Endeksi",
+        "dataset_aciklama": (
+            "Türkiye'de köpek bakımı kalemlerinin gerçek e-ticaret verisinden "
+            "derlenen fiyat endeksi."
+        ),
+        "olcek_varsayilan": 1,
+        "ornek_ifade": "köpek kurulumunun",
+        "anasayfa_ifade": "bir köpeğe başlangıç kurulumu",
+        "kart_alt": "tek seferlik kurulum",
+        "hesaplayici_daveti": "Kendi listenizi seçip hesaplayın →",
+        "dahil_olanlar": [
+            "Gezdirme: tasma, taşıma çantası ya da kafes.",
+            "Yaşam alanı: yatak, oyuncak.",
+            "Beslenme donanımı: mama ve su kabı.",
+        ],
+        "dahil_olmayanlar": [
+            "Mama ve çiş pedi gibi aylık sarf giderleri varsayılan toplamda "
+            "yok — tek seferlik kurulumla karıştırmamak için ayrı gösteriliyor.",
+            "Veteriner, aşı, kısırlaştırma ve mikroçip masrafları.",
+            "Köpeğin kendisi (sahiplenme ücretsizdir).",
+            "Eğitim, pet kuaförü, pansiyon ve seyahat giderleri.",
+        ],
+        "segment_aciklama": (
+            "Ekonomik segment temel ihtiyacı karşılayan alt fiyat bandını, orta "
+            "segment yaygın tercih edilen ürünleri, üst segment ise marka ve "
+            "özellik olarak daha yüksek bandı gösterir. Rakamlar tek köpek "
+            "içindir; ırk ve boy farkı özellikle mama tüketiminde belirleyici."
+        ),
+        "kalem_sayfalari": [
+            {
+                "id": "kopek-mamasi",
+                "slug": "kopek-mamasi-fiyatlari",
+                "baslik": "2026'da Köpek Maması Fiyatları Ne Kadar?",
+                "soru": "2026'da köpek maması fiyatları ne kadar?",
+                "aciklama": (
+                    "Köpek maması fiyatı ırk boyuna, kuru/yaş oluşuna ve paket "
+                    "büyüklüğüne göre ayrışır; büyük ırkta aylık tüketim katlanır."
                 ),
             },
         ],
@@ -796,6 +873,14 @@ KALEM_SAYFA_NOTLARI = {
     "davetiye": "Davetiye adet fiyatı kağıt cinsi ve baskı tekniğine göre ayrışır; toplam tutar davetli sayısıyla çarpılır.",
     "gelin-ayakkabisi": "Gelin ayakkabısı fiyatı topuk yüksekliği ve malzemeden çok markaya göre ayrışır.",
     "yemek-ikram": "Mekanın yemekli ve kokteyl fiyatı arasındaki fark, o mekanda menünün kişi başı bedelini verir.",
+    # -- kopek --
+    "kopek-tasmasi": "Köpek tasması fiyatı göğüs tasması mı boyun tasması mı olduğuna ve ırk boyuna göre değişir.",
+    "kopek-tasima": "Taşıma çantası/kafes fiyatı ırk boyuna ve uçuş uygunluğuna göre ayrışır; büyük ırkta sert kafes gerekir.",
+    "kopek-yatagi": "Köpek yatağı fiyatı ırk boyuna ve ortopedik sünger içerip içermediğine göre değişir.",
+    "kopek-oyuncagi": "Köpek oyuncağı fiyatı çiğneme dayanıklılığına göre ayrışır; güçlü çeneli ırklarda dayanıklı modeller şart.",
+    "kopek-mama-kabi": "Mama ve su kabı fiyatı malzemeye ve yükseltilmiş sehpalı olup olmamasına göre değişir.",
+    "kopek-mamasi": "Köpek maması aylık tekrarlayan bir giderdir ve ırk boyuyla doğrudan büyür; kilo fiyatı büyük pakette düşer. Tek seferlik kurulum toplamına dahil edilmez.",
+    "cis-pedi": "Çiş pedi özellikle yavru dönemde aylık tekrarlayan bir giderdir; adet fiyatı paket büyüklüğüne göre değişir. Kurulum toplamına dahil edilmez.",
     # -- kedi --
     "kedi-tuvaleti": "Kedi tuvaleti fiyatı açık/kapalı oluşuna ve elek sistemine göre değişir; kapalı modeller koku kontrolünde daha iyi.",
     "tasima-cantasi": "Taşıma çantası fiyatı sert kafes mi yumuşak çanta mı olduğuna ve uçuş uygunluğuna göre ayrışır.",
@@ -951,7 +1036,20 @@ ANASAYFA_KART_LINK_SINIRI = 8
 def genel_menu(aktif: str = "") -> str:
     """Her sayfada AYNI ust menu. `aktif` o an bulunulan bolumu isaretler
     (aria-current) - hem erisilebilirlik hem yon duygusu."""
-    ogeler = [(conf["ad"], f'/{conf["yol"]}/', v) for v, conf in VERTIKALLER.items()]
+    # EVCIL HAYVAN: kedi ve kopek menude TEK GIRDI olarak birlesiyor.
+    # Ayri gosterilse menu 10 ogeye cikar ve dar ekranda kullanilmaz
+    # hale gelir; ayrica ikisi kavramsal olarak ayni bolum. Hub sayfasi
+    # ikisini yan yana gosterip AYRI sayfalarina baglıyor - toplamiyor
+    # (bkz. evcil_hub.py).
+    ogeler = []
+    evcil_eklendi = False
+    for v, conf in VERTIKALLER.items():
+        if conf.get("evcil_hayvan"):
+            if not evcil_eklendi:
+                ogeler.append(("Evcil Hayvan", "/evcil-hayvan/", "evcil-hayvan"))
+                evcil_eklendi = True
+            continue
+        ogeler.append((conf["ad"], f'/{conf["yol"]}/', v))
     ogeler += [
         ("Hesaplayıcılar", "/hesap/", "hesap"),
         ("Rehber", "/rehber/", "rehber"),
@@ -3040,6 +3138,12 @@ def sitemap_uret() -> str:
                     url_kayitlari.append((f"/rehber/{r['slug']}/", "monthly", "0.7"))
     except ImportError:
         pass
+    # Evcil hayvan hub'i: kedi ve kopek vertikallerini birlestiren
+    # sayfa. Ayri modulde uretiliyor (evcil_hub.py), sitemap buradan
+    # besleniyor - dosya yoksa link verilmiyor.
+    if (SITE_KOK / "evcil-hayvan" / "index.html").exists():
+        url_kayitlari.append(("/evcil-hayvan/", "monthly", "0.8"))
+
     # Formul hesaplayicilari (/hesap/...). Elle liste tutulmuyor -
     # hesaplayicilar.py'den okunuyor ki yeni hesaplayici eklenince
     # sitemap'te unutulmasin (okul vertikali gecmis.py'de unutulmustu).

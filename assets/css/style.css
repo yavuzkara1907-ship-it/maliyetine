@@ -83,7 +83,26 @@ a {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  /* Govde 880 px'lik okuma sutununda; ama header GEZINME CUBUGU, o
+     sutuna hizalanmak zorunda degil. Menu 9 ogeye cikinca logo+menu
+     923 px istiyordu ve 880 px'lik kapsayicidan tasiyordu - VIEWPORT
+     NE OLURSA OLSUN (1024'te de, 1440'ta da). Kirilim noktasi
+     degistirmek cozmez, kapsayici genisligi cozer. */
+  max-width: 1180px;
 }
+
+/* Guvenlik agi: menu her kosulda kendi icinde kayabilsin. Boylece
+   ileride oge eklenirse sayfa yatay tasmaz, menu kaydirilir.
+   `min-width: 0` SART: menu bir flex ogesi ve flex ogelerinin
+   varsayilan `min-width: auto` degeri onu icerigi kadar buyuk tutup
+   overflow'u etkisiz kiliyor. Ayni tuzaga asistan formunda da
+   dusmustuk - flex + overflow her zaman min-width:0 ister. */
+.ust-menu {
+  overflow-x: auto;
+  scrollbar-width: none;
+  min-width: 0;
+}
+.ust-menu::-webkit-scrollbar { display: none; }
 
 .logo {
   font-weight: 800;
@@ -865,11 +884,27 @@ button.metin-buton {
 }
 
 /* Footer'daki global endeks listesi - vertikal ici menuden ayri dursun. */
+/* Footer'daki TUM gezinme listeleri sarmali. Once yalnizca
+   `.footer-endeksler` icin yazilmisti ama footer'da SINIFSIZ bir
+   <nav> daha var (bolum linkleri) ve 320 px'te sayfayi tasiran
+   oydu - sinifa gore degil, yapiya gore kural yazmak gerekiyordu. */
+footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+}
+
 .footer-endeksler {
   margin-top: 6px;
   padding-top: 8px;
   border-top: 1px solid var(--renk-cizgi);
   opacity: 0.85;
+  /* 2026-07-28: kedi ve kopek eklenince liste 7 endekse cikti ve
+     320 px'te tasti. Footer navigasyonu tek satirda kalmak zorunda
+     degil - sarmali. */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
 }
 
 /* ---- Kalem arama (ana sayfa) ---- */

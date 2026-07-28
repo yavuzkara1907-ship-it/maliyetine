@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Köpek Tasması"
+  ],
+  "kalem": "kopek-tasmasi",
+  "vertikal": "kopek",
+  "tarih": "2026-07-28",
+  "toplam_urun": 44,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 490,
+  "segmentler": {
+    "dusuk": {
+      "min": 120,
+      "medyan": 300,
+      "max": 399,
+      "urun_sayisi": 16
+    },
+    "orta": {
+      "min": 400,
+      "medyan": 597,
+      "max": 927,
+      "urun_sayisi": 18
+    },
+    "luks": {
+      "min": 946,
+      "medyan": 1349,
+      "max": 1834,
+      "urun_sayisi": 10
+    }
+  }
+}

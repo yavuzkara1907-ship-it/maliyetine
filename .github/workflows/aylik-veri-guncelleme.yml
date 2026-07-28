@@ -52,7 +52,7 @@ jobs:
       - name: Kaynakları birleştir ve statik sayfaları üret
         working-directory: scraper
         run: |
-          for vertikal in dugun ev-kurma okul bebek kedi arac; do
+          for vertikal in dugun ev-kurma okul bebek kedi kopek arac; do
             echo "--- $vertikal ---"
             python agrega.py --vertikal "$vertikal"
             python sayfa_uret.py --vertikal "$vertikal"
@@ -84,6 +84,13 @@ jobs:
       # Senaryo sayfalari (100 kisilik dugun, beyaz esya butcesi...).
       # sayfa_uret'ten SONRA: endeks sayfalari bu dosyalarin varligina
       # bakip ic link veriyor, sitemap de oyle.
+      # Evcil hayvan hub'i: kedi ve kopek vertikallerini yan yana
+      # gosterir (toplamaz). sayfa_uret'ten SONRA - vertikal ozetlerini
+      # okuyor ve sitemap onun varligina bakiyor.
+      - name: Evcil hayvan hub'ını üret
+        working-directory: scraper
+        run: python evcil_hub.py
+
       - name: Senaryo sayfalarını üret
         working-directory: scraper
         run: python senaryo.py
@@ -162,7 +169,7 @@ jobs:
           git add scraper/veri scraper/kaynak_gecmisi.json veri \
                   index.html sitemap.xml llms.txt ai.txt robots.txt \
                   assets \
-                  dugun ev-kurma okul bebek kedi arac rehber hesap sss
+                  dugun ev-kurma okul bebek kedi kopek arac evcil-hayvan rehber hesap sss
           if git diff --cached --quiet; then
             echo "Değişiklik yok, commit atlanıyor."
             echo "degisti=false" >> "$GITHUB_OUTPUT"

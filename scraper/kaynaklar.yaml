@@ -3995,3 +3995,150 @@ kaynaklar:
       fiyat_secici: ".a-price .a-offscreen"
     aktif: true
     durum: "onaylandi"
+
+  # ------------------------------------------------------------------
+  # KOPEK VERTIKALI (2026-07-28) - kedi ile birlikte /evcil-hayvan/
+  # hub'i altinda IKI AYRI YATAY. Ayri vertikal olmalarinin sebebi:
+  # kimse hem kedi hem kopek mamasi almiyor, toplanmalari anlamsiz
+  # olurdu (arac vertikalindeki 'marka kalemleri' dersi).
+  # ------------------------------------------------------------------
+
+  - ad: "Amazon - Köpek Maması (aylık)"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=k%C3%B6pek%20mamas%C4%B1"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "kopek"
+    kalem: "kopek-mamasi"
+    yontem: "otomatik"
+    min_fiyat: 100
+    bekleme_sn: 3
+    ad_gerekli: "mama"
+    ad_dislama: "kap|kase|saklama|kedi"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    aktif: true
+    durum: "onaylandi"
+
+  - ad: "Amazon - Köpek Tasması"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=k%C3%B6pek%20tasmas%C4%B1"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "kopek"
+    kalem: "kopek-tasmasi"
+    yontem: "otomatik"
+    min_fiyat: 80
+    bekleme_sn: 3
+    ad_gerekli: "tasma|kayış|göğüs"
+    ad_dislama: "kedi"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    aktif: true
+    durum: "onaylandi"
+
+  - ad: "Amazon - Köpek Yatağı"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=k%C3%B6pek%20yata%C4%9F%C4%B1"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "kopek"
+    kalem: "kopek-yatagi"
+    yontem: "otomatik"
+    min_fiyat: 100
+    bekleme_sn: 3
+    ad_gerekli: "yata[kğ]|yuva|minder"
+    ad_dislama: "kum|mama"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    aktif: true
+    durum: "onaylandi"
+
+  - ad: "Amazon - Taşıma Çantası / Kafes"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=k%C3%B6pek%20ta%C5%9F%C4%B1ma%20%C3%A7antas%C4%B1"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "kopek"
+    kalem: "kopek-tasima"
+    yontem: "otomatik"
+    min_fiyat: 150
+    bekleme_sn: 3
+    ad_gerekli: "taşıma|taşima|çanta|kafes|box"
+    ad_dislama: "kılıf"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    aktif: true
+    durum: "onaylandi"
+
+  - ad: "Amazon - Köpek Oyuncağı"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=k%C3%B6pek%20oyunca%C4%9F%C4%B1"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "kopek"
+    kalem: "kopek-oyuncagi"
+    yontem: "otomatik"
+    min_fiyat: 50
+    bekleme_sn: 3
+    ad_gerekli: "oyunca[kğ]|top|çiğneme|ip"
+    ad_dislama: "tasma"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    aktif: true
+    durum: "onaylandi"
+
+  - ad: "Amazon - Köpek Mama ve Su Kabı"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=k%C3%B6pek%20mama%20kab%C4%B1"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "kopek"
+    kalem: "kopek-mama-kabi"
+    yontem: "otomatik"
+    min_fiyat: 50
+    bekleme_sn: 3
+    ad_gerekli: "ka[pb]ı|mama ka[pb]|su ka[pb]|kase|çanak"
+    ad_dislama: "mama$|otomatik.*3"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    aktif: true
+    durum: "onaylandi"
+
+  - ad: "Amazon - Çiş Pedi (aylık)"
+    site: "amazon"
+    url: "https://www.amazon.com.tr/s?k=k%C3%B6pek%20%C3%A7i%C5%9F%20pedi"
+    render_gerekli: true
+    kaydirma: 3
+    sayfa_sayisi: 1
+    vertikal: "kopek"
+    kalem: "cis-pedi"
+    yontem: "otomatik"
+    min_fiyat: 80
+    bekleme_sn: 3
+    ad_gerekli: "ped|çiş|tuvalet e[gğ]itim"
+    ad_dislama: "kum|mama"
+    css_secicileri:
+      urun_karti: "div[data-asin]"
+      isim_secici: "h2"
+      fiyat_secici: ".a-price .a-offscreen"
+    aktif: true
+    durum: "onaylandi"
