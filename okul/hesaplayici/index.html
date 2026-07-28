@@ -254,6 +254,13 @@
   });
 
   let veriKalemleri = {};
+  // VERI YUKLENMEDEN HESAP YAPILMAZ (2026-07-28 denetiminde bulundu).
+  // Yavas baglantida "Hesapla"ya hemen basan kullanici, fetch bitmeden
+  // GUVENILIR GORUNEN YANLIS bir rakam goruyordu: cogu vertikalde
+  // "0 TL", dugunde ise 28.500 TL - yalnizca tahmini kalemlerin
+  // toplami, cunku onlarin degeri JS'e gomulu. Ikisi de bu projenin
+  // yasakladigi seyin ta kendisi.
+  let veriYuklendi = false;
   let guncellemeTarihi = null;
   const veriDurumu = document.getElementById("veri-durumu");
 
@@ -262,6 +269,7 @@
       return r.json();
     }).then(function (veri) {
       veriKalemleri = veri.kalemler || {};
+      veriYuklendi = true;
       guncellemeTarihi = veri.guncelleme_tarihi;
     }).catch(function () {
       veriDurumu.hidden = false;
@@ -276,6 +284,11 @@
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
+    if (!veriYuklendi) {
+      veriDurumu.hidden = false;
+      veriDurumu.textContent = "Fiyat verisi henüz yüklenmedi — bir saniye içinde hazır olacak.";
+      return;
+    }
 
     const segment = form.querySelector('input[name="segment"]:checked').value;
     const secilenIdler = tumKutular().filter(function (k) {

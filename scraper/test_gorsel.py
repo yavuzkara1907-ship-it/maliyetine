@@ -138,6 +138,47 @@ class GorselDenetim(unittest.TestCase):
                 f"{vertikal}: hesaplayici {bulunan:,} diyor, endeks {beklenen:,} - "
                 f"ayni sey icin iki farkli rakam.".replace(",", "."))
 
+    def test_veri_yuklenmeden_rakam_gosterilmiyor(self):
+        """GERCEK BUG (2026-07-28 son denetim): yavas baglantida
+        "Hesapla"ya fetch bitmeden basan kullanici GUVENILIR GORUNEN
+        YANLIS bir rakam goruyordu.
+
+        Cogu vertikalde "0 TL"; DUGUNDE ISE 28.500 TL - yalnizca
+        tahmini kalemlerin toplami, cunku onlarin degeri JS'e gomulu
+        ve veri beklemiyor. Ikincisi daha tehlikeli: 0 TL bariz
+        yanlisken 28.500 makul goruntyor.
+
+        Bu, projenin her yerde uyguladigi kuralin ihlaliydi: cevabi
+        olmayan durumda uydurma sayi gosterme. Artik veri yuklenmeden
+        sonuc kutusu ACILMIYOR, bunun yerine acik bir mesaj cikiyor."""
+        for vertikal, conf in __import__("sayfa_uret").VERTIKALLER.items():
+            if not conf.get("hesaplayici_var", True):
+                continue
+            dosya = SITE / vertikal / "hesaplayici" / "index.html"
+            if not dosya.exists():
+                continue
+            # ARAC HARIC ve bu DOGRU: arac hesaplayicisi veri CEKMIYOR -
+            # MTV, noter ve harclari `arac-ek-maliyetler.js` icindeki
+            # resmi sabitlerden aliyor. Beklemesi gereken bir sey yok,
+            # sonucu hemen gostermesi dogru davranis.
+            if "veriKalemleri" not in dosya.read_text(encoding="utf-8"):
+                continue
+            yol = f"/{vertikal}/hesaplayici/"
+            s = self.tarayici.new_page(viewport={"width": 390, "height": 900})
+            try:
+                # Veri istegini bilerek dusuruyoruz - yavas/kopuk baglanti
+                s.route("**/veri/*.json", lambda r: r.abort())
+                s.goto(f"http://127.0.0.1:{self.port}{yol}",
+                       wait_until="domcontentloaded")
+                s.eval_on_selector("#hesaplayici-form", "f => f.requestSubmit()")
+                s.wait_for_timeout(250)
+                gizli = s.eval_on_selector("#sonuc-kutu", "e => e.hidden")
+                self.assertTrue(
+                    gizli, f"{yol}: veri yokken sonuc kutusu ACILIYOR - "
+                           f"uydurma rakam gosteriliyor")
+            finally:
+                s.close()
+
     def test_konsol_hatasi_yok(self):
         for yol in SAYFALAR:
             s = self._ac(yol)
