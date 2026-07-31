@@ -1795,6 +1795,43 @@ sitemap 169 → **173**, IndexNow'a bildirildi, dordu de canlida 200.
 14 Python suite (306 test) + 80 Node testi geciyor.
 
 
+## SEARCH CONSOLE: "aggregateRating / review eksik" (2026-08-01)
+Yavuz sordu. **Ikisi de ISTEGE BAGLI alan, eksiklikleri hata degil** —
+Search Console bunlari "kritik olmayan sorun" olarak listeliyor.
+Etkisi: yildizli zengin sonuca aday olmuyoruz. Fiyat/Product parcacigi
+calismaya devam ediyor.
+
+**DOLDURMUYORUZ, karar kayitli:**
+1. **Kullanici yorumu toplamiyoruz.** Olmayan yorumu isaretlemek
+   Google'in *yapilandirilmis veri spam'i* manuel islemine dogrudan
+   aday. Birkac yildiz icin alinacak risk degil — manuel islem tum
+   sitenin gorunurlugunu vurur.
+2. **Kendi urunumuze kendi puanimizi vermek** self-serving review;
+   ayrica sayfada GORUNUR olmayan bir puani isaretlemek de ihlal.
+3. **Zaten urun DEGERLENDIRMIYORUZ**, fiyat olcuyoruz. Bir buzdolabinin
+   iyi olup olmadigi bizim olctugumuz sey degil — o yuzden bu alanlarin
+   eksik olmasi bir kusur degil, kapsam tanimimizin dogru sonucu.
+
+### AYNI TURDA GERCEK BIR KUSUR BULUNDU: `availability: InStock`
+Semaya bakinca cikti. Product/AggregateOffer blogunda
+`"availability": "https://schema.org/InStock"` yaziyordu ve **97
+sayfada** duruyordu. **Hicbir sey satmiyoruz ve stok durumu
+olcmuyoruz** — dogrulanmamis bir iddiaydi. Sitenin baska hicbir yerinde
+olcmedigimiz bir sey iddia edilmiyor; semada da edilmemeli. Ustelik
+AggregateOffer icin zorunlu alan degil (zorunlu olan `lowPrice` +
+`priceCurrency`). Kaldirildi.
+
+**DERS:** semanin dogrulanmasi (parse OK, zorunlu alan tam) icerigin
+DOGRU oldugu anlamina gelmiyor. `InStock` gecerli bir degerdi, hicbir
+denetim aracina takilmazdi — sadece gercek degildi. Sema, sayfa
+metniyle ayni dogruluk standardina tabi.
+
+**Yeni test** uretilmis sayfalarin TUM JSON-LD bloklarini tariyor:
+`aggregateRating` / `ratingValue` / `reviewCount` / `availability`
+gecerse patliyor. Gercekten yorum toplanmaya baslanirsa once o altyapi
+kurulur, sonra test bilerek guncellenir.
+
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
