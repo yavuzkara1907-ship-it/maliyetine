@@ -1655,6 +1655,74 @@ sabitlerden alıyor; test bu ayrımı kaynak koddan yapıyor.
 - Sayfalardaki "veride bulunmayan" 35 rakam tek tek doğrulandı: hepsi
   meşru grup alt toplamı (köpek 2.141 = 597+1.544 Gezdirme)
 
+## UZUN KUYRUK YAZILARI + KAYNAK TURU (2026-07-31)
+Yavuz: *"uzun kuyruklu anahtar kelimeli yazilar girelim. bunlar gercekten
+cok onemli. sen yapay zeka olarak pek onem vermiyorsun gibi. cok proper
+gidiyorsun. biraz halka in... damatliklara girilmeye baslandi."*
+
+**4 yeni rehber, 15'e cikti.** Basliklar arama kutusuna yazilan sey:
+*"damatlik kac para"*, *"asgari ucretle ev kurulur mu"*,
+*"gelinlik mi damatlik mi pahali"*, *"kedi mi kopek mi masrafli"*.
+486-570 kelime (onceki yazilar 315-445) — uzun kuyruk sorgusu daha
+fazla baglam istiyor.
+
+- **`/rehber/damatlik-kac-para/`** — trafik almaya baslayan kalem.
+  Yazinin govdesi bizim olctugumuz, baskasinin olcmedigi sey: ayni
+  kalemde **Trendyol 3.240 / Beymen 44.950 / Vakko 71.970**, en ucuz ve
+  en pahali urun arasinda **66 kat** fark. "Damatlik tek bir urun degil"
+  tespiti bu tablodan cikiyor, iddiadan degil.
+- **`/rehber/asgari-ucretle-ev-kurulur-mu/`** — resmi asgari ucret
+  (28.075,50 net) + kendi ev kurma olcumumuz. Ekonomik ev **181.117 TL**
+  = **6,5 aylik net asgari ucret**. Iki veri kumesini birlikte tutan
+  baska kaynak yok.
+- **`/rehber/gelinlik-mi-damatlik-mi-pahali/`** — **bu turun en onemli
+  yazisi.** Verimizde damatlik (46.450) gelinlikten (18.172) pahali
+  cikiyor. *Ama bu piyasa gercegi degil, OLCUM SINIRI:* gelinlikte tek
+  kaynak var (Trendyol, pazaryeri), damatlikta uc ve ikisi luks marka.
+  Carpici basligi atmak ("damatlik gelinlikten pahali cikti") teknik
+  olarak yalan olmazdi ama yanlis olurdu. **Nedeni gizlemek yerine
+  yazinin konusu yapildi** — yazi kendi verisinin sinirini anlatiyor.
+- **`/rehber/kedi-mi-kopek-mi-masrafli/`** — kurulumda kedi pahali
+  (5.267/3.921), aylikta kopek (1.911/1.330), 12 ayda makas tersine
+  donuyor (26.853/21.227).
+
+### YENI TEST: baslikta gomulu para tutari YASAK
+**Kendi yaptigim hatadan cikti.** Damatlik yazisinin ilk basligi
+*"3 Bin Liralik da Var, 165 Bin Liralik da"* idi — ikisi de o anki
+olcumden geliyordu. Bir sonraki olcumde min/max degisince **govdedeki
+rakam guncellenirken baslik donmus kalacak ve sessizce yalan olacakti.**
+Projenin *"hicbir tutar metne gomulmedi"* kurali basliklarda
+uygulanmiyordu. `test_basliklarda_rakam_gomulu_degil` baslik/seo_baslik/
+meta alanlarinda para tutari ariyor; bug geri konarak patladigi
+dogrulandi. ("150 kisilik", "45 kalemde", "2026" gibi sabit kavramlar
+serbest — yasak olan olculen tutar.)
+
+### KAYNAK TURU: 4 aday denendi, DORDU DE CIKMADI
+Yavuz'un onerdigi pazarama/teknosa/lcw/avva. Zorlanmadi, sebepleri:
+| aday | sonuc |
+|---|---|
+| **teknosa** | robots.txt RET + 403 — kapali |
+| **lcw** | `ERR_HTTP2_PROTOCOL_ERROR`, hem `requests` hem Playwright'ta. Ag seviyesinde engel; ana sayfa 200 donuyor ama kategori sayfalari acilmiyor |
+| **pazarama** | sayfa geliyor (1 MB), **0 urun ayikleniyor** — JSON-LD/microdata/CSS hicbiri tutmuyor |
+| **avva** | **calisiyor** (JSON-LD, secici gerekmedi) **ama tam takim yok** |
+
+**Avva'nin ayrintisi kayda deger:** `/takim-elbise` sayfasi 6 urun
+donuyor ve bunlar *ceket* (4.799) ile *pantolon* (3.199) — **ayri ayri
+satiliyor.** Bu fiyatlari "damatlik" kalemine yazmak endeksi bozardi:
+olctugumuz sey tam takim. Calisan bir kaynagi kalem tanimina uymadigi
+icin birakmak, bu projede daha once idefix'te (fiyat-urun eslesmesi
+kurulamiyor) ve Trendyol/altin-bilezikte (alakasiz urun) yasandi.
+**Kaynagin CEKILEBILIR olmasi, OLCTUGUMUZ SEYI olctugu anlamina
+gelmiyor.**
+
+**URL tahmin edilmedi** — dordunun de ana sayfasindan kategori linki
+avlandi (avva 103 linkten 5 ilgili, lcw 429'dan 118, pazarama 1167'den
+55). `kaynak_tara.py` dersinin uygulamasi.
+
+sitemap 165 -> **169**, IndexNow'a bildirildi, dordu de canlida 200.
+304 Python + 80 Node testi geciyor.
+
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
