@@ -1723,6 +1723,78 @@ sitemap 165 -> **169**, IndexNow'a bildirildi, dordu de canlida 200.
 304 Python + 80 Node testi geciyor.
 
 
+## TAVSIYE YAZILARI (2026-08-01) — ve sitedeki ondalik ayraci kusuru
+Yavuz: *"tavsiyeler de cok araniyor sanki. ozellikle evcil hayvan vs
+konularinda."*
+
+**TAVSIYE YAZMANIN BU PROJEDEKI SINIRI** (`rehber.py` basinda kayitli):
+genel bakim tavsiyesi (*"kediyi haftada bir tarayin"*) YAZILMIYOR.
+Olcmuyoruz, veteriner degiliz, ve o icerik rakiplerin yaptigi seyin ta
+kendisi — modelden uretilmis, kaynaksiz, herkeste ayni. **Bizim
+verebilecegimiz tavsiye OLCUMDEN cikandir:** hangi kalemde secim
+butceyi gercekten degistiriyor, hangisinde degistirmiyor.
+
+**`rehber.aralik_siralamasi()`** kalemleri ekonomik-ust **kat farkina**
+gore siraliyor. Ortaya cikan sey baska kimsede yok:
+| kalem | ekonomik → ust | kat |
+|---|---|---|
+| Kedi tuvaleti | 599 → 17.099 | **28,5** |
+| Kahve makinesi | 996 → 11.452 | 11,5 |
+| Kopek yatagi | 396 → 2.277 | 5,8 |
+| Camasir makinesi | 18.819 → 39.292 | 2,1 |
+| Bulasik makinesi | 16.579 → 26.464 | **1,6** |
+
+**YORUM TUZAGI, metinlerde acikca yazili:** genis aralik *"pahalisi
+daha kaliteli"* demek DEGIL. Cogu zaman kategori **farkli urun
+tiplerini** iceriyor (kedi tuvaletinde 599 TL duz kap, 17.099 TL
+otomatik elekli sistem — ayni seyin ucuzu ve pahalisi degil). Bu yuzden
+tavsiye *"pahalisini al"* degil: **"once hangi tipi istedigine karar
+ver"**.
+
+**4 yazi, rehber 19'a cikti:**
+`kedi-sahiplenmeden-once` · `kopek-sahiplenmeden-once` ·
+`ev-kurarken-nerede-tasarruf-edilir` · `bebek-alisverisinde-nelere-dikkat`
+
+- **Bebek yazisinda kasitli bir uyari var:** oto koltugu ve besikte asil
+  kriter fiyat degil **guvenlik standardi** ve biz onu olcmuyoruz.
+  Sayfada fiyat siralamasi oldugu icin bunu yazmak zorundayiz — tek
+  basina birakilirsa "en ucuzu sec" gibi okunur.
+- Her yazida "neyi soylemiyoruz" bolumu var (veteriner/bakim tavsiyesi
+  yok, marka tavsiyesi yok, olcmedigimiz tasarruf onerisi yok).
+
+### METIN IDDIALARI ARTIK VERIYE BAGLI — gercek hata sonrasi
+Ilk hal **kedi verisine gore** yazilmisti: *"X ucta duruyor"* ve somut
+ornek olarak *"bir ucta duz kap, obur ucta otomatik sistem"*. Kedide
+dogruydu (28,5x'e karsi 6,0x, ve kalem gercekten kedi tuvaleti). Ama
+**ayni fonksiyon kopek yazisini da uretiyordu** ve orada en genis kalem
+**yatak**, siralama da 5,8/5,2/5,1/4,5 — ne bir uc var ne "otomatik
+sistem" diye bir sey. Duzeltme: uc ancak ikinciden **2 kat** ayrisiyorsa
+"uc" denir, dar ancak **≤2,0** ise "dar" denir, urun tipi **ornekle
+anlatilmaz** (hangi kalem oldugunu onceden bilemeyiz).
+**DERS (bu projede tekrarlayan sinif): bir veri kumesi icin yazilmis
+metni baska bir kumeye uygulamak.** Sabit vertikal listeleri, `sss/`
+commit eksigi ve `_sss_html`'in tek sayfa tipinde cagrilmasi ayni
+aileden.
+
+### AYRI BULGU — SITENIN 107 SAYFASINDA ONDALIK AYRACI YANLISTI
+`{kat:.1f}` dogrudan kullaniliyordu: **"2.1 kat"**, **"28.5 kat"**.
+Nokta Turkce'de **binlik** ayraci; ayni cumlede *"29.382 TL"* ile
+*"2.1 kat"* yan yana duruyordu — ayni karakter iki farkli anlamda.
+Benim yeni sayfalarimda degil, **sitede zaten duran** bir kusurdu.
+- **`sayfa_uret._kat()`** tek yerden cozuyor; tam sayida ondalik hic
+  gosterilmiyor (6,0 degil **6**).
+- Yeni test (`test_seo_denetim`) **uretilmis sayfalarin tamamini**
+  tariyor, bug geri konarak patladigi dogrulandi.
+- Mevcut bir test eski bicimi kilitliyordu (`"3.0 katı"`) — yeni kurala
+  gore guncellendi, ondalikli bir vaka da eklendi.
+
+**Mevcut testler bir hatami daha yakaladi:** kedi ve kopek yazilarina
+ayni meta aciklamayi vermistim (description tekrari).
+
+sitemap 169 → **173**, IndexNow'a bildirildi, dordu de canlida 200.
+14 Python suite (306 test) + 80 Node testi geciyor.
+
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
