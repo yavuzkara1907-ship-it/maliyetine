@@ -1005,7 +1005,347 @@ def _govde_kaynak_karsilastirma(v: dict) -> str | None:
 """
 
 
+# ---------------------------------------------------------------------------
+# 12. Damatlik kac para (UZUN KUYRUK)
+#
+# Yavuz (2026-07-31): "uzun kuyruklu anahtar kelimeli yazilar girelim...
+# biraz halka in." Baslik "2026 Damatlik Fiyat Analizi" degil, insanin
+# arama kutusuna yazdigi sey: "damatlik kac para".
+#
+# Bu yazinin govdesi bizim OLCTUGUMUZ ve baskasinin olcmedigi seye
+# dayaniyor: ayni kalemde uc kaynak arasindaki %2121'lik fark.
+# ---------------------------------------------------------------------------
+def _govde_damatlik(v: dict) -> str | None:
+    d = v.get("dugun")
+    if not d:
+        return None
+    k = (d.get("kalemler") or {}).get("damatlik") or {}
+    seg = k.get("segmentler") or {}
+    if not seg.get("orta"):
+        return None
+    kaynaklar = sorted(
+        ((x["site"], x.get("genel_medyan"), x.get("toplam_urun"))
+         for x in (k.get("kaynaklar") or []) if x.get("toplam_urun")),
+        key=lambda x: x[1] or 0)
+    if len(kaynaklar) < 2:
+        return None
+    eko, orta, ust = seg["dusuk"]["medyan"], seg["orta"]["medyan"], seg["luks"]["medyan"]
+    en_ucuz, en_pahali = seg["dusuk"]["min"], seg["luks"]["max"]
+    satirlar = "".join(
+        f'<tr><td>{ad.capitalize()}</td><td class="sayi">{_p(m)}</td>'
+        f'<td class="sayi">{n}</td></tr>' for ad, m, n in kaynaklar)
+    kat = (kaynaklar[-1][1] or 1) / (kaynaklar[0][1] or 1)
+
+    return f"""
+  <p class="cevap-blok">
+    Damatlığın orta segment fiyatı <strong>{_p(orta)}</strong>. Ama tek bir
+    rakam bu kalemi anlatmıyor: ölçtüğümüz ürünlerin en ucuzu {_p(en_ucuz)},
+    en pahalısı {_p(en_pahali)}. Yani aynı isimle satılan iki şey arasında
+    <strong>{en_pahali / en_ucuz:.0f} kat</strong> fark var.
+  </p>
+
+  <h2>Neden bu kadar geniş bir aralık?</h2>
+  <p>
+    Çünkü "damatlık" tek bir ürün değil. Aynı kelimeyle hem pazaryerindeki
+    hazır takım hem tasarımcı markasının smokini satılıyor. Bunu üç ayrı
+    yerden ölçünce net görülüyor:
+  </p>
+  <div class="tablo-sarmal"><table>
+    <thead><tr><th>Kaynak</th><th class="sayi">Ortalama fiyat</th><th class="sayi">Ürün</th></tr></thead>
+    <tbody>{satirlar}</tbody>
+  </table></div>
+  <p>
+    En ucuz kaynakla en pahalı kaynak arasında <strong>{kat:.0f} kat</strong>
+    fark var. Bu bir ölçüm hatası değil; iki farklı pazarın fiyatı. Damatlık
+    ararken önce hangi pazarda olduğunuza karar vermek, marka seçmekten
+    daha belirleyici.
+  </p>
+
+  <h2>Üç bandın karşılığı ne?</h2>
+  <ul>
+    <li><strong>{_p(eko)} civarı</strong> — pazaryeri ve zincir mağaza; hazır
+      beden, sınırlı kumaş seçeneği. Bir günlük kullanım için yeterli.</li>
+    <li><strong>{_p(orta)} civarı</strong> — marka mağazası; kumaş ve dikiş
+      farkı burada başlıyor, tadilat genelde dahil.</li>
+    <li><strong>{_p(ust)} ve üzeri</strong> — tasarımcı markası, smokin ve
+      özel dikim. Düğün sonrası da giyilecek bir yatırım olarak düşünülüyor.</li>
+  </ul>
+
+  <h2>Kiralamak ucuz mu?</h2>
+  <p>
+    Bunu <em>ölçmedik</em>, o yüzden rakam vermiyoruz. Kiralama fiyatları
+    internette liste halinde yayınlanmıyor; mağazadan sorulup öğreniliyor.
+    Ölçemediğimiz bir şeye tahmin yazmak bu sitenin kuralına aykırı — bu
+    kalemde bir kaynağa ulaşırsak buraya ekleriz.
+  </p>
+
+  <h2>Düğün bütçesinin neresi?</h2>
+  <p>
+    Orta segment damatlık, 150 kişilik bir düğünün toplamında görece küçük
+    bir kalem — bütçeyi asıl belirleyen kişi başı salon bedeli. Kalem kalem
+    dağılım <a href="/rehber/150-kisilik-dugun-maliyeti/">150 kişilik düğün
+    yazısında</a>; güncel fiyatlar
+    <a href="/dugun/damatlik-fiyatlari/">damatlık fiyatları sayfasında</a>.
+  </p>
+"""
+
+
+# ---------------------------------------------------------------------------
+# 13. Asgari ucretle ev kurulur mu (UZUN KUYRUK)
+# Iki ayri veri kumesini birlestiriyor: resmi asgari ucret + kendi ev
+# kurma olcumumuz. Ikisi de bizde var, baska kimsede birlikte yok.
+# ---------------------------------------------------------------------------
+def _govde_asgari_ucret_ev(v: dict) -> str | None:
+    e = v.get("ev-kurma")
+    if not e:
+        return None
+    conf = su.VERTIKALLER["ev-kurma"]
+    kalemler = e.get("kalemler") or {}
+    eko, _ = su.ornek_toplam_hesapla(conf, kalemler, 1, "ekonomik")
+    orta, _ = su.ornek_toplam_hesapla(conf, kalemler, 1, "orta")
+    if not eko:
+        return None
+    net = 28075.5   # 2026 net asgari ucret
+    brut = 33030.0
+    ay_eko = eko / net
+    ay_orta = orta / net
+
+    beyaz = ["buzdolabi", "camasir-makinesi", "firin-ocak"]
+    zorunlu = sum(_kalem(e, x, "dusuk") or 0 for x in beyaz)
+
+    return f"""
+  <p class="cevap-blok">
+    Kısa cevap: <strong>tek maaşla ve tek seferde hayır.</strong> Ekonomik
+    tercihlerle sıfırdan ev kurmak <strong>{_p(eko)}</strong> tutuyor; 2026
+    net asgari ücret {_p(net)}. Yani ev, <strong>{ay_eko:.0f} aylık net
+    asgari ücrete</strong> denk geliyor — hiç harcamadan biriktirseniz bile
+    {ay_eko / 12:.1f} yıl.
+  </p>
+
+  <h2>Rakamı biraz açalım</h2>
+  <ul>
+    <li>Ekonomik segmentte toplam {_p(eko)} → {ay_eko:.0f} maaş</li>
+    <li>Orta segmentte {_p(orta)} → {ay_orta:.0f} maaş</li>
+    <li>Yalnızca buzdolabı, çamaşır makinesi ve fırın (ekonomik) → {_p(zorunlu)}</li>
+  </ul>
+  <p>
+    Son satır önemli: listenin tamamını almak zorunda değilsiniz. Üç temel
+    beyaz eşya, ekonomik segmentte toplamın küçük bir dilimi ve bir evi
+    yaşanabilir kılmaya yetiyor. Geri kalanı zamana yayılabilir.
+  </p>
+
+  <h2>Pratikte nasıl yapılıyor?</h2>
+  <p>
+    Ölçtüğümüz rakam "her şeyi bugün, sıfırdan, yeni al" senaryosu. Gerçek
+    hayatta ev kurma üç yoldan biriyle oluyor: ikinci el, aileden devralma
+    ya da taksit. Üçü de bu hesabın dışında kalıyor çünkü ikinci el fiyatı
+    ürünün durumuna göre değişiyor ve tek bir sayıyla ölçülemiyor.
+  </p>
+  <p>
+    Taksit tarafında ise etiket fiyatı ödediğinizin tamamı değil: 12 ay
+    vadede toplam geri ödemenin ne olduğunu
+    <a href="/hesap/kredi-taksit-hesaplama/">kredi taksit hesaplayıcısıyla</a>
+    görebilirsiniz.
+  </p>
+
+  <h2>Bir de şu var: rakam yerinde durmuyor</h2>
+  <p>
+    Bu tutar ayda iki kez yeniden ölçülüyor ve enflasyonla birlikte
+    değişiyor. Bugün {ay_eko:.0f} maaş olan şey, maaş artışı fiyat
+    artışının gerisinde kalırsa gelecek yıl daha fazla maaş eder.
+    Paranızın erimesini
+    <a href="/hesap/alim-gucu-hesaplama/">alım gücü hesaplayıcısından</a>
+    takip edebilirsiniz.
+  </p>
+
+{_tufe(v, "ev-kurma")}
+  <p>
+    Kalem kalem liste <a href="/ev-kurma/">ev kurma endeksinde</a>; kendi
+    listenizi <a href="/ev-kurma/hesaplayici/">hesaplayıcıdan</a>
+    çıkarabilirsiniz.
+  </p>
+"""
+
+
+# ---------------------------------------------------------------------------
+# 14. Gelinlik mi damatlik mi pahali (UZUN KUYRUK)
+#
+# BU YAZININ ASIL DEGERI: verimizde damatlik gelinlikten pahali cikiyor
+# ama bu PIYASA GERCEGI DEGIL, OLCUM SINIRI - gelinlikte tek kaynak
+# (pazaryeri) var, damatlikta uc kaynak ve ikisi luks marka. Bunu
+# gizlemek yerine yazinin konusu yapiyoruz.
+# ---------------------------------------------------------------------------
+def _govde_gelinlik_damatlik(v: dict) -> str | None:
+    d = v.get("dugun")
+    if not d:
+        return None
+    kal = d.get("kalemler") or {}
+    g, dm = kal.get("gelinlik") or {}, kal.get("damatlik") or {}
+    gs, ds = (g.get("segmentler") or {}).get("orta"), (dm.get("segmentler") or {}).get("orta")
+    if not (gs and ds):
+        return None
+    g_kaynak = [x for x in (g.get("kaynaklar") or []) if x.get("toplam_urun")]
+    d_kaynak = [x for x in (dm.get("kaynaklar") or []) if x.get("toplam_urun")]
+
+    return f"""
+  <p class="cevap-blok">
+    Ölçtüğümüz veride <strong>damatlık {_p(ds["medyan"])}</strong>,
+    <strong>gelinlik {_p(gs["medyan"])}</strong> — yani damatlık daha
+    pahalı görünüyor. Ama bu piyasa gerçeği değil,
+    <strong>bizim ölçüm sınırımız</strong>. Nedenini gizlemek yerine
+    anlatalım.
+  </p>
+
+  <h2>Fark nereden geliyor?</h2>
+  <p>
+    Damatlığı <strong>{len(d_kaynak)} ayrı kaynaktan</strong> ölçüyoruz ve
+    bunların ikisi lüks marka mağazası. Gelinliği ise şu an
+    <strong>{len(g_kaynak)} kaynaktan</strong> ölçebiliyoruz ve o da bir
+    pazaryeri. Yani iki kalemi farklı pazarlarda ölçüp yan yana koymuş
+    oluyoruz.
+  </p>
+  <p>
+    Gerçek hayatta gelinlik evinden alınan bir gelinlik, pazaryerindeki
+    hazır gelinliğin kat kat üzerinde. O fiyatları ölçemiyoruz çünkü
+    gelinlik evleri fiyatlarını internette yayınlamıyor —
+    denediğimiz kaynaklarda "fiyat için üye olun" yazıyordu.
+  </p>
+
+  <h2>Peki bu rakamlar işe yaramaz mı?</h2>
+  <p>
+    Yarar, ama neyi gösterdiğini bilerek. Gelinlik rakamımız
+    <em>pazaryeri gelinliğinin</em> fiyatı; damatlık rakamımız
+    <em>pazaryeri + marka mağazası karışımının</em> fiyatı. Kendi
+    bütçenizi kurarken ikisini aynı kefeye koymayın; her kalemin kaç
+    kaynaktan ölçüldüğü ilgili sayfada yazıyor.
+  </p>
+
+  <h2>Neden bunu yazıyoruz?</h2>
+  <p>
+    Çünkü bir maliyet sitesinin en kolay yalanı, elindeki iki rakamı yan
+    yana koyup çarpıcı bir başlık atmak. Bizde de o başlık atılabilirdi:
+    "damatlık gelinlikten pahalı". Doğru olmazdı. Verinin nereden
+    geldiğini yazmadan verilen her karşılaştırma böyle bir risk taşıyor.
+  </p>
+  <p>
+    Kalem kalem güncel fiyatlar:
+    <a href="/dugun/gelinlik-fiyatlari/">gelinlik</a> ·
+    <a href="/dugun/damatlik-fiyatlari/">damatlık</a> ·
+    yöntem için <a href="/dugun/metodoloji/">metodoloji sayfası</a>.
+  </p>
+"""
+
+
+# ---------------------------------------------------------------------------
+# 15. Kedi mi kopek mi masrafli (UZUN KUYRUK)
+# ---------------------------------------------------------------------------
+def _govde_kedi_kopek(v: dict) -> str | None:
+    ked, kop = v.get("kedi"), v.get("kopek")
+    if not (ked and kop):
+        return None
+    sonuc = {}
+    for ad, veri in (("Kedi", ked), ("Köpek", kop)):
+        vert = "kedi" if ad == "Kedi" else "kopek"
+        conf = su.VERTIKALLER[vert]
+        kalemler = veri.get("kalemler") or {}
+        kurulum, _ = su.ornek_toplam_hesapla(conf, kalemler, 1, "orta")
+        aylik = sum(
+            ((kalemler.get(t["id"]) or {}).get("segmentler") or {}).get("orta", {}).get("medyan", 0)
+            for t in conf["kalemler"] if t.get("varsayilan_dahil") is False)
+        if not kurulum:
+            return None
+        sonuc[ad] = {"kurulum": kurulum, "aylik": aylik, "yil": kurulum + aylik * 12}
+    k, p = sonuc["Kedi"], sonuc["Köpek"]
+
+    return f"""
+  <p class="cevap-blok">
+    İlk yılda <strong>köpek daha masraflı</strong>: {_p(p["yil"])} karşılık
+    kedide {_p(k["yil"])}. İlginç olan şu — <strong>kurulumda kedi daha
+    pahalı</strong> ({_p(k["kurulum"])} / {_p(p["kurulum"])}), ama köpeğin
+    aylık gideri kediyi geçiyor ({_p(p["aylik"])} / {_p(k["aylik"])}) ve
+    on iki ayda makas kapanıp tersine dönüyor.
+  </p>
+
+  <h2>Neden kurulumda kedi öne geçiyor?</h2>
+  <p>
+    Tek kalem yüzünden: kedi tuvaleti. Kapalı modeller ve elek sistemi
+    fiyatı yukarı çekiyor. Köpekte o kalemin karşılığı yok; onun yerine
+    tasma ve taşıma çantası var, ikisi birlikte daha ucuza geliyor.
+  </p>
+
+  <h2>Aylıkta neden köpek öne geçiyor?</h2>
+  <p>
+    Mama. Köpek maması hem kilo fiyatı hem tüketim olarak kedininkinin
+    üzerinde ve ırk büyüdükçe fark açılıyor. Bizim rakamımız ortalama bir
+    tüketim varsayıyor; büyük ırk bir köpekte aylık gider bu rakamın
+    belirgin üzerine çıkar.
+  </p>
+
+  <div class="tablo-sarmal"><table>
+    <thead><tr><th></th><th class="sayi">Kedi</th><th class="sayi">Köpek</th></tr></thead>
+    <tbody>
+      <tr><td>Tek seferlik kurulum</td><td class="sayi">{_p(k["kurulum"])}</td><td class="sayi">{_p(p["kurulum"])}</td></tr>
+      <tr><td>Aylık sarf</td><td class="sayi">{_p(k["aylik"])}</td><td class="sayi">{_p(p["aylik"])}</td></tr>
+      <tr><td>İlk yıl toplam</td><td class="sayi">{_p(k["yil"])}</td><td class="sayi">{_p(p["yil"])}</td></tr>
+    </tbody>
+  </table></div>
+
+  <h2>Bu rakamlara neler dahil değil</h2>
+  <p>
+    Veteriner, aşı, kısırlaştırma ve mikroçip yok — bunlar hem kliniğe göre
+    değişiyor hem internette liste fiyatı olarak yayınlanmıyor. Pet
+    kuaförü, pansiyon ve eğitim de dışarıda. Yani ölçtüğümüz rakam
+    <em>alt sınır</em>; gerçek yıllık gider bunun üzerinde olacak.
+  </p>
+  <p>
+    Hayvanın kendisi de hesapta yok: sahiplenme ücretsizdir ve satın almayı
+    ne ölçüyor ne teşvik ediyoruz.
+  </p>
+  <p>
+    Kalem kalem: <a href="/kedi/">kedi masrafı</a> ·
+    <a href="/kopek/">köpek masrafı</a> ·
+    <a href="/evcil-hayvan/">ikisi bir arada</a>.
+  </p>
+"""
+
+
 REHBERLER = [
+    {
+        "slug": "damatlik-kac-para",
+        "baslik": "Damatlık Kaç Para? Neden Kimse Aynı Fiyatı Söylemiyor",
+        "seo_baslik": "Damatlık Kaç Para? 2026 Fiyatları — Üç Kaynaktan Ölçtük",
+        "meta": "Damatlık fiyatları neden bu kadar geniş bir aralıkta? Üç ayrı "
+                "kaynaktan ölçtük, aradaki farkın nereden geldiğini yazdık.",
+        "govde": _govde_damatlik,
+        "vertikal": "dugun",
+    },
+    {
+        "slug": "asgari-ucretle-ev-kurulur-mu",
+        "baslik": "Asgari Ücretle Ev Kurulur mu? Kaç Maaş Gerekiyor",
+        "seo_baslik": "Asgari Ücretle Ev Kurulur mu? Kaç Maaş Ettiğini Hesapladık",
+        "meta": "Sıfırdan ev kurmak kaç aylık asgari ücret ediyor? Ölçülmüş "
+                "fiyatlarla, ekonomik ve orta segment için ayrı ayrı.",
+        "govde": _govde_asgari_ucret_ev,
+        "vertikal": "ev-kurma",
+    },
+    {
+        "slug": "gelinlik-mi-damatlik-mi-pahali",
+        "baslik": "Gelinlik mi Damatlık mı Pahalı? Verimiz Ne Diyor, Neyi Demiyor",
+        "seo_baslik": "Gelinlik mi Damatlık mı Pahalı? Ölçüm Sonucu ve Sınırı",
+        "meta": "Verimizde damatlık daha pahalı çıkıyor. Ama bu piyasa gerçeği "
+                "değil, ölçüm sınırı — nedenini açıkça yazdık.",
+        "govde": _govde_gelinlik_damatlik,
+        "vertikal": "dugun",
+    },
+    {
+        "slug": "kedi-mi-kopek-mi-masrafli",
+        "baslik": "Kedi mi Köpek mi Daha Masraflı? İlk Yılı Hesapladık",
+        "seo_baslik": "Kedi mi Köpek mi Daha Masraflı? İlk Yıl Karşılaştırması",
+        "meta": "Kurulumda kedi, aylıkta köpek daha pahalı. On iki ayda makas "
+                "tersine dönüyor — ölçülmüş fiyatlarla kalem kalem.",
+        "govde": _govde_kedi_kopek,
+        "vertikal": "kedi",
+    },
     {
         "slug": "bebek-masraflari-ilk-yil",
         "baslik": "Bebek Masrafları: İlk Yıl Ne Kadar Tutuyor?",

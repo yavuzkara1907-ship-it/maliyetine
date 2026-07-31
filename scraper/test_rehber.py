@@ -82,6 +82,27 @@ class RehberTesti(unittest.TestCase):
             self.assertNotIn(kalip.lower(), html.lower(), f"klise kalip: {kalip}")
 
 
+    def test_basliklarda_rakam_gomulu_degil(self):
+        """Rakam metne gomulmez - veri degisince baslik yalana doner.
+
+        Bu testi yazmaya sebep olan gercek hata (2026-07-31): damatlik
+        yazisinin basligi "3 Bin Liralik da Var, 165 Bin Liralik da"
+        idi. Ikisi de o anki olcumden geliyordu; bir sonraki olcumde
+        min/max degisince baslik sessizce yanlis olacakti - govdedeki
+        rakam guncellenirken baslik donmus kalir.
+        """
+        import re
+        # "150 kisilik", "45 kalemde", "2026" gibi SABIT kavramlar serbest;
+        # yasak olan olculen para tutari (bin/milyon/TL ile birlikte).
+        para = re.compile(r"\d[\d.,]*\s*(bin|milyon|tl|₺)", re.I)
+        for r in rehber.REHBERLER:
+            for alan in ("baslik", "seo_baslik", "meta"):
+                metin = r[alan]
+                self.assertIsNone(
+                    para.search(metin),
+                    "{}/{} icinde gomulu para tutari var: {!r}".format(
+                        r["slug"], alan, metin))
+
 if __name__ == "__main__":
     unittest.main()
 
