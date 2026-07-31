@@ -304,5 +304,38 @@ class SiteDenetimi(unittest.TestCase):
         self.assertEqual([], hatali,
                          "Turkce ondalik ayraci virgul olmali: {}".format(hatali[:5]))
 
+    def test_urun_semasinda_UYDURMA_puan_ve_yorum_YOK(self):
+        """aggregateRating / review BILEREK yok - Search Console bunlari
+        "eksik alan" diye bildiriyor ama ikisi de istege bagli.
+
+        Doldurmak icin ya olmayan yorumu isaretlememiz ya kendi
+        urunumuze kendi puanimizi vermemiz gerekirdi. Ikisi de Google'in
+        yapilandirilmis veri politikasina aykiri ve manuel isleme aday;
+        birkac yildiz icin alinacak risk degil. Ustelik biz urun
+        DEGERLENDIRMIYORUZ, fiyat olcuyoruz.
+
+        `availability` de ayni sebeple yok: hicbir sey satmiyoruz ve
+        stok durumu olcmuyoruz. "InStock" dogrulanmamis bir iddiaydi.
+
+        Bu test kararin sessizce bozulmasini engelliyor. Gercekten
+        yorum toplamaya baslanirsa once o altyapi kurulur, sonra bu
+        test bilerek guncellenir.
+        """
+        yasak = ("aggregateRating", "reviewCount", "ratingValue", "availability")
+        hatali = []
+        for yol in self.sayfalar:
+            for blok in re.findall(r'application/ld\+json">(.*?)</script>',
+                                   _oku(yol), re.S):
+                try:
+                    d = json.loads(blok)
+                except ValueError:
+                    continue
+                ham = json.dumps(d, ensure_ascii=False)
+                for alan in yasak:
+                    if '"{}"'.format(alan) in ham:
+                        hatali.append("{}: {}".format(yol, alan))
+        self.assertEqual([], hatali,
+                         "Olcmedigimiz alan semaya girmis: {}".format(hatali[:5]))
+
 if __name__ == "__main__":
     unittest.main()

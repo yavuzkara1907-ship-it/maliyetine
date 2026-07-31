@@ -2721,6 +2721,26 @@ def kalem_sayfasi_uret(
     # Product/AggregateOffer: fiyat araligi olan kalemler icin zengin sonuc
     # adayi. Tek bir urun degil, olculen urun kumesini temsil ediyor -
     # o yuzden AggregateOffer ve lowPrice/highPrice kullaniliyor.
+    #
+    # `aggregateRating` ve `review` BILEREK YOK (2026-08-01).
+    # Search Console bunlari "eksik alan" diye bildiriyor; ikisi de
+    # ISTEGE BAGLI ve eksiklikleri hata degil. Dolduramayiz:
+    #   - Kullanici yorumu toplamiyoruz. Olmayan yorumu isaretlemek
+    #     Google'in "yapilandirilmis veri spam'i" manuel islemine
+    #     dogrudan aday - yildiz kazanmak icin alinacak risk degil.
+    #   - Kendi hakkimizda kendi verdigimiz puan zaten uygun degil
+    #     (self-serving review), ayrica sayfada GORUNUR olmayan bir
+    #     puani isaretlemek de ihlal.
+    #   - Ve zaten urun DEGERLENDIRMIYORUZ; fiyat olcuyoruz. Bir
+    #     buzdolabinin iyi olup olmadigi bizim olctugumuz sey degil.
+    # Bir test bu kararin sessizce bozulmasini engelliyor.
+    #
+    # `availability` KALDIRILDI (2026-08-01, ayni turda bulundu):
+    # "InStock" yaziyordu. Hicbir sey satmiyoruz ve stok durumu
+    # olcmuyoruz - dogrulanmamis bir iddiaydi. Sitede baska hicbir
+    # yerde olcmedigimiz bir sey iddia edilmiyor, semada da
+    # edilmemeli. AggregateOffer icin zorunlu alan da degil
+    # (zorunlu olan lowPrice + priceCurrency).
     if orta and degerler.get("dusuk") and degerler.get("luks"):
         json_ld["@graph"].append({
             "@type": "Product",
@@ -2733,7 +2753,6 @@ def kalem_sayfasi_uret(
                 "lowPrice": degerler["dusuk"],
                 "highPrice": degerler["luks"],
                 "offerCount": urun_sayisi or (veri or {}).get("toplam_urun") or 1,
-                "availability": "https://schema.org/InStock",
             },
         })
 
