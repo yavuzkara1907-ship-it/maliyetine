@@ -286,5 +286,23 @@ class SiteDenetimi(unittest.TestCase):
             self.assertIn(beklenen, menu, f"menude {beklenen} yok")
 
 
+    def test_ondalik_ayraci_turkce(self):
+        """Uretilen sayfalarda ondalik NOKTAYLA yazilmaz.
+
+        2026-08-01'de bulundu: `{kat:.1f}` dogrudan kullanildigi icin
+        107 sayfa "2.1 kat", "28.5 kat" yaziyordu. Ayni cumlede para
+        tutari `_para()` ile "29.382 TL" seklinde -- yani noktanin bir
+        yerde binlik, bir yerde ondalik ayraci oldugu iki bicim yan
+        yana duruyordu. `sayfa_uret._kat()` bunu tek yerden cozuyor.
+        """
+        desen = re.compile(r"\d+\.\d\s*(kat|×)")
+        hatali = []
+        for yol in self.sayfalar:
+            m = desen.search(_metin(_oku(yol)))
+            if m:
+                hatali.append("{}: {!r}".format(yol, m.group(0)))
+        self.assertEqual([], hatali,
+                         "Turkce ondalik ayraci virgul olmali: {}".format(hatali[:5]))
+
 if __name__ == "__main__":
     unittest.main()

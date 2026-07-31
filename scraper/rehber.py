@@ -854,7 +854,7 @@ def _govde_yatak_odasi(v: dict) -> str | None:
     Bir yatak odasını sıfırdan kurmak orta segmentte
     <strong>{_p(toplam)}</strong> tutuyor. Ekonomik tercihlerle
     {_p(eko)}, üst segmentte {_p(ust)} — yani aradaki fark
-    {ust / eko:.1f} kat.
+    {su._kat(ust / eko)} kat.
   </p>
 
   <h2>Kalem kalem</h2>
@@ -1041,7 +1041,7 @@ def _govde_damatlik(v: dict) -> str | None:
     Damatlığın orta segment fiyatı <strong>{_p(orta)}</strong>. Ama tek bir
     rakam bu kalemi anlatmıyor: ölçtüğümüz ürünlerin en ucuzu {_p(en_ucuz)},
     en pahalısı {_p(en_pahali)}. Yani aynı isimle satılan iki şey arasında
-    <strong>{en_pahali / en_ucuz:.0f} kat</strong> fark var.
+    <strong>{su._kat(en_pahali / en_ucuz)} kat</strong> fark var.
   </p>
 
   <h2>Neden bu kadar geniş bir aralık?</h2>
@@ -1055,7 +1055,7 @@ def _govde_damatlik(v: dict) -> str | None:
     <tbody>{satirlar}</tbody>
   </table></div>
   <p>
-    En ucuz kaynakla en pahalı kaynak arasında <strong>{kat:.0f} kat</strong>
+    En ucuz kaynakla en pahalı kaynak arasında <strong>{su._kat(kat)} kat</strong>
     fark var. Bu bir ölçüm hatası değil; iki farklı pazarın fiyatı. Damatlık
     ararken önce hangi pazarda olduğunuza karar vermek, marka seçmekten
     daha belirleyici.
@@ -1309,7 +1309,380 @@ def _govde_kedi_kopek(v: dict) -> str | None:
 """
 
 
+# ---------------------------------------------------------------------------
+# TAVSIYE YAZILARI ICIN ORTAK YARDIMCI (2026-08-01)
+#
+# Yavuz: "tavsiyeler de cok araniyor sanki. ozellikle evcil hayvan vs
+# konularinda."
+#
+# TAVSIYE YAZMANIN BU PROJEDEKI SINIRI
+# ------------------------------------
+# Genel bakim tavsiyesi ("kediyi haftada bir tarayin") YAZMIYORUZ.
+# Bunu olcmuyoruz, veteriner degiliz ve o icerik rakiplerin yaptigi
+# seyin ta kendisi - modelden uretilmis, kaynaksiz, herkeste ayni.
+#
+# Bizim verebilecegimiz tavsiye OLCUMDEN cikandir: hangi kalemde
+# secim butceyi gercekten degistiriyor, hangisinde degistirmiyor.
+# `aralik_siralamasi()` bunu veriden hesapliyor.
+#
+# YORUM TUZAGI - metinlerde acikca yazili:
+# Genis aralik "kalitesi daha iyi urun daha pahali" demek DEGIL.
+# Cogu zaman kategori FARKLI URUN TIPLERINI iceriyor. Kedi tuvaletinde
+# 599 TL acik kap, 17.099 TL otomatik elekli sistem - ikisi ayni seyin
+# ucuzu ve pahalisi degil, ayri urunler. Bu yuzden tavsiye "pahalisini
+# al" ya da "ucuzunu al" degil: "once hangi TIPI istedigine karar ver".
+# ---------------------------------------------------------------------------
+def aralik_siralamasi(veri: dict, vertikal: str) -> list[dict]:
+    """Kalemleri ekonomik-ust kat farkina gore siralar (genis -> dar).
+
+    Yalnizca uc segmenti de dolu ve gercek olculmus kalemler girer;
+    tahmini ve tek-olcum kalemleri disarida kalir (onlarda "aralik"
+    diye bir sey yok, uc segment ayni degeri tasiyor).
+    """
+    conf = su.VERTIKALLER.get(vertikal)
+    kalemler = (veri or {}).get("kalemler") or {}
+    if not conf:
+        return []
+    cikti = []
+    for tanim in conf["kalemler"]:
+        k = kalemler.get(tanim["id"]) or {}
+        if k.get("kaynak_tipi") == "tahmini" or k.get("tek_deger"):
+            continue
+        seg = k.get("segmentler") or {}
+        eko, orta, ust = ((seg.get(x) or {}).get("medyan")
+                          for x in ("dusuk", "orta", "luks"))
+        if not (eko and orta and ust) or ust <= eko:
+            continue
+        cikti.append({
+            "id": tanim["id"], "ad": tanim["ad"], "kat": ust / eko,
+            "eko": eko, "orta": orta, "ust": ust,
+            "aylik": tanim.get("varsayilan_dahil") is False,
+        })
+    cikti.sort(key=lambda x: x["kat"], reverse=True)
+    return cikti
+
+
+def _aralik_tablosu(sira: list[dict], adet: int = 5) -> str:
+    satir = "".join(
+        '<tr><td>{ad}</td><td class="sayi">{e}</td><td class="sayi">{u}</td>'
+        '<td class="sayi">{k}×</td></tr>'.format(
+            ad=x["ad"], e=_p(x["eko"]), u=_p(x["ust"]), k=su._kat(x["kat"]))
+        for x in sira[:adet])
+    return ('<div class="tablo-sarmal"><table><thead><tr><th>Kalem</th>'
+            '<th class="sayi">Ekonomik</th><th class="sayi">Üst</th>'
+            '<th class="sayi">Fark</th></tr></thead>'
+            "<tbody>{}</tbody></table></div>".format(satir))
+
+
+# ---------------------------------------------------------------------------
+# 16-17. Kedi / kopek sahiplenmeden once (TAVSIYE)
+# Tek fonksiyon iki yaziyi da uretiyor - govde ayni veriden, hayvan
+# adi ve kalem kirilimi farkli. Metin de farkli cikiyor cunku
+# siralamayi VERI belirliyor (kedide tuvalet, kopekte mama one cikiyor).
+# ---------------------------------------------------------------------------
+def _govde_sahiplenme(vertikal: str, ad: str, oteki_yol: str, oteki_ad: str):
+    def govde(v: dict) -> str | None:
+        veri = v.get(vertikal)
+        if not veri:
+            return None
+        conf = su.VERTIKALLER[vertikal]
+        kalemler = veri.get("kalemler") or {}
+        kurulum, _ = su.ornek_toplam_hesapla(conf, kalemler, 1, "orta")
+        if not kurulum:
+            return None
+        aylik = sum(
+            ((kalemler.get(t["id"]) or {}).get("segmentler") or {}).get("orta", {}).get("medyan", 0)
+            for t in conf["kalemler"] if t.get("varsayilan_dahil") is False)
+        sira = [x for x in aralik_siralamasi(veri, vertikal) if not x["aylik"]]
+        if len(sira) < 3:
+            return None
+        en_genis, en_dar = sira[0], sira[-1]
+        # IDDIALAR VERIYE BAGLI (2026-08-01, gercek hata sonrasi).
+        # Ilk hal kedi verisine gore yazilmisti: "X ucta duruyor" ve
+        # somut ornek olarak "bir ucta duz kap, obur ucta otomatik
+        # sistem". Kedide dogruydu (28,5x'e karsi 6,0x, ve kalem
+        # gercekten kedi tuvaleti). Kopekte AYNI metin uretiliyordu
+        # ama orada en genis kalem YATAK ve siralama 5,8/5,2/5,1/4,5
+        # -- ne bir uc var ne de "otomatik sistem" diye bir sey.
+        # Artik: uc ancak ikinciden belirgin ayrisiyorsa "uc" denir,
+        # dar ancak gercekten darsa "dar" denir, ve urun tipi
+        # ORNEKLE ANLATILMAZ (hangi kalem oldugunu bilemeyiz).
+        gercek_uc = en_genis["kat"] >= 2 * sira[1]["kat"]
+        gercek_dar = en_dar["kat"] <= 2.0
+        pahali = max((x for x in sira), key=lambda x: x["orta"])
+
+        return f"""
+  <p class="cevap-blok">
+    {ad} sahiplenmeden önce bilinmesi gereken iki rakam var:
+    <strong>{_p(kurulum)}</strong> tek seferlik kurulum ve
+    <strong>ayda {_p(aylik)}</strong> tekrarlayan gider. İkincisi
+    genelde hafife alınıyor — on iki ayda {_p(aylik * 12)} ediyor, yani
+    ilk yılın büyük kısmı kurulumdan değil aylık giderden geliyor.
+  </p>
+
+  <h2>Kurulumda parayı belirleyen tek kalem</h2>
+  <p>
+    Ölçtüğümüz {len(sira)} tek seferlik kalemin içinde
+    <strong>{pahali["ad"].lower()}</strong> tek başına {_p(pahali["orta"])}
+    ile en büyük tutar. Bütçeyi burada verdiğiniz karar belirliyor;
+    diğer kalemlerin toplamı bunun yanında küçük kalıyor.
+  </p>
+
+  <h2>Hangi kalemde seçim gerçekten fark ediyor?</h2>
+  <p>
+    Bunu tahmin etmek yerine ölçtük. Her kalemin ekonomik ve üst
+    segmenti arasındaki fark şöyle:
+  </p>
+{_aralik_tablosu(sira)}
+  <p>
+    Listenin başındaki <strong>{en_genis["ad"].lower()}</strong> kaleminde
+    ekonomik ile üst segment arasında {su._kat(en_genis["kat"])} kat fark var{
+    " ve bu kalem diğerlerinden belirgin şekilde ayrışıyor" if gercek_uc else ""}.
+    Ama geniş aralık "pahalısı daha kaliteli" demek değil: aynı isim
+    altında <em>farklı ürün tipleri</em> listeleniyor — en yalın modelle
+    en donanımlısı aynı kategoride duruyor.
+    <strong>Yani burada verilecek ilk karar marka değil, tip kararı.</strong>
+  </p>
+  <p>
+    Listenin sonundaki <strong>{en_dar["ad"].lower()}</strong> kaleminde
+    fark {su._kat(en_dar["kat"])} kata iniyor. {
+    "Bu kadar dar bir aralıkta ürünler birbirine yakın demektir; üst segmente çıkmanın bütçeye etkisi sınırlı."
+    if gercek_dar else
+    "Yani bu listede aralığı gerçekten dar bir kalem yok — hangi kalemde ne seçtiğiniz bütçeyi baştan sona etkiliyor."}
+  </p>
+
+  <h2>Bu rakamlara girmeyen ve muhtemelen daha çok tutacak şey</h2>
+  <p>
+    Veteriner, aşı, kısırlaştırma, mikroçip. Bunları <em>ölçmüyoruz</em>
+    çünkü klinikten kliniğe değişiyor ve internette liste fiyatı olarak
+    yayınlanmıyor. Pet kuaförü, pansiyon ve eğitim de dışarıda. Yani
+    yukarıdaki tutarlar <strong>alt sınır</strong>; gerçek yıllık gider
+    bunun üzerinde olacak. Sahiplenmeden önce bir kliniğe telefon açıp
+    kısırlaştırma ve ilk yıl aşı takvimini sormak, bu yazıdaki bütün
+    rakamlardan daha çok işinize yarar.
+  </p>
+
+  <h2>Hayvanın kendisi hesapta yok</h2>
+  <p>
+    Sahiplenme ücretsizdir. Satın almayı ne ölçüyoruz ne teşvik
+    ediyoruz — barınaklarda ve sokakta sahiplenmeyi bekleyen hayvan
+    varken bu bir maliyet kalemi değil.
+  </p>
+
+  <h2>Neyi söylemiyoruz</h2>
+  <p>
+    Bakım, beslenme ve sağlık tavsiyesi vermiyoruz. Biz fiyat ölçüyoruz;
+    hangi mamanın iyi olduğu ya da hangi aşının ne zaman yapılacağı
+    veterinerin işi. Bu sayfada göreceğiniz her cümlenin arkasında bir
+    ölçüm var, olmadığı yerde de bunu yazıyoruz.
+  </p>
+  <p>
+    Kalem kalem güncel fiyatlar <a href="/{vertikal}/">{ad.lower()} masrafı
+    sayfasında</a>; kendi listenizi
+    <a href="/{vertikal}/hesaplayici/">hesaplayıcıdan</a> çıkarabilirsiniz.
+    {oteki_ad} ile karşılaştırma
+    <a href="/rehber/kedi-mi-kopek-mi-masrafli/">şurada</a>.
+  </p>
+"""
+    return govde
+
+
+# ---------------------------------------------------------------------------
+# 18. Ev kurarken nerede tasarruf edilir (TAVSIYE)
+# Ayni aralik olcusu, bu kez 42 kalemlik bir listede: hangi kalemde
+# pazarlik/segment dusurmek gercekten para kazandiriyor.
+# ---------------------------------------------------------------------------
+def _govde_nerede_tasarruf(v: dict) -> str | None:
+    veri = v.get("ev-kurma")
+    if not veri:
+        return None
+    sira = aralik_siralamasi(veri, "ev-kurma")
+    if len(sira) < 10:
+        return None
+    conf = su.VERTIKALLER["ev-kurma"]
+    kalemler = veri.get("kalemler") or {}
+    orta, _ = su.ornek_toplam_hesapla(conf, kalemler, 1, "orta")
+    eko, _ = su.ornek_toplam_hesapla(conf, kalemler, 1, "ekonomik")
+    dar = sira[-5:][::-1]
+    # En cok para birakan hamle: kalem bazinda orta -> ekonomik TL farki
+    kazanc = sorted(sira, key=lambda x: x["orta"] - x["eko"], reverse=True)[:5]
+    kazanc_satir = "".join(
+        '<tr><td>{ad}</td><td class="sayi">{o}</td><td class="sayi">{e}</td>'
+        '<td class="sayi">−{f}</td></tr>'.format(
+            ad=x["ad"], o=_p(x["orta"]), e=_p(x["eko"]), f=_p(x["orta"] - x["eko"]))
+        for x in kazanc)
+    ilk_uc = sum(x["orta"] - x["eko"] for x in kazanc[:3])
+
+    return f"""
+  <p class="cevap-blok">
+    Orta segmentte sıfırdan ev kurmak <strong>{_p(orta)}</strong>, ekonomik
+    tercihlerle <strong>{_p(eko)}</strong> tutuyor — arada
+    {_p(orta - eko)} var. Ama bu farkın hepsini kovalamak gerekmiyor:
+    <strong>yalnızca üç kalemde segment düşürmek {_p(ilk_uc)} bırakıyor.</strong>
+  </p>
+
+  <h2>Parayı bırakan üç beş kalem</h2>
+  <p>
+    Ölçtüğümüz {len(sira)} kalemi, orta segmentten ekonomiğe inince kaç
+    lira kazandırdığına göre sıraladık:
+  </p>
+  <div class="tablo-sarmal"><table>
+    <thead><tr><th>Kalem</th><th class="sayi">Orta</th><th class="sayi">Ekonomik</th><th class="sayi">Kazanç</th></tr></thead>
+    <tbody>{kazanc_satir}</tbody>
+  </table></div>
+  <p>
+    Listenin geri kalanında tek tek uğraşmanın karşılığı küçük. Kırk
+    kalemin hepsinde ucuzunu aramak yerine bu birkaçına odaklanmak,
+    aynı tasarrufu çok daha az yorularak veriyor.
+  </p>
+
+  <h2>Nerede ucuza kaçmanın karşılığı yok</h2>
+  <p>
+    Bunun tersi de veriden çıkıyor. Bazı kalemlerde ekonomik ile üst
+    segment arasındaki fark o kadar dar ki, o kategoride ürünler
+    birbirine benziyor demektir:
+  </p>
+{_aralik_tablosu(dar)}
+  <p>
+    Örneğin {dar[0]["ad"].lower()} kaleminde ekonomikten üste çıkmak
+    fiyatı yalnızca {su._kat(dar[0]["kat"])} katına çıkarıyor. Buralarda
+    "en ucuzunu bulayım" diye vakit harcamak, kazandırdığından fazlasını
+    götürüyor.
+  </p>
+
+  <h2>Bir uyarı: geniş aralık her zaman kalite farkı değil</h2>
+  <p>
+    {sira[0]["ad"]} kaleminde ekonomik ile üst arasında
+    {su._kat(sira[0]["kat"])} kat var. Bu, pahalısının {su._kat(sira[0]["kat"])} kat
+    iyi olduğu anlamına gelmiyor — o kategoride farklı <em>ürün tipleri</em>
+    aynı isimle listeleniyor. Önce hangi tipi istediğinize karar verin;
+    marka karşılaştırması ondan sonra anlamlı.
+  </p>
+
+  <h2>Ölçmediğimiz için söylemediğimiz şey</h2>
+  <p>
+    "Şu markayı alın", "şu üründen kaçının" demiyoruz. Dayanıklılık ve
+    servis kalitesi bizim ölçtüğümüz şeyler değil; fiyat ölçüyoruz. Aynı
+    sebeple "pazarlık yapın, %10 indirim alırsınız" gibi bir tasarruf da
+    önermiyoruz — onu ölçemiyoruz, o yüzden yazmıyoruz.
+  </p>
+  <p>
+    Kendi listenizi <a href="/ev-kurma/hesaplayici/">hesaplayıcıdan</a>
+    çıkarabilir, bütçenizi girip hangi kalemde ne yapmanız gerektiğini
+    orada görebilirsiniz. Kalem kalem fiyatlar
+    <a href="/ev-kurma/">ev kurma endeksinde</a>.
+  </p>
+"""
+
+
+# ---------------------------------------------------------------------------
+# 19. Bebek alisverisinde nelere dikkat (TAVSIYE)
+# ---------------------------------------------------------------------------
+def _govde_bebek_tavsiye(v: dict) -> str | None:
+    veri = v.get("bebek")
+    if not veri:
+        return None
+    conf = su.VERTIKALLER["bebek"]
+    kalemler = veri.get("kalemler") or {}
+    hazirlik, _ = su.ornek_toplam_hesapla(conf, kalemler, 1, "orta")
+    if not hazirlik:
+        return None
+    bez = ((kalemler.get("bebek-bezi") or {}).get("segmentler") or {}).get("orta", {}).get("medyan", 0)
+    sira = [x for x in aralik_siralamasi(veri, "bebek") if not x["aylik"]]
+    if len(sira) < 3:
+        return None
+    pahali = sorted(sira, key=lambda x: x["orta"], reverse=True)[:3]
+    pahali_toplam = sum(x["orta"] for x in pahali)
+
+    return f"""
+  <p class="cevap-blok">
+    Tek seferlik bebek hazırlığı orta segmentte <strong>{_p(hazirlik)}</strong>.
+    Bunun <strong>{_p(pahali_toplam)}</strong>'si yalnızca üç kalemden
+    geliyor: {", ".join(x["ad"].lower() for x in pahali)}. Yani listenin
+    tamamını dert etmek yerine bu üçünde doğru kararı vermek, bütçenin
+    büyük kısmını çözüyor.
+  </p>
+
+  <h2>Aylık gider ayrı hesap</h2>
+  <p>
+    Bebek bezi tek seferlik değil, her ay tekrar eden bir gider:
+    ayda {_p(bez)}, yılda {_p(bez * 12)}. Hazırlık toplamına dahil
+    etmiyoruz çünkü ikisini birleştirmek "bebek maliyeti şu kadar" gibi
+    ne olduğu belirsiz bir rakam üretir. Bütçe kurarken de ayrı
+    düşünülmeli: hazırlık bir kerelik bir birikim işi, bez sürekli bir
+    kalem.
+  </p>
+
+  <h2>Hangi kalemde seçim bütçeyi değiştiriyor?</h2>
+{_aralik_tablosu(sira)}
+  <p>
+    Üstteki kalemlerde ekonomik ile üst segment arasında büyük fark var;
+    alttakilerde ürünler birbirine yakın. Ama bu tablo "pahalısını alın"
+    demek değil — geniş aralık genelde o kategoride
+    <em>farklı ürün tiplerinin</em> aynı isimle listelenmesinden geliyor.
+  </p>
+
+  <h2>Güvenlik bizim ölçtüğümüz şey değil</h2>
+  <p>
+    Oto koltuğu ve beşik gibi kalemlerde asıl kriter fiyat değil
+    <strong>güvenlik standardı</strong> — ve biz onu ölçmüyoruz. Fiyat
+    tablosuna bakıp en ucuzu seçmek bu iki kalemde doğru yöntem değil;
+    ürünün taşıdığı belge ve standart, bizim verebileceğimiz her
+    rakamdan önce gelir. Bunu yazmak zorundayız çünkü sayfada fiyat
+    sıralaması var ve tek başına yanıltıcı olabilir.
+  </p>
+
+  <h2>İkinci el ve devralma bu hesapta yok</h2>
+  <p>
+    Ölçtüğümüz rakam "her şeyi bugün, sıfır ve yeni al" senaryosu.
+    Pratikte bebek eşyasının önemli kısmı devralınıyor ya da ikinci el
+    alınıyor; ikinci el fiyatı ürünün durumuna göre değiştiği için tek
+    bir sayıyla ölçülemiyor, o yüzden kapsam dışında.
+  </p>
+  <p>
+    İlk yılın toplamı <a href="/rehber/bebek-masraflari-ilk-yil/">şurada</a>,
+    kalem kalem fiyatlar <a href="/bebek/">bebek masrafları endeksinde</a>.
+  </p>
+"""
+
+
 REHBERLER = [
+    {
+        "slug": "kedi-sahiplenmeden-once",
+        "baslik": "Kedi Sahiplenmeden Önce: Neye Ne Kadar Para Gidiyor?",
+        "seo_baslik": "Kedi Sahiplenmeden Önce Bilinmesi Gerekenler — Masraf",
+        "meta": "Kedi kurulumunun büyük kısmını tek bir kalem belirliyor. "
+                "Tek seferlik ve aylık gider ayrı ayrı, ölçülmüş fiyatlarla.",
+        "govde": _govde_sahiplenme("kedi", "Kedi", "kopek", "Köpek"),
+        "vertikal": "kedi",
+    },
+    {
+        "slug": "kopek-sahiplenmeden-once",
+        "baslik": "Köpek Sahiplenmeden Önce: Neye Ne Kadar Para Gidiyor?",
+        "seo_baslik": "Köpek Sahiplenmeden Önce Bilinmesi Gerekenler — Masraf",
+        "meta": "Köpekte asıl yük aylık mamada. Tek seferlik kurulum ile "
+                "her ay tekrarlayan gider ayrı ayrı, ölçülmüş fiyatlarla.",
+        "govde": _govde_sahiplenme("kopek", "Köpek", "kedi", "Kedi"),
+        "vertikal": "kopek",
+    },
+    {
+        "slug": "ev-kurarken-nerede-tasarruf-edilir",
+        "baslik": "Ev Kurarken Nerede Tasarruf Edilir, Nerede Edilmez?",
+        "seo_baslik": "Ev Kurarken Nerede Tasarruf Edilir? Ölçülmüş Cevap",
+        "meta": "Hangi kalemde segment düşürmek gerçekten para bırakıyor, "
+                "hangisinde uğraşmanın karşılığı yok — kalem kalem ölçtük.",
+        "govde": _govde_nerede_tasarruf,
+        "vertikal": "ev-kurma",
+    },
+    {
+        "slug": "bebek-alisverisinde-nelere-dikkat",
+        "baslik": "Bebek Alışverişinde Nelere Dikkat Etmeli?",
+        "seo_baslik": "Bebek Alışverişinde Nelere Dikkat Etmeli? Masraf Rehberi",
+        "meta": "Hazırlık bütçesinin büyük kısmını üç kalem belirliyor. "
+                "Hangileri olduğunu ve nerede fiyata bakılmayacağını yazdık.",
+        "govde": _govde_bebek_tavsiye,
+        "vertikal": "bebek",
+    },
     {
         "slug": "damatlik-kac-para",
         "baslik": "Damatlık Kaç Para? Neden Kimse Aynı Fiyatı Söylemiyor",

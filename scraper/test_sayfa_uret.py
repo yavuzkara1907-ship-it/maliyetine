@@ -866,7 +866,21 @@ class FiyatGrafigiTesti(unittest.TestCase):
 
     def test_kat_farki_dogru_hesaplanir(self):
         g = sayfa_uret._segment_grafigi({"dusuk": 1000, "orta": 2000, "luks": 3000})
-        self.assertIn("3.0 katı", g)
+        self.assertIn("3 katı", g)
+        self.assertNotIn("3.0 katı", g)   # tam sayida ondalik gosterilmez
+
+    def test_kat_farki_ondaligi_TURKCE_ayracla(self):
+        """2026-08-01: sitenin 107 sayfasi "2.1 kat" yaziyordu.
+
+        Nokta Turkce'de binlik ayraci; ayni cumlede "29.382 TL" ile
+        "2.1 kat" yan yana duruyordu, yani ayni karakter iki farkli
+        anlamda. `_kat()` bunu tek yerden cozuyor.
+        """
+        g = sayfa_uret._segment_grafigi({"dusuk": 1000, "orta": 1500, "luks": 2100})
+        self.assertIn("2,1 katı", g)
+        self.assertNotIn("2.1 katı", g)
+        self.assertEqual("28,5", sayfa_uret._kat(28.5))
+        self.assertEqual("6", sayfa_uret._kat(6.0))
 
 
 class BreadcrumbTesti(unittest.TestCase):

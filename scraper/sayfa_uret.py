@@ -1219,7 +1219,7 @@ def _segment_grafigi(degerler: dict, birim_notu: str = "") -> str:
         )
     kat = veri[2][1] / veri[0][1] if veri[0][1] else 0
     alt = (f'<text x="{sol}" y="{ust + 3 * aralik + 6}" class="g-alt">'
-           f'Üst segment, ekonomiğin {kat:.1f} katı{birim_notu}</text>') if kat else ""
+           f'Üst segment, ekonomiğin {_kat(kat)} katı{birim_notu}</text>') if kat else ""
     return (
         f'  <figure class="fiyat-grafik">\n'
         f'    <svg viewBox="0 0 {GRAFIK_GENISLIK} {GRAFIK_YUKSEKLIK}" '
@@ -1396,6 +1396,23 @@ def _arama_js(kayitlar: list[dict]) -> str:
     return "<script>" + ARAMA_JS_GOVDE.replace(
         "__VERI__", json.dumps(kayitlar, ensure_ascii=False)
     ) + "</script>\n"
+
+
+def _kat(n: float) -> str:
+    """Kat farkini Turkce ondalik ayraciyla yazar: 28,5 (28.5 degil).
+
+    2026-08-01'de bulundu: `{kat:.1f}` dogrudan kullaniliyordu ve
+    sitenin 107 sayfasi "3.1 kat", "28.5 kat" gibi ondaligi NOKTAYLA
+    yaziyordu. Para tutarlari `_para()` ile dogru bicimlendirildigi
+    icin ayni sayfada iki farkli sayi bicimi vardi: "29.382 TL" (nokta
+    binlik ayraci) ile "2.1 kat" (nokta ondalik ayraci) yan yana.
+    Tam sayilarda ondalik hic gosterilmiyor: 6,0 degil 6.
+    """
+    if n is None:
+        return ""
+    if abs(n - round(n)) < 0.05:
+        return "{:.0f}".format(n)
+    return "{:.1f}".format(n).replace(".", ",")
 
 
 def _para(n: int) -> str:
@@ -2653,7 +2670,7 @@ def kalem_sayfasi_uret(
             "name": f"{tanim['ad']} fiyatları arasında ne kadar fark var?",
             "acceptedAnswer": {"@type": "Answer", "text": (
                 f"Ekonomik segmentte {_para(degerler['dusuk'])}, lüks segmentte "
-                f"{_para(degerler['luks'])} — yaklaşık {kat:.1f} kat fark. "
+                f"{_para(degerler['luks'])} — yaklaşık {_kat(kat)} kat fark. "
                 "Segmentler persentil bazlı ayrılır: en ucuz çeyrek ekonomik, "
                 "ortadaki yarı orta, en pahalı çeyrek lüks kabul edilir."
             )},
