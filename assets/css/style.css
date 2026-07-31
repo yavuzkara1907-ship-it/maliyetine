@@ -1,39 +1,108 @@
-/* Maliyetine.com.tr - temel stil. Framework yok, saf CSS. */
+/* Maliyetine.com.tr - temel stil. Framework yok, saf CSS.
+ *
+ * TASARIM YONU (2026-08-01, Yavuz: "siteyi kim gorse Claude isi diyor,
+ * tasarim dilin cok standart"). Haklıydı. Eski halin isaretleri:
+ *   - sistem font yigini (-apple-system, Segoe UI...) = hic tipografi
+ *     karari verilmemis demek; uretilmis sitenin en net imzasi
+ *   - her sey acik gri zemin uzerinde 10px yuvarlatilmis KART
+ *   - tek mavi vurgu hem her linke hem her RAKAMA ayni sekilde
+ *   - her yerde esit, bol, ayni bosluk - hicbir yerde gerginlik yok
+ *
+ * Yanlis referansa bakilmisti: SaaS landing page. Bu sitenin isi olcum
+ * yayinlamak; dogru referans ISTATISTIK BULTENI ve FINANS BASINI.
+ * Karar seti:
+ *   - Baslik ve rakamlarda SERIF (Source Serif 4), govdede IBM Plex Sans.
+ *     Ikisi de kendi sunucumuzda; Google'a istek atmiyoruz.
+ *   - KART DEGIL CETVEL. Golge ve gri kutu yerine cizgi ve bosluk.
+ *   - Kose yaricapi ~0. Keskin kenar kurumsal/editoryal okunuyor.
+ *   - RAKAM RENKLE DEGIL BUYUKLUKLE one cikar. Renk yalnizca
+ *     tiklanabilir seye ayrildi - eskiden rakam da link de aynı maviydi,
+ *     yani hiyerarsi yoktu.
+ *   - tabular-nums: sitenin urunu fiyat sutunu. Oransal rakamla
+ *     tablodaki basamaklar alt alta hizalanmiyordu - bu estetik degil
+ *     islevsel bir kusurdu.
+ */
+
+/* Fontlar kendi sunucumuzda (assets/font/). Google Fonts'a baglanmak
+   ucuncu taraf istegi + KVKK tarafinda gereksiz yuk demekti.
+   fontTools ile Turkce+Latin karakter kumesine indirgendi: 396 -> 116 KB. */
+@font-face {
+  font-family: "Kaynak Serif";
+  font-style: normal; font-weight: 700; font-display: swap;
+  src: url("/assets/font/serif-700-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+2000-206F, U+2190-21BB, U+20A0-20BF, U+2122;
+}
+@font-face {
+  font-family: "Kaynak Serif";
+  font-style: normal; font-weight: 700; font-display: swap;
+  src: url("/assets/font/serif-700-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-024F, U+1E00-1EFF;
+}
+@font-face {
+  font-family: "Kaynak Sans";
+  font-style: normal; font-weight: 400; font-display: swap;
+  src: url("/assets/font/sans-400-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+2000-206F, U+2190-21BB, U+20A0-20BF, U+2122;
+}
+@font-face {
+  font-family: "Kaynak Sans";
+  font-style: normal; font-weight: 400; font-display: swap;
+  src: url("/assets/font/sans-400-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-024F, U+1E00-1EFF;
+}
+@font-face {
+  font-family: "Kaynak Sans";
+  font-style: normal; font-weight: 600; font-display: swap;
+  src: url("/assets/font/sans-600-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+2000-206F, U+2190-21BB, U+20A0-20BF, U+2122;
+}
+@font-face {
+  font-family: "Kaynak Sans";
+  font-style: normal; font-weight: 600; font-display: swap;
+  src: url("/assets/font/sans-600-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-024F, U+1E00-1EFF;
+}
 
 :root {
-  --renk-metin: #16161d;
-  --renk-metin-soluk: #5b5b6b;
-  --renk-zemin: #ffffff;
-  --renk-zemin-alt: #f6f7f9;
-  /* Vurgu rengi jenerik mavi degil, hafif teal-mavi: veri sitelerinde
-     rakamin yaninda daha sakin duruyor ve link mavisiyle karismiyor. */
-  --renk-vurgu: #0f5c8c;
-  --renk-vurgu-koyu: #0a4569;
-  --renk-vurgu-acik: #e8f2f8;
-  --renk-cizgi: #e4e4ec;
-  --renk-cizgi-koyu: #cfcfdb;
-  --renk-uyari: #a35a00;
-  --renk-uyari-zemin: #fdf1dc;
-  /* 780 -> 880: fiyat tablolari 5 sutunlu, dar govdede sikisiyordu. */
+  --yazi-baslik: "Kaynak Serif", Georgia, "Times New Roman", serif;
+  --yazi-govde: "Kaynak Sans", -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* Kagit beyazi, saf beyaz degil: uzun okunan veri sayfasinda
+     goz yormuyor ve basili bulten hissini veriyor. */
+  --renk-metin: #14140f;
+  --renk-metin-soluk: #6a6a5e;
+  --renk-zemin: #fbfaf7;
+  --renk-zemin-alt: #f2f0ea;
+  /* Vurgu ARTIK RAKAMDA DEGIL. Yalnizca tiklanabilir sey ve
+     isaretleyici cizgi. Jenerik mavi degil, basili yayin kirmizisi. */
+  --renk-vurgu: #9c2b1a;
+  --renk-vurgu-koyu: #74200f;
+  --renk-vurgu-acik: #f6ece8;
+  --renk-cizgi: #ddd9cd;
+  --renk-cizgi-koyu: #b8b2a1;
+  --renk-uyari: #8a5a00;
+  --renk-uyari-zemin: #f7edd6;
   --genislik-icerik: 880px;
-  --radius: 10px;
+  /* Kose yaricapi neredeyse sifir - keskin kenar editoryal okunuyor.
+     Degisken korunuyor cunku 30+ kuralda kullaniliyor. */
+  --radius: 2px;
 }
 
 /* Karanlik mod: sistem tercihine gore. Veri sayfalari uzun okunuyor,
    gece okuyan kullaniciyi beyaz ekranla birakmamak icin. */
 @media (prefers-color-scheme: dark) {
   :root {
-    --renk-metin: #e8e8f0;
-    --renk-metin-soluk: #a2a2b4;
-    --renk-zemin: #14141a;
-    --renk-zemin-alt: #1d1d26;
-    --renk-vurgu: #6fb8dd;
-    --renk-vurgu-koyu: #9ad0ee;
-    --renk-vurgu-acik: #1a2a34;
-    --renk-cizgi: #2c2c38;
-    --renk-cizgi-koyu: #3d3d4c;
-    --renk-uyari: #e0a75a;
-    --renk-uyari-zemin: #3a2c14;
+    --renk-metin: #ece9e0;
+    --renk-metin-soluk: #a09a8c;
+    --renk-zemin: #16150f;
+    --renk-zemin-alt: #201e17;
+    --renk-vurgu: #e88060;
+    --renk-vurgu-koyu: #f2a58c;
+    --renk-vurgu-acik: #33201a;
+    --renk-cizgi: #322f26;
+    --renk-cizgi-koyu: #4a4638;
+    --renk-uyari: #d9a850;
+    --renk-uyari-zemin: #33290f;
   }
 }
 
@@ -47,7 +116,10 @@ html {
 
 body {
   margin: 0;
-  font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: var(--yazi-govde);
+  /* Fiyat sitesinde basamaklar alt alta hizalanmali. */
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
   color: var(--renk-metin);
   background: var(--renk-zemin);
   line-height: 1.55;
@@ -69,7 +141,9 @@ a {
    duruyordu. Marka ve gezinme sitenin ilk izlenimi; zayif birakmak
    guven de kaybettiriyor. */
 .ust-bar {
-  border-bottom: 1px solid var(--renk-cizgi-koyu);
+  /* Ince gri cizgi yerine kalin mürekkep kurali: gazete kunyesi gibi
+     sayfayi ustten kapatiyor, "app header" gibi degil. */
+  border-bottom: 2px solid var(--renk-metin);
   padding: 14px 0;
   background: var(--renk-zemin);
   position: sticky;   /* uzun sayfalarda (ana sayfa 8.500px) gezinme
@@ -105,9 +179,9 @@ a {
 .ust-menu::-webkit-scrollbar { display: none; }
 
 .logo {
-  font-weight: 800;
-  font-size: 1.45rem;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: -0.025em;
   text-decoration: none;
   color: var(--renk-metin);
   flex-shrink: 0;
@@ -125,6 +199,8 @@ a {
 }
 
 .ust-menu a {
+  font-size: 0.9rem;
+  letter-spacing: 0.005em;
   text-decoration: none;
   color: var(--renk-metin);
   padding: 7px 11px;
@@ -139,10 +215,13 @@ a {
 }
 
 /* Bulunulan bolum - hem yon duygusu hem erisilebilirlik */
+/* Aktif bolum: hap zemin yerine alttan kalin isaret. Gezinme
+   cubugunda renkli kutu "sekme bileseni" gibi duruyordu. */
 .ust-menu a[aria-current="page"] {
-  color: var(--renk-vurgu);
-  background: var(--renk-vurgu-acik);
-  font-weight: 700;
+  color: var(--renk-metin);
+  background: none;
+  font-weight: 600;
+  box-shadow: inset 0 -3px 0 var(--renk-vurgu);
 }
 
 /* Hesaplayicilar en yeni ve en genis bolum; menude kaybolmasin diye
@@ -165,25 +244,44 @@ body {
   font-size: 17px;
 }
 
+h1, h2, h3, .kart-rakam, .sonuc-toplam, .logo {
+  font-family: var(--yazi-baslik);
+  font-weight: 700;
+}
+
 h1 {
   /* Alt sinir 1,75 -> 2rem: mobilde baslik rakamlarin yaninda
      kayboluyordu (olculdu: 24,8px). */
-  font-size: clamp(2rem, 1.3rem + 2.2vw, 2.5rem);
-  line-height: 1.2;
-  letter-spacing: -0.02em;
+  font-size: clamp(2.05rem, 1.3rem + 2.4vw, 2.7rem);
+  line-height: 1.15;
+  letter-spacing: -0.015em;
   margin: 0 0 14px;
 }
 
+/* h2 artik KUTU degil CETVEL basligi: ustunde ince bir kural cizgisi
+   var, bolumleri gri panel yerine tipografi ve cizgi ayiriyor. */
 h2 {
-  font-size: 1.4rem;
-  line-height: 1.3;
+  font-size: 1.42rem;
+  line-height: 1.25;
   letter-spacing: -0.01em;
-  margin: 44px 0 14px;
-  padding-top: 4px;
+  margin: 46px 0 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--renk-cizgi);
+}
+
+/* Cevap blogunun hemen ardindaki ilk baslikta CIFT CETVEL olmasin:
+   cevap blogunun kendi alt kurali zaten bolumu kapatiyor. Dogrudan
+   kardes de olabilir, bir .icerik-bolumu sarmalayicisinin ilk cocugu
+   da - ikisi de yakalaniyor. */
+.cevap-blok + h2,
+.cevap-blok + .icerik-bolumu > h2:first-child {
+  border-top: 0;
+  padding-top: 0;
+  margin-top: 34px;
 }
 
 h3 {
-  font-size: 1.08rem;
+  font-size: 1.06rem;
   margin: 26px 0 8px;
 }
 
@@ -192,31 +290,47 @@ p {
 }
 
 /* ---- GEO cevap bloğu: ilk 40-60 kelimede net cevap ---- */
+/* Gri kutu KALDIRILDI. Sayfanin en onemli blogu artik kendini
+   zeminle degil TIPOGRAFIYLE ayiriyor: buyuk punto, ust-alt kural
+   cizgisi, sol vurgu. Kutu icine almak onu "bilesen" gibi
+   gosteriyordu; oysa bu sayfanin ana metni. */
 .cevap-blok {
-  background: var(--renk-zemin-alt);
-  border: 1px solid var(--renk-cizgi);
-  border-inline-start: 4px solid var(--renk-vurgu);
-  border-radius: var(--radius);
-  padding: 20px 24px;
-  margin: 0 0 30px;
-  font-size: 1.06rem;
-  line-height: 1.6;
+  border-block: 1px solid var(--renk-cizgi-koyu);
+  border-inline-start: 3px solid var(--renk-vurgu);
+  padding: 18px 0 18px 20px;
+  margin: 0 0 32px;
+  font-size: 1.14rem;
+  line-height: 1.62;
 }
 
+/* Rakam RENKLE degil AGIRLIKLA one cikiyor. Eskiden hem link hem
+   rakam ayni maviydi; okuyucu neyin tiklanabilir oldugunu
+   ayirt edemiyordu. */
 .cevap-blok strong {
-  color: var(--renk-vurgu);
+  color: var(--renk-metin);
+  font-weight: 600;
+  /* `white-space: nowrap` DENENDI VE GERI ALINDI (2026-08-01):
+     amac "406.375 TL" ifadesinin bolunmemesiydi, ama cevap blogundaki
+     her <strong> rakam degil. /hesap/ sayfasinda uzun bir vurgulu
+     cumle 665px'lik kirilamaz bir satira donusup 320px'te sayfayi
+     yatay tasirdi. Gorsel test yakaladi. */
 }
 
 /* ---- Guncelleme etiketi ---- */
+/* Hap seklindeki rozet -> kunye satiri. Bir tarih "etiket" degil,
+   yayin bilgisi; gazetede de basligin ustunde duz yazar. */
 .guncelleme-etiketi {
-  display: inline-block;
-  font-size: 0.82rem;
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 600;
   color: var(--renk-metin-soluk);
-  background: var(--renk-zemin-alt);
-  border: 1px solid var(--renk-cizgi);
-  border-radius: 999px;
-  padding: 4px 12px;
-  margin-bottom: 18px;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
 }
 
 /* ---- Tahmini/uyari etiketi ---- */
@@ -295,6 +409,11 @@ tbody tr:hover {
 td.sayi, th.sayi {
   text-align: right;
   font-variant-numeric: tabular-nums;
+  /* Fiyat ASLA satir kirmaz. Yeni tipografide tabular rakamlar
+     oransal olanlardan genis; dar bir sutunda "46.450 TL" iki satira
+     boluniyordu ve tablo okunmaz hale geliyordu. Tasan tablo zaten
+     .tablo-sarmal icinde kendi icinde kayiyor - dogru davranis bu. */
+  white-space: nowrap;
 }
 
 /* Ilk sutun (kalem adi) daha belirgin, sayilar okunakli */
@@ -325,12 +444,16 @@ tbody td:first-child {
 }
 
 /* ---- Kart ---- */
+/* Kart artik kutu degil, ust kenarindan kalin kuralla ayrilan bir
+   BOLUM. Cerceve + yaricap + zemin uclusu "component library"
+   gorunumunun kendisiydi. */
 .kart {
-  border: 1px solid var(--renk-cizgi);
-  border-radius: var(--radius);
-  padding: 20px;
-  margin-bottom: 16px;
-  background: var(--renk-zemin);
+  border: 0;
+  border-top: 2px solid var(--renk-metin);
+  border-radius: 0;
+  padding: 16px 0 20px;
+  margin-bottom: 0;
+  background: none;
 }
 
 .kart-grid {
@@ -392,8 +515,8 @@ tbody td:first-child {
   gap: 6px;
   font-weight: 400;
   font-size: 0.95rem;
-  border: 1px solid var(--renk-cizgi);
-  border-radius: 999px;
+  border: 1px solid var(--renk-cizgi-koyu);
+  border-radius: 2px;
   /* 23 px olculdu - dokunma hedefi icin cok kucuktu (WCAG 40 px).
      Segment secimi hesaplayicinin en cok kullanilan kontrolu. */
   min-height: 42px;
@@ -437,13 +560,14 @@ tbody td:first-child {
 }
 
 button.birincil-buton {
-  background: var(--renk-vurg, var(--renk-vurgu));
+  background: var(--renk-vurgu);
   color: #fff;
   border: none;
-  border-radius: 8px;
-  padding: 13px 22px;
-  font-size: 1rem;
+  border-radius: 2px;
+  padding: 13px 24px;
+  font-size: 0.95rem;
   font-weight: 600;
+  letter-spacing: 0.02em;
   cursor: pointer;
 }
 
@@ -452,19 +576,26 @@ button.birincil-buton:hover {
 }
 
 /* ---- Sonuc kutusu ---- */
+/* Sonuc kutusu: renkli panel yerine kalin ust kural. Rengi kaldirmak
+   rakami zayiflatmiyor - buyutuyor, cunku artik dikkat rengi kutuyla
+   paylasmiyor. (Ayrica eski hali `#c7d5fb` gibi degiskene BAGLI OLMAYAN
+   sabit bir mavi kullaniyordu; karanlik modda oldugu gibi kaliyordu.) */
 .sonuc-kutu {
   margin-top: 26px;
-  padding: 22px;
-  background: var(--renk-vurgu-acik);
-  border-radius: var(--radius);
-  border: 1px solid #c7d5fb;
+  padding: 18px 0 4px;
+  background: none;
+  border: 0;
+  border-top: 3px solid var(--renk-metin);
+  border-radius: 0;
 }
 
 .sonuc-toplam {
-  font-size: 2rem;
+  font-size: clamp(2.4rem, 1.6rem + 3vw, 3.4rem);
   font-weight: 700;
-  color: var(--renk-vurgu);
-  margin: 4px 0 2px;
+  color: var(--renk-metin);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: 6px 0 4px;
 }
 
 .sonuc-alt-metin {
@@ -573,6 +704,8 @@ footer a {
   }
 
   .ust-menu a {
+  font-size: 0.9rem;
+  letter-spacing: 0.005em;
     white-space: nowrap;
     font-size: 0.92rem;
   }
@@ -616,11 +749,12 @@ button.metin-buton {
 
 /* Ana sayfa endeks kartlari: rakam one cikar, alt bilgi ve kalem linkleri */
 .kart-rakam {
-  font-size: 1.85rem;
+  font-size: 2.15rem;
   font-weight: 700;
   color: var(--renk-metin);
-  margin: 8px 0 6px;
-  letter-spacing: -0.025em;
+  margin: 10px 0 6px;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
   font-variant-numeric: tabular-nums;
 }
 
@@ -637,23 +771,29 @@ button.metin-buton {
   margin: 0;
 }
 
+/* Renkli hap -> indeks girdisi. Kart basina 8 tane yan yana renkli
+   kutu, sayfanin asil icerigi olan RAKAMLA dikkat icin yarisiyordu. */
 .kart-linkler a {
-  font-size: 0.8rem;
-  background: var(--renk-vurgu-acik);
-  color: var(--renk-vurgu);
-  padding: 3px 9px;
-  border-radius: 999px;
+  font-size: 0.85rem;
+  background: none;
+  color: var(--renk-metin);
+  padding: 2px 0;
+  border-radius: 0;
   text-decoration: none;
+  border-bottom: 1px solid var(--renk-cizgi-koyu);
 }
 
 .kart-linkler a:hover {
-  text-decoration: underline;
+  color: var(--renk-vurgu);
+  border-bottom-color: var(--renk-vurgu);
 }
 
 .kart-linkler a.kart-link-tum {
   background: transparent;
-  border: 1px dashed var(--renk-cizgi-koyu);
+  border: 0;
+  border-bottom: 1px dashed var(--renk-cizgi-koyu);
   color: var(--renk-metin-soluk);
+  font-style: italic;
 }
 
 /* Ana sayfada kart basligindaki link, kartin kendisi gibi davranmali */
@@ -731,10 +871,12 @@ button.metin-buton {
 
 /* ---- Ana sayfa hizli hesap ---- */
 .hizli-hesap {
-  background: var(--renk-zemin-alt);
-  border: 1px solid var(--renk-cizgi);
-  border-radius: var(--radius);
-  padding: 22px 24px;
+  background: none;
+  border: 0;
+  border-top: 2px solid var(--renk-metin);
+  border-bottom: 1px solid var(--renk-cizgi-koyu);
+  border-radius: 0;
+  padding: 18px 0 22px;
   margin: 0 0 34px;
 }
 
@@ -792,7 +934,7 @@ button.metin-buton {
 }
 
 .hizli-sonuc {
-  border-top: 1px solid var(--renk-cizgi);
+  border-top: 1px solid var(--renk-cizgi-koyu);
   padding-top: 16px;
 }
 
@@ -805,10 +947,11 @@ button.metin-buton {
 }
 
 .hizli-sonuc-deger {
-  font-size: clamp(1.9rem, 1.2rem + 3vw, 2.6rem);
+  font-family: var(--yazi-baslik);
+  font-size: clamp(2.3rem, 1.4rem + 3.4vw, 3.2rem);
   font-weight: 700;
-  letter-spacing: -0.03em;
-  color: var(--renk-vurgu);
+  letter-spacing: -0.035em;
+  color: var(--renk-metin);
   margin: 0 0 4px;
   font-variant-numeric: tabular-nums;
   line-height: 1.1;
@@ -838,6 +981,8 @@ button.metin-buton {
   }
 
   .ust-menu a {
+  font-size: 0.9rem;
+  letter-spacing: 0.005em;
     display: inline-block;
     padding: 8px 2px;
   }
@@ -990,9 +1135,11 @@ footer nav {
 
 /* ---- Sohbet asistani ---- */
 .asistan {
-  border: 1px solid var(--renk-cizgi);
-  border-radius: var(--radius);
-  padding: 22px 24px;
+  border: 0;
+  border-top: 2px solid var(--renk-metin);
+  border-bottom: 1px solid var(--renk-cizgi-koyu);
+  border-radius: 0;
+  padding: 18px 0 22px;
   margin: 0 0 34px;
 }
 
@@ -1064,7 +1211,7 @@ footer nav {
   font: inherit;
   font-size: 0.83rem;
   padding: 7px 13px;
-  border-radius: 999px;
+  border-radius: 2px;
   border: 1px solid var(--renk-cizgi-koyu);
   background: var(--renk-zemin);
   color: var(--renk-vurgu);
