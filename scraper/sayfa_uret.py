@@ -3327,12 +3327,24 @@ def _site_ozeti(ozetler: list[dict], veri_kok: Path | None = None) -> str:
         hesap = len(hs.tum_hesaplayicilar())
     except ImportError:
         hesap = 0
-    parcalar = [f"<strong>{len(ozetler)} maliyet endeksi</strong>",
-                f"<strong>{kalem} kalem</strong>"]
+    # 2026-08-01 (Yavuz: "2026'da ne kaça mal olur cok kotu"):
+    # ozet "7 maliyet endeksi" diyordu ama HANGILERI oldugunu hic
+    # soylemiyordu. Baslikta da "Ne" bir bosluktu. Siteye ilk gelen,
+    # dugun mu olcuyoruz araba mi, ekranin ustunden anlayamiyordu.
+    # Vertikal adlari VERIDEN geliyor - yeni vertikal eklendiginde
+    # cumle de kendiliginden guncelleniyor (elle yazilan liste bu
+    # projede iki kez bayatladi: gecmis.py ve rehber.py).
+    adlar = [o["ad"].lower() for o in ozetler]
+    if adlar:
+        kapsam = (", ".join(adlar[:-1]) + " ve " + adlar[-1]) if len(adlar) > 1 else adlar[0]
+        kapsam = kapsam[0].upper() + kapsam[1:]
+    else:
+        kapsam = ""
+    parcalar = [f"<strong>{kalem} kalem</strong>"]
     if hesap:
         parcalar.append(f'<strong><a href="/hesap/">{hesap} hesaplayıcı</a></strong>')
     return (
-        " · ".join(parcalar)
+        f"{kapsam} — " + " · ".join(parcalar)
         + ". Fiyatlar gerçek kaynaklardan ayda iki kez ölçülür; her rakamın "
         "yanında kaynak sayısı ve ölçüm tarihi yazar."
     )
@@ -3573,7 +3585,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
 <main class="kapsayici">
 
   <span class="guncelleme-etiketi">Güncelleme: {tarih}</span>
-  <h1>2026'da Ne Kaça Mal Olur?</h1>
+  <h1>2026 Maliyet Endeksi</h1>
   <p class="site-ozeti">{site_ozeti}</p>
 
   <div class="cevap-blok"{cevap_stil}>
