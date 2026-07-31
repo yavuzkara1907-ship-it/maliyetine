@@ -1832,6 +1832,68 @@ gecerse patliyor. Gercekten yorum toplanmaya baslanirsa once o altyapi
 kurulur, sonra test bilerek guncellenir.
 
 
+## TASARIM DILI: SaaS SABLONUNDAN ISTATISTIK BULTENINE (2026-08-01)
+Yavuz: *"siteyi kim gorse Claude isi diyor. demek ki tasarim dilin cok
+standart. cikamadik oradan."* Haklıydı. Ekran goruntusu alinarak
+calisildi (bu projede tasarima bakmadan dokunmak korluk).
+
+**"URETILMIS SITE" DEDIRTEN SEYLER — tek tek belirlendi:**
+1. **Sistem font yigini** (`-apple-system, Segoe UI, Roboto...`) —
+   tek basina en net isaret. Tarayici varsayilani demek, yani hic
+   tipografi karari verilmemis demek.
+2. Her sey acik gri zemin uzerinde **10px yuvarlatilmis kart**.
+3. **Tek mavi vurgu hem her linke hem her RAKAMA** ayni sekilde —
+   yani hiyerarsi yok, okuyucu neyin tiklanabilir oldugunu ayirt
+   edemiyor.
+4. Her yerde **esit ve bol bosluk**; hicbir yerde gerginlik yok.
+5. **999px yaricapli hap** radyo butonlari ve rozetler.
+
+**KOK NEDEN: yanlis referans.** SaaS landing page'ine bakilmisti. Bu
+sitenin isi olcum yayinlamak; dogru referans **istatistik bulteni ve
+finans basini** — kart degil cetvel, yumusak degil keskin, dekoratif
+degil isaretleyici renk.
+
+**YAPILANLAR — yalnizca CSS, 173 sayfanin HTML'ine dokunulmadi:**
+- **Source Serif 4** (baslik + rakam) + **IBM Plex Sans** (govde),
+  **kendi sunucumuzda** (`assets/font/`). Google Fonts'a baglanmak
+  ucuncu taraf istegi + KVKK tarafinda gereksiz yuk. `fontTools` ile
+  Turkce+Latin karakter kumesine indirgendi: **396 -> 116 KB**.
+  `unicode-range` ile latin/latin-ext ayri; `font-display: swap`.
+- **Kart/golge/gri panel -> CETVEL ve bosluk.** `.cevap-blok`,
+  `.kart`, `.sonuc-kutu`, `.hizli-hesap`, `.asistan` — hepsi kutu
+  olmaktan cikti, ust kenar kuraliyla ayrisiyor.
+- Kose yaricapi **10px -> 2px**; 999px'lik hap kalmadi.
+- **RAKAM RENKLE DEGIL BUYUKLUKLE one cikiyor.** Renk artik yalnizca
+  tiklanabilir seye ait. Toplamlar serif ve ~3rem.
+- Kagit beyazi zemin (`#fbfaf7`) + basili yayin kirmizisi
+  (`#9c2b1a`); karanlik mod da sicak tonda.
+- **`tabular-nums`**: sitenin urunu fiyat sutunu, basamaklar alt alta
+  hizalanmaliydi. Estetik degil islevsel kusurdu.
+
+### Bu turda bulunan uc kusur (tasarimla ilgisiz, bakinca cikti)
+1. `background: var(--renk-vurg, var(--renk-vurgu))` — **oyle bir
+   degisken yok**; yalnizca fallback sayesinde calisiyordu. Birisi
+   fallback'i sadelestirse buton renksiz kalirdi.
+2. `.sonuc-kutu` sabit `#c7d5fb` kullaniyordu — degiskene bagli
+   olmadigi icin **karanlik modda oldugu gibi kaliyordu**.
+3. Yeni tipografide tabular rakamlar oransal olanlardan genis: dar
+   sutunda **"46.450 TL" iki satira boluniyordu**. `td.sayi`'ya
+   `white-space: nowrap`.
+
+### VE BIR REGRESYONU KENDI GORSEL TESTIM YAKALADI
+`.cevap-blok strong`'a `nowrap` koymustum — amac *"406.375 TL"*
+ifadesinin bolunmemesiydi. Ama **cevap blogundaki her `<strong>`
+rakam degil**: `/hesap/` sayfasinda uzun bir vurgulu cumle 665px'lik
+kirilamaz bir satira donusup 320px'te sayfayi yatay tasirdi.
+`test_gorsel` yakaladi, geri alindi, sebebi CSS'e yazildi.
+**Ayni sinif: bir baglam icin dogru olan kurali tum bagalamlara
+uygulamak** (kopek yazisindaki "otomatik sistem" cumlesi, `_sss_html`
+tek sayfa tipinde cagrilmasi, sabit vertikal listeleri).
+
+**Dogrulama:** 14 genislik x 9 sayfa yatay tasma taramasi temiz,
+karanlik mod temiz, canlida 6/6 font 200 ve 0 konsol hatasi.
+
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
