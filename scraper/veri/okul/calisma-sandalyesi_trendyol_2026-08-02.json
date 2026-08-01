@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Calisma Sandalyesi"
+  ],
+  "kalem": "calisma-sandalyesi",
+  "vertikal": "okul",
+  "tarih": "2026-08-02",
+  "toplam_urun": 24,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 2044,
+  "segmentler": {
+    "dusuk": {
+      "min": 1509,
+      "medyan": 1550,
+      "max": 1669,
+      "urun_sayisi": 7
+    },
+    "orta": {
+      "min": 1752,
+      "medyan": 2248,
+      "max": 3460,
+      "urun_sayisi": 12
+    },
+    "luks": {
+      "min": 3980,
+      "medyan": 4122,
+      "max": 4654,
+      "urun_sayisi": 5
+    }
+  }
+}

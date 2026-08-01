@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Kurşun Kalem Seti"
+  ],
+  "kalem": "kalem",
+  "vertikal": "okul",
+  "tarih": "2026-08-02",
+  "toplam_urun": 43,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 164,
+  "segmentler": {
+    "dusuk": {
+      "min": 65,
+      "medyan": 90,
+      "max": 100,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 100,
+      "medyan": 173,
+      "max": 298,
+      "urun_sayisi": 22
+    },
+    "luks": {
+      "min": 299,
+      "medyan": 364,
+      "max": 550,
+      "urun_sayisi": 10
+    }
+  }
+}

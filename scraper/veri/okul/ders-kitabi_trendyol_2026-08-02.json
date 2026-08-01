@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Ders ve Yardimci Kitaplar"
+  ],
+  "kalem": "ders-kitabi",
+  "vertikal": "okul",
+  "tarih": "2026-08-02",
+  "toplam_urun": 24,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 264,
+  "segmentler": {
+    "dusuk": {
+      "min": 150,
+      "medyan": 207,
+      "max": 225,
+      "urun_sayisi": 7
+    },
+    "orta": {
+      "min": 239,
+      "medyan": 269,
+      "max": 347,
+      "urun_sayisi": 12
+    },
+    "luks": {
+      "min": 349,
+      "medyan": 399,
+      "max": 470,
+      "urun_sayisi": 5
+    }
+  }
+}

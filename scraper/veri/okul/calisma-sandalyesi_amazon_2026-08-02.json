@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Çalışma Sandalyesi"
+  ],
+  "kalem": "calisma-sandalyesi",
+  "vertikal": "okul",
+  "tarih": "2026-08-02",
+  "toplam_urun": 41,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 4946,
+  "segmentler": {
+    "dusuk": {
+      "min": 2599,
+      "medyan": 3119,
+      "max": 3400,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 3449,
+      "medyan": 5123,
+      "max": 6390,
+      "urun_sayisi": 20
+    },
+    "luks": {
+      "min": 6490,
+      "medyan": 8874,
+      "max": 10889,
+      "urun_sayisi": 10
+    }
+  }
+}

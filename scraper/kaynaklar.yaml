@@ -4142,3 +4142,134 @@ kaynaklar:
       fiyat_secici: ".a-price .a-offscreen"
     aktif: true
     durum: "onaylandi"
+
+  # =========================================================
+  # KIRTASIYE ZINCIRLERI (2026-08-01, Yavuz: "kirtasiye kismi iyi
+  # tiklama getirecek gibi. D&R, Nezih kirtasiye ya da birkac yerden
+  # daha veri cekmeyi dener misin")
+  #
+  # Okul vertikalinin 14 kaleminin TAMAMI pazaryerinden (trendyol +
+  # amazon) geliyordu. Kirtasiye zinciri FARKLI BIR PAZAR: marka
+  # karmasi ve fiyat bandi pazaryerinden belirgin ayriliyor, yani COK
+  # KAYNAK KURALI'nin istedigi turden gercek bir ikinci bakis acisi.
+  #
+  # ELENENLER ve sebepleri (tekrar denenmesin diye):
+  #   - ofix     : SARI cikti, teknik olarak cok temiz (115 fiyatin
+  #                114'u urun kartinin icinde) AMA B2B ofis tedarikcisi
+  #                ve fiyatlari KDV HARIC gosteriyor ("57,45 TL + KDV").
+  #                Pazaryerinin KDV dahil fiyatiyla ayni endekse koymak
+  #                sistematik hata olurdu.
+  #   - dr/matara: "termos ve mataralar" kategorisi Stanley tipi TERMOS
+  #                iceriyor; bizim kalem ogrenci sulugu. Farkli urun.
+  #   - dr/okul-cantasi: ham HTML'de 1 urun (gerisi JS) - orneklem yok.
+  #   - nezih/kuru-boya-kalemleri: bizim `kalem` kalemi KURSUN kalem
+  #                seti; kuru boya farkli urun.
+  #   - kitapyurdu, bkmkitap: kategori sayfasinda fiyat yok (JS).
+  #
+  # NEZIH'TE SINIF ADLARI TERS - dikkat:
+  #     .currentPrice    = ODENEN fiyat            (499,90)
+  #     .discountedPrice = ustu cizili liste fiyat (699,90)
+  #   Adina bakip .discountedPrice secilseydi endeks sistematik olarak
+  #   sisirilirdi. Uc urunde tek tek dogrulandi.
+  #
+  # D&R kategori sayfasinda fiyat KARTTAN 6 KAT DERINDE; kaynak_tara.py
+  # bu yuzden "fiyat kart disinda" deyip KIRMIZI vermisti. Sezgisel
+  # tarayicinin KIRMIZI'si kesin sonuc degil - elle bakinca cozuldu.
+  # =========================================================
+
+  - ad: "Nezih - Defter ve Bloknotlar"
+    site: nezih
+    vertikal: okul
+    kalem: defter
+    url: "https://www.nezih.com.tr/defter-ve-bloknotlar"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 15
+    bekleme_sn: 2
+    sayfa_sayisi: 1
+    css_secicileri:
+      urun_karti: div.productDetails
+      isim_secici: a
+      # ADINA ALDANMA: currentPrice odenen, discountedPrice ustu cizili.
+      fiyat_secici: .currentPrice
+
+  - ad: "Nezih - Kalem Kutulari"
+    site: nezih
+    vertikal: okul
+    kalem: kalem-kutusu
+    url: "https://www.nezih.com.tr/kalem-kutulari"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 30
+    bekleme_sn: 2
+    sayfa_sayisi: 1
+    css_secicileri:
+      urun_karti: div.productDetails
+      isim_secici: a
+      # ADINA ALDANMA: currentPrice odenen, discountedPrice ustu cizili.
+      fiyat_secici: .currentPrice
+
+  - ad: "Nezih - Sulu Boya"
+    site: nezih
+    vertikal: okul
+    kalem: boya-seti
+    url: "https://www.nezih.com.tr/sulu-boya"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 20
+    bekleme_sn: 2
+    sayfa_sayisi: 1
+    css_secicileri:
+      urun_karti: div.productDetails
+      isim_secici: a
+      # ADINA ALDANMA: currentPrice odenen, discountedPrice ustu cizili.
+      fiyat_secici: .currentPrice
+
+  - ad: "Nezih - Sirt Cantalari"
+    site: nezih
+    vertikal: okul
+    kalem: okul-cantasi
+    url: "https://www.nezih.com.tr/sirt-cantalari"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 150
+    bekleme_sn: 2
+    sayfa_sayisi: 1
+    css_secicileri:
+      urun_karti: div.productDetails
+      isim_secici: a
+      # ADINA ALDANMA: currentPrice odenen, discountedPrice ustu cizili.
+      fiyat_secici: .currentPrice
+
+  - ad: "Nezih - Mataralar"
+    site: nezih
+    vertikal: okul
+    kalem: matara
+    url: "https://www.nezih.com.tr/mataralar"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 50
+    bekleme_sn: 2
+    sayfa_sayisi: 1
+    css_secicileri:
+      urun_karti: div.productDetails
+      isim_secici: a
+      # ADINA ALDANMA: currentPrice odenen, discountedPrice ustu cizili.
+      fiyat_secici: .currentPrice
+
+  - ad: "D&R - Defterler"
+    site: dr
+    vertikal: okul
+    kalem: defter
+    url: "https://www.dr.com.tr/kategori/kirtasiye/defterler/grupno=01473"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 15
+    bekleme_sn: 2
+    sayfa_sayisi: 1
+    render_gerekli: true
+    kaydirma: 6
+    css_secicileri:
+      urun_karti: div.product-card
+      isim_secici: h3
+      fiyat_secici: .prd-price

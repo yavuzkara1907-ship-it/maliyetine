@@ -1,0 +1,35 @@
+{
+  "site": "nezih",
+  "kaynak_adlari": [
+    "Nezih - Sirt Cantalari"
+  ],
+  "kalem": "okul-cantasi",
+  "vertikal": "okul",
+  "tarih": "2026-08-02",
+  "toplam_urun": 98,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 2500,
+  "segmentler": {
+    "dusuk": {
+      "min": 470,
+      "medyan": 1150,
+      "max": 1785,
+      "urun_sayisi": 28
+    },
+    "orta": {
+      "min": 1800,
+      "medyan": 2525,
+      "max": 2800,
+      "urun_sayisi": 48
+    },
+    "luks": {
+      "min": 2900,
+      "medyan": 3499,
+      "max": 4200,
+      "urun_sayisi": 22
+    }
+  }
+}

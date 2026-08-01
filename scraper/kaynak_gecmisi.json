@@ -1270,113 +1270,127 @@
     "urun_sayilari": [
       23,
       0,
-      25
+      25,
+      24
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "okul/beslenme-cantasi/trendyol": {
     "urun_sayilari": [
       23,
       23,
-      23
+      23,
+      24
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "okul/matara/trendyol": {
     "urun_sayilari": [
       24,
       23,
-      24
+      24,
+      25
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "okul/kalem-kutusu/trendyol": {
     "urun_sayilari": [
       25,
       25,
-      25
+      25,
+      24
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "okul/defter/trendyol": {
     "urun_sayilari": [
       22,
       22,
+      23,
       23
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "okul/kalem/trendyol": {
     "urun_sayilari": [
       21,
       21,
+      25,
       25
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "okul/boya-seti/trendyol": {
     "urun_sayilari": [
       21,
       21,
-      22
+      22,
+      21
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "okul/resim-malzemeleri/trendyol": {
     "urun_sayilari": [
       23,
       0,
-      24
+      24,
+      22
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "okul/ders-kitabi/trendyol": {
     "urun_sayilari": [
       22,
       23,
+      24,
       24
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "okul/sozluk/trendyol": {
     "urun_sayilari": [
       25,
       25,
-      24
+      24,
+      25
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "okul/ayakkabi/trendyol": {
     "urun_sayilari": [
       21,
       22,
-      20
+      20,
+      0
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "okul/tablet/trendyol": {
     "urun_sayilari": [
       21,
       21,
-      24
+      24,
+      22
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "okul/calisma-masasi/trendyol": {
     "urun_sayilari": [
       20,
       18,
-      21
+      21,
+      22
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "okul/calisma-sandalyesi/trendyol": {
     "urun_sayilari": [
       24,
       24,
+      24,
       24
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "ev-kurma/buzdolabi/amazon": {
     "urun_sayilari": [
@@ -1675,100 +1689,114 @@
   "okul/okul-cantasi/amazon": {
     "urun_sayilari": [
       48,
+      48,
       48
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "okul/beslenme-cantasi/amazon": {
     "urun_sayilari": [
       43,
-      60
+      60,
+      57
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "okul/matara/amazon": {
     "urun_sayilari": [
       0,
-      0
+      0,
+      45
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "okul/kalem-kutusu/amazon": {
     "urun_sayilari": [
       52,
-      40
+      40,
+      52
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "okul/defter/amazon": {
     "urun_sayilari": [
       46,
-      0
+      0,
+      46
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "okul/kalem/amazon": {
     "urun_sayilari": [
       44,
-      0
+      0,
+      43
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "okul/boya-seti/amazon": {
     "urun_sayilari": [
       53,
-      0
+      0,
+      51
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "okul/resim-malzemeleri/amazon": {
     "urun_sayilari": [
       0,
-      0
+      0,
+      42
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "okul/ders-kitabi/amazon": {
     "urun_sayilari": [
       40,
+      41,
       41
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "okul/sozluk/amazon": {
     "urun_sayilari": [
       37,
+      37,
       37
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "okul/ayakkabi/amazon": {
     "urun_sayilari": [
       47,
-      45
+      45,
+      47
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "okul/tablet/amazon": {
     "urun_sayilari": [
       40,
+      42,
       42
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "okul/calisma-masasi/amazon": {
     "urun_sayilari": [
       46,
-      39
+      39,
+      42
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "okul/calisma-sandalyesi/amazon": {
     "urun_sayilari": [
       0,
-      38
+      38,
+      41
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "dugun/gelin-ayakkabisi/amazon": {
     "urun_sayilari": [
@@ -1991,5 +2019,41 @@
       45
     ],
     "son_calisma": "2026-07-28"
+  },
+  "okul/defter/nezih": {
+    "urun_sayilari": [
+      87
+    ],
+    "son_calisma": "2026-08-02"
+  },
+  "okul/kalem-kutusu/nezih": {
+    "urun_sayilari": [
+      97
+    ],
+    "son_calisma": "2026-08-02"
+  },
+  "okul/boya-seti/nezih": {
+    "urun_sayilari": [
+      21
+    ],
+    "son_calisma": "2026-08-02"
+  },
+  "okul/okul-cantasi/nezih": {
+    "urun_sayilari": [
+      98
+    ],
+    "son_calisma": "2026-08-02"
+  },
+  "okul/matara/nezih": {
+    "urun_sayilari": [
+      100
+    ],
+    "son_calisma": "2026-08-02"
+  },
+  "okul/defter/dr": {
+    "urun_sayilari": [
+      25
+    ],
+    "son_calisma": "2026-08-02"
   }
 }

@@ -1,0 +1,35 @@
+{
+  "site": "nezih",
+  "kaynak_adlari": [
+    "Nezih - Defter ve Bloknotlar"
+  ],
+  "kalem": "defter",
+  "vertikal": "okul",
+  "tarih": "2026-08-02",
+  "toplam_urun": 87,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 245,
+  "segmentler": {
+    "dusuk": {
+      "min": 40,
+      "medyan": 150,
+      "max": 180,
+      "urun_sayisi": 33
+    },
+    "orta": {
+      "min": 190,
+      "medyan": 277,
+      "max": 300,
+      "urun_sayisi": 42
+    },
+    "luks": {
+      "min": 320,
+      "medyan": 410,
+      "max": 520,
+      "urun_sayisi": 12
+    }
+  }
+}

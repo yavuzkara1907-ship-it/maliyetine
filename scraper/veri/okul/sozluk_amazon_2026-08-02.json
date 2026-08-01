@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Türkçe Sözlük"
+  ],
+  "kalem": "sozluk",
+  "vertikal": "okul",
+  "tarih": "2026-08-02",
+  "toplam_urun": 37,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 162,
+  "segmentler": {
+    "dusuk": {
+      "min": 56,
+      "medyan": 96,
+      "max": 114,
+      "urun_sayisi": 10
+    },
+    "orta": {
+      "min": 128,
+      "medyan": 162,
+      "max": 224,
+      "urun_sayisi": 18
+    },
+    "luks": {
+      "min": 277,
+      "medyan": 524,
+      "max": 965,
+      "urun_sayisi": 9
+    }
+  }
+}

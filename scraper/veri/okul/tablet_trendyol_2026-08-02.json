@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Tablet"
+  ],
+  "kalem": "tablet",
+  "vertikal": "okul",
+  "tarih": "2026-08-02",
+  "toplam_urun": 22,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 6458,
+  "segmentler": {
+    "dusuk": {
+      "min": 2457,
+      "medyan": 4145,
+      "max": 5390,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 5419,
+      "medyan": 6925,
+      "max": 8695,
+      "urun_sayisi": 11
+    },
+    "luks": {
+      "min": 9499,
+      "medyan": 10499,
+      "max": 13899,
+      "urun_sayisi": 5
+    }
+  }
+}

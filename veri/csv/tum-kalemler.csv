@@ -56,20 +56,20 @@ ev-kurma,karyola,Karyola / Baza,Yatak odası,sabit,3450,4966,7670,2051,12620,51,
 ev-kurma,komodin,Komodin,Yatak odası,sabit,738,1554,3074,479,4250,61,2,amazon; trendyol,2026-07-26
 ev-kurma,yatak,Çift Kişilik Yatak,Yatak odası,sabit,1644,2308,3826,1000,5900,65,2,amazon; trendyol,2026-07-26
 ev-kurma,sifonyer,Şifonyer,Yatak odası,sabit,2176,4050,5946,899,9990,58,2,amazon; trendyol,2026-07-26
-okul,ayakkabi,Spor Ayakkabı,Giyim,sabit,774,1120,1514,435,2580,65,2,amazon; trendyol,2026-07-26
-okul,ders-kitabi,Ders ve Yardımcı Kitap,Kitap,sabit,176,308,602,72,958,65,2,amazon; trendyol,2026-07-26
-okul,sozluk,Sözlük,Kitap,sabit,113,232,688,56,965,61,2,amazon; trendyol,2026-07-26
-okul,boya-seti,Boya Seti,Kırtasiye,sabit,121,318,719,58,1310,75,2,amazon; trendyol,2026-07-26
-okul,defter,Defter,Kırtasiye,sabit,105,218,344,50,579,69,2,amazon; trendyol,2026-07-26
-okul,kalem,Kalem,Kırtasiye,sabit,69,213,426,28,675,69,2,amazon; trendyol,2026-07-26
-okul,kalem-kutusu,Kalem Kutusu,Kırtasiye,sabit,212,513,782,73,1399,65,2,amazon; trendyol,2026-07-26
-okul,resim-malzemeleri,Resim ve Sanat Malzemeleri,Kırtasiye,sabit,172,458,850,125,1050,24,1,trendyol,2026-07-26
-okul,tablet,Tablet,Teknoloji,sabit,4394,9271,16532,2500,34999,66,2,amazon; trendyol,2026-07-26
-okul,calisma-masasi,Çalışma Masası,Çalışma alanı,sabit,1536,2422,4684,1014,7159,60,2,amazon; trendyol,2026-07-26
-okul,calisma-sandalyesi,Çalışma Sandalyesi,Çalışma alanı,sabit,2490,3946,6486,1530,10033,62,2,amazon; trendyol,2026-07-26
-okul,beslenme-cantasi,Beslenme Çantası,Çanta ve beslenme,sabit,339,666,1138,168,1700,83,2,amazon; trendyol,2026-07-26
-okul,okul-cantasi,Okul Çantası,Çanta ve beslenme,sabit,800,1378,1950,424,2759,73,2,amazon; trendyol,2026-07-26
-okul,matara,Suluk / Matara,Çanta ve beslenme,sabit,150,200,400,75,479,24,1,trendyol,2026-07-26
+okul,ayakkabi,Spor Ayakkabı,Giyim,sabit,778,1145,1512,435,2407,67,2,amazon; trendyol,2026-08-02
+okul,ders-kitabi,Ders ve Yardımcı Kitap,Kitap,sabit,174,309,515,65,882,65,2,amazon; trendyol,2026-08-02
+okul,sozluk,Sözlük,Kitap,sabit,126,269,735,56,1590,62,2,amazon; trendyol,2026-08-02
+okul,boya-seti,Boya Seti,Kırtasiye,sabit,111,342,670,63,1310,93,3,amazon; nezih; trendyol,2026-08-02
+okul,defter,Defter,Kırtasiye,sabit,154,288,400,40,1199,181,4,amazon; dr; nezih; trendyol,2026-08-02
+okul,kalem,Kalem,Kırtasiye,sabit,79,160,430,33,589,68,2,amazon; trendyol,2026-08-02
+okul,kalem-kutusu,Kalem Kutusu,Kırtasiye,sabit,260,610,830,80,1295,173,3,amazon; nezih; trendyol,2026-08-02
+okul,resim-malzemeleri,Resim ve Sanat Malzemeleri,Kırtasiye,sabit,132,364,556,70,695,64,2,amazon; trendyol,2026-08-02
+okul,tablet,Tablet,Teknoloji,sabit,4752,10980,17192,2457,38779,64,2,amazon; trendyol,2026-08-02
+okul,calisma-masasi,Çalışma Masası,Çalışma alanı,sabit,1444,2348,4554,1014,7599,64,2,amazon; trendyol,2026-08-02
+okul,calisma-sandalyesi,Çalışma Sandalyesi,Çalışma alanı,sabit,2334,3686,6498,1509,10889,65,2,amazon; trendyol,2026-08-02
+okul,beslenme-cantasi,Beslenme Çantası,Çanta ve beslenme,sabit,344,627,994,140,1850,81,2,amazon; trendyol,2026-08-02
+okul,okul-cantasi,Okul Çantası,Çanta ve beslenme,sabit,900,1472,2399,470,4200,170,3,amazon; nezih; trendyol,2026-08-02
+okul,matara,Suluk / Matara,Çanta ve beslenme,sabit,260,800,1500,75,2400,170,3,amazon; nezih; trendyol,2026-08-02
 bebek,bebek-bezi,Bebek Bezi (aylık),Aylık sarf,sabit,314,565,1239,240,1349,44,1,amazon,2026-07-26
 bebek,bebek-kuveti,Bebek Küveti,Bakım,sabit,724,1628,3499,493,3834,39,1,amazon,2026-07-26
 bebek,biberon-seti,Biberon Seti,Beslenme,sabit,400,830,1449,199,1999,41,1,amazon,2026-07-26

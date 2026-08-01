@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Sozluk ve Imla Kilavuzu"
+  ],
+  "kalem": "sozluk",
+  "vertikal": "okul",
+  "tarih": "2026-08-02",
+  "toplam_urun": 25,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 370,
+  "segmentler": {
+    "dusuk": {
+      "min": 152,
+      "medyan": 155,
+      "max": 196,
+      "urun_sayisi": 7
+    },
+    "orta": {
+      "min": 200,
+      "medyan": 376,
+      "max": 780,
+      "urun_sayisi": 12
+    },
+    "luks": {
+      "min": 824,
+      "medyan": 946,
+      "max": 1590,
+      "urun_sayisi": 6
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Resim ve Sanat Malzemeleri"
+  ],
+  "kalem": "resim-malzemeleri",
+  "vertikal": "okul",
+  "tarih": "2026-08-02",
+  "toplam_urun": 22,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 354,
+  "segmentler": {
+    "dusuk": {
+      "min": 70,
+      "medyan": 110,
+      "max": 144,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 172,
+      "medyan": 379,
+      "max": 490,
+      "urun_sayisi": 12
+    },
+    "luks": {
+      "min": 527,
+      "medyan": 583,
+      "max": 650,
+      "urun_sayisi": 4
+    }
+  }
+}

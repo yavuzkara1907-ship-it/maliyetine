@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Suluk ve Matara"
+  ],
+  "kalem": "matara",
+  "vertikal": "okul",
+  "tarih": "2026-08-02",
+  "toplam_urun": 25,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 247,
+  "segmentler": {
+    "dusuk": {
+      "min": 75,
+      "medyan": 159,
+      "max": 170,
+      "urun_sayisi": 7
+    },
+    "orta": {
+      "min": 195,
+      "medyan": 265,
+      "max": 350,
+      "urun_sayisi": 13
+    },
+    "luks": {
+      "min": 371,
+      "medyan": 415,
+      "max": 534,
+      "urun_sayisi": 5
+    }
+  }
+}

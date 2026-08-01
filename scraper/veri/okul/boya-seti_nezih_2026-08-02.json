@@ -1,0 +1,35 @@
+{
+  "site": "nezih",
+  "kaynak_adlari": [
+    "Nezih - Sulu Boya"
+  ],
+  "kalem": "boya-seti",
+  "vertikal": "okul",
+  "tarih": "2026-08-02",
+  "toplam_urun": 21,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 340,
+  "segmentler": {
+    "dusuk": {
+      "min": 135,
+      "medyan": 208,
+      "max": 250,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 300,
+      "medyan": 342,
+      "max": 410,
+      "urun_sayisi": 10
+    },
+    "luks": {
+      "min": 480,
+      "medyan": 670,
+      "max": 730,
+      "urun_sayisi": 5
+    }
+  }
+}

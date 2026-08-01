@@ -1,0 +1,35 @@
+{
+  "site": "dr",
+  "kaynak_adlari": [
+    "D&R - Defterler"
+  ],
+  "kalem": "defter",
+  "vertikal": "okul",
+  "tarih": "2026-08-02",
+  "toplam_urun": 25,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 400,
+  "segmentler": {
+    "dusuk": {
+      "min": 159,
+      "medyan": 249,
+      "max": 310,
+      "urun_sayisi": 7
+    },
+    "orta": {
+      "min": 330,
+      "medyan": 415,
+      "max": 680,
+      "urun_sayisi": 12
+    },
+    "luks": {
+      "min": 699,
+      "medyan": 975,
+      "max": 1199,
+      "urun_sayisi": 6
+    }
+  }
+}

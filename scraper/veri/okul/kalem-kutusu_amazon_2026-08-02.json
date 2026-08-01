@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Okul Kalem Kutusu"
+  ],
+  "kalem": "kalem-kutusu",
+  "vertikal": "okul",
+  "tarih": "2026-08-02",
+  "toplam_urun": 52,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 601,
+  "segmentler": {
+    "dusuk": {
+      "min": 110,
+      "medyan": 290,
+      "max": 399,
+      "urun_sayisi": 14
+    },
+    "orta": {
+      "min": 439,
+      "medyan": 615,
+      "max": 839,
+      "urun_sayisi": 26
+    },
+    "luks": {
+      "min": 849,
+      "medyan": 944,
+      "max": 1295,
+      "urun_sayisi": 12
+    }
+  }
+}

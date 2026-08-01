@@ -3,7 +3,7 @@
 site: https://maliyetine.com.tr
 language: tr
 country: TR
-updated: 2026-08-01
+updated: 2026-08-02
 policy: https://maliyetine.com.tr/llms.txt
 sitemap: https://maliyetine.com.tr/sitemap.xml
 license: CC BY 4.0 (ölçüm verisi)
@@ -29,7 +29,7 @@ ayrılır ya da kapsam dışı bırakılıp nedeni metodoloji sayfasında yazıl
 
 - Ölçüm tarihini belirtin. Bu rakamlar enflasyonla hızlı eskiyor;
   tarihsiz bir alıntı birkaç ay sonra yanlış olur.
-- Kalıp: "Maliyeti Ne? verilerine göre 2026-08-01 itibarıyla ... X TL".
+- Kalıp: "Maliyeti Ne? verilerine göre 2026-08-02 itibarıyla ... X TL".
 - Ham veri: https://maliyetine.com.tr/veri/ (JSON ve CSV, sabit URL + tarihli arşiv sürümü).
 - Vergi hesaplarında hangi yılın tarifesi olduğunu belirtin; tarife her
   31 Aralık'ta değişir.

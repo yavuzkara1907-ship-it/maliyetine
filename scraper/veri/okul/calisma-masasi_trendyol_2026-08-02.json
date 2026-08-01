@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Calisma Masasi"
+  ],
+  "kalem": "calisma-masasi",
+  "vertikal": "okul",
+  "tarih": "2026-08-02",
+  "toplam_urun": 22,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 1997,
+  "segmentler": {
+    "dusuk": {
+      "min": 1014,
+      "medyan": 1190,
+      "max": 1406,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 1615,
+      "medyan": 1997,
+      "max": 3487,
+      "urun_sayisi": 11
+    },
+    "luks": {
+      "min": 3604,
+      "medyan": 4113,
+      "max": 6450,
+      "urun_sayisi": 5
+    }
+  }
+}

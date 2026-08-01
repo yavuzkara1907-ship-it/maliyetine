@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Okul Çantası"
+  ],
+  "kalem": "okul-cantasi",
+  "vertikal": "okul",
+  "tarih": "2026-08-02",
+  "toplam_urun": 48,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 1442,
+  "segmentler": {
+    "dusuk": {
+      "min": 530,
+      "medyan": 900,
+      "max": 1147,
+      "urun_sayisi": 13
+    },
+    "orta": {
+      "min": 1227,
+      "medyan": 1472,
+      "max": 2171,
+      "urun_sayisi": 24
+    },
+    "luks": {
+      "min": 2174,
+      "medyan": 2399,
+      "max": 3065,
+      "urun_sayisi": 11
+    }
+  }
+}

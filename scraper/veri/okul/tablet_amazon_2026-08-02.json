@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Tablet"
+  ],
+  "kalem": "tablet",
+  "vertikal": "okul",
+  "tarih": "2026-08-02",
+  "toplam_urun": 42,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 13142,
+  "segmentler": {
+    "dusuk": {
+      "min": 2699,
+      "medyan": 5359,
+      "max": 7458,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 7999,
+      "medyan": 15035,
+      "max": 20383,
+      "urun_sayisi": 21
+    },
+    "luks": {
+      "min": 20498,
+      "medyan": 23884,
+      "max": 38779,
+      "urun_sayisi": 10
+    }
+  }
+}

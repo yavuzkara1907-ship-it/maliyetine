@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Yardımcı Ders Kitabı"
+  ],
+  "kalem": "ders-kitabi",
+  "vertikal": "okul",
+  "tarih": "2026-08-02",
+  "toplam_urun": 41,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 349,
+  "segmentler": {
+    "dusuk": {
+      "min": 65,
+      "medyan": 142,
+      "max": 188,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 217,
+      "medyan": 349,
+      "max": 462,
+      "urun_sayisi": 20
+    },
+    "luks": {
+      "min": 467,
+      "medyan": 631,
+      "max": 882,
+      "urun_sayisi": 10
+    }
+  }
+}

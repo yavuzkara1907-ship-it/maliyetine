@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Çelik Matara Suluk"
+  ],
+  "kalem": "matara",
+  "vertikal": "okul",
+  "tarih": "2026-08-02",
+  "toplam_urun": 45,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 800,
+  "segmentler": {
+    "dusuk": {
+      "min": 337,
+      "medyan": 420,
+      "max": 498,
+      "urun_sayisi": 12
+    },
+    "orta": {
+      "min": 501,
+      "medyan": 800,
+      "max": 1000,
+      "urun_sayisi": 24
+    },
+    "luks": {
+      "min": 1187,
+      "medyan": 1500,
+      "max": 1560,
+      "urun_sayisi": 9
+    }
+  }
+}

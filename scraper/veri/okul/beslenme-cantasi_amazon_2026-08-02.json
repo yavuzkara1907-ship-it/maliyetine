@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Beslenme Çantası"
+  ],
+  "kalem": "beslenme-cantasi",
+  "vertikal": "okul",
+  "tarih": "2026-08-02",
+  "toplam_urun": 57,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 800,
+  "segmentler": {
+    "dusuk": {
+      "min": 173,
+      "medyan": 490,
+      "max": 702,
+      "urun_sayisi": 15
+    },
+    "orta": {
+      "min": 721,
+      "medyan": 800,
+      "max": 990,
+      "urun_sayisi": 29
+    },
+    "luks": {
+      "min": 1200,
+      "medyan": 1390,
+      "max": 1850,
+      "urun_sayisi": 13
+    }
+  }
+}

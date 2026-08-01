@@ -1,0 +1,12 @@
+{
+  "vertikal": "okul",
+  "kalem": "beslenme-cantasi",
+  "tarih": "2026-08-02",
+  "site_medyanlari": {
+    "trendyol": 449,
+    "amazon": 800
+  },
+  "fark_orani": 0.782,
+  "esik_orani": 0.3,
+  "uyari": true
+}

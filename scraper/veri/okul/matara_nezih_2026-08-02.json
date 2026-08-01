@@ -1,0 +1,35 @@
+{
+  "site": "nezih",
+  "kaynak_adlari": [
+    "Nezih - Mataralar"
+  ],
+  "kalem": "matara",
+  "vertikal": "okul",
+  "tarih": "2026-08-02",
+  "toplam_urun": 100,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 1050,
+  "segmentler": {
+    "dusuk": {
+      "min": 150,
+      "medyan": 260,
+      "max": 470,
+      "urun_sayisi": 26
+    },
+    "orta": {
+      "min": 480,
+      "medyan": 1075,
+      "max": 1250,
+      "urun_sayisi": 54
+    },
+    "luks": {
+      "min": 1270,
+      "medyan": 1665,
+      "max": 2400,
+      "urun_sayisi": 20
+    }
+  }
+}

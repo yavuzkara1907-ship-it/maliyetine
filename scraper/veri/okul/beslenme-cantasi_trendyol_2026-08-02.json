@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Beslenme Cantasi"
+  ],
+  "kalem": "beslenme-cantasi",
+  "vertikal": "okul",
+  "tarih": "2026-08-02",
+  "toplam_urun": 24,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 449,
+  "segmentler": {
+    "dusuk": {
+      "min": 140,
+      "medyan": 199,
+      "max": 247,
+      "urun_sayisi": 7
+    },
+    "orta": {
+      "min": 334,
+      "medyan": 454,
+      "max": 541,
+      "urun_sayisi": 12
+    },
+    "luks": {
+      "min": 560,
+      "medyan": 599,
+      "max": 921,
+      "urun_sayisi": 5
+    }
+  }
+}
