@@ -1894,6 +1894,70 @@ tek sayfa tipinde cagrilmasi, sabit vertikal listeleri).
 karanlik mod temiz, canlida 6/6 font 200 ve 0 konsol hatasi.
 
 
+## KIRTASIYE ZINCIRLERI — okul 2 -> 4 bagimsiz kaynak (2026-08-01)
+Yavuz: *"kirtasiye kismi iyi tiklama getirecek gibi. D&R, Nezih
+kirtasiye ya da birkac yerden daha veri cekmeyi dener misin"*
+
+Okul vertikalinin **14 kaleminin TAMAMI pazaryerinden** (trendyol +
+amazon) geliyordu. Kirtasiye zinciri **farkli bir pazar**: marka karmasi
+ve fiyat bandi pazaryerinden belirgin ayriliyor — COK KAYNAK KURALI'nin
+istedigi turden gercek bir ikinci bakis acisi.
+
+**Eklenen 6 kaynak:** nezih (defter, kalem-kutusu, boya-seti,
+okul-cantasi, matara) + dr (defter).
+**Okul toplami 5.624 -> 6.386 TL, bagimsiz site 2 -> 4.**
+
+| kalem | trendyol | amazon | nezih | dr | endeks |
+|---|---|---|---|---|---|
+| defter | 296 | 141 | 245 | 400 | **270** |
+| kalem-kutusu | 313 | 601 | 600 | — | **600** |
+| boya-seti | 350 | 202 | 340 | — | **340** |
+| okul-cantasi | 1.242 | 1.442 | 2.500 | — | **1.442** |
+| matara | 247 | 800 | 1.050 | — | **800** |
+
+### ELENENLER — sebepleriyle (yaml'a da yazildi)
+- **ofix — teknik olarak EN TEMIZ adaydi ama alinamaz.** `kaynak_tara`
+  SARI verdi: 115 fiyatin **114'u urun kartinin icinde** (idefix'i
+  eleyen eslesme sorunu hic yok). **AMA B2B ofis tedarikcisi ve
+  fiyatlari KDV HARIC gosteriyor** (*"57,45 TL + KDV"*). Pazaryerinin
+  KDV dahil fiyatiyla ayni endekse koymak sistematik hata olurdu.
+  *Kaynagin cekilebilir olmasi, OLCTUGUMUZ SEYI olctugu anlamina
+  gelmiyor* — avva/takim-elbise dersinin ayni ailesi.
+- **dr/matara:** "termos ve mataralar" kategorisi Stanley tipi TERMOS
+  iceriyor; bizim kalem ogrenci sulugu.
+- **dr/okul-cantasi:** ham HTML'de 1 urun (gerisi JS) — orneklem yok.
+- **nezih/kuru-boya-kalemleri:** bizim `kalem` kalemi KURSUN kalem seti.
+- **kitapyurdu, bkmkitap:** kategori sayfasinda fiyat yok (JS).
+
+### NEZIH'TE SINIF ADLARI TERS — sessiz sisirme tuzagi
+```
+.currentPrice     = ODENEN fiyat             (499,90)
+.discountedPrice  = ustu cizili liste fiyati (699,90)
+```
+Adina bakip `.discountedPrice` secilseydi (kulaga "indirimli fiyat"
+gibi geliyor) endeks **sistematik olarak sisirilirdi** ve hicbir test
+bunu yakalamazdi — rakamlar gecerli, sadece yanlis fiyat olurdu.
+Uc urunde tek tek dogrulandi.
+
+### kaynak_tara.py'nin KIRMIZI'si kesin sonuc DEGIL
+Tarayici D&R'a *"fiyat kart disinda, eslesme kurulamaz"* dedi — ayni
+teshis idefix'i hakli olarak elemisti. Ama D&R'da fiyat **karttan 6 kat
+derinde** (`.prd-price` -> ... -> `div.product-card`) ve sezgisel
+tarayici o kadar yukari bakmiyor. Elle bakinca cozuldu: 25 urun.
+**Ders: KIRMIZI "bak" demek, "birak" demek degil** — ozellikle hedef
+site elle secilmisse.
+
+### Ve yine URL TAHMIN ETTIM
+Ilk turda `dr.com.tr/.../defterler/grupno=00246` uydurdum, 404 aldi.
+Dogru URL sitenin kendi ana sayfasindan avlandi. **Bu ders bu projede
+en az dorduncu kez tekrarlaniyor** (okul/Trendyol, kedi/Trendyol,
+Karaca, simdi D&R): kategori URL'i ASLA tahmin edilmez.
+
+Cikan capraz dogrulama uyarilari (matara %325, okul-cantasi %101)
+gizlenmiyor — endeks sayfasinda "Capraz dogrulama notu" kutusunda
+yaziyor. sitemap 173, IndexNow'a bildirildi, canlida dogrulandi.
+
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
