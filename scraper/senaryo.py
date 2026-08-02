@@ -207,7 +207,7 @@ def _title(baslik: str) -> str:
 def _sayfa_html(baslik: str, soru: str, aciklama_blok: str, govde: str,
                 url: str, meta: str, breadcrumb: list, tarih: str,
                 sorular: list[dict], konu_kumesi: str = "",
-                vertikal: str = "") -> str:
+                vertikal: str = "", og_kart: str | None = None) -> str:
     json_ld = {
         "@context": "https://schema.org",
         "@graph": [
@@ -255,7 +255,7 @@ def _sayfa_html(baslik: str, soru: str, aciklama_blok: str, govde: str,
 <meta property="og:description" content="{meta}">
 <meta property="og:type" content="article">
 <meta property="og:url" content="{url}">
-{su.OG_ETIKETLERI}
+{su.og_etiketleri(og_kart, baslik)}
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {json.dumps(json_ld, ensure_ascii=False, indent=2)}
@@ -389,6 +389,7 @@ def olcek_sayfasi(vertikal: str, senaryo: dict, veri: dict, tarih: str) -> str |
             f"{_p(eko)}, üst segmentte {_p(ust)}. Bunun {_p(kisi_basi_toplam)} "
             f"kadarı davetli sayısına bağlı."
         ),
+        og_kart=f"/assets/og/{vertikal}-{senaryo['slug']}.png",
         govde=govde, url=url,
         meta=(f"{olcek} kişilik düğün maliyeti {tarih} itibarıyla {_p(toplam)}. "
               "Kalem kalem döküm, segment karşılaştırması ve ölçüm kaynakları."),
@@ -487,6 +488,7 @@ def grup_sayfasi(vertikal: str, senaryo: dict, veri: dict, tarih: str) -> str | 
             f"{len(satirlar)} kalemin toplamı — tüm ev kurma bütçesinin "
             f"yaklaşık %{pay}'i."
         ),
+        og_kart=f"/assets/og/{vertikal}-{senaryo['slug']}.png",
         govde=govde, url=url,
         meta=(f"{senaryo['baslik']} {tarih} itibarıyla {_p(orta)}. "
               "Kalem kalem ekonomik, orta ve üst segment fiyatlarıyla."),

@@ -1270,7 +1270,8 @@ HESAP_MENU = (
 
 
 def _kabuk(baslik_etiketi: str, meta: str, kanonik: str, schema: str,
-           govde: str, ekstra_js: str = "") -> str:
+           govde: str, ekstra_js: str = "", og_kart: str | None = None,
+           og_alt: str | None = None) -> str:
     return f"""<!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -1283,7 +1284,7 @@ def _kabuk(baslik_etiketi: str, meta: str, kanonik: str, schema: str,
 <meta property="og:description" content="{meta}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{kanonik}">
-{su.OG_ETIKETLERI}
+{su.og_etiketleri(og_kart, og_alt)}
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="/assets/css/style.css">
 <script type="application/ld+json">
@@ -1422,7 +1423,9 @@ def sayfa_uret(h: dict) -> str:
     <a href="/">maliyet endekslerimize</a> bakabilirsiniz.</p>
 """
     return _kabuk(f'{h["baslik"]} | Maliyeti Ne?', h["meta"], url,
-                  _schema(h), govde, _hesap_js(h))
+                  _schema(h), govde, _hesap_js(h),
+                  og_kart=f'/assets/og/hesap-{h["slug"]}.png',
+                  og_alt=h.get("ad") or h["baslik"])
 
 
 def dizin_uret() -> str:

@@ -2190,7 +2190,7 @@ def rehber_uret(rehber: dict, veriler: dict, tarih: str | None = None) -> str | 
 <meta property="og:description" content="{rehber["meta"]}">
 <meta property="og:type" content="article">
 <meta property="og:url" content="{url}">
-{su.OG_ETIKETLERI}
+{su.og_etiketleri("/assets/og/rehber-" + rehber["slug"] + ".png", rehber["baslik"])}
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {json.dumps(json_ld, ensure_ascii=False, indent=2)}

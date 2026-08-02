@@ -59,7 +59,7 @@ def _yazi_tipi_uret(ImageFont, boyut, kalin=True):
     return ImageFont.load_default()
 
 
-def _sar(d, metin, font, azami_genislik):
+def _sar(d, metin, font, azami_genislik, azami_satir=2):
     """Basligi kutuya sigacak sekilde satirlara boler."""
     kelimeler = metin.split()
     satirlar, gecerli = [], ""
@@ -72,7 +72,7 @@ def _sar(d, metin, font, azami_genislik):
             gecerli = k
     if gecerli:
         satirlar.append(gecerli)
-    return satirlar[:2]
+    return satirlar[:azami_satir]
 
 
 def kalem_karti(baslik: str, tutar: int, alt_satir: str, hedef: Path):
@@ -118,9 +118,140 @@ def kalem_karti(baslik: str, tutar: int, alt_satir: str, hedef: Path):
            font=_yazi_tipi_uret(ImageFont, 27, False)), 532),
            "maliyetine.com.tr", font=_yazi_tipi_uret(ImageFont, 27, False), fill=SOLUK)
 
+    return _kaydet(img, hedef)
+
+
+def _kaydet(img, hedef: Path):
+    """Kartlari PALETLI PNG olarak kaydeder.
+
+    2026-08-02: 167 kart x ~33 KB = 5,5 MB. Kartlar RAKAM TASIDIGI icin
+    her olcumde (ayda iki kez) yeniden uretiliyor ve depoya giriyor -
+    yilda ~130 MB git gecmisi demekti. Bu kartlar duz zemin + duz metin;
+    16 renklik palet gorsel olarak ayirt edilemez ama dosyayi ucte
+    birine indiriyor (33 -> 9 KB).
+    """
+    from PIL import Image
     hedef.parent.mkdir(parents=True, exist_ok=True)
-    img.save(hedef, "PNG", optimize=True)
+    img.convert("P", palette=Image.ADAPTIVE, colors=16).save(
+        hedef, "PNG", optimize=True)
     return hedef
+
+
+def kart_baslikli(baslik: str, alt_satir: str, hedef: Path,
+                  vurgu_satiri: str | None = None):
+    """BASLIK ODAKLI kart - rehber ve hesaplayici sayfalari icin.
+
+    Kalem kartlari tek bir olculmus rakami buyutuyor. Rehberde tek bir
+    "ana rakam" yok (cogu yazi iki rakami KARSILASTIRIYOR), hesaplayicida
+    ise olculmus rakam HIC yok - orada cevabi kullanici uretiyor,
+    bizim sagladigimiz sey MEVZUAT PARAMETRESI.
+
+    O yuzden bu kartta iddiayi BASLIK tasiyor; alt satir da bos bir
+    slogan degil, dayanagi soyluyor:
+      - rehberde  : hangi endeksten besleniyor, kac kaynak, olcum tarihi
+      - hesapta   : hangi teblig/kanun (rakiplerin paylasim kartinda
+                    mevzuat atfi yok - bu bizim ayirt edici yerimiz)
+    """
+    try:
+        from PIL import Image, ImageDraw, ImageFont
+    except ImportError:
+        return None
+
+    img = Image.new("RGB", (GENISLIK, YUKSEKLIK), KAGIT)
+    d = ImageDraw.Draw(img)
+    d.rectangle([0, 0, GENISLIK, 12], fill=MUREKKEP)
+    d.text((70, 74), "Maliyeti Ne?", font=_yazi_tipi_uret(ImageFont, 38), fill=VURGU)
+
+    bf = _yazi_tipi_uret(ImageFont, 66)
+    satirlar = _sar(d, baslik, bf, GENISLIK - 140, azami_satir=3)
+    # Blogu 150-500 bandinda DIKEYDE ORTALA: tek satirlik bir hesaplayici
+    # adiyla uc satirlik bir rehber basligi ayni kartta dengeli dursun.
+    ek = [vurgu_satiri] if vurgu_satiri else []
+    yukseklik = len(satirlar) * 80 + (52 if ek else 0)
+    y = 150 + max(0, (350 - yukseklik) // 2)
+    for sat in satirlar:
+        d.text((70, y), sat, font=bf, fill=MUREKKEP)
+        y += 80
+    for sat in ek:
+        d.text((70, y + 8), sat, font=_yazi_tipi_uret(ImageFont, 34, False), fill=SOLUK)
+
+    d.line([(70, 512), (GENISLIK - 70, 512)], fill=CIZGI, width=2)
+    kf = _yazi_tipi_uret(ImageFont, 26, False)
+    # Alt satir uzunsa kirp - tasan metin kartin disina cikar.
+    while d.textlength(alt_satir, font=kf) > GENISLIK - 340 and len(alt_satir) > 12:
+        alt_satir = alt_satir[:-4] + "…"
+    d.text((70, 532), alt_satir, font=kf, fill=SOLUK)
+    d.text((GENISLIK - 70 - d.textlength("maliyetine.com.tr", font=kf), 532),
+           "maliyetine.com.tr", font=kf, fill=SOLUK)
+
+    return _kaydet(img, hedef)
+
+
+def rehber_ve_hesap_kartlari(veri_kok: Path | None = None) -> int:
+    """Rehber ve hesaplayici sayfalari icin baslik odakli kartlar."""
+    kok = veri_kok or SITE_KOK / "veri"
+    sayi = 0
+
+    # --- Rehberler: alt satir BESLENDIGI ENDEKSTEN gelir ---
+    try:
+        import rehber
+    except ImportError:
+        rehber = None
+    if rehber:
+        ozet = {}
+        for vertikal, conf in su.VERTIKALLER.items():
+            dosya = kok / f"{vertikal}.json"
+            if not dosya.exists():
+                continue
+            try:
+                veri = json.loads(dosya.read_text(encoding="utf-8"))
+            except (json.JSONDecodeError, OSError):
+                continue
+            kalemler = veri.get("kalemler") or {}
+            toplam, _ = su.ornek_toplam_hesapla(
+                conf, kalemler, conf.get("olcek_varsayilan", 1), "orta")
+            siteler = {x["site"] for k in kalemler.values()
+                       for x in (k.get("kaynaklar") or []) if x.get("toplam_urun")}
+            ozet[vertikal] = (toplam, len(siteler), veri.get("guncelleme_tarihi") or "")
+
+        for r in rehber.REHBERLER:
+            # Yazi gercekten uretilmis mi? Uretilmemis yaziya kart acmak,
+            # 404'e isaret eden bir og:image demek.
+            if not (SITE_KOK / "rehber" / r["slug"] / "index.html").exists():
+                continue
+            t, n, tarih = ozet.get(r.get("vertikal"), (None, 0, ""))
+            conf = su.VERTIKALLER.get(r.get("vertikal")) or {}
+            alt = "{} endeksi · {} bağımsız kaynak · {}".format(
+                conf.get("ad", "Maliyet"), n, tarih) if n else "ölçülmüş fiyat verisi"
+            # VERTIKAL TOPLAMI KARTA YAZILMAZ.
+            # Ilk halde yaziyordu ve YANILTICIYDI: damatlik yazisinin
+            # kartinda "406.375 TL" (dugun TOPLAMI) goruluyordu, oysa
+            # damatlik 46.450 TL. Karti goren "damatlik 406 bin" anlar.
+            # Yazinin kendi rakami govdede hesaplaniyor ve buraya
+            # guvenilir sekilde tasinamiyor; iddiayi BASLIK tasisin.
+            if kart_baslikli(r["baslik"], alt,
+                             KALEM_KOK / "rehber-{}.png".format(r["slug"]),
+                             vurgu_satiri=None):
+                sayi += 1
+
+    # --- Hesaplayicilar: alt satir MEVZUAT DAYANAGI ---
+    try:
+        import hesaplayicilar as hs
+    except ImportError:
+        return sayi
+    for h in hs.tum_hesaplayicilar():
+        if not (SITE_KOK / "hesap" / h["slug"] / "index.html").exists():
+            continue
+        kaynaklar = h.get("kaynaklar") or []
+        alt = kaynaklar[0] if kaynaklar else "formülün kendisi kaynaktır"
+        ozet = (h.get("ozet") or "").strip()
+        if len(ozet) > 74:
+            ozet = ozet[:71].rsplit(" ", 1)[0] + "…"
+        if kart_baslikli(h.get("ad") or h["baslik"], alt,
+                         KALEM_KOK / "hesap-{}.png".format(h["slug"]),
+                         vurgu_satiri=ozet or None):
+            sayi += 1
+    return sayi
 
 
 def kalem_kartlarini_uret(veri_kok: Path | None = None) -> int:
@@ -252,6 +383,100 @@ def uret(hedef: Path | None = None, veri_kok: Path | None = None) -> Path | None
     img.save(h, "PNG", optimize=True)
     return h
 
+
+
+def senaryo_ve_arac_kartlari(veri_kok: Path | None = None) -> int:
+    """Senaryo sayfalari (rakam odakli) + vertikal hesaplayici ve
+    metodoloji sayfalari (baslik odakli).
+
+    Senaryo sayfalarinin GERCEK bir toplami var ("100 kisilik dugun
+    303.470 TL") - bunlar rakam kartini hak ediyor ve zaten en yuksek
+    niyetli sorgulari hedefliyorlar.
+    """
+    kok = veri_kok or SITE_KOK / "veri"
+    sayi = 0
+    try:
+        import senaryo as sen
+    except ImportError:
+        sen = None
+
+    for vertikal, conf in su.VERTIKALLER.items():
+        dosya = kok / f"{vertikal}.json"
+        if not dosya.exists():
+            continue
+        try:
+            veri = json.loads(dosya.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            continue
+        kalemler = veri.get("kalemler") or {}
+        tarih = veri.get("guncelleme_tarihi") or ""
+        siteler = {x["site"] for k in kalemler.values()
+                   for x in (k.get("kaynaklar") or []) if x.get("toplam_urun")}
+
+        # Hesaplayici ve metodoloji: baslik odakli
+        for alt_yol, baslik in (
+                ("hesaplayici", conf["ad"] + " hesaplayıcı"),
+                ("metodoloji", conf["ad"] + " — nasıl ölçüyoruz?")):
+            if not (SITE_KOK / vertikal / alt_yol / "index.html").exists():
+                continue
+            if kart_baslikli(
+                    baslik,
+                    "{} bağımsız kaynak · ayda iki kez ölçülüyor · {}".format(
+                        len(siteler), tarih),
+                    KALEM_KOK / f"{vertikal}-{alt_yol}.png"):
+                sayi += 1
+
+        if not sen:
+            continue
+        # Olcek senaryolari: kisi sayisina gore gercek toplam
+        for x in (sen.OLCEK_SENARYOLARI.get(vertikal) or []):
+            if not (SITE_KOK / vertikal / x["slug"] / "index.html").exists():
+                continue
+            t, _ = su.ornek_toplam_hesapla(conf, kalemler, x["olcek"], "orta")
+            if not t:
+                continue
+            if kart_karti_yaz(x["baslik"], int(t),
+                              "orta segment · {} bağımsız kaynak · {}".format(
+                                  len(siteler), tarih),
+                              KALEM_KOK / f"{vertikal}-{x['slug']}.png"):
+                sayi += 1
+        # Grup senaryolari: yalnizca o gruptaki kalemlerin toplami
+        for x in (sen.GRUP_SENARYOLARI.get(vertikal) or []):
+            if not (SITE_KOK / vertikal / x["slug"] / "index.html").exists():
+                continue
+            gruplar = set(x["gruplar"])
+            t = sum(
+                ((kalemler.get(tn["id"]) or {}).get("segmentler") or {})
+                .get("orta", {}).get("medyan", 0)
+                for tn in conf["kalemler"]
+                if tn.get("grup") in gruplar and tn.get("varsayilan_dahil") is not False
+                and not tn.get("bilgi_amacli"))
+            if not t:
+                continue
+            if kart_karti_yaz(x["baslik"], int(t),
+                              "orta segment · {} bağımsız kaynak · {}".format(
+                                  len(siteler), tarih),
+                              KALEM_KOK / f"{vertikal}-{x['slug']}.png"):
+                sayi += 1
+    return sayi
+
+
+def kart_karti_yaz(baslik, tutar, alt, hedef):
+    """kalem_karti icin ince sarmalayici - okunurluk icin ayri ad."""
+    return kalem_karti(baslik, tutar, alt, hedef)
+
+
+def tum_kartlar(veri_kok: Path | None = None) -> int:
+    """Butun paylasim kartlari TEK CAGRIDAN.
+
+    Iki ayri fonksiyon vardi ve workflow yalnizca birini cagiriyordu;
+    bu tam olarak `sss/` sayfasinin commit listesinden dusme hatasinin
+    ayni turu. Tek giris noktasi olsun ki eklenen kart tipi otomatik
+    uretilsin.
+    """
+    return (kalem_kartlarini_uret(veri_kok)
+            + rehber_ve_hesap_kartlari(veri_kok)
+            + senaryo_ve_arac_kartlari(veri_kok))
 
 def main():
     yol = uret()
