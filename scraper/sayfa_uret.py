@@ -356,7 +356,7 @@ VERTIKALLER = {
         ],
         "segment_aciklama": (
             "Ekonomik segment düşük fiyat bandını, orta segment piyasadaki ortalama "
-            "bütçeyi, lüks segment ise üst fiyat bandını gösterir. Hizmetlerde "
+            "bütçeyi, üst segment ise en pahalı çeyreği gösterir. Hizmetlerde "
             "aynı mekanın tüm seçenekleri aynı kapsamı sunmayabilir; bu yüzden "
             "toplam senaryoda yemekli salon ayrı, kokteyl salon ayrı değerlendirilir."
         ),
@@ -444,7 +444,7 @@ VERTIKALLER = {
         "dahil_olanlar": [
             "Beyaz eşya, mobilya, yatak odası, elektronik, küçük ev aleti, mutfak ve tekstil kalemleri.",
             "Her kalemden bir adet veya bir standart takım varsayımı.",
-            "Gerçek e-ticaret kategori verisinden derlenen ekonomik, orta ve lüks segment fiyatları.",
+            "Gerçek e-ticaret kategori verisinden derlenen ekonomik, orta ve üst segment fiyatları.",
         ],
         "dahil_olmayanlar": [
             "Konut satın alma veya kira bedeli.",
@@ -453,7 +453,7 @@ VERTIKALLER = {
         ],
         "segment_aciklama": (
             "Ekonomik segment temel işlevi karşılayan alt fiyat bandını, orta segment "
-            "ev kurma bütçesinde beklenen ortalama fiyatı, lüks segment ise daha yüksek "
+            "ev kurma bütçesinde beklenen ortalama fiyatı, üst segment ise daha yüksek "
             "marka/kapasite bandını gösterir. Ev kurma endeksinde tüm kalemler sabit "
             "birimli ürün olduğu için davetli sayısı gibi ek çarpan kullanılmaz."
         ),
@@ -777,7 +777,7 @@ VERTIKALLER = {
         "one_cikan_kalemler": ["en-ucuz-sifir-arac", "fiat", "renault", "togg", "dacia", "hyundai"],
         "segment_aciklama": (
             "Ekonomik segment markaların giriş seviyesi (en ucuz) modellerinin "
-            "alt bandını, orta segment tipik giriş fiyatını, lüks segment ise "
+            "alt bandını, orta segment tipik giriş fiyatını, üst segment ise "
             "premium markaların giriş modellerini gösterir. Marka bazlı "
             "kalemlerde segmentler o markanın kendi model yelpazesi içindeki "
             "dağılımı yansıtır — markalar arası kıyas için değil, marka içi "
@@ -1741,6 +1741,36 @@ OG_ETIKETLERI = (
 )
 
 
+def og_etiketleri(gorsel_yolu: str | None = None, alt: str | None = None) -> str:
+    """Sayfaya OZEL paylasim karti varsa onu, yoksa jenerik gorseli kullanir.
+
+    2026-08-02 denetiminde bulundu: 175 sayfanin TAMAMI ayni jenerik
+    gorseli paylasiyordu. `/ev-kurma/buzdolabi-fiyatlari/` WhatsApp'ta
+    paylasildiginda kartta "2026 Maliyet Endeksi" yaziyordu,
+    "Buzdolabi 29.597 TL" YAZMIYORDU. Ilk trafik olcumunde referans
+    kaynagi neredeyse tamamen m.facebook.com cikmisti - bu kanalda
+    paylasim karti dogrudan tiklanma oraninin kendisi.
+
+    Kart DOSYASI YOKSA sessizce jenerige duser: gorsel uretimi PIL'e
+    bagli ve zorunlu bir adim degil, eksikligi 404 veren bir og:image
+    beyanina donusmemeli (bos kart, jenerik karttan kotudur).
+    """
+    if gorsel_yolu and (SITE_KOK / gorsel_yolu.lstrip("/")).exists():
+        url = f"{SITE_KOK_URL}{gorsel_yolu}"
+        aciklama = alt or "Maliyeti Ne? — ölçülmüş fiyat"
+    else:
+        url = OG_GORSEL_URL
+        aciklama = "Maliyeti Ne? — 2026 maliyet endeksleri"
+    return (
+        f'<meta property="og:image" content="{url}">\n'
+        f'<meta property="og:image:width" content="{OG_GENISLIK}">\n'
+        f'<meta property="og:image:height" content="{OG_YUKSEKLIK}">\n'
+        f'<meta property="og:image:alt" content="{aciklama}">\n'
+        '<meta property="og:site_name" content="Maliyeti Ne?">\n'
+        '<meta property="og:locale" content="tr_TR">'
+    )
+
+
 def ek_sorular_uret(conf: dict, kalemler: dict, olcek: int) -> list[dict]:
     """Veriden GERCEK sayilarla ek soru/cevap ciftleri uretir (GEO icin).
 
@@ -2389,7 +2419,7 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
 <meta property="og:description" content="{conf["meta_aciklama"]}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://maliyetine.com.tr/{yol}/">
-{OG_ETIKETLERI}
+{og_etiketleri("/assets/og/" + vertikal + ".png", conf["ad"] + " maliyeti — ölçülmüş fiyat")}
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {json.dumps(json_ld, ensure_ascii=False, indent=2)}
@@ -2422,7 +2452,7 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
   {_tahmini_aciklama_html(conf)}
   <table>
     <thead>
-      <tr><th>Kalem</th><th class="sayi">Ekonomik</th><th class="sayi">Orta</th><th class="sayi">Lüks</th><th class="sayi">Kaynak</th></tr>
+      <tr><th>Kalem</th><th class="sayi">Ekonomik</th><th class="sayi">Orta</th><th class="sayi">Üst</th><th class="sayi">Kaynak</th></tr>
     </thead>
     <tbody>
       {_kalem_satirlari_html(conf, kalemler)}
@@ -2696,7 +2726,7 @@ def kalem_sayfasi_uret(
     if orta:
         meta_aciklama = (
             f"{tanim['ad']} {'ortalama fiyatı' if (veri or {}).get('segment_tutarsiz') else 'orta segment ortalama fiyatı'}{birim} {_para(orta)} "
-            f"({guncelleme_tarihi}). Ekonomik, orta ve lüks fiyat aralığı; "
+            f"({guncelleme_tarihi}). Ekonomik, orta ve üst fiyat aralığı; "
             f"kaynak sayısı ve örneklem büyüklüğüyle."
         )
     else:
@@ -2749,10 +2779,10 @@ def kalem_sayfasi_uret(
             "@type": "Question",
             "name": f"{tanim['ad']} fiyatları arasında ne kadar fark var?",
             "acceptedAnswer": {"@type": "Answer", "text": (
-                f"Ekonomik segmentte {_para(degerler['dusuk'])}, lüks segmentte "
+                f"Ekonomik segmentte {_para(degerler['dusuk'])}, üst segmentte "
                 f"{_para(degerler['luks'])} — yaklaşık {_kat(kat)} kat fark. "
                 "Segmentler persentil bazlı ayrılır: en ucuz çeyrek ekonomik, "
-                "ortadaki yarı orta, en pahalı çeyrek lüks kabul edilir."
+                "ortadaki yarı orta, en pahalı çeyrek üst kabul edilir."
             )},
         })
 
@@ -2849,7 +2879,7 @@ def kalem_sayfasi_uret(
 <meta property="og:description" content="{meta_aciklama}">
 <meta property="og:type" content="article">
 <meta property="og:url" content="{sayfa_url}">
-{OG_ETIKETLERI}
+{og_etiketleri("/assets/og/" + vertikal + "-" + sayfa["slug"] + ".png", tanim["ad"] + " ortalama fiyatı")}
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {json.dumps(json_ld, ensure_ascii=False, indent=2)}
@@ -2880,7 +2910,7 @@ def kalem_sayfasi_uret(
 {_segment_grafigi(degerler, " (kişi başı)" if tanim["birim"] == "kisi_basi" else "")}
     {_segment_detay_tablosu_html(veri)}
     <p class="sonuc-alt-metin">Segmentler persentil bazlı ayrılır: en ucuz
-      çeyrek ekonomik, ortadaki yarı orta, en pahalı çeyrek lüks. "Ürün"
+      çeyrek ekonomik, ortadaki yarı orta, en pahalı çeyrek üst. "Ürün"
       sütunu o segmentte kaç ürünün ölçüldüğünü gösterir.</p>
   </section>
 
@@ -3642,7 +3672,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
 <meta name="description" content="Düğün ve ev kurma maliyeti: gerçek fiyat verisinden derlenmiş, aylık güncellenen, doğrulanabilir endeks. Kaynak, tarih ve örneklem her rakamın yanında.">
 <link rel="canonical" href="{SITE_KOK_URL}/">
 <link rel="stylesheet" href="/assets/css/style.css">
-<meta property="og:title" content="2026'da ne kaça mal olur? | Maliyeti Ne?">
+<meta property="og:title" content="2026 Maliyet Endeksi | Maliyeti Ne?">
 <meta property="og:description" content="{og_aciklama}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{SITE_KOK_URL}/">

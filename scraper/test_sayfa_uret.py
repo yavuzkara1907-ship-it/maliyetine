@@ -419,6 +419,11 @@ class EkSorularTestleri(unittest.TestCase):
             if s["name"].startswith("Televizyon")
         )
         self.assertIn("orta segmentte 87.499 TL", televizyon_cevabi)
+        # Olmayan segment icin genel medyan FALLBACK edilmemeli.
+        # (2026-08-02: segment adi "lüks" -> "üst" olarak birlestirildi;
+        # test eski ifadeyi ariyordu ve degisiklikten sonra sessizce
+        # her zaman gecer hale gelmisti - iki ifadeyi de kontrol ediyor.)
+        self.assertNotIn("üst segmentte", televizyon_cevabi)
         self.assertNotIn("lüks segmentte", televizyon_cevabi)
         self.assertNotIn("46.499 TL", televizyon_cevabi)
 
@@ -1168,11 +1173,25 @@ class OgEtiketleriTesti(unittest.TestCase):
 
     def test_sablonlarda_elle_yazilmis_og_image_yok(self):
         """Sekiz sablonda ayri ayri yaziliydi; biri guncellenip otekiler
-        kalirsa sayfalar farkli kart gosterir. Tek kaynak: OG_ETIKETLERI."""
+        kalirsa sayfalar farkli kart gosterir.
+
+        Tek kaynak IKI parcali (2026-08-02): jenerik kart icin
+        `OG_ETIKETLERI` sabiti, sayfaya OZEL kart icin `og_etiketleri()`
+        fonksiyonu. Fonksiyonun KENDI govdesi haric hicbir sablon
+        og:image yazmamali.
+        """
         for ad in ("sayfa_uret.py", "senaryo.py", "rehber.py", "veri_disa_aktar.py"):
             kaynak = (Path(__file__).parent / ad).read_text(encoding="utf-8")
-            # OG_ETIKETLERI sabitinin kendi tanimi haric hicbir yerde
-            # elle yazilmis og:image satiri olmamali.
-            elle = [s for s in kaynak.splitlines()
-                    if 'property="og:image"' in s and "OG_GORSEL_URL" not in s]
+            satirlar = kaynak.splitlines()
+            # og_etiketleri() fonksiyonunun govdesini disla.
+            bas = son = None
+            for i, sat in enumerate(satirlar):
+                if sat.startswith("def og_etiketleri("):
+                    bas = i
+                elif bas is not None and son is None and sat.startswith("def ") and i > bas:
+                    son = i
+            gecerli = [(i, sat) for i, sat in enumerate(satirlar)
+                       if not (bas is not None and bas <= i < (son or len(satirlar)))]
+            elle = [sat for _, sat in gecerli
+                    if 'property="og:image"' in sat and "OG_GORSEL_URL" not in sat]
             self.assertEqual(elle, [], f"{ad} icinde elle yazilmis og:image var")

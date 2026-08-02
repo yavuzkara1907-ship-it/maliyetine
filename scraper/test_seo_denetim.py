@@ -337,5 +337,71 @@ class SiteDenetimi(unittest.TestCase):
         self.assertEqual([], hatali,
                          "Olcmedigimiz alan semaya girmis: {}".format(hatali[:5]))
 
+    def test_segment_adi_SITE_GENELINDE_ayni(self):
+        """Ayni segmentin uc yerde uc farkli adi olmasin.
+
+        2026-08-02'de bulundu. 25 Temmuz'da "Lüks" -> "Üst" karari
+        alinmisti (sebep: 43 bin TL'lik buzdolabi luks degil, listedeki
+        ust ceyrek). Ama degisiklik yalnizca HESAPLAYICI butonlarina ve
+        KALEM sayfasi tablosuna uygulanmisti:
+            endeks sayfasi tablo basligi : "Lüks"
+            kalem sayfasi tablosu        : "Üst"
+            meta description             : "lüks"
+        108 sayfanin gorunur metninde ve 99 meta aciklamada eski ad
+        duruyordu. Ayni seyin iki adi olmasi, guven iddiasi tutarliliga
+        dayanan bir sitede kabul edilemez.
+
+        NOT: "lüks marka magazasi" gibi MARKAYI tarif eden kullanim
+        serbest - yasak olan SEGMENT ADI olarak kullanmak.
+        """
+        desen = re.compile(r"lüks\s+(segment|fiyat|kabul|çeyrek)|>\s*Lüks\s*<", re.I)
+        hatali = []
+        for yol in self.sayfalar:
+            h = _oku(yol)
+            m = desen.search(re.sub(r"<script.*?</script>", " ", h, flags=re.S))
+            if m:
+                hatali.append("{}: {!r}".format(yol, m.group(0)))
+        self.assertEqual([], hatali,
+                         "segment adi 'Üst' olmali: {}".format(hatali[:5]))
+
+    def test_paylasim_karti_sayfaya_OZEL(self):
+        """Endeks ve kalem sayfalari kendi olcum kartini paylasmali.
+
+        2026-08-02 denetiminde bulundu: 175 sayfanin TAMAMI ayni jenerik
+        gorseli paylasiyordu. /ev-kurma/buzdolabi-fiyatlari/ WhatsApp'ta
+        paylasildiginda kartta "2026 Maliyet Endeksi" yaziyordu,
+        "Buzdolabi 29.597 TL" YAZMIYORDU. Ilk trafik olcumunde referans
+        kaynagi neredeyse tamamen m.facebook.com'du - bu kanalda
+        paylasim karti dogrudan tiklanma oraninin kendisi.
+
+        ILK YAZDIGIM HALI ISE YARAMIYORDU: "ozel kart sayisi > 50" diye
+        bakiyordu ve bir vertikali jenerige dondurunce digerleri sayiyi
+        ayakta tutuyordu (bug geri konarak dogrulandi: gecti).
+        Artik KART DOSYASI DISKTE OLAN her sayfanin o karti gercekten
+        gosterdigi tek tek kontrol ediliyor.
+        """
+        kok = Path(__file__).resolve().parent.parent
+        kart_kok = kok / "assets" / "og"
+        if not kart_kok.exists():
+            self.skipTest("paylasim kartlari uretilmemis")
+        kartlar = {p.name for p in kart_kok.glob("*.png")}
+
+        eksik, kirik = [], []
+        for yol in self.sayfalar:
+            bag = yol.relative_to(kok).parent.as_posix()   # "ev-kurma/buzdolabi-fiyatlari"
+            parca = bag.split("/")
+            beklenen = ("-".join(parca) + ".png") if len(parca) == 2 else (bag + ".png")
+            h = _oku(yol)
+            m = re.search(r'og:image" content="[^"]*?([^/"]+\.png)"', h)
+            kullanilan = m.group(1) if m else None
+            if kullanilan and kullanilan != "og-gorsel.png" and kullanilan not in kartlar:
+                kirik.append("{} -> {} (diskte yok)".format(bag, kullanilan))
+            if beklenen in kartlar and kullanilan != beklenen:
+                eksik.append("{}: {} yerine {}".format(bag, beklenen, kullanilan))
+
+        self.assertEqual([], kirik, "og:image diskte yok: {}".format(kirik[:5]))
+        self.assertEqual([], eksik,
+                         "kendi karti varken jenerik gosteriyor: {}".format(eksik[:6]))
+
 if __name__ == "__main__":
     unittest.main()

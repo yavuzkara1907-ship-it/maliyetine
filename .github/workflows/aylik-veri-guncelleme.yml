@@ -79,7 +79,13 @@ jobs:
       # veri degisince bayatlamamali. PIL yoksa adim sessizce geciyor.
       - name: Paylaşım görselini güncelle
         working-directory: scraper
-        run: python og_gorsel.py || echo "OG gorseli guncellenemedi, devam."
+        run: |
+          python og_gorsel.py || echo "OG gorseli guncellenemedi, devam."
+          # Sayfaya OZEL paylasim kartlari (2026-08-02). Rakam tasidiklari
+          # icin HER olcumde yenilenmeli - bayat kart, bayat rakam demek
+          # ve WhatsApp/Facebook onbellege alir.
+          python -c "import og_gorsel; print(og_gorsel.kalem_kartlarini_uret(), 'kart')" \
+            || echo "Kalem kartlari uretilemedi, devam."
 
       # Senaryo sayfalari (100 kisilik dugun, beyaz esya butcesi...).
       # sayfa_uret'ten SONRA: endeks sayfalari bu dosyalarin varligina
