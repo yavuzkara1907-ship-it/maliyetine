@@ -2021,6 +2021,77 @@ tek basina "en ucuzu sec" diye okunabilirdi.
 sitemap 173 -> **175**, IndexNow'a bildirildi, canlida dogrulandi.
 
 
+## EV KURMA UST SEGMENTI NIHAYET KAPANDI (2026-08-02)
+Yavuz: *"buzdolabi ve o ev kurma kisminda hala eksigiz. dogru
+kaynaklara ulasamadik. ust fiyatlar cok ucuz kaldi."*
+
+**BU, 25 TEMMUZ'DAN BERI ACIK OLAN EKSIK.** O gun ayni tespit
+yapilmisti (*"buzdolabi 45 bin TL luks diyoruz ama asil luks
+80.000'den basliyor"*) ve **teshis dogruydu**: Trendyol kategori
+sayfasinda max 62K var, premium modeller listede yok; `?prc=` ve
+`?sst=PRICE_BY_DESC` filtreleri JS ile uygulaniyor, sunucu HTML'i
+degismiyor. **Ama cozum eksikti: kalemi "luks" yerine "ust" diye
+ADLANDIRDIK, gercek premium veriyi getirmedik.** Adlandirma bir cozum
+degil, sorunun kabulüydu. Simdi veri getirildi.
+
+### MediaMarkt — 17 kalem, JSON-LD, CSS secici gerekmedi
+**Onceki turda yanlis elenmisti.** Kayitta *"robots ONAY ama JSON-LD/
+microdata YOK -> CSS gerekir"* yaziyordu; o teshis **ANA SAYFAYA**
+bakilarak yapilmisti. **Kategori sayfalarinda JSON-LD var.**
+*Ders: bir siteyi ana sayfasina bakip elemek, kategori sayfasina
+bakmadan karar vermek demek.*
+
+| kalem | ust (once → sonra) | max (once → sonra) |
+|---|---|---|
+| firin-ocak | 25.690 → **38.564** | 31.049 → **53.528** |
+| buzdolabi | 48.266 → 42.999 | 61.990 → **72.999** |
+| dikey-supurge | — | 26.299 → **39.999** |
+| utu | — | 9.999 → **27.499** |
+| kahve-makinesi | — | 23.868 → **32.999** |
+
+**12 URUN SINIRI:** her kategoride tam 12 urun donuyor ve
+kaydirma/render bunu **degistirmiyor** (0/6/12 kaydirma denendi,
+ucu de 12) — MediaMarkt JSON-LD ItemList'e 12 urun koyuyor. Orneklem
+ince ama premium uctaki 12 urun tam da eksigimiz olan sey.
+
+### Dogtas — 3 kalem, mobilya ust segmenti
+| kalem | ust (once → sonra) | Dogtas / Trendyol |
+|---|---|---|
+| koltuk-takimi | 45.944 → **66.005** | 54.406 / 41.344 |
+| gardirop | — | **42.003 / 6.000** |
+
+Gardiropta pazaryeri ile marka magazasi arasindaki ucurum artik
+gorunuyor: **7 kat.**
+
+### 17 KALEMIN HEPSI EKLENDI, sadece rakami yukseltenler DEGIL
+Oyle yapmak **kiraz toplamak** olurdu. Televizyon (bizim max 119.999 >
+MediaMarkt 89.999), supurge (62.999 > 39.999) ve camasir makinesinde
+bizim mevcut ust ucumuz zaten daha yuksek cikti — **bu da bilgi:**
+her kalemde premium magaza daha pahali degil.
+
+### ELENENLER
+- **`dogtas/yatak` — en sinsi olani.** `/yataklar` sayfasi
+  *"YATAK ODASI TAKIMI"* donduruyor (117.955 TL); bizim `yatak`
+  kalemimiz **SILTE** (ust medyanimiz 3.826). Kategori adi tuttugu
+  icin ilk bakista dogru gorunuyordu, **urun ADLARINA bakilinca**
+  ortaya cikti. D&R/termos ve ebebek/biberon ile ayni tuzak.
+- vatan, miele: kategori linki bulunamadi · siemens, vestel: fiyat JS
+  ile · bosch, bellona, istikbal: fiyat var ama kart icinde degil ·
+  enzahome: 66 fiyatin yalnizca 6'si kart icinde · vivense: robots RET
+
+### Bulunan hata
+Dogtas'ta ilk yazdigim `isim_secici: .c-p-i-link` **karti saran `<a>`**
+idi ve metni **fiyatlari da iceriyordu**
+(*"FIORENKoltuk Takimi56.984,43 TL63.316,03 TL"*). **Fiyat dogru
+cikiyordu, o yuzden bu sessizce gecebilirdi** — urun adlari yalnizca
+log ve ad filtresinde kullaniliyor. `.title` ile duzeltildi.
+
+**ev-kurma:** eko 181.117 → **212.086** · orta 352.769 → **385.913** ·
+**ust 622.136** · bagimsiz site **5 → 7**.
+`tava-seti/trendyol` saglik kontrolunde karantinaya alindi (urun
+sayisi anomalisi) — endekse girmedi.
+
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
