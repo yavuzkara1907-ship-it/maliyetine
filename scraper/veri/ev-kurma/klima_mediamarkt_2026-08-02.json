@@ -1,0 +1,35 @@
+{
+  "site": "mediamarkt",
+  "kaynak_adlari": [
+    "MediaMarkt - Klimalar"
+  ],
+  "kalem": "klima",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 12,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 40499,
+  "segmentler": {
+    "dusuk": {
+      "min": 26599,
+      "medyan": 29449,
+      "max": 32999,
+      "urun_sayisi": 4
+    },
+    "orta": {
+      "min": 36999,
+      "medyan": 41499,
+      "max": 45999,
+      "urun_sayisi": 6
+    },
+    "luks": {
+      "min": 46999,
+      "medyan": 53249,
+      "max": 59499,
+      "urun_sayisi": 2
+    }
+  }
+}

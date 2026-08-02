@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Camasir Makinesi"
+  ],
+  "kalem": "camasir-makinesi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 22,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 23100,
+  "segmentler": {
+    "dusuk": {
+      "min": 16784,
+      "medyan": 19474,
+      "max": 20000,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 21250,
+      "medyan": 23199,
+      "max": 26789,
+      "urun_sayisi": 11
+    },
+    "luks": {
+      "min": 28200,
+      "medyan": 30189,
+      "max": 31079,
+      "urun_sayisi": 5
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Orta Sehpa"
+  ],
+  "kalem": "sehpa",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 46,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 2694,
+  "segmentler": {
+    "dusuk": {
+      "min": 750,
+      "medyan": 1074,
+      "max": 1449,
+      "urun_sayisi": 12
+    },
+    "orta": {
+      "min": 1699,
+      "medyan": 2700,
+      "max": 3799,
+      "urun_sayisi": 23
+    },
+    "luks": {
+      "min": 3923,
+      "medyan": 4763,
+      "max": 6980,
+      "urun_sayisi": 11
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Çamaşır Makinesi"
+  ],
+  "kalem": "camasir-makinesi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 15,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 29499,
+  "segmentler": {
+    "dusuk": {
+      "min": 5210,
+      "medyan": 6267,
+      "max": 14399,
+      "urun_sayisi": 4
+    },
+    "orta": {
+      "min": 19899,
+      "medyan": 31239,
+      "max": 42999,
+      "urun_sayisi": 8
+    },
+    "luks": {
+      "min": 44959,
+      "medyan": 48840,
+      "max": 54599,
+      "urun_sayisi": 3
+    }
+  }
+}

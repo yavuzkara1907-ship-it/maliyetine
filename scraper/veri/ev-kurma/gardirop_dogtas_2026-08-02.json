@@ -1,0 +1,35 @@
+{
+  "site": "dogtas",
+  "kaynak_adlari": [
+    "Dogtas - Dolaplar"
+  ],
+  "kalem": "gardirop",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 21,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 42003,
+  "segmentler": {
+    "dusuk": {
+      "min": 23807,
+      "medyan": 33572,
+      "max": 35572,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 36722,
+      "medyan": 42194,
+      "max": 44170,
+      "urun_sayisi": 10
+    },
+    "luks": {
+      "min": 45286,
+      "medyan": 49989,
+      "max": 52805,
+      "urun_sayisi": 5
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Kurutma Makinesi"
+  ],
+  "kalem": "kurutma-makinesi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 12,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 9926,
+  "segmentler": {
+    "dusuk": {
+      "min": 3733,
+      "medyan": 4649,
+      "max": 5624,
+      "urun_sayisi": 4
+    },
+    "orta": {
+      "min": 5799,
+      "medyan": 10694,
+      "max": 19499,
+      "urun_sayisi": 6
+    },
+    "luks": {
+      "min": 19899,
+      "medyan": 25587,
+      "max": 31275,
+      "urun_sayisi": 2
+    }
+  }
+}

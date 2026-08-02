@@ -1,0 +1,35 @@
+{
+  "site": "mediamarkt",
+  "kaynak_adlari": [
+    "MediaMarkt - Kurutma Makineleri"
+  ],
+  "kalem": "kurutma-makinesi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 12,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 24443,
+  "segmentler": {
+    "dusuk": {
+      "min": 14999,
+      "medyan": 17249,
+      "max": 18499,
+      "urun_sayisi": 4
+    },
+    "orta": {
+      "min": 20999,
+      "medyan": 25999,
+      "max": 27399,
+      "urun_sayisi": 6
+    },
+    "luks": {
+      "min": 27999,
+      "medyan": 34599,
+      "max": 41199,
+      "urun_sayisi": 2
+    }
+  }
+}

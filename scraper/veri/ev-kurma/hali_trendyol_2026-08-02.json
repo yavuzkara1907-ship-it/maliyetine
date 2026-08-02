@@ -1,0 +1,29 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Hali"
+  ],
+  "kalem": "hali",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 3,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 1711,
+  "segmentler": {
+    "dusuk": {
+      "min": 1256,
+      "medyan": 1256,
+      "max": 1256,
+      "urun_sayisi": 1
+    },
+    "orta": {
+      "min": 1711,
+      "medyan": 2380,
+      "max": 3048,
+      "urun_sayisi": 2
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "site": "mediamarkt",
+  "kaynak_adlari": [
+    "MediaMarkt - Sac Kurutma"
+  ],
+  "kalem": "sac-kurutma-makinesi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 12,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 2349,
+  "segmentler": {
+    "dusuk": {
+      "min": 999,
+      "medyan": 1410,
+      "max": 1590,
+      "urun_sayisi": 4
+    },
+    "orta": {
+      "min": 1999,
+      "medyan": 3449,
+      "max": 5999,
+      "urun_sayisi": 6
+    },
+    "luks": {
+      "min": 14999,
+      "medyan": 19999,
+      "max": 24999,
+      "urun_sayisi": 2
+    }
+  }
+}

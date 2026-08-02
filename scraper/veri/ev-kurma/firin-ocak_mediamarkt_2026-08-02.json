@@ -1,0 +1,35 @@
+{
+  "site": "mediamarkt",
+  "kaynak_adlari": [
+    "MediaMarkt - Ocakli Firinlar"
+  ],
+  "kalem": "firin-ocak",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 12,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 29894,
+  "segmentler": {
+    "dusuk": {
+      "min": 19999,
+      "medyan": 22199,
+      "max": 24699,
+      "urun_sayisi": 4
+    },
+    "orta": {
+      "min": 26699,
+      "medyan": 31999,
+      "max": 52940,
+      "urun_sayisi": 6
+    },
+    "luks": {
+      "min": 53527,
+      "medyan": 53528,
+      "max": 53528,
+      "urun_sayisi": 2
+    }
+  }
+}

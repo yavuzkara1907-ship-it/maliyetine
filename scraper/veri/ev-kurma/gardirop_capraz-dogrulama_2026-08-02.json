@@ -1,0 +1,13 @@
+{
+  "vertikal": "ev-kurma",
+  "kalem": "gardirop",
+  "tarih": "2026-08-02",
+  "site_medyanlari": {
+    "trendyol": 6000,
+    "amazon": 5122,
+    "dogtas": 42003
+  },
+  "fark_orani": 7.201,
+  "esik_orani": 0.3,
+  "uyari": true
+}

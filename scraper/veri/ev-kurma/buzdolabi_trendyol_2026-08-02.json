@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Buzdolabi"
+  ],
+  "kalem": "buzdolabi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 24,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 29098,
+  "segmentler": {
+    "dusuk": {
+      "min": 6191,
+      "medyan": 9240,
+      "max": 16699,
+      "urun_sayisi": 7
+    },
+    "orta": {
+      "min": 18589,
+      "medyan": 29597,
+      "max": 36499,
+      "urun_sayisi": 12
+    },
+    "luks": {
+      "min": 37699,
+      "medyan": 42999,
+      "max": 59999,
+      "urun_sayisi": 5
+    }
+  }
+}

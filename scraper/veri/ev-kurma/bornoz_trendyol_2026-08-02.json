@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Bornoz"
+  ],
+  "kalem": "bornoz",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 22,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 676,
+  "segmentler": {
+    "dusuk": {
+      "min": 399,
+      "medyan": 448,
+      "max": 547,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 586,
+      "medyan": 676,
+      "max": 1250,
+      "urun_sayisi": 11
+    },
+    "luks": {
+      "min": 1385,
+      "medyan": 1453,
+      "max": 1625,
+      "urun_sayisi": 5
+    }
+  }
+}

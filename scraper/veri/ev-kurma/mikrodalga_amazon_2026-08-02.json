@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Mikrodalga Fırın"
+  ],
+  "kalem": "mikrodalga",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 28,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 4687,
+  "segmentler": {
+    "dusuk": {
+      "min": 1400,
+      "medyan": 2945,
+      "max": 3355,
+      "urun_sayisi": 8
+    },
+    "orta": {
+      "min": 3499,
+      "medyan": 4887,
+      "max": 6009,
+      "urun_sayisi": 14
+    },
+    "luks": {
+      "min": 6199,
+      "medyan": 7214,
+      "max": 8499,
+      "urun_sayisi": 6
+    }
+  }
+}

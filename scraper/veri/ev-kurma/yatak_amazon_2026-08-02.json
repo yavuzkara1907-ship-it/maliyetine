@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Yatak Şilte"
+  ],
+  "kalem": "yatak",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 46,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 2860,
+  "segmentler": {
+    "dusuk": {
+      "min": 1100,
+      "medyan": 2099,
+      "max": 2400,
+      "urun_sayisi": 12
+    },
+    "orta": {
+      "min": 2499,
+      "medyan": 2920,
+      "max": 3799,
+      "urun_sayisi": 23
+    },
+    "luks": {
+      "min": 3899,
+      "medyan": 5299,
+      "max": 5900,
+      "urun_sayisi": 11
+    }
+  }
+}

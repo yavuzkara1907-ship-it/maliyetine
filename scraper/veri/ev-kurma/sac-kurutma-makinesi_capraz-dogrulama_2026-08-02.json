@@ -1,0 +1,13 @@
+{
+  "vertikal": "ev-kurma",
+  "kalem": "sac-kurutma-makinesi",
+  "tarih": "2026-08-02",
+  "site_medyanlari": {
+    "trendyol": 1149,
+    "amazon": 1490,
+    "mediamarkt": 2349
+  },
+  "fark_orani": 1.044,
+  "esik_orani": 0.3,
+  "uyari": true
+}

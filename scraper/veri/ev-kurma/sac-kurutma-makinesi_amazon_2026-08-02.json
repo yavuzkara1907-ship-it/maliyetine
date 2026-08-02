@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Saç Kurutma Makinesi"
+  ],
+  "kalem": "sac-kurutma-makinesi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 37,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 1490,
+  "segmentler": {
+    "dusuk": {
+      "min": 499,
+      "medyan": 848,
+      "max": 1044,
+      "urun_sayisi": 10
+    },
+    "orta": {
+      "min": 1049,
+      "medyan": 1494,
+      "max": 2144,
+      "urun_sayisi": 18
+    },
+    "luks": {
+      "min": 2199,
+      "medyan": 2699,
+      "max": 4299,
+      "urun_sayisi": 9
+    }
+  }
+}

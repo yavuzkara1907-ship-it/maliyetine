@@ -14,48 +14,48 @@ dugun,organizasyon,Organizasyon / Süsleme,,sabit,22150,22150,22150,22150,22150,
 dugun,taki-altin,Takı — Altın Bilezik (1 adet),,sabit,33085,85022,180340,30600,243765,24,1,atasay,2026-07-26
 dugun,yemek-ikram,Yemek / İkram (mekanın menü bedeli),,kisi_basi,250,405,785,200,920,9,1,dugunbuketi,2026-07-26
 dugun,salon,salon,,,320,525,775,200,800,9,1,dugunbuketi,2026-07-26
-ev-kurma,firin-ocak,Ankastre Fırın / Ocak Seti,Beyaz eşya,sabit,6954,18056,25690,3849,31049,30,2,amazon; trendyol,2026-07-26
-ev-kurma,bulasik-makinesi,Bulaşık Makinesi,Beyaz eşya,sabit,16579,20800,26464,4333,34499,44,2,amazon; trendyol,2026-07-26
-ev-kurma,buzdolabi,Buzdolabı,Beyaz eşya,sabit,12538,29150,48266,4408,61990,51,2,amazon; trendyol,2026-07-26
-ev-kurma,davlumbaz,Davlumbaz,Beyaz eşya,sabit,3014,4614,9726,799,17850,42,2,amazon; trendyol,2026-07-26
-ev-kurma,klima,Klima,Beyaz eşya,sabit,14554,29884,40940,5199,53999,46,2,amazon; trendyol,2026-07-26
-ev-kurma,kurutma-makinesi,Kurutma Makinesi,Beyaz eşya,sabit,10972,18340,28698,3579,39100,35,2,amazon; trendyol,2026-07-26
-ev-kurma,mikrodalga,Mikrodalga Fırın,Beyaz eşya,sabit,2914,5106,6612,1500,9199,49,2,amazon; trendyol,2026-07-26
-ev-kurma,camasir-makinesi,Çamaşır Makinesi,Beyaz eşya,sabit,18819,29382,39292,5543,54599,42,2,amazon; trendyol,2026-07-26
-ev-kurma,dikey-supurge,Dikey Süpürge,Elektronik,sabit,1718,5767,12374,933,26299,68,2,amazon; trendyol,2026-07-26
-ev-kurma,supurge,Robot Süpürge,Elektronik,sabit,8174,18516,41499,5304,62999,64,2,amazon; trendyol,2026-07-26
-ev-kurma,televizyon,Televizyon (4K),Elektronik,sabit,20993,41099,87999,9119,119999,51,2,amazon; trendyol,2026-07-26
-ev-kurma,airfryer,Airfryer,Küçük ev aleti,sabit,1976,3578,6374,999,9499,57,2,amazon; trendyol,2026-07-26
-ev-kurma,blender,Blender,Küçük ev aleti,sabit,1825,5564,4999,949,8789,57,2,amazon; trendyol,2026-07-26
-ev-kurma,kahve-makinesi,Kahve Makinesi,Küçük ev aleti,sabit,996,3482,11452,319,23868,63,2,amazon; trendyol,2026-07-26
-ev-kurma,mutfak-robotu,Mutfak Robotu / Doğrayıcı,Küçük ev aleti,sabit,1766,3240,5692,1074,9999,65,2,amazon; trendyol,2026-07-26
-ev-kurma,sac-kurutma-makinesi,Saç Kurutma Makinesi,Küçük ev aleti,sabit,684,1219,2079,353,3799,58,2,amazon; trendyol,2026-07-26
-ev-kurma,su-isitici,Su Isıtıcı (Kettle),Küçük ev aleti,sabit,606,1222,2280,349,4974,74,2,amazon; trendyol,2026-07-26
-ev-kurma,tost-makinesi,Tost Makinesi,Küçük ev aleti,sabit,1528,2688,4919,569,8649,79,2,amazon; trendyol,2026-07-26
-ev-kurma,utu,Ütü,Küçük ev aleti,sabit,962,2510,5981,739,9999,66,2,amazon; trendyol,2026-07-26
-ev-kurma,koltuk-takimi,Koltuk Takımı,Mobilya,sabit,15244,36652,45944,6599,65999,49,2,amazon; trendyol,2026-07-26
-ev-kurma,konsol,Konsol,Mobilya,sabit,2780,5753,8164,2204,10183,61,2,amazon; trendyol,2026-07-26
-ev-kurma,sehpa,Orta Sehpa,Mobilya,sabit,1281,2319,3540,799,8750,72,2,amazon; trendyol,2026-07-26
-ev-kurma,tv-unitesi,TV Ünitesi,Mobilya,sabit,2768,5326,21628,1349,38249,50,2,amazon; trendyol,2026-07-26
-ev-kurma,yemek-masasi,Yemek Odası Takımı,Mobilya,sabit,7910,17951,26474,3450,38990,58,2,amazon; trendyol,2026-07-26
-ev-kurma,bardak-takimi,Bardak Takımı,Mutfak,sabit,223,362,575,122,1320,68,2,amazon; trendyol,2026-07-26
-ev-kurma,kahvalti-takimi,Kahvaltı Takımı,Mutfak,sabit,695,1068,2273,300,3771,76,2,amazon; trendyol,2026-07-26
-ev-kurma,tava-seti,Tava Seti,Mutfak,sabit,1136,1658,4010,294,4740,43,2,amazon; trendyol,2026-07-26
-ev-kurma,tencere-seti,Tencere Seti,Mutfak,sabit,3084,5399,10962,1399,28000,119,4,amazon; karaca; madamecoco; trendyol,2026-07-26
-ev-kurma,yemek-takimi,Yemek Takımı,Mutfak,sabit,1634,2384,4069,1000,4999,64,2,amazon; trendyol,2026-07-26
-ev-kurma,catal-kasik-bicak-takimi,Çatal-Kaşık-Bıçak Takımı,Mutfak,sabit,1108,2860,5368,490,6949,60,2,amazon; trendyol,2026-07-26
-ev-kurma,aydinlatma,Avize / Aydınlatma,Tekstil,sabit,571,1124,2275,157,3982,68,2,amazon; trendyol,2026-07-26
-ev-kurma,bornoz,Bornoz,Tekstil,sabit,572,897,1340,372,2400,76,2,amazon; trendyol,2026-07-26
-ev-kurma,hali,Halı,Tekstil,sabit,712,1369,3103,160,4228,49,2,amazon; trendyol,2026-07-26
-ev-kurma,havlu-takimi,Havlu Takımı,Tekstil,sabit,357,607,1387,194,1650,79,2,amazon; trendyol,2026-07-26
-ev-kurma,nevresim-takimi,Nevresim Takımı,Tekstil,sabit,550,999,1600,268,2990,122,3,amazon; englishhome; trendyol,2026-07-26
-ev-kurma,perde,Perde,Tekstil,sabit,301,648,1487,126,1710,50,2,amazon; trendyol,2026-07-26
-ev-kurma,boy-aynasi,Boy Aynası,Yatak odası,sabit,1696,2400,4542,1200,8812,57,2,amazon; trendyol,2026-07-26
-ev-kurma,gardirop,Gardırop,Yatak odası,sabit,2915,5898,8909,965,13659,55,2,amazon; trendyol,2026-07-26
-ev-kurma,karyola,Karyola / Baza,Yatak odası,sabit,3450,4966,7670,2051,12620,51,2,amazon; trendyol,2026-07-26
-ev-kurma,komodin,Komodin,Yatak odası,sabit,738,1554,3074,479,4250,61,2,amazon; trendyol,2026-07-26
-ev-kurma,yatak,Çift Kişilik Yatak,Yatak odası,sabit,1644,2308,3826,1000,5900,65,2,amazon; trendyol,2026-07-26
-ev-kurma,sifonyer,Şifonyer,Yatak odası,sabit,2176,4050,5946,899,9990,58,2,amazon; trendyol,2026-07-26
+ev-kurma,firin-ocak,Ankastre Fırın / Ocak Seti,Beyaz eşya,sabit,18199,31999,38564,3849,53528,45,3,amazon; mediamarkt; trendyol,2026-08-02
+ev-kurma,bulasik-makinesi,Bulaşık Makinesi,Beyaz eşya,sabit,16249,23999,26998,4333,32999,48,3,amazon; mediamarkt; trendyol,2026-08-02
+ev-kurma,buzdolabi,Buzdolabı,Beyaz eşya,sabit,9240,29597,42999,6191,72999,66,3,amazon; mediamarkt; trendyol,2026-08-02
+ev-kurma,davlumbaz,Davlumbaz,Beyaz eşya,sabit,2980,4799,12537,799,19999,51,3,amazon; mediamarkt; trendyol,2026-08-02
+ev-kurma,klima,Klima,Beyaz eşya,sabit,25145,34924,53249,9499,95000,50,3,amazon; mediamarkt; trendyol,2026-08-02
+ev-kurma,kurutma-makinesi,Kurutma Makinesi,Beyaz eşya,sabit,15849,19504,31489,3733,41199,47,3,amazon; mediamarkt; trendyol,2026-08-02
+ev-kurma,mikrodalga,Mikrodalga Fırın,Beyaz eşya,sabit,3258,4887,7214,1400,11699,62,3,amazon; mediamarkt; trendyol,2026-08-02
+ev-kurma,camasir-makinesi,Çamaşır Makinesi,Beyaz eşya,sabit,19474,30499,41449,5210,54599,49,3,amazon; mediamarkt; trendyol,2026-08-02
+ev-kurma,dikey-supurge,Dikey Süpürge,Elektronik,sabit,1698,7649,15710,899,39999,78,3,amazon; mediamarkt; trendyol,2026-08-02
+ev-kurma,supurge,Robot Süpürge,Elektronik,sabit,8749,18299,41371,3400,79999,88,3,amazon; mediamarkt; trendyol,2026-08-02
+ev-kurma,televizyon,Televizyon (4K),Elektronik,sabit,17352,38519,70064,6299,89999,61,3,amazon; mediamarkt; trendyol,2026-08-02
+ev-kurma,airfryer,Airfryer,Küçük ev aleti,sabit,1999,3990,7749,999,16799,68,3,amazon; mediamarkt; trendyol,2026-08-02
+ev-kurma,blender,Blender,Küçük ev aleti,sabit,1379,4549,10639,949,14999,60,3,amazon; mediamarkt; trendyol,2026-08-02
+ev-kurma,kahve-makinesi,Kahve Makinesi,Küçük ev aleti,sabit,1363,3560,16053,425,32999,86,3,amazon; mediamarkt; trendyol,2026-08-02
+ev-kurma,mutfak-robotu,Mutfak Robotu / Doğrayıcı,Küçük ev aleti,sabit,1761,3088,5590,1100,10999,67,2,amazon; trendyol,2026-08-02
+ev-kurma,sac-kurutma-makinesi,Saç Kurutma Makinesi,Küçük ev aleti,sabit,848,1494,2699,429,24999,72,3,amazon; mediamarkt; trendyol,2026-08-02
+ev-kurma,su-isitici,Su Isıtıcı (Kettle),Küçük ev aleti,sabit,606,1248,2272,359,4979,62,2,amazon; trendyol,2026-08-02
+ev-kurma,tost-makinesi,Tost Makinesi,Küçük ev aleti,sabit,2200,3317,5353,699,10499,74,3,amazon; mediamarkt; trendyol,2026-08-02
+ev-kurma,utu,Ütü,Küçük ev aleti,sabit,1074,2813,5699,749,27499,74,3,amazon; mediamarkt; trendyol,2026-08-02
+ev-kurma,koltuk-takimi,Koltuk Takımı,Mobilya,sabit,20844,42689,66005,6405,88349,77,3,amazon; dogtas; trendyol,2026-08-02
+ev-kurma,konsol,Konsol,Mobilya,sabit,2784,5526,7656,1499,9900,62,2,amazon; trendyol,2026-08-02
+ev-kurma,sehpa,Orta Sehpa,Mobilya,sabit,1150,2398,3658,750,6980,66,2,amazon; trendyol,2026-08-02
+ev-kurma,tv-unitesi,TV Ünitesi,Mobilya,sabit,2916,5014,6872,1240,7945,61,2,amazon; trendyol,2026-08-02
+ev-kurma,yemek-masasi,Yemek Odası Takımı,Mobilya,sabit,10835,21540,29250,3446,83399,72,3,amazon; dogtas; trendyol,2026-08-02
+ev-kurma,bardak-takimi,Bardak Takımı,Mutfak,sabit,222,397,756,117,1349,68,2,amazon; trendyol,2026-08-02
+ev-kurma,kahvalti-takimi,Kahvaltı Takımı,Mutfak,sabit,714,1324,2476,230,3771,63,2,amazon; trendyol,2026-08-02
+ev-kurma,tava-seti,Tava Seti,Mutfak,sabit,1126,1755,3890,310,4740,43,2,amazon; trendyol,2026-08-02
+ev-kurma,tencere-seti,Tencere Seti,Mutfak,sabit,2210,3729,6828,1260,17999,111,4,amazon; karaca; madamecoco; trendyol,2026-08-02
+ev-kurma,yemek-takimi,Yemek Takımı,Mutfak,sabit,1726,2620,3974,699,6899,67,2,amazon; trendyol,2026-08-02
+ev-kurma,catal-kasik-bicak-takimi,Çatal-Kaşık-Bıçak Takımı,Mutfak,sabit,801,2022,5236,490,6999,55,2,amazon; trendyol,2026-08-02
+ev-kurma,aydinlatma,Avize / Aydınlatma,Tekstil,sabit,424,1146,2168,152,3836,68,2,amazon; trendyol,2026-08-02
+ev-kurma,bornoz,Bornoz,Tekstil,sabit,600,1063,1574,399,2350,69,2,amazon; trendyol,2026-08-02
+ev-kurma,hali,Halı,Tekstil,sabit,854,1936,2925,160,3538,49,2,amazon; trendyol,2026-08-02
+ev-kurma,havlu-takimi,Havlu Takımı,Tekstil,sabit,364,572,910,194,1637,66,2,amazon; trendyol,2026-08-02
+ev-kurma,nevresim-takimi,Nevresim Takımı,Tekstil,sabit,550,874,1550,307,3600,105,3,amazon; englishhome; trendyol,2026-08-02
+ev-kurma,perde,Perde,Tekstil,sabit,314,585,836,200,1337,46,2,amazon; trendyol,2026-08-02
+ev-kurma,boy-aynasi,Boy Aynası,Yatak odası,sabit,1649,2850,5133,578,8812,53,2,amazon; trendyol,2026-08-02
+ev-kurma,gardirop,Gardırop,Yatak odası,sabit,4534,6100,11224,965,52805,76,3,amazon; dogtas; trendyol,2026-08-02
+ev-kurma,karyola,Karyola / Baza,Yatak odası,sabit,3328,5024,7732,2143,12620,49,2,amazon; trendyol,2026-08-02
+ev-kurma,komodin,Komodin,Yatak odası,sabit,775,1617,2919,479,4250,61,2,amazon; trendyol,2026-08-02
+ev-kurma,yatak,Çift Kişilik Yatak,Yatak odası,sabit,1647,2294,3890,1100,5900,65,2,amazon; trendyol,2026-08-02
+ev-kurma,sifonyer,Şifonyer,Yatak odası,sabit,2296,4104,6976,1099,9990,61,2,amazon; trendyol,2026-08-02
 okul,ayakkabi,Spor Ayakkabı,Giyim,sabit,778,1145,1512,435,2407,67,2,amazon; trendyol,2026-08-02
 okul,ders-kitabi,Ders ve Yardımcı Kitap,Kitap,sabit,174,309,515,65,882,65,2,amazon; trendyol,2026-08-02
 okul,sozluk,Sözlük,Kitap,sabit,126,269,735,56,1590,62,2,amazon; trendyol,2026-08-02

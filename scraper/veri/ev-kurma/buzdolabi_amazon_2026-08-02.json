@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Buzdolabı"
+  ],
+  "kalem": "buzdolabi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 30,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 23499,
+  "segmentler": {
+    "dusuk": {
+      "min": 6575,
+      "medyan": 9065,
+      "max": 15000,
+      "urun_sayisi": 8
+    },
+    "orta": {
+      "min": 15396,
+      "medyan": 24999,
+      "max": 32299,
+      "urun_sayisi": 15
+    },
+    "luks": {
+      "min": 34499,
+      "medyan": 41299,
+      "max": 59899,
+      "urun_sayisi": 7
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Gardirop"
+  ],
+  "kalem": "gardirop",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 23,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 6000,
+  "segmentler": {
+    "dusuk": {
+      "min": 1599,
+      "medyan": 4534,
+      "max": 4909,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 5019,
+      "medyan": 6100,
+      "max": 9000,
+      "urun_sayisi": 13
+    },
+    "luks": {
+      "min": 10000,
+      "medyan": 11224,
+      "max": 13659,
+      "urun_sayisi": 4
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Kahve Makinesi"
+  ],
+  "kalem": "kahve-makinesi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 20,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 2012,
+  "segmentler": {
+    "dusuk": {
+      "min": 599,
+      "medyan": 1229,
+      "max": 1399,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 1599,
+      "medyan": 2052,
+      "max": 5599,
+      "urun_sayisi": 10
+    },
+    "luks": {
+      "min": 5599,
+      "medyan": 6475,
+      "max": 10299,
+      "urun_sayisi": 4
+    }
+  }
+}

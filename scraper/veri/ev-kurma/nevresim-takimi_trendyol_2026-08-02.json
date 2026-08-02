@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Nevresim Takimi"
+  ],
+  "kalem": "nevresim-takimi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 20,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 594,
+  "segmentler": {
+    "dusuk": {
+      "min": 307,
+      "medyan": 392,
+      "max": 440,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 497,
+      "medyan": 610,
+      "max": 695,
+      "urun_sayisi": 10
+    },
+    "luks": {
+      "min": 700,
+      "medyan": 729,
+      "max": 844,
+      "urun_sayisi": 4
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Dikey Supurge"
+  ],
+  "kalem": "dikey-supurge",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 24,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 3162,
+  "segmentler": {
+    "dusuk": {
+      "min": 1199,
+      "medyan": 1698,
+      "max": 1984,
+      "urun_sayisi": 7
+    },
+    "orta": {
+      "min": 2320,
+      "medyan": 3317,
+      "max": 5499,
+      "urun_sayisi": 12
+    },
+    "luks": {
+      "min": 5999,
+      "medyan": 6599,
+      "max": 10699,
+      "urun_sayisi": 5
+    }
+  }
+}

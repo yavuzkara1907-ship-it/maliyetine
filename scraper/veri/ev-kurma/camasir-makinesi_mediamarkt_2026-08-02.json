@@ -1,0 +1,35 @@
+{
+  "site": "mediamarkt",
+  "kaynak_adlari": [
+    "MediaMarkt - Camasir Makineleri"
+  ],
+  "kalem": "camasir-makinesi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 12,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 27199,
+  "segmentler": {
+    "dusuk": {
+      "min": 18999,
+      "medyan": 20999,
+      "max": 22999,
+      "urun_sayisi": 4
+    },
+    "orta": {
+      "min": 23999,
+      "medyan": 30499,
+      "max": 40699,
+      "urun_sayisi": 6
+    },
+    "luks": {
+      "min": 40999,
+      "medyan": 41449,
+      "max": 41899,
+      "urun_sayisi": 2
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Tencere Seti"
+  ],
+  "kalem": "tencere-seti",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 39,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 4000,
+  "segmentler": {
+    "dusuk": {
+      "min": 1399,
+      "medyan": 2299,
+      "max": 2999,
+      "urun_sayisi": 10
+    },
+    "orta": {
+      "min": 3099,
+      "medyan": 4034,
+      "max": 6799,
+      "urun_sayisi": 20
+    },
+    "luks": {
+      "min": 6858,
+      "medyan": 7879,
+      "max": 10199,
+      "urun_sayisi": 9
+    }
+  }
+}

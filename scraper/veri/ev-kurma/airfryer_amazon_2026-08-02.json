@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Airfryer"
+  ],
+  "kalem": "airfryer",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 34,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 3990,
+  "segmentler": {
+    "dusuk": {
+      "min": 999,
+      "medyan": 1999,
+      "max": 2499,
+      "urun_sayisi": 9
+    },
+    "orta": {
+      "min": 2650,
+      "medyan": 3990,
+      "max": 4999,
+      "urun_sayisi": 17
+    },
+    "luks": {
+      "min": 5499,
+      "medyan": 7749,
+      "max": 9499,
+      "urun_sayisi": 8
+    }
+  }
+}

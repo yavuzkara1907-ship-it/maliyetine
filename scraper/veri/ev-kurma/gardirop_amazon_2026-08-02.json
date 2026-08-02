@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Gardırop"
+  ],
+  "kalem": "gardirop",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 32,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 5122,
+  "segmentler": {
+    "dusuk": {
+      "min": 965,
+      "medyan": 1709,
+      "max": 3100,
+      "urun_sayisi": 9
+    },
+    "orta": {
+      "min": 3179,
+      "medyan": 5197,
+      "max": 7120,
+      "urun_sayisi": 16
+    },
+    "luks": {
+      "min": 7811,
+      "medyan": 8398,
+      "max": 12320,
+      "urun_sayisi": 7
+    }
+  }
+}

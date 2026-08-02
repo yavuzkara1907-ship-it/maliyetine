@@ -13,7 +13,7 @@ yanıltıcı hale gelir: "buzdolabı 30 bin lira" altı ay sonra yanlış olur,
 ## Endeksler
 
 - [Düğün](https://maliyetine.com.tr/dugun/): 15 kalem, ölçüm 2026-07-26. JSON: https://maliyetine.com.tr/veri/dugun.json · CSV: https://maliyetine.com.tr/veri/csv/dugun.csv
-- [Ev Kurma](https://maliyetine.com.tr/ev-kurma/): 42 kalem, ölçüm 2026-07-26. JSON: https://maliyetine.com.tr/veri/ev-kurma.json · CSV: https://maliyetine.com.tr/veri/csv/ev-kurma.csv
+- [Ev Kurma](https://maliyetine.com.tr/ev-kurma/): 42 kalem, ölçüm 2026-08-02. JSON: https://maliyetine.com.tr/veri/ev-kurma.json · CSV: https://maliyetine.com.tr/veri/csv/ev-kurma.csv
 - [Okul](https://maliyetine.com.tr/okul/): 14 kalem, ölçüm 2026-08-02. JSON: https://maliyetine.com.tr/veri/okul.json · CSV: https://maliyetine.com.tr/veri/csv/okul.csv
 - [Bebek](https://maliyetine.com.tr/bebek/): 11 kalem, ölçüm 2026-08-02. JSON: https://maliyetine.com.tr/veri/bebek.json · CSV: https://maliyetine.com.tr/veri/csv/bebek.csv
 - [Kedi](https://maliyetine.com.tr/kedi/): 8 kalem, ölçüm 2026-07-28. JSON: https://maliyetine.com.tr/veri/kedi.json · CSV: https://maliyetine.com.tr/veri/csv/kedi.csv

@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Şifonyer"
+  ],
+  "kalem": "sifonyer",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 36,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 3474,
+  "segmentler": {
+    "dusuk": {
+      "min": 1099,
+      "medyan": 1994,
+      "max": 2339,
+      "urun_sayisi": 10
+    },
+    "orta": {
+      "min": 2469,
+      "medyan": 4454,
+      "max": 5999,
+      "urun_sayisi": 18
+    },
+    "luks": {
+      "min": 6311,
+      "medyan": 7900,
+      "max": 9990,
+      "urun_sayisi": 8
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Tava Seti"
+  ],
+  "kalem": "tava-seti",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 38,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 1544,
+  "segmentler": {
+    "dusuk": {
+      "min": 310,
+      "medyan": 824,
+      "max": 1036,
+      "urun_sayisi": 10
+    },
+    "orta": {
+      "min": 1038,
+      "medyan": 1594,
+      "max": 2199,
+      "urun_sayisi": 20
+    },
+    "luks": {
+      "min": 2459,
+      "medyan": 3040,
+      "max": 4420,
+      "urun_sayisi": 8
+    }
+  }
+}

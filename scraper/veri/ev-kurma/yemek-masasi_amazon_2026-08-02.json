@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Yemek Masası Takımı"
+  ],
+  "kalem": "yemek-masasi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 33,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 11533,
+  "segmentler": {
+    "dusuk": {
+      "min": 3446,
+      "medyan": 4300,
+      "max": 4699,
+      "urun_sayisi": 9
+    },
+    "orta": {
+      "min": 4901,
+      "medyan": 11533,
+      "max": 13995,
+      "urun_sayisi": 17
+    },
+    "luks": {
+      "min": 14994,
+      "medyan": 14994,
+      "max": 19500,
+      "urun_sayisi": 7
+    }
+  }
+}

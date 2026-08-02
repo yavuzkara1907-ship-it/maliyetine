@@ -1,0 +1,35 @@
+{
+  "site": "mediamarkt",
+  "kaynak_adlari": [
+    "MediaMarkt - Supurgeler"
+  ],
+  "kalem": "supurge",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 12,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 16499,
+  "segmentler": {
+    "dusuk": {
+      "min": 4499,
+      "medyan": 8749,
+      "max": 12949,
+      "urun_sayisi": 4
+    },
+    "orta": {
+      "min": 13499,
+      "medyan": 17249,
+      "max": 18999,
+      "urun_sayisi": 6
+    },
+    "luks": {
+      "min": 36999,
+      "medyan": 38499,
+      "max": 39999,
+      "urun_sayisi": 2
+    }
+  }
+}

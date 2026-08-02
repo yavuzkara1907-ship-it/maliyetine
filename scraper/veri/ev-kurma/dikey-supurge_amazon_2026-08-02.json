@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Dikey Süpürge"
+  ],
+  "kalem": "dikey-supurge",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 42,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 7474,
+  "segmentler": {
+    "dusuk": {
+      "min": 899,
+      "medyan": 1529,
+      "max": 3999,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 4300,
+      "medyan": 7649,
+      "max": 10919,
+      "urun_sayisi": 21
+    },
+    "luks": {
+      "min": 12249,
+      "medyan": 15710,
+      "max": 18180,
+      "urun_sayisi": 10
+    }
+  }
+}

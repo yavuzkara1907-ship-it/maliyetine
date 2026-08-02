@@ -1,0 +1,13 @@
+{
+  "vertikal": "ev-kurma",
+  "kalem": "mikrodalga",
+  "tarih": "2026-08-02",
+  "site_medyanlari": {
+    "trendyol": 5049,
+    "amazon": 4687,
+    "mediamarkt": 4499
+  },
+  "fark_orani": 0.122,
+  "esik_orani": 0.3,
+  "uyari": false
+}

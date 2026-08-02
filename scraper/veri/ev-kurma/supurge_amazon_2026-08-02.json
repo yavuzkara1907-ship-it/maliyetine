@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Robot Süpürge"
+  ],
+  "kalem": "supurge",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 51,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 26598,
+  "segmentler": {
+    "dusuk": {
+      "min": 3400,
+      "medyan": 9689,
+      "max": 14502,
+      "urun_sayisi": 13
+    },
+    "orta": {
+      "min": 14999,
+      "medyan": 30282,
+      "max": 45999,
+      "urun_sayisi": 27
+    },
+    "luks": {
+      "min": 49999,
+      "medyan": 62999,
+      "max": 79999,
+      "urun_sayisi": 11
+    }
+  }
+}

@@ -1853,6 +1853,8 @@ KAYNAK_SITELERI = {
     "dugunbuketi": {"ad": "DüğünBuketi", "rel": "nofollow"},
     "donanimhaber": {"ad": "DonanımHaber", "rel": "nofollow"},
     "ebebek": {"ad": "ebebek", "rel": "nofollow"},
+    "mediamarkt": {"ad": "MediaMarkt", "rel": "nofollow"},
+    "dogtas": {"ad": "Doğtaş", "rel": "nofollow"},
     "joker": {"ad": "Joker", "rel": "nofollow"},
     "nezih": {"ad": "Nezih", "rel": "nofollow"},
     "dr": {"ad": "D&R", "rel": "nofollow"},

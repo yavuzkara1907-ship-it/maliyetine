@@ -1,0 +1,35 @@
+{
+  "site": "mediamarkt",
+  "kaynak_adlari": [
+    "MediaMarkt - Utuler"
+  ],
+  "kalem": "utu",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 12,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 7499,
+  "segmentler": {
+    "dusuk": {
+      "min": 2299,
+      "medyan": 2749,
+      "max": 3999,
+      "urun_sayisi": 4
+    },
+    "orta": {
+      "min": 4999,
+      "medyan": 8999,
+      "max": 22899,
+      "urun_sayisi": 6
+    },
+    "luks": {
+      "min": 22999,
+      "medyan": 25249,
+      "max": 27499,
+      "urun_sayisi": 2
+    }
+  }
+}

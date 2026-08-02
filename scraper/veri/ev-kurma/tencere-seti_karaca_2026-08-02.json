@@ -1,0 +1,35 @@
+{
+  "site": "karaca",
+  "kaynak_adlari": [
+    "Karaca - Tencere Seti"
+  ],
+  "kalem": "tencere-seti",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 42,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 6999,
+  "segmentler": {
+    "dusuk": {
+      "min": 2400,
+      "medyan": 3499,
+      "max": 3999,
+      "urun_sayisi": 13
+    },
+    "orta": {
+      "min": 4499,
+      "medyan": 6999,
+      "max": 7999,
+      "urun_sayisi": 19
+    },
+    "luks": {
+      "min": 9999,
+      "medyan": 10499,
+      "max": 17999,
+      "urun_sayisi": 10
+    }
+  }
+}

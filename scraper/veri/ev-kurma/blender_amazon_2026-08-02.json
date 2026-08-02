@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Blender"
+  ],
+  "kalem": "blender",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 40,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 2434,
+  "segmentler": {
+    "dusuk": {
+      "min": 949,
+      "medyan": 1379,
+      "max": 1599,
+      "urun_sayisi": 12
+    },
+    "orta": {
+      "min": 1899,
+      "medyan": 2569,
+      "max": 3610,
+      "urun_sayisi": 19
+    },
+    "luks": {
+      "min": 3644,
+      "medyan": 4750,
+      "max": 5989,
+      "urun_sayisi": 9
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Kahve Makinesi"
+  ],
+  "kalem": "kahve-makinesi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 54,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 3430,
+  "segmentler": {
+    "dusuk": {
+      "min": 425,
+      "medyan": 1363,
+      "max": 1973,
+      "urun_sayisi": 14
+    },
+    "orta": {
+      "min": 1991,
+      "medyan": 3560,
+      "max": 8999,
+      "urun_sayisi": 27
+    },
+    "luks": {
+      "min": 9699,
+      "medyan": 16053,
+      "max": 24149,
+      "urun_sayisi": 13
+    }
+  }
+}

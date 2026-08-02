@@ -4456,3 +4456,313 @@ kaynaklar:
     min_fiyat: 150
     bekleme_sn: 2
     sayfa_sayisi: 1
+
+  # =========================================================
+  # MEDIAMARKT — EV KURMA UST SEGMENTI (2026-08-02)
+  #
+  # Yavuz: "buzdolabi ve o ev kurma kisminda hala eksigiz. dogru
+  # kaynaklara ulasamadik. ust fiyatlar cok ucuz kaldi."
+  #
+  # BU, 25 TEMMUZ'DAN BERI ACIK OLAN EKSIGIN KAPANMASI. O gun Yavuz
+  # "buzdolabi 45 bin TL luks diyoruz ama asil luks 80.000'den
+  # basliyor" demisti. O zamanki teshis dogruydu (Trendyol kategori
+  # sayfasinda max 62K var, premium modeller listede YOK; ?prc= ve
+  # ?sst=PRICE_BY_DESC filtreleri JS ile uygulaniyor, sunucu HTML'i
+  # degismiyor) ama COZUM eksikti: kalemi "luks" yerine "ust" diye
+  # ADLANDIRDIK, gercek premium veriyi getirmedik.
+  #
+  # MediaMarkt JSON-LD veriyor, CSS secici gerekmedi. Onceki turda
+  # "robots ONAY ama JSON-LD/microdata YOK -> CSS gerekir" diye
+  # kaydedilmisti; o teshis ANA SAYFAYA bakilarak yapilmisti,
+  # KATEGORI sayfalarinda JSON-LD var.
+  #
+  # 12 URUN SINIRI: her kategoride tam 12 urun donuyor ve
+  # kaydirma/render bunu DEGISTIRMIYOR (0/6/12 kaydirma denendi,
+  # ucu de 12) - MediaMarkt JSON-LD ItemList'e 12 urun koyuyor.
+  # Orneklem ince ama premium uctaki 12 urun tam da eksigimiz olan
+  # sey; saglik kontrolu anomaliyi zaten yakalar.
+  #
+  # 17 KALEMIN HEPSI EKLENDI, yalnizca rakami yukseltenler DEGIL --
+  # oyle yapmak kiraz toplamak olurdu. Bazilarinda bizim mevcut
+  # ust ucumuz zaten daha yuksek (televizyon 119.999 > 89.999,
+  # supurge 62.999 > 39.999, camasir 54.599 > 41.899) ve bu da
+  # bilgi: her kalemde premium magaza daha pahali degil.
+  #
+  # Olculen ust uc etkisi (bizim max -> MediaMarkt max):
+  #   firin-ocak    31.049 -> 53.528     utu           9.999 -> 27.499
+  #   buzdolabi     61.990 -> 72.999     sac-kurutma   3.799 -> 24.999
+  #   dikey-supurge 26.299 -> 39.999     kahve-mak.   23.868 -> 32.999
+  #   blender        8.789 -> 14.999     airfryer      9.499 -> 16.799
+  #
+  # ELENEN ADAYLAR (ayni turda):
+  #   - vatan     : ana sayfadan kategori linki bulunamadi
+  #   - miele     : kategori linki bulunamadi
+  #   - siemens   : fiyat yok (JS)
+  #   - vestel    : fiyat yok (JS)
+  #   - bosch     : 12 fiyat var ama 0'i urun kartinin icinde
+  #                 (D&R'daki gibi elle bakilabilir - siradaki tur)
+  # =========================================================
+
+  - ad: "MediaMarkt - Buzdolabi"
+    site: mediamarkt
+    vertikal: ev-kurma
+    kalem: buzdolabi
+    url: "https://www.mediamarkt.com.tr/tr/category/buzdolabi-465709.html"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 5000
+    bekleme_sn: 3
+    sayfa_sayisi: 1
+
+  - ad: "MediaMarkt - Camasir Makineleri"
+    site: mediamarkt
+    vertikal: ev-kurma
+    kalem: camasir-makinesi
+    url: "https://www.mediamarkt.com.tr/tr/category/camasir-makineleri-809009.html"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 5000
+    bekleme_sn: 3
+    sayfa_sayisi: 1
+
+  - ad: "MediaMarkt - Bulasik Makineleri"
+    site: mediamarkt
+    vertikal: ev-kurma
+    kalem: bulasik-makinesi
+    url: "https://www.mediamarkt.com.tr/tr/category/bulasik-makineleri-712509.html"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 5000
+    bekleme_sn: 3
+    sayfa_sayisi: 1
+
+  - ad: "MediaMarkt - Kurutma Makineleri"
+    site: mediamarkt
+    vertikal: ev-kurma
+    kalem: kurutma-makinesi
+    url: "https://www.mediamarkt.com.tr/tr/category/kurutma-makineleri-809010.html"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 5000
+    bekleme_sn: 3
+    sayfa_sayisi: 1
+
+  - ad: "MediaMarkt - Ocakli Firinlar"
+    site: mediamarkt
+    vertikal: ev-kurma
+    kalem: firin-ocak
+    url: "https://www.mediamarkt.com.tr/tr/category/ocakli-firinlar-465720.html"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 3000
+    bekleme_sn: 3
+    sayfa_sayisi: 1
+
+  - ad: "MediaMarkt - Davlumbazlar"
+    site: mediamarkt
+    vertikal: ev-kurma
+    kalem: davlumbaz
+    url: "https://www.mediamarkt.com.tr/tr/category/davlumbazlar-465730.html"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 1000
+    bekleme_sn: 3
+    sayfa_sayisi: 1
+
+  - ad: "MediaMarkt - Mikrodalga Firinlar"
+    site: mediamarkt
+    vertikal: ev-kurma
+    kalem: mikrodalga
+    url: "https://www.mediamarkt.com.tr/tr/category/mikrodalga-465721.html"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 1500
+    bekleme_sn: 3
+    sayfa_sayisi: 1
+
+  - ad: "MediaMarkt - Klimalar"
+    site: mediamarkt
+    vertikal: ev-kurma
+    kalem: klima
+    url: "https://www.mediamarkt.com.tr/tr/category/klimalar-465752.html"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 8000
+    bekleme_sn: 3
+    sayfa_sayisi: 1
+
+  - ad: "MediaMarkt - Televizyonlar"
+    site: mediamarkt
+    vertikal: ev-kurma
+    kalem: televizyon
+    url: "https://www.mediamarkt.com.tr/tr/category/televizyon-465019.html"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 5000
+    bekleme_sn: 3
+    sayfa_sayisi: 1
+
+  - ad: "MediaMarkt - Supurgeler"
+    site: mediamarkt
+    vertikal: ev-kurma
+    kalem: supurge
+    url: "https://www.mediamarkt.com.tr/tr/category/supurgeler-465738.html"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 1000
+    bekleme_sn: 3
+    sayfa_sayisi: 1
+
+  - ad: "MediaMarkt - Dikey Supurge"
+    site: mediamarkt
+    vertikal: ev-kurma
+    kalem: dikey-supurge
+    url: "https://www.mediamarkt.com.tr/tr/category/dikey-supurge-465743.html"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 1500
+    bekleme_sn: 3
+    sayfa_sayisi: 1
+
+  - ad: "MediaMarkt - Airfryer"
+    site: mediamarkt
+    vertikal: ev-kurma
+    kalem: airfryer
+    url: "https://www.mediamarkt.com.tr/tr/category/airfryer-806576.html"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 1000
+    bekleme_sn: 3
+    sayfa_sayisi: 1
+
+  - ad: "MediaMarkt - Kahve Makinesi"
+    site: mediamarkt
+    vertikal: ev-kurma
+    kalem: kahve-makinesi
+    url: "https://www.mediamarkt.com.tr/tr/category/kahve-makinesi-806537.html"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 800
+    bekleme_sn: 3
+    sayfa_sayisi: 1
+
+  - ad: "MediaMarkt - Tost Makineleri"
+    site: mediamarkt
+    vertikal: ev-kurma
+    kalem: tost-makinesi
+    url: "https://www.mediamarkt.com.tr/tr/category/tost-makineleri-806549.html"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 500
+    bekleme_sn: 3
+    sayfa_sayisi: 1
+
+  - ad: "MediaMarkt - Blender"
+    site: mediamarkt
+    vertikal: ev-kurma
+    kalem: blender
+    url: "https://www.mediamarkt.com.tr/tr/category/blender-806556.html"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 400
+    bekleme_sn: 3
+    sayfa_sayisi: 1
+
+  - ad: "MediaMarkt - Utuler"
+    site: mediamarkt
+    vertikal: ev-kurma
+    kalem: utu
+    url: "https://www.mediamarkt.com.tr/tr/category/utuler-465747.html"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 600
+    bekleme_sn: 3
+    sayfa_sayisi: 1
+
+  - ad: "MediaMarkt - Sac Kurutma"
+    site: mediamarkt
+    vertikal: ev-kurma
+    kalem: sac-kurutma-makinesi
+    url: "https://www.mediamarkt.com.tr/tr/category/sac-kurutma-465828.html"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 300
+    bekleme_sn: 3
+    sayfa_sayisi: 1
+
+  # =========================================================
+  # DOGTAS — EV KURMA MOBILYA UST SEGMENTI (2026-08-02)
+  #
+  # MediaMarkt beyaz esya/elektronik ust ucunu actı; mobilya tarafinda
+  # ayni bosluk vardi. Dogtas premium bir Turk mobilya markasi ve
+  # ust ucu ciddi sekilde geniletiyor:
+  #   koltuk-takimi  bizim max 65.999 -> 139.190
+  #   yemek-masasi   bizim max 38.990 ->  83.399
+  #   gardirop       (dolaplar) max 52.805
+  #
+  # Taranan diger mobilya adaylari:
+  #   - vivense           : robots RET
+  #   - bellona, istikbal : fiyat var (27/46) ama 0'i urun kartinin
+  #                         icinde - D&R gibi elle bakilabilir, siradaki tur
+  #   - enzahome          : JSON-LD var ama 66 fiyatin yalnizca 6'si
+  #                         kart icinde; eslesme guvenilir degil
+  #
+  # ALINMAYAN: dogtas/yatak. `/yataklar` sayfasi "YATAK ODASI TAKIMI"
+  # donduruyor (117.955 TL) - bizim `yatak` kalemimiz SILTE (ust
+  # medyanimiz 3.826). Kategori adi tuttugu icin ilk bakista dogru
+  # gorunuyordu; urun adlarina bakilinca ortaya cikti. Tam olarak
+  # D&R/termos ve ebebek/biberon ile ayni tuzak.
+  #
+  # isim_secici: `.c-p-i-link` ILK DENEMEDE KULLANILDI VE YANLISTI --
+  # o element karti saran <a>, metni fiyatlari da iceriyor
+  # ("FIORENKoltuk Takimi56.984,43 TL63.316,03 TL"). `.title` temiz
+  # ad veriyor. Fiyat dogru cikiyordu, o yuzden bu sessizce gecebilirdi.
+  # =========================================================
+
+  - ad: "Dogtas - Koltuk Takimlari"
+    site: dogtas
+    vertikal: ev-kurma
+    kalem: koltuk-takimi
+    url: "https://www.dogtas.com/koltuk-takimlari"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 8000
+    bekleme_sn: 2
+    sayfa_sayisi: 1
+    css_secicileri:
+      urun_karti: .card-product
+      isim_secici: .title
+      # Ustu cizili eski fiyat ayri sinifta; odenen fiyat new-sale-price.
+      fiyat_secici: ".new-sale-price:not(.d-none), .new-sale-price"
+
+  - ad: "Dogtas - Yemek Odasi Takimlari"
+    site: dogtas
+    vertikal: ev-kurma
+    kalem: yemek-masasi
+    url: "https://www.dogtas.com/yemek-odasi-takimlari"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 8000
+    bekleme_sn: 2
+    sayfa_sayisi: 1
+    css_secicileri:
+      urun_karti: .card-product
+      isim_secici: .title
+      # Ustu cizili eski fiyat ayri sinifta; odenen fiyat new-sale-price.
+      fiyat_secici: ".new-sale-price:not(.d-none), .new-sale-price"
+
+  - ad: "Dogtas - Dolaplar"
+    site: dogtas
+    vertikal: ev-kurma
+    kalem: gardirop
+    url: "https://www.dogtas.com/dolaplar"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 6000
+    bekleme_sn: 2
+    sayfa_sayisi: 1
+    css_secicileri:
+      urun_karti: .card-product
+      isim_secici: .title
+      # Ustu cizili eski fiyat ayri sinifta; odenen fiyat new-sale-price.
+      fiyat_secici: ".new-sale-price:not(.d-none), .new-sale-price"

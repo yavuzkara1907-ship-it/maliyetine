@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Tost Makinesi"
+  ],
+  "kalem": "tost-makinesi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-02",
+  "toplam_urun": 21,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 2000,
+  "segmentler": {
+    "dusuk": {
+      "min": 742,
+      "medyan": 799,
+      "max": 899,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 1590,
+      "medyan": 2170,
+      "max": 2921,
+      "urun_sayisi": 10
+    },
+    "luks": {
+      "min": 2999,
+      "medyan": 3399,
+      "max": 5446,
+      "urun_sayisi": 5
+    }
+  }
+}
