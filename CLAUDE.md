@@ -1958,6 +1958,69 @@ gizlenmiyor — endeks sayfasinda "Capraz dogrulama notu" kutusunda
 yaziyor. sitemap 173, IndexNow'a bildirildi, canlida dogrulandi.
 
 
+## BEBEK: EBEBEK KAYNAGI + DOGUM MALIYETI REHBERI (2026-08-02)
+Yavuz: *"bebek kategorisini de hem rehber yazilariyla hem yeni maliyet
+kaynaklariyla guncelleyebilir miyiz? ozel hastanede dogum maliyeti gibi
+bir rehber de olabilir."*
+
+**KAYNAK — ebebek eklendi (6 kalem).** Bebek hazirligi **34.829 ->
+39.300 TL**, bagimsiz site **2 -> 3**. JSON-LD veriyor, CSS secici
+gerekmedi.
+
+| kalem | trendyol | amazon | ebebek | endeks |
+|---|---|---|---|---|
+| bebek-arabasi | 3.799 | 10.599 | 11.199 | **10.599** |
+| besik | 1.744 | 5.729 | 4.399 | **4.399** |
+| park-yatak | — | 5.399 | 4.899 | **5.149** |
+| bebek-kuveti | — | 1.250 | 850 | **1.050** |
+| gogus-pompasi | — | 1.259 | 3.299 | **2.279** |
+| bebek-bezi | — | 720 | 248 | **484** |
+
+**`render_gerekli: true` — ters yonlu bir ders.** ebebek ilk birkac
+istekte duz `requests` ile DOLU HTML donuyor, sonrakilerde **2.418
+byte'lik bos kabuk**. Yani "bir kez calisti" diye `false` yazmak
+yaniltici olurdu. Beymen'de tam TERSINI ogrenmistik (orada
+`render_gerekli: true` yanlisti cunku Playwright'a bos sayfa
+veriliyordu). **Kural: iki modu da, birkac kez dene.**
+
+**Elenenler:** ebebek biberon-seti / zibin-seti (bizim kalemler SET,
+ebebek TEK urun listeliyor — farkli urun, segment farki degil) ·
+ebebek mama-sandalyesi (6 urun, donen sey "bebek oturagi") · ebebek
+oto-koltugu (bizimle %1 uyumlu **ama ham HTML'de 4 urun** — guvenilir
+medyan icin az) · **joker** (calisiyor ama premium butik: Inglesina oto
+koltugu 33.742 TL, bizim 8.573) · prenatal, mothercare (SSL/baglanti).
+
+### `/rehber/ozel-hastanede-dogum-maliyeti/` — RAKAM VERMEYEN REHBER
+**Bu yazinin degeri rakam vermemesinde.** Ozel hastane dogum paketi
+fiyatlari internette liste halinde yayinlanmiyor; telefonla soruluyor
+ve gebelik haftasina, doktora, oda tipine gore degisiyor. *"Ortalama
+dogum 80 bin TL"* yazmak KIRMIZI CIZGI ihlali olurdu — ve bu sorguda
+tam olarak oyle yapan cok sayfa var, hicbirinde kaynak yok.
+
+Yazinin verdigi sey: **ilave ucret mekanizmasi** (SGK sozlesmeli
+hastanede odenen sey doğumun tamami degil, kanunun izin verdigi fark),
+teklif alirken sorulacak somut sorular (sezaryene donerse fark var mi,
+doktor ucreti dahil mi, kac gece yatis...), ve **olcebildigimiz kisim**
+(dogum sonrasi hazirlik, gercek veriyle).
+
+**ILAVE UCRET TAVAN ORANI BILEREK YAZILMADI.** Oran Cumhurbaskani
+kararina bagli ve degisiyor; birincil kaynaktan (Resmi Gazete / SGK
+tebligi) guncel orani **dogrulayamadim**. Dogrulanmamis bir yuzde
+yazmak yerine SGK'nin kendi **ilave ucret sorgu ekranina**
+yonlendiriliyor — hem dogru hem bayatlamaz. Oran birincil kaynaktan
+dogrulanirsa teblig adi + R.G. tarih/sayisiyla eklenebilir.
+
+### `/rehber/dogumdan-once-alinacaklar-listesi/`
+Cok aranan "dogum oncesi alinacaklar" sorgusu; farkimiz listeyi
+**fiyatla** vermek. Uc kalem toplamin buyuk kismini belirliyor; hangi
+kalemin dogum gunu gerektigi, hangisinin sonraya birakilabilecegi
+veriden cikiyor. **Oto koltugunda kriterin fiyat degil GUVENLIK
+STANDARDI oldugu ayrica yaziliyor** — sayfada fiyat siralamasi var ve
+tek basina "en ucuzu sec" diye okunabilirdi.
+
+sitemap 173 -> **175**, IndexNow'a bildirildi, canlida dogrulandi.
+
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
