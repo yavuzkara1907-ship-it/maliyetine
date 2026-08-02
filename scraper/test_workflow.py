@@ -132,5 +132,60 @@ class WorkflowTesti(unittest.TestCase):
                                f"{dosya.name}: hic test kosmuyor")
 
 
+    def test_duman_testi_HER_SITEYI_deniyor(self):
+        """Duman testi tek vertikal degil, HER SITEDEN bir kaynak denemeli.
+
+        2026-08-03'e kadar `motor.py --vertikal arac` calisiyordu ve arac
+        TEK kaynakli (donanimhaber). Yani "GitHub runner hedef sitelere
+        erisebiliyor mu" sorusu 20 sitenin BIRI icin cevaplaniyordu;
+        2 Agustos'ta eklenen 20 yeni kaynak (nezih, dr, ebebek, joker,
+        mediamarkt, dogtas) hic denenmemisti. Veri merkezi IP'sine farkli
+        davranan siteler var - Akakce ve Beymen'de tam bunu yasadik.
+
+        Bu test iki seyi birden tutuyor: workflow gercekten altkume
+        ureticisini cagiriyor mu, ve uretici aktif SITELERIN TAMAMINI
+        kapsiyor mu.
+        """
+        import duman_kaynaklari
+        import yaml as _yaml
+
+        akis = (Path(__file__).resolve().parent.parent
+                / ".github" / "workflows" / "duman-testi.yml").read_text(encoding="utf-8")
+        self.assertIn("duman_kaynaklari.py", akis,
+                      "duman testi altkume ureticisini cagirmiyor")
+        # Yorumda "--vertikal arac" gecebilir (eski halin aciklamasi);
+        # asil bakilan sey KOMUT SATIRI.
+        self.assertNotIn("motor.py --vertikal arac", akis,
+                         "duman testi hala tek vertikale bakiyor")
+
+        ham = _yaml.safe_load(
+            (Path(__file__).resolve().parent / "kaynaklar.yaml").read_text(encoding="utf-8"))
+        kaynaklar = ham.get("kaynaklar") or []
+        aktif = {k["site"] for k in kaynaklar if k.get("aktif", True) and k.get("site")}
+        secilen = {k["site"] for k in duman_kaynaklari.duman_altkumesi(kaynaklar)}
+        self.assertEqual(aktif, secilen,
+                         "duman testi bazi siteleri atliyor: {}".format(aktif - secilen))
+
+    def test_duman_testi_TUM_vertikalleri_uretiyor(self):
+        """Duman testinin sayfa uretim zinciri VERTIKALLER ile ayni olmali.
+
+        2026-08-03'te bulundu: aylik workflow'un dongusu 2026-07-28'de
+        kedi/kopek eklenerek duzeltilmisti ama DUMAN TESTININ dongusu
+        eski kalmisti (`dugun ev-kurma okul bebek arac`). Yani kedi,
+        kopek ve evcil-hayvan hub'inin uretim yolu runner'da hic
+        denenmiyordu - duman testi tam da bu kod yollarina kor olan
+        seydi.
+        """
+        akis = (Path(__file__).resolve().parent.parent
+                / ".github" / "workflows" / "duman-testi.yml").read_text(encoding="utf-8")
+        import sayfa_uret
+        for v in sayfa_uret.VERTIKALLER:
+            self.assertIn(v, akis,
+                          "duman testi '{}' vertikalini uretmiyor".format(v))
+        self.assertIn("evcil_hub.py", akis,
+                      "duman testi evcil-hayvan hub'ini uretmiyor")
+        self.assertIn("og_gorsel", akis,
+                      "duman testi paylasim kartlarini uretmiyor")
+
 if __name__ == "__main__":
     unittest.main()

@@ -44,10 +44,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Depoyu çek
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Python kur
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.11"
 
@@ -70,14 +70,18 @@ jobs:
         run: node --test "assets/js/test/*.test.js"
 
       # EN KRITIK ADIM: gercek sitelere GitHub IP'sinden erisim.
-      # Kucuk bir vertikal seciliyor (arac: tek kaynak, hizli) ve cikti
-      # /tmp'ye yaziliyor - gercek veri KIRLENMIYOR.
-      - name: Kazıma erişimi (veri /tmp'ye, gerçek veriye dokunulmaz)
+      # HER SITEDEN BIR kaynak deneniyor (2026-08-03'e kadar yalnizca
+      # `--vertikal arac` calisiyordu, o da TEK kaynakli - yani 20
+      # sitenin 19'u GitHub IP'sinden hic denenmemisti). Liste
+      # kaynaklar.yaml'dan uretiliyor, elle tutulmuyor.
+      # Cikti /tmp'ye yaziliyor - gercek veri KIRLENMIYOR.
+      - name: Kazıma erişimi — her siteden bir kaynak
         working-directory: scraper
         run: |
-          python motor.py --vertikal arac \
+          python duman_kaynaklari.py --cikti /tmp/duman-kaynaklar.yaml
+          python motor.py --kaynaklar /tmp/duman-kaynaklar.yaml \
             --cikti /tmp/duman-veri \
-            --gecmis /tmp/duman-gecmis.json 2>&1 | tail -30
+            --gecmis /tmp/duman-gecmis.json 2>&1 | tail -60
           echo "--- sonuc ---"
           bulunan=$(find /tmp/duman-veri -name '*.json' 2>/dev/null | wc -l)
           echo "yazilan anlik goruntu: $bulunan"
@@ -99,6 +103,28 @@ jobs:
             echo "::error::site yapisi degismis ya da bot korumasi devrede."
             exit 1
           fi
+          # Site bazinda rapor: tek bir sitenin sessizce dusmesi
+          # toplam urun sayisinda kaybolur. Uyari cikarilir ama is
+          # BASARISIZ SAYILMAZ - bir kaynagin gecici dusmesi normal,
+          # motor onu zaten karantinaya alir.
+          python - <<'PY'
+          import json, glob, os, collections
+          say = collections.Counter()
+          for f in glob.glob("/tmp/duman-veri/**/*.json", recursive=True):
+              if "capraz" in f:
+                  continue
+              d = json.load(open(f))
+              say[d.get("site") or os.path.basename(f)] += d.get("toplam_urun", 0)
+          print("--- site bazinda urun ---")
+          bos = []
+          for s, n in sorted(say.items()):
+              print(f"  {s:<16} {n}")
+              if n == 0:
+                  bos.append(s)
+          if bos:
+              print("::warning::GitHub IP'sinden 0 urun donen site(ler): "
+                    + ", ".join(bos))
+          PY
 
       - name: EVDS anahtarı tanımlı mı
         env:
@@ -115,15 +141,20 @@ jobs:
       - name: Sayfa üretim zinciri (commit edilmez)
         working-directory: scraper
         run: |
-          for v in dugun ev-kurma okul bebek arac; do
+          # Vertikal listesi sayfa_uret.VERTIKALLER ile AYNI olmali -
+          # bir test bunu dogruluyor. 2026-08-03'e kadar kedi/kopek
+          # eksikti; o kod yollari runner'da hic denenmiyordu.
+          for v in dugun ev-kurma okul bebek kedi kopek arac; do
             python sayfa_uret.py --vertikal "$v" >/dev/null
           done
           python senaryo.py >/dev/null
+          python evcil_hub.py >/dev/null
           python rehber.py >/dev/null
           python hesaplayicilar.py >/dev/null
           python veri_disa_aktar.py >/dev/null
           python gecmis.py --cikti-kok /tmp/duman-gecmis >/dev/null
           python sosyal.py >/dev/null
+          python -c "import og_gorsel; print(og_gorsel.tum_kartlar(), 'kart')"
           echo "Zincir tamam."
 
       - name: Özet
