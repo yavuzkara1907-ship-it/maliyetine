@@ -1852,6 +1852,10 @@ KAYNAK_SITELERI = {
     "cimri": {"ad": "Cimri", "rel": "nofollow"},
     "dugunbuketi": {"ad": "DüğünBuketi", "rel": "nofollow"},
     "donanimhaber": {"ad": "DonanımHaber", "rel": "nofollow"},
+    "ebebek": {"ad": "ebebek", "rel": "nofollow"},
+    "joker": {"ad": "Joker", "rel": "nofollow"},
+    "nezih": {"ad": "Nezih", "rel": "nofollow"},
+    "dr": {"ad": "D&R", "rel": "nofollow"},
 }
 
 
@@ -1887,6 +1891,80 @@ def kalem_kaynak_linkleri(vertikal: str, kalem_id: str):
     if _KAYNAK_LINKLERI is None:
         _KAYNAK_LINKLERI = _kaynak_linkleri_yukle()
     return _KAYNAK_LINKLERI.get((vertikal, kalem_id), [])
+
+
+def _kaynak_fiyat_tablosu_html(vertikal: str, kalem_id: str,
+                               kalem_verisi: dict | None) -> str:
+    """Hangi magaza bu kalemi kaca satiyor - kaynak kaynak.
+
+    2026-08-02, Yavuz: *"premiumlari neden eliyorsun? zaten luks
+    magazalari da sergilememiz lazim."*
+
+    Sayfa "3 bagimsiz kaynak" diyordu ama HANGISININ NE DEDIGI hicbir
+    yerde gorunmuyordu. Oysa bu sitenin en ozgun verisi tam olarak bu:
+    ayni kalemi birden fazla yerden olcmus olmak. Tek bir medyan
+    yayinlayip kirilimini saklamak, elimizdeki en degerli seyi
+    saklamak oluyordu.
+
+    BU BOLUM "KAYNAKLAR VE YONTEM" DEGIL. Yavuz 2026-07-25'te o bolumu
+    hakli olarak kaldirtmisti (*"bizim kisisel sovumuzu mu
+    okuyacaklar"*) - orada hangi siteden nasil cektigimiz
+    anlatiliyordu. Buradaki sey URUN BILGISI: ayni urun nerede kaca
+    satiliyor. Okuyucunun aradigi sey bu.
+
+    Ucuzdan pahaliya siralanir: aradaki fark okunur olsun diye.
+    Tek kaynak varsa hic basilmaz (tek satirlik tablo bilgi vermez).
+    """
+    kaynaklar = [k for k in ((kalem_verisi or {}).get("kaynaklar") or [])
+                 if k.get("toplam_urun") and k.get("genel_medyan")]
+    if len(kaynaklar) < 2:
+        return ""
+    kaynaklar.sort(key=lambda k: k["genel_medyan"])
+    linkler = dict(kalem_kaynak_linkleri(vertikal, kalem_id))
+
+    satirlar = []
+    for k in kaynaklar:
+        bilgi = KAYNAK_SITELERI.get(k["site"], {"ad": k["site"].capitalize(),
+                                                "rel": "nofollow"})
+        ad = bilgi["ad"]
+        url = linkler.get(k["site"])
+        if url:
+            takip = bilgi.get("takip")
+            if takip:
+                url = url + ("&" if "?" in url else "?") + takip
+            rel = "sponsored" if takip else bilgi["rel"]
+            ad = f'<a href="{url}" rel="{rel} noopener" target="_blank">{ad}</a>'
+        satirlar.append(
+            f'<tr><td>{ad}</td><td class="sayi">{_para(k["genel_medyan"])}</td>'
+            f'<td class="sayi">{k["toplam_urun"]}</td></tr>')
+
+    en_ucuz, en_pahali = kaynaklar[0], kaynaklar[-1]
+    kat = en_pahali["genel_medyan"] / en_ucuz["genel_medyan"]
+    ad_ucuz = KAYNAK_SITELERI.get(en_ucuz["site"], {}).get("ad", en_ucuz["site"])
+    ad_pahali = KAYNAK_SITELERI.get(en_pahali["site"], {}).get("ad", en_pahali["site"])
+    fark = (
+        f"<p>{ad_pahali} ile {ad_ucuz} arasında <strong>{_kat(kat)} kat</strong> "
+        "fark var. Bu bir ölçüm hatası değil: pazaryeri ile marka mağazası "
+        "aynı ürün adı altında farklı ürün karması satıyor. Bütçenizi "
+        "kurarken önce hangi pazarda alışveriş yapacağınıza karar vermek, "
+        "marka seçmekten daha belirleyici.</p>\n"
+        if kat >= 1.5 else "")
+
+    return (
+        '  <section class="icerik-bolumu">\n'
+        "    <h2>Hangi mağaza kaça satıyor?</h2>\n"
+        '    <div class="tablo-sarmal"><table>\n'
+        "      <thead><tr><th>Kaynak</th><th class=\"sayi\">Ortalama fiyat</th>"
+        "<th class=\"sayi\">Ölçülen ürün</th></tr></thead>\n"
+        f"      <tbody>{''.join(satirlar)}</tbody>\n"
+        "    </table></div>\n"
+        f"    {fark}"
+        '    <p class="sonuc-alt-metin">Her satır o kaynakta ölçülen '
+        "ürünlerin ortanca fiyatı. Endeks rakamı bu değerlerin ortancası "
+        "olarak hesaplanır — tek bir mağazanın fiyat politikası endeksi "
+        "tek başına belirlemesin diye.</p>\n"
+        "  </section>\n"
+    )
 
 
 def _nereden_alinir_html(vertikal: str, kalem_id: str, kalem_adi: str) -> str:
@@ -2812,7 +2890,7 @@ def kalem_sayfasi_uret(
   </section>
 
 {_sss_html(sorular)}
-{_fiyat_gecmisi_html(vertikal, sayfa['id'])}{_nereden_alinir_html(vertikal, sayfa['id'], tanim['ad'])}{_kunye_html(conf, veri, guncelleme_tarihi)}{_ilgili_kalemler_html(conf, sayfa["slug"])}</main>
+{_fiyat_gecmisi_html(vertikal, sayfa['id'])}{_kaynak_fiyat_tablosu_html(vertikal, sayfa['id'], veri)}{_nereden_alinir_html(vertikal, sayfa['id'], tanim['ad'])}{_kunye_html(conf, veri, guncelleme_tarihi)}{_ilgili_kalemler_html(conf, sayfa["slug"])}</main>
 
 <footer>
   <div class="kapsayici">

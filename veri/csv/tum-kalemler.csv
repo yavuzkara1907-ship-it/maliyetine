@@ -70,17 +70,17 @@ okul,calisma-sandalyesi,Çalışma Sandalyesi,Çalışma alanı,sabit,2334,3686,
 okul,beslenme-cantasi,Beslenme Çantası,Çanta ve beslenme,sabit,344,627,994,140,1850,81,2,amazon; trendyol,2026-08-02
 okul,okul-cantasi,Okul Çantası,Çanta ve beslenme,sabit,900,1472,2399,470,4200,170,3,amazon; nezih; trendyol,2026-08-02
 okul,matara,Suluk / Matara,Çanta ve beslenme,sabit,260,800,1500,75,2400,170,3,amazon; nezih; trendyol,2026-08-02
-bebek,bebek-bezi,Bebek Bezi (aylık),Aylık sarf,sabit,278,504,921,180,1780,45,2,amazon; ebebek,2026-08-02
+bebek,bebek-bezi,Bebek Bezi (aylık),Aylık sarf,sabit,286,592,940,160,1780,59,2,amazon; ebebek,2026-08-02
 bebek,bebek-kuveti,Bebek Küveti,Bakım,sabit,750,1080,2484,493,4899,51,2,amazon; ebebek,2026-08-02
-bebek,biberon-seti,Biberon Seti,Beslenme,sabit,350,804,1799,149,2499,49,1,amazon,2026-08-02
-bebek,gogus-pompasi,Göğüs Pompası,Beslenme,sabit,674,2349,4400,310,7000,49,2,amazon; ebebek,2026-08-02
-bebek,mama-sandalyesi,Mama Sandalyesi,Beslenme,sabit,1200,1802,4868,350,7054,55,2,amazon; trendyol,2026-08-02
-bebek,uyku-tulumu,Uyku Tulumu,Tekstil,sabit,329,499,750,200,859,35,1,amazon,2026-08-02
-bebek,zibin-seti,Zıbın / Body Seti,Tekstil,sabit,398,550,825,260,999,48,1,amazon,2026-08-02
-bebek,bebek-arabasi,Bebek Arabası,Uyku ve taşıma,sabit,4999,10799,18997,2999,46999,74,3,amazon; ebebek; trendyol,2026-08-02
-bebek,besik,Beşik,Uyku ve taşıma,sabit,1599,5892,12999,876,28699,53,3,amazon; ebebek; trendyol,2026-08-02
-bebek,oto-koltugu,Oto Koltuğu,Uyku ve taşıma,sabit,4191,10126,17920,840,31999,67,2,amazon; trendyol,2026-08-02
-bebek,park-yatak,Park Yatak / Oyun Parkı,Uyku ve taşıma,sabit,3624,5399,13449,2495,15899,34,2,amazon; ebebek,2026-08-02
+bebek,biberon-seti,Biberon Seti,Beslenme,sabit,400,1015,1899,199,2499,41,1,amazon,2026-08-02
+bebek,gogus-pompasi,Göğüs Pompası,Beslenme,sabit,674,2350,4400,310,7000,49,2,amazon; ebebek,2026-08-02
+bebek,mama-sandalyesi,Mama Sandalyesi,Beslenme,sabit,1438,1950,4745,350,24742,69,3,amazon; joker; trendyol,2026-08-02
+bebek,uyku-tulumu,Uyku Tulumu,Tekstil,sabit,912,500,750,200,760,44,2,amazon; joker,2026-08-02
+bebek,zibin-seti,Zıbın / Body Seti,Tekstil,sabit,339,550,825,180,1000,48,1,amazon,2026-08-02
+bebek,bebek-arabasi,Bebek Arabası,Uyku ve taşıma,sabit,8600,16212,42148,2495,129990,108,4,amazon; ebebek; joker; trendyol,2026-08-02
+bebek,besik,Beşik,Uyku ve taşıma,sabit,1599,5729,12890,876,28699,55,3,amazon; ebebek; trendyol,2026-08-02
+bebek,oto-koltugu,Oto Koltuğu,Uyku ve taşıma,sabit,6799,14252,26041,840,44990,96,3,amazon; joker; trendyol,2026-08-02
+bebek,park-yatak,Park Yatak / Oyun Parkı,Uyku ve taşıma,sabit,3169,6064,11436,2495,15899,38,2,amazon; ebebek,2026-08-02
 kedi,kedi-kumu,Kedi Kumu (aylık),Aylık sarf,sabit,160,260,380,104,600,37,1,amazon,2026-07-28
 kedi,kedi-mamasi,Kedi Maması (aylık),Aylık sarf,sabit,274,1070,1846,118,3599,50,1,amazon,2026-07-28
 kedi,mama-su-kabi,Mama ve Su Kabı,Beslenme,sabit,130,307,417,59,589,41,1,amazon,2026-07-28

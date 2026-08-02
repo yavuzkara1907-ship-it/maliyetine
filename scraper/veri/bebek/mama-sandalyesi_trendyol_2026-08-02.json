@@ -6,12 +6,12 @@
   "kalem": "mama-sandalyesi",
   "vertikal": "bebek",
   "tarih": "2026-08-02",
-  "toplam_urun": 19,
+  "toplam_urun": 18,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "json-ld"
   ],
-  "genel_medyan": 1459,
+  "genel_medyan": 1444,
   "segmentler": {
     "dusuk": {
       "min": 350,
@@ -21,15 +21,15 @@
     },
     "orta": {
       "min": 1019,
-      "medyan": 1605,
-      "max": 2539,
-      "urun_sayisi": 11
+      "medyan": 1459,
+      "max": 1869,
+      "urun_sayisi": 9
     },
     "luks": {
-      "min": 3000,
-      "medyan": 4991,
-      "max": 6239,
-      "urun_sayisi": 3
+      "min": 2539,
+      "medyan": 2539,
+      "max": 3000,
+      "urun_sayisi": 4
     }
   }
 }

@@ -204,5 +204,55 @@
     };
   }
 
-  return { hesapla, kalemSatiriHesapla, butceyiDengele, SEGMENT_ANAHTARI };
+  // ---------------- PAYLASILABILIR SONUC LINKI ----------------
+  // 2026-08-02. Bir kullanici 400 bin TL'lik hesabi cikardiginda o
+  // hesabi esine/is ortagina gonderebilmeli. Backend yok, gerek de
+  // yok: secimler URL'in query kismina yaziliyor, link acildiginda
+  // geri okunuyor.
+  //
+  // NEDEN hash (#) DEGIL query (?): hash sunucuya ve arama motoruna
+  // hic gitmiyor, ama biz paylasilan linkin canonical'a isaret eden
+  // normal bir sayfa olmasini istiyoruz. Query kullaniyoruz ve
+  // sayfalarin canonical etiketi parametresiz URL'i gosterdigi icin
+  // Google bunlari ayri sayfa saymiyor (yinelenen icerik olmuyor).
+  //
+  // Kalem id'leri kisaltilmiyor: link uzun olsun ama OKUNABILIR
+  // olsun - paylasilan bir linkte "gelinlik,alyans" gormek, "a3f9"
+  // gormekten iyi.
+  function durumuUrldenOku(arama) {
+    const p = new URLSearchParams(arama || "");
+    const d = {};
+    if (p.has("segment")) d.segment = p.get("segment");
+    if (p.has("olcek")) {
+      const n = parseFloat(p.get("olcek"));
+      if (isFinite(n) && n > 0) d.olcek = n;
+    }
+    if (p.has("kalemler")) {
+      d.kalemler = p.get("kalemler").split(",").map(function (x) {
+        return x.trim();
+      }).filter(Boolean);
+    }
+    if (p.has("hedef")) {
+      const h = parseFloat(p.get("hedef"));
+      if (isFinite(h) && h > 0) d.hedef = h;
+    }
+    return d;
+  }
+
+  function durumuUrleYaz(taban, durum) {
+    const p = new URLSearchParams();
+    if (durum.segment) p.set("segment", durum.segment);
+    if (durum.olcek) p.set("olcek", String(durum.olcek));
+    if (durum.kalemler && durum.kalemler.length) {
+      p.set("kalemler", durum.kalemler.join(","));
+    }
+    if (durum.hedef) p.set("hedef", String(durum.hedef));
+    const q = p.toString();
+    return q ? taban.split("?")[0] + "?" + q : taban.split("?")[0];
+  }
+
+  return {
+    hesapla, kalemSatiriHesapla, butceyiDengele, SEGMENT_ANAHTARI,
+    durumuUrldenOku, durumuUrleYaz,
+  };
 });

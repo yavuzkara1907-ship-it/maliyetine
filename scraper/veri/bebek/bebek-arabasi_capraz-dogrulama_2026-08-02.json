@@ -4,10 +4,11 @@
   "tarih": "2026-08-02",
   "site_medyanlari": {
     "trendyol": 3799,
-    "amazon": 10599,
-    "ebebek": 11199
+    "amazon": 10399,
+    "ebebek": 20624,
+    "joker": 44620
   },
-  "fark_orani": 1.948,
+  "fark_orani": 10.745,
   "esik_orani": 0.3,
   "uyari": true
 }

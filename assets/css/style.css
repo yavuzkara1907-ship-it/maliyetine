@@ -1413,3 +1413,59 @@ footer nav {
 
   .ust-menu::-webkit-scrollbar { display: none; }
 }
+
+/* ---------------------------------------------------------------------------
+   YAZDIRMA (2026-08-02)
+   Gemini'nin onerisi "PDF indirme" idi. Statik sitede PDF uretmek ucuncu
+   taraf servis + backend demek; oysa tarayicinin kendi "PDF olarak
+   kaydet"i zaten var ve TEK EKSIK duzgun bir baski stiliydi. Ciktida
+   gezinme, arama kutusu, asistan ve butonlar ise yaramaz - kagida
+   giden sey FIYAT TABLOSU olmali.
+   --------------------------------------------------------------------------- */
+@media print {
+  :root {
+    --renk-metin: #000;
+    --renk-metin-soluk: #444;
+    --renk-zemin: #fff;
+    --renk-zemin-alt: #fff;
+    --renk-vurgu: #000;
+    --renk-cizgi: #999;
+    --renk-cizgi-koyu: #333;
+  }
+
+  /* Ekranda ise yarayan, kagitta yaramayan her sey */
+  .ust-bar, footer, .kalem-arama, .asistan, .kart-linkler,
+  #linki-kopyala, button.birincil-buton, button.metin-buton,
+  .as-oneriler, .kirinti, .ilgili-kalemler {
+    display: none !important;
+  }
+
+  body { font-size: 11pt; line-height: 1.4; }
+  main.kapsayici { max-width: none; padding: 0; }
+  h1 { font-size: 20pt; }
+  h2 { font-size: 13pt; border-top: 1px solid #333; page-break-after: avoid; }
+
+  /* Tablo satiri sayfa sonunda ikiye bolunmesin - butce listesi
+     yazdirmanin asil sebebi, okunakli kalmali. */
+  table { page-break-inside: auto; }
+  tr    { page-break-inside: avoid; page-break-after: auto; }
+  thead { display: table-header-group; }   /* her sayfada baslik tekrar */
+  tbody tr:nth-child(even) { background: none; }
+
+  /* Sonuc kutusu ve cevap blogu bolunmesin */
+  .sonuc-kutu, .cevap-blok, .tablo-sarmal { page-break-inside: avoid; }
+  .tablo-sarmal { overflow: visible; }
+
+  /* Baglantinin nereye gittigi kagitta gorunmuyor - adresi yazdir.
+     Ic linklerde gereksiz gurultu olur, yalnizca DIS baglantida. */
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 8pt;
+    color: #555;
+    word-break: break-all;
+  }
+
+  /* Kunye: rakamin ne zaman olculdugu kagitta da kalmali - bu sitenin
+     tum iddiasi rakamin yaninda tarih ve kaynak olmasi. */
+  .kunye { border-top: 1px solid #999; padding-top: 6px; font-size: 9pt; }
+}

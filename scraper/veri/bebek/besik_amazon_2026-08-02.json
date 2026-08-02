@@ -6,7 +6,7 @@
   "kalem": "besik",
   "vertikal": "bebek",
   "tarih": "2026-08-02",
-  "toplam_urun": 29,
+  "toplam_urun": 31,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "css"
@@ -21,14 +21,14 @@
     },
     "orta": {
       "min": 2499,
-      "medyan": 5892,
-      "max": 7350,
-      "urun_sayisi": 14
+      "medyan": 5729,
+      "max": 7249,
+      "urun_sayisi": 16
     },
     "luks": {
-      "min": 10233,
-      "medyan": 12999,
-      "max": 14639,
+      "min": 7350,
+      "medyan": 12890,
+      "max": 12999,
       "urun_sayisi": 7
     }
   }

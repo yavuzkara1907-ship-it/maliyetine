@@ -1823,6 +1823,7 @@
     "urun_sayilari": [
       21,
       21,
+      21,
       21
     ],
     "son_calisma": "2026-08-02"
@@ -1831,6 +1832,7 @@
     "urun_sayilari": [
       24,
       20,
+      18,
       18
     ],
     "son_calisma": "2026-08-02"
@@ -1839,7 +1841,8 @@
     "urun_sayilari": [
       21,
       18,
-      19
+      19,
+      18
     ],
     "son_calisma": "2026-08-02"
   },
@@ -1847,6 +1850,7 @@
     "urun_sayilari": [
       24,
       24,
+      22,
       22
     ],
     "son_calisma": "2026-08-02"
@@ -1855,7 +1859,8 @@
     "urun_sayilari": [
       42,
       42,
-      42
+      42,
+      43
     ],
     "son_calisma": "2026-08-02"
   },
@@ -1863,7 +1868,8 @@
     "urun_sayilari": [
       35,
       25,
-      29
+      29,
+      31
     ],
     "son_calisma": "2026-08-02"
   },
@@ -1871,7 +1877,8 @@
     "urun_sayilari": [
       50,
       42,
-      36
+      36,
+      34
     ],
     "son_calisma": "2026-08-02"
   },
@@ -1879,7 +1886,8 @@
     "urun_sayilari": [
       36,
       36,
-      45
+      45,
+      44
     ],
     "son_calisma": "2026-08-02"
   },
@@ -1887,7 +1895,8 @@
     "urun_sayilari": [
       33,
       20,
-      22
+      22,
+      26
     ],
     "son_calisma": "2026-08-02"
   },
@@ -1895,7 +1904,8 @@
     "urun_sayilari": [
       46,
       41,
-      49
+      49,
+      41
     ],
     "son_calisma": "2026-08-02"
   },
@@ -1903,6 +1913,7 @@
     "urun_sayilari": [
       36,
       36,
+      38,
       38
     ],
     "son_calisma": "2026-08-02"
@@ -1917,6 +1928,7 @@
     "urun_sayilari": [
       40,
       39,
+      40,
       40
     ],
     "son_calisma": "2026-08-02"
@@ -1925,13 +1937,15 @@
     "urun_sayilari": [
       43,
       44,
-      44
+      44,
+      47
     ],
     "son_calisma": "2026-08-02"
   },
   "bebek/zibin-seti/amazon": {
     "urun_sayilari": [
       56,
+      48,
       48,
       48
     ],
@@ -1941,7 +1955,8 @@
     "urun_sayilari": [
       35,
       45,
-      35
+      35,
+      36
     ],
     "son_calisma": "2026-08-02"
   },
@@ -2073,37 +2088,67 @@
   },
   "bebek/bebek-arabasi/ebebek": {
     "urun_sayilari": [
-      11
+      11,
+      12
     ],
     "son_calisma": "2026-08-02"
   },
   "bebek/besik/ebebek": {
     "urun_sayilari": [
+      6,
       6
     ],
     "son_calisma": "2026-08-02"
   },
   "bebek/park-yatak/ebebek": {
     "urun_sayilari": [
+      12,
       12
     ],
     "son_calisma": "2026-08-02"
   },
   "bebek/bebek-kuveti/ebebek": {
     "urun_sayilari": [
+      11,
       11
     ],
     "son_calisma": "2026-08-02"
   },
   "bebek/gogus-pompasi/ebebek": {
     "urun_sayilari": [
+      11,
       11
     ],
     "son_calisma": "2026-08-02"
   },
   "bebek/bebek-bezi/ebebek": {
     "urun_sayilari": [
-      1
+      1,
+      12
+    ],
+    "son_calisma": "2026-08-02"
+  },
+  "bebek/bebek-arabasi/joker": {
+    "urun_sayilari": [
+      32
+    ],
+    "son_calisma": "2026-08-02"
+  },
+  "bebek/oto-koltugu/joker": {
+    "urun_sayilari": [
+      30
+    ],
+    "son_calisma": "2026-08-02"
+  },
+  "bebek/mama-sandalyesi/joker": {
+    "urun_sayilari": [
+      17
+    ],
+    "son_calisma": "2026-08-02"
+  },
+  "bebek/uyku-tulumu/joker": {
+    "urun_sayilari": [
+      8
     ],
     "son_calisma": "2026-08-02"
   }

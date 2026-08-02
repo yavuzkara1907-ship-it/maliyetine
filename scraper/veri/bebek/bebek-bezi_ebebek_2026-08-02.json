@@ -6,30 +6,30 @@
   "kalem": "bebek-bezi",
   "vertikal": "bebek",
   "tarih": "2026-08-02",
-  "toplam_urun": 1,
+  "toplam_urun": 12,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "json-ld"
   ],
-  "genel_medyan": 248,
+  "genel_medyan": 431,
   "segmentler": {
     "dusuk": {
-      "min": 248,
-      "medyan": 248,
-      "max": 248,
-      "urun_sayisi": 1
+      "min": 160,
+      "medyan": 264,
+      "max": 288,
+      "urun_sayisi": 5
     },
     "orta": {
-      "min": 248,
-      "medyan": 248,
-      "max": 248,
-      "urun_sayisi": 1
+      "min": 397,
+      "medyan": 464,
+      "max": 560,
+      "urun_sayisi": 5
     },
     "luks": {
-      "min": 248,
-      "medyan": 248,
-      "max": 248,
-      "urun_sayisi": 1
+      "min": 720,
+      "medyan": 840,
+      "max": 959,
+      "urun_sayisi": 2
     }
   }
 }

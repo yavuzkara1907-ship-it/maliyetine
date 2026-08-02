@@ -6,30 +6,30 @@
   "kalem": "biberon-seti",
   "vertikal": "bebek",
   "tarih": "2026-08-02",
-  "toplam_urun": 49,
+  "toplam_urun": 41,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "css"
   ],
-  "genel_medyan": 789,
+  "genel_medyan": 1000,
   "segmentler": {
     "dusuk": {
-      "min": 149,
-      "medyan": 350,
-      "max": 414,
-      "urun_sayisi": 13
+      "min": 199,
+      "medyan": 400,
+      "max": 649,
+      "urun_sayisi": 11
     },
     "orta": {
-      "min": 416,
-      "medyan": 804,
-      "max": 1239,
-      "urun_sayisi": 24
+      "min": 654,
+      "medyan": 1015,
+      "max": 1400,
+      "urun_sayisi": 20
     },
     "luks": {
-      "min": 1299,
-      "medyan": 1799,
+      "min": 1499,
+      "medyan": 1899,
       "max": 2499,
-      "urun_sayisi": 12
+      "urun_sayisi": 10
     }
   }
 }

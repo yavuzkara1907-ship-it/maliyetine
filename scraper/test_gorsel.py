@@ -217,5 +217,42 @@ class GorselDenetim(unittest.TestCase):
             self.assertEqual(kucuk, [], f"{yol}: kucuk dokunma hedefi {kucuk}")
 
 
+    def test_paylasilan_link_ayni_hesabi_uretiyor(self):
+        """Paylasilan sonuc linki ACILDIGINDA ayni rakami vermeli.
+
+        2026-08-02'de eklendi. Ilk yazimda `_urldenUygula()` fetch'ten
+        ONCE cagriliyordu; "veri yuklenmeden rakam gosterme" korumasi
+        devreye girip paylasilan HER link "veri yuklenemedi" mesajiyla
+        aciliyordu. Yani ozellik sessizce hic calismiyordu.
+        """
+        ctx = self.tarayici.new_context(viewport={"width": 1280, "height": 900})
+        try:
+            sf = ctx.new_page()
+            sf.goto(f"http://127.0.0.1:{self.port}/bebek/hesaplayici/",
+                    wait_until="networkidle")
+            sf.wait_for_timeout(700)
+            sf.click('input[name="segment"][value="luks"]')
+            sf.evaluate("document.getElementById('hesaplayici-form').requestSubmit()")
+            sf.wait_for_timeout(400)
+            beklenen = sf.evaluate(
+                "document.getElementById('sonuc-toplam-deger').textContent")
+            sf.click("#linki-kopyala")
+            sf.wait_for_timeout(300)
+            url = sf.url
+            self.assertIn("segment=luks", url, "secim URL'e yazilmadi")
+
+            yeni = ctx.new_page()
+            yeni.goto(url, wait_until="networkidle")
+            yeni.wait_for_timeout(1400)
+            self.assertFalse(
+                yeni.evaluate("document.getElementById('sonuc-kutu').hidden"),
+                "paylasilan link acildiginda sonuc gosterilmedi")
+            self.assertEqual(
+                beklenen,
+                yeni.evaluate("document.getElementById('sonuc-toplam-deger').textContent"),
+                "paylasilan link FARKLI rakam uretti")
+        finally:
+            ctx.close()
+
 if __name__ == "__main__":
     unittest.main()

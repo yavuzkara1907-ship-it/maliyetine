@@ -1,13 +1,12 @@
 {
   "vertikal": "bebek",
-  "kalem": "mama-sandalyesi",
+  "kalem": "uyku-tulumu",
   "tarih": "2026-08-02",
   "site_medyanlari": {
-    "trendyol": 1444,
-    "amazon": 1919,
-    "joker": 7192
+    "amazon": 474,
+    "joker": 1495
   },
-  "fark_orani": 3.981,
+  "fark_orani": 2.154,
   "esik_orani": 0.3,
   "uyari": true
 }

@@ -4379,3 +4379,80 @@ kaynaklar:
     min_fiyat: 80
     bekleme_sn: 3
     sayfa_sayisi: 1
+
+  # =========================================================
+  # JOKER — PREMIUM BEBEK (2026-08-02)
+  #
+  # ONCE ELENMISTI, YAVUZ DUZELTTI: "premiumlari neden eliyorsun?
+  # zaten luks magazalari da sergilememiz lazim." Hakliydi ve
+  # elemenin gerekcesi hataliydi.
+  #
+  # Iki farkli seyi karistirmisim:
+  #   (a) YANLIS URUN  -> elenmeli. avva'da ceket+pantolon ayri
+  #       satiliyor, takim elbise degil. ebebek'te tek biberon,
+  #       bizim kalem biberon SETI. D&R'da termos, bizim kalem
+  #       ogrenci sulugu. Bunlar olctugumuz seyi olcmuyor.
+  #   (b) AYNI URUN, PREMIUM SEGMENT -> ELENMEZ. Joker'de Inglesina
+  #       oto koltugu gercekten oto koltugu, sadece pahali.
+  #
+  # (b)'yi elemek UST SEGMENTI KOR BIRAKIYOR. Bu zaten belgeli bir
+  # zayifliktik: Yavuz 2026-07-25'te "buzdolabi 45 bin TL luks
+  # diyoruz ama asil luks 80.000'den basliyor" demisti; o zaman
+  # cozum kalemi "luks" yerine "ust" diye adlandirmak olmustu -
+  # yani sorunu ADLANDIRMISTIK, COZMEMISTIK. Premium kaynak eklemek
+  # gercek cozum.
+  #
+  # Olculdu - Joker'in medyani bizim UST SEGMENT medyanimizin 2-3 kati:
+  #   bebek-arabasi   44.620  (bizim ust 18.997)
+  #   oto-koltugu     33.742  (bizim ust 17.920)
+  #   mama-sandalyesi  7.192  (bizim ust  4.868)
+  #   uyku-tulumu      1.495  (bizim ust    750)
+  #
+  # ALINMAYAN IKI KALEM ve sebebi SEGMENT DEGIL ORNEKLEM:
+  #   joker/park-yatak  2 urun, joker/zibin-seti 6 urun - guvenilir
+  #   medyan icin az. Orneklem buyurse eklenir.
+  # =========================================================
+
+  - ad: "Joker - Bebek Arabasi / Puset"
+    site: joker
+    vertikal: bebek
+    kalem: bebek-arabasi
+    url: "https://www.joker.com.tr/bebek-arabasi-puset"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 1000
+    bekleme_sn: 2
+    sayfa_sayisi: 1
+
+  - ad: "Joker - Bebek Oto Koltugu"
+    site: joker
+    vertikal: bebek
+    kalem: oto-koltugu
+    url: "https://www.joker.com.tr/bebek-oto-koltugu"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 800
+    bekleme_sn: 2
+    sayfa_sayisi: 1
+
+  - ad: "Joker - Mama Sandalyesi"
+    site: joker
+    vertikal: bebek
+    kalem: mama-sandalyesi
+    url: "https://www.joker.com.tr/mama-sandalyesi"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 600
+    bekleme_sn: 2
+    sayfa_sayisi: 1
+
+  - ad: "Joker - Uyku Tulumu"
+    site: joker
+    vertikal: bebek
+    kalem: uyku-tulumu
+    url: "https://www.joker.com.tr/uyku-tulumu"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 150
+    bekleme_sn: 2
+    sayfa_sayisi: 1

@@ -1,0 +1,35 @@
+{
+  "site": "joker",
+  "kaynak_adlari": [
+    "Joker - Mama Sandalyesi"
+  ],
+  "kalem": "mama-sandalyesi",
+  "vertikal": "bebek",
+  "tarih": "2026-08-02",
+  "toplam_urun": 17,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 7192,
+  "segmentler": {
+    "dusuk": {
+      "min": 2242,
+      "medyan": 7192,
+      "max": 7192,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 7492,
+      "medyan": 8741,
+      "max": 9990,
+      "urun_sayisi": 2
+    },
+    "luks": {
+      "min": 24742,
+      "medyan": 24742,
+      "max": 24742,
+      "urun_sayisi": 4
+    }
+  }
+}

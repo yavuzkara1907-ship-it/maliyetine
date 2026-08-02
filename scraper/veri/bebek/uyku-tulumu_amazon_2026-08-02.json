@@ -6,29 +6,29 @@
   "kalem": "uyku-tulumu",
   "vertikal": "bebek",
   "tarih": "2026-08-02",
-  "toplam_urun": 35,
+  "toplam_urun": 36,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "css"
   ],
-  "genel_medyan": 450,
+  "genel_medyan": 474,
   "segmentler": {
     "dusuk": {
       "min": 200,
       "medyan": 329,
-      "max": 385,
-      "urun_sayisi": 9
+      "max": 399,
+      "urun_sayisi": 13
     },
     "orta": {
-      "min": 397,
-      "medyan": 499,
-      "max": 599,
-      "urun_sayisi": 19
+      "min": 400,
+      "medyan": 500,
+      "max": 700,
+      "urun_sayisi": 16
     },
     "luks": {
-      "min": 700,
+      "min": 750,
       "medyan": 750,
-      "max": 859,
+      "max": 760,
       "urun_sayisi": 7
     }
   }

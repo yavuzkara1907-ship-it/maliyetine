@@ -6,24 +6,24 @@
   "kalem": "oto-koltugu",
   "vertikal": "bebek",
   "tarih": "2026-08-02",
-  "toplam_urun": 45,
+  "toplam_urun": 44,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "css"
   ],
-  "genel_medyan": 14506,
+  "genel_medyan": 13702,
   "segmentler": {
     "dusuk": {
       "min": 4300,
-      "medyan": 7196,
-      "max": 8179,
+      "medyan": 6799,
+      "max": 7282,
       "urun_sayisi": 12
     },
     "orta": {
-      "min": 8590,
-      "medyan": 14506,
+      "min": 7499,
+      "medyan": 14252,
       "max": 20475,
-      "urun_sayisi": 23
+      "urun_sayisi": 22
     },
     "luks": {
       "min": 24009,

@@ -1,0 +1,35 @@
+{
+  "site": "joker",
+  "kaynak_adlari": [
+    "Joker - Bebek Oto Koltugu"
+  ],
+  "kalem": "oto-koltugu",
+  "vertikal": "bebek",
+  "tarih": "2026-08-02",
+  "toplam_urun": 30,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 33742,
+  "segmentler": {
+    "dusuk": {
+      "min": 22492,
+      "medyan": 23741,
+      "max": 29990,
+      "urun_sayisi": 12
+    },
+    "orta": {
+      "min": 29992,
+      "medyan": 33742,
+      "max": 33742,
+      "urun_sayisi": 13
+    },
+    "luks": {
+      "min": 44990,
+      "medyan": 44990,
+      "max": 44990,
+      "urun_sayisi": 5
+    }
+  }
+}

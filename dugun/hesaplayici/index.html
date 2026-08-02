@@ -134,6 +134,9 @@
     <p class="sonuc-alt-metin" id="sonuc-guncelleme"></p>
     <p class="sonuc-alt-metin" id="sonuc-kirilim"></p>
     <div id="butce-plani" class="butce-plani" hidden></div>
+    <p class="sonuc-alt-metin">
+      <button type="button" id="linki-kopyala" class="metin-buton">Bu hesabın linkini kopyala</button>
+    </p>
 
 
     <table id="detay-tablo">
@@ -277,6 +280,11 @@
       veriKalemleri = veri.kalemler || {};
       veriYuklendi = true;
       guncellemeTarihi = veri.guncelleme_tarihi;
+      // Paylasilan link ancak VERI GELDIKTEN SONRA calistirilir.
+      // Once fetch'ten once cagiriyordum: "veri yuklenmeden rakam
+      // gosterme" korumasi devreye girip paylasilan her link
+      // "veri yuklenemedi" mesajiyla aciliyordu.
+      if (_urldenUygula()) { try { form.requestSubmit(); } catch (e) {} }
       // Menu bedeli ancak veri gelince bilinir - notu tazele.
       yemekNotunuGuncelle();
     }).catch(function () {
@@ -327,6 +335,72 @@
 
   yemekNotunuGuncelle();
 
+  // ---- Paylasilabilir sonuc linki (2026-08-02) ----
+  // Backend yok: secimler URL'e yaziliyor, link acilinca geri okunuyor.
+  function _secimDurumu() {
+    const segEl = form.querySelector('input[name="segment"]:checked');
+    const olcekEl = form.querySelector('input[name="olcek"], #olcek, #davetli');
+    const d = { segment: segEl ? segEl.value : null, kalemler: [] };
+    if (olcekEl && olcekEl.value) {
+      const n = parseFloat(olcekEl.value);
+      if (isFinite(n) && n > 0) d.olcek = n;
+    }
+    form.querySelectorAll('.kalem-secim-liste input[type="checkbox"]:checked')
+        .forEach(function (k) { d.kalemler.push(k.value); });
+    const hedefEl = document.getElementById("hedef-butce");
+    if (hedefEl && hedefEl.value) {
+      const h = parseFloat(hedefEl.value);
+      if (isFinite(h) && h > 0) d.hedef = h;
+    }
+    return d;
+  }
+
+  function _urldenUygula() {
+    const d = maliyetHesapla.durumuUrldenOku(window.location.search);
+    if (!Object.keys(d).length) return false;
+    if (d.segment) {
+      const r = form.querySelector('input[name="segment"][value="' + d.segment + '"]');
+      if (r) r.checked = true;
+    }
+    if (d.olcek) {
+      const o = form.querySelector('input[name="olcek"], #olcek, #davetli');
+      if (o) o.value = d.olcek;
+    }
+    if (d.kalemler) {
+      const istenen = new Set(d.kalemler);
+      form.querySelectorAll('.kalem-secim-liste input[type="checkbox"]')
+          .forEach(function (k) { k.checked = istenen.has(k.value); });
+    }
+    if (d.hedef) {
+      const h = document.getElementById("hedef-butce");
+      if (h) h.value = d.hedef;
+    }
+    return true;
+  }
+
+  function _linkiGuncelle() {
+    const url = maliyetHesapla.durumuUrleYaz(window.location.href, _secimDurumu());
+    // replaceState: geri tusunu her hesaplamada kirletmiyoruz.
+    window.history.replaceState(null, "", url);
+    return url;
+  }
+
+  const _paylasBtn = document.getElementById("linki-kopyala");
+  if (_paylasBtn) {
+    _paylasBtn.addEventListener("click", function () {
+      const url = _linkiGuncelle();
+      const bitir = function (mesaj) {
+        _paylasBtn.textContent = mesaj;
+        setTimeout(function () { _paylasBtn.textContent = "Bu hesabın linkini kopyala"; }, 2500);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function () { bitir("Kopyalandı ✓"); },
+                                                function () { bitir(url); });
+      } else {
+        bitir(url);   // pano yoksa linki goster, sessizce basarisiz olma
+      }
+    });
+  }
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     if (!veriYuklendi) {

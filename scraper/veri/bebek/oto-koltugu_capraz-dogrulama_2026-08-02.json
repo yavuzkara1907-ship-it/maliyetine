@@ -3,10 +3,11 @@
   "kalem": "oto-koltugu",
   "tarih": "2026-08-02",
   "site_medyanlari": {
-    "trendyol": 5525,
-    "amazon": 14506
+    "trendyol": 5468,
+    "amazon": 13702,
+    "joker": 33742
   },
-  "fark_orani": 1.626,
+  "fark_orani": 5.171,
   "esik_orani": 0.3,
   "uyari": true
 }
