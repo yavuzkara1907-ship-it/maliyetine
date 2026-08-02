@@ -1,0 +1,35 @@
+{
+  "site": "ebebek",
+  "kaynak_adlari": [
+    "ebebek - Bebek Arabalari"
+  ],
+  "kalem": "bebek-arabasi",
+  "vertikal": "bebek",
+  "tarih": "2026-08-02",
+  "toplam_urun": 11,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 11199,
+  "segmentler": {
+    "dusuk": {
+      "min": 5999,
+      "medyan": 6999,
+      "max": 8499,
+      "urun_sayisi": 3
+    },
+    "orta": {
+      "min": 9999,
+      "medyan": 13299,
+      "max": 34999,
+      "urun_sayisi": 7
+    },
+    "luks": {
+      "min": 46999,
+      "medyan": 46999,
+      "max": 46999,
+      "urun_sayisi": 1
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Bebek Bezi Fırsat Paketi"
+  ],
+  "kalem": "bebek-bezi",
+  "vertikal": "bebek",
+  "tarih": "2026-08-02",
+  "toplam_urun": 44,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 720,
+  "segmentler": {
+    "dusuk": {
+      "min": 180,
+      "medyan": 308,
+      "max": 380,
+      "urun_sayisi": 12
+    },
+    "orta": {
+      "min": 446,
+      "medyan": 761,
+      "max": 959,
+      "urun_sayisi": 24
+    },
+    "luks": {
+      "min": 996,
+      "medyan": 1594,
+      "max": 1780,
+      "urun_sayisi": 8
+    }
+  }
+}

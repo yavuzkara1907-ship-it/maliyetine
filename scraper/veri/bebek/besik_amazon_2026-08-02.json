@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Bebek Beşiği"
+  ],
+  "kalem": "besik",
+  "vertikal": "bebek",
+  "tarih": "2026-08-02",
+  "toplam_urun": 29,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 5729,
+  "segmentler": {
+    "dusuk": {
+      "min": 876,
+      "medyan": 1599,
+      "max": 1849,
+      "urun_sayisi": 8
+    },
+    "orta": {
+      "min": 2499,
+      "medyan": 5892,
+      "max": 7350,
+      "urun_sayisi": 14
+    },
+    "luks": {
+      "min": 10233,
+      "medyan": 12999,
+      "max": 14639,
+      "urun_sayisi": 7
+    }
+  }
+}

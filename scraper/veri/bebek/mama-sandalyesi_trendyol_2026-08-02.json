@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Mama Sandalyesi (bebek)"
+  ],
+  "kalem": "mama-sandalyesi",
+  "vertikal": "bebek",
+  "tarih": "2026-08-02",
+  "toplam_urun": 19,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 1459,
+  "segmentler": {
+    "dusuk": {
+      "min": 350,
+      "medyan": 900,
+      "max": 949,
+      "urun_sayisi": 5
+    },
+    "orta": {
+      "min": 1019,
+      "medyan": 1605,
+      "max": 2539,
+      "urun_sayisi": 11
+    },
+    "luks": {
+      "min": 3000,
+      "medyan": 4991,
+      "max": 6239,
+      "urun_sayisi": 3
+    }
+  }
+}

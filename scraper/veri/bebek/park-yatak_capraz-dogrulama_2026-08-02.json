@@ -1,0 +1,12 @@
+{
+  "vertikal": "bebek",
+  "kalem": "park-yatak",
+  "tarih": "2026-08-02",
+  "site_medyanlari": {
+    "amazon": 5399,
+    "ebebek": 4899
+  },
+  "fark_orani": 0.102,
+  "esik_orani": 0.3,
+  "uyari": false
+}

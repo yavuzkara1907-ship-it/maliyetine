@@ -15,7 +15,7 @@ yanıltıcı hale gelir: "buzdolabı 30 bin lira" altı ay sonra yanlış olur,
 - [Düğün](https://maliyetine.com.tr/dugun/): 15 kalem, ölçüm 2026-07-26. JSON: https://maliyetine.com.tr/veri/dugun.json · CSV: https://maliyetine.com.tr/veri/csv/dugun.csv
 - [Ev Kurma](https://maliyetine.com.tr/ev-kurma/): 42 kalem, ölçüm 2026-07-26. JSON: https://maliyetine.com.tr/veri/ev-kurma.json · CSV: https://maliyetine.com.tr/veri/csv/ev-kurma.csv
 - [Okul](https://maliyetine.com.tr/okul/): 14 kalem, ölçüm 2026-08-02. JSON: https://maliyetine.com.tr/veri/okul.json · CSV: https://maliyetine.com.tr/veri/csv/okul.csv
-- [Bebek](https://maliyetine.com.tr/bebek/): 11 kalem, ölçüm 2026-07-26. JSON: https://maliyetine.com.tr/veri/bebek.json · CSV: https://maliyetine.com.tr/veri/csv/bebek.csv
+- [Bebek](https://maliyetine.com.tr/bebek/): 11 kalem, ölçüm 2026-08-02. JSON: https://maliyetine.com.tr/veri/bebek.json · CSV: https://maliyetine.com.tr/veri/csv/bebek.csv
 - [Kedi](https://maliyetine.com.tr/kedi/): 8 kalem, ölçüm 2026-07-28. JSON: https://maliyetine.com.tr/veri/kedi.json · CSV: https://maliyetine.com.tr/veri/csv/kedi.csv
 - [Köpek](https://maliyetine.com.tr/kopek/): 7 kalem, ölçüm 2026-07-28. JSON: https://maliyetine.com.tr/veri/kopek.json · CSV: https://maliyetine.com.tr/veri/csv/kopek.csv
 - [0 km Araç](https://maliyetine.com.tr/arac/): 25 kalem, ölçüm 2026-07-26. JSON: https://maliyetine.com.tr/veri/arac.json · CSV: https://maliyetine.com.tr/veri/csv/arac.csv
@@ -59,6 +59,8 @@ geldiği ve ölçüm tarihi bulunur; rakam bağımsız olarak doğrulanabilir.
 
 ## Rehberler
 
+- [Özel Hastanede Doğum Maliyeti: Neden Kimse Net Fiyat Vermiyor?](https://maliyetine.com.tr/rehber/ozel-hastanede-dogum-maliyeti/)
+- [Doğumdan Önce Alınacaklar Listesi — Fiyatlarıyla](https://maliyetine.com.tr/rehber/dogumdan-once-alinacaklar-listesi/)
 - [Kedi Sahiplenmeden Önce: Neye Ne Kadar Para Gidiyor?](https://maliyetine.com.tr/rehber/kedi-sahiplenmeden-once/)
 - [Köpek Sahiplenmeden Önce: Neye Ne Kadar Para Gidiyor?](https://maliyetine.com.tr/rehber/kopek-sahiplenmeden-once/)
 - [Ev Kurarken Nerede Tasarruf Edilir, Nerede Edilmez?](https://maliyetine.com.tr/rehber/ev-kurarken-nerede-tasarruf-edilir/)

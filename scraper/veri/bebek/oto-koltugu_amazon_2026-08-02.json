@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Bebek Oto Koltuğu"
+  ],
+  "kalem": "oto-koltugu",
+  "vertikal": "bebek",
+  "tarih": "2026-08-02",
+  "toplam_urun": 45,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 14506,
+  "segmentler": {
+    "dusuk": {
+      "min": 4300,
+      "medyan": 7196,
+      "max": 8179,
+      "urun_sayisi": 12
+    },
+    "orta": {
+      "min": 8590,
+      "medyan": 14506,
+      "max": 20475,
+      "urun_sayisi": 23
+    },
+    "luks": {
+      "min": 24009,
+      "medyan": 26041,
+      "max": 31999,
+      "urun_sayisi": 10
+    }
+  }
+}

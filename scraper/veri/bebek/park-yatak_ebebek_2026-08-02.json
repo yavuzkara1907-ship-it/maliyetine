@@ -1,0 +1,35 @@
+{
+  "site": "ebebek",
+  "kaynak_adlari": [
+    "ebebek - Park Yatak"
+  ],
+  "kalem": "park-yatak",
+  "vertikal": "bebek",
+  "tarih": "2026-08-02",
+  "toplam_urun": 12,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 4899,
+  "segmentler": {
+    "dusuk": {
+      "min": 3439,
+      "medyan": 3999,
+      "max": 3999,
+      "urun_sayisi": 5
+    },
+    "orta": {
+      "min": 4799,
+      "medyan": 5199,
+      "max": 9999,
+      "urun_sayisi": 5
+    },
+    "luks": {
+      "min": 15899,
+      "medyan": 15899,
+      "max": 15899,
+      "urun_sayisi": 2
+    }
+  }
+}

@@ -1646,7 +1646,229 @@ def _govde_bebek_tavsiye(v: dict) -> str | None:
 """
 
 
+# ---------------------------------------------------------------------------
+# 20. Ozel hastanede dogum maliyeti (2026-08-02, Yavuz'un istegi)
+#
+# BU YAZI RAKAM VERMIYOR VE SEBEBI YAZININ KENDISI.
+# Ozel hastanelerin dogum paketi fiyatlari internette LISTE HALINDE
+# YAYINLANMIYOR; telefonla ya da hastaneye gidilerek soruluyor.
+# Olcemedigimiz bir seye "ortalama dogum 80 bin TL" yazmak KIRMIZI
+# CIZGI ihlali olurdu - ve bu sorguda tam olarak boyle yapan cok
+# sayfa var, hepsi kaynaksiz.
+#
+# Bizim verebilecegimiz sey: MEKANIZMAYI dogru anlatmak, hangi
+# rakamin nereden ogrenilecegini soylemek ve olctugumuz kismi
+# (dogum sonrasi hazirlik) gercek veriyle vermek.
+#
+# ILAVE UCRET TAVAN ORANI YAZILMADI: oran Cumhurbaskani kararina
+# bagli ve degisiyor; birincil kaynaktan (Resmi Gazete / SGK tebligi)
+# guncel oranı DOGRULAYAMADIM. Dogrulanmamis bir yuzde yazmak yerine
+# SGK'nin kendi ilave ucret sorgu ekranina yonlendiriliyor - hem
+# dogru hem bayatlamaz. Oran birincil kaynaktan dogrulanirsa buraya
+# tebliğ adi ve R.G. tarih/sayisiyla eklenebilir.
+# ---------------------------------------------------------------------------
+def _govde_dogum_maliyeti(v: dict) -> str | None:
+    b = v.get("bebek")
+    if not b:
+        return None
+    conf = su.VERTIKALLER["bebek"]
+    kalemler = b.get("kalemler") or {}
+    hazirlik, _ = su.ornek_toplam_hesapla(conf, kalemler, 1, "orta")
+    eko, _ = su.ornek_toplam_hesapla(conf, kalemler, 1, "ekonomik")
+    if not hazirlik:
+        return None
+    bez = ((kalemler.get("bebek-bezi") or {}).get("segmentler") or {}).get("orta", {}).get("medyan", 0)
+
+    return f"""
+  <p class="cevap-blok">
+    Dürüst cevap: <strong>özel hastane doğum ücretini ölçemiyoruz, o
+    yüzden bir rakam yazmıyoruz.</strong> Hastaneler doğum paketi
+    fiyatlarını internette liste halinde yayınlamıyor; fiyat telefonla
+    ya da hastaneye gidilerek, üstelik gebelik haftasına ve doktora
+    göre değişerek veriliyor. Ölçemediğimiz bir şeye tahmin yazmak bu
+    sitenin kuralına aykırı.
+  </p>
+
+  <h2>Peki bu sayfa ne işe yarıyor?</h2>
+  <p>
+    İki işe. Birincisi: doğum ücretinin nasıl belirlendiğini bilirseniz
+    aldığınız teklifi değerlendirebilirsiniz. İkincisi: doğumdan sonra
+    gelen ve <em>ölçülebilen</em> masrafı buradan görebilirsiniz.
+  </p>
+
+  <h2>SGK'lıysanız ödeyeceğiniz şeyin adı "ilave ücret"</h2>
+  <p>
+    Genel sağlık sigortası kapsamındaysanız ve gittiğiniz özel hastane
+    <strong>SGK ile sözleşmeliyse</strong>, doğumun bedelini SGK
+    karşılar; hastane size ancak kanunun izin verdiği sınır içinde
+    <strong>ilave ücret</strong> isteyebilir. Yani ödediğiniz şey
+    doğumun tamamı değil, bu farktır.
+  </p>
+  <p>
+    Tavan oran Cumhurbaşkanı kararıyla belirleniyor ve değişebiliyor.
+    Bu yüzden buraya bir yüzde yazmıyoruz — <strong>eskiyeceği kesin bir
+    sayıyı sabitlemek yerine</strong> kaynağı veriyoruz: gideceğiniz
+    hastanenin sözleşmeli olup olmadığını ve uygulanan ilave ücret
+    oranını
+    <a href="https://gss.sgk.gov.tr/SaglikHizmetSunuculari/pages/ilaveUcretHesaplama.faces"
+       rel="nofollow noopener" target="_blank">SGK'nın ilave ücret sorgu
+    ekranından</a> doğrudan öğrenebilirsiniz.
+  </p>
+  <p>
+    Sözleşmesiz bir özel hastaneye giderseniz durum değişir: orada
+    fiyatı tamamen hastane belirler ve SGK katkısı çok daha sınırlı
+    kalır. Acil hâllerde ilave ücret alınamayacağı da ayrıca
+    düzenlenmiştir.
+  </p>
+
+  <h2>Teklif alırken sorulacak şeyler</h2>
+  <p>
+    Bunlar fiyat tahmini değil, aldığınız teklifi karşılaştırılabilir
+    kılan sorular — çünkü iki hastanenin "doğum paketi" dediği şey aynı
+    olmayabiliyor:
+  </p>
+  <ul>
+    <li>Hastane SGK ile sözleşmeli mi? Alınan ilave ücret oranı ne?</li>
+    <li>Fiyat normal doğum için mi, sezaryen dâhil mi? Sezaryene
+      dönerse fark alınıyor mu?</li>
+    <li>Kaç gece yatış dâhil? Oda tipi ne? Fazla gecenin bedeli ne?</li>
+    <li>Doktor ücreti pakete dâhil mi, ayrı mı?</li>
+    <li>Epidural, yenidoğan yoğun bakım ihtimali ve tarama testleri
+      pakette mi?</li>
+    <li>Teklif yazılı veriliyor mu? (İlave ücret için işlemden
+      <em>önce</em> yazılı onay alınması gerekiyor.)</li>
+  </ul>
+
+  <h2>Ölçebildiğimiz kısım: doğumdan sonrası</h2>
+  <p>
+    Hastane faturası bittiğinde masraf bitmiyor. Bebeğin tek seferlik
+    hazırlığı orta segmentte <strong>{_p(hazirlik)}</strong>, ekonomik
+    tercihlerle <strong>{_p(eko)}</strong>. Buna ek olarak bebek bezi
+    her ay tekrar ediyor: ayda {_p(bez)}, yılda {_p(bez * 12)}.
+  </p>
+  <p>
+    Bu rakamlar gerçek satış sitelerinden ölçülüyor ve ayda iki kez
+    yenileniyor; kalem kalem dökümü
+    <a href="/bebek/">bebek masrafları endeksinde</a>, ilk yılın
+    toplamı <a href="/rehber/bebek-masraflari-ilk-yil/">şurada</a>.
+    Neye ne kadar ayırmanız gerektiğine
+    <a href="/bebek/hesaplayici/">hesaplayıcıdan</a> karar
+    verebilirsiniz.
+  </p>
+
+  <h2>Neden başka sitelerde rakam var da bizde yok?</h2>
+  <p>
+    Çünkü o rakamların çoğunun arkasında bir ölçüm yok. Doğum ücreti
+    hastaneye, şehre, doktora, oda tipine ve gebeliğin seyrine göre
+    değişen bir hizmet bedeli; tek bir "ortalama" vermek kolay ama
+    yanıltıcı. Bu kalemde yayınlanmış bir fiyat listesine ulaşırsak
+    ölçer ve buraya kaynağıyla ekleriz — bulamadığımız sürece
+    bulamadığımızı yazarız.
+  </p>
+"""
+
+
+# ---------------------------------------------------------------------------
+# 21. Dogumdan once alinacaklar listesi (UZUN KUYRUK)
+# "hastane cantasi" / "dogum oncesi alinacaklar" cok aranan bir sorgu;
+# bizim farkimiz listeyi FIYATLA vermek.
+# ---------------------------------------------------------------------------
+def _govde_dogum_oncesi(v: dict) -> str | None:
+    b = v.get("bebek")
+    if not b:
+        return None
+    conf = su.VERTIKALLER["bebek"]
+    kalemler = b.get("kalemler") or {}
+    hazirlik, _ = su.ornek_toplam_hesapla(conf, kalemler, 1, "orta")
+    eko, _ = su.ornek_toplam_hesapla(conf, kalemler, 1, "ekonomik")
+    if not hazirlik:
+        return None
+    tek = []
+    for t in conf["kalemler"]:
+        if t.get("varsayilan_dahil") is False:
+            continue
+        m = ((kalemler.get(t["id"]) or {}).get("segmentler") or {}).get("orta", {}).get("medyan")
+        if m:
+            tek.append((m, t["ad"]))
+    tek.sort(reverse=True)
+    if len(tek) < 4:
+        return None
+    satir = "".join(
+        f'<tr><td>{ad}</td><td class="sayi">{_p(m)}</td></tr>' for m, ad in tek)
+    ilk3 = sum(m for m, _ in tek[:3])
+    pay = ilk3 / hazirlik * 100
+
+    return f"""
+  <p class="cevap-blok">
+    Doğumdan önce alınan tek seferlik eşyanın toplamı orta segmentte
+    <strong>{_p(hazirlik)}</strong>, ekonomik tercihlerle
+    <strong>{_p(eko)}</strong>. Listenin uzunluğu göz korkutuyor ama
+    rakamı belirleyen üç kalem var:
+    <strong>{", ".join(ad.lower() for _, ad in tek[:3])}</strong> —
+    tek başlarına toplamın <strong>%{pay:.0f}</strong>'ini oluşturuyor.
+  </p>
+
+  <h2>Liste ve güncel fiyatlar</h2>
+  <div class="tablo-sarmal"><table>
+    <thead><tr><th>Kalem</th><th class="sayi">Orta segment</th></tr></thead>
+    <tbody>{satir}</tbody>
+  </table></div>
+  <p>
+    Bunlar tek seferlik alınan şeyler. Bebek bezi gibi her ay tekrarlayan
+    giderler bu toplama girmiyor — ikisini birleştirmek "bebek maliyeti
+    şu kadar" gibi ne olduğu belirsiz bir rakam üretirdi.
+  </p>
+
+  <h2>Hepsi doğumdan önce alınmak zorunda değil</h2>
+  <p>
+    Listenin üst sıraları (bebek arabası, oto koltuğu, beşik) doğum
+    günü lazım; alt sıralardaki çoğu kalem birkaç ay sonra da alınabilir.
+    Mama sandalyesi ek gıdaya geçilene kadar, park yatak bebek
+    yuvarlanmaya başlayana kadar kullanılmıyor. Bütçeyi zamana yaymanın
+    en kolay yeri burası.
+  </p>
+  <p>
+    Oto koltuğu bunun istisnası: hastaneden çıkışta gerekiyor ve burada
+    asıl kriter fiyat değil <strong>güvenlik standardı</strong> — onu
+    biz ölçmüyoruz, ürünün taşıdığı belgeye bakın.
+  </p>
+
+  <h2>Ölçtüğümüz şey "her şey sıfır ve yeni" senaryosu</h2>
+  <p>
+    Pratikte bebek eşyasının önemli kısmı devralınıyor ya da ikinci el
+    alınıyor. İkinci el fiyatı ürünün durumuna göre değiştiği için tek
+    bir sayıyla ölçülemiyor, o yüzden kapsam dışında. Yani üstteki
+    tutar bir <em>üst sınır</em>: gerçek harcamanız büyük olasılıkla
+    bunun altında kalacak.
+  </p>
+  <p>
+    Kendi listenizi <a href="/bebek/hesaplayici/">hesaplayıcıdan</a>
+    çıkarabilir, hastane tarafını
+    <a href="/rehber/ozel-hastanede-dogum-maliyeti/">doğum maliyeti
+    yazısından</a> okuyabilirsiniz.
+  </p>
+"""
+
+
 REHBERLER = [
+    {
+        "slug": "ozel-hastanede-dogum-maliyeti",
+        "baslik": "Özel Hastanede Doğum Maliyeti: Neden Kimse Net Fiyat Vermiyor?",
+        "seo_baslik": "Özel Hastanede Doğum Maliyeti — Ne Sorulmalı?",
+        "meta": "Doğum paketi fiyatları yayınlanmıyor. İlave ücretin nasıl "
+                "işlediğini, ne sorulacağını ve doğum sonrası ölçülmüş masrafı yazdık.",
+        "govde": _govde_dogum_maliyeti,
+        "vertikal": "bebek",
+    },
+    {
+        "slug": "dogumdan-once-alinacaklar-listesi",
+        "baslik": "Doğumdan Önce Alınacaklar Listesi — Fiyatlarıyla",
+        "seo_baslik": "Doğumdan Önce Alınacaklar Listesi ve Fiyatları",
+        "meta": "Tek seferlik bebek hazırlığının kalem kalem listesi ve "
+                "ölçülmüş güncel fiyatları. Hangi üç kalem bütçeyi belirliyor?",
+        "govde": _govde_dogum_oncesi,
+        "vertikal": "bebek",
+    },
     {
         "slug": "kedi-sahiplenmeden-once",
         "baslik": "Kedi Sahiplenmeden Önce: Neye Ne Kadar Para Gidiyor?",

@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Bebek Arabası (bebek)"
+  ],
+  "kalem": "bebek-arabasi",
+  "vertikal": "bebek",
+  "tarih": "2026-08-02",
+  "toplam_urun": 21,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 3799,
+  "segmentler": {
+    "dusuk": {
+      "min": 3269,
+      "medyan": 3419,
+      "max": 3499,
+      "urun_sayisi": 9
+    },
+    "orta": {
+      "min": 3540,
+      "medyan": 4892,
+      "max": 5082,
+      "urun_sayisi": 7
+    },
+    "luks": {
+      "min": 5144,
+      "medyan": 5402,
+      "max": 6399,
+      "urun_sayisi": 5
+    }
+  }
+}

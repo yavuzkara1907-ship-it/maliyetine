@@ -1,0 +1,35 @@
+{
+  "site": "ebebek",
+  "kaynak_adlari": [
+    "ebebek - Bebek Bezleri"
+  ],
+  "kalem": "bebek-bezi",
+  "vertikal": "bebek",
+  "tarih": "2026-08-02",
+  "toplam_urun": 1,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 248,
+  "segmentler": {
+    "dusuk": {
+      "min": 248,
+      "medyan": 248,
+      "max": 248,
+      "urun_sayisi": 1
+    },
+    "orta": {
+      "min": 248,
+      "medyan": 248,
+      "max": 248,
+      "urun_sayisi": 1
+    },
+    "luks": {
+      "min": 248,
+      "medyan": 248,
+      "max": 248,
+      "urun_sayisi": 1
+    }
+  }
+}

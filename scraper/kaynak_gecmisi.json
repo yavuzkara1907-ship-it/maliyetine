@@ -1822,79 +1822,90 @@
   "bebek/bebek-arabasi/trendyol": {
     "urun_sayilari": [
       21,
+      21,
       21
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "bebek/besik/trendyol": {
     "urun_sayilari": [
       24,
-      20
+      20,
+      18
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "bebek/mama-sandalyesi/trendyol": {
     "urun_sayilari": [
       21,
-      18
+      18,
+      19
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "bebek/oto-koltugu/trendyol": {
     "urun_sayilari": [
       24,
-      24
+      24,
+      22
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "bebek/bebek-arabasi/amazon": {
     "urun_sayilari": [
       42,
+      42,
       42
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "bebek/besik/amazon": {
     "urun_sayilari": [
       35,
-      25
+      25,
+      29
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "bebek/mama-sandalyesi/amazon": {
     "urun_sayilari": [
       50,
-      42
+      42,
+      36
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "bebek/oto-koltugu/amazon": {
     "urun_sayilari": [
       36,
-      36
+      36,
+      45
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "bebek/park-yatak/amazon": {
     "urun_sayilari": [
       33,
-      20
+      20,
+      22
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "bebek/biberon-seti/amazon": {
     "urun_sayilari": [
       46,
-      41
+      41,
+      49
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "bebek/gogus-pompasi/amazon": {
     "urun_sayilari": [
       36,
-      36
+      36,
+      38
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "bebek/sterilizator/amazon": {
     "urun_sayilari": [
@@ -1905,30 +1916,34 @@
   "bebek/bebek-kuveti/amazon": {
     "urun_sayilari": [
       40,
-      39
+      39,
+      40
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "bebek/bebek-bezi/amazon": {
     "urun_sayilari": [
       43,
+      44,
       44
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "bebek/zibin-seti/amazon": {
     "urun_sayilari": [
       56,
+      48,
       48
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "bebek/uyku-tulumu/amazon": {
     "urun_sayilari": [
       35,
-      45
+      45,
+      35
     ],
-    "son_calisma": "2026-07-26"
+    "son_calisma": "2026-08-02"
   },
   "kedi/kedi-tuvaleti/amazon": {
     "urun_sayilari": [
@@ -2053,6 +2068,42 @@
   "okul/defter/dr": {
     "urun_sayilari": [
       25
+    ],
+    "son_calisma": "2026-08-02"
+  },
+  "bebek/bebek-arabasi/ebebek": {
+    "urun_sayilari": [
+      11
+    ],
+    "son_calisma": "2026-08-02"
+  },
+  "bebek/besik/ebebek": {
+    "urun_sayilari": [
+      6
+    ],
+    "son_calisma": "2026-08-02"
+  },
+  "bebek/park-yatak/ebebek": {
+    "urun_sayilari": [
+      12
+    ],
+    "son_calisma": "2026-08-02"
+  },
+  "bebek/bebek-kuveti/ebebek": {
+    "urun_sayilari": [
+      11
+    ],
+    "son_calisma": "2026-08-02"
+  },
+  "bebek/gogus-pompasi/ebebek": {
+    "urun_sayilari": [
+      11
+    ],
+    "son_calisma": "2026-08-02"
+  },
+  "bebek/bebek-bezi/ebebek": {
+    "urun_sayilari": [
+      1
     ],
     "son_calisma": "2026-08-02"
   }

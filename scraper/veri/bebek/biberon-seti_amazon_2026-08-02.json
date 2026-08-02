@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Biberon Seti"
+  ],
+  "kalem": "biberon-seti",
+  "vertikal": "bebek",
+  "tarih": "2026-08-02",
+  "toplam_urun": 49,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 789,
+  "segmentler": {
+    "dusuk": {
+      "min": 149,
+      "medyan": 350,
+      "max": 414,
+      "urun_sayisi": 13
+    },
+    "orta": {
+      "min": 416,
+      "medyan": 804,
+      "max": 1239,
+      "urun_sayisi": 24
+    },
+    "luks": {
+      "min": 1299,
+      "medyan": 1799,
+      "max": 2499,
+      "urun_sayisi": 12
+    }
+  }
+}

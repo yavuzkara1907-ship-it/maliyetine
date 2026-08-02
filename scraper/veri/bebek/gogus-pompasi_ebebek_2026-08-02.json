@@ -1,0 +1,35 @@
+{
+  "site": "ebebek",
+  "kaynak_adlari": [
+    "ebebek - Sut Pompasi"
+  ],
+  "kalem": "gogus-pompasi",
+  "vertikal": "bebek",
+  "tarih": "2026-08-02",
+  "toplam_urun": 11,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 3299,
+  "segmentler": {
+    "dusuk": {
+      "min": 600,
+      "medyan": 900,
+      "max": 900,
+      "urun_sayisi": 3
+    },
+    "orta": {
+      "min": 2799,
+      "medyan": 3399,
+      "max": 4999,
+      "urun_sayisi": 6
+    },
+    "luks": {
+      "min": 6000,
+      "medyan": 6500,
+      "max": 7000,
+      "urun_sayisi": 2
+    }
+  }
+}

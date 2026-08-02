@@ -1,0 +1,35 @@
+{
+  "site": "ebebek",
+  "kaynak_adlari": [
+    "ebebek - Besikler"
+  ],
+  "kalem": "besik",
+  "vertikal": "bebek",
+  "tarih": "2026-08-02",
+  "toplam_urun": 6,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 4399,
+  "segmentler": {
+    "dusuk": {
+      "min": 1000,
+      "medyan": 4299,
+      "max": 4299,
+      "urun_sayisi": 3
+    },
+    "orta": {
+      "min": 4499,
+      "medyan": 10750,
+      "max": 17000,
+      "urun_sayisi": 2
+    },
+    "luks": {
+      "min": 28699,
+      "medyan": 28699,
+      "max": 28699,
+      "urun_sayisi": 1
+    }
+  }
+}

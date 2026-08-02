@@ -4273,3 +4273,109 @@ kaynaklar:
       urun_karti: div.product-card
       isim_secici: h3
       fiyat_secici: .prd-price
+
+  # =========================================================
+  # EBEBEK (2026-08-02, Yavuz: "bebek kategorisini de ... yeni maliyet
+  # kaynaklariyla guncelleyebilir miyiz")
+  #
+  # Bebek vertikalinin 11 kalemi trendyol+amazon'dan geliyordu. ebebek
+  # Turkiye'nin en buyuk bebek perakendecisi - pazaryeri disinda gercek
+  # bir ucuncu bakis. JSON-LD veriyor, CSS secici GEREKMEDI.
+  #
+  # render_gerekli: true -- ilk birkac istek duz `requests` ile 200 ve
+  # dolu HTML donuyor, sonrakiler 2.418 byte'lik BOS KABUK. Yani site
+  # ard arda istekte kabuk servis ediyor. Playwright'ta sorun yok.
+  # (Bu, "bir kez calisti diye render_gerekli: false yazma" dersinin
+  # tersi: Beymen'de tam tersi olmustu.)
+  #
+  # ELENENLER:
+  #   - ebebek/biberon-seti (360 TL) ve /zibin-seti (220 TL): bizim
+  #     kalemlerimiz SET, ebebek kategorileri TEK urun listeliyor.
+  #     Farkli urun - segment farki degil.
+  #   - ebebek/mama-sandalyesi: 6 urun ve donen sey "bebek oturagi",
+  #     mama sandalyesi degil.
+  #   - ebebek/oto-koltugu: bizim rakamla %1 uyumlu ama ham HTML'de
+  #     yalnizca 4 urun - guvenilir medyan icin cok az.
+  #   - joker (bebek-anne): calisiyor ama PREMIUM BUTIK. Inglesina oto
+  #     koltugu 33.742 TL (bizim 8.573), mama sandalyesi 7.192 (1.607).
+  #     Urun karmasi bizim olctugumuz tipik alisverisi temsil etmiyor;
+  #     avva/takim-elbise ile ayni sebep.
+  # =========================================================
+
+  - ad: "ebebek - Bebek Arabalari"
+    site: ebebek
+    vertikal: bebek
+    kalem: bebek-arabasi
+    url: "https://www.ebebek.com/bebek-arabalari-c10110"
+    aktif: true
+    durum: onaylandi
+    render_gerekli: true
+    kaydirma: 5
+    min_fiyat: 1000
+    bekleme_sn: 3
+    sayfa_sayisi: 1
+
+  - ad: "ebebek - Besikler"
+    site: ebebek
+    vertikal: bebek
+    kalem: besik
+    url: "https://www.ebebek.com/besikler-c7050"
+    aktif: true
+    durum: onaylandi
+    render_gerekli: true
+    kaydirma: 5
+    min_fiyat: 400
+    bekleme_sn: 3
+    sayfa_sayisi: 1
+
+  - ad: "ebebek - Park Yatak"
+    site: ebebek
+    vertikal: bebek
+    kalem: park-yatak
+    url: "https://www.ebebek.com/park-yatak-c3831"
+    aktif: true
+    durum: onaylandi
+    render_gerekli: true
+    kaydirma: 5
+    min_fiyat: 800
+    bekleme_sn: 3
+    sayfa_sayisi: 1
+
+  - ad: "ebebek - Bebek Kuvet Oturagi"
+    site: ebebek
+    vertikal: bebek
+    kalem: bebek-kuveti
+    url: "https://www.ebebek.com/bebek-kuvet-oturagi-c4272"
+    aktif: true
+    durum: onaylandi
+    render_gerekli: true
+    kaydirma: 5
+    min_fiyat: 200
+    bekleme_sn: 3
+    sayfa_sayisi: 1
+
+  - ad: "ebebek - Sut Pompasi"
+    site: ebebek
+    vertikal: bebek
+    kalem: gogus-pompasi
+    url: "https://www.ebebek.com/sut-pompasi-c3789"
+    aktif: true
+    durum: onaylandi
+    render_gerekli: true
+    kaydirma: 5
+    min_fiyat: 300
+    bekleme_sn: 3
+    sayfa_sayisi: 1
+
+  - ad: "ebebek - Bebek Bezleri"
+    site: ebebek
+    vertikal: bebek
+    kalem: bebek-bezi
+    url: "https://www.ebebek.com/bebek-bezleri-c10111"
+    aktif: true
+    durum: onaylandi
+    render_gerekli: true
+    kaydirma: 5
+    min_fiyat: 80
+    bekleme_sn: 3
+    sayfa_sayisi: 1
