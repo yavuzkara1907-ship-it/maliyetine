@@ -2160,6 +2160,54 @@ gelmisti: `assertNotIn("lüks segmentte")` — o ifade artik hic
 uretilmiyor. Iki ifadeyi de kontrol edecek sekilde guncellendi.
 
 
+## PAYLASIM KARTLARI TAMAMLANDI: 167/174 (2026-08-02)
+Yavuz: *"rehber ve hesaplayici sayfalarina da kart yapalim."*
+
+**IKI FARKLI KART TIPI GEREKTI** cunku bu sayfalarda "ana rakam" yok:
+
+| tip | nerede | kartta ne var |
+|---|---|---|
+| **rakam odakli** | kalem, endeks, **senaryo** | buyuk tutar + kaynak/orneklem/tarih |
+| **baslik odakli** | rehber, hesaplayici, metodoloji | baslik + **dayanak** |
+
+- **Senaryo sayfalari rakam kartini hak ediyor** — gercek toplamlari var
+  (*"100 Kisilik Dugun 356.375 TL"*) ve zaten en yuksek niyetli
+  sorgulari hedefliyorlar.
+- **Hesaplayici kartinda alt satir MEVZUAT DAYANAGI:** *"332 Seri No.lu
+  Gelir Vergisi Genel Tebligi (31.12.2025 R.G. 33124)"*. Rakiplerin
+  paylasim kartinda mevzuat atfi yok — bu bizim ayirt edici yerimiz ve
+  paylasilan gorselde gorunuyor.
+
+### YAYINLAMADAN ONCE YAKALANAN HATA
+Ilk halde rehber kartina o yazinin **vertikal toplami** vurgu olarak
+basiliyordu. **Damatlik yazisinin kartinda "406.375 TL" goruluyordu —
+o DUGUN TOPLAMI; damatlik 46.450 TL.** Karti goren *"damatlik 406 bin"*
+anlar. Yazinin kendi rakami govdede hesaplaniyor ve karta guvenilir
+sekilde tasinamiyor; vurgu satiri kaldirildi, iddiayi **baslik** tasiyor.
+*Rakami one cikarmak her zaman iyi degil — YANLIS rakami one cikarmak
+hic rakam olmamasindan kotu.*
+
+### PALETLI PNG — depo sisme sorunu
+167 kart x 33 KB = **5,5 MB**. Kartlar **rakam tasidigi** icin her
+olcumde (ayda iki kez) yeniden uretilip depoya giriyor — **yilda
+~130 MB git gecmisi** demekti. Duz zemin + duz metin oldugu icin
+16 renklik palet gorsel olarak ayirt edilemiyor ama dosyayi ucte
+birine indiriyor: **33 -> 9,5 KB**, toplam **5,5 -> 1,9 MB**.
+
+### TEK GIRIS NOKTASI: `og_gorsel.tum_kartlar()`
+Onceden iki ayri fonksiyon vardi ve workflow **yalnizca birini**
+cagiriyordu — `sss/` sayfasinin commit listesinden dusmesiyle ayni tur
+hata (uretilen sey var, yayina tasiyan adim eksik). Workflow tek
+cagriya gecirildi.
+
+**Kalan 7 jenerik sayfa DOGRU:** hakkimizda, iletisim, veri, sss,
+rehber/hesap dizinleri, evcil-hayvan hub — bunlar tek bir olcumu
+temsil etmiyor.
+
+Kart rakamlarinin sayfa rakamlariyla birebir tuttugu dogrulandi
+(100 kisilik dugun 356.375 · buzdolabi 29.597 · besik 5.729).
+
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
