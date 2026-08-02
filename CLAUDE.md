@@ -2092,6 +2092,74 @@ log ve ad filtresinde kullaniliyor. `.title` ile duzeltildi.
 sayisi anomalisi) — endekse girmedi.
 
 
+## DENETIM TURU (2026-08-02) — paylasim karti, segment adi, og:title
+Yavuz: *"bu turu kontrole ayiralim. Google'da nasil gorunuyor, sosyal
+medyada ya da whatsapp'ta paylasilinca nasil gorunuyor? hata, eksik,
+fazla var mi? GEO-SEO kontrolu"* — canli siteye karsi olculdu.
+
+### 1. HER SAYFA AYNI JENERIK GORSELI PAYLASIYORDU (175 sayfa)
+`/ev-kurma/buzdolabi-fiyatlari/` WhatsApp'ta paylasildiginda kartta
+*"2026 Maliyet Endeksi"* yaziyordu, **"Buzdolabi 29.597 TL"
+YAZMIYORDU.** Ilk trafik olcumunde referans kaynagi neredeyse tamamen
+`m.facebook.com`'du — **bu kanalda paylasim karti dogrudan tiklanma
+oraninin kendisi.** 27 Temmuz'da "en yuksek kaldiracli is" diye
+kaydedilmisti; kapandi.
+- **`og_gorsel.kalem_kartlarini_uret()`** — 106 kart (7 endeks +
+  99 kalem), ortalama **31 KB** (WhatsApp'in 300 KB sinirinin cok
+  altinda). Kartin uzerindeki her sey **veriden**; sabit metin
+  yalnizca marka adi ve alan adi.
+- **Kart dosyasi yoksa sessizce jenerige duser** — 404 veren bir
+  `og:image`, jenerik gorselden kotudur (bos kart cikar).
+- `kalem_sayfalarini_genislet()` cagrilmadan yalnizca **28** kart
+  uretiliyordu (statik tanim), 97 sayfa varken. Calisma anindaki
+  genisletme sarttir.
+- Aylik workflow'a eklendi: kartlar **rakam tasiyor**, her olcumde
+  yenilenmeli.
+
+### 2. AYNI SEGMENTIN UC FARKLI ADI VARDI
+25 Temmuz'da *"Lüks" → "Üst"* karari alinmisti (sebep: 43 bin TL'lik
+buzdolabi luks degil, listedeki ust ceyrek). **Degisiklik yalnizca
+hesaplayici butonlarina ve kalem sayfasi tablosuna uygulanmisti:**
+
+| yer | yazan |
+|---|---|
+| endeks sayfasi tablo basligi | **Lüks** |
+| kalem sayfasi tablosu | Üst |
+| hesaplayici butonu | Üst |
+| meta description | **lüks** |
+
+108 sayfanin GORUNUR metninde, 99 meta aciklamada eski ad duruyordu.
+Hepsi "Üst"e cevrildi ve `test_segment_adi_SITE_GENELINDE_ayni` ile
+kilitlendi. (*"lüks marka magazasi"* gibi MARKAYI tarif eden kullanim
+serbest — yasak olan **segment adi** olarak kullanmak.)
+**Ayni sinif: bir yerde duzeltip her yerde duzeldigini varsaymak.**
+
+### 3. ANA SAYFA og:title BAYATTI
+*"2026'da ne kaça mal olur?"* diyordu; baslik bir gun once
+*"2026 Maliyet Endeksi"* olmustu. Paylasilan kart, sayfanin baska bir
+sayfasiymis gibi gorunuyordu.
+
+### TEMIZ CIKANLAR
+Googlebot / GPTBot / ClaudeBot / PerplexityBot / facebookexternalhit /
+WhatsApp **hepsi 200** · robots.txt'te tek `Disallow: /` yok ·
+sitemap **175 URL diskle BIREBIR** (ne eksik ne fazla) · llms.txt yeni
+rehberleri iceriyor · *"17 bagimsiz kaynak"* iddiasi gercek veriyle
+dogrulandi (17 benzersiz site) · og gorseli 1200x630, 50 KB, 1.90:1.
+
+### ILK YAZDIGIM TEST ISE YARAMIYORDU
+*"ozel kart sayisi > 50"* diye bakiyordu; bir vertikali jenerige
+dondurunce **digerleri sayiyi ayakta tutuyor** ve test geciyordu (bug
+geri konarak dogrulandi). Artik **kart dosyasi diskte olan her
+sayfanin o karti gercekten gosterdigi** tek tek kontrol ediliyor — bu
+haliyle bug geri konunca patliyor.
+**DERS: esik degerli test (`> N`) bir seyin BOZULDUGUNU degil, hala
+BIRAZ calistigini olcer.**
+
+Ayrica bir test degisiklikten sonra **sessizce her zaman gecer** hale
+gelmisti: `assertNotIn("lüks segmentte")` — o ifade artik hic
+uretilmiyor. Iki ifadeyi de kontrol edecek sekilde guncellendi.
+
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
