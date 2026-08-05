@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - 4K Televizyon"
+  ],
+  "kalem": "televizyon",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-05",
+  "toplam_urun": 44,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 38724,
+  "segmentler": {
+    "dusuk": {
+      "min": 14997,
+      "medyan": 21499,
+      "max": 26099,
+      "urun_sayisi": 12
+    },
+    "orta": {
+      "min": 29999,
+      "medyan": 40999,
+      "max": 59999,
+      "urun_sayisi": 23
+    },
+    "luks": {
+      "min": 60859,
+      "medyan": 70999,
+      "max": 99999,
+      "urun_sayisi": 9
+    }
+  }
+}

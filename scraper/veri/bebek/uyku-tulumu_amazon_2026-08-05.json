@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Bebek Uyku Tulumu"
+  ],
+  "kalem": "uyku-tulumu",
+  "vertikal": "bebek",
+  "tarih": "2026-08-05",
+  "toplam_urun": 42,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 532,
+  "segmentler": {
+    "dusuk": {
+      "min": 314,
+      "medyan": 399,
+      "max": 450,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 499,
+      "medyan": 550,
+      "max": 1620,
+      "urun_sayisi": 21
+    },
+    "luks": {
+      "min": 1629,
+      "medyan": 2750,
+      "max": 3250,
+      "urun_sayisi": 10
+    }
+  }
+}

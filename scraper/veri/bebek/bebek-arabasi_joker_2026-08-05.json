@@ -1,0 +1,35 @@
+{
+  "site": "joker",
+  "kaynak_adlari": [
+    "Joker - Bebek Arabasi / Puset"
+  ],
+  "kalem": "bebek-arabasi",
+  "vertikal": "bebek",
+  "tarih": "2026-08-05",
+  "toplam_urun": 32,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 44620,
+  "segmentler": {
+    "dusuk": {
+      "min": 2495,
+      "medyan": 11700,
+      "max": 11995,
+      "urun_sayisi": 9
+    },
+    "orta": {
+      "min": 19494,
+      "medyan": 48370,
+      "max": 67492,
+      "urun_sayisi": 20
+    },
+    "luks": {
+      "min": 89990,
+      "medyan": 98995,
+      "max": 129990,
+      "urun_sayisi": 3
+    }
+  }
+}

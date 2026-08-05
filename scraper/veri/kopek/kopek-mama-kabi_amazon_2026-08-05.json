@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Köpek Mama ve Su Kabı"
+  ],
+  "kalem": "kopek-mama-kabi",
+  "vertikal": "kopek",
+  "tarih": "2026-08-05",
+  "toplam_urun": 42,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 388,
+  "segmentler": {
+    "dusuk": {
+      "min": 99,
+      "medyan": 169,
+      "max": 233,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 269,
+      "medyan": 396,
+      "max": 499,
+      "urun_sayisi": 21
+    },
+    "luks": {
+      "min": 500,
+      "medyan": 584,
+      "max": 950,
+      "urun_sayisi": 10
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Mercedes"
+  ],
+  "kalem": "mercedes",
+  "vertikal": "arac",
+  "tarih": "2026-08-05",
+  "toplam_urun": 42,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 9757250,
+  "segmentler": {
+    "dusuk": {
+      "min": 3222000,
+      "medyan": 4873000,
+      "max": 6950000,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 6957500,
+      "medyan": 10108500,
+      "max": 15671000,
+      "urun_sayisi": 21
+    },
+    "luks": {
+      "min": 16675000,
+      "medyan": 22726500,
+      "max": 30448000,
+      "urun_sayisi": 10
+    }
+  }
+}

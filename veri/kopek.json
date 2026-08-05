@@ -1,75 +1,34 @@
 {
   "vertikal": "kopek",
-  "guncelleme_tarihi": "2026-07-28",
+  "guncelleme_tarihi": "2026-08-05",
   "kalemler": {
-    "kopek-yatagi": {
-      "segmentler": {
-        "dusuk": {
-          "min": 209,
-          "medyan": 396,
-          "max": 500,
-          "urun_sayisi": 11,
-          "kaynak_sayisi": 1
-        },
-        "orta": {
-          "min": 644,
-          "medyan": 1140,
-          "max": 1875,
-          "urun_sayisi": 21,
-          "kaynak_sayisi": 1
-        },
-        "luks": {
-          "min": 1878,
-          "medyan": 2277,
-          "max": 2940,
-          "urun_sayisi": 10,
-          "kaynak_sayisi": 1
-        }
-      },
-      "genel_medyan": 1130,
-      "toplam_urun": 42,
-      "guncelleme_tarihi": "2026-07-28",
-      "kaynak_sayisi": 1,
-      "kaynaklar": [
-        {
-          "site": "amazon",
-          "kaynak_adlari": [
-            "Amazon - Köpek Yatağı"
-          ],
-          "tarih": "2026-07-28",
-          "toplam_urun": 42,
-          "genel_medyan": 1130
-        }
-      ],
-      "capraz_dogrulama_uyarisi": null
-    },
     "kopek-mamasi": {
       "segmentler": {
         "dusuk": {
-          "min": 135,
-          "medyan": 509,
-          "max": 804,
+          "min": 101,
+          "medyan": 477,
+          "max": 805,
           "urun_sayisi": 12,
           "kaynak_sayisi": 1
         },
         "orta": {
-          "min": 876,
-          "medyan": 1534,
-          "max": 3499,
-          "urun_sayisi": 22,
+          "min": 860,
+          "medyan": 1517,
+          "max": 3340,
+          "urun_sayisi": 24,
           "kaynak_sayisi": 1
         },
         "luks": {
-          "min": 3673,
-          "medyan": 4103,
-          "max": 4635,
-          "urun_sayisi": 10,
+          "min": 3588,
+          "medyan": 4042,
+          "max": 5049,
+          "urun_sayisi": 11,
           "kaynak_sayisi": 1
         }
       },
-      "genel_medyan": 1526,
-      "toplam_urun": 44,
-      "guncelleme_tarihi": "2026-07-28",
+      "genel_medyan": 1512,
+      "toplam_urun": 47,
+      "guncelleme_tarihi": "2026-08-05",
       "kaynak_sayisi": 1,
       "kaynaklar": [
         {
@@ -77,9 +36,91 @@
           "kaynak_adlari": [
             "Amazon - Köpek Maması (aylık)"
           ],
-          "tarih": "2026-07-28",
-          "toplam_urun": 44,
-          "genel_medyan": 1526
+          "tarih": "2026-08-05",
+          "toplam_urun": 47,
+          "genel_medyan": 1512
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "cis-pedi": {
+      "segmentler": {
+        "dusuk": {
+          "min": 170,
+          "medyan": 259,
+          "max": 294,
+          "urun_sayisi": 11,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 295,
+          "medyan": 387,
+          "max": 1030,
+          "urun_sayisi": 22,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 1082,
+          "medyan": 1195,
+          "max": 1470,
+          "urun_sayisi": 10,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 385,
+      "toplam_urun": 43,
+      "guncelleme_tarihi": "2026-08-05",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Çiş Pedi (aylık)"
+          ],
+          "tarih": "2026-08-05",
+          "toplam_urun": 43,
+          "genel_medyan": 385
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "kopek-tasmasi": {
+      "segmentler": {
+        "dusuk": {
+          "min": 120,
+          "medyan": 259,
+          "max": 390,
+          "urun_sayisi": 10,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 399,
+          "medyan": 565,
+          "max": 699,
+          "urun_sayisi": 19,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 724,
+          "medyan": 967,
+          "max": 1398,
+          "urun_sayisi": 9,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 528,
+      "toplam_urun": 38,
+      "guncelleme_tarihi": "2026-08-05",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Köpek Tasması"
+          ],
+          "tarih": "2026-08-05",
+          "toplam_urun": 38,
+          "genel_medyan": 528
         }
       ],
       "capraz_dogrulama_uyarisi": null
@@ -125,74 +166,33 @@
       ],
       "capraz_dogrulama_uyarisi": null
     },
-    "kopek-mama-kabi": {
-      "segmentler": {
-        "dusuk": {
-          "min": 89,
-          "medyan": 129,
-          "max": 179,
-          "urun_sayisi": 13,
-          "kaynak_sayisi": 1
-        },
-        "orta": {
-          "min": 188,
-          "medyan": 390,
-          "max": 499,
-          "urun_sayisi": 26,
-          "kaynak_sayisi": 1
-        },
-        "luks": {
-          "min": 500,
-          "medyan": 670,
-          "max": 899,
-          "urun_sayisi": 9,
-          "kaynak_sayisi": 1
-        }
-      },
-      "genel_medyan": 354,
-      "toplam_urun": 48,
-      "guncelleme_tarihi": "2026-07-28",
-      "kaynak_sayisi": 1,
-      "kaynaklar": [
-        {
-          "site": "amazon",
-          "kaynak_adlari": [
-            "Amazon - Mama ve Su Kabı"
-          ],
-          "tarih": "2026-07-28",
-          "toplam_urun": 48,
-          "genel_medyan": 354
-        }
-      ],
-      "capraz_dogrulama_uyarisi": null
-    },
     "kopek-oyuncagi": {
       "segmentler": {
         "dusuk": {
-          "min": 59,
-          "medyan": 105,
-          "max": 139,
+          "min": 65,
+          "medyan": 125,
+          "max": 134,
           "urun_sayisi": 13,
           "kaynak_sayisi": 1
         },
         "orta": {
-          "min": 150,
+          "min": 139,
           "medyan": 250,
-          "max": 440,
+          "max": 421,
           "urun_sayisi": 24,
           "kaynak_sayisi": 1
         },
         "luks": {
-          "min": 456,
-          "medyan": 540,
-          "max": 790,
+          "min": 445,
+          "medyan": 544,
+          "max": 821,
           "urun_sayisi": 12,
           "kaynak_sayisi": 1
         }
       },
       "genel_medyan": 249,
       "toplam_urun": 49,
-      "guncelleme_tarihi": "2026-07-28",
+      "guncelleme_tarihi": "2026-08-05",
       "kaynak_sayisi": 1,
       "kaynaklar": [
         {
@@ -200,91 +200,91 @@
           "kaynak_adlari": [
             "Amazon - Köpek Oyuncağı"
           ],
-          "tarih": "2026-07-28",
+          "tarih": "2026-08-05",
           "toplam_urun": 49,
           "genel_medyan": 249
         }
       ],
       "capraz_dogrulama_uyarisi": null
     },
-    "cis-pedi": {
+    "kopek-mama-kabi": {
       "segmentler": {
         "dusuk": {
-          "min": 195,
-          "medyan": 242,
-          "max": 289,
-          "urun_sayisi": 12,
-          "kaynak_sayisi": 1
-        },
-        "orta": {
-          "min": 299,
-          "medyan": 377,
-          "max": 929,
-          "urun_sayisi": 22,
-          "kaynak_sayisi": 1
-        },
-        "luks": {
-          "min": 930,
-          "medyan": 1108,
-          "max": 1470,
+          "min": 99,
+          "medyan": 169,
+          "max": 233,
           "urun_sayisi": 11,
           "kaynak_sayisi": 1
-        }
-      },
-      "genel_medyan": 369,
-      "toplam_urun": 45,
-      "guncelleme_tarihi": "2026-07-28",
-      "kaynak_sayisi": 1,
-      "kaynaklar": [
-        {
-          "site": "amazon",
-          "kaynak_adlari": [
-            "Amazon - Çiş Pedi (aylık)"
-          ],
-          "tarih": "2026-07-28",
-          "toplam_urun": 45,
-          "genel_medyan": 369
-        }
-      ],
-      "capraz_dogrulama_uyarisi": null
-    },
-    "kopek-tasmasi": {
-      "segmentler": {
-        "dusuk": {
-          "min": 120,
-          "medyan": 300,
-          "max": 399,
-          "urun_sayisi": 16,
-          "kaynak_sayisi": 1
         },
         "orta": {
-          "min": 400,
-          "medyan": 597,
-          "max": 927,
-          "urun_sayisi": 18,
+          "min": 269,
+          "medyan": 396,
+          "max": 499,
+          "urun_sayisi": 21,
           "kaynak_sayisi": 1
         },
         "luks": {
-          "min": 946,
-          "medyan": 1349,
-          "max": 1834,
+          "min": 500,
+          "medyan": 584,
+          "max": 950,
           "urun_sayisi": 10,
           "kaynak_sayisi": 1
         }
       },
-      "genel_medyan": 490,
-      "toplam_urun": 44,
+      "genel_medyan": 388,
+      "toplam_urun": 42,
+      "guncelleme_tarihi": "2026-08-05",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Köpek Mama ve Su Kabı"
+          ],
+          "tarih": "2026-08-05",
+          "toplam_urun": 42,
+          "genel_medyan": 388
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "kopek-yatagi": {
+      "segmentler": {
+        "dusuk": {
+          "min": 209,
+          "medyan": 396,
+          "max": 500,
+          "urun_sayisi": 11,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 644,
+          "medyan": 1140,
+          "max": 1875,
+          "urun_sayisi": 21,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 1878,
+          "medyan": 2277,
+          "max": 2940,
+          "urun_sayisi": 10,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 1130,
+      "toplam_urun": 42,
       "guncelleme_tarihi": "2026-07-28",
       "kaynak_sayisi": 1,
       "kaynaklar": [
         {
           "site": "amazon",
           "kaynak_adlari": [
-            "Amazon - Köpek Tasması"
+            "Amazon - Köpek Yatağı"
           ],
           "tarih": "2026-07-28",
-          "toplam_urun": 44,
-          "genel_medyan": 490
+          "toplam_urun": 42,
+          "genel_medyan": 1130
         }
       ],
       "capraz_dogrulama_uyarisi": null

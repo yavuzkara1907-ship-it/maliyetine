@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Bebek Park Yatak Oyun Parkı"
+  ],
+  "kalem": "park-yatak",
+  "vertikal": "bebek",
+  "tarih": "2026-08-05",
+  "toplam_urun": 26,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 5399,
+  "segmentler": {
+    "dusuk": {
+      "min": 2495,
+      "medyan": 2899,
+      "max": 3700,
+      "urun_sayisi": 7
+    },
+    "orta": {
+      "min": 4139,
+      "medyan": 5599,
+      "max": 7199,
+      "urun_sayisi": 13
+    },
+    "luks": {
+      "min": 7249,
+      "medyan": 10249,
+      "max": 12499,
+      "urun_sayisi": 6
+    }
+  }
+}

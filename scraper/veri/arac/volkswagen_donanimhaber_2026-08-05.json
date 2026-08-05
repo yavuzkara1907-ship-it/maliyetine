@@ -1,0 +1,35 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Volkswagen"
+  ],
+  "kalem": "volkswagen",
+  "vertikal": "arac",
+  "tarih": "2026-08-05",
+  "toplam_urun": 40,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 3609000,
+  "segmentler": {
+    "dusuk": {
+      "min": 2165000,
+      "medyan": 2755000,
+      "max": 3052000,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 3114000,
+      "medyan": 3642500,
+      "max": 4907000,
+      "urun_sayisi": 20
+    },
+    "luks": {
+      "min": 5003000,
+      "medyan": 6617000,
+      "max": 7375000,
+      "urun_sayisi": 9
+    }
+  }
+}

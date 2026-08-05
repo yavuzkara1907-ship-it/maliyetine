@@ -1,0 +1,35 @@
+{
+  "site": "nezih",
+  "kaynak_adlari": [
+    "Nezih - Kalem Kutulari"
+  ],
+  "kalem": "kalem-kutusu",
+  "vertikal": "okul",
+  "tarih": "2026-08-05",
+  "toplam_urun": 97,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 600,
+  "segmentler": {
+    "dusuk": {
+      "min": 80,
+      "medyan": 260,
+      "max": 390,
+      "urun_sayisi": 25
+    },
+    "orta": {
+      "min": 400,
+      "medyan": 610,
+      "max": 750,
+      "urun_sayisi": 49
+    },
+    "luks": {
+      "min": 765,
+      "medyan": 830,
+      "max": 1200,
+      "urun_sayisi": 23
+    }
+  }
+}

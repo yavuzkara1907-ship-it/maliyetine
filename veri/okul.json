@@ -1,84 +1,90 @@
 {
   "vertikal": "okul",
-  "guncelleme_tarihi": "2026-08-02",
+  "guncelleme_tarihi": "2026-08-05",
   "kalemler": {
-    "resim-malzemeleri": {
+    "ayakkabi": {
       "segmentler": {
         "dusuk": {
-          "min": 70,
-          "medyan": 132,
-          "max": 220,
-          "urun_sayisi": 17,
+          "min": 435,
+          "medyan": 778,
+          "max": 1281,
+          "urun_sayisi": 18,
           "kaynak_sayisi": 2
         },
         "orta": {
-          "min": 172,
-          "medyan": 364,
-          "max": 490,
-          "urun_sayisi": 33,
+          "min": 641,
+          "medyan": 1145,
+          "max": 1799,
+          "urun_sayisi": 35,
           "kaynak_sayisi": 2
         },
         "luks": {
-          "min": 479,
-          "medyan": 556,
-          "max": 695,
+          "min": 800,
+          "medyan": 1512,
+          "max": 2407,
           "urun_sayisi": 14,
           "kaynak_sayisi": 2
         }
       },
-      "genel_medyan": 352,
-      "toplam_urun": 64,
+      "genel_medyan": 1138,
+      "toplam_urun": 67,
       "guncelleme_tarihi": "2026-08-02",
       "kaynak_sayisi": 2,
       "kaynaklar": [
         {
           "site": "amazon",
           "kaynak_adlari": [
-            "Amazon - Resim Defteri Seti"
+            "Amazon - Çocuk Spor Ayakkabı"
           ],
           "tarih": "2026-08-02",
-          "toplam_urun": 42,
-          "genel_medyan": 349
+          "toplam_urun": 47,
+          "genel_medyan": 1562
         },
         {
           "site": "trendyol",
           "kaynak_adlari": [
-            "Trendyol - Resim ve Sanat Malzemeleri"
+            "Trendyol - Spor Ayakkabi (okul)"
           ],
-          "tarih": "2026-08-02",
-          "toplam_urun": 22,
-          "genel_medyan": 354
+          "tarih": "2026-07-26",
+          "toplam_urun": 20,
+          "genel_medyan": 714
         }
       ],
-      "capraz_dogrulama_uyarisi": null
+      "capraz_dogrulama_uyarisi": {
+        "fark_yuzdesi": 112.6,
+        "medyanlar": {
+          "trendyol": 714,
+          "amazon": 1518
+        }
+      }
     },
     "matara": {
       "segmentler": {
         "dusuk": {
           "min": 75,
           "medyan": 260,
-          "max": 498,
+          "max": 502,
           "urun_sayisi": 45,
           "kaynak_sayisi": 3
         },
         "orta": {
           "min": 195,
-          "medyan": 800,
+          "medyan": 785,
           "max": 1250,
-          "urun_sayisi": 91,
+          "urun_sayisi": 89,
           "kaynak_sayisi": 3
         },
         "luks": {
           "min": 371,
-          "medyan": 1500,
+          "medyan": 1538,
           "max": 2400,
-          "urun_sayisi": 34,
+          "urun_sayisi": 35,
           "kaynak_sayisi": 3
         }
       },
-      "genel_medyan": 800,
-      "toplam_urun": 170,
-      "guncelleme_tarihi": "2026-08-02",
+      "genel_medyan": 735,
+      "toplam_urun": 169,
+      "guncelleme_tarihi": "2026-08-05",
       "kaynak_sayisi": 3,
       "kaynaklar": [
         {
@@ -86,16 +92,16 @@
           "kaynak_adlari": [
             "Amazon - Çelik Matara Suluk"
           ],
-          "tarih": "2026-08-02",
-          "toplam_urun": 45,
-          "genel_medyan": 800
+          "tarih": "2026-08-05",
+          "toplam_urun": 44,
+          "genel_medyan": 735
         },
         {
           "site": "nezih",
           "kaynak_adlari": [
             "Nezih - Mataralar"
           ],
-          "tarih": "2026-08-02",
+          "tarih": "2026-08-05",
           "toplam_urun": 100,
           "genel_medyan": 1050
         },
@@ -110,133 +116,10 @@
         }
       ],
       "capraz_dogrulama_uyarisi": {
-        "fark_yuzdesi": 325.1,
+        "fark_yuzdesi": 42.9,
         "medyanlar": {
-          "trendyol": 247,
-          "amazon": 800,
+          "amazon": 735,
           "nezih": 1050
-        }
-      }
-    },
-    "calisma-sandalyesi": {
-      "segmentler": {
-        "dusuk": {
-          "min": 1509,
-          "medyan": 2334,
-          "max": 3400,
-          "urun_sayisi": 18,
-          "kaynak_sayisi": 2
-        },
-        "orta": {
-          "min": 1752,
-          "medyan": 3686,
-          "max": 6390,
-          "urun_sayisi": 32,
-          "kaynak_sayisi": 2
-        },
-        "luks": {
-          "min": 3980,
-          "medyan": 6498,
-          "max": 10889,
-          "urun_sayisi": 15,
-          "kaynak_sayisi": 2
-        }
-      },
-      "genel_medyan": 3495,
-      "toplam_urun": 65,
-      "guncelleme_tarihi": "2026-08-02",
-      "kaynak_sayisi": 2,
-      "kaynaklar": [
-        {
-          "site": "amazon",
-          "kaynak_adlari": [
-            "Amazon - Çalışma Sandalyesi"
-          ],
-          "tarih": "2026-08-02",
-          "toplam_urun": 41,
-          "genel_medyan": 4946
-        },
-        {
-          "site": "trendyol",
-          "kaynak_adlari": [
-            "Trendyol - Calisma Sandalyesi"
-          ],
-          "tarih": "2026-08-02",
-          "toplam_urun": 24,
-          "genel_medyan": 2044
-        }
-      ],
-      "capraz_dogrulama_uyarisi": {
-        "fark_yuzdesi": 142.0,
-        "medyanlar": {
-          "trendyol": 2044,
-          "amazon": 4946
-        }
-      }
-    },
-    "kalem-kutusu": {
-      "segmentler": {
-        "dusuk": {
-          "min": 80,
-          "medyan": 260,
-          "max": 399,
-          "urun_sayisi": 46,
-          "kaynak_sayisi": 3
-        },
-        "orta": {
-          "min": 266,
-          "medyan": 610,
-          "max": 839,
-          "urun_sayisi": 87,
-          "kaynak_sayisi": 3
-        },
-        "luks": {
-          "min": 475,
-          "medyan": 830,
-          "max": 1295,
-          "urun_sayisi": 40,
-          "kaynak_sayisi": 3
-        }
-      },
-      "genel_medyan": 600,
-      "toplam_urun": 173,
-      "guncelleme_tarihi": "2026-08-02",
-      "kaynak_sayisi": 3,
-      "kaynaklar": [
-        {
-          "site": "amazon",
-          "kaynak_adlari": [
-            "Amazon - Okul Kalem Kutusu"
-          ],
-          "tarih": "2026-08-02",
-          "toplam_urun": 52,
-          "genel_medyan": 601
-        },
-        {
-          "site": "nezih",
-          "kaynak_adlari": [
-            "Nezih - Kalem Kutulari"
-          ],
-          "tarih": "2026-08-02",
-          "toplam_urun": 97,
-          "genel_medyan": 600
-        },
-        {
-          "site": "trendyol",
-          "kaynak_adlari": [
-            "Trendyol - Kalem Kutusu"
-          ],
-          "tarih": "2026-08-02",
-          "toplam_urun": 24,
-          "genel_medyan": 313
-        }
-      ],
-      "capraz_dogrulama_uyarisi": {
-        "fark_yuzdesi": 92.0,
-        "medyanlar": {
-          "trendyol": 313,
-          "amazon": 601,
-          "nezih": 600
         }
       }
     },
@@ -295,6 +178,178 @@
           "amazon": 2649
         }
       }
+    },
+    "ders-kitabi": {
+      "segmentler": {
+        "dusuk": {
+          "min": 65,
+          "medyan": 174,
+          "max": 225,
+          "urun_sayisi": 18,
+          "kaynak_sayisi": 2
+        },
+        "orta": {
+          "min": 217,
+          "medyan": 309,
+          "max": 462,
+          "urun_sayisi": 32,
+          "kaynak_sayisi": 2
+        },
+        "luks": {
+          "min": 349,
+          "medyan": 515,
+          "max": 882,
+          "urun_sayisi": 15,
+          "kaynak_sayisi": 2
+        }
+      },
+      "genel_medyan": 306,
+      "toplam_urun": 65,
+      "guncelleme_tarihi": "2026-08-02",
+      "kaynak_sayisi": 2,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Yardımcı Ders Kitabı"
+          ],
+          "tarih": "2026-08-02",
+          "toplam_urun": 41,
+          "genel_medyan": 349
+        },
+        {
+          "site": "trendyol",
+          "kaynak_adlari": [
+            "Trendyol - Ders ve Yardimci Kitaplar"
+          ],
+          "tarih": "2026-08-02",
+          "toplam_urun": 24,
+          "genel_medyan": 264
+        }
+      ],
+      "capraz_dogrulama_uyarisi": {
+        "fark_yuzdesi": 32.2,
+        "medyanlar": {
+          "trendyol": 264,
+          "amazon": 349
+        }
+      }
+    },
+    "kalem-kutusu": {
+      "segmentler": {
+        "dusuk": {
+          "min": 80,
+          "medyan": 260,
+          "max": 399,
+          "urun_sayisi": 46,
+          "kaynak_sayisi": 3
+        },
+        "orta": {
+          "min": 266,
+          "medyan": 610,
+          "max": 839,
+          "urun_sayisi": 87,
+          "kaynak_sayisi": 3
+        },
+        "luks": {
+          "min": 475,
+          "medyan": 830,
+          "max": 1295,
+          "urun_sayisi": 40,
+          "kaynak_sayisi": 3
+        }
+      },
+      "genel_medyan": 600,
+      "toplam_urun": 173,
+      "guncelleme_tarihi": "2026-08-05",
+      "kaynak_sayisi": 3,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Okul Kalem Kutusu"
+          ],
+          "tarih": "2026-08-02",
+          "toplam_urun": 52,
+          "genel_medyan": 601
+        },
+        {
+          "site": "nezih",
+          "kaynak_adlari": [
+            "Nezih - Kalem Kutulari"
+          ],
+          "tarih": "2026-08-05",
+          "toplam_urun": 97,
+          "genel_medyan": 600
+        },
+        {
+          "site": "trendyol",
+          "kaynak_adlari": [
+            "Trendyol - Kalem Kutusu"
+          ],
+          "tarih": "2026-08-02",
+          "toplam_urun": 24,
+          "genel_medyan": 313
+        }
+      ],
+      "capraz_dogrulama_uyarisi": {
+        "fark_yuzdesi": 92.0,
+        "medyanlar": {
+          "trendyol": 313,
+          "amazon": 601,
+          "nezih": 600
+        }
+      }
+    },
+    "kalem": {
+      "segmentler": {
+        "dusuk": {
+          "min": 33,
+          "medyan": 82,
+          "max": 107,
+          "urun_sayisi": 19,
+          "kaynak_sayisi": 2
+        },
+        "orta": {
+          "min": 90,
+          "medyan": 164,
+          "max": 349,
+          "urun_sayisi": 35,
+          "kaynak_sayisi": 2
+        },
+        "luks": {
+          "min": 300,
+          "medyan": 424,
+          "max": 589,
+          "urun_sayisi": 15,
+          "kaynak_sayisi": 2
+        }
+      },
+      "genel_medyan": 159,
+      "toplam_urun": 69,
+      "guncelleme_tarihi": "2026-08-05",
+      "kaynak_sayisi": 2,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Kurşun Kalem Seti"
+          ],
+          "tarih": "2026-08-05",
+          "toplam_urun": 44,
+          "genel_medyan": 173
+        },
+        {
+          "site": "trendyol",
+          "kaynak_adlari": [
+            "Trendyol - Kalem"
+          ],
+          "tarih": "2026-08-02",
+          "toplam_urun": 25,
+          "genel_medyan": 145
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
     },
     "tablet": {
       "segmentler": {
@@ -357,28 +412,28 @@
         "dusuk": {
           "min": 470,
           "medyan": 900,
-          "max": 1785,
-          "urun_sayisi": 48,
+          "max": 1755,
+          "urun_sayisi": 45,
           "kaynak_sayisi": 3
         },
         "orta": {
           "min": 1000,
           "medyan": 1472,
-          "max": 2800,
-          "urun_sayisi": 84,
+          "max": 2750,
+          "urun_sayisi": 85,
           "kaynak_sayisi": 3
         },
         "luks": {
           "min": 1499,
           "medyan": 2399,
           "max": 4200,
-          "urun_sayisi": 38,
+          "urun_sayisi": 40,
           "kaynak_sayisi": 3
         }
       },
       "genel_medyan": 1442,
       "toplam_urun": 170,
-      "guncelleme_tarihi": "2026-08-02",
+      "guncelleme_tarihi": "2026-08-05",
       "kaynak_sayisi": 3,
       "kaynaklar": [
         {
@@ -395,7 +450,7 @@
           "kaynak_adlari": [
             "Nezih - Sirt Cantalari"
           ],
-          "tarih": "2026-08-02",
+          "tarih": "2026-08-05",
           "toplam_urun": 98,
           "genel_medyan": 2500
         },
@@ -418,109 +473,69 @@
         }
       }
     },
-    "kalem": {
+    "boya-seti": {
       "segmentler": {
         "dusuk": {
-          "min": 33,
-          "medyan": 79,
-          "max": 100,
-          "urun_sayisi": 18,
-          "kaynak_sayisi": 2
+          "min": 63,
+          "medyan": 111,
+          "max": 250,
+          "urun_sayisi": 25,
+          "kaynak_sayisi": 3
         },
         "orta": {
-          "min": 90,
-          "medyan": 160,
-          "max": 349,
-          "urun_sayisi": 34,
-          "kaynak_sayisi": 2
+          "min": 159,
+          "medyan": 342,
+          "max": 425,
+          "urun_sayisi": 46,
+          "kaynak_sayisi": 3
         },
         "luks": {
-          "min": 299,
-          "medyan": 430,
-          "max": 589,
-          "urun_sayisi": 16,
-          "kaynak_sayisi": 2
+          "min": 413,
+          "medyan": 670,
+          "max": 1310,
+          "urun_sayisi": 22,
+          "kaynak_sayisi": 3
         }
       },
-      "genel_medyan": 154,
-      "toplam_urun": 68,
-      "guncelleme_tarihi": "2026-08-02",
-      "kaynak_sayisi": 2,
+      "genel_medyan": 340,
+      "toplam_urun": 93,
+      "guncelleme_tarihi": "2026-08-05",
+      "kaynak_sayisi": 3,
       "kaynaklar": [
         {
           "site": "amazon",
           "kaynak_adlari": [
-            "Amazon - Kurşun Kalem Seti"
+            "Amazon - Kuru Boya Seti"
           ],
           "tarih": "2026-08-02",
-          "toplam_urun": 43,
-          "genel_medyan": 164
+          "toplam_urun": 51,
+          "genel_medyan": 202
+        },
+        {
+          "site": "nezih",
+          "kaynak_adlari": [
+            "Nezih - Sulu Boya"
+          ],
+          "tarih": "2026-08-05",
+          "toplam_urun": 21,
+          "genel_medyan": 340
         },
         {
           "site": "trendyol",
           "kaynak_adlari": [
-            "Trendyol - Kalem"
+            "Trendyol - Boya Seti"
           ],
           "tarih": "2026-08-02",
-          "toplam_urun": 25,
-          "genel_medyan": 145
-        }
-      ],
-      "capraz_dogrulama_uyarisi": null
-    },
-    "ayakkabi": {
-      "segmentler": {
-        "dusuk": {
-          "min": 435,
-          "medyan": 778,
-          "max": 1281,
-          "urun_sayisi": 18,
-          "kaynak_sayisi": 2
-        },
-        "orta": {
-          "min": 641,
-          "medyan": 1145,
-          "max": 1799,
-          "urun_sayisi": 35,
-          "kaynak_sayisi": 2
-        },
-        "luks": {
-          "min": 800,
-          "medyan": 1512,
-          "max": 2407,
-          "urun_sayisi": 14,
-          "kaynak_sayisi": 2
-        }
-      },
-      "genel_medyan": 1138,
-      "toplam_urun": 67,
-      "guncelleme_tarihi": "2026-08-02",
-      "kaynak_sayisi": 2,
-      "kaynaklar": [
-        {
-          "site": "amazon",
-          "kaynak_adlari": [
-            "Amazon - Çocuk Spor Ayakkabı"
-          ],
-          "tarih": "2026-08-02",
-          "toplam_urun": 47,
-          "genel_medyan": 1562
-        },
-        {
-          "site": "trendyol",
-          "kaynak_adlari": [
-            "Trendyol - Spor Ayakkabi (okul)"
-          ],
-          "tarih": "2026-07-26",
-          "toplam_urun": 20,
-          "genel_medyan": 714
+          "toplam_urun": 21,
+          "genel_medyan": 350
         }
       ],
       "capraz_dogrulama_uyarisi": {
-        "fark_yuzdesi": 112.6,
+        "fark_yuzdesi": 73.3,
         "medyanlar": {
-          "trendyol": 714,
-          "amazon": 1518
+          "trendyol": 350,
+          "amazon": 202,
+          "nezih": 340
         }
       }
     },
@@ -580,6 +595,130 @@
         }
       }
     },
+    "defter": {
+      "segmentler": {
+        "dusuk": {
+          "min": 40,
+          "medyan": 154,
+          "max": 310,
+          "urun_sayisi": 59,
+          "kaynak_sayisi": 4
+        },
+        "orta": {
+          "min": 90,
+          "medyan": 288,
+          "max": 680,
+          "urun_sayisi": 87,
+          "kaynak_sayisi": 4
+        },
+        "luks": {
+          "min": 299,
+          "medyan": 400,
+          "max": 1199,
+          "urun_sayisi": 34,
+          "kaynak_sayisi": 4
+        }
+      },
+      "genel_medyan": 270,
+      "toplam_urun": 180,
+      "guncelleme_tarihi": "2026-08-05",
+      "kaynak_sayisi": 4,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Okul Defteri"
+          ],
+          "tarih": "2026-08-05",
+          "toplam_urun": 45,
+          "genel_medyan": 148
+        },
+        {
+          "site": "dr",
+          "kaynak_adlari": [
+            "D&R - Defterler"
+          ],
+          "tarih": "2026-08-02",
+          "toplam_urun": 25,
+          "genel_medyan": 400
+        },
+        {
+          "site": "nezih",
+          "kaynak_adlari": [
+            "Nezih - Defter ve Bloknotlar"
+          ],
+          "tarih": "2026-08-05",
+          "toplam_urun": 87,
+          "genel_medyan": 245
+        },
+        {
+          "site": "trendyol",
+          "kaynak_adlari": [
+            "Trendyol - Defter"
+          ],
+          "tarih": "2026-08-02",
+          "toplam_urun": 23,
+          "genel_medyan": 296
+        }
+      ],
+      "capraz_dogrulama_uyarisi": {
+        "fark_yuzdesi": 65.5,
+        "medyanlar": {
+          "amazon": 148,
+          "nezih": 245
+        }
+      }
+    },
+    "resim-malzemeleri": {
+      "segmentler": {
+        "dusuk": {
+          "min": 70,
+          "medyan": 132,
+          "max": 220,
+          "urun_sayisi": 17,
+          "kaynak_sayisi": 2
+        },
+        "orta": {
+          "min": 172,
+          "medyan": 383,
+          "max": 496,
+          "urun_sayisi": 32,
+          "kaynak_sayisi": 2
+        },
+        "luks": {
+          "min": 499,
+          "medyan": 572,
+          "max": 900,
+          "urun_sayisi": 14,
+          "kaynak_sayisi": 2
+        }
+      },
+      "genel_medyan": 364,
+      "toplam_urun": 63,
+      "guncelleme_tarihi": "2026-08-05",
+      "kaynak_sayisi": 2,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Resim Defteri Seti"
+          ],
+          "tarih": "2026-08-05",
+          "toplam_urun": 41,
+          "genel_medyan": 375
+        },
+        {
+          "site": "trendyol",
+          "kaynak_adlari": [
+            "Trendyol - Resim ve Sanat Malzemeleri"
+          ],
+          "tarih": "2026-08-02",
+          "toplam_urun": 22,
+          "genel_medyan": 354
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
     "sozluk": {
       "segmentler": {
         "dusuk": {
@@ -636,201 +775,59 @@
         }
       }
     },
-    "defter": {
+    "calisma-sandalyesi": {
       "segmentler": {
         "dusuk": {
-          "min": 40,
-          "medyan": 154,
-          "max": 310,
-          "urun_sayisi": 61,
-          "kaynak_sayisi": 4
-        },
-        "orta": {
-          "min": 85,
-          "medyan": 288,
-          "max": 680,
-          "urun_sayisi": 90,
-          "kaynak_sayisi": 4
-        },
-        "luks": {
-          "min": 300,
-          "medyan": 400,
-          "max": 1199,
-          "urun_sayisi": 30,
-          "kaynak_sayisi": 4
-        }
-      },
-      "genel_medyan": 270,
-      "toplam_urun": 181,
-      "guncelleme_tarihi": "2026-08-02",
-      "kaynak_sayisi": 4,
-      "kaynaklar": [
-        {
-          "site": "amazon",
-          "kaynak_adlari": [
-            "Amazon - Okul Defteri"
-          ],
-          "tarih": "2026-08-02",
-          "toplam_urun": 46,
-          "genel_medyan": 141
-        },
-        {
-          "site": "dr",
-          "kaynak_adlari": [
-            "D&R - Defterler"
-          ],
-          "tarih": "2026-08-02",
-          "toplam_urun": 25,
-          "genel_medyan": 400
-        },
-        {
-          "site": "nezih",
-          "kaynak_adlari": [
-            "Nezih - Defter ve Bloknotlar"
-          ],
-          "tarih": "2026-08-02",
-          "toplam_urun": 87,
-          "genel_medyan": 245
-        },
-        {
-          "site": "trendyol",
-          "kaynak_adlari": [
-            "Trendyol - Defter"
-          ],
-          "tarih": "2026-08-02",
-          "toplam_urun": 23,
-          "genel_medyan": 296
-        }
-      ],
-      "capraz_dogrulama_uyarisi": {
-        "fark_yuzdesi": 183.7,
-        "medyanlar": {
-          "trendyol": 296,
-          "amazon": 141,
-          "nezih": 245,
-          "dr": 400
-        }
-      }
-    },
-    "ders-kitabi": {
-      "segmentler": {
-        "dusuk": {
-          "min": 65,
-          "medyan": 174,
-          "max": 225,
-          "urun_sayisi": 18,
+          "min": 1509,
+          "medyan": 2361,
+          "max": 3449,
+          "urun_sayisi": 17,
           "kaynak_sayisi": 2
         },
         "orta": {
-          "min": 217,
-          "medyan": 309,
-          "max": 462,
+          "min": 1752,
+          "medyan": 3819,
+          "max": 8799,
           "urun_sayisi": 32,
           "kaynak_sayisi": 2
         },
         "luks": {
-          "min": 349,
-          "medyan": 515,
-          "max": 882,
-          "urun_sayisi": 15,
+          "min": 3980,
+          "medyan": 6810,
+          "max": 10142,
+          "urun_sayisi": 14,
           "kaynak_sayisi": 2
         }
       },
-      "genel_medyan": 306,
-      "toplam_urun": 65,
-      "guncelleme_tarihi": "2026-08-02",
+      "genel_medyan": 3717,
+      "toplam_urun": 63,
+      "guncelleme_tarihi": "2026-08-05",
       "kaynak_sayisi": 2,
       "kaynaklar": [
         {
           "site": "amazon",
           "kaynak_adlari": [
-            "Amazon - Yardımcı Ders Kitabı"
+            "Amazon - Çalışma Sandalyesi"
           ],
-          "tarih": "2026-08-02",
-          "toplam_urun": 41,
-          "genel_medyan": 349
+          "tarih": "2026-08-05",
+          "toplam_urun": 39,
+          "genel_medyan": 5390
         },
         {
           "site": "trendyol",
           "kaynak_adlari": [
-            "Trendyol - Ders ve Yardimci Kitaplar"
+            "Trendyol - Calisma Sandalyesi"
           ],
           "tarih": "2026-08-02",
           "toplam_urun": 24,
-          "genel_medyan": 264
+          "genel_medyan": 2044
         }
       ],
       "capraz_dogrulama_uyarisi": {
-        "fark_yuzdesi": 32.2,
+        "fark_yuzdesi": 142.0,
         "medyanlar": {
-          "trendyol": 264,
-          "amazon": 349
-        }
-      }
-    },
-    "boya-seti": {
-      "segmentler": {
-        "dusuk": {
-          "min": 63,
-          "medyan": 111,
-          "max": 250,
-          "urun_sayisi": 25,
-          "kaynak_sayisi": 3
-        },
-        "orta": {
-          "min": 159,
-          "medyan": 342,
-          "max": 425,
-          "urun_sayisi": 46,
-          "kaynak_sayisi": 3
-        },
-        "luks": {
-          "min": 413,
-          "medyan": 670,
-          "max": 1310,
-          "urun_sayisi": 22,
-          "kaynak_sayisi": 3
-        }
-      },
-      "genel_medyan": 340,
-      "toplam_urun": 93,
-      "guncelleme_tarihi": "2026-08-02",
-      "kaynak_sayisi": 3,
-      "kaynaklar": [
-        {
-          "site": "amazon",
-          "kaynak_adlari": [
-            "Amazon - Kuru Boya Seti"
-          ],
-          "tarih": "2026-08-02",
-          "toplam_urun": 51,
-          "genel_medyan": 202
-        },
-        {
-          "site": "nezih",
-          "kaynak_adlari": [
-            "Nezih - Sulu Boya"
-          ],
-          "tarih": "2026-08-02",
-          "toplam_urun": 21,
-          "genel_medyan": 340
-        },
-        {
-          "site": "trendyol",
-          "kaynak_adlari": [
-            "Trendyol - Boya Seti"
-          ],
-          "tarih": "2026-08-02",
-          "toplam_urun": 21,
-          "genel_medyan": 350
-        }
-      ],
-      "capraz_dogrulama_uyarisi": {
-        "fark_yuzdesi": 73.3,
-        "medyanlar": {
-          "trendyol": 350,
-          "amazon": 202,
-          "nezih": 340
+          "trendyol": 2044,
+          "amazon": 4946
         }
       }
     }

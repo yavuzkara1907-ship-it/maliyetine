@@ -1,0 +1,35 @@
+{
+  "site": "dugunbuketi",
+  "kaynak_adlari": [
+    "DugunBuketi - Istanbul Dugun Mekanlari (kokteyl kisi basi)"
+  ],
+  "kalem": "salon-kokteyl",
+  "vertikal": "dugun",
+  "tarih": "2026-08-05",
+  "toplam_urun": 10,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "detay"
+  ],
+  "genel_medyan": 500,
+  "segmentler": {
+    "dusuk": {
+      "min": 250,
+      "medyan": 500,
+      "max": 500,
+      "urun_sayisi": 7
+    },
+    "orta": {
+      "min": 800,
+      "medyan": 800,
+      "max": 800,
+      "urun_sayisi": 1
+    },
+    "luks": {
+      "min": 990,
+      "medyan": 1245,
+      "max": 1500,
+      "urun_sayisi": 2
+    }
+  }
+}

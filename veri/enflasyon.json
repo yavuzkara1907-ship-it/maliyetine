@@ -2,14 +2,15 @@
  "kaynak": "TCMB EVDS (TÜİK Tüketici Fiyat Endeksi, 2025=100)",
  "kaynak_url": "https://evds3.tcmb.gov.tr/",
  "yil": 2026,
- "uretim_tarihi": "2026-07-27",
+ "uretim_tarihi": "2026-08-05",
  "olcumler": [
   "2026-01",
   "2026-02",
   "2026-03",
   "2026-04",
   "2026-05",
-  "2026-06"
+  "2026-06",
+  "2026-07"
  ],
  "gruplar": {
   "TP.FE25.OKTG01": {
@@ -42,6 +43,10 @@
     {
      "tarih": "2026-06",
      "endeks": 129.99
+    },
+    {
+     "tarih": "2026-07",
+     "endeks": 132.31
     }
    ],
    "ilk": {
@@ -49,10 +54,10 @@
     "endeks": 115.73
    },
    "son": {
-    "tarih": "2026-06",
-    "endeks": 129.99
+    "tarih": "2026-07",
+    "endeks": 132.31
    },
-   "degisim_yuzde": 12.3
+   "degisim_yuzde": 14.3
   },
   "TP.FE25.OKTG19": {
    "ad": "Giyim ve ayakkabı",
@@ -85,6 +90,10 @@
     {
      "tarih": "2026-06",
      "endeks": 115.93
+    },
+    {
+     "tarih": "2026-07",
+     "endeks": 111.29
     }
    ],
    "ilk": {
@@ -92,10 +101,10 @@
     "endeks": 103.39
    },
    "son": {
-    "tarih": "2026-06",
-    "endeks": 115.93
+    "tarih": "2026-07",
+    "endeks": 111.29
    },
-   "degisim_yuzde": 12.1
+   "degisim_yuzde": 7.6
   },
   "TP.FE25.OKTG20": {
    "ad": "Dayanıklı mallar (altın hariç)",
@@ -127,6 +136,10 @@
     {
      "tarih": "2026-06",
      "endeks": 117.03
+    },
+    {
+     "tarih": "2026-07",
+     "endeks": 118.14
     }
    ],
    "ilk": {
@@ -134,10 +147,10 @@
     "endeks": 110.59
    },
    "son": {
-    "tarih": "2026-06",
-    "endeks": 117.03
+    "tarih": "2026-07",
+    "endeks": 118.14
    },
-   "degisim_yuzde": 5.8
+   "degisim_yuzde": 6.8
   },
   "TP.FE25.OKTG25": {
    "ad": "Lokanta ve oteller",
@@ -169,6 +182,10 @@
     {
      "tarih": "2026-06",
      "endeks": 130.72
+    },
+    {
+     "tarih": "2026-07",
+     "endeks": 133.7
     }
    ],
    "ilk": {
@@ -176,10 +193,10 @@
     "endeks": 116.72
    },
    "son": {
-    "tarih": "2026-06",
-    "endeks": 130.72
+    "tarih": "2026-07",
+    "endeks": 133.7
    },
-   "degisim_yuzde": 12.0
+   "degisim_yuzde": 14.5
   },
   "TP.FE25.OKTG22": {
    "ad": "Alkollü içecekler, tütün ve altın",
@@ -211,6 +228,10 @@
     {
      "tarih": "2026-06",
      "endeks": 127.97
+    },
+    {
+     "tarih": "2026-07",
+     "endeks": 129.77
     }
    ],
    "ilk": {
@@ -218,10 +239,10 @@
     "endeks": 116.42
    },
    "son": {
-    "tarih": "2026-06",
-    "endeks": 127.97
+    "tarih": "2026-07",
+    "endeks": 129.77
    },
-   "degisim_yuzde": 9.9
+   "degisim_yuzde": 11.5
   },
   "TP.FE25.OKTG21": {
    "ad": "Diğer temel mallar",
@@ -253,6 +274,10 @@
     {
      "tarih": "2026-06",
      "endeks": 121.48
+    },
+    {
+     "tarih": "2026-07",
+     "endeks": 122.92
     }
    ],
    "ilk": {
@@ -260,10 +285,10 @@
     "endeks": 110.36
    },
    "son": {
-    "tarih": "2026-06",
-    "endeks": 121.48
+    "tarih": "2026-07",
+    "endeks": 122.92
    },
-   "degisim_yuzde": 10.1
+   "degisim_yuzde": 11.4
   }
  }
 }

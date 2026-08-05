@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Bardak Takımı"
+  ],
+  "kalem": "bardak-takimi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-05",
+  "toplam_urun": 39,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 487,
+  "segmentler": {
+    "dusuk": {
+      "min": 155,
+      "medyan": 244,
+      "max": 300,
+      "urun_sayisi": 10
+    },
+    "orta": {
+      "min": 320,
+      "medyan": 491,
+      "max": 699,
+      "urun_sayisi": 22
+    },
+    "luks": {
+      "min": 700,
+      "medyan": 800,
+      "max": 1190,
+      "urun_sayisi": 7
+    }
+  }
+}

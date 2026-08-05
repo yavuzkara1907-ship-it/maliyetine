@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Köpek Oyuncağı"
+  ],
+  "kalem": "kopek-oyuncagi",
+  "vertikal": "kopek",
+  "tarih": "2026-08-05",
+  "toplam_urun": 49,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 249,
+  "segmentler": {
+    "dusuk": {
+      "min": 65,
+      "medyan": 125,
+      "max": 134,
+      "urun_sayisi": 13
+    },
+    "orta": {
+      "min": 139,
+      "medyan": 250,
+      "max": 421,
+      "urun_sayisi": 24
+    },
+    "luks": {
+      "min": 445,
+      "medyan": 544,
+      "max": 821,
+      "urun_sayisi": 12
+    }
+  }
+}

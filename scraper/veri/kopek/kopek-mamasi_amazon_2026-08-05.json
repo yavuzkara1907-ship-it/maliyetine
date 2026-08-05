@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Köpek Maması (aylık)"
+  ],
+  "kalem": "kopek-mamasi",
+  "vertikal": "kopek",
+  "tarih": "2026-08-05",
+  "toplam_urun": 47,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 1512,
+  "segmentler": {
+    "dusuk": {
+      "min": 101,
+      "medyan": 477,
+      "max": 805,
+      "urun_sayisi": 12
+    },
+    "orta": {
+      "min": 860,
+      "medyan": 1517,
+      "max": 3340,
+      "urun_sayisi": 24
+    },
+    "luks": {
+      "min": 3588,
+      "medyan": 4042,
+      "max": 5049,
+      "urun_sayisi": 11
+    }
+  }
+}

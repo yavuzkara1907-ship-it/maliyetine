@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Düğün Davetiyesi"
+  ],
+  "kalem": "davetiye",
+  "vertikal": "dugun",
+  "tarih": "2026-08-05",
+  "toplam_urun": 20,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 275,
+  "segmentler": {
+    "dusuk": {
+      "min": 100,
+      "medyan": 205,
+      "max": 215,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 220,
+      "medyan": 375,
+      "max": 770,
+      "urun_sayisi": 10
+    },
+    "luks": {
+      "min": 937,
+      "medyan": 2250,
+      "max": 3274,
+      "urun_sayisi": 4
+    }
+  }
+}

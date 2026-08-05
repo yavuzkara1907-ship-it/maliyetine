@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Komodin"
+  ],
+  "kalem": "komodin",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-05",
+  "toplam_urun": 43,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 1549,
+  "segmentler": {
+    "dusuk": {
+      "min": 479,
+      "medyan": 788,
+      "max": 881,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 900,
+      "medyan": 1549,
+      "max": 2499,
+      "urun_sayisi": 22
+    },
+    "luks": {
+      "min": 2600,
+      "medyan": 2989,
+      "max": 4250,
+      "urun_sayisi": 10
+    }
+  }
+}

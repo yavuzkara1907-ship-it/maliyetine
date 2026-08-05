@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Halı"
+  ],
+  "kalem": "hali",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-05",
+  "toplam_urun": 44,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 985,
+  "segmentler": {
+    "dusuk": {
+      "min": 160,
+      "medyan": 439,
+      "max": 590,
+      "urun_sayisi": 12
+    },
+    "orta": {
+      "min": 628,
+      "medyan": 1101,
+      "max": 1672,
+      "urun_sayisi": 22
+    },
+    "luks": {
+      "min": 1683,
+      "medyan": 2104,
+      "max": 3393,
+      "urun_sayisi": 10
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Togg"
+  ],
+  "kalem": "togg",
+  "vertikal": "arac",
+  "tarih": "2026-08-05",
+  "toplam_urun": 8,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 2295334,
+  "segmentler": {
+    "dusuk": {
+      "min": 1886000,
+      "medyan": 1909048,
+      "max": 2196000,
+      "urun_sayisi": 3
+    },
+    "orta": {
+      "min": 2219668,
+      "medyan": 2411000,
+      "max": 3178000,
+      "urun_sayisi": 5
+    }
+  }
+}

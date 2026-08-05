@@ -1,0 +1,35 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - MG"
+  ],
+  "kalem": "mg",
+  "vertikal": "arac",
+  "tarih": "2026-08-05",
+  "toplam_urun": 5,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 3265000,
+  "segmentler": {
+    "dusuk": {
+      "min": 2655000,
+      "medyan": 2676000,
+      "max": 2697000,
+      "urun_sayisi": 2
+    },
+    "orta": {
+      "min": 3265000,
+      "medyan": 3282500,
+      "max": 3300000,
+      "urun_sayisi": 2
+    },
+    "luks": {
+      "min": 3450000,
+      "medyan": 3450000,
+      "max": 3450000,
+      "urun_sayisi": 1
+    }
+  }
+}

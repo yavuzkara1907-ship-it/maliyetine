@@ -1,74 +1,13 @@
 {
  "vertikal": "dugun",
- "uretim_tarihi": "2026-07-28",
+ "uretim_tarihi": "2026-08-05",
  "olcumler": [
   "2026-07-24",
   "2026-07-25",
-  "2026-07-26"
+  "2026-07-26",
+  "2026-08-05"
  ],
  "kalemler": {
-  "alyans": {
-   "seri": [
-    {
-     "tarih": "2026-07-24",
-     "medyan": 11852,
-     "urun": 27,
-     "kaynak": 2
-    },
-    {
-     "tarih": "2026-07-25",
-     "medyan": 11869,
-     "urun": 27,
-     "kaynak": 2
-    },
-    {
-     "tarih": "2026-07-26",
-     "medyan": 11869,
-     "urun": 27,
-     "kaynak": 2
-    }
-   ],
-   "ilk": {
-    "tarih": "2026-07-24",
-    "medyan": 11852,
-    "urun": 27,
-    "kaynak": 2
-   },
-   "son": {
-    "tarih": "2026-07-26",
-    "medyan": 11869,
-    "urun": 27,
-    "kaynak": 2
-   }
-  },
-  "salon-yemekli": {
-   "seri": [
-    {
-     "tarih": "2026-07-25",
-     "medyan": 1000,
-     "urun": 11,
-     "kaynak": 1
-    },
-    {
-     "tarih": "2026-07-26",
-     "medyan": 1000,
-     "urun": 10,
-     "kaynak": 1
-    }
-   ],
-   "ilk": {
-    "tarih": "2026-07-25",
-    "medyan": 1000,
-    "urun": 11,
-    "kaynak": 1
-   },
-   "son": {
-    "tarih": "2026-07-26",
-    "medyan": 1000,
-    "urun": 10,
-    "kaynak": 1
-   }
-  },
   "gelinlik": {
    "seri": [
     {
@@ -103,89 +42,42 @@
     "kaynak": 1
    }
   },
-  "salon-kokteyl": {
+  "salon-yemekli": {
    "seri": [
     {
      "tarih": "2026-07-25",
-     "medyan": 500,
-     "urun": 10,
+     "medyan": 1000,
+     "urun": 11,
      "kaynak": 1
     },
     {
      "tarih": "2026-07-26",
-     "medyan": 500,
+     "medyan": 1000,
+     "urun": 10,
+     "kaynak": 1
+    },
+    {
+     "tarih": "2026-08-05",
+     "medyan": 1000,
      "urun": 10,
      "kaynak": 1
     }
    ],
    "ilk": {
     "tarih": "2026-07-25",
-    "medyan": 500,
+    "medyan": 1000,
+    "urun": 11,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-08-05",
+    "medyan": 1000,
     "urun": 10,
     "kaynak": 1
    },
-   "son": {
-    "tarih": "2026-07-26",
-    "medyan": 500,
-    "urun": 10,
-    "kaynak": 1
-   }
-  },
-  "gelin-arabasi": {
-   "seri": [
-    {
-     "tarih": "2026-07-26",
-     "medyan": 9800,
-     "urun": 1,
-     "kaynak": 1
-    }
-   ],
-   "ilk": {
-    "tarih": "2026-07-26",
-    "medyan": 9800,
-    "urun": 1,
-    "kaynak": 1
-   },
-   "son": {
-    "tarih": "2026-07-26",
-    "medyan": 9800,
-    "urun": 1,
-    "kaynak": 1
-   }
-  },
-  "nikah-sekeri": {
-   "seri": [
-    {
-     "tarih": "2026-07-24",
-     "medyan": 489,
-     "urun": 6,
-     "kaynak": 1
-    },
-    {
-     "tarih": "2026-07-25",
-     "medyan": 294,
-     "urun": 2,
-     "kaynak": 1
-    },
-    {
-     "tarih": "2026-07-26",
-     "medyan": 390,
-     "urun": 37,
-     "kaynak": 2
-    }
-   ],
-   "ilk": {
-    "tarih": "2026-07-24",
-    "medyan": 489,
-    "urun": 6,
-    "kaynak": 1
-   },
-   "son": {
-    "tarih": "2026-07-26",
-    "medyan": 390,
-    "urun": 37,
-    "kaynak": 2
-   }
+   "degisim_yuzde": 0.0,
+   "gun_araligi": 11,
+   "aylik_degisim_yuzde": 0.0
   },
   "damatlik": {
    "seri": [
@@ -206,6 +98,12 @@
      "medyan": 44950,
      "urun": 98,
      "kaynak": 3
+    },
+    {
+     "tarih": "2026-08-05",
+     "medyan": 44950,
+     "urun": 41,
+     "kaynak": 1
     }
    ],
    "ilk": {
@@ -215,54 +113,47 @@
     "kaynak": 3
    },
    "son": {
-    "tarih": "2026-07-26",
+    "tarih": "2026-08-05",
     "medyan": 44950,
-    "urun": 98,
-    "kaynak": 3
-   }
+    "urun": 41,
+    "kaynak": 1
+   },
+   "degisim_yuzde": 0.0,
+   "gun_araligi": 12,
+   "aylik_degisim_yuzde": 0.0
   },
-  "kuafor-makyaj": {
+  "alyans": {
    "seri": [
     {
+     "tarih": "2026-07-24",
+     "medyan": 11852,
+     "urun": 27,
+     "kaynak": 2
+    },
+    {
+     "tarih": "2026-07-25",
+     "medyan": 11869,
+     "urun": 27,
+     "kaynak": 2
+    },
+    {
      "tarih": "2026-07-26",
-     "medyan": 12450,
-     "urun": 1,
-     "kaynak": 1
+     "medyan": 11869,
+     "urun": 27,
+     "kaynak": 2
     }
    ],
    "ilk": {
-    "tarih": "2026-07-26",
-    "medyan": 12450,
-    "urun": 1,
-    "kaynak": 1
+    "tarih": "2026-07-24",
+    "medyan": 11852,
+    "urun": 27,
+    "kaynak": 2
    },
    "son": {
     "tarih": "2026-07-26",
-    "medyan": 12450,
-    "urun": 1,
-    "kaynak": 1
-   }
-  },
-  "fotografci": {
-   "seri": [
-    {
-     "tarih": "2026-07-26",
-     "medyan": 15600,
-     "urun": 1,
-     "kaynak": 1
-    }
-   ],
-   "ilk": {
-    "tarih": "2026-07-26",
-    "medyan": 15600,
-    "urun": 1,
-    "kaynak": 1
-   },
-   "son": {
-    "tarih": "2026-07-26",
-    "medyan": 15600,
-    "urun": 1,
-    "kaynak": 1
+    "medyan": 11869,
+    "urun": 27,
+    "kaynak": 2
    }
   },
   "davetiye": {
@@ -284,6 +175,12 @@
      "medyan": 190,
      "urun": 30,
      "kaynak": 2
+    },
+    {
+     "tarih": "2026-08-05",
+     "medyan": 275,
+     "urun": 20,
+     "kaynak": 1
     }
    ],
    "ilk": {
@@ -293,11 +190,199 @@
     "kaynak": 1
    },
    "son": {
+    "tarih": "2026-08-05",
+    "medyan": 275,
+    "urun": 20,
+    "kaynak": 1
+   },
+   "degisim_yuzde": 114.8,
+   "gun_araligi": 12,
+   "aylik_degisim_yuzde": 44.7
+  },
+  "gelin-ayakkabisi": {
+   "seri": [
+    {
+     "tarih": "2026-07-24",
+     "medyan": 1432,
+     "urun": 10,
+     "kaynak": 1
+    },
+    {
+     "tarih": "2026-07-25",
+     "medyan": 1274,
+     "urun": 9,
+     "kaynak": 1
+    },
+    {
+     "tarih": "2026-07-26",
+     "medyan": 1190,
+     "urun": 45,
+     "kaynak": 2
+    },
+    {
+     "tarih": "2026-08-05",
+     "medyan": 1597,
+     "urun": 46,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-24",
+    "medyan": 1432,
+    "urun": 10,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-08-05",
+    "medyan": 1597,
+    "urun": 46,
+    "kaynak": 1
+   },
+   "degisim_yuzde": 11.5,
+   "gun_araligi": 12,
+   "aylik_degisim_yuzde": 34.2
+  },
+  "gelin-arabasi": {
+   "seri": [
+    {
+     "tarih": "2026-07-26",
+     "medyan": 9800,
+     "urun": 1,
+     "kaynak": 1
+    },
+    {
+     "tarih": "2026-08-05",
+     "medyan": 9300,
+     "urun": 1,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
     "tarih": "2026-07-26",
-    "medyan": 190,
-    "urun": 30,
-    "kaynak": 2
-   }
+    "medyan": 9800,
+    "urun": 1,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-08-05",
+    "medyan": 9300,
+    "urun": 1,
+    "kaynak": 1
+   },
+   "degisim_yuzde": -5.1,
+   "gun_araligi": 10,
+   "aylik_degisim_yuzde": -5.1
+  },
+  "nikah-sekeri": {
+   "seri": [
+    {
+     "tarih": "2026-07-24",
+     "medyan": 489,
+     "urun": 6,
+     "kaynak": 1
+    },
+    {
+     "tarih": "2026-07-25",
+     "medyan": 294,
+     "urun": 2,
+     "kaynak": 1
+    },
+    {
+     "tarih": "2026-07-26",
+     "medyan": 390,
+     "urun": 37,
+     "kaynak": 2
+    },
+    {
+     "tarih": "2026-08-05",
+     "medyan": 307,
+     "urun": 24,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-24",
+    "medyan": 489,
+    "urun": 6,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-08-05",
+    "medyan": 307,
+    "urun": 24,
+    "kaynak": 1
+   },
+   "degisim_yuzde": -37.2,
+   "gun_araligi": 12,
+   "aylik_degisim_yuzde": -21.3
+  },
+  "yemek-ikram": {
+   "seri": [
+    {
+     "tarih": "2026-07-25",
+     "medyan": 400,
+     "urun": 9,
+     "kaynak": 1
+    },
+    {
+     "tarih": "2026-07-26",
+     "medyan": 400,
+     "urun": 9,
+     "kaynak": 1
+    },
+    {
+     "tarih": "2026-08-05",
+     "medyan": 250,
+     "urun": 10,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-25",
+    "medyan": 400,
+    "urun": 9,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-08-05",
+    "medyan": 250,
+    "urun": 10,
+    "kaynak": 1
+   },
+   "degisim_yuzde": -37.5,
+   "gun_araligi": 11,
+   "aylik_degisim_yuzde": -37.5
+  },
+  "fotografci": {
+   "seri": [
+    {
+     "tarih": "2026-07-26",
+     "medyan": 15600,
+     "urun": 1,
+     "kaynak": 1
+    },
+    {
+     "tarih": "2026-08-05",
+     "medyan": 15000,
+     "urun": 1,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-26",
+    "medyan": 15600,
+    "urun": 1,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-08-05",
+    "medyan": 15000,
+    "urun": 1,
+    "kaynak": 1
+   },
+   "degisim_yuzde": -3.8,
+   "gun_araligi": 10,
+   "aylik_degisim_yuzde": -3.8
   },
   "taki-altin": {
    "seri": [
@@ -327,67 +412,36 @@
     "kaynak": 1
    }
   },
-  "gelin-ayakkabisi": {
+  "kuafor-makyaj": {
    "seri": [
     {
-     "tarih": "2026-07-24",
-     "medyan": 1432,
-     "urun": 10,
-     "kaynak": 1
-    },
-    {
-     "tarih": "2026-07-25",
-     "medyan": 1274,
-     "urun": 9,
-     "kaynak": 1
-    },
-    {
      "tarih": "2026-07-26",
-     "medyan": 1190,
-     "urun": 45,
-     "kaynak": 2
-    }
-   ],
-   "ilk": {
-    "tarih": "2026-07-24",
-    "medyan": 1432,
-    "urun": 10,
-    "kaynak": 1
-   },
-   "son": {
-    "tarih": "2026-07-26",
-    "medyan": 1190,
-    "urun": 45,
-    "kaynak": 2
-   }
-  },
-  "yemek-ikram": {
-   "seri": [
-    {
-     "tarih": "2026-07-25",
-     "medyan": 400,
-     "urun": 9,
+     "medyan": 12450,
+     "urun": 1,
      "kaynak": 1
     },
     {
-     "tarih": "2026-07-26",
-     "medyan": 400,
-     "urun": 9,
+     "tarih": "2026-08-05",
+     "medyan": 12600,
+     "urun": 1,
      "kaynak": 1
     }
    ],
    "ilk": {
-    "tarih": "2026-07-25",
-    "medyan": 400,
-    "urun": 9,
+    "tarih": "2026-07-26",
+    "medyan": 12450,
+    "urun": 1,
     "kaynak": 1
    },
    "son": {
-    "tarih": "2026-07-26",
-    "medyan": 400,
-    "urun": 9,
+    "tarih": "2026-08-05",
+    "medyan": 12600,
+    "urun": 1,
     "kaynak": 1
-   }
+   },
+   "degisim_yuzde": 1.2,
+   "gun_araligi": 10,
+   "aylik_degisim_yuzde": 1.2
   },
   "salon": {
    "seri": [
@@ -424,6 +478,12 @@
      "medyan": 22150,
      "urun": 1,
      "kaynak": 1
+    },
+    {
+     "tarih": "2026-08-05",
+     "medyan": 16550,
+     "urun": 1,
+     "kaynak": 1
     }
    ],
    "ilk": {
@@ -433,19 +493,59 @@
     "kaynak": 1
    },
    "son": {
-    "tarih": "2026-07-26",
-    "medyan": 22150,
+    "tarih": "2026-08-05",
+    "medyan": 16550,
     "urun": 1,
     "kaynak": 1
-   }
+   },
+   "degisim_yuzde": -25.3,
+   "gun_araligi": 10,
+   "aylik_degisim_yuzde": -25.3
+  },
+  "salon-kokteyl": {
+   "seri": [
+    {
+     "tarih": "2026-07-25",
+     "medyan": 500,
+     "urun": 10,
+     "kaynak": 1
+    },
+    {
+     "tarih": "2026-07-26",
+     "medyan": 500,
+     "urun": 10,
+     "kaynak": 1
+    },
+    {
+     "tarih": "2026-08-05",
+     "medyan": 500,
+     "urun": 10,
+     "kaynak": 1
+    }
+   ],
+   "ilk": {
+    "tarih": "2026-07-25",
+    "medyan": 500,
+    "urun": 10,
+    "kaynak": 1
+   },
+   "son": {
+    "tarih": "2026-08-05",
+    "medyan": 500,
+    "urun": 10,
+    "kaynak": 1
+   },
+   "degisim_yuzde": 0.0,
+   "gun_araligi": 11,
+   "aylik_degisim_yuzde": 0.0
   }
  },
  "ozet": {
   "kalem_sayisi": 15,
-  "karsilastirilabilir": 0,
-  "artan": 0,
-  "azalan": 0,
-  "sabit": 0,
-  "medyan_degisim_yuzde": null
+  "karsilastirilabilir": 11,
+  "artan": 3,
+  "azalan": 5,
+  "sabit": 3,
+  "medyan_degisim_yuzde": 0.0
  }
 }

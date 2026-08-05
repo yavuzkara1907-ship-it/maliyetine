@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Çiş Pedi (aylık)"
+  ],
+  "kalem": "cis-pedi",
+  "vertikal": "kopek",
+  "tarih": "2026-08-05",
+  "toplam_urun": 43,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 385,
+  "segmentler": {
+    "dusuk": {
+      "min": 170,
+      "medyan": 259,
+      "max": 294,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 295,
+      "medyan": 387,
+      "max": 1030,
+      "urun_sayisi": 22
+    },
+    "luks": {
+      "min": 1082,
+      "medyan": 1195,
+      "max": 1470,
+      "urun_sayisi": 10
+    }
+  }
+}
