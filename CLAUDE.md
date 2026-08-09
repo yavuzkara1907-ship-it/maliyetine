@@ -2278,6 +2278,60 @@ Search Console'da da **URL tahmin edip 404 aldim** (drilldown linki).
 Bu ders artik tarayicida da tekrar etti.
 
 
+## ARAMA VERISI: SORGU KUMELERI VE DURUMLARI (2026-08-09, guncellenecek)
+Search Console 28 gun: **555 gosterim · 4 tik · konum 39,4 · 115 sorgu.**
+Bu bolum HER SEARCH CONSOLE TURUNDA guncellenmeli — dagilirsa bir
+sonraki turda kaybolur.
+
+| kume | gosterim | durum |
+|---|---|---|
+| kira geliri vergisi | ~72 | sayfa var · 2 SSS eklendi (ceza, tarla) |
+| damatlik / gelinlik | ~63 | **tek tik buradan** · kiralama rehberi eklendi |
+| hisse / borsa maliyet | ~51 | "borsa" kelimesi EKLENDI · lot hesaplayici acildi |
+| temettu | ~37 | baslik "geliri/verimi" oldu · **temettu VERGISI eksik** |
+| tapu harci | ~18 | sayfa var · "ipotek harci" eksik |
+| birikim / bilesik | ~11 | sayfa var |
+| issizlik | ~10 | sayfa var |
+| kdv matrah | ~5 | sayfa var, "matrah" gecıyor |
+| aylik kedi masrafi | 7 | **cevap bloguna aylik sarf eklendi** |
+| defter fiyatlari | 7 | sayfa var |
+| ceyiz ne kadar tutar | 1 (GIRIS) | **baslik sorguyla eslestirildi** |
+| camasir makinesi 2026 | ~5 | sayfa var |
+| yemeksiz dugun salonu | 2 | sayfa var (salon-kokteyl) |
+
+### KAPATILAN BOSLUKLAR
+1. **"borsa" kelimesi hisse-maliyet sayfasinda HIC GECMIYORDU** — oysa
+   "borsa maliyet hesaplama" 18 gosterimle en cok gosterim alan ikinci
+   sorgumuzdu. *Sayfa aradiklari seydi, sadece onlarin kelimesini
+   kullanmiyordu.* Bu kalibi her turda ara.
+2. **Aylik sarf cevap blogunda yoktu** (kedi/kopek/bebek). Rakam
+   verimizde vardi. Cevap blogu Google'in ve AI motorlarinin
+   alintiladigi parca — olctugumuz bir rakami oraya koymamak olcmemis
+   gibi gorunmek demek.
+3. **`/hesap/lot-hesaplama/`** acildi (saf matematik, komisyon
+   kullanicidan).
+4. **`/rehber/damatlik-kiralamak-mi-almak-mi/`** — kiralama fiyatini
+   OLCMUYORUZ, yazi bunu ilk cumlede soyluyor; degeri karari kurmanin
+   cercevesini vermek.
+5. **Ceyiz basligi** "Ceyiz Masraflari" -> **"Ceyiz Ne Kadar Tutar?"**
+
+### ACIK KALANLAR (siradaki tur)
+- **temettu vergisi hesaplayici** (~4 gosterim). Stopaj orani birincil
+  kaynaktan DOGRULANMADAN yazilmaz.
+- **ipotek harci** (1 gosterim) — tapu sayfasina alt baslik olabilir.
+- **kira geliri rehberi** — en buyuk kume ama hesaplayici sayfasi zaten
+  siralaniyor; ayri rehber KANNIBALIZE edebilir. Once konum iyilessin.
+- **kedi/kopek %100 tek kaynakli** (8/8 ve 7/7). Sayfada "1 bagimsiz
+  kaynak" yaziyor — kendi cok kaynak kuralimizla celisiyor. En net eksik.
+- **Bellona / Istikbal** — fiyat var ama kart eslesmesi kurulamadi;
+  D&R'da ayni teshis elle bakilinca cozulmustu.
+
+### OLCUM: TEK KAYNAKLI KALEMLER (2026-08-09)
+122 olculen kalemin **52'si (%43)** tek kaynakli:
+arac 25 (yapisal ve dogru — uretici liste fiyati) · dugun 10 ·
+**kedi 8/8** · **kopek 7/7** · bebek 2.
+
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)

@@ -2060,8 +2060,12 @@ REHBERLER = [
     },
     {
         "slug": "ceyiz-masraflari",
-        "baslik": "Çeyiz Masrafları: Tekstil, Mutfak ve Küçük Ev Aletleri",
-        "seo_baslik": "Çeyiz Masrafları 2026 — Kalem Kalem Liste",
+        # 2026-08-09: "ceyiz ne kadar tutar 2026" sorgusundan GIRIS geldi.
+        # Sayfa tam o soruyu cevapliyordu (cevap blogu "41.716 TL tutuyor"
+        # diyor) ama basligi "Ceyiz Masraflari" idi - kullanicinin yazdigi
+        # ifade H1'de hic gecmiyordu.
+        "baslik": "Çeyiz Ne Kadar Tutar? Tekstil, Mutfak ve Küçük Ev Aletleri",
+        "seo_baslik": "Çeyiz Ne Kadar Tutar? 2026 Kalem Kalem Liste",
         "meta": "Çeyiz kapsamındaki tekstil, mutfak eşyası ve küçük ev aletleri "
                 "kalem kalem, ekonomik-orta-üst fiyatlarıyla.",
         "govde": _govde_ceyiz,
