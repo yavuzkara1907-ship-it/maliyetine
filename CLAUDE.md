@@ -2419,6 +2419,52 @@ dogrulandi (Hybrid Sleep, Detox Prime).
 `orta 383.814 -> 369.371` · `UST 600.942` · **9 bagimsiz site**.
 
 
+## HESAPLAYICILAR 21 -> 24: RAKIP TARAMASI (2026-08-09)
+Yavuz: *"rakiplerde olup bizde olmayan ya da gercekten tutabilecek
+hesaplayicilari tespit edip ekleyelim."*
+
+**Tahmin edilmedi, rakip listeleri CEKILDI:** hesapsonuc **275**,
+yenibirhesap **253**, hesaplamaci **29** hesaplayici. Cogu kapsam disi
+(burc, gebelik, sinav puani, vucut kitle) — marka bir **maliyet**
+sitesi olarak kaliyoruz; hesapsonuc'un *"juno lilith hesaplama"* ile
+seyreldigi yer orasi.
+
+### ONCE MEVCUTLARI KONTROL ETTIM — iki "eksik" eksik degildi
+- **"KDV matrah hesaplama"** (5 gosterim): KDV hesaplayicimiz zaten
+  dahil/haric ceviriyor ve SSS'sinde anlatiyor. *Yeni sayfa degil,
+  kelime meselesi.*
+- **"asgari ucret hesaplama"**: maas hesaplayicisinin SSS'sinde
+  kapsaniyor; ayri sayfa **kannibalize** ederdi.
+
+*Yeni sayfa acmadan once mevcut sayfanin o isi yapip yapmadigina
+bakmak, bu turda iki gereksiz sayfayi engelledi.*
+
+### EKLENEN 3 — ucu de saf matematik, parametre riski sifir
+| sayfa | neden guvenli |
+|---|---|
+| `/hesap/yakit-maliyeti-hesaplama/` | litre fiyati KULLANICIDAN — akaryakit gunluk degisiyor, il il farkli |
+| `/hesap/boya-hesaplama/` | verim (m²/litre) kullanicidan — kutuda yazar, markaya gore degisir |
+| `/hesap/basa-bas-noktasi-hesaplama/` | hicbir dis parametre yok |
+
+**Her ucunde de "uydurma cevap verme" kurali uygulandi:**
+- Boyada litre fiyati bos birakilirsa **tutar `null` doner**, 0 TL degil.
+- Basa basta satis fiyati degisken maliyetin altindaysa **basa bas
+  noktasi YOKTUR** — uydurma adet ya da "sonsuz" yerine acikca
+  soyluyor ve gereken en dusuk fiyati veriyor (kart borcu
+  hesaplayicisindaki kararin aynisi).
+- Boyada kapi/pencere **dusulmuyor**: dusmek icin uydurma bir katsayi
+  gerekirdi. Iscilik dahil degil ve sayfada yaziyor.
+
+### AYNI ONDALIK HATASINI TEKRAR URETTIM
+Ilk halde *"32.4 litre"*, *"%62.5"* yaziyordu — noktali ondalik.
+**Bunu 2 Agustos'ta site genelinde duzeltmistim** (`_kat()` yardimcisi)
+ama yeni hesaplayicilarda geri geldi, cunku o duzeltme Python
+tarafindaydi, bunlar JS ciktisi. JS tarafinda ayri bir yardimciyla
+duzeltildi.
+**Ders: bir bicimlendirme kurali iki ayri dilde uygulanıyorsa iki
+yerde de korunmasi gerekiyor; birini duzeltmek otekini kapsamiyor.**
+
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
