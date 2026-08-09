@@ -2208,6 +2208,76 @@ Kart rakamlarinin sayfa rakamlariyla birebir tuttugu dogrulandi
 (100 kisilik dugun 356.375 · buzdolabi 29.597 · besik 5.729).
 
 
+## 5 AGUSTOS KOSUSU + SEARCH CONSOLE DENETIMI (2026-08-09)
+
+### ILK GERCEK URETIM KOSUSU CALISTI
+5 Agustos'ta aylik workflow kendiliginden kostu ve commit atti
+(`1fc7953 Aylik veri guncellemesi 2026-08-05`). Zaman serisi olustu:
+arac 3 olcum / 25 kalem, ev-kurma 4 olcum, bebek 3.
+**10 gunluk esik dogru calisti:** 2 Agustos'ta elle calistirdigim
+vertikaller (ev-kurma 25 kalem, okul 6) esigin altinda kaldigi icin
+reddedildi — uyardigim bedel aynen gerceklesti.
+
+### AMA SAYFALARDA GORUNMUYORDU — SESSIZ SIRA HATASI
+`gecmis.py` workflow'un **en sonunda** kosuyordu, `sayfa_uret.py` ise
+ondan once. Yani **sayfalar uretilirken zaman serisi henuz o ayki
+olcumu icermiyordu** → *"Fiyat gecmisi" bolumu HER ZAMAN BIR OLCUM
+GERIDEYDI.*
+
+Somut sonuc: 5 Agustos'ta damatlik sayfasi hala *"kendi olcumumuz yeni
+basladi, ilk karsilastirmali rakamlar bir sonraki olcumde gorunecek"*
+diyordu — oysa seride `2026-07-24` ve `2026-08-05` kayitlari vardi ve
+`_fiyat_gecmisi_html` elle cagrildiginda karsilastirmayi uretiyordu.
+**Projenin en cok beklenen ciktisi bir tur gecikiyordu ve hicbir sey
+hata vermiyordu.**
+
+Duzeltme: `agrega -> gecmis -> sayfa_uret`. Testle kilitlendi (eski
+sirayla test patliyor, dogrulandi). Yeniden uretim sonrasi
+**47/81 kalem sayfasinda gercek karsilastirma** gorunuyor (once 0).
+
+### SEARCH CONSOLE — 28 gun: 555 gosterim, 4 tik, konum 39,4, 115 sorgu
+
+**STRATEJIK SURPRIZ: gosterimlerin buyuk kismi maliyet endekslerinden
+DEGIL, FINANS HESAPLAYICILARINDAN geliyor.**
+
+| sayfa | gosterim |
+|---|---|
+| www/hesap/kira-gelir-vergisi-hesaplama | 66 |
+| /dugun/damatlik-fiyatlari | 61 |
+| www/hesap/temettu-verimi-hesaplama | 36 |
+| www/hesap/hisse-maliyet-hesaplama | 28 |
+
+Sorgu kumeleri: kira geliri vergisi ~72 · damatlik/gelinlik ~63 ·
+hisse-borsa maliyet ~51 · temettu ~37 · tapu harci ~18.
+
+**EN BUYUK TEKNIK SORUN — www:** dort varyant da (http/https ×
+www/koksuz) **200 donuyor.** Google ayni sayfayi iki ana bilgisayara
+bolmus: *tiklamalar www'ye, gosterimler koke gidiyor.* Dizine ekleme
+raporu: **185 sayfa dizinde degil**, 123'u "kesfedildi-taranmadi" ve
+**ana sayfanin kok surumu bile hic taranmamis** (son tarama: Yok).
+Canonical dogru ama canonical bir IPUCU, 301 bir DIREKTIF.
+`_redirects`/`_headers` dosyasi yok, Worker panelden yapilandirilmis —
+**bu Cloudflare Redirect Rules isi, Yavuz'da.**
+
+**KELIME BOSLUKLARI (sayfa aradiklari sey, kelimeleri farkli):**
+1. **"borsa" kelimesi hisse-maliyet sayfasinda HIC GECMIYORDU.**
+   "borsa maliyet hesaplama" 18 gosterimle en cok gosterim alan ikinci
+   sorgumuz; varyantlariyla ~30 gosterim, hepsi 0 tik. Baslik
+   *"Borsa Hisse Maliyet Dusurme Hesaplama"* oldu.
+2. Temettu sayfasi yalnizca "verim" diyordu; sorgular "geliri" (8),
+   "orani" (5), "formulu" (5), "kar payi" (3) diyor.
+3. Kira gelirinde iki alt konu eksikti. **"kira vergisi cezasi"** icin
+   CEZA TUTARI YAZILMADI (VUK'a ve yeniden degerlemeye bagli,
+   dogrulamadan rakam vermeyiz); yazilan sey KESIN kural: beyan
+   edilmezse **istisna hakki duser** (GVK md.21). **"tarla kira
+   vergisi"** icin: bu hesap onu KAPSAMIYOR, 58.000 TL istisna yalnizca
+   konuta ozgu — soylemek, yanlis sonuc vermekten iyi.
+
+### Yan not
+Search Console'da da **URL tahmin edip 404 aldim** (drilldown linki).
+Bu ders artik tarayicida da tekrar etti.
+
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
