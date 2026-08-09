@@ -41,7 +41,12 @@ class TanimTesti(unittest.TestCase):
                      # sayiya yuvarlama). Komisyon KULLANICIDAN aliniyor ve
                      # bos birakilabiliyor - sabit bir oran GOMULMUYOR, o
                      # yuzden mevzuat/olculen veri sinifina girmiyor.
-                     "lot"}
+                     "lot",
+                     # 2026-08-09, rakip taramasi sonucu eklenenler.
+                     # Ucu de saf aritmetik/geometri; degisken parametreler
+                     # (litre fiyati, boya verimi) KULLANICIDAN aliniyor
+                     # cunku gunluk degisiyor ya da markaya gore farkli.
+                     "yakit", "boya", "basabas"}
     # RPM resmi olarak yayinlanmiyor - kullanicidan alinir, aralik gosterilir
     KULLANICI_PARAMETRESI = {"icerik", "website"}
     OLCULEN_VERI = {"alim-gucu"}         # parametresi bizim cektigimiz TUFE

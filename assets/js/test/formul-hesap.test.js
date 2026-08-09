@@ -6,6 +6,7 @@ const {
   tapuHarciHesapla, issizlikOdenegiHesapla, kiraGelirVergisiHesapla,
   yillikIzinHesapla, fazlaMesaiHesapla, alimGucuHesapla,
   icerikGeliriHesapla, ICERIK_RPM_ADIMLARI, lotHesapla,
+  yakitMaliyetiHesapla, boyaHesapla, basaBasHesapla,
 } = require("../formul-hesap.js");
 const { RESMI_PARAMETRELER, tarifedenVergi, parametreGecerliMi } =
   require("../resmi-parametreler.js");
@@ -353,4 +354,51 @@ test("lot: gecersiz girdide null - 0 gibi bir sonuc uretmez", () => {
   assert.equal(lotHesapla(0, 10, 0), null);
   assert.equal(lotHesapla(1000, 0, 0), null);
   assert.equal(lotHesapla(-5, 10, 0), null);
+});
+
+// ---------------- YAKIT / BOYA / BASA BAS (2026-08-09) ----------------
+// Rakip taramasindan cikan uc hesaplayici. Ucu de saf matematik;
+// degisken parametreler (litre fiyati, boya verimi) kullanicidan.
+test("yakit: gidis-donus mesafeyi IKIYE katliyor", () => {
+  const tek = yakitMaliyetiHesapla(450, 7.2, 48, false);
+  const cift = yakitMaliyetiHesapla(450, 7.2, 48, true);
+  assert.equal(cift.mesafe, tek.mesafe * 2);
+  assert.equal(cift.tutar, tek.tutar * 2);
+  assert.equal(tek.km_basina, Math.round((tek.tutar / 450) * 100) / 100);
+});
+
+test("yakit: gecersiz girdide null", () => {
+  assert.equal(yakitMaliyetiHesapla(0, 7, 48, false), null);
+  assert.equal(yakitMaliyetiHesapla(100, 0, 48, false), null);
+  assert.equal(yakitMaliyetiHesapla(100, 7, 0, false), null);
+});
+
+test("boya: tavan secimi alani ve litreyi degistiriyor", () => {
+  const tavanli = boyaHesapla(4, 5, 2.8, 2, 12, 450, true);
+  const tavansiz = boyaHesapla(4, 5, 2.8, 2, 12, 450, false);
+  assert.equal(tavanli.tavan_alani, 20);
+  assert.equal(tavansiz.tavan_alani, 0);
+  assert.ok(tavanli.litre > tavansiz.litre);
+  // duvar = 2*(4+5)*2.8 = 50.4
+  assert.equal(tavanli.duvar_alani, 50.4);
+});
+
+test("boya: litre fiyati verilmezse tutar NULL - 0 TL uydurmuyor", () => {
+  const s = boyaHesapla(4, 5, 2.8, 2, 12, 0, true);
+  assert.equal(s.tutar, null);
+  assert.ok(s.litre > 0, "litre yine de hesaplanmali");
+});
+
+test("basabas: katki payi ve adet dogru", () => {
+  const s = basaBasHesapla(50000, 120, 45);
+  assert.equal(s.birim_katki, 75);
+  assert.equal(s.adet, Math.ceil(50000 / 75));   // yukari yuvarlar
+  assert.equal(s.mumkun_degil, false);
+});
+
+test("basabas: fiyat degisken maliyetin ALTINDAYSA uydurma adet donmez", () => {
+  const s = basaBasHesapla(50000, 40, 45);
+  assert.equal(s.mumkun_degil, true);
+  assert.equal(s.adet, undefined);          // "sonsuz" ya da sahte sayi yok
+  assert.ok(s.gereken_fiyat > 45, "basa bas icin gereken en dusuk fiyat gosterilmeli");
 });

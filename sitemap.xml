@@ -289,6 +289,24 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://maliyetine.com.tr/hesap/yakit-maliyeti-hesaplama/</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maliyetine.com.tr/hesap/boya-hesaplama/</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://maliyetine.com.tr/hesap/basa-bas-noktasi-hesaplama/</loc>
+    <lastmod>2026-08-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://maliyetine.com.tr/hesap/lot-hesaplama/</loc>
     <lastmod>2026-08-09</lastmod>
     <changefreq>yearly</changefreq>

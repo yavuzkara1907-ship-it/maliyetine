@@ -555,6 +555,80 @@ function lotHesapla(butce, fiyat, komisyonYuzde) {
 }
 
 
+// ---------------- YAKIT MALIYETI ----------------
+// 2026-08-09. Rakiplerin listesinde "arabam ne kadar yakar" var ve
+// bizde yoktu; arac vertikalimiz varken bu bosluk anlamsizdi.
+//
+// SAF MATEMATIK: mesafe x tuketim / 100 x litre fiyati. Hicbir mevzuat
+// parametresi yok. LITRE FIYATI KULLANICIDAN aliniyor - akaryakit
+// fiyati gunluk degisiyor ve il il farkli; sabit bir deger gomsek
+// ertesi gun yanlis olurdu.
+function yakitMaliyetiHesapla(mesafeKm, tuketim100, litreFiyat, gidisDonus) {
+  if (!(mesafeKm > 0) || !(tuketim100 > 0) || !(litreFiyat > 0)) return null;
+  const mesafe = gidisDonus ? mesafeKm * 2 : mesafeKm;
+  const litre = (mesafe * tuketim100) / 100;
+  const tutar = litre * litreFiyat;
+  return {
+    mesafe: _yuvarla(mesafe),
+    litre: Math.round(litre * 100) / 100,
+    tutar: _yuvarla(tutar),
+    km_basina: Math.round((tutar / mesafe) * 100) / 100,
+    yuz_km: _yuvarla((tuketim100 / 100) * 100 * litreFiyat),
+  };
+}
+
+
+// ---------------- BOYA / ODA BOYAMA ----------------
+// Alan hesabi saf geometri. VERIM (m2/litre) ve KAT SAYISI kullanicidan;
+// boya markasina gore degisiyor ve kutunun uzerinde yazili.
+// Kapi/pencere icin kaba bir dusum YAPILMIYOR - onun yerine kullanici
+// isterse alan girer; uydurma bir "%10 dus" katsayisi koymuyoruz.
+function boyaHesapla(en, boy, yukseklik, katSayisi, verim, litreFiyat,
+                     tavanDahil) {
+  if (!(en > 0) || !(boy > 0) || !(yukseklik > 0)) return null;
+  const kat = katSayisi > 0 ? katSayisi : 2;
+  const m2Litre = verim > 0 ? verim : 12;      // tipik: kutuda yazar
+  const duvar = 2 * (en + boy) * yukseklik;
+  const tavan = tavanDahil ? en * boy : 0;
+  const alan = duvar + tavan;
+  const litre = (alan * kat) / m2Litre;
+  return {
+    duvar_alani: Math.round(duvar * 10) / 10,
+    tavan_alani: Math.round(tavan * 10) / 10,
+    toplam_alan: Math.round(alan * 10) / 10,
+    kat: kat,
+    litre: Math.ceil(litre * 10) / 10,
+    tutar: litreFiyat > 0 ? _yuvarla(Math.ceil(litre * 10) / 10 * litreFiyat) : null,
+  };
+}
+
+
+// ---------------- BASA BAS SATIS ADEDI ----------------
+// Sabit gider / (birim fiyat - birim degisken maliyet). Saf matematik.
+// Birim katki sifir ya da negatifse BASA BAS YOKTUR - uydurma bir adet
+// dondurmek yerine bunu acikca soyluyoruz (kart borcu hesaplayicisinda
+// aldigimiz kararin aynisi).
+function basaBasHesapla(sabitGider, birimFiyat, birimDegisken) {
+  if (!(sabitGider > 0) || !(birimFiyat > 0)) return null;
+  const katki = birimFiyat - (birimDegisken > 0 ? birimDegisken : 0);
+  if (katki <= 0) {
+    return {
+      mumkun_degil: true,
+      katki: _yuvarla(katki),
+      gereken_fiyat: _yuvarla((birimDegisken > 0 ? birimDegisken : 0) + 1),
+    };
+  }
+  const adet = Math.ceil(sabitGider / katki);
+  return {
+    mumkun_degil: false,
+    birim_katki: _yuvarla(katki),
+    katki_orani: Math.round((katki / birimFiyat) * 1000) / 10,
+    adet: adet,
+    ciro: _yuvarla(adet * birimFiyat),
+  };
+}
+
+
 function hisseMaliyetHesapla(mevcutAdet, mevcutMaliyet, yeniAdet, yeniFiyat) {
   if (!(mevcutAdet > 0) || !(mevcutMaliyet > 0) || !(yeniAdet > 0) || !(yeniFiyat > 0)) {
     return null;
@@ -712,6 +786,9 @@ if (typeof module !== "undefined" && module.exports) {
     birikimHedefiHesapla,
     hisseMaliyetHesapla,
     lotHesapla,
+    yakitMaliyetiHesapla,
+    boyaHesapla,
+    basaBasHesapla,
     karZararHesapla,
     temettuVerimiHesapla,
     kartBorcuHesapla,

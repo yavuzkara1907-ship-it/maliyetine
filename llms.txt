@@ -100,6 +100,9 @@ hangi yılın tarifesi olduğunu belirtin.
 - [YouTube Gelir Hesaplama](https://maliyetine.com.tr/hesap/youtube-gelir-hesaplama/): Hesap saf aritmetiktir. RPM değeri kullanıcıdan alınır — resmî bir kaynağı olmadığı için tarafımızdan varsayılmaz.
 - [Bileşik Faiz Hesaplama](https://maliyetine.com.tr/hesap/bilesik-faiz-hesaplama/): Bileşik faiz ve annüite gelecek değeri formülü — finansal matematik
 - [Birikim Hedefi Hesaplama](https://maliyetine.com.tr/hesap/birikim-hedefi-hesaplama/): Annüite formülünün tersi — finansal matematik
+- [Yakıt Maliyeti Hesaplama](https://maliyetine.com.tr/hesap/yakit-maliyeti-hesaplama/): Orantı — temel aritmetik
+- [Boya Hesaplama](https://maliyetine.com.tr/hesap/boya-hesaplama/): Alan hesabı — temel geometri
+- [Başa Baş Noktası Hesaplama](https://maliyetine.com.tr/hesap/basa-bas-noktasi-hesaplama/): Başa baş analizi — temel aritmetik
 - [Borsa Lot Hesaplama](https://maliyetine.com.tr/hesap/lot-hesaplama/): Tam sayıya yuvarlama — temel aritmetik
 - [Borsa Hisse Maliyet Hesaplama](https://maliyetine.com.tr/hesap/hisse-maliyet-hesaplama/): Ağırlıklı ortalama — temel aritmetik
 - [Kâr Zarar Hesaplama](https://maliyetine.com.tr/hesap/kar-zarar-hesaplama/): Kâr/zarar ve yüzde getiri — temel aritmetik

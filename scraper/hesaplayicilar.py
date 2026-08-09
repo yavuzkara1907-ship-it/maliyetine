@@ -674,6 +674,177 @@ HESAPLAYICILAR = [
         ],
     },
     {
+        "id": "yakit",
+        "slug": "yakit-maliyeti-hesaplama",
+        "ad": "Yakıt Maliyeti Hesaplama",
+        "baslik": "Arabam Ne Kadar Yakar? Yakıt Maliyeti Hesaplama",
+        "soru": "Bu yol bana yakıt olarak kaça patlar?",
+        "meta": "Mesafe, ortalama tüketim ve litre fiyatına göre yolun yakıt "
+                "maliyeti, km başına gider ve 100 km maliyeti.",
+        "ozet": (
+            "Yakıt maliyeti <strong>mesafe × tüketim ÷ 100 × litre fiyatı</strong>. "
+            "Litre fiyatını siz giriyorsunuz: akaryakıt fiyatı günlük değişiyor ve "
+            "ilden ile farklı, buraya sabit bir rakam yazsak ertesi gün yanlış olurdu."
+        ),
+        "formul": "Yakıt = (mesafe × ortalama tüketim ÷ 100) × litre fiyatı",
+        "kaynaklar": ["Orantı — temel aritmetik"],
+        "alanlar": [
+            {"id": "mesafe", "etiket": "Mesafe (km)", "tip": "number", "varsayilan": "450", "adim": "1"},
+            {"id": "tuketim", "etiket": "Ortalama tüketim (litre/100 km)", "tip": "number", "varsayilan": "7.2", "adim": "any"},
+            {"id": "litre", "etiket": "Litre fiyatı (TL)", "tip": "number", "varsayilan": "48", "adim": "any"},
+            {"id": "gidisdonus", "etiket": "Gidiş-dönüş", "tip": "secim", "varsayilan": "0",
+             "secenekler": [["0", "Tek yön"], ["1", "Gidiş-dönüş"]]},
+        ],
+        "alan_notu": (
+            "Ortalama tüketim aracın kendi bilgisayarından okunabilir; şehir içi "
+            "ve şehir dışı değerleri belirgin farklıdır. Katalog tüketimi genelde "
+            "gerçek kullanımın altında kalır."
+        ),
+        "js": """
+      const nd = (x) => String(x).replace(".", ",");
+      const s = yakitMaliyetiHesapla(sayi("mesafe"), sayi("tuketim"),
+                                     sayi("litre"), sayi("gidisdonus") === 1);
+      if (!s) return null;
+      return [
+        ["Yakıt maliyeti", s.tutar, true],
+        ["Toplam mesafe", null, false, "not", s.mesafe + " km"],
+        ["Harcanan yakıt", null, false, "not", nd(s.litre) + " litre"],
+        ["Kilometre başına", s.km_basina, false],
+        ["100 km maliyeti", s.yuz_km, false],
+      ];""",
+        "sss": [
+            ("Litre fiyatını neden siz yazmıyorsunuz?",
+             "Akaryakıt fiyatı günlük değişiyor ve dağıtıcıya, ile göre farklılaşıyor. "
+             "Buraya bir rakam gömseydik ertesi gün yanlış olurdu; ölçemediğimiz ya da "
+             "hızla eskiyecek bir parametreyi uydurmak yerine sizden alıyoruz."),
+            ("Şehir içi tüketim neden daha yüksek?",
+             "Dur-kalk trafiğinde motor sık sık rölantide ve düşük viteste çalışıyor; "
+             "aynı mesafe için daha çok yakıt gidiyor. Aracınızın şehir içi ve şehir "
+             "dışı ortalamaları genelde ayrı ayrı gösterilir."),
+            ("Aracın toplam maliyeti sadece yakıt mı?",
+             'Hayır. Etiket fiyatının üzerine MTV, noter, tescil, sigorta ve kasko '
+             'biniyor. Bunları <a href="/arac/hesaplayici/">araç sahip olma maliyeti '
+             'hesaplayıcısında</a> resmî tarifelerle ayırıyoruz.'),
+        ],
+    },
+    {
+        "id": "boya",
+        "slug": "boya-hesaplama",
+        "ad": "Boya Hesaplama",
+        "baslik": "Oda Boyama Maliyeti: Kaç Litre Boya Gerekir?",
+        "soru": "Bu odayı boyamak kaç litre boya ve kaç para eder?",
+        "meta": "Oda ölçülerine göre boyanacak alan, gereken boya litresi ve "
+                "litre fiyatını girerseniz toplam boya maliyeti.",
+        "ozet": (
+            "Duvar alanı <strong>2 × (en + boy) × yükseklik</strong>. Gereken boya "
+            "<strong>alan × kat sayısı ÷ verim</strong> — verim (m²/litre) boya "
+            "kutusunun üzerinde yazar ve markaya göre değişir, o yüzden sizden "
+            "alıyoruz."
+        ),
+        "formul": "Litre = (2×(en+boy)×yükseklik + tavan) × kat ÷ verim",
+        "kaynaklar": ["Alan hesabı — temel geometri"],
+        "alanlar": [
+            {"id": "en", "etiket": "Oda eni (m)", "tip": "number", "varsayilan": "4", "adim": "any"},
+            {"id": "boy", "etiket": "Oda boyu (m)", "tip": "number", "varsayilan": "5", "adim": "any"},
+            {"id": "yuk", "etiket": "Tavan yüksekliği (m)", "tip": "number", "varsayilan": "2.8", "adim": "any"},
+            {"id": "kat", "etiket": "Kaç kat boyanacak?", "tip": "number", "varsayilan": "2", "adim": "1"},
+            {"id": "verim", "etiket": "Boya verimi (m²/litre) — kutuda yazar", "tip": "number", "varsayilan": "12", "adim": "any"},
+            {"id": "fiyat", "etiket": "Litre fiyatı (TL) — boşsa yalnız litre hesaplanır",
+             "tip": "number", "varsayilan": "", "adim": "any", "zorunlu": False},
+            {"id": "tavan", "etiket": "Tavan da boyanacak mı?", "tip": "secim", "varsayilan": "1",
+             "secenekler": [["1", "Evet"], ["0", "Hayır"]]},
+        ],
+        "alan_notu": (
+            "Kapı ve pencere alanı düşülmez. Uydurma bir \"%10 düş\" katsayısı "
+            "koymuyoruz; artan boya rötuş için zaten işe yarıyor. İşçilik bu hesaba "
+            "dahil değil — onu ölçmüyoruz."
+        ),
+        "js": """
+      const nd = (x) => String(x).replace(".", ",");
+      const s = boyaHesapla(sayi("en"), sayi("boy"), sayi("yuk"), sayi("kat"),
+                            sayi("verim"), sayi("fiyat"), sayi("tavan") === 1);
+      if (!s) return null;
+      const satirlar = [];
+      if (s.tutar !== null) satirlar.push(["Boya maliyeti", s.tutar, true]);
+      satirlar.push(["Gereken boya", null, s.tutar === null, "not", nd(s.litre) + " litre"]);
+      satirlar.push(["Duvar alanı", null, false, "not", nd(s.duvar_alani) + " m²"]);
+      if (s.tavan_alani > 0) satirlar.push(["Tavan alanı", null, false, "not", nd(s.tavan_alani) + " m²"]);
+      satirlar.push(["Toplam boyanacak alan", null, false, "not", nd(s.toplam_alan) + " m²"]);
+      return satirlar;""",
+        "sss": [
+            ("Kaç kat boya gerekir?",
+             "Aynı renk üzerine genelde iki kat yeterli. Koyu rengin üzerine açık "
+             "renk atılıyorsa üç kat gerekebilir; astar kullanmak kat sayısını düşürür."),
+            ("Kapı ve pencereyi neden düşmüyorsunuz?",
+             "Düşmek için bir varsayım katsayısı uydurmamız gerekirdi. Artan boya "
+             "rötuş için zaten kullanılıyor; eksik kalması, fazla kalmasından kötü."),
+            ("İşçilik dahil mi?",
+             'Hayır. Boyacı yevmiyesi internette liste halinde yayınlanmıyor ve '
+             'ölçemediğimiz bir şeye rakam yazmıyoruz. Bu hesap yalnızca malzeme.'),
+        ],
+    },
+    {
+        "id": "basabas",
+        "slug": "basa-bas-noktasi-hesaplama",
+        "ad": "Başa Baş Noktası Hesaplama",
+        "baslik": "Başa Baş Noktası: Kaç Adet Satmam Gerekiyor?",
+        "soru": "Sabit giderimi çıkarmak için kaç adet satmalıyım?",
+        "meta": "Sabit gider, birim satış fiyatı ve birim değişken maliyete göre "
+                "başa baş satış adedi, birim katkı payı ve gereken ciro.",
+        "ozet": (
+            "Başa baş adet = <strong>sabit gider ÷ birim katkı payı</strong>. "
+            "Birim katkı payı, satış fiyatından birim değişken maliyetin "
+            "çıkarılmasıyla bulunur — yani her bir satışın sabit gideri karşılamaya "
+            "bıraktığı tutar."
+        ),
+        "formul": "Adet = sabit gider ÷ (birim fiyat − birim değişken maliyet)",
+        "kaynaklar": ["Başa baş analizi — temel aritmetik"],
+        "alanlar": [
+            {"id": "sabit", "etiket": "Aylık sabit gider (TL)", "tip": "number", "varsayilan": "50000", "adim": "1"},
+            {"id": "fiyat", "etiket": "Birim satış fiyatı (TL)", "tip": "number", "varsayilan": "120", "adim": "any"},
+            {"id": "degisken", "etiket": "Birim değişken maliyet (TL)", "tip": "number", "varsayilan": "45", "adim": "any"},
+        ],
+        "alan_notu": (
+            "Sabit gider: kira, maaş, abonelikler — satış olmasa da ödenen kalemler. "
+            "Değişken maliyet: her bir satışla birlikte oluşan maliyet (hammadde, "
+            "komisyon, kargo)."
+        ),
+        "js": """
+      const nd = (x) => String(x).replace(".", ",");
+      const s = basaBasHesapla(sayi("sabit"), sayi("fiyat"), sayi("degisken"));
+      if (!s) return null;
+      if (s.mumkun_degil) {
+        return [
+          ["Başa baş noktası", null, true, "not", "YOK"],
+          ["Birim katkı payı", s.katki, false],
+          ["Durum", null, false, "not",
+           "Satış fiyatı değişken maliyeti karşılamıyor; her satış zararı büyütür."],
+          ["Başa baş için gereken en düşük fiyat", s.gereken_fiyat, false],
+        ];
+      }
+      return [
+        ["Başa baş satış adedi", null, true, "not", String(s.adet) + " adet"],
+        ["Birim katkı payı", s.birim_katki, false],
+        ["Katkı oranı", null, false, "not", "%" + nd(s.katki_orani)],
+        ["Gereken ciro", s.ciro, false],
+      ];""",
+        "sss": [
+            ("Satış fiyatım değişken maliyetin altındaysa ne olur?",
+             "Başa baş noktası <strong>yoktur</strong>. Her satış zararı büyütür; "
+             "daha çok satmak durumu kötüleştirir. Bu hesap o durumda uydurma bir "
+             "adet vermiyor, açıkça söylüyor ve başa baş için gereken en düşük "
+             "fiyatı gösteriyor."),
+            ("Katkı oranı ne işe yarar?",
+             "Her 100 TL'lik satışın kaç lirasının sabit giderlere kaldığını "
+             "gösterir. Oran düştükçe aynı sabit gideri karşılamak için çok daha "
+             "fazla satış gerekir."),
+            ("KDV bu hesaba dahil mi?",
+             'Hayır, tutarları KDV hariç girin. KDV dahil/hariç çevrimi için '
+             '<a href="/hesap/kdv-hesaplama/">KDV hesaplayıcısını</a> '
+             'kullanabilirsiniz.'),
+        ],
+    },
+    {
         "id": "lot",
         "slug": "lot-hesaplama",
         "ad": "Borsa Lot Hesaplama",
