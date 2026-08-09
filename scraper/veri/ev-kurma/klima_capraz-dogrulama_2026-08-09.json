@@ -1,0 +1,13 @@
+{
+  "vertikal": "ev-kurma",
+  "kalem": "klima",
+  "tarih": "2026-08-09",
+  "site_medyanlari": {
+    "trendyol": 26900,
+    "amazon": 32314,
+    "mediamarkt": 38999
+  },
+  "fark_orani": 0.45,
+  "esik_orani": 0.3,
+  "uyari": true
+}

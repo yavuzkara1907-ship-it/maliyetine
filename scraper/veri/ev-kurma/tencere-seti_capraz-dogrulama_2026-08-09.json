@@ -1,0 +1,14 @@
+{
+  "vertikal": "ev-kurma",
+  "kalem": "tencere-seti",
+  "tarih": "2026-08-09",
+  "site_medyanlari": {
+    "trendyol": 2924,
+    "karaca": 6999,
+    "madamecoco": 2900,
+    "amazon": 3999
+  },
+  "fark_orani": 1.413,
+  "esik_orani": 0.3,
+  "uyari": true
+}

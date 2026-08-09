@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Avize"
+  ],
+  "kalem": "aydinlatma",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-09",
+  "toplam_urun": 25,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 472,
+  "segmentler": {
+    "dusuk": {
+      "min": 157,
+      "medyan": 297,
+      "max": 324,
+      "urun_sayisi": 7
+    },
+    "orta": {
+      "min": 327,
+      "medyan": 477,
+      "max": 800,
+      "urun_sayisi": 12
+    },
+    "luks": {
+      "min": 1150,
+      "medyan": 1331,
+      "max": 1419,
+      "urun_sayisi": 6
+    }
+  }
+}

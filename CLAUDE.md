@@ -2332,6 +2332,44 @@ arac 25 (yapisal ve dogru — uretici liste fiyati) · dugun 10 ·
 **kedi 8/8** · **kopek 7/7** · bebek 2.
 
 
+## ABD FIYAT KARSILASTIRMASI — DENENDI, SU AN YAPILAMIYOR (2026-08-09)
+Yavuz: *"abd'de yasam maliyeti 2026 gibi bir hesaplama araci nasil olur?"*
+
+**Cerceve yeniden kuruldu.** "ABD'de yasam maliyeti" icin kira/market/
+ulasim rakamlari gerekir; bunlar ya Numbeo tipi KALABALIK KAYNAKLI
+(beyan, olcum degil — bizim tanimimiza uymuyor) ya da uydurma olur.
+Bunun yerine bize ait olabilecek soru: **ayni urun Turkiye'de kaca,
+ABD'de kaca?** Zaten 122 kalemi olcuyoruz; ayni motorla ABD'de olcup
+asgari ucrete oranlayabilirdik (TL/USD kuru icin TCMB EVDS'ye zaten
+bagliyiz — resmi, tarihli, alintilanabilir).
+
+**OLCULDU VE SU AN YAPILAMIYOR:**
+
+| kaynak | robots | sonuc |
+|---|---|---|
+| amazon.com | **ONAY** | 16 urun karti geliyor ama **FIYAT YOK** — `a-offscreen` 0, `$X.XX` deseni 0. Captcha da yok. Muhtemelen ABD disi IP'ye fiyat sunulmuyor. |
+| walmart.com | RET | — |
+| bestbuy.com | RET | — |
+| target.com | RET | — |
+
+Yani uc buyuk perakendeci robots.txt ile kapali, Amazon ise fiyati
+bizim IP'mize vermiyor. **Bu bir kod sorunu degil, erisim sorunu.**
+
+**Ilerlemek icin gereken sey (bir sonraki tur degerlendirilir):**
+- ABD cikisli bir istek yolu (workflow zaten GitHub runner'inda kosuyor
+  ve o ABD'de olabilir — *duman testinde ayrica olculmeli*, ev
+  baglantimizdan farkli davranabilir; bu tam olarak Akakce/Beymen'de
+  yasadigimiz seyin tersi bir firsat).
+- Ya da resmi ABD verisi: BLS "Average Price Data" gercek fiyat
+  yayinliyor ama gida/enerji kalemleri icin — bizim urun listemizle
+  ortusmuyor, AYRI BIR VERTIKAL olurdu.
+
+**KDV/satis vergisi tuzagi (yapilirsa mutlaka):** ABD etiket fiyati
+genelde satis vergisi HARIC, bizimki KDV DAHIL. Duzeltilmezse
+karsilastirma sistematik olarak yanlis cikar — ofix'i elemekle ayni
+sebep.
+
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)

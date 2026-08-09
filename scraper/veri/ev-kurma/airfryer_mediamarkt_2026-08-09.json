@@ -1,0 +1,35 @@
+{
+  "site": "mediamarkt",
+  "kaynak_adlari": [
+    "MediaMarkt - Airfryer"
+  ],
+  "kalem": "airfryer",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-09",
+  "toplam_urun": 12,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 6484,
+  "segmentler": {
+    "dusuk": {
+      "min": 3000,
+      "medyan": 4281,
+      "max": 5480,
+      "urun_sayisi": 4
+    },
+    "orta": {
+      "min": 5799,
+      "medyan": 6999,
+      "max": 12999,
+      "urun_sayisi": 7
+    },
+    "luks": {
+      "min": 15999,
+      "medyan": 15999,
+      "max": 15999,
+      "urun_sayisi": 1
+    }
+  }
+}

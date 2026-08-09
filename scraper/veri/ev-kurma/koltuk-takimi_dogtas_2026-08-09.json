@@ -1,0 +1,35 @@
+{
+  "site": "dogtas",
+  "kaynak_adlari": [
+    "Dogtas - Koltuk Takimlari"
+  ],
+  "kalem": "koltuk-takimi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-09",
+  "toplam_urun": 27,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 54263,
+  "segmentler": {
+    "dusuk": {
+      "min": 30090,
+      "medyan": 39973,
+      "max": 42376,
+      "urun_sayisi": 7
+    },
+    "orta": {
+      "min": 43210,
+      "medyan": 54723,
+      "max": 58597,
+      "urun_sayisi": 14
+    },
+    "luks": {
+      "min": 62517,
+      "medyan": 67181,
+      "max": 87270,
+      "urun_sayisi": 6
+    }
+  }
+}

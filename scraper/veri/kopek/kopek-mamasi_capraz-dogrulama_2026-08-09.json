@@ -1,0 +1,12 @@
+{
+  "vertikal": "kopek",
+  "kalem": "kopek-mamasi",
+  "tarih": "2026-08-09",
+  "site_medyanlari": {
+    "amazon": 1829,
+    "petzzshop": 3445
+  },
+  "fark_orani": 0.884,
+  "esik_orani": 0.3,
+  "uyari": true
+}

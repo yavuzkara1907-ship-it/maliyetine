@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Koltuk Takımı"
+  ],
+  "kalem": "koltuk-takimi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-09",
+  "toplam_urun": 27,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 23760,
+  "segmentler": {
+    "dusuk": {
+      "min": 6599,
+      "medyan": 10499,
+      "max": 11999,
+      "urun_sayisi": 8
+    },
+    "orta": {
+      "min": 13900,
+      "medyan": 34999,
+      "max": 36999,
+      "urun_sayisi": 13
+    },
+    "luks": {
+      "min": 39999,
+      "medyan": 40999,
+      "max": 47999,
+      "urun_sayisi": 6
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Tencere Seti"
+  ],
+  "kalem": "tencere-seti",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-09",
+  "toplam_urun": 12,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 2924,
+  "segmentler": {
+    "dusuk": {
+      "min": 2059,
+      "medyan": 2338,
+      "max": 2562,
+      "urun_sayisi": 4
+    },
+    "orta": {
+      "min": 2562,
+      "medyan": 2963,
+      "max": 3839,
+      "urun_sayisi": 6
+    },
+    "luks": {
+      "min": 3999,
+      "medyan": 5205,
+      "max": 6411,
+      "urun_sayisi": 2
+    }
+  }
+}

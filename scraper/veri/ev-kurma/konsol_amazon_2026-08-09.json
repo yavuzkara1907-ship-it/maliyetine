@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Konsol"
+  ],
+  "kalem": "konsol",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-09",
+  "toplam_urun": 40,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 6231,
+  "segmentler": {
+    "dusuk": {
+      "min": 900,
+      "medyan": 2599,
+      "max": 3550,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 3659,
+      "medyan": 6381,
+      "max": 7230,
+      "urun_sayisi": 20
+    },
+    "luks": {
+      "min": 7335,
+      "medyan": 8360,
+      "max": 9900,
+      "urun_sayisi": 9
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "site": "mediamarkt",
+  "kaynak_adlari": [
+    "MediaMarkt - Televizyonlar"
+  ],
+  "kalem": "televizyon",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-09",
+  "toplam_urun": 12,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 46099,
+  "segmentler": {
+    "dusuk": {
+      "min": 6199,
+      "medyan": 8649,
+      "max": 14999,
+      "urun_sayisi": 4
+    },
+    "orta": {
+      "min": 29999,
+      "medyan": 50449,
+      "max": 59999,
+      "urun_sayisi": 6
+    },
+    "luks": {
+      "min": 64999,
+      "medyan": 82499,
+      "max": 99999,
+      "urun_sayisi": 2
+    }
+  }
+}

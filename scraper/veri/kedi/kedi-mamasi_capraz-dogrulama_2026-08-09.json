@@ -1,0 +1,12 @@
+{
+  "vertikal": "kedi",
+  "kalem": "kedi-mamasi",
+  "tarih": "2026-08-09",
+  "site_medyanlari": {
+    "amazon": 1102,
+    "petzzshop": 1599
+  },
+  "fark_orani": 0.451,
+  "esik_orani": 0.3,
+  "uyari": true
+}

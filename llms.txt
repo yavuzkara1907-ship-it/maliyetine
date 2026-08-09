@@ -13,11 +13,11 @@ yanıltıcı hale gelir: "buzdolabı 30 bin lira" altı ay sonra yanlış olur,
 ## Endeksler
 
 - [Düğün](https://maliyetine.com.tr/dugun/): 15 kalem, ölçüm 2026-08-05. JSON: https://maliyetine.com.tr/veri/dugun.json · CSV: https://maliyetine.com.tr/veri/csv/dugun.csv
-- [Ev Kurma](https://maliyetine.com.tr/ev-kurma/): 42 kalem, ölçüm 2026-08-05. JSON: https://maliyetine.com.tr/veri/ev-kurma.json · CSV: https://maliyetine.com.tr/veri/csv/ev-kurma.csv
+- [Ev Kurma](https://maliyetine.com.tr/ev-kurma/): 42 kalem, ölçüm 2026-08-09. JSON: https://maliyetine.com.tr/veri/ev-kurma.json · CSV: https://maliyetine.com.tr/veri/csv/ev-kurma.csv
 - [Okul](https://maliyetine.com.tr/okul/): 14 kalem, ölçüm 2026-08-05. JSON: https://maliyetine.com.tr/veri/okul.json · CSV: https://maliyetine.com.tr/veri/csv/okul.csv
 - [Bebek](https://maliyetine.com.tr/bebek/): 11 kalem, ölçüm 2026-08-05. JSON: https://maliyetine.com.tr/veri/bebek.json · CSV: https://maliyetine.com.tr/veri/csv/bebek.csv
-- [Kedi](https://maliyetine.com.tr/kedi/): 8 kalem, ölçüm 2026-08-05. JSON: https://maliyetine.com.tr/veri/kedi.json · CSV: https://maliyetine.com.tr/veri/csv/kedi.csv
-- [Köpek](https://maliyetine.com.tr/kopek/): 7 kalem, ölçüm 2026-08-05. JSON: https://maliyetine.com.tr/veri/kopek.json · CSV: https://maliyetine.com.tr/veri/csv/kopek.csv
+- [Kedi](https://maliyetine.com.tr/kedi/): 8 kalem, ölçüm 2026-08-09. JSON: https://maliyetine.com.tr/veri/kedi.json · CSV: https://maliyetine.com.tr/veri/csv/kedi.csv
+- [Köpek](https://maliyetine.com.tr/kopek/): 7 kalem, ölçüm 2026-08-09. JSON: https://maliyetine.com.tr/veri/kopek.json · CSV: https://maliyetine.com.tr/veri/csv/kopek.csv
 - [0 km Araç](https://maliyetine.com.tr/arac/): 25 kalem, ölçüm 2026-08-05. JSON: https://maliyetine.com.tr/veri/arac.json · CSV: https://maliyetine.com.tr/veri/csv/arac.csv
 
 ## Veriyi indirin
@@ -71,7 +71,7 @@ geldiği ve ölçüm tarihi bulunur; rakam bağımsız olarak doğrulanabilir.
 - [Gelinlik mi Damatlık mı Pahalı? Verimiz Ne Diyor, Neyi Demiyor](https://maliyetine.com.tr/rehber/gelinlik-mi-damatlik-mi-pahali/)
 - [Kedi mi Köpek mi Daha Masraflı? İlk Yılı Hesapladık](https://maliyetine.com.tr/rehber/kedi-mi-kopek-mi-masrafli/)
 - [Bebek Masrafları: İlk Yıl Ne Kadar Tutuyor?](https://maliyetine.com.tr/rehber/bebek-masraflari-ilk-yil/)
-- [Çeyiz Masrafları: Tekstil, Mutfak ve Küçük Ev Aletleri](https://maliyetine.com.tr/rehber/ceyiz-masraflari/)
+- [Çeyiz Ne Kadar Tutar? Tekstil, Mutfak ve Küçük Ev Aletleri](https://maliyetine.com.tr/rehber/ceyiz-masraflari/)
 - [Yatak Odası Masrafları: Sıfırdan Kurmak Ne Kadar?](https://maliyetine.com.tr/rehber/yatak-odasi-masraflari/)
 - [Trendyol mu Amazon mu Daha Ucuz? 45 Kalemde Ölçtük](https://maliyetine.com.tr/rehber/trendyol-mu-amazon-mu-ucuz/)
 - [Ekonomik Düğün Nasıl Yapılır? Nereden Kısılır, Nereden Kısılmaz](https://maliyetine.com.tr/rehber/ekonomik-dugun-nasil-yapilir/)

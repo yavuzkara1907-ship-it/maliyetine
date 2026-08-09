@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Kedi Yatağı"
+  ],
+  "kalem": "kedi-yatagi",
+  "vertikal": "kedi",
+  "tarih": "2026-08-09",
+  "toplam_urun": 41,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 390,
+  "segmentler": {
+    "dusuk": {
+      "min": 199,
+      "medyan": 250,
+      "max": 300,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 300,
+      "medyan": 394,
+      "max": 690,
+      "urun_sayisi": 23
+    },
+    "luks": {
+      "min": 899,
+      "medyan": 1112,
+      "max": 1199,
+      "urun_sayisi": 7
+    }
+  }
+}

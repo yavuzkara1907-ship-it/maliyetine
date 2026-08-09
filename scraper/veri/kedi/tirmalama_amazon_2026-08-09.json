@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Tırmalama Tahtası"
+  ],
+  "kalem": "tirmalama",
+  "vertikal": "kedi",
+  "tarih": "2026-08-09",
+  "toplam_urun": 41,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 513,
+  "segmentler": {
+    "dusuk": {
+      "min": 150,
+      "medyan": 300,
+      "max": 370,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 380,
+      "medyan": 549,
+      "max": 650,
+      "urun_sayisi": 22
+    },
+    "luks": {
+      "min": 749,
+      "medyan": 1017,
+      "max": 1575,
+      "urun_sayisi": 8
+    }
+  }
+}

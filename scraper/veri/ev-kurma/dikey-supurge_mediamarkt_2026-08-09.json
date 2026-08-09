@@ -1,0 +1,35 @@
+{
+  "site": "mediamarkt",
+  "kaynak_adlari": [
+    "MediaMarkt - Dikey Supurge"
+  ],
+  "kalem": "dikey-supurge",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-09",
+  "toplam_urun": 11,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 18999,
+  "segmentler": {
+    "dusuk": {
+      "min": 13299,
+      "medyan": 15199,
+      "max": 16999,
+      "urun_sayisi": 3
+    },
+    "orta": {
+      "min": 17699,
+      "medyan": 19299,
+      "max": 25999,
+      "urun_sayisi": 6
+    },
+    "luks": {
+      "min": 34999,
+      "medyan": 35999,
+      "max": 36999,
+      "urun_sayisi": 2
+    }
+  }
+}

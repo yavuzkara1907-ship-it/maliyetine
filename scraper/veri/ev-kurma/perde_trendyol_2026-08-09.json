@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Perde"
+  ],
+  "kalem": "perde",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-09",
+  "toplam_urun": 7,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 399,
+  "segmentler": {
+    "dusuk": {
+      "min": 126,
+      "medyan": 156,
+      "max": 185,
+      "urun_sayisi": 2
+    },
+    "orta": {
+      "min": 367,
+      "medyan": 430,
+      "max": 485,
+      "urun_sayisi": 4
+    },
+    "luks": {
+      "min": 940,
+      "medyan": 940,
+      "max": 940,
+      "urun_sayisi": 1
+    }
+  }
+}

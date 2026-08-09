@@ -1,0 +1,13 @@
+{
+  "vertikal": "ev-kurma",
+  "kalem": "airfryer",
+  "tarih": "2026-08-09",
+  "site_medyanlari": {
+    "trendyol": 2287,
+    "amazon": 3324,
+    "mediamarkt": 6484
+  },
+  "fark_orani": 1.835,
+  "esik_orani": 0.3,
+  "uyari": true
+}

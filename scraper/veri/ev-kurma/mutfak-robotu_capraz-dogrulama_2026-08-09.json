@@ -1,0 +1,12 @@
+{
+  "vertikal": "ev-kurma",
+  "kalem": "mutfak-robotu",
+  "tarih": "2026-08-09",
+  "site_medyanlari": {
+    "trendyol": 1899,
+    "amazon": 3713
+  },
+  "fark_orani": 0.955,
+  "esik_orani": 0.3,
+  "uyari": true
+}

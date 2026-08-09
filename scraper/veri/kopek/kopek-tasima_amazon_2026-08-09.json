@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Taşıma Çantası / Kafes"
+  ],
+  "kalem": "kopek-tasima",
+  "vertikal": "kopek",
+  "tarih": "2026-08-09",
+  "toplam_urun": 44,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 1497,
+  "segmentler": {
+    "dusuk": {
+      "min": 411,
+      "medyan": 844,
+      "max": 1099,
+      "urun_sayisi": 14
+    },
+    "orta": {
+      "min": 1181,
+      "medyan": 1632,
+      "max": 2400,
+      "urun_sayisi": 20
+    },
+    "luks": {
+      "min": 2645,
+      "medyan": 3014,
+      "max": 4720,
+      "urun_sayisi": 10
+    }
+  }
+}

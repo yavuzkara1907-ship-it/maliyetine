@@ -1,0 +1,12 @@
+{
+  "vertikal": "ev-kurma",
+  "kalem": "catal-kasik-bicak-takimi",
+  "tarih": "2026-08-09",
+  "site_medyanlari": {
+    "trendyol": 2099,
+    "amazon": 1950
+  },
+  "fark_orani": 0.076,
+  "esik_orani": 0.3,
+  "uyari": false
+}

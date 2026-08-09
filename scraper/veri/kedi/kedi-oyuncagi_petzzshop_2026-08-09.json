@@ -1,0 +1,35 @@
+{
+  "site": "petzzshop",
+  "kaynak_adlari": [
+    "petzzshop - Kedi Oyuncaklari"
+  ],
+  "kalem": "kedi-oyuncagi",
+  "vertikal": "kedi",
+  "tarih": "2026-08-09",
+  "toplam_urun": 20,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 106,
+  "segmentler": {
+    "dusuk": {
+      "min": 50,
+      "medyan": 65,
+      "max": 71,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 90,
+      "medyan": 108,
+      "max": 127,
+      "urun_sayisi": 10
+    },
+    "luks": {
+      "min": 144,
+      "medyan": 148,
+      "max": 209,
+      "urun_sayisi": 4
+    }
+  }
+}

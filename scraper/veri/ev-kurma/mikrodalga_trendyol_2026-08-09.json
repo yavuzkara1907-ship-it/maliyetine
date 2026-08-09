@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Mikrodalga Firin"
+  ],
+  "kalem": "mikrodalga",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-09",
+  "toplam_urun": 21,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 4499,
+  "segmentler": {
+    "dusuk": {
+      "min": 2461,
+      "medyan": 3057,
+      "max": 3699,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 3730,
+      "medyan": 4899,
+      "max": 5299,
+      "urun_sayisi": 11
+    },
+    "luks": {
+      "min": 5799,
+      "medyan": 5900,
+      "max": 6199,
+      "urun_sayisi": 4
+    }
+  }
+}

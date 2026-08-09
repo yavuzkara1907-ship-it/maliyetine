@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Tv Ünitesi"
+  ],
+  "kalem": "tv-unitesi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-09",
+  "toplam_urun": 46,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 4000,
+  "segmentler": {
+    "dusuk": {
+      "min": 1240,
+      "medyan": 1649,
+      "max": 2699,
+      "urun_sayisi": 13
+    },
+    "orta": {
+      "min": 2790,
+      "medyan": 4006,
+      "max": 5150,
+      "urun_sayisi": 22
+    },
+    "luks": {
+      "min": 5211,
+      "medyan": 5600,
+      "max": 7500,
+      "urun_sayisi": 11
+    }
+  }
+}

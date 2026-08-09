@@ -1,0 +1,35 @@
+{
+  "site": "mediamarkt",
+  "kaynak_adlari": [
+    "MediaMarkt - Tost Makineleri"
+  ],
+  "kalem": "tost-makinesi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-09",
+  "toplam_urun": 12,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 5999,
+  "segmentler": {
+    "dusuk": {
+      "min": 3099,
+      "medyan": 3699,
+      "max": 5349,
+      "urun_sayisi": 4
+    },
+    "orta": {
+      "min": 5599,
+      "medyan": 7299,
+      "max": 8499,
+      "urun_sayisi": 7
+    },
+    "luks": {
+      "min": 10499,
+      "medyan": 10499,
+      "max": 10499,
+      "urun_sayisi": 1
+    }
+  }
+}

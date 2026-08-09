@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Ütü"
+  ],
+  "kalem": "utu",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-09",
+  "toplam_urun": 50,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 3199,
+  "segmentler": {
+    "dusuk": {
+      "min": 749,
+      "medyan": 1355,
+      "max": 2299,
+      "urun_sayisi": 13
+    },
+    "orta": {
+      "min": 2370,
+      "medyan": 3199,
+      "max": 4875,
+      "urun_sayisi": 25
+    },
+    "luks": {
+      "min": 4900,
+      "medyan": 6598,
+      "max": 8799,
+      "urun_sayisi": 12
+    }
+  }
+}

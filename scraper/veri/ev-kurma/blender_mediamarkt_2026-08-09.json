@@ -1,0 +1,35 @@
+{
+  "site": "mediamarkt",
+  "kaynak_adlari": [
+    "MediaMarkt - Blender"
+  ],
+  "kalem": "blender",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-09",
+  "toplam_urun": 12,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 3399,
+  "segmentler": {
+    "dusuk": {
+      "min": 2199,
+      "medyan": 2524,
+      "max": 2599,
+      "urun_sayisi": 4
+    },
+    "orta": {
+      "min": 2999,
+      "medyan": 3699,
+      "max": 6299,
+      "urun_sayisi": 6
+    },
+    "luks": {
+      "min": 7999,
+      "medyan": 8099,
+      "max": 8199,
+      "urun_sayisi": 2
+    }
+  }
+}

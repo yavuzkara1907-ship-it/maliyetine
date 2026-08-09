@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Yemek Takımı"
+  ],
+  "kalem": "yemek-takimi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-09",
+  "toplam_urun": 41,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 2999,
+  "segmentler": {
+    "dusuk": {
+      "min": 1445,
+      "medyan": 1809,
+      "max": 2204,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 2270,
+      "medyan": 2999,
+      "max": 4199,
+      "urun_sayisi": 20
+    },
+    "luks": {
+      "min": 4233,
+      "medyan": 4928,
+      "max": 6850,
+      "urun_sayisi": 10
+    }
+  }
+}

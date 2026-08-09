@@ -1,0 +1,12 @@
+{
+  "vertikal": "ev-kurma",
+  "kalem": "konsol",
+  "tarih": "2026-08-09",
+  "site_medyanlari": {
+    "trendyol": 4174,
+    "amazon": 6231
+  },
+  "fark_orani": 0.493,
+  "esik_orani": 0.3,
+  "uyari": true
+}

@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Kedi Maması (aylık)"
+  ],
+  "kalem": "kedi-mamasi",
+  "vertikal": "kedi",
+  "tarih": "2026-08-09",
+  "toplam_urun": 50,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 1102,
+  "segmentler": {
+    "dusuk": {
+      "min": 118,
+      "medyan": 495,
+      "max": 726,
+      "urun_sayisi": 13
+    },
+    "orta": {
+      "min": 744,
+      "medyan": 1102,
+      "max": 1419,
+      "urun_sayisi": 25
+    },
+    "luks": {
+      "min": 1535,
+      "medyan": 1903,
+      "max": 3468,
+      "urun_sayisi": 12
+    }
+  }
+}

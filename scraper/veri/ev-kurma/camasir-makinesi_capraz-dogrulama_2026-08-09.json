@@ -1,0 +1,13 @@
+{
+  "vertikal": "ev-kurma",
+  "kalem": "camasir-makinesi",
+  "tarih": "2026-08-09",
+  "site_medyanlari": {
+    "trendyol": 23199,
+    "amazon": 36499,
+    "mediamarkt": 25999
+  },
+  "fark_orani": 0.573,
+  "esik_orani": 0.3,
+  "uyari": true
+}

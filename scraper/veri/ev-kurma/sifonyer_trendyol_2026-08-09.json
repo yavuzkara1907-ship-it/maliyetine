@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Sifonyer"
+  ],
+  "kalem": "sifonyer",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-09",
+  "toplam_urun": 25,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 3700,
+  "segmentler": {
+    "dusuk": {
+      "min": 1045,
+      "medyan": 2410,
+      "max": 2705,
+      "urun_sayisi": 7
+    },
+    "orta": {
+      "min": 2760,
+      "medyan": 3730,
+      "max": 4920,
+      "urun_sayisi": 12
+    },
+    "luks": {
+      "min": 5034,
+      "medyan": 6258,
+      "max": 7852,
+      "urun_sayisi": 6
+    }
+  }
+}

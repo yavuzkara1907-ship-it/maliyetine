@@ -4766,3 +4766,279 @@ kaynaklar:
       isim_secici: .title
       # Ustu cizili eski fiyat ayri sinifta; odenen fiyat new-sale-price.
       fiyat_secici: ".new-sale-price:not(.d-none), .new-sale-price"
+
+  # =========================================================
+  # PETZZSHOP — KEDI/KOPEK IKINCI KAYNAK (2026-08-09)
+  #
+  # Kedi ve kopek vertikallerinin kalemlerinin TAMAMI tek kaynakliydi
+  # (kedi 8/8, kopek 7/7 - hepsi Amazon) ve sayfalarda "1 bagimsiz
+  # kaynak" yaziyordu. Bu, kendi COK KAYNAK KURALIMIZLA acikca
+  # celisiyordu; sitedeki en net eksikti.
+  #
+  # petzzshop uzman pet magazasi: JSON-LD yok ama kart yapisi cok temiz
+  # (.kombos-product-card), 23-24 urun/kategori.
+  #
+  # SEGMENT FARKI BEKLENIYOR VE MESRU: Amazon pazaryeri ucuz karma
+  # satiyor, petzzshop pet markalarini (Ferplast, N&D, Lepus, M-Pets).
+  # Urun ADLARI tek tek okunarak dogrulandi - gercekten ayni urun,
+  # sadece farkli segment. Ornek: kedi yatagi Amazon 398 / petzz 2.370
+  # ama petzz'de donen sey gercek kedi yatagi (Ferplast Relax,
+  # Lepus Comfort), aksesuar degil.
+  #
+  # ALINMAYANLAR:
+  #   - kedi-tuvaleti: `/kedi-kum-ve-tuvalet` kategorisi KARISIK -
+  #     kum torbasi (113 TL), kedi kapisi (483) ve tuvalet (2.052) bir
+  #     arada. Ad filtresi denendi, 24 urunun 23'u elendi ve filtre
+  #     UYARI verdi; geriye 1 urun kaldi. Guvenilir medyan icin yetmez.
+  #   - tirmalama-tahtasi: ayri kategorisi yok.
+  #
+  # tasima-cantasi AD FILTRESIYLE alindi: ayni kategoride boyun tasmasi
+  # (155 TL) ve kafes (19.534 TL) da var. `ad_gerekli: tasima` +
+  # `ad_dislama: kafes|tasma|kayis` ile 15 gercek canta kaldi.
+  # =========================================================
+
+  - ad: "petzzshop - Kedi Mamasi"
+    site: petzzshop
+    vertikal: kedi
+    kalem: kedi-mamasi
+    url: "https://www.petzzshop.com/kedi-mamasi"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 80
+    bekleme_sn: 2
+    sayfa_sayisi: 1
+    css_secicileri:
+      urun_karti: .kombos-product-card
+      isim_secici: .kombos-product-card__name
+      fiyat_secici: .kombos-product-card__price-current
+
+  - ad: "petzzshop - Kedi Kumu"
+    site: petzzshop
+    vertikal: kedi
+    kalem: kedi-kumu
+    url: "https://www.petzzshop.com/kedi-kumu"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 50
+    bekleme_sn: 2
+    sayfa_sayisi: 1
+    css_secicileri:
+      urun_karti: .kombos-product-card
+      isim_secici: .kombos-product-card__name
+      fiyat_secici: .kombos-product-card__price-current
+
+  - ad: "petzzshop - Kedi Yataklari"
+    site: petzzshop
+    vertikal: kedi
+    kalem: kedi-yatagi
+    url: "https://www.petzzshop.com/kedi-yataklari"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 100
+    bekleme_sn: 2
+    sayfa_sayisi: 1
+    css_secicileri:
+      urun_karti: .kombos-product-card
+      isim_secici: .kombos-product-card__name
+      fiyat_secici: .kombos-product-card__price-current
+
+  - ad: "petzzshop - Kedi Oyuncaklari"
+    site: petzzshop
+    vertikal: kedi
+    kalem: kedi-oyuncagi
+    url: "https://www.petzzshop.com/kedi-oyuncaklari"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 30
+    bekleme_sn: 2
+    sayfa_sayisi: 1
+    css_secicileri:
+      urun_karti: .kombos-product-card
+      isim_secici: .kombos-product-card__name
+      fiyat_secici: .kombos-product-card__price-current
+
+  - ad: "petzzshop - Kedi Mama ve Su Kaplari"
+    site: petzzshop
+    vertikal: kedi
+    kalem: mama-su-kabi
+    url: "https://www.petzzshop.com/kedi-mama-ve-su-kaplari"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 50
+    bekleme_sn: 2
+    sayfa_sayisi: 1
+    css_secicileri:
+      urun_karti: .kombos-product-card
+      isim_secici: .kombos-product-card__name
+      fiyat_secici: .kombos-product-card__price-current
+
+  - ad: "petzzshop - Kedi Tasima Cantasi"
+    site: petzzshop
+    vertikal: kedi
+    kalem: tasima-cantasi
+    url: "https://www.petzzshop.com/kedi-tasma-ve-tasima"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 100
+    bekleme_sn: 2
+    sayfa_sayisi: 1
+    ad_gerekli: "taşıma|tasima"
+    ad_dislama: "kafes|tasma|kayış"
+    css_secicileri:
+      urun_karti: .kombos-product-card
+      isim_secici: .kombos-product-card__name
+      fiyat_secici: .kombos-product-card__price-current
+
+  - ad: "petzzshop - Kopek Mamasi"
+    site: petzzshop
+    vertikal: kopek
+    kalem: kopek-mamasi
+    url: "https://www.petzzshop.com/kopek-mamasi"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 150
+    bekleme_sn: 2
+    sayfa_sayisi: 1
+    css_secicileri:
+      urun_karti: .kombos-product-card
+      isim_secici: .kombos-product-card__name
+      fiyat_secici: .kombos-product-card__price-current
+
+  - ad: "petzzshop - Kopek Yataklari"
+    site: petzzshop
+    vertikal: kopek
+    kalem: kopek-yatagi
+    url: "https://www.petzzshop.com/kopek-yataklari"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 100
+    bekleme_sn: 2
+    sayfa_sayisi: 1
+    css_secicileri:
+      urun_karti: .kombos-product-card
+      isim_secici: .kombos-product-card__name
+      fiyat_secici: .kombos-product-card__price-current
+
+  - ad: "petzzshop - Kopek Tasmalari"
+    site: petzzshop
+    vertikal: kopek
+    kalem: kopek-tasmasi
+    url: "https://www.petzzshop.com/kopek-tasmalari-kayislari"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 50
+    bekleme_sn: 2
+    sayfa_sayisi: 1
+    css_secicileri:
+      urun_karti: .kombos-product-card
+      isim_secici: .kombos-product-card__name
+      fiyat_secici: .kombos-product-card__price-current
+
+  - ad: "petzzshop - Kopek Oyuncaklari"
+    site: petzzshop
+    vertikal: kopek
+    kalem: kopek-oyuncagi
+    url: "https://www.petzzshop.com/kopek-oyuncaklari"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 30
+    bekleme_sn: 2
+    sayfa_sayisi: 1
+    css_secicileri:
+      urun_karti: .kombos-product-card
+      isim_secici: .kombos-product-card__name
+      fiyat_secici: .kombos-product-card__price-current
+
+  # =========================================================
+  # BELLONA + ISTIKBAL — MOBILYA VE YATAK (2026-08-09)
+  #
+  # Ikisi de daha once `kaynak_tara.py` tarafindan KIRMIZI verilmisti
+  # ("fiyat kart disinda, eslesme kurulamaz"). Teshis YANLISTI: sezgisel
+  # tarayicinin yakaladigi ilk fiyat dugumu urun degil FIYAT FILTRESI
+  # menusuydu (kenar cubugundaki fiyat araligi secici). Gercek urun
+  # fiyati `.showcase-price-new` sinifinda ve karti `.showcase`.
+  # D&R'da da ayni sey olmustu - KIRMIZI "bak" demek, "birak" demek degil.
+  #
+  # Ikisi de AYNI SABLONU kullaniyor (ayni yazilim evi):
+  #   .showcase / .showcase-title / .showcase-price-new
+  #
+  # EN DEGERLI BULGU - YATAK (SILTE):
+  #   bizim ust segment  3.816 TL
+  #   bellona           12.999 TL (max 25.285)
+  #   istikbal          12.369 TL (max 25.299)
+  # Amazon ve Trendyol ucuz silte satiyor; gercek yatak fiyati
+  # endeksimizde HIC gorunmuyordu. Urun adlari dogrulandi (Hybrid Sleep
+  # Yatak, Detox Prime Yatak) - gercekten yatak, sunger degil.
+  #
+  # Koltuk takiminda ikisi de Dogtas'in (66.005) ALTINDA kaliyor
+  # (30.310 ve 37.898) - yani orta bandi dolduruyorlar, ust ucu degil.
+  # Bu da bilgi: pazaryeri / zincir magaza / premium marka uclusu
+  # artik uc ayri bantta temsil ediliyor.
+  #
+  # Denenip alinmayan: bellona/gardirop ve istikbal/yemek-odasi
+  # URL'leri 0 urun dondurdu (tahmin edilmis slug'lar).
+  # =========================================================
+
+  - ad: "Bellona - Kanepe ve Koltuk"
+    site: bellona
+    vertikal: ev-kurma
+    kalem: koltuk-takimi
+    url: "https://www.bellona.com.tr/kategori/kanepe-koltuk"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 8000
+    bekleme_sn: 2
+    sayfa_sayisi: 1
+    css_secicileri:
+      urun_karti: .showcase
+      isim_secici: .showcase-title
+      # Ustu cizili eski fiyat .showcase-price-old'da; odenen fiyat bu.
+      fiyat_secici: .showcase-price-new
+
+  - ad: "Bellona - Yatak"
+    site: bellona
+    vertikal: ev-kurma
+    kalem: yatak
+    url: "https://www.bellona.com.tr/kategori/yatak"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 3000
+    bekleme_sn: 2
+    sayfa_sayisi: 1
+    css_secicileri:
+      urun_karti: .showcase
+      isim_secici: .showcase-title
+      # Ustu cizili eski fiyat .showcase-price-old'da; odenen fiyat bu.
+      fiyat_secici: .showcase-price-new
+
+  - ad: "Istikbal - Kanepe ve Koltuk"
+    site: istikbal
+    vertikal: ev-kurma
+    kalem: koltuk-takimi
+    url: "https://www.istikbal.com.tr/kategori/kanepe-koltuk"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 8000
+    bekleme_sn: 2
+    sayfa_sayisi: 1
+    css_secicileri:
+      urun_karti: .showcase
+      isim_secici: .showcase-title
+      # Ustu cizili eski fiyat .showcase-price-old'da; odenen fiyat bu.
+      fiyat_secici: .showcase-price-new
+
+  - ad: "Istikbal - Yatak"
+    site: istikbal
+    vertikal: ev-kurma
+    kalem: yatak
+    url: "https://www.istikbal.com.tr/kategori/yatak"
+    aktif: true
+    durum: onaylandi
+    min_fiyat: 3000
+    bekleme_sn: 2
+    sayfa_sayisi: 1
+    css_secicileri:
+      urun_karti: .showcase
+      isim_secici: .showcase-title
+      # Ustu cizili eski fiyat .showcase-price-old'da; odenen fiyat bu.
+      fiyat_secici: .showcase-price-new

@@ -1,0 +1,35 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - TV Unitesi"
+  ],
+  "kalem": "tv-unitesi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-09",
+  "toplam_urun": 11,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 6129,
+  "segmentler": {
+    "dusuk": {
+      "min": 3674,
+      "medyan": 3700,
+      "max": 5082,
+      "urun_sayisi": 3
+    },
+    "orta": {
+      "min": 5538,
+      "medyan": 6723,
+      "max": 7945,
+      "urun_sayisi": 6
+    },
+    "luks": {
+      "min": 8102,
+      "medyan": 9251,
+      "max": 10399,
+      "urun_sayisi": 2
+    }
+  }
+}

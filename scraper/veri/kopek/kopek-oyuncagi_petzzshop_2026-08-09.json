@@ -1,0 +1,35 @@
+{
+  "site": "petzzshop",
+  "kaynak_adlari": [
+    "petzzshop - Kopek Oyuncaklari"
+  ],
+  "kalem": "kopek-oyuncagi",
+  "vertikal": "kopek",
+  "tarih": "2026-08-09",
+  "toplam_urun": 24,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 278,
+  "segmentler": {
+    "dusuk": {
+      "min": 36,
+      "medyan": 100,
+      "max": 171,
+      "urun_sayisi": 7
+    },
+    "orta": {
+      "min": 179,
+      "medyan": 295,
+      "max": 862,
+      "urun_sayisi": 12
+    },
+    "luks": {
+      "min": 964,
+      "medyan": 1048,
+      "max": 1111,
+      "urun_sayisi": 5
+    }
+  }
+}
