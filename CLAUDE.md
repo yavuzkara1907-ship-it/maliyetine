@@ -2370,6 +2370,55 @@ karsilastirma sistematik olarak yanlis cikar — ofix'i elemekle ayni
 sebep.
 
 
+## TEK KAYNAK BOSLUGU KAPATILDI (2026-08-09)
+Yavuz: *"sen bugunun tum islerini tek seferde hallet."*
+Site geneli tek kaynakli kalem orani **%43 -> %34**.
+
+### petzzshop — kedi/kopek (10 kalem)
+Kedi **8/8**, kopek **7/7** tek kaynakliydi (hepsi Amazon) ve sayfalarda
+*"1 bagimsiz kaynak"* yaziyordu — **kendi cok kaynak kuralimizla acikca
+celisiyordu.** Simdi kedi 2/8, kopek 3/7.
+`kedi 5.388 -> 6.351` · `kopek 3.895 -> 4.624`
+
+Segment farki bekleniyor ve mesru (kedi yatagi Amazon 390 / petzz
+2.400) ama **urun ADLARI tek tek okundu**: Ferplast Relax, Lepus
+Comfort — gercek kedi yatagi, aksesuar degil.
+
+**Ad filtresi bir kalemi KURTARDI, birini ELEDI:**
+- `tasima-cantasi` ✓ ayni kategoride boyun tasmasi (155 TL) ve kafes
+  (19.534 TL) vardi; `ad_gerekli: tasima` + `ad_dislama: kafes|tasma`
+  ile **15 gercek canta** kaldi.
+- `kedi-tuvaleti` ✗ kum torbasi (113), kedi kapisi (483), tuvalet
+  (2.052) karisik. Filtre 24 urunun **23'unu eledi ve UYARI verdi**;
+  geriye 1 urun kaldi — guvenilir medyan icin yetmez, alinmadi.
+  *Filtre uyarisi tam bu is icin yazilmisti ve isini yapti.*
+
+### Bellona + Istikbal — onceki KIRMIZI teshis YANLISTI
+`kaynak_tara` *"fiyat kart disinda, eslesme kurulamaz"* demisti.
+**Sezgisel tarayicinin yakaladigi ilk fiyat dugumu URUN DEGIL, kenar
+cubugundaki FIYAT FILTRESI menusuydu.** Gercek fiyat
+`.showcase-price-new`, kart `.showcase` — ikisi de ayni sablonu
+kullaniyor (ayni yazilim evi).
+**Bu, D&R'da yasananin aynisi. KIRMIZI "bak" demek, "birak" demek
+degil** — ozellikle hedef site elle secilmisse.
+
+**EN DEGERLI BULGU — YATAK (SILTE) UST SEGMENTI:**
+
+| kaynak | medyan |
+|---|---|
+| Trendyol | 1.682 |
+| Amazon | 2.799 |
+| Istikbal | 12.369 |
+| Bellona | 12.999 |
+
+Ust segment **3.816 -> 12.909**. Gercek yatak fiyati endeksimizde
+**hic gorunmuyordu**; pazaryerleri ucuz silte satiyor. Urun adlari
+dogrulandi (Hybrid Sleep, Detox Prime).
+
+**EV-KURMADA ARTIK TEK KAYNAKLI KALEM YOK: 0/42.**
+`orta 383.814 -> 369.371` · `UST 600.942` · **9 bagimsiz site**.
+
+
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
