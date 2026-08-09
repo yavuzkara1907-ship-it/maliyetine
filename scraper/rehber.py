@@ -1850,7 +1850,115 @@ def _govde_dogum_oncesi(v: dict) -> str | None:
 """
 
 
+# ---------------------------------------------------------------------------
+# 22. Damatlik kiralamak mi almak mi (2026-08-09, Search Console)
+#
+# "damatlik kiralama fiyatlari 2026", "gelinlik kiralama fiyatlari 2026",
+# "gelinlik tadilat fiyatlari" sorgulari gosterim aliyordu. Damatlik zaten
+# TEK TIKLAMA ALDIGIMIZ sayfa (48 gosterim, 1 tik) - komsu niyeti
+# yakalamak icin en dogru yer.
+#
+# KIRALAMA FIYATI OLCEMIYORUZ ve bu yazi onu ilk cumlede soyluyor.
+# Yazinin degeri kiralama fiyati vermek DEGIL, karari kurmanin yolunu
+# vermek: satin almanin rakami bizde olculmus, kiralama teklifini onunla
+# karsilastirmak icin gereken cerceve kurulabiliyor.
+# ---------------------------------------------------------------------------
+def _govde_damatlik_kiralama(v: dict) -> str | None:
+    d = v.get("dugun")
+    if not d:
+        return None
+    k = (d.get("kalemler") or {}).get("damatlik") or {}
+    seg = k.get("segmentler") or {}
+    if not seg.get("orta"):
+        return None
+    eko, orta, ust = seg["dusuk"]["medyan"], seg["orta"]["medyan"], seg["luks"]["medyan"]
+
+    return f"""
+  <p class="cevap-blok">
+    Önce dürüst olalım: <strong>kiralama fiyatı ölçmüyoruz.</strong> Damatlık
+    kiralama bedelleri internette liste halinde yayınlanmıyor; mağazadan
+    sorularak, üstelik sezona ve modele göre değişerek veriliyor. Ama
+    <em>satın almanın</em> rakamı bizde ölçülü: ekonomik {_p(eko)},
+    orta segment <strong>{_p(orta)}</strong>, üst segment {_p(ust)}.
+    Aldığınız kiralama teklifini bu rakamlarla karşılaştırabilirsiniz.
+  </p>
+
+  <h2>Kararı kurmanın basit yolu</h2>
+  <p>
+    Tek soru var: <strong>kira bedeli, satın alma fiyatının kaçta kaçı?</strong>
+    Orta segment bir takım {_p(orta)} tutuyorsa, bunun üçte birini aşan bir
+    kiralama teklifi ekonomik olarak zayıflar — çünkü satın alsanız takım
+    elinizde kalır ve ikinci kez giyilebilir.
+  </p>
+  <ul>
+    <li><strong>Kira, satın almanın %25'inin altındaysa:</strong> tek
+      kullanımda kiralama net avantajlı.</li>
+    <li><strong>%25–40 arasındaysa:</strong> takımı bir daha giyip
+      giymeyeceğinize bakın. İki kez giyecekseniz satın alma başa baş
+      gelir.</li>
+    <li><strong>%40'ın üzerindeyse:</strong> aynı paraya sahip olacağınız
+      bir takım varken kiralamak zorlaşır.</li>
+  </ul>
+  <p>
+    Bu eşikler bir formül değil, elimizdeki satın alma rakamından çıkan
+    aritmetik bir çerçeve. Kiralamanın kendi rakamını ölçemediğimiz için
+    "kiralama şu kadar" demiyoruz — teklifi siz alıp bu çerçeveye
+    koyacaksınız.
+  </p>
+
+  <h2>Kiralamada fiyata dahil olmayanlar</h2>
+  <p>
+    Teklif alırken karşılaştırmayı bozan kalemler bunlar; sormadan
+    kıyaslamak yanıltıcı olur:
+  </p>
+  <ul>
+    <li><strong>Tadilat.</strong> Kiralıkta çoğu zaman sınırlı tadilat
+      yapılır (paça, kol boyu); belden ciddi daraltma genelde mümkün
+      değil. Satın almada tadilat sıklıkla fiyata dahil.</li>
+    <li><strong>Depozito.</strong> İade edilir ama düğün öncesi nakit
+      bağlar.</li>
+    <li><strong>Gecikme ve hasar bedeli.</strong> Sözleşmede yazar,
+      teklifte yazmaz.</li>
+    <li><strong>Gömlek, kravat, ayakkabı, kol düğmesi.</strong> Kiralama
+      paketine dahil olup olmadığı mağazaya göre değişiyor; satın almada
+      zaten ayrı kalem.</li>
+  </ul>
+
+  <h2>Gelinlikte durum aynı değil</h2>
+  <p>
+    Gelinlik tarafında satın alma rakamımız yalnızca <em>bir</em> kaynaktan
+    geliyor ve o da bir pazaryeri — gelinlik evlerinin fiyatları
+    yayınlanmıyor. Yani gelinlikte yukarıdaki karşılaştırmayı kurmak için
+    sağlam bir taban rakamımız yok. Bunu neden söylediğimizi
+    <a href="/rehber/gelinlik-mi-damatlik-mi-pahali/">şurada</a> yazdık.
+  </p>
+
+  <h2>Bu sayfada neden fiyat listesi yok?</h2>
+  <p>
+    Çünkü ölçmediğimiz bir şeye rakam yazmıyoruz. Bu sorguda hazır fiyat
+    listesi veren çok sayfa var; hiçbirinin arkasında tarihli, örneklemli
+    bir ölçüm yok. Yayınlanmış bir kiralama fiyat listesine ulaşırsak
+    ölçer ve kaynağıyla buraya ekleriz.
+  </p>
+  <p>
+    Güncel satın alma fiyatları
+    <a href="/dugun/damatlik-fiyatlari/">damatlık fiyatları sayfasında</a>;
+    aradaki kaynak farkının neden bu kadar büyük olduğu
+    <a href="/rehber/damatlik-kac-para/">şurada</a>.
+  </p>
+"""
+
+
 REHBERLER = [
+    {
+        "slug": "damatlik-kiralamak-mi-almak-mi",
+        "baslik": "Damatlık Kiralamak mı Almak mı? Kararı Nasıl Kurarsınız",
+        "seo_baslik": "Damatlık Kiralamak mı Almak mı? 2026 Karşılaştırma",
+        "meta": "Kiralama fiyatı yayınlanmıyor, ama satın almanın rakamı ölçülü. "
+                "Aldığınız kiralama teklifini nasıl değerlendireceğinizi yazdık.",
+        "govde": _govde_damatlik_kiralama,
+        "vertikal": "dugun",
+    },
     {
         "slug": "ozel-hastanede-dogum-maliyeti",
         "baslik": "Özel Hastanede Doğum Maliyeti: Neden Kimse Net Fiyat Vermiyor?",

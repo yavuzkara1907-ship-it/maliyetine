@@ -5,7 +5,7 @@ const {
   krediTaksitHesapla, yuzdeHesapla, sonucParametreleriGecerliMi,
   tapuHarciHesapla, issizlikOdenegiHesapla, kiraGelirVergisiHesapla,
   yillikIzinHesapla, fazlaMesaiHesapla, alimGucuHesapla,
-  icerikGeliriHesapla, ICERIK_RPM_ADIMLARI,
+  icerikGeliriHesapla, ICERIK_RPM_ADIMLARI, lotHesapla,
 } = require("../formul-hesap.js");
 const { RESMI_PARAMETRELER, tarifedenVergi, parametreGecerliMi } =
   require("../resmi-parametreler.js");
@@ -322,4 +322,35 @@ test("icerik geliri: kur carpani uygulaniyor", () => {
   const tl = icerikGeliriHesapla(1000000, 2, 1).secilen_aylik;
   const usd = icerikGeliriHesapla(1000000, 2, 40).secilen_aylik;
   yakin(usd, tl * 40);
+});
+
+// ---------------- LOT HESAPLAMA (2026-08-09) ----------------
+// Search Console: "borsa lot hesaplama" ve "hisse senedi lot hesaplama"
+// sorgulari geliyordu, karsiligi olan sayfa yoktu.
+test("lot: butce ve fiyata gore tam sayi lot bulunur", () => {
+  const s = lotHesapla(10000, 42.5, 0);
+  assert.equal(s.lot, 235);                 // 10000/42.5 = 235.29 -> asagi
+  assert.equal(s.tutar, 9987.5);
+  assert.ok(s.kalan >= 0 && s.kalan < 42.5); // kalan bir lottan az olmali
+});
+
+test("lot: komisyon efektif birim maliyeti yukseltir, lot AZALIR", () => {
+  const komisyonsuz = lotHesapla(10000, 42.5, 0);
+  const komisyonlu = lotHesapla(10000, 42.5, 0.2);
+  assert.ok(komisyonlu.lot < komisyonsuz.lot,
+    "komisyon eklenince daha az lot alinabilmeli");
+  assert.ok(komisyonlu.toplam <= 10000, "toplam odeme butceyi asmamali");
+});
+
+test("lot: butce bir lota bile yetmiyorsa UYDURMA sayi donmez", () => {
+  const s = lotHesapla(100, 500, 0);
+  assert.equal(s.yetersiz, true);
+  assert.equal(s.lot, undefined);   // "0 lot" diye sahte bir sonuc yok
+  assert.equal(s.gereken, 500);
+});
+
+test("lot: gecersiz girdide null - 0 gibi bir sonuc uretmez", () => {
+  assert.equal(lotHesapla(0, 10, 0), null);
+  assert.equal(lotHesapla(1000, 0, 0), null);
+  assert.equal(lotHesapla(-5, 10, 0), null);
 });

@@ -62,6 +62,8 @@ function kdvHesapla(tutar, oran, yon) {
     kdv = tutar * oran;
     dahil = haric + kdv;
   }
+
+
   return {
     haric: _yuvarla(haric),
     kdv: _yuvarla(kdv),
@@ -512,6 +514,47 @@ function birikimHedefiHesapla(hedef, baslangic, yillikOranYuzde, ayS) {
 /* ================================================================
  * 15. HİSSE MALİYET ORTALAMASI — saf matematik
  * ================================================================ */
+// ---------------- LOT HESAPLAMA ----------------
+// 2026-08-09, Search Console: "borsa lot hesaplama" ve "hisse senedi
+// lot hesaplama" sorgulari geliyordu, karsiligi olan sayfa yoktu.
+//
+// BIST'te 1 LOT = 1 ADET PAY (2005'teki lot birimi degisikliginden
+// beri). Yani "kac lot alabilirim" sorusu aslinda "butcem kac paya
+// yeter" sorusudur. Hesap saf aritmetik - hicbir mevzuat parametresi
+// ya da olculmus veri icermiyor, o yuzden bayatlamaz.
+//
+// KOMISYON KULLANICIDAN ALINIYOR: araci kurum komisyon oranlari
+// kuruma gore degisiyor ve yayinlanmis TEK bir oran yok. Varsayilan
+// bir oran gomsek uydurma olurdu; kullanicidan istiyoruz ve bos
+// birakilirsa komisyonsuz hesapliyoruz.
+function lotHesapla(butce, fiyat, komisyonYuzde) {
+  if (!(butce > 0) || !(fiyat > 0)) return null;
+  const oran = komisyonYuzde > 0 ? komisyonYuzde / 100 : 0;
+  // Komisyon alis tutari uzerinden alindigi icin efektif birim
+  // maliyet fiyat*(1+oran) olur; lot sayisi buna gore bulunur.
+  const birim = fiyat * (1 + oran);
+  const lot = Math.floor(butce / birim);
+  if (lot < 1) {
+    return {
+      yetersiz: true,
+      gereken: _yuvarla(birim),
+      butce: _yuvarla(butce),
+    };
+  }
+  const tutar = lot * fiyat;
+  const komisyon = tutar * oran;
+  return {
+    yetersiz: false,
+    lot: lot,
+    tutar: _yuvarla(tutar),
+    komisyon: _yuvarla(komisyon),
+    toplam: _yuvarla(tutar + komisyon),
+    kalan: _yuvarla(butce - tutar - komisyon),
+    birim_maliyet: _yuvarla(birim),
+  };
+}
+
+
 function hisseMaliyetHesapla(mevcutAdet, mevcutMaliyet, yeniAdet, yeniFiyat) {
   if (!(mevcutAdet > 0) || !(mevcutMaliyet > 0) || !(yeniAdet > 0) || !(yeniFiyat > 0)) {
     return null;
@@ -668,6 +711,7 @@ if (typeof module !== "undefined" && module.exports) {
     bilesikFaizHesapla,
     birikimHedefiHesapla,
     hisseMaliyetHesapla,
+    lotHesapla,
     karZararHesapla,
     temettuVerimiHesapla,
     kartBorcuHesapla,

@@ -59,6 +59,7 @@ geldiği ve ölçüm tarihi bulunur; rakam bağımsız olarak doğrulanabilir.
 
 ## Rehberler
 
+- [Damatlık Kiralamak mı Almak mı? Kararı Nasıl Kurarsınız](https://maliyetine.com.tr/rehber/damatlik-kiralamak-mi-almak-mi/)
 - [Özel Hastanede Doğum Maliyeti: Neden Kimse Net Fiyat Vermiyor?](https://maliyetine.com.tr/rehber/ozel-hastanede-dogum-maliyeti/)
 - [Doğumdan Önce Alınacaklar Listesi — Fiyatlarıyla](https://maliyetine.com.tr/rehber/dogumdan-once-alinacaklar-listesi/)
 - [Kedi Sahiplenmeden Önce: Neye Ne Kadar Para Gidiyor?](https://maliyetine.com.tr/rehber/kedi-sahiplenmeden-once/)
@@ -99,6 +100,7 @@ hangi yılın tarifesi olduğunu belirtin.
 - [YouTube Gelir Hesaplama](https://maliyetine.com.tr/hesap/youtube-gelir-hesaplama/): Hesap saf aritmetiktir. RPM değeri kullanıcıdan alınır — resmî bir kaynağı olmadığı için tarafımızdan varsayılmaz.
 - [Bileşik Faiz Hesaplama](https://maliyetine.com.tr/hesap/bilesik-faiz-hesaplama/): Bileşik faiz ve annüite gelecek değeri formülü — finansal matematik
 - [Birikim Hedefi Hesaplama](https://maliyetine.com.tr/hesap/birikim-hedefi-hesaplama/): Annüite formülünün tersi — finansal matematik
+- [Borsa Lot Hesaplama](https://maliyetine.com.tr/hesap/lot-hesaplama/): Tam sayıya yuvarlama — temel aritmetik
 - [Borsa Hisse Maliyet Hesaplama](https://maliyetine.com.tr/hesap/hisse-maliyet-hesaplama/): Ağırlıklı ortalama — temel aritmetik
 - [Kâr Zarar Hesaplama](https://maliyetine.com.tr/hesap/kar-zarar-hesaplama/): Kâr/zarar ve yüzde getiri — temel aritmetik
 - [Temettü Verimi ve Geliri Hesaplama](https://maliyetine.com.tr/hesap/temettu-verimi-hesaplama/): Temettü verimi tanımı — temel aritmetik

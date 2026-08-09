@@ -2161,6 +2161,43 @@ def _resmi_gecmis_html(vertikal: str, veri_kok: Path | None = None) -> str:
     )
 
 
+def _aylik_sarf_ifadesi(conf: dict, kalemler: dict) -> str:
+    """Varsayilan toplama GIRMEYEN aylik kalemleri cevap blogunda soyler.
+
+    2026-08-09, Search Console: "aylik kedi masrafi 2026" 7 gosterim,
+    "aylik bebek bezi masrafi" 1 — ama /kedi/ cevap blogu YALNIZCA
+    kurulumu soyluyordu ("kedi kurulumunun 5.388 TL tutmasi bekleniyor").
+    Aylik rakam VERIMIZDE VARDI, cevap blogunda yoktu.
+
+    Cevap blogu bu sitede en cok okunan yer: Google'in ve AI motorlarinin
+    alintiladigi parca burasi. Olctugumuz bir rakami oraya koymamak,
+    olcmemis gibi gorunmek demek.
+
+    Toplama KATILMIYOR - o ayrim korunuyor (tek seferlik kurulum ile her
+    ay tekrarlayan gideri toplamak "kedi masrafi 20 bin TL" gibi ne oldugu
+    belirsiz bir sayi uretirdi). Yalnizca ayrica soyleniyor.
+    """
+    aylik = 0
+    adlar = []
+    for tanim in conf["kalemler"]:
+        if tanim.get("varsayilan_dahil") is not False or tanim.get("bilgi_amacli"):
+            continue
+        m = ((kalemler.get(tanim["id"]) or {}).get("segmentler") or {}).get(
+            "orta", {}).get("medyan")
+        if m:
+            aylik += m
+            adlar.append(tanim["ad"].split("(")[0].strip().lower())
+    if not aylik:
+        return ""
+    liste = (", ".join(adlar[:-1]) + " ve " + adlar[-1]) if len(adlar) > 1 else adlar[0]
+    return (
+        f" Buna ek olarak her ay tekrarlayan sarf gideri var: {liste} için "
+        f"<strong>ayda {_para(aylik)}</strong>, yılda {_para(aylik * 12)}. "
+        "Bu tutar üstteki toplama dahil değil — tek seferlik alınan eşyayla "
+        "her ay tekrarlayan gideri aynı rakamda birleştirmek yanıltıcı olurdu."
+    )
+
+
 def _dayanak_ifadesi(conf: dict, site_sayisi: int) -> str:
     """Fiyatin dayanagini anlatan ifade.
 
@@ -2279,6 +2316,7 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
                 f"Bu rakamın tamamı {len(gercek_detaylar)} kalem için "
                 f"{_dayanak_ifadesi(conf, site_sayisi)} derlenen güncel fiyatlara dayanır."
             )
+        cevap_metni += _aylik_sarf_ifadesi(conf, kalemler)
         cevap_disable = ""
     elif tahmini_detaylar:
         cevap_metni = (

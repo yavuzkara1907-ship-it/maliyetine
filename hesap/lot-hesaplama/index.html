@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Borsa Lot Hesaplama: Bütçemle Kaç Lot Alırım? | Maliyeti Ne?</title>
+<meta name="description" content="Bütçenize ve hisse fiyatına göre kaç lot alabileceğinizi, komisyon dahil toplam tutarı ve kalan bakiyeyi hesaplayın.">
+<link rel="canonical" href="https://maliyetine.com.tr/hesap/lot-hesaplama/">
+<meta property="og:title" content="Borsa Lot Hesaplama: Bütçemle Kaç Lot Alırım? | Maliyeti Ne?">
+<meta property="og:description" content="Bütçenize ve hisse fiyatına göre kaç lot alabileceğinizi, komisyon dahil toplam tutarı ve kalan bakiyeyi hesaplayın.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://maliyetine.com.tr/hesap/lot-hesaplama/">
+<meta property="og:image" content="https://maliyetine.com.tr/assets/og/hesap-lot-hesaplama.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Borsa Lot Hesaplama">
+<meta property="og:site_name" content="Maliyeti Ne?">
+<meta property="og:locale" content="tr_TR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/assets/css/style.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebApplication",
+   "name": "Borsa Lot Hesaplama",
+   "url": "https://maliyetine.com.tr/hesap/lot-hesaplama/",
+   "applicationCategory": "FinanceApplication",
+   "operatingSystem": "Web",
+   "browserRequirements": "JavaScript",
+   "inLanguage": "tr-TR",
+   "isAccessibleForFree": true,
+   "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "TRY"
+   },
+   "publisher": {
+    "@type": "Organization",
+    "name": "Maliyeti Ne?",
+    "url": "https://maliyetine.com.tr/"
+   }
+  },
+  {
+   "@type": "HowTo",
+   "name": "Borsa Lot Hesaplama: Bütçemle Kaç Lot Alırım?",
+   "description": "BIST'te 1 lot = 1 adet paydır; yani \"kaç lot alırım\" sorusu \"bütçem kaç paya yeter\" sorusudur. Komisyon alış tutarı üzerinden alındığı için efektif birim maliyet fiyat × (1 + komisyon oranı) olur ve lot sayısı buna göre bulunur.",
+   "inLanguage": "tr-TR",
+   "step": [
+    {
+     "@type": "HowToStep",
+     "position": 1,
+     "name": "Bütçeniz (TL)",
+     "text": "Bütçeniz (TL) alanını doldurun."
+    },
+    {
+     "@type": "HowToStep",
+     "position": 2,
+     "name": "Hisse fiyatı (TL)",
+     "text": "Hisse fiyatı (TL) alanını doldurun."
+    },
+    {
+     "@type": "HowToStep",
+     "position": 3,
+     "name": "Aracı kurum komisyonu (%) — bilmiyorsanız boş bırakın",
+     "text": "Aracı kurum komisyonu (%) — bilmiyorsanız boş bırakın alanını doldurun."
+    },
+    {
+     "@type": "HowToStep",
+     "position": 4,
+     "name": "Hesapla",
+     "text": "Sonuç şu formülle bulunur: Lot = ⌊bütçe ÷ (fiyat × (1 + komisyon oranı))⌋"
+    }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "BIST'te 1 lot kaç adet hisse?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "1 lot = 1 adet paydır. Eskiden 1 lot 1.000 adede karşılık geliyordu; bu birim 2005'te değişti. Yani bugün \"500 lot aldım\" demek \"500 adet pay aldım\" demektir."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Küsuratlı lot alınabilir mi?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Hayır, pay adedi tam sayıdır. Bu yüzden hesap aşağı yuvarlar ve artan tutarı \"kalan bakiye\" olarak gösterir."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Komisyonu neden siz yazmıyorsunuz?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Aracı kurumların komisyon oranları birbirinden farklı ve tek bir resmî oran yok. Buraya bir sayı gömseydik çoğu kullanıcı için yanlış olurdu; ölçemediğimiz bir parametreyi uydurmak yerine sizden alıyoruz."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Aldıktan sonra ortalama maliyetim ne olur?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Mevcut pozisyonunuza ekleme yapıyorsanız yeni ortalamayı <a href=\"/hesap/hisse-maliyet-hesaplama/\">borsa hisse maliyet hesaplayıcısından</a> görebilirsiniz."
+     }
+    }
+   ]
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Ana sayfa",
+     "item": "https://maliyetine.com.tr/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Hesaplayıcılar",
+     "item": "https://maliyetine.com.tr/hesap/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Borsa Lot Hesaplama",
+     "item": "https://maliyetine.com.tr/hesap/lot-hesaplama/"
+    }
+   ]
+  }
+ ]
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JP07XQLV0L"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-JP07XQLV0L');
+</script>
+</head>
+<body>
+
+<header class="ust-bar">
+  <div class="kapsayici">
+    <a href="/" class="logo">Maliyeti <span>Ne?</span></a>
+    <nav class="ust-menu"><a href="/dugun/">Düğün</a><a href="/ev-kurma/">Ev Kurma</a><a href="/okul/">Okul</a><a href="/bebek/">Bebek</a><a href="/evcil-hayvan/">Evcil Hayvan</a><a href="/arac/">0 km Araç</a><a href="/hesap/" aria-current="page" class="menu-one-cikan">Hesaplayıcılar</a><a href="/rehber/">Rehber</a><a href="/veri/">Veri</a></nav>
+  </div>
+</header>
+
+<main class="kapsayici">
+  <nav class="kirinti" aria-label="Sayfa yolu">
+    <a href="/">Ana sayfa</a> › <a href="/hesap/">Hesaplayıcılar</a> › <span>Borsa Lot Hesaplama</span>
+  </nav>
+
+  <h1>Borsa Lot Hesaplama: Bütçemle Kaç Lot Alırım?</h1>
+
+  <div class="cevap-blok">
+    BIST'te <strong>1 lot = 1 adet pay</strong>dır; yani "kaç lot alırım" sorusu "bütçem kaç paya yeter" sorusudur. Komisyon alış tutarı üzerinden alındığı için efektif birim maliyet <strong>fiyat × (1 + komisyon oranı)</strong> olur ve lot sayısı buna göre bulunur.
+  </div>
+
+  <form id="hesap-formu" class="hesap-formu">
+  <div class="alan-izgara">
+    <div class="alan"><label for="butce">Bütçeniz (TL)</label><input type="number" id="butce" name="butce" value="10000" step="1" min="0" required></div>
+    <div class="alan"><label for="fiyat">Hisse fiyatı (TL)</label><input type="number" id="fiyat" name="fiyat" value="42.50" step="0.01" min="0" required></div>
+    <div class="alan"><label for="kom">Aracı kurum komisyonu (%) — bilmiyorsanız boş bırakın</label><input type="number" id="kom" name="kom" value="" step="any" min="0"></div>
+  </div>
+  <p class="alan-notu">Komisyon oranı aracı kurumunuza göre değişir ve tek bir yayınlanmış oran yoktur; o yüzden buraya sabit bir değer koymuyoruz. Boş bırakırsanız komisyonsuz hesaplanır. Bu bir hesap aracıdır, yatırım tavsiyesi değildir.</p>
+  <button type="submit">Hesapla</button>
+</form>
+<div id="sonuc" class="hesap-sonuc" hidden></div>
+
+  <section>
+    <h2>Nasıl hesaplanır?</h2>
+    <p class="formul">Lot = ⌊bütçe ÷ (fiyat × (1 + komisyon oranı))⌋</p>
+  </section>
+
+  <section class="kaynak-kunye">
+  <h2>Hesapta kullanılan mevzuat</h2>
+  <ul><li>Tam sayıya yuvarlama — temel aritmetik</li></ul>
+  <p class="sonuc-alt-metin">Vergi tarifesi ve hadler her 31 Aralık'ta Resmî Gazete'de yeniden değerleme oranıyla değişir; kıdem tazminatı tavanı yılda iki kez (Ocak ve Temmuz) güncellenir. Bu sayfadaki parametreler geçerlilik dönemiyle birlikte tutulur — dönem geçtiğinde sayfa uyarı gösterir.</p>
+</section>
+
+  <section class="sss">
+  <h2>Sıkça sorulan sorular</h2>
+  <details><summary>BIST'te 1 lot kaç adet hisse?</summary><p>1 lot = 1 adet paydır. Eskiden 1 lot 1.000 adede karşılık geliyordu; bu birim 2005'te değişti. Yani bugün "500 lot aldım" demek "500 adet pay aldım" demektir.</p></details>
+  <details><summary>Küsuratlı lot alınabilir mi?</summary><p>Hayır, pay adedi tam sayıdır. Bu yüzden hesap aşağı yuvarlar ve artan tutarı "kalan bakiye" olarak gösterir.</p></details>
+  <details><summary>Komisyonu neden siz yazmıyorsunuz?</summary><p>Aracı kurumların komisyon oranları birbirinden farklı ve tek bir resmî oran yok. Buraya bir sayı gömseydik çoğu kullanıcı için yanlış olurdu; ölçemediğimiz bir parametreyi uydurmak yerine sizden alıyoruz.</p></details>
+  <details><summary>Aldıktan sonra ortalama maliyetim ne olur?</summary><p>Mevcut pozisyonunuza ekleme yapıyorsanız yeni ortalamayı <a href="/hesap/hisse-maliyet-hesaplama/">borsa hisse maliyet hesaplayıcısından</a> görebilirsiniz.</p></details>
+</section>
+
+  <section><h2>Diğer hesaplayıcılar</h2><ul class="hesap-liste"><li><a href="/hesap/alim-gucu-hesaplama/">Alım Gücü Hesaplama</a></li><li><a href="/hesap/kdv-hesaplama/">KDV Hesaplama</a></li><li><a href="/hesap/brutten-nete-maas-hesaplama/">Brütten Nete Maaş Hesaplama</a></li><li><a href="/hesap/kidem-tazminati-hesaplama/">Kıdem ve İhbar Tazminatı Hesaplama</a></li><li><a href="/hesap/tapu-harci-hesaplama/">Tapu Harcı Hesaplama</a></li><li><a href="/hesap/issizlik-maasi-hesaplama/">İşsizlik Maaşı Hesaplama</a></li><li><a href="/hesap/kira-gelir-vergisi-hesaplama/">Kira Gelir Vergisi Hesaplama</a></li><li><a href="/hesap/yillik-izin-hesaplama/">Yıllık İzin Hesaplama</a></li><li><a href="/hesap/fazla-mesai-hesaplama/">Fazla Mesai Ücreti Hesaplama</a></li><li><a href="/hesap/youtube-gelir-hesaplama/">YouTube Gelir Hesaplama</a></li><li><a href="/hesap/bilesik-faiz-hesaplama/">Bileşik Faiz Hesaplama</a></li><li><a href="/hesap/birikim-hedefi-hesaplama/">Birikim Hedefi Hesaplama</a></li><li><a href="/hesap/hisse-maliyet-hesaplama/">Borsa Hisse Maliyet Hesaplama</a></li><li><a href="/hesap/kar-zarar-hesaplama/">Kâr Zarar Hesaplama</a></li><li><a href="/hesap/temettu-verimi-hesaplama/">Temettü Verimi ve Geliri Hesaplama</a></li><li><a href="/hesap/kredi-karti-borcu-hesaplama/">Kredi Kartı Borcu Hesaplama</a></li><li><a href="/hesap/serbest-meslek-vergi-hesaplama/">Serbest Meslek Vergi Hesaplama</a></li><li><a href="/hesap/web-sitesi-gelir-hesaplama/">Web Sitesi Gelir Hesaplama</a></li><li><a href="/hesap/kredi-taksit-hesaplama/">Kredi Taksit Hesaplama</a></li><li><a href="/hesap/yuzde-hesaplama/">Yüzde Hesaplama</a></li></ul></section>
+
+  <p class="sonuc-alt-metin">Bu sayfa bir hesap aracıdır, mali ya da hukuki
+    danışmanlık değildir. Ölçülmüş gerçek fiyat verileri için
+    <a href="/">maliyet endekslerimize</a> bakabilirsiniz.</p>
+
+</main>
+
+<footer>
+  <div class="kapsayici">
+    <div>© 2026 Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/sss/">SSS</a> · <a href="/rehber/">Rehber</a> · <a href="/veri/">Veri</a></div>
+    <nav class="footer-endeksler" aria-label="Tüm endeksler">
+      <a href="/dugun/">Düğün</a>
+      <a href="/ev-kurma/">Ev Kurma</a>
+      <a href="/okul/">Okul</a>
+      <a href="/bebek/">Bebek</a>
+      <a href="/kedi/">Kedi</a>
+      <a href="/kopek/">Köpek</a>
+      <a href="/arac/">0 km Araç</a></nav>
+  </div>
+</footer>
+
+<script src="/assets/js/resmi-parametreler.js"></script>
+<script src="/assets/js/formul-hesap.js"></script>
+<script>
+(function () {
+  var form = document.getElementById("hesap-formu");
+  var kutu = document.getElementById("sonuc");
+  if (!form || !kutu) return;
+
+  function deger(id) { var e = document.getElementById(id); return e ? e.value : ""; }
+  function sayi(id) { return parseFloat(String(deger(id)).replace(",", ".")) || 0; }
+  function para(n) {
+    // Tam sayida kurus gostermiyoruz ("1.000 TL"), ondalik varsa iki hane
+    // ("4.624,20 TL"). Tek hane ("4.624,2 TL") amatorce duruyordu.
+    // -0 duzeltmesi: sifir vergi satirlarinda "-0 TL" cikiyordu.
+    // (-0 === 0 dogru oldugu icin karsilastirmayla degil ATAMAYLA cozulur.)
+    if (n === 0) n = 0;
+    var basamak = Number.isInteger(n) ? 0 : 2;
+    return new Intl.NumberFormat("tr-TR", {
+      minimumFractionDigits: basamak, maximumFractionDigits: basamak,
+    }).format(n) + " TL";
+  }
+
+  function hesapla() {
+
+      const s = lotHesapla(sayi("butce"), sayi("fiyat"), sayi("kom"));
+      if (!s) return null;
+      if (s.yetersiz) {
+        return [
+          ["Alınabilecek lot", null, true, "not", "0 lot"],
+          ["Bir lot için gereken", s.gereken, false],
+          ["Bütçeniz", s.butce, false],
+          ["Durum", null, false, "not",
+           "Bütçe tek bir lota bile yetmiyor."],
+        ];
+      }
+      return [
+        ["Alınabilecek lot", null, true, "not", String(s.lot) + " lot"],
+        ["Hisse tutarı", s.tutar, false],
+        ["Komisyon", s.komisyon, false],
+        ["Toplam ödeme", s.toplam, false],
+        ["Kalan bakiye", s.kalan, false],
+      ];
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var satirlar;
+    try { satirlar = hesapla(); } catch (hata) { satirlar = null; }
+    if (!satirlar) {
+      // Gecersiz girdide "0 TL" gibi guvenilir gorunen bir sonuc BASILMAZ.
+      kutu.innerHTML = '<p class="uyari">Girdiğiniz değerlerle hesap yapılamadı. Alanları kontrol edin.</p>';
+      kutu.hidden = false;
+      return;
+    }
+    var gecerli = sonucParametreleriGecerliMi({ parametreler: [] });
+    var html = "";
+    if (!gecerli) {
+      // Parametrenin gecerlilik donemi gecmis: sessizce eski yilin
+      // vergisini vermek yerine acikca soyluyoruz.
+      html += '<p class="uyari">Bu hesapta kullanılan resmî parametrelerin geçerlilik ' +
+              'dönemi sona ermiş görünüyor. Sonucu yeni dönem tutarlarıyla ' +
+              'doğrulamadan kullanmayın.</p>';
+    }
+    html += '<table class="sonuc-tablo"><tbody>';
+    satirlar.forEach(function (s) {
+      var ad = s[0], tutar = s[1], vurgu = s[2], tip = s[3], metin = s[4];
+      var govde = metin ? metin : (tutar === null ? "" : para(tutar));
+      html += '<tr' + (vurgu ? ' class="vurgu"' : (tip === "not" ? ' class="satir-not"' : '')) +
+              '><td>' + ad + '</td><td class="sayi">' + govde + '</td></tr>';
+    });
+    html += "</tbody></table>";
+    kutu.innerHTML = html;
+    kutu.hidden = false;
+  });
+})();
+</script>
+</body>
+</html>

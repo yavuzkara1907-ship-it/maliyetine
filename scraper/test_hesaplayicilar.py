@@ -36,7 +36,12 @@ class TanimTesti(unittest.TestCase):
     MEVZUAT = {"kdv", "maas", "kidem", "tapu", "issizlik", "kira", "izin",
                "mesai", "freelancer"}
     SAF_MATEMATIK = {"kredi", "yuzde", "bilesik-faiz", "birikim",
-                     "hisse-maliyet", "kar-zarar", "temettu", "kart-borcu"}
+                     "hisse-maliyet", "kar-zarar", "temettu", "kart-borcu",
+                     # lot: cekirdek hesap saf aritmetik (butce / fiyat, tam
+                     # sayiya yuvarlama). Komisyon KULLANICIDAN aliniyor ve
+                     # bos birakilabiliyor - sabit bir oran GOMULMUYOR, o
+                     # yuzden mevzuat/olculen veri sinifina girmiyor.
+                     "lot"}
     # RPM resmi olarak yayinlanmiyor - kullanicidan alinir, aralik gosterilir
     KULLANICI_PARAMETRESI = {"icerik", "website"}
     OLCULEN_VERI = {"alim-gucu"}         # parametresi bizim cektigimiz TUFE

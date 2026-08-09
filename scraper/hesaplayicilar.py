@@ -674,6 +674,77 @@ HESAPLAYICILAR = [
         ],
     },
     {
+        "id": "lot",
+        "slug": "lot-hesaplama",
+        "ad": "Borsa Lot Hesaplama",
+        "baslik": "Borsa Lot Hesaplama: Bütçemle Kaç Lot Alırım?",
+        "soru": "Belirli bir bütçeyle kaç lot hisse alabilirim?",
+        "meta": "Bütçenize ve hisse fiyatına göre kaç lot alabileceğinizi, "
+                "komisyon dahil toplam tutarı ve kalan bakiyeyi hesaplayın.",
+        "ozet": (
+            "BIST'te <strong>1 lot = 1 adet pay</strong>dır; yani \"kaç lot "
+            "alırım\" sorusu \"bütçem kaç paya yeter\" sorusudur. Komisyon alış "
+            "tutarı üzerinden alındığı için efektif birim maliyet "
+            "<strong>fiyat × (1 + komisyon oranı)</strong> olur ve lot sayısı "
+            "buna göre bulunur."
+        ),
+        "formul": "Lot = ⌊bütçe ÷ (fiyat × (1 + komisyon oranı))⌋",
+        # SAF MATEMATIK: hicbir mevzuat parametresi ya da olculmus veri yok.
+        # Komisyon oranini KULLANICIDAN aliyoruz - araci kurumlara gore
+        # degisiyor ve yayinlanmis TEK bir oran yok; varsayilan gomsek
+        # uydurma olurdu.
+        "kaynaklar": ["Tam sayıya yuvarlama — temel aritmetik"],
+        "alanlar": [
+            {"id": "butce", "etiket": "Bütçeniz (TL)", "tip": "number", "varsayilan": "10000", "adim": "1"},
+            {"id": "fiyat", "etiket": "Hisse fiyatı (TL)", "tip": "number", "varsayilan": "42.50", "adim": "0.01"},
+            {"id": "kom", "etiket": "Aracı kurum komisyonu (%) — bilmiyorsanız boş bırakın",
+             "tip": "number", "varsayilan": "", "adim": "any", "zorunlu": False},
+        ],
+        "alan_notu": (
+            "Komisyon oranı aracı kurumunuza göre değişir ve tek bir yayınlanmış "
+            "oran yoktur; o yüzden buraya sabit bir değer koymuyoruz. Boş "
+            "bırakırsanız komisyonsuz hesaplanır. Bu bir hesap aracıdır, "
+            "yatırım tavsiyesi değildir."
+        ),
+        "js": """
+      const s = lotHesapla(sayi("butce"), sayi("fiyat"), sayi("kom"));
+      if (!s) return null;
+      if (s.yetersiz) {
+        return [
+          ["Alınabilecek lot", null, true, "not", "0 lot"],
+          ["Bir lot için gereken", s.gereken, false],
+          ["Bütçeniz", s.butce, false],
+          ["Durum", null, false, "not",
+           "Bütçe tek bir lota bile yetmiyor."],
+        ];
+      }
+      return [
+        ["Alınabilecek lot", null, true, "not", String(s.lot) + " lot"],
+        ["Hisse tutarı", s.tutar, false],
+        ["Komisyon", s.komisyon, false],
+        ["Toplam ödeme", s.toplam, false],
+        ["Kalan bakiye", s.kalan, false],
+      ];""",
+        "sss": [
+            ("BIST'te 1 lot kaç adet hisse?",
+             "1 lot = 1 adet paydır. Eskiden 1 lot 1.000 adede karşılık geliyordu; "
+             "bu birim 2005'te değişti. Yani bugün \"500 lot aldım\" demek "
+             "\"500 adet pay aldım\" demektir."),
+            ("Küsuratlı lot alınabilir mi?",
+             "Hayır, pay adedi tam sayıdır. Bu yüzden hesap aşağı yuvarlar ve "
+             "artan tutarı \"kalan bakiye\" olarak gösterir."),
+            ("Komisyonu neden siz yazmıyorsunuz?",
+             "Aracı kurumların komisyon oranları birbirinden farklı ve tek bir "
+             "resmî oran yok. Buraya bir sayı gömseydik çoğu kullanıcı için "
+             "yanlış olurdu; ölçemediğimiz bir parametreyi uydurmak yerine "
+             "sizden alıyoruz."),
+            ("Aldıktan sonra ortalama maliyetim ne olur?",
+             "Mevcut pozisyonunuza ekleme yapıyorsanız yeni ortalamayı "
+             "<a href=\"/hesap/hisse-maliyet-hesaplama/\">borsa hisse maliyet "
+             "hesaplayıcısından</a> görebilirsiniz."),
+        ],
+    },
+    {
         "id": "hisse-maliyet",
         "slug": "hisse-maliyet-hesaplama",
         "ad": "Borsa Hisse Maliyet Hesaplama",
