@@ -187,5 +187,35 @@ class WorkflowTesti(unittest.TestCase):
         self.assertIn("og_gorsel", akis,
                       "duman testi paylasim kartlarini uretmiyor")
 
+    def test_gecmis_SAYFA_URETIMINDEN_ONCE_calisiyor(self):
+        """gecmis.py, sayfa_uret.py'den ONCE kosmali.
+
+        2026-08-09'da bulundu ve SESSIZ bir hataydi. gecmis.py en sonda
+        kosuyordu; sayfalar uretilirken zaman serisi HENUZ O AYKI OLCUMU
+        icermiyordu, yani "Fiyat gecmisi" bolumu HER ZAMAN BIR OLCUM
+        GERIDEYDI.
+
+        5 Agustos kosusunda somut sonucu: damatlik sayfasi hala
+        "kendi olcumumuz yeni basladi, ilk karsilastirmali rakamlar bir
+        sonraki olcumde gorunecek" diyordu - oysa seride 2026-07-24 ve
+        2026-08-05 kayitlari vardi ve `_fiyat_gecmisi_html` cagrildiginda
+        karsilastirmayi uretiyordu. Projenin en cok beklenen ciktisi bir
+        tur gecikiyordu ve hicbir sey hata vermiyordu.
+        """
+        akis = (Path(__file__).resolve().parent.parent
+                / ".github" / "workflows" / "aylik-veri-guncelleme.yml"
+                ).read_text(encoding="utf-8")
+        self.assertIn("gecmis.py", akis)
+        ilk_gecmis = akis.index("python gecmis.py")
+        ilk_sayfa = akis.index("python sayfa_uret.py")
+        self.assertLess(
+            ilk_gecmis, ilk_sayfa,
+            "gecmis.py sayfa_uret.py'den SONRA kosuyor - fiyat gecmisi "
+            "bolumu bir olcum geride kalir")
+        # agrega da gecmis'ten once olmali: gecmis veri/*.json okuyor
+        self.assertLess(akis.index("python agrega.py"), ilk_gecmis,
+                        "gecmis.py agrega.py'den once kosuyor - o ayki "
+                        "birlestirilmis veri henuz yok")
+
 if __name__ == "__main__":
     unittest.main()

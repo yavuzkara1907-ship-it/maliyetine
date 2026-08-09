@@ -4,7 +4,7 @@
 > endeksi. Fiyatlar tahmin edilmez; gerçek satış listelerinden ölçülür. Her
 > rakamın yanında kaynak sayısı, ürün adedi ve ölçüm tarihi yayınlanır.
 
-Şu an 122 kalem ölçülüyor. Son güncelleme: 2026-08-05.
+Şu an 122 kalem ölçülüyor. Son güncelleme: 2026-08-09.
 
 **Alıntılarken ölçüm tarihini belirtin.** Fiyat verisi tarihsiz olduğunda
 yanıltıcı hale gelir: "buzdolabı 30 bin lira" altı ay sonra yanlış olur,
@@ -99,9 +99,9 @@ hangi yılın tarifesi olduğunu belirtin.
 - [YouTube Gelir Hesaplama](https://maliyetine.com.tr/hesap/youtube-gelir-hesaplama/): Hesap saf aritmetiktir. RPM değeri kullanıcıdan alınır — resmî bir kaynağı olmadığı için tarafımızdan varsayılmaz.
 - [Bileşik Faiz Hesaplama](https://maliyetine.com.tr/hesap/bilesik-faiz-hesaplama/): Bileşik faiz ve annüite gelecek değeri formülü — finansal matematik
 - [Birikim Hedefi Hesaplama](https://maliyetine.com.tr/hesap/birikim-hedefi-hesaplama/): Annüite formülünün tersi — finansal matematik
-- [Hisse Maliyet Ortalama Hesaplama](https://maliyetine.com.tr/hesap/hisse-maliyet-hesaplama/): Ağırlıklı ortalama — temel aritmetik
+- [Borsa Hisse Maliyet Hesaplama](https://maliyetine.com.tr/hesap/hisse-maliyet-hesaplama/): Ağırlıklı ortalama — temel aritmetik
 - [Kâr Zarar Hesaplama](https://maliyetine.com.tr/hesap/kar-zarar-hesaplama/): Kâr/zarar ve yüzde getiri — temel aritmetik
-- [Temettü Verimi Hesaplama](https://maliyetine.com.tr/hesap/temettu-verimi-hesaplama/): Temettü verimi tanımı — temel aritmetik
+- [Temettü Verimi ve Geliri Hesaplama](https://maliyetine.com.tr/hesap/temettu-verimi-hesaplama/): Temettü verimi tanımı — temel aritmetik
 - [Kredi Kartı Borcu Hesaplama](https://maliyetine.com.tr/hesap/kredi-karti-borcu-hesaplama/): Bileşik faizli borç itfası — finansal matematik
 - [Serbest Meslek Vergi Hesaplama](https://maliyetine.com.tr/hesap/serbest-meslek-vergi-hesaplama/): 193 sayılı Gelir Vergisi Kanunu md. 94 (serbest meslek stopajı), 193 sayılı GVK mükerrer md. 20 — genç girişimci kazanç istisnası, 332 Seri No.lu Gelir Vergisi Genel Tebliği — 2026 istisna tutarı 400.000 TL, 3065 sayılı KDV Kanunu
 - [Web Sitesi Gelir Hesaplama](https://maliyetine.com.tr/hesap/web-sitesi-gelir-hesaplama/): Hesap saf aritmetiktir. RPM değeri kullanıcıdan alınır — resmî bir kaynağı olmadığı için tarafımızdan varsayılmaz.

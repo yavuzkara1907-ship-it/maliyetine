@@ -408,6 +408,29 @@ HESAPLAYICILAR = [
              "Ücret dışı gelir tarifesinden. Ücret tarifesiyle ilk iki dilimi aynıdır, üçüncü dilimde ayrışır: kirada 1.000.000 TL, ücrette 1.500.000 TL."),
             ("Kirayı elden aldım, yine de beyan etmem gerekir mi?",
              "Evet. Ayrıca konutlarda tutarı ne olursa olsun kira tahsilatının banka veya PTT üzerinden yapılması zorunludur; aksi halde ceza uygulanır."),
+            # 2026-08-09, Search Console: "kira vergisi cezasi hesaplama"
+            # ve varyantlari gosterim aliyordu ama sayfada karsiligi yoktu.
+            # CEZA TUTARI YAZILMIYOR - oranlar VUK'a ve yeniden degerlemeye
+            # bagli, birincil kaynaktan dogrulanmadan rakam vermeyiz.
+            # Yazilan sey KESIN olan kural: istisnanin kaybi (GVK md.21).
+            ("Kira gelirini beyan etmezsem ne olur?",
+             "En somut sonuç şu: <strong>istisnadan yararlanma hakkınızı "
+             "kaybedersiniz</strong>. Konut kira geliri istisnası, beyanname "
+             "verilmediği ya da eksik beyan edildiği idarece tespit edilirse "
+             "uygulanmaz (GVK md. 21). Yani 58.000 TL'lik indirim düşer ve "
+             "verginiz kiranın tamamı üzerinden hesaplanır. Buna ek olarak "
+             "vergi ziyaı cezası ve gecikme faizi işler; bu tutarlar Vergi Usul "
+             "Kanunu'na ve ilgili döneme göre değiştiği için burada oran "
+             "yazmıyoruz — güncel tutar için Gelir İdaresi Başkanlığı'na bakın."),
+            # "tarla kira vergisi hesaplama" sorgusu geliyordu; bu hesap
+            # ONU KAPSAMIYOR ve bunu soylemek, yanlis sonuc vermekten iyi.
+            ("Tarla veya arazi kirası da bu hesaba girer mi?",
+             "Hayır. Bu hesaplayıcı <strong>konut ve işyeri</strong> kira geliri "
+             "içindir. Tarım arazisi kirası da gayrimenkul sermaye iradı sayılır "
+             "ama <strong>58.000 TL'lik istisna yalnızca konuta özgüdür</strong> — "
+             "araziye uygulanmaz. Araziyi kendiniz işletiyorsanız gelir kira "
+             "değil zirai kazanç olur ve tamamen farklı kurallara tabidir. "
+             "Yanlış sonuç vermemek için bu hesabı arazi kirası için kullanmayın."),
         ],
     },
     {
@@ -653,15 +676,17 @@ HESAPLAYICILAR = [
     {
         "id": "hisse-maliyet",
         "slug": "hisse-maliyet-hesaplama",
-        "ad": "Hisse Maliyet Ortalama Hesaplama",
-        "baslik": "Hisse Maliyet Ortalaması Hesaplama",
-        "soru": "Hisse alınca ortalama maliyetim ne olur?",
-        "meta": "Mevcut pozisyona ekleme yapınca yeni ortalama maliyet ve başa baş fiyat. Maliyet düşürme hesabı.",
+        "ad": "Borsa Hisse Maliyet Hesaplama",
+        "baslik": "Borsa Hisse Maliyet Düşürme Hesaplama",
+        "soru": "Hisse alınca ortalama maliyetim ne olur, maliyet nasıl düşer?",
+        "meta": "Borsada hisse senedi alımında yeni ortalama maliyet, başa baş "
+                "fiyat ve maliyet düşürme hesabı. Kaç lot alınca maliyet nereye iner?",
         "ozet": (
-            "Mevcut pozisyonunuza ekleme yaptığınızda yeni ortalama maliyetiniz "
-            "<strong>toplam tutar ÷ toplam adet</strong> olur. Sonuç aynı zamanda "
-            "<strong>başa baş fiyatınızdır</strong> — bu fiyatın altında satarsanız "
-            "zarardasınız."
+            "Borsada mevcut pozisyonunuza ekleme yaptığınızda yeni ortalama "
+            "maliyetiniz <strong>toplam tutar ÷ toplam adet</strong> olur. Sonuç "
+            "aynı zamanda <strong>başa baş fiyatınızdır</strong> — bu fiyatın "
+            "altında satarsanız zarardasınız. BIST'te 1 lot 1 adet paya eşittir, "
+            "yani adet ve lot aynı sayıdır."
         ),
         "formul": "Yeni maliyet = (eski adet × eski maliyet + yeni adet × yeni fiyat) ÷ toplam adet",
         "kaynaklar": ["Ağırlıklı ortalama — temel aritmetik"],
@@ -738,10 +763,11 @@ HESAPLAYICILAR = [
     {
         "id": "temettu",
         "slug": "temettu-verimi-hesaplama",
-        "ad": "Temettü Verimi Hesaplama",
-        "baslik": "Temettü Verimi Hesaplama",
-        "soru": "Temettü verimi nasıl hesaplanır?",
-        "meta": "Hisse fiyatı ve hisse başına temettüye göre temettü verimi, yıllık temettü geliri ve geri dönüş süresi.",
+        "ad": "Temettü Verimi ve Geliri Hesaplama",
+        "baslik": "Temettü Geliri ve Verimi Hesaplama",
+        "soru": "Temettü geliri ve verimi nasıl hesaplanır, formülü nedir?",
+        "meta": "Hisse başına temettüye göre yıllık temettü geliri, temettü verimi "
+                "(kâr payı oranı) ve geri dönüş süresi. Formülüyle birlikte.",
         "ozet": (
             "Temettü verimi = <strong>hisse başına temettü ÷ hisse fiyatı</strong>. "
             "Yüksek verim her zaman iyi haber değildir: fiyat düştüğü için de "

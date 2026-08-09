@@ -49,12 +49,34 @@ jobs:
       # Her vertikal icin agrega + sayfa uretimi. Yeni vertikal eklenince
       # buraya tek kelime eklemek yeterli - sayfa_uret ayrica sitemap'i ve
       # ana sayfayi TUM vertikalleri okuyarak urettigi icin ek adim gerekmez.
-      - name: Kaynakları birleştir ve statik sayfaları üret
+      - name: Kaynakları birleştir
         working-directory: scraper
         run: |
           for vertikal in dugun ev-kurma okul bebek kedi kopek arac; do
             echo "--- $vertikal ---"
             python agrega.py --vertikal "$vertikal"
+          done
+
+      # SIRA KRITIK - gecmis.py SAYFA URETIMINDEN ONCE calismali.
+      #
+      # 2026-08-09'da bulundu. Once gecmis.py en sonda kosuyordu ve sonuc
+      # suydu: sayfalar uretilirken zaman serisi HENUZ O AYKI OLCUMU
+      # ICERMIYORDU, yani "Fiyat gecmisi" bolumu HER ZAMAN BIR OLCUM
+      # GERIDEYDI. 5 Agustos kosusunda damatlik sayfasi hala "kendi
+      # olcumumuz yeni basladi, ilk karsilastirmali rakamlar bir sonraki
+      # olcumde gorunecek" diyordu - oysa seride 07-24 ve 08-05 kayitlari
+      # vardi ve karsilastirma uretilebilirdi.
+      #
+      # Bu, projenin en cok beklenen ciktisini (ilk zaman serisi sonucu)
+      # sessizce bir tur geciktiriyordu. Hicbir sey hata vermiyordu.
+      - name: Fiyat geçmişini derle (sayfa üretiminden ÖNCE)
+        working-directory: scraper
+        run: python gecmis.py
+
+      - name: Statik sayfaları üret
+        working-directory: scraper
+        run: |
+          for vertikal in dugun ev-kurma okul bebek kedi kopek arac; do
             python sayfa_uret.py --vertikal "$vertikal"
           done
 
@@ -116,13 +138,6 @@ jobs:
       - name: Veriyi CSV olarak dışa aktar
         working-directory: scraper
         run: python veri_disa_aktar.py
-
-      # Zaman serisi: aylik anlik goruntuleri tarayip fiyat gecmisi uretir.
-      # Projenin kopyalanamaz varligi bu - bir ay atlanirsa seride kalici
-      # delik olusur.
-      - name: Fiyat geçmişini derle
-        working-directory: scraper
-        run: python gecmis.py
 
       # Formul hesaplayicilari (/hesap/...). Olculmus fiyattan bagimsiz -
       # mevzuat parametreleri assets/js/resmi-parametreler.js'te sabit
