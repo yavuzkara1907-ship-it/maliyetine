@@ -1,0 +1,35 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Toyota"
+  ],
+  "kalem": "toyota",
+  "vertikal": "arac",
+  "tarih": "2026-08-20",
+  "toplam_urun": 27,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 2989000,
+  "segmentler": {
+    "dusuk": {
+      "min": 2245000,
+      "medyan": 2609000,
+      "max": 2753000,
+      "urun_sayisi": 7
+    },
+    "orta": {
+      "min": 2781000,
+      "medyan": 3057500,
+      "max": 3556000,
+      "urun_sayisi": 14
+    },
+    "luks": {
+      "min": 4120500,
+      "medyan": 5100000,
+      "max": 5781000,
+      "urun_sayisi": 6
+    }
+  }
+}

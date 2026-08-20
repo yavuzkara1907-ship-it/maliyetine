@@ -1,0 +1,35 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Opel"
+  ],
+  "kalem": "opel",
+  "vertikal": "arac",
+  "tarih": "2026-08-20",
+  "toplam_urun": 21,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 2133000,
+  "segmentler": {
+    "dusuk": {
+      "min": 1535000,
+      "medyan": 1845500,
+      "max": 1999000,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 2003000,
+      "medyan": 2166500,
+      "max": 2590000,
+      "urun_sayisi": 10
+    },
+    "luks": {
+      "min": 2650000,
+      "medyan": 3179000,
+      "max": 3570000,
+      "urun_sayisi": 5
+    }
+  }
+}

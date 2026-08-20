@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Ankastre Fırın"
+  ],
+  "kalem": "firin-ocak",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-20",
+  "toplam_urun": 38,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 16784,
+  "segmentler": {
+    "dusuk": {
+      "min": 4049,
+      "medyan": 7909,
+      "max": 12499,
+      "urun_sayisi": 10
+    },
+    "orta": {
+      "min": 13956,
+      "medyan": 16999,
+      "max": 21299,
+      "urun_sayisi": 19
+    },
+    "luks": {
+      "min": 22499,
+      "medyan": 26999,
+      "max": 31280,
+      "urun_sayisi": 9
+    }
+  }
+}

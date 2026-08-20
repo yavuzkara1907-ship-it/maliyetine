@@ -1,0 +1,35 @@
+{
+  "site": "petzzshop",
+  "kaynak_adlari": [
+    "petzzshop - Kopek Mamasi"
+  ],
+  "kalem": "kopek-mamasi",
+  "vertikal": "kopek",
+  "tarih": "2026-08-20",
+  "toplam_urun": 24,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 4208,
+  "segmentler": {
+    "dusuk": {
+      "min": 700,
+      "medyan": 1232,
+      "max": 2090,
+      "urun_sayisi": 7
+    },
+    "orta": {
+      "min": 2894,
+      "medyan": 4526,
+      "max": 6263,
+      "urun_sayisi": 13
+    },
+    "luks": {
+      "min": 6299,
+      "medyan": 6478,
+      "max": 7087,
+      "urun_sayisi": 4
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Kedi Tuvaleti"
+  ],
+  "kalem": "kedi-tuvaleti",
+  "vertikal": "kedi",
+  "tarih": "2026-08-20",
+  "toplam_urun": 30,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 1124,
+  "segmentler": {
+    "dusuk": {
+      "min": 300,
+      "medyan": 372,
+      "max": 580,
+      "urun_sayisi": 8
+    },
+    "orta": {
+      "min": 599,
+      "medyan": 1349,
+      "max": 2699,
+      "urun_sayisi": 15
+    },
+    "luks": {
+      "min": 3389,
+      "medyan": 9999,
+      "max": 11889,
+      "urun_sayisi": 7
+    }
+  }
+}

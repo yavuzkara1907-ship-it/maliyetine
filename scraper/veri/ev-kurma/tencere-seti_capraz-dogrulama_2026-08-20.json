@@ -1,0 +1,12 @@
+{
+  "vertikal": "ev-kurma",
+  "kalem": "tencere-seti",
+  "tarih": "2026-08-20",
+  "site_medyanlari": {
+    "karaca": 6999,
+    "amazon": 3760
+  },
+  "fark_orani": 0.861,
+  "esik_orani": 0.3,
+  "uyari": true
+}

@@ -1,0 +1,12 @@
+{
+  "vertikal": "bebek",
+  "kalem": "bebek-arabasi",
+  "tarih": "2026-08-20",
+  "site_medyanlari": {
+    "amazon": 8899,
+    "joker": 48370
+  },
+  "fark_orani": 4.435,
+  "esik_orani": 0.3,
+  "uyari": true
+}

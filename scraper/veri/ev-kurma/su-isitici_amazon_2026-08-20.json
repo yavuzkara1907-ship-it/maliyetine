@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Su Isıtıcı Kettle"
+  ],
+  "kalem": "su-isitici",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-20",
+  "toplam_urun": 39,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 1399,
+  "segmentler": {
+    "dusuk": {
+      "min": 570,
+      "medyan": 749,
+      "max": 809,
+      "urun_sayisi": 10
+    },
+    "orta": {
+      "min": 841,
+      "medyan": 1467,
+      "max": 2078,
+      "urun_sayisi": 20
+    },
+    "luks": {
+      "min": 2099,
+      "medyan": 2499,
+      "max": 3329,
+      "urun_sayisi": 9
+    }
+  }
+}

@@ -1,29 +1,29 @@
-# Sosyal medya önizleme — 2026-08-05
+# Sosyal medya önizleme — 2026-08-20
 
-## 1. (degisim, 164 karakter)
-
-```
-Davetiye ortalama fiyatı 10 günde %44.7 arttı: 190 TL → 275 TL.
-
-20 üründen, tek kaynaktan ölçüldü (2026-08-05).
-https://maliyetine.com.tr/dugun/davetiye-fiyatlari/
-```
-
-## 2. (degisim, 195 karakter)
+## 1. (degisim, 193 karakter)
 
 ```
-Yemek / İkram (mekanın menü bedeli) ortalama fiyatı 10 günde %37.5 azaldı: 400 TL → 250 TL.
+Yemek / İkram (mekanın menü bedeli) ortalama fiyatı 15 günde %82.0 arttı: 250 TL → 455 TL.
 
-10 üründen, tek kaynaktan ölçüldü (2026-08-05).
+8 üründen, tek kaynaktan ölçüldü (2026-08-20).
 https://maliyetine.com.tr/dugun/yemek-ikram-fiyatlari/
 ```
 
-## 3. (degisim, 201 karakter)
+## 2. (degisim, 183 karakter)
 
 ```
-Gelin Ayakkabısı, Duvak, Aksesuar ortalama fiyatı 10 günde %34.2 arttı: 1.190 TL → 1.597 TL.
+Avize / Aydınlatma ortalama fiyatı 11 günde %66.1 arttı: 1.010 TL → 1.678 TL.
 
-46 üründen, tek kaynaktan ölçüldü (2026-08-05).
-https://maliyetine.com.tr/dugun/gelin-ayakkabisi-fiyatlari/
+46 üründen, tek kaynaktan ölçüldü (2026-08-20).
+https://maliyetine.com.tr/ev-kurma/aydinlatma-fiyatlari/
+```
+
+## 3. (degisim, 177 karakter)
+
+```
+Tencere Seti ortalama fiyatı 11 günde %55.4 arttı: 3.462 TL → 5.380 TL.
+
+85 üründen, 2 kaynaktan ölçüldü (2026-08-20).
+https://maliyetine.com.tr/ev-kurma/tencere-seti-fiyatlari/
 ```
 

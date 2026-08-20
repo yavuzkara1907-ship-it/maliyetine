@@ -1,0 +1,35 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Kia"
+  ],
+  "kalem": "kia",
+  "vertikal": "arac",
+  "tarih": "2026-08-20",
+  "toplam_urun": 21,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 2399000,
+  "segmentler": {
+    "dusuk": {
+      "min": 1435000,
+      "medyan": 1819000,
+      "max": 1960000,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 2070000,
+      "medyan": 2424500,
+      "max": 2750000,
+      "urun_sayisi": 10
+    },
+    "luks": {
+      "min": 3075000,
+      "medyan": 3650000,
+      "max": 3760000,
+      "urun_sayisi": 5
+    }
+  }
+}

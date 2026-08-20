@@ -1,0 +1,35 @@
+{
+  "site": "englishhome",
+  "kaynak_adlari": [
+    "English Home - Nevresim Takimi"
+  ],
+  "kalem": "nevresim-takimi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-20",
+  "toplam_urun": 44,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 1695,
+  "segmentler": {
+    "dusuk": {
+      "min": 780,
+      "medyan": 1050,
+      "max": 1300,
+      "urun_sayisi": 13
+    },
+    "orta": {
+      "min": 1400,
+      "medyan": 1800,
+      "max": 2500,
+      "urun_sayisi": 24
+    },
+    "luks": {
+      "min": 2550,
+      "medyan": 3300,
+      "max": 3800,
+      "urun_sayisi": 7
+    }
+  }
+}

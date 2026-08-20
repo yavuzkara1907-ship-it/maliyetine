@@ -1,0 +1,14 @@
+{
+  "site": "dr",
+  "kaynak_adlari": [
+    "D&R - Defterler"
+  ],
+  "kalem": "defter",
+  "vertikal": "okul",
+  "tarih": "2026-08-20",
+  "toplam_urun": 0,
+  "saglikli": false,
+  "kullanilan_katmanlar": [],
+  "genel_medyan": null,
+  "segmentler": {}
+}

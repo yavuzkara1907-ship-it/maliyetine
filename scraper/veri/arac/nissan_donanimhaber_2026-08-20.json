@@ -1,0 +1,35 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Nissan"
+  ],
+  "kalem": "nissan",
+  "vertikal": "arac",
+  "tarih": "2026-08-20",
+  "toplam_urun": 18,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 3748300,
+  "segmentler": {
+    "dusuk": {
+      "min": 2270900,
+      "medyan": 2757600,
+      "max": 3194300,
+      "urun_sayisi": 5
+    },
+    "orta": {
+      "min": 3399700,
+      "medyan": 3808500,
+      "max": 4142400,
+      "urun_sayisi": 9
+    },
+    "luks": {
+      "min": 4269100,
+      "medyan": 4755700,
+      "max": 5615600,
+      "urun_sayisi": 4
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Bebek Arabası"
+  ],
+  "kalem": "bebek-arabasi",
+  "vertikal": "bebek",
+  "tarih": "2026-08-20",
+  "toplam_urun": 40,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 8899,
+  "segmentler": {
+    "dusuk": {
+      "min": 1500,
+      "medyan": 4599,
+      "max": 5499,
+      "urun_sayisi": 13
+    },
+    "orta": {
+      "min": 5749,
+      "medyan": 9399,
+      "max": 13499,
+      "urun_sayisi": 18
+    },
+    "luks": {
+      "min": 13615,
+      "medyan": 17006,
+      "max": 23000,
+      "urun_sayisi": 9
+    }
+  }
+}

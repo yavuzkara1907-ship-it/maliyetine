@@ -1,175 +1,7 @@
 {
   "vertikal": "kedi",
-  "guncelleme_tarihi": "2026-08-09",
+  "guncelleme_tarihi": "2026-08-20",
   "kalemler": {
-    "kedi-mamasi": {
-      "segmentler": {
-        "dusuk": {
-          "min": 118,
-          "medyan": 580,
-          "max": 1176,
-          "urun_sayisi": 20,
-          "kaynak_sayisi": 2
-        },
-        "orta": {
-          "min": 744,
-          "medyan": 1412,
-          "max": 3007,
-          "urun_sayisi": 37,
-          "kaynak_sayisi": 2
-        },
-        "luks": {
-          "min": 1535,
-          "medyan": 3351,
-          "max": 5087,
-          "urun_sayisi": 17,
-          "kaynak_sayisi": 2
-        }
-      },
-      "genel_medyan": 1350,
-      "toplam_urun": 74,
-      "guncelleme_tarihi": "2026-08-09",
-      "kaynak_sayisi": 2,
-      "kaynaklar": [
-        {
-          "site": "amazon",
-          "kaynak_adlari": [
-            "Amazon - Kedi Maması (aylık)"
-          ],
-          "tarih": "2026-08-09",
-          "toplam_urun": 50,
-          "genel_medyan": 1102
-        },
-        {
-          "site": "petzzshop",
-          "kaynak_adlari": [
-            "petzzshop - Kedi Mamasi"
-          ],
-          "tarih": "2026-08-09",
-          "toplam_urun": 24,
-          "genel_medyan": 1599
-        }
-      ],
-      "capraz_dogrulama_uyarisi": {
-        "fark_yuzdesi": 45.1,
-        "medyanlar": {
-          "amazon": 1102,
-          "petzzshop": 1599
-        }
-      }
-    },
-    "kedi-kumu": {
-      "segmentler": {
-        "dusuk": {
-          "min": 107,
-          "medyan": 242,
-          "max": 324,
-          "urun_sayisi": 17,
-          "kaynak_sayisi": 2
-        },
-        "orta": {
-          "min": 225,
-          "medyan": 394,
-          "max": 525,
-          "urun_sayisi": 29,
-          "kaynak_sayisi": 2
-        },
-        "luks": {
-          "min": 359,
-          "medyan": 504,
-          "max": 901,
-          "urun_sayisi": 14,
-          "kaynak_sayisi": 2
-        }
-      },
-      "genel_medyan": 386,
-      "toplam_urun": 60,
-      "guncelleme_tarihi": "2026-08-09",
-      "kaynak_sayisi": 2,
-      "kaynaklar": [
-        {
-          "site": "amazon",
-          "kaynak_adlari": [
-            "Amazon - Kedi Kumu (aylık)"
-          ],
-          "tarih": "2026-08-09",
-          "toplam_urun": 38,
-          "genel_medyan": 299
-        },
-        {
-          "site": "petzzshop",
-          "kaynak_adlari": [
-            "petzzshop - Kedi Kumu"
-          ],
-          "tarih": "2026-08-09",
-          "toplam_urun": 22,
-          "genel_medyan": 474
-        }
-      ],
-      "capraz_dogrulama_uyarisi": {
-        "fark_yuzdesi": 58.5,
-        "medyanlar": {
-          "amazon": 299,
-          "petzzshop": 474
-        }
-      }
-    },
-    "kedi-oyuncagi": {
-      "segmentler": {
-        "dusuk": {
-          "min": 50,
-          "medyan": 85,
-          "max": 130,
-          "urun_sayisi": 20,
-          "kaynak_sayisi": 2
-        },
-        "orta": {
-          "min": 90,
-          "medyan": 138,
-          "max": 264,
-          "urun_sayisi": 36,
-          "kaynak_sayisi": 2
-        },
-        "luks": {
-          "min": 144,
-          "medyan": 224,
-          "max": 500,
-          "urun_sayisi": 16,
-          "kaynak_sayisi": 2
-        }
-      },
-      "genel_medyan": 136,
-      "toplam_urun": 72,
-      "guncelleme_tarihi": "2026-08-09",
-      "kaynak_sayisi": 2,
-      "kaynaklar": [
-        {
-          "site": "amazon",
-          "kaynak_adlari": [
-            "Amazon - Kedi Oyuncağı"
-          ],
-          "tarih": "2026-08-09",
-          "toplam_urun": 52,
-          "genel_medyan": 167
-        },
-        {
-          "site": "petzzshop",
-          "kaynak_adlari": [
-            "petzzshop - Kedi Oyuncaklari"
-          ],
-          "tarih": "2026-08-09",
-          "toplam_urun": 20,
-          "genel_medyan": 106
-        }
-      ],
-      "capraz_dogrulama_uyarisi": {
-        "fark_yuzdesi": 57.5,
-        "medyanlar": {
-          "amazon": 167,
-          "petzzshop": 106
-        }
-      }
-    },
     "mama-su-kabi": {
       "segmentler": {
         "dusuk": {
@@ -196,7 +28,7 @@
       },
       "genel_medyan": 342,
       "toplam_urun": 62,
-      "guncelleme_tarihi": "2026-08-09",
+      "guncelleme_tarihi": "2026-08-20",
       "kaynak_sayisi": 2,
       "kaynaklar": [
         {
@@ -213,20 +45,76 @@
           "kaynak_adlari": [
             "petzzshop - Kedi Mama ve Su Kaplari"
           ],
-          "tarih": "2026-08-09",
+          "tarih": "2026-08-20",
           "toplam_urun": 20,
           "genel_medyan": 363
         }
       ],
       "capraz_dogrulama_uyarisi": null
     },
+    "kedi-oyuncagi": {
+      "segmentler": {
+        "dusuk": {
+          "min": 50,
+          "medyan": 84,
+          "max": 119,
+          "urun_sayisi": 17,
+          "kaynak_sayisi": 2
+        },
+        "orta": {
+          "min": 90,
+          "medyan": 138,
+          "max": 214,
+          "urun_sayisi": 30,
+          "kaynak_sayisi": 2
+        },
+        "luks": {
+          "min": 144,
+          "medyan": 290,
+          "max": 384,
+          "urun_sayisi": 14,
+          "kaynak_sayisi": 2
+        }
+      },
+      "genel_medyan": 132,
+      "toplam_urun": 61,
+      "guncelleme_tarihi": "2026-08-20",
+      "kaynak_sayisi": 2,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Kedi Oyuncağı"
+          ],
+          "tarih": "2026-08-20",
+          "toplam_urun": 39,
+          "genel_medyan": 159
+        },
+        {
+          "site": "petzzshop",
+          "kaynak_adlari": [
+            "petzzshop - Kedi Oyuncaklari"
+          ],
+          "tarih": "2026-08-20",
+          "toplam_urun": 22,
+          "genel_medyan": 106
+        }
+      ],
+      "capraz_dogrulama_uyarisi": {
+        "fark_yuzdesi": 50.0,
+        "medyanlar": {
+          "amazon": 159,
+          "petzzshop": 106
+        }
+      }
+    },
     "tasima-cantasi": {
       "segmentler": {
         "dusuk": {
           "min": 212,
-          "medyan": 1132,
-          "max": 2341,
-          "urun_sayisi": 18,
+          "medyan": 1134,
+          "max": 2455,
+          "urun_sayisi": 19,
           "kaynak_sayisi": 2
         },
         "orta": {
@@ -244,9 +132,9 @@
           "kaynak_sayisi": 2
         }
       },
-      "genel_medyan": 2084,
-      "toplam_urun": 63,
-      "guncelleme_tarihi": "2026-08-09",
+      "genel_medyan": 2069,
+      "toplam_urun": 64,
+      "guncelleme_tarihi": "2026-08-20",
       "kaynak_sayisi": 2,
       "kaynaklar": [
         {
@@ -263,9 +151,9 @@
           "kaynak_adlari": [
             "petzzshop - Kedi Tasima Cantasi"
           ],
-          "tarih": "2026-08-09",
-          "toplam_urun": 15,
-          "genel_medyan": 3093
+          "tarih": "2026-08-20",
+          "toplam_urun": 16,
+          "genel_medyan": 3063
         }
       ],
       "capraz_dogrulama_uyarisi": {
@@ -275,47 +163,6 @@
           "petzzshop": 3093
         }
       }
-    },
-    "kedi-tuvaleti": {
-      "segmentler": {
-        "dusuk": {
-          "min": 445,
-          "medyan": 580,
-          "max": 747,
-          "urun_sayisi": 7,
-          "kaynak_sayisi": 1
-        },
-        "orta": {
-          "min": 830,
-          "medyan": 1690,
-          "max": 2750,
-          "urun_sayisi": 14,
-          "kaynak_sayisi": 1
-        },
-        "luks": {
-          "min": 2799,
-          "medyan": 4344,
-          "max": 9999,
-          "urun_sayisi": 6,
-          "kaynak_sayisi": 1
-        }
-      },
-      "genel_medyan": 1679,
-      "toplam_urun": 27,
-      "guncelleme_tarihi": "2026-08-09",
-      "kaynak_sayisi": 1,
-      "kaynaklar": [
-        {
-          "site": "amazon",
-          "kaynak_adlari": [
-            "Amazon - Kedi Tuvaleti"
-          ],
-          "tarih": "2026-08-09",
-          "toplam_urun": 27,
-          "genel_medyan": 1679
-        }
-      ],
-      "capraz_dogrulama_uyarisi": null
     },
     "kedi-yatagi": {
       "segmentler": {
@@ -343,7 +190,7 @@
       },
       "genel_medyan": 1395,
       "toplam_urun": 64,
-      "guncelleme_tarihi": "2026-08-09",
+      "guncelleme_tarihi": "2026-08-20",
       "kaynak_sayisi": 2,
       "kaynaklar": [
         {
@@ -360,7 +207,7 @@
           "kaynak_adlari": [
             "petzzshop - Kedi Yataklari"
           ],
-          "tarih": "2026-08-09",
+          "tarih": "2026-08-20",
           "toplam_urun": 23,
           "genel_medyan": 2400
         }
@@ -370,6 +217,103 @@
         "medyanlar": {
           "amazon": 390,
           "petzzshop": 2400
+        }
+      }
+    },
+    "kedi-tuvaleti": {
+      "segmentler": {
+        "dusuk": {
+          "min": 300,
+          "medyan": 372,
+          "max": 580,
+          "urun_sayisi": 8,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 599,
+          "medyan": 1349,
+          "max": 2699,
+          "urun_sayisi": 15,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 3389,
+          "medyan": 9999,
+          "max": 11889,
+          "urun_sayisi": 7,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 1124,
+      "toplam_urun": 30,
+      "guncelleme_tarihi": "2026-08-20",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Kedi Tuvaleti"
+          ],
+          "tarih": "2026-08-20",
+          "toplam_urun": 30,
+          "genel_medyan": 1124
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "kedi-kumu": {
+      "segmentler": {
+        "dusuk": {
+          "min": 107,
+          "medyan": 248,
+          "max": 370,
+          "urun_sayisi": 18,
+          "kaynak_sayisi": 2
+        },
+        "orta": {
+          "min": 225,
+          "medyan": 403,
+          "max": 889,
+          "urun_sayisi": 30,
+          "kaynak_sayisi": 2
+        },
+        "luks": {
+          "min": 359,
+          "medyan": 805,
+          "max": 1296,
+          "urun_sayisi": 14,
+          "kaynak_sayisi": 2
+        }
+      },
+      "genel_medyan": 398,
+      "toplam_urun": 62,
+      "guncelleme_tarihi": "2026-08-20",
+      "kaynak_sayisi": 2,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Kedi Kumu (aylık)"
+          ],
+          "tarih": "2026-08-09",
+          "toplam_urun": 38,
+          "genel_medyan": 299
+        },
+        {
+          "site": "petzzshop",
+          "kaynak_adlari": [
+            "petzzshop - Kedi Kumu"
+          ],
+          "tarih": "2026-08-20",
+          "toplam_urun": 24,
+          "genel_medyan": 498
+        }
+      ],
+      "capraz_dogrulama_uyarisi": {
+        "fark_yuzdesi": 58.5,
+        "medyanlar": {
+          "amazon": 299,
+          "petzzshop": 474
         }
       }
     },
@@ -413,6 +357,62 @@
         }
       ],
       "capraz_dogrulama_uyarisi": null
+    },
+    "kedi-mamasi": {
+      "segmentler": {
+        "dusuk": {
+          "min": 118,
+          "medyan": 688,
+          "max": 1147,
+          "urun_sayisi": 20,
+          "kaynak_sayisi": 2
+        },
+        "orta": {
+          "min": 744,
+          "medyan": 1902,
+          "max": 3757,
+          "urun_sayisi": 37,
+          "kaynak_sayisi": 2
+        },
+        "luks": {
+          "min": 1535,
+          "medyan": 3351,
+          "max": 7044,
+          "urun_sayisi": 17,
+          "kaynak_sayisi": 2
+        }
+      },
+      "genel_medyan": 1850,
+      "toplam_urun": 74,
+      "guncelleme_tarihi": "2026-08-20",
+      "kaynak_sayisi": 2,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Kedi Maması (aylık)"
+          ],
+          "tarih": "2026-08-09",
+          "toplam_urun": 50,
+          "genel_medyan": 1102
+        },
+        {
+          "site": "petzzshop",
+          "kaynak_adlari": [
+            "petzzshop - Kedi Mamasi"
+          ],
+          "tarih": "2026-08-20",
+          "toplam_urun": 24,
+          "genel_medyan": 2599
+        }
+      ],
+      "capraz_dogrulama_uyarisi": {
+        "fark_yuzdesi": 45.1,
+        "medyanlar": {
+          "amazon": 1102,
+          "petzzshop": 1599
+        }
+      }
     }
   }
 }

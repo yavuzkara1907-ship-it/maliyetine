@@ -1,0 +1,16 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Çamaşır Makinesi"
+  ],
+  "kalem": "camasir-makinesi",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-20",
+  "toplam_urun": 0,
+  "saglikli": false,
+  "kullanilan_katmanlar": [
+    "hicbiri"
+  ],
+  "genel_medyan": null,
+  "segmentler": {}
+}

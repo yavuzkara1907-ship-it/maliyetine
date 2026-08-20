@@ -2,7 +2,7 @@
  "kaynak": "TCMB EVDS (TÜİK Tüketici Fiyat Endeksi, 2025=100)",
  "kaynak_url": "https://evds3.tcmb.gov.tr/",
  "yil": 2026,
- "uretim_tarihi": "2026-08-05",
+ "uretim_tarihi": "2026-08-20",
  "olcumler": [
   "2026-01",
   "2026-02",

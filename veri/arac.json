@@ -1,485 +1,7 @@
 {
   "vertikal": "arac",
-  "guncelleme_tarihi": "2026-08-05",
+  "guncelleme_tarihi": "2026-08-20",
   "kalemler": {
-    "seat": {
-      "segmentler": {
-        "dusuk": {
-          "min": 1857000,
-          "medyan": 1912500,
-          "max": 1968000,
-          "urun_sayisi": 2,
-          "kaynak_sayisi": 1
-        },
-        "orta": {
-          "min": 2380000,
-          "medyan": 2470500,
-          "max": 2561000,
-          "urun_sayisi": 2,
-          "kaynak_sayisi": 1
-        }
-      },
-      "genel_medyan": 2174000,
-      "toplam_urun": 4,
-      "guncelleme_tarihi": "2026-08-05",
-      "kaynak_sayisi": 1,
-      "kaynaklar": [
-        {
-          "site": "donanimhaber",
-          "kaynak_adlari": [
-            "DonanimHaber - Seat"
-          ],
-          "tarih": "2026-08-05",
-          "toplam_urun": 4,
-          "genel_medyan": 2174000
-        }
-      ],
-      "capraz_dogrulama_uyarisi": null
-    },
-    "fiat": {
-      "segmentler": {
-        "dusuk": {
-          "min": 609900,
-          "medyan": 1064900,
-          "max": 1499900,
-          "urun_sayisi": 4,
-          "kaynak_sayisi": 1
-        },
-        "orta": {
-          "min": 1599900,
-          "medyan": 1955200,
-          "max": 2029900,
-          "urun_sayisi": 8,
-          "kaynak_sayisi": 1
-        },
-        "luks": {
-          "min": 2050500,
-          "medyan": 2090500,
-          "max": 2289900,
-          "urun_sayisi": 3,
-          "kaynak_sayisi": 1
-        }
-      },
-      "genel_medyan": 1950500,
-      "toplam_urun": 15,
-      "guncelleme_tarihi": "2026-08-05",
-      "kaynak_sayisi": 1,
-      "kaynaklar": [
-        {
-          "site": "donanimhaber",
-          "kaynak_adlari": [
-            "DonanimHaber - Fiat"
-          ],
-          "tarih": "2026-08-05",
-          "toplam_urun": 15,
-          "genel_medyan": 1950500
-        }
-      ],
-      "capraz_dogrulama_uyarisi": null
-    },
-    "renault": {
-      "segmentler": {
-        "dusuk": {
-          "min": 1830000,
-          "medyan": 1937500,
-          "max": 2080000,
-          "urun_sayisi": 6,
-          "kaynak_sayisi": 1
-        },
-        "orta": {
-          "min": 2099000,
-          "medyan": 2436000,
-          "max": 2805000,
-          "urun_sayisi": 12,
-          "kaynak_sayisi": 1
-        },
-        "luks": {
-          "min": 2875000,
-          "medyan": 3130000,
-          "max": 3490000,
-          "urun_sayisi": 5,
-          "kaynak_sayisi": 1
-        }
-      },
-      "genel_medyan": 2386000,
-      "toplam_urun": 23,
-      "guncelleme_tarihi": "2026-08-05",
-      "kaynak_sayisi": 1,
-      "kaynaklar": [
-        {
-          "site": "donanimhaber",
-          "kaynak_adlari": [
-            "DonanimHaber - Renault"
-          ],
-          "tarih": "2026-08-05",
-          "toplam_urun": 23,
-          "genel_medyan": 2386000
-        }
-      ],
-      "capraz_dogrulama_uyarisi": null
-    },
-    "skoda": {
-      "segmentler": {
-        "dusuk": {
-          "min": 1874900,
-          "medyan": 2344900,
-          "max": 2734900,
-          "urun_sayisi": 11,
-          "kaynak_sayisi": 1
-        },
-        "orta": {
-          "min": 2774900,
-          "medyan": 3812400,
-          "max": 5109900,
-          "urun_sayisi": 20,
-          "kaynak_sayisi": 1
-        },
-        "luks": {
-          "min": 5349900,
-          "medyan": 6924900,
-          "max": 7224900,
-          "urun_sayisi": 10,
-          "kaynak_sayisi": 1
-        }
-      },
-      "genel_medyan": 3774900,
-      "toplam_urun": 41,
-      "guncelleme_tarihi": "2026-08-05",
-      "kaynak_sayisi": 1,
-      "kaynaklar": [
-        {
-          "site": "donanimhaber",
-          "kaynak_adlari": [
-            "DonanimHaber - Skoda"
-          ],
-          "tarih": "2026-08-05",
-          "toplam_urun": 41,
-          "genel_medyan": 3774900
-        }
-      ],
-      "capraz_dogrulama_uyarisi": null
-    },
-    "peugeot": {
-      "segmentler": {
-        "dusuk": {
-          "min": 1624000,
-          "medyan": 2038250,
-          "max": 2308500,
-          "urun_sayisi": 6,
-          "kaynak_sayisi": 1
-        },
-        "orta": {
-          "min": 2353000,
-          "medyan": 2773000,
-          "max": 3318000,
-          "urun_sayisi": 10,
-          "kaynak_sayisi": 1
-        },
-        "luks": {
-          "min": 3502000,
-          "medyan": 3557250,
-          "max": 3644000,
-          "urun_sayisi": 4,
-          "kaynak_sayisi": 1
-        }
-      },
-      "genel_medyan": 2637500,
-      "toplam_urun": 20,
-      "guncelleme_tarihi": "2026-08-05",
-      "kaynak_sayisi": 1,
-      "kaynaklar": [
-        {
-          "site": "donanimhaber",
-          "kaynak_adlari": [
-            "DonanimHaber - Peugeot"
-          ],
-          "tarih": "2026-08-05",
-          "toplam_urun": 20,
-          "genel_medyan": 2637500
-        }
-      ],
-      "capraz_dogrulama_uyarisi": null
-    },
-    "dacia": {
-      "segmentler": {
-        "dusuk": {
-          "min": 1299000,
-          "medyan": 1436500,
-          "max": 1600000,
-          "urun_sayisi": 4,
-          "kaynak_sayisi": 1
-        },
-        "orta": {
-          "min": 1680000,
-          "medyan": 1725000,
-          "max": 1784000,
-          "urun_sayisi": 6,
-          "kaynak_sayisi": 1
-        },
-        "luks": {
-          "min": 1821000,
-          "medyan": 1835500,
-          "max": 1850000,
-          "urun_sayisi": 2,
-          "kaynak_sayisi": 1
-        }
-      },
-      "genel_medyan": 1709500,
-      "toplam_urun": 12,
-      "guncelleme_tarihi": "2026-08-05",
-      "kaynak_sayisi": 1,
-      "kaynaklar": [
-        {
-          "site": "donanimhaber",
-          "kaynak_adlari": [
-            "DonanimHaber - Dacia"
-          ],
-          "tarih": "2026-08-05",
-          "toplam_urun": 12,
-          "genel_medyan": 1709500
-        }
-      ],
-      "capraz_dogrulama_uyarisi": null
-    },
-    "ford": {
-      "segmentler": {
-        "dusuk": {
-          "min": 2131500,
-          "medyan": 2158700,
-          "max": 2359500,
-          "urun_sayisi": 5,
-          "kaynak_sayisi": 1
-        },
-        "orta": {
-          "min": 2421100,
-          "medyan": 2736050,
-          "max": 3116700,
-          "urun_sayisi": 8,
-          "kaynak_sayisi": 1
-        },
-        "luks": {
-          "min": 3164300,
-          "medyan": 3779850,
-          "max": 4266600,
-          "urun_sayisi": 4,
-          "kaynak_sayisi": 1
-        }
-      },
-      "genel_medyan": 2732100,
-      "toplam_urun": 17,
-      "guncelleme_tarihi": "2026-08-05",
-      "kaynak_sayisi": 1,
-      "kaynaklar": [
-        {
-          "site": "donanimhaber",
-          "kaynak_adlari": [
-            "DonanimHaber - Ford"
-          ],
-          "tarih": "2026-08-05",
-          "toplam_urun": 17,
-          "genel_medyan": 2732100
-        }
-      ],
-      "capraz_dogrulama_uyarisi": null
-    },
-    "mg": {
-      "segmentler": {
-        "dusuk": {
-          "min": 2655000,
-          "medyan": 2676000,
-          "max": 2697000,
-          "urun_sayisi": 2,
-          "kaynak_sayisi": 1
-        },
-        "orta": {
-          "min": 3265000,
-          "medyan": 3282500,
-          "max": 3300000,
-          "urun_sayisi": 2,
-          "kaynak_sayisi": 1
-        },
-        "luks": {
-          "min": 3450000,
-          "medyan": 3450000,
-          "max": 3450000,
-          "urun_sayisi": 1,
-          "kaynak_sayisi": 1
-        }
-      },
-      "genel_medyan": 3265000,
-      "toplam_urun": 5,
-      "guncelleme_tarihi": "2026-08-05",
-      "kaynak_sayisi": 1,
-      "kaynaklar": [
-        {
-          "site": "donanimhaber",
-          "kaynak_adlari": [
-            "DonanimHaber - MG"
-          ],
-          "tarih": "2026-08-05",
-          "toplam_urun": 5,
-          "genel_medyan": 3265000
-        }
-      ],
-      "capraz_dogrulama_uyarisi": null
-    },
-    "toyota": {
-      "segmentler": {
-        "dusuk": {
-          "min": 2245000,
-          "medyan": 2609000,
-          "max": 2753000,
-          "urun_sayisi": 7,
-          "kaynak_sayisi": 1
-        },
-        "orta": {
-          "min": 2781000,
-          "medyan": 2976000,
-          "max": 3249000,
-          "urun_sayisi": 12,
-          "kaynak_sayisi": 1
-        },
-        "luks": {
-          "min": 3320000,
-          "medyan": 3556000,
-          "max": 4300000,
-          "urun_sayisi": 5,
-          "kaynak_sayisi": 1
-        }
-      },
-      "genel_medyan": 2961000,
-      "toplam_urun": 24,
-      "guncelleme_tarihi": "2026-08-05",
-      "kaynak_sayisi": 1,
-      "kaynaklar": [
-        {
-          "site": "donanimhaber",
-          "kaynak_adlari": [
-            "DonanimHaber - Toyota"
-          ],
-          "tarih": "2026-08-05",
-          "toplam_urun": 24,
-          "genel_medyan": 2961000
-        }
-      ],
-      "capraz_dogrulama_uyarisi": null
-    },
-    "bmw": {
-      "segmentler": {
-        "dusuk": {
-          "min": 3724500,
-          "medyan": 4468450,
-          "max": 5469400,
-          "urun_sayisi": 16,
-          "kaynak_sayisi": 1
-        },
-        "orta": {
-          "min": 5529000,
-          "medyan": 8159300,
-          "max": 11095800,
-          "urun_sayisi": 31,
-          "kaynak_sayisi": 1
-        },
-        "luks": {
-          "min": 11254800,
-          "medyan": 15799000,
-          "max": 21870500,
-          "urun_sayisi": 13,
-          "kaynak_sayisi": 1
-        }
-      },
-      "genel_medyan": 7854750,
-      "toplam_urun": 60,
-      "guncelleme_tarihi": "2026-08-05",
-      "kaynak_sayisi": 1,
-      "kaynaklar": [
-        {
-          "site": "donanimhaber",
-          "kaynak_adlari": [
-            "DonanimHaber - BMW"
-          ],
-          "tarih": "2026-08-05",
-          "toplam_urun": 60,
-          "genel_medyan": 7854750
-        }
-      ],
-      "capraz_dogrulama_uyarisi": null
-    },
-    "mercedes": {
-      "segmentler": {
-        "dusuk": {
-          "min": 3222000,
-          "medyan": 4873000,
-          "max": 6950000,
-          "urun_sayisi": 11,
-          "kaynak_sayisi": 1
-        },
-        "orta": {
-          "min": 6957500,
-          "medyan": 10108500,
-          "max": 15671000,
-          "urun_sayisi": 21,
-          "kaynak_sayisi": 1
-        },
-        "luks": {
-          "min": 16675000,
-          "medyan": 22726500,
-          "max": 30448000,
-          "urun_sayisi": 10,
-          "kaynak_sayisi": 1
-        }
-      },
-      "genel_medyan": 9757250,
-      "toplam_urun": 42,
-      "guncelleme_tarihi": "2026-08-05",
-      "kaynak_sayisi": 1,
-      "kaynaklar": [
-        {
-          "site": "donanimhaber",
-          "kaynak_adlari": [
-            "DonanimHaber - Mercedes"
-          ],
-          "tarih": "2026-08-05",
-          "toplam_urun": 42,
-          "genel_medyan": 9757250
-        }
-      ],
-      "capraz_dogrulama_uyarisi": null
-    },
-    "chery": {
-      "segmentler": {
-        "dusuk": {
-          "min": 2310000,
-          "medyan": 2310000,
-          "max": 2310000,
-          "urun_sayisi": 1,
-          "kaynak_sayisi": 1
-        },
-        "orta": {
-          "min": 2605000,
-          "medyan": 2672500,
-          "max": 2740000,
-          "urun_sayisi": 2,
-          "kaynak_sayisi": 1
-        }
-      },
-      "genel_medyan": 2605000,
-      "toplam_urun": 3,
-      "guncelleme_tarihi": "2026-08-05",
-      "kaynak_sayisi": 1,
-      "kaynaklar": [
-        {
-          "site": "donanimhaber",
-          "kaynak_adlari": [
-            "DonanimHaber - Chery"
-          ],
-          "tarih": "2026-08-05",
-          "toplam_urun": 3,
-          "genel_medyan": 2605000
-        }
-      ],
-      "capraz_dogrulama_uyarisi": null
-    },
     "en-ucuz-sifir-arac": {
       "segmentler": {
         "dusuk": {
@@ -491,7 +13,7 @@
         },
         "orta": {
           "min": 1830000,
-          "medyan": 2100250,
+          "medyan": 2113850,
           "max": 2525000,
           "urun_sayisi": 12,
           "kaynak_sayisi": 1
@@ -506,7 +28,7 @@
       },
       "genel_medyan": 2069000,
       "toplam_urun": 23,
-      "guncelleme_tarihi": "2026-08-05",
+      "guncelleme_tarihi": "2026-08-20",
       "kaynak_sayisi": 1,
       "kaynaklar": [
         {
@@ -514,50 +36,43 @@
           "kaynak_adlari": [
             "DonanimHaber - Marka Giris Fiyatlari"
           ],
-          "tarih": "2026-08-05",
+          "tarih": "2026-08-20",
           "toplam_urun": 23,
           "genel_medyan": 2069000
         }
       ],
       "capraz_dogrulama_uyarisi": null
     },
-    "suzuki": {
+    "togg": {
       "segmentler": {
         "dusuk": {
-          "min": 2079000,
-          "medyan": 2108500,
-          "max": 2158000,
-          "urun_sayisi": 4,
+          "min": 1886000,
+          "medyan": 1909048,
+          "max": 2196000,
+          "urun_sayisi": 3,
           "kaynak_sayisi": 1
         },
         "orta": {
-          "min": 2253000,
-          "medyan": 2474500,
-          "max": 2649000,
-          "urun_sayisi": 6,
-          "kaynak_sayisi": 1
-        },
-        "luks": {
-          "min": 2680000,
-          "medyan": 2731500,
-          "max": 2783000,
-          "urun_sayisi": 2,
+          "min": 2219668,
+          "medyan": 2411000,
+          "max": 3178000,
+          "urun_sayisi": 5,
           "kaynak_sayisi": 1
         }
       },
-      "genel_medyan": 2354000,
-      "toplam_urun": 12,
-      "guncelleme_tarihi": "2026-08-05",
+      "genel_medyan": 2295334,
+      "toplam_urun": 8,
+      "guncelleme_tarihi": "2026-08-20",
       "kaynak_sayisi": 1,
       "kaynaklar": [
         {
           "site": "donanimhaber",
           "kaynak_adlari": [
-            "DonanimHaber - Suzuki"
+            "DonanimHaber - Togg"
           ],
-          "tarih": "2026-08-05",
-          "toplam_urun": 12,
-          "genel_medyan": 2354000
+          "tarih": "2026-08-20",
+          "toplam_urun": 8,
+          "genel_medyan": 2295334
         }
       ],
       "capraz_dogrulama_uyarisi": null
@@ -588,7 +103,7 @@
       },
       "genel_medyan": 2133000,
       "toplam_urun": 21,
-      "guncelleme_tarihi": "2026-08-05",
+      "guncelleme_tarihi": "2026-08-20",
       "kaynak_sayisi": 1,
       "kaynaklar": [
         {
@@ -596,323 +111,9 @@
           "kaynak_adlari": [
             "DonanimHaber - Opel"
           ],
-          "tarih": "2026-08-05",
+          "tarih": "2026-08-20",
           "toplam_urun": 21,
           "genel_medyan": 2133000
-        }
-      ],
-      "capraz_dogrulama_uyarisi": null
-    },
-    "citroen": {
-      "segmentler": {
-        "dusuk": {
-          "min": 1595000,
-          "medyan": 1790000,
-          "max": 1930000,
-          "urun_sayisi": 5,
-          "kaynak_sayisi": 1
-        },
-        "orta": {
-          "min": 2061000,
-          "medyan": 2236000,
-          "max": 2295000,
-          "urun_sayisi": 8,
-          "kaynak_sayisi": 1
-        },
-        "luks": {
-          "min": 2360000,
-          "medyan": 2570000,
-          "max": 2960000,
-          "urun_sayisi": 4,
-          "kaynak_sayisi": 1
-        }
-      },
-      "genel_medyan": 2230000,
-      "toplam_urun": 17,
-      "guncelleme_tarihi": "2026-08-05",
-      "kaynak_sayisi": 1,
-      "kaynaklar": [
-        {
-          "site": "donanimhaber",
-          "kaynak_adlari": [
-            "DonanimHaber - Citroen"
-          ],
-          "tarih": "2026-08-05",
-          "toplam_urun": 17,
-          "genel_medyan": 2230000
-        }
-      ],
-      "capraz_dogrulama_uyarisi": null
-    },
-    "cupra": {
-      "segmentler": {
-        "dusuk": {
-          "min": 2650000,
-          "medyan": 2700000,
-          "max": 2750000,
-          "urun_sayisi": 2,
-          "kaynak_sayisi": 1
-        },
-        "orta": {
-          "min": 3270000,
-          "medyan": 3502500,
-          "max": 4115000,
-          "urun_sayisi": 4,
-          "kaynak_sayisi": 1
-        },
-        "luks": {
-          "min": 4520000,
-          "medyan": 4520000,
-          "max": 4520000,
-          "urun_sayisi": 1,
-          "kaynak_sayisi": 1
-        }
-      },
-      "genel_medyan": 3335000,
-      "toplam_urun": 7,
-      "guncelleme_tarihi": "2026-08-05",
-      "kaynak_sayisi": 1,
-      "kaynaklar": [
-        {
-          "site": "donanimhaber",
-          "kaynak_adlari": [
-            "DonanimHaber - Cupra"
-          ],
-          "tarih": "2026-08-05",
-          "toplam_urun": 7,
-          "genel_medyan": 3335000
-        }
-      ],
-      "capraz_dogrulama_uyarisi": null
-    },
-    "kia": {
-      "segmentler": {
-        "dusuk": {
-          "min": 1435000,
-          "medyan": 1960000,
-          "max": 2070000,
-          "urun_sayisi": 5,
-          "kaynak_sayisi": 1
-        },
-        "orta": {
-          "min": 2249000,
-          "medyan": 2485000,
-          "max": 3075000,
-          "urun_sayisi": 9,
-          "kaynak_sayisi": 1
-        },
-        "luks": {
-          "min": 3340000,
-          "medyan": 3705000,
-          "max": 3760000,
-          "urun_sayisi": 4,
-          "kaynak_sayisi": 1
-        }
-      },
-      "genel_medyan": 2467500,
-      "toplam_urun": 18,
-      "guncelleme_tarihi": "2026-08-05",
-      "kaynak_sayisi": 1,
-      "kaynaklar": [
-        {
-          "site": "donanimhaber",
-          "kaynak_adlari": [
-            "DonanimHaber - Kia"
-          ],
-          "tarih": "2026-08-05",
-          "toplam_urun": 18,
-          "genel_medyan": 2467500
-        }
-      ],
-      "capraz_dogrulama_uyarisi": null
-    },
-    "volkswagen": {
-      "segmentler": {
-        "dusuk": {
-          "min": 2165000,
-          "medyan": 2755000,
-          "max": 3052000,
-          "urun_sayisi": 11,
-          "kaynak_sayisi": 1
-        },
-        "orta": {
-          "min": 3114000,
-          "medyan": 3642500,
-          "max": 4907000,
-          "urun_sayisi": 20,
-          "kaynak_sayisi": 1
-        },
-        "luks": {
-          "min": 5003000,
-          "medyan": 6617000,
-          "max": 7375000,
-          "urun_sayisi": 9,
-          "kaynak_sayisi": 1
-        }
-      },
-      "genel_medyan": 3609000,
-      "toplam_urun": 40,
-      "guncelleme_tarihi": "2026-08-05",
-      "kaynak_sayisi": 1,
-      "kaynaklar": [
-        {
-          "site": "donanimhaber",
-          "kaynak_adlari": [
-            "DonanimHaber - Volkswagen"
-          ],
-          "tarih": "2026-08-05",
-          "toplam_urun": 40,
-          "genel_medyan": 3609000
-        }
-      ],
-      "capraz_dogrulama_uyarisi": null
-    },
-    "byd": {
-      "segmentler": {
-        "dusuk": {
-          "min": 4077000,
-          "medyan": 4133500,
-          "max": 4190000,
-          "urun_sayisi": 2,
-          "kaynak_sayisi": 1
-        },
-        "orta": {
-          "min": 4873000,
-          "medyan": 5145500,
-          "max": 5418000,
-          "urun_sayisi": 2,
-          "kaynak_sayisi": 1
-        }
-      },
-      "genel_medyan": 4531500,
-      "toplam_urun": 4,
-      "guncelleme_tarihi": "2026-08-05",
-      "kaynak_sayisi": 1,
-      "kaynaklar": [
-        {
-          "site": "donanimhaber",
-          "kaynak_adlari": [
-            "DonanimHaber - BYD"
-          ],
-          "tarih": "2026-08-05",
-          "toplam_urun": 4,
-          "genel_medyan": 4531500
-        }
-      ],
-      "capraz_dogrulama_uyarisi": null
-    },
-    "hyundai": {
-      "segmentler": {
-        "dusuk": {
-          "min": 1487000,
-          "medyan": 1699500,
-          "max": 1831000,
-          "urun_sayisi": 8,
-          "kaynak_sayisi": 1
-        },
-        "orta": {
-          "min": 1840000,
-          "medyan": 2100000,
-          "max": 2721000,
-          "urun_sayisi": 14,
-          "kaynak_sayisi": 1
-        },
-        "luks": {
-          "min": 2771000,
-          "medyan": 3434000,
-          "max": 3720000,
-          "urun_sayisi": 6,
-          "kaynak_sayisi": 1
-        }
-      },
-      "genel_medyan": 2039000,
-      "toplam_urun": 28,
-      "guncelleme_tarihi": "2026-08-05",
-      "kaynak_sayisi": 1,
-      "kaynaklar": [
-        {
-          "site": "donanimhaber",
-          "kaynak_adlari": [
-            "DonanimHaber - Hyundai"
-          ],
-          "tarih": "2026-08-05",
-          "toplam_urun": 28,
-          "genel_medyan": 2039000
-        }
-      ],
-      "capraz_dogrulama_uyarisi": null
-    },
-    "tesla": {
-      "segmentler": {
-        "dusuk": {
-          "min": 2474985,
-          "medyan": 3078892,
-          "max": 3682800,
-          "urun_sayisi": 2,
-          "kaynak_sayisi": 1
-        },
-        "orta": {
-          "min": 4410000,
-          "medyan": 4583000,
-          "max": 4756000,
-          "urun_sayisi": 2,
-          "kaynak_sayisi": 1
-        }
-      },
-      "genel_medyan": 4046400,
-      "toplam_urun": 4,
-      "guncelleme_tarihi": "2026-08-05",
-      "kaynak_sayisi": 1,
-      "kaynaklar": [
-        {
-          "site": "donanimhaber",
-          "kaynak_adlari": [
-            "DonanimHaber - Tesla"
-          ],
-          "tarih": "2026-08-05",
-          "toplam_urun": 4,
-          "genel_medyan": 4046400
-        }
-      ],
-      "capraz_dogrulama_uyarisi": null
-    },
-    "honda": {
-      "segmentler": {
-        "dusuk": {
-          "min": 2525000,
-          "medyan": 2592000,
-          "max": 2659000,
-          "urun_sayisi": 2,
-          "kaynak_sayisi": 1
-        },
-        "orta": {
-          "min": 2810000,
-          "medyan": 4015000,
-          "max": 5600000,
-          "urun_sayisi": 4,
-          "kaynak_sayisi": 1
-        },
-        "luks": {
-          "min": 6160000,
-          "medyan": 6160000,
-          "max": 6160000,
-          "urun_sayisi": 1,
-          "kaynak_sayisi": 1
-        }
-      },
-      "genel_medyan": 3060000,
-      "toplam_urun": 7,
-      "guncelleme_tarihi": "2026-08-05",
-      "kaynak_sayisi": 1,
-      "kaynaklar": [
-        {
-          "site": "donanimhaber",
-          "kaynak_adlari": [
-            "DonanimHaber - Honda"
-          ],
-          "tarih": "2026-08-05",
-          "toplam_urun": 7,
-          "genel_medyan": 3060000
         }
       ],
       "capraz_dogrulama_uyarisi": null
@@ -943,7 +144,7 @@
       },
       "genel_medyan": 3748300,
       "toplam_urun": 18,
-      "guncelleme_tarihi": "2026-08-05",
+      "guncelleme_tarihi": "2026-08-20",
       "kaynak_sayisi": 1,
       "kaynaklar": [
         {
@@ -951,43 +152,842 @@
           "kaynak_adlari": [
             "DonanimHaber - Nissan"
           ],
-          "tarih": "2026-08-05",
+          "tarih": "2026-08-20",
           "toplam_urun": 18,
           "genel_medyan": 3748300
         }
       ],
       "capraz_dogrulama_uyarisi": null
     },
-    "togg": {
+    "citroen": {
       "segmentler": {
         "dusuk": {
-          "min": 1886000,
-          "medyan": 1909048,
-          "max": 2196000,
-          "urun_sayisi": 3,
+          "min": 1595000,
+          "medyan": 1790000,
+          "max": 1930000,
+          "urun_sayisi": 5,
           "kaynak_sayisi": 1
         },
         "orta": {
-          "min": 2219668,
-          "medyan": 2411000,
-          "max": 3178000,
-          "urun_sayisi": 5,
+          "min": 2061000,
+          "medyan": 2236000,
+          "max": 2295000,
+          "urun_sayisi": 8,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 2360000,
+          "medyan": 2570000,
+          "max": 2960000,
+          "urun_sayisi": 4,
           "kaynak_sayisi": 1
         }
       },
-      "genel_medyan": 2295334,
-      "toplam_urun": 8,
-      "guncelleme_tarihi": "2026-08-05",
+      "genel_medyan": 2230000,
+      "toplam_urun": 17,
+      "guncelleme_tarihi": "2026-08-20",
       "kaynak_sayisi": 1,
       "kaynaklar": [
         {
           "site": "donanimhaber",
           "kaynak_adlari": [
-            "DonanimHaber - Togg"
+            "DonanimHaber - Citroen"
           ],
-          "tarih": "2026-08-05",
-          "toplam_urun": 8,
-          "genel_medyan": 2295334
+          "tarih": "2026-08-20",
+          "toplam_urun": 17,
+          "genel_medyan": 2230000
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "ford": {
+      "segmentler": {
+        "dusuk": {
+          "min": 2158700,
+          "medyan": 2238900,
+          "max": 2457300,
+          "urun_sayisi": 5,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 2615600,
+          "medyan": 2864900,
+          "max": 3270400,
+          "urun_sayisi": 10,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 3371600,
+          "medyan": 3836100,
+          "max": 4330000,
+          "urun_sayisi": 4,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 2859900,
+      "toplam_urun": 19,
+      "guncelleme_tarihi": "2026-08-20",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "donanimhaber",
+          "kaynak_adlari": [
+            "DonanimHaber - Ford"
+          ],
+          "tarih": "2026-08-20",
+          "toplam_urun": 19,
+          "genel_medyan": 2859900
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "toyota": {
+      "segmentler": {
+        "dusuk": {
+          "min": 2245000,
+          "medyan": 2609000,
+          "max": 2753000,
+          "urun_sayisi": 7,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 2781000,
+          "medyan": 3057500,
+          "max": 3556000,
+          "urun_sayisi": 14,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 4120500,
+          "medyan": 5100000,
+          "max": 5781000,
+          "urun_sayisi": 6,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 2989000,
+      "toplam_urun": 27,
+      "guncelleme_tarihi": "2026-08-20",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "donanimhaber",
+          "kaynak_adlari": [
+            "DonanimHaber - Toyota"
+          ],
+          "tarih": "2026-08-20",
+          "toplam_urun": 27,
+          "genel_medyan": 2989000
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "bmw": {
+      "segmentler": {
+        "dusuk": {
+          "min": 3724500,
+          "medyan": 4468450,
+          "max": 5469400,
+          "urun_sayisi": 16,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 5529000,
+          "medyan": 8159300,
+          "max": 11095800,
+          "urun_sayisi": 31,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 11254800,
+          "medyan": 15799000,
+          "max": 21870500,
+          "urun_sayisi": 13,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 7854750,
+      "toplam_urun": 60,
+      "guncelleme_tarihi": "2026-08-20",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "donanimhaber",
+          "kaynak_adlari": [
+            "DonanimHaber - BMW"
+          ],
+          "tarih": "2026-08-20",
+          "toplam_urun": 60,
+          "genel_medyan": 7854750
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "mg": {
+      "segmentler": {
+        "dusuk": {
+          "min": 2655000,
+          "medyan": 2676000,
+          "max": 2697000,
+          "urun_sayisi": 2,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 3265000,
+          "medyan": 3282500,
+          "max": 3300000,
+          "urun_sayisi": 2,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 3450000,
+          "medyan": 3450000,
+          "max": 3450000,
+          "urun_sayisi": 1,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 3265000,
+      "toplam_urun": 5,
+      "guncelleme_tarihi": "2026-08-20",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "donanimhaber",
+          "kaynak_adlari": [
+            "DonanimHaber - MG"
+          ],
+          "tarih": "2026-08-20",
+          "toplam_urun": 5,
+          "genel_medyan": 3265000
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "fiat": {
+      "segmentler": {
+        "dusuk": {
+          "min": 609900,
+          "medyan": 1064900,
+          "max": 1499900,
+          "urun_sayisi": 4,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 1599900,
+          "medyan": 1955200,
+          "max": 2029900,
+          "urun_sayisi": 8,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 2050500,
+          "medyan": 2090500,
+          "max": 2289900,
+          "urun_sayisi": 3,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 1950500,
+      "toplam_urun": 15,
+      "guncelleme_tarihi": "2026-08-20",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "donanimhaber",
+          "kaynak_adlari": [
+            "DonanimHaber - Fiat"
+          ],
+          "tarih": "2026-08-20",
+          "toplam_urun": 15,
+          "genel_medyan": 1950500
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "mercedes": {
+      "segmentler": {
+        "dusuk": {
+          "min": 3222000,
+          "medyan": 4873000,
+          "max": 6950000,
+          "urun_sayisi": 11,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 6957500,
+          "medyan": 10108500,
+          "max": 15671000,
+          "urun_sayisi": 21,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 16675000,
+          "medyan": 22726500,
+          "max": 30448000,
+          "urun_sayisi": 10,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 9757250,
+      "toplam_urun": 42,
+      "guncelleme_tarihi": "2026-08-20",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "donanimhaber",
+          "kaynak_adlari": [
+            "DonanimHaber - Mercedes"
+          ],
+          "tarih": "2026-08-20",
+          "toplam_urun": 42,
+          "genel_medyan": 9757250
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "cupra": {
+      "segmentler": {
+        "dusuk": {
+          "min": 2650000,
+          "medyan": 2700000,
+          "max": 2750000,
+          "urun_sayisi": 2,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 3270000,
+          "medyan": 3502500,
+          "max": 4115000,
+          "urun_sayisi": 4,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 4520000,
+          "medyan": 4520000,
+          "max": 4520000,
+          "urun_sayisi": 1,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 3335000,
+      "toplam_urun": 7,
+      "guncelleme_tarihi": "2026-08-20",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "donanimhaber",
+          "kaynak_adlari": [
+            "DonanimHaber - Cupra"
+          ],
+          "tarih": "2026-08-20",
+          "toplam_urun": 7,
+          "genel_medyan": 3335000
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "byd": {
+      "segmentler": {
+        "dusuk": {
+          "min": 4077000,
+          "medyan": 4133500,
+          "max": 4190000,
+          "urun_sayisi": 2,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 4873000,
+          "medyan": 5145500,
+          "max": 5418000,
+          "urun_sayisi": 2,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 4531500,
+      "toplam_urun": 4,
+      "guncelleme_tarihi": "2026-08-20",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "donanimhaber",
+          "kaynak_adlari": [
+            "DonanimHaber - BYD"
+          ],
+          "tarih": "2026-08-20",
+          "toplam_urun": 4,
+          "genel_medyan": 4531500
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "renault": {
+      "segmentler": {
+        "dusuk": {
+          "min": 1830000,
+          "medyan": 1937500,
+          "max": 2080000,
+          "urun_sayisi": 6,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 2099000,
+          "medyan": 2436000,
+          "max": 2805000,
+          "urun_sayisi": 12,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 2875000,
+          "medyan": 3130000,
+          "max": 3490000,
+          "urun_sayisi": 5,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 2386000,
+      "toplam_urun": 23,
+      "guncelleme_tarihi": "2026-08-20",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "donanimhaber",
+          "kaynak_adlari": [
+            "DonanimHaber - Renault"
+          ],
+          "tarih": "2026-08-20",
+          "toplam_urun": 23,
+          "genel_medyan": 2386000
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "tesla": {
+      "segmentler": {
+        "dusuk": {
+          "min": 2474985,
+          "medyan": 3078892,
+          "max": 3682800,
+          "urun_sayisi": 2,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 4410000,
+          "medyan": 4583000,
+          "max": 4756000,
+          "urun_sayisi": 2,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 4046400,
+      "toplam_urun": 4,
+      "guncelleme_tarihi": "2026-08-20",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "donanimhaber",
+          "kaynak_adlari": [
+            "DonanimHaber - Tesla"
+          ],
+          "tarih": "2026-08-20",
+          "toplam_urun": 4,
+          "genel_medyan": 4046400
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "suzuki": {
+      "segmentler": {
+        "dusuk": {
+          "min": 2079000,
+          "medyan": 2108500,
+          "max": 2158000,
+          "urun_sayisi": 4,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 2253000,
+          "medyan": 2474500,
+          "max": 2649000,
+          "urun_sayisi": 6,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 2680000,
+          "medyan": 2731500,
+          "max": 2783000,
+          "urun_sayisi": 2,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 2354000,
+      "toplam_urun": 12,
+      "guncelleme_tarihi": "2026-08-20",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "donanimhaber",
+          "kaynak_adlari": [
+            "DonanimHaber - Suzuki"
+          ],
+          "tarih": "2026-08-20",
+          "toplam_urun": 12,
+          "genel_medyan": 2354000
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "honda": {
+      "segmentler": {
+        "dusuk": {
+          "min": 2525000,
+          "medyan": 2592000,
+          "max": 2659000,
+          "urun_sayisi": 2,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 2810000,
+          "medyan": 4015000,
+          "max": 5600000,
+          "urun_sayisi": 4,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 6160000,
+          "medyan": 6160000,
+          "max": 6160000,
+          "urun_sayisi": 1,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 3060000,
+      "toplam_urun": 7,
+      "guncelleme_tarihi": "2026-08-20",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "donanimhaber",
+          "kaynak_adlari": [
+            "DonanimHaber - Honda"
+          ],
+          "tarih": "2026-08-20",
+          "toplam_urun": 7,
+          "genel_medyan": 3060000
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "dacia": {
+      "segmentler": {
+        "dusuk": {
+          "min": 1299000,
+          "medyan": 1436500,
+          "max": 1600000,
+          "urun_sayisi": 4,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 1680000,
+          "medyan": 1725000,
+          "max": 1784000,
+          "urun_sayisi": 6,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 1821000,
+          "medyan": 1835500,
+          "max": 1850000,
+          "urun_sayisi": 2,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 1709500,
+      "toplam_urun": 12,
+      "guncelleme_tarihi": "2026-08-20",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "donanimhaber",
+          "kaynak_adlari": [
+            "DonanimHaber - Dacia"
+          ],
+          "tarih": "2026-08-20",
+          "toplam_urun": 12,
+          "genel_medyan": 1709500
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "seat": {
+      "segmentler": {
+        "dusuk": {
+          "min": 1857000,
+          "medyan": 1912500,
+          "max": 1968000,
+          "urun_sayisi": 2,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 2380000,
+          "medyan": 2470500,
+          "max": 2561000,
+          "urun_sayisi": 2,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 2174000,
+      "toplam_urun": 4,
+      "guncelleme_tarihi": "2026-08-20",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "donanimhaber",
+          "kaynak_adlari": [
+            "DonanimHaber - Seat"
+          ],
+          "tarih": "2026-08-20",
+          "toplam_urun": 4,
+          "genel_medyan": 2174000
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "skoda": {
+      "segmentler": {
+        "dusuk": {
+          "min": 1969900,
+          "medyan": 2389900,
+          "max": 2734900,
+          "urun_sayisi": 11,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 2829900,
+          "medyan": 3887400,
+          "max": 5219900,
+          "urun_sayisi": 20,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 5499900,
+          "medyan": 7049900,
+          "max": 7399900,
+          "urun_sayisi": 10,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 3774900,
+      "toplam_urun": 41,
+      "guncelleme_tarihi": "2026-08-20",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "donanimhaber",
+          "kaynak_adlari": [
+            "DonanimHaber - Skoda"
+          ],
+          "tarih": "2026-08-20",
+          "toplam_urun": 41,
+          "genel_medyan": 3774900
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "hyundai": {
+      "segmentler": {
+        "dusuk": {
+          "min": 1487000,
+          "medyan": 1647000,
+          "max": 1790000,
+          "urun_sayisi": 9,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 1816000,
+          "medyan": 1986500,
+          "max": 2484000,
+          "urun_sayisi": 18,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 2577000,
+          "medyan": 2960500,
+          "max": 3715000,
+          "urun_sayisi": 8,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 1980000,
+      "toplam_urun": 35,
+      "guncelleme_tarihi": "2026-08-20",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "donanimhaber",
+          "kaynak_adlari": [
+            "DonanimHaber - Hyundai"
+          ],
+          "tarih": "2026-08-20",
+          "toplam_urun": 35,
+          "genel_medyan": 1980000
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "peugeot": {
+      "segmentler": {
+        "dusuk": {
+          "min": 1624000,
+          "medyan": 2038250,
+          "max": 2308500,
+          "urun_sayisi": 6,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 2353000,
+          "medyan": 2695000,
+          "max": 3290000,
+          "urun_sayisi": 10,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 3318000,
+          "medyan": 3514500,
+          "max": 3644000,
+          "urun_sayisi": 5,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 2695000,
+      "toplam_urun": 21,
+      "guncelleme_tarihi": "2026-08-20",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "donanimhaber",
+          "kaynak_adlari": [
+            "DonanimHaber - Peugeot"
+          ],
+          "tarih": "2026-08-20",
+          "toplam_urun": 21,
+          "genel_medyan": 2695000
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "kia": {
+      "segmentler": {
+        "dusuk": {
+          "min": 1435000,
+          "medyan": 1819000,
+          "max": 1960000,
+          "urun_sayisi": 6,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 2070000,
+          "medyan": 2424500,
+          "max": 2750000,
+          "urun_sayisi": 10,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 3075000,
+          "medyan": 3650000,
+          "max": 3760000,
+          "urun_sayisi": 5,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 2399000,
+      "toplam_urun": 21,
+      "guncelleme_tarihi": "2026-08-20",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "donanimhaber",
+          "kaynak_adlari": [
+            "DonanimHaber - Kia"
+          ],
+          "tarih": "2026-08-20",
+          "toplam_urun": 21,
+          "genel_medyan": 2399000
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "volkswagen": {
+      "segmentler": {
+        "dusuk": {
+          "min": 2230000,
+          "medyan": 2838000,
+          "max": 3126000,
+          "urun_sayisi": 11,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 3144000,
+          "medyan": 3751500,
+          "max": 5054000,
+          "urun_sayisi": 20,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 5153000,
+          "medyan": 6815000,
+          "max": 7596000,
+          "urun_sayisi": 9,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 3717500,
+      "toplam_urun": 40,
+      "guncelleme_tarihi": "2026-08-20",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "donanimhaber",
+          "kaynak_adlari": [
+            "DonanimHaber - Volkswagen"
+          ],
+          "tarih": "2026-08-20",
+          "toplam_urun": 40,
+          "genel_medyan": 3717500
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "chery": {
+      "segmentler": {
+        "dusuk": {
+          "min": 2175000,
+          "medyan": 2377500,
+          "max": 2580000,
+          "urun_sayisi": 2,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 2720000,
+          "medyan": 2820000,
+          "max": 2920000,
+          "urun_sayisi": 2,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 2650000,
+      "toplam_urun": 4,
+      "guncelleme_tarihi": "2026-08-20",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "donanimhaber",
+          "kaynak_adlari": [
+            "DonanimHaber - Chery"
+          ],
+          "tarih": "2026-08-20",
+          "toplam_urun": 4,
+          "genel_medyan": 2650000
         }
       ],
       "capraz_dogrulama_uyarisi": null

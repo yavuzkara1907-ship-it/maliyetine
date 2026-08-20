@@ -1,113 +1,7 @@
 {
   "vertikal": "kopek",
-  "guncelleme_tarihi": "2026-08-09",
+  "guncelleme_tarihi": "2026-08-20",
   "kalemler": {
-    "kopek-yatagi": {
-      "segmentler": {
-        "dusuk": {
-          "min": 209,
-          "medyan": 1296,
-          "max": 2250,
-          "urun_sayisi": 19,
-          "kaynak_sayisi": 2
-        },
-        "orta": {
-          "min": 599,
-          "medyan": 1880,
-          "max": 3075,
-          "urun_sayisi": 27,
-          "kaynak_sayisi": 2
-        },
-        "luks": {
-          "min": 1865,
-          "medyan": 2797,
-          "max": 3975,
-          "urun_sayisi": 13,
-          "kaynak_sayisi": 2
-        }
-      },
-      "genel_medyan": 1758,
-      "toplam_urun": 59,
-      "guncelleme_tarihi": "2026-08-09",
-      "kaynak_sayisi": 2,
-      "kaynaklar": [
-        {
-          "site": "amazon",
-          "kaynak_adlari": [
-            "Amazon - Köpek Yatağı"
-          ],
-          "tarih": "2026-08-09",
-          "toplam_urun": 36,
-          "genel_medyan": 1116
-        },
-        {
-          "site": "petzzshop",
-          "kaynak_adlari": [
-            "petzzshop - Kopek Yataklari"
-          ],
-          "tarih": "2026-08-09",
-          "toplam_urun": 23,
-          "genel_medyan": 2400
-        }
-      ],
-      "capraz_dogrulama_uyarisi": {
-        "fark_yuzdesi": 115.1,
-        "medyanlar": {
-          "amazon": 1116,
-          "petzzshop": 2400
-        }
-      }
-    },
-    "kopek-oyuncagi": {
-      "segmentler": {
-        "dusuk": {
-          "min": 36,
-          "medyan": 112,
-          "max": 171,
-          "urun_sayisi": 21,
-          "kaynak_sayisi": 2
-        },
-        "orta": {
-          "min": 179,
-          "medyan": 282,
-          "max": 862,
-          "urun_sayisi": 40,
-          "kaynak_sayisi": 2
-        },
-        "luks": {
-          "min": 474,
-          "medyan": 799,
-          "max": 1111,
-          "urun_sayisi": 18,
-          "kaynak_sayisi": 2
-        }
-      },
-      "genel_medyan": 274,
-      "toplam_urun": 79,
-      "guncelleme_tarihi": "2026-08-09",
-      "kaynak_sayisi": 2,
-      "kaynaklar": [
-        {
-          "site": "amazon",
-          "kaynak_adlari": [
-            "Amazon - Köpek Oyuncağı"
-          ],
-          "tarih": "2026-08-09",
-          "toplam_urun": 55,
-          "genel_medyan": 269
-        },
-        {
-          "site": "petzzshop",
-          "kaynak_adlari": [
-            "petzzshop - Kopek Oyuncaklari"
-          ],
-          "tarih": "2026-08-09",
-          "toplam_urun": 24,
-          "genel_medyan": 278
-        }
-      ],
-      "capraz_dogrulama_uyarisi": null
-    },
     "cis-pedi": {
       "segmentler": {
         "dusuk": {
@@ -154,13 +48,13 @@
         "dusuk": {
           "min": 105,
           "medyan": 990,
-          "max": 1477,
+          "max": 2090,
           "urun_sayisi": 19,
           "kaynak_sayisi": 2
         },
         "orta": {
           "min": 1120,
-          "medyan": 2714,
+          "medyan": 3202,
           "max": 6263,
           "urun_sayisi": 35,
           "kaynak_sayisi": 2
@@ -168,14 +62,14 @@
         "luks": {
           "min": 3685,
           "medyan": 5288,
-          "max": 7051,
+          "max": 7087,
           "urun_sayisi": 15,
           "kaynak_sayisi": 2
         }
       },
-      "genel_medyan": 2637,
+      "genel_medyan": 3018,
       "toplam_urun": 69,
-      "guncelleme_tarihi": "2026-08-09",
+      "guncelleme_tarihi": "2026-08-20",
       "kaynak_sayisi": 2,
       "kaynaklar": [
         {
@@ -192,9 +86,9 @@
           "kaynak_adlari": [
             "petzzshop - Kopek Mamasi"
           ],
-          "tarih": "2026-08-09",
+          "tarih": "2026-08-20",
           "toplam_urun": 24,
-          "genel_medyan": 3445
+          "genel_medyan": 4208
         }
       ],
       "capraz_dogrulama_uyarisi": {
@@ -231,7 +125,7 @@
       },
       "genel_medyan": 398,
       "toplam_urun": 62,
-      "guncelleme_tarihi": "2026-08-09",
+      "guncelleme_tarihi": "2026-08-20",
       "kaynak_sayisi": 2,
       "kaynaklar": [
         {
@@ -248,12 +142,118 @@
           "kaynak_adlari": [
             "petzzshop - Kopek Tasmalari"
           ],
-          "tarih": "2026-08-09",
+          "tarih": "2026-08-20",
           "toplam_urun": 22,
           "genel_medyan": 396
         }
       ],
       "capraz_dogrulama_uyarisi": null
+    },
+    "kopek-oyuncagi": {
+      "segmentler": {
+        "dusuk": {
+          "min": 36,
+          "medyan": 112,
+          "max": 171,
+          "urun_sayisi": 21,
+          "kaynak_sayisi": 2
+        },
+        "orta": {
+          "min": 179,
+          "medyan": 288,
+          "max": 985,
+          "urun_sayisi": 40,
+          "kaynak_sayisi": 2
+        },
+        "luks": {
+          "min": 474,
+          "medyan": 818,
+          "max": 1120,
+          "urun_sayisi": 18,
+          "kaynak_sayisi": 2
+        }
+      },
+      "genel_medyan": 272,
+      "toplam_urun": 79,
+      "guncelleme_tarihi": "2026-08-20",
+      "kaynak_sayisi": 2,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Köpek Oyuncağı"
+          ],
+          "tarih": "2026-08-09",
+          "toplam_urun": 55,
+          "genel_medyan": 269
+        },
+        {
+          "site": "petzzshop",
+          "kaynak_adlari": [
+            "petzzshop - Kopek Oyuncaklari"
+          ],
+          "tarih": "2026-08-20",
+          "toplam_urun": 24,
+          "genel_medyan": 274
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "kopek-yatagi": {
+      "segmentler": {
+        "dusuk": {
+          "min": 209,
+          "medyan": 1536,
+          "max": 2250,
+          "urun_sayisi": 17,
+          "kaynak_sayisi": 2
+        },
+        "orta": {
+          "min": 1120,
+          "medyan": 2080,
+          "max": 3075,
+          "urun_sayisi": 25,
+          "kaynak_sayisi": 2
+        },
+        "luks": {
+          "min": 2500,
+          "medyan": 2920,
+          "max": 3975,
+          "urun_sayisi": 12,
+          "kaynak_sayisi": 2
+        }
+      },
+      "genel_medyan": 1998,
+      "toplam_urun": 54,
+      "guncelleme_tarihi": "2026-08-20",
+      "kaynak_sayisi": 2,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Köpek Yatağı"
+          ],
+          "tarih": "2026-08-20",
+          "toplam_urun": 31,
+          "genel_medyan": 1595
+        },
+        {
+          "site": "petzzshop",
+          "kaynak_adlari": [
+            "petzzshop - Kopek Yataklari"
+          ],
+          "tarih": "2026-08-20",
+          "toplam_urun": 23,
+          "genel_medyan": 2400
+        }
+      ],
+      "capraz_dogrulama_uyarisi": {
+        "fark_yuzdesi": 50.5,
+        "medyanlar": {
+          "amazon": 1595,
+          "petzzshop": 2400
+        }
+      }
     },
     "kopek-tasima": {
       "segmentler": {

@@ -1,0 +1,35 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Honda"
+  ],
+  "kalem": "honda",
+  "vertikal": "arac",
+  "tarih": "2026-08-20",
+  "toplam_urun": 7,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 3060000,
+  "segmentler": {
+    "dusuk": {
+      "min": 2525000,
+      "medyan": 2592000,
+      "max": 2659000,
+      "urun_sayisi": 2
+    },
+    "orta": {
+      "min": 2810000,
+      "medyan": 4015000,
+      "max": 5600000,
+      "urun_sayisi": 4
+    },
+    "luks": {
+      "min": 6160000,
+      "medyan": 6160000,
+      "max": 6160000,
+      "urun_sayisi": 1
+    }
+  }
+}

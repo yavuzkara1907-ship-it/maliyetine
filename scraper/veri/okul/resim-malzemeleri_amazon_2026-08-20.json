@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Resim Defteri Seti"
+  ],
+  "kalem": "resim-malzemeleri",
+  "vertikal": "okul",
+  "tarih": "2026-08-20",
+  "toplam_urun": 43,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 304,
+  "segmentler": {
+    "dusuk": {
+      "min": 105,
+      "medyan": 181,
+      "max": 218,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 220,
+      "medyan": 317,
+      "max": 522,
+      "urun_sayisi": 22
+    },
+    "luks": {
+      "min": 535,
+      "medyan": 689,
+      "max": 1200,
+      "urun_sayisi": 10
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Skoda"
+  ],
+  "kalem": "skoda",
+  "vertikal": "arac",
+  "tarih": "2026-08-20",
+  "toplam_urun": 41,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 3774900,
+  "segmentler": {
+    "dusuk": {
+      "min": 1969900,
+      "medyan": 2389900,
+      "max": 2734900,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 2829900,
+      "medyan": 3887400,
+      "max": 5219900,
+      "urun_sayisi": 20
+    },
+    "luks": {
+      "min": 5499900,
+      "medyan": 7049900,
+      "max": 7399900,
+      "urun_sayisi": 10
+    }
+  }
+}

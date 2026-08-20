@@ -1,0 +1,35 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Karyola Baza"
+  ],
+  "kalem": "karyola",
+  "vertikal": "ev-kurma",
+  "tarih": "2026-08-20",
+  "toplam_urun": 34,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 5830,
+  "segmentler": {
+    "dusuk": {
+      "min": 2825,
+      "medyan": 4200,
+      "max": 4550,
+      "urun_sayisi": 9
+    },
+    "orta": {
+      "min": 4590,
+      "medyan": 5830,
+      "max": 8150,
+      "urun_sayisi": 18
+    },
+    "luks": {
+      "min": 8400,
+      "medyan": 9260,
+      "max": 12620,
+      "urun_sayisi": 7
+    }
+  }
+}

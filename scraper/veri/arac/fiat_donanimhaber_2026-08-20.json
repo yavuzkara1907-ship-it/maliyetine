@@ -1,0 +1,35 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Fiat"
+  ],
+  "kalem": "fiat",
+  "vertikal": "arac",
+  "tarih": "2026-08-20",
+  "toplam_urun": 15,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 1950500,
+  "segmentler": {
+    "dusuk": {
+      "min": 609900,
+      "medyan": 1064900,
+      "max": 1499900,
+      "urun_sayisi": 4
+    },
+    "orta": {
+      "min": 1599900,
+      "medyan": 1955200,
+      "max": 2029900,
+      "urun_sayisi": 8
+    },
+    "luks": {
+      "min": 2050500,
+      "medyan": 2090500,
+      "max": 2289900,
+      "urun_sayisi": 3
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Cupra"
+  ],
+  "kalem": "cupra",
+  "vertikal": "arac",
+  "tarih": "2026-08-20",
+  "toplam_urun": 7,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 3335000,
+  "segmentler": {
+    "dusuk": {
+      "min": 2650000,
+      "medyan": 2700000,
+      "max": 2750000,
+      "urun_sayisi": 2
+    },
+    "orta": {
+      "min": 3270000,
+      "medyan": 3502500,
+      "max": 4115000,
+      "urun_sayisi": 4
+    },
+    "luks": {
+      "min": 4520000,
+      "medyan": 4520000,
+      "max": 4520000,
+      "urun_sayisi": 1
+    }
+  }
+}
