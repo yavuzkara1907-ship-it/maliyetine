@@ -534,18 +534,24 @@ HESAPLAYICILAR = [
         "id": "icerik",
         "slug": "youtube-gelir-hesaplama",
         "ad": "YouTube Gelir Hesaplama",
-        "baslik": "YouTube Kanalı Ne Kadar Kazandırır?",
-        "soru": "YouTube kanalı aylık ne kadar kazandırır?",
-        "meta": "İzlenme sayısına ve RPM'e göre YouTube geliri. Tek bir uydurma rakam değil, RPM'e göre duyarlılık tablosu.",
+        "baslik": "YouTube Para Kazanma ve Gelir Hesaplama",
+        "soru": "YouTube'dan para kazanmak için kaç izlenme gerekir?",
+        "meta": "YouTube para kazanma şartları ve izlenme/RPM'e göre gelir hesabı. Tek uydurma rakam değil, resmi eşikler ve duyarlılık tablosu.",
         "ozet": (
-            "Formül basit: <strong>(izlenme ÷ 1000) × RPM</strong>. Ama cevabı "
-            "belirleyen şey RPM ve <strong>RPM resmî olarak yayınlanmıyor</strong> — "
-            "kanala, izleyicinin ülkesine ve döneme göre kat kat değişiyor. "
-            "Bu yüzden size tek bir rakam vermiyoruz: kendi RPM'inizi girin, "
-            "ya da aşağıdaki tablodan hangi RPM'de ne kazanılacağını okuyun."
+            "YouTube gelir hesabının formülü basit: <strong>(izlenme ÷ 1000) × RPM</strong>. "
+            "Ama para kazanmanın iki ayrı eşiği var. 2026-08-22 itibarıyla fan "
+            "destekli özellikler için 500 abone + son 90 günde 3 yükleme + "
+            "3.000 saat izlenme ya da 3 milyon Shorts görüntülemesi; reklam geliri "
+            "için 1.000 abone + 4.000 saat izlenme ya da 10 milyon Shorts "
+            "görüntülemesi aranıyor. RPM ise <strong>resmî olarak yayınlanmıyor</strong>; "
+            "kanala, ülkeye ve döneme göre değiştiği için tek rakam vermiyoruz."
         ),
         "formul": "Aylık gelir = (aylık izlenme ÷ 1000) × RPM × kur",
         "kaynaklar": [
+            "YouTube Help — YouTube İş Ortağı Programı koşulları: "
+            "<a href=\"https://support.google.com/youtube/answer/72857?hl=tr\">support.google.com/youtube/answer/72857</a>",
+            "Google Blog, 11 Ağustos 2026 — 1 Şubat 2027 YPP eşik değişikliği: "
+            "<a href=\"https://blog.google/intl/en-mena/product-updates/connect-communicate/new-opportunities-to-earn-and-changes-to-the-youtube-partner-program/\">blog.google</a>",
             "Hesap saf aritmetiktir. RPM değeri kullanıcıdan alınır — resmî bir "
             "kaynağı olmadığı için tarafımızdan varsayılmaz.",
         ],
@@ -559,8 +565,10 @@ HESAPLAYICILAR = [
         ],
         "alan_notu": (
             "RPM'inizi YouTube Studio → Analizler → Gelir sekmesinde görebilirsiniz. "
-            "Bu hesap yalnızca reklam gelirini modellerken sponsorluk, üyelik ve "
-            "ürün satışını içermez — çoğu kanalda asıl gelir oralardan gelir."
+            "1 Şubat 2027'den itibaren yeni reklam/Premium başvurularında eşik "
+            "8.000 saat ya da 20 milyon Shorts görüntülemesine çıkacak; Google'ın "
+            "duyurusuna göre mevcut YPP üreticileri bundan etkilenmiyor. Bu hesap "
+            "sponsorluk, üyelik ve ürün satışını içermez."
         ),
         "js": """
       const s = icerikGeliriHesapla(sayi("izlenme"), sayi("rpm"), sayi("kur"));
@@ -578,6 +586,10 @@ HESAPLAYICILAR = [
       });
       return satirlar;""",
         "sss": [
+            ("YouTube'dan para kazanma şartları ne?",
+             "2026-08-22 itibarıyla ilk YPP eşiği 500 abone, son 90 günde 3 herkese açık yükleme ve 3.000 saat izlenme ya da 3 milyon Shorts görüntülemesi. Reklam geliri için eşik 1.000 abone ve 4.000 saat izlenme ya da 10 milyon Shorts görüntülemesi."),
+            ("2027'de YouTube para kazanma şartları değişiyor mu?",
+             "Evet. Google'ın 11 Ağustos 2026 duyurusuna göre 1 Şubat 2027'den itibaren yeni reklam ve YouTube Premium gelir başvurularında izlenme eşiği 8.000 saat ya da 20 milyon Shorts görüntülemesi olacak. Duyuru mevcut YPP üreticilerinin etkilenmediğini söylüyor."),
             ("Neden tek bir rakam vermiyorsunuz?",
              "Çünkü veremeyiz. Gelirin tamamı RPM'e bağlı ve RPM'in resmî, yayınlanmış bir değeri yok; kanalın konusuna, izleyicinin bulunduğu ülkeye ve reklam sezonuna göre kat kat değişiyor. Tek bir sayı vermek uydurma olurdu; onun yerine RPM'e göre nasıl değiştiğini gösteriyoruz."),
             ("RPM ile CPM aynı şey mi?",
@@ -1454,14 +1466,26 @@ def _form_html(h: dict) -> str:
 
 def _kaynak_kunyesi(h: dict) -> str:
     maddeler = "".join(f"<li>{k}</li>" for k in h["kaynaklar"])
+    mevzuat = any(
+        "Kanunu" in k or "Tebliğ" in k or "Bakanlığı" in k or "BKK" in k
+        for k in h["kaynaklar"]
+    )
+    baslik = "Hesapta kullanılan mevzuat" if mevzuat else "Kaynak ve yöntem"
+    not_metni = (
+        "Vergi tarifesi ve hadler her 31 Aralık'ta Resmî Gazete'de yeniden "
+        "değerleme oranıyla değişir; kıdem tazminatı tavanı yılda iki kez "
+        "(Ocak ve Temmuz) güncellenir. Bu sayfadaki parametreler geçerlilik "
+        "dönemiyle birlikte tutulur — dönem geçtiğinde sayfa uyarı gösterir."
+        if mevzuat else
+        "Mevzuata bağlı olmayan hesaplarda değişken parametreleri uydurmuyoruz: "
+        "ya kullanıcıdan alıyoruz ya da resmi/teknik kaynağı görünür şekilde "
+        "yazıyoruz. Bu yüzden bazı cevaplar tek sayı değil, aralık olarak verilir."
+    )
     return (
         '<section class="kaynak-kunye">\n'
-        "  <h2>Hesapta kullanılan mevzuat</h2>\n"
+        f"  <h2>{baslik}</h2>\n"
         f"  <ul>{maddeler}</ul>\n"
-        '  <p class="sonuc-alt-metin">Vergi tarifesi ve hadler her 31 Aralık\'ta '
-        "Resmî Gazete'de yeniden değerleme oranıyla değişir; kıdem tazminatı tavanı "
-        "yılda iki kez (Ocak ve Temmuz) güncellenir. Bu sayfadaki parametreler "
-        "geçerlilik dönemiyle birlikte tutulur — dönem geçtiğinde sayfa uyarı gösterir.</p>\n"
+        f'  <p class="sonuc-alt-metin">{not_metni}</p>\n'
         "</section>"
     )
 

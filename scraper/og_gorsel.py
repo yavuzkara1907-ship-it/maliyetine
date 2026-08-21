@@ -219,10 +219,13 @@ def rehber_ve_hesap_kartlari(veri_kok: Path | None = None) -> int:
             # 404'e isaret eden bir og:image demek.
             if not (SITE_KOK / "rehber" / r["slug"] / "index.html").exists():
                 continue
-            t, n, tarih = ozet.get(r.get("vertikal"), (None, 0, ""))
-            conf = su.VERTIKALLER.get(r.get("vertikal")) or {}
-            alt = "{} endeksi · {} bağımsız kaynak · {}".format(
-                conf.get("ad", "Maliyet"), n, tarih) if n else "ölçülmüş fiyat verisi"
+            if r.get("og_alt"):
+                alt = r["og_alt"]
+            else:
+                t, n, tarih = ozet.get(r.get("vertikal"), (None, 0, ""))
+                conf = su.VERTIKALLER.get(r.get("vertikal")) or {}
+                alt = "{} endeksi · {} bağımsız kaynak · {}".format(
+                    conf.get("ad", "Maliyet"), n, tarih) if n else "ölçülmüş fiyat verisi"
             # VERTIKAL TOPLAMI KARTA YAZILMAZ.
             # Ilk halde yaziyordu ve YANILTICIYDI: damatlik yazisinin
             # kartinda "406.375 TL" (dugun TOPLAMI) goruluyordu, oysa

@@ -31,7 +31,24 @@ class RehberTesti(unittest.TestCase):
     def test_veri_yoksa_sayfa_URETILMEZ(self):
         """Bos/rakamsiz bir blog yazisi yayinlamak guven kaybi."""
         for r in rehber.REHBERLER:
+            if r.get("kaynak_tipi") == "resmi":
+                continue
             self.assertIsNone(rehber.rehber_uret(r, {}), r["slug"])
+
+    def test_resmi_kaynakli_rehber_veri_istemeden_kaynak_gosterir(self):
+        """Bazi rehberler fiyat olcumu degil, resmi kaynak okuma rehberi.
+
+        Bunlar veri yokken de uretilebilir; ama kaynaklari gorunur olmak
+        zorunda. Aksi halde "olcum yok" istisnasi kapi araligi olur.
+        """
+        r = next(x for x in rehber.REHBERLER
+                 if x["slug"] == "kredi-karti-puanlari-nerede-gecer")
+        html = rehber.rehber_uret(r, {})
+        self.assertIsNotNone(html)
+        self.assertIn("Bonus resmi marka listesi", html)
+        self.assertIn("ParafPara resmi tanıtım sayfası", html)
+        self.assertIn('"@type": "FAQPage"', html)
+        self.assertNotIn("tarihli ölçümlerden", html)
 
     def test_rakamlar_veriden_gelir(self):
         r = next(x for x in rehber.REHBERLER if x["slug"] == "yemekli-mi-kokteyl-mi")

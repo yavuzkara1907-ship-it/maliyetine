@@ -1949,7 +1949,141 @@ def _govde_damatlik_kiralama(v: dict) -> str | None:
 """
 
 
+def _govde_kart_puanlari(v: dict) -> str | None:
+    """Resmi kaynakli rehber.
+
+    Bu sayfa fiyat olcumu degil; bankalarin resmi program metinlerinden
+    derlenen karar rehberi. Magaza listesini elle kopyalamiyoruz, cunku
+    uye isyeri ve kampanya kosulu canli degisir.
+    """
+    return """
+  <p class="cevap-blok">
+    Kısa cevap: <strong>ParafPara Paraf üye işyerlerinde, Chip-Para Axess
+    üye işyerlerinde, Bonus ise Bonus Card anlaşmalı işyerlerinde geçer.</strong>
+    Üç programda da temel mantık 1 puan = 1 TL'dir; ama puanı gerçekten
+    harcayıp harcayamayacağınızı POS/online ödeme entegrasyonu ve kampanya
+    şartı belirler.
+  </p>
+
+  <h2>Üç programın farkı</h2>
+  <div class="tablo-sarmal"><table>
+    <thead><tr><th>Program</th><th>Nerede geçer?</th><th>Dikkat edilmesi gereken</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>ParafPara</strong></td>
+        <td>Paraf üye işyerlerinde ve kampanya koşullarının izin verdiği alışverişlerde.</td>
+        <td>Kampanyaya katılım, sektör ve pazar yeri istisnaları sayfaya göre değişebilir.</td>
+      </tr>
+      <tr>
+        <td><strong>Chip-Para</strong></td>
+        <td>Axess üye işyerlerinde; online tarafta entegre sanal mağazalarda.</td>
+        <td>Mağazanın Axess üyesi olması yetmeyebilir; ödeme adımında chip-para harcama seçeneği görünmeli.</td>
+      </tr>
+      <tr>
+        <td><strong>Bonus</strong></td>
+        <td>Bonus Card anlaşmalı markalarda ve Bonus'un canlı marka listesindeki işyerlerinde.</td>
+        <td>Genel marka listesi ayrı, tek tek kampanya şartları ayrı okunmalı.</td>
+      </tr>
+    </tbody>
+  </table></div>
+
+  <h2>Neden burada uzun mağaza listesi yok?</h2>
+  <p>
+    Çünkü bu konu bayatlamaya çok açık. Bugün geçerli olan bir market,
+    akaryakıt istasyonu ya da e-ticaret mağazası yarın kampanyadan çıkabilir;
+    aynı markanın fiziksel POS'u puan harcatırken online ödeme ekranı
+    harcatmayabilir. Kopyalanmış "nerelerde geçer" listeleri bu yüzden güvenli
+    değil. Doğru cevap, markanın resmi canlı listesine gitmek ve ödeme
+    adımında puan kullanımı görünüyor mu diye kontrol etmektir.
+  </p>
+
+  <h2>Kampanya şartında bakılacak üç satır</h2>
+  <p>
+    Puanın geçip geçmediğini anlamak için kampanya metninde şu üç satırı
+    arayın. Bunlardan biri tersse, marka listede olsa bile beklediğiniz puanı
+    kazanamayabilir ya da harcayamayabilirsiniz.
+  </p>
+  <ul>
+    <li><strong>Katılım şartı:</strong> SMS, mobil uygulama ya da çağrı merkeziyle
+      kampanyaya katılım isteniyor mu?</li>
+    <li><strong>Hariç tutulan yerler:</strong> pazar yerleri, cüzdan/ödeme kuruluşları,
+      akaryakıt, vergi, sigorta veya taksitli işlemler dışarıda mı?</li>
+    <li><strong>Yükleme ve son kullanım:</strong> puan ne zaman yükleniyor,
+      hangi tarihe kadar harcanmalı?</li>
+  </ul>
+
+  <h2>Doğru kontrol sırası</h2>
+  <p>
+    Önce bankanın resmi marka/üye işyeri sayfasına bakın. Sonra alışveriş
+    yapacağınız kampanyanın kendi koşullarını okuyun. Online alışverişte son
+    kontrol ödeme ekranıdır: puanla ödeme alanı çıkmıyorsa, müşteri hizmetleri
+    "üye işyeri" dese bile işlemde puan harcama açık olmayabilir.
+  </p>
+
+  <h2>Maliyeti nasıl etkiler?</h2>
+  <p>
+    Puan gerçek indirim gibi düşünülürse hata azalır: harcanabilir puan,
+    sonraki alışverişte nakit çıkışını azaltır. Ama sadece puan kazanmak
+    için daha pahalı mağazadan alışveriş yapmak çoğu zaman toplam maliyeti
+    artırır. Kart borcunu erteleyerek puan kovalamadan önce
+    <a href="/hesap/kredi-karti-borcu-hesaplama/">kredi kartı borcu
+    hesaplayıcısıyla</a> faiz yükünü kontrol edin.
+  </p>
+"""
+
+
 REHBERLER = [
+    {
+        "slug": "kredi-karti-puanlari-nerede-gecer",
+        "baslik": "ParafPara, Chip-Para ve Bonus Nerelerde Geçerli?",
+        "seo_baslik": "Kart Puanları Nerede Geçer? Paraf, Chip-Para, Bonus",
+        "meta": "ParafPara, Chip-Para ve Bonus için doğru kontrol sırası: üye işyeri, "
+                "puan karşılığı, kampanya şartı ve resmi canlı kaynaklar.",
+        "govde": _govde_kart_puanlari,
+        "kaynak_tipi": "resmi",
+        "og_alt": "resmî kaynaklı kart puanı rehberi",
+        "kaynaklar": [
+            {
+                "ad": "Bonus resmi marka listesi",
+                "url": "https://www.bonus.com.tr/markalar",
+                "not": "Bonus'un anlaşmalı marka ve işyeri kontrol noktası.",
+            },
+            {
+                "ad": "Garanti BBVA sıkça sorulan sorular",
+                "url": "https://www.garantibbva.com.tr/sikca-sorulan-sorular",
+                "not": "Bonus kullanım mantığı ve 1 bonus = 1 TL bilgisi.",
+            },
+            {
+                "ad": "ParafPara resmi tanıtım sayfası",
+                "url": "https://www.paraf.com.tr/tr/parafi-taniyin/ParafPara.html",
+                "not": "ParafPara'nın üye işyerlerinde kullanımı ve 1 ParafPara = 1 TL bilgisi.",
+            },
+            {
+                "ad": "Akbank Free Kart",
+                "url": "https://www.akbank.com/kartlar/kredi-kartlari/free-kart",
+                "not": "Chip-para kazanımı, üye işyerlerinde kullanım ve 1 chip-para = 1 TL bilgisi.",
+            },
+            {
+                "ad": "Akbank Sanal POS",
+                "url": "https://eticaret.akbank.com/pos-urunleri/sanal-pos.html",
+                "not": "Axess üye işyeri ve entegre sanal mağaza kullanım mantığı.",
+            },
+        ],
+        "sss": [
+            (
+                "ParafPara, Chip-Para ve Bonus nakit gibi mi?",
+                "Temel karşılık 1 puan = 1 TL'dir, ama puanın harcanacağı yer programın üye işyeri ve kampanya şartına bağlıdır. Bu yüzden puan nakde benzese de her yerde nakit gibi kullanılamaz.",
+            ),
+            (
+                "Bir mağaza listede görünüyorsa puan kesin geçer mi?",
+                "Hayır. Fiziksel POS, sanal POS, pazar yeri satıcısı ve kampanya koşulu ayrı ayrı çalışabilir. Son karar alışverişin ödeme ekranında ya da kampanya şartlarında görünür.",
+            ),
+            (
+                "Neden tek tek tüm mağazaları yazmıyorsunuz?",
+                "Çünkü banka üye işyeri listeleri ve kampanya istisnaları değişir. Elle kopyalanmış liste hızla yanlış olur; resmi canlı listeye bağlantı vermek daha güvenli.",
+            ),
+        ],
+    },
     {
         "slug": "damatlik-kiralamak-mi-almak-mi",
         "baslik": "Damatlık Kiralamak mı Almak mı? Kararı Nasıl Kurarsınız",
@@ -2243,6 +2377,39 @@ def _title(rehber: dict) -> str:
     return ana
 
 
+def _rehber_kaynaklari_html(rehber: dict) -> str:
+    kaynaklar = rehber.get("kaynaklar") or []
+    if not kaynaklar:
+        return ""
+    maddeler = []
+    for kaynak in kaynaklar:
+        ad = kaynak["ad"]
+        url = kaynak["url"]
+        notu = kaynak.get("not")
+        aciklama = f" — {notu}" if notu else ""
+        maddeler.append(
+            f'<li><a href="{url}">{ad}</a>{aciklama}</li>'
+        )
+    return (
+        '<section id="kaynaklar" class="kaynak-kunye">\n'
+        "  <h2>Kaynaklar</h2>\n"
+        f"  <ul>{''.join(maddeler)}</ul>\n"
+        "  <p class=\"sonuc-alt-metin\">Dış kaynaklı program koşulları değişebilir; "
+        "alışverişten önce bankanın kendi kampanya ve üye işyeri sayfası esas alınmalı.</p>\n"
+        "</section>\n"
+    )
+
+
+def _rehber_sss_html(rehber: dict) -> str:
+    sorular = rehber.get("sss") or []
+    if not sorular:
+        return ""
+    govde = "".join(
+        f"  <details><summary>{s}</summary><p>{c}</p></details>\n" for s, c in sorular
+    )
+    return f'<section class="sss">\n  <h2>Sıkça sorulan sorular</h2>\n{govde}</section>\n'
+
+
 def rehber_uret(rehber: dict, veriler: dict, tarih: str | None = None) -> str | None:
     """Tek bir rehber sayfasi. Veri yoksa None - bos sayfa YAYINLANMAZ."""
     govde = rehber["govde"](veriler)
@@ -2250,26 +2417,33 @@ def rehber_uret(rehber: dict, veriler: dict, tarih: str | None = None) -> str | 
         return None
     tarih = tarih or date.today().isoformat()
     url = f"{SITE_KOK_URL}/rehber/{rehber['slug']}/"
-    vconf = su.VERTIKALLER[rehber["vertikal"]]
+    vconf = su.VERTIKALLER.get(rehber.get("vertikal"))
+    olcum_tarihi = (
+        ((veriler.get(rehber.get("vertikal")) or {}).get("guncelleme_tarihi"))
+        if vconf else None
+    ) or tarih
+    article = {
+        "@type": "Article",
+        "headline": rehber["baslik"],
+        "description": rehber["meta"],
+        "datePublished": tarih,
+        "dateModified": tarih,
+        "inLanguage": "tr-TR",
+        "mainEntityOfPage": url,
+        "author": {"@type": "Organization", "name": "Maliyeti Ne?"},
+        "publisher": {
+            "@type": "Organization",
+            "name": "Maliyeti Ne?",
+            "url": SITE_KOK_URL,
+        },
+    }
+    if rehber.get("kaynaklar"):
+        article["citation"] = [k["url"] for k in rehber["kaynaklar"]]
 
     json_ld = {
         "@context": "https://schema.org",
         "@graph": [
-            {
-                "@type": "Article",
-                "headline": rehber["baslik"],
-                "description": rehber["meta"],
-                "datePublished": tarih,
-                "dateModified": tarih,
-                "inLanguage": "tr-TR",
-                "mainEntityOfPage": url,
-                "author": {"@type": "Organization", "name": "Maliyeti Ne?"},
-                "publisher": {
-                    "@type": "Organization",
-                    "name": "Maliyeti Ne?",
-                    "url": SITE_KOK_URL,
-                },
-            },
+            article,
             {
                 "@type": "BreadcrumbList",
                 "itemListElement": [
@@ -2283,11 +2457,32 @@ def rehber_uret(rehber: dict, veriler: dict, tarih: str | None = None) -> str | 
             },
         ],
     }
+    if rehber.get("sss"):
+        json_ld["@graph"].append({
+            "@type": "FAQPage",
+            "mainEntity": [
+                {"@type": "Question", "name": s,
+                 "acceptedAnswer": {"@type": "Answer", "text": c}}
+                for s, c in rehber["sss"]
+            ],
+        })
 
     digerleri = "".join(
         f'<a href="/rehber/{r["slug"]}/">{r["baslik"]}</a>'
         for r in REHBERLER if r["slug"] != rehber["slug"]
     )
+    kaynaklar_html = _rehber_kaynaklari_html(rehber)
+    sss_html = _rehber_sss_html(rehber)
+    if vconf:
+        kunye = (
+            f'  <p class="kunye">{olcum_tarihi} tarihli ölçümlerden · '
+            f'<a href="/{vconf["yol"]}/metodoloji/">Yöntem</a></p>'
+        )
+    else:
+        kunye = (
+            f'  <p class="kunye">{tarih} tarihli resmi kaynak kontrolünden · '
+            '<a href="#kaynaklar">Kaynaklar</a></p>'
+        )
 
     return f"""<!DOCTYPE html>
 <html lang="tr">
@@ -2323,8 +2518,7 @@ def rehber_uret(rehber: dict, veriler: dict, tarih: str | None = None) -> str | 
   <span class="guncelleme-etiketi">Güncelleme: {tarih}</span>
   <h1>{rehber["baslik"]}</h1>
 {govde}
-  <p class="kunye">{tarih} tarihli ölçümlerden ·
-    <a href="/{vconf['yol']}/metodoloji/">Yöntem</a></p>
+{kaynaklar_html}{sss_html}{kunye}
 
   <section class="icerik-bolumu">
     <h2>Diğer rehberler</h2>
@@ -2386,8 +2580,10 @@ def rehber_dizini_uret(yazilanlar: list[dict], tarih: str | None = None) -> str:
 <main class="kapsayici">
   <h1>Rehber</h1>
   <p>
-    Her yazıdaki rakam, o gün ölçtüğümüz gerçek fiyatlardan geliyor ve
-    veri yenilendikçe yazı da güncelleniyor.
+    Ölçümlü rehberlerdeki rakamlar gerçek fiyat verisinden geliyor ve veri
+    yenilendikçe yazı da güncelleniyor. Resmi kaynak rehberlerinde ise
+    değişken listeleri kopyalamak yerine canlı kaynak bağlantıları açık
+    tutuluyor.
   </p>
   <div class="kart-grid">{kartlar}</div>
 </main>

@@ -11,14 +11,14 @@
 > Karar verirken güncel gerçek bu bölümdür.
 
 - Branch `claude/new-session-csygpf`. Remote:
-  `github.com/yavuzkara1907-ship-it/maliyetine.git`. Yerel branch
-  `75ceda9 Aylık veri güncellemesi 2026-08-20` tabanına alındı; çalışma
-  ağacında yalnızca bu hafıza/workflow not düzeltmeleri var. Veri commit'i
-  canlıda doğrulandı.
+  `github.com/yavuzkara1907-ship-it/maliyetine.git`. Teknik temizlik
+  commit'i sonrası içerik/GEO turu açıldı: YouTube para kazanma sayfası
+  resmi YPP şartlarıyla güçlendirildi, kart puanları için resmi kaynaklı
+  rehber eklendi.
 - Site artık tek konu değil, **veri ürünü + hesaplayıcı ağı**:
   **7 vertikal** (`dugun`, `ev-kurma`, `okul`, `bebek`, `kedi`, `kopek`,
   `arac`), **122 ölçülen kalem**, **24 bağımsız `/hesap/` hesaplayıcı**,
-  **180 sitemap URL'i**.
+  **23 rehber**, **181 sitemap URL'i**.
 - Yayın modeli: statik dosyalar Cloudflare tarafında **Worker** ile servis
   ediliyor. Eski Pages kurulum notları tarihî kayıt; bugün doğru altyapı
   "statik çıktı + Cloudflare Worker + GitHub Actions"tır.
@@ -38,6 +38,10 @@
   filtresi "Son 3 ay" olsa da fiilî veri aralığı **2026-07-24 –
   2026-08-19**; **3.277 gösterim, 21 tık, %0,6 TO, konum 25,9, 306 sorgu**.
   Önceki tur 555 gösterim / 4 tık / 115 sorguydu; büyüme gerçek.
+- GEO içerik sinyali başladı: Analytics'te **2 ChatGPT + 1 Gemini**
+  yönlendirmesi görüldü. Bu küçük sayı ama doğru yönde sinyal; artık
+  içerik üretirken yalnız Google snippet'i değil, AI cevabına girecek kısa,
+  kaynaklı, tarihli cevap blokları da hedeflenmeli.
 - Cloudflare `www` → kök domain 301 redirect **tamamlandı ve canlıda
   doğrulandı** (2026-08-22). Eski kural aktif görünüyordu ama expression,
   `URI Full wildcard` alanına yazıldığı için çalışmıyordu. Kural
@@ -55,7 +59,9 @@
      kaynaklı duruma geldi; kedi/kopek kısmen kapandı ama tamamen bitmedi.
   4. Düğünde kalan iki tahmini kalem (`nikah-islemleri`, `orkestra-dj`)
      metodolojik karar + kaynak bulununca kapatılmalı.
-  5. Sosyal/Meta tarafına geçilecekse önce sayfa bazlı ölçüm kartı
+  5. YouTube YPP şartları **2027-02-01** öncesi yeniden kontrol edilmeli;
+     resmi eşik değişikliği tarihli notla sayfaya işlendi.
+  6. Sosyal/Meta tarafına geçilecekse önce sayfa bazlı ölçüm kartı
      üretimi korunmalı; Instagram metin değil görsel ister.
 
 ## Proje Sahibi
@@ -2398,6 +2404,42 @@ Ek sinyal: Ürün snippet'leri **40 gosterim, konum 5,55**, ancak 0 tik.
   kaynak" yaziyor — kendi cok kaynak kuralimizla celisiyor. En net eksik.
 - **Bellona / Istikbal** — fiyat var ama kart eslesmesi kurulamadi;
   D&R'da ayni teshis elle bakilinca cozulmustu.
+
+### ICERIK/GEO HAMLESI (2026-08-22)
+Yavuz'un notu: Analytics'te **2 ChatGPT + 1 Gemini** yonlendirmesi var.
+Bu, GEO hedefinin ilk kucuk sinyali. Bu turda iki ornek uzerinden
+icerik standardi netlesti:
+
+1. **YouTube'dan nasil para kazanilir?** Dogru konu. Ama yeni genel blog
+   degil; mevcut `/hesap/youtube-gelir-hesaplama/` sayfasinin niyetini
+   genisletmek daha dogruydu. Sayfa artik resmi YPP esiklerini, 2027-02-01
+   degisikligini ve RPM belirsizligini ayni yerde veriyor. Kaynaklar:
+   YouTube Help + Google Blog. KURAL: RPM yine uydurulmaz, kullanicidan
+   alinir; sayfa tek gelir rakami basmaz.
+2. **ParafPara / Chip-Para / Bonus nerelerde gecer?** Dogru konu ama
+   "tum magaza listesi" elle yazilirsa hizla bayatlar. Bu yuzden
+   `/rehber/kredi-karti-puanlari-nerede-gecer/` resmi kaynak rehberi
+   olarak acildi: 1 puan = 1 TL mantigi, uye isyeri/kampanya/POS ayrimi,
+   resmi canli kaynak baglantilari ve FAQ schema. KURAL: dinamik liste
+   kopyalanmaz; bankanin canli listesine baglanilir, kampanya sarti
+   okutulur.
+
+Bu turda `rehber.py` yeni bir icerik tipi ogrendi: `kaynak_tipi: "resmi"`.
+Olcumlu rehberler veri yoksa uretilmez; resmi kaynak rehberleri veri
+istemeden uretilir ama gorunur kaynak + citation + FAQ tasimak zorundadir.
+Rehber kunyesi de ayrildi: olcumlu rehberde olcum tarihi, resmi rehberde
+kaynak kontrol tarihi gorunur.
+
+SIRADAKI BENZER ADAYLAR:
+- Banka puani serisi genisletilecekse "Worldpuan/Maximum/Nays/Hepsipay
+  nerede gecer?" gibi sayfalar ancak resmi kaynak + canli liste baglantisi
+  ile acilmali.
+- "YouTube Shorts para kazanma", "TikTok Creator Fund Turkiye var mi?",
+  "Instagram Reels para kazanma" gibi icerikler guncel resmi kaynak
+  dogrulamasi ister; tahminle yazilmaz.
+- GSC verisinden gelen kira/temettu/ipotek konulari hâlâ daha yakin para
+  niyeti tasiyor; yeni sayfa acmadan once mevcut hesaplayiciyi
+  cannibalize edip etmeyecegi kontrol edilmeli.
 
 ### OLCUM: TEK KAYNAKLI KALEMLER (2026-08-09)
 122 olculen kalemin **52'si (%43)** tek kaynakli:
