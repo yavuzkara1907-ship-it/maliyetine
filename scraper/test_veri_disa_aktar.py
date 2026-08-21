@@ -86,6 +86,23 @@ class CsvTesti(unittest.TestCase):
         self.assertIn("creativecommons", graf[0]["license"])
         self.assertIn("ölçüm tarihini", sayfa)
 
+    def test_ai_haritasi_veri_araclarini_formul_diye_gostermez(self):
+        ozet = {"ev-kurma": {"kalem": 1, "tarih": "2026-08-05",
+                              "dosya": "/veri/csv/ev-kurma.csv"}}
+        llms = vd.llms_txt(ozet, "2026-08-05")
+        ai = vd.ai_txt(ozet, "2026-08-05")
+        self.assertIn("Bütçem Yeter mi?", llms)
+        self.assertIn("İki tür araç vardır", llms)
+        self.assertIn("23 formül/mevzuat", ai)
+        self.assertIn("2 güncel veriye dayalı", ai)
+
+    def test_ai_haritasi_build_gununu_olcum_tarihi_diye_yazmaz(self):
+        ozet = {
+            "dugun": {"tarih": "2026-08-05"},
+            "ev-kurma": {"tarih": "2026-08-20"},
+        }
+        self.assertEqual(vd.son_olcum_tarihi(ozet), "2026-08-20")
+
 
 if __name__ == "__main__":
     unittest.main()

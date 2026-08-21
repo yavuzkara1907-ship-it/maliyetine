@@ -25,6 +25,25 @@ DUGUN_VERI = {
     },
 }
 
+KEDI_VERI = {
+    "vertikal": "kedi",
+    "guncelleme_tarihi": "2026-08-20",
+    "kalemler": {
+        "kedi-yatagi": {
+            "segmentler": {"dusuk": {"medyan": 3000}, "orta": {"medyan": 5000},
+                            "luks": {"medyan": 8000}},
+        },
+        "kedi-kumu": {
+            "segmentler": {"dusuk": {"medyan": 100}, "orta": {"medyan": 200},
+                            "luks": {"medyan": 400}},
+        },
+        "kedi-mamasi": {
+            "segmentler": {"dusuk": {"medyan": 500}, "orta": {"medyan": 800},
+                            "luks": {"medyan": 1500}},
+        },
+    },
+}
+
 
 class RehberTesti(unittest.TestCase):
 
@@ -57,6 +76,25 @@ class RehberTesti(unittest.TestCase):
         self.assertIn("1.000 TL", html)   # yemekli
         self.assertIn("500 TL", html)     # kokteyl
         self.assertIn("75.000 TL", html)  # 150 kisilik fark: (1000-500)*150
+
+    def test_aylik_evcil_rehberi_yalniz_tekrarlayan_kalemleri_toplar(self):
+        r = next(x for x in rehber.REHBERLER if x["slug"] == "aylik-kedi-masrafi")
+        html = rehber.rehber_uret(r, {"kedi": KEDI_VERI})
+        self.assertIsNotNone(html)
+        self.assertIn("1.000 TL", html)   # mama + kum
+        self.assertIn("12.000 TL", html)  # ayni aylik alt sinirin 12 ayi
+        cevap = re.search(r'<p class="cevap-blok">(.*?)</p>', html, re.S).group(1)
+        self.assertNotIn("5.000 TL", cevap)  # tek seferlik yatak ayliga karismaz
+
+    def test_veriden_uretilen_sss_gorunur_ve_schema_ile_ayni(self):
+        r = next(x for x in rehber.REHBERLER if x["slug"] == "aylik-kedi-masrafi")
+        html = rehber.rehber_uret(r, {"kedi": KEDI_VERI})
+        self.assertIn("2026'da aylık kedi masrafı ne kadar?", html)
+        graf = json.loads(
+            re.search(r'<script type="application/ld\+json">(.*?)</script>', html, re.S).group(1)
+        )["@graph"]
+        faq = next(x for x in graf if x["@type"] == "FAQPage")
+        self.assertIn("1.000 TL", faq["mainEntity"][0]["acceptedAnswer"]["text"])
 
     def test_jsonld_gecerli_ve_article(self):
         r = next(x for x in rehber.REHBERLER if x["slug"] == "yemekli-mi-kokteyl-mi")

@@ -199,7 +199,7 @@ class SiteDenetimi(unittest.TestCase):
             self.skipTest("robots.txt yok")
         m = r.read_text(encoding="utf-8")
         self.assertNotIn("Disallow: /", m, "robots.txt genel Disallow iceriyor")
-        for bot in ("GPTBot", "ClaudeBot", "PerplexityBot"):
+        for bot in ("GPTBot", "OAI-SearchBot", "ClaudeBot", "PerplexityBot"):
             self.assertIn(bot, m, f"{bot} robots.txt'te tanimli degil")
     def test_yayindaki_rakamlar_GUNCEL_veriyle_ayni(self):
         """Yayindaki her toplam, SU ANKI veriden turetilebilir olmali.

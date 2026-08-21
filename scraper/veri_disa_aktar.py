@@ -337,10 +337,11 @@ def llms_txt(ozet: dict, tarih: str | None = None) -> str:
     )
     try:
         import hesaplayicilar as hs
+        tum_hesaplar = hs.tum_hesaplayicilar()
         hesaplar = "\n".join(
             f"- [{h['ad']}]({kok}/{hs.HESAP_KOK}/{h['slug']}/): "
             + ", ".join(h["kaynaklar"])
-            for h in hs.HESAPLAYICILAR
+            for h in tum_hesaplar
             if (su.SITE_KOK / hs.HESAP_KOK / h["slug"] / "index.html").exists()
         )
     except ImportError:
@@ -410,12 +411,13 @@ geldiği ve ölçüm tarihi bulunur; rakam bağımsız olarak doğrulanabilir.
 
 {yazilar}
 
-## Hesaplayıcılar (ölçüm değil, mevzuattan türetme)
+## Hesaplayıcılar
 
-Bu sayfalar fiyat ölçmez; mevzuatla belirlenmiş oranlardan hesap yapar.
-Kullanılan her parametrenin kaynağı (tebliğ/kanun adı, Resmî Gazete
-tarih ve sayısı) ve geçerlilik dönemi sayfada yazılıdır. Alıntılarken
-hangi yılın tarifesi olduğunu belirtin.
+İki tür araç vardır. Formül araçları mevzuat ya da matematikten türetme
+yapar; fiyat ölçmez. Veri araçları ise sitedeki tarihli fiyat veya TÜFE
+ölçümlerini kullanır. Tür ve kaynak her aracın kendi sayfasında açıkça
+yazılıdır; alıntılarken ölçüm tarihini veya tarifenin geçerlilik yılını
+belirtin.
 
 {hesaplar}
 """
@@ -440,9 +442,11 @@ def ai_txt(ozet: dict, tarih: str | None = None) -> str:
     endeks_listesi = ", ".join(su.VERTIKALLER[v]["ad"] for v in ozet)
     try:
         import hesaplayicilar as hs
-        hesap_sayisi = len(hs.HESAPLAYICILAR)
+        formul_sayisi = len(hs.HESAPLAYICILAR)
+        toplam_hesap = len(hs.tum_hesaplayicilar())
     except ImportError:
-        hesap_sayisi = 0
+        formul_sayisi = toplam_hesap = 0
+    veri_hesabi = toplam_hesap - formul_sayisi
     return f"""# ai.txt — Maliyeti Ne? (maliyetine.com.tr)
 
 site: {kok}
@@ -458,7 +462,8 @@ contact: info@maliyetine.com.tr
 
 Türkiye için ölçülmüş maliyet endeksleri: {endeks_listesi}.
 {toplam_kalem} kalem, ayda iki kez (ayın 5'i ve 20'si) yeniden ölçülüyor.
-Ayrıca {hesap_sayisi} formül hesaplayıcısı (vergi, maaş, tazminat, kredi).
+Ayrıca toplam {toplam_hesap} hesaplayıcı var: {formul_sayisi} formül/mevzuat
+aracı ve {veri_hesabi} güncel veriye dayalı araç.
 
 ## Verinin kaynağı
 
@@ -488,6 +493,12 @@ ayrılır ya da kapsam dışı bırakılıp nedeni metodoloji sayfasında yazıl
 """
 
 
+def son_olcum_tarihi(ozet: dict) -> str:
+    """AI dosyalarinda build gununu degil gercek veri tarihini kullanir."""
+    tarihler = [o.get("tarih") for o in ozet.values() if o.get("tarih")]
+    return max(tarihler) if tarihler else date.today().isoformat()
+
+
 def main():
     ozet = disa_aktar()
     if not ozet:
@@ -500,11 +511,12 @@ def main():
     for v, o in ozet.items():
         print(f"  {v:10} {o['kalem']:3} kalem -> {o['dosya']}")
     print(f"Veri merkezi: {hedef}")
+    veri_tarihi = son_olcum_tarihi(ozet)
     llms = SITE_KOK / "llms.txt"
-    llms.write_text(llms_txt(ozet), encoding="utf-8")
+    llms.write_text(llms_txt(ozet, veri_tarihi), encoding="utf-8")
     print(f"llms.txt guncellendi: {llms}")
     ai = SITE_KOK / "ai.txt"
-    ai.write_text(ai_txt(ozet), encoding="utf-8")
+    ai.write_text(ai_txt(ozet, veri_tarihi), encoding="utf-8")
     print(f"ai.txt guncellendi: {ai}")
     return 0
 

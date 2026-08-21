@@ -49,7 +49,7 @@ class TanimTesti(unittest.TestCase):
                      "yakit", "boya", "basabas"}
     # RPM resmi olarak yayinlanmiyor - kullanicidan alinir, aralik gosterilir
     KULLANICI_PARAMETRESI = {"icerik", "website"}
-    OLCULEN_VERI = {"alim-gucu"}         # parametresi bizim cektigimiz TUFE
+    OLCULEN_VERI = {"alim-gucu", "butcem-yeter-mi"}
 
     def test_her_hesaplayici_bir_tipe_giriyor(self):
         """Siniflandirilmamis hesaplayici olmasin - yenisi eklenirken
@@ -222,6 +222,35 @@ class SayfaTesti(unittest.TestCase):
         html = hc.sayfa_uret(ag)
         self.assertIn("TUFE_SERISI", html)
         self.assertIn(ag["_tufe"]["seri"][0]["tarih"], html)
+
+    def test_butce_araci_VERI_YOKSA_uretilmez(self):
+        with TemporaryDirectory() as gecici:
+            self.assertIsNone(hc.butcem_yeter_mi_tanimi(Path(gecici)))
+            liste = [h["id"] for h in hc.tum_hesaplayicilar(Path(gecici))]
+            self.assertNotIn("butcem-yeter-mi", liste)
+
+    def test_butce_araci_olculen_bantlari_sayfaya_GOMER(self):
+        arac = hc.butcem_yeter_mi_tanimi()
+        if not arac:
+            self.skipTest("Olculmus fiyat verisi yok")
+        html = hc.sayfa_uret(arac)
+        self.assertIn("BUTCE_KALEMLERI", html)
+        self.assertGreater(len(arac["_butce"]), 50)
+        self.assertTrue(all(k["dusuk"] and k["orta"] and k["luks"]
+                            for k in arac["_butce"]))
+        self.assertNotIn('"kaynak_tipi": "tahmini"', html)
+        # Varsayilan secim formda gercekten secili olmali; yalnizca veri
+        # taniminda yazmasi tarayici deneyimini degistirmez.
+        self.assertRegex(html, r'value="ev-kurma:firin-ocak" selected')
+
+    def test_butce_araci_opsiyonel_kalemi_aylik_sanmiyor(self):
+        arac = hc.butcem_yeter_mi_tanimi()
+        if not arac:
+            self.skipTest("Olculmus fiyat verisi yok")
+        birimler = {k["anahtar"]: k["birim"] for k in arac["_butce"]}
+        self.assertEqual(birimler.get("dugun:salon-kokteyl"), "kişi başı")
+        self.assertEqual(birimler.get("okul:tablet"), "adet")
+        self.assertEqual(birimler.get("kedi:kedi-mamasi"), "aylık")
 
     def test_opsiyonel_alanda_required_YOK(self):
         """GERCEK BUG (tarayici testi yakaladi): YouTube hesabinda RPM

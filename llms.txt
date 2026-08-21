@@ -59,6 +59,9 @@ geldiği ve ölçüm tarihi bulunur; rakam bağımsız olarak doğrulanabilir.
 
 ## Rehberler
 
+- [ParafPara, Chip-Para ve Bonus Nerelerde Geçerli?](https://maliyetine.com.tr/rehber/kredi-karti-puanlari-nerede-gecer/)
+- [Aylık Kedi Masrafı 2026: Mama ve Kum Ne Kadar?](https://maliyetine.com.tr/rehber/aylik-kedi-masrafi/)
+- [Aylık Köpek Masrafı 2026: Mama ve Ped Ne Kadar?](https://maliyetine.com.tr/rehber/aylik-kopek-masrafi/)
 - [Damatlık Kiralamak mı Almak mı? Kararı Nasıl Kurarsınız](https://maliyetine.com.tr/rehber/damatlik-kiralamak-mi-almak-mi/)
 - [Özel Hastanede Doğum Maliyeti: Neden Kimse Net Fiyat Vermiyor?](https://maliyetine.com.tr/rehber/ozel-hastanede-dogum-maliyeti/)
 - [Doğumdan Önce Alınacaklar Listesi — Fiyatlarıyla](https://maliyetine.com.tr/rehber/dogumdan-once-alinacaklar-listesi/)
@@ -82,13 +85,16 @@ geldiği ve ölçüm tarihi bulunur; rakam bağımsız olarak doğrulanabilir.
 - [Ev Kurarken Alınacaklar Listesi ve 2026 Maliyeti](https://maliyetine.com.tr/rehber/sifirdan-ev-kurma-listesi/)
 - [2026 Sıfır Araba Masrafları: Etiket Fiyatı Yetmiyor](https://maliyetine.com.tr/rehber/sifir-araba-gercek-maliyeti/)
 
-## Hesaplayıcılar (ölçüm değil, mevzuattan türetme)
+## Hesaplayıcılar
 
-Bu sayfalar fiyat ölçmez; mevzuatla belirlenmiş oranlardan hesap yapar.
-Kullanılan her parametrenin kaynağı (tebliğ/kanun adı, Resmî Gazete
-tarih ve sayısı) ve geçerlilik dönemi sayfada yazılıdır. Alıntılarken
-hangi yılın tarifesi olduğunu belirtin.
+İki tür araç vardır. Formül araçları mevzuat ya da matematikten türetme
+yapar; fiyat ölçmez. Veri araçları ise sitedeki tarihli fiyat veya TÜFE
+ölçümlerini kullanır. Tür ve kaynak her aracın kendi sayfasında açıkça
+yazılıdır; alıntılarken ölçüm tarihini veya tarifenin geçerlilik yılını
+belirtin.
 
+- [Alım Gücü Hesaplama](https://maliyetine.com.tr/hesap/alim-gucu-hesaplama/): TCMB EVDS — TÜİK Tüketici Fiyat Endeksi (2025=100), seri TP.FE25.OKTG01, Kullanılan seri: 2026-01 – 2026-07, ayda iki kez güncelleniyor
+- [Bütçem Yeter mi?](https://maliyetine.com.tr/hesap/butcem-yeter-mi/): Maliyeti Ne? Düğün veri seti — ölçüm tarihi 2026-08-20, Maliyeti Ne? Ev Kurma veri seti — ölçüm tarihi 2026-08-20, Maliyeti Ne? Okul veri seti — ölçüm tarihi 2026-08-20, Maliyeti Ne? Bebek veri seti — ölçüm tarihi 2026-08-20, Maliyeti Ne? Kedi veri seti — ölçüm tarihi 2026-08-20, Maliyeti Ne? Köpek veri seti — ölçüm tarihi 2026-08-20, Maliyeti Ne? 0 km Araç veri seti — ölçüm tarihi 2026-08-20
 - [KDV Hesaplama](https://maliyetine.com.tr/hesap/kdv-hesaplama/): 3065 sayılı KDV Kanunu, 2007/13033 sayılı BKK ekli listeler
 - [Brütten Nete Maaş Hesaplama](https://maliyetine.com.tr/hesap/brutten-nete-maas-hesaplama/): 332 Seri No.lu Gelir Vergisi Genel Tebliği (31.12.2025 R.G. 33124, 5. Mükerrer), 5510 sayılı Kanun — 2026 prime esas kazanç sınırları, 488 sayılı Damga Vergisi Kanunu, 2026 Asgari Ücret Tespit Komisyonu Kararı
 - [Kıdem ve İhbar Tazminatı Hesaplama](https://maliyetine.com.tr/hesap/kidem-tazminati-hesaplama/): 1475 sayılı İş Kanunu md. 14 (kıdem tazminatı), 4857 sayılı İş Kanunu md. 17 (ihbar süreleri), T.C. Çalışma ve Sosyal Güvenlik Bakanlığı — kıdem tazminatı tavanı: 73.729,84 TL (1 Temmuz – 31 Aralık 2026), 488 sayılı Damga Vergisi Kanunu
@@ -97,7 +103,7 @@ hangi yılın tarifesi olduğunu belirtin.
 - [Kira Gelir Vergisi Hesaplama](https://maliyetine.com.tr/hesap/kira-gelir-vergisi-hesaplama/): 332 Seri No.lu Gelir Vergisi Genel Tebliği — 2026 mesken istisnası 58.000 TL, 193 sayılı Gelir Vergisi Kanunu md. 21 (mesken istisnası) ve md. 74 (götürü gider %15)
 - [Yıllık İzin Hesaplama](https://maliyetine.com.tr/hesap/yillik-izin-hesaplama/): 4857 sayılı İş Kanunu md. 53 ve md. 56
 - [Fazla Mesai Ücreti Hesaplama](https://maliyetine.com.tr/hesap/fazla-mesai-hesaplama/): 4857 sayılı İş Kanunu md. 41 (fazla çalışma, %50 zam, yıllık 270 saat sınırı), 4857 sayılı İş Kanunu md. 47 (genel tatil ve hafta tatili çalışması)
-- [YouTube Gelir Hesaplama](https://maliyetine.com.tr/hesap/youtube-gelir-hesaplama/): Hesap saf aritmetiktir. RPM değeri kullanıcıdan alınır — resmî bir kaynağı olmadığı için tarafımızdan varsayılmaz.
+- [YouTube Gelir Hesaplama](https://maliyetine.com.tr/hesap/youtube-gelir-hesaplama/): YouTube Help — YouTube İş Ortağı Programı koşulları: <a href="https://support.google.com/youtube/answer/72857?hl=tr">support.google.com/youtube/answer/72857</a>, Google Blog, 11 Ağustos 2026 — 1 Şubat 2027 YPP eşik değişikliği: <a href="https://blog.google/intl/en-mena/product-updates/connect-communicate/new-opportunities-to-earn-and-changes-to-the-youtube-partner-program/">blog.google</a>, Hesap saf aritmetiktir. RPM değeri kullanıcıdan alınır — resmî bir kaynağı olmadığı için tarafımızdan varsayılmaz.
 - [Bileşik Faiz Hesaplama](https://maliyetine.com.tr/hesap/bilesik-faiz-hesaplama/): Bileşik faiz ve annüite gelecek değeri formülü — finansal matematik
 - [Birikim Hedefi Hesaplama](https://maliyetine.com.tr/hesap/birikim-hedefi-hesaplama/): Annüite formülünün tersi — finansal matematik
 - [Yakıt Maliyeti Hesaplama](https://maliyetine.com.tr/hesap/yakit-maliyeti-hesaplama/): Orantı — temel aritmetik

@@ -17,8 +17,8 @@
   rehber eklendi.
 - Site artık tek konu değil, **veri ürünü + hesaplayıcı ağı**:
   **7 vertikal** (`dugun`, `ev-kurma`, `okul`, `bebek`, `kedi`, `kopek`,
-  `arac`), **122 ölçülen kalem**, **24 bağımsız `/hesap/` hesaplayıcı**,
-  **23 rehber**, **181 sitemap URL'i**.
+  `arac`), **122 ölçülen kalem**, **25 bağımsız `/hesap/` hesaplayıcı**,
+  **25 rehber**, **185 sitemap URL'i**.
 - Yayın modeli: statik dosyalar Cloudflare tarafında **Worker** ile servis
   ediliyor. Eski Pages kurulum notları tarihî kayıt; bugün doğru altyapı
   "statik çıktı + Cloudflare Worker + GitHub Actions"tır.
@@ -42,6 +42,15 @@
   yönlendirmesi görüldü. Bu küçük sayı ama doğru yönde sinyal; artık
   içerik üretirken yalnız Google snippet'i değil, AI cevabına girecek kısa,
   kaynaklı, tarihli cevap blokları da hedeflenmeli.
+- AI/GEO ikinci turunda iki örnekten bağımsız ürün hamlesi yapıldı:
+  **114 tam segmentli ölçümle çalışan `/hesap/butcem-yeter-mi/`**, aylık
+  kedi ve köpek gider rehberleri, bebeğin aylık giderine dürüst alt sınır
+  cevabı ve **1.000 kişilik düğün senaryosu**. Özellik verisi olmayan
+  ürün sorularında (ör. buhar destekli fırın/indüksiyon) içerik uydurmak
+  yerine önce yeni veri alanı toplanacak.
+- OpenAI arama görünürlüğü için `robots.txt` artık **OAI-SearchBot**'u da
+  açıkça kabul ediyor. `llms.txt` bütün 25 aracı listeliyor ve formül
+  araçlarıyla güncel veriye dayalı iki aracı birbirine karıştırmıyor.
 - Cloudflare `www` → kök domain 301 redirect **tamamlandı ve canlıda
   doğrulandı** (2026-08-22). Eski kural aktif görünüyordu ama expression,
   `URI Full wildcard` alanına yazıldığı için çalışmıyordu. Kural
@@ -54,7 +63,8 @@
   2. Search Console sorgu boşlukları: kira gelir vergisi, hisse/borsa
      maliyet, tapu/ipotek harcı, temettü ve düşük CTR'li iyi pozisyon
      sorguları. Yeni sayfa açmadan önce mevcut sayfanın cannibalize olup
-     olmayacağı kontrol edilmeli.
+     olmayacağı kontrol edilmeli; aylık evcil hayvan ve 1.000 kişilik
+     düğün fırsatları bu turda kapatıldı.
   3. Tek kaynaklı kalem oranı hâlâ takip edilmeli. EV-kurma 0/42 tek
      kaynaklı duruma geldi; kedi/kopek kısmen kapandı ama tamamen bitmedi.
   4. Düğünde kalan iki tahmini kalem (`nikah-islemleri`, `orkestra-dj`)
@@ -2365,18 +2375,22 @@ koke kayip kaymadigi kontrol edilmeli.
 
 | kume | sorgu sayisi | tik | gosterim | durum |
 |---|---:|---:|---:|---|
-| kira gelir vergisi | 36 | 0 | 254 | Sayfa var ama pozisyon 70+; tek is yeni sayfa degil, niyet/cevap blogu ve otorite. |
-| damatlik / gelinlik | 14 | 3 | 229 | Damatlik ana kazanan; gelinlikte `www` bolunmesi ve CTR izlenecek. |
-| hisse / borsa maliyet | 26 | 0 | 171 | "borsa" eklendi ama pozisyon hâlâ zayıf; hızlı cevap + varyant başlıkları kontrol. |
-| tapu / ipotek harci | 57 | 0 | 148 | Tapu sayfası var; ipotek, KKTC ve "tapu masrafı" varyantları ayrı niyet mi bakılacak. |
-| temettu | 14 | 0 | 83 | "oran/kar payı/gelir/formül" varyantları geliyor; vergi boşluğu hâlâ açık. |
-| dugun salon / yemek / ceyiz | 23 | 3 | 64 | Çeyiz yüksek CTR; "1.000 kişilik düğün yemeği" iyi pozisyonlu yeni fırsat. |
-| beyaz esya | 3 | 1 | 59 | Konum ~6; başlık/meta/snippet CTR işi, yeni sayfa değil. |
-| defter fiyatlari | 1 | 0 | 47 | Konum ~6,7; snippet/başlıkla tık alınabilir. |
-| kedi/kopek aylik | 3 | 0 | 24 | "aylık kedi masrafı 2026" konum 11; cevap bloğu ve iç link izlenecek. |
-| bebek/dogum | 15 | 0 | 21 | Hastane doğum sorguları geliyor ama pozisyon zayıf; tıbbi/ücret iddiasında dikkat. |
+| dugun / gelinlik / damatlik | 36 | 6 | 292 | En guclu ticari kume. 1.000 kisilik senaryo acildi; yeni sayfadan once niyet ayrimi. |
+| hisse / borsa | 45 | 0 | 272 | "borsa" eklendi; mevcut arac guclendirilecek, kopya hesaplayici acilmayacak. |
+| kira | 36 | 0 | 254 | Sayfa var ama pozisyon zayif; cevap ve otorite sorunu, sadece yeni URL sorunu degil. |
+| tapu / ipotek | 60 | 0 | 159 | Tapu araci var; ipotek ve KKTC sorgularinin ayri niyeti dogrulanacak. |
+| calisan / maas / tazminat | 54 | 0 | 139 | Mevzuat sayfalari icin kaynak tazeligi ve sorgu dili oncelikli. |
+| ev kurma / beyaz esya | 13 | 1 | 84 | Urun ozelligi sorulari geliyor; ozellik verisi toplamadan tavsiye yazilmayacak. |
+| evcil hayvan | 3 | 0 | 24 | Aylik kedi sorgusu konum 11; iki aylik gider rehberi acildi. |
+| bebek / dogum | 14 | 0 | 19 | Aylik gider cevabi alt sinirla eklendi; saglik/ucret iddiasinda dikkat. |
 
 Ek sinyal: Ürün snippet'leri **40 gosterim, konum 5,55**, ancak 0 tik.
+
+Ilk sayfaya en yakin sifir tikli sorgular: `defter fiyatları 2026`
+(47 gosterim, konum 6,7), `aylık kedi masrafı 2026` (21, konum 11),
+`1.000 kişilik düğün yemeği maliyeti 2026` (13, konum 8,1), `bir bebeğin
+aylık masrafı 2026` (8, konum 7,5), `mikrodalga fırın fiyatları Türkiye
+2026` (8, konum 10) ve `bir köpeğin aylık masrafı 2026` (8, konum 11,4).
 
 ### KAPATILAN BOSLUKLAR
 1. **"borsa" kelimesi hisse-maliyet sayfasinda HIC GECMIYORDU** — oysa
@@ -2400,8 +2414,9 @@ Ek sinyal: Ürün snippet'leri **40 gosterim, konum 5,55**, ancak 0 tik.
 - **ipotek harci** (1 gosterim) — tapu sayfasina alt baslik olabilir.
 - **kira geliri rehberi** — en buyuk kume ama hesaplayici sayfasi zaten
   siralaniyor; ayri rehber KANNIBALIZE edebilir. Once konum iyilessin.
-- **kedi/kopek %100 tek kaynakli** (8/8 ve 7/7). Sayfada "1 bagimsiz
-  kaynak" yaziyor — kendi cok kaynak kuralimizla celisiyor. En net eksik.
+- **Evcil hayvanda kalan tek kaynaklar:** kedi 2/8, kopek 3/7. Mama,
+  kum, yatak, oyuncak ve tasma Petzzshop ile kapandi; kalan 5 kalem
+  trafik/etki sirasiyla ikinci kaynaga tasinmali.
 - **Bellona / Istikbal** — fiyat var ama kart eslesmesi kurulamadi;
   D&R'da ayni teshis elle bakilinca cozulmustu.
 
@@ -2440,6 +2455,57 @@ SIRADAKI BENZER ADAYLAR:
 - GSC verisinden gelen kira/temettu/ipotek konulari hâlâ daha yakin para
   niyeti tasiyor; yeni sayfa acmadan once mevcut hesaplayiciyi
   cannibalize edip etmeyecegi kontrol edilmeli.
+
+### AI-NATIVE URUN TURU (2026-08-22)
+
+Onceki tur yalnizca Yavuz'un iki ornegine cevap verdi; bu tur 306 GSC
+sorgusunun tamami urun niyetine gore incelendi. Sonuc: AI kullanicisi
+yalnizca "fiyati ne" demiyor; **"butcem yeter mi", "aylik/yillik toplam
+ne", "X kiside ne olur" ve "hangisi daha mantikli"** diye karar soruyor.
+Site ham makale sayisini degil, olculmus veriden bu karar kaliplarini
+cevaplayan araclari buyutecek.
+
+Uygulananlar:
+- **`/hesap/butcem-yeter-mi/`**: uc segmenti de bulunan, tahmini olmayan
+  114 kalemi tek karar aracinda toplar. Butceyi ekonomik/orta/ust ortancayla
+  karsilastirir; marka veya ozellik onerisi uydurmaz. Tarih, kaynak sayisi
+  ve urun orneklemi sonucta gorunur.
+- **Aylik kedi ve kopek rehberleri**: yalniz tekrar eden olculmus sarflari
+  toplar. Veteriner, saglik ve diger olculmeyen giderler acikca haric;
+  sonuc "tam maliyet" degil **olculmus alt sinir** olarak yayinlanir.
+- **Bebegin aylik masrafi**: mevcut ilk-yil rehberine GSC sorgusunu
+  karsilayan gorunur cevap + ayni metinli schema eklendi. Yalniz bez
+  olculdugu icin mama, saglik, giyim, kres ve bakici haric tutulur.
+- **1.000 kisilik dugun**: mevcut kisi basi olcumu 1.000 ile carpar;
+  dogrulanmis teklif verisi olmadigi icin hayali hacim indirimi uygulamaz.
+- `robots.txt`e **OAI-SearchBot** eklendi. OpenAI'nin yayinici dokumanina
+  gore ChatGPT arama ozetleri/snippet'leri icin asil ilgili tarayici budur;
+  GPTBot tek basina bu isi karsilamaz.
+- `llms.txt`teki yanlis siniflandirma kapatildi: 23 formul/mevzuat araci
+  ile 2 guncel veriye dayali arac artik ayri tanimlanir ve 25'inin tamami
+  haritada yer alir.
+
+GEO icin teknik karar: Google'in resmi AI Search dokumanlari ozel bir
+"GEO schema", `llms.txt` veya AI metin dosyasi istemiyor. Standart SEO,
+ham HTML'de gorunen benzersiz icerik, taranabilirlik, dogru ic link ve
+gorunen metinle birebir uyumlu structured data esas. AI Mode'un query
+fan-out davranisi nedeniyle her soru varyanti icin zayif sayfa acmak
+yerine ayni niyetin cevabini tek guclu sayfada bolumlemek daha dogru.
+FAQ schema gorunur soru-cevapla ayni kalir ama "sihirli GEO etiketi" veya
+garantili rich result gibi ele alinmaz.
+
+Siradaki urun rotasi:
+1. **CTR turu:** defter, mikrodalga ve beyaz esya sayfalarinda yeni URL
+   acmadan baslik/snippet ile cevap blogunu GSC verisiyle iyilestir.
+2. **Otorite turu:** kira, hisse/borsa, tapu ve calisan kumelerinde mevcut
+   araci sorgu dili + birincil kaynak + ic link bakimiyla guclendir.
+3. **Yeni veri turu:** "buhar destekli firin ve induksiyonlu ocak fiyata
+   deger mi?" gibi AI sorulari icin urun ozelligi alanlarini toplamadan
+   karsilastirma yazisi acma. Ilk is fiyat kaydina ozellik/kapasite/enerji
+   sinifi gibi karsilastirilabilir alanlar eklemek.
+4. **Olcum turu:** ChatGPT yonlendirmelerini `utm_source=chatgpt.com`,
+   Gemini ve Bing Webmaster AI Performance raporuyla sayfa bazinda izle;
+   alinti alan sayfa kalibini veriyle cogalt.
 
 ### OLCUM: TEK KAYNAKLI KALEMLER (2026-08-09)
 122 olculen kalemin **52'si (%43)** tek kaynakli:
@@ -2594,7 +2660,7 @@ yerde de korunmasi gerekiyor; birini duzeltmek otekini kapsamiyor.**
   kapatıldı, canlı robots.txt artık depodaki dosyayla BİREBİR AYNI.**
   Doğrulandı: hiç `Disallow` yok, `Content-Signal` satırı yok; GPTBot,
   ClaudeBot, PerplexityBot ve Googlebot canlı sayfaya **HTTP 200**
-  alıyor; www üzerinden de temiz. Yerel sitemap şu an **180 URL** içeriyor.
+  alıyor; www üzerinden de temiz. Yerel sitemap şu an **185 URL** içeriyor.
   Kapatma yolu (ileride tekrar gerekirse): Cloudflare Dashboard → zone →
   **AI Crawl Control → Robots.txt → "Disable robots.txt configuration"**
   (varsayılan "Content signals policy" idi).

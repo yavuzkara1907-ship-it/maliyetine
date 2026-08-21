@@ -30,7 +30,7 @@ class OlcekSenaryosuTesti(unittest.TestCase):
         """Kisi basi kalem olcekle carpilmali. Tahmini kalemler de toplama
         girdigi icin beklenen deger gercek hesapla karsilastiriliyor."""
         conf = su.VERTIKALLER["dugun"]
-        for olcek in (100, 200, 300):
+        for olcek in (100, 200, 300, 1000):
             s = next(x for x in senaryo.OLCEK_SENARYOLARI["dugun"] if x["olcek"] == olcek)
             html = senaryo.olcek_sayfasi("dugun", s, DUGUN, "2026-08-05")
             self.assertIsNotNone(html)
@@ -48,7 +48,14 @@ class OlcekSenaryosuTesti(unittest.TestCase):
             html = senaryo.olcek_sayfasi("dugun", s, DUGUN, "2026-08-05")
             m = re.search(r'<strong>([\d.]+ TL)</strong>', html)
             rakamlar.add(m.group(1))
-        self.assertEqual(len(rakamlar), 3)
+        self.assertEqual(len(rakamlar), len(senaryo.OLCEK_SENARYOLARI["dugun"]))
+
+    def test_1000_kisilik_senaryo_indirim_uydurmuyor(self):
+        s = next(x for x in senaryo.OLCEK_SENARYOLARI["dugun"]
+                 if x["olcek"] == 1000)
+        html = senaryo.olcek_sayfasi("dugun", s, DUGUN, "2026-08-05")
+        self.assertIn("yüksek adet indirimi varsaymaz", html)
+        self.assertIn(su._para(1_000_000), html)
 
     def test_kisi_basi_sabit_kirilimi_tutarli(self):
         s = senaryo.OLCEK_SENARYOLARI["dugun"][0]  # 100 kisilik

@@ -99,6 +99,8 @@ jobs:
 
       # Paylasim gorseli: uzerinde vertikal adlari ve kalem sayisi var,
       # veri degisince bayatlamamali. PIL yoksa adim sessizce geciyor.
+      # Kartlar HTML'den once uretilir: ayni commit'te eklenen yeni sayfa
+      # ilk gunden kendi og:image'ini kullanabilsin, ikinci olcumu beklemesin.
       - name: Paylaşım görselini güncelle
         working-directory: scraper
         run: |
@@ -139,10 +141,9 @@ jobs:
         working-directory: scraper
         run: python veri_disa_aktar.py
 
-      # Formul hesaplayicilari (/hesap/...). Olculmus fiyattan bagimsiz -
-      # mevzuat parametreleri assets/js/resmi-parametreler.js'te sabit
-      # duruyor. Yine de her turda yeniden uretiliyor cunku sayfa kabugu
-      # (OG etiketleri, footer, endeks linkleri) sayfa_uret'ten geliyor.
+      # Hesaplayicilar (/hesap/...). Cogunlugu mevzuat ya da matematikten
+      # turetir; alim gucu ve "Butcem Yeter mi?" araclari ise guncel veri
+      # dosyalarini okur. Bu nedenle veri birlestirildikten sonra uretilir.
       - name: Formül hesaplayıcılarını üret
         working-directory: scraper
         run: python hesaplayicilar.py

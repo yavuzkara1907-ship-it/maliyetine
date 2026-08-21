@@ -32,7 +32,8 @@ SITE = Path(__file__).parent.parent
 # atlandi ve her sayfa tasiyordu.
 GENISLIKLER = [320, 360, 390, 414, 480, 560, 600, 700, 768, 834, 900, 1024, 1280, 1440]
 
-SAYFALAR = ["/", "/ev-kurma/", "/hesap/", "/hesap/kidem-tazminati-hesaplama/",
+SAYFALAR = ["/", "/ev-kurma/", "/hesap/", "/hesap/butcem-yeter-mi/",
+            "/hesap/kidem-tazminati-hesaplama/",
             "/rehber/", "/dugun/hesaplayici/", "/veri/", "/sss/",
             "/ev-kurma/buzdolabi-fiyatlari/"]
 
@@ -196,6 +197,23 @@ class GorselDenetim(unittest.TestCase):
                 "document.documentElement.scrollWidth > window.innerWidth + 1")
             s.close()
             self.assertFalse(tasma, f"{yol} karanlik mod: tasma")
+
+    def test_butce_sonucu_mobilde_kirpilmaz(self):
+        """Tablo sayfayi tasirmasa bile nowrap hucreyi gorunmez yapabilir."""
+        s = self._ac("/hesap/butcem-yeter-mi/", 390)
+        try:
+            s.fill("#butce", "50000")
+            s.eval_on_selector("#hesap-formu", "f => f.requestSubmit()")
+            s.wait_for_timeout(200)
+            kirpilan = s.evaluate("""() => [...document.querySelectorAll(
+                '#sonuc .sonuc-tablo td')].filter(e => {
+                  const r = e.getBoundingClientRect();
+                  return r.left < 0 || r.right > window.innerWidth + 1 ||
+                         e.scrollWidth > e.clientWidth + 1;
+                }).map(e => e.textContent.trim())""")
+            self.assertEqual(kirpilan, [], f"mobilde kirpilan sonuc: {kirpilan}")
+        finally:
+            s.close()
 
     def test_dokunma_hedefleri_yeterli(self):
         """Kontroller mobilde en az 40 px olmali (WCAG hedef boyutu).

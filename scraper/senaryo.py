@@ -8,7 +8,7 @@ dugun maliyeti", "sadece beyaz esya butcesi", "mutfak esyalari kac para".
 Bu sorgularin hepsinde veri elimizde var ama sayfa yoktu.
 
 IKI TIP:
-  1. Olcek senaryolari (dugun): 100 / 200 / 300 kisilik. Her biri
+  1. Olcek senaryolari (dugun): 100 / 200 / 300 / 1.000 kisilik. Her biri
      GERCEKTEN farkli bir toplam veriyor - kisi basi kalemler olcekle
      carpiliyor.
   2. Grup senaryolari (ev kurma): yalnizca beyaz esya / mobilya / mutfak.
@@ -17,7 +17,7 @@ IKI TIP:
 INCE ICERIK DEGIL - kirmizi cizgi kontrolu: her sayfa farkli bir RAKAM,
 farkli bir kalem listesi ve o senaryoya ozgu bir yorum tasiyor. Ayni
 metnin sayi degistirilmis kopyasi degil. Uretilebilecek kombinasyon
-sayisi kasitla dusuk tutuldu (3+3); "her sayi icin bir sayfa" yaklasimi
+sayisi kasitla dusuk tutuldu (4+3); "her sayi icin bir sayfa" yaklasimi
 tam olarak Google'in cezalandirdigi sey.
 """
 
@@ -68,6 +68,17 @@ OLCEK_SENARYOLARI = {
                 "kaldıran mekan sayısı azalıyor ve fiyatlar yukarı ayrışıyor. "
                 "Bütçenin neredeyse tamamı kişi başı kalemlere gidiyor, sabit "
                 "kalemlerin (gelinlik, alyans) payı görece küçülüyor."
+            ),
+        },
+        {
+            "olcek": 1000, "slug": "1000-kisilik-dugun-maliyeti",
+            "baslik": "1.000 Kişilik Düğün Maliyeti",
+            "yorum": (
+                "1.000 kişi standart salon ölçeğinin dışına çıkar. Kapasite, "
+                "servis hızı, otopark ve aynı anda yemek çıkarabilme kabiliyeti "
+                "fiyattan önce doğrulanmalı. Bu sayfadaki hesap kişi başı ölçümü "
+                "1.000 ile çarpar; yüksek adet indirimi varsaymaz, çünkü böyle bir "
+                "indirimi doğrulayacak teklif verimiz yok."
             ),
         },
     ],

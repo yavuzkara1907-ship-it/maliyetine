@@ -215,10 +215,10 @@ def rehber_ve_hesap_kartlari(veri_kok: Path | None = None) -> int:
             ozet[vertikal] = (toplam, len(siteler), veri.get("guncelleme_tarihi") or "")
 
         for r in rehber.REHBERLER:
-            # Yazi gercekten uretilmis mi? Uretilmemis yaziya kart acmak,
-            # 404'e isaret eden bir og:image demek.
-            if not (SITE_KOK / "rehber" / r["slug"] / "index.html").exists():
-                continue
+            # Kart sayfadan ONCE uretilir. Aksi halde yeni bir rehber ilk
+            # workflow kosusunda jenerik karta duser ve ancak bir sonraki
+            # olcumde kendi kartini kullanir. Yetim bir PNG zararsizdir;
+            # og:image'i zaten yalniz gercekten uretilen HTML yayinlar.
             if r.get("og_alt"):
                 alt = r["og_alt"]
             else:
@@ -243,8 +243,6 @@ def rehber_ve_hesap_kartlari(veri_kok: Path | None = None) -> int:
     except ImportError:
         return sayi
     for h in hs.tum_hesaplayicilar():
-        if not (SITE_KOK / "hesap" / h["slug"] / "index.html").exists():
-            continue
         kaynaklar = h.get("kaynaklar") or []
         alt = kaynaklar[0] if kaynaklar else "formülün kendisi kaynaktır"
         ozet = (h.get("ozet") or "").strip()
@@ -420,8 +418,6 @@ def senaryo_ve_arac_kartlari(veri_kok: Path | None = None) -> int:
         for alt_yol, baslik in (
                 ("hesaplayici", conf["ad"] + " hesaplayıcı"),
                 ("metodoloji", conf["ad"] + " — nasıl ölçüyoruz?")):
-            if not (SITE_KOK / vertikal / alt_yol / "index.html").exists():
-                continue
             if kart_baslikli(
                     baslik,
                     "{} bağımsız kaynak · ayda iki kez ölçülüyor · {}".format(
@@ -433,8 +429,6 @@ def senaryo_ve_arac_kartlari(veri_kok: Path | None = None) -> int:
             continue
         # Olcek senaryolari: kisi sayisina gore gercek toplam
         for x in (sen.OLCEK_SENARYOLARI.get(vertikal) or []):
-            if not (SITE_KOK / vertikal / x["slug"] / "index.html").exists():
-                continue
             t, _ = su.ornek_toplam_hesapla(conf, kalemler, x["olcek"], "orta")
             if not t:
                 continue
@@ -445,8 +439,6 @@ def senaryo_ve_arac_kartlari(veri_kok: Path | None = None) -> int:
                 sayi += 1
         # Grup senaryolari: yalnizca o gruptaki kalemlerin toplami
         for x in (sen.GRUP_SENARYOLARI.get(vertikal) or []):
-            if not (SITE_KOK / vertikal / x["slug"] / "index.html").exists():
-                continue
             gruplar = set(x["gruplar"])
             t = sum(
                 ((kalemler.get(tn["id"]) or {}).get("segmentler") or {})

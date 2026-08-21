@@ -1171,6 +1171,16 @@ class OgEtiketleriTesti(unittest.TestCase):
         """Goreli og:image URL'i klasik hata - Facebook bos kart gosterir."""
         self.assertTrue(sayfa_uret.OG_GORSEL_URL.startswith("https://"))
 
+    def test_yeni_sayfanin_karti_html_olmadan_once_uretilebilir(self):
+        """Ayni workflow'ta eklenen sayfa ikinci olcumu beklememeli."""
+        import inspect
+        import og_gorsel
+        for fonksiyon in (og_gorsel.rehber_ve_hesap_kartlari,
+                          og_gorsel.senaryo_ve_arac_kartlari):
+            self.assertNotIn(
+                '"index.html").exists()', inspect.getsource(fonksiyon),
+                f"{fonksiyon.__name__} yeni sayfayi kart uretiminden once ariyor")
+
     def test_sablonlarda_elle_yazilmis_og_image_yok(self):
         """Sekiz sablonda ayri ayri yaziliydi; biri guncellenip otekiler
         kalirsa sayfalar farkli kart gosterir.

@@ -1346,7 +1346,37 @@ footer nav {
 .hesap-kart strong { color: var(--renk-vurgu); font-size: 1.05rem; }
 .hesap-kart span { font-size: .88rem; color: var(--renk-metin-soluk); }
 .hesap-liste { columns: 2; column-gap: 2rem; font-size: .95rem; }
-@media (max-width: 520px) { .hesap-liste { columns: 1; } }
+@media (max-width: 520px) {
+  .hesap-liste { columns: 1; }
+  .sonuc-tablo,
+  .sonuc-tablo tbody,
+  .sonuc-tablo tr,
+  .sonuc-tablo td { display: block; width: 100%; }
+  .sonuc-tablo tr {
+    padding: .55rem 0;
+    border-bottom: 1px solid var(--renk-cizgi);
+  }
+  .sonuc-tablo td {
+    padding: .12rem .5rem;
+    border: 0;
+    overflow-wrap: anywhere;
+  }
+  .sonuc-tablo td:first-child {
+    color: var(--renk-metin-soluk);
+    font-size: .82rem;
+  }
+  .sonuc-tablo td.sayi {
+    text-align: left;
+    white-space: normal;
+  }
+  .sonuc-tablo tr.vurgu td {
+    border: 0;
+  }
+  .sonuc-tablo tr.vurgu {
+    border-top: 2px solid var(--renk-vurgu);
+    border-bottom: 0;
+  }
+}
 
 /* Bütçe dengeleyici (hesaplayıcı sayfalarında) */
 .butce-alan input { max-width: 260px; }

@@ -13,7 +13,8 @@ contact: info@maliyetine.com.tr
 
 Türkiye için ölçülmüş maliyet endeksleri: Düğün, Ev Kurma, Okul, Bebek, Kedi, Köpek, 0 km Araç.
 122 kalem, ayda iki kez (ayın 5'i ve 20'si) yeniden ölçülüyor.
-Ayrıca 23 formül hesaplayıcısı (vergi, maaş, tazminat, kredi).
+Ayrıca toplam 25 hesaplayıcı var: 23 formül/mevzuat
+aracı ve 2 güncel veriye dayalı araç.
 
 ## Verinin kaynağı
 

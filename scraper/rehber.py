@@ -760,6 +760,39 @@ def _govde_bebek_ilk_yil(v: dict) -> str | None:
 """
 
 
+def _sss_bebek_masrafi(v: dict) -> list[tuple[str, str]]:
+    """Aylik bebek sorgusuna kapsam sinirini bozmadan cevap verir."""
+    b = v.get("bebek")
+    if not b:
+        return []
+    conf = su.VERTIKALLER["bebek"]
+    kalemler = b.get("kalemler") or {}
+    tek_seferlik, _ = su.ornek_toplam_hesapla(conf, kalemler, 1, "orta")
+    bez = _kalem(b, "bebek-bezi")
+    if not (tek_seferlik and bez):
+        return []
+    tarih = b.get("guncelleme_tarihi") or "—"
+    return [
+        (
+            "Bir bebeğin aylık masrafı 2026'da ne kadar?",
+            f"{tarih} ölçümünde doğrulayabildiğimiz tekrarlayan alt sınır, aylık "
+            f"{_p(bez)} bebek bezi gideridir. Mama, ek gıda, sağlık, giyim, kreş "
+            "ve bakıcı dahil olmadığı için bu tutar tam aylık maliyet değildir."
+        ),
+        (
+            "Bir bebeğin ilk yılı ne kadar tutar?",
+            f"Ölçtüğümüz tek seferlik hazırlık {_p(tek_seferlik)}, on iki aylık "
+            f"bez gideri {_p(bez * 12)}; birlikte {_p(tek_seferlik + bez * 12)}. "
+            "Doğum ve hastane masrafı bu toplamda yoktur."
+        ),
+        (
+            "Neden mama ve sağlık gideri için tahmin vermiyorsunuz?",
+            "Bebeğin beslenme ve sağlık ihtiyacı kişiye göre değişir; doğrulanabilir "
+            "ve karşılaştırılabilir fiyat verisi olmadan tek rakam yazmak yanıltıcı olur."
+        ),
+    ]
+
+
 # ---------------------------------------------------------------------------
 # 10. Ceyiz masraflari
 # ---------------------------------------------------------------------------
@@ -1304,9 +1337,130 @@ def _govde_kedi_kopek(v: dict) -> str | None:
   <p>
     Kalem kalem: <a href="/kedi/">kedi masrafı</a> ·
     <a href="/kopek/">köpek masrafı</a> ·
-    <a href="/evcil-hayvan/">ikisi bir arada</a>.
+    <a href="/evcil-hayvan/">ikisi bir arada</a>. Aylık sarf hesabı:
+    <a href="/rehber/aylik-kedi-masrafi/">kedi</a> ·
+    <a href="/rehber/aylik-kopek-masrafi/">köpek</a>.
   </p>
 """
+
+
+# ---------------------------------------------------------------------------
+# AI SORGU KALIBI: "aylik X masrafi ne kadar?"
+#
+# Search Console'da kedi ve kopek icin bu kalip ilk sayfa sinirina geldi.
+# Cevap genel bir bakim tahmini degil; yalnizca veri setinde aylik olarak
+# isaretlenmis sarf kalemlerinin toplami. Veteriner vb. olculmeyen giderler
+# acikca disarida tutuluyor.
+# ---------------------------------------------------------------------------
+def _aylik_evcil_ozeti(v: dict, vertikal: str) -> dict | None:
+    veri = v.get(vertikal)
+    conf = su.VERTIKALLER.get(vertikal)
+    if not (veri and conf):
+        return None
+    kalemler = veri.get("kalemler") or {}
+    tekrar = [t for t in conf["kalemler"] if t.get("varsayilan_dahil") is False]
+    satirlar = []
+    toplamlar = {"dusuk": 0, "orta": 0, "luks": 0}
+    for tanim in tekrar:
+        degerler = {s: _kalem(veri, tanim["id"], s) for s in toplamlar}
+        if not degerler["orta"]:
+            continue
+        for s, deger in degerler.items():
+            toplamlar[s] += deger or 0
+        satirlar.append({"ad": tanim["ad"].replace(" (aylık)", ""), **degerler})
+    if not satirlar or not toplamlar["orta"]:
+        return None
+    return {
+        "tarih": veri.get("guncelleme_tarihi") or "—",
+        "satirlar": satirlar,
+        "toplamlar": toplamlar,
+    }
+
+
+def _govde_aylik_evcil(vertikal: str, ad: str, ozel_not: str):
+    def govde(v: dict) -> str | None:
+        ozet = _aylik_evcil_ozeti(v, vertikal)
+        if not ozet:
+            return None
+        t = ozet["toplamlar"]
+        satirlar = "".join(
+            f'<tr><td>{x["ad"]}</td><td class="sayi">{_p(x["dusuk"])}</td>'
+            f'<td class="sayi">{_p(x["orta"])}</td>'
+            f'<td class="sayi">{_p(x["luks"])}</td></tr>'
+            for x in ozet["satirlar"]
+        )
+        return f"""
+  <p class="cevap-blok">
+    {ozet['tarih']} ölçümünde bir {ad.lower()} için internette fiyatını
+    doğrulayabildiğimiz aylık sarf kalemleri orta segmentte
+    <strong>{_p(t['orta'])}</strong> tutuyor. Ekonomik bant {_p(t['dusuk'])},
+    üst bant {_p(t['luks'])}. Bu rakam <strong>tam bakım maliyeti değil,
+    ölçülebilen alt sınırdır</strong>.
+  </p>
+
+  <h2>Aylık hesapta hangi kalemler var?</h2>
+  <div class="tablo-sarmal"><table>
+    <thead><tr><th>Kalem</th><th class="sayi">Ekonomik</th><th class="sayi">Orta</th><th class="sayi">Üst</th></tr></thead>
+    <tbody>{satirlar}</tbody>
+  </table></div>
+  <p>{ozel_not}</p>
+
+  <h2>On iki ayda ne olur?</h2>
+  <p>
+    Fiyatlar hiç değişmese ölçebildiğimiz sarf toplamı yılda
+    <strong>{_p(t['orta'] * 12)}</strong> eder. Bu yalnızca bugünkü aylık
+    tutarın on ikiyle çarpımıdır; yıl içindeki fiyat artışını tahmin etmez.
+    Site fiyatları ayın 5'i ve 20'sinde yeniden ölçtüğü için güncel aylık
+    rakamı burada, geçmişi kalem sayfalarında görebilirsiniz.
+  </p>
+
+  <h2>Bu rakama neler dahil değil?</h2>
+  <p>
+    Veteriner muayenesi, aşı, kısırlaştırma, mikroçip, ilaç, kuaför,
+    pansiyon ve eğitim dahil değil. Bunların fiyatı klinik, şehir, ırk ve
+    ihtiyaca göre değişiyor; doğrulanabilir bir liste fiyatı olmadan tek
+    rakam yazmıyoruz. Gerçek aylık maliyet bu yüzden yukarıdaki ölçülmüş
+    alt sınırın üzerinde olabilir.
+  </p>
+
+  <h2>Kendi listenizi hesaplayın</h2>
+  <p>
+    Tek seferlik kurulumla aylık kalemleri birlikte görmek için
+    <a href="/{vertikal}/hesaplayici/">{ad.lower()} masrafı hesaplayıcısını</a>
+    kullanın. Fiyat aralıkları ve kaynaklar
+    <a href="/{vertikal}/">{ad.lower()} maliyeti endeksinde</a>.
+  </p>
+"""
+    return govde
+
+
+def _sss_aylik_evcil(vertikal: str, ad: str):
+    def sorular(v: dict) -> list[tuple[str, str]]:
+        ozet = _aylik_evcil_ozeti(v, vertikal)
+        if not ozet:
+            return []
+        orta = ozet["toplamlar"]["orta"]
+        kalem_adlari = ", ".join(x["ad"].lower() for x in ozet["satirlar"])
+        return [
+            (
+                f"2026'da aylık {ad.lower()} masrafı ne kadar?",
+                f"{ozet['tarih']} ölçümünde fiyatını doğrulayabildiğimiz aylık "
+                f"sarf kalemleri orta segmentte {_p(orta)}. Bu toplam {kalem_adlari} "
+                "içerir; veteriner ve sağlık giderleri dahil değildir."
+            ),
+            (
+                f"Bir {ad.lower()} yılda ne kadar masraf çıkarır?",
+                f"Bugünkü ölçülebilen aylık sarf tutarı değişmezse on iki ayda "
+                f"{_p(orta * 12)} eder. Bu, fiyat artışını ve sağlık giderlerini "
+                "içermeyen alt sınırdır."
+            ),
+            (
+                "Veteriner ve aşı neden hesapta yok?",
+                "Klinik ücretleri şehir, işlem ve hayvanın durumuna göre değişiyor; "
+                "karşılaştırılabilir canlı fiyat listesi bulunmadan tahmin eklemiyoruz."
+            ),
+        ]
+    return sorular
 
 
 # ---------------------------------------------------------------------------
@@ -1480,6 +1634,9 @@ def _govde_sahiplenme(vertikal: str, ad: str, oteki_yol: str, oteki_ad: str):
     Kalem kalem güncel fiyatlar <a href="/{vertikal}/">{ad.lower()} masrafı
     sayfasında</a>; kendi listenizi
     <a href="/{vertikal}/hesaplayici/">hesaplayıcıdan</a> çıkarabilirsiniz.
+    Yalnızca her ay tekrar eden sarf hesabı
+    <a href="/rehber/aylik-{vertikal}-masrafi/">aylık {ad.lower()} masrafı
+    rehberinde</a>.
     {oteki_ad} ile karşılaştırma
     <a href="/rehber/kedi-mi-kopek-mi-masrafli/">şurada</a>.
   </p>
@@ -2085,6 +2242,36 @@ REHBERLER = [
         ],
     },
     {
+        "slug": "aylik-kedi-masrafi",
+        "baslik": "Aylık Kedi Masrafı 2026: Mama ve Kum Ne Kadar?",
+        "seo_baslik": "Aylık Kedi Masrafı 2026 — Mama ve Kum",
+        "meta": "Aylık kedi maması ve kum gideri ekonomik, orta ve üst fiyat "
+                "bandıyla. Veteriner dahil olmayan ölçülmüş alt sınır.",
+        "govde": _govde_aylik_evcil(
+            "kedi", "Kedi",
+            "Kedide ölçebildiğimiz tekrar eden iki kalem mama ve kum. Paket "
+            "boyu ile tüketim süresi aynı olmadığı için bu tutar kişisel kullanımda "
+            "değişebilir; tablo kategori fiyat bandını gösterir.",
+        ),
+        "sss": _sss_aylik_evcil("kedi", "Kedi"),
+        "vertikal": "kedi",
+    },
+    {
+        "slug": "aylik-kopek-masrafi",
+        "baslik": "Aylık Köpek Masrafı 2026: Mama ve Ped Ne Kadar?",
+        "seo_baslik": "Aylık Köpek Masrafı 2026 — Mama ve Ped",
+        "meta": "Aylık köpek maması ve çiş pedi gideri ekonomik, orta ve üst "
+                "fiyat bandıyla. Veteriner dahil olmayan ölçülmüş alt sınır.",
+        "govde": _govde_aylik_evcil(
+            "kopek", "Köpek",
+            "Çiş pedi her yetişkin köpekte sürekli gider değildir. Ped kullanmayan "
+            "bir köpekte yalnızca mama satırını baz alın; tüketim de ırk ve kiloya "
+            "göre değişir.",
+        ),
+        "sss": _sss_aylik_evcil("kopek", "Köpek"),
+        "vertikal": "kopek",
+    },
+    {
         "slug": "damatlik-kiralamak-mi-almak-mi",
         "baslik": "Damatlık Kiralamak mı Almak mı? Kararı Nasıl Kurarsınız",
         "seo_baslik": "Damatlık Kiralamak mı Almak mı? 2026 Karşılaştırma",
@@ -2190,6 +2377,7 @@ REHBERLER = [
         "meta": "Tek seferlik hazırlık ile aylık tekrarlayan bez masrafı ayrı ayrı, "
                 "ölçülmüş fiyatlarla. İlk yılın gerçek toplamı.",
         "govde": _govde_bebek_ilk_yil,
+        "sss": _sss_bebek_masrafi,
         "vertikal": "bebek",
     },
     {
@@ -2400,8 +2588,14 @@ def _rehber_kaynaklari_html(rehber: dict) -> str:
     )
 
 
-def _rehber_sss_html(rehber: dict) -> str:
+def _rehber_sssleri(rehber: dict, veriler: dict) -> list[tuple[str, str]]:
     sorular = rehber.get("sss") or []
+    if callable(sorular):
+        sorular = sorular(veriler)
+    return sorular or []
+
+
+def _rehber_sss_html(sorular: list[tuple[str, str]]) -> str:
     if not sorular:
         return ""
     govde = "".join(
@@ -2457,13 +2651,14 @@ def rehber_uret(rehber: dict, veriler: dict, tarih: str | None = None) -> str | 
             },
         ],
     }
-    if rehber.get("sss"):
+    sss_sorulari = _rehber_sssleri(rehber, veriler)
+    if sss_sorulari:
         json_ld["@graph"].append({
             "@type": "FAQPage",
             "mainEntity": [
                 {"@type": "Question", "name": s,
                  "acceptedAnswer": {"@type": "Answer", "text": c}}
-                for s, c in rehber["sss"]
+                for s, c in sss_sorulari
             ],
         })
 
@@ -2472,7 +2667,7 @@ def rehber_uret(rehber: dict, veriler: dict, tarih: str | None = None) -> str | 
         for r in REHBERLER if r["slug"] != rehber["slug"]
     )
     kaynaklar_html = _rehber_kaynaklari_html(rehber)
-    sss_html = _rehber_sss_html(rehber)
+    sss_html = _rehber_sss_html(sss_sorulari)
     if vconf:
         kunye = (
             f'  <p class="kunye">{olcum_tarihi} tarihli ölçümlerden · '

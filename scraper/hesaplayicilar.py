@@ -1419,6 +1419,173 @@ def alim_gucu_tanimi(veri_kok: Path | None = None) -> dict | None:
     }
 
 
+def _butce_kalemleri(veri_kok: Path | None = None) -> list[dict]:
+    """Olculmus kalemleri butce karar aracina hazirlar.
+
+    Burada yeni fiyat URETILMEZ. Arac yalnizca yayinlanan ekonomik, orta
+    ve ust segment ortancalarini kullanir. Uc bandi da olmayan ya da
+    tahmini olan kalem listeye girmez; eksik veriden karar cikarmak,
+    kullaniciya guvenilir gorunen ama dayanak olmayan bir cevap verirdi.
+    """
+    kok = veri_kok or SITE_KOK / "veri"
+    satirlar = []
+    for vertikal, conf in su.VERTIKALLER.items():
+        dosya = kok / f"{vertikal}.json"
+        if not dosya.exists():
+            continue
+        try:
+            veri_seti = json.loads(dosya.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            continue
+        tarih = veri_seti.get("guncelleme_tarihi") or "—"
+        kalemler = veri_seti.get("kalemler") or {}
+        for tanim in conf["kalemler"]:
+            veri = kalemler.get(tanim["id"]) or {}
+            if veri.get("kaynak_tipi") == "tahmini":
+                continue
+            degerler = su.segment_degerleri(veri)
+            if not all(degerler.get(k) for k in ("dusuk", "orta", "luks")):
+                continue
+            birim = "kişi başı" if tanim.get("birim") == "kisi_basi" else "adet"
+            aylik_mi = (
+                "(aylık)" in tanim["ad"].lower()
+                or tanim.get("grup") == "Aylık sarf"
+            )
+            if aylik_mi:
+                birim = "aylık"
+            kaynak_sayisi = len(
+                su.bagimsiz_siteler({tanim["id"]: veri}, {tanim["id"]})
+            ) or veri.get("kaynak_sayisi", 0)
+            satirlar.append({
+                "anahtar": f"{vertikal}:{tanim['id']}",
+                "kategori": conf["ad"],
+                "ad": su._kisa_kalem_adi(tanim["ad"]),
+                "birim": birim,
+                "dusuk": degerler["dusuk"],
+                "orta": degerler["orta"],
+                "luks": degerler["luks"],
+                "tarih": tarih,
+                "kaynak": kaynak_sayisi,
+                "urun": veri.get("toplam_urun") or 0,
+                "yol": f"/{conf['yol']}/",
+            })
+    return satirlar
+
+
+def butcem_yeter_mi_tanimi(veri_kok: Path | None = None) -> dict | None:
+    """Dogal AI sorgusunu urune cevirir: "X butceyle Y alinir mi?"""
+    kalemler = _butce_kalemleri(veri_kok)
+    if not kalemler:
+        return None
+    varsayilan = next(
+        (k["anahtar"] for k in kalemler if k["anahtar"] == "ev-kurma:firin-ocak"),
+        kalemler[0]["anahtar"],
+    )
+    kaynaklar = []
+    for kategori in dict.fromkeys(k["kategori"] for k in kalemler):
+        tarih = next(k["tarih"] for k in kalemler if k["kategori"] == kategori)
+        kaynaklar.append(
+            f"Maliyeti Ne? {kategori} veri seti — ölçüm tarihi {tarih}"
+        )
+    return {
+        "id": "butcem-yeter-mi",
+        "slug": "butcem-yeter-mi",
+        "ad": "Bütçem Yeter mi?",
+        "baslik": "Bütçem Bu Ürüne Yeter mi?",
+        "soru": "Ayırdığım bütçe seçtiğim ürün için yeterli mi?",
+        "meta": (
+            f"{len(kalemler)} ölçülmüş kalemde bütçenizin ekonomik, orta veya "
+            "üst fiyat bandına yetip yetmediğini güncel verilerle kontrol edin."
+        ),
+        "ozet": (
+            f"<strong>{len(kalemler)} ölçülmüş kalemden</strong> birini ve bütçenizi "
+            "seçin. Araç, bütçeyi güncel ekonomik, orta ve üst fiyat bandıyla "
+            "karşılaştırır; marka ya da özellik uydurmadan hangi seviyeye "
+            "ulaştığınızı söyler."
+        ),
+        "formul": (
+            "Bütçe &lt; ekonomik → yetersiz &nbsp;·&nbsp; ekonomik ≤ bütçe &lt; orta → "
+            "ekonomik banda yeter &nbsp;·&nbsp; orta ≤ bütçe &lt; üst → orta banda yeter"
+        ),
+        "kaynaklar": kaynaklar,
+        "alanlar": [
+            {
+                "id": "kalem", "etiket": "Ne almak istiyorsunuz?", "tip": "select",
+                "varsayilan": varsayilan,
+                "secenekler": [
+                    (k["anahtar"], f"{k['kategori']} — {k['ad']} ({k['birim']})")
+                    for k in kalemler
+                ],
+            },
+            {"id": "butce", "etiket": "Ayırdığınız bütçe (TL)", "tip": "number",
+             "varsayilan": "50000", "adim": "1"},
+        ],
+        "alan_notu": (
+            "Sonuç bir ürün önerisi değil, fiyat bandı kontrolüdür. Kategori "
+            "sayfalarındaki ürün karması marka, kapasite ve özelliğe göre değişir; "
+            "özellik uygunluğu ayrıca doğrulanmalıdır."
+        ),
+        "js": """
+      const k = BUTCE_KALEMLERI.find((x) => x.anahtar === deger("kalem"));
+      const butce = sayi("butce");
+      if (!k || butce <= 0) return null;
+      let karar, hedef, fark;
+      if (butce < k.dusuk) {
+        hedef = k.dusuk;
+        fark = k.dusuk - butce;
+        karar = "Ekonomik fiyat bandının altında; ekonomik bandın ortasına " + para(fark) + " eksik.";
+      } else if (butce < k.orta) {
+        hedef = k.orta;
+        fark = k.orta - butce;
+        karar = "Ekonomik banda yeter; orta bandın ortasına " + para(fark) + " eksik.";
+      } else if (butce < k.luks) {
+        hedef = k.luks;
+        fark = k.luks - butce;
+        karar = "Orta banda yeter; üst bandın ortasına " + para(fark) + " eksik.";
+      } else {
+        hedef = k.luks;
+        fark = butce - k.luks;
+        karar = "Üst fiyat bandının ortasına yeter; bütçede " + para(fark) + " kalır.";
+      }
+      const dayanak = k.kaynak + " bağımsız kaynak" + (k.urun ? ", " + k.urun + " ürün" : "");
+      return [
+        ["Seçilen kalem", null, false, "not", k.kategori + " — " + k.ad + " (" + k.birim + ")"],
+        ["Bütçeniz", butce, false],
+        ["Ekonomik bandın ortası", k.dusuk, false],
+        ["Orta bandın ortası", k.orta, false],
+        ["Üst bandın ortası", k.luks, false],
+        ["Karar", null, true, "not", karar],
+        ["Veri dayanağı", null, false, "not", dayanak + " · " + k.tarih],
+      ];""",
+        "sss": [
+            (
+                "Bütçemin yeterli olduğuna nasıl karar veriliyor?",
+                "Bütçeniz seçtiğiniz kalemin ölçülmüş ekonomik, orta ve üst segment "
+                "ortancalarıyla karşılaştırılır. Sonuç tek bir mağazanın en ucuz "
+                "ürününe değil, birden fazla kaynaktaki fiyat bandına dayanır."
+            ),
+            (
+                "Neden belirli bir marka veya model önermiyor?",
+                "Çünkü bu araç fiyat ölçüyor; enerji sınıfı, kapasite, malzeme ve "
+                "ürün özelliği ölçmüyor. Ölçmediğimiz bir özelliğe dayanarak model "
+                "önermek güvenilir olmaz."
+            ),
+            (
+                "Bütçe üst banda yetiyorsa istediğim ürünü kesin bulur muyum?",
+                "Hayır. Segment tutarları kategori ortancasıdır, stok garantisi veya "
+                "tekil ürün teklifi değildir. Satın almadan önce güncel mağaza "
+                "fiyatını ve aradığınız özellikleri ayrıca kontrol edin."
+            ),
+            (
+                "Fiyatlar ne zaman yenileniyor?",
+                "Ölçümlü veri setleri her ayın 5'i ve 20'sinde yenilenir. Sonuç "
+                "tablosunda seçtiğiniz kalemin ölçüm tarihi ayrıca gösterilir."
+            ),
+        ],
+        "_butce": kalemler,
+    }
+
+
 def _slug_haritasi() -> dict[str, dict]:
     return {h["slug"]: h for h in HESAPLAYICILAR}
 
@@ -1431,7 +1598,8 @@ def _form_html(h: dict) -> str:
     for a in h["alanlar"]:
         if a["tip"] == "select":
             secenekler = "".join(
-                f'<option value="{d}">{m}</option>' for d, m in a["secenekler"]
+                f'<option value="{d}"{(" selected" if str(d) == str(a.get("varsayilan")) else "")}>{m}</option>'
+                for d, m in a["secenekler"]
             )
             girdi = f'<select id="{a["id"]}" name="{a["id"]}">{secenekler}</select>'
         else:
@@ -1679,6 +1847,13 @@ def _hesap_js(h: dict) -> str:
         onek = ("<script>const TUFE_SERISI = "
                 + json.dumps(h["_tufe"]["seri"], ensure_ascii=False)
                 + ";</script>\n")
+    if h.get("_butce"):
+        # Fiyat bantlari build-time gomulu. Arama/AI botu sayfanin neye
+        # dayandigini JS calistirmadan gorur; kullanici etkilesiminde ayni
+        # anlik veri kullanilir, istemci tarafinda ikinci kaynak fetch edilmez.
+        onek += ("<script>const BUTCE_KALEMLERI = "
+                 + json.dumps(h["_butce"], ensure_ascii=False)
+                 + ";</script>\n")
     param = "RESMI_PARAMETRELER ? Object.values(RESMI_PARAMETRELER) : []"
     if not any("Kanunu" in k or "Tebliğ" in k or "Bakanlığı" in k for k in h["kaynaklar"]):
         param = "[]"  # saf matematik - mevzuata bagli degil
@@ -1761,13 +1936,13 @@ def dizin_uret() -> str:
 {kartlar}  </div>
 
   <section>
-    <h2>Bunlar ölçülmüş fiyatlardan nasıl farklı?</h2>
-    <p>Sitenin geri kalanı gerçek fiyat <em>ölçümü</em> yapar: ürünler
-      e-ticaret kaynaklarından ayda iki kez derlenir, her rakamın yanında
-      kaynak sayısı ve ölçüm tarihi durur. Bu sayfadaki hesaplar ise
-      ölçüm değil <em>türetme</em>: kıdem tazminatı bir kanun formülü,
-      gelir vergisi bir tebliğ tarifesi. İkisini bilinçli olarak ayrı
-      tutuyoruz — biri ölçülür, diğeri mevzuattan okunur.</p>
+    <h2>Sonuç neye dayanıyor?</h2>
+    <p>Burada iki ayrı tür hesap var. Vergi, maaş ve tazminat sonuçları
+      ölçüm değil; mevzuat ya da matematikten <em>türetme</em> yapar.
+      Bütçem Yeter mi?
+      aracı ise sitedeki güncel fiyat <em>ölçümlerini</em> ekonomik, orta ve
+      üst bantla karşılaştırır. Hangi türün kullanıldığı her aracın kaynak
+      bölümünde açıkça yazılıdır.</p>
     <p>Ölçülmüş fiyatlar için: {su.TUM_ENDEKS_LINKLERI}</p>
   </section>
 """
@@ -1779,9 +1954,12 @@ def dizin_uret() -> str:
 
 
 def tum_hesaplayicilar(veri_kok: Path | None = None) -> list[dict]:
-    """Sabit liste + (veri varsa) alim gucu. Veri yoksa o sayfa hic
+    """Sabit liste + veriyle uretilen araclar. Veri yoksa o sayfalar hic
     uretilmez ve sitemap'e de girmez."""
     liste = list(HESAPLAYICILAR)
+    butce = butcem_yeter_mi_tanimi(veri_kok)
+    if butce:
+        liste.insert(0, butce)
     ag = alim_gucu_tanimi(veri_kok)
     if ag:
         liste.insert(0, ag)
