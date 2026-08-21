@@ -4,8 +4,8 @@ name: Aylık Veri Güncelleme
 # (bkz. CLAUDE.md "Modüller" -> 6. Aylık otomasyon). Sıra:
 #   motor.py (kazıma) -> agrega.py (birleştirme) -> sayfa_uret.py (statik HTML)
 # Zamanlanmış tetikleyici SADECE varsayılan (default) branch'teki workflow
-# dosyasından çalışır - bu dosya main'e alınana kadar cron ateşlemez.
-# workflow_dispatch her zaman elle tetiklenebilir (branch fark etmeksizin).
+# dosyasından çalışır. Varsayılan branch değişirse bu workflow da aynı
+# branch'te kalmalı; workflow_dispatch elle tetiklenebilir.
 
 on:
   schedule:

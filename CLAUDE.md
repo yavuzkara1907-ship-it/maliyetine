@@ -1,8 +1,62 @@
 # Maliyetine.com.tr — Proje Hafızası
 
 > Her oturumun başında önce bunu oku. Kararları değiştirmeden önce
-> Yavuz'a sor. Oturum sonunda "Teknik Durum" ve "Yapılacaklar"
-> bölümlerini güncelle.
+> Yavuz'a sor. Oturum sonunda "GÜNCEL SON DURUM" ve "Yapılacaklar"
+> bölümlerini güncelle; tarihî bölümlere yalnızca gerçekten yeni ders
+> varsa ek yap.
+
+## GÜNCEL SON DURUM (2026-08-22 kontrolü)
+> **Önce burayı baz al.** Aşağıdaki uzun bölüm proje günlüğü ve ders
+> arşividir; içinde tarihî kayıt olarak kalması gereken eski kararlar var.
+> Karar verirken güncel gerçek bu bölümdür.
+
+- Branch `claude/new-session-csygpf`. Remote:
+  `github.com/yavuzkara1907-ship-it/maliyetine.git`. Yerel branch
+  `75ceda9 Aylık veri güncellemesi 2026-08-20` tabanına alındı; çalışma
+  ağacında yalnızca bu hafıza/workflow not düzeltmeleri var. Veri commit'i
+  canlıda doğrulandı.
+- Site artık tek konu değil, **veri ürünü + hesaplayıcı ağı**:
+  **7 vertikal** (`dugun`, `ev-kurma`, `okul`, `bebek`, `kedi`, `kopek`,
+  `arac`), **122 ölçülen kalem**, **24 bağımsız `/hesap/` hesaplayıcı**,
+  **180 sitemap URL'i**.
+- Yayın modeli: statik dosyalar Cloudflare tarafında **Worker** ile servis
+  ediliyor. Eski Pages kurulum notları tarihî kayıt; bugün doğru altyapı
+  "statik çıktı + Cloudflare Worker + GitHub Actions"tır.
+- Otomasyon ayda iki kez çalışacak şekilde tasarlandı: ayın **5'i ve
+  20'si**. **20 Ağustos 2026 koşusu kontrol edildi:** GitHub Actions run
+  `32339864463` başarıyla bitti, `maliyetine-bot` `75ceda9` commit'ini attı
+  ve canlı sitede 7 vertikal JSON'u + 7 CSV dosyası `2026-08-20` olarak 200
+  dönüyor.
+- Düğünde tahmini kalan kalem sayısı artık düşük: `orkestra-dj` ve
+  `nikah-islemleri`. `taki-altin`, `yemek-ikram`, `fotografci`,
+  `organizasyon`, `kuafor-makyaj`, `gelin-arabasi` gerçek kaynağa taşındı.
+  `yemek-ikram` **bilgi amaçlıdır**, hiçbir toplamda toplanmaz.
+- EVDS/TÜFE entegrasyonu var: `veri/enflasyon.json` üretilmiş, sayfalarda
+  TCMB EVDS kaynaklı resmî enflasyon blokları görünüyor. TÜFE hiçbir zaman
+  TL fiyatın yerine geçmez.
+- Search Console artık veri veriyor. **2026-08-22 canlı export:** tarih
+  filtresi "Son 3 ay" olsa da fiilî veri aralığı **2026-07-24 –
+  2026-08-19**; **3.277 gösterim, 21 tık, %0,6 TO, konum 25,9, 306 sorgu**.
+  Önceki tur 555 gösterim / 4 tık / 115 sorguydu; büyüme gerçek.
+- Cloudflare `www` → kök domain 301 redirect **tamamlandı ve canlıda
+  doğrulandı** (2026-08-22). Eski kural aktif görünüyordu ama expression,
+  `URI Full wildcard` alanına yazıldığı için çalışmıyordu. Kural
+  `www ve HTTP -> kök HTTPS 301` olarak düzeltildi; `https://www...` ve
+  `http://www...` artık `https://maliyetine.com.tr/...` adresine 301
+  dönüyor, query string korunuyor, kök HTTPS 200 kalıyor.
+- En yüksek kaldıraçlı açık işler:
+  1. 301 sonrası Search Console'u 7-14 gün sonra tekrar kontrol et:
+     sayfa tablosunda `www` sinyali düşüyor mu, kök hosta birleşiyor mu?
+  2. Search Console sorgu boşlukları: kira gelir vergisi, hisse/borsa
+     maliyet, tapu/ipotek harcı, temettü ve düşük CTR'li iyi pozisyon
+     sorguları. Yeni sayfa açmadan önce mevcut sayfanın cannibalize olup
+     olmayacağı kontrol edilmeli.
+  3. Tek kaynaklı kalem oranı hâlâ takip edilmeli. EV-kurma 0/42 tek
+     kaynaklı duruma geldi; kedi/kopek kısmen kapandı ama tamamen bitmedi.
+  4. Düğünde kalan iki tahmini kalem (`nikah-islemleri`, `orkestra-dj`)
+     metodolojik karar + kaynak bulununca kapatılmalı.
+  5. Sosyal/Meta tarafına geçilecekse önce sayfa bazlı ölçüm kartı
+     üretimi korunmalı; Instagram metin değil görsel ister.
 
 ## Proje Sahibi
 - Yavuz. Türkçe konuşur. Doğrudan iletişim ister, uzun açıklama değil
@@ -30,7 +84,7 @@ motorları için.
 - Çözüm: AI'ın BİLMEDİĞİ veriyi üretmek. AI'ın taze yerel fiyat verisi
   yok; enflasyon her rakamı 3 ayda eskitiyor.
 - GEO hedefi: AI motorlarının alıntılamak zorunda olduğu kaynak olmak.
-  Hedef cümle: "Maliyetine'ye göre 2026'da ... ortalama X TL."
+  Hedef cümle: "Maliyeti Ne? verilerine göre 2026'da ... ortalama X TL."
 - Yıl konsepti markanın parçası: her yıl "2027 versiyonu". Yıllık
   karşılaştırmalar ("düğün maliyeti %X arttı") bedava basın malzemesi.
 
@@ -45,12 +99,13 @@ motorları için.
 - Metodoloji sayfası zorunlu. Güven = tek ürün. Rakip çöp sitelerden
   tek farkımız bu.
 - **İSTİSNA (2026-07-24, Yavuz'un açık talimatıyla):** kazıma kaynağı
-  henüz bulunamamış kalemler (takı/altın, yemek/ikram, fotoğrafçı,
-  orkestra/DJ, gelin arabası, kuaför/makyaj, organizasyon, nikah
-  işlemleri) için WebSearch ile genel piyasa araştırmasından türetilmiş
-  TEK SEFERLİK bir tahmini değer kullanılıyor ("bunlar önemli, senin
-  bilgin dahilinde olan fiyatlandırmayı kullan" talimatı). Bu istisna
-  KATI ŞARTLARLA sınırlı, sessizce genişletilmemeli:
+  henüz bulunamamış bazı düğün kalemleri için WebSearch ile genel piyasa
+  araştırmasından türetilmiş TEK SEFERLİK tahmini değer kullanıldı
+  ("bunlar önemli, senin bilgin dahilinde olan fiyatlandırmayı kullan"
+  talimatı). Bu istisna kalıcı model değildir. **Güncel durumda tahmini
+  kalanlar yalnızca `orkestra-dj` ve `nikah-islemleri`;** diğer hizmet
+  kalemleri gerçek kaynağa taşındı. Bu istisna KATI ŞARTLARLA sınırlı,
+  sessizce genişletilmemeli:
   - Her tahmini kalem `assets/js/dugun-kalemler.js` ve
     `scraper/sayfa_uret.py`'de `kaynak_tipi: "tahmini"` ile ayrı
     tanımlanır, gerçek kaynaklı kalemlerle AYNI listeye/koda KARIŞTIRILMAZ.
@@ -66,7 +121,8 @@ motorları için.
     tahmini kalemler" bölümü) açıkça anlatır, gizlemez.
 
 ## ÇOK KAYNAK KURALI (önemli)
-- **Tek kaynağa BAĞLI KALINMAZ.** Akakçe sadece başlangıç kaynağıdır.
+- **Tek kaynağa BAĞLI KALINMAZ.** Akakçe artık bırakıldı; kural bir
+  kaynağa değil, kaynağa bağımlı kalmama disiplinine aittir.
 - Sebep 1 (kırılganlık): tek kaynak tasarım değiştirir/engellerse endeks
   tamamen durur.
 - Sebep 2 (güvenilirlik): tek kaynak o sitenin fiyat politikasını
@@ -79,25 +135,27 @@ motorları için.
      daha gerçekçi segment fiyatı)
   3. İkinci el / ilan platformları (alt segment için)
   4. Sektör platformları (düğün, tadilat vb. hizmet listeleri)
-  5. **Doğrulama katmanı: TÜİK TÜFE alt kalemleri** (giyim, lokanta,
-     kişisel bakım, mobilya). Kendi verimizle karşılaştırılır.
+  5. **Doğrulama katmanı: TÜİK TÜFE alt kalemleri / TCMB EVDS**
+     (giyim, lokanta, dayanıklı mallar vb.). Kendi verimizle
+     karşılaştırılır; TL fiyatın yerine geçmez.
 - **Çapraz doğrulama uyarısı:** kaynaklar arası fark %30'u aşarsa
   sistem uyarı versin (ya kazıma hatası ya farklı segment — ikisi de
   bilinmesi gereken şey). TÜİK trendiyle ters düşen sıçramalar
   karantinaya alınır.
-- Metodoloji sayfasında "resmi verilerle çapraz doğrulanmıştır" ifadesi
-  hedeflenir — ciddi güven sinyali.
+- Metodoloji sayfasında resmî verinin rolü açık yazılır: TÜFE trend
+  doğrulamasıdır, fiyat kaynağı değildir.
 
 ## Ürün Kararları
-- Format: her kalem için düşük / orta / lüks segment (persentil:
-  ≤P25 düşük, P25–P75 orta, >P75 lüks) + min/medyan/max + örneklem
-  sayısı + tarih.
-- Aylık güncelleme. Aylık JSON'lar biriktirilir → fiyat geçmişi
-  grafikleri (GEO + basın malzemesi).
-- Başlangıç 2 vertikal: (1) Düğün maliyeti, (2) **Ev kurma maliyeti**
-  (2026-07-25'te Yavuz'un kararıyla "ev tadilatı"nın yerine geçti — ürün
-  bazlı olduğu için daha hızlı ilerliyor). Sonra: ev tadilatı, 0 km araç,
-  tatil, ilkokul, üniversite.
+- Format: her kalem için ekonomik / orta / üst segment (persentil:
+  ≤P25 ekonomik, P25–P75 orta, >P75 üst) + min/ortalama diye görünen
+  ortanca + max + örneklem sayısı + tarih. Eski "lüks" adı terk edildi;
+  üst segment piyasanın mutlak lüksü değil, ölçülen örneklemin üst
+  çeyreğidir.
+- Ölçüm ayda iki kez: ayın 5'i ve 20'si. JSON snapshot'lar biriktirilir →
+  fiyat geçmişi ve Search Console/PR malzemesi.
+- Yayındaki vertikaller: düğün, ev-kurma, okul, bebek, kedi, köpek,
+  araç. Ev tadilatı/tatil/üniversite gibi alanlar hâlâ adaydır ama
+  işçilik/dinamik fiyat nedeniyle aceleye getirilmez.
 - Her vertikal üçlüsü: hesaplayıcı + endeks sayfası + metodoloji sayfası.
 - Şehir/segment kırılımı hedeflenir.
 - UYARI: Kaynak seçimi metodolojinin kendisidir. Genel e-ticaret
@@ -133,7 +191,7 @@ Hesaplayıcı bu kalemleri toplar. Her kalem: segment + kaynak + tarih.
 6. Davetiye
 7. Gelin ayakkabısı, duvak, aksesuar
 
-**Hizmet bazlı (zor — kaynak sınırlı, "başlangıç fiyatı" uyarısı ile):**
+**Hizmet bazlı (zor — tanım ve segment tuzağı var):**
 8. Düğün salonu / davet (kişi başı × davetli sayısı) — **2026-07-25'te
    İKİ TANIMLI VARYANTA bölündü:** `salon-yemekli` (menü dahil kişi başı)
    ve `salon-kokteyl` (yemeksiz). Sebep: mekan listeleme sayfasındaki
@@ -141,23 +199,28 @@ Hesaplayıcı bu kalemleri toplar. Her kalem: segment + kaynak + tarih.
    kokteyl) ve ne ölçtüğü belirsizdi. Detay sayfalarında iki fiyat ayrı
    ayrı yazıyor, artık ayrı kalem olarak derleniyor.
 9. Yemek/ikram (salona dahil değilse ayrı) — **`salon-yemekli` seçiliyse
-   ÇİFT SAYIM olur**, hesaplayıcı otomatik devre dışı bırakır; endeks
-   sayfasının varsayılan senaryosunda da toplama girmez.
-10. Fotoğraf ve video
-11. Orkestra / DJ
-12. Gelin arabası
-13. Kuaför ve makyaj
-14. Organizasyon/süsleme (çiçek, masa düzeni)
-15. Nikah işlemleri (resmi harçlar)
+   ÇİFT SAYIM olur**. Güncel karar daha katı: `yemek-ikram` bilgi
+   amaçlıdır, hiçbir toplamda toplanmaz; mekanların menü bedeli için
+   referans notu olarak gösterilir.
+10. Fotoğraf ve video — **2026-07-26'da GERÇEK KAYNAĞA taşındı**
+    (`dugun.com` İstanbul tablosu, tek değer).
+11. Orkestra / DJ — hâlâ tahmini. Çoğu salonda paket içinde geçebilir;
+    ayrı kalem mi paket kalemi mi olacağı metodolojik karar ister.
+12. Gelin arabası — **2026-07-26'da GERÇEK KAYNAĞA taşındı**.
+13. Kuaför ve makyaj — **2026-07-26'da GERÇEK KAYNAĞA taşındı**.
+14. Organizasyon/süsleme (çiçek, masa düzeni) — **2026-07-26'da GERÇEK
+    KAYNAĞA taşındı**.
+15. Nikah işlemleri (resmi harçlar) — hâlâ tahmini; düşük etkili ama
+    resmî kaynakla kapatılabilir.
 
 **Ayrı gösterilecek:**
 16. Balayı (ayrı bölüm; tatil vertikaliyle veri paylaşır — aynı kaynak
     iki vertikali besler)
 
-- Kaynağı bulunamayan kalemler ilk sürümde tahmini değerle konur ve
-  sayfada AÇIKÇA "tahmini" olarak işaretlenir. Dürüstlük ürünün parçası.
+- Kaynağı bulunamayan kalemler yalnızca açık "Tahmini" etiketiyle
+  yayınlanır. Güncel tahmini kalemler: `orkestra-dj`, `nikah-islemleri`.
 - Hesaplayıcı girdileri: şehir, davetli sayısı, segment (ekonomik/orta/
-  lüks), opsiyonel kalem seçimleri.
+  üst), opsiyonel kalem seçimleri.
 
 ## EV KURMA VERTİKALİ — Kalem Listesi (2026-07-25 başlatıldı)
 - Yavuz'un talimatıyla düğün'den sonraki 2. vertikal olarak seçildi
@@ -165,10 +228,10 @@ Hesaplayıcı bu kalemleri toplar. Her kalem: segment + kaynak + tarih.
   istedi — plan güncellendi).
 - **Tamamen ürün bazlı** (CLAUDE.md'nin "Vertikal veri tipi ayrımı"
   notuna göre kolay kategori) — her kalem tek bir fiziksel üründür,
-  hizmet/işçilik karmaşıklığı yok. Mevcut motor.py/Trendyol şablonu
-  değişiklik gerektirmeden çalışıyor (yapısal olarak; gerçek kazıma
-  Yavuz'un yerelinde doğrulanmayı bekliyor).
-- **42 kalem, tamamı Trendyol (tek kaynak, ilk tur):** ilk 14'e (buzdolabı,
+  hizmet/işçilik karmaşıklığı yok. İlk tur Trendyol'la başladı, sonra
+  Amazon, Karaca/English Home, Madame Coco, MediaMarkt, Doğtaş, Bellona
+  ve İstikbal gibi kaynaklarla genişledi.
+- **İLK TUR (tarihî kayıt): 42 kalem, tamamı Trendyol.** İlk 14'e (buzdolabı,
   çamaşır makinesi, bulaşık makinesi, fırın/ocak, mikrodalga, koltuk
   takımı, yemek masası takımı, yatak, gardırop, TV ünitesi, robot
   süpürge, perde, aydınlatma, klima) Yavuz'un ChatGPT'den aldığı
@@ -190,9 +253,9 @@ Hesaplayıcı bu kalemleri toplar. Her kalem: segment + kaynak + tarih.
   malzemeleri, ilk yardım çantası, saklama kutuları vb.) kasıtlı olarak
   dışarıda bırakıldı — tek bir net "ürün" karşılığı yok, dedike kazıma
   girdisine değmez.
-  **ÇOK KAYNAK KURALI henüz karşılanmıyor** (hepsi tek kaynaklı) —
-  ikinci bağımsız kaynak (Hepsiburada, Vatan, Koçtaş, IKEA vb.) sonraki
-  turda aranmalı.
+  **GÜNCELLEME (2026-08-09):** EV-kurma artık 42/42 kalemde gerçek veri
+  üretiyor ve **tek kaynaklı kalem kalmadı**. Orta segment son yerel
+  veriyle 369.371 TL, üst segment 600.942 TL; bağımsız site sayısı 9.
 - ✅ **Kazıma DOĞRULANDI (2026-07-25, Yavuz'un yerelinde):** `python
   motor.py` çalıştırıldı, **42 kalemin 42'si de gerçek ürün döndürdü**
   (hepsi Trendyol, JSON-LD/CSS katmanıyla). Düğün'de yaşanan "bazı
@@ -201,8 +264,9 @@ Hesaplayıcı bu kalemleri toplar. Her kalem: segment + kaynak + tarih.
   altında 42 snapshot dosyası mevcut, hepsinde segment kırılımı
   (düşük/orta/lüks) dolu.
 - ✅ **Frontend TAMAMLANDI (2026-07-25):** `/ev-kurma/` üçlüsü
-  (endeks + hesaplayıcı + metodoloji) yayında, gerçek veriyle.
-  **Orta segment toplam: 353.827 TL** (ekonomik 188.949 / lüks 576.699).
+  (endeks + hesaplayıcı + metodoloji) yayında, gerçek veriyle. İlk
+  yayın toplamı 353.827 TL idi; güncel rakamlar veri dosyalarından gelir,
+  bu satırdaki tarihî tutar karar aldırmak için kullanılmamalı.
   Tarayıcıda uçtan uca doğrulandı (üç segmentin de bağımsız hesapla ile
   birebir eşleştiği, 42 satırın tamamının render olduğu, console'da JS
   hatası olmadığı, tüm sayfalardaki tüm linklerin 200 döndüğü).
@@ -216,9 +280,13 @@ Hesaplayıcı bu kalemleri toplar. Her kalem: segment + kaynak + tarih.
   zaten tamamen jenerikti; her iki vertikal de aynı dosyayı kullanıyor.
 
 ## SEO / Keşfedilebilirlik Durumu (2026-07-25)
-- **Google şu an bizi GÖRMÜYOR.** `site:maliyetine.com.tr` sorgusu boş —
+- **GÜNCELLEME (2026-08-09): Google artık veri veriyor.** Search Console
+  28 günde 555 gösterim, 4 tık, ortalama konum 39,4 ve 115 sorgu
+  gösterdi. En büyük teknik sorun `www`/kök host bölünmesi; 301 redirect
+  hâlâ en önemli dış ayar.
+- **TARİHÎ İLK GÜN NOTU:** `site:maliyetine.com.tr` sorgusu boştu —
   beklenen, site 2026-07-25'te yayına girdi ve sitemap hiçbir arama
-  motoruna gönderilmedi. (Arama sırasında **rakip tespit edildi:**
+  motoruna gönderilmemişti. (Arama sırasında **rakip tespit edildi:**
   `maliyeti.com.tr` — "Her Şeyin Maliyetini Öğrenin!", indeksli, "Havuz
   Maliyeti 2025" gibi sayfaları var. İncelemeye değer, bkz. Yapılacaklar.)
 - **Teknik SEO denetimi yapıldı, düzeltildi:**
@@ -386,7 +454,7 @@ Yavuz "daha önemli gördüğün bir eksik var mı?" diye sordu. Ölçüldü,
    Google'ın **YMYL** (Your Money or Your Life) kategorisine giriyor;
    bu kategoride kimliği belirsiz siteler kasıtlı olarak bastırılıyor.
    AI motorları da kaynak seçerken yayıncı kimliğine bakıyor —
-   "Maliyetine'ye göre" diye alıntılanmak istiyorsak "Maliyetine kim?"
+   "Maliyeti Ne? verilerine göre" diye alıntılanmak istiyorsak "Maliyeti Ne? kim?"
    sorusunun cevabı sitede olmalı.
    → `/hakkimizda/` (neden kurduk, veriyi nasıl elde ediyoruz,
    **bağımsızlık beyanı**, gelir modeli şeffaflığı, **düzeltme
@@ -2278,26 +2346,31 @@ Search Console'da da **URL tahmin edip 404 aldim** (drilldown linki).
 Bu ders artik tarayicida da tekrar etti.
 
 
-## ARAMA VERISI: SORGU KUMELERI VE DURUMLARI (2026-08-09, guncellenecek)
-Search Console 28 gun: **555 gosterim · 4 tik · konum 39,4 · 115 sorgu.**
-Bu bolum HER SEARCH CONSOLE TURUNDA guncellenmeli — dagilirsa bir
-sonraki turda kaybolur.
+## ARAMA VERISI: SORGU KUMELERI VE DURUMLARI (2026-08-22, guncel)
+Search Console export: tarih filtresi **Son 3 ay**, fiilî veri aralığı
+**2026-07-24 – 2026-08-19**. Toplam: **3.277 gosterim · 21 tik ·
+%0,6 TO · konum 25,9 · 306 sorgu**. Önceki tur 555 gosterim / 4 tik /
+115 sorguydu; gosterim ~5,9x, tik ~5,25x buyudu.
 
-| kume | gosterim | durum |
-|---|---|---|
-| kira geliri vergisi | ~72 | sayfa var · 2 SSS eklendi (ceza, tarla) |
-| damatlik / gelinlik | ~63 | **tek tik buradan** · kiralama rehberi eklendi |
-| hisse / borsa maliyet | ~51 | "borsa" kelimesi EKLENDI · lot hesaplayici acildi |
-| temettu | ~37 | baslik "geliri/verimi" oldu · **temettu VERGISI eksik** |
-| tapu harci | ~18 | sayfa var · "ipotek harci" eksik |
-| birikim / bilesik | ~11 | sayfa var |
-| issizlik | ~10 | sayfa var |
-| kdv matrah | ~5 | sayfa var, "matrah" gecıyor |
-| aylik kedi masrafi | 7 | **cevap bloguna aylik sarf eklendi** |
-| defter fiyatlari | 7 | sayfa var |
-| ceyiz ne kadar tutar | 1 (GIRIS) | **baslik sorguyla eslestirildi** |
-| camasir makinesi 2026 | ~5 | sayfa var |
-| yemeksiz dugun salonu | 2 | sayfa var (salon-kokteyl) |
+Host bolunmesi sayfa tablosunda acikti: kok host **16 tik / 2.514
+gosterim**, `www` host **5 tik / 857 gosterim**. Cloudflare 301
+2026-08-22'de duzeltildi; bir sonraki GSC turunda `www` sinyalinin
+koke kayip kaymadigi kontrol edilmeli.
+
+| kume | sorgu sayisi | tik | gosterim | durum |
+|---|---:|---:|---:|---|
+| kira gelir vergisi | 36 | 0 | 254 | Sayfa var ama pozisyon 70+; tek is yeni sayfa degil, niyet/cevap blogu ve otorite. |
+| damatlik / gelinlik | 14 | 3 | 229 | Damatlik ana kazanan; gelinlikte `www` bolunmesi ve CTR izlenecek. |
+| hisse / borsa maliyet | 26 | 0 | 171 | "borsa" eklendi ama pozisyon hâlâ zayıf; hızlı cevap + varyant başlıkları kontrol. |
+| tapu / ipotek harci | 57 | 0 | 148 | Tapu sayfası var; ipotek, KKTC ve "tapu masrafı" varyantları ayrı niyet mi bakılacak. |
+| temettu | 14 | 0 | 83 | "oran/kar payı/gelir/formül" varyantları geliyor; vergi boşluğu hâlâ açık. |
+| dugun salon / yemek / ceyiz | 23 | 3 | 64 | Çeyiz yüksek CTR; "1.000 kişilik düğün yemeği" iyi pozisyonlu yeni fırsat. |
+| beyaz esya | 3 | 1 | 59 | Konum ~6; başlık/meta/snippet CTR işi, yeni sayfa değil. |
+| defter fiyatlari | 1 | 0 | 47 | Konum ~6,7; snippet/başlıkla tık alınabilir. |
+| kedi/kopek aylik | 3 | 0 | 24 | "aylık kedi masrafı 2026" konum 11; cevap bloğu ve iç link izlenecek. |
+| bebek/dogum | 15 | 0 | 21 | Hastane doğum sorguları geliyor ama pozisyon zayıf; tıbbi/ücret iddiasında dikkat. |
+
+Ek sinyal: Ürün snippet'leri **40 gosterim, konum 5,55**, ancak 0 tik.
 
 ### KAPATILAN BOSLUKLAR
 1. **"borsa" kelimesi hisse-maliyet sayfasinda HIC GECMIYORDU** — oysa
@@ -2479,7 +2552,7 @@ yerde de korunmasi gerekiyor; birini duzeltmek otekini kapsamiyor.**
   kapatıldı, canlı robots.txt artık depodaki dosyayla BİREBİR AYNI.**
   Doğrulandı: hiç `Disallow` yok, `Content-Signal` satırı yok; GPTBot,
   ClaudeBot, PerplexityBot ve Googlebot canlı sayfaya **HTTP 200**
-  alıyor; www üzerinden de temiz; sitemap 200 ve 7 URL içeriyor.
+  alıyor; www üzerinden de temiz. Yerel sitemap şu an **180 URL** içeriyor.
   Kapatma yolu (ileride tekrar gerekirse): Cloudflare Dashboard → zone →
   **AI Crawl Control → Robots.txt → "Disable robots.txt configuration"**
   (varsayılan "Content signals policy" idi).
@@ -2530,7 +2603,7 @@ yerde de korunmasi gerekiyor; birini duzeltmek otekini kapsamiyor.**
     depodaki 7 `Allow: /` girdisi ve Sitemap satırı görünmeli.
 
 ## İçerik SEO Stratejisi (2026-07-25)
-- **Ana prensip:** Maliyetine klasik blog sitesi değil; veri ürünü. İçerik
+- **Ana prensip:** Maliyeti Ne? klasik blog sitesi değil; veri ürünü. İçerik
   SEO'su, genel tavsiye yazılarıyla değil, Google'ın "helpful, reliable,
   people-first content" çizgisine uygun şekilde **özgün veri + yöntem +
   karar yardımcısı** üretmek için yapılır. Kaynak notu:
@@ -2566,15 +2639,16 @@ yerde de korunmasi gerekiyor; birini duzeltmek otekini kapsamiyor.**
   veya "Türkiye geneli" diye dürüst yazılır. Kalem sayfası, ana sayfadaki
   satırı kopyalamaz; trend, dahil/dahil değil, segment açıklaması ve
   hesaplayıcı bağlantısıyla ek değer üretir.
-- **E-E-A-T / güven sinyali:** Maliyetine'nin uzmanlığı "piyasa verisini
+- **E-E-A-T / güven sinyali:** Maliyeti Ne?'nin uzmanlığı "piyasa verisini
   toplama ve metodoloji"dir. Her sayfada "kim/how/why" net olmalı:
-  yayıncı Maliyetine, veri nasıl toplandı, AI varsa rafineri rolünde
+  yayıncı Maliyeti Ne?, veri nasıl toplandı, AI varsa rafineri rolünde
   kullanıldı, nihai rakamlar gerçek kaynak/tahmini ayrımıyla verildi.
 - **İlk içerik kümeleri:**
   - Düğün: düğün maliyeti 2026, İstanbul düğün maliyeti, düğün salonu
     kişi başı fiyatı, yemekli/kokteyl farkı, gelinlik fiyatları,
     damatlık fiyatları, alyans fiyatları, altın bilezik fiyatı, davetiye,
-    nikah şekeri, fotoğrafçı/organizasyon tahmini notları.
+    nikah şekeri, fotoğrafçı/organizasyon gerçek ölçüm notları,
+    orkestra/DJ ve nikah işlemleri tahmini notları.
   - Ev kurma: ev kurma maliyeti 2026, sıfırdan ev eşyası maliyeti,
     çeyiz/eşya listesi fiyatları, beyaz eşya bütçesi, mobilya bütçesi,
     yatak odası bütçesi, mutfak ürünleri, buzdolabı, çamaşır makinesi,
@@ -2582,16 +2656,19 @@ yerde de korunmasi gerekiyor; birini duzeltmek otekini kapsamiyor.**
 - **Ölçüm:** Google Search Console'da sorgu bazında izlenecekler:
   gösterim, tıklama, ortalama konum, hangi long-tail soruların geldiği,
   hangi sayfaların indekslenmediği. AI görünürlüğü için ayrıca manuel
-  "Maliyetine'ye göre..." alıntı kontrolleri yapılır.
+  "Maliyeti Ne? verilerine göre..." alıntı kontrolleri yapılır.
 
 ## Altyapı Kararları (KESİN)
-- Domain: **maliyetine.com.tr** — alındı, DNS Cloudflare'e taşınıyor.
-- Hosting: **statik site + Cloudflare Pages**. Ücretsiz. Backend YOK.
+- Domain: **maliyetine.com.tr** — alındı, DNS Cloudflare'de aktif.
+- Hosting: **statik site + Cloudflare Worker**. Backend YOK. Eski
+  "Cloudflare Pages" notları tarihî kayıt; canlı dağıtım Worker üzerinden.
 - WordPress KULLANILMAYACAK.
 - Hesaplayıcılar tarayıcıda JavaScript ile çalışır.
 - Kod deposu: GitHub `maliyetine` (private).
-- Otomasyon: GitHub Actions (aylık cron).
-- A/CNAME kayıtları elle eklenmez; Pages custom domain ekleyince oluşur.
+- Otomasyon: GitHub Actions (ayın 5'i ve 20'si).
+- `www` → kök domain 301 yönlendirmesi Cloudflare Redirect Rules ile
+  **tamamlandı** (2026-08-22). Eski hatalı kural wildcard alanına expression
+  yazdığı için çalışmıyordu; canlı doğrulamada `www` 301, kök HTTPS 200.
 - E-posta: gerekirse Cloudflare Email Routing (ücretsiz).
 - Basit tut: gereksiz framework yok, hedef ~10-20K satır toplam kod.
 
@@ -2636,7 +2713,8 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
 - **Çapraz doğrulama (ÇOK KAYNAK KURALI):** aynı (vertikal, kalem) için
   ≥2 sağlıklı bağımsız site varsa genel medyanları karşılaştırılır; fark
   %30'u aşarsa uyarı loglanır ve `{kalem}_capraz-dogrulama_{tarih}.json`
-  yazılır. TÜİK entegrasyonu henüz yok (bkz. Yapılacaklar).
+  yazılır. Resmî EVDS/TÜFE serisi trend doğrulama katmanı olarak var; TL
+  fiyatın yerine geçmez.
 - **Nazik kazıma:** gerçekçi User-Agent, istekler arası 2+ sn bekleme,
   retry + backoff, ayda bir çalıştırma.
 - **robots.txt doğrulaması otomatik:** `urllib.robotparser` ile her URL
@@ -2728,7 +2806,11 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
   robots.txt formatlarına (çoklu User-agent grubu, joker karakter, bot
   koruması) karşı test edilmeden güvenilmemeli.
 
-## Teknik Durum
+## Teknik Durum (tarihî ayrıntı; güncel durum yukarıda)
+> Bu bölüm ilk kazıma/motor kuruluşunun ayrıntılı günlüğüdür. İçinde o
+> gün doğru olan ama sonra kapanmış durumlar var. Güncel aksiyon için
+> **GÜNCEL SON DURUM** ve **Yapılacaklar** bölümünü esas al.
+
 - GitHub repo `maliyetine` oluşturuldu.
 - **Kazıma motoru v0.6**: robots.txt kontrolü `protego`'ya taşındı (bkz.
   yukarıdaki "DÜZELTİLDİ" notu) + ÇOK KAYNAK KURALI'na göre site-bazlı
@@ -2976,10 +3058,10 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
     GİZLİYOR** (üyelik/teklif-al iş modeli) — bu bir kazıma/seçici hatası
     değil, sitenin ürün kararı. Her iki girdi de **BIRAKILDI**
     (`aktif: false, durum: "birakildi"`), geçici teşhis scripti silindi.
-  - **"fotoğrafçı" kalemi artık SIFIR aktif kaynaklı** (Armut da ayrı
-    bir teşhiste kesin bırakılmıştı) — bu kalem için acilen yeni bir
-    kaynak aranmalı. "gelinlik" kalemi etkilenmedi, Trendyol (23 ürün)
-    ile hâlâ kapsanıyor.
+  - **TARİHÎ NOT:** Bu noktada "fotoğrafçı" sıfır aktif kaynaklıydı
+    (Armut da ayrı bir teşhiste kesin bırakılmıştı). 2026-07-26'da
+    `dugun.com` İstanbul tablosuyla gerçek kaynağa taşındı. "gelinlik"
+    kalemi bu teşhisten etkilenmedi.
 - **Trendyol/davetiye de aynı turda teşhis edildi, DÜZELTİLDİ:** diğer
   Trendyol sayfalarında çalışan `.price-value`/
   `.seller-store-default-price-value` seçicisi bu sayfada eşleşmiyordu.
@@ -2998,7 +3080,10 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
   zaten 3 çalışan kaynağa sahip (Trendyol 18, Vakko 48, Beymen 46 ürün),
   Boyner olmadan da ÇOK KAYNAK KURALI hedefi fazlasıyla aşılıyor.
 
-## Modüller (sırayla)
+## Modüller (tarihî kayıt; güncel özet yukarıda)
+> Bu bölüm ilk kuruluş günlüğüdür. "Ne yapmalıyım?" sorusunun cevabı için
+> önce **GÜNCEL SON DURUM** ve **Yapılacaklar** bölümüne bak.
+
 1. **Kazıma hattı** — ✅✅ **motor GERÇEK VERİ üretiyor (2026-07-24).**
    `python motor.py`'nin son çalıştırılmış hali:
    - **Çalışan kaynaklar (11):** Trendyol/gelinlik (23, JSON-LD),
@@ -3022,8 +3107,9 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
      fotoğrafçı + gelinlik-moda-evleri** (2026-07-24 kesinleşti — kart/
      isim seçicileri doğru ama site bu iki kalemde fiyatı kasıtlı
      olarak gizliyor, 13 karttan 0'ında görünür fiyat var, üyelik/
-     teklif-al modeli — kazıma hatası değil). **"fotoğrafçı" kalemi
-     artık sıfır aktif kaynaklı, acil yeni kaynak aranmalı.**
+     teklif-al modeli — kazıma hatası değil). **TARİHÎ NOT:** o gün
+     "fotoğrafçı" sıfır aktif kaynaklıydı; 2026-07-26'da `dugun.com`
+     İstanbul tablosuyla gerçek kaynağa taşındı.
    - **ÇOK KAYNAK KURALI 2 gerçek uyarı üretti:**
      - alyans: Atasay (19.405 TL) vs Trendyol (4.298 TL) — %351 fark.
      - damatlık: Vakko (71.970 TL) vs Trendyol (3.240 TL) — **%2121 fark**
@@ -3167,516 +3253,67 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
    "bağımsız kaynak" sayısına dahil edilmiyor; düğün ana cevap bloğu bu
    yüzden 10 değil 5 çalışan kaynağı gösteriyor. Doğrulama:
    Python 110/110, JS 19/19, 16 sayfada JSON-LD parse OK, iç link OK.
-5. **Yayın** — Cloudflare Pages, custom domain, SSL. Repo build gerektirmiyor
-   (statik dosyalar kökte) — Cloudflare Pages ayarı: Build command yok,
-   Output directory `/`. **Yavuz'un tarafında kalan iş:** Cloudflare
-   hesabından repo'yu Pages'e bağlamak + custom domain + nameserver
-   propagasyonu (Claude Code'un Cloudflare erişimi yok).
-6. **Aylık otomasyon** — ✅ **Tamamlandı (2026-07-24).**
+5. **Yayın** — ✅ Canlıda Cloudflare **Worker** üzerinden statik dosyalar
+   servis ediliyor. Eski Pages kurulum adımları tarihî kayıt; bugün
+   bakılacak yer Worker/Cloudflare Redirect Rules tarafı. `www` → kök domain
+   301 yönlendirmesi 2026-08-22'de düzeltildi ve canlıda doğrulandı.
+6. **Aylık otomasyon** — ✅ **Tamamlandı (2026-07-24), sonra ayda iki kez
+   çalışacak şekilde güncellendi.**
    `.github/workflows/aylik-veri-guncelleme.yml`: `python motor.py` →
    `python agrega.py` → `python sayfa_uret.py` → değişiklik varsa commit+push.
    **2026-07-25'te ev-kurma eklendi:** agrega+sayfa_uret adımı artık
    `for vertikal in dugun ev-kurma` döngüsüyle her iki vertikali de
    işliyor, commit'e `ev-kurma/` dizini de dahil.
-   Tetikleyiciler: aylık cron (`0 6 1 * *`, sadece default branch'teki
-   workflow dosyasından ateşler) + `workflow_dispatch` (elle tetikleme).
-   **DÜZELTME (2026-07-25):** eskiden burada "main'e alınana kadar
-   çalışmayacak" yazıyordu — bu YANLIŞ. Repoda `main` diye ayrı bir dal
+   Tetikleyiciler: cron `0 6 5,20 * *` + `workflow_dispatch` (elle
+   tetikleme).
+   **DÜZELTME (2026-07-25):** eskiden cronun ayrı bir `main` dalı
+   beklediği sanılmıştı — bu YANLIŞ. Repoda `main` diye ayrı bir dal
    YOK; **default branch zaten `claude/new-session-csygpf`**
    (`origin/HEAD` bunu gösteriyor). Yani cron ateşlenecek durumda.
    Not: bu branch adı bir üretim dalı için tuhaf; Yavuz istediğinde
-   GitHub'dan `main` olarak yeniden adlandırılabilir (Pages'in production
-   branch ayarı da o zaman güncellenmeli). **Kritik düzeltme:** `scraper/kaynak_gecmisi.json` artık
+   GitHub'dan `main` olarak yeniden adlandırılabilir; Cloudflare deploy /
+   default branch ayarı da o zaman güncellenmeli.
+   **Kritik düzeltme:** `scraper/kaynak_gecmisi.json` artık
    `.gitignore`'da DEĞİL — GitHub Actions runner'ları her seferinde
    sıfırdan başladığı için, bu dosya commit edilmezse `saglik_kontrolu()`
    hiçbir zaman gerçek bir geçmiş biriktiremez, her ay "ilk çalıştırma"
    sanıp anomali tespiti hiç çalışmazdı. Workflow bu dosyayı da commit
    ediyor. Ayrıca `/sitemap.xml` eklendi (robots.txt zaten ona işaret
    ediyordu ama dosya yoktu).
-7. **Fiyat geçmişi grafikleri** (3+ ay veri sonrası).
+7. **Fiyat geçmişi** — ✅ sayfalarda görünmeye başladı; daha uzun seri
+   biriktikçe yıllık karşılaştırma ve basın malzemesi güçlenecek.
 
-## Yapılacaklar (kod dışı)
-- [x] Domain alındı, GitHub repo kuruldu
-- [x] Cloudflare nameserver propagasyonu TAMAM (2026-07-25 doğrulandı: zone aktif, SOA dönüyor)
-- [x] robots.txt kontrolü (protego ile düzeltilmiş script) — Hepsiburada/
-      Dolap gerçekten erişim yasağı (RET doğru), diğerleri ONAY.
-- [x] Akakçe → Cloudflare bot-doğrulaması nedeniyle BIRAKILDI (Yavuz
-      onayladı), yerine Trendyol genişletildi (5 kalem + 2 yeni kalem:
-      nikah-şekeri, davetiye).
-- [x] Kritik bug düzeltildi: `Accept-Encoding: br` header'ı brotli
-      decoder'sız ortamda yanıtı bozuyordu.
-- [x] **`python motor.py` gerçek veri üretiyor (2026-07-24):** 8 kaynak
-      çalışıyor. alyans (%351) ve damatlık (%2121) çapraz-doğrulama
-      uyarısı verdi — Yavuz'a soruldu, **karar: kalemler bölünmüyor,
-      olduğu gibi belgelenip bırakılıyor** (bkz. Teknik Durum).
-- [x] Beymen/Boyner/Vakko damatlığa, Beymen gelinliğe eklendi (Yavuz'un
-      önerisiyle) — Vakko damatlık hemen çalıştı (48 ürün), diğerleri
-      CSS seçici bekliyor.
-- [x] **Beymen/damatlık (Erkek Smokin) CSS seçici ÇÖZÜLDÜ (2026-07-24):**
-      `.m-productCard` / `.m-productCard__desc` / `.m-productCard__newPrice`
-      — `sayfa_tani.py` çıktısından doğrudan doğrulandı, `test_motor.py`'ye
-      kilit test eklendi.
-- [x] **DüğünBuketi'nin 3 sayfası CSS seçici ÇÖZÜLDÜ (2026-07-24):**
-      `.bg-card` / `a.font-semibold.tracking-tight` / `.font-bold` —
-      üçü de aynı şablonu paylaşıyor, salon sayfasından doğrulanıp
-      hepsine uygulandı.
-- [x] **Yavuz'un yerelinde `python motor.py` ile GERÇEK doğrulama
-      yapıldı (2026-07-24) — 2 yeni bug bulundu ve düzeltildi:**
-      DüğünBuketi'nin 3 sayfası CSS doğru olmasına rağmen `min_fiyat`
-      eşiği (5000/3000/1000) "başlangıç fiyatı" rakamlarının (685 TL
-      gibi) çok üzerindeydi, TÜM kartları eledi → 100'e düşürüldü.
-      Beymen/Erkek Smokin CSS doğru olmasına rağmen `render_gerekli:
-      true` yüzünden Playwright kullanıyordu — **Beymen'in Playwright'a
-      requests'ten FARKLI/BOŞ sayfa sunduğu ortaya çıktı** (muhtemelen
-      headless tarayıcı tespiti) → `render_gerekli: false` yapıldı
-      (Beymen'in hem smokin hem gelinlik girdisinde).
-- [x] **Beymen/Erkek Smokin ve DüğünBuketi/salon DOĞRULANDI (2026-07-24):**
-      düzeltmeler sonrası Yavuz'un yerelinde `git pull` + `python motor.py`
-      ile tekrar çalıştırıldı (ilk deneme yanlışlıkla pull edilmemiş eski
-      kodla yapılmıştı) — **Beymen/Erkek Smokin: 46 ürün, ÇALIŞIYOR.**
-      **DüğünBuketi/salon: 8 ürün, ÇALIŞIYOR.**
-- [x] **Endeks sayfalarının schema.org/GEO bloğu güçlendirildi
-      (2026-07-25):** `sayfa_uret.py` artık Organization + BreadcrumbList +
-      zengin FAQPage + Dataset/DataDownload/variableMeasured üretiyor.
-      Ek FAQ'larda olmayan segment için genel medyan kullanılmıyor
-      (Televizyon örneğinde "lüks 46.499 TL" hatası düzeltildi).
-      `dugun/index.html` ve `ev-kurma/index.html` yeniden üretildi.
-- [x] **İçerik SEO stratejisi proje hafızasına eklendi (2026-07-25):**
-      Google Search Central'ın people-first/helpful content ilkelerine göre
-      Maliyetine'nin içerik yolu belirlendi: veri hub'ları, kalem sayfaları,
-      senaryo/listeler, kaynaklı cevap blokları ve ince/tekrarlı sayfadan
-      kaçınma.
-- [x] **İlk içerik SEO uygulaması (2026-07-25):** `/dugun/` ve `/ev-kurma/` endeks
-      sayfalarına görünür içerik blokları ekle: "bu rakama dahil olanlar",
-      "dahil olmayanlar", "en pahalı kalemler", "segment nasıl okunmalı",
-      "hesaplayıcıya git" iç linkleri. Bunlar ham HTML'de olmalı.
-- [x] **Kalem sayfası şablonu çıkarıldı (2026-07-25):** gerçek verisi güçlü kalemler için
-      statik sayfa üretimi (`/{vertikal}/{kalem}-fiyatlari/`). İlk adaylar:
-      düğün için gelinlik, damatlık, alyans, düğün salonu; ev-kurma için
-      buzdolabı, çamaşır makinesi, koltuk takımı, gardırop, televizyon.
-- [x] **İç link ağı kuruldu (2026-07-25):** ana sayfa → vertikal hub; hub → hesaplayıcı,
-      metodoloji, kalem sayfaları; kalem sayfaları → hub + hesaplayıcı +
-      ilgili kalemler. Anchor text açık olsun ("gelinlik fiyatları 2026"
-      gibi), "buraya tıkla" kullanılmasın.
-- [ ] **Google Search Console kurulumu/doğrulaması:** sitemap gönder,
-      index coverage + query raporlarını takip et. İlk ölçüm metriği:
-      "düğün maliyeti 2026", "ev kurma maliyeti", kalem fiyat sorguları.
-- [x] **Beymen/gelinlik KESİN BIRAKILDI (2026-07-24):** `render_gerekli:
-      false` sonrası da hâlâ 0 ürün - Erkek Smokin aynı seçici+ayarla
-      çalıştığı için hem "yanlış seçici" hem "Playwright engeli"
-      ihtimalleri ayıklandı. Geriye tek açıklama kalıyor: bu URL'nin ham
-      HTML'i gerçekten ürün içermiyor VE Beymen headless tarayıcıyı da
-      engelliyor. `aktif: false, durum: "birakildi"` yapıldı - gelinlik
-      için Beymen'den başka kaynak aranmalı.
-- [x] **Boyner kök nedeni bulundu (2026-07-24):** sayfa JS-"skeleton"
-      yükleme halinde geliyor (`b-skeleton` class'ları), gerçek kart
-      JS ile sonradan doluyor. `sayfa_tani.py` bunu artık otomatik
-      tespit edip Playwright'a düşüyor (`_iskelet_mi()` eklendi).
-- [x] **Boyner tekrar teşhis edildi (2026-07-24), düşük önceliğe
-      alındı:** düzeltilmiş `sayfa_tani.py` Playwright'a düştü, gerçek
-      fiyatları gördü (`price_priceMain__DrVVQ`, "16.999,99 TL" gibi)
-      ama sezgisel kart-tarayıcı tam kart sarmalayıcısını yakalayamadı.
-      CSS seçici hâlâ dolu değil — damatlık zaten 3 çalışan kaynağa
-      sahip olduğu için (Trendyol/Vakko/Beymen) bunu kovalamayı bıraktık.
-- [x] **Trendyol/davetiye ÇÖZÜLDÜ ve DOĞRULANDI (2026-07-24):** bu
-      sayfanın fiyatı `.price-value` değil `.sale-price` class'ında -
-      Trendyol'un farklı kategori sayfalarında birden fazla fiyat
-      şablonu var. `.sale-price` fallback olarak eklendi. Yavuz'un
-      yerelinde `python motor.py` ile tekrar çalıştırıldı: **8 ürün,
-      ÇALIŞIYOR.**
-- [x] **DüğünBuketi/fotoğrafçı + gelinlik-moda-evleri KESİN BIRAKILDI
-      (2026-07-24):** İlk teşhis ("fiyat `<strong>` etiketinde")
-      YANLIŞ çıktı - düzeltme sonrası da hâlâ 0 ürün döndü. Geçici bir
-      script ile TÜM 13 kart tek tek kontrol edildi: **0/13 kartta
-      görünür fiyat var** - hepsi "Fiyat bilgisi için üye olun"
-      gösteriyor. Sayfadaki `<strong>...TL</strong>` metinleri
-      kartların DIŞINDA, alakasız bir UI elemanına ait. Site bu iki
-      kalemde fiyatı KASITLI OLARAK GİZLİYOR (üyelik/teklif-al modeli)
-      - kazıma hatası değil. `aktif: false, durum: "birakildi"` yapıldı,
-      geçici teşhis scripti silindi.
-- [x] **Armut/fotoğrafçı BIRAKILDI, kesin teşhis (2026-07-24):** agregat
-      tek-ürün JSON-LD sayfası, gerçek teklifler React (hash'li
-      class'lar) ile client-side render — kolay kazınabilir değil,
-      `aktif: false` yapıldı.
-- [ ] **ACİL: "fotoğrafçı" kalemi artık SIFIR aktif kaynaklı**
-      (Armut + DüğünBuketi ikisi de bırakıldı) — yeni bağımsız kaynak
-      aranmalı.
-- [ ] Cimri/gelinlik: Akakçe gibi Cloudflare'e mi düştü, belirsiz —
-      düşük öncelik (gelinlik zaten trendyol+beymen ile kapsanıyor,
-      dugunbuketi/gelinlik de bırakıldığı için artık trendyol tek
-      gerçek kaynak - ikinci bir kaynak aranabilir)
-- [ ] "salon" için 2. bağımsız kaynak bulma (şu an sadece dugunbuketi)
-- [x] **Site iskeleti + hesaplayıcı + endeks + metodoloji sayfaları
-      YAZILDI (2026-07-24):** `agrega.py` (13 test), `sayfa_uret.py`
-      (9 test), `/dugun/hesaplayici/` (10 Node test), `/dugun/`,
-      `/dugun/metodoloji/`, `/index.html`, `/assets/css/style.css`,
-      `/robots.txt`. Playwright ile duman testi yapıldı, JS hatası yok.
-- [x] **ÇÖZÜLDÜ (2026-07-25): gerçek veri commit edildi, site artık
-      GERÇEK RAKAM gösteriyor.** Yavuz'un yerelinde `python3 motor.py`
-      çalıştırıldı (13 kaynak-grubu, 13 sağlıklı) → `scraper/veri/`
-      commit edildi → `agrega.py` + `sayfa_uret.py` çalıştırıldı.
-      **Bu ilk gerçek uçtan uca çalıştırmada kritik bir bug bulundu:**
-      `sayfa_uret.py` çöktü (`TypeError`, `None`'a format string
-      uygulanmaya çalışılıyordu) - kök neden, `agrega.py`'nin motor.py'nin
-      GERÇEK çapraz-doğrulama rapor şemasını yanlış varsaymış olmasıydı
-      (uydurma alan adları `medyanlar`/`fark_yuzdesi` kullanılmıştı,
-      gerçek şema `site_medyanlari`/`fark_orani` - ayrıca motor.py esiği
-      AŞMAYAN kalemler için de rapor yazıyor, `uyari: false` ile, bu
-      filtrelenmiyordu). Düzeltildi (75 test PASS), gerçek veriyle
-      doğrulandı: `/dugun/` artık "414.549 TL" gibi gerçek bir toplam,
-      7 gerçek kaynaklı + 8 tahmini kalem, 2 gerçek çapraz doğrulama
-      uyarısı (damatlık %2042, alyans %352) gösteriyor. Yavuz kendi
-      yerelinde doğruladı ("evet gördüm").
-      **Yan not:** Yavuz'un yerelinden GitHub'a İLK `git push` denemesi
-      kimlik doğrulama sorunu yaşadı (GitHub artık şifre kabul etmiyor,
-      Personal Access Token gerekiyor) - PAT oluşturup Keychain'e
-      kaydedilmesiyle çözüldü, artık sorunsuz push edebiliyor.
-- [x] **EV KURMA VERTİKALİ YAYINA HAZIR (2026-07-25).** Kazıma
-      doğrulandı (42/42 kalem gerçek ürün döndürdü), `agrega.py
-      --vertikal ev-kurma` çalıştırıldı (`/veri/ev-kurma.json`),
-      `sayfa_uret.py` vertikal-agnostik hale getirildi, `/ev-kurma/`
-      üçlüsü (endeks+hesaplayıcı+metodoloji) üretildi, ana sayfa +
-      sitemap + GitHub Actions güncellendi. Orta segment: **353.827 TL**
-      (ekonomik 188.949 / lüks 576.699).
-      Tarayıcıda uçtan uca doğrulandı. 87 Python + 15 Node testi PASS.
-- [x] **Dürüstlük bug'ı düzeltildi (2026-07-25):** "N bağımsız kaynak"
-      ifadesi kalem başına `kaynak_sayisi`'nı topluyordu, yani aynı siteyi
-      her kalemde tekrar sayıyordu (düğün "20" diyordu, gerçek 10). Artık
-      benzersiz site sayılıyor. Ayrıca tek kaynaklı vertikaller için
-      görünür "tek kaynak uyarısı" eklendi.
-- [x] **PARALEL OTURUM ÇAKIŞMASI çözüldü (2026-07-25).** Bu oturum
-      ev-kurma frontend'ini yaparken BAŞKA bir oturum da aynı işi yapıp
-      GitHub'a push etmiş (commit'ler `9317a46`, `6c0a1e5`) — 11 dosyada
-      çakışma. Yavuz'a soruldu, **karar: bu oturumun sürümü temel alınsın,
-      diğerinin iyi kısımları graft edilsin.** Sebep: diğer sürüm
-      "N bağımsız kaynak" bug'ını içeriyordu (ev-kurma için "42 bağımsız
-      kaynaktan derlendi" diyordu, oysa hepsi Trendyol). Graft edilenler:
-      daha açıklayıcı endeks ifadesi ("sıfırdan, orta segment bir evi
-      eşyalandırmanın (beyaz eşya + mobilya + mutfak + tekstil)"),
-      hesaplayıcıda "şu an için tek kaynak: Trendyol" notu, ana sayfa
-      kart metni, ve düğün `veri/dugun.json`'ının yeniden agrega
-      edilmesi. **DERS:** `-X ours` ile merge, çakışMAYAN hunk'ları
-      yine de alır — iki sızıntı bu yüzden oldu (ana sayfada ev-kurma
-      kartı iki kez göründü ve "ev tadilatı" kartı kayboldu;
-      `sayfa_uret.py`'ye bu sürümde var olmayan bir değişkene
-      (`konfig`) atıf yapan ölü satır girdi). İkisi de yakalanıp
-      düzeltildi, ama merge sonrası diff'i satır satır okumak şart.
-- [x] **Düğün verisi tazelendi (2026-07-25):** `scraper/veri/dugun/`
-      güncellenmişti ama `agrega.py --vertikal dugun` çalıştırılmamıştı,
-      yani `/veri/dugun.json` bayattı. Çalıştırıldı — düğün orta segment
-      toplamı **414.549 → 427.203 TL** oldu (gelin-ayakkabısı örneklemi
-      8'den 9 ürüne çıkmış). **Kural: `motor.py` çalıştıktan sonra HER
-      vertikal için `agrega.py` + `sayfa_uret.py` de çalıştırılmalı** —
-      GitHub Actions bunu zaten döngüyle yapıyor, elle çalıştırmalarda
-      atlanmamalı.
-- [~] **Ev-kurma 2. bağımsız kaynak — KISMİ İLERLEME (2026-07-25), GERÇEK VERİYE ALINDI.**
-      Yavuz'un "deneyelim ama olmuyorsa zorlayıp vakit kaybetmeyelim"
-      talimatıyla zaman kutulu bir tur yapıldı. **KAZANÇ: 42 kalemden
-      2'si artık ÇOK KAYNAK KURALI'nı karşılıyor:**
-      - **Karaca/tencere-seti** — 46-48 ürün, JSON-LD, CSS seçici
-        GEREKMEDİ. `durum: onaylandi`.
-      - **English Home/nevresim-takimi** — 44 ürün, JSON-LD, CSS seçici
-        GEREKMEDİ. `durum: onaylandi`.
-      İkisi de gerçek `motor.py` çalıştırmasıyla doğrulandı ve
-      **çapraz doğrulama ev-kurma'da İLK KEZ gerçekten devreye girdi**:
-      nevresim Trendyol 619 TL vs English Home 1.280 TL (%107 fark),
-      tencere Trendyol 3.299 vs Karaca 6.249 (%89 fark). İkisi de
-      kazıma hatası DEĞİL — pazaryeri vs marka mağazası segment farkı
-      (düğün'deki Vakko/Trendyol %2042 farkının çok daha makul hali).
-      Mevcut karar geçerli: kalemler bölünmüyor, fark belgeleniyor.
-      **Tam `motor.py` çalıştırıldı (57 kaynak-grubu, 56 sağlıklı):**
-      ev-kurma artık "3 bağımsız kaynak" diyor ve **tek-kaynak uyarısı
-      sayfadan kendiliğinden kayboldu** (kod doğru davrandı, elle
-      müdahale gerekmedi). Ev-kurma orta segment toplamı 353.827 →
-      **387.035 TL** (yeni kaynaklar medyanı yukarı çekti: Karaca ve
-      English Home marka mağazası, Trendyol pazaryeri).
-      Düğün: 427.203 → **418.101 TL**.
-      **SAĞLIK KONTROLÜ İLK KEZ GERÇEKTEN DEVREYE GİRDİ:** Vakko/damatlık
-      normalde ~40 ürün dönerken 0 döndü → otomatik karantinaya alındı,
-      endekse DAHİL EDİLMEDİ (`scraper/veri/karantina/`). Vakko daha önce
-      48 ürün veriyordu, site yapısı değişmiş olabilir — düşük öncelik,
-      damatlık zaten Trendyol+Beymen ile kapsanıyor, ama bir sonraki
-      turda `sayfa_tani.py` ile bakılabilir.
-- [ ] **Kalan 40 kalem için 2. kaynak (sonraki tur).** Bu turda elenenler
-      ve SEBEPLERİ (tekrar denemeye değip değmeyeceğini bilmek için):
-      - **robots.txt RET (denenmez):** Hepsiburada, Teknosa, Koçtaş, n11.
-      - **MediaMarkt** — robots.txt ONAY, sayfa çekilebiliyor (700KB) ama
-        JSON-LD/microdata YOK → CSS seçici gerekir. Düşük öncelik ama
-        ölü değil; `sayfa_tani.py` ile teşhis edilebilir. Beyaz eşya +
-        elektronik kapsadığı için en değerli aday.
-      - **Vatan / IKEA / Bellona** — denenen kategori URL'leri 404 verdi,
-        yani **site engeli DEĞİL, sadece doğru URL bulunamadı.** robots.txt
-        üçünde de ONAY. Doğru kategori URL'si bulunursa çalışabilir.
-      - **Karaca'nın diğer kalemleri — ÖNEMLİ METODOLOJİ NOTU.**
-        `category-sitemap.xml`'de 4030 kategori URL'si var ama çoğu
-        KAMPANYA sayfası ("12 kişilik yemek takımı alana çatal bıçak
-        hediye") — bunlardan fiyat toplamak segment temsilini bozar.
-        Kampanya işaretleri filtrelenip test edilen jenerik sayfalar ise
-        MARKA SERİSİ bazlı çıktı ve sadece 5-7 ürün döndürdü
-        (`bakir-tava`, `biodiamond-tava`) — örneklem çok küçük.
-        `tencere-seti` (48 ürün) şanslı bir istisnaydı. Yani Karaca'da
-        kalem başına doğru jenerik kategori sayfası ELLE seçilmeli;
-        slug tahmini tutmuyor (`/tava-seti` 404).
-- [x] **Bu makinede network erişimi VAR (2026-07-25) — eski sandbox notu
-      artık geçerli değil.** CLAUDE.md'nin "Bilinen sandbox kısıtı"
-      bölümü, Claude Code'un hedef sitelere 403 aldığını söylüyordu. Bu
-      oturum Yavuz'un MacBook'unda doğrudan terminalde çalıştığı için
-      Trendyol/Karaca/English Home'a gerçek istek atılabildi, robots.txt
-      taraması ve gerçek kazıma buradan yapıldı. **Yeni kaynak araştırması
-      artık Yavuz'un elle çalıştırmasını beklemek zorunda değil.**
-- [x] **SALON KALEMİ TANIMI DÜZELTİLDİ + detay sayfası katmanı eklendi
-      (2026-07-25).** Hizmet kalemleri turunun ilk işi. Bulgu: salon
-      kalemi mekan listeleme sayfasındaki "başlangıç fiyatı"nı okuyordu;
-      bu mekanın EN DÜŞÜK seçeneği, çoğu mekanda **yemeksiz kokteyl**
-      fiyatı — yani "salon" kaleminin ne ölçtüğü belirsizdi, üstüne
-      ayrıca 700 TL/kişi tahmini yemek ekleniyordu.
-      Detay sayfalarında iki fiyat **ayrı ayrı** yazıyor:
-      `Yemekli kişi başı` ve `Kokteyl kişi başı`.
-      **Yavuz'un kararı: hesaplayıcıda kullanıcı seçsin.** Uygulanan:
-      - `motor.py`'ye **detay sayfası katmanı** (bkz. Kazıyıcı Mimarisi).
-      - `salon-yemekli` (11 mekan, orta medyan **1.100 TL/kişi**) ve
-        `salon-kokteyl` (10 mekan, orta medyan **800 TL/kişi**) ayrı
-        kalemler. Eski `salon` girdisi `aktif: false, durum: degistirildi`
-        — silinmedi, eski yöntemin ne ölçtüğü kayıtlı kalsın.
-      - **ÇİFT SAYIM KORUMASI:** kalem tanımlarına `secim_grubu` (radyo
-        davranışı), `yemek_dahil`, `yemek_kalemi` ve `varsayilan_dahil`
-        alanları eklendi. Yemekli seçilince yemek/ikram kutusu kilitlenir
-        ve açıklama gösterilir; kokteyl seçilince açılır. Endeks
-        sayfasında iki varyant da fiyatıyla GÖRÜNÜR ama toplama biri
-        girer — girmeyen satır `Toplamda değil` etiketli.
-      - Cevap metnindeki "gerçek X + tahmini Y" kırılımının gösterilen
-        toplamla **aritmetik tuttuğu** ayrı bir regresyon testiyle
-        kilitlendi (toplama girmeyen kalemler kırılımda da sayılmaz).
-      - Metodoloji sayfasına "yemekli mi kokteyl mi" bölümü + tablo.
-      - Testler: motor +6, JS +4, sayfa_uret +4.
-- [x] **TAHMİNİ YEMEK DEĞERİ 2.8 KAT YANLIŞ ÇIKTI, gerçek ölçüme
-      taşındı (2026-07-25). Yavuz'un yakaladığı hata.** Salon iki
-      varyanta bölündükten sonra hesaplayıcı şunu gösteriyordu:
-      yemekli senaryo tahmini 161.500 TL, kokteyl senaryo 266.500 TL.
-      Yavuz "bir hata olabilir mi?" diye sordu — haklıydı:
-      - Yemekli salon = 1.100 TL/kişi (menü dahil).
-      - Kokteyl + ayrı tahmini yemek = 800 + 700 = 1.500 TL/kişi.
-      - Aynı düğün, **%36 fark**. Mekanın kendi menüsünü almak,
-        kokteyl alıp dışarıdan yemek getirmekten 60.000 TL ucuz
-        görünüyordu — ekonomik olarak saçma.
-      **Kök neden:** WebSearch'ten türetilen tahmin (700 TL/kişi)
-      gerçekten çok yüksekti. Artık ölçülebiliyor: AYNI mekanın kendi
-      yemekli/kokteyl fiyat farkı = o mekanda yemeğin kişi başı bedeli.
-      Gerçek veri (2026-07-25, 9 mekan): orta segment **410 TL/kişi**
-      (düşük 200, lüks 785). Tahmin **1.7 kat** sapmış.
-      **Yavuz'un kararı: gerçek veriden türet, tahmini olmaktan çıkar.**
-      Uygulanan:
-      - `motor.detay_urunler`'e **fark modu** (`cikarilacak_regex`):
-        iki fiyatın farkı AYNI SAYFADA, yani AYNI MEKAN içinde alınır.
-      - **Neden aynı-mekan şart:** "iki kalemin medyanını çıkar"
-        kestirmesi farklı sonuç verir — mekan setleri farklı (bazı
-        mekan kokteyl sunmuyor) ve farkların medyanı ≠ medyanların
-        farkı (bizim veride 250 TL'ye karşı 300 TL). Bu ayrım özel bir
-        testle kilitlendi.
-      - Kokteyl > yemekli çıkarsa (tutarsız veri) o mekan atlanır ve
-        loglanır — sessizce kabul edilmez.
-      - `yemek-ikram` KIRMIZI ÇİZGİ kuralı gereği tahmini listeden
-        çıkarılıp gerçek kaynağa taşındı (hem `sayfa_uret.py` hem
-        `dugun-kalemler.js`). Bir kalemin iki listede birden
-        bulunmadığını doğrulayan test eklendi.
-      - **SONRA DAHA DERİN BİR SORUN BULUNDU ve kalem TOPLAMDAN
-        ÇIKARILDI (`bilgi_amacli: True`).** Ölçüm sonrası hesaplayıcı
-        şunu gösterdi: yemekli 1.200 TL/kişi, kokteyl 500 + yemek 410 =
-        910 TL/kişi → **%24 tutarsızlık.** Halbuki fark tanım gereği
-        `yemekli − kokteyl` olduğu için `kokteyl + fark = yemekli`
-        **matematiksel bir kimlik olmalıydı.** Kök neden: **her kalem
-        BAĞIMSIZ segmentleniyor** — "orta segment yemekli mekan"
-        (yemekli fiyatı P25–P75 arası olanlar) ile "orta segment kokteyl
-        mekan" AYNI MEKANLAR DEĞİL. Üç ayrı mekan alt kümesinin medyanı
-        toplanıyordu. **Yavuz'un kararı: toplamdan çıkar, bilgi olarak
-        göster.** Uygulandı: `bilgi_amacli` alanı (hiçbir senaryoda
-        toplanmaz), hesaplayıcıda seçim kutusu YOK, yerine salon seçimine
-        göre dinamik not ("mekanların menü bedeli medyanı kişi başı
-        410 TL"). Endeks tablosunda `Bilgi amaçlı — toplamda değil`
-        etiketi. 2 yeni test bunu kilitliyor.
-      - **BU YAPISAL SINIR GENEL:** persentil bazlı segmentleme, aynı
-        varlığın (mekan/ürün) farklı kalemlerdeki segmentini hizalamıyor.
-        Yani **aynı varlıktan türeyen kalemler toplanmamalı.** İleride
-        benzer varyantlı kalem eklenirse (ör. otelde/kırda düğün, yazlık/
-        kışlık paket) aynı tuzak var. Doğru çözüm mekan-bazlı eşleştirme
-        olurdu (motor ham ürünleri saklasın, agrega varlık kimliğine göre
-        hizalasın) — şema değişikliği gerektiriyor, şimdilik yapılmadı.
-      **DERS:** tahmini bir kalem ölçülebilir hale geldiğinde
-      tahminin ne kadar saptığı ortaya çıkıyor — ve buradaki sapma
-      toplamı şişiriyordu. Kalan 7 tahmini kalem için de aynı riski
-      varsaymak gerekir; "makul görünen" bir tahmin doğru demek değil.
-      Ayrıca: iki senaryonun birbirini tutmaması (aynı düğün, farklı
-      yol, farklı sonuç) bu tür hatayı yakalamak için iyi bir sağlama —
-      ileride benzer varyantlı kalemlerde bu tutarlılık kontrol edilsin.
-      **SONUÇ (2026-07-25 sonu): düğün tahmini oranı %62 → %39.**
-      Toplam 414.716 TL; 253.216 TL'si (7 kalem, 10 bağımsız kaynak)
-      gerçek, 161.500 TL'si (7 kalem) tahmini.
-- [x] **KALEM BAZLI LANDING SAYFALARI eklendi (2026-07-25).** Yavuz bu
-      turda ChatGPT/Codex'e yaptırdı, sonra kontrol edildi. **İş büyük
-      ölçüde doğru yapılmış:** sayfalar `sayfa_uret.py`'ye
-      `kalem_sayfalari` konfigürasyonu olarak eklenmiş (ELLE YAZILMAMIŞ —
-      yani aylık otomasyonda kendiliğinden güncelleniyor), 9 sayfanın
-      rakamları tek tek `/veri/*.json` ile karşılaştırıldı, **hiç uydurma
-      sayı yok** (KIRMIZI ÇİZGİ korunmuş). Schema.org (Organization +
-      BreadcrumbList + FAQPage), iç linkler (endeks ↔ kalem sayfası),
-      **sitemap artık otomatik üretiliyor** ve workflow commit'ine dahil.
-      Sayfalar: `/dugun/{gelinlik,damatlik,alyans,dugun-salonu}-fiyatlari/`
-      ve `/ev-kurma/{buzdolabi,camasir-makinesi,koltuk-takimi,gardirop,
-      televizyon}-fiyatlari/`.
-      **Bulunan 3 sorun düzeltildi:**
-      1. Sayfalar commit edilmemişti (canlıda 404) → commit+push edildi.
-      2. `AGENTS.md`, CLAUDE.md'nin kopyasıydı ve sapmıştı — içinde
-         YANLIŞ bilgi vardı (branch adını `Codex/new-session-csygpf`
-         yapmış, öyle bir branch yok). **Artık CLAUDE.md'ye symlink** —
-         tek kaynak, iki isim; Codex AGENTS.md okuyunca aynı içeriği
-         görüyor, sapma imkânsız.
-      3. Aşağıdaki kaynak-sayısı bug'ı (kalem sayfası onu görünür kıldı).
-- [x] **DÜZELTİLDİ (2026-07-25) — kaynak sayısı HÂLÂ şişikti: "10" değil
-      5.** Bu oturumda daha önce `bagimsiz_siteler()` ile benzersiz site
-      saymaya geçmiştim (20→10), ama **0 ürün döndüren kaynaklar
-      filtrelenmiyordu.** Bırakılmış/bozulmuş kaynakların eski tarihli
-      0-ürünlü snapshot'ları diskte kalıyor ve `agrega.py` onları
-      `kaynaklar` listesine + `kaynak_sayisi`'na dahil ediyordu.
-      Düğün/gelinlik'te 6 kaynak listeliyken gerçekte yalnızca trendyol
-      ürün döndürüyordu; vertikal genelinde 11 site listeleniyor, 5'i
-      veri veriyordu (akakce, armut, boyner, cimri, n11, ramsey → hepsi
-      boş). **Düzeltme:** `agrega.py` yalnızca `toplam_urun > 0` olan
-      kaynakları sayıyor ve listeliyor. Düğün artık doğru şekilde
-      **"5 bağımsız kaynak"** diyor. Toplam DEĞİŞMEDİ (459.738 TL) —
-      boş kaynaklar zaten medyana katkı yapmıyordu, yalnızca iddia
-      şişikti. Yan fayda: kalem sayfalarındaki anlamsız
-      "Akakce: bu çalıştırmada ürün yok" satırları da kalktı.
-      2 regresyon testiyle kilitlendi.
-      **DERS:** "kaç bağımsız kaynak" iddiası iki kez yanlış çıktı
-      (tekrar sayma, sonra boş kaynak sayma). Bu proje için en kritik
-      metrik bu — ileride kaynak sayısına dokunan her değişiklikte
-      "gerçekten veri veren kaç site var?" diye ayrıca doğrulanmalı.
-- [x] **ANA SAYFA BUILD-TIME ÜRETİLİYOR, canlı rakamlarla (2026-07-25).**
-      Önceki hali elle yazılmıştı ve **hiç rakam içermiyordu** — GEO'nun
-      ilk temas noktası olmasına rağmen alıntılanabilir tek sayı yoktu.
-      Artık `sayfa_uret.anasayfa_uret()`:
-      - Cevap bloğunda iki endeksin güncel toplamı ("...bir düğün
-        459.738 TL; sıfırdan bir evi eşyalandırmak 385.730 TL tutuyor").
-      - Endeks kartlarında büyük rakam + kaynak/kalem kırılımı.
-      - **Kalem sayfalarına iç link** (etiket şeklinde) — yetim sayfa
-        riskini azaltır, sitemap tek başına zayıf sinyaldir.
-      - schema.org: Organization + WebSite + ItemList + FAQPage (her
-        vertikal için veriden üretilen soru/cevap).
-      - **Verisi olmayan vertikal "Yakında" kartı olur, rakam
-        UYDURULMAZ** (testle kilitli).
-      **Workflow'a ek adım GEREKMEDİ:** ana sayfa tüm vertikallerin
-      verisini okuduğu için hangi vertikalle çağrılırsa aynı doğru
-      sonucu üretir — sitemap ile aynı desen. (PAT'ta `workflow` scope
-      olmadığı için workflow dosyasına dokunulamıyor, bu yüzden bu desen
-      şart oldu.)
-      Türkçe notu: endeks sayfası "...bir düğünün X tutması bekleniyor"
-      (genitif) kalıbını kullanıyor; ana sayfa "...bir düğün X tutuyor"
-      (yalın) kalıbı istediği için conf'a ayrı `anasayfa_ifade` ve kısa
-      `kart_alt` alanları eklendi. 6 yeni test.
-- [ ] **Hizmet kalemleri turu — kalan tahmini kalemler.** Öncelik sırası
-      (etki × çözülebilirlik):
-      - **taki-altin (40.000 TL) — EN KOLAY SIRADAKİ.** Gram altın fiyatı
-        tamamen halka açık; Atasay zaten CSS ile kazınıyor, yani kuyumcu
-        siteleri çalışıyor. "Tahmini"den gerçek kaynağa taşınabilir.
-      - **fotografci (45.000)** — şu an SIFIR aktif kaynak (Armut ve
-        DüğünBuketi bırakıldı). Ama artık **detay sayfası katmanı var**;
-        DüğünBuketi fotoğrafçı sayfası kartlarda fiyat gizliyordu, detay
-        sayfasında açık olabilir — TEKRAR BAKILMALI.
-      - **organizasyon (40.000)**, **orkestra-dj (25.000)** — mekanların
-        "her şey dahil paket" içeriğinde geçiyor (catering + fotoğraf +
-        DJ + ışık/ses). Ayrı kalem olarak mı, paket olarak mı ölçmek
-        doğru — metodolojik karar gerekiyor.
-      - **nikah-islemleri (3.500)** — belediye harçları, resmi kaynak,
-        kolay ama küçük etki.
-- [x] **Takı/altın GERÇEK KAYNAĞA TAŞINDI (2026-07-25).** Yavuz'un
-      "altını da ekleyelim" talimatıyla. Kaynak: **Atasay altın bilezik**
-      (`/tr/altin/bilezik/`), 24 ürün, CSS katmanı — alyansla aynı
-      seçiciler çalıştı, yeni seçici gerekmedi.
-      **Tahmin ~2 KAT DÜŞÜKMÜŞ:** düşük 15.000 → gerçek 33.085,
-      orta 40.000 → **85.022**, lüks 90.000 → 180.340. (Gram altın
-      6.140 TL bandında ~13 gramlık bileziğe denk, makul.)
-      - **Kalem adı daraltıldı:** `Takı — Altın Bilezik (1 adet)`.
-        Salon kalemindeki "ne ölçtüğü belirsiz" hatasını tekrarlamamak
-        için — toplam takılan altın ölçülemez, tek kalem ölçülebilir.
-      - **min_fiyat: 10.000.** Gram altın 6.140 TL olduğu için altındaki
-        bir "altın bilezik" gerçekçi değil.
-      - **Trendyol REDDEDİLDİ:** `altin-bilezik` kategorisi 2.591 TL
-        medyanla *"Pierre Cardin Kozmetik Çeyiz Seti"* döndürüyordu —
-        alakasız ürün, eklenirse endeksi bozardı. Veri kalitesi kontrolü
-        işe yaradı.
-      - **Altınbaş / Zen:** robots.txt ONAY veriyor ama denenen kategori
-        URL'leri 404 (site engeli DEĞİL, doğru URL bulunamadı). Slug
-        avına çıkılmadı (Karaca dersi). Sonraki turda ikinci — daha
-        ekonomik — kuyumcu kaynağı aranmalı; Atasay premium marka olduğu
-        için şu an üst segmenti temsil ediyor.
-      - Metodoloji sayfasına "Takı ve altın: neyi ölçüyoruz?" bölümü
-        eklendi (neden daraltıldığı ve tek kaynak sınırı açıklanıyor).
-      - **SONUÇ: düğün tahmini oranı %39 → %26.** Toplam 459.738 TL;
-        338.238 TL'si (8 kalem, 10 bağımsız kaynak) gerçek,
-        121.500 TL'si (6 kalem) tahmini.
-        **Oturum başında bu oran %62 idi.**
-- [ ] TÜİK doğrulama verisi entegrasyonu (ÇOK KAYNAK KURALI 5. katman)
-- [x] **GitHub Actions aylık otomasyon + sitemap.xml eklendi (2026-07-24).**
-      `.github/workflows/aylik-veri-guncelleme.yml` — bkz. Modül 6.
-      `kaynak_gecmisi.json` gitignore'dan çıkarıldı (aksi halde saglik
-      kontrolü hiç geçmiş biriktiremezdi).
-- [x] **SİTE CANLIDA (2026-07-25). `https://maliyetine.com.tr` çalışıyor.**
-      Yavuz Cloudflare'de projeyi deploy etti (Pages değil **Worker**
-      olarak: `maliyetine.yavuzkara-1907.workers.dev`) ve custom domain'i
-      ekledi. Canlı doğrulama yapıldı:
-      - 14 sayfa/dosya (3 düğün + 3 ev-kurma sayfası, `/veri/*.json`,
-        robots.txt, sitemap, CSS/JS) → **hepsi HTTP 200.**
-      - SSL sertifikası geçerli, DNS tüm genel resolver'larda (1.1.1.1,
-        8.8.8.8, 9.9.9.9) çözülüyor.
-      - Hesaplayıcı canlıda **gerçekten çalışıyor**: yemekli 414.716 TL /
-        kokteyl 309.716 TL, menü bedeli notu doğru, console'da hata yok.
-      - **Otomatik deploy çalışıyor** — push edilen içerik canlıda.
-      - **`www.maliyetine.com.tr` de çalışıyor** (HTTP 200, SSL geçerli).
-        Yavuz "www eklenmiyor" dedi; sebebi kaydın ZATEN var olması
-        (Cloudflare kök domain eklenirken oluşturmuş) — yapacak bir şey
-        yoktu. NOT: kök ve www aynı içeriği 200 ile veriyor
-        (duplicate content). Canonical etiketi her ikisinde de kök
-        domaini gösteriyor, bu yeterli bir sinyal; ama en temizi
-        Cloudflare → Rules → **Redirect Rules** ile `www` → kök 301
-        yönlendirmesi (ileride, acil değil).
-      - **Not:** Worker olarak deploy edilmesi işlevsel sorun değil,
-        statik dosyalar doğru servis ediliyor. Ama "Altyapı Kararları"
-        bölümündeki "Cloudflare Pages" ifadesi artık tam doğru değil.
-      - **Production branch: `claude/new-session-csygpf`** (repoda `main`
-        yok). Branch ileride `main` olarak yeniden adlandırılırsa
-        Worker'ın branch ayarı da güncellenmeli.
-- [~] **(TARİHÎ KAYIT) Cloudflare: DNS TAMAM, Pages bağlantısı EKSİK
-      (2026-07-25, sonra ÇÖZÜLDÜ — yukarıdaki maddeye bakın).** Yavuz "cloudflare ok" dedi, canlıdan doğrulandı:
-      - ✅ **Domain Cloudflare'e geçmiş, zone aktif.** `dig NS` →
-        `brenda.ns.cloudflare.com` / `ryan.ns.cloudflare.com`, ve zone
-        SOA kaydı dönüyor. (Not: `whois` hâlâ eski `NS*.NS.TR`
-        kayıtlarını gösteriyor — nic.tr registry görünümü gecikmeli,
-        gerçek delegasyon Cloudflare'de.)
-      - ❌ **Zone BOŞ: hiç A/AAAA/CNAME kaydı yok** (ne kök ne `www`,
-        Cloudflare NS'ine doğrudan sorulup doğrulandı). Bu yüzden
-        `https://maliyetine.com.tr/` DNS çözümlemiyor (curl 000,
-        "Could not resolve host").
-      - **Teşhis: Pages projesi ile custom domain bağlantısı henüz
-        yapılmamış.** A kaydı elle eklenmez, Pages'e custom domain
-        eklenince otomatik oluşur (bkz. Altyapı Kararları).
-      - **Yavuz'un yapması gerekenler:** Cloudflare Dashboard →
-        Workers & Pages → Create application → Pages → Connect to Git →
-        `maliyetine` reposu → **Production branch:
-        `claude/new-session-csygpf`** (default branch bu, `main` yok) →
-        **Build command: BOŞ**, **Build output directory: `/`** →
-        Save and Deploy. Deploy bitince Pages projesinde
-        **Custom domains → Set up a custom domain → `maliyetine.com.tr`**
-        (istenirse `www` de) — A kaydı o an oluşur.
-      - Repo private olduğu için Cloudflare'e GitHub erişim izni
-        verilmesi gerekebilir.
-- [ ] **Görsel tasarım kararı bekliyor, ACİL DEĞİL.** 3 yön denendi
-      (modern/premium, sıcak/samimi, minimal/editoryal) — Yavuz "hepsi
-      kötü ama gelişir, acelemiz yok" dedi, önce altyapıya odaklanılıyor.
-      Tasarım kararı ileride tekrar gündeme gelecek.
-- [ ] (İleride) Türk Patent marka başvurusu
-- [ ] (İleride) yakın domain varyantlarını kapat
+## Yapılacaklar (güncel, 2026-08-22)
+Tarihî tamamlanan işler yukarıdaki günlükte duruyor. Bu liste yalnızca
+bugün gerçekten iş açan maddeleri taşımalı; biten iş burada kalmasın.
+
+- [ ] **301 sonrası Search Console kontrolü.** Cloudflare `www` → kök domain
+      redirect 2026-08-22'de düzeltildi ve canlı HTTP ile doğrulandı. 7-14
+      gün sonra GSC sayfa tablosunda `www` gösterim/tık payı azalıyor mu
+      bakılacak.
+- [ ] **Search Console içerik turu.** 2026-08-22 export'ta en büyük kümeler:
+      kira gelir vergisi (254 gösterim), damatlık/gelinlik (229),
+      hisse/borsa maliyet (171), tapu/ipotek (148), temettü (83).
+      Yeni sayfa açmadan önce mevcut sayfanın niyeti karşılayıp karşılamadığı
+      ve cannibalization riski kontrol edilecek.
+- [ ] **Yeni sayfa açmadan önce cannibalization kontrolü.** KDV matrah ve
+      asgari ücret örneğinde olduğu gibi, bazı "eksikler" mevcut sayfanın
+      kelime eksiği olabilir. Yeni sayfa ancak ayrı niyet varsa açılır.
+- [ ] **Tek kaynaklı kalem raporu çıkar.** EV-kurma 0/42 tek kaynaklı hale
+      geldi; kedi/kopek kısmen kapandı. Kalan tek kaynaklı kalemler veri
+      dosyasından ölçülüp en yüksek trafik/etki sırasıyla kapatılmalı.
+- [ ] **Düğünde kalan tahmini iki kalemi kapat.** `nikah-islemleri` için
+      belediye/resmî tarife; `orkestra-dj` için ayrı kalem mi salon
+      paketinin parçası mı önce metodolojik karar. Kaynak bulunmadan
+      "gerçek" etiketi yok.
+- [ ] **Sosyal yayın kararını netleştir.** X/Bluesky secret'ları eklenirse
+      mevcut otomasyon gönderir. Facebook/Instagram için önce görsel kart
+      mantığı korunmalı; Instagram düz metin/link formatı değil.
+- [ ] **Marka koruması.** Türk Patent başvurusu ve yakın domain varyantları
+      ileride yapılacak; teknik değil ama marka büyüdükçe ertelenmemeli.
 
 ## Çalışma Şekli
 - Strateji claude.ai sohbetinde, inşaat Claude Code'da.
 - Her oturum TEK modüle odaklanır.
-- Oturum sonunda bu dosya güncellenir.
+- Oturum sonunda "GÜNCEL SON DURUM" ve "Yapılacaklar" güncellenir; uzun
+  tarihî bölümlere yalnızca gerçekten yeni ders varsa ek yapılır.
