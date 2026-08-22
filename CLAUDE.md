@@ -85,6 +85,11 @@
 - Yayın modeli: statik dosyalar Cloudflare tarafında **Worker** ile servis
   ediliyor. Eski Pages kurulum notları tarihî kayıt; bugün doğru altyapı
   "statik çıktı + Cloudflare Worker + GitHub Actions"tır.
+- Teknik veri güvence turu `002cba9` ile remote'a gönderildi ve Cloudflare
+  otomatik dağıtımı canlıda doğrulandı. `/veri/manifest.json` ile
+  `/veri/qa.json` HTTP 200 dönüyor; ikisi de
+  `2026-08-22-f0c8be50f5ae1a98` veri sürümünü taşıyor ve canlı QA durumu
+  `gecti`.
 - Otomasyon ayda iki kez çalışacak şekilde tasarlandı: ayın **5'i ve
   20'si**. **20 Ağustos 2026 koşusu kontrol edildi:** GitHub Actions run
   `32339864463` başarıyla bitti, `maliyetine-bot` `75ceda9` commit'ini attı
