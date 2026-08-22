@@ -2108,7 +2108,10 @@ degil isaretleyici renk.
   **kendi sunucumuzda** (`assets/font/`). Google Fonts'a baglanmak
   ucuncu taraf istegi + KVKK tarafinda gereksiz yuk. `fontTools` ile
   Turkce+Latin karakter kumesine indirgendi: **396 -> 116 KB**.
-  `unicode-range` ile latin/latin-ext ayri; `font-display: swap`.
+  `unicode-range` ile latin/latin-ext ayri. 2026-08-22 mobil CLS
+  duzeltmesinden sonra buyuk latin dosyalari `font-display: optional`,
+  4-5 KB'lik latin-ext dosyalari `swap`; cevap blogunun iki sans fontu
+  tum HTML'de preload ediliyor.
 - **Kart/golge/gri panel -> CETVEL ve bosluk.** `.cevap-blok`,
   `.kart`, `.sonuc-kutu`, `.hizli-hesap`, `.asistan` — hepsi kutu
   olmaktan cikti, ust kenar kuraliyla ayrisiyor.
@@ -3561,6 +3564,38 @@ Her site için ayrı script YAZILMAZ. Tek motor + kaynak kaydı:
    ediyordu ama dosya yoktu).
 7. **Fiyat geçmişi** — ✅ sayfalarda görünmeye başladı; daha uzun seri
    biriktikçe yıllık karşılaştırma ve basın malzemesi güçlenecek.
+
+## MOBIL PAGESPEED / FONT CLS DUZELTMESI (2026-08-22)
+
+Paylasilan PageSpeed mobil laboratuvar raporu: **Performans 73**,
+Erisilebilirlik/Best Practices/SEO **100/100/100**. FCP 2,8 sn, LCP 3,6
+sn, TBT 10 ms ve CLS 0,246. Gercek kullanici (CrUX) verisi henuz yok.
+
+**Kok neden:** CLS'nin 0,245'i `body > main.kapsayici > div.cevap-blok`
+uzerindeydi. Lighthouse `sans-400-latin`, `sans-600-latin` ve
+`serif-700-latin` font degisimlerini neden olarak gosterdi. JS kilitlenmesi
+degil; gec gelen web fontunun satir kirilimlarini degistirmesiydi.
+
+**Uygulanan karar:**
+- LCP olan cevap blogunun 400/600 govde fontu her sayfada preload.
+- Buyuk latin yuzleri `font-display: optional`: yavas hatta gec gelip sayfayi
+  oynatmak yerine o ziyarette metrik olarak guvenli fallback'te kalir.
+- 4-5 KB'lik latin-ext yuzleri `swap`: Turkce glifler sistem fontunda kalmaz.
+- Serif preload YAPILMADI. Kontrollu yavas 4G olcumunde CLS'ye ek faydasi
+  yoktu, FCP'yi yaklasik 150 ms geciktiriyordu. Yavas hatta Georgia fallback'i
+  metrik olarak guvenli ve tasarim diline yakin.
+- Etiketler `sayfa_uret.STIL_ETIKETLERI` icinde tek merkezde; alti uretici
+  bunu kullaniyor. Mevcut **187/187 HTML** ayni kurala gecirildi.
+- `test_workflow.py` iki kritik preload'u tum yayin sayfalarinda (404 dahil)
+  zorunlu tutuyor.
+
+**Korluk kontrolu:** ayni Chromium, 412x823, bos onbellek ve yavas 4G ile
+eski HEAD ve yeni hali ucer kez olculdu. Eski medyan CLS **0,1532**, yeni
+medyan CLS **0,0000**. Tum fontlari preload eden ilk deneme geri alindi:
+CLS yine sifirdi ama ilk boyama gereksiz yere yavasliyordu. Iki sans preload
+varyanti cevap blogunda IBM Plex Sans'i (normal + kalin ve Turkce glifler)
+korurken CLS'yi sifir tuttu. Son kapilar: Python **393/393**, JS **90/90**.
+
 
 ## Yapılacaklar (güncel, 2026-08-22)
 Tarihî tamamlanan işler yukarıdaki günlükte duruyor. Bu liste yalnızca

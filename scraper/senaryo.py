@@ -261,7 +261,7 @@ def _sayfa_html(baslik: str, soru: str, aciklama_blok: str, govde: str,
 <title>{_title(baslik)}</title>
 <meta name="description" content="{meta}">
 <link rel="canonical" href="{url}">
-<link rel="stylesheet" href="/assets/css/style.css">
+{su.STIL_ETIKETLERI}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="{baslik} 2026">
 <meta property="og:description" content="{meta}">

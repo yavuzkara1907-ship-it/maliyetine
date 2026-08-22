@@ -1924,7 +1924,7 @@ def _kabuk(baslik_etiketi: str, meta: str, kanonik: str, schema: str,
 <meta property="og:url" content="{kanonik}">
 {su.og_etiketleri(og_kart, og_alt)}
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="/assets/css/style.css">
+{su.STIL_ETIKETLERI}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script type="application/ld+json">
 {schema}

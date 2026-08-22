@@ -25,10 +25,13 @@
 
 /* Fontlar kendi sunucumuzda (assets/font/). Google Fonts'a baglanmak
    ucuncu taraf istegi + KVKK tarafinda gereksiz yuk demekti.
-   fontTools ile Turkce+Latin karakter kumesine indirgendi: 396 -> 116 KB. */
+   fontTools ile Turkce+Latin karakter kumesine indirgendi: 396 -> 116 KB.
+   Govde latin dosyalari preload + optional: cevap blogu ilk cizime yetisir.
+   Serif latin optional: yavas hatta Georgia ile cizilir, kritik yolu sisirmez.
+   4-5 KB'lik latin-ext parcalari swap: Turkce glifler sistem fontunda kalmaz. */
 @font-face {
   font-family: "Kaynak Serif";
-  font-style: normal; font-weight: 700; font-display: swap;
+  font-style: normal; font-weight: 700; font-display: optional;
   src: url("/assets/font/serif-700-latin.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+2000-206F, U+2190-21BB, U+20A0-20BF, U+2122;
 }
@@ -40,7 +43,7 @@
 }
 @font-face {
   font-family: "Kaynak Sans";
-  font-style: normal; font-weight: 400; font-display: swap;
+  font-style: normal; font-weight: 400; font-display: optional;
   src: url("/assets/font/sans-400-latin.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+2000-206F, U+2190-21BB, U+20A0-20BF, U+2122;
 }
@@ -52,7 +55,7 @@
 }
 @font-face {
   font-family: "Kaynak Sans";
-  font-style: normal; font-weight: 600; font-display: swap;
+  font-style: normal; font-weight: 600; font-display: optional;
   src: url("/assets/font/sans-600-latin.woff2") format("woff2");
   unicode-range: U+0000-00FF, U+0131, U+2000-206F, U+2190-21BB, U+20A0-20BF, U+2122;
 }

@@ -273,5 +273,24 @@ class WorkflowTesti(unittest.TestCase):
                  if 'href="/favicon.svg"' not in p.read_text(encoding="utf-8")]
         self.assertEqual(eksik, [], f"favicon baglantisi eksik sayfalar: {eksik}")
 
+    def test_tum_yayin_sayfalari_kritik_fontlari_onceden_yukluyor(self):
+        """Fontlar gec gelince ilk cevap blogu yer degistirip CLS uretiyordu."""
+        sayfalar = list(BASE.parent.rglob("index.html")) + [BASE.parent / "404.html"]
+        fontlar = (
+            "sans-400-latin.woff2",
+            "sans-600-latin.woff2",
+        )
+        eksik = []
+        for sayfa in sayfalar:
+            html = sayfa.read_text(encoding="utf-8")
+            for font in fontlar:
+                etiket = (
+                    f'<link rel="preload" href="/assets/font/{font}" '
+                    'as="font" type="font/woff2" crossorigin>'
+                )
+                if etiket not in html:
+                    eksik.append(f"{sayfa.relative_to(BASE.parent)}: {font}")
+        self.assertEqual(eksik, [], f"font preload eksik: {eksik[:8]}")
+
 if __name__ == "__main__":
     unittest.main()

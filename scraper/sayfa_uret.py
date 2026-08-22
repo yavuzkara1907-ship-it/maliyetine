@@ -1700,6 +1700,16 @@ def _capraz_dogrulama_uyarilari_html(conf: dict, kalemler: dict) -> str:
 
 SITE_KOK_URL = "https://maliyetine.com.tr"
 
+# LCP olan cevap blogunun normal ve kalin govde fontlari CSS indirilmeden
+# kesfedilsin. `font-display: optional` ile birlikte bu etiketler hizli
+# baglantida marka tipografisini ilk cizime yetistirir; yavas baglantida ise
+# gec font degisiminin cevap blogunu asagi itip CLS uretmesini engeller.
+# Serif dosyasini preload etmek olculen CLS'yi degistirmedi, yavas 4G'de FCP'yi
+# 150 ms geciktirdi. Latin-ext dosyalari da 4-5 KB; CSS uzerinden hizla gelir.
+STIL_ETIKETLERI = """<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="preload" href="/assets/font/sans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/font/sans-600-latin.woff2" as="font" type="font/woff2" crossorigin>"""
+
 # ----------------------------------------------------------
 # PAYLASIM (Open Graph) ETIKETLERI
 #
@@ -2466,7 +2476,7 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
 <title>{conf["sayfa_basligi"]}</title>
 <meta name="description" content="{conf["meta_aciklama"]}">
 <link rel="canonical" href="https://maliyetine.com.tr/{yol}/">
-<link rel="stylesheet" href="/assets/css/style.css">
+{STIL_ETIKETLERI}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="{conf["baslik"]}">
 <meta property="og:description" content="{conf["meta_aciklama"]}">
@@ -3091,7 +3101,7 @@ def kalem_sayfasi_uret(
 <title>{_seo_title(tanim["ad"])}</title>
 <meta name="description" content="{meta_aciklama}">
 <link rel="canonical" href="{sayfa_url}">
-<link rel="stylesheet" href="/assets/css/style.css">
+{STIL_ETIKETLERI}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="{sayfa["baslik"]}">
 <meta property="og:description" content="{meta_aciklama}">
@@ -3353,7 +3363,7 @@ def sss_sayfasi_uret(veri_kok: Path | None = None, tarih: str | None = None) -> 
 <title>Sık Sorulan Sorular | Maliyeti Ne?</title>
 <meta name="description" content="Fiyatlar nereden geliyor, ne sıklıkla güncelleniyor, veriyi kullanabilir miyim? Maliyeti Ne? hakkında sık sorulan sorular ve yanıtları.">
 <link rel="canonical" href="{url}">
-<link rel="stylesheet" href="/assets/css/style.css">
+{STIL_ETIKETLERI}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="Sık Sorulan Sorular | Maliyeti Ne?">
 <meta property="og:description" content="Fiyatlar nereden geliyor, ne sıklıkla güncelleniyor, veriyi kullanabilir miyim?">
@@ -3840,7 +3850,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
 <title>Maliyet Hesaplama ve 2026 Fiyat Endeksleri | Maliyeti Ne?</title>
 <meta name="description" content="Düğün ve ev kurma maliyeti: gerçek fiyat verisinden derlenmiş, ayda iki kez güncellenen endeks. Kaynak, tarih ve örneklem her rakamın yanında.">
 <link rel="canonical" href="{SITE_KOK_URL}/">
-<link rel="stylesheet" href="/assets/css/style.css">
+{STIL_ETIKETLERI}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="2026 Maliyet Endeksi | Maliyeti Ne?">
 <meta property="og:description" content="{og_aciklama}">

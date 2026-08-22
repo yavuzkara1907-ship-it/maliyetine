@@ -116,7 +116,7 @@ def uret(veri_kok: Path | None = None) -> str | None:
 <meta property="og:url" content="{url}">
 {og}
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="/assets/css/style.css">
+{stil_etiketleri}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script type="application/ld+json">
 {json_ld}
@@ -187,6 +187,7 @@ def uret(veri_kok: Path | None = None) -> str | None:
 </body>
 </html>
 """.format(url=url, og=su.OG_ETIKETLERI, json_ld=_json_ld(ozetler, url, bugun),
+           stil_etiketleri=su.STIL_ETIKETLERI,
            analitik=su.ANALITIK, menu=su.genel_menu(YOL), cumle=cumle,
            kartlar=_kartlar(ozetler), sss=sss, yil=bugun[:4],
            endeksler=su.TUM_ENDEKS_LINKLERI)

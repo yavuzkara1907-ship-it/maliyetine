@@ -245,7 +245,7 @@ def veri_sayfasi(
 <title>Veriyi İndir | Maliyeti Ne?</title>
 <meta name="description" content="{endeks_adlari} fiyat verisi CSV ve JSON olarak indirilebilir. {toplam_kalem} fiyat serisi, kaynak ve ölçüm tarihiyle birlikte.">
 <link rel="canonical" href="{url}">
-<link rel="stylesheet" href="/assets/css/style.css">
+{su.STIL_ETIKETLERI}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="Veriyi İndir | Maliyeti Ne?">
 <meta property="og:description" content="{toplam_kalem} fiyat serisi, CSV ve JSON olarak açık.">

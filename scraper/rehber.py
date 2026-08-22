@@ -2830,7 +2830,7 @@ def rehber_uret(rehber: dict, veriler: dict, tarih: str | None = None) -> str | 
 <title>{_title(rehber)}</title>
 <meta name="description" content="{rehber["meta"]}">
 <link rel="canonical" href="{url}">
-<link rel="stylesheet" href="/assets/css/style.css">
+{su.STIL_ETIKETLERI}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="{rehber["baslik"]}">
 <meta property="og:description" content="{rehber["meta"]}">
@@ -2898,7 +2898,7 @@ def rehber_dizini_uret(yazilanlar: list[dict], tarih: str | None = None) -> str:
 <title>Rehber | Maliyeti Ne?</title>
 <meta name="description" content="Düğün, ev kurma ve sıfır araç bütçesi üzerine, gerçek fiyat ölçümlerine dayanan rehberler.">
 <link rel="canonical" href="{SITE_KOK_URL}/rehber/">
-<link rel="stylesheet" href="/assets/css/style.css">
+{su.STIL_ETIKETLERI}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="Rehber | Maliyeti Ne?">
 <meta property="og:description" content="Gerçek fiyat ölçümlerine dayanan bütçe rehberleri.">
