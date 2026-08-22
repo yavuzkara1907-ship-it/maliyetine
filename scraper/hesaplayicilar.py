@@ -965,7 +965,8 @@ HESAPLAYICILAR = [
         "id": "hisse-maliyet",
         "slug": "hisse-maliyet-hesaplama",
         "ad": "Borsa Hisse Maliyet Hesaplama",
-        "baslik": "Borsa Hisse Maliyet Düşürme Hesaplama",
+        "baslik": "Hisse Maliyet Hesaplama ve Maliyet Düşürme",
+        "seo_baslik": "Hisse Maliyet Hesaplama (Borsa) | Maliyeti Ne?",
         "soru": "Hisse alınca ortalama maliyetim ne olur, maliyet nasıl düşer?",
         "meta": "Borsada hisse senedi alımında yeni ortalama maliyet, başa baş "
                 "fiyat ve maliyet düşürme hesabı. Kaç lot alınca maliyet nereye iner?",
@@ -1846,7 +1847,7 @@ def _kaynak_kunyesi(h: dict) -> str:
         "yazıyoruz. Bu yüzden bazı cevaplar tek sayı değil, aralık olarak verilir."
     )
     return (
-        '<section class="kaynak-kunye">\n'
+        '<section id="kaynak-ve-yontem" class="kaynak-kunye">\n'
         f"  <h2>{baslik}</h2>\n"
         f"  <ul>{maddeler}</ul>\n"
         f'  <p class="sonuc-alt-metin">{not_metni}</p>\n'
@@ -1866,6 +1867,16 @@ def _schema(h: dict) -> str:
     formul_duz = re.sub(r"<[^>]+>", "", h["formul"]).replace("&nbsp;", " ")
     ozet_duz = re.sub(r"<[^>]+>", "", h["ozet"])
     graf = [
+        su.kurum_semantigi(),
+        {
+            "@type": "WebPage",
+            "@id": url + "#webpage",
+            "url": url,
+            "name": h["baslik"],
+            "description": h["meta"],
+            "inLanguage": "tr-TR",
+            "publisher": {"@id": f"{SITE_KOK_URL}/#kurum"},
+        },
         {
             "@type": "WebApplication",
             "name": h["ad"],
@@ -1876,7 +1887,7 @@ def _schema(h: dict) -> str:
             "inLanguage": "tr-TR",
             "isAccessibleForFree": True,
             "offers": {"@type": "Offer", "price": "0", "priceCurrency": "TRY"},
-            "publisher": {"@type": "Organization", "name": "Maliyeti Ne?", "url": SITE_KOK_URL + "/"},
+            "publisher": {"@id": f"{SITE_KOK_URL}/#kurum"},
         },
         {
             "@type": "HowTo",
@@ -2071,6 +2082,22 @@ def _hesap_js(h: dict) -> str:
 
 def sayfa_uret(h: dict) -> str:
     url = f"{SITE_KOK_URL}/{HESAP_KOK}/{h['slug']}/"
+    mevzuat = any(
+        "Kanunu" in k or "Tebliğ" in k or "Bakanlığı" in k or "BKK" in k
+        for k in h["kaynaklar"]
+    )
+    hesap_kunye = su.yayin_kunyesi_html(
+        [
+            ("Yöntem", "Resmî parametre" if mevzuat else "Matematiksel formül"),
+            ("Kaynak", len(h["kaynaklar"])),
+            ("Hesaplama", "Tarayıcıda"),
+            ("Üyelik", "Gerekmez"),
+        ],
+        [("Kaynak ve yöntem", "#kaynak-ve-yontem"),
+         ("Yayın ilkeleri", "/hakkimizda/"),
+         ("Hata bildir", "/iletisim/")],
+        "Hesabın dayanağı",
+    )
     govde = f"""  <nav class="kirinti" aria-label="Sayfa yolu">
     <a href="/">Ana sayfa</a> › <a href="/{HESAP_KOK}/">Hesaplayıcılar</a> › <span>{h["ad"]}</span>
   </nav>
@@ -2080,6 +2107,8 @@ def sayfa_uret(h: dict) -> str:
   <div class="cevap-blok">
     {h["ozet"]}
   </div>
+
+  {hesap_kunye}
 
   {_form_html(h)}
 
@@ -2098,7 +2127,7 @@ def sayfa_uret(h: dict) -> str:
     danışmanlık değildir. Ölçülmüş gerçek fiyat verileri için
     <a href="/">maliyet endekslerimize</a> bakabilirsiniz.</p>
 """
-    return _kabuk(f'{h["baslik"]} | Maliyeti Ne?', h["meta"], url,
+    return _kabuk(h.get("seo_baslik") or f'{h["baslik"]} | Maliyeti Ne?', h["meta"], url,
                   _schema(h), govde, _hesap_js(h),
                   og_kart=f'/assets/og/hesap-{h["slug"]}.png',
                   og_alt=h.get("ad") or h["baslik"])

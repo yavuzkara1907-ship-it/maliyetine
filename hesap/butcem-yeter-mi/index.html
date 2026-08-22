@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Maliyeti Ne?">
 <meta property="og:locale" content="tr_TR">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="/assets/css/style.css?v=20260822-rapor">
+<link rel="stylesheet" href="/assets/css/style.css?v=20260822-guven">
 <link rel="alternate" type="application/rss+xml" title="Maliyeti Ne? veri güncellemeleri" href="/feed.xml">
 <link rel="preload" href="/assets/font/sans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/font/sans-600-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -26,6 +26,38 @@
 {
  "@context": "https://schema.org",
  "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://maliyetine.com.tr/#kurum",
+   "name": "Maliyeti Ne?",
+   "url": "https://maliyetine.com.tr",
+   "description": "Türkiye için canlı, doğrulanabilir maliyet endeksi.",
+   "foundingDate": "2026",
+   "areaServed": {
+    "@type": "Country",
+    "name": "Türkiye"
+   },
+   "knowsLanguage": "tr-TR",
+   "publishingPrinciples": "https://maliyetine.com.tr/hakkimizda/",
+   "correctionsPolicy": "https://maliyetine.com.tr/hakkimizda/#hata-bildirimi",
+   "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "editorial",
+    "email": "info@maliyetine.com.tr",
+    "availableLanguage": "Turkish"
+   }
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://maliyetine.com.tr/hesap/butcem-yeter-mi/#webpage",
+   "url": "https://maliyetine.com.tr/hesap/butcem-yeter-mi/",
+   "name": "Bütçem Bu Ürüne Yeter mi?",
+   "description": "109 ölçülmüş kalemde bütçenizin ekonomik, orta veya üst fiyat bandına yetip yetmediğini güncel verilerle kontrol edin.",
+   "inLanguage": "tr-TR",
+   "publisher": {
+    "@id": "https://maliyetine.com.tr/#kurum"
+   }
+  },
   {
    "@type": "WebApplication",
    "name": "Bütçem Yeter mi?",
@@ -41,9 +73,7 @@
     "priceCurrency": "TRY"
    },
    "publisher": {
-    "@type": "Organization",
-    "name": "Maliyeti Ne?",
-    "url": "https://maliyetine.com.tr/"
+    "@id": "https://maliyetine.com.tr/#kurum"
    }
   },
   {
@@ -163,6 +193,8 @@
     <strong>109 ölçülmüş kalemden</strong> birini ve bütçenizi seçin. Araç, bütçeyi güncel ekonomik, orta ve üst fiyat bandıyla karşılaştırır; marka ya da özellik uydurmadan hangi seviyeye ulaştığınızı söyler.
   </div>
 
+  <aside class="yayin-kunyesi" aria-label="Yayın doğrulama bilgileri"><p class="yayin-kunyesi-baslik"><span aria-hidden="true"></span>Hesabın dayanağı</p><dl><div><dt>Yöntem</dt><dd>Matematiksel formül</dd></div><div><dt>Kaynak</dt><dd>7</dd></div><div><dt>Hesaplama</dt><dd>Tarayıcıda</dd></div><div><dt>Üyelik</dt><dd>Gerekmez</dd></div></dl><p class="yayin-kunyesi-linkler"><a href="#kaynak-ve-yontem">Kaynak ve yöntem</a> · <a href="/hakkimizda/">Yayın ilkeleri</a> · <a href="/iletisim/">Hata bildir</a></p></aside>
+
   <form id="hesap-formu" class="hesap-formu">
   <div class="alan-izgara">
     <div class="alan"><label for="kalem">Ne almak istiyorsunuz?</label><select id="kalem" name="kalem"><option value="dugun:gelinlik" selected>Düğün — Gelinlik (adet)</option><option value="dugun:damatlik">Düğün — Damatlık / Takım Elbise (adet)</option><option value="dugun:alyans">Düğün — Alyans (adet)</option><option value="dugun:gelin-ayakkabisi">Düğün — Gelin Ayakkabısı, Duvak, Aksesuar (adet)</option><option value="dugun:nikah-sekeri">Düğün — Nikah Şekeri (adet)</option><option value="dugun:davetiye">Düğün — Davetiye (adet)</option><option value="dugun:taki-altin">Düğün — Takı (Altın Bilezik) (adet)</option><option value="dugun:salon-yemekli">Düğün — Düğün Salonu (yemekli) (kişi başı)</option><option value="dugun:salon-kokteyl">Düğün — Düğün Salonu (kokteyl) (kişi başı)</option><option value="dugun:yemek-ikram">Düğün — Yemek / İkram (kişi başı)</option><option value="dugun:fotografci">Düğün — Fotoğraf ve Video (adet)</option><option value="dugun:organizasyon">Düğün — Organizasyon / Süsleme (adet)</option><option value="dugun:kuafor-makyaj">Düğün — Kuaför ve Makyaj (adet)</option><option value="dugun:gelin-arabasi">Düğün — Gelin Arabası (adet)</option><option value="ev-kurma:camasir-makinesi">Ev Kurma — Çamaşır Makinesi (adet)</option><option value="ev-kurma:kurutma-makinesi">Ev Kurma — Kurutma Makinesi (adet)</option><option value="ev-kurma:bulasik-makinesi">Ev Kurma — Bulaşık Makinesi (adet)</option><option value="ev-kurma:davlumbaz">Ev Kurma — Davlumbaz (adet)</option><option value="ev-kurma:mikrodalga">Ev Kurma — Mikrodalga Fırın (adet)</option><option value="ev-kurma:klima">Ev Kurma — Klima (adet)</option><option value="ev-kurma:koltuk-takimi">Ev Kurma — Koltuk Takımı (adet)</option><option value="ev-kurma:yemek-masasi">Ev Kurma — Yemek Odası Takımı (adet)</option><option value="ev-kurma:tv-unitesi">Ev Kurma — TV Ünitesi (adet)</option><option value="ev-kurma:sehpa">Ev Kurma — Orta Sehpa (adet)</option><option value="ev-kurma:konsol">Ev Kurma — Konsol (adet)</option><option value="ev-kurma:yatak">Ev Kurma — Çift Kişilik Yatak (adet)</option><option value="ev-kurma:karyola">Ev Kurma — Karyola / Baza (adet)</option><option value="ev-kurma:gardirop">Ev Kurma — Gardırop (adet)</option><option value="ev-kurma:komodin">Ev Kurma — Komodin (adet)</option><option value="ev-kurma:sifonyer">Ev Kurma — Şifonyer (adet)</option><option value="ev-kurma:boy-aynasi">Ev Kurma — Boy Aynası (adet)</option><option value="ev-kurma:televizyon">Ev Kurma — Televizyon (adet)</option><option value="ev-kurma:supurge">Ev Kurma — Robot Süpürge (adet)</option><option value="ev-kurma:airfryer">Ev Kurma — Airfryer (adet)</option><option value="ev-kurma:su-isitici">Ev Kurma — Su Isıtıcı (adet)</option><option value="ev-kurma:tost-makinesi">Ev Kurma — Tost Makinesi (adet)</option><option value="ev-kurma:blender">Ev Kurma — Blender (adet)</option><option value="ev-kurma:mutfak-robotu">Ev Kurma — Mutfak Robotu / Doğrayıcı (adet)</option><option value="ev-kurma:utu">Ev Kurma — Ütü (adet)</option><option value="ev-kurma:sac-kurutma-makinesi">Ev Kurma — Saç Kurutma Makinesi (adet)</option><option value="ev-kurma:tencere-seti">Ev Kurma — Tencere Seti (adet)</option><option value="ev-kurma:tava-seti">Ev Kurma — Tava Seti (adet)</option><option value="ev-kurma:catal-kasik-bicak-takimi">Ev Kurma — Çatal-Kaşık-Bıçak Takımı (adet)</option><option value="ev-kurma:yemek-takimi">Ev Kurma — Yemek Takımı (adet)</option><option value="ev-kurma:kahvalti-takimi">Ev Kurma — Kahvaltı Takımı (adet)</option><option value="ev-kurma:bardak-takimi">Ev Kurma — Bardak Takımı (adet)</option><option value="ev-kurma:nevresim-takimi">Ev Kurma — Nevresim Takımı (adet)</option><option value="ev-kurma:havlu-takimi">Ev Kurma — Havlu Takımı (adet)</option><option value="ev-kurma:bornoz">Ev Kurma — Bornoz (adet)</option><option value="ev-kurma:perde">Ev Kurma — Perde (adet)</option><option value="ev-kurma:aydinlatma">Ev Kurma — Avize / Aydınlatma (adet)</option><option value="okul:okul-cantasi">Okul — Okul Çantası (adet)</option><option value="okul:beslenme-cantasi">Okul — Beslenme Çantası (adet)</option><option value="okul:matara">Okul — Suluk / Matara (adet)</option><option value="okul:kalem-kutusu">Okul — Kalem Kutusu (adet)</option><option value="okul:defter">Okul — Defter (adet)</option><option value="okul:kalem">Okul — Kalem (adet)</option><option value="okul:boya-seti">Okul — Boya Seti (adet)</option><option value="okul:resim-malzemeleri">Okul — Resim ve Sanat Malzemeleri (adet)</option><option value="okul:ders-kitabi">Okul — Ders ve Yardımcı Kitap (adet)</option><option value="okul:sozluk">Okul — Sözlük (adet)</option><option value="okul:ayakkabi">Okul — Spor Ayakkabı (adet)</option><option value="okul:tablet">Okul — Tablet (adet)</option><option value="okul:calisma-masasi">Okul — Çalışma Masası (adet)</option><option value="okul:calisma-sandalyesi">Okul — Çalışma Sandalyesi (adet)</option><option value="bebek:bebek-arabasi">Bebek — Bebek Arabası (adet)</option><option value="bebek:besik">Bebek — Beşik (adet)</option><option value="bebek:park-yatak">Bebek — Park Yatak / Oyun Parkı (adet)</option><option value="bebek:oto-koltugu">Bebek — Oto Koltuğu (adet)</option><option value="bebek:mama-sandalyesi">Bebek — Mama Sandalyesi (adet)</option><option value="bebek:biberon-seti">Bebek — Biberon Seti (adet)</option><option value="bebek:gogus-pompasi">Bebek — Göğüs Pompası (adet)</option><option value="bebek:bebek-kuveti">Bebek — Bebek Küveti (adet)</option><option value="bebek:zibin-seti">Bebek — Zıbın / Body Seti (adet)</option><option value="bebek:bebek-bezi">Bebek — Bebek Bezi (paket)</option><option value="kedi:tasima-cantasi">Kedi — Taşıma Çantası (adet)</option><option value="kedi:tirmalama">Kedi — Tırmalama Tahtası (adet)</option><option value="kedi:kedi-yatagi">Kedi — Kedi Yatağı (adet)</option><option value="kedi:mama-su-kabi">Kedi — Mama ve Su Kabı (adet)</option><option value="kedi:kedi-oyuncagi">Kedi — Kedi Oyuncağı (adet)</option><option value="kedi:kedi-mamasi">Kedi — Kedi Maması (paket)</option><option value="kedi:kedi-kumu">Kedi — Kedi Kumu (paket)</option><option value="kopek:kopek-tasmasi">Köpek — Köpek Tasması (adet)</option><option value="kopek:kopek-tasima">Köpek — Taşıma Çantası / Kafes (adet)</option><option value="kopek:kopek-yatagi">Köpek — Köpek Yatağı (adet)</option><option value="kopek:kopek-oyuncagi">Köpek — Köpek Oyuncağı (adet)</option><option value="kopek:kopek-mama-kabi">Köpek — Köpek Mama ve Su Kabı (adet)</option><option value="kopek:kopek-mamasi">Köpek — Köpek Maması (paket)</option><option value="kopek:cis-pedi">Köpek — Çiş Pedi (paket)</option><option value="arac:en-ucuz-sifir-arac">0 km Araç — En ucuz sıfır araç (adet)</option><option value="arac:renault">0 km Araç — Renault (adet)</option><option value="arac:dacia">0 km Araç — Dacia (adet)</option><option value="arac:citroen">0 km Araç — Citroen (adet)</option><option value="arac:opel">0 km Araç — Opel (adet)</option><option value="arac:peugeot">0 km Araç — Peugeot (adet)</option><option value="arac:ford">0 km Araç — Ford (adet)</option><option value="arac:hyundai">0 km Araç — Hyundai (adet)</option><option value="arac:kia">0 km Araç — Kia (adet)</option><option value="arac:skoda">0 km Araç — Skoda (adet)</option><option value="arac:honda">0 km Araç — Honda (adet)</option><option value="arac:toyota">0 km Araç — Toyota (adet)</option><option value="arac:fiat">0 km Araç — Fiat (adet)</option><option value="arac:volkswagen">0 km Araç — Volkswagen (adet)</option><option value="arac:nissan">0 km Araç — Nissan (adet)</option><option value="arac:mg">0 km Araç — MG (adet)</option><option value="arac:bmw">0 km Araç — BMW (adet)</option><option value="arac:mercedes">0 km Araç — Mercedes (adet)</option><option value="arac:suzuki">0 km Araç — Suzuki (adet)</option><option value="arac:cupra">0 km Araç — Cupra (adet)</option></select></div>
@@ -178,7 +210,7 @@
     <p class="formul">Bütçe &lt; ekonomik → yetersiz &nbsp;·&nbsp; ekonomik ≤ bütçe &lt; orta → ekonomik banda yeter &nbsp;·&nbsp; orta ≤ bütçe &lt; üst → orta banda yeter</p>
   </section>
 
-  <section class="kaynak-kunye">
+  <section id="kaynak-ve-yontem" class="kaynak-kunye">
   <h2>Kaynak ve yöntem</h2>
   <ul><li>Maliyeti Ne? Düğün veri seti — ölçüm tarihi 2026-08-20</li><li>Maliyeti Ne? Ev Kurma veri seti — ölçüm tarihi 2026-08-22</li><li>Maliyeti Ne? Okul veri seti — ölçüm tarihi 2026-08-20</li><li>Maliyeti Ne? Bebek veri seti — ölçüm tarihi 2026-08-22</li><li>Maliyeti Ne? Kedi veri seti — ölçüm tarihi 2026-08-22</li><li>Maliyeti Ne? Köpek veri seti — ölçüm tarihi 2026-08-22</li><li>Maliyeti Ne? 0 km Araç veri seti — ölçüm tarihi 2026-08-22</li></ul>
   <p class="sonuc-alt-metin">Mevzuata bağlı olmayan hesaplarda değişken parametreleri uydurmuyoruz: ya kullanıcıdan alıyoruz ya da resmi/teknik kaynağı görünür şekilde yazıyoruz. Bu yüzden bazı cevaplar tek sayı değil, aralık olarak verilir.</p>

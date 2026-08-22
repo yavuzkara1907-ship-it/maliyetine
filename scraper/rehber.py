@@ -2936,15 +2936,11 @@ def rehber_uret(rehber: dict, veriler: dict, tarih: str | None = None) -> str | 
         "headline": rehber["baslik"],
         "description": rehber["meta"],
         "datePublished": tarih,
-        "dateModified": tarih,
+        "dateModified": olcum_tarihi,
         "inLanguage": "tr-TR",
         "mainEntityOfPage": url,
-        "author": {"@type": "Organization", "name": "Maliyeti Ne?"},
-        "publisher": {
-            "@type": "Organization",
-            "name": "Maliyeti Ne?",
-            "url": SITE_KOK_URL,
-        },
+        "author": {"@id": f"{SITE_KOK_URL}/#kurum"},
+        "publisher": {"@id": f"{SITE_KOK_URL}/#kurum"},
     }
     if rehber.get("kaynaklar"):
         article["citation"] = [k["url"] for k in rehber["kaynaklar"]]
@@ -2964,6 +2960,7 @@ def rehber_uret(rehber: dict, veriler: dict, tarih: str | None = None) -> str | 
                      "item": url},
                 ],
             },
+            su.kurum_semantigi(),
         ],
     }
     sss_sorulari = _rehber_sssleri(rehber, veriler)
@@ -2984,11 +2981,30 @@ def rehber_uret(rehber: dict, veriler: dict, tarih: str | None = None) -> str | 
     kaynaklar_html = _rehber_kaynaklari_html(rehber)
     sss_html = _rehber_sss_html(sss_sorulari)
     if vconf:
+        kalemler = (veriler.get(rehber.get("vertikal")) or {}).get("kalemler") or {}
+        rehber_kunye = su.yayin_kunyesi_html(
+            [("Fiyat serisi", len(kalemler)),
+             ("Bağımsız kaynak", len(su.bagimsiz_siteler(kalemler, set(kalemler)))),
+             ("Son ölçüm", olcum_tarihi),
+             ("Yayıncı", "Maliyeti Ne? Veri Ekibi")],
+            [("Yöntem", f'/{vconf["yol"]}/metodoloji/'),
+             ("Ham veri", f'/veri/{rehber["vertikal"]}.json'),
+             ("Hata bildir", "/iletisim/")],
+        )
         kunye = (
             f'  <p class="kunye">{olcum_tarihi} tarihli ölçümlerden · '
             f'<a href="/{vconf["yol"]}/metodoloji/">Yöntem</a></p>'
         )
     else:
+        rehber_kunye = su.yayin_kunyesi_html(
+            [("Kaynak", len(rehber.get("kaynaklar") or [])),
+             ("Kontrol tarihi", tarih),
+             ("Yayıncı", "Maliyeti Ne? Veri Ekibi")],
+            [("Kaynaklar", "#kaynaklar"),
+             ("Yayın ilkeleri", "/hakkimizda/"),
+             ("Hata bildir", "/iletisim/")],
+            "Editoryal kontrol",
+        )
         kunye = (
             f'  <p class="kunye">{tarih} tarihli resmi kaynak kontrolünden · '
             '<a href="#kaynaklar">Kaynaklar</a></p>'
@@ -3026,8 +3042,9 @@ def rehber_uret(rehber: dict, veriler: dict, tarih: str | None = None) -> str | 
 
 <main class="kapsayici">
 
-  <span class="guncelleme-etiketi">Son veri: {tarih}</span>
+  <span class="guncelleme-etiketi">Son veri: {olcum_tarihi}</span>
   <h1>{rehber["baslik"]}</h1>
+  {rehber_kunye}
 {govde}
 {kaynaklar_html}{sss_html}{kunye}
 

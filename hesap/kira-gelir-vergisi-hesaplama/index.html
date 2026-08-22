@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Maliyeti Ne?">
 <meta property="og:locale" content="tr_TR">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="/assets/css/style.css?v=20260822-rapor">
+<link rel="stylesheet" href="/assets/css/style.css?v=20260822-guven">
 <link rel="alternate" type="application/rss+xml" title="Maliyeti Ne? veri güncellemeleri" href="/feed.xml">
 <link rel="preload" href="/assets/font/sans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/font/sans-600-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -26,6 +26,38 @@
 {
  "@context": "https://schema.org",
  "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://maliyetine.com.tr/#kurum",
+   "name": "Maliyeti Ne?",
+   "url": "https://maliyetine.com.tr",
+   "description": "Türkiye için canlı, doğrulanabilir maliyet endeksi.",
+   "foundingDate": "2026",
+   "areaServed": {
+    "@type": "Country",
+    "name": "Türkiye"
+   },
+   "knowsLanguage": "tr-TR",
+   "publishingPrinciples": "https://maliyetine.com.tr/hakkimizda/",
+   "correctionsPolicy": "https://maliyetine.com.tr/hakkimizda/#hata-bildirimi",
+   "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "editorial",
+    "email": "info@maliyetine.com.tr",
+    "availableLanguage": "Turkish"
+   }
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://maliyetine.com.tr/hesap/kira-gelir-vergisi-hesaplama/#webpage",
+   "url": "https://maliyetine.com.tr/hesap/kira-gelir-vergisi-hesaplama/",
+   "name": "Kira Gelir Vergisi Hesaplama (2026)",
+   "description": "Konut ve işyeri kira geliri vergisi: 58.000 TL mesken istisnası, götürü veya gerçek gider yöntemi, 2026 tarifesi.",
+   "inLanguage": "tr-TR",
+   "publisher": {
+    "@id": "https://maliyetine.com.tr/#kurum"
+   }
+  },
   {
    "@type": "WebApplication",
    "name": "Kira Gelir Vergisi Hesaplama",
@@ -41,9 +73,7 @@
     "priceCurrency": "TRY"
    },
    "publisher": {
-    "@type": "Organization",
-    "name": "Maliyeti Ne?",
-    "url": "https://maliyetine.com.tr/"
+    "@id": "https://maliyetine.com.tr/#kurum"
    }
   },
   {
@@ -199,6 +229,8 @@
     Konut kira gelirinin <strong>58.000 TL'si istisna</strong>dır (2026). Kalan tutardan gider düşülür — <strong>götürü yöntemde %15</strong>, gerçek yöntemde belgelendirilen giderler. Kalan matraha ücret dışı gelir vergisi tarifesi uygulanır.
   </div>
 
+  <aside class="yayin-kunyesi" aria-label="Yayın doğrulama bilgileri"><p class="yayin-kunyesi-baslik"><span aria-hidden="true"></span>Hesabın dayanağı</p><dl><div><dt>Yöntem</dt><dd>Resmî parametre</dd></div><div><dt>Kaynak</dt><dd>2</dd></div><div><dt>Hesaplama</dt><dd>Tarayıcıda</dd></div><div><dt>Üyelik</dt><dd>Gerekmez</dd></div></dl><p class="yayin-kunyesi-linkler"><a href="#kaynak-ve-yontem">Kaynak ve yöntem</a> · <a href="/hakkimizda/">Yayın ilkeleri</a> · <a href="/iletisim/">Hata bildir</a></p></aside>
+
   <form id="hesap-formu" class="hesap-formu">
   <div class="alan-izgara">
     <div class="alan"><label for="kira">Yıllık toplam kira geliri (TL)</label><input type="number" id="kira" name="kira" value="180000" step="0.01" min="0" required></div>
@@ -216,7 +248,7 @@
     <p class="formul">Matrah = (yıllık kira − istisna) − gider &nbsp;·&nbsp; Vergi = artan oranlı tarife(matrah)</p>
   </section>
 
-  <section class="kaynak-kunye">
+  <section id="kaynak-ve-yontem" class="kaynak-kunye">
   <h2>Hesapta kullanılan mevzuat</h2>
   <ul><li>332 Seri No.lu Gelir Vergisi Genel Tebliği — 2026 mesken istisnası 58.000 TL</li><li>193 sayılı Gelir Vergisi Kanunu md. 21 (mesken istisnası) ve md. 74 (götürü gider %15)</li></ul>
   <p class="sonuc-alt-metin">Vergi tarifesi ve hadler her 31 Aralık'ta Resmî Gazete'de yeniden değerleme oranıyla değişir; kıdem tazminatı tavanı yılda iki kez (Ocak ve Temmuz) güncellenir. Bu sayfadaki parametreler geçerlilik dönemiyle birlikte tutulur — dönem geçtiğinde sayfa uyarı gösterir.</p>

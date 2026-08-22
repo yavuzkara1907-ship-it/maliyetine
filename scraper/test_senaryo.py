@@ -102,3 +102,24 @@ class GrupSenaryosuTesti(unittest.TestCase):
             tipler = {g["@type"] for g in graf}
             self.assertIn("FAQPage", tipler, slug)
             self.assertIn("BreadcrumbList", tipler, slug)
+
+    def test_beyaz_esya_arama_niyeti_ve_guven_kunyesi(self):
+        s = senaryo.GRUP_SENARYOLARI["ev-kurma"][0]
+        kalemler = {}
+        for i, t in enumerate(
+                x for x in su.VERTIKALLER["ev-kurma"]["kalemler"]
+                if x.get("grup") == "Beyaz eşya"):
+            kalemler[t["id"]] = {
+                "toplam_urun": 10 + i,
+                "kaynaklar": [{"site": f"kaynak-{i}.com"}],
+                "segmentler": {
+                    "dusuk": {"medyan": 10000 + i},
+                    "orta": {"medyan": 20000 + i},
+                    "luks": {"medyan": 30000 + i},
+                },
+            }
+        html = senaryo.grup_sayfasi(
+            "ev-kurma", s, {"kalemler": kalemler}, "2026-08-22")
+        self.assertIn("<title>Beyaz Eşya Fiyatları 2026 | Maliyeti Ne?</title>", html)
+        self.assertIn('class="yayin-kunyesi"', html)
+        self.assertIn('"@type": "WebPage"', html)

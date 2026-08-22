@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Maliyeti Ne?">
 <meta property="og:locale" content="tr_TR">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="/assets/css/style.css?v=20260822-rapor">
+<link rel="stylesheet" href="/assets/css/style.css?v=20260822-guven">
 <link rel="alternate" type="application/rss+xml" title="Maliyeti Ne? veri güncellemeleri" href="/feed.xml">
 <link rel="preload" href="/assets/font/sans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/font/sans-600-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -26,6 +26,38 @@
 {
  "@context": "https://schema.org",
  "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://maliyetine.com.tr/#kurum",
+   "name": "Maliyeti Ne?",
+   "url": "https://maliyetine.com.tr",
+   "description": "Türkiye için canlı, doğrulanabilir maliyet endeksi.",
+   "foundingDate": "2026",
+   "areaServed": {
+    "@type": "Country",
+    "name": "Türkiye"
+   },
+   "knowsLanguage": "tr-TR",
+   "publishingPrinciples": "https://maliyetine.com.tr/hakkimizda/",
+   "correctionsPolicy": "https://maliyetine.com.tr/hakkimizda/#hata-bildirimi",
+   "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "editorial",
+    "email": "info@maliyetine.com.tr",
+    "availableLanguage": "Turkish"
+   }
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://maliyetine.com.tr/hesap/aylik-tuketim-maliyeti/#webpage",
+   "url": "https://maliyetine.com.tr/hesap/aylik-tuketim-maliyeti/",
+   "name": "Mama, Kum, Bez ve Ped Aylık Maliyet Hesabı",
+   "description": "Kedi ve köpek maması, kedi kumu, bebek bezi ve çiş pedi için ölçülmüş TL/kg, TL/litre veya TL/adet verisiyle aylık maliyet hesabı.",
+   "inLanguage": "tr-TR",
+   "publisher": {
+    "@id": "https://maliyetine.com.tr/#kurum"
+   }
+  },
   {
    "@type": "WebApplication",
    "name": "Aylık Tüketim Maliyeti",
@@ -41,9 +73,7 @@
     "priceCurrency": "TRY"
    },
    "publisher": {
-    "@type": "Organization",
-    "name": "Maliyeti Ne?",
-    "url": "https://maliyetine.com.tr/"
+    "@id": "https://maliyetine.com.tr/#kurum"
    }
   },
   {
@@ -171,6 +201,8 @@
     Paket fiyatını aylık gider sanmak yerine <strong>4 normalize tüketim profili</strong> kullanıyoruz. Kendi tüketiminizi girin; araç ölçülmüş birim fiyatla aylık ve yıllık karşılığı hesaplasın.
   </div>
 
+  <aside class="yayin-kunyesi" aria-label="Yayın doğrulama bilgileri"><p class="yayin-kunyesi-baslik"><span aria-hidden="true"></span>Hesabın dayanağı</p><dl><div><dt>Yöntem</dt><dd>Matematiksel formül</dd></div><div><dt>Kaynak</dt><dd>2</dd></div><div><dt>Hesaplama</dt><dd>Tarayıcıda</dd></div><div><dt>Üyelik</dt><dd>Gerekmez</dd></div></dl><p class="yayin-kunyesi-linkler"><a href="#kaynak-ve-yontem">Kaynak ve yöntem</a> · <a href="/hakkimizda/">Yayın ilkeleri</a> · <a href="/iletisim/">Hata bildir</a></p></aside>
+
   <form id="hesap-formu" class="hesap-formu">
   <div class="alan-izgara">
     <div class="alan"><label for="urun">Tüketim kalemi</label><select id="urun" name="urun"><option value="kedi:kedi-mamasi:kg" selected>Kedi maması — TL/kg</option><option value="kopek:kopek-mamasi:kg">Köpek maması — TL/kg</option><option value="kedi:kedi-kumu:litre">Kedi kumu (litre) — TL/litre</option><option value="bebek:bebek-bezi:adet">Bebek bezi — TL/adet</option></select></div>
@@ -186,7 +218,7 @@
     <p class="formul">Mama = TL/kg × günlük gram × 30 ÷ 1.000 &nbsp;·&nbsp; Bez/ped = TL/adet × günlük adet × 30 &nbsp;·&nbsp; Kum = TL/kg veya TL/litre × aylık miktar</p>
   </section>
 
-  <section class="kaynak-kunye">
+  <section id="kaynak-ve-yontem" class="kaynak-kunye">
   <h2>Kaynak ve yöntem</h2>
   <ul><li>Maliyeti Ne? normalize ürün verisi — ölçüm tarihleri 2026-08-22 – 2026-08-22</li><li>Birim fiyat yalnız ürün adında gramaj veya paket adedi açıkça yazan ürünlerden hesaplanır</li></ul>
   <p class="sonuc-alt-metin">Mevzuata bağlı olmayan hesaplarda değişken parametreleri uydurmuyoruz: ya kullanıcıdan alıyoruz ya da resmi/teknik kaynağı görünür şekilde yazıyoruz. Bu yüzden bazı cevaplar tek sayı değil, aralık olarak verilir.</p>

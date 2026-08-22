@@ -1450,6 +1450,13 @@ def _kat(n: float) -> str:
     return "{:.1f}".format(n).replace(".", ",")
 
 
+def _kaynak_farki_ifadesi(fark_yuzdesi: float) -> str:
+    """Ucurumlari yuzdeyle dramatize etmek yerine okunur oranla anlatir."""
+    if fark_yuzdesi >= 300:
+        return f"en yüksek kaynak ortancası en düşüğün {_kat(1 + fark_yuzdesi / 100)} katı"
+    return f"kaynak ortancaları arasındaki fark %{_kat(fark_yuzdesi)}"
+
+
 def _para(n: int) -> str:
     return f"{n:,.0f}".replace(",", ".") + " TL"
 
@@ -1716,7 +1723,7 @@ def _capraz_dogrulama_uyarilari_html(conf: dict, kalemler: dict) -> str:
         if uyari:
             ad = ad_haritasi.get(kalem_id, kalem_id)
             uyarilar.append(
-                f"<li><strong>{ad}:</strong> kaynaklar arası fark %{uyari['fark_yuzdesi']:.0f} "
+                f"<li><strong>{ad}:</strong> {_kaynak_farki_ifadesi(uyari['fark_yuzdesi'])} "
                 "— farklı segment/marka aralığını yansıtıyor olabilir, "
                 f'<a href="/{yol}/metodoloji/">metodolojiye bakın</a>.</li>'
             )
@@ -1736,10 +1743,73 @@ SITE_KOK_URL = "https://maliyetine.com.tr"
 # gec font degisiminin cevap blogunu asagi itip CLS uretmesini engeller.
 # Serif dosyasini preload etmek olculen CLS'yi degistirmedi, yavas 4G'de FCP'yi
 # 150 ms geciktirdi. Latin-ext dosyalari da 4-5 KB; CSS uzerinden hizla gelir.
-STIL_ETIKETLERI = """<link rel="stylesheet" href="/assets/css/style.css?v=20260822-rapor">
+STIL_ETIKETLERI = """<link rel="stylesheet" href="/assets/css/style.css?v=20260822-guven">
 <link rel="alternate" type="application/rss+xml" title="Maliyeti Ne? veri güncellemeleri" href="/feed.xml">
 <link rel="preload" href="/assets/font/sans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/font/sans-600-latin.woff2" as="font" type="font/woff2" crossorigin>"""
+
+
+def qa_ozeti(veri_kok: Path | None = None) -> dict:
+    """Yayinlanan QA sonucunu, bozuk/bayat dosyada guven iddiasi kurmadan oku."""
+    kok = veri_kok or SITE_KOK / "veri"
+    try:
+        veri = json.loads((kok / "qa.json").read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    if veri.get("durum") != "gecti":
+        return {}
+    return veri
+
+
+def yayin_kunyesi_html(ogeler: list[tuple[str, str | int]],
+                       baglantilar: list[tuple[str, str]],
+                       baslik: str = "Doğrulanabilir yayın") -> str:
+    """Kaynak, orneklem ve yontemi ilk ekranda okunur tek bir seritte toplar.
+
+    Bu bir "guven rozeti" degil: her deger kanonik JSON'dan gelir ve ilgili
+    kanit sayfasina baglanir. Bos degerler gizlenir; olmayan kanit uydurulmaz.
+    """
+    temiz_ogeler = [(etiket, deger) for etiket, deger in ogeler
+                    if deger not in (None, "")]
+    if not temiz_ogeler:
+        return ""
+    maddeler = "".join(
+        '<div><dt>' + html.escape(str(etiket)) + '</dt><dd>'
+        + html.escape(str(deger)) + '</dd></div>'
+        for etiket, deger in temiz_ogeler
+    )
+    linkler = " · ".join(
+        f'<a href="{html.escape(url, quote=True)}">{html.escape(metin)}</a>'
+        for metin, url in baglantilar
+    )
+    link_satiri = f'<p class="yayin-kunyesi-linkler">{linkler}</p>' if linkler else ""
+    return (
+        '<aside class="yayin-kunyesi" aria-label="Yayın doğrulama bilgileri">'
+        f'<p class="yayin-kunyesi-baslik"><span aria-hidden="true"></span>{html.escape(baslik)}</p>'
+        f'<dl>{maddeler}</dl>{link_satiri}</aside>'
+    )
+
+
+def kurum_semantigi() -> dict:
+    """Tum sema graflarinda ayni yayin kimligini kullan."""
+    return {
+        "@type": "Organization",
+        "@id": f"{SITE_KOK_URL}/#kurum",
+        "name": "Maliyeti Ne?",
+        "url": SITE_KOK_URL,
+        "description": "Türkiye için canlı, doğrulanabilir maliyet endeksi.",
+        "foundingDate": "2026",
+        "areaServed": {"@type": "Country", "name": "Türkiye"},
+        "knowsLanguage": "tr-TR",
+        "publishingPrinciples": f"{SITE_KOK_URL}/hakkimizda/",
+        "correctionsPolicy": f"{SITE_KOK_URL}/hakkimizda/#hata-bildirimi",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "editorial",
+            "email": "info@maliyetine.com.tr",
+            "availableLanguage": "Turkish",
+        },
+    }
 
 # ----------------------------------------------------------
 # PAYLASIM (Open Graph) ETIKETLERI
@@ -2433,15 +2503,24 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
         if guncelleme_tarihi
         else '<span class="guncelleme-etiketi">Henüz ölçülmedi</span>'
     )
+    hub_qa = qa_ozeti(veri_dosyasi.parent)
+    hub_siteler = bagimsiz_siteler(kalemler, set(kalemler))
+    hub_kunye = yayin_kunyesi_html(
+        [
+            ("Fiyat serisi", len(kalemler)),
+            ("Bağımsız kaynak", len(hub_siteler)),
+            ("Son veri", guncelleme_tarihi),
+            ("Yayın kontrolü", "QA geçti" if hub_qa else None),
+        ],
+        [
+            ("Yöntemi inceleyin", f"/{yol}/metodoloji/"),
+            ("Açık veriyi indirin", f"/veri/{vertikal}.json"),
+            ("QA sonucunu görün", "/veri/qa.json"),
+        ],
+    )
 
     sayfa_url = f"{SITE_KOK_URL}/{yol}/"
-    kurum = {
-        "@type": "Organization",
-        "@id": f"{SITE_KOK_URL}/#kurum",
-        "name": "Maliyeti Ne?",
-        "url": SITE_KOK_URL,
-        "description": "Türkiye için canlı, doğrulanabilir maliyet endeksi.",
-    }
+    kurum = kurum_semantigi()
 
     sorular = [{
         "@type": "Question",
@@ -2467,6 +2546,7 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
     # veriyi gercekten indirilebilir kilmak hem seffaflik hem kesfedilebilirlik.
     dataset = {
         "@type": "Dataset",
+        "@id": sayfa_url + "#dataset",
         "name": conf["dataset_ad"],
         "description": conf["dataset_aciklama"],
         "url": sayfa_url,
@@ -2511,6 +2591,16 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
         "@context": "https://schema.org",
         "@graph": [
             kurum,
+            {
+                "@type": "WebPage",
+                "@id": sayfa_url + "#webpage",
+                "url": sayfa_url,
+                "name": conf["sayfa_basligi"],
+                "dateModified": guncelleme_tarihi or bugun,
+                "inLanguage": "tr-TR",
+                "publisher": {"@id": f"{SITE_KOK_URL}/#kurum"},
+                "mainEntity": {"@id": sayfa_url + "#dataset"},
+            },
             {
                 "@type": "BreadcrumbList",
                 "itemListElement": [
@@ -2563,6 +2653,8 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
   <div class="cevap-blok"{cevap_disable}>
     {cevap_metni}
   </div>
+
+  {hub_kunye}
 
   {_tek_kaynak_uyarisi_html(conf, kullanilan_siteler)}
 
@@ -3107,13 +3199,7 @@ def kalem_sayfasi_uret(
     if len(meta_aciklama) > 158:
         meta_aciklama = meta_aciklama[:155].rsplit(" ", 1)[0] + "…"
 
-    kurum = {
-        "@type": "Organization",
-        "@id": f"{SITE_KOK_URL}/#kurum",
-        "name": "Maliyeti Ne?",
-        "url": SITE_KOK_URL,
-        "description": "Türkiye için canlı, doğrulanabilir maliyet endeksi.",
-    }
+    kurum = kurum_semantigi()
     # SSS: hepsi VERIDEN uretiliyor, uydurma cevap yok. Hem schema'ya hem
     # sayfaya (gorunur) konuyor - Google yapilandirilmis veriye tek basina
     # guvenmiyor, AI motorlari da sayfa metnini okuyor.
@@ -3191,7 +3277,7 @@ def kalem_sayfasi_uret(
             "@type": "Question",
             "name": "Kaynaklar arasında neden fark var?",
             "acceptedAnswer": {"@type": "Answer", "text": (
-                f"Kaynaklar arası fark %{uyari['fark_yuzdesi']:.0f}. Bu genellikle "
+                f"{_kaynak_farki_ifadesi(uyari['fark_yuzdesi']).capitalize()}. Bu genellikle "
                 "farklı segmentlerin (pazaryeri ile marka mağazası) karşılaştırılmasından "
                 "kaynaklanır."
             )},
@@ -3201,6 +3287,16 @@ def kalem_sayfasi_uret(
         "@context": "https://schema.org",
         "@graph": [
             kurum,
+            {
+                "@type": "WebPage",
+                "@id": sayfa_url + "#webpage",
+                "url": sayfa_url,
+                "name": sayfa["baslik"],
+                "description": meta_aciklama,
+                "dateModified": guncelleme_tarihi or bugun,
+                "inLanguage": "tr-TR",
+                "publisher": {"@id": f"{SITE_KOK_URL}/#kurum"},
+            },
             {
                 "@type": "BreadcrumbList",
                 "itemListElement": [
@@ -3240,6 +3336,7 @@ def kalem_sayfasi_uret(
             and degerler.get("luks")):
         json_ld["@graph"].append({
             "@type": "Product",
+            "mainEntityOfPage": {"@id": sayfa_url + "#webpage"},
             "name": f"{tanim['ad']} fiyatları ({guncelleme_tarihi})",
             "description": sayfa["aciklama"],
             "category": conf["ad"],
@@ -3300,6 +3397,19 @@ def kalem_sayfasi_uret(
         gorunen_baslik + MARKA_SONEKI if marka_rehberi
         else _seo_title(tanim["ad"])
     )
+    kalem_kunye = yayin_kunyesi_html(
+        [
+            ("Bağımsız kaynak", kaynak_sayisi),
+            ("Ölçülen ürün", urun_sayisi),
+            ("Son ölçüm", guncelleme_tarihi),
+            ("Ölçüm", "Ortanca fiyat" if not karma_urun_turu else "Ürün tipi bazlı"),
+        ],
+        [
+            ("Yöntemi inceleyin", f"/{conf['yol']}/metodoloji/"),
+            ("Ham veriyi görün", f"/veri/{vertikal}.json"),
+            ("Hata bildirin", "/iletisim/"),
+        ],
+    )
 
     return f"""<!DOCTYPE html>
 <html lang="tr">
@@ -3338,6 +3448,8 @@ def kalem_sayfasi_uret(
   <div class="cevap-blok">
     {cevap}
   </div>
+
+  {kalem_kunye}
 
   <section class="icerik-bolumu">
     <h2>{fiyat_bolumu_basligi}</h2>
@@ -3921,6 +4033,21 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
     rehber_linkleri = ""
     hesap_linkleri = _hesap_linkleri_html()
     site_ozeti = _site_ozeti(ozetler, veri_kok)
+    anasayfa_qa = qa_ozeti(veri_kok)
+    anasayfa_kunye = yayin_kunyesi_html(
+        [
+            ("Fiyat serisi", _envanter["fiyat_serisi"]),
+            ("Bağımsız kaynak", _envanter["kaynak"]),
+            ("Çok kaynaklı seri", _envanter["cok_kaynakli"]),
+            ("Yayın kontrolü", "0 kritik hata" if anasayfa_qa else None),
+        ],
+        [
+            ("Nasıl ölçüyoruz?", "/hakkimizda/"),
+            ("Açık veri", "/veri/"),
+            ("QA raporu", "/veri/qa.json"),
+        ],
+        "Bağımsız ve denetlenebilir veri",
+    )
     anasayfa_yazi = ""
     try:
         import rehber
@@ -3980,13 +4107,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
       <p class="kart-linkler">{alt_linkler}</p>
     </div>""")
 
-    kurum = {
-        "@type": "Organization",
-        "@id": f"{SITE_KOK_URL}/#kurum",
-        "name": "Maliyeti Ne?",
-        "url": SITE_KOK_URL,
-        "description": "Türkiye için canlı, doğrulanabilir maliyet endeksi.",
-    }
+    kurum = kurum_semantigi()
     json_ld = {
         "@context": "https://schema.org",
         "@graph": [
@@ -4095,6 +4216,8 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
   <div class="cevap-blok"{cevap_stil}>
     {cevap}
   </div>
+
+  {anasayfa_kunye}
 
   <section class="kalem-arama">
     <label for="kalem-ara">Bir ürünün fiyatını arayın</label>

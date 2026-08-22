@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Maliyeti Ne?">
 <meta property="og:locale" content="tr_TR">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="/assets/css/style.css?v=20260822-rapor">
+<link rel="stylesheet" href="/assets/css/style.css?v=20260822-guven">
 <link rel="alternate" type="application/rss+xml" title="Maliyeti Ne? veri güncellemeleri" href="/feed.xml">
 <link rel="preload" href="/assets/font/sans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/font/sans-600-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -26,6 +26,38 @@
 {
  "@context": "https://schema.org",
  "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://maliyetine.com.tr/#kurum",
+   "name": "Maliyeti Ne?",
+   "url": "https://maliyetine.com.tr",
+   "description": "Türkiye için canlı, doğrulanabilir maliyet endeksi.",
+   "foundingDate": "2026",
+   "areaServed": {
+    "@type": "Country",
+    "name": "Türkiye"
+   },
+   "knowsLanguage": "tr-TR",
+   "publishingPrinciples": "https://maliyetine.com.tr/hakkimizda/",
+   "correctionsPolicy": "https://maliyetine.com.tr/hakkimizda/#hata-bildirimi",
+   "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "editorial",
+    "email": "info@maliyetine.com.tr",
+    "availableLanguage": "Turkish"
+   }
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://maliyetine.com.tr/hesap/serbest-meslek-vergi-hesaplama/#webpage",
+   "url": "https://maliyetine.com.tr/hesap/serbest-meslek-vergi-hesaplama/",
+   "name": "Freelancer Vergi Hesaplama (2026)",
+   "description": "Serbest meslek kazancında stopaj, KDV ve gelir vergisi. 2026 genç girişimci istisnası 400.000 TL dahil.",
+   "inLanguage": "tr-TR",
+   "publisher": {
+    "@id": "https://maliyetine.com.tr/#kurum"
+   }
+  },
   {
    "@type": "WebApplication",
    "name": "Serbest Meslek Vergi Hesaplama",
@@ -41,9 +73,7 @@
     "priceCurrency": "TRY"
    },
    "publisher": {
-    "@type": "Organization",
-    "name": "Maliyeti Ne?",
-    "url": "https://maliyetine.com.tr/"
+    "@id": "https://maliyetine.com.tr/#kurum"
    }
   },
   {
@@ -169,6 +199,8 @@
     Serbest meslek makbuzunda <strong>%20 stopaj</strong> kesilir ve <strong>%20 KDV</strong> eklenir. Yıllık beyanda kazancınızdan giderler düşülür, varsa <strong>genç girişimci istisnası (2026: 400.000 TL)</strong> uygulanır; yıl içinde kesilen stopaj hesaplanan vergiden <strong>mahsup edilir</strong> — çoğu hesaplayıcının atladığı kısım budur ve iade doğurabilir.
   </div>
 
+  <aside class="yayin-kunyesi" aria-label="Yayın doğrulama bilgileri"><p class="yayin-kunyesi-baslik"><span aria-hidden="true"></span>Hesabın dayanağı</p><dl><div><dt>Yöntem</dt><dd>Resmî parametre</dd></div><div><dt>Kaynak</dt><dd>4</dd></div><div><dt>Hesaplama</dt><dd>Tarayıcıda</dd></div><div><dt>Üyelik</dt><dd>Gerekmez</dd></div></dl><p class="yayin-kunyesi-linkler"><a href="#kaynak-ve-yontem">Kaynak ve yöntem</a> · <a href="/hakkimizda/">Yayın ilkeleri</a> · <a href="/iletisim/">Hata bildir</a></p></aside>
+
   <form id="hesap-formu" class="hesap-formu">
   <div class="alan-izgara">
     <div class="alan"><label for="hasilat">Yıllık brüt hasılat (TL)</label><input type="number" id="hasilat" name="hasilat" value="600000" step="0.01" min="0" required></div>
@@ -185,7 +217,7 @@
     <p class="formul">Matrah = hasılat − gider − istisna &nbsp;·&nbsp; Ödenecek = tarife(matrah) − yıl içinde kesilen stopaj</p>
   </section>
 
-  <section class="kaynak-kunye">
+  <section id="kaynak-ve-yontem" class="kaynak-kunye">
   <h2>Hesapta kullanılan mevzuat</h2>
   <ul><li>193 sayılı Gelir Vergisi Kanunu md. 94 (serbest meslek stopajı)</li><li>193 sayılı GVK mükerrer md. 20 — genç girişimci kazanç istisnası</li><li>332 Seri No.lu Gelir Vergisi Genel Tebliği — 2026 istisna tutarı 400.000 TL</li><li>3065 sayılı KDV Kanunu</li></ul>
   <p class="sonuc-alt-metin">Vergi tarifesi ve hadler her 31 Aralık'ta Resmî Gazete'de yeniden değerleme oranıyla değişir; kıdem tazminatı tavanı yılda iki kez (Ocak ve Temmuz) güncellenir. Bu sayfadaki parametreler geçerlilik dönemiyle birlikte tutulur — dönem geçtiğinde sayfa uyarı gösterir.</p>

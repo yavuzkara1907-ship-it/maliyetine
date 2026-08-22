@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Maliyeti Ne?">
 <meta property="og:locale" content="tr_TR">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="/assets/css/style.css?v=20260822-rapor">
+<link rel="stylesheet" href="/assets/css/style.css?v=20260822-guven">
 <link rel="alternate" type="application/rss+xml" title="Maliyeti Ne? veri güncellemeleri" href="/feed.xml">
 <link rel="preload" href="/assets/font/sans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/font/sans-600-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -26,6 +26,38 @@
 {
  "@context": "https://schema.org",
  "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://maliyetine.com.tr/#kurum",
+   "name": "Maliyeti Ne?",
+   "url": "https://maliyetine.com.tr",
+   "description": "Türkiye için canlı, doğrulanabilir maliyet endeksi.",
+   "foundingDate": "2026",
+   "areaServed": {
+    "@type": "Country",
+    "name": "Türkiye"
+   },
+   "knowsLanguage": "tr-TR",
+   "publishingPrinciples": "https://maliyetine.com.tr/hakkimizda/",
+   "correctionsPolicy": "https://maliyetine.com.tr/hakkimizda/#hata-bildirimi",
+   "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "editorial",
+    "email": "info@maliyetine.com.tr",
+    "availableLanguage": "Turkish"
+   }
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://maliyetine.com.tr/hesap/brutten-nete-maas-hesaplama/#webpage",
+   "url": "https://maliyetine.com.tr/hesap/brutten-nete-maas-hesaplama/",
+   "name": "Brütten Nete Maaş Hesaplama (2026)",
+   "description": "2026 vergi tarifesi ve SGK oranlarıyla brütten nete, netten brüte maaş hesabı. Asgari ücret istisnası ve kümülatif matrah dahil.",
+   "inLanguage": "tr-TR",
+   "publisher": {
+    "@id": "https://maliyetine.com.tr/#kurum"
+   }
+  },
   {
    "@type": "WebApplication",
    "name": "Brütten Nete Maaş Hesaplama",
@@ -41,9 +73,7 @@
     "priceCurrency": "TRY"
    },
    "publisher": {
-    "@type": "Organization",
-    "name": "Maliyeti Ne?",
-    "url": "https://maliyetine.com.tr/"
+    "@id": "https://maliyetine.com.tr/#kurum"
    }
   },
   {
@@ -177,6 +207,8 @@
     Brüt ücretten önce <strong>%14 SGK</strong> ve <strong>%1 işsizlik</strong> primi kesilir; kalan tutar gelir vergisi matrahıdır. Vergi 2026 ücret tarifesinden hesaplanır, sonra <strong>asgari ücret istisnası</strong> düşülür. Son olarak binde 7,59 damga vergisi uygulanır.
   </div>
 
+  <aside class="yayin-kunyesi" aria-label="Yayın doğrulama bilgileri"><p class="yayin-kunyesi-baslik"><span aria-hidden="true"></span>Hesabın dayanağı</p><dl><div><dt>Yöntem</dt><dd>Resmî parametre</dd></div><div><dt>Kaynak</dt><dd>4</dd></div><div><dt>Hesaplama</dt><dd>Tarayıcıda</dd></div><div><dt>Üyelik</dt><dd>Gerekmez</dd></div></dl><p class="yayin-kunyesi-linkler"><a href="#kaynak-ve-yontem">Kaynak ve yöntem</a> · <a href="/hakkimizda/">Yayın ilkeleri</a> · <a href="/iletisim/">Hata bildir</a></p></aside>
+
   <form id="hesap-formu" class="hesap-formu">
   <div class="alan-izgara">
     <div class="alan"><label for="yon">Hesaplama yönü</label><select id="yon" name="yon"><option value="brutten">Brütten nete</option><option value="netten">Netten brüte</option></select></div>
@@ -193,7 +225,7 @@
     <p class="formul">Net = Brüt − (SGK %14 + İşsizlik %1) − (Gelir vergisi − asgari ücret istisnası) − (Damga ‰7,59 − asgari ücret istisnası)</p>
   </section>
 
-  <section class="kaynak-kunye">
+  <section id="kaynak-ve-yontem" class="kaynak-kunye">
   <h2>Hesapta kullanılan mevzuat</h2>
   <ul><li>332 Seri No.lu Gelir Vergisi Genel Tebliği (31.12.2025 R.G. 33124, 5. Mükerrer)</li><li>5510 sayılı Kanun — 2026 prime esas kazanç sınırları</li><li>488 sayılı Damga Vergisi Kanunu</li><li>2026 Asgari Ücret Tespit Komisyonu Kararı</li></ul>
   <p class="sonuc-alt-metin">Vergi tarifesi ve hadler her 31 Aralık'ta Resmî Gazete'de yeniden değerleme oranıyla değişir; kıdem tazminatı tavanı yılda iki kez (Ocak ve Temmuz) güncellenir. Bu sayfadaki parametreler geçerlilik dönemiyle birlikte tutulur — dönem geçtiğinde sayfa uyarı gösterir.</p>

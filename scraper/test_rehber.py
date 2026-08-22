@@ -122,6 +122,10 @@ class RehberTesti(unittest.TestCase):
         graf = json.loads(bloklar[0])["@graph"]
         self.assertEqual(graf[0]["@type"], "Article")
         self.assertEqual(graf[1]["@type"], "BreadcrumbList")
+        kurum = next(x for x in graf if x["@type"] == "Organization")
+        self.assertIn("publishingPrinciples", kurum)
+        self.assertEqual(graf[0]["publisher"], {"@id": kurum["@id"]})
+        self.assertIn('class="yayin-kunyesi"', html)
 
     def test_diger_rehberlere_ic_link_verir(self):
         r = next(x for x in rehber.REHBERLER if x["slug"] == "yemekli-mi-kokteyl-mi")

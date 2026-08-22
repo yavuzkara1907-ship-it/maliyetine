@@ -23,6 +23,16 @@ JS_KOK = hc.SITE_KOK / "assets" / "js"
 
 
 class TanimTesti(unittest.TestCase):
+    def test_hisse_sayfasi_arama_niyeti_ve_guven_kunyesi(self):
+        hisse = next(h for h in hc.HESAPLAYICILAR if h["id"] == "hisse-maliyet")
+        html = hc.sayfa_uret(hisse)
+        self.assertIn(
+            "<title>Hisse Maliyet Hesaplama (Borsa) | Maliyeti Ne?</title>", html)
+        self.assertIn("<h1>Hisse Maliyet Hesaplama ve Maliyet Düşürme</h1>", html)
+        self.assertIn('class="yayin-kunyesi"', html)
+        self.assertIn('"@type": "WebPage"', html)
+        self.assertIn('"publishingPrinciples"', html)
+
     def test_her_hesaplayici_kaynak_tasiyor(self):
         """Kaynaksiz vergi hesabi yayinlamak yok - tek farkimiz bu."""
         for h in hc.HESAPLAYICILAR:

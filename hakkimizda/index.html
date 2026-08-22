@@ -6,7 +6,7 @@
 <title>Hakkımızda | Maliyeti Ne?</title>
 <meta name="description" content="Maliyeti Ne? kim yayınlıyor, veriler nasıl derleniyor, bağımsızlık ve gelir modeli. Türkiye için doğrulanabilir maliyet endeksi.">
 <link rel="canonical" href="https://maliyetine.com.tr/hakkimizda/">
-<link rel="stylesheet" href="/assets/css/style.css?v=20260822-rapor">
+<link rel="stylesheet" href="/assets/css/style.css?v=20260822-guven">
 <link rel="alternate" type="application/rss+xml" title="Maliyeti Ne? veri güncellemeleri" href="/feed.xml">
 <link rel="preload" href="/assets/font/sans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/font/sans-600-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -35,6 +35,8 @@
     "foundingDate": "2026",
     "areaServed": {"@type": "Country", "name": "Türkiye"},
     "knowsLanguage": "tr-TR",
+    "publishingPrinciples": "https://maliyetine.com.tr/hakkimizda/#yayin-ilkeleri",
+    "correctionsPolicy": "https://maliyetine.com.tr/hakkimizda/#hata-bildirimi",
     "contactPoint": {
       "@type": "ContactPoint",
       "contactType": "editorial",
@@ -68,8 +70,8 @@
   <div class="cevap-blok">
     Maliyeti Ne?, Türkiye'de büyük hayat masraflarının ne kadara mal
     olduğunu <strong>ölçülmüş verilerle</strong> gösteren bağımsız bir
-    maliyet endeksidir. Düğün, ev kurma ve sıfır araç için fiyatları aylık
-    olarak derler; her rakamın yanında kaynak sayısını, örneklem
+    maliyet endeksidir. Düğün, ev kurma, okul, bebek, evcil hayvan ve
+    sıfır araç için fiyatları düzenli olarak derler; her rakamın yanında kaynak sayısını, örneklem
     büyüklüğünü ve derleme tarihini yayınlarız.
   </div>
 
@@ -82,7 +84,7 @@
     üründen</strong> ölçüldüğü belli rakamlar yayınlıyoruz.
   </p>
 
-  <h2>Verileri nasıl elde ediyoruz?</h2>
+  <h2 id="yayin-ilkeleri">Verileri nasıl elde ediyoruz?</h2>
   <p>
     Fiyatlar tahmin edilmez; gerçek satış listelerinden ölçülür. Her kalem
     için birden fazla bağımsız kaynak kullanmayı hedefleriz ve kaynaklar
@@ -95,7 +97,13 @@
   <p>Ayrıntılar için vertikal metodoloji sayfalarımıza bakabilirsiniz:
     <a href="/dugun/metodoloji/">düğün</a>,
     <a href="/ev-kurma/metodoloji/">ev kurma</a>,
-    <a href="/arac/metodoloji/">0 km araç</a>.</p>
+    <a href="/okul/metodoloji/">okul</a>,
+    <a href="/bebek/metodoloji/">bebek</a>,
+    <a href="/kedi/metodoloji/">kedi</a>,
+    <a href="/kopek/metodoloji/">köpek</a> ve
+    <a href="/arac/metodoloji/">0 km araç</a>. Yayındaki kapsamı ve son
+    kalite kontrolünü <a href="/veri/envanter.json">canlı envanter</a> ile
+    <a href="/veri/qa.json">QA raporundan</a> ayrıca doğrulayabilirsiniz.</p>
 
   <h2>Bağımsızlık</h2>
   <p>
@@ -115,7 +123,7 @@
     bunu ilgili yerde açıkça belirtiriz.
   </p>
 
-  <h2>Hata bulursanız</h2>
+  <h2 id="hata-bildirimi">Hata bulursanız</h2>
   <p>
     Veri hataları olabilir; bir kaynak sayfasını değiştirdiğinde ölçümümüz
     yanlış çıkabilir. Yanlış gördüğünüz bir rakamı

@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Maliyeti Ne?">
 <meta property="og:locale" content="tr_TR">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="/assets/css/style.css?v=20260822-rapor">
+<link rel="stylesheet" href="/assets/css/style.css?v=20260822-guven">
 <link rel="alternate" type="application/rss+xml" title="Maliyeti Ne? veri güncellemeleri" href="/feed.xml">
 <link rel="preload" href="/assets/font/sans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/font/sans-600-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -26,6 +26,38 @@
 {
  "@context": "https://schema.org",
  "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://maliyetine.com.tr/#kurum",
+   "name": "Maliyeti Ne?",
+   "url": "https://maliyetine.com.tr",
+   "description": "Türkiye için canlı, doğrulanabilir maliyet endeksi.",
+   "foundingDate": "2026",
+   "areaServed": {
+    "@type": "Country",
+    "name": "Türkiye"
+   },
+   "knowsLanguage": "tr-TR",
+   "publishingPrinciples": "https://maliyetine.com.tr/hakkimizda/",
+   "correctionsPolicy": "https://maliyetine.com.tr/hakkimizda/#hata-bildirimi",
+   "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "editorial",
+    "email": "info@maliyetine.com.tr",
+    "availableLanguage": "Turkish"
+   }
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://maliyetine.com.tr/hesap/basa-bas-noktasi-hesaplama/#webpage",
+   "url": "https://maliyetine.com.tr/hesap/basa-bas-noktasi-hesaplama/",
+   "name": "Başa Baş Noktası: Kaç Adet Satmam Gerekiyor?",
+   "description": "Sabit gider, birim satış fiyatı ve birim değişken maliyete göre başa baş satış adedi, birim katkı payı ve gereken ciro.",
+   "inLanguage": "tr-TR",
+   "publisher": {
+    "@id": "https://maliyetine.com.tr/#kurum"
+   }
+  },
   {
    "@type": "WebApplication",
    "name": "Başa Baş Noktası Hesaplama",
@@ -41,9 +73,7 @@
     "priceCurrency": "TRY"
    },
    "publisher": {
-    "@type": "Organization",
-    "name": "Maliyeti Ne?",
-    "url": "https://maliyetine.com.tr/"
+    "@id": "https://maliyetine.com.tr/#kurum"
    }
   },
   {
@@ -161,6 +191,8 @@
     Başa baş adet = <strong>sabit gider ÷ birim katkı payı</strong>. Birim katkı payı, satış fiyatından birim değişken maliyetin çıkarılmasıyla bulunur — yani her bir satışın sabit gideri karşılamaya bıraktığı tutar.
   </div>
 
+  <aside class="yayin-kunyesi" aria-label="Yayın doğrulama bilgileri"><p class="yayin-kunyesi-baslik"><span aria-hidden="true"></span>Hesabın dayanağı</p><dl><div><dt>Yöntem</dt><dd>Matematiksel formül</dd></div><div><dt>Kaynak</dt><dd>1</dd></div><div><dt>Hesaplama</dt><dd>Tarayıcıda</dd></div><div><dt>Üyelik</dt><dd>Gerekmez</dd></div></dl><p class="yayin-kunyesi-linkler"><a href="#kaynak-ve-yontem">Kaynak ve yöntem</a> · <a href="/hakkimizda/">Yayın ilkeleri</a> · <a href="/iletisim/">Hata bildir</a></p></aside>
+
   <form id="hesap-formu" class="hesap-formu">
   <div class="alan-izgara">
     <div class="alan"><label for="sabit">Aylık sabit gider (TL)</label><input type="number" id="sabit" name="sabit" value="50000" step="1" min="0" required></div>
@@ -177,7 +209,7 @@
     <p class="formul">Adet = sabit gider ÷ (birim fiyat − birim değişken maliyet)</p>
   </section>
 
-  <section class="kaynak-kunye">
+  <section id="kaynak-ve-yontem" class="kaynak-kunye">
   <h2>Kaynak ve yöntem</h2>
   <ul><li>Başa baş analizi — temel aritmetik</li></ul>
   <p class="sonuc-alt-metin">Mevzuata bağlı olmayan hesaplarda değişken parametreleri uydurmuyoruz: ya kullanıcıdan alıyoruz ya da resmi/teknik kaynağı görünür şekilde yazıyoruz. Bu yüzden bazı cevaplar tek sayı değil, aralık olarak verilir.</p>

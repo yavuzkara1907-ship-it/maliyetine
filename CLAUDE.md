@@ -86,7 +86,7 @@
   Corsa-e, Astra, Mokka, Frontera, Grandland ve Combo H3 bölümleridir.
   Kaynaktaki motor, şanzıman ve donanım ifadesi aynen korunur; ayrı ayrı
   özellik farkı uydurulmaz. Canlı QA: 121 seri, 109 kalem sayfası, 0 kritik
-  hata, 29 uyarı, 72 görünür veri sınırı; Python 420/420, JS 90/90.
+  hata, 29 uyarı, 72 görünür veri sınırı; Python 424/424, JS 90/90.
 - **Google dışı dağıtım omurgası eklendi (2026-08-22).** `/rapor/` tek
   kanonik URL'de yedi endeksin güncel orta senaryolarını, envanter
   sayılarını ve yalnız kalite eşiğini geçen fiyat değişimlerini yayınlar.
@@ -102,6 +102,20 @@
   `4da0102` canlıdadır: rapor, RSS, JSON, ana sayfa çağrısı, sitemap ve
   sürümlü CSS Cloudflare üzerinden doğrulandı. Aynı turda sitemap'teki
   199 URL IndexNow'a gönderildi ve servis `200 OK` ile kabul etti.
+- **SEO/GEO güven turunda yeni URL açılmadı (2026-08-22).** Search
+  Console'ın son 7 günlük görünümü 1.550 gösterim, 11 tık, %0,7 TO ve
+  20,4 ortalama konum gösterdi; talep alan sayfaları güçlendirmek yeni
+  içerikten daha doğru hamleydi. Ana sayfa, 7 endeks, 109 kalem sayfası,
+  senaryolar, 27 rehber ve 26 hesaplayıcı artık şablondan üretilen bir
+  yayın doğrulama künyesi taşır. Seri/kaynak/örneklem/QA değerleri kanonik
+  JSON'dan gelir; yöntem, ham veri ve hata bildirim yollarına bağlanır.
+  `Organization`, `WebPage`, `Article` ve `Dataset` aynı `/#kurum`
+  kimliğine bağlandı; yayın ilkeleri ve düzeltme politikası şemada
+  görünürdür. Yüksek gösterimli beyaz eşya sayfasının title'ı “Beyaz Eşya
+  Fiyatları 2026”, hisse aracınınki “Hisse Maliyet Hesaplama (Borsa)”
+  niyetine çekildi. Kaynak uçurumları `%2121` gibi yanıltıcı ifadeler
+  yerine `22,2 kat` olarak anlatılır. Mobil 390 px ve masaüstü 1280 px
+  kontrolde taşma yok; Python 424/424, JS 90/90 ve yayın QA'sı geçti.
 - **Düğün ikinci kaynak standardı:** aynı para biriminde görünmesi iki
   kaynağı karşılaştırılabilir yapmaz. Kişi başı salon fiyatına toplam
   organizasyon teklifi; aynı mekandaki paket farkından türetilen
@@ -3733,7 +3747,9 @@ bugün gerçekten iş açan maddeleri taşımalı; biten iş burada kalmasın.
 - [ ] **Yüksek niyetli hesaplayıcıları ölç.** Tapu, kira gelir vergisi,
       hisse maliyet, temettü ve işsizlik sayfalarına 2026-08-22'de eklenen
       örnek hesapların gösterim → tık etkisini 14-28 gün sonra karşılaştır.
-      CTR/konum hareketi yoksa title/cevap bloğu yeniden çalışılmalı.
+      Hisse title değişikliği ile site genelindeki yayın güven künyesinin
+      CTR/konum hareketini de ayrı karşılaştır; hareket yoksa cevap bloğu
+      yeniden çalışılmalı.
 - [ ] **Yeni sayfa açmadan önce cannibalization kontrolü.** KDV matrah ve
       asgari ücret örneğinde olduğu gibi, bazı "eksikler" mevcut sayfanın
       kelime eksiği olabilir. Yeni sayfa ancak ayrı niyet varsa açılır.

@@ -573,11 +573,31 @@ class SayfaUretTestleri(unittest.TestCase):
         # alyans kalemi DUGUN_KALEMLERI listesinde degil (bu test sadece
         # uyari render fonksiyonunu dogrudan kontrol ediyor).
         html_uyari = sayfa_uret._capraz_dogrulama_uyarilari_html(DUGUN, {"alyans": uyarili_alyans})
-        self.assertIn("%351", html_uyari)
+        self.assertIn("4,5 katı", html_uyari)
         self.assertIn("Alyans", html_uyari)
 
         html_uyarisiz = sayfa_uret._capraz_dogrulama_uyarilari_html(DUGUN, {"gelinlik": GELINLIK_VERISI})
         self.assertEqual(html_uyarisiz, "")
+
+    def test_yayin_kunyesi_veriyi_kacirmadan_ve_kacislayarak_yazar(self):
+        html = sayfa_uret.yayin_kunyesi_html(
+            [("Kaynak", 3), ("Son ölçüm", "2026-08-22"), ("Boş", None)],
+            [("Yöntem & veri", "/metodoloji/?a=1&b=2")],
+        )
+        self.assertIn('class="yayin-kunyesi"', html)
+        self.assertIn("Yöntem &amp; veri", html)
+        self.assertIn("a=1&amp;b=2", html)
+        self.assertNotIn("Boş", html)
+
+    def test_kaynak_ucurumu_yuzde_yerine_okunur_oranla_anlatilir(self):
+        self.assertEqual(
+            sayfa_uret._kaynak_farki_ifadesi(2121),
+            "en yüksek kaynak ortancası en düşüğün 22,2 katı",
+        )
+        self.assertEqual(
+            sayfa_uret._kaynak_farki_ifadesi(50),
+            "kaynak ortancaları arasındaki fark %50",
+        )
 
 
 class EkSorularTestleri(unittest.TestCase):

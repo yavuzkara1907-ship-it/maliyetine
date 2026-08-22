@@ -319,6 +319,67 @@ p {
      yatay tasirdi. Gorsel test yakaladi. */
 }
 
+/* Yayın künyesi: "bize güvenin" rozeti değil, rakamın kanıt zinciri.
+   Ayrı kartlar yerine tek cetvel kullanır; veri yayını karakterini korur. */
+.yayin-kunyesi {
+  margin: -12px 0 32px;
+  padding: 13px 0 12px;
+  border-bottom: 1px solid var(--renk-cizgi-koyu);
+}
+.yayin-kunyesi-baslik {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0 0 10px;
+  color: var(--renk-metin-soluk);
+  font-size: .76rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+.yayin-kunyesi-baslik span {
+  width: 7px;
+  height: 7px;
+  flex: 0 0 7px;
+  border-radius: 50%;
+  background: #39754a;
+}
+.yayin-kunyesi dl {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 0;
+}
+.yayin-kunyesi dl > div {
+  min-width: 0;
+  padding: 0 14px;
+  border-left: 1px solid var(--renk-cizgi);
+}
+.yayin-kunyesi dl > div:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+.yayin-kunyesi dt {
+  color: var(--renk-metin-soluk);
+  font-size: .72rem;
+}
+.yayin-kunyesi dd {
+  margin: 2px 0 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.yayin-kunyesi-linkler {
+  margin: 10px 0 0;
+  color: var(--renk-metin-soluk);
+  font-size: .82rem;
+}
+@media (max-width: 620px) {
+  .yayin-kunyesi dl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .yayin-kunyesi dl > div { padding: 7px 10px; }
+  .yayin-kunyesi dl > div:first-child,
+  .yayin-kunyesi dl > div:nth-child(3) { padding-left: 0; border-left: 0; }
+  .yayin-kunyesi dl > div:nth-child(n+3) { border-top: 1px solid var(--renk-cizgi); }
+}
+
 /* ---- Guncelleme etiketi ---- */
 /* Hap seklindeki rozet -> kunye satiri. Bir tarih "etiket" degil,
    yayin bilgisi; gazetede de basligin ustunde duz yazar. */

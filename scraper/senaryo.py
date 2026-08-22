@@ -91,6 +91,8 @@ GRUP_SENARYOLARI = {
             "slug": "beyaz-esya-fiyatlari",
             "gruplar": ["Beyaz eşya"],
             "baslik": "Beyaz Eşya Seti Fiyatları",
+            "seo_baslik": "Beyaz Eşya Fiyatları 2026 | Maliyeti Ne?",
+            "seo_ifade": "Beyaz eşya fiyatları 2026",
             "soru": "Bir evin beyaz eşyası ne kadar tutuyor?",
             "yorum": (
                 "Beyaz eşya, ev kurma bütçesinin tek kalemde en büyük dilimi. "
@@ -218,15 +220,21 @@ def _title(baslik: str) -> str:
 def _sayfa_html(baslik: str, soru: str, aciklama_blok: str, govde: str,
                 url: str, meta: str, breadcrumb: list, tarih: str,
                 sorular: list[dict], konu_kumesi: str = "",
-                vertikal: str = "", og_kart: str | None = None) -> str:
+                vertikal: str = "", og_kart: str | None = None,
+                guven_html: str = "", seo_baslik: str | None = None) -> str:
     json_ld = {
         "@context": "https://schema.org",
         "@graph": [
+            su.kurum_semantigi(),
             {
-                "@type": "Organization",
-                "@id": f"{SITE_KOK_URL}/#kurum",
-                "name": "Maliyeti Ne?",
-                "url": SITE_KOK_URL,
+                "@type": "WebPage",
+                "@id": url + "#webpage",
+                "url": url,
+                "name": baslik,
+                "description": meta,
+                "dateModified": tarih,
+                "inLanguage": "tr-TR",
+                "publisher": {"@id": f"{SITE_KOK_URL}/#kurum"},
             },
             {
                 "@type": "BreadcrumbList",
@@ -258,7 +266,7 @@ def _sayfa_html(baslik: str, soru: str, aciklama_blok: str, govde: str,
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{_title(baslik)}</title>
+<title>{seo_baslik or _title(baslik)}</title>
 <meta name="description" content="{meta}">
 <link rel="canonical" href="{url}">
 {su.STIL_ETIKETLERI}
@@ -291,6 +299,8 @@ def _sayfa_html(baslik: str, soru: str, aciklama_blok: str, govde: str,
   <h1>{baslik}</h1>
 
   <div class="cevap-blok">{aciklama_blok}</div>
+
+  {guven_html}
 
 {govde}
   <section class="icerik-bolumu">
@@ -392,6 +402,25 @@ def olcek_sayfasi(vertikal: str, senaryo: dict, veri: dict, tarih: str) -> str |
     </p>
   </section>
 """
+    olculen_idler = {
+        d["id"] for d in detaylar
+        if d.get("toplama_dahil") and d.get("satir_toplam") and not d.get("tahmini_mi")
+    }
+    urun_sayisi = sum(
+        (kalemler.get(kalem_id) or {}).get("toplam_urun", 0)
+        for kalem_id in olculen_idler
+    )
+    guven_html = su.yayin_kunyesi_html(
+        [
+            ("Ölçülen kalem", gercek_kalem),
+            ("Bağımsız kaynak", len(su.bagimsiz_siteler(kalemler, olculen_idler))),
+            ("Ürün örneklemi", urun_sayisi),
+            ("Son ölçüm", tarih),
+        ],
+        [("Yöntem", f"/{conf['yol']}/metodoloji/"),
+         ("Ham veri", f"/veri/{vertikal}.json"),
+         ("Hata bildir", "/iletisim/")],
+    )
     return _sayfa_html(
         baslik=senaryo["baslik"],
         soru=f"{olcek} kişilik düğün ne kadar tutar?",
@@ -411,6 +440,7 @@ def olcek_sayfasi(vertikal: str, senaryo: dict, veri: dict, tarih: str) -> str |
         tarih=tarih, sorular=sorular,
         konu_kumesi=_konu_kumesi_html(vertikal, senaryo["slug"]),
         vertikal=vertikal,
+        guven_html=guven_html,
     )
 
 
@@ -491,6 +521,23 @@ def grup_sayfasi(vertikal: str, senaryo: dict, veri: dict, tarih: str) -> str | 
     </p>
   </section>
 """
+    olculen_idler = {t["id"] for t, _ in satirlar}
+    urun_sayisi = sum(
+        (kalemler.get(kalem_id) or {}).get("toplam_urun", 0)
+        for kalem_id in olculen_idler
+    )
+    guven_html = su.yayin_kunyesi_html(
+        [
+            ("Ölçülen kalem", len(satirlar)),
+            ("Bağımsız kaynak", len(su.bagimsiz_siteler(kalemler, olculen_idler))),
+            ("Ürün örneklemi", urun_sayisi),
+            ("Son ölçüm", tarih),
+        ],
+        [("Yöntem", f"/{conf['yol']}/metodoloji/"),
+         ("Ham veri", f"/veri/{vertikal}.json"),
+         ("Hata bildir", "/iletisim/")],
+    )
+    meta_ifade = senaryo.get("seo_ifade", senaryo["baslik"])
     return _sayfa_html(
         baslik=senaryo["baslik"],
         soru=senaryo["soru"],
@@ -502,7 +549,7 @@ def grup_sayfasi(vertikal: str, senaryo: dict, veri: dict, tarih: str) -> str | 
         ),
         og_kart=f"/assets/og/{vertikal}-{senaryo['slug']}.png",
         govde=govde, url=url,
-        meta=(f"{senaryo['baslik']} {tarih} itibarıyla {_p(orta)}. "
+        meta=(f"{meta_ifade} itibarıyla {_p(orta)}. "
               "Kalem kalem ekonomik, orta ve üst segment fiyatlarıyla."),
         breadcrumb=[("Ana sayfa", SITE_KOK_URL + "/"),
                     (conf["ad"], f"{SITE_KOK_URL}/{conf['yol']}/"),
@@ -510,6 +557,8 @@ def grup_sayfasi(vertikal: str, senaryo: dict, veri: dict, tarih: str) -> str | 
         tarih=tarih, sorular=sorular,
         konu_kumesi=_konu_kumesi_html(vertikal, senaryo["slug"]),
         vertikal=vertikal,
+        guven_html=guven_html,
+        seo_baslik=senaryo.get("seo_baslik"),
     )
 
 
