@@ -3812,6 +3812,33 @@ daha kolay alinabilir hale getirmek.
   **121 cevap = 109 kalem baglantisi + 12 endeks baglantisi** sozlesmesini
   ve `2026-08-22-9f06c382a78198a6` veri surumunu tasiyor.
 
+### STRATEJI DUZELTMESI: EXACT-QUERY URL YUZEYI
+
+Yavuz'un hakli itirazi: kaliteyi koruma refleksi URL hacmine karsi bir
+argumana donustu. Rakip 1.000+ neredeyse kaynaksiz sayfayla ChatGPT cevap
+yuzeyini yonlendirirken yalniz 121 seri cevabini paketlemek yeterli degil.
+Dogru karar `kalite veya hacim` degil, **gercek gozlemle hacim**.
+
+**Uygulama:**
+- `scraper/fiyat_gozlemleri.py`, agregali veride urun/model adi ile fiyat
+  birlikte bulunan satirlari birlestiriyor. Ayni ad iki kaynakta gecerse tek
+  URL ve iki kaynak olcumu oluyor; sifir/bos fiyat sayfa acmiyor.
+- `/fiyat/` ana hub, 5 vertikal hub ve **733 tekil urun/model/paket sayfasi**
+  uretildi: arac 487, ev-kurma 146, kedi 59, bebek 26, kopek 15.
+- Her sayfa kesin urun sorusu, son olcum ortancasi, kaynak tablosu, kategori
+  ortancasi karsilastirmasi, fiyat gecmisi, ham JSON, metodoloji, gorunur FAQ
+  ve Product/AggregateOffer schema tasiyor.
+- `/veri/fiyat-gozlemleri.json` kalici arsivdir. Urun sonraki taramada
+  gorunmezse kayit silinmez ve URL 404 olmaz; `son gorulen olcum` olarak
+  tarihli kalir. Yeni gercek urunler geldikce URL yuzeyi otomatik buyur.
+- Sitemap **199 -> 938 URL** oldu. `llms.txt`, `ai.txt`, DataCatalog, veri
+  merkezi, aylik workflow ve IndexNow bu yuzeyi otomatik kesfediyor. Sayac
+  elle yazilmiyor; envanter JSON'undan geliyor.
+- Son kalite kapilari Python **445/445**, JavaScript **90/90**. Uretilmis 938
+  HTML ile sitemap birebir; title/description benzersiz, yetim sayfa yok.
+  `/fiyat/`, 487 linkli arac hub'i ve tekil model sayfasi Chromium'da masaustu
+  ve 390 px mobilde yatay tasmasiz, okunabilir olarak dogrulandi.
+
 ## Yapılacaklar (güncel, 2026-08-22)
 Tarihî tamamlanan işler yukarıdaki günlükte duruyor. Bu liste yalnızca
 bugün gerçekten iş açan maddeleri taşımalı; biten iş burada kalmasın.

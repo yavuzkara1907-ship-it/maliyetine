@@ -8,6 +8,9 @@ dataset_version: 2026-08-22-9f06c382a78198a6
 policy: https://maliyetine.com.tr/llms.txt
 full_answer_catalog: https://maliyetine.com.tr/llms-full.txt
 machine_readable_answers: https://maliyetine.com.tr/veri/cevaplar.json
+exact_price_pages: 733
+exact_price_catalog: https://maliyetine.com.tr/fiyat/
+price_observation_data: https://maliyetine.com.tr/veri/fiyat-gozlemleri.json
 sitemap: https://maliyetine.com.tr/sitemap.xml
 license: CC BY 4.0 (ölçüm verisi)
 contact: info@maliyetine.com.tr

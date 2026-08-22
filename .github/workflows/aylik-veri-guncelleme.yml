@@ -154,9 +154,16 @@ jobs:
           python hesaplayicilar.py
           python sayfa_uret.py --vertikal dugun
 
+      # Kaynaklarda adi + fiyati birlikte gorulen urun/model satirlarina
+      # kalici exact-query URL'leri. Envanter onceki kayitlari korur; yeni
+      # taramada gorunmeyen urun 404'e donusmez, son olcum olarak kalir.
+      - name: Tekil fiyat gözlemlerini üret
+        working-directory: scraper
+        run: python fiyat_gozlemleri.py
+
       # CSV disa aktarim + /veri/ indirme merkezi + AI haritalari.
-      # Hesaplayicidan sonra calisir; llms.txt ilk build'de de yeni araclari
-      # eksiksiz listelemeli.
+      # Fiyat gozlemlerinden sonra calisir; llms.txt ve ai.txt ilk build'de
+      # bile yeni exact-query yuzeyini eksiksiz duyurur.
       - name: Veriyi CSV olarak dışa aktar
         working-directory: scraper
         run: python veri_disa_aktar.py
@@ -220,7 +227,7 @@ jobs:
           # bu projede daha once yasanan hata sinifi).
           git add scraper/veri scraper/kaynak_gecmisi.json veri \
                   index.html sitemap.xml feed.xml llms.txt llms-full.txt ai.txt robots.txt \
-                  assets \
+                  assets fiyat \
                   dugun ev-kurma okul bebek kedi kopek arac evcil-hayvan rehber hesap sss rapor
           if git diff --cached --quiet; then
             echo "Değişiklik yok, commit atlanıyor."

@@ -22,6 +22,12 @@ yanıltıcı hale gelir: "buzdolabı 30 bin lira" altı ay sonra yanlış olur,
 - [Köpek](https://maliyetine.com.tr/kopek/): 7 fiyat serisi, ölçüm 2026-08-22. JSON: https://maliyetine.com.tr/veri/kopek.json · CSV: https://maliyetine.com.tr/veri/csv/kopek.csv
 - [0 km Araç](https://maliyetine.com.tr/arac/): 25 fiyat serisi, ölçüm 2026-08-22. JSON: https://maliyetine.com.tr/veri/arac.json · CSV: https://maliyetine.com.tr/veri/csv/arac.csv
 
+## Tekil ürün ve model fiyatları
+
+- 733 gerçek ürün/model için ayrı fiyat sayfası: https://maliyetine.com.tr/fiyat/
+- Kalıcı gözlem ve fiyat geçmişi envanteri (JSON): https://maliyetine.com.tr/veri/fiyat-gozlemleri.json
+
+
 ## Veriyi indirin
 
 - Tüm fiyat serileri tek dosyada (CSV): https://maliyetine.com.tr/veri/csv/tum-kalemler.csv

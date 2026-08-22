@@ -38,6 +38,18 @@ SAYFALAR = ["/", "/ev-kurma/", "/hesap/", "/hesap/butcem-yeter-mi/",
             "/veri/", "/sss/",
             "/ev-kurma/buzdolabi-fiyatlari/"]
 
+# Programatik fiyat yuzeyinin hub ve gercek bir urun sayfasi da tum cihaz
+# genisliklerinde denetlenir. Slug envanterden okunur; veri degisince test
+# elle guncelleme istemez.
+if (SITE / "fiyat" / "index.html").exists():
+    SAYFALAR.extend(["/fiyat/", "/fiyat/arac/"])
+    adaylar = sorted(
+        p for p in (SITE / "fiyat").glob("*/index.html")
+        if p.parent.name not in {"arac", "bebek", "ev-kurma", "kedi", "kopek"}
+    )
+    if adaylar:
+        SAYFALAR.append(f"/fiyat/{adaylar[0].parent.name}/")
+
 
 class _Sunucu(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *a, **k):

@@ -270,6 +270,20 @@ class WorkflowTesti(unittest.TestCase):
             "hesaplayici sayfalari uretildikten sonra sitemap yenilenmiyor",
         )
 
+    def test_fiyat_gozlemlerinden_sonra_sitemap_yeniden_uretiliyor(self):
+        """Yuzlerce yeni exact-query URL ilk build'de sitemap disinda kalmamali."""
+        akis = _metin()
+        gozlem = akis.index("python fiyat_gozlemleri.py")
+        self.assertLess(
+            gozlem, akis.index("python veri_disa_aktar.py"),
+            "AI haritalari fiyat gozlemi envanterinden once uretiliyor",
+        )
+        self.assertLess(
+            gozlem, akis.rindex("python sayfa_uret.py"),
+            "fiyat gozlemleri uretildikten sonra sitemap yenilenmiyor",
+        )
+        self.assertIn("fiyat", _git_add_yollari())
+
     def test_QA_sosyal_gonderi_ve_committen_once_calisiyor(self):
         """Tutarsiz build once dis dunyaya yan etki uretmemeli."""
         akis = _metin()

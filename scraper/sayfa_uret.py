@@ -3846,6 +3846,17 @@ def sitemap_uret() -> str:
     except ImportError:
         pass
 
+    # Kaynakta adi + fiyati birlikte gorulen urun/model gozlemleri.
+    # Envanter kalicidir: urun sonraki taramada kaybolsa da URL 404 olmaz.
+    try:
+        import fiyat_gozlemleri
+        for yol_ in fiyat_gozlemleri.sitemap_yollari():
+            if (SITE_KOK / yol_ / "index.html").exists():
+                oncelik = "0.8" if yol_.count("/") <= 2 else "0.6"
+                url_kayitlari.append((f"/{yol_}", "monthly", oncelik))
+    except ImportError:
+        pass
+
     for conf in VERTIKALLER.values():
         yol = conf["yol"]
         url_kayitlari.extend([

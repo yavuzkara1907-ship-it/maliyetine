@@ -19,6 +19,7 @@ Bu testler gercek dosyalari okur; site uretilmemisse atlanir.
 from __future__ import annotations
 
 import json
+import html
 
 import re
 import unittest
@@ -42,7 +43,9 @@ def _govde(h: str) -> str:
 
 
 def _metin(h: str) -> str:
-    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", _govde(h)))
+    return html.unescape(
+        re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", _govde(h)))
+    )
 
 
 def _yol(p: Path) -> str:
@@ -130,14 +133,16 @@ class SiteDenetimi(unittest.TestCase):
             for p in self.sayfalar:
                 m = re.search(desen, _oku(p), re.S)
                 self.assertIsNotNone(m, f"{_yol(p)}: {alan} yok")
-                d = m.group(1).strip()
+                d = html.unescape(m.group(1).strip())
                 self.assertNotIn(d, gorulen,
                                  f"{alan} tekrar: {_yol(p)} = {gorulen.get(d)}")
                 gorulen[d] = _yol(p)
 
     def test_title_60_karakteri_asmiyor(self):
         for p in self.sayfalar:
-            t = re.search(r"<title>(.*?)</title>", _oku(p), re.S).group(1).strip()
+            t = html.unescape(
+                re.search(r"<title>(.*?)</title>", _oku(p), re.S).group(1).strip()
+            )
             self.assertLessEqual(len(t), 62, f"{_yol(p)}: title {len(t)} karakter")
 
     def test_paylasim_etiketleri_tam(self):

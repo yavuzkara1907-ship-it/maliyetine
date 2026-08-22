@@ -153,6 +153,8 @@ class CsvTesti(unittest.TestCase):
         self.assertIn("2026-08-05-abcdef1234567890", sayfa)
         self.assertIn("/veri/qa.json", sayfa)
         self.assertIn("/veri/cevaplar.json", sayfa)
+        self.assertIn("/veri/fiyat-gozlemleri.json", sayfa)
+        self.assertIn("/fiyat/", sayfa)
 
     def test_cevap_envanteri_tarihli_kaynakli_ve_kanonik(self):
         with TemporaryDirectory() as d:
@@ -205,6 +207,17 @@ class CsvTesti(unittest.TestCase):
         self.assertIn("sayfası açma eşiğinin altında", ince["sinir"])
         self.assertEqual(ince["soru"].split("'da ", 1)[1].split(" fiyatı")[0],
                          ince["kalem_adi"])
+
+    def test_canli_ai_haritalari_tekil_fiyat_yuzeyini_duyurur(self):
+        ozet = vd.disa_aktar()
+        sayi = vd.fiyat_gozlem_sayisi()
+        self.assertGreater(sayi, 0)
+        llms = vd.llms_txt(ozet, "2026-08-22", veri_kok=vd.SITE_KOK / "veri")
+        ai = vd.ai_txt(ozet, "2026-08-22")
+        self.assertIn(f"{sayi} gerçek ürün/model", llms)
+        self.assertIn("/veri/fiyat-gozlemleri.json", llms)
+        self.assertIn(f"exact_price_pages: {sayi}", ai)
+        self.assertIn("exact_price_catalog: https://maliyetine.com.tr/fiyat/", ai)
 
     def test_ai_haritasi_veri_araclarini_formul_diye_gostermez(self):
         ozet = {"ev-kurma": {"kalem": 1, "tarih": "2026-08-05",

@@ -158,6 +158,16 @@ def _aktif_kaynaklar(kalem: dict) -> list[str]:
     })
 
 
+def fiyat_gozlem_sayisi(veri_kok: Path | None = None) -> int:
+    dosya = (veri_kok or SITE_KOK / "veri") / "fiyat-gozlemleri.json"
+    if not dosya.exists():
+        return 0
+    try:
+        return int(json.loads(dosya.read_text(encoding="utf-8")).get("gozlem_sayfasi") or 0)
+    except (json.JSONDecodeError, OSError, TypeError, ValueError):
+        return 0
+
+
 def cevap_envanteri(
     veri_kok: Path | None = None, dataset_surumu: str | None = None
 ) -> dict:
@@ -381,6 +391,12 @@ def veri_sayfasi(
             "contentUrl": f"{su.SITE_KOK_URL}/veri/cevaplar.json",
             "name": "Doğrudan fiyat cevapları (JSON)",
         },
+        {
+            "@type": "DataDownload",
+            "encodingFormat": "application/json",
+            "contentUrl": f"{su.SITE_KOK_URL}/veri/fiyat-gozlemleri.json",
+            "name": "Tekil ürün ve model fiyat gözlemleri (JSON)",
+        },
     ] + [
         {
             "@type": "DataDownload",
@@ -493,6 +509,7 @@ def veri_sayfasi(
   <p>
     Hepsi tek dosyada: <a href="/veri/csv/tum-kalemler.csv" download><strong>tum-kalemler.csv</strong></a>
     · <a href="/veri/cevaplar.json"><strong>cevaplar.json</strong></a>
+    · <a href="/fiyat/"><strong>tekil fiyat gözlemleri</strong></a>
     · <a href="/veri/envanter.json"><strong>envanter.json</strong></a>
     · <a href="/veri/manifest.json"><strong>manifest.json</strong></a>
     · <a href="/veri/qa.json"><strong>qa.json</strong></a>
@@ -635,6 +652,14 @@ def llms_txt(
     except ImportError:
         yazilar = ""
     toplam = sum(o["kalem"] for o in ozet.values())
+    gozlem_sayisi = fiyat_gozlem_sayisi(veri_kok)
+    gozlem_satirlari = (
+        f"\n## Tekil ürün ve model fiyatları\n\n"
+        f"- {gozlem_sayisi} gerçek ürün/model için ayrı fiyat sayfası: {kok}/fiyat/\n"
+        f"- Kalıcı gözlem ve fiyat geçmişi envanteri (JSON): "
+        f"{kok}/veri/fiyat-gozlemleri.json\n"
+        if gozlem_sayisi else ""
+    )
 
     return f"""# Maliyeti Ne?
 
@@ -653,6 +678,7 @@ yanıltıcı hale gelir: "buzdolabı 30 bin lira" altı ay sonra yanlış olur,
 ## Endeksler
 
 {endeksler}
+{gozlem_satirlari}
 
 ## Veriyi indirin
 
@@ -731,6 +757,13 @@ def ai_txt(
     except ImportError:
         formul_sayisi = toplam_hesap = 0
     veri_hesabi = toplam_hesap - formul_sayisi
+    gozlem_sayisi = fiyat_gozlem_sayisi()
+    gozlem_alani = (
+        f"exact_price_pages: {gozlem_sayisi}\n"
+        f"exact_price_catalog: {kok}/fiyat/\n"
+        f"price_observation_data: {kok}/veri/fiyat-gozlemleri.json\n"
+        if gozlem_sayisi else ""
+    )
     return f"""# ai.txt — Maliyeti Ne? (maliyetine.com.tr)
 
 site: {kok}
@@ -741,7 +774,7 @@ dataset_version: {dataset_surumu or kok + '/veri/manifest.json'}
 policy: {kok}/llms.txt
 full_answer_catalog: {kok}/llms-full.txt
 machine_readable_answers: {kok}/veri/cevaplar.json
-sitemap: {kok}/sitemap.xml
+{gozlem_alani}sitemap: {kok}/sitemap.xml
 license: CC BY 4.0 (ölçüm verisi)
 contact: info@maliyetine.com.tr
 
