@@ -26,6 +26,10 @@ yanıltıcı hale gelir: "buzdolabı 30 bin lira" altı ay sonra yanlış olur,
 
 - 733 gerçek ürün/model için ayrı fiyat sayfası: https://maliyetine.com.tr/fiyat/
 - Kalıcı gözlem ve fiyat geçmişi envanteri (JSON): https://maliyetine.com.tr/veri/fiyat-gozlemleri.json
+- 64 marka sayfası: https://maliyetine.com.tr/markalar/
+- 34 kategori/model listesi: https://maliyetine.com.tr/kategoriler/
+- 276 araç fiyat karşılaştırması: https://maliyetine.com.tr/karsilastir/
+- 7/30 günlük değişen fiyatlar: https://maliyetine.com.tr/fiyati-degisen/30-gun/
 
 
 ## Veriyi indirin

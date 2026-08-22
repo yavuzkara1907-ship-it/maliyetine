@@ -161,6 +161,13 @@ jobs:
         working-directory: scraper
         run: python fiyat_gozlemleri.py
 
+      # Rakibin marka, kategori, degisim ve karsilastirma URL mimarisini
+      # mevcut gercek gozlemlerden kurar. Fiyat envanterinden sonra, AI
+      # haritalarindan once calismali ki sayaclar ayni kosuda guncellensin.
+      - name: Marka, kategori ve karşılaştırma yüzeyini üret
+        working-directory: scraper
+        run: python kesif_yuzeyi.py
+
       # CSV disa aktarim + /veri/ indirme merkezi + AI haritalari.
       # Fiyat gozlemlerinden sonra calisir; llms.txt ve ai.txt ilk build'de
       # bile yeni exact-query yuzeyini eksiksiz duyurur.
@@ -227,7 +234,8 @@ jobs:
           # bu projede daha once yasanan hata sinifi).
           git add scraper/veri scraper/kaynak_gecmisi.json veri \
                   index.html sitemap.xml feed.xml llms.txt llms-full.txt ai.txt robots.txt \
-                  assets fiyat \
+                  assets fiyat marka markalar kategori kategoriler karsilastir \
+                  fiyati-degisen zamlanan-urunler ucuzlayan-urunler raporlar \
                   dugun ev-kurma okul bebek kedi kopek arac evcil-hayvan rehber hesap sss rapor
           if git diff --cached --quiet; then
             echo "Değişiklik yok, commit atlanıyor."

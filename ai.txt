@@ -11,6 +11,12 @@ machine_readable_answers: https://maliyetine.com.tr/veri/cevaplar.json
 exact_price_pages: 733
 exact_price_catalog: https://maliyetine.com.tr/fiyat/
 price_observation_data: https://maliyetine.com.tr/veri/fiyat-gozlemleri.json
+brand_pages: 64
+brand_catalog: https://maliyetine.com.tr/markalar/
+category_pages: 34
+comparison_pages: 276
+comparison_catalog: https://maliyetine.com.tr/karsilastir/
+price_changes: https://maliyetine.com.tr/fiyati-degisen/30-gun/
 sitemap: https://maliyetine.com.tr/sitemap.xml
 license: CC BY 4.0 (ölçüm verisi)
 contact: info@maliyetine.com.tr

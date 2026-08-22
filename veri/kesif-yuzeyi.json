@@ -1,0 +1,2277 @@
+{
+  "sema_surumu": 1,
+  "uretim_tarihi": "2026-08-22",
+  "toplam_sayfa": 389,
+  "marka_sayfasi": 64,
+  "kategori_sayfasi": 34,
+  "karsilastirma_sayfasi": 276,
+  "rapor_sayfasi": 8,
+  "degisim_sayfasi": 4,
+  "markalar": [
+    {
+      "ad": "Altus",
+      "urun_sayisi": 5,
+      "url": "https://maliyetine.com.tr/marka/altus/"
+    },
+    {
+      "ad": "Arcelik",
+      "urun_sayisi": 6,
+      "url": "https://maliyetine.com.tr/marka/arcelik/"
+    },
+    {
+      "ad": "Arnica",
+      "urun_sayisi": 3,
+      "url": "https://maliyetine.com.tr/marka/arnica/"
+    },
+    {
+      "ad": "Arzum",
+      "urun_sayisi": 6,
+      "url": "https://maliyetine.com.tr/marka/arzum/"
+    },
+    {
+      "ad": "BMW",
+      "urun_sayisi": 59,
+      "url": "https://maliyetine.com.tr/marka/bmw/"
+    },
+    {
+      "ad": "Bosch",
+      "urun_sayisi": 14,
+      "url": "https://maliyetine.com.tr/marka/bosch/"
+    },
+    {
+      "ad": "BYD",
+      "urun_sayisi": 4,
+      "url": "https://maliyetine.com.tr/marka/byd/"
+    },
+    {
+      "ad": "Chery",
+      "urun_sayisi": 5,
+      "url": "https://maliyetine.com.tr/marka/chery/"
+    },
+    {
+      "ad": "Citroen",
+      "urun_sayisi": 18,
+      "url": "https://maliyetine.com.tr/marka/citroen/"
+    },
+    {
+      "ad": "Cupra",
+      "urun_sayisi": 8,
+      "url": "https://maliyetine.com.tr/marka/cupra/"
+    },
+    {
+      "ad": "D.S",
+      "urun_sayisi": 2,
+      "url": "https://maliyetine.com.tr/marka/d-s/"
+    },
+    {
+      "ad": "Dacia",
+      "urun_sayisi": 13,
+      "url": "https://maliyetine.com.tr/marka/dacia/"
+    },
+    {
+      "ad": "Delonghi",
+      "urun_sayisi": 2,
+      "url": "https://maliyetine.com.tr/marka/delonghi/"
+    },
+    {
+      "ad": "Dijitsu",
+      "urun_sayisi": 3,
+      "url": "https://maliyetine.com.tr/marka/dijitsu/"
+    },
+    {
+      "ad": "Dyson",
+      "urun_sayisi": 5,
+      "url": "https://maliyetine.com.tr/marka/dyson/"
+    },
+    {
+      "ad": "Emsan",
+      "urun_sayisi": 2,
+      "url": "https://maliyetine.com.tr/marka/emsan/"
+    },
+    {
+      "ad": "Exclusion",
+      "urun_sayisi": 3,
+      "url": "https://maliyetine.com.tr/marka/exclusion/"
+    },
+    {
+      "ad": "Fantom",
+      "urun_sayisi": 5,
+      "url": "https://maliyetine.com.tr/marka/fantom/"
+    },
+    {
+      "ad": "Fiat",
+      "urun_sayisi": 16,
+      "url": "https://maliyetine.com.tr/marka/fiat/"
+    },
+    {
+      "ad": "Ford",
+      "urun_sayisi": 20,
+      "url": "https://maliyetine.com.tr/marka/ford/"
+    },
+    {
+      "ad": "Grundig",
+      "urun_sayisi": 9,
+      "url": "https://maliyetine.com.tr/marka/grundig/"
+    },
+    {
+      "ad": "Haustier",
+      "urun_sayisi": 3,
+      "url": "https://maliyetine.com.tr/marka/haustier/"
+    },
+    {
+      "ad": "Hills",
+      "urun_sayisi": 3,
+      "url": "https://maliyetine.com.tr/marka/hills/"
+    },
+    {
+      "ad": "Honda",
+      "urun_sayisi": 8,
+      "url": "https://maliyetine.com.tr/marka/honda/"
+    },
+    {
+      "ad": "Hoover",
+      "urun_sayisi": 2,
+      "url": "https://maliyetine.com.tr/marka/hoover/"
+    },
+    {
+      "ad": "Hyundai",
+      "urun_sayisi": 36,
+      "url": "https://maliyetine.com.tr/marka/hyundai/"
+    },
+    {
+      "ad": "Karaca",
+      "urun_sayisi": 4,
+      "url": "https://maliyetine.com.tr/marka/karaca/"
+    },
+    {
+      "ad": "Kia",
+      "urun_sayisi": 22,
+      "url": "https://maliyetine.com.tr/marka/kia/"
+    },
+    {
+      "ad": "Kiwi",
+      "urun_sayisi": 5,
+      "url": "https://maliyetine.com.tr/marka/kiwi/"
+    },
+    {
+      "ad": "Lindocat",
+      "urun_sayisi": 8,
+      "url": "https://maliyetine.com.tr/marka/lindocat/"
+    },
+    {
+      "ad": "Little Swimmers",
+      "urun_sayisi": 2,
+      "url": "https://maliyetine.com.tr/marka/little-swimmers/"
+    },
+    {
+      "ad": "Mayo",
+      "urun_sayisi": 3,
+      "url": "https://maliyetine.com.tr/marka/mayo/"
+    },
+    {
+      "ad": "Mercedes",
+      "urun_sayisi": 43,
+      "url": "https://maliyetine.com.tr/marka/mercedes/"
+    },
+    {
+      "ad": "MG",
+      "urun_sayisi": 5,
+      "url": "https://maliyetine.com.tr/marka/mg/"
+    },
+    {
+      "ad": "Molfix",
+      "urun_sayisi": 3,
+      "url": "https://maliyetine.com.tr/marka/molfix/"
+    },
+    {
+      "ad": "Molly",
+      "urun_sayisi": 3,
+      "url": "https://maliyetine.com.tr/marka/molly/"
+    },
+    {
+      "ad": "N&D",
+      "urun_sayisi": 10,
+      "url": "https://maliyetine.com.tr/marka/n-d/"
+    },
+    {
+      "ad": "Ninja",
+      "urun_sayisi": 2,
+      "url": "https://maliyetine.com.tr/marka/ninja/"
+    },
+    {
+      "ad": "Nissan",
+      "urun_sayisi": 19,
+      "url": "https://maliyetine.com.tr/marka/nissan/"
+    },
+    {
+      "ad": "Onvo",
+      "urun_sayisi": 2,
+      "url": "https://maliyetine.com.tr/marka/onvo/"
+    },
+    {
+      "ad": "Opel",
+      "urun_sayisi": 22,
+      "url": "https://maliyetine.com.tr/marka/opel/"
+    },
+    {
+      "ad": "Peugeot",
+      "urun_sayisi": 22,
+      "url": "https://maliyetine.com.tr/marka/peugeot/"
+    },
+    {
+      "ad": "Philips",
+      "urun_sayisi": 14,
+      "url": "https://maliyetine.com.tr/marka/philips/"
+    },
+    {
+      "ad": "Prima",
+      "urun_sayisi": 6,
+      "url": "https://maliyetine.com.tr/marka/prima/"
+    },
+    {
+      "ad": "Pro Plan",
+      "urun_sayisi": 7,
+      "url": "https://maliyetine.com.tr/marka/pro-plan/"
+    },
+    {
+      "ad": "Profine",
+      "urun_sayisi": 2,
+      "url": "https://maliyetine.com.tr/marka/profine/"
+    },
+    {
+      "ad": "Purina",
+      "urun_sayisi": 2,
+      "url": "https://maliyetine.com.tr/marka/purina/"
+    },
+    {
+      "ad": "Reflex",
+      "urun_sayisi": 2,
+      "url": "https://maliyetine.com.tr/marka/reflex/"
+    },
+    {
+      "ad": "Renault",
+      "urun_sayisi": 24,
+      "url": "https://maliyetine.com.tr/marka/renault/"
+    },
+    {
+      "ad": "Royal Canin",
+      "urun_sayisi": 5,
+      "url": "https://maliyetine.com.tr/marka/royal-canin/"
+    },
+    {
+      "ad": "Samsung",
+      "urun_sayisi": 4,
+      "url": "https://maliyetine.com.tr/marka/samsung/"
+    },
+    {
+      "ad": "Seat",
+      "urun_sayisi": 5,
+      "url": "https://maliyetine.com.tr/marka/seat/"
+    },
+    {
+      "ad": "Simfer",
+      "urun_sayisi": 4,
+      "url": "https://maliyetine.com.tr/marka/simfer/"
+    },
+    {
+      "ad": "Sinbo",
+      "urun_sayisi": 12,
+      "url": "https://maliyetine.com.tr/marka/sinbo/"
+    },
+    {
+      "ad": "Skoda",
+      "urun_sayisi": 42,
+      "url": "https://maliyetine.com.tr/marka/skoda/"
+    },
+    {
+      "ad": "Sleepy",
+      "urun_sayisi": 4,
+      "url": "https://maliyetine.com.tr/marka/sleepy/"
+    },
+    {
+      "ad": "Suzuki",
+      "urun_sayisi": 13,
+      "url": "https://maliyetine.com.tr/marka/suzuki/"
+    },
+    {
+      "ad": "Tanos",
+      "urun_sayisi": 2,
+      "url": "https://maliyetine.com.tr/marka/tanos/"
+    },
+    {
+      "ad": "Tesla",
+      "urun_sayisi": 5,
+      "url": "https://maliyetine.com.tr/marka/tesla/"
+    },
+    {
+      "ad": "Togg",
+      "urun_sayisi": 9,
+      "url": "https://maliyetine.com.tr/marka/togg/"
+    },
+    {
+      "ad": "Toyota",
+      "urun_sayisi": 28,
+      "url": "https://maliyetine.com.tr/marka/toyota/"
+    },
+    {
+      "ad": "Uğur",
+      "urun_sayisi": 3,
+      "url": "https://maliyetine.com.tr/marka/ugur/"
+    },
+    {
+      "ad": "Vestel",
+      "urun_sayisi": 10,
+      "url": "https://maliyetine.com.tr/marka/vestel/"
+    },
+    {
+      "ad": "Volkswagen",
+      "urun_sayisi": 41,
+      "url": "https://maliyetine.com.tr/marka/volkswagen/"
+    }
+  ],
+  "kategoriler": [
+    {
+      "ad": "Bebek Bezi (paket)",
+      "urun_sayisi": 26,
+      "url": "https://maliyetine.com.tr/kategori/bebek-bezi/"
+    },
+    {
+      "ad": "BMW",
+      "urun_sayisi": 58,
+      "url": "https://maliyetine.com.tr/kategori/bmw/"
+    },
+    {
+      "ad": "Buzdolabı",
+      "urun_sayisi": 42,
+      "url": "https://maliyetine.com.tr/kategori/buzdolabi/"
+    },
+    {
+      "ad": "BYD",
+      "urun_sayisi": 4,
+      "url": "https://maliyetine.com.tr/kategori/byd/"
+    },
+    {
+      "ad": "Chery",
+      "urun_sayisi": 4,
+      "url": "https://maliyetine.com.tr/kategori/chery/"
+    },
+    {
+      "ad": "Citroen",
+      "urun_sayisi": 17,
+      "url": "https://maliyetine.com.tr/kategori/citroen/"
+    },
+    {
+      "ad": "Cupra",
+      "urun_sayisi": 7,
+      "url": "https://maliyetine.com.tr/kategori/cupra/"
+    },
+    {
+      "ad": "Dacia",
+      "urun_sayisi": 12,
+      "url": "https://maliyetine.com.tr/kategori/dacia/"
+    },
+    {
+      "ad": "Dikey Süpürge",
+      "urun_sayisi": 41,
+      "url": "https://maliyetine.com.tr/kategori/dikey-supurge/"
+    },
+    {
+      "ad": "En ucuz sıfır araç (marka giriş fiyatı)",
+      "urun_sayisi": 22,
+      "url": "https://maliyetine.com.tr/kategori/en-ucuz-sifir-arac/"
+    },
+    {
+      "ad": "Fiat",
+      "urun_sayisi": 15,
+      "url": "https://maliyetine.com.tr/kategori/fiat/"
+    },
+    {
+      "ad": "Ford",
+      "urun_sayisi": 19,
+      "url": "https://maliyetine.com.tr/kategori/ford/"
+    },
+    {
+      "ad": "Fırın / Ocak (ürün tipine göre)",
+      "urun_sayisi": 21,
+      "url": "https://maliyetine.com.tr/kategori/firin-ocak/"
+    },
+    {
+      "ad": "Honda",
+      "urun_sayisi": 7,
+      "url": "https://maliyetine.com.tr/kategori/honda/"
+    },
+    {
+      "ad": "Hyundai",
+      "urun_sayisi": 35,
+      "url": "https://maliyetine.com.tr/kategori/hyundai/"
+    },
+    {
+      "ad": "Kahve Makinesi",
+      "urun_sayisi": 42,
+      "url": "https://maliyetine.com.tr/kategori/kahve-makinesi/"
+    },
+    {
+      "ad": "Kedi Kumu (paket)",
+      "urun_sayisi": 15,
+      "url": "https://maliyetine.com.tr/kategori/kedi-kumu/"
+    },
+    {
+      "ad": "Kedi Maması (paket)",
+      "urun_sayisi": 30,
+      "url": "https://maliyetine.com.tr/kategori/kedi-mamasi/"
+    },
+    {
+      "ad": "Kedi Tuvaleti",
+      "urun_sayisi": 14,
+      "url": "https://maliyetine.com.tr/kategori/kedi-tuvaleti/"
+    },
+    {
+      "ad": "Kia",
+      "urun_sayisi": 21,
+      "url": "https://maliyetine.com.tr/kategori/kia/"
+    },
+    {
+      "ad": "Köpek Maması (paket)",
+      "urun_sayisi": 15,
+      "url": "https://maliyetine.com.tr/kategori/kopek-mamasi/"
+    },
+    {
+      "ad": "Mercedes",
+      "urun_sayisi": 42,
+      "url": "https://maliyetine.com.tr/kategori/mercedes/"
+    },
+    {
+      "ad": "MG",
+      "urun_sayisi": 5,
+      "url": "https://maliyetine.com.tr/kategori/mg/"
+    },
+    {
+      "ad": "Nissan",
+      "urun_sayisi": 18,
+      "url": "https://maliyetine.com.tr/kategori/nissan/"
+    },
+    {
+      "ad": "Opel",
+      "urun_sayisi": 21,
+      "url": "https://maliyetine.com.tr/kategori/opel/"
+    },
+    {
+      "ad": "Peugeot",
+      "urun_sayisi": 21,
+      "url": "https://maliyetine.com.tr/kategori/peugeot/"
+    },
+    {
+      "ad": "Renault",
+      "urun_sayisi": 23,
+      "url": "https://maliyetine.com.tr/kategori/renault/"
+    },
+    {
+      "ad": "Seat",
+      "urun_sayisi": 4,
+      "url": "https://maliyetine.com.tr/kategori/seat/"
+    },
+    {
+      "ad": "Skoda",
+      "urun_sayisi": 41,
+      "url": "https://maliyetine.com.tr/kategori/skoda/"
+    },
+    {
+      "ad": "Suzuki",
+      "urun_sayisi": 12,
+      "url": "https://maliyetine.com.tr/kategori/suzuki/"
+    },
+    {
+      "ad": "Tesla",
+      "urun_sayisi": 4,
+      "url": "https://maliyetine.com.tr/kategori/tesla/"
+    },
+    {
+      "ad": "Togg",
+      "urun_sayisi": 8,
+      "url": "https://maliyetine.com.tr/kategori/togg/"
+    },
+    {
+      "ad": "Toyota",
+      "urun_sayisi": 27,
+      "url": "https://maliyetine.com.tr/kategori/toyota/"
+    },
+    {
+      "ad": "Volkswagen",
+      "urun_sayisi": 40,
+      "url": "https://maliyetine.com.tr/kategori/volkswagen/"
+    }
+  ],
+  "karsilastirmalar": [
+    {
+      "marka_a": "BMW",
+      "marka_b": "BYD",
+      "url": "https://maliyetine.com.tr/karsilastir/bmw-vs-byd-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BMW",
+      "marka_b": "Chery",
+      "url": "https://maliyetine.com.tr/karsilastir/bmw-vs-chery-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BMW",
+      "marka_b": "Citroen",
+      "url": "https://maliyetine.com.tr/karsilastir/bmw-vs-citroen-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BMW",
+      "marka_b": "Cupra",
+      "url": "https://maliyetine.com.tr/karsilastir/bmw-vs-cupra-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BMW",
+      "marka_b": "Dacia",
+      "url": "https://maliyetine.com.tr/karsilastir/bmw-vs-dacia-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BMW",
+      "marka_b": "Fiat",
+      "url": "https://maliyetine.com.tr/karsilastir/bmw-vs-fiat-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BMW",
+      "marka_b": "Ford",
+      "url": "https://maliyetine.com.tr/karsilastir/bmw-vs-ford-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BMW",
+      "marka_b": "Honda",
+      "url": "https://maliyetine.com.tr/karsilastir/bmw-vs-honda-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BMW",
+      "marka_b": "Hyundai",
+      "url": "https://maliyetine.com.tr/karsilastir/bmw-vs-hyundai-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BMW",
+      "marka_b": "Kia",
+      "url": "https://maliyetine.com.tr/karsilastir/bmw-vs-kia-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BMW",
+      "marka_b": "Mercedes",
+      "url": "https://maliyetine.com.tr/karsilastir/bmw-vs-mercedes-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BMW",
+      "marka_b": "MG",
+      "url": "https://maliyetine.com.tr/karsilastir/bmw-vs-mg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BMW",
+      "marka_b": "Nissan",
+      "url": "https://maliyetine.com.tr/karsilastir/bmw-vs-nissan-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BMW",
+      "marka_b": "Opel",
+      "url": "https://maliyetine.com.tr/karsilastir/bmw-vs-opel-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BMW",
+      "marka_b": "Peugeot",
+      "url": "https://maliyetine.com.tr/karsilastir/bmw-vs-peugeot-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BMW",
+      "marka_b": "Renault",
+      "url": "https://maliyetine.com.tr/karsilastir/bmw-vs-renault-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BMW",
+      "marka_b": "Seat",
+      "url": "https://maliyetine.com.tr/karsilastir/bmw-vs-seat-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BMW",
+      "marka_b": "Skoda",
+      "url": "https://maliyetine.com.tr/karsilastir/bmw-vs-skoda-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BMW",
+      "marka_b": "Suzuki",
+      "url": "https://maliyetine.com.tr/karsilastir/bmw-vs-suzuki-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BMW",
+      "marka_b": "Tesla",
+      "url": "https://maliyetine.com.tr/karsilastir/bmw-vs-tesla-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BMW",
+      "marka_b": "Togg",
+      "url": "https://maliyetine.com.tr/karsilastir/bmw-vs-togg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BMW",
+      "marka_b": "Toyota",
+      "url": "https://maliyetine.com.tr/karsilastir/bmw-vs-toyota-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BMW",
+      "marka_b": "Volkswagen",
+      "url": "https://maliyetine.com.tr/karsilastir/bmw-vs-volkswagen-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BYD",
+      "marka_b": "Chery",
+      "url": "https://maliyetine.com.tr/karsilastir/byd-vs-chery-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BYD",
+      "marka_b": "Citroen",
+      "url": "https://maliyetine.com.tr/karsilastir/byd-vs-citroen-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BYD",
+      "marka_b": "Cupra",
+      "url": "https://maliyetine.com.tr/karsilastir/byd-vs-cupra-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BYD",
+      "marka_b": "Dacia",
+      "url": "https://maliyetine.com.tr/karsilastir/byd-vs-dacia-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BYD",
+      "marka_b": "Fiat",
+      "url": "https://maliyetine.com.tr/karsilastir/byd-vs-fiat-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BYD",
+      "marka_b": "Ford",
+      "url": "https://maliyetine.com.tr/karsilastir/byd-vs-ford-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BYD",
+      "marka_b": "Honda",
+      "url": "https://maliyetine.com.tr/karsilastir/byd-vs-honda-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BYD",
+      "marka_b": "Hyundai",
+      "url": "https://maliyetine.com.tr/karsilastir/byd-vs-hyundai-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BYD",
+      "marka_b": "Kia",
+      "url": "https://maliyetine.com.tr/karsilastir/byd-vs-kia-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BYD",
+      "marka_b": "Mercedes",
+      "url": "https://maliyetine.com.tr/karsilastir/byd-vs-mercedes-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BYD",
+      "marka_b": "MG",
+      "url": "https://maliyetine.com.tr/karsilastir/byd-vs-mg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BYD",
+      "marka_b": "Nissan",
+      "url": "https://maliyetine.com.tr/karsilastir/byd-vs-nissan-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BYD",
+      "marka_b": "Opel",
+      "url": "https://maliyetine.com.tr/karsilastir/byd-vs-opel-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BYD",
+      "marka_b": "Peugeot",
+      "url": "https://maliyetine.com.tr/karsilastir/byd-vs-peugeot-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BYD",
+      "marka_b": "Renault",
+      "url": "https://maliyetine.com.tr/karsilastir/byd-vs-renault-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BYD",
+      "marka_b": "Seat",
+      "url": "https://maliyetine.com.tr/karsilastir/byd-vs-seat-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BYD",
+      "marka_b": "Skoda",
+      "url": "https://maliyetine.com.tr/karsilastir/byd-vs-skoda-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BYD",
+      "marka_b": "Suzuki",
+      "url": "https://maliyetine.com.tr/karsilastir/byd-vs-suzuki-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BYD",
+      "marka_b": "Tesla",
+      "url": "https://maliyetine.com.tr/karsilastir/byd-vs-tesla-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BYD",
+      "marka_b": "Togg",
+      "url": "https://maliyetine.com.tr/karsilastir/byd-vs-togg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BYD",
+      "marka_b": "Toyota",
+      "url": "https://maliyetine.com.tr/karsilastir/byd-vs-toyota-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "BYD",
+      "marka_b": "Volkswagen",
+      "url": "https://maliyetine.com.tr/karsilastir/byd-vs-volkswagen-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Chery",
+      "marka_b": "Citroen",
+      "url": "https://maliyetine.com.tr/karsilastir/chery-vs-citroen-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Chery",
+      "marka_b": "Cupra",
+      "url": "https://maliyetine.com.tr/karsilastir/chery-vs-cupra-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Chery",
+      "marka_b": "Dacia",
+      "url": "https://maliyetine.com.tr/karsilastir/chery-vs-dacia-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Chery",
+      "marka_b": "Fiat",
+      "url": "https://maliyetine.com.tr/karsilastir/chery-vs-fiat-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Chery",
+      "marka_b": "Ford",
+      "url": "https://maliyetine.com.tr/karsilastir/chery-vs-ford-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Chery",
+      "marka_b": "Honda",
+      "url": "https://maliyetine.com.tr/karsilastir/chery-vs-honda-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Chery",
+      "marka_b": "Hyundai",
+      "url": "https://maliyetine.com.tr/karsilastir/chery-vs-hyundai-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Chery",
+      "marka_b": "Kia",
+      "url": "https://maliyetine.com.tr/karsilastir/chery-vs-kia-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Chery",
+      "marka_b": "Mercedes",
+      "url": "https://maliyetine.com.tr/karsilastir/chery-vs-mercedes-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Chery",
+      "marka_b": "MG",
+      "url": "https://maliyetine.com.tr/karsilastir/chery-vs-mg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Chery",
+      "marka_b": "Nissan",
+      "url": "https://maliyetine.com.tr/karsilastir/chery-vs-nissan-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Chery",
+      "marka_b": "Opel",
+      "url": "https://maliyetine.com.tr/karsilastir/chery-vs-opel-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Chery",
+      "marka_b": "Peugeot",
+      "url": "https://maliyetine.com.tr/karsilastir/chery-vs-peugeot-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Chery",
+      "marka_b": "Renault",
+      "url": "https://maliyetine.com.tr/karsilastir/chery-vs-renault-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Chery",
+      "marka_b": "Seat",
+      "url": "https://maliyetine.com.tr/karsilastir/chery-vs-seat-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Chery",
+      "marka_b": "Skoda",
+      "url": "https://maliyetine.com.tr/karsilastir/chery-vs-skoda-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Chery",
+      "marka_b": "Suzuki",
+      "url": "https://maliyetine.com.tr/karsilastir/chery-vs-suzuki-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Chery",
+      "marka_b": "Tesla",
+      "url": "https://maliyetine.com.tr/karsilastir/chery-vs-tesla-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Chery",
+      "marka_b": "Togg",
+      "url": "https://maliyetine.com.tr/karsilastir/chery-vs-togg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Chery",
+      "marka_b": "Toyota",
+      "url": "https://maliyetine.com.tr/karsilastir/chery-vs-toyota-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Chery",
+      "marka_b": "Volkswagen",
+      "url": "https://maliyetine.com.tr/karsilastir/chery-vs-volkswagen-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Citroen",
+      "marka_b": "Cupra",
+      "url": "https://maliyetine.com.tr/karsilastir/citroen-vs-cupra-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Citroen",
+      "marka_b": "Dacia",
+      "url": "https://maliyetine.com.tr/karsilastir/citroen-vs-dacia-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Citroen",
+      "marka_b": "Fiat",
+      "url": "https://maliyetine.com.tr/karsilastir/citroen-vs-fiat-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Citroen",
+      "marka_b": "Ford",
+      "url": "https://maliyetine.com.tr/karsilastir/citroen-vs-ford-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Citroen",
+      "marka_b": "Honda",
+      "url": "https://maliyetine.com.tr/karsilastir/citroen-vs-honda-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Citroen",
+      "marka_b": "Hyundai",
+      "url": "https://maliyetine.com.tr/karsilastir/citroen-vs-hyundai-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Citroen",
+      "marka_b": "Kia",
+      "url": "https://maliyetine.com.tr/karsilastir/citroen-vs-kia-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Citroen",
+      "marka_b": "Mercedes",
+      "url": "https://maliyetine.com.tr/karsilastir/citroen-vs-mercedes-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Citroen",
+      "marka_b": "MG",
+      "url": "https://maliyetine.com.tr/karsilastir/citroen-vs-mg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Citroen",
+      "marka_b": "Nissan",
+      "url": "https://maliyetine.com.tr/karsilastir/citroen-vs-nissan-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Citroen",
+      "marka_b": "Opel",
+      "url": "https://maliyetine.com.tr/karsilastir/citroen-vs-opel-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Citroen",
+      "marka_b": "Peugeot",
+      "url": "https://maliyetine.com.tr/karsilastir/citroen-vs-peugeot-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Citroen",
+      "marka_b": "Renault",
+      "url": "https://maliyetine.com.tr/karsilastir/citroen-vs-renault-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Citroen",
+      "marka_b": "Seat",
+      "url": "https://maliyetine.com.tr/karsilastir/citroen-vs-seat-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Citroen",
+      "marka_b": "Skoda",
+      "url": "https://maliyetine.com.tr/karsilastir/citroen-vs-skoda-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Citroen",
+      "marka_b": "Suzuki",
+      "url": "https://maliyetine.com.tr/karsilastir/citroen-vs-suzuki-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Citroen",
+      "marka_b": "Tesla",
+      "url": "https://maliyetine.com.tr/karsilastir/citroen-vs-tesla-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Citroen",
+      "marka_b": "Togg",
+      "url": "https://maliyetine.com.tr/karsilastir/citroen-vs-togg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Citroen",
+      "marka_b": "Toyota",
+      "url": "https://maliyetine.com.tr/karsilastir/citroen-vs-toyota-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Citroen",
+      "marka_b": "Volkswagen",
+      "url": "https://maliyetine.com.tr/karsilastir/citroen-vs-volkswagen-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Cupra",
+      "marka_b": "Dacia",
+      "url": "https://maliyetine.com.tr/karsilastir/cupra-vs-dacia-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Cupra",
+      "marka_b": "Fiat",
+      "url": "https://maliyetine.com.tr/karsilastir/cupra-vs-fiat-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Cupra",
+      "marka_b": "Ford",
+      "url": "https://maliyetine.com.tr/karsilastir/cupra-vs-ford-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Cupra",
+      "marka_b": "Honda",
+      "url": "https://maliyetine.com.tr/karsilastir/cupra-vs-honda-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Cupra",
+      "marka_b": "Hyundai",
+      "url": "https://maliyetine.com.tr/karsilastir/cupra-vs-hyundai-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Cupra",
+      "marka_b": "Kia",
+      "url": "https://maliyetine.com.tr/karsilastir/cupra-vs-kia-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Cupra",
+      "marka_b": "Mercedes",
+      "url": "https://maliyetine.com.tr/karsilastir/cupra-vs-mercedes-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Cupra",
+      "marka_b": "MG",
+      "url": "https://maliyetine.com.tr/karsilastir/cupra-vs-mg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Cupra",
+      "marka_b": "Nissan",
+      "url": "https://maliyetine.com.tr/karsilastir/cupra-vs-nissan-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Cupra",
+      "marka_b": "Opel",
+      "url": "https://maliyetine.com.tr/karsilastir/cupra-vs-opel-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Cupra",
+      "marka_b": "Peugeot",
+      "url": "https://maliyetine.com.tr/karsilastir/cupra-vs-peugeot-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Cupra",
+      "marka_b": "Renault",
+      "url": "https://maliyetine.com.tr/karsilastir/cupra-vs-renault-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Cupra",
+      "marka_b": "Seat",
+      "url": "https://maliyetine.com.tr/karsilastir/cupra-vs-seat-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Cupra",
+      "marka_b": "Skoda",
+      "url": "https://maliyetine.com.tr/karsilastir/cupra-vs-skoda-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Cupra",
+      "marka_b": "Suzuki",
+      "url": "https://maliyetine.com.tr/karsilastir/cupra-vs-suzuki-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Cupra",
+      "marka_b": "Tesla",
+      "url": "https://maliyetine.com.tr/karsilastir/cupra-vs-tesla-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Cupra",
+      "marka_b": "Togg",
+      "url": "https://maliyetine.com.tr/karsilastir/cupra-vs-togg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Cupra",
+      "marka_b": "Toyota",
+      "url": "https://maliyetine.com.tr/karsilastir/cupra-vs-toyota-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Cupra",
+      "marka_b": "Volkswagen",
+      "url": "https://maliyetine.com.tr/karsilastir/cupra-vs-volkswagen-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Dacia",
+      "marka_b": "Fiat",
+      "url": "https://maliyetine.com.tr/karsilastir/dacia-vs-fiat-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Dacia",
+      "marka_b": "Ford",
+      "url": "https://maliyetine.com.tr/karsilastir/dacia-vs-ford-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Dacia",
+      "marka_b": "Honda",
+      "url": "https://maliyetine.com.tr/karsilastir/dacia-vs-honda-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Dacia",
+      "marka_b": "Hyundai",
+      "url": "https://maliyetine.com.tr/karsilastir/dacia-vs-hyundai-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Dacia",
+      "marka_b": "Kia",
+      "url": "https://maliyetine.com.tr/karsilastir/dacia-vs-kia-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Dacia",
+      "marka_b": "Mercedes",
+      "url": "https://maliyetine.com.tr/karsilastir/dacia-vs-mercedes-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Dacia",
+      "marka_b": "MG",
+      "url": "https://maliyetine.com.tr/karsilastir/dacia-vs-mg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Dacia",
+      "marka_b": "Nissan",
+      "url": "https://maliyetine.com.tr/karsilastir/dacia-vs-nissan-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Dacia",
+      "marka_b": "Opel",
+      "url": "https://maliyetine.com.tr/karsilastir/dacia-vs-opel-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Dacia",
+      "marka_b": "Peugeot",
+      "url": "https://maliyetine.com.tr/karsilastir/dacia-vs-peugeot-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Dacia",
+      "marka_b": "Renault",
+      "url": "https://maliyetine.com.tr/karsilastir/dacia-vs-renault-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Dacia",
+      "marka_b": "Seat",
+      "url": "https://maliyetine.com.tr/karsilastir/dacia-vs-seat-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Dacia",
+      "marka_b": "Skoda",
+      "url": "https://maliyetine.com.tr/karsilastir/dacia-vs-skoda-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Dacia",
+      "marka_b": "Suzuki",
+      "url": "https://maliyetine.com.tr/karsilastir/dacia-vs-suzuki-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Dacia",
+      "marka_b": "Tesla",
+      "url": "https://maliyetine.com.tr/karsilastir/dacia-vs-tesla-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Dacia",
+      "marka_b": "Togg",
+      "url": "https://maliyetine.com.tr/karsilastir/dacia-vs-togg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Dacia",
+      "marka_b": "Toyota",
+      "url": "https://maliyetine.com.tr/karsilastir/dacia-vs-toyota-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Dacia",
+      "marka_b": "Volkswagen",
+      "url": "https://maliyetine.com.tr/karsilastir/dacia-vs-volkswagen-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Fiat",
+      "marka_b": "Ford",
+      "url": "https://maliyetine.com.tr/karsilastir/fiat-vs-ford-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Fiat",
+      "marka_b": "Honda",
+      "url": "https://maliyetine.com.tr/karsilastir/fiat-vs-honda-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Fiat",
+      "marka_b": "Hyundai",
+      "url": "https://maliyetine.com.tr/karsilastir/fiat-vs-hyundai-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Fiat",
+      "marka_b": "Kia",
+      "url": "https://maliyetine.com.tr/karsilastir/fiat-vs-kia-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Fiat",
+      "marka_b": "Mercedes",
+      "url": "https://maliyetine.com.tr/karsilastir/fiat-vs-mercedes-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Fiat",
+      "marka_b": "MG",
+      "url": "https://maliyetine.com.tr/karsilastir/fiat-vs-mg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Fiat",
+      "marka_b": "Nissan",
+      "url": "https://maliyetine.com.tr/karsilastir/fiat-vs-nissan-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Fiat",
+      "marka_b": "Opel",
+      "url": "https://maliyetine.com.tr/karsilastir/fiat-vs-opel-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Fiat",
+      "marka_b": "Peugeot",
+      "url": "https://maliyetine.com.tr/karsilastir/fiat-vs-peugeot-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Fiat",
+      "marka_b": "Renault",
+      "url": "https://maliyetine.com.tr/karsilastir/fiat-vs-renault-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Fiat",
+      "marka_b": "Seat",
+      "url": "https://maliyetine.com.tr/karsilastir/fiat-vs-seat-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Fiat",
+      "marka_b": "Skoda",
+      "url": "https://maliyetine.com.tr/karsilastir/fiat-vs-skoda-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Fiat",
+      "marka_b": "Suzuki",
+      "url": "https://maliyetine.com.tr/karsilastir/fiat-vs-suzuki-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Fiat",
+      "marka_b": "Tesla",
+      "url": "https://maliyetine.com.tr/karsilastir/fiat-vs-tesla-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Fiat",
+      "marka_b": "Togg",
+      "url": "https://maliyetine.com.tr/karsilastir/fiat-vs-togg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Fiat",
+      "marka_b": "Toyota",
+      "url": "https://maliyetine.com.tr/karsilastir/fiat-vs-toyota-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Fiat",
+      "marka_b": "Volkswagen",
+      "url": "https://maliyetine.com.tr/karsilastir/fiat-vs-volkswagen-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Ford",
+      "marka_b": "Honda",
+      "url": "https://maliyetine.com.tr/karsilastir/ford-vs-honda-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Ford",
+      "marka_b": "Hyundai",
+      "url": "https://maliyetine.com.tr/karsilastir/ford-vs-hyundai-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Ford",
+      "marka_b": "Kia",
+      "url": "https://maliyetine.com.tr/karsilastir/ford-vs-kia-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Ford",
+      "marka_b": "Mercedes",
+      "url": "https://maliyetine.com.tr/karsilastir/ford-vs-mercedes-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Ford",
+      "marka_b": "MG",
+      "url": "https://maliyetine.com.tr/karsilastir/ford-vs-mg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Ford",
+      "marka_b": "Nissan",
+      "url": "https://maliyetine.com.tr/karsilastir/ford-vs-nissan-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Ford",
+      "marka_b": "Opel",
+      "url": "https://maliyetine.com.tr/karsilastir/ford-vs-opel-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Ford",
+      "marka_b": "Peugeot",
+      "url": "https://maliyetine.com.tr/karsilastir/ford-vs-peugeot-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Ford",
+      "marka_b": "Renault",
+      "url": "https://maliyetine.com.tr/karsilastir/ford-vs-renault-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Ford",
+      "marka_b": "Seat",
+      "url": "https://maliyetine.com.tr/karsilastir/ford-vs-seat-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Ford",
+      "marka_b": "Skoda",
+      "url": "https://maliyetine.com.tr/karsilastir/ford-vs-skoda-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Ford",
+      "marka_b": "Suzuki",
+      "url": "https://maliyetine.com.tr/karsilastir/ford-vs-suzuki-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Ford",
+      "marka_b": "Tesla",
+      "url": "https://maliyetine.com.tr/karsilastir/ford-vs-tesla-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Ford",
+      "marka_b": "Togg",
+      "url": "https://maliyetine.com.tr/karsilastir/ford-vs-togg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Ford",
+      "marka_b": "Toyota",
+      "url": "https://maliyetine.com.tr/karsilastir/ford-vs-toyota-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Ford",
+      "marka_b": "Volkswagen",
+      "url": "https://maliyetine.com.tr/karsilastir/ford-vs-volkswagen-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Honda",
+      "marka_b": "Hyundai",
+      "url": "https://maliyetine.com.tr/karsilastir/honda-vs-hyundai-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Honda",
+      "marka_b": "Kia",
+      "url": "https://maliyetine.com.tr/karsilastir/honda-vs-kia-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Honda",
+      "marka_b": "Mercedes",
+      "url": "https://maliyetine.com.tr/karsilastir/honda-vs-mercedes-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Honda",
+      "marka_b": "MG",
+      "url": "https://maliyetine.com.tr/karsilastir/honda-vs-mg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Honda",
+      "marka_b": "Nissan",
+      "url": "https://maliyetine.com.tr/karsilastir/honda-vs-nissan-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Honda",
+      "marka_b": "Opel",
+      "url": "https://maliyetine.com.tr/karsilastir/honda-vs-opel-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Honda",
+      "marka_b": "Peugeot",
+      "url": "https://maliyetine.com.tr/karsilastir/honda-vs-peugeot-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Honda",
+      "marka_b": "Renault",
+      "url": "https://maliyetine.com.tr/karsilastir/honda-vs-renault-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Honda",
+      "marka_b": "Seat",
+      "url": "https://maliyetine.com.tr/karsilastir/honda-vs-seat-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Honda",
+      "marka_b": "Skoda",
+      "url": "https://maliyetine.com.tr/karsilastir/honda-vs-skoda-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Honda",
+      "marka_b": "Suzuki",
+      "url": "https://maliyetine.com.tr/karsilastir/honda-vs-suzuki-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Honda",
+      "marka_b": "Tesla",
+      "url": "https://maliyetine.com.tr/karsilastir/honda-vs-tesla-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Honda",
+      "marka_b": "Togg",
+      "url": "https://maliyetine.com.tr/karsilastir/honda-vs-togg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Honda",
+      "marka_b": "Toyota",
+      "url": "https://maliyetine.com.tr/karsilastir/honda-vs-toyota-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Honda",
+      "marka_b": "Volkswagen",
+      "url": "https://maliyetine.com.tr/karsilastir/honda-vs-volkswagen-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Hyundai",
+      "marka_b": "Kia",
+      "url": "https://maliyetine.com.tr/karsilastir/hyundai-vs-kia-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Hyundai",
+      "marka_b": "Mercedes",
+      "url": "https://maliyetine.com.tr/karsilastir/hyundai-vs-mercedes-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Hyundai",
+      "marka_b": "MG",
+      "url": "https://maliyetine.com.tr/karsilastir/hyundai-vs-mg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Hyundai",
+      "marka_b": "Nissan",
+      "url": "https://maliyetine.com.tr/karsilastir/hyundai-vs-nissan-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Hyundai",
+      "marka_b": "Opel",
+      "url": "https://maliyetine.com.tr/karsilastir/hyundai-vs-opel-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Hyundai",
+      "marka_b": "Peugeot",
+      "url": "https://maliyetine.com.tr/karsilastir/hyundai-vs-peugeot-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Hyundai",
+      "marka_b": "Renault",
+      "url": "https://maliyetine.com.tr/karsilastir/hyundai-vs-renault-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Hyundai",
+      "marka_b": "Seat",
+      "url": "https://maliyetine.com.tr/karsilastir/hyundai-vs-seat-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Hyundai",
+      "marka_b": "Skoda",
+      "url": "https://maliyetine.com.tr/karsilastir/hyundai-vs-skoda-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Hyundai",
+      "marka_b": "Suzuki",
+      "url": "https://maliyetine.com.tr/karsilastir/hyundai-vs-suzuki-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Hyundai",
+      "marka_b": "Tesla",
+      "url": "https://maliyetine.com.tr/karsilastir/hyundai-vs-tesla-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Hyundai",
+      "marka_b": "Togg",
+      "url": "https://maliyetine.com.tr/karsilastir/hyundai-vs-togg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Hyundai",
+      "marka_b": "Toyota",
+      "url": "https://maliyetine.com.tr/karsilastir/hyundai-vs-toyota-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Hyundai",
+      "marka_b": "Volkswagen",
+      "url": "https://maliyetine.com.tr/karsilastir/hyundai-vs-volkswagen-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Kia",
+      "marka_b": "Mercedes",
+      "url": "https://maliyetine.com.tr/karsilastir/kia-vs-mercedes-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Kia",
+      "marka_b": "MG",
+      "url": "https://maliyetine.com.tr/karsilastir/kia-vs-mg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Kia",
+      "marka_b": "Nissan",
+      "url": "https://maliyetine.com.tr/karsilastir/kia-vs-nissan-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Kia",
+      "marka_b": "Opel",
+      "url": "https://maliyetine.com.tr/karsilastir/kia-vs-opel-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Kia",
+      "marka_b": "Peugeot",
+      "url": "https://maliyetine.com.tr/karsilastir/kia-vs-peugeot-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Kia",
+      "marka_b": "Renault",
+      "url": "https://maliyetine.com.tr/karsilastir/kia-vs-renault-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Kia",
+      "marka_b": "Seat",
+      "url": "https://maliyetine.com.tr/karsilastir/kia-vs-seat-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Kia",
+      "marka_b": "Skoda",
+      "url": "https://maliyetine.com.tr/karsilastir/kia-vs-skoda-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Kia",
+      "marka_b": "Suzuki",
+      "url": "https://maliyetine.com.tr/karsilastir/kia-vs-suzuki-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Kia",
+      "marka_b": "Tesla",
+      "url": "https://maliyetine.com.tr/karsilastir/kia-vs-tesla-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Kia",
+      "marka_b": "Togg",
+      "url": "https://maliyetine.com.tr/karsilastir/kia-vs-togg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Kia",
+      "marka_b": "Toyota",
+      "url": "https://maliyetine.com.tr/karsilastir/kia-vs-toyota-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Kia",
+      "marka_b": "Volkswagen",
+      "url": "https://maliyetine.com.tr/karsilastir/kia-vs-volkswagen-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Mercedes",
+      "marka_b": "MG",
+      "url": "https://maliyetine.com.tr/karsilastir/mercedes-vs-mg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Mercedes",
+      "marka_b": "Nissan",
+      "url": "https://maliyetine.com.tr/karsilastir/mercedes-vs-nissan-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Mercedes",
+      "marka_b": "Opel",
+      "url": "https://maliyetine.com.tr/karsilastir/mercedes-vs-opel-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Mercedes",
+      "marka_b": "Peugeot",
+      "url": "https://maliyetine.com.tr/karsilastir/mercedes-vs-peugeot-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Mercedes",
+      "marka_b": "Renault",
+      "url": "https://maliyetine.com.tr/karsilastir/mercedes-vs-renault-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Mercedes",
+      "marka_b": "Seat",
+      "url": "https://maliyetine.com.tr/karsilastir/mercedes-vs-seat-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Mercedes",
+      "marka_b": "Skoda",
+      "url": "https://maliyetine.com.tr/karsilastir/mercedes-vs-skoda-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Mercedes",
+      "marka_b": "Suzuki",
+      "url": "https://maliyetine.com.tr/karsilastir/mercedes-vs-suzuki-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Mercedes",
+      "marka_b": "Tesla",
+      "url": "https://maliyetine.com.tr/karsilastir/mercedes-vs-tesla-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Mercedes",
+      "marka_b": "Togg",
+      "url": "https://maliyetine.com.tr/karsilastir/mercedes-vs-togg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Mercedes",
+      "marka_b": "Toyota",
+      "url": "https://maliyetine.com.tr/karsilastir/mercedes-vs-toyota-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Mercedes",
+      "marka_b": "Volkswagen",
+      "url": "https://maliyetine.com.tr/karsilastir/mercedes-vs-volkswagen-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "MG",
+      "marka_b": "Nissan",
+      "url": "https://maliyetine.com.tr/karsilastir/mg-vs-nissan-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "MG",
+      "marka_b": "Opel",
+      "url": "https://maliyetine.com.tr/karsilastir/mg-vs-opel-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "MG",
+      "marka_b": "Peugeot",
+      "url": "https://maliyetine.com.tr/karsilastir/mg-vs-peugeot-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "MG",
+      "marka_b": "Renault",
+      "url": "https://maliyetine.com.tr/karsilastir/mg-vs-renault-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "MG",
+      "marka_b": "Seat",
+      "url": "https://maliyetine.com.tr/karsilastir/mg-vs-seat-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "MG",
+      "marka_b": "Skoda",
+      "url": "https://maliyetine.com.tr/karsilastir/mg-vs-skoda-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "MG",
+      "marka_b": "Suzuki",
+      "url": "https://maliyetine.com.tr/karsilastir/mg-vs-suzuki-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "MG",
+      "marka_b": "Tesla",
+      "url": "https://maliyetine.com.tr/karsilastir/mg-vs-tesla-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "MG",
+      "marka_b": "Togg",
+      "url": "https://maliyetine.com.tr/karsilastir/mg-vs-togg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "MG",
+      "marka_b": "Toyota",
+      "url": "https://maliyetine.com.tr/karsilastir/mg-vs-toyota-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "MG",
+      "marka_b": "Volkswagen",
+      "url": "https://maliyetine.com.tr/karsilastir/mg-vs-volkswagen-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Nissan",
+      "marka_b": "Opel",
+      "url": "https://maliyetine.com.tr/karsilastir/nissan-vs-opel-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Nissan",
+      "marka_b": "Peugeot",
+      "url": "https://maliyetine.com.tr/karsilastir/nissan-vs-peugeot-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Nissan",
+      "marka_b": "Renault",
+      "url": "https://maliyetine.com.tr/karsilastir/nissan-vs-renault-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Nissan",
+      "marka_b": "Seat",
+      "url": "https://maliyetine.com.tr/karsilastir/nissan-vs-seat-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Nissan",
+      "marka_b": "Skoda",
+      "url": "https://maliyetine.com.tr/karsilastir/nissan-vs-skoda-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Nissan",
+      "marka_b": "Suzuki",
+      "url": "https://maliyetine.com.tr/karsilastir/nissan-vs-suzuki-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Nissan",
+      "marka_b": "Tesla",
+      "url": "https://maliyetine.com.tr/karsilastir/nissan-vs-tesla-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Nissan",
+      "marka_b": "Togg",
+      "url": "https://maliyetine.com.tr/karsilastir/nissan-vs-togg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Nissan",
+      "marka_b": "Toyota",
+      "url": "https://maliyetine.com.tr/karsilastir/nissan-vs-toyota-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Nissan",
+      "marka_b": "Volkswagen",
+      "url": "https://maliyetine.com.tr/karsilastir/nissan-vs-volkswagen-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Opel",
+      "marka_b": "Peugeot",
+      "url": "https://maliyetine.com.tr/karsilastir/opel-vs-peugeot-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Opel",
+      "marka_b": "Renault",
+      "url": "https://maliyetine.com.tr/karsilastir/opel-vs-renault-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Opel",
+      "marka_b": "Seat",
+      "url": "https://maliyetine.com.tr/karsilastir/opel-vs-seat-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Opel",
+      "marka_b": "Skoda",
+      "url": "https://maliyetine.com.tr/karsilastir/opel-vs-skoda-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Opel",
+      "marka_b": "Suzuki",
+      "url": "https://maliyetine.com.tr/karsilastir/opel-vs-suzuki-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Opel",
+      "marka_b": "Tesla",
+      "url": "https://maliyetine.com.tr/karsilastir/opel-vs-tesla-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Opel",
+      "marka_b": "Togg",
+      "url": "https://maliyetine.com.tr/karsilastir/opel-vs-togg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Opel",
+      "marka_b": "Toyota",
+      "url": "https://maliyetine.com.tr/karsilastir/opel-vs-toyota-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Opel",
+      "marka_b": "Volkswagen",
+      "url": "https://maliyetine.com.tr/karsilastir/opel-vs-volkswagen-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Peugeot",
+      "marka_b": "Renault",
+      "url": "https://maliyetine.com.tr/karsilastir/peugeot-vs-renault-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Peugeot",
+      "marka_b": "Seat",
+      "url": "https://maliyetine.com.tr/karsilastir/peugeot-vs-seat-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Peugeot",
+      "marka_b": "Skoda",
+      "url": "https://maliyetine.com.tr/karsilastir/peugeot-vs-skoda-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Peugeot",
+      "marka_b": "Suzuki",
+      "url": "https://maliyetine.com.tr/karsilastir/peugeot-vs-suzuki-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Peugeot",
+      "marka_b": "Tesla",
+      "url": "https://maliyetine.com.tr/karsilastir/peugeot-vs-tesla-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Peugeot",
+      "marka_b": "Togg",
+      "url": "https://maliyetine.com.tr/karsilastir/peugeot-vs-togg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Peugeot",
+      "marka_b": "Toyota",
+      "url": "https://maliyetine.com.tr/karsilastir/peugeot-vs-toyota-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Peugeot",
+      "marka_b": "Volkswagen",
+      "url": "https://maliyetine.com.tr/karsilastir/peugeot-vs-volkswagen-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Renault",
+      "marka_b": "Seat",
+      "url": "https://maliyetine.com.tr/karsilastir/renault-vs-seat-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Renault",
+      "marka_b": "Skoda",
+      "url": "https://maliyetine.com.tr/karsilastir/renault-vs-skoda-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Renault",
+      "marka_b": "Suzuki",
+      "url": "https://maliyetine.com.tr/karsilastir/renault-vs-suzuki-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Renault",
+      "marka_b": "Tesla",
+      "url": "https://maliyetine.com.tr/karsilastir/renault-vs-tesla-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Renault",
+      "marka_b": "Togg",
+      "url": "https://maliyetine.com.tr/karsilastir/renault-vs-togg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Renault",
+      "marka_b": "Toyota",
+      "url": "https://maliyetine.com.tr/karsilastir/renault-vs-toyota-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Renault",
+      "marka_b": "Volkswagen",
+      "url": "https://maliyetine.com.tr/karsilastir/renault-vs-volkswagen-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Seat",
+      "marka_b": "Skoda",
+      "url": "https://maliyetine.com.tr/karsilastir/seat-vs-skoda-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Seat",
+      "marka_b": "Suzuki",
+      "url": "https://maliyetine.com.tr/karsilastir/seat-vs-suzuki-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Seat",
+      "marka_b": "Tesla",
+      "url": "https://maliyetine.com.tr/karsilastir/seat-vs-tesla-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Seat",
+      "marka_b": "Togg",
+      "url": "https://maliyetine.com.tr/karsilastir/seat-vs-togg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Seat",
+      "marka_b": "Toyota",
+      "url": "https://maliyetine.com.tr/karsilastir/seat-vs-toyota-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Seat",
+      "marka_b": "Volkswagen",
+      "url": "https://maliyetine.com.tr/karsilastir/seat-vs-volkswagen-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Skoda",
+      "marka_b": "Suzuki",
+      "url": "https://maliyetine.com.tr/karsilastir/skoda-vs-suzuki-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Skoda",
+      "marka_b": "Tesla",
+      "url": "https://maliyetine.com.tr/karsilastir/skoda-vs-tesla-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Skoda",
+      "marka_b": "Togg",
+      "url": "https://maliyetine.com.tr/karsilastir/skoda-vs-togg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Skoda",
+      "marka_b": "Toyota",
+      "url": "https://maliyetine.com.tr/karsilastir/skoda-vs-toyota-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Skoda",
+      "marka_b": "Volkswagen",
+      "url": "https://maliyetine.com.tr/karsilastir/skoda-vs-volkswagen-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Suzuki",
+      "marka_b": "Tesla",
+      "url": "https://maliyetine.com.tr/karsilastir/suzuki-vs-tesla-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Suzuki",
+      "marka_b": "Togg",
+      "url": "https://maliyetine.com.tr/karsilastir/suzuki-vs-togg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Suzuki",
+      "marka_b": "Toyota",
+      "url": "https://maliyetine.com.tr/karsilastir/suzuki-vs-toyota-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Suzuki",
+      "marka_b": "Volkswagen",
+      "url": "https://maliyetine.com.tr/karsilastir/suzuki-vs-volkswagen-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Tesla",
+      "marka_b": "Togg",
+      "url": "https://maliyetine.com.tr/karsilastir/tesla-vs-togg-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Tesla",
+      "marka_b": "Toyota",
+      "url": "https://maliyetine.com.tr/karsilastir/tesla-vs-toyota-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Tesla",
+      "marka_b": "Volkswagen",
+      "url": "https://maliyetine.com.tr/karsilastir/tesla-vs-volkswagen-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Togg",
+      "marka_b": "Toyota",
+      "url": "https://maliyetine.com.tr/karsilastir/togg-vs-toyota-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Togg",
+      "marka_b": "Volkswagen",
+      "url": "https://maliyetine.com.tr/karsilastir/togg-vs-volkswagen-sifir-arac-fiyatlari/"
+    },
+    {
+      "marka_a": "Toyota",
+      "marka_b": "Volkswagen",
+      "url": "https://maliyetine.com.tr/karsilastir/toyota-vs-volkswagen-sifir-arac-fiyatlari/"
+    }
+  ],
+  "yollar": [
+    "markalar/",
+    "kategoriler/",
+    "karsilastir/",
+    "raporlar/",
+    "fiyati-degisen/7-gun/",
+    "fiyati-degisen/30-gun/",
+    "zamlanan-urunler/",
+    "ucuzlayan-urunler/",
+    "marka/altus/",
+    "marka/arcelik/",
+    "marka/arnica/",
+    "marka/arzum/",
+    "marka/bmw/",
+    "marka/bosch/",
+    "marka/byd/",
+    "marka/chery/",
+    "marka/citroen/",
+    "marka/cupra/",
+    "marka/d-s/",
+    "marka/dacia/",
+    "marka/delonghi/",
+    "marka/dijitsu/",
+    "marka/dyson/",
+    "marka/emsan/",
+    "marka/exclusion/",
+    "marka/fantom/",
+    "marka/fiat/",
+    "marka/ford/",
+    "marka/grundig/",
+    "marka/haustier/",
+    "marka/hills/",
+    "marka/honda/",
+    "marka/hoover/",
+    "marka/hyundai/",
+    "marka/karaca/",
+    "marka/kia/",
+    "marka/kiwi/",
+    "marka/lindocat/",
+    "marka/little-swimmers/",
+    "marka/mayo/",
+    "marka/mercedes/",
+    "marka/mg/",
+    "marka/molfix/",
+    "marka/molly/",
+    "marka/n-d/",
+    "marka/ninja/",
+    "marka/nissan/",
+    "marka/onvo/",
+    "marka/opel/",
+    "marka/peugeot/",
+    "marka/philips/",
+    "marka/prima/",
+    "marka/pro-plan/",
+    "marka/profine/",
+    "marka/purina/",
+    "marka/reflex/",
+    "marka/renault/",
+    "marka/royal-canin/",
+    "marka/samsung/",
+    "marka/seat/",
+    "marka/simfer/",
+    "marka/sinbo/",
+    "marka/skoda/",
+    "marka/sleepy/",
+    "marka/suzuki/",
+    "marka/tanos/",
+    "marka/tesla/",
+    "marka/togg/",
+    "marka/toyota/",
+    "marka/ugur/",
+    "marka/vestel/",
+    "marka/volkswagen/",
+    "kategori/bebek-bezi/",
+    "kategori/bmw/",
+    "kategori/buzdolabi/",
+    "kategori/byd/",
+    "kategori/chery/",
+    "kategori/citroen/",
+    "kategori/cupra/",
+    "kategori/dacia/",
+    "kategori/dikey-supurge/",
+    "kategori/en-ucuz-sifir-arac/",
+    "kategori/fiat/",
+    "kategori/ford/",
+    "kategori/firin-ocak/",
+    "kategori/honda/",
+    "kategori/hyundai/",
+    "kategori/kahve-makinesi/",
+    "kategori/kedi-kumu/",
+    "kategori/kedi-mamasi/",
+    "kategori/kedi-tuvaleti/",
+    "kategori/kia/",
+    "kategori/kopek-mamasi/",
+    "kategori/mercedes/",
+    "kategori/mg/",
+    "kategori/nissan/",
+    "kategori/opel/",
+    "kategori/peugeot/",
+    "kategori/renault/",
+    "kategori/seat/",
+    "kategori/skoda/",
+    "kategori/suzuki/",
+    "kategori/tesla/",
+    "kategori/togg/",
+    "kategori/toyota/",
+    "kategori/volkswagen/",
+    "karsilastir/bmw-vs-byd-sifir-arac-fiyatlari/",
+    "karsilastir/bmw-vs-chery-sifir-arac-fiyatlari/",
+    "karsilastir/bmw-vs-citroen-sifir-arac-fiyatlari/",
+    "karsilastir/bmw-vs-cupra-sifir-arac-fiyatlari/",
+    "karsilastir/bmw-vs-dacia-sifir-arac-fiyatlari/",
+    "karsilastir/bmw-vs-fiat-sifir-arac-fiyatlari/",
+    "karsilastir/bmw-vs-ford-sifir-arac-fiyatlari/",
+    "karsilastir/bmw-vs-honda-sifir-arac-fiyatlari/",
+    "karsilastir/bmw-vs-hyundai-sifir-arac-fiyatlari/",
+    "karsilastir/bmw-vs-kia-sifir-arac-fiyatlari/",
+    "karsilastir/bmw-vs-mercedes-sifir-arac-fiyatlari/",
+    "karsilastir/bmw-vs-mg-sifir-arac-fiyatlari/",
+    "karsilastir/bmw-vs-nissan-sifir-arac-fiyatlari/",
+    "karsilastir/bmw-vs-opel-sifir-arac-fiyatlari/",
+    "karsilastir/bmw-vs-peugeot-sifir-arac-fiyatlari/",
+    "karsilastir/bmw-vs-renault-sifir-arac-fiyatlari/",
+    "karsilastir/bmw-vs-seat-sifir-arac-fiyatlari/",
+    "karsilastir/bmw-vs-skoda-sifir-arac-fiyatlari/",
+    "karsilastir/bmw-vs-suzuki-sifir-arac-fiyatlari/",
+    "karsilastir/bmw-vs-tesla-sifir-arac-fiyatlari/",
+    "karsilastir/bmw-vs-togg-sifir-arac-fiyatlari/",
+    "karsilastir/bmw-vs-toyota-sifir-arac-fiyatlari/",
+    "karsilastir/bmw-vs-volkswagen-sifir-arac-fiyatlari/",
+    "karsilastir/byd-vs-chery-sifir-arac-fiyatlari/",
+    "karsilastir/byd-vs-citroen-sifir-arac-fiyatlari/",
+    "karsilastir/byd-vs-cupra-sifir-arac-fiyatlari/",
+    "karsilastir/byd-vs-dacia-sifir-arac-fiyatlari/",
+    "karsilastir/byd-vs-fiat-sifir-arac-fiyatlari/",
+    "karsilastir/byd-vs-ford-sifir-arac-fiyatlari/",
+    "karsilastir/byd-vs-honda-sifir-arac-fiyatlari/",
+    "karsilastir/byd-vs-hyundai-sifir-arac-fiyatlari/",
+    "karsilastir/byd-vs-kia-sifir-arac-fiyatlari/",
+    "karsilastir/byd-vs-mercedes-sifir-arac-fiyatlari/",
+    "karsilastir/byd-vs-mg-sifir-arac-fiyatlari/",
+    "karsilastir/byd-vs-nissan-sifir-arac-fiyatlari/",
+    "karsilastir/byd-vs-opel-sifir-arac-fiyatlari/",
+    "karsilastir/byd-vs-peugeot-sifir-arac-fiyatlari/",
+    "karsilastir/byd-vs-renault-sifir-arac-fiyatlari/",
+    "karsilastir/byd-vs-seat-sifir-arac-fiyatlari/",
+    "karsilastir/byd-vs-skoda-sifir-arac-fiyatlari/",
+    "karsilastir/byd-vs-suzuki-sifir-arac-fiyatlari/",
+    "karsilastir/byd-vs-tesla-sifir-arac-fiyatlari/",
+    "karsilastir/byd-vs-togg-sifir-arac-fiyatlari/",
+    "karsilastir/byd-vs-toyota-sifir-arac-fiyatlari/",
+    "karsilastir/byd-vs-volkswagen-sifir-arac-fiyatlari/",
+    "karsilastir/chery-vs-citroen-sifir-arac-fiyatlari/",
+    "karsilastir/chery-vs-cupra-sifir-arac-fiyatlari/",
+    "karsilastir/chery-vs-dacia-sifir-arac-fiyatlari/",
+    "karsilastir/chery-vs-fiat-sifir-arac-fiyatlari/",
+    "karsilastir/chery-vs-ford-sifir-arac-fiyatlari/",
+    "karsilastir/chery-vs-honda-sifir-arac-fiyatlari/",
+    "karsilastir/chery-vs-hyundai-sifir-arac-fiyatlari/",
+    "karsilastir/chery-vs-kia-sifir-arac-fiyatlari/",
+    "karsilastir/chery-vs-mercedes-sifir-arac-fiyatlari/",
+    "karsilastir/chery-vs-mg-sifir-arac-fiyatlari/",
+    "karsilastir/chery-vs-nissan-sifir-arac-fiyatlari/",
+    "karsilastir/chery-vs-opel-sifir-arac-fiyatlari/",
+    "karsilastir/chery-vs-peugeot-sifir-arac-fiyatlari/",
+    "karsilastir/chery-vs-renault-sifir-arac-fiyatlari/",
+    "karsilastir/chery-vs-seat-sifir-arac-fiyatlari/",
+    "karsilastir/chery-vs-skoda-sifir-arac-fiyatlari/",
+    "karsilastir/chery-vs-suzuki-sifir-arac-fiyatlari/",
+    "karsilastir/chery-vs-tesla-sifir-arac-fiyatlari/",
+    "karsilastir/chery-vs-togg-sifir-arac-fiyatlari/",
+    "karsilastir/chery-vs-toyota-sifir-arac-fiyatlari/",
+    "karsilastir/chery-vs-volkswagen-sifir-arac-fiyatlari/",
+    "karsilastir/citroen-vs-cupra-sifir-arac-fiyatlari/",
+    "karsilastir/citroen-vs-dacia-sifir-arac-fiyatlari/",
+    "karsilastir/citroen-vs-fiat-sifir-arac-fiyatlari/",
+    "karsilastir/citroen-vs-ford-sifir-arac-fiyatlari/",
+    "karsilastir/citroen-vs-honda-sifir-arac-fiyatlari/",
+    "karsilastir/citroen-vs-hyundai-sifir-arac-fiyatlari/",
+    "karsilastir/citroen-vs-kia-sifir-arac-fiyatlari/",
+    "karsilastir/citroen-vs-mercedes-sifir-arac-fiyatlari/",
+    "karsilastir/citroen-vs-mg-sifir-arac-fiyatlari/",
+    "karsilastir/citroen-vs-nissan-sifir-arac-fiyatlari/",
+    "karsilastir/citroen-vs-opel-sifir-arac-fiyatlari/",
+    "karsilastir/citroen-vs-peugeot-sifir-arac-fiyatlari/",
+    "karsilastir/citroen-vs-renault-sifir-arac-fiyatlari/",
+    "karsilastir/citroen-vs-seat-sifir-arac-fiyatlari/",
+    "karsilastir/citroen-vs-skoda-sifir-arac-fiyatlari/",
+    "karsilastir/citroen-vs-suzuki-sifir-arac-fiyatlari/",
+    "karsilastir/citroen-vs-tesla-sifir-arac-fiyatlari/",
+    "karsilastir/citroen-vs-togg-sifir-arac-fiyatlari/",
+    "karsilastir/citroen-vs-toyota-sifir-arac-fiyatlari/",
+    "karsilastir/citroen-vs-volkswagen-sifir-arac-fiyatlari/",
+    "karsilastir/cupra-vs-dacia-sifir-arac-fiyatlari/",
+    "karsilastir/cupra-vs-fiat-sifir-arac-fiyatlari/",
+    "karsilastir/cupra-vs-ford-sifir-arac-fiyatlari/",
+    "karsilastir/cupra-vs-honda-sifir-arac-fiyatlari/",
+    "karsilastir/cupra-vs-hyundai-sifir-arac-fiyatlari/",
+    "karsilastir/cupra-vs-kia-sifir-arac-fiyatlari/",
+    "karsilastir/cupra-vs-mercedes-sifir-arac-fiyatlari/",
+    "karsilastir/cupra-vs-mg-sifir-arac-fiyatlari/",
+    "karsilastir/cupra-vs-nissan-sifir-arac-fiyatlari/",
+    "karsilastir/cupra-vs-opel-sifir-arac-fiyatlari/",
+    "karsilastir/cupra-vs-peugeot-sifir-arac-fiyatlari/",
+    "karsilastir/cupra-vs-renault-sifir-arac-fiyatlari/",
+    "karsilastir/cupra-vs-seat-sifir-arac-fiyatlari/",
+    "karsilastir/cupra-vs-skoda-sifir-arac-fiyatlari/",
+    "karsilastir/cupra-vs-suzuki-sifir-arac-fiyatlari/",
+    "karsilastir/cupra-vs-tesla-sifir-arac-fiyatlari/",
+    "karsilastir/cupra-vs-togg-sifir-arac-fiyatlari/",
+    "karsilastir/cupra-vs-toyota-sifir-arac-fiyatlari/",
+    "karsilastir/cupra-vs-volkswagen-sifir-arac-fiyatlari/",
+    "karsilastir/dacia-vs-fiat-sifir-arac-fiyatlari/",
+    "karsilastir/dacia-vs-ford-sifir-arac-fiyatlari/",
+    "karsilastir/dacia-vs-honda-sifir-arac-fiyatlari/",
+    "karsilastir/dacia-vs-hyundai-sifir-arac-fiyatlari/",
+    "karsilastir/dacia-vs-kia-sifir-arac-fiyatlari/",
+    "karsilastir/dacia-vs-mercedes-sifir-arac-fiyatlari/",
+    "karsilastir/dacia-vs-mg-sifir-arac-fiyatlari/",
+    "karsilastir/dacia-vs-nissan-sifir-arac-fiyatlari/",
+    "karsilastir/dacia-vs-opel-sifir-arac-fiyatlari/",
+    "karsilastir/dacia-vs-peugeot-sifir-arac-fiyatlari/",
+    "karsilastir/dacia-vs-renault-sifir-arac-fiyatlari/",
+    "karsilastir/dacia-vs-seat-sifir-arac-fiyatlari/",
+    "karsilastir/dacia-vs-skoda-sifir-arac-fiyatlari/",
+    "karsilastir/dacia-vs-suzuki-sifir-arac-fiyatlari/",
+    "karsilastir/dacia-vs-tesla-sifir-arac-fiyatlari/",
+    "karsilastir/dacia-vs-togg-sifir-arac-fiyatlari/",
+    "karsilastir/dacia-vs-toyota-sifir-arac-fiyatlari/",
+    "karsilastir/dacia-vs-volkswagen-sifir-arac-fiyatlari/",
+    "karsilastir/fiat-vs-ford-sifir-arac-fiyatlari/",
+    "karsilastir/fiat-vs-honda-sifir-arac-fiyatlari/",
+    "karsilastir/fiat-vs-hyundai-sifir-arac-fiyatlari/",
+    "karsilastir/fiat-vs-kia-sifir-arac-fiyatlari/",
+    "karsilastir/fiat-vs-mercedes-sifir-arac-fiyatlari/",
+    "karsilastir/fiat-vs-mg-sifir-arac-fiyatlari/",
+    "karsilastir/fiat-vs-nissan-sifir-arac-fiyatlari/",
+    "karsilastir/fiat-vs-opel-sifir-arac-fiyatlari/",
+    "karsilastir/fiat-vs-peugeot-sifir-arac-fiyatlari/",
+    "karsilastir/fiat-vs-renault-sifir-arac-fiyatlari/",
+    "karsilastir/fiat-vs-seat-sifir-arac-fiyatlari/",
+    "karsilastir/fiat-vs-skoda-sifir-arac-fiyatlari/",
+    "karsilastir/fiat-vs-suzuki-sifir-arac-fiyatlari/",
+    "karsilastir/fiat-vs-tesla-sifir-arac-fiyatlari/",
+    "karsilastir/fiat-vs-togg-sifir-arac-fiyatlari/",
+    "karsilastir/fiat-vs-toyota-sifir-arac-fiyatlari/",
+    "karsilastir/fiat-vs-volkswagen-sifir-arac-fiyatlari/",
+    "karsilastir/ford-vs-honda-sifir-arac-fiyatlari/",
+    "karsilastir/ford-vs-hyundai-sifir-arac-fiyatlari/",
+    "karsilastir/ford-vs-kia-sifir-arac-fiyatlari/",
+    "karsilastir/ford-vs-mercedes-sifir-arac-fiyatlari/",
+    "karsilastir/ford-vs-mg-sifir-arac-fiyatlari/",
+    "karsilastir/ford-vs-nissan-sifir-arac-fiyatlari/",
+    "karsilastir/ford-vs-opel-sifir-arac-fiyatlari/",
+    "karsilastir/ford-vs-peugeot-sifir-arac-fiyatlari/",
+    "karsilastir/ford-vs-renault-sifir-arac-fiyatlari/",
+    "karsilastir/ford-vs-seat-sifir-arac-fiyatlari/",
+    "karsilastir/ford-vs-skoda-sifir-arac-fiyatlari/",
+    "karsilastir/ford-vs-suzuki-sifir-arac-fiyatlari/",
+    "karsilastir/ford-vs-tesla-sifir-arac-fiyatlari/",
+    "karsilastir/ford-vs-togg-sifir-arac-fiyatlari/",
+    "karsilastir/ford-vs-toyota-sifir-arac-fiyatlari/",
+    "karsilastir/ford-vs-volkswagen-sifir-arac-fiyatlari/",
+    "karsilastir/honda-vs-hyundai-sifir-arac-fiyatlari/",
+    "karsilastir/honda-vs-kia-sifir-arac-fiyatlari/",
+    "karsilastir/honda-vs-mercedes-sifir-arac-fiyatlari/",
+    "karsilastir/honda-vs-mg-sifir-arac-fiyatlari/",
+    "karsilastir/honda-vs-nissan-sifir-arac-fiyatlari/",
+    "karsilastir/honda-vs-opel-sifir-arac-fiyatlari/",
+    "karsilastir/honda-vs-peugeot-sifir-arac-fiyatlari/",
+    "karsilastir/honda-vs-renault-sifir-arac-fiyatlari/",
+    "karsilastir/honda-vs-seat-sifir-arac-fiyatlari/",
+    "karsilastir/honda-vs-skoda-sifir-arac-fiyatlari/",
+    "karsilastir/honda-vs-suzuki-sifir-arac-fiyatlari/",
+    "karsilastir/honda-vs-tesla-sifir-arac-fiyatlari/",
+    "karsilastir/honda-vs-togg-sifir-arac-fiyatlari/",
+    "karsilastir/honda-vs-toyota-sifir-arac-fiyatlari/",
+    "karsilastir/honda-vs-volkswagen-sifir-arac-fiyatlari/",
+    "karsilastir/hyundai-vs-kia-sifir-arac-fiyatlari/",
+    "karsilastir/hyundai-vs-mercedes-sifir-arac-fiyatlari/",
+    "karsilastir/hyundai-vs-mg-sifir-arac-fiyatlari/",
+    "karsilastir/hyundai-vs-nissan-sifir-arac-fiyatlari/",
+    "karsilastir/hyundai-vs-opel-sifir-arac-fiyatlari/",
+    "karsilastir/hyundai-vs-peugeot-sifir-arac-fiyatlari/",
+    "karsilastir/hyundai-vs-renault-sifir-arac-fiyatlari/",
+    "karsilastir/hyundai-vs-seat-sifir-arac-fiyatlari/",
+    "karsilastir/hyundai-vs-skoda-sifir-arac-fiyatlari/",
+    "karsilastir/hyundai-vs-suzuki-sifir-arac-fiyatlari/",
+    "karsilastir/hyundai-vs-tesla-sifir-arac-fiyatlari/",
+    "karsilastir/hyundai-vs-togg-sifir-arac-fiyatlari/",
+    "karsilastir/hyundai-vs-toyota-sifir-arac-fiyatlari/",
+    "karsilastir/hyundai-vs-volkswagen-sifir-arac-fiyatlari/",
+    "karsilastir/kia-vs-mercedes-sifir-arac-fiyatlari/",
+    "karsilastir/kia-vs-mg-sifir-arac-fiyatlari/",
+    "karsilastir/kia-vs-nissan-sifir-arac-fiyatlari/",
+    "karsilastir/kia-vs-opel-sifir-arac-fiyatlari/",
+    "karsilastir/kia-vs-peugeot-sifir-arac-fiyatlari/",
+    "karsilastir/kia-vs-renault-sifir-arac-fiyatlari/",
+    "karsilastir/kia-vs-seat-sifir-arac-fiyatlari/",
+    "karsilastir/kia-vs-skoda-sifir-arac-fiyatlari/",
+    "karsilastir/kia-vs-suzuki-sifir-arac-fiyatlari/",
+    "karsilastir/kia-vs-tesla-sifir-arac-fiyatlari/",
+    "karsilastir/kia-vs-togg-sifir-arac-fiyatlari/",
+    "karsilastir/kia-vs-toyota-sifir-arac-fiyatlari/",
+    "karsilastir/kia-vs-volkswagen-sifir-arac-fiyatlari/",
+    "karsilastir/mercedes-vs-mg-sifir-arac-fiyatlari/",
+    "karsilastir/mercedes-vs-nissan-sifir-arac-fiyatlari/",
+    "karsilastir/mercedes-vs-opel-sifir-arac-fiyatlari/",
+    "karsilastir/mercedes-vs-peugeot-sifir-arac-fiyatlari/",
+    "karsilastir/mercedes-vs-renault-sifir-arac-fiyatlari/",
+    "karsilastir/mercedes-vs-seat-sifir-arac-fiyatlari/",
+    "karsilastir/mercedes-vs-skoda-sifir-arac-fiyatlari/",
+    "karsilastir/mercedes-vs-suzuki-sifir-arac-fiyatlari/",
+    "karsilastir/mercedes-vs-tesla-sifir-arac-fiyatlari/",
+    "karsilastir/mercedes-vs-togg-sifir-arac-fiyatlari/",
+    "karsilastir/mercedes-vs-toyota-sifir-arac-fiyatlari/",
+    "karsilastir/mercedes-vs-volkswagen-sifir-arac-fiyatlari/",
+    "karsilastir/mg-vs-nissan-sifir-arac-fiyatlari/",
+    "karsilastir/mg-vs-opel-sifir-arac-fiyatlari/",
+    "karsilastir/mg-vs-peugeot-sifir-arac-fiyatlari/",
+    "karsilastir/mg-vs-renault-sifir-arac-fiyatlari/",
+    "karsilastir/mg-vs-seat-sifir-arac-fiyatlari/",
+    "karsilastir/mg-vs-skoda-sifir-arac-fiyatlari/",
+    "karsilastir/mg-vs-suzuki-sifir-arac-fiyatlari/",
+    "karsilastir/mg-vs-tesla-sifir-arac-fiyatlari/",
+    "karsilastir/mg-vs-togg-sifir-arac-fiyatlari/",
+    "karsilastir/mg-vs-toyota-sifir-arac-fiyatlari/",
+    "karsilastir/mg-vs-volkswagen-sifir-arac-fiyatlari/",
+    "karsilastir/nissan-vs-opel-sifir-arac-fiyatlari/",
+    "karsilastir/nissan-vs-peugeot-sifir-arac-fiyatlari/",
+    "karsilastir/nissan-vs-renault-sifir-arac-fiyatlari/",
+    "karsilastir/nissan-vs-seat-sifir-arac-fiyatlari/",
+    "karsilastir/nissan-vs-skoda-sifir-arac-fiyatlari/",
+    "karsilastir/nissan-vs-suzuki-sifir-arac-fiyatlari/",
+    "karsilastir/nissan-vs-tesla-sifir-arac-fiyatlari/",
+    "karsilastir/nissan-vs-togg-sifir-arac-fiyatlari/",
+    "karsilastir/nissan-vs-toyota-sifir-arac-fiyatlari/",
+    "karsilastir/nissan-vs-volkswagen-sifir-arac-fiyatlari/",
+    "karsilastir/opel-vs-peugeot-sifir-arac-fiyatlari/",
+    "karsilastir/opel-vs-renault-sifir-arac-fiyatlari/",
+    "karsilastir/opel-vs-seat-sifir-arac-fiyatlari/",
+    "karsilastir/opel-vs-skoda-sifir-arac-fiyatlari/",
+    "karsilastir/opel-vs-suzuki-sifir-arac-fiyatlari/",
+    "karsilastir/opel-vs-tesla-sifir-arac-fiyatlari/",
+    "karsilastir/opel-vs-togg-sifir-arac-fiyatlari/",
+    "karsilastir/opel-vs-toyota-sifir-arac-fiyatlari/",
+    "karsilastir/opel-vs-volkswagen-sifir-arac-fiyatlari/",
+    "karsilastir/peugeot-vs-renault-sifir-arac-fiyatlari/",
+    "karsilastir/peugeot-vs-seat-sifir-arac-fiyatlari/",
+    "karsilastir/peugeot-vs-skoda-sifir-arac-fiyatlari/",
+    "karsilastir/peugeot-vs-suzuki-sifir-arac-fiyatlari/",
+    "karsilastir/peugeot-vs-tesla-sifir-arac-fiyatlari/",
+    "karsilastir/peugeot-vs-togg-sifir-arac-fiyatlari/",
+    "karsilastir/peugeot-vs-toyota-sifir-arac-fiyatlari/",
+    "karsilastir/peugeot-vs-volkswagen-sifir-arac-fiyatlari/",
+    "karsilastir/renault-vs-seat-sifir-arac-fiyatlari/",
+    "karsilastir/renault-vs-skoda-sifir-arac-fiyatlari/",
+    "karsilastir/renault-vs-suzuki-sifir-arac-fiyatlari/",
+    "karsilastir/renault-vs-tesla-sifir-arac-fiyatlari/",
+    "karsilastir/renault-vs-togg-sifir-arac-fiyatlari/",
+    "karsilastir/renault-vs-toyota-sifir-arac-fiyatlari/",
+    "karsilastir/renault-vs-volkswagen-sifir-arac-fiyatlari/",
+    "karsilastir/seat-vs-skoda-sifir-arac-fiyatlari/",
+    "karsilastir/seat-vs-suzuki-sifir-arac-fiyatlari/",
+    "karsilastir/seat-vs-tesla-sifir-arac-fiyatlari/",
+    "karsilastir/seat-vs-togg-sifir-arac-fiyatlari/",
+    "karsilastir/seat-vs-toyota-sifir-arac-fiyatlari/",
+    "karsilastir/seat-vs-volkswagen-sifir-arac-fiyatlari/",
+    "karsilastir/skoda-vs-suzuki-sifir-arac-fiyatlari/",
+    "karsilastir/skoda-vs-tesla-sifir-arac-fiyatlari/",
+    "karsilastir/skoda-vs-togg-sifir-arac-fiyatlari/",
+    "karsilastir/skoda-vs-toyota-sifir-arac-fiyatlari/",
+    "karsilastir/skoda-vs-volkswagen-sifir-arac-fiyatlari/",
+    "karsilastir/suzuki-vs-tesla-sifir-arac-fiyatlari/",
+    "karsilastir/suzuki-vs-togg-sifir-arac-fiyatlari/",
+    "karsilastir/suzuki-vs-toyota-sifir-arac-fiyatlari/",
+    "karsilastir/suzuki-vs-volkswagen-sifir-arac-fiyatlari/",
+    "karsilastir/tesla-vs-togg-sifir-arac-fiyatlari/",
+    "karsilastir/tesla-vs-toyota-sifir-arac-fiyatlari/",
+    "karsilastir/tesla-vs-volkswagen-sifir-arac-fiyatlari/",
+    "karsilastir/togg-vs-toyota-sifir-arac-fiyatlari/",
+    "karsilastir/togg-vs-volkswagen-sifir-arac-fiyatlari/",
+    "karsilastir/toyota-vs-volkswagen-sifir-arac-fiyatlari/",
+    "raporlar/arac/",
+    "raporlar/bebek/",
+    "raporlar/dugun/",
+    "raporlar/ev-kurma/",
+    "raporlar/kedi/",
+    "raporlar/kopek/",
+    "raporlar/okul/"
+  ]
+}

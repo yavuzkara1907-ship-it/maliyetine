@@ -385,7 +385,11 @@ model ve paket</strong> için ayrı fiyat kaydı yayınlıyoruz. Her sayfada kay
 buradaki sayfalar ise kaynakta görülen tekil ürün veya model fiyatını cevaplar.
 İkisi birbirinin yerine kullanılmaz. Yeni gerçek gözlemler geldikçe arşiv büyür;
 eski URL'ler ölçüm tarihiyle korunur.</p><p><a href="/veri/fiyat-gozlemleri.json">
-Makine-okunur envanteri indirin</a> · <a href="/veri/">Veri merkezi</a></p>
+Makine-okunur envanteri indirin</a> · <a href="/markalar/">Markalara göz atın</a> ·
+<a href="/kategoriler/">Kategorilere göz atın</a> ·
+<a href="/karsilastir/">Araçları karşılaştırın</a> ·
+<a href="/fiyati-degisen/30-gun/">Değişen fiyatlar</a> ·
+<a href="/raporlar/">Fiyat raporları</a></p>
 </main><footer><div class="kapsayici"><div>© 2026 Maliyeti Ne? · <a href="/veri/">Veri</a> ·
 <a href="/hakkimizda/">Hakkımızda</a></div></div></footer></body></html>"""
 

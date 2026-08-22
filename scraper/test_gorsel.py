@@ -50,6 +50,14 @@ if (SITE / "fiyat" / "index.html").exists():
     if adaylar:
         SAYFALAR.append(f"/fiyat/{adaylar[0].parent.name}/")
 
+# Rakipten uyarlanan yeni kesif yuzeyinin farkli tablo yogunluklarina sahip
+# dort temsilcisi de tum cihaz genisliklerinde gercek Chromium ile acilir.
+for yol in ("/marka/bosch/", "/kategori/buzdolabi/",
+            "/fiyati-degisen/30-gun/",
+            "/karsilastir/opel-vs-renault-sifir-arac-fiyatlari/"):
+    if (SITE / yol.strip("/") / "index.html").exists():
+        SAYFALAR.append(yol)
+
 
 class _Sunucu(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *a, **k):

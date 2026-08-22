@@ -168,6 +168,17 @@ def fiyat_gozlem_sayisi(veri_kok: Path | None = None) -> int:
         return 0
 
 
+def kesif_yuzeyi_ozeti(veri_kok: Path | None = None) -> dict:
+    dosya = (veri_kok or SITE_KOK / "veri") / "kesif-yuzeyi.json"
+    if not dosya.exists():
+        return {}
+    try:
+        veri = json.loads(dosya.read_text(encoding="utf-8"))
+        return veri if isinstance(veri, dict) else {}
+    except (json.JSONDecodeError, OSError):
+        return {}
+
+
 def cevap_envanteri(
     veri_kok: Path | None = None, dataset_surumu: str | None = None
 ) -> dict:
@@ -397,6 +408,12 @@ def veri_sayfasi(
             "contentUrl": f"{su.SITE_KOK_URL}/veri/fiyat-gozlemleri.json",
             "name": "Tekil ürün ve model fiyat gözlemleri (JSON)",
         },
+        {
+            "@type": "DataDownload",
+            "encodingFormat": "application/json",
+            "contentUrl": f"{su.SITE_KOK_URL}/veri/kesif-yuzeyi.json",
+            "name": "Marka, kategori ve karşılaştırma URL envanteri (JSON)",
+        },
     ] + [
         {
             "@type": "DataDownload",
@@ -510,6 +527,9 @@ def veri_sayfasi(
     Hepsi tek dosyada: <a href="/veri/csv/tum-kalemler.csv" download><strong>tum-kalemler.csv</strong></a>
     · <a href="/veri/cevaplar.json"><strong>cevaplar.json</strong></a>
     · <a href="/fiyat/"><strong>tekil fiyat gözlemleri</strong></a>
+    · <a href="/veri/kesif-yuzeyi.json"><strong>keşif yüzeyi</strong></a>
+    · <a href="/markalar/"><strong>markalar</strong></a>
+    · <a href="/karsilastir/"><strong>karşılaştırmalar</strong></a>
     · <a href="/veri/envanter.json"><strong>envanter.json</strong></a>
     · <a href="/veri/manifest.json"><strong>manifest.json</strong></a>
     · <a href="/veri/qa.json"><strong>qa.json</strong></a>
@@ -653,11 +673,16 @@ def llms_txt(
         yazilar = ""
     toplam = sum(o["kalem"] for o in ozet.values())
     gozlem_sayisi = fiyat_gozlem_sayisi(veri_kok)
+    kesif = kesif_yuzeyi_ozeti(veri_kok)
     gozlem_satirlari = (
         f"\n## Tekil ürün ve model fiyatları\n\n"
         f"- {gozlem_sayisi} gerçek ürün/model için ayrı fiyat sayfası: {kok}/fiyat/\n"
         f"- Kalıcı gözlem ve fiyat geçmişi envanteri (JSON): "
         f"{kok}/veri/fiyat-gozlemleri.json\n"
+        f"- {kesif.get('marka_sayfasi', 0)} marka sayfası: {kok}/markalar/\n"
+        f"- {kesif.get('kategori_sayfasi', 0)} kategori/model listesi: {kok}/kategoriler/\n"
+        f"- {kesif.get('karsilastirma_sayfasi', 0)} araç fiyat karşılaştırması: {kok}/karsilastir/\n"
+        f"- 7/30 günlük değişen fiyatlar: {kok}/fiyati-degisen/30-gun/\n"
         if gozlem_sayisi else ""
     )
 
@@ -758,10 +783,17 @@ def ai_txt(
         formul_sayisi = toplam_hesap = 0
     veri_hesabi = toplam_hesap - formul_sayisi
     gozlem_sayisi = fiyat_gozlem_sayisi()
+    kesif = kesif_yuzeyi_ozeti()
     gozlem_alani = (
         f"exact_price_pages: {gozlem_sayisi}\n"
         f"exact_price_catalog: {kok}/fiyat/\n"
         f"price_observation_data: {kok}/veri/fiyat-gozlemleri.json\n"
+        f"brand_pages: {kesif.get('marka_sayfasi', 0)}\n"
+        f"brand_catalog: {kok}/markalar/\n"
+        f"category_pages: {kesif.get('kategori_sayfasi', 0)}\n"
+        f"comparison_pages: {kesif.get('karsilastirma_sayfasi', 0)}\n"
+        f"comparison_catalog: {kok}/karsilastir/\n"
+        f"price_changes: {kok}/fiyati-degisen/30-gun/\n"
         if gozlem_sayisi else ""
     )
     return f"""# ai.txt — Maliyeti Ne? (maliyetine.com.tr)

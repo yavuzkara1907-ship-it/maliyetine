@@ -3844,6 +3844,40 @@ Dogru karar `kalite veya hacim` degil, **gercek gozlemle hacim**.
   ve `ai.txt` exact-query katalogunu ilan ediyor. Sitemap'teki 938 URL
   IndexNow'a gonderildi ve servis `200 OK` ile kabul etti.
 
+### STRATEJI DUZELTMESI 2: RAKIP TALEP KUMELERINI KULLAN
+
+Yavuz'un ikinci hakli itirazi: rakibin icerigini kopyalamama hassasiyeti,
+rakibin kesfettigi **arama niyetlerini ve URL mimarisini** de kullanmama
+refleksine donusmustu. `fiyatendeksi.com` sitemap'i 2026-08-22'de yeniden
+sayildi: **11.662 URL**; 9.905 fiyat, 909 marka, 382 kategori, 118 asgari
+ucret, 118 TUIK, 96 yasam maliyeti, 44 maas, 25 rapor, 12 endeks ve 6
+karsilastirma. Ders: rakibin metnini kopyalamak gerekmiyor; kanitlanmis talep
+kumelerini alip daha iyi, kaynakli cevapla doldurmak gerekiyor.
+
+**Uygulanan ikinci kesif dalgasi:** `scraper/kesif_yuzeyi.py`, mevcut 733
+gercek urun/model gozlemi ile 121 tarihsel seriden **389 yeni sayfa** uretir:
+64 marka arsivi, 34 kategori/model listesi, en az 4 modeli bulunan arac
+markalari arasinda 276 fiyat karsilastirmasi, 7/30 gunluk degisim, zamlanan ve
+ucuzlayan kategori sayfalari, rapor hub'i ve 7 vertikal raporu. Boylece
+sitemap **938 -> 1.327 URL** oldu.
+
+- Marka adlari buyuk/kucuk harften birlestirilir; `Firsat`, `Ekonomik`,
+  `Ankastre` gibi urun adi on ekleri marka diye yayinlanmaz.
+- Karsilastirma, minimum/ortanca/maksimum ve en ucuz modelleri ayni tarihli
+  liste fiyatindan verir; donanim, ikinci el ve kullanim maliyetinin
+  esitlenmedigini gorunur sinir olarak yazar.
+- 7/30 gunluk sayfalar kategori ortancasini karsilastirir ve orneklem/kaynak
+  degisiminin farki etkileyebilecegini aciklar. Etiket zammi diye sunmaz.
+- `/veri/kesif-yuzeyi.json` marka, kategori ve karsilastirmalari URL ve
+  sayaclariyla makine-okunur verir. `llms.txt`, `ai.txt`, DataCatalog,
+  `/veri/`, sitemap ve aylik workflow ayni envantere bagli.
+- ItemList ve gorunur FAQ semalari eklendi. Title/description benzersiz,
+  kirik link ve yetim sayfa yok. Dört yeni sayfa tipi 320-1440 px arasindaki
+  14 genislikte Chromium ile yatay tasmasiz dogrulandi.
+- Son kapilar: Python **451/451**, JavaScript **90/90**; QA **121 seri / 109
+  kalem sayfasi / 0 kritik hata**. Sitemapte **1.327 benzersiz URL**, disinda
+  yalniz `404.html` olmak uzere toplam 1.328 HTML var.
+
 ## Yapılacaklar (güncel, 2026-08-22)
 Tarihî tamamlanan işler yukarıdaki günlükte duruyor. Bu liste yalnızca
 bugün gerçekten iş açan maddeleri taşımalı; biten iş burada kalmasın.

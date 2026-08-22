@@ -3857,6 +3857,17 @@ def sitemap_uret() -> str:
     except ImportError:
         pass
 
+    # Rakip fiyat sitelerindeki talep yuzeyinin yerel, kaynakli karsiligi:
+    # marka/kategori varliklari, degisim raporlari ve arac karsilastirmalari.
+    try:
+        import kesif_yuzeyi
+        for yol_ in kesif_yuzeyi.sitemap_yollari():
+            if (SITE_KOK / yol_ / "index.html").exists():
+                oncelik = "0.8" if yol_.count("/") <= 2 else "0.7"
+                url_kayitlari.append((f"/{yol_}", "weekly", oncelik))
+    except ImportError:
+        pass
+
     for conf in VERTIKALLER.values():
         yol = conf["yol"]
         url_kayitlari.extend([
