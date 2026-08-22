@@ -3596,6 +3596,13 @@ CLS yine sifirdi ama ilk boyama gereksiz yere yavasliyordu. Iki sans preload
 varyanti cevap blogunda IBM Plex Sans'i (normal + kalin ve Turkce glifler)
 korurken CLS'yi sifir tuttu. Son kapilar: Python **393/393**, JS **90/90**.
 
+**Canli dogrulama:** `5ffcd76` deploy edildikten sonra yeni PageSpeed mobil
+raporu alindi (`qw85f4c55e`). Performans **73 -> 98**, FCP **2,8 -> 1,7 sn**,
+LCP **3,6 -> 2,0 sn**, CLS **0,246 -> 0**. Ajan Tabanli Tarama da ayni CLS
+nedeni kalkinca **2/3 -> 3/3** oldu. Erisilebilirlik/Best Practices/SEO
+**100/100/100** kaldi. Hala gercek kullanici CrUX verisi yok; Search Console
+CWV olusunca laboratuvar sonucundan ayri izlenecek.
+
 
 ## Yapılacaklar (güncel, 2026-08-22)
 Tarihî tamamlanan işler yukarıdaki günlükte duruyor. Bu liste yalnızca
