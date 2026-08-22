@@ -198,6 +198,11 @@ def vertikal_gecmisi(
     return {
         "vertikal": vertikal,
         "uretim_tarihi": date.today().isoformat(),
+        "metrik": {
+            "alan": "genel_medyan",
+            "ad": "Ölçülen ürünlerin ortanca fiyatı",
+            "yontem": "Kaynak ortancalarının ortancası",
+        },
         "olcumler": sorted(tum_tarihler),
         "kalemler": kalemler,
         "ozet": ozet,

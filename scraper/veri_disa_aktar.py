@@ -124,10 +124,11 @@ def disa_aktar(veri_kok: Path | None = None, cikti_kok: Path | None = None) -> d
         tarih = veri.get("guncelleme_tarihi") or date.today().isoformat()
         (hedef / f"{vertikal}.csv").write_text(metin, encoding="utf-8")
         arsiv = hedef / f"{vertikal}-{tarih}.csv"
-        # Tarihli URL yayinlandiktan sonra o olcumun kanitidir. Ayni gun
-        # tekrar build almak sabit URL'yi yenileyebilir ama arsivi sessizce
-        # degistiremez.
-        if not arsiv.exists():
+        # Gecmis gunlerin tarihli CSV'si degismez. Ayni gun icinde hedefli
+        # yeniden olcum yapilabilir ve gun-granuler snapshot son saglikli
+        # kosuyla yenilenir; bugunun arsivi de bu kanonik durumla birlikte
+        # guncellenir. Gun kapandiktan sonra dosya sabitlenir.
+        if not arsiv.exists() or tarih == date.today().isoformat():
             arsiv.write_text(metin, encoding="utf-8")
         ozet[vertikal] = {
             "kalem": len(satirlar),
@@ -339,7 +340,7 @@ def veri_sayfasi(
       <tr><td>kg_urun_sayisi / litre_urun_sayisi / adet_urun_sayisi</td><td>İlgili birim fiyat hesabına kaç ürünün girdiği.</td></tr>
       <tr><td>urun_sayisi</td><td>O kalem için kaç ürün fiyatı okundu.</td></tr>
       <tr><td>kaynak_sayisi / kaynaklar</td><td>Kaç bağımsız siteden derlendi ve hangileri.</td></tr>
-      <tr><td>olcum_tarihi</td><td>Verinin çekildiği gün. Ayda iki kez yenilenir.</td></tr>
+      <tr><td>olcum_tarihi</td><td>Serinin son başarılı ölçüm günü. Başarısız tarama bu tarihi ilerletmez.</td></tr>
     </tbody>
   </table></div>
 
@@ -354,8 +355,8 @@ def veri_sayfasi(
 
   <h2>Bu veri nasıl toplanıyor?</h2>
   <p>
-    Fiyatlar gerçek satış sayfalarından, ayda iki kez otomatik olarak
-    derleniyor. Yöntemin ayrıntısı ve bilinen sınırlar her endeksin
+    Kaynaklar ayın 5'i ve 20'sinde otomatik olarak yeniden taranıyor; her
+    seri son başarılı ölçüm tarihini koruyor. Yöntemin ayrıntısı ve bilinen sınırlar her endeksin
     metodoloji sayfasında: <a href="/dugun/metodoloji/">düğün</a>,
     <a href="/ev-kurma/metodoloji/">ev kurma</a>,
     <a href="/okul/metodoloji/">okul</a>,
@@ -430,7 +431,8 @@ def llms_txt(
 
     return f"""# Maliyeti Ne?
 
-> Türkiye için ayda iki kez güncellenen, kaynağı ve örneklemi açıklanan maliyet
+> Türkiye için kaynakları ayın 5'i ve 20'sinde yeniden taranan, kaynağı ve
+> örneklemi açıklanan maliyet
 > endeksi. Fiyatlar tahmin edilmez; gerçek satış listelerinden ölçülür. Her
 > rakamın yanında kaynak sayısı, ürün adedi ve ölçüm tarihi yayınlanır.
 
@@ -465,8 +467,8 @@ geldiği ve ölçüm tarihi bulunur; rakam bağımsız olarak doğrulanabilir.
 
 ## Nasıl ölçülüyor?
 
-- Fiyatlar gerçek e-ticaret ve sektör sitelerinden, robots.txt kurallarına
-  uygun biçimde ayda iki kez derlenir (ayın 5'i ve 20'si).
+- Gerçek e-ticaret ve sektör kaynakları robots.txt kurallarına uygun biçimde
+  ayın 5'i ve 20'sinde yeniden taranır; başarısız tarama ölçüm tarihini ilerletmez.
 - Her kalem için birden fazla bağımsız kaynak hedeflenir. Kaynakların ham
   fiyatları karıştırılmaz: her kaynağın kendi orta değeri alınır, sonra
   onların ortası hesaplanır.
@@ -535,7 +537,7 @@ contact: info@maliyetine.com.tr
 ## Ne yayınlıyoruz
 
 Türkiye için ölçülmüş maliyet endeksleri: {endeks_listesi}.
-{toplam_kalem} aktif fiyat serisi, ayda iki kez (ayın 5'i ve 20'si) yeniden ölçülüyor.
+{toplam_kalem} aktif fiyat serisinin kaynakları ayın 5'i ve 20'sinde yeniden taranıyor; her seri son başarılı ölçüm tarihini taşıyor.
 Ayrıca toplam {toplam_hesap} hesaplayıcı var: {formul_sayisi} formül/mevzuat
 aracı ve {veri_hesabi} güncel veriye dayalı araç.
 

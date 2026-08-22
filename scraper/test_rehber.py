@@ -76,6 +76,9 @@ class RehberTesti(unittest.TestCase):
         self.assertIn("1.000 TL", html)   # yemekli
         self.assertIn("500 TL", html)     # kokteyl
         self.assertIn("75.000 TL", html)  # 150 kisilik fark: (1000-500)*150
+        self.assertIn("varsayılan düğün bütçesine yalnızca yemekli", html)
+        self.assertIn("Alternatif; varsayılan toplama eklenmez", html)
+        self.assertNotIn("yemeği başka yerden almanız gerekiyor", html)
 
     def test_evcil_rehberi_paket_fiyatini_ayliklastirmaz(self):
         r = next(x for x in rehber.REHBERLER if x["slug"] == "aylik-kedi-masrafi")
@@ -126,6 +129,38 @@ class RehberTesti(unittest.TestCase):
         self.assertIn("/rehber/150-kisilik-dugun-maliyeti/", html)
         # kendine link vermemeli
         self.assertNotIn('href="/rehber/yemekli-mi-kokteyl-mi/"', html)
+
+    def test_okul_pahali_kalem_linkleri_kanonik_slug_kullanir(self):
+        import sayfa_uret as su
+        conf = su.VERTIKALLER["okul"]
+        kalemler = {
+            t["id"]: {
+                "genel_medyan": 1000,
+                "toplam_urun": 20,
+                "segmentler": {
+                    "dusuk": {"medyan": 500},
+                    "orta": {"medyan": 1000},
+                    "luks": {"medyan": 2000},
+                },
+            }
+            for t in conf["kalemler"]
+        }
+        tanim = next(
+            x for x in rehber.REHBERLER
+            if x["slug"] == "okul-alisverisinde-en-pahali-kalemler"
+        )
+        sayfa = rehber.rehber_uret(
+            tanim,
+            {"okul": {"kalemler": kalemler, "guncelleme_tarihi": "2026-08-22"}},
+        )
+        self.assertIn('/okul/okul-cantasi-fiyatlari/', sayfa)
+        self.assertNotIn('/okul/okul-cantasi/', sayfa)
+        tablo = re.search(
+            r'<h2>Sepette en yüksek payı alan kalemler</h2>(.*?)</table>',
+            sayfa,
+            re.S,
+        ).group(1)
+        self.assertEqual(tablo.count('<a href="/okul/'), 5)
 
     def test_yazilan_dosyalar_ve_dizin(self):
         with TemporaryDirectory() as d:

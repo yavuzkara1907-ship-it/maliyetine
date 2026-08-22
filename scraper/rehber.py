@@ -25,10 +25,12 @@ en hizli yolu.
 
 from __future__ import annotations
 
+import html
 import json
 from datetime import date
 from pathlib import Path
 
+import arac_maliyetleri as am
 import sayfa_uret as su
 
 SITE_KOK = su.SITE_KOK
@@ -216,21 +218,62 @@ def _govde_yemekli_kokteyl(v: dict) -> str | None:
     if not (yemekli and kokteyl):
         return None
 
-    fark_150 = (yemekli - kokteyl) * 150
+    yemekli_150 = yemekli * 150
+    kokteyl_150 = kokteyl * 150
+    fark_150 = yemekli_150 - kokteyl_150
+    menu_150 = menu * 150 if menu else None
+    menu_satiri = (
+        f'<tr><td>Aynı mekandaki menü farkı</td><td class="sayi">{_p(menu)}</td>'
+        f'<td class="sayi">{_p(menu_150)}</td>'
+        '<td>Türetilmiş karşılaştırma; ayrıca eklenmez</td></tr>'
+        if menu else ""
+    )
+    menu_bolumu = f"""
+  <h2>Menünün kişi başı bedeli</h2>
+  <p>
+    Aynı mekanın yemekli ve kokteyl fiyatları arasındaki farkı tek tek
+    hesapladık; orta segmentte kişi başı {_p(menu)} çıkıyor. Bu değer
+    bağımsız bir catering teklifi değil, aynı mekan içindeki paket farkından
+    türetilmiş bir karşılaştırma metriği.
+  </p>
+  <p>
+    Farkı <em>aynı mekan içinde</em> almak şart. İki ayrı listenin
+    ortancasını çıkarmak yanlış sonuç verir, çünkü her mekan kokteyl
+    seçeneği sunmuyor ve farkların ortancası, ortancaların farkına eşit
+    değil.
+  </p>
+""" if menu else """
+  <h2>Menü farkı neden ayrıca görünmüyor?</h2>
+  <p>
+    Aynı mekanın iki paketini eşleştiren yeterli ölçüm olmadan, yemekli ve
+    kokteyl ortancalarını birbirinden çıkarıp menü bedeli uydurmuyoruz.
+    Paket farkı ancak eşleşmiş mekan örnekleri bulunduğunda gösterilir.
+  </p>
+"""
     return f"""
   <p class="cevap-blok">
-    Yemekli salon kişi başı <strong>{_p(yemekli)}</strong>, kokteyl salon
-    <strong>{_p(kokteyl)}</strong>. 150 kişilik bir düğünde aradaki fark
-    {_p(fark_150)}. Ama bu farkın tamamı cebinizde kalmıyor — kokteyl
-    seçerseniz yemeği başka yerden almanız gerekiyor.
+    150 kişilik varsayılan düğün bütçesine yalnızca yemekli salon senaryosu
+    giriyor: <strong>{_p(yemekli_150)}</strong>. Kokteyl düzen
+    <strong>{_p(kokteyl_150)}</strong> ile ayrı bir alternatif; iki paket
+    birbirine eklenmiyor. Ölçülen fark {_p(fark_150)}.
   </p>
+
+  <div class="tablo-sarmal"><table>
+    <thead><tr><th>Senaryo</th><th class="sayi">Kişi başı</th><th class="sayi">150 kişi</th><th>Bütçedeki yeri</th></tr></thead>
+    <tbody>
+      <tr><td>Yemekli salon paketi</td><td class="sayi">{_p(yemekli)}</td><td class="sayi">{_p(yemekli_150)}</td><td>Varsayılan düğün toplamına dahil</td></tr>
+      <tr><td>Kokteyl salon paketi</td><td class="sayi">{_p(kokteyl)}</td><td class="sayi">{_p(kokteyl_150)}</td><td>Alternatif; varsayılan toplama eklenmez</td></tr>
+      {menu_satiri}
+    </tbody>
+  </table></div>
 
   <h2>İki fiyat neyi kapsıyor?</h2>
   <p>
     Düğün mekanları fiyatı kişi başı verir ve genellikle iki seçenek sunar.
     Yemekli seçenekte salon ve menü birlikte fiyatlanır. Kokteyl seçenekte
-    salonu alırsınız, yemek yoktur; ikram genelde sınırlı bir açık büfeyle
-    kalır.
+    mekanın listesinde tanımlanan daha sınırlı ikram paketi bulunur. Tam
+    yemek servisi isteyip istememek ayrı bir planlama kararıdır; verimiz
+    kokteyl seçen herkesin dışarıdan yemek alacağını varsaymaz.
   </p>
   <p>
     Bu ayrım göründüğünden önemli, çünkü mekanların ilan sayfalarında
@@ -239,31 +282,15 @@ def _govde_yemekli_kokteyl(v: dict) -> str | None:
     yanlış kurulur.
   </p>
 
-  <h2>Menünün kişi başı bedeli</h2>
-  <p>
-    Menünün gerçek maliyetini bulmanın temiz bir yolu var: aynı mekanın
-    yemekli ve kokteyl fiyatını çıkarmak. Aradaki fark, o mekanda yemeğin
-    kişi başı bedeli. Bunu tek tek mekanlar için hesapladık; orta segmentte
-    {_p(menu)} çıkıyor.
-  </p>
-  <p>
-    Farkı <em>aynı mekan içinde</em> almak şart. İki ayrı listenin
-    ortalamasını çıkarmak yanlış sonuç verir, çünkü her mekan kokteyl
-    seçeneği sunmuyor ve farkların ortası, ortaların farkına eşit değil.
-    Bizim veride bu iki yöntem arasında gözle görülür bir sapma vardı.
-  </p>
+{menu_bolumu}
 
   <h2>Hangisi size uygun?</h2>
   <p>
-    Kokteyl düzen, davetlilerin oturup yemek yemediği, daha kısa süren
-    organizasyonlar için mantıklı. Akşam saatinde, uzun bir düğün
-    planlıyorsanız misafirleriniz yemek bekler; kokteyl alıp dışarıdan
-    catering getirmek çoğu zaman yemekli paketten ucuza gelmez.
-  </p>
-  <p>
-    Mekanın kendi menüsü genelde daha ekonomik olur — mutfak zaten orada,
-    servis ekibi zaten çalışıyor. Dışarıdan catering'in ulaşım, ekipman ve
-    servis kalemleri fiyata biniyor.
+    Kokteyl düzen, daha kısa ve ayakta ağırlama ağırlıklı organizasyonlar
+    için düşünülebilir. Uzun bir akşam davetinde tam yemek servisi
+    istiyorsanız dış catering teklifini ayrıca ölçmek gerekir; elimizde
+    karşılaştırılabilir catering örneklemi olmadığı için bunun daha ucuz ya
+    da pahalı olduğunu iddia etmiyoruz.
   </p>
 
   <h2>Bir uyarı</h2>
@@ -271,7 +298,8 @@ def _govde_yemekli_kokteyl(v: dict) -> str | None:
     Bu iki rakamı toplayıp tek bir "gerçek maliyet" çıkarmaya çalışmayın.
     Hesaplayıcımızda da toplamıyoruz: yemekli fiyat zaten menüyü içerdiği
     için üstüne ayrıca yemek eklemek aynı masrafı iki kez saymak olur.
-    Seçtiğiniz düzen hangisiyse toplama yalnızca o giriyor.
+    Varsayılan 150 kişilik bütçeye yemekli paket giriyor. Kokteyl seçilirse
+    yemekli paket onunla değiştirilir; menü farkı ayrıca eklenmez.
   </p>
   <p>
     Kendi düğününüz için hesap:
@@ -361,8 +389,8 @@ def _govde_ev_kurma(v: dict) -> str | None:
 {_tufe(v, "ev-kurma")}
   <h2>Fiyatlar nereden geliyor?</h2>
   <p>
-    Kalemlerin fiyatı büyük e-ticaret sitelerinden ve marka mağazalarından
-    ayda iki kez derleniyor. Bir uyarı: kategori listelerinden derlediğimiz
+    Kaynaklar ayın 5'i ve 20'sinde yeniden taranıyor; her kalem son başarılı
+    ölçüm tarihini taşıyor. Bir uyarı: kategori listelerinden derlediğimiz
     için üst segment rakamı piyasanın en pahalısını değil, yaygın ürünler
     içindeki üst çeyreği gösteriyor. Ankastre bir premium buzdolabı
     arıyorsanız gerçek fiyat bizim "üst" sütunumuzun üzerinde olacaktır.
@@ -382,59 +410,61 @@ def _govde_arac(v: dict) -> str | None:
     a = v.get("arac")
     if not a:
         return None
-    giris = _kalem(a, "en-ucuz-sifir-arac")
-    if not giris:
+    kalem = (a.get("kalemler") or {}).get("en-ucuz-sifir-arac") or {}
+    giris = (((kalem.get("segmentler") or {}).get("dusuk") or {}).get("min"))
+    ortanca = kalem.get("genel_medyan")
+    if not (giris and ortanca):
         return None
-
-    # arac-ek-maliyetler.js ile AYNI kurallar - tek kaynak olsun diye
-    # buradaki degerler o dosyadan turetilmis sabitler.
-    mtv = 12028          # 1301-1600 cc, ilk yil (58 Seri No.lu MTV Teblig)
-    noter = max(giris * 0.002, 1000) + 1920
-    kasko = max(giris * 0.03, 12000)
-    trafik = 9500
-    plaka = 4500
-    ek = mtv + noter + kasko + trafik + plaka
+    en_ucuz = su._en_ucuz_ornek(kalem)
+    model = (en_ucuz or {}).get("isim")
+    model_ifadesi = f"<strong>{html.escape(model)}</strong>" if model else "bir marka"
+    secilenler = ["mtv", "noter_tescil", "plaka_ruhsat", "trafik_sigortasi", "kasko"]
+    ornek = am.hesapla(giris, 1500, secilenler)
+    detay_satirlari = "".join(
+        f'<tr><td>{html.escape(d["ad"])}</td><td class="sayi">{_p(d["tutar"])}</td>'
+        f'<td>{"Resmî" if d["kaynak_tipi"] == "resmi" else "Tahmini"}</td></tr>'
+        for d in ornek["detaylar"]
+    )
     return f"""
   <p class="cevap-blok">
-    Sıfır aracın etiket fiyatı ödediğiniz tutar değil. Bir markanın giriş
-    modeli ortalama <strong>{_p(giris)}</strong>; üzerine vergi, harç ve
-    sigorta olarak yaklaşık <strong>{_p(ek)}</strong> biniyor. Anahtarı
-    almanın gerçek maliyeti <strong>{_p(giris + ek)}</strong> civarında.
+    Ölçümümüzde en ucuz sıfır araç {model_ifadesi}: <strong>{_p(giris)}</strong>.
+    Marka giriş fiyatlarının ortancası {_p(ortanca)}; bu ikinci değer “en
+    ucuz araç” cevabı değildir. 1301-1600 cc, 1-3 yaş ve üst taşıt değeri
+    kademesindeki örnek senaryoda seçili ilk yıl kalemleri yaklaşık
+    <strong>{_p(ornek["ek_toplam"])}</strong> ekliyor. Bunun
+    {_p(ornek["resmi_toplam"])} tutarı resmî tarifeden,
+    {_p(ornek["tahmini_toplam"])} tutarı piyasa varsayımlarından gelir.
   </p>
 
   <h2>Etiket fiyatının üstüne ne ekleniyor?</h2>
   <div class="tablo-sarmal"><table>
     <thead><tr><th>Kalem</th><th class="sayi">Tutar</th><th>Tür</th></tr></thead>
-    <tbody>
-      <tr><td>MTV (ilk yıl, 1301–1600 cc)</td><td class="sayi">{_p(mtv)}</td><td>Resmî tarife</td></tr>
-      <tr><td>Noter ve ilk tescil</td><td class="sayi">{_p(round(noter))}</td><td>Resmî tarife</td></tr>
-      <tr><td>Kasko (yıllık)</td><td class="sayi">{_p(round(kasko))}</td><td>Tahmini</td></tr>
-      <tr><td>Zorunlu trafik sigortası</td><td class="sayi">{_p(trafik)}</td><td>Tahmini</td></tr>
-      <tr><td>Plaka ve ruhsat</td><td class="sayi">{_p(plaka)}</td><td>Tahmini</td></tr>
-    </tbody>
+    <tbody>{detay_satirlari}</tbody>
   </table></div>
   <p>
-    MTV ve noter harcı resmî tarifeye bağlı; Resmî Gazete'de yayımlanan
-    tutarlar. Kasko ve trafik sigortası ise şirkete, sürücünün yaşına ve
-    hasarsızlık geçmişine göre değişiyor — buradaki rakamlar piyasa
-    ortalaması, teklif değil.
+    MTV, <a href="{am.PARAMETRELER['mtv']['kaynak_url']}">58 Seri No.lu
+    Genel Tebliğ</a>; ilk tescil harcı ise
+    <a href="{am.PARAMETRELER['noter_tescil']['kaynak_url']}">492 sayılı
+    Harçlar Kanunu tarifesi</a> üzerinden hesaplanır. Noter hizmet/yazı
+    giderleri değişebildiği için resmî toplama eklenmedi. Kasko ve trafik
+    sigortası şirkete, ile ve sürücü profiline göre değişir; buradaki
+    değerler teklif değil, açıkça etiketlenmiş yaklaşık varsayımlardır.
   </p>
 
   <h2>Motor hacmi vergiyi ikiye katlayabilir</h2>
   <p>
-    MTV kademeli hesaplanıyor ve kademeler arasındaki fark büyük. 1300 cc'ye
-    kadar olan bir araçta ilk yıl MTV'si 6.903 TL iken, 1601–1800 cc bandında
-    21.252 TL'ye çıkıyor. İki benzer araç arasında karar veriyorsanız motor
-    hacmi, yalnızca yakıt tüketimi değil vergi farkı demek.
+    MTV; motor hacmi, taşıt değeri, yaş ve tescil tarihine göre kademeli
+    hesaplanıyor. Bu sayfadaki örnek 1-3 yaş ve üst taşıt değeri kademesini
+    kullanır. Elektrikli araçların vergisi motor gücüne göre hesaplandığı
+    için bu örneğe dahil değildir.
   </p>
 
-  <h2>Neden ortalama araç fiyatı vermiyoruz</h2>
+  <h2>Neden tüm modellerin ortalamasını vermiyoruz?</h2>
   <p>
     Piyasadaki tüm modellerin ortasını almak yanıltıcı bir rakam üretiyor.
-    Denedik: 3,2 milyon TL çıkıyor. Sebebi listede Porsche ile Fiat'ın eşit
-    ağırlıkta sayılması — oysa Türkiye'de satılan araçların dağılımı böyle
-    değil. Bunun yerine her markanın giriş modelini ölçüyoruz; net tanımlı
-    ve karşılaştırılabilir bir rakam.
+    Pahalı ve ucuz markaları satış adetlerinden bağımsız, eşit ağırlıkla
+    saymış olur. Bunun yerine her markanın giriş modelini ölçüyor; en düşük
+    liste fiyatını ve bu marka girişlerinin ortancasını ayrı gösteriyoruz.
   </p>
 
   <h2>Kendi aracınızı hesaplayın</h2>
@@ -1238,8 +1268,8 @@ def _govde_asgari_ucret_ev(v: dict) -> str | None:
 
   <h2>Bir de şu var: rakam yerinde durmuyor</h2>
   <p>
-    Bu tutar ayda iki kez yeniden ölçülüyor ve enflasyonla birlikte
-    değişiyor. Bugün {ay_eko:.0f} maaş olan şey, maaş artışı fiyat
+    Kaynaklar ayın 5'i ve 20'sinde yeniden taranıyor; yazı her serinin son
+    başarılı ölçümünü kullanıyor. Bugün {ay_eko:.0f} maaş olan şey, maaş artışı fiyat
     artışının gerisinde kalırsa gelecek yıl daha fazla maaş eder.
     Paranızın erimesini
     <a href="/hesap/alim-gucu-hesaplama/">alım gücü hesaplayıcısından</a>
@@ -2047,8 +2077,8 @@ def _govde_dogum_maliyeti(v: dict) -> str | None:
     için aylık ya da yıllık gider olarak sunulmaz.
   </p>
   <p>
-    Bu rakamlar gerçek satış sitelerinden ölçülüyor ve ayda iki kez
-    yenileniyor; kalem kalem dökümü
+    Bu rakamlar gerçek satış sitelerinden ölçülüyor. Kaynaklar ayın 5'i ve
+    20'sinde yeniden taranıyor; kalem kalem dökümü
     <a href="/bebek/">bebek masrafları endeksinde</a>, ilk yıl hesabının
     veri sınırı <a href="/rehber/bebek-masraflari-ilk-yil/">şurada</a>.
     Neye ne kadar ayırmanız gerektiğine
@@ -2332,6 +2362,130 @@ def _govde_kart_puanlari(v: dict) -> str | None:
 """
 
 
+def _govde_okul_pahali_kalemler(v: dict) -> str | None:
+    o = v.get("okul")
+    if not o:
+        return None
+    conf = su.VERTIKALLER["okul"]
+    toplam, detaylar = su.ornek_toplam_hesapla(
+        conf, o.get("kalemler") or {}, olcek=1, segment="orta"
+    )
+    dahil = sorted(
+        (d for d in detaylar if d.get("toplama_dahil") and d.get("satir_toplam")),
+        key=lambda d: d["satir_toplam"],
+        reverse=True,
+    )
+    if not toplam or len(dahil) < 5:
+        return None
+    ilk_bes = dahil[:5]
+    ilk_bes_toplam = sum(d["satir_toplam"] for d in ilk_bes)
+    sayfalar = [
+        *conf.get("kalem_sayfalari", []),
+        *su._ek_kalem_sayfalari(conf, o.get("kalemler") or {}),
+    ]
+    sluglar = {s["id"]: s["slug"] for s in sayfalar}
+    satirlar = "".join(
+        f'<tr><td><a href="/okul/{sluglar[d["id"]]}/">{html.escape(d["ad"])}</a></td>'
+        f'<td class="sayi">{_p(d["satir_toplam"])}</td>'
+        f'<td class="sayi">%{d["satir_toplam"] / toplam * 100:.0f}</td></tr>'
+        for d in ilk_bes if d["id"] in sluglar
+    )
+    return f"""
+  <p class="cevap-blok">
+    Okul alışverişi sepetinde en pahalı beş kalem birlikte
+    <strong>{_p(ilk_bes_toplam)}</strong> tutuyor ve ölçülen orta segment
+    sepetinin %{ilk_bes_toplam / toplam * 100:.0f}'ini oluşturuyor. Bu,
+    okulun yıllık toplam gideri değil; yalnızca sitede tanımlı alışveriş
+    sepetinin dağılımı.
+  </p>
+
+  <h2>Sepette en yüksek payı alan kalemler</h2>
+  <div class="tablo-sarmal"><table>
+    <thead><tr><th>Kalem</th><th class="sayi">Orta segment</th><th class="sayi">Sepetteki pay</th></tr></thead>
+    <tbody>{satirlar}</tbody>
+  </table></div>
+  <p>
+    Sıralama ve yüzdeler sayfa üretilirken güncel okul verisinden yeniden
+    hesaplanır. Fiyat değiştiğinde üstteki cevap da tablo da aynı veriyle
+    birlikte değişir.
+  </p>
+
+  <h2>Bu karşılaştırmanın sınırı</h2>
+  <p>
+    Kayıt ücreti, bağış, servis, yemek ve özel okul ücreti ölçüm kapsamı
+    dışında. Tablet, çalışma masası ve sandalye ise isteğe bağlı ve uzun
+    ömürlü ürünler olduğu için varsayılan sepete eklenmiyor. Bu kalemleri
+    dahil ederek sonucu <a href="/okul/hesaplayici/">okul alışverişi
+    hesaplayıcısında</a> kişiselleştirebilirsiniz.
+  </p>
+
+  <h2>Kalem sayısı kadar adet de önemli</h2>
+  <p>
+    Tek bir çanta ile tek bir defterin fiyatını yan yana koymak, gerçek
+    alışveriş adetlerini açıklamaz. Bu sayfa mevcut varsayılan sepette her
+    kalemi bir kez sayar. Okulun verdiği ihtiyaç listesinde aynı üründen
+    birden fazla isteniyorsa hesabı adetle çarpmak gerekir.
+  </p>
+"""
+
+
+def _govde_marka_giris_fiyatlari(v: dict) -> str | None:
+    a = v.get("arac")
+    if not a:
+        return None
+    kalem = (a.get("kalemler") or {}).get("en-ucuz-sifir-arac") or {}
+    ornekler = []
+    for kaynak in kalem.get("kaynaklar") or []:
+        ornekler.extend(kaynak.get("ornek_urunler") or [])
+    benzersiz = {}
+    for urun in ornekler:
+        isim = str(urun.get("isim") or "").strip()
+        fiyat = urun.get("fiyat")
+        if isim and fiyat:
+            benzersiz[(isim.casefold(), fiyat)] = {"isim": isim, "fiyat": fiyat}
+    sirali = sorted(benzersiz.values(), key=lambda u: (u["fiyat"], u["isim"].casefold()))
+    if len(sirali) < 5:
+        return None
+    gosterilen = sirali[:10]
+    ortanca = kalem.get("genel_medyan")
+    tarih = kalem.get("guncelleme_tarihi")
+    satirlar = "".join(
+        f'<tr><td>{i}</td><td>{html.escape(u["isim"])}</td>'
+        f'<td class="sayi">{_p(u["fiyat"])}</td></tr>'
+        for i, u in enumerate(gosterilen, start=1)
+    )
+    return f"""
+  <p class="cevap-blok">
+    {tarih} ölçümünde en düşük yayımlanmış marka giriş fiyatı
+    <strong>{html.escape(sirali[0]["isim"])}</strong> için
+    <strong>{_p(sirali[0]["fiyat"])}</strong>. Marka giriş fiyatlarının
+    ortancası {_p(ortanca)}; en ucuz araç cevabıyla piyasanın orta noktasını
+    aynı rakam gibi kullanmıyoruz.
+  </p>
+
+  <h2>En düşük marka giriş fiyatları</h2>
+  <div class="tablo-sarmal"><table>
+    <thead><tr><th>Sıra</th><th>Marka / giriş modeli</th><th class="sayi">Liste fiyatı</th></tr></thead>
+    <tbody>{satirlar}</tbody>
+  </table></div>
+  <p>
+    Tablo bayi pazarlığı, stok kampanyası ve ikinci el ilanı değil; kaynağın
+    yayımladığı sıfır araç liste fiyatlarını karşılaştırır. Her markadan
+    yalnızca giriş seviyesi alındığı için markanın tüm model gamını temsil
+    etmez.
+  </p>
+
+  <h2>Karar verirken etiket fiyatıyla kalmayın</h2>
+  <p>
+    Benzer giriş fiyatındaki iki araç, motor hacmi, kasko, yakıt ve bakımda
+    farklı toplam maliyet çıkarabilir. Satın alma anındaki ek giderleri
+    <a href="/arac/hesaplayici/">araç hesaplayıcısında</a>; ölçümün tamamını
+    <a href="/arac/en-ucuz-sifir-araba/">en ucuz sıfır araç sayfasında</a>
+    görebilirsiniz.
+  </p>
+"""
+
+
 REHBERLER = [
     {
         "slug": "kredi-karti-puanlari-nerede-gecer",
@@ -2577,8 +2731,17 @@ REHBERLER = [
         "baslik": "2026 Okul Alışverişi Maliyeti: Bir Öğrenciye Ne Kadar?",
         "seo_baslik": "Okul Alışverişi Maliyeti 2026 — Liste ve Fiyatlar",
         "meta": "Çanta, kırtasiye, kitap ve ayakkabı: bir öğrencinin okul "
-                "masrafı kalem kalem. Aylık güncellenen gerçek fiyatlarla.",
+                "alışverişi kalem kalem, son başarılı ölçüm tarihiyle.",
         "govde": _govde_okul,
+        "vertikal": "okul",
+    },
+    {
+        "slug": "okul-alisverisinde-en-pahali-kalemler",
+        "baslik": "Okul Alışverişinde En Pahalı Kalemler Hangileri?",
+        "seo_baslik": "Okul Alışverişinde En Pahalı Kalemler 2026",
+        "meta": "Okul alışverişi sepetinde en yüksek payı alan beş kalem, güncel "
+                "ölçümlerden otomatik hesaplanan tutar ve yüzdelerle.",
+        "govde": _govde_okul_pahali_kalemler,
         "vertikal": "okul",
     },
     {
@@ -2586,7 +2749,7 @@ REHBERLER = [
         "baslik": "2026 150 Kişilik Düğün Maliyeti",
         "seo_baslik": "150 Kişilik Düğün Maliyeti 2026 — Kalem Kalem",
         "meta": "150 kişilik düğünün kalem kalem maliyeti: salon, gelinlik, takı, "
-                "fotoğrafçı. Gerçek fiyat ölçümlerinden, ayda iki kez güncellenen rakamlarla.",
+                "fotoğrafçı. Son başarılı ölçüm tarihi ve kapsam notlarıyla.",
         "govde": _govde_dugun_150,
         "vertikal": "dugun",
     },
@@ -2604,7 +2767,7 @@ REHBERLER = [
         "baslik": "Ev Kurarken Alınacaklar Listesi ve 2026 Maliyeti",
         "seo_baslik": "Ev Kurarken Alınacaklar Listesi 2026 — Fiyatlarıyla",
         "meta": "Beyaz eşyadan tekstile, sıfırdan ev kurmanın kalem kalem maliyeti "
-                "ve bütçe dağılımı. Aylık güncellenen gerçek fiyatlarla.",
+                "ve bütçe dağılımı. Son başarılı ölçüm tarihiyle.",
         "govde": _govde_ev_kurma,
         "vertikal": "ev-kurma",
     },
@@ -2615,6 +2778,15 @@ REHBERLER = [
         "meta": "MTV, noter, tescil, kasko ve trafik sigortası: sıfır aracın etiket "
                 "fiyatının üstüne binen maliyetler ve toplam tutar.",
         "govde": _govde_arac,
+        "vertikal": "arac",
+    },
+    {
+        "slug": "marka-giris-fiyatlari",
+        "baslik": "En Ucuz Sıfır Araçlar: Marka Giriş Fiyatları",
+        "seo_baslik": "En Ucuz Sıfır Araçlar 2026 — Marka Giriş Fiyatları",
+        "meta": "En düşük sıfır araç liste fiyatları ve marka giriş fiyatlarının "
+                "ortancası; kampanya ile piyasa ortalamasını karıştırmadan.",
+        "govde": _govde_marka_giris_fiyatlari,
         "vertikal": "arac",
     },
 ]
@@ -2658,7 +2830,7 @@ def anasayfa_yazisi(veriler: dict | None = None) -> str:
             f"{olcumler[0]} — {olcumler[-1]} arasında genel enflasyon "
             f"%{genel['degisim_yuzde']:.1f} oldu. Altı ay önce sorulmuş bir "
             "&quot;ne kadar tutar&quot; sorusunun cevabı bugün geçerli değil; bu yüzden "
-            "ölçümü ayda iki kez tekrarlıyoruz.</p>\n"
+            "kaynakları ayın 5'i ve 20'sinde yeniden tarıyoruz.</p>\n"
         )
 
     return (
@@ -2854,7 +3026,7 @@ def rehber_uret(rehber: dict, veriler: dict, tarih: str | None = None) -> str | 
 
 <main class="kapsayici">
 
-  <span class="guncelleme-etiketi">Güncelleme: {tarih}</span>
+  <span class="guncelleme-etiketi">Son veri: {tarih}</span>
   <h1>{rehber["baslik"]}</h1>
 {govde}
 {kaynaklar_html}{sss_html}{kunye}

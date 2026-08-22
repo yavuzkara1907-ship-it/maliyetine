@@ -101,20 +101,15 @@
       <input type="number" id="arac-fiyati" min="0" step="1" value="2069000"
         inputmode="numeric">
       <p class="sonuc-alt-metin">Varsayılan değer, endeksimizdeki marka
-        giriş fiyatlarının ortalamasıdır.</p>
+        giriş fiyatlarının ortancasıdır.</p>
     </div>
 
     <div class="form-alan">
       <label for="motor-cc">Motor silindir hacmi</label>
-      <select id="motor-cc">
-        <option value="1300">1300 cc'ye kadar</option>
-        <option value="1500" selected>1301 – 1600 cc</option>
-        <option value="1700">1601 – 1800 cc</option>
-        <option value="2000">1801 cc ve üzeri</option>
-      </select>
-      <p class="sonuc-alt-metin">MTV bu kademeye göre belirlenir.
-        Elektrikli araçlarda MTV motor gücüne (kW) göre hesaplanır —
-        bu hesaplayıcı içten yanmalı motorları kapsar.</p>
+      <select id="motor-cc"></select>
+      <p class="sonuc-alt-metin">MTV, 1-3 yaş ve üst taşıt değeri kademesi
+        için hesaplanır. Elektrikli araçlarda vergi motor gücüne (kW) göre
+        belirlendiğinden bu hesaplayıcı içten yanmalı araçları kapsar.</p>
     </div>
 
     <div class="form-alan">
@@ -177,13 +172,20 @@
   const paraFormat = new Intl.NumberFormat("tr-TR", { maximumFractionDigits: 0 });
   function paraYaz(n) { return paraFormat.format(Math.round(n)) + " TL"; }
 
-  const KALEMLER = [
-    { id: "mtv", ad: "MTV (ilk yıl)", tip: "resmi" },
-    { id: "noter_tescil", ad: "Noter + ilk tescil harcı", tip: "resmi" },
-    { id: "plaka_ruhsat", ad: "Plaka + ruhsat", tip: "tahmini" },
-    { id: "trafik_sigortasi", ad: "Zorunlu trafik sigortası", tip: "tahmini" },
-    { id: "kasko", ad: "Kasko (ilk yıl)", tip: "tahmini" },
-  ];
+  const MOTOR_SECIM = document.getElementById("motor-cc");
+  ARAC_EK_MALIYETLER.mtv.kademeler.forEach(function (kademe) {
+    const secenek = document.createElement("option");
+    secenek.value = kademe.max_cc === null ? 4001 : kademe.max_cc;
+    secenek.textContent = kademe.etiket;
+    secenek.selected = kademe.max_cc === 1600;
+    MOTOR_SECIM.appendChild(secenek);
+  });
+
+  const KALEMLER = ["mtv", "noter_tescil", "plaka_ruhsat", "trafik_sigortasi", "kasko"]
+    .map(function (id) {
+      const kaynak = ARAC_EK_MALIYETLER[id];
+      return { id: id, ad: kaynak.ad, tip: kaynak.kaynak_tipi };
+    });
 
   const liste = document.getElementById("kalem-secim-liste");
   KALEMLER.forEach(function (k) {

@@ -1,5 +1,5 @@
 {
-  "dataset_surumu": "2026-08-22-f0c8be50f5ae1a98",
+  "dataset_surumu": "2026-08-22-2474420e7b83fd9b",
   "kontrol_tarihi": "2026-08-22",
   "durum": "gecti",
   "ozet": {
@@ -8,7 +8,7 @@
     "tek_kaynakli": 41,
     "kalem_sayfasi": 99,
     "kritik_hata": 0,
-    "uyari": 28,
+    "uyari": 29,
     "bilinen_sinir": 72
   },
   "kritik_hatalar": [],
@@ -96,6 +96,12 @@
       "mesaj": "Son karsilastirilabilir degisim %82.0",
       "vertikal": "dugun",
       "kalem": "yemek-ikram"
+    },
+    {
+      "kod": "sert_degisim",
+      "mesaj": "Son karsilastirilabilir degisim %72.4",
+      "vertikal": "ev-kurma",
+      "kalem": "kahve-makinesi"
     },
     {
       "kod": "tek_kaynak",

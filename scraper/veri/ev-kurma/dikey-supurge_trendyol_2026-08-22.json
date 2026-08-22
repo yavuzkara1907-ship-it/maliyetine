@@ -1,0 +1,260 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Dikey Supurge"
+  ],
+  "kalem": "dikey-supurge",
+  "vertikal": "ev-kurma",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-08-22",
+  "ham_urun_sayisi": 24,
+  "aykiri_urun_sayisi": 3,
+  "toplam_urun": 21,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 3289,
+  "segmentler": {
+    "dusuk": {
+      "min": 979,
+      "medyan": 1637,
+      "max": 2368,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 2390,
+      "medyan": 3314,
+      "max": 3999,
+      "urun_sayisi": 10
+    },
+    "luks": {
+      "min": 4099,
+      "medyan": 6033,
+      "max": 10199,
+      "urun_sayisi": 5
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Sinbo SVC-8616 500W Dikey Elektrikli Süpürge – Kırmızı, Yüksek Emiş Gücü",
+      "fiyat": 979.0
+    },
+    {
+      "isim": "Kiwi Dikey Elektrikli Süpürge Gri Kvc-4108",
+      "fiyat": 1203.0
+    },
+    {
+      "isim": "Arnica ET13213 Merlin Pro Dik Elektrikli Süpürge Mor",
+      "fiyat": 1663.16
+    },
+    {
+      "isim": "Arzum AR4087 Gırgır 2’si1 Arada 550W Dikey Elektrikli Süpürge, El Süpürgesi Özellikli, Yıkanabilir Filtre",
+      "fiyat": 1709.05
+    },
+    {
+      "isim": "Fantom Pratic-S P1200 Toz Torbasız Dikey Süpürge Pembe",
+      "fiyat": 2390.0
+    },
+    {
+      "isim": "Fantom Pratıc-S P1200 Toz Torbasız Dikey Süpürge Antrasit",
+      "fiyat": 2409.0
+    },
+    {
+      "isim": "Fantom Provac P 5000 Cyclone Dikey Süpürge Siyah",
+      "fiyat": 3095.0
+    },
+    {
+      "isim": "Fantom Pratic Aır Power P 1250 Antrasit Torbasız Dönebilen Turbo Başlıklı Dikey Süpürge",
+      "fiyat": 3289.0
+    },
+    {
+      "isim": "Fantom Pratic Aır Power P 1250 Siyah Torbasız Dönebilen Turbo Başlıklı Dikey Süpürge",
+      "fiyat": 3338.0
+    },
+    {
+      "isim": "Kiwi Kvc-4040BLF Katlanabilir Şarjlı Bldc Motor Dik Süpürge",
+      "fiyat": 3999.0
+    },
+    {
+      "isim": "Sinbo SVC-8642 Kablosuz Dikey Şarjlı Süpürge 22.2V BLDC Motor LED Işıklı Turbo Başlık 1L Toz Hazneli",
+      "fiyat": 3999.0
+    },
+    {
+      "isim": "Kiwi Kvc-4040 BLDC Kablosuz Dikey Süpürge Mor",
+      "fiyat": 4099.0
+    },
+    {
+      "isim": "ONVO Ovdss01 Şarjlı Dikey Süpürge",
+      "fiyat": 4453.0
+    },
+    {
+      "isim": "Altus AL 6885 Dsb Şarjlı Dik Süpürge",
+      "fiyat": 6141.07
+    },
+    {
+      "isim": "Philips 6000 Serisi Kablosuz Dikey Süpürge, PowerCyclone 11, XC6551/01",
+      "fiyat": 10199.0
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 21,
+    "ozellik_eslesen_urun": 11,
+    "urun_turleri": {
+      "el-supurgesi": {
+        "ad": "El süpürgesi",
+        "genel_medyan": 1709,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 1709.05,
+            "medyan": 1709.05,
+            "max": 1709.05,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 1709.05,
+            "medyan": 1709.05,
+            "max": 1709.05,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 1709.05,
+            "medyan": 1709.05,
+            "max": 1709.05,
+            "urun_sayisi": 1
+          }
+        }
+      },
+      "kablolu": {
+        "ad": "Kablolu dikey süpürge",
+        "genel_medyan": 1611,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 1611.47,
+            "medyan": 1611.47,
+            "max": 1611.47,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 1611.47,
+            "medyan": 1611.47,
+            "max": 1611.47,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 1611.47,
+            "medyan": 1611.47,
+            "max": 1611.47,
+            "urun_sayisi": 1
+          }
+        }
+      },
+      "sarjli": {
+        "ad": "Şarjlı dikey süpürge",
+        "genel_medyan": 4099,
+        "urun_sayisi": 9,
+        "segmentler": {
+          "dusuk": {
+            "min": 3999.0,
+            "medyan": 3999.0,
+            "max": 3999.0,
+            "urun_sayisi": 4
+          },
+          "orta": {
+            "min": 4099.0,
+            "medyan": 4453.0,
+            "max": 6033.4,
+            "urun_sayisi": 3
+          },
+          "luks": {
+            "min": 6141.07,
+            "medyan": 8170.03,
+            "max": 10199.0,
+            "urun_sayisi": 2
+          }
+        }
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "Fakir Vector 2’si 1 Arada Dikey Süpürge 800W Kablolu Kompakt Elektrikli Süpürge",
+        "fiyat": 1611.47,
+        "nitelikler": {
+          "urun_turu": "kablolu"
+        }
+      },
+      {
+        "isim": "Arzum AR4087 Gırgır 2’si1 Arada 550W Dikey Elektrikli Süpürge, El Süpürgesi Özellikli, Yıkanabilir Filtre",
+        "fiyat": 1709.05,
+        "nitelikler": {
+          "urun_turu": "el-supurgesi"
+        }
+      },
+      {
+        "isim": "HOMEND Dustrider 1271H 160W Şarjlı Dikey Süpürge 12 kPa Emiş Gücü",
+        "fiyat": 3999.0,
+        "nitelikler": {
+          "urun_turu": "sarjli"
+        }
+      },
+      {
+        "isim": "Kiwi Kvc-4040BLF Katlanabilir Şarjlı Bldc Motor Dik Süpürge",
+        "fiyat": 3999.0,
+        "nitelikler": {
+          "urun_turu": "sarjli"
+        }
+      },
+      {
+        "isim": "Sinbo SVC-8642 Kablosuz Dikey Şarjlı Süpürge 22.2V BLDC Motor LED Işıklı Turbo Başlık 1L Toz Hazneli",
+        "fiyat": 3999.0,
+        "nitelikler": {
+          "urun_turu": "sarjli"
+        }
+      },
+      {
+        "isim": "Sinbo SVC-8642 Kablosuz Dikey Şarjlı Süpürge 22.2V BLDC Motor LED Işıklı Turbo Başlık 1L Toz Hazneli",
+        "fiyat": 3999.0,
+        "nitelikler": {
+          "urun_turu": "sarjli"
+        }
+      },
+      {
+        "isim": "Kiwi Kvc-4040 BLDC Kablosuz Dikey Süpürge Mor",
+        "fiyat": 4099.0,
+        "nitelikler": {
+          "urun_turu": "sarjli"
+        }
+      },
+      {
+        "isim": "ONVO Ovdss01 Şarjlı Dikey Süpürge",
+        "fiyat": 4453.0,
+        "nitelikler": {
+          "urun_turu": "sarjli"
+        }
+      },
+      {
+        "isim": "TEFAL TY6983TR X-Pert 3.60 150 Air Watt Kablosuz Dikey Şarjlı Süpürge",
+        "fiyat": 6033.4,
+        "nitelikler": {
+          "urun_turu": "sarjli"
+        }
+      },
+      {
+        "isim": "Altus AL 6885 Dsb Şarjlı Dik Süpürge",
+        "fiyat": 6141.07,
+        "nitelikler": {
+          "urun_turu": "sarjli"
+        }
+      },
+      {
+        "isim": "Philips 6000 Serisi Kablosuz Dikey Süpürge, PowerCyclone 11, XC6551/01",
+        "fiyat": 10199.0,
+        "nitelikler": {
+          "urun_turu": "sarjli"
+        }
+      }
+    ]
+  }
+}

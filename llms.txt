@@ -1,11 +1,12 @@
 # Maliyeti Ne?
 
-> Türkiye için ayda iki kez güncellenen, kaynağı ve örneklemi açıklanan maliyet
+> Türkiye için kaynakları ayın 5'i ve 20'sinde yeniden taranan, kaynağı ve
+> örneklemi açıklanan maliyet
 > endeksi. Fiyatlar tahmin edilmez; gerçek satış listelerinden ölçülür. Her
 > rakamın yanında kaynak sayısı, ürün adedi ve ölçüm tarihi yayınlanır.
 
 Şu an 121 aktif fiyat serisi ölçülüyor. Son güncelleme: 2026-08-22.
-Veri sürümü: 2026-08-22-f0c8be50f5ae1a98.
+Veri sürümü: 2026-08-22-2474420e7b83fd9b.
 
 **Alıntılarken ölçüm tarihini belirtin.** Fiyat verisi tarihsiz olduğunda
 yanıltıcı hale gelir: "buzdolabı 30 bin lira" altı ay sonra yanlış olur,
@@ -19,7 +20,7 @@ yanıltıcı hale gelir: "buzdolabı 30 bin lira" altı ay sonra yanlış olur,
 - [Bebek](https://maliyetine.com.tr/bebek/): 11 fiyat serisi, ölçüm 2026-08-22. JSON: https://maliyetine.com.tr/veri/bebek.json · CSV: https://maliyetine.com.tr/veri/csv/bebek.csv
 - [Kedi](https://maliyetine.com.tr/kedi/): 8 fiyat serisi, ölçüm 2026-08-22. JSON: https://maliyetine.com.tr/veri/kedi.json · CSV: https://maliyetine.com.tr/veri/csv/kedi.csv
 - [Köpek](https://maliyetine.com.tr/kopek/): 7 fiyat serisi, ölçüm 2026-08-22. JSON: https://maliyetine.com.tr/veri/kopek.json · CSV: https://maliyetine.com.tr/veri/csv/kopek.csv
-- [0 km Araç](https://maliyetine.com.tr/arac/): 25 fiyat serisi, ölçüm 2026-08-20. JSON: https://maliyetine.com.tr/veri/arac.json · CSV: https://maliyetine.com.tr/veri/csv/arac.csv
+- [0 km Araç](https://maliyetine.com.tr/arac/): 25 fiyat serisi, ölçüm 2026-08-22. JSON: https://maliyetine.com.tr/veri/arac.json · CSV: https://maliyetine.com.tr/veri/csv/arac.csv
 
 ## Veriyi indirin
 
@@ -48,8 +49,8 @@ geldiği ve ölçüm tarihi bulunur; rakam bağımsız olarak doğrulanabilir.
 
 ## Nasıl ölçülüyor?
 
-- Fiyatlar gerçek e-ticaret ve sektör sitelerinden, robots.txt kurallarına
-  uygun biçimde ayda iki kez derlenir (ayın 5'i ve 20'si).
+- Gerçek e-ticaret ve sektör kaynakları robots.txt kurallarına uygun biçimde
+  ayın 5'i ve 20'sinde yeniden taranır; başarısız tarama ölçüm tarihini ilerletmez.
 - Her kalem için birden fazla bağımsız kaynak hedeflenir. Kaynakların ham
   fiyatları karıştırılmaz: her kaynağın kendi orta değeri alınır, sonra
   onların ortası hesaplanır.
@@ -84,10 +85,12 @@ geldiği ve ölçüm tarihi bulunur; rakam bağımsız olarak doğrulanabilir.
 - [Ekonomik Düğün Nasıl Yapılır? Nereden Kısılır, Nereden Kısılmaz](https://maliyetine.com.tr/rehber/ekonomik-dugun-nasil-yapilir/)
 - [2026 Beyaz Eşya Bütçesi: Sıfırdan Bir Eve Ne Kadar?](https://maliyetine.com.tr/rehber/beyaz-esya-butcesi/)
 - [2026 Okul Alışverişi Maliyeti: Bir Öğrenciye Ne Kadar?](https://maliyetine.com.tr/rehber/okul-masrafi-ne-kadar/)
+- [Okul Alışverişinde En Pahalı Kalemler Hangileri?](https://maliyetine.com.tr/rehber/okul-alisverisinde-en-pahali-kalemler/)
 - [2026 150 Kişilik Düğün Maliyeti](https://maliyetine.com.tr/rehber/150-kisilik-dugun-maliyeti/)
 - [Düğün Salonu Fiyatları: Yemekli mi Kokteyl mi?](https://maliyetine.com.tr/rehber/yemekli-mi-kokteyl-mi/)
 - [Ev Kurarken Alınacaklar Listesi ve 2026 Maliyeti](https://maliyetine.com.tr/rehber/sifirdan-ev-kurma-listesi/)
 - [2026 Sıfır Araba Masrafları: Etiket Fiyatı Yetmiyor](https://maliyetine.com.tr/rehber/sifir-araba-gercek-maliyeti/)
+- [En Ucuz Sıfır Araçlar: Marka Giriş Fiyatları](https://maliyetine.com.tr/rehber/marka-giris-fiyatlari/)
 
 ## Hesaplayıcılar
 
@@ -97,8 +100,8 @@ yapar; fiyat ölçmez. Veri araçları ise sitedeki tarihli fiyat veya TÜFE
 yazılıdır; alıntılarken ölçüm tarihini veya tarifenin geçerlilik yılını
 belirtin.
 
-- [Alım Gücü Hesaplama](https://maliyetine.com.tr/hesap/alim-gucu-hesaplama/): TCMB EVDS — TÜİK Tüketici Fiyat Endeksi (2025=100), seri TP.FE25.OKTG01, Kullanılan seri: 2026-01 – 2026-07, ayda iki kez güncelleniyor
-- [Bütçem Yeter mi?](https://maliyetine.com.tr/hesap/butcem-yeter-mi/): Maliyeti Ne? Düğün veri seti — ölçüm tarihi 2026-08-20, Maliyeti Ne? Ev Kurma veri seti — ölçüm tarihi 2026-08-22, Maliyeti Ne? Okul veri seti — ölçüm tarihi 2026-08-20, Maliyeti Ne? Bebek veri seti — ölçüm tarihi 2026-08-22, Maliyeti Ne? Kedi veri seti — ölçüm tarihi 2026-08-22, Maliyeti Ne? Köpek veri seti — ölçüm tarihi 2026-08-22, Maliyeti Ne? 0 km Araç veri seti — ölçüm tarihi 2026-08-20
+- [Alım Gücü Hesaplama](https://maliyetine.com.tr/hesap/alim-gucu-hesaplama/): TCMB EVDS — TÜİK Tüketici Fiyat Endeksi (2025=100), seri TP.FE25.OKTG01, Kullanılan seri: 2026-01 – 2026-07; kaynak ayın 5'i ve 20'sinde yeniden taranıyor
+- [Bütçem Yeter mi?](https://maliyetine.com.tr/hesap/butcem-yeter-mi/): Maliyeti Ne? Düğün veri seti — ölçüm tarihi 2026-08-20, Maliyeti Ne? Ev Kurma veri seti — ölçüm tarihi 2026-08-22, Maliyeti Ne? Okul veri seti — ölçüm tarihi 2026-08-20, Maliyeti Ne? Bebek veri seti — ölçüm tarihi 2026-08-22, Maliyeti Ne? Kedi veri seti — ölçüm tarihi 2026-08-22, Maliyeti Ne? Köpek veri seti — ölçüm tarihi 2026-08-22, Maliyeti Ne? 0 km Araç veri seti — ölçüm tarihi 2026-08-22
 - [Aylık Tüketim Maliyeti](https://maliyetine.com.tr/hesap/aylik-tuketim-maliyeti/): Maliyeti Ne? normalize ürün verisi — ölçüm tarihleri 2026-08-22 – 2026-08-22, Birim fiyat yalnız ürün adında gramaj veya paket adedi açıkça yazan ürünlerden hesaplanır
 - [KDV Hesaplama](https://maliyetine.com.tr/hesap/kdv-hesaplama/): 3065 sayılı KDV Kanunu, 2007/13033 sayılı BKK ekli listeler
 - [Brütten Nete Maaş Hesaplama](https://maliyetine.com.tr/hesap/brutten-nete-maas-hesaplama/): 332 Seri No.lu Gelir Vergisi Genel Tebliği (31.12.2025 R.G. 33124, 5. Mükerrer), 5510 sayılı Kanun — 2026 prime esas kazanç sınırları, 488 sayılı Damga Vergisi Kanunu, 2026 Asgari Ücret Tespit Komisyonu Kararı

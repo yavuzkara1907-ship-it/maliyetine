@@ -1,0 +1,13 @@
+{
+  "vertikal": "ev-kurma",
+  "kalem": "kahve-makinesi",
+  "tarih": "2026-08-22",
+  "site_medyanlari": {
+    "trendyol": 1987,
+    "amazon": 5689,
+    "mediamarkt": 22049
+  },
+  "fark_orani": 10.097,
+  "esik_orani": 0.3,
+  "uyari": true
+}

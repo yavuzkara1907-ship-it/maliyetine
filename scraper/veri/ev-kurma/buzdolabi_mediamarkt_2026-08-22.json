@@ -1,0 +1,205 @@
+{
+  "site": "mediamarkt",
+  "kaynak_adlari": [
+    "MediaMarkt - Buzdolabi"
+  ],
+  "kalem": "buzdolabi",
+  "vertikal": "ev-kurma",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-08-22",
+  "ham_urun_sayisi": 12,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 12,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 39499,
+  "segmentler": {
+    "dusuk": {
+      "min": 22999,
+      "medyan": 34599,
+      "max": 35999,
+      "urun_sayisi": 4
+    },
+    "orta": {
+      "min": 37499,
+      "medyan": 43749,
+      "max": 59999,
+      "urun_sayisi": 6
+    },
+    "luks": {
+      "min": 64999,
+      "medyan": 66499,
+      "max": 67999,
+      "urun_sayisi": 2
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "ALTUS AL 365 NE E Enerji Sınıfı 357 L Üstten Donduruculu No- Frost Buzdolabı Beyaz",
+      "fiyat": 22999.0
+    },
+    {
+      "isim": "GRUNDIG GPRNE 477L E Enerji Sınıfı NoFrost Üstten Donduruculu Buzdolabı Beyaz",
+      "fiyat": 34199.0
+    },
+    {
+      "isim": "SAMSUNG RT47CG6636WWTR E Enerji Sınıfı 465 Litre Üstten Donduruculu Buzdolabı",
+      "fiyat": 34999.0
+    },
+    {
+      "isim": "GRUNDIG GPKNE 477 E Enerji Sınıfı 477 L Duo-No Frost Alttan Donduruculu Buzdolabı Beyaz",
+      "fiyat": 35999.0
+    },
+    {
+      "isim": "BOSCH KDN55NWE0N E Enerji Sınıfı 453 L Üstten Donduruculu No-Frost Buzdolabı Beyaz",
+      "fiyat": 37499.0
+    },
+    {
+      "isim": "SAMSUNG RT47CG6636S9TR E Enerji Sınıfı 465 litre Üstten Donduruculu Buzdolabı",
+      "fiyat": 38999.0
+    },
+    {
+      "isim": "BOSCH KDN55NLE0N E Enerji Sınıfı 453 L Üstten Donduruculu No-Frost Buzdolabı Inox",
+      "fiyat": 39999.0
+    },
+    {
+      "isim": "BOSCH KGN55CWE0N 483L ALtan Donduruculu No-Frost Buzdolabı",
+      "fiyat": 47499.0
+    },
+    {
+      "isim": "BOSCH KGN55CIE0N 483L Alttan Donduruculu No-Frost Buzdolabı",
+      "fiyat": 49999.0
+    },
+    {
+      "isim": "BOSCH KDN76XIE1N 542 L No Frost Üstten Dolduruculu Buzdolabı",
+      "fiyat": 59999.0
+    },
+    {
+      "isim": "BOSCH KGN76CIE0N E Enerji Sınıfı 526 L Alttan Donduruculu NoFrost Buzdolabı Inox",
+      "fiyat": 64999.0
+    },
+    {
+      "isim": "BOSCH KGN86AID2N D Enerji Sınıfı 631 L Alttan Donduruculu No-Frost Buzdolabı Inox",
+      "fiyat": 67999.0
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 12,
+    "ozellik_eslesen_urun": 12,
+    "urun_turleri": {
+      "standart": {
+        "ad": "Standart buzdolabı",
+        "genel_medyan": 39499,
+        "urun_sayisi": 12,
+        "segmentler": {
+          "dusuk": {
+            "min": 22999.0,
+            "medyan": 34599.0,
+            "max": 35999.0,
+            "urun_sayisi": 4
+          },
+          "orta": {
+            "min": 37499.0,
+            "medyan": 43749.0,
+            "max": 59999.0,
+            "urun_sayisi": 6
+          },
+          "luks": {
+            "min": 64999.0,
+            "medyan": 66499.0,
+            "max": 67999.0,
+            "urun_sayisi": 2
+          }
+        }
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "ALTUS AL 365 NE E Enerji Sınıfı 357 L Üstten Donduruculu No- Frost Buzdolabı Beyaz",
+        "fiyat": 22999.0,
+        "nitelikler": {
+          "urun_turu": "standart"
+        }
+      },
+      {
+        "isim": "GRUNDIG GPRNE 477L E Enerji Sınıfı NoFrost Üstten Donduruculu Buzdolabı Beyaz",
+        "fiyat": 34199.0,
+        "nitelikler": {
+          "urun_turu": "standart"
+        }
+      },
+      {
+        "isim": "SAMSUNG RT47CG6636WWTR E Enerji Sınıfı 465 Litre Üstten Donduruculu Buzdolabı",
+        "fiyat": 34999.0,
+        "nitelikler": {
+          "urun_turu": "standart"
+        }
+      },
+      {
+        "isim": "GRUNDIG GPKNE 477 E Enerji Sınıfı 477 L Duo-No Frost Alttan Donduruculu Buzdolabı Beyaz",
+        "fiyat": 35999.0,
+        "nitelikler": {
+          "urun_turu": "standart"
+        }
+      },
+      {
+        "isim": "BOSCH KDN55NWE0N E Enerji Sınıfı 453 L Üstten Donduruculu No-Frost Buzdolabı Beyaz",
+        "fiyat": 37499.0,
+        "nitelikler": {
+          "urun_turu": "standart"
+        }
+      },
+      {
+        "isim": "SAMSUNG RT47CG6636S9TR E Enerji Sınıfı 465 litre Üstten Donduruculu Buzdolabı",
+        "fiyat": 38999.0,
+        "nitelikler": {
+          "urun_turu": "standart"
+        }
+      },
+      {
+        "isim": "BOSCH KDN55NLE0N E Enerji Sınıfı 453 L Üstten Donduruculu No-Frost Buzdolabı Inox",
+        "fiyat": 39999.0,
+        "nitelikler": {
+          "urun_turu": "standart"
+        }
+      },
+      {
+        "isim": "BOSCH KGN55CWE0N 483L ALtan Donduruculu No-Frost Buzdolabı",
+        "fiyat": 47499.0,
+        "nitelikler": {
+          "urun_turu": "standart"
+        }
+      },
+      {
+        "isim": "BOSCH KGN55CIE0N 483L Alttan Donduruculu No-Frost Buzdolabı",
+        "fiyat": 49999.0,
+        "nitelikler": {
+          "urun_turu": "standart"
+        }
+      },
+      {
+        "isim": "BOSCH KDN76XIE1N 542 L No Frost Üstten Dolduruculu Buzdolabı",
+        "fiyat": 59999.0,
+        "nitelikler": {
+          "urun_turu": "standart"
+        }
+      },
+      {
+        "isim": "BOSCH KGN76CIE0N E Enerji Sınıfı 526 L Alttan Donduruculu NoFrost Buzdolabı Inox",
+        "fiyat": 64999.0,
+        "nitelikler": {
+          "urun_turu": "standart"
+        }
+      },
+      {
+        "isim": "BOSCH KGN86AID2N D Enerji Sınıfı 631 L Alttan Donduruculu No-Frost Buzdolabı Inox",
+        "fiyat": 67999.0,
+        "nitelikler": {
+          "urun_turu": "standart"
+        }
+      }
+    ]
+  }
+}

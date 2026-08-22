@@ -73,6 +73,10 @@ jobs:
         working-directory: scraper
         run: python gecmis.py
 
+      - name: Araç ek maliyet sözleşmesini üret
+        working-directory: scraper
+        run: python arac_maliyetleri.py
+
       - name: Statik sayfaları üret
         working-directory: scraper
         run: |

@@ -3,6 +3,7 @@
 import csv
 import json
 import unittest
+from datetime import date
 from io import StringIO
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -108,6 +109,27 @@ class CsvTesti(unittest.TestCase):
             vd.disa_aktar(veri_kok=kok, cikti_kok=cikti)
             self.assertEqual(arsiv.read_text(encoding="utf-8"), "yayindaki-degismez-surum")
             self.assertIn("buzdolabi", (cikti / "ev-kurma.csv").read_text(encoding="utf-8"))
+
+    def test_bugunun_arsivi_hedefli_yeniden_olcumde_guncellenir(self):
+        with TemporaryDirectory() as d:
+            bugun = date.today().isoformat()
+            veri = json.loads(json.dumps(ORNEK))
+            veri["guncelleme_tarihi"] = bugun
+            veri["kalemler"]["buzdolabi"]["guncelleme_tarihi"] = bugun
+            kok = Path(d) / "veri"
+            kok.mkdir()
+            (kok / "ev-kurma.json").write_text(
+                json.dumps(veri, ensure_ascii=False), encoding="utf-8"
+            )
+            cikti = Path(d) / "csv"
+            cikti.mkdir()
+            arsiv = cikti / f"ev-kurma-{bugun}.csv"
+            arsiv.write_text("eski-ayni-gun", encoding="utf-8")
+            vd.disa_aktar(veri_kok=kok, cikti_kok=cikti)
+            self.assertNotEqual(
+                arsiv.read_text(encoding="utf-8"), "eski-ayni-gun"
+            )
+            self.assertIn("buzdolabi", arsiv.read_text(encoding="utf-8"))
 
     def test_veri_yoksa_dosya_uretilmez(self):
         with TemporaryDirectory() as d:

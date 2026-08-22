@@ -274,7 +274,7 @@ ASISTAN_JS = """
     // 5) Yontem sorulari
     for (var y = 0; y < D.yontem.length; y++) {
       if (q.indexOf(sade(D.yontem[y])) !== -1) {
-        return "Fiyatları gerçek satış sayfalarından, ayda iki kez ölçüyoruz. " +
+        return "Kaynakları ayın 5'i ve 20'sinde yeniden tarıyoruz; her seri son başarılı ölçüm tarihini taşır. " +
           "Her rakamın yanında kaç üründen derlendiği, hangi kaynaklardan geldiği " +
           "ve ölçüm tarihi yazıyor — hiçbir fiyatı tahmin etmiyoruz." +
           "<a class='as-link' href='/sss/'>Sık sorulan sorular →</a>";

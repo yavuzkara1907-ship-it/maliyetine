@@ -14,19 +14,19 @@ dugun,organizasyon,Organizasyon / Süsleme,,sabit,kalem_fiyati,16550,16550,16550
 dugun,taki-altin,Takı — Altın Bilezik (1 adet),,sabit,kalem_fiyati,33085,85022,180340,30600,243765,,,,,,,24,1,atasay,2026-07-26
 dugun,yemek-ikram,Yemek / İkram (mekanın menü bedeli),,kisi_basi,kisi_basi_fiyat,250,500,920,150,920,,,,,,,8,1,dugunbuketi,2026-08-20
 ev-kurma,bulasik-makinesi,Bulaşık Makinesi,Beyaz eşya,sabit,kalem_fiyati,15749,23899,32499,12999,54778,,,,,,,52,3,amazon; mediamarkt; trendyol,2026-08-20
-ev-kurma,buzdolabi,Buzdolabı,Beyaz eşya,sabit,kalem_fiyati,9000,29168,59899,4880,74799,,,,,,,57,3,amazon; mediamarkt; trendyol,2026-08-09
+ev-kurma,buzdolabi,Buzdolabı,Beyaz eşya,sabit,kalem_fiyati,9750,30370,59899,4874,76057,,,,,,,76,3,amazon; mediamarkt; trendyol,2026-08-22
 ev-kurma,davlumbaz,Davlumbaz,Beyaz eşya,sabit,kalem_fiyati,3373,5295,9592,2199,15992,,,,,,,60,3,amazon; mediamarkt; trendyol,2026-08-20
 ev-kurma,firin-ocak,Fırın / Ocak (ürün tipine göre),Beyaz eşya,sabit,kalem_fiyati,11399,16999,38159,4049,51175,,,,,,,59,3,amazon; mediamarkt; trendyol,2026-08-22
 ev-kurma,klima,Klima,Beyaz eşya,sabit,kalem_fiyati,19962,29041,38799,6500,58999,,,,,,,57,3,amazon; mediamarkt; trendyol,2026-08-20
 ev-kurma,kurutma-makinesi,Kurutma Makinesi,Beyaz eşya,sabit,kalem_fiyati,16027,18972,28000,2999,65999,,,,,,,51,3,amazon; mediamarkt; trendyol,2026-08-09
 ev-kurma,mikrodalga,Mikrodalga Fırın,Beyaz eşya,sabit,kalem_fiyati,3369,5058,7757,1400,17999,,,,,,,69,3,amazon; mediamarkt; trendyol,2026-08-09
 ev-kurma,camasir-makinesi,Çamaşır Makinesi,Beyaz eşya,sabit,kalem_fiyati,22499,27499,42499,11699,61999,,,,,,,52,3,amazon; mediamarkt; trendyol,2026-08-09
-ev-kurma,dikey-supurge,Dikey Süpürge,Elektronik,sabit,kalem_fiyati,1799,9640,16499,933,36999,,,,,,,79,3,amazon; mediamarkt; trendyol,2026-08-09
+ev-kurma,dikey-supurge,Dikey Süpürge,Elektronik,sabit,kalem_fiyati,1637,7100,16707,933,36999,,,,,,,76,3,amazon; mediamarkt; trendyol,2026-08-22
 ev-kurma,supurge,Robot Süpürge,Elektronik,sabit,kalem_fiyati,8649,20963,39434,3499,58999,,,,,,,69,3,amazon; mediamarkt; trendyol,2026-08-09
 ev-kurma,televizyon,Televizyon (4K),Elektronik,sabit,kalem_fiyati,19999,37724,61740,6199,99999,,,,,,,63,3,amazon; mediamarkt; trendyol,2026-08-09
 ev-kurma,airfryer,Airfryer,Küçük ev aleti,sabit,kalem_fiyati,1849,3424,5499,1007,15999,,,,,,,66,3,amazon; mediamarkt; trendyol,2026-08-09
 ev-kurma,blender,Blender,Küçük ev aleti,sabit,kalem_fiyati,1258,3328,8099,939,11629,,,,,,,69,3,amazon; mediamarkt; trendyol,2026-08-09
-ev-kurma,kahve-makinesi,Kahve Makinesi,Küçük ev aleti,sabit,kalem_fiyati,1099,3420,9699,319,30999,,,,,,,84,3,amazon; mediamarkt; trendyol,2026-08-09
+ev-kurma,kahve-makinesi,Kahve Makinesi,Küçük ev aleti,sabit,kalem_fiyati,1289,5799,22788,319,48999,,,,,,,78,3,amazon; mediamarkt; trendyol,2026-08-22
 ev-kurma,mutfak-robotu,Mutfak Robotu / Doğrayıcı,Küçük ev aleti,sabit,kalem_fiyati,1690,2854,5674,1058,10999,,,,,,,56,2,amazon; trendyol,2026-08-09
 ev-kurma,sac-kurutma-makinesi,Saç Kurutma Makinesi,Küçük ev aleti,sabit,kalem_fiyati,823,1339,2161,430,24999,,,,,,,72,3,amazon; mediamarkt; trendyol,2026-08-09
 ev-kurma,su-isitici,Su Isıtıcı (Kettle),Küçük ev aleti,sabit,kalem_fiyati,579,1108,1874,359,3329,,,,,,,61,2,amazon; trendyol,2026-08-20
@@ -84,7 +84,7 @@ kedi,mama-su-kabi,Mama ve Su Kabı,Beslenme,sabit,kalem_fiyati,154,356,600,99,13
 kedi,tasima-cantasi,Taşıma Çantası,Taşıma,sabit,kalem_fiyati,1134,2170,3880,212,9181,,,,,,,64,2,amazon; petzzshop,2026-08-20
 kedi,kedi-kumu,Kedi Kumu (paket),Tekrarlayan ürün,sabit,paket_fiyati,248,398,805,107,1296,29.5,1,33.99,7,,,62,2,amazon; petzzshop,2026-08-22
 kedi,kedi-mamasi,Kedi Maması (paket),Tekrarlayan ürün,sabit,paket_fiyati,772,2070,3454,118,7044,389.92,52,,,,,64,2,amazon; petzzshop,2026-08-22
-kedi,kedi-tuvaleti,Kedi Tuvaleti,Tuvalet,sabit,kalem_fiyati,372,1349,9999,300,11889,,,,,,,30,1,amazon,2026-08-20
+kedi,kedi-tuvaleti,Kedi Tuvaleti,Tuvalet,sabit,kalem_fiyati,422,1484,12217,300,23799,,,,,,,37,1,amazon,2026-08-22
 kedi,kedi-oyuncagi,Kedi Oyuncağı,Yaşam alanı,sabit,kalem_fiyati,84,138,290,50,384,,,,,,,61,2,amazon; petzzshop,2026-08-20
 kedi,kedi-yatagi,Kedi Yatağı,Yaşam alanı,sabit,kalem_fiyati,1231,1448,2206,199,3975,,,,,,,64,2,amazon; petzzshop,2026-08-20
 kedi,tirmalama,Tırmalama Tahtası,Yaşam alanı,sabit,kalem_fiyati,300,549,1017,150,1575,,,,,,,41,1,amazon,2026-08-09
@@ -119,4 +119,4 @@ arac,tesla,Tesla,Marka bazlı fiyatlar,sabit,kalem_fiyati,3078892,4583000,,24749
 arac,togg,Togg,Marka bazlı fiyatlar,sabit,kalem_fiyati,1909048,2411000,,1886000,,,,,,,,8,1,donanimhaber,2026-08-20
 arac,toyota,Toyota,Marka bazlı fiyatlar,sabit,kalem_fiyati,2609000,3057500,5100000,2245000,5781000,,,,,,,27,1,donanimhaber,2026-08-20
 arac,volkswagen,Volkswagen,Marka bazlı fiyatlar,sabit,kalem_fiyati,2838000,3751500,6815000,2230000,7596000,,,,,,,40,1,donanimhaber,2026-08-20
-arac,en-ucuz-sifir-arac,En ucuz sıfır araç (marka giriş fiyatı),,sabit,kalem_fiyati,1517450,2113850,2772100,1299000,3724500,,,,,,,23,1,donanimhaber,2026-08-20
+arac,en-ucuz-sifir-arac,En ucuz sıfır araç (marka giriş fiyatı),,sabit,kalem_fiyati,1517450,2113850,2772100,1299000,3724500,,,,,,,23,1,donanimhaber,2026-08-22

@@ -113,6 +113,25 @@ class KalemBirlestirTestleri(unittest.TestCase):
         self.assertEqual(ozet["ozellik_ozeti"]["urun_turleri"]["ankastre-firin"]["urun_sayisi"], 7)
         self.assertTrue(ozet["karma_urun_turu"])
 
+    def test_genis_kategori_alt_turlere_ayrilir_ama_butceden_dusmez(self):
+        kayit = {
+            "site": "ornek", "kaynak_adlari": ["Örnek"], "tarih": "2026-08-22",
+            "toplam_urun": 12, "genel_medyan": 1000, "segmentler": {},
+            "ozellik_ozeti": {
+                "toplam_urun": 12, "ozellik_eslesen_urun": 12,
+                "urun_turleri": {
+                    "mini": {"ad": "Mini", "genel_medyan": 6000,
+                             "urun_sayisi": 5, "segmentler": {}},
+                    "standart": {"ad": "Standart", "genel_medyan": 25000,
+                                "urun_sayisi": 7, "segmentler": {}},
+                },
+                "ornek_urunler": [],
+            },
+        }
+        ozet = agrega.kalem_birlestir([kayit], "buzdolabi")
+        self.assertTrue(ozet["urun_turlerine_ayrilmis"])
+        self.assertNotIn("karma_urun_turu", ozet)
+
     def test_eski_aylik_etiketi_paket_fiyati_olarak_yayinlanir(self):
         kayit = {
             "site": "amazon",

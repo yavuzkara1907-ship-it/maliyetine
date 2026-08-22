@@ -1,0 +1,219 @@
+{
+  "site": "mediamarkt",
+  "kaynak_adlari": [
+    "MediaMarkt - Dikey Supurge"
+  ],
+  "kalem": "dikey-supurge",
+  "vertikal": "ev-kurma",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-08-22",
+  "ham_urun_sayisi": 11,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 11,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 19899,
+  "segmentler": {
+    "dusuk": {
+      "min": 13299,
+      "medyan": 14999,
+      "max": 16999,
+      "urun_sayisi": 3
+    },
+    "orta": {
+      "min": 17099,
+      "medyan": 22949,
+      "max": 32999,
+      "urun_sayisi": 6
+    },
+    "luks": {
+      "min": 34999,
+      "medyan": 35999,
+      "max": 36999,
+      "urun_sayisi": 2
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "ARNICA Arnica Solara ET13494 Flex Şarjlı Dikey Süpürge",
+      "fiyat": 13299.0
+    },
+    {
+      "isim": "PHILIPS 6000 Serisi XC6456/10 Kablosuz Şarjlı Dikey Süpürge",
+      "fiyat": 14999.0
+    },
+    {
+      "isim": "PHILIPS 7000 Serisi XC7057/01 Kablosuz Dik Süpürge",
+      "fiyat": 16999.0
+    },
+    {
+      "isim": "PHILIPS Aqua Plus 8000 Serisi XC8057/01 Islak Kuru Şarjlı Dikey Süpürge",
+      "fiyat": 17099.0
+    },
+    {
+      "isim": "BOSCH BCS711XTR Unlimited 7 Şarjlı Süpürge Siyah",
+      "fiyat": 17999.0
+    },
+    {
+      "isim": "TEFAL X-Force Flex 14.80 Aqua Dikey Şarjlı Süpürge Mavi",
+      "fiyat": 19899.0
+    },
+    {
+      "isim": "DYSON Cyclone V10 Absolute Kablosuz Şarjlı Dikey Süpürge Nikel Bakır",
+      "fiyat": 25999.0
+    },
+    {
+      "isim": "DYSON V10 Konical™ Kablosuz Şarjlı Dikey Süpürge",
+      "fiyat": 25999.0
+    },
+    {
+      "isim": "DYSON V12s Detect Slim Submarine Şarjlı Dikey Süpürge",
+      "fiyat": 32999.0
+    },
+    {
+      "isim": "DYSON V12 Detect Slim Absolute Kablosuz Şarjlı Dikey Süpürge",
+      "fiyat": 34999.0
+    },
+    {
+      "isim": "DYSON V12 Detect Slim Absolute Kablosuz Şarjlı Dikey Süpürge Sarı Nikel",
+      "fiyat": 36999.0
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 11,
+    "ozellik_eslesen_urun": 11,
+    "urun_turleri": {
+      "islak-kuru": {
+        "ad": "Islak-kuru dikey süpürge",
+        "genel_medyan": 17099,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 17099.0,
+            "medyan": 17099.0,
+            "max": 17099.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 17099.0,
+            "medyan": 17099.0,
+            "max": 17099.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 17099.0,
+            "medyan": 17099.0,
+            "max": 17099.0,
+            "urun_sayisi": 1
+          }
+        }
+      },
+      "sarjli": {
+        "ad": "Şarjlı dikey süpürge",
+        "genel_medyan": 22949,
+        "urun_sayisi": 10,
+        "segmentler": {
+          "dusuk": {
+            "min": 13299.0,
+            "medyan": 14999.0,
+            "max": 16999.0,
+            "urun_sayisi": 3
+          },
+          "orta": {
+            "min": 17999.0,
+            "medyan": 25999.0,
+            "max": 32999.0,
+            "urun_sayisi": 5
+          },
+          "luks": {
+            "min": 34999.0,
+            "medyan": 35999.0,
+            "max": 36999.0,
+            "urun_sayisi": 2
+          }
+        }
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "ARNICA Arnica Solara ET13494 Flex Şarjlı Dikey Süpürge",
+        "fiyat": 13299.0,
+        "nitelikler": {
+          "urun_turu": "sarjli"
+        }
+      },
+      {
+        "isim": "PHILIPS 6000 Serisi XC6456/10 Kablosuz Şarjlı Dikey Süpürge",
+        "fiyat": 14999.0,
+        "nitelikler": {
+          "urun_turu": "sarjli"
+        }
+      },
+      {
+        "isim": "PHILIPS 7000 Serisi XC7057/01 Kablosuz Dik Süpürge",
+        "fiyat": 16999.0,
+        "nitelikler": {
+          "urun_turu": "sarjli"
+        }
+      },
+      {
+        "isim": "PHILIPS Aqua Plus 8000 Serisi XC8057/01 Islak Kuru Şarjlı Dikey Süpürge",
+        "fiyat": 17099.0,
+        "nitelikler": {
+          "urun_turu": "islak-kuru"
+        }
+      },
+      {
+        "isim": "BOSCH BCS711XTR Unlimited 7 Şarjlı Süpürge Siyah",
+        "fiyat": 17999.0,
+        "nitelikler": {
+          "urun_turu": "sarjli"
+        }
+      },
+      {
+        "isim": "TEFAL X-Force Flex 14.80 Aqua Dikey Şarjlı Süpürge Mavi",
+        "fiyat": 19899.0,
+        "nitelikler": {
+          "urun_turu": "sarjli"
+        }
+      },
+      {
+        "isim": "DYSON Cyclone V10 Absolute Kablosuz Şarjlı Dikey Süpürge Nikel Bakır",
+        "fiyat": 25999.0,
+        "nitelikler": {
+          "urun_turu": "sarjli"
+        }
+      },
+      {
+        "isim": "DYSON V10 Konical™ Kablosuz Şarjlı Dikey Süpürge",
+        "fiyat": 25999.0,
+        "nitelikler": {
+          "urun_turu": "sarjli"
+        }
+      },
+      {
+        "isim": "DYSON V12s Detect Slim Submarine Şarjlı Dikey Süpürge",
+        "fiyat": 32999.0,
+        "nitelikler": {
+          "urun_turu": "sarjli"
+        }
+      },
+      {
+        "isim": "DYSON V12 Detect Slim Absolute Kablosuz Şarjlı Dikey Süpürge",
+        "fiyat": 34999.0,
+        "nitelikler": {
+          "urun_turu": "sarjli"
+        }
+      },
+      {
+        "isim": "DYSON V12 Detect Slim Absolute Kablosuz Şarjlı Dikey Süpürge Sarı Nikel",
+        "fiyat": 36999.0,
+        "nitelikler": {
+          "urun_turu": "sarjli"
+        }
+      }
+    ]
+  }
+}

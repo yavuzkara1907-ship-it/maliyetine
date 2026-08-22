@@ -241,6 +241,34 @@ _URUN_TURLERI = {
     "ocak": "Ocak",
 }
 
+# Tek kategori sayfasinda birbirinden farkli urun tipleri toplanabilen
+# kalemler. Yalniz urun adinda ACIKCA gecen ifadeler kullanilir; fiyatina
+# bakarak "bu otomatik olmali" gibi bir tahmin yapilmaz.
+_GENIS_KATEGORI_TURLERI = {
+    "kedi-tuvaleti": (
+        ("otomatik-tuvalet", "Otomatik kedi tuvaleti", r"otomatik|ak[ıi]ll[ıi]|self[ -]?clean|robot"),
+        ("kapali-tuvalet", "Kapalı kedi tuvaleti", r"kapal[ıi]|kapakl[ıi]|kabin|filtreli"),
+        ("acik-tuvalet", "Açık kedi tuvaleti / kum kabı", r"a[çc][ıi]k|kum kab[ıi]"),
+    ),
+    "kahve-makinesi": (
+        ("espresso", "Espresso makinesi", r"espresso|barista|cappuccino|latte|portafiltre|tam otomatik"),
+        ("kapsul", "Kapsül kahve makinesi", r"kaps[uü]l|capsule|nespresso|dolce gusto"),
+        ("filtre", "Filtre kahve makinesi", r"filtre kahve|drip"),
+        ("turk-kahvesi", "Türk kahvesi makinesi", r"t[uü]rk kahve|turkish coffee|cezve"),
+    ),
+    "buzdolabi": (
+        ("mini", "Mini / tezgah altı buzdolabı", r"\bmini\b|minibar|b[uü]ro tipi|tezg[aâ]h alt[ıi]"),
+        ("gardiroplu", "Gardırop tipi buzdolabı", r"gard[ıi]rop tipi|side[ -]?by[ -]?side|multi[ -]?door|4 kap[ıi]"),
+        ("standart", "Standart buzdolabı", r"buzdolab[ıi]|no[ -]?frost|komb[iı] tipi"),
+    ),
+    "dikey-supurge": (
+        ("islak-kuru", "Islak-kuru dikey süpürge", r"[ıi]slak.?kuru|y[ıi]kama|mop"),
+        ("sarjli", "Şarjlı dikey süpürge", r"[şs]arjl[ıi]|kablosuz|cordless"),
+        ("kablolu", "Kablolu dikey süpürge", r"kablolu"),
+        ("el-supurgesi", "El süpürgesi", r"el s[uü]p[uü]rgesi|handheld"),
+    ),
+}
+
 
 def firin_ozelliklerini_ayristir(isim: str) -> dict:
     metin = str(isim or "")
@@ -361,6 +389,54 @@ def firin_ozellik_ozeti(kalem: str, urunler: list[dict]) -> dict:
             "urun_sayisi": len(kapasiteler),
         }} if kapasiteler else {}),
         "ornek_urunler": ornekler,
+        # Set, ocak ve firin birbirinin fiyat segmenti degil, ayri urundur.
+        # Bu bayrak butce toplaminda tek bir ortak fiyat kullanilmasini engeller.
+        "tek_metrik_gecersiz": True,
+    }
+
+
+def genis_kategori_urun_turu(kalem: str, isim: str) -> dict:
+    """Genis kategori kaleminde urun adindan acik urun turunu cikarir."""
+    desenler = _GENIS_KATEGORI_TURLERI.get(kalem)
+    if not desenler:
+        return {}
+    metin = str(isim or "").casefold()
+    for anahtar, _ad, desen in desenler:
+        if re.search(desen, metin, re.I):
+            return {"urun_turu": anahtar}
+    return {}
+
+
+def urun_ozellik_ozeti(kalem: str, urunler: list[dict]) -> dict:
+    """Kaleme uygun yapisal urun ozeti.
+
+    Firin/ocakta mevcut ayrintili ayristirici korunur. Genis kategori
+    kalemlerinde yalniz urun tipi cikarilir; bu kirilim ana fiyati ortadan
+    kaldirmaz, kullaniciya dagilimin hangi urun tiplerinden geldigini gosterir.
+    """
+    if kalem == "firin-ocak":
+        return firin_ozellik_ozeti(kalem, urunler)
+    desenler = _GENIS_KATEGORI_TURLERI.get(kalem)
+    if not desenler:
+        return {}
+
+    normal = []
+    for urun in urunler:
+        nitelikler = genis_kategori_urun_turu(kalem, urun.get("isim", ""))
+        if nitelikler:
+            normal.append({
+                "isim": str(urun.get("isim", ""))[:240],
+                "fiyat": round(float(urun.get("fiyat") or 0), 2),
+                "nitelikler": nitelikler,
+            })
+    if not normal:
+        return {}
+    adlar = {anahtar: ad for anahtar, ad, _desen in desenler}
+    return {
+        "toplam_urun": len(urunler),
+        "ozellik_eslesen_urun": len(normal),
+        "urun_turleri": _grup_ozeti(normal, "urun_turu", adlar),
+        "ornek_urunler": _daginik_ornek(normal, "fiyat", 15),
     }
 
 

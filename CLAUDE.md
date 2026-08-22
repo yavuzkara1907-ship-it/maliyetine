@@ -17,8 +17,10 @@
   rehber eklendi.
 - Site artık tek konu değil, **veri ürünü + hesaplayıcı ağı**:
   **7 vertikal** (`dugun`, `ev-kurma`, `okul`, `bebek`, `kedi`, `kopek`,
-  `arac`), **121 aktif fiyat serisi**, **26 bağımsız `/hesap/` hesaplayıcı**,
-  **25 rehber**, **186 sitemap URL'i**.
+  `arac`), **121 aktif fiyat serisi**, **26 bağımsız `/hesap/` hesaplayıcı**
+  ve **27 veriyle/resmî kaynakla üretilen rehber**. Diskteki 188 yayın
+  sayfası sitemap'teki 188 URL ile birebirdir; 180 sayfaya özel OG kartı
+  vardır.
 - **Envanter sayacı tek sözleşmeye bağlandı.** Eski `122` sayısı gerçek
   bir yayın hatasıydı: iki salon varyantına bölündükten sonra devre dışı
   kalan eski `dugun/salon` kaydı ham arşivde doğru biçimde korunmuş, fakat
@@ -31,15 +33,15 @@
 - **Yayın paketi artık içerik tabanlı sürümlüdür.** `/veri/manifest.json`,
   yedi güncel JSON için gerçek dosya SHA-256 özetlerini; ilgili geçmiş JSON
   ve CSV özetlerini; ölçüm tarihi ile 121 seri sayısını birlikte yayınlar.
-  Güncel sürüm `2026-08-22-f0c8be50f5ae1a98`tir. Aynı kanonik JSON'lar aynı
+  Güncel sürüm `2026-08-22-2474420e7b83fd9b`tir. Aynı kanonik JSON'lar aynı
   sürümü üretir; güncel veride tek bayt değişirse sürüm değişir.
 - **Yayın öncesi QA kapısı var.** `scraper/qa.py`; JSON envanteri, kaynak ve
   ürün toplamı, kalem tarihi, segment işareti, son geçmiş noktası, CSV satırı,
   ana sayfa/dikey toplamı ve 99 görünür kalem sayfasını aynı sürüme karşı
   denetler. `/veri/qa.json` sonucu makinece okunabilir yayınlar. 2026-08-22
-  raporu: **0 kritik hata, 28 geliştirme uyarısı, 72 sayfada zaten görünür
+  raporu: **0 kritik hata, 29 geliştirme uyarısı, 72 sayfada zaten görünür
   veri sınırı**. Uyarılar: 16 gerçek tek-kaynak açığı, 11 düşük örneklem ve
-  1 sert dönem değişimi; görünür sınırlar 70 kaynak farkı ve 2 tutarsız
+  2 sert dönem değişimi; görünür sınırlar 70 kaynak farkı ve 2 tutarsız
   segment kırılımıdır. Keyfî kalite puanı kullanılmaz.
 - Rakam taşıyan OG/paylaşım kartları da atomik paketin zorunlu parçasıdır.
   `pillow` CI bağımlılığına eklendi; ana OG veya sayfa kartları üretilemezse
@@ -74,6 +76,18 @@
   marka/model/fiyat kartları döndürdü. Ancak kök sayfa yalnız sınırlı
   örnek kart gösteriyor; 25 serinin URL ve marka/model kapsamı
   doğrulanmadan üretime eklenmez.
+- **Düğün ikinci kaynak standardı:** aynı para biriminde görünmesi iki
+  kaynağı karşılaştırılabilir yapmaz. Kişi başı salon fiyatına toplam
+  organizasyon teklifi; aynı mekandaki paket farkından türetilen
+  `yemek-ikram` değerine dış catering teklifi karıştırılmaz. Aday kaynak
+  aynı şehir/kapsam/birimde en az 5 karşılaştırılabilir satır vermeli veya
+  yayınladığı toplulaştırma yöntemini açıkça açıklamalıdır. Armut örnek
+  talepleri kişi, şehir ve hizmet kapsamı normalize edilmeden; Düğün.com
+  mekan listeleri kişi başı/yemekli-kokteyl ayrımı doğrulanmadan ikinci
+  kaynak sayılmaz. Dış catering ölçülebilirse ayrı `dis-catering` kalemi
+  olur; mevcut `yemek-ikram` serisinin üstüne yazılmaz. İkinci kaynak
+  uğruna iki uyumsuz evreni birleştirmek, tek kaynak sınırını açıkça
+  göstermekten daha kötüdür.
 - **Açık veri ile gelir modeli çakışmıyor.** Güncel JSON/CSV, tarihli
   arşivler ve kamusal geçmiş CC BY 4.0 ile ücretsiz kalır; güven, alıntı
   ve GEO dağıtımı bu katmanın işidir. Gelecekteki Pro/API aynı dosyaları
@@ -90,6 +104,9 @@
   `/veri/qa.json` HTTP 200 dönüyor; ikisi de
   `2026-08-22-f0c8be50f5ae1a98` veri sürümünü taşıyor ve canlı QA durumu
   `gecti`.
+  Bu canlı sürüm önceki deploy'a aittir; bu turdaki yerel yayın paketi
+  `2026-08-22-2474420e7b83fd9b` olarak üretildi, push/deploy sonrasında
+  canlı doğrulama yeniden yapılmalıdır.
 - Otomasyon ayda iki kez çalışacak şekilde tasarlandı: ayın **5'i ve
   20'si**. **20 Ağustos 2026 koşusu kontrol edildi:** GitHub Actions run
   `32339864463` başarıyla bitti, `maliyetine-bot` `75ceda9` commit'ini attı
@@ -153,6 +170,62 @@
   `Bütçem Yeter mi?` aracından, genel fiyat geçmişinden ve karma kaynak
   medyanı karşılaştırmasından çıkarıldı; Product/AggregateOffer schema da
   üretilmiyor. Paylaşım kartı tek rakam yerine ürün tipi ayrımını taşıyor.
+- **Geniş dağılım alt türleri kontrollü biçimde genişletildi (2026-08-22).**
+  Fiyat aralığı tek başına sınıflandırma sinyali değildir; yalnız ürün
+  adında açıkça yazan tür kullanılır. Canlı yeniden ölçümde kedi tuvaleti
+  açık/kapalı/otomatik; kahve makinesi Türk kahvesi/filtre/kapsül/espresso;
+  buzdolabı mini/standart/gardırop; dikey süpürge kablolu/şarjlı/ıslak-kuru/
+  el süpürgesi olarak ayrıldı. Alt türler detay sayfasında ayrı ortancalarla
+  görünür. Fırın/ocaktaki set + tek ürün karışımı ortak metriği geçersiz
+  kıldığı için bütçeden çıkar; buzdolabı gibi aynı bütçe kaleminin
+  seçenekleri ise alt tür tablosu taşısa da bütçeden düşmez.
+- **Ana fiyat metriği kesinleştirildi (2026-08-22).** Kalem detayındaki ana
+  fiyat ve fiyat geçmişi aynı alanı, `genel_medyan`ı kullanır. Kullanıcıya
+  “ölçülen ürünlerin ortancası” diye gösterilir. Bütçe toplamındaki “orta
+  segment”, fiyatların ortadaki yarısının ortancasıdır ve ayrı bir karar
+  referansıdır; iki değer farklıysa sayfa ikisini de adlarıyla yazar.
+  Görünür fiyat tablolarında aritmetik ortalama hesaplanmadıkça “ortalama”
+  denmez.
+- **Tarih sözleşmesi kesinleştirildi (2026-08-22).** Görünür tarih son
+  başarılı ölçümdür. Kaynakların ayın 5'i ve 20'sinde yeniden taranması,
+  her kalemin o gün değişeceği vaadi değildir. Veri dönmeyen, karantinaya
+  düşen veya QA'yı geçmeyen tarama eski sağlıklı ölçümün tarihini ileri
+  taşımaz. Arayüzde “Güncelleme” yerine “Son veri”/“Son ölçüm” kullanılır.
+- **Niyet ve kapsam düzeltmeleri (2026-08-22).** “En ucuz sıfır araç”
+  cevabı artık marka girişlerinin ortancasını değil ölçümdeki gerçek
+  minimum liste fiyatını ve marka adını verir; ortanca ayrı bağlamdır.
+  Okul yüzeyi okul ücreti/yemek/servis iddiası taşımayan “okul alışverişi”,
+  kedi/köpek yüzeyleri aylık/ilk yıl iddiası taşımayan “başlangıç kurulumu”
+  olarak adlandırılır. Düğünde yemekli paket varsayılan bütçedir; kokteyl
+  onun alternatifidir, ikisi ve türetilmiş menü farkı birlikte toplanmaz.
+- **Araç ek maliyetleri tek sözleşmeye bağlandı (2026-08-22).** Resmî tarife
+  ve tahmini varsayımlar artık `scraper/arac_maliyetleri.py` içinde tek
+  kaynaktır; rehber bunu doğrudan kullanır,
+  `assets/js/arac-ek-maliyetler.js` aynı kaynaktan otomatik üretilir ve iki
+  workflow da üretim adımını çalıştırır. 58 Seri No.lu MTV Tebliği resmî
+  tablosuyla kontrol edildi: eski 6.903/21.252 yuvarlamaları 6.902/21.251
+  olarak düzeltildi, mevzuatta olmayan “1801 cc ve üzeri 33.000 TL” tek
+  kademesi dokuz gerçek motor hacmi kademesine ayrıldı. Hesaplayıcı açıkça
+  1-3 yaş, üst taşıt değeri ve içten yanmalı araç senaryosudur; elektrikli
+  araç iddiası üretmez. İlk tescilde resmî toplam yalnız satış bedelinin
+  binde 2'si (asgari 1.000 TL) olan doğrulanmış harcı içerir; eski kaynaksız
+  sabit noter ücreti kaldırıldı, değişken hizmet/yazı/belge giderleri kapsam
+  dışında görünür. Motor seçenekleri ve kalem adları da aynı JavaScript
+  sözleşmesinden kurulur; HTML'de ikinci bir elle liste yoktur.
+- **İçerik derinliği ve hesaplayıcı bilgi mimarisi (2026-08-22).** Okul
+  alışverişinde en yüksek paylı kalemleri güncel JSON'dan sıralayan rehber
+  ile marka giriş fiyatlarını güncel kaynak örneklerinden sıralayan araç
+  rehberi eklendi. `/hesap/` düz kart duvarı değildir; fiyat ve bütçe,
+  maaş ve çalışma, vergi ve taşınmaz, yatırım ve birikim, borç ve kredi,
+  iş ve dijital gelir, pratik matematik başlıklarına ayrılır. Her
+  hesaplayıcının tam bir kategoriye girmesi testle zorunludur.
+- **Search Console içerik kararı (2026-08-22, son 28 gün):** yakın sonuç
+  veren sorgular okul alışverişi/defter, çeyiz, beyaz eşya ve evcil hayvan
+  aylık gider niyetlerinde yoğunlaşıyor. Okul ve evcil hayvan cevaplarında
+  kapsam kesinliği bu yüzden kısa vadede yüksek kaldıraçlıdır. Araçta
+  marka sorgusu görünmeye başladı ancak henüz seyrek; araç içerik artışı
+  gerçek minimum ve marka giriş listesiyle başlatıldı, ölçülmemiş kullanım
+  gideri yazılarıyla genişletilmedi.
 - Hedefli kazıma güvenliği güçlendirildi: `motor.py --kalem` filtresi var;
   karantinaya düşen koşu kaynak geçmişini değiştirmiyor ve aynı gün tekrar
   denemesi sahte ikinci dönem oluşturmuyor. CSV, kalem detay sayfası ve
@@ -189,10 +262,13 @@
   `www ve HTTP -> kök HTTPS 301` olarak düzeltildi; `https://www...` ve
   `http://www...` artık `https://maliyetine.com.tr/...` adresine 301
   dönüyor, query string korunuyor, kök HTTPS 200 kalıyor.
-- Bu turun son doğrulaması: **392 Python + 90 JavaScript test PASS**.
-  Yeni `/veri/` yüzeyi 1440×900 ve 390×844 görünümde gerçek tarayıcıyla
-  sınandı: belge yatay taşmıyor, geniş veri tablosu kendi sarmalında kayıyor,
-  sürüm bağlantısı taşıp metni kesmiyor ve konsol hatası yok.
+- Bu turun son doğrulaması: **406 Python + 90 JavaScript test PASS**.
+  SEO + rehber + gerçek tarayıcı hedefli paketi ayrıca **46/46** geçti.
+  Araç hesaplayıcısı da 320-1440 px aralığındaki tarama listesine eklendi.
+  İkinci tam tur yeni okul rehberindeki `/okul/okul-cantasi/` kırık linkini
+  yakaladı; link üretimi kalem kimliği yerine kanonik sayfa slug'ına bağlandı
+  ve regresyon testi eklendi. `git diff --check` temiz, yayın QA'sı 0 kritik
+  hatadır.
 - En yüksek kaldıraçlı açık işler:
   1. 301 sonrası Search Console'u 7-14 gün sonra tekrar kontrol et:
      sayfa tablosunda `www` sinyali düşüyor mu, kök hosta birleşiyor mu?
@@ -550,21 +626,23 @@ Hesaplayıcı bu kalemleri toplar. Her kalem: segment + kaynak + tarih.
   **eksik düşünülmüştü:** asıl değer araç fiyatının ÜZERİNE binen
   maliyetlerde. Etiket fiyatı aracın gerçek maliyeti değil ve bu toplamı
   kimse tek yerde vermiyor. Yavuz bunu fark etti.
-- `assets/js/arac-ek-maliyetler.js` + `/arac/hesaplayici/`.
+- `scraper/arac_maliyetleri.py` tek kaynak;
+  `assets/js/arac-ek-maliyetler.js` buradan üretilir ve
+  `/arac/hesaplayici/` bunu kullanır.
   **Her kalem `kaynak_tipi` taşır, resmî ile tahmini KARIŞTIRILMAZ:**
-  - **RESMÎ — MTV (ilk yıl):** motor hacmi kademesine göre (1300cc'ye
-    kadar 6.903, 1301–1600 12.028, 1601–1800 21.252 TL). Kaynak: 58 Seri
-    No.lu MTV Genel Tebliği, 31.12.2025 R.G.
-  - **RESMÎ — Noter + ilk tescil:** satış bedelinin binde 2'si (asgari
-    1.000 TL) + sabit noter ücreti. 2026 nispi harç düzenlemesi.
+  - **RESMÎ — MTV (ilk yıl):** 1-3 yaş, üst taşıt değeri ve motor hacmi
+    kademesine göre. Kaynak: 58 Seri No.lu MTV Genel Tebliği, 31.12.2025
+    R.G. Elektrikli araç kapsam dışıdır.
+  - **RESMÎ — İlk tescil harcı:** satış bedelinin binde 2'si (asgari
+    1.000 TL). Değişken noter hizmet/yazı/belge gideri resmî toplama
+    uydurma sabit olarak eklenmez.
   - **TAHMİNİ:** plaka/ruhsat, zorunlu trafik sigortası, kasko
     (araç değerinin ~%3'ü).
   - Sonuç ekranı resmî ve tahmini toplamı AYRI gösterir.
-  - Örnek: 2.069.000 TL araç → 92.656 TL ek (18.086 resmî + 74.570
-    tahmini) → 2.161.656 TL.
 - **YILLIK GÜNCELLEME GEREKİR:** MTV ve harçlar her 31 Aralık'ta Resmî
-  Gazete'de yeniden değerleme oranıyla artıyor. `arac-ek-maliyetler.js`
-  içindeki `yil` alanı ve tutarlar elle güncellenmeli — bu kalemler
+  Gazete'de yeniden değerleme oranıyla artıyor. Yalnız
+  `scraper/arac_maliyetleri.py` içindeki `yil` alanı ve tutarlar
+  güncellenmeli; JS dosyası yeniden üretilir. Bu kalemler
   kazınmıyor (yılda bir değiştiği için kazımaya değmez, ama TAHMİNİ de
   değil: kaynağı belli resmî tarife).
 - **TARAYICI TESTİNDE GERÇEK BUG YAKALANDI:** `<input step="50000">`
@@ -3585,7 +3663,7 @@ degil; gec gelen web fontunun satir kirilimlarini degistirmesiydi.
   yoktu, FCP'yi yaklasik 150 ms geciktiriyordu. Yavas hatta Georgia fallback'i
   metrik olarak guvenli ve tasarim diline yakin.
 - Etiketler `sayfa_uret.STIL_ETIKETLERI` icinde tek merkezde; alti uretici
-  bunu kullaniyor. Mevcut **187/187 HTML** ayni kurala gecirildi.
+  bunu kullaniyor. Bu tur sonunda **188/188 HTML** ayni kurali tasiyor.
 - `test_workflow.py` iki kritik preload'u tum yayin sayfalarinda (404 dahil)
   zorunlu tutuyor.
 
@@ -3618,10 +3696,11 @@ bugün gerçekten iş açan maddeleri taşımalı; biten iş burada kalmasın.
 - [ ] **Eksik tüketim profillerini güçlendir.** Çiş pedi için ikinci çalışan
       kaynak bul; kedi kumu `TL/kg` eşleşmesini 1/24 seviyesinden kalite
       eşiğine çıkar. Eşiği düşürerek sayfa açma.
-- [ ] **Ürün özellik şemasını kontrollü genişlet.** `firin-ocak` pilotu
-      tamamlandı. Sonraki aday buzdolabı veya çamaşır makinesi; kapasite,
-      model ve enerji sınıfı testleri geçmeden tüm ev-kurma kalemlerine
-      toplu yayma.
+- [ ] **Ürün özellik şemasının ikinci katmanını güçlendir.** Kedi tuvaleti,
+      kahve makinesi, buzdolabı ve dikey süpürgede ad-temelli alt tür
+      ayrımı yayında. Sonraki adım buzdolabında kapasite/model/enerji
+      sınıfını ayrı alanlar olarak doğrulamak; testleri geçmeden tüm
+      ev-kurma kalemlerine toplu yayma.
 - [ ] **Yüksek niyetli hesaplayıcıları ölç.** Tapu, kira gelir vergisi,
       hisse maliyet, temettü ve işsizlik sayfalarına 2026-08-22'de eklenen
       örnek hesapların gösterim → tık etkisini 14-28 gün sonra karşılaştır.
@@ -3640,10 +3719,13 @@ bugün gerçekten iş açan maddeleri taşımalı; biten iş burada kalmasın.
       sağlık testinden sonra operasyonel yedek olabilir. Aynı üretici
       liste fiyatını ikinci kez görmek pazar medyanı sayılmaz; arayüzde
       kaynak derinliği diye satma.
-- [ ] **Düğünde kalan tahmini iki kalemi kapat.** `nikah-islemleri` için
-      belediye/resmî tarife; `orkestra-dj` için ayrı kalem mi salon
-      paketinin parçası mı önce metodolojik karar. Kaynak bulunmadan
-      "gerçek" etiketi yok.
+- [ ] **Düğünde kaynak derinliğini artır.** Önce 9 tek kaynaklı seride aynı
+      birim/şehir/kapsam standardını geçen adayları doğrula. Armut toplam
+      tekliflerini kişi başı salon verisine, dış catering'i aynı mekan
+      menü farkına karıştırma. Ardından kalan tahmini iki kalemi kapat:
+      `nikah-islemleri` için belediye/resmî tarife; `orkestra-dj` için
+      ayrı kalem mi salon paketinin parçası mı önce metodolojik karar.
+      Kaynak bulunmadan "gerçek" etiketi yok.
 - [ ] **Sosyal yayın kararını netleştir.** X/Bluesky secret'ları eklenirse
       mevcut otomasyon gönderir. Facebook/Instagram için önce görsel kart
       mantığı korunmalı; Instagram düz metin/link formatı değil.

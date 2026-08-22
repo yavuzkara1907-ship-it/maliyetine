@@ -1,0 +1,313 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Kahve Makinesi"
+  ],
+  "kalem": "kahve-makinesi",
+  "vertikal": "ev-kurma",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-08-22",
+  "ham_urun_sayisi": 46,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 46,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 5689,
+  "segmentler": {
+    "dusuk": {
+      "min": 319,
+      "medyan": 1157,
+      "max": 1959,
+      "urun_sayisi": 12
+    },
+    "orta": {
+      "min": 1999,
+      "medyan": 5799,
+      "max": 13130,
+      "urun_sayisi": 23
+    },
+    "luks": {
+      "min": 15428,
+      "medyan": 22788,
+      "max": 27347,
+      "urun_sayisi": 11
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Kiwi J55 7510 Mor Türk Kahve Makinesi",
+      "fiyat": 319.0
+    },
+    {
+      "isim": "Sinbo 2992 Sinbo Elektrikli Çelik Cezve Türk Kahvesi Makinesi",
+      "fiyat": 599.9
+    },
+    {
+      "isim": "Emsan Közde Türk Kahve Makinesi Shiny Black",
+      "fiyat": 1363.21
+    },
+    {
+      "isim": "Arzum OK004 Okka Minio Türk Kahvesi Makinesi, 4 Fincan Kapasiteli, Taşma Önleyici Sistem, 480 W, Krom",
+      "fiyat": 1915.0
+    },
+    {
+      "isim": "Sinbo SCM-9041 Otomatik Zaman Ayarlı Xl 14 Fincan Filtre Kahve Makinesi Dijital Göstergeli",
+      "fiyat": 2199.0
+    },
+    {
+      "isim": "Philips Daily Collection Filtre Kahve Makinesi - Optimal lezzet için Aroma-Twister, 1.2L kapasite, damlatmayı önleyici, otomatik kapanma, bulaşık makinesinde yıkanabilir parçalar (HD7461/20)",
+      "fiyat": 2685.0
+    },
+    {
+      "isim": "Arzum OK006 OKKA Minio Duo Türk Kahvesi Makinesi, 8 Fincan Kapasite, Taşma Önleyici, 800-960W, Bakır",
+      "fiyat": 3378.2
+    },
+    {
+      "isim": "Sinbo Scm‑2994 Pro Kapsüllü & Toz Kahve Espresso Makinesi – 15 bar Basınç, Süt Haznesi, Dokunmatik",
+      "fiyat": 5579.1
+    },
+    {
+      "isim": "Mavera Ahşap Detaylı Espresso Kahve Makinesi, 20 Bar, EM-411",
+      "fiyat": 6995.0
+    },
+    {
+      "isim": "Philips 2200 Serisi Tam Otomatik Espresso Makinesi, Dokunmatik Ekran, Klasik Süt Köpürtücü, 2 İçecek, EP2220/10",
+      "fiyat": 10499.0
+    },
+    {
+      "isim": "Arzum Okka Espresso Pro Tam Otomatik Espresso Makinesi",
+      "fiyat": 11000.0
+    },
+    {
+      "isim": "Philips Serisi 3300 Tam Otomatik Espresso Makinesi LatteGo Süt Sistemi ile, 6 Kahve Çeşidi, SilentBrew Teknolojisi, AquaClean Filtre – Beyaz & Parlak Siyah (EP3343/50)",
+      "fiyat": 15427.85
+    },
+    {
+      "isim": "Philips 5500 Serisi LatteGo Tam Otomatik Espresso Makinesi 20 Sıcak ve Soğuk İçecek, Renkli Dokunmatik Ekran, Beyaz Roze Renk, QuickStart, SilentBrew Teknolojisi (EP5543/80)",
+      "fiyat": 22134.05
+    },
+    {
+      "isim": "Ninja Luxe Café Premier Espresso Makinesi ES601EU",
+      "fiyat": 24898.0
+    },
+    {
+      "isim": "Delonghi Magnifica Evo, ECAM310.60.B Next Tam Otomatik Espresso Kahve Makinesi",
+      "fiyat": 27347.21
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 46,
+    "ozellik_eslesen_urun": 44,
+    "urun_turleri": {
+      "espresso": {
+        "ad": "Espresso makinesi",
+        "genel_medyan": 10950,
+        "urun_sayisi": 24,
+        "segmentler": {
+          "dusuk": {
+            "min": 3999.0,
+            "medyan": 5799.0,
+            "max": 6995.0,
+            "urun_sayisi": 7
+          },
+          "orta": {
+            "min": 8639.04,
+            "medyan": 12065.02,
+            "max": 22788.0,
+            "urun_sayisi": 12
+          },
+          "luks": {
+            "min": 23899.0,
+            "medyan": 24898.0,
+            "max": 27347.21,
+            "urun_sayisi": 5
+          }
+        }
+      },
+      "filtre": {
+        "ad": "Filtre kahve makinesi",
+        "genel_medyan": 2499,
+        "urun_sayisi": 7,
+        "segmentler": {
+          "dusuk": {
+            "min": 425.0,
+            "medyan": 1212.0,
+            "max": 1999.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 2199.0,
+            "medyan": 2588.11,
+            "max": 2685.0,
+            "urun_sayisi": 4
+          },
+          "luks": {
+            "min": 2725.0,
+            "medyan": 2725.0,
+            "max": 2725.0,
+            "urun_sayisi": 1
+          }
+        }
+      },
+      "kapsul": {
+        "ad": "Kapsül kahve makinesi",
+        "genel_medyan": 11313,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 11313.12,
+            "medyan": 11313.12,
+            "max": 11313.12,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 11313.12,
+            "medyan": 11313.12,
+            "max": 11313.12,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 11313.12,
+            "medyan": 11313.12,
+            "max": 11313.12,
+            "urun_sayisi": 1
+          }
+        }
+      },
+      "turk-kahvesi": {
+        "ad": "Türk kahvesi makinesi",
+        "genel_medyan": 1719,
+        "urun_sayisi": 12,
+        "segmentler": {
+          "dusuk": {
+            "min": 319.0,
+            "medyan": 549.9,
+            "max": 690.98,
+            "urun_sayisi": 4
+          },
+          "orta": {
+            "min": 1363.21,
+            "medyan": 1858.98,
+            "max": 1959.02,
+            "urun_sayisi": 6
+          },
+          "luks": {
+            "min": 2760.0,
+            "medyan": 3069.1,
+            "max": 3378.2,
+            "urun_sayisi": 2
+          }
+        }
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "Kiwi J55 7510 Mor Türk Kahve Makinesi",
+        "fiyat": 319.0,
+        "nitelikler": {
+          "urun_turu": "turk-kahvesi"
+        }
+      },
+      {
+        "isim": "Sinbo 2992 Sinbo Elektrikli Çelik Cezve Türk Kahvesi Makinesi",
+        "fiyat": 599.9,
+        "nitelikler": {
+          "urun_turu": "turk-kahvesi"
+        }
+      },
+      {
+        "isim": "Homend Pottoman 1830h Bulut Kremi Türk Kahve Makinesi",
+        "fiyat": 1600.0,
+        "nitelikler": {
+          "urun_turu": "turk-kahvesi"
+        }
+      },
+      {
+        "isim": "Arzum OK004 Okka Minio Türk Kahvesi Makinesi, 4 Fincan Kapasiteli, Taşma Önleyici Sistem, 480 W, Krom",
+        "fiyat": 1915.0,
+        "nitelikler": {
+          "urun_turu": "turk-kahvesi"
+        }
+      },
+      {
+        "isim": "Sinbo SCM-9041 Otomatik Zaman Ayarlı Xl 14 Fincan Filtre Kahve Makinesi Dijital Göstergeli",
+        "fiyat": 2199.0,
+        "nitelikler": {
+          "urun_turu": "filtre"
+        }
+      },
+      {
+        "isim": "Philips Daily Collection Filtre Kahve Makinesi - Optimal lezzet için Aroma-Twister, 1.2L kapasite, damlatmayı önleyici, otomatik kapanma, bulaşık makinesinde yıkanabilir parçalar (HD7461/20)",
+        "fiyat": 2685.0,
+        "nitelikler": {
+          "urun_turu": "filtre"
+        }
+      },
+      {
+        "isim": "Arzum OK006 OKKA Minio Duo Türk Kahvesi Makinesi, 8 Fincan Kapasite, Taşma Önleyici, 800-960W, Bakır",
+        "fiyat": 3378.2,
+        "nitelikler": {
+          "urun_turu": "turk-kahvesi"
+        }
+      },
+      {
+        "isim": "Nespresso D40 Inissia Kapsüllü Kahve Makinesi, Siyah",
+        "fiyat": 5799.0,
+        "nitelikler": {
+          "urun_turu": "espresso"
+        }
+      },
+      {
+        "isim": "Mavera Ahşap Detaylı Espresso Kahve Makinesi, 20 Bar, EM-411",
+        "fiyat": 6995.0,
+        "nitelikler": {
+          "urun_turu": "espresso"
+        }
+      },
+      {
+        "isim": "Philips 2200 Serisi Tam Otomatik Espresso Makinesi, Dokunmatik Ekran, Klasik Süt Köpürtücü, 2 İçecek, EP2220/10",
+        "fiyat": 10499.0,
+        "nitelikler": {
+          "urun_turu": "espresso"
+        }
+      },
+      {
+        "isim": "Arzum Okka Espresso Pro Tam Otomatik Espresso Makinesi",
+        "fiyat": 11000.0,
+        "nitelikler": {
+          "urun_turu": "espresso"
+        }
+      },
+      {
+        "isim": "Philips Serisi 3300 Tam Otomatik Espresso Makinesi LatteGo Süt Sistemi ile, 6 Kahve Çeşidi, SilentBrew Teknolojisi, AquaClean Filtre – Beyaz & Parlak Siyah (EP3343/50)",
+        "fiyat": 15427.85,
+        "nitelikler": {
+          "urun_turu": "espresso"
+        }
+      },
+      {
+        "isim": "Philips 5500 Serisi LatteGo Tam Otomatik Espresso Makinesi 20 Sıcak ve Soğuk İçecek, Renkli Dokunmatik Ekran, Beyaz Roze Renk, QuickStart, SilentBrew Teknolojisi (EP5543/80)",
+        "fiyat": 22134.05,
+        "nitelikler": {
+          "urun_turu": "espresso"
+        }
+      },
+      {
+        "isim": "Ninja Luxe Café Premier Espresso Makinesi ES601EU",
+        "fiyat": 24898.0,
+        "nitelikler": {
+          "urun_turu": "espresso"
+        }
+      },
+      {
+        "isim": "Delonghi Magnifica Evo, ECAM310.60.B Next Tam Otomatik Espresso Kahve Makinesi",
+        "fiyat": 27347.21,
+        "nitelikler": {
+          "urun_turu": "espresso"
+        }
+      }
+    ]
+  }
+}

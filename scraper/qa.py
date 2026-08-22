@@ -277,8 +277,18 @@ def rapor_uret(site_kok: Path = SITE_KOK, bugun: date | None = None) -> dict:
                     if o.get("urun_sayisi", 0) >= 3
                 )
             else:
-                orta = su.segment_degerleri(kalem).get("orta") or su.kalem_deger(kalem, "orta")
-                beklenenler.append(su._para(orta) if orta else None)
+                # Kalem detayinin ana metrigi fiyat gecmisiyle ayni:
+                # genel_medyan. Orta segment yalniz butce referansidir ve
+                # segment_tutarsiz kalemlerde gizlenebilir.
+                beklenenler.append(
+                    su._para(kalem.get("genel_medyan"))
+                    if kalem.get("genel_medyan") else None
+                )
+                if vertikal == "arac" and sayfa["id"] == "en-ucuz-sifir-arac":
+                    en_dusuk = (
+                        ((kalem.get("segmentler") or {}).get("dusuk") or {}).get("min")
+                    )
+                    beklenenler.append(su._para(en_dusuk) if en_dusuk else None)
             if not cevap or any(b and b not in cevap_metni for b in beklenenler):
                 _kayit(hatalar, "kalem_sayfasi_cevabi", "Gorunur kalem cevabi guncel JSON'dan farkli", **baglam)
             kalem_sayfasi += 1

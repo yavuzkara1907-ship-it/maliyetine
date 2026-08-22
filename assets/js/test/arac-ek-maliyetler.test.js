@@ -8,31 +8,30 @@ test("MTV motor hacmi kademesine gore secilir (resmi tarife)", () => {
   const kucuk = aracEkMaliyetHesapla(1000000, 1200, ["mtv"]);
   const orta = aracEkMaliyetHesapla(1000000, 1500, ["mtv"]);
   const buyuk = aracEkMaliyetHesapla(1000000, 1700, ["mtv"]);
-  assert.equal(kucuk.detaylar[0].tutar, 6903);
+  assert.equal(kucuk.detaylar[0].tutar, 6902);
   assert.equal(orta.detaylar[0].tutar, 12028);
-  assert.equal(buyuk.detaylar[0].tutar, 21252);
+  assert.equal(buyuk.detaylar[0].tutar, 21251);
 });
 
 test("kademe sinirlari dogru: 1300 kucuk, 1301 orta bandda", () => {
-  assert.equal(aracEkMaliyetHesapla(1e6, 1300, ["mtv"]).detaylar[0].tutar, 6903);
+  assert.equal(aracEkMaliyetHesapla(1e6, 1300, ["mtv"]).detaylar[0].tutar, 6902);
   assert.equal(aracEkMaliyetHesapla(1e6, 1301, ["mtv"]).detaylar[0].tutar, 12028);
 });
 
 test("cok buyuk motor son kademeye duser (kademe disi kalmaz)", () => {
   const d = aracEkMaliyetHesapla(1e6, 5000, ["mtv"]).detaylar[0];
-  assert.equal(d.tutar, 33000);
+  assert.equal(d.tutar, 274415);
 });
 
-test("noter harci nispi: arac fiyatinin binde 2'si + sabit ucret", () => {
+test("ilk tescil harci arac fiyatinin binde 2'sidir", () => {
   const s = aracEkMaliyetHesapla(3000000, 1500, ["noter_tescil"]);
-  // 3.000.000 * 0.002 = 6.000 (asgari 1.000'in ustunde) + 1.920 sabit
-  assert.equal(s.detaylar[0].tutar, 7920);
+  assert.equal(s.detaylar[0].tutar, 6000);
 });
 
 test("noter harcinda ASGARI 1.000 TL tabani uygulanir", () => {
-  // 200.000 * 0.002 = 400 -> asgari 1.000'e yukselir, + 1.920
+  // 200.000 * 0.002 = 400 -> asgari 1.000'e yukselir
   const s = aracEkMaliyetHesapla(200000, 1500, ["noter_tescil"]);
-  assert.equal(s.detaylar[0].tutar, 2920);
+  assert.equal(s.detaylar[0].tutar, 1000);
 });
 
 test("kasko arac degerinin yuzdesi, asgari tabanli", () => {

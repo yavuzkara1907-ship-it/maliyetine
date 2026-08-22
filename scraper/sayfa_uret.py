@@ -186,6 +186,9 @@ ARAC_KALEMLERI = [
         "id": "en-ucuz-sifir-arac",
         "ad": "En ucuz sıfır araç (marka giriş fiyatı)",
         "birim": "sabit",
+        # Dikey özet markaların giriş fiyatı ortancasını gösterir. Detay
+        # sayfasındaki "en ucuz" cevap ise ayrıca gerçek minimumu kullanır.
+        "ana_metrik": "genel_medyan",
     },
     # 24 markanin model fiyat listeleri. TOPLAMA GIRMEZ (bilgi_amacli):
     # birbirinin alternatifi, toplamak anlamsiz sayi uretir.
@@ -325,12 +328,12 @@ VERTIKALLER = {
         "sayfa_basligi": "Düğün Maliyeti 2026 — Kalem Kalem | Maliyeti Ne?",
         "meta_aciklama": (
             "Gelinlik, damatlık, alyans, salon ve daha fazlası: gerçek fiyat "
-            "verisinden derlenmiş, ayda iki kez güncellenen düğün maliyeti endeksi."
+            "verisinden derlenmiş, ayın 5'i ve 20'sinde yeniden taranan düğün maliyeti endeksi."
         ),
         "dataset_ad": "Maliyeti Ne? Düğün Maliyeti Endeksi",
         "dataset_aciklama": (
             "Türkiye'de düğün kalemlerinin gerçek e-ticaret ve ilan verisinden "
-            "ayda iki kez derlenen fiyat endeksi."
+            "ayın 5'i ve 20'sinde yeniden taranan fiyat endeksi."
         ),
         # kisi_basi kalemleri carpan olcegi (davetli sayisi)
         "olcek_varsayilan": 150,
@@ -364,10 +367,11 @@ VERTIKALLER = {
             "Şehir dışı ulaşım, konaklama ve kişiye özel ekstra talepler.",
         ],
         "segment_aciklama": (
-            "Ekonomik segment düşük fiyat bandını, orta segment piyasadaki ortalama "
-            "bütçeyi, üst segment ise en pahalı çeyreği gösterir. Hizmetlerde "
+            "Ekonomik segment düşük fiyat bandını, orta segment fiyatların ortadaki "
+            "yarısını, üst segment ise en pahalı çeyreği gösterir. Hizmetlerde "
             "aynı mekanın tüm seçenekleri aynı kapsamı sunmayabilir; bu yüzden "
-            "toplam senaryoda yemekli salon ayrı, kokteyl salon ayrı değerlendirilir."
+            "varsayılan bütçeye yalnız yemekli salon girer; kokteyl alternatif "
+            "senaryo olarak ayrıca gösterilir ve ikisi birlikte toplanmaz."
         ),
         "kalem_sayfalari": [
             {
@@ -421,15 +425,16 @@ VERTIKALLER = {
         "soru": "2026'da sıfırdan ev kurmak kaça mal olur?",
         "sayfa_basligi": "Ev Kurma Maliyeti 2026 — Kalem Kalem | Maliyeti Ne?",
         "meta_aciklama": (
-            "Gerçek e-ticaret verisinden derlenmiş, ayda iki kez güncellenen ev kurma "
-            "maliyeti endeksi. Beyaz eşya, mobilya, mutfak, tekstil — 42 kalem, "
-            "kaynak ve tarihiyle."
+            "Gerçek e-ticaret verisinden derlenmiş, ayın 5'i ve 20'sinde yeniden "
+            "taranan ev kurma "
+            "maliyeti endeksi. Beyaz eşya, mobilya, mutfak ve tekstil; "
+            "kaynak ve son başarılı ölçüm tarihiyle."
         ),
         "dataset_ad": "Maliyeti Ne? Ev Kurma Maliyeti Endeksi",
         "dataset_aciklama": (
             "Türkiye'de sıfırdan ev kurmak için gereken beyaz eşya, mobilya, "
             "mutfak ve tekstil kalemlerinin gerçek e-ticaret verisinden derlenen "
-            "ayda iki kez derlenen fiyat endeksi."
+            "ayın 5'i ve 20'sinde yeniden taranan fiyat endeksi."
         ),
         "olcek_varsayilan": 1,
         "ornek_ifade": (
@@ -462,7 +467,7 @@ VERTIKALLER = {
         ],
         "segment_aciklama": (
             "Ekonomik segment temel işlevi karşılayan alt fiyat bandını, orta segment "
-            "ev kurma bütçesinde beklenen ortalama fiyatı, üst segment ise daha yüksek "
+            "fiyatların ortadaki yarısını, üst segment ise daha yüksek "
             "marka/kapasite bandını gösterir. Ev kurma endeksinde tüm kalemler sabit "
             "birimli ürün olduğu için davetli sayısı gibi ek çarpan kullanılmaz."
         ),
@@ -524,22 +529,23 @@ VERTIKALLER = {
         "yol": "okul",
         "kalemler": OKUL_KALEMLERI,
         "tahmini_kalemler": [],
-        "baslik": "2026 Okul Masrafı: Bir Öğrenci Ne Kadar Tutuyor?",
-        "soru": "2026'da bir öğrencinin okul masrafı ne kadar?",
-        "sayfa_basligi": "Okul Masrafı 2026 — Kalem Kalem | Maliyeti Ne?",
+        "baslik": "2026 Okul Alışverişi: Bir Öğrenci Ne Kadar Tutuyor?",
+        "soru": "2026'da bir öğrencinin okul alışverişi ne kadar?",
+        "sayfa_basligi": "Okul Alışverişi Maliyeti 2026 | Maliyeti Ne?",
         "meta_aciklama": (
-            "Çanta, kırtasiye, kitap, ayakkabı: bir öğrencinin okul masrafı "
-            "kalem kalem. Gerçek fiyat verisinden, ayda iki kez güncellenen endeks."
+            "Çanta, kırtasiye, yardımcı kitap ve ayakkabı: bir öğrencinin okul "
+            "alışverişi kalem kalem. Servis, yemek ve okul ücreti hariç."
         ),
-        "dataset_ad": "Maliyeti Ne? Okul Masrafı Endeksi",
+        "dataset_ad": "Maliyeti Ne? Okul Alışverişi Endeksi",
         "dataset_aciklama": (
             "Türkiye'de bir öğrencinin okul alışverişi kalemlerinin gerçek "
-            "e-ticaret verisinden ayda iki kez derlenen fiyat endeksi."
+            "e-ticaret kaynaklarından ayın 5'i ve 20'sinde yeniden taranan "
+            "fiyat endeksi."
         ),
         "olcek_varsayilan": 1,
-        "ornek_ifade": "bir öğrencinin okul masrafının",
-        "anasayfa_ifade": "bir öğrencinin okul masrafı",
-        "kart_alt": "bir öğrenci, yıllık",
+        "ornek_ifade": "bir öğrencinin okul alışverişinin",
+        "anasayfa_ifade": "bir öğrencinin okul alışverişi",
+        "kart_alt": "bir öğrenci, alışveriş sepeti",
         "hesaplayici_daveti": "Kendi listenizi seçip hesaplayın →",
         "dahil_olanlar": [
             "Okul çantası, beslenme çantası ve suluk.",
@@ -584,7 +590,7 @@ VERTIKALLER = {
         "sayfa_basligi": "Bebek Masrafı 2026 — Kalem Kalem | Maliyeti Ne?",
         "meta_aciklama": (
             "Bebek arabası, beşik, oto koltuğu, biberon: yeni doğan hazırlığı "
-            "kalem kalem. Gerçek fiyat verisinden, ayda iki kez ölçülen endeks."
+            "kalem kalem. Gerçek fiyat ve son başarılı ölçüm tarihiyle."
         ),
         "dataset_ad": "Maliyeti Ne? Bebek Hazırlığı Endeksi",
         "dataset_aciklama": (
@@ -636,14 +642,14 @@ VERTIKALLER = {
         "kalemler": KEDI_KALEMLERI,
         "tahmini_kalemler": [],
         "evcil_hayvan": True,
-        "baslik": "2026 Kedi Masrafı: Bir Kediye Ne Kadar Gider?",
-        "soru": "2026'da kedi bakım masrafı ne kadar?",
-        "sayfa_basligi": "Kedi Masrafı 2026 — Kalem Kalem | Maliyeti Ne?",
+        "baslik": "2026 Kedi Başlangıç Masrafı: Kurulum Ne Kadar?",
+        "soru": "2026'da kedi için başlangıç kurulumu ne kadar?",
+        "sayfa_basligi": "Kedi Başlangıç Masrafı 2026 | Maliyeti Ne?",
         "meta_aciklama": (
             "Kedi tuvaleti, taşıma çantası, mama ve kum: kurulum ile paket "
             "fiyatları ayrı ayrı, ölçülmüş verilerle."
         ),
-        "dataset_ad": "Maliyeti Ne? Kedi Bakım Masrafı Endeksi",
+        "dataset_ad": "Maliyeti Ne? Kedi Başlangıç Kurulumu Endeksi",
         "dataset_aciklama": (
             "Türkiye'de kedi bakımı kalemlerinin gerçek e-ticaret verisinden "
             "derlenen fiyat endeksi."
@@ -691,14 +697,14 @@ VERTIKALLER = {
         "kalemler": KOPEK_KALEMLERI,
         "tahmini_kalemler": [],
         "evcil_hayvan": True,
-        "baslik": "2026 Köpek Masrafı: Bir Köpeğe Ne Kadar Gider?",
-        "soru": "2026'da köpek bakım masrafı ne kadar?",
-        "sayfa_basligi": "Köpek Masrafı 2026 — Kalem Kalem | Maliyeti Ne?",
+        "baslik": "2026 Köpek Başlangıç Masrafı: Kurulum Ne Kadar?",
+        "soru": "2026'da köpek için başlangıç kurulumu ne kadar?",
+        "sayfa_basligi": "Köpek Başlangıç Masrafı 2026 | Maliyeti Ne?",
         "meta_aciklama": (
             "Tasma, yatak, mama ve çiş pedi: kurulum ile paket fiyatları ayrı "
             "ayrı, ölçülmüş verilerle."
         ),
-        "dataset_ad": "Maliyeti Ne? Köpek Bakım Masrafı Endeksi",
+        "dataset_ad": "Maliyeti Ne? Köpek Başlangıç Kurulumu Endeksi",
         "dataset_aciklama": (
             "Türkiye'de köpek bakımı kalemlerinin gerçek e-ticaret verisinden "
             "derlenen fiyat endeksi."
@@ -754,14 +760,15 @@ VERTIKALLER = {
         "dataset_ad": "Maliyeti Ne? 0 km Araç Fiyat Endeksi",
         "dataset_aciklama": (
             "Türkiye'de satılan sıfır kilometre otomobillerin marka giriş "
-            "fiyatları ve marka bazlı model fiyatlarından ayda iki kez derlenen endeks."
+            "fiyatları ve marka bazlı model fiyatları için ayın 5'i ve 20'sinde "
+            "yeniden taranan endeks."
         ),
         # Bu vertikalde kalemler TOPLANMAZ (marka kalemleri bilgi_amacli),
         # "toplam" = marka giris fiyatlarinin medyani.
         "olcek_varsayilan": 1,
-        "ornek_ifade": "bir markanın en ucuz sıfır aracının ortalama fiyatının",
-        "anasayfa_ifade": "bir markanın en ucuz sıfır aracı ortalama",
-        "kart_alt": "24 marka giriş fiyatı",
+        "ornek_ifade": "marka giriş fiyatlarının ortancasının",
+        "anasayfa_ifade": "marka giriş fiyatlarının ortancası",
+        "kart_alt": "marka giriş fiyatları",
         # 2026-07-25: Yavuz'un onerisiyle hesaplayici EKLENDI. Ilk tasarimda
         # "kalemler birbirinin alternatifi, toplama hesabi anlamsiz" diye
         # atlanmisti - dogruydu ama EKSIK dusunulmustu: asil deger arac
@@ -1463,7 +1470,11 @@ def ornek_toplam_hesapla(conf: dict, kalemler: dict, olcek: int, segment: str) -
     detaylar = []
     for tanim in conf["kalemler"]:
         veri = kalemler.get(tanim["id"])
-        deger = kalem_deger(veri, seg_anahtari)
+        deger = (
+            (veri or {}).get("genel_medyan")
+            if tanim.get("ana_metrik") == "genel_medyan"
+            else kalem_deger(veri, seg_anahtari)
+        )
         if deger is None:
             detaylar.append({**tanim, "veri_var": False, "tahmini_mi": False})
             continue
@@ -1591,7 +1602,7 @@ def _segment_tutarsiz_notu(kalem_verisi: dict | None) -> str:
         "Kaynaklardan birinin örneklemi küçük olduğu için üst segment yalnızca "
         "tek kaynaktan hesaplanıyor ve sıralama tutarsız çıkıyor (orta segment, "
         "üst segmentten pahalı görünüyor). Yanlış bir tablo göstermektense "
-        "yalnızca genel ortalamayı veriyoruz; örneklem büyüdüğünde kırılım "
+        "yalnızca genel ortancayı veriyoruz; örneklem büyüdüğünde kırılım "
         "kendiliğinden geri gelecek.\n"
         "    </div>\n"
     )
@@ -2074,7 +2085,7 @@ def _nereden_alinir_html(vertikal: str, kalem_id: str, kalem_adi: str) -> str:
     )
 
 
-def _kunye_html(conf: dict, kalem_verisi: dict | None, tarih: str) -> str:
+def _kunye_html(conf: dict, kalem_verisi: dict | None, tarih: str | None) -> str:
     """Sayfa altinda TEK SATIR kunye.
 
     Onceden burada "Kaynaklar ve yontem" diye ayri bir bolum vardi ve
@@ -2088,7 +2099,8 @@ def _kunye_html(conf: dict, kalem_verisi: dict | None, tarih: str) -> str:
     parca = []
     if urun:
         parca.append(f"{urun} üründen derlendi")
-    parca.append(tarih)
+    if tarih:
+        parca.append(tarih)
     return (
         '  <p class="kunye">' + " · ".join(parca)
         + f' · <a href="/{conf["yol"]}/metodoloji/">Yöntem</a></p>\n'
@@ -2133,7 +2145,8 @@ def _fiyat_gecmisi_html(vertikal: str, kalem_id: str, gecmis_kok: Path | None = 
         for n in seri
     )
     ozet = (
-        f'{ilk["tarih"]} tarihinden {son["tarih"]} tarihine kadar ortalama fiyat '
+        f'{ilk["tarih"]} tarihinden {son["tarih"]} tarihine kadar ölçülen ürünlerin '
+        f'ortanca fiyatı '
         f'{_para(ilk["medyan"])} → {_para(son["medyan"])}, yani '
         f'<strong>%{abs(degisim):.1f} {yon}</strong>.'
     )
@@ -2142,9 +2155,13 @@ def _fiyat_gecmisi_html(vertikal: str, kalem_id: str, gecmis_kok: Path | None = 
         "    <h2>Fiyat geçmişi</h2>\n"
         f"    <p>{ozet}</p>\n"
         '    <div class="tablo-sarmal"><table>\n'
-        "      <thead><tr><th>Ölçüm tarihi</th><th>Ortalama</th><th>Örneklem</th></tr></thead>\n"
+        "      <thead><tr><th>Ölçüm tarihi</th><th>Ortanca</th><th>Örneklem</th></tr></thead>\n"
         f"      <tbody>{satirlar}</tbody>\n"
         "    </table></div>\n"
+        '    <p class="sonuc-alt-metin">Bu seri tüm ölçülen ürünlerin '
+        "ortancasını izler. Bütçe tablosundaki <strong>orta segment</strong> "
+        "ise fiyatların ortadaki yarısından hesaplanan ayrı bir referanstır; "
+        "iki rakam eşit olmak zorunda değildir.</p>\n"
         "  </section>\n"
     )
 
@@ -2354,11 +2371,30 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
     else:
         ornek_toplam = None
         cevap_metni = (
-            "Veri toplama süreci devam ediyor — bu sayfa ayda iki kez güncellenen "
-            "gerçek fiyat verisiyle otomatik olarak dolacak. Şu an "
+            "Veri toplama süreci devam ediyor. Kaynaklar ayın 5'i ve 20'sinde "
+            "yeniden taranıyor; şu an "
             "gösterilecek doğrulanmış bir rakam yok."
         )
         cevap_disable = ' style="color:#7a4a06"'
+
+    # Arac hub'inin sorusu "en ucuz"; toplam/ortanca cevabi bu niyeti
+    # karsilamaz. En dusuk gozlemi ve marka giris ortancasini ayri yaz.
+    if vertikal == "arac":
+        arac_kalemi = kalemler.get("en-ucuz-sifir-arac") or {}
+        en_ucuz = _en_ucuz_ornek(arac_kalemi)
+        dusuk = (arac_kalemi.get("segmentler") or {}).get("dusuk") or {}
+        en_ucuz_fiyat = (en_ucuz or {}).get("fiyat") or dusuk.get("min")
+        ortanca = arac_kalemi.get("genel_medyan")
+        if en_ucuz_fiyat and ortanca:
+            marka = html.escape(str((en_ucuz or {}).get("isim") or "En düşük gözlem"))
+            arac_tarihi = arac_kalemi.get("guncelleme_tarihi") or guncelleme_tarihi
+            cevap_metni = (
+                f"Maliyeti Ne? verilerine göre {arac_tarihi} itibarıyla en ucuz "
+                f"sıfır araç <strong>{marka}: {_para(en_ucuz_fiyat)}</strong>. "
+                f"Marka giriş fiyatlarının ortancası {_para(ortanca)}; bu ikinci "
+                "değer en ucuz araç cevabı değildir."
+            )
+            cevap_disable = ""
 
     # Hesaplayicisi olmayan vertikalde (arac) o linkler gosterilmez -
     # aksi halde sitemap ve menude 404 olusur.
@@ -2373,9 +2409,9 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
     )
 
     guncelleme_etiketi = (
-        f'<span class="guncelleme-etiketi">Güncelleme: {guncelleme_tarihi}</span>'
+        f'<span class="guncelleme-etiketi">Son veri: {guncelleme_tarihi}</span>'
         if guncelleme_tarihi
-        else '<span class="guncelleme-etiketi">Henüz güncellenmedi</span>'
+        else '<span class="guncelleme-etiketi">Henüz ölçülmedi</span>'
     )
 
     sayfa_url = f"{SITE_KOK_URL}/{yol}/"
@@ -2433,7 +2469,8 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
         }],
         "measurementTechnique": (
             "Gerçek e-ticaret ve sektör platformlarından robots.txt kurallarına "
-            "uygun, ayda iki kez yapılan kazıma; kaynak başına medyan alınıp kaynaklar arası "
+            "uygun biçimde ayın 5'i ve 20'sinde yeniden tarama; her seri son başarılı "
+            "ölçüm tarihini taşır. Kaynak başına medyan alınıp kaynaklar arası "
             "medyan-of-medyan hesaplanır, persentil bazlı segmentlenir."
         ),
         "variableMeasured": [
@@ -2604,7 +2641,7 @@ def _segment_detay_tablosu_html(kalem_verisi: dict | None) -> str:
         )
     return (
         "<table>\n<thead><tr><th>Segment</th>"
-        '<th class="sayi">Ortalama</th><th class="sayi">En düşük</th>'
+        '<th class="sayi">Ortanca</th><th class="sayi">En düşük</th>'
         '<th class="sayi">En yüksek</th><th class="sayi">Ürün</th></tr></thead>\n'
         "<tbody>\n" + "\n".join(satirlar) + "\n</tbody>\n</table>"
     )
@@ -2690,19 +2727,19 @@ def _urun_ozellik_ozeti_html(kalem_verisi: dict | None) -> str:
         f'{ozet.get("toplam_urun", 0)} ürünün '
         f'{ozet.get("ozellik_eslesen_urun", 0)} tanesinde en az bir yapısal alan bulundu.'
     )
+    ekler_html = f"    <ul>{''.join(ekler)}</ul>\n" if ekler else ""
+    ornekler_html = f"    {ornek_tablo}\n" if ornek_tablo else ""
     return f'''  <section class="icerik-bolumu">
     <h2>Ürün tipine göre fiyatlar</h2>
-    <p>{kapsam} Aynı alışveriş kalemi gibi görünseler de ankastre fırın,
-      ocaklı fırın ve ankastre set aynı ürün değildir; bu nedenle aşağıdaki
-      fiyatlar tip bazında ayrı gösterilir.</p>
+    <p>{kapsam} Aynı kategori sayfasında farklı ürün tipleri bulunabildiği
+      için geniş fiyat aralığını tek bir kalite merdiveni gibi okumuyoruz;
+      aşağıdaki ortancalar ürün tipine göre ayrı hesaplanır.</p>
     <div class="tablo-sarmal"><table>
       <thead><tr><th>Ürün tipi</th><th class="sayi">Ortanca fiyat</th>
       <th class="sayi">Ürün</th><th class="sayi">Kaynak</th></tr></thead>
       <tbody>{tur_satirlari}</tbody>
     </table></div>
-    {('<ul>' + ''.join(ekler) + '</ul>') if ekler else ''}
-    {ornek_tablo}
-    <p class="sonuc-alt-metin">Yalnız ürün adında açıkça yazan marka, model,
+{ekler_html}{ornekler_html}    <p class="sonuc-alt-metin">Yalnız ürün adında açıkça yazan marka, model,
       kapasite, enerji sınıfı ve özellikler ayrıştırılır. Eksik alan tahmin edilmez;
       düşük örneklemli kırılımlar yayınlanmaz.</p>
   </section>
@@ -2830,6 +2867,16 @@ def _kalem_sayfasi_sec(conf: dict, slug: str) -> dict:
     raise ValueError(f"Bilinmeyen kalem sayfasi: {conf['yol']}/{slug}")
 
 
+def _en_ucuz_ornek(kalem_verisi: dict | None) -> dict | None:
+    """Kaynak denetim örneklerinden en düşük fiyatlı satırı döndürür."""
+    adaylar = []
+    for kaynak in (kalem_verisi or {}).get("kaynaklar", []):
+        for urun in kaynak.get("ornek_urunler") or []:
+            if urun.get("fiyat") is not None:
+                adaylar.append(urun)
+    return min(adaylar, key=lambda u: u["fiyat"]) if adaylar else None
+
+
 def kalem_sayfasi_uret(
     vertikal: str,
     slug: str,
@@ -2856,11 +2903,12 @@ def kalem_sayfasi_uret(
     # tarihini gostermeli.
     guncelleme_tarihi = (
         (veri or {}).get("guncelleme_tarihi")
-        or agregali.get("guncelleme_tarihi")
-        or bugun
+        or (agregali.get("guncelleme_tarihi") if veri else None)
     )
     degerler = segment_degerleri(veri)
-    orta = degerler["orta"] or kalem_deger(veri, "orta")
+    orta = degerler["orta"]
+    genel_ortanca = (veri or {}).get("genel_medyan")
+    ana_fiyat = genel_ortanca or orta
     karma_urun_turu = bool((veri or {}).get("karma_urun_turu"))
     kaynak_sayisi = len(bagimsiz_siteler({sayfa["id"]: veri or {}}, {sayfa["id"]}))
     urun_sayisi = (veri or {}).get("toplam_urun")
@@ -2875,7 +2923,22 @@ def kalem_sayfasi_uret(
     )
     birim = " kişi başı" if tanim["birim"] == "kisi_basi" else ""
 
-    if karma_urun_turu:
+    en_dusuk = None
+    if vertikal == "arac" and sayfa["id"] == "en-ucuz-sifir-arac" and veri:
+        en_dusuk = ((veri.get("segmentler") or {}).get("dusuk") or {}).get("min")
+    if en_dusuk:
+        en_ucuz_ornek = _en_ucuz_ornek(veri)
+        ad = (en_ucuz_ornek or {}).get("isim")
+        ad_ifadesi = f"<strong>{html.escape(ad)}</strong> için " if ad else ""
+        cevap = (
+            f"Maliyeti Ne? verilerine göre {guncelleme_tarihi} ölçümündeki "
+            f"{urun_sayisi or 0} marka içinde en düşük giriş fiyatı "
+            f"{ad_ifadesi}<strong>{_para(en_dusuk)}</strong>. "
+            f"Marka giriş fiyatlarının ortancası {_para(genel_ortanca)}"
+            + (f", orta fiyat bandı referansı {_para(orta)}." if orta else ".")
+            + " Bu rakamlar kampanyalı bayi teklifi değil, yayımlanan liste fiyatlarıdır."
+        )
+    elif karma_urun_turu:
         turler = [
             o for o in ((veri or {}).get("ozellik_ozeti", {}).get("urun_turleri") or {}).values()
             if o.get("urun_sayisi", 0) >= 3
@@ -2889,16 +2952,21 @@ def kalem_sayfasi_uret(
             f"itibarıyla {tur_ifadesi}. <strong>Tek bir set ortalaması vermiyoruz</strong>; "
             "ürün tipi seçilmeden bu kalem ev kurma toplamına dahil edilmiyor."
         )
-    elif orta:
+    elif ana_fiyat:
         cevap = (
             f"Maliyeti Ne? verilerine göre {guncelleme_tarihi} itibarıyla {tanim['ad']} "
-            f"{'ortalama fiyatı' if (veri or {}).get('segment_tutarsiz') else 'orta segment ortalama fiyatı'} {birim} <strong>{_para(orta)}</strong>. "
+            f"için ölçülen ürünlerin ortanca fiyatı{birim} <strong>{_para(ana_fiyat)}</strong>. "
             f"Bu rakam {kaynak_sayisi or (veri or {}).get('kaynak_sayisi', 0)} bağımsız kaynak"
         )
         if urun_sayisi:
             cevap += f" ve {urun_sayisi} ürün üzerinden derlendi."
         else:
             cevap += " üzerinden derlendi."
+        if orta and orta != ana_fiyat and not (veri or {}).get("segment_tutarsiz"):
+            cevap += (
+                f" Bütçe hesabında kullanılan orta segment referansı {_para(orta)}; "
+                "bu, tüm ürünlerin ortancasından ayrı bir metriktir."
+            )
     else:
         cevap = (
             f"{tanim['ad']} için doğrulanmış fiyat verisi henüz hazır değil. "
@@ -2907,14 +2975,19 @@ def kalem_sayfasi_uret(
 
     # Meta aciklama SERP'te gorunur: GERCEK RAKAM icersin, 160 karakteri
     # asmasin (Google keser).
-    if karma_urun_turu:
+    if en_dusuk:
+        meta_aciklama = (
+            f"En ucuz sıfır araba giriş fiyatı {_para(en_dusuk)} "
+            f"({guncelleme_tarihi}); {urun_sayisi} markanın liste fiyatı ve ortancasıyla."
+        )
+    elif karma_urun_turu:
         meta_aciklama = (
             f"{tanim['ad']} fiyatları ürün tipine göre ayrıldı ({guncelleme_tarihi}). "
             "Ankastre fırın, ocaklı fırın ve set medyanları; ürün ve kaynak sayısıyla."
         )
-    elif orta:
+    elif ana_fiyat:
         meta_aciklama = (
-            f"{tanim['ad']} {'ortalama fiyatı' if (veri or {}).get('segment_tutarsiz') else 'orta segment ortalama fiyatı'}{birim} {_para(orta)} "
+            f"{tanim['ad']} ölçülen ürün ortancası{birim} {_para(ana_fiyat)} "
             f"({guncelleme_tarihi}). Ekonomik, orta ve üst fiyat aralığı; "
             f"kaynak sayısı ve örneklem büyüklüğüyle."
         )
@@ -2977,14 +3050,16 @@ def kalem_sayfasi_uret(
             )},
         })
 
-    sorular.append({
-        "@type": "Question",
-        "name": "Fiyatlar ne zaman güncellendi?",
-        "acceptedAnswer": {"@type": "Answer", "text": (
-            f"Bu sayfadaki fiyatlar {guncelleme_tarihi} tarihinde ölçüldü ve "
-            "ayın 5'i ve 20'sinde yenilenir."
-        )},
-    })
+    if guncelleme_tarihi:
+        sorular.append({
+            "@type": "Question",
+            "name": "Fiyatlar ne zaman ölçüldü?",
+            "acceptedAnswer": {"@type": "Answer", "text": (
+                f"Bu kalemin son başarılı ölçümü {guncelleme_tarihi}. Kaynaklar ayın "
+                "5'i ve 20'sinde yeniden taranır; veri dönmeyen veya kalite kontrolünü "
+                "geçmeyen tarama önceki başarılı ölçümün tarihini değiştirmez."
+            )},
+        })
 
     butce_cumlesi = (
         f" — orta segmentte {conf['ad'].lower()} bütçesinin yaklaşık %{pay[1]:.0f}'i."
@@ -3042,7 +3117,7 @@ def kalem_sayfasi_uret(
     # yerde olcmedigimiz bir sey iddia edilmiyor, semada da
     # edilmemeli. AggregateOffer icin zorunlu alan da degil
     # (zorunlu olan lowPrice + priceCurrency).
-    if (not karma_urun_turu and orta and degerler.get("dusuk")
+    if (not karma_urun_turu and ana_fiyat and degerler.get("dusuk")
             and degerler.get("luks")):
         json_ld["@graph"].append({
             "@type": "Product",
@@ -3090,7 +3165,13 @@ def kalem_sayfasi_uret(
 
     og_alt = (
         tanim["ad"] + " ürün tipi fiyatları"
-        if karma_urun_turu else tanim["ad"] + " ortalama fiyatı"
+        if karma_urun_turu else tanim["ad"] + " ortanca fiyatı"
+    )
+
+    olcum_etiketi = (
+        f'<span class="guncelleme-etiketi">Son ölçüm: {guncelleme_tarihi}</span>'
+        if guncelleme_tarihi
+        else '<span class="guncelleme-etiketi">Henüz ölçülmedi</span>'
     )
 
     return f"""<!DOCTYPE html>
@@ -3124,7 +3205,7 @@ def kalem_sayfasi_uret(
 </header>
 
 <main class="kapsayici">
-{_breadcrumb_html(conf, tanim["ad"])}  <span class="guncelleme-etiketi">Güncelleme: {guncelleme_tarihi}</span>
+{_breadcrumb_html(conf, tanim["ad"])}  {olcum_etiketi}
   <h1>{sayfa["baslik"]}</h1>
 
   <div class="cevap-blok">
@@ -3659,8 +3740,8 @@ def _site_ozeti(ozetler: list[dict], veri_kok: Path | None = None) -> str:
         parcalar.append(f'<strong><a href="/hesap/">{hesap} hesaplayıcı</a></strong>')
     return (
         f"{kapsam} — " + " · ".join(parcalar)
-        + ". Fiyatlar gerçek kaynaklardan ayda iki kez ölçülür; her rakamın "
-        "yanında kaynak sayısı ve ölçüm tarihi yazar."
+        + ". Kaynaklar ayın 5'i ve 20'sinde yeniden taranır; her rakamın "
+        "yanında kaynak sayısı ve son başarılı ölçüm tarihi yazar."
     )
 
 
@@ -3684,8 +3765,8 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
     _envanter = envanter_ozeti(veri_kok or SITE_KOK / "veri", VERTIKALLER)
     og_aciklama = (
         f"{_envanter['fiyat_serisi']} fiyat serisi, {_envanter['kaynak']} "
-        "bağımsız kaynaktan ayda iki kez "
-        "ölçülüyor. Her rakamın yanında kaynak ve ölçüm tarihi var."
+        "bağımsız kaynaktan geliyor. Kaynaklar ayın 5'i ve 20'sinde yeniden "
+        "taranıyor; her rakamın yanında son başarılı ölçüm tarihi var."
     ) if _envanter["fiyat_serisi"] else "Gerçek fiyat verisinden derlenmiş maliyet endeksi."
 
     # Sohbet asistani: cevaplari VERIDEN secen, uydurma yapamayan yapi
@@ -3733,15 +3814,14 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
         cevap = (
             f"Maliyeti Ne? verilerine göre {tarih} itibarıyla "
             + "; ".join(cumleler)
-            + " tutuyor. Rakamlar gerçek e-ticaret ve sektör "
-              "platformlarından ayda iki kez derlenir; her kalemin yanında kaynak "
-              "sayısı ve derleme tarihi görünür."
+            + " tutuyor. Kaynaklar ayın 5'i ve 20'sinde yeniden taranır; "
+              "her kalemin yanında kaynak sayısı ve son başarılı ölçüm tarihi görünür."
         )
         cevap_stil = ""
     else:
         cevap = (
-            "Veri toplama süreci devam ediyor — bu sayfa ayda iki kez güncellenen "
-            "gerçek fiyat verisiyle otomatik olarak dolacak."
+            "Veri toplama süreci devam ediyor. Kaynaklar ayın 5'i ve 20'sinde "
+            "yeniden taranıyor; doğrulanan fiyatlar bu sayfaya aktarılacak."
         )
         cevap_stil = ' style="color:#7a4a06"'
         tarih = bugun
@@ -3848,7 +3928,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Maliyet Hesaplama ve 2026 Fiyat Endeksleri | Maliyeti Ne?</title>
-<meta name="description" content="Düğün ve ev kurma maliyeti: gerçek fiyat verisinden derlenmiş, ayda iki kez güncellenen endeks. Kaynak, tarih ve örneklem her rakamın yanında.">
+<meta name="description" content="Düğün, ev kurma ve günlük bütçeler: gerçek fiyat verisi, kaynak, örneklem ve son başarılı ölçüm tarihiyle.">
 <link rel="canonical" href="{SITE_KOK_URL}/">
 {STIL_ETIKETLERI}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -3874,7 +3954,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
 
 <main class="kapsayici">
 
-  <span class="guncelleme-etiketi">Güncelleme: {tarih}</span>
+  <span class="guncelleme-etiketi">Son veri: {tarih}</span>
   <h1>2026 Maliyet Endeksi</h1>
   <p class="site-ozeti">{site_ozeti}</p>
   <p class="sonuc-alt-metin">Fiyat serisi, bütçeye giren kalemle aynı şey

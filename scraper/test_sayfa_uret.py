@@ -307,8 +307,10 @@ class IcerikSeoTestleri(unittest.TestCase):
             "ev-kurma", "buzdolabi-fiyatlari", self.veri_dosyasi
         )
         self.assertIn("2026'da Buzdolabı Fiyatları Ne Kadar?", html)
-        self.assertIn("orta segment ortalama fiyatı", html)
-        self.assertIn("28.930 TL", html)
+        self.assertIn("ölçülen ürünlerin ortanca fiyatı", html)
+        self.assertIn("28.860 TL", html)
+        self.assertIn("orta segment referansı 28.930 TL", html)
+        self.assertNotIn("orta segment ortalama fiyatı", html)
         self.assertIn("/ev-kurma/hesaplayici/", html)
 
     def test_kalem_sayfasi_hedefli_yenilemede_kendi_olcum_tarihini_gosterir(self):
@@ -323,8 +325,56 @@ class IcerikSeoTestleri(unittest.TestCase):
         html = sayfa_uret.kalem_sayfasi_uret(
             "ev-kurma", "buzdolabi-fiyatlari", self.veri_dosyasi
         )
-        self.assertIn("Güncelleme: 2026-08-20", html)
-        self.assertNotIn("Güncelleme: 2026-08-22", html)
+        self.assertIn("Son ölçüm: 2026-08-20", html)
+        self.assertNotIn("Son ölçüm: 2026-08-22", html)
+
+    def test_en_ucuz_arac_sorgusu_ortanca_degil_minimumla_cevaplanir(self):
+        agregali = {
+            "vertikal": "arac",
+            "guncelleme_tarihi": "2026-08-22",
+            "kalemler": {"en-ucuz-sifir-arac": {
+                "genel_medyan": 2069000,
+                "guncelleme_tarihi": "2026-08-22",
+                "toplam_urun": 23,
+                "kaynak_sayisi": 1,
+                "kaynaklar": [{
+                    "site": "liste", "toplam_urun": 23, "genel_medyan": 2069000,
+                    "ornek_urunler": [
+                        {"isim": "Dacia", "fiyat": 1299000},
+                        {"isim": "Kia", "fiyat": 1460000},
+                    ],
+                }],
+                "segmentler": {
+                    "dusuk": {"min": 1299000, "medyan": 1517450,
+                              "max": 1595000, "urun_sayisi": 6},
+                    "orta": {"min": 1650000, "medyan": 2113850,
+                             "max": 2380000, "urun_sayisi": 11},
+                    "luks": {"min": 2500000, "medyan": 2772100,
+                             "max": 4090000, "urun_sayisi": 6},
+                },
+            }},
+        }
+        self.veri_dosyasi.write_text(
+            json.dumps(agregali, ensure_ascii=False), encoding="utf-8"
+        )
+        html = sayfa_uret.kalem_sayfasi_uret(
+            "arac", "en-ucuz-sifir-araba", self.veri_dosyasi
+        )
+        cevap = html.split('<div class="cevap-blok">', 1)[1].split("</div>", 1)[0]
+        self.assertIn("Dacia", cevap)
+        self.assertIn("1.299.000 TL", cevap)
+        self.assertIn("Marka giriş fiyatlarının ortancası 2.069.000 TL", cevap)
+
+        hub = sayfa_uret.sayfa_uret("arac", self.veri_dosyasi)
+        hub_cevap = hub.split('<div class="cevap-blok"', 1)[1].split("</div>", 1)[0]
+        self.assertIn("Dacia: 1.299.000 TL", hub_cevap)
+        self.assertIn("ortancası 2.069.000 TL", hub_cevap)
+        self.assertIn("en ucuz araç cevabı değildir", hub_cevap)
+
+    def test_okul_ve_evcil_hayvan_basliklari_kapsami_asmaz(self):
+        self.assertIn("Alışveriş", sayfa_uret.VERTIKALLER["okul"]["baslik"])
+        self.assertIn("Başlangıç", sayfa_uret.VERTIKALLER["kedi"]["baslik"])
+        self.assertIn("Başlangıç", sayfa_uret.VERTIKALLER["kopek"]["baslik"])
 
     def test_karma_firin_havuzu_tip_bazinda_gosterilir(self):
         firin = {
@@ -376,7 +426,7 @@ class IcerikSeoTestleri(unittest.TestCase):
         self.assertNotIn("Fiyat geçmişi", html)
         self.assertNotIn("Hangi mağaza kaça satıyor?", html)
         self.assertNotIn("Kaynaklar arasında neden fark var?", html)
-        self.assertIn("ayın 5'i ve 20'sinde yenilenir", html)
+        self.assertIn("ayın 5'i ve 20'sinde yeniden taranır", html)
         self.assertIn(
             'property="og:image:alt" content="Fırın / Ocak (ürün tipine göre) ürün tipi fiyatları"',
             html,
@@ -406,7 +456,7 @@ class SayfaUretTestleri(unittest.TestCase):
         html = sayfa_uret.sayfa_uret("dugun", self.veri_dosyasi)
         self.assertIn("TAMAMEN genel piyasa araştırmasına dayanıyor", html)
         self.assertNotIn("bağımsız kaynaktan derlenen", html)
-        self.assertIn("Henüz güncellenmedi", html)
+        self.assertIn("Henüz ölçülmedi", html)
 
     def test_tum_gercek_kaynaklar_0_urun_donduyse_tahmini_oldugu_belirtilir(self):
         # Regresyon: kalemler sozlugu BOS DEGIL (kaynaklar calisti,
@@ -437,7 +487,7 @@ class SayfaUretTestleri(unittest.TestCase):
         self.veri_dosyasi.write_text(json.dumps(agregali, ensure_ascii=False), encoding="utf-8")
 
         html = sayfa_uret.sayfa_uret("dugun", self.veri_dosyasi)
-        self.assertIn("Güncelleme: 2026-07-24", html)
+        self.assertIn("Son veri: 2026-07-24", html)
         gercek_kismi = 5000 + 1100 * DUGUN["olcek_varsayilan"]
         self.assertIn(sayfa_uret._para(gercek_kismi), html)
         self.assertIn("bağımsız kaynaktan derlenen", html)
@@ -605,7 +655,7 @@ class EvKurmaVertikaliTestleri(unittest.TestCase):
         self.veri_dosyasi.write_text(json.dumps(agregali, ensure_ascii=False), encoding="utf-8")
 
         html = sayfa_uret.sayfa_uret("ev-kurma", self.veri_dosyasi)
-        self.assertIn("Güncelleme: 2026-07-25", html)
+        self.assertIn("Son veri: 2026-07-25", html)
         self.assertIn(sayfa_uret._para(28930), html)
         self.assertIn("bağımsız kaynaktan derlenen", html)
         # Tahmini kalem olmadigi icin "tahmini kismi" cumlesi HIC kurulmamali.
@@ -687,7 +737,7 @@ class AnasayfaTestleri(unittest.TestCase):
         html = sayfa_uret.anasayfa_uret(self.veri_kok)
         beklenen = 5000 + 1100 * DUGUN["olcek_varsayilan"] + 28500
         self.assertIn(sayfa_uret._para(beklenen), html)
-        self.assertIn("Güncelleme: 2026-07-25", html)
+        self.assertIn("Son veri: 2026-07-25", html)
 
     def test_kalem_sayfalarina_ic_link_verir(self):
         # Yetim sayfa riskini azaltir: sitemap tek basina zayif sinyal.

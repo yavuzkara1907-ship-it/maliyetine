@@ -435,30 +435,30 @@
       "olcum_turu": "kalem_fiyati",
       "segmentler": {
         "dusuk": {
-          "min": 4880,
-          "medyan": 9000,
-          "max": 36999,
-          "urun_sayisi": 18,
+          "min": 4874,
+          "medyan": 9750,
+          "max": 35999,
+          "urun_sayisi": 22,
           "kaynak_sayisi": 3
         },
         "orta": {
-          "min": 13989,
-          "medyan": 29168,
-          "max": 48999,
-          "urun_sayisi": 27,
+          "min": 15499,
+          "medyan": 30370,
+          "max": 59999,
+          "urun_sayisi": 38,
           "kaynak_sayisi": 3
         },
         "luks": {
-          "min": 37898,
+          "min": 36000,
           "medyan": 59899,
-          "max": 74799,
-          "urun_sayisi": 12,
+          "max": 76057,
+          "urun_sayisi": 16,
           "kaynak_sayisi": 3
         }
       },
-      "genel_medyan": 28054,
-      "toplam_urun": 57,
-      "guncelleme_tarihi": "2026-08-09",
+      "genel_medyan": 29324,
+      "toplam_urun": 76,
+      "guncelleme_tarihi": "2026-08-22",
       "kaynak_sayisi": 3,
       "kaynaklar": [
         {
@@ -466,34 +466,458 @@
           "kaynak_adlari": [
             "Amazon - Buzdolabı"
           ],
-          "tarih": "2026-08-09",
-          "toplam_urun": 21,
-          "genel_medyan": 26779
+          "tarih": "2026-08-22",
+          "toplam_urun": 40,
+          "genel_medyan": 27199,
+          "ornek_urunler": [
+            {
+              "isim": "OVBZD41 41LT Mini Buzdolabı",
+              "fiyat": 4874.0
+            },
+            {
+              "isim": "Outwell ECOcool Lite Dark Blue 24 Litre 12V/230V Portatif Buz Dolabı",
+              "fiyat": 8549.05
+            },
+            {
+              "isim": "Uğur Ues 204 D2K Statik Buzdolabı",
+              "fiyat": 13989.0
+            },
+            {
+              "isim": "ICECO MCD40D 12/24Volt 40 Litre Kompresörlü Outdoor Oto Buzdolabı",
+              "fiyat": 14559.22
+            },
+            {
+              "isim": "Vestel SB9011 89 Lt Statik Buzdolabı",
+              "fiyat": 15499.0
+            },
+            {
+              "isim": "Evacool EVA55L 12/24V/220V 55 Litre Kompresörlü Oto Buzdolabı",
+              "fiyat": 16600.0
+            },
+            {
+              "isim": "Vestel NF27011 251 Lt No-Frost Buzdolabı",
+              "fiyat": 25199.0
+            },
+            {
+              "isim": "Vestel NF37011 310 Lt No-Frost Buzdolabı",
+              "fiyat": 27699.0
+            },
+            {
+              "isim": "Vestel SC47011 Buzdolabı",
+              "fiyat": 30199.0
+            },
+            {
+              "isim": "Vestel SC55011 500 Lt Statik Buzdolabı",
+              "fiyat": 35999.0
+            },
+            {
+              "isim": "Vestel RETRO SC32211 Bej 311 Lt Statik Buzdolabı",
+              "fiyat": 43599.0
+            },
+            {
+              "isim": "Vestel NFK37111 G Buzdolabı",
+              "fiyat": 44999.0
+            },
+            {
+              "isim": "Arçelik 270475 MB Alttan Donduruculu Buzdolabı",
+              "fiyat": 47939.0
+            },
+            {
+              "isim": "Vestel NFK64022 EX WIFI 588 Lt No-Frost Buzdolabı",
+              "fiyat": 71999.0
+            },
+            {
+              "isim": "Arçelik 274532 Eı No Frost Buzdolabı",
+              "fiyat": 76056.55
+            }
+          ]
         },
         {
           "site": "mediamarkt",
           "kaynak_adlari": [
             "MediaMarkt - Buzdolabi"
           ],
-          "tarih": "2026-08-09",
+          "tarih": "2026-08-22",
           "toplam_urun": 12,
-          "genel_medyan": 39499
+          "genel_medyan": 39499,
+          "ornek_urunler": [
+            {
+              "isim": "ALTUS AL 365 NE E Enerji Sınıfı 357 L Üstten Donduruculu No- Frost Buzdolabı Beyaz",
+              "fiyat": 22999.0
+            },
+            {
+              "isim": "GRUNDIG GPRNE 477L E Enerji Sınıfı NoFrost Üstten Donduruculu Buzdolabı Beyaz",
+              "fiyat": 34199.0
+            },
+            {
+              "isim": "SAMSUNG RT47CG6636WWTR E Enerji Sınıfı 465 Litre Üstten Donduruculu Buzdolabı",
+              "fiyat": 34999.0
+            },
+            {
+              "isim": "GRUNDIG GPKNE 477 E Enerji Sınıfı 477 L Duo-No Frost Alttan Donduruculu Buzdolabı Beyaz",
+              "fiyat": 35999.0
+            },
+            {
+              "isim": "BOSCH KDN55NWE0N E Enerji Sınıfı 453 L Üstten Donduruculu No-Frost Buzdolabı Beyaz",
+              "fiyat": 37499.0
+            },
+            {
+              "isim": "SAMSUNG RT47CG6636S9TR E Enerji Sınıfı 465 litre Üstten Donduruculu Buzdolabı",
+              "fiyat": 38999.0
+            },
+            {
+              "isim": "BOSCH KDN55NLE0N E Enerji Sınıfı 453 L Üstten Donduruculu No-Frost Buzdolabı Inox",
+              "fiyat": 39999.0
+            },
+            {
+              "isim": "BOSCH KGN55CWE0N 483L ALtan Donduruculu No-Frost Buzdolabı",
+              "fiyat": 47499.0
+            },
+            {
+              "isim": "BOSCH KGN55CIE0N 483L Alttan Donduruculu No-Frost Buzdolabı",
+              "fiyat": 49999.0
+            },
+            {
+              "isim": "BOSCH KDN76XIE1N 542 L No Frost Üstten Dolduruculu Buzdolabı",
+              "fiyat": 59999.0
+            },
+            {
+              "isim": "BOSCH KGN76CIE0N E Enerji Sınıfı 526 L Alttan Donduruculu NoFrost Buzdolabı Inox",
+              "fiyat": 64999.0
+            },
+            {
+              "isim": "BOSCH KGN86AID2N D Enerji Sınıfı 631 L Alttan Donduruculu No-Frost Buzdolabı Inox",
+              "fiyat": 67999.0
+            }
+          ]
         },
         {
           "site": "trendyol",
           "kaynak_adlari": [
             "Trendyol - Buzdolabi"
           ],
-          "tarih": "2026-08-09",
+          "tarih": "2026-08-22",
           "toplam_urun": 24,
-          "genel_medyan": 28054
+          "genel_medyan": 29324,
+          "ornek_urunler": [
+            {
+              "isim": "Buz Dolabı Ev Ürünleri ve Modelleri Koleksiyonu | Trendyol",
+              "fiyat": 7569.0
+            },
+            {
+              "isim": "Dijitsu Dbd150 Buzdolabı",
+              "fiyat": 9199.0
+            },
+            {
+              "isim": "KUMTEL HTMF-90EW 87 L Çift Kapılı Mini Buzdolabı - Beyaz",
+              "fiyat": 9699.0
+            },
+            {
+              "isim": "Dijitsu Dbd200 Tmf A Statik Buzdolabı",
+              "fiyat": 15989.0
+            },
+            {
+              "isim": "Uğur BUZDOLABI UES 206 D2K R65",
+              "fiyat": 18690.0
+            },
+            {
+              "isim": "Dijitsu Dbd250k Buzdolabı",
+              "fiyat": 21690.0
+            },
+            {
+              "isim": "Vestel NF27011 251 Lt No-Frost Buzdolabı",
+              "fiyat": 25199.0
+            },
+            {
+              "isim": "Vestel NF45011 402 Lt No-Frost Buzdolabı",
+              "fiyat": 29749.0
+            },
+            {
+              "isim": "Arçelik 570471 MB Üstten Donduruculu Buzdolabı",
+              "fiyat": 30990.0
+            },
+            {
+              "isim": "Grundig GPKNE 316 Buzdolabı",
+              "fiyat": 31999.0
+            },
+            {
+              "isim": "Altus AL 375 XIE Çift Kapılı No Frost Buzdolabı",
+              "fiyat": 32999.0
+            },
+            {
+              "isim": "Bosch KDN55NWE0N Çift Kapılı No Frost Beyaz Buzdolabı",
+              "fiyat": 34999.0
+            },
+            {
+              "isim": "Profilo Bd3055wecn E Enerji Sınıfı 483 Lt Nofrost Alttan Donduruculu Buzdolabı",
+              "fiyat": 37898.0
+            },
+            {
+              "isim": "Vestel NF45011 G 402 Lt No-Frost Buzdolabı",
+              "fiyat": 38999.0
+            },
+            {
+              "isim": "Hoover HHCR3818EWPL 463 Lt Gardırop Tipi No-Frost Buzdolabı",
+              "fiyat": 51899.0
+            }
+          ]
         }
       ],
+      "ozellik_ozeti": {
+        "toplam_urun": 76,
+        "ozellik_eslesen_urun": 74,
+        "kaynak_sayisi": 3,
+        "urun_turleri": {
+          "gardiroplu": {
+            "ad": "Gardırop tipi buzdolabı",
+            "genel_medyan": 63349,
+            "urun_sayisi": 2,
+            "kaynak_sayisi": 2,
+            "segmentler": {
+              "dusuk": {
+                "min": 51899.0,
+                "medyan": 63349.0,
+                "max": 74799.0,
+                "urun_sayisi": 2,
+                "kaynak_sayisi": 2
+              },
+              "orta": {
+                "min": 51899.0,
+                "medyan": 63349.0,
+                "max": 74799.0,
+                "urun_sayisi": 2,
+                "kaynak_sayisi": 2
+              },
+              "luks": {
+                "min": 51899.0,
+                "medyan": 63349.0,
+                "max": 74799.0,
+                "urun_sayisi": 2,
+                "kaynak_sayisi": 2
+              }
+            }
+          },
+          "mini": {
+            "ad": "Mini / tezgah altı buzdolabı",
+            "genel_medyan": 7726,
+            "urun_sayisi": 5,
+            "kaynak_sayisi": 2,
+            "segmentler": {
+              "dusuk": {
+                "min": 4874.0,
+                "medyan": 6221.5,
+                "max": 7569.0,
+                "urun_sayisi": 2,
+                "kaynak_sayisi": 2
+              },
+              "orta": {
+                "min": 6635.0,
+                "medyan": 8327.0,
+                "max": 10339.0,
+                "urun_sayisi": 3,
+                "kaynak_sayisi": 2
+              }
+            }
+          },
+          "standart": {
+            "ad": "Standart buzdolabı",
+            "genel_medyan": 30990,
+            "urun_sayisi": 67,
+            "kaynak_sayisi": 3,
+            "segmentler": {
+              "dusuk": {
+                "min": 6299.0,
+                "medyan": 18589.0,
+                "max": 35999.0,
+                "urun_sayisi": 19,
+                "kaynak_sayisi": 3
+              },
+              "orta": {
+                "min": 16500.0,
+                "medyan": 31195.0,
+                "max": 59999.0,
+                "urun_sayisi": 34,
+                "kaynak_sayisi": 3
+              },
+              "luks": {
+                "min": 36000.0,
+                "medyan": 58449.0,
+                "max": 76056.55,
+                "urun_sayisi": 14,
+                "kaynak_sayisi": 3
+              }
+            }
+          }
+        },
+        "ornek_urunler": [
+          {
+            "isim": "OVBZD41 41LT Mini Buzdolabı",
+            "fiyat": 4874.0,
+            "nitelikler": {
+              "urun_turu": "mini"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "Coolist CLK25B 12/24Volt/ 220Volt 25 Litre Kompresörlü Bluetooth Bağlantılı Oto Buzdolabı",
+            "fiyat": 9532.73,
+            "nitelikler": {
+              "urun_turu": "standart"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "KUMTEL HTMF-90EB 87 L Çift Kapılı Mini Buzdolabı - Siyah",
+            "fiyat": 10339.0,
+            "nitelikler": {
+              "urun_turu": "mini"
+            },
+            "site": "trendyol"
+          },
+          {
+            "isim": "Acopower V18 12/24/220Volt 18Litre Kompresörlü Outdoor Oto Buzdolabı (Akü Dahil Değildir)",
+            "fiyat": 14927.66,
+            "nitelikler": {
+              "urun_turu": "standart"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "KUMTEL Çift Kapılı Buzdolabı 204L HTMF-210",
+            "fiyat": 18589.0,
+            "nitelikler": {
+              "urun_turu": "standart"
+            },
+            "site": "trendyol"
+          },
+          {
+            "isim": "ALTUS AL 365 NE E Enerji Sınıfı 357 L Üstten Donduruculu No- Frost Buzdolabı Beyaz",
+            "fiyat": 22999.0,
+            "nitelikler": {
+              "urun_turu": "standart"
+            },
+            "site": "mediamarkt"
+          },
+          {
+            "isim": "Vestel NF27011 251 Lt No-Frost Buzdolabı",
+            "fiyat": 25199.0,
+            "nitelikler": {
+              "urun_turu": "standart"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "Vestel NF37011 310 Lt No-Frost Buzdolabı",
+            "fiyat": 27699.0,
+            "nitelikler": {
+              "urun_turu": "standart"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "Vestel NF45011 G Buzdolabı",
+            "fiyat": 30749.0,
+            "nitelikler": {
+              "urun_turu": "standart"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "Grundig GPKNE 316 Buzdolabı",
+            "fiyat": 31999.0,
+            "nitelikler": {
+              "urun_turu": "standart"
+            },
+            "site": "trendyol"
+          },
+          {
+            "isim": "Bosch KDN55NWE0N Çift Kapılı No Frost Beyaz Buzdolabı",
+            "fiyat": 34999.0,
+            "nitelikler": {
+              "urun_turu": "standart"
+            },
+            "site": "trendyol"
+          },
+          {
+            "isim": "GRUNDIG GPKNE 477 E Enerji Sınıfı 477 L Duo-No Frost Alttan Donduruculu Buzdolabı Beyaz",
+            "fiyat": 35999.0,
+            "nitelikler": {
+              "urun_turu": "standart"
+            },
+            "site": "mediamarkt"
+          },
+          {
+            "isim": "BOSCH KDN55NWE0N E Enerji Sınıfı 453 L Üstten Donduruculu No-Frost Buzdolabı Beyaz",
+            "fiyat": 37499.0,
+            "nitelikler": {
+              "urun_turu": "standart"
+            },
+            "site": "mediamarkt"
+          },
+          {
+            "isim": "SAMSUNG RT47CG6636S9TR E Enerji Sınıfı 465 litre Üstten Donduruculu Buzdolabı",
+            "fiyat": 38999.0,
+            "nitelikler": {
+              "urun_turu": "standart"
+            },
+            "site": "mediamarkt"
+          },
+          {
+            "isim": "BOSCH KDN55NLE0N E Enerji Sınıfı 453 L Üstten Donduruculu No-Frost Buzdolabı Inox",
+            "fiyat": 39999.0,
+            "nitelikler": {
+              "urun_turu": "standart"
+            },
+            "site": "mediamarkt"
+          },
+          {
+            "isim": "Vestel NFK37111 G Buzdolabı",
+            "fiyat": 44999.0,
+            "nitelikler": {
+              "urun_turu": "standart"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "Hoover HHCR3818EWPL 463 Lt Gardırop Tipi No-Frost Buzdolabı",
+            "fiyat": 51899.0,
+            "nitelikler": {
+              "urun_turu": "gardiroplu"
+            },
+            "site": "trendyol"
+          },
+          {
+            "isim": "BOSCH KDN76XIE1N 542 L No Frost Üstten Dolduruculu Buzdolabı",
+            "fiyat": 59999.0,
+            "nitelikler": {
+              "urun_turu": "standart"
+            },
+            "site": "mediamarkt"
+          },
+          {
+            "isim": "BOSCH KGN86AID2N D Enerji Sınıfı 631 L Alttan Donduruculu No-Frost Buzdolabı Inox",
+            "fiyat": 67999.0,
+            "nitelikler": {
+              "urun_turu": "standart"
+            },
+            "site": "mediamarkt"
+          },
+          {
+            "isim": "Arçelik 274532 Eı No Frost Buzdolabı",
+            "fiyat": 76056.55,
+            "nitelikler": {
+              "urun_turu": "standart"
+            },
+            "site": "amazon"
+          }
+        ]
+      },
+      "urun_turlerine_ayrilmis": true,
       "capraz_dogrulama_uyarisi": {
-        "fark_yuzdesi": 47.5,
+        "fark_yuzdesi": 45.2,
         "medyanlar": {
-          "trendyol": 28054,
-          "amazon": 26779,
+          "trendyol": 29324,
+          "amazon": 27199,
           "mediamarkt": 39499
         }
       }
@@ -688,29 +1112,29 @@
       "segmentler": {
         "dusuk": {
           "min": 933,
-          "medyan": 1799,
+          "medyan": 1637,
           "max": 16999,
           "urun_sayisi": 21,
           "kaynak_sayisi": 3
         },
         "orta": {
-          "min": 2296,
-          "medyan": 9640,
-          "max": 25999,
-          "urun_sayisi": 40,
+          "min": 2390,
+          "medyan": 7100,
+          "max": 32999,
+          "urun_sayisi": 38,
           "kaynak_sayisi": 3
         },
         "luks": {
-          "min": 8799,
-          "medyan": 16499,
+          "min": 4099,
+          "medyan": 16707,
           "max": 36999,
-          "urun_sayisi": 18,
+          "urun_sayisi": 17,
           "kaynak_sayisi": 3
         }
       },
-      "genel_medyan": 9599,
-      "toplam_urun": 79,
-      "guncelleme_tarihi": "2026-08-09",
+      "genel_medyan": 6935,
+      "toplam_urun": 76,
+      "guncelleme_tarihi": "2026-08-22",
       "kaynak_sayisi": 3,
       "kaynaklar": [
         {
@@ -718,35 +1142,491 @@
           "kaynak_adlari": [
             "Amazon - Dikey Süpürge"
           ],
-          "tarih": "2026-08-09",
-          "toplam_urun": 45,
-          "genel_medyan": 9599
+          "tarih": "2026-08-22",
+          "toplam_urun": 44,
+          "genel_medyan": 6935,
+          "ornek_urunler": [
+            {
+              "isim": "LS8807C - Vardem Dikey Elektrik Süpürgesi Pembe 3 in1 Kapalı Kutu",
+              "fiyat": 933.0
+            },
+            {
+              "isim": "Sinbo SVC 8640 Esnek Dikey Elektrikli Süpürge, 600 W, 16 kPa Emiş Gücü, 800 ml Toz Haznesi, HEPA Filtreli, 2’si 1 Arada Kablolu Süpürge",
+              "fiyat": 1499.0
+            },
+            {
+              "isim": "Sinbo SVC-8640 Dikey Elektrikli Süpürge Katlanır Borulu, El Süpürgesi, 800 ml Toz Hazneli",
+              "fiyat": 1599.9
+            },
+            {
+              "isim": "Luster Plus KH-V600 Kablolu Dikey Süpürge Güçlü Emiş Performansı Hafif ve Ergonomik Tasarım",
+              "fiyat": 1876.0
+            },
+            {
+              "isim": "Sinbo SVC-8642 Kablosuz Dikey Süpürge",
+              "fiyat": 3899.0
+            },
+            {
+              "isim": "Arnica ET11201 Süpürgeç E-Max Mavi Şarjlı Dik Süpürge",
+              "fiyat": 4499.0
+            },
+            {
+              "isim": "Hoover HFG10P 011 Şarjlı Dikey Süpürge",
+              "fiyat": 6289.0
+            },
+            {
+              "isim": "Tineco PowerHero 11 Snap Şarjlı Dikey Süpürge",
+              "fiyat": 6999.0
+            },
+            {
+              "isim": "Ultenic FS1 Cordless Vacuum Cleaner, with Automatic Emptying Station, Powerful Suction 30KPa/450W, Removable Battery up to 60 Mins, Stick Vacuum Cleaner for Hard Floor Home Carpets",
+              "fiyat": 9404.98
+            },
+            {
+              "isim": "Dreame H12 Core Islak Kuru Şarjlı Dikey Süpürge",
+              "fiyat": 9999.0
+            },
+            {
+              "isim": "Greenote GSC50 Şarjlı Dikey Süpürge, 23000Pa Güçlü Emişli Hafif Çubuk Elektrikli Süpürge 30 dakika Uzun Çalışma Süresi, Çıkarılabilir Pil, El Araba Sert Zemin Halı Evcil Hayvan Kılı için El Süpürgesi",
+              "fiyat": 10999.99
+            },
+            {
+              "isim": "Einhell Akülü Dikey Süpürge TE-SV 18 Li (1x4,0 Ah) 2347187 | PXC | 18 V | torbasız | siklon teknolojisi | BOOST modu | 3 aşamalı filtre sistemi | 4.0 Ah akü & aksesuarlar dahil",
+              "fiyat": 13500.0
+            },
+            {
+              "isim": "Samsung Jet 60 (VS15A6031R4) Dikey/Pratik Elektrikli Süpürge - Jet Siklon",
+              "fiyat": 15999.0
+            },
+            {
+              "isim": "Philips 8000 Serisi Aqua Plus Kablosuz Dik Süpürge, 25.2 V, 80 dk'ya kadar Çalışma Süresi, XC8057/01",
+              "fiyat": 17099.0
+            },
+            {
+              "isim": "Philips 9000 Serisi AquaTrio Kablosuz Dikey Süpürge (XW9463/11) ve Philips Aqua Trio Uyumlu Zemin Temizleme Solüsyonu (XV1792/01)",
+              "fiyat": 23499.0
+            }
+          ]
         },
         {
           "site": "mediamarkt",
           "kaynak_adlari": [
             "MediaMarkt - Dikey Supurge"
           ],
-          "tarih": "2026-08-09",
+          "tarih": "2026-08-22",
           "toplam_urun": 11,
-          "genel_medyan": 18999
+          "genel_medyan": 19899,
+          "ornek_urunler": [
+            {
+              "isim": "ARNICA Arnica Solara ET13494 Flex Şarjlı Dikey Süpürge",
+              "fiyat": 13299.0
+            },
+            {
+              "isim": "PHILIPS 6000 Serisi XC6456/10 Kablosuz Şarjlı Dikey Süpürge",
+              "fiyat": 14999.0
+            },
+            {
+              "isim": "PHILIPS 7000 Serisi XC7057/01 Kablosuz Dik Süpürge",
+              "fiyat": 16999.0
+            },
+            {
+              "isim": "PHILIPS Aqua Plus 8000 Serisi XC8057/01 Islak Kuru Şarjlı Dikey Süpürge",
+              "fiyat": 17099.0
+            },
+            {
+              "isim": "BOSCH BCS711XTR Unlimited 7 Şarjlı Süpürge Siyah",
+              "fiyat": 17999.0
+            },
+            {
+              "isim": "TEFAL X-Force Flex 14.80 Aqua Dikey Şarjlı Süpürge Mavi",
+              "fiyat": 19899.0
+            },
+            {
+              "isim": "DYSON Cyclone V10 Absolute Kablosuz Şarjlı Dikey Süpürge Nikel Bakır",
+              "fiyat": 25999.0
+            },
+            {
+              "isim": "DYSON V10 Konical™ Kablosuz Şarjlı Dikey Süpürge",
+              "fiyat": 25999.0
+            },
+            {
+              "isim": "DYSON V12s Detect Slim Submarine Şarjlı Dikey Süpürge",
+              "fiyat": 32999.0
+            },
+            {
+              "isim": "DYSON V12 Detect Slim Absolute Kablosuz Şarjlı Dikey Süpürge",
+              "fiyat": 34999.0
+            },
+            {
+              "isim": "DYSON V12 Detect Slim Absolute Kablosuz Şarjlı Dikey Süpürge Sarı Nikel",
+              "fiyat": 36999.0
+            }
+          ]
         },
         {
           "site": "trendyol",
           "kaynak_adlari": [
             "Trendyol - Dikey Supurge"
           ],
-          "tarih": "2026-08-09",
-          "toplam_urun": 23,
-          "genel_medyan": 3304
+          "tarih": "2026-08-22",
+          "toplam_urun": 21,
+          "genel_medyan": 3289,
+          "ornek_urunler": [
+            {
+              "isim": "Sinbo SVC-8616 500W Dikey Elektrikli Süpürge – Kırmızı, Yüksek Emiş Gücü",
+              "fiyat": 979.0
+            },
+            {
+              "isim": "Kiwi Dikey Elektrikli Süpürge Gri Kvc-4108",
+              "fiyat": 1203.0
+            },
+            {
+              "isim": "Arnica ET13213 Merlin Pro Dik Elektrikli Süpürge Mor",
+              "fiyat": 1663.16
+            },
+            {
+              "isim": "Arzum AR4087 Gırgır 2’si1 Arada 550W Dikey Elektrikli Süpürge, El Süpürgesi Özellikli, Yıkanabilir Filtre",
+              "fiyat": 1709.05
+            },
+            {
+              "isim": "Fantom Pratic-S P1200 Toz Torbasız Dikey Süpürge Pembe",
+              "fiyat": 2390.0
+            },
+            {
+              "isim": "Fantom Pratıc-S P1200 Toz Torbasız Dikey Süpürge Antrasit",
+              "fiyat": 2409.0
+            },
+            {
+              "isim": "Fantom Provac P 5000 Cyclone Dikey Süpürge Siyah",
+              "fiyat": 3095.0
+            },
+            {
+              "isim": "Fantom Pratic Aır Power P 1250 Antrasit Torbasız Dönebilen Turbo Başlıklı Dikey Süpürge",
+              "fiyat": 3289.0
+            },
+            {
+              "isim": "Fantom Pratic Aır Power P 1250 Siyah Torbasız Dönebilen Turbo Başlıklı Dikey Süpürge",
+              "fiyat": 3338.0
+            },
+            {
+              "isim": "Kiwi Kvc-4040BLF Katlanabilir Şarjlı Bldc Motor Dik Süpürge",
+              "fiyat": 3999.0
+            },
+            {
+              "isim": "Sinbo SVC-8642 Kablosuz Dikey Şarjlı Süpürge 22.2V BLDC Motor LED Işıklı Turbo Başlık 1L Toz Hazneli",
+              "fiyat": 3999.0
+            },
+            {
+              "isim": "Kiwi Kvc-4040 BLDC Kablosuz Dikey Süpürge Mor",
+              "fiyat": 4099.0
+            },
+            {
+              "isim": "ONVO Ovdss01 Şarjlı Dikey Süpürge",
+              "fiyat": 4453.0
+            },
+            {
+              "isim": "Altus AL 6885 Dsb Şarjlı Dik Süpürge",
+              "fiyat": 6141.07
+            },
+            {
+              "isim": "Philips 6000 Serisi Kablosuz Dikey Süpürge, PowerCyclone 11, XC6551/01",
+              "fiyat": 10199.0
+            }
+          ]
         }
       ],
+      "ozellik_ozeti": {
+        "toplam_urun": 76,
+        "ozellik_eslesen_urun": 57,
+        "kaynak_sayisi": 3,
+        "urun_turleri": {
+          "el-supurgesi": {
+            "ad": "El süpürgesi",
+            "genel_medyan": 1629,
+            "urun_sayisi": 3,
+            "kaynak_sayisi": 2,
+            "segmentler": {
+              "dusuk": {
+                "min": 1499.0,
+                "medyan": 1604.03,
+                "max": 1709.05,
+                "urun_sayisi": 2,
+                "kaynak_sayisi": 2
+              },
+              "orta": {
+                "min": 1599.9,
+                "medyan": 1654.47,
+                "max": 1709.05,
+                "urun_sayisi": 2,
+                "kaynak_sayisi": 2
+              },
+              "luks": {
+                "min": 1709.05,
+                "medyan": 1709.05,
+                "max": 1709.05,
+                "urun_sayisi": 1,
+                "kaynak_sayisi": 1
+              }
+            }
+          },
+          "islak-kuru": {
+            "ad": "Islak-kuru dikey süpürge",
+            "genel_medyan": 13549,
+            "urun_sayisi": 2,
+            "kaynak_sayisi": 2,
+            "segmentler": {
+              "dusuk": {
+                "min": 9999.0,
+                "medyan": 13549.0,
+                "max": 17099.0,
+                "urun_sayisi": 2,
+                "kaynak_sayisi": 2
+              },
+              "orta": {
+                "min": 9999.0,
+                "medyan": 13549.0,
+                "max": 17099.0,
+                "urun_sayisi": 2,
+                "kaynak_sayisi": 2
+              },
+              "luks": {
+                "min": 9999.0,
+                "medyan": 13549.0,
+                "max": 17099.0,
+                "urun_sayisi": 2,
+                "kaynak_sayisi": 2
+              }
+            }
+          },
+          "kablolu": {
+            "ad": "Kablolu dikey süpürge",
+            "genel_medyan": 1605,
+            "urun_sayisi": 7,
+            "kaynak_sayisi": 2,
+            "segmentler": {
+              "dusuk": {
+                "min": 1199.0,
+                "medyan": 1480.24,
+                "max": 1611.47,
+                "urun_sayisi": 3,
+                "kaynak_sayisi": 2
+              },
+              "orta": {
+                "min": 1599.0,
+                "medyan": 1605.73,
+                "max": 1876.0,
+                "urun_sayisi": 4,
+                "kaynak_sayisi": 2
+              },
+              "luks": {
+                "min": 1611.47,
+                "medyan": 2240.73,
+                "max": 2869.99,
+                "urun_sayisi": 2,
+                "kaynak_sayisi": 2
+              }
+            }
+          },
+          "sarjli": {
+            "ad": "Şarjlı dikey süpürge",
+            "genel_medyan": 9749,
+            "urun_sayisi": 45,
+            "kaynak_sayisi": 3,
+            "segmentler": {
+              "dusuk": {
+                "min": 3899.0,
+                "medyan": 4499.0,
+                "max": 16999.0,
+                "urun_sayisi": 14,
+                "kaynak_sayisi": 3
+              },
+              "orta": {
+                "min": 4099.0,
+                "medyan": 9799.0,
+                "max": 32999.0,
+                "urun_sayisi": 21,
+                "kaynak_sayisi": 3
+              },
+              "luks": {
+                "min": 6141.07,
+                "medyan": 17549.0,
+                "max": 36999.0,
+                "urun_sayisi": 10,
+                "kaynak_sayisi": 3
+              }
+            }
+          }
+        },
+        "ornek_urunler": [
+          {
+            "isim": "Yui Vc90 Torbasız Kablolu Dikey Süpürge Ve El Süpürgesi",
+            "fiyat": 1199.0,
+            "nitelikler": {
+              "urun_turu": "kablolu"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "Fakir Range Vector Kablolu Dik Süpürge Turbo Başlık 0,5 L Toz Hacmi",
+            "fiyat": 1599.99,
+            "nitelikler": {
+              "urun_turu": "kablolu"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "Arzum AR4087 Gırgır 2’si1 Arada 550W Dikey Elektrikli Süpürge, El Süpürgesi Özellikli, Yıkanabilir Filtre",
+            "fiyat": 1709.05,
+            "nitelikler": {
+              "urun_turu": "el-supurgesi"
+            },
+            "site": "trendyol"
+          },
+          {
+            "isim": "HOMEND Dustrider 1271H 160W Şarjlı Dikey Süpürge 12 kPa Emiş Gücü",
+            "fiyat": 3999.0,
+            "nitelikler": {
+              "urun_turu": "sarjli"
+            },
+            "site": "trendyol"
+          },
+          {
+            "isim": "Sinbo SVC-8642 Kablosuz Dikey Şarjlı Süpürge 22.2V BLDC Motor LED Işıklı Turbo Başlık 1L Toz Hazneli",
+            "fiyat": 3999.0,
+            "nitelikler": {
+              "urun_turu": "sarjli"
+            },
+            "site": "trendyol"
+          },
+          {
+            "isim": "Sinbo SVC-8642 Kablosuz Dikey Şarjlı Süpürge 22.2V BLDC Motor LED Işıklı Turbo Başlık 1L Toz Hazneli",
+            "fiyat": 3999.0,
+            "nitelikler": {
+              "urun_turu": "sarjli"
+            },
+            "site": "trendyol"
+          },
+          {
+            "isim": "Sinbo SVC-8634 Kablosuz Dikey Süpürge Hayvan Setli",
+            "fiyat": 4399.0,
+            "nitelikler": {
+              "urun_turu": "sarjli"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "Bldc Motorlu Dikey Kablosuz Şarjlı Led Aydınlatmalı Süpürge Svc-8620 - (UV LED'Lİ Mite Başlık)",
+            "fiyat": 4899.0,
+            "nitelikler": {
+              "urun_turu": "sarjli"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "Altus AL 6885 Dsb Şarjlı Dik Süpürge",
+            "fiyat": 6141.07,
+            "nitelikler": {
+              "urun_turu": "sarjli"
+            },
+            "site": "trendyol"
+          },
+          {
+            "isim": "Tineco PowerHero 11 Snap Şarjlı Dikey Süpürge",
+            "fiyat": 6999.0,
+            "nitelikler": {
+              "urun_turu": "sarjli"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "Dreame H12 Core Islak Kuru Şarjlı Dikey Süpürge",
+            "fiyat": 9999.0,
+            "nitelikler": {
+              "urun_turu": "islak-kuru"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "Philips 6000 Serisi Kablosuz Dikey Süpürge, PowerCyclone 11, XC6551/01",
+            "fiyat": 10199.0,
+            "nitelikler": {
+              "urun_turu": "sarjli"
+            },
+            "site": "trendyol"
+          },
+          {
+            "isim": "Philips 8000 Serisi Aqua Plus Kablosuz Dik Süpürge, 25.2 V, 80 dk'ya kadar Çalışma Süresi, PrecisionPower Başlık, Aqua Plus Başlık, XC8053/01",
+            "fiyat": 14509.0,
+            "nitelikler": {
+              "urun_turu": "sarjli"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "Philips 7000 Serisi Aqua 25.2 V Kablosuz Dik Süpürge, PowerCyclone 12, 80 dk'ya Kadar Kullanım, XC7153/10",
+            "fiyat": 16414.5,
+            "nitelikler": {
+              "urun_turu": "sarjli"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "PHILIPS Aqua Plus 8000 Serisi XC8057/01 Islak Kuru Şarjlı Dikey Süpürge",
+            "fiyat": 17099.0,
+            "nitelikler": {
+              "urun_turu": "islak-kuru"
+            },
+            "site": "mediamarkt"
+          },
+          {
+            "isim": "8000 Serisi Aqua Plus Kablosuz Dik Süpürge, 360° Güçlü Emiş, TriActive Akıllı LED Başlık, 80 dk'ya Kadar Kullanım, XC8153/10",
+            "fiyat": 17999.0,
+            "nitelikler": {
+              "urun_turu": "sarjli"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "TEFAL X-Force Flex 14.80 Aqua Dikey Şarjlı Süpürge Mavi",
+            "fiyat": 19899.0,
+            "nitelikler": {
+              "urun_turu": "sarjli"
+            },
+            "site": "mediamarkt"
+          },
+          {
+            "isim": "DYSON Cyclone V10 Absolute Kablosuz Şarjlı Dikey Süpürge Nikel Bakır",
+            "fiyat": 25999.0,
+            "nitelikler": {
+              "urun_turu": "sarjli"
+            },
+            "site": "mediamarkt"
+          },
+          {
+            "isim": "DYSON V12s Detect Slim Submarine Şarjlı Dikey Süpürge",
+            "fiyat": 32999.0,
+            "nitelikler": {
+              "urun_turu": "sarjli"
+            },
+            "site": "mediamarkt"
+          },
+          {
+            "isim": "DYSON V12 Detect Slim Absolute Kablosuz Şarjlı Dikey Süpürge Sarı Nikel",
+            "fiyat": 36999.0,
+            "nitelikler": {
+              "urun_turu": "sarjli"
+            },
+            "site": "mediamarkt"
+          }
+        ]
+      },
+      "urun_turlerine_ayrilmis": true,
       "capraz_dogrulama_uyarisi": {
-        "fark_yuzdesi": 475.0,
+        "fark_yuzdesi": 505.0,
         "medyanlar": {
-          "trendyol": 3304,
-          "amazon": 9599,
-          "mediamarkt": 18999
+          "trendyol": 3289,
+          "amazon": 6935,
+          "mediamarkt": 19899
         }
       }
     },
@@ -1381,6 +2261,7 @@
           }
         ]
       },
+      "urun_turlerine_ayrilmis": true,
       "karma_urun_turu": true,
       "capraz_dogrulama_uyarisi": {
         "fark_yuzdesi": 79.8,
@@ -1634,29 +2515,29 @@
       "segmentler": {
         "dusuk": {
           "min": 319,
-          "medyan": 1099,
-          "max": 8999,
+          "medyan": 1289,
+          "max": 12299,
           "urun_sayisi": 23,
           "kaynak_sayisi": 3
         },
         "orta": {
-          "min": 1500,
-          "medyan": 3420,
+          "min": 1747,
+          "medyan": 5799,
           "max": 29999,
-          "urun_sayisi": 43,
+          "urun_sayisi": 38,
           "kaynak_sayisi": 3
         },
         "luks": {
-          "min": 3854,
-          "medyan": 9699,
-          "max": 30999,
-          "urun_sayisi": 18,
+          "min": 5574,
+          "medyan": 22788,
+          "max": 48999,
+          "urun_sayisi": 17,
           "kaynak_sayisi": 3
         }
       },
-      "genel_medyan": 3299,
-      "toplam_urun": 84,
-      "guncelleme_tarihi": "2026-08-09",
+      "genel_medyan": 5689,
+      "toplam_urun": 78,
+      "guncelleme_tarihi": "2026-08-22",
       "kaynak_sayisi": 3,
       "kaynaklar": [
         {
@@ -1664,35 +2545,495 @@
           "kaynak_adlari": [
             "Amazon - Kahve Makinesi"
           ],
-          "tarih": "2026-08-09",
-          "toplam_urun": 51,
-          "genel_medyan": 3299
+          "tarih": "2026-08-22",
+          "toplam_urun": 46,
+          "genel_medyan": 5689,
+          "ornek_urunler": [
+            {
+              "isim": "Kiwi J55 7510 Mor Türk Kahve Makinesi",
+              "fiyat": 319.0
+            },
+            {
+              "isim": "Sinbo 2992 Sinbo Elektrikli Çelik Cezve Türk Kahvesi Makinesi",
+              "fiyat": 599.9
+            },
+            {
+              "isim": "Emsan Közde Türk Kahve Makinesi Shiny Black",
+              "fiyat": 1363.21
+            },
+            {
+              "isim": "Arzum OK004 Okka Minio Türk Kahvesi Makinesi, 4 Fincan Kapasiteli, Taşma Önleyici Sistem, 480 W, Krom",
+              "fiyat": 1915.0
+            },
+            {
+              "isim": "Sinbo SCM-9041 Otomatik Zaman Ayarlı Xl 14 Fincan Filtre Kahve Makinesi Dijital Göstergeli",
+              "fiyat": 2199.0
+            },
+            {
+              "isim": "Philips Daily Collection Filtre Kahve Makinesi - Optimal lezzet için Aroma-Twister, 1.2L kapasite, damlatmayı önleyici, otomatik kapanma, bulaşık makinesinde yıkanabilir parçalar (HD7461/20)",
+              "fiyat": 2685.0
+            },
+            {
+              "isim": "Arzum OK006 OKKA Minio Duo Türk Kahvesi Makinesi, 8 Fincan Kapasite, Taşma Önleyici, 800-960W, Bakır",
+              "fiyat": 3378.2
+            },
+            {
+              "isim": "Sinbo Scm‑2994 Pro Kapsüllü & Toz Kahve Espresso Makinesi – 15 bar Basınç, Süt Haznesi, Dokunmatik",
+              "fiyat": 5579.1
+            },
+            {
+              "isim": "Mavera Ahşap Detaylı Espresso Kahve Makinesi, 20 Bar, EM-411",
+              "fiyat": 6995.0
+            },
+            {
+              "isim": "Philips 2200 Serisi Tam Otomatik Espresso Makinesi, Dokunmatik Ekran, Klasik Süt Köpürtücü, 2 İçecek, EP2220/10",
+              "fiyat": 10499.0
+            },
+            {
+              "isim": "Arzum Okka Espresso Pro Tam Otomatik Espresso Makinesi",
+              "fiyat": 11000.0
+            },
+            {
+              "isim": "Philips Serisi 3300 Tam Otomatik Espresso Makinesi LatteGo Süt Sistemi ile, 6 Kahve Çeşidi, SilentBrew Teknolojisi, AquaClean Filtre – Beyaz & Parlak Siyah (EP3343/50)",
+              "fiyat": 15427.85
+            },
+            {
+              "isim": "Philips 5500 Serisi LatteGo Tam Otomatik Espresso Makinesi 20 Sıcak ve Soğuk İçecek, Renkli Dokunmatik Ekran, Beyaz Roze Renk, QuickStart, SilentBrew Teknolojisi (EP5543/80)",
+              "fiyat": 22134.05
+            },
+            {
+              "isim": "Ninja Luxe Café Premier Espresso Makinesi ES601EU",
+              "fiyat": 24898.0
+            },
+            {
+              "isim": "Delonghi Magnifica Evo, ECAM310.60.B Next Tam Otomatik Espresso Kahve Makinesi",
+              "fiyat": 27347.21
+            }
+          ]
         },
         {
           "site": "mediamarkt",
           "kaynak_adlari": [
             "MediaMarkt - Kahve Makinesi"
           ],
-          "tarih": "2026-08-09",
+          "tarih": "2026-08-22",
           "toplam_urun": 12,
-          "genel_medyan": 18699
+          "genel_medyan": 22049,
+          "ornek_urunler": [
+            {
+              "isim": "GRUNDIG KSM 5330 Delisia Coffee Entegre Süt Hazneli Yarı Otomatik Espresso Makinesi",
+              "fiyat": 7999.0
+            },
+            {
+              "isim": "GRUNDIG KSM 6430 Delisia Coffee Yarı Otomatik Kapsüllü Süt Hazneli Espresso Makinesi",
+              "fiyat": 7999.0
+            },
+            {
+              "isim": "GRUNDIG TCM 7061 D 1100W İkili Çelik Türk Kahve Makinesi Siyah",
+              "fiyat": 8999.0
+            },
+            {
+              "isim": "TCHIBO Esperto Mini Tam Otomatik Kahve Makinesi Gri",
+              "fiyat": 12299.0
+            },
+            {
+              "isim": "PHILIPS LatteGo EP2331/10 Tam Otomatik Espresso Makinesi",
+              "fiyat": 17399.0
+            },
+            {
+              "isim": "GRUNDIG KVA 7230 Delisia Coffee Entegre Süt Hazneli Tam Otomatik Espresso Makinesi",
+              "fiyat": 18099.0
+            },
+            {
+              "isim": "SIEMENS TE651319RW Full Otomatik Kahve Makinesi Safir Siyah Metalik",
+              "fiyat": 25999.0
+            },
+            {
+              "isim": "NINJA Luxe Café Premier Espresso Makinesi Gümüş",
+              "fiyat": 29999.0
+            },
+            {
+              "isim": "PHILIPS EP5544/80 Tam Otomatik Espresso Makinesi Bronz Siyah",
+              "fiyat": 29999.0
+            },
+            {
+              "isim": "PHILIPS EP5547/90 Tam Otomatik Espresso Makinesi Krom Siyah",
+              "fiyat": 29999.0
+            },
+            {
+              "isim": "DELONGHI Magnifica Plus ECAM320.70.TB Tam Otomatik Kahve Makinesi",
+              "fiyat": 30999.0
+            },
+            {
+              "isim": "PHILIPS 8000 Serisi LatteGo Pro Café Aromis Kahve Makinesi, Evde Kafe Kalitesi, BrewExtract, 54 farklı Sıcak ve Soğuk İçecek, EP8757/20",
+              "fiyat": 48999.0
+            }
+          ]
         },
         {
           "site": "trendyol",
           "kaynak_adlari": [
             "Trendyol - Kahve Makinesi"
           ],
-          "tarih": "2026-08-09",
-          "toplam_urun": 21,
-          "genel_medyan": 1817
+          "tarih": "2026-08-22",
+          "toplam_urun": 20,
+          "genel_medyan": 1987,
+          "ornek_urunler": [
+            {
+              "isim": "Sinbo SCM-9038 Elektrikli Türk Kahve Makinesi Paslanmaz Çelik Cezve 5 Fincan 500 ml",
+              "fiyat": 601.0
+            },
+            {
+              "isim": "Sinbo SCM-9039 Elektrikli Türk Kahve Makinesi 5 Fincan 500 ml Paslanmaz Çelik Cezve",
+              "fiyat": 609.0
+            },
+            {
+              "isim": "Arzum FL397 Felix Jet Türk Kahvesi Makinesi, 5 Fincan Kapasiteli, Taşma Önleyici Sistem, Bol Köpüklü Kahve",
+              "fiyat": 1288.76
+            },
+            {
+              "isim": "Emsan Közde Türk Kahve Makinesi Shiny Black 5 Fincan Kapasiteli",
+              "fiyat": 1598.99
+            },
+            {
+              "isim": "Karaca Hatır Közde Türk Kahvesi ve Türk Kahve Makinesi Krem 5 Fincan Kapasiteli Bol Köpüklü",
+              "fiyat": 1699.0
+            },
+            {
+              "isim": "Kiwi Kcm-7570 Siyah Otomatik Türk Kahve Makinesi Bol Köpüklü",
+              "fiyat": 1747.08
+            },
+            {
+              "isim": "Karaca Hatır Közde Türk Kahvesi ve Türk Kahve Makinesi Shiny Black 5 Fincan Kapasiteli Bol Köpüklü",
+              "fiyat": 1802.28
+            },
+            {
+              "isim": "Karaca Hatır Neo-S Sütlü Türk Kahve Makinesi Space Gray",
+              "fiyat": 1999.0
+            },
+            {
+              "isim": "Arzum OK004 Okka Minio Türk Kahvesi Makinesi Taşma Önleyici Sistem, 4 Fincan Kapasiteli, Bakır",
+              "fiyat": 2020.0
+            },
+            {
+              "isim": "Bosch Çift Hazneli Elektrikli Türk Kahve Makinesi 600 ML LCD Ekran /Bakır",
+              "fiyat": 2999.0
+            },
+            {
+              "isim": "Karaca Hatır Hüp Düet 10 Fincan Kapasiteli Bol Köpüklü Aromalı, Közde ve Türk Kahve Makinesi Uzay Gr",
+              "fiyat": 3833.0
+            },
+            {
+              "isim": "Sinbo SCM-2994 Pro Espresso Kahve Makinesi 20 Bar Basınçlı 6 İçecek Hazırlama Buharlı Süt Köpürtücülü",
+              "fiyat": 5558.45
+            },
+            {
+              "isim": "Sinbo Scm‑2995 Pro Kapsüllü & Toz Kahve Espresso Makinesi – 20 bar Basınç, Süt Haznesi, Dokunmatik",
+              "fiyat": 5574.0
+            },
+            {
+              "isim": "Grundig TCM 7061 ST Türk Kahve Makinesi",
+              "fiyat": 6849.0
+            },
+            {
+              "isim": "Arçelik Tkm 9961 B Telve Kahve Makinesi",
+              "fiyat": 9732.0
+            }
+          ]
         }
       ],
+      "ozellik_ozeti": {
+        "toplam_urun": 78,
+        "ozellik_eslesen_urun": 74,
+        "kaynak_sayisi": 3,
+        "urun_turleri": {
+          "espresso": {
+            "ad": "Espresso makinesi",
+            "genel_medyan": 10950,
+            "urun_sayisi": 37,
+            "kaynak_sayisi": 3,
+            "segmentler": {
+              "dusuk": {
+                "min": 3999.0,
+                "medyan": 5799.0,
+                "max": 12299.0,
+                "urun_sayisi": 11,
+                "kaynak_sayisi": 3
+              },
+              "orta": {
+                "min": 5574.0,
+                "medyan": 12065.02,
+                "max": 29999.0,
+                "urun_sayisi": 19,
+                "kaynak_sayisi": 3
+              },
+              "luks": {
+                "min": 23899.0,
+                "medyan": 32448.5,
+                "max": 48999.0,
+                "urun_sayisi": 7,
+                "kaynak_sayisi": 2
+              }
+            }
+          },
+          "filtre": {
+            "ad": "Filtre kahve makinesi",
+            "genel_medyan": 2499,
+            "urun_sayisi": 7,
+            "kaynak_sayisi": 1,
+            "segmentler": {
+              "dusuk": {
+                "min": 425.0,
+                "medyan": 1212.0,
+                "max": 1999.0,
+                "urun_sayisi": 2,
+                "kaynak_sayisi": 1
+              },
+              "orta": {
+                "min": 2199.0,
+                "medyan": 2588.11,
+                "max": 2685.0,
+                "urun_sayisi": 4,
+                "kaynak_sayisi": 1
+              },
+              "luks": {
+                "min": 2725.0,
+                "medyan": 2725.0,
+                "max": 2725.0,
+                "urun_sayisi": 1,
+                "kaynak_sayisi": 1
+              }
+            }
+          },
+          "kapsul": {
+            "ad": "Kapsül kahve makinesi",
+            "genel_medyan": 11313,
+            "urun_sayisi": 1,
+            "kaynak_sayisi": 1,
+            "segmentler": {
+              "dusuk": {
+                "min": 11313.12,
+                "medyan": 11313.12,
+                "max": 11313.12,
+                "urun_sayisi": 1,
+                "kaynak_sayisi": 1
+              },
+              "orta": {
+                "min": 11313.12,
+                "medyan": 11313.12,
+                "max": 11313.12,
+                "urun_sayisi": 1,
+                "kaynak_sayisi": 1
+              },
+              "luks": {
+                "min": 11313.12,
+                "medyan": 11313.12,
+                "max": 11313.12,
+                "urun_sayisi": 1,
+                "kaynak_sayisi": 1
+              }
+            }
+          },
+          "turk-kahvesi": {
+            "ad": "Türk kahvesi makinesi",
+            "genel_medyan": 1775,
+            "urun_sayisi": 29,
+            "kaynak_sayisi": 3,
+            "segmentler": {
+              "dusuk": {
+                "min": 319.0,
+                "medyan": 1199.0,
+                "max": 8999.0,
+                "urun_sayisi": 10,
+                "kaynak_sayisi": 3
+              },
+              "orta": {
+                "min": 1363.21,
+                "medyan": 1888.64,
+                "max": 8999.0,
+                "urun_sayisi": 15,
+                "kaynak_sayisi": 3
+              },
+              "luks": {
+                "min": 2760.0,
+                "medyan": 3833.0,
+                "max": 8999.0,
+                "urun_sayisi": 6,
+                "kaynak_sayisi": 3
+              }
+            }
+          }
+        },
+        "ornek_urunler": [
+          {
+            "isim": "Kiwi J55 7510 Mor Türk Kahve Makinesi",
+            "fiyat": 319.0,
+            "nitelikler": {
+              "urun_turu": "turk-kahvesi"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "Sinbo SCM-9038 Elektrikli Türk Kahve Makinesi Paslanmaz Çelik Cezve 5 Fincan 500 ml",
+            "fiyat": 601.0,
+            "nitelikler": {
+              "urun_turu": "turk-kahvesi"
+            },
+            "site": "trendyol"
+          },
+          {
+            "isim": "Arzum FL397 Felix Jet Türk Kahvesi Makinesi, 5 Fincan Kapasiteli, Taşma Önleyici Sistem, Bol Köpüklü Kahve",
+            "fiyat": 1288.76,
+            "nitelikler": {
+              "urun_turu": "turk-kahvesi"
+            },
+            "site": "trendyol"
+          },
+          {
+            "isim": "Homend Pottoman 1830h Bulut Kremi Türk Kahve Makinesi",
+            "fiyat": 1600.0,
+            "nitelikler": {
+              "urun_turu": "turk-kahvesi"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "Karaca Hatır Közde Türk Kahvesi ve Türk Kahve Makinesi Kırmızı 5 Fincan Kapasiteli Bol Köpüklü",
+            "fiyat": 1699.0,
+            "nitelikler": {
+              "urun_turu": "turk-kahvesi"
+            },
+            "site": "trendyol"
+          },
+          {
+            "isim": "Philips 5000 Serisi Türk Kahvesi Makinesi, Közde Türk Kahvesi Pişirme Fonksiyonu, HDA150/60",
+            "fiyat": 1975.0,
+            "nitelikler": {
+              "urun_turu": "turk-kahvesi"
+            },
+            "site": "trendyol"
+          },
+          {
+            "isim": "Sinbo SCM-9041 Otomatik Zaman Ayarlı Xl 14 Fincan Filtre Kahve Makinesi Dijital Göstergeli",
+            "fiyat": 2199.0,
+            "nitelikler": {
+              "urun_turu": "filtre"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "Bosch Çift Hazneli Elektrikli Türk Kahve Makinesi 600 ML LCD Ekran /Bakır",
+            "fiyat": 2999.0,
+            "nitelikler": {
+              "urun_turu": "turk-kahvesi"
+            },
+            "site": "trendyol"
+          },
+          {
+            "isim": "Arzum OK006 OKKA Minio Duo Türk Kahvesi Makinesi, 8 Fincan Kapasite, Taşma Önleyici, 800-960W, Bakır",
+            "fiyat": 3378.2,
+            "nitelikler": {
+              "urun_turu": "turk-kahvesi"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "Sinbo SCM-2994 Pro Espresso Kahve Makinesi 20 Bar Basınçlı 6 İçecek Hazırlama Buharlı Süt Köpürtücülü",
+            "fiyat": 5558.45,
+            "nitelikler": {
+              "urun_turu": "espresso"
+            },
+            "site": "trendyol"
+          },
+          {
+            "isim": "Karaca Hatır Plus Barista 6 In 1 Latte Cappucino ve Közde Türk Kahvesi Makinesi Black Silver",
+            "fiyat": 6432.45,
+            "nitelikler": {
+              "urun_turu": "espresso"
+            },
+            "site": "trendyol"
+          },
+          {
+            "isim": "Mavera Ahşap Detaylı Espresso Kahve Makinesi, 20 Bar, EM-411",
+            "fiyat": 6995.0,
+            "nitelikler": {
+              "urun_turu": "espresso"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "GRUNDIG KSM 6430 Delisia Coffee Yarı Otomatik Kapsüllü Süt Hazneli Espresso Makinesi",
+            "fiyat": 7999.0,
+            "nitelikler": {
+              "urun_turu": "espresso"
+            },
+            "site": "mediamarkt"
+          },
+          {
+            "isim": "Philips 2200 Serisi Tam Otomatik Espresso Makinesi, Dokunmatik Ekran, Klasik Süt Köpürtücü, 2 İçecek, EP2220/10",
+            "fiyat": 10499.0,
+            "nitelikler": {
+              "urun_turu": "espresso"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "TCHIBO Esperto Mini Tam Otomatik Kahve Makinesi Gri",
+            "fiyat": 12299.0,
+            "nitelikler": {
+              "urun_turu": "espresso"
+            },
+            "site": "mediamarkt"
+          },
+          {
+            "isim": "GRUNDIG KVA 7230 Delisia Coffee Entegre Süt Hazneli Tam Otomatik Espresso Makinesi",
+            "fiyat": 18099.0,
+            "nitelikler": {
+              "urun_turu": "espresso"
+            },
+            "site": "mediamarkt"
+          },
+          {
+            "isim": "Ninja Luxe Café Premier Espresso Makinesi ES601EU",
+            "fiyat": 24898.0,
+            "nitelikler": {
+              "urun_turu": "espresso"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "NINJA Luxe Café Premier Espresso Makinesi Gümüş",
+            "fiyat": 29999.0,
+            "nitelikler": {
+              "urun_turu": "espresso"
+            },
+            "site": "mediamarkt"
+          },
+          {
+            "isim": "PHILIPS EP5547/90 Tam Otomatik Espresso Makinesi Krom Siyah",
+            "fiyat": 29999.0,
+            "nitelikler": {
+              "urun_turu": "espresso"
+            },
+            "site": "mediamarkt"
+          },
+          {
+            "isim": "PHILIPS 8000 Serisi LatteGo Pro Café Aromis Kahve Makinesi, Evde Kafe Kalitesi, BrewExtract, 54 farklı Sıcak ve Soğuk İçecek, EP8757/20",
+            "fiyat": 48999.0,
+            "nitelikler": {
+              "urun_turu": "espresso"
+            },
+            "site": "mediamarkt"
+          }
+        ]
+      },
+      "urun_turlerine_ayrilmis": true,
       "capraz_dogrulama_uyarisi": {
-        "fark_yuzdesi": 929.1,
+        "fark_yuzdesi": 1009.7,
         "medyanlar": {
-          "trendyol": 1817,
-          "amazon": 3299,
-          "mediamarkt": 18699
+          "trendyol": 1987,
+          "amazon": 5689,
+          "mediamarkt": 22049
         }
       }
     },

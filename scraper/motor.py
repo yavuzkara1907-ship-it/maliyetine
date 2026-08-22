@@ -50,7 +50,7 @@ from bs4 import BeautifulSoup
 from protego import Protego
 
 from olcum_sozlesmesi import olcum_turu
-from urun_normalizasyonu import birim_fiyat_ozeti, firin_ozellik_ozeti
+from urun_normalizasyonu import birim_fiyat_ozeti, urun_ozellik_ozeti
 
 BASE_DIR = Path(__file__).parent
 VARSAYILAN_KAYNAKLAR = BASE_DIR / "kaynaklar.yaml"
@@ -874,12 +874,18 @@ def grup_isle(vertikal: str, kalem: str, site: str, grup: dict, gecmis: dict, ci
         "kullanilan_katmanlar": sorted(grup["katmanlar"]),
         "genel_medyan": genel_medyan,
         "segmentler": segmentle(temiz),
-        "ornek_urunler": denetim_ornegi(temiz),
+        # Marka giris fiyatlari rehberinde eksiksiz siralama yapabilmek icin
+        # bu kucuk tabloyu tum satirlariyla sakla. Diger kalemlerde daginik
+        # 15 satirlik denetim ornegi depo boyutunu sinirlamaya devam eder.
+        "ornek_urunler": denetim_ornegi(
+            temiz,
+            sinir=len(temiz) if kalem == "en-ucuz-sifir-arac" else 15,
+        ),
         **({"birim_fiyatlari": birim_ozeti} if (
             birim_ozeti := birim_fiyat_ozeti(kalem, temiz)
         ) else {}),
         **({"ozellik_ozeti": ozellik_ozeti} if (
-            ozellik_ozeti := firin_ozellik_ozeti(kalem, temiz)
+            ozellik_ozeti := urun_ozellik_ozeti(kalem, temiz)
         ) else {}),
     }
 

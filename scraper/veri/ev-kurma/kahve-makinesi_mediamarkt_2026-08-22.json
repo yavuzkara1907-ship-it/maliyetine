@@ -1,0 +1,223 @@
+{
+  "site": "mediamarkt",
+  "kaynak_adlari": [
+    "MediaMarkt - Kahve Makinesi"
+  ],
+  "kalem": "kahve-makinesi",
+  "vertikal": "ev-kurma",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-08-22",
+  "ham_urun_sayisi": 12,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 12,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 22049,
+  "segmentler": {
+    "dusuk": {
+      "min": 7999,
+      "medyan": 8499,
+      "max": 12299,
+      "urun_sayisi": 4
+    },
+    "orta": {
+      "min": 17399,
+      "medyan": 27999,
+      "max": 29999,
+      "urun_sayisi": 6
+    },
+    "luks": {
+      "min": 30999,
+      "medyan": 39999,
+      "max": 48999,
+      "urun_sayisi": 2
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "GRUNDIG KSM 5330 Delisia Coffee Entegre Süt Hazneli Yarı Otomatik Espresso Makinesi",
+      "fiyat": 7999.0
+    },
+    {
+      "isim": "GRUNDIG KSM 6430 Delisia Coffee Yarı Otomatik Kapsüllü Süt Hazneli Espresso Makinesi",
+      "fiyat": 7999.0
+    },
+    {
+      "isim": "GRUNDIG TCM 7061 D 1100W İkili Çelik Türk Kahve Makinesi Siyah",
+      "fiyat": 8999.0
+    },
+    {
+      "isim": "TCHIBO Esperto Mini Tam Otomatik Kahve Makinesi Gri",
+      "fiyat": 12299.0
+    },
+    {
+      "isim": "PHILIPS LatteGo EP2331/10 Tam Otomatik Espresso Makinesi",
+      "fiyat": 17399.0
+    },
+    {
+      "isim": "GRUNDIG KVA 7230 Delisia Coffee Entegre Süt Hazneli Tam Otomatik Espresso Makinesi",
+      "fiyat": 18099.0
+    },
+    {
+      "isim": "SIEMENS TE651319RW Full Otomatik Kahve Makinesi Safir Siyah Metalik",
+      "fiyat": 25999.0
+    },
+    {
+      "isim": "NINJA Luxe Café Premier Espresso Makinesi Gümüş",
+      "fiyat": 29999.0
+    },
+    {
+      "isim": "PHILIPS EP5544/80 Tam Otomatik Espresso Makinesi Bronz Siyah",
+      "fiyat": 29999.0
+    },
+    {
+      "isim": "PHILIPS EP5547/90 Tam Otomatik Espresso Makinesi Krom Siyah",
+      "fiyat": 29999.0
+    },
+    {
+      "isim": "DELONGHI Magnifica Plus ECAM320.70.TB Tam Otomatik Kahve Makinesi",
+      "fiyat": 30999.0
+    },
+    {
+      "isim": "PHILIPS 8000 Serisi LatteGo Pro Café Aromis Kahve Makinesi, Evde Kafe Kalitesi, BrewExtract, 54 farklı Sıcak ve Soğuk İçecek, EP8757/20",
+      "fiyat": 48999.0
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 12,
+    "ozellik_eslesen_urun": 11,
+    "urun_turleri": {
+      "espresso": {
+        "ad": "Espresso makinesi",
+        "genel_medyan": 24049,
+        "urun_sayisi": 10,
+        "segmentler": {
+          "dusuk": {
+            "min": 7999.0,
+            "medyan": 7999.0,
+            "max": 12299.0,
+            "urun_sayisi": 3
+          },
+          "orta": {
+            "min": 17399.0,
+            "medyan": 29999.0,
+            "max": 29999.0,
+            "urun_sayisi": 5
+          },
+          "luks": {
+            "min": 30999.0,
+            "medyan": 39999.0,
+            "max": 48999.0,
+            "urun_sayisi": 2
+          }
+        }
+      },
+      "turk-kahvesi": {
+        "ad": "Türk kahvesi makinesi",
+        "genel_medyan": 8999,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 8999.0,
+            "medyan": 8999.0,
+            "max": 8999.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 8999.0,
+            "medyan": 8999.0,
+            "max": 8999.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 8999.0,
+            "medyan": 8999.0,
+            "max": 8999.0,
+            "urun_sayisi": 1
+          }
+        }
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "GRUNDIG KSM 5330 Delisia Coffee Entegre Süt Hazneli Yarı Otomatik Espresso Makinesi",
+        "fiyat": 7999.0,
+        "nitelikler": {
+          "urun_turu": "espresso"
+        }
+      },
+      {
+        "isim": "GRUNDIG KSM 6430 Delisia Coffee Yarı Otomatik Kapsüllü Süt Hazneli Espresso Makinesi",
+        "fiyat": 7999.0,
+        "nitelikler": {
+          "urun_turu": "espresso"
+        }
+      },
+      {
+        "isim": "GRUNDIG TCM 7061 D 1100W İkili Çelik Türk Kahve Makinesi Siyah",
+        "fiyat": 8999.0,
+        "nitelikler": {
+          "urun_turu": "turk-kahvesi"
+        }
+      },
+      {
+        "isim": "TCHIBO Esperto Mini Tam Otomatik Kahve Makinesi Gri",
+        "fiyat": 12299.0,
+        "nitelikler": {
+          "urun_turu": "espresso"
+        }
+      },
+      {
+        "isim": "PHILIPS LatteGo EP2331/10 Tam Otomatik Espresso Makinesi",
+        "fiyat": 17399.0,
+        "nitelikler": {
+          "urun_turu": "espresso"
+        }
+      },
+      {
+        "isim": "GRUNDIG KVA 7230 Delisia Coffee Entegre Süt Hazneli Tam Otomatik Espresso Makinesi",
+        "fiyat": 18099.0,
+        "nitelikler": {
+          "urun_turu": "espresso"
+        }
+      },
+      {
+        "isim": "NINJA Luxe Café Premier Espresso Makinesi Gümüş",
+        "fiyat": 29999.0,
+        "nitelikler": {
+          "urun_turu": "espresso"
+        }
+      },
+      {
+        "isim": "PHILIPS EP5544/80 Tam Otomatik Espresso Makinesi Bronz Siyah",
+        "fiyat": 29999.0,
+        "nitelikler": {
+          "urun_turu": "espresso"
+        }
+      },
+      {
+        "isim": "PHILIPS EP5547/90 Tam Otomatik Espresso Makinesi Krom Siyah",
+        "fiyat": 29999.0,
+        "nitelikler": {
+          "urun_turu": "espresso"
+        }
+      },
+      {
+        "isim": "DELONGHI Magnifica Plus ECAM320.70.TB Tam Otomatik Kahve Makinesi",
+        "fiyat": 30999.0,
+        "nitelikler": {
+          "urun_turu": "espresso"
+        }
+      },
+      {
+        "isim": "PHILIPS 8000 Serisi LatteGo Pro Café Aromis Kahve Makinesi, Evde Kafe Kalitesi, BrewExtract, 54 farklı Sıcak ve Soğuk İçecek, EP8757/20",
+        "fiyat": 48999.0,
+        "nitelikler": {
+          "urun_turu": "espresso"
+        }
+      }
+    ]
+  }
+}

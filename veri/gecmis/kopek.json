@@ -1,6 +1,11 @@
 {
  "vertikal": "kopek",
  "uretim_tarihi": "2026-08-22",
+ "metrik": {
+  "alan": "genel_medyan",
+  "ad": "Ölçülen ürünlerin ortanca fiyatı",
+  "yontem": "Kaynak ortancalarının ortancası"
+ },
  "olcumler": [
   "2026-07-28",
   "2026-08-05",

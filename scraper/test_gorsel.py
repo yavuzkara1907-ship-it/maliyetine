@@ -34,7 +34,8 @@ GENISLIKLER = [320, 360, 390, 414, 480, 560, 600, 700, 768, 834, 900, 1024, 1280
 
 SAYFALAR = ["/", "/ev-kurma/", "/hesap/", "/hesap/butcem-yeter-mi/",
             "/hesap/kidem-tazminati-hesaplama/",
-            "/rehber/", "/dugun/hesaplayici/", "/veri/", "/sss/",
+            "/rehber/", "/dugun/hesaplayici/", "/arac/hesaplayici/",
+            "/veri/", "/sss/",
             "/ev-kurma/buzdolabi-fiyatlari/"]
 
 

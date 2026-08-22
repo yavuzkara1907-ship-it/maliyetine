@@ -607,29 +607,29 @@
       "segmentler": {
         "dusuk": {
           "min": 300,
-          "medyan": 372,
+          "medyan": 422,
           "max": 580,
-          "urun_sayisi": 8,
+          "urun_sayisi": 10,
           "kaynak_sayisi": 1
         },
         "orta": {
-          "min": 599,
-          "medyan": 1349,
-          "max": 2699,
-          "urun_sayisi": 15,
+          "min": 730,
+          "medyan": 1484,
+          "max": 5199,
+          "urun_sayisi": 18,
           "kaynak_sayisi": 1
         },
         "luks": {
-          "min": 3389,
-          "medyan": 9999,
-          "max": 11889,
-          "urun_sayisi": 7,
+          "min": 9999,
+          "medyan": 12217,
+          "max": 23799,
+          "urun_sayisi": 9,
           "kaynak_sayisi": 1
         }
       },
-      "genel_medyan": 1124,
-      "toplam_urun": 30,
-      "guncelleme_tarihi": "2026-08-20",
+      "genel_medyan": 1349,
+      "toplam_urun": 37,
+      "guncelleme_tarihi": "2026-08-22",
       "kaynak_sayisi": 1,
       "kaynaklar": [
         {
@@ -637,11 +637,283 @@
           "kaynak_adlari": [
             "Amazon - Kedi Tuvaleti"
           ],
-          "tarih": "2026-08-20",
-          "toplam_urun": 30,
-          "genel_medyan": 1124
+          "tarih": "2026-08-22",
+          "toplam_urun": 37,
+          "genel_medyan": 1349,
+          "ornek_urunler": [
+            {
+              "isim": "Tanos Yarı Açık Kedi Tuvaleti 54x40x32 - Bej",
+              "fiyat": 300.0
+            },
+            {
+              "isim": "Tanos Yarı Açık Kedi Tuvaleti 54x40x32 - Mavi",
+              "fiyat": 300.0
+            },
+            {
+              "isim": "Açık Kedi Tuvaleti, 50x37x17 cm, Yüksek Kenarlı Kedi Tuvalet Kabı, Kum Küreği Hediyeli",
+              "fiyat": 439.9
+            },
+            {
+              "isim": "Comfort Açık Kedi Tuvaleti, 52x37x23 cm, Yüksek Kenarlı Kedi Tuvalet Kabı, Kum Küreği Hediyeli",
+              "fiyat": 579.9
+            },
+            {
+              "isim": "Lüks Kapalı Kedi Tuvaleti, 52x37,5x39 cm, Kedi Tuvalet Kabı",
+              "fiyat": 729.9
+            },
+            {
+              "isim": "Flex Elekli Kedi Tuvaleti, 50x37,5x40 cm, XL boy, Kum küreği hediyeli",
+              "fiyat": 839.9
+            },
+            {
+              "isim": "Flex Elekli Kedi Tuvaleti, 50x37,5x40 cm, XL boy, Kum küreği hediyeli",
+              "fiyat": 879.9
+            },
+            {
+              "isim": "XXL Çift Filtreli Çekmeceli Katlanabilir Kedi Tuvaleti",
+              "fiyat": 1349.0
+            },
+            {
+              "isim": "Flex Jumbo Boy Kedi Tuvaleti, 46x66x52 cm, Filtreli ve Kum Küreği Hediyeli - VN11102",
+              "fiyat": 1949.9
+            },
+            {
+              "isim": "XXL Kapalı kedi tuvaleti + Simit Yatak + Tırmalama + Paspas Kedi başlangıç seti -XXLKT1",
+              "fiyat": 2049.9
+            },
+            {
+              "isim": "Catit Kapalı Kedi Tuvalet Kabini (57x46x43)",
+              "fiyat": 3489.0
+            },
+            {
+              "isim": "Haustier CLB01 Yeni Nesil Akıllı Otomatik Kedi Tuvaleti, Ağırlık Sensörlü, Uygulama Üzerinden Uzaktan Kontrol, 78Lt İç Hazne, 9lt Çöp Haznesi",
+              "fiyat": 9999.0
+            },
+            {
+              "isim": "Haustier BLW02 Akıllı Kedi Tuvaleti - APP Kontrollü, Kızılötesi Sensörlü ve 6.5L Geniş Hazne Açık Tasarım",
+              "fiyat": 11889.0
+            },
+            {
+              "isim": "Haustier CB001 Gri Akıllı Otomatik Kedi Tuvaleti, APP ile Uzaktan Kontrol, 75lt Hazne, 7lt çöp haznesi, Ağırlık sensörlü",
+              "fiyat": 12990.0
+            },
+            {
+              "isim": "UBPet C10 Pro Kameralı Akıllı Kedi Tuvaleti – Entegre HD Kameralı, Otomatik Temizleme, Mobil Uygulama Kontrolü, Akıllı Sensörler, Sessiz Çalışma, Geniş İç Hacim, Koku Hediyeli",
+              "fiyat": 23799.0
+            }
+          ]
         }
       ],
+      "ozellik_ozeti": {
+        "toplam_urun": 37,
+        "ozellik_eslesen_urun": 33,
+        "kaynak_sayisi": 1,
+        "urun_turleri": {
+          "acik-tuvalet": {
+            "ad": "Açık kedi tuvaleti / kum kabı",
+            "genel_medyan": 370,
+            "urun_sayisi": 8,
+            "kaynak_sayisi": 1,
+            "segmentler": {
+              "dusuk": {
+                "min": 300.0,
+                "medyan": 300.0,
+                "max": 300.0,
+                "urun_sayisi": 4,
+                "kaynak_sayisi": 1
+              },
+              "orta": {
+                "min": 439.9,
+                "medyan": 512.4,
+                "max": 579.9,
+                "urun_sayisi": 4,
+                "kaynak_sayisi": 1
+              }
+            }
+          },
+          "kapali-tuvalet": {
+            "ad": "Kapalı kedi tuvaleti",
+            "genel_medyan": 1484,
+            "urun_sayisi": 14,
+            "kaynak_sayisi": 1,
+            "segmentler": {
+              "dusuk": {
+                "min": 729.9,
+                "medyan": 812.45,
+                "max": 869.9,
+                "urun_sayisi": 4,
+                "kaynak_sayisi": 1
+              },
+              "orta": {
+                "min": 899.0,
+                "medyan": 1619.0,
+                "max": 1949.9,
+                "urun_sayisi": 7,
+                "kaynak_sayisi": 1
+              },
+              "luks": {
+                "min": 2049.9,
+                "medyan": 2699.0,
+                "max": 3489.0,
+                "urun_sayisi": 3,
+                "kaynak_sayisi": 1
+              }
+            }
+          },
+          "otomatik-tuvalet": {
+            "ad": "Otomatik kedi tuvaleti",
+            "genel_medyan": 11889,
+            "urun_sayisi": 11,
+            "kaynak_sayisi": 1,
+            "segmentler": {
+              "dusuk": {
+                "min": 3450.0,
+                "medyan": 9999.0,
+                "max": 9999.0,
+                "urun_sayisi": 5,
+                "kaynak_sayisi": 1
+              },
+              "orta": {
+                "min": 11889.0,
+                "medyan": 12603.58,
+                "max": 13990.0,
+                "urun_sayisi": 4,
+                "kaynak_sayisi": 1
+              },
+              "luks": {
+                "min": 15999.0,
+                "medyan": 19899.0,
+                "max": 23799.0,
+                "urun_sayisi": 2,
+                "kaynak_sayisi": 1
+              }
+            }
+          }
+        },
+        "ornek_urunler": [
+          {
+            "isim": "Tanos Yarı Açık Kedi Tuvaleti 54x40x32 - Bej",
+            "fiyat": 300.0,
+            "nitelikler": {
+              "urun_turu": "acik-tuvalet"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "Tanos Yarı Açık Kedi Tuvaleti 54x40x32 - Gri",
+            "fiyat": 300.0,
+            "nitelikler": {
+              "urun_turu": "acik-tuvalet"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "Açık Kedi Tuvaleti, 50x37x17 cm, Yüksek Kenarlı Kedi Tuvalet Kabı, Kum Küreği Hediyeli",
+            "fiyat": 444.9,
+            "nitelikler": {
+              "urun_turu": "acik-tuvalet"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "Comfort Açık Kedi Tuvaleti, 52x37x23 cm, Yüksek Kenarlı Kedi Tuvalet Kabı, Kum Küreği Hediyeli",
+            "fiyat": 579.9,
+            "nitelikler": {
+              "urun_turu": "acik-tuvalet"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "Handor Kapalı Kedi Tuvaleti XXL 57x39x43 - Gri",
+            "fiyat": 795.0,
+            "nitelikler": {
+              "urun_turu": "kapali-tuvalet"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "Lüks Kapalı Kedi Tuvaleti, 52x37,5x39 cm, Kedi Tuvalet Kabı",
+            "fiyat": 869.9,
+            "nitelikler": {
+              "urun_turu": "kapali-tuvalet"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "XXL Çift Filtreli Çekmeceli Katlanabilir Kedi Tuvaleti",
+            "fiyat": 1349.0,
+            "nitelikler": {
+              "urun_turu": "kapali-tuvalet"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "Ferplast İç ve Dış Mekan Kullanımına Uygun Ekonomik Kapalı Kedi Tuvaleti",
+            "fiyat": 1720.0,
+            "nitelikler": {
+              "urun_turu": "kapali-tuvalet"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "Flex Jumbo Boy Kedi Tuvaleti, 46x66x52 cm, Filtreli ve Kum Küreği Hediyeli - VN11102",
+            "fiyat": 1949.9,
+            "nitelikler": {
+              "urun_turu": "kapali-tuvalet"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "SPORT PET Le you yarı otomatik hızlı temizlik kedi kumu kutusu, Lüks kedi tuvaleti (beyaz/süt kahverengisi)",
+            "fiyat": 3450.0,
+            "nitelikler": {
+              "urun_turu": "otomatik-tuvalet"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "Catit Smart Sift Otomatik Kedi Tuvalet Kabı, Gri/Beyaz, 66 x 48 x 63 cm",
+            "fiyat": 5199.0,
+            "nitelikler": {
+              "urun_turu": "otomatik-tuvalet"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "Haustier MSP08 Akıllı Otomatik Kedi Tuvaleti, Uzaktan Kontrol, 65lt Hazne, 9lt Çöp haznesi-İyonizer Kötü Koku Giderici, Ağırlık sensörlü",
+            "fiyat": 9999.0,
+            "nitelikler": {
+              "urun_turu": "otomatik-tuvalet"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "Haustier BLW02 Akıllı Kedi Tuvaleti - APP Kontrollü, Kızılötesi Sensörlü ve 6.5L Geniş Hazne Açık Tasarım",
+            "fiyat": 11889.0,
+            "nitelikler": {
+              "urun_turu": "otomatik-tuvalet"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "Haustier MSP05 Akıllı Otomatik Kedi Tuvaleti, APP ile Uzaktan Kontrol, 65lt Hazne, Iyonizer Kötü Koku Giderici, Ağırlık sensörlü",
+            "fiyat": 13990.0,
+            "nitelikler": {
+              "urun_turu": "otomatik-tuvalet"
+            },
+            "site": "amazon"
+          },
+          {
+            "isim": "UBPet C10 Pro Kameralı Akıllı Kedi Tuvaleti – Entegre HD Kameralı, Otomatik Temizleme, Mobil Uygulama Kontrolü, Akıllı Sensörler, Sessiz Çalışma, Geniş İç Hacim, Koku Hediyeli",
+            "fiyat": 23799.0,
+            "nitelikler": {
+              "urun_turu": "otomatik-tuvalet"
+            },
+            "site": "amazon"
+          }
+        ]
+      },
+      "urun_turlerine_ayrilmis": true,
       "capraz_dogrulama_uyarisi": null
     },
     "kedi-yatagi": {

@@ -380,7 +380,7 @@ def uret(hedef: Path | None = None, veri_kok: Path | None = None) -> Path | None
     # Rakamlar: soyut "guvenilir veri" iddiasi yerine olculebilir kanit
     d.text(
         (70, 480),
-        f"{o['kalem']} fiyat serisi · {o['kaynak']} bağımsız kaynak · ayda iki kez ölçülüyor",
+        f"{o['kalem']} fiyat serisi · {o['kaynak']} bağımsız kaynak · kaynaklar 5/20'de taranır",
         font=yazi_tipi(30, False), fill=MUREKKEP,
     )
     d.text((70, 540), "maliyetine.com.tr", font=yazi_tipi(28, False), fill=SOLUK)
@@ -425,7 +425,7 @@ def senaryo_ve_arac_kartlari(veri_kok: Path | None = None) -> int:
                 ("metodoloji", conf["ad"] + " — nasıl ölçüyoruz?")):
             if kart_baslikli(
                     baslik,
-                    "{} bağımsız kaynak · ayda iki kez ölçülüyor · {}".format(
+                    "{} bağımsız kaynak · son başarılı veri {}".format(
                         len(siteler), tarih),
                     KALEM_KOK / f"{vertikal}-{alt_yol}.png"):
                 sayi += 1

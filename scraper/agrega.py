@@ -177,7 +177,20 @@ def kalem_birlestir(kaynak_kayitlari: list[dict], kalem: str = "") -> dict:
         o for o in (ozellik_ozeti.get("urun_turleri") or {}).values()
         if o.get("urun_sayisi", 0) >= 3
     ]
-    karma_urun_turu = len(guclu_urun_turleri) > 1
+    urun_turlerine_ayrilmis = len(guclu_urun_turleri) > 1
+    # Her alt tur ortak bir fiyat metrigini gecersiz kilmaz. Ornegin mini
+    # ve standart buzdolabi ayni butce kaleminin secenekleridir. Firin/ocak
+    # havuzundaki set + tek urun karisimi ise gercekten tek fiyat olamaz.
+    karma_urun_turu = bool(
+        urun_turlerine_ayrilmis
+        and (
+            kalem_id == "firin-ocak"
+            or any(
+                k.get("ozellik_ozeti", {}).get("tek_metrik_gecersiz")
+                for k in veri_veren
+            )
+        )
+    )
 
     return {
         "olcum_turu": olcum_turu(kalem_id),
@@ -204,6 +217,7 @@ def kalem_birlestir(kaynak_kayitlari: list[dict], kalem: str = "") -> dict:
         ],
         **({"birim_fiyatlari": birim_fiyatlari} if birim_fiyatlari else {}),
         **({"ozellik_ozeti": ozellik_ozeti} if ozellik_ozeti else {}),
+        **({"urun_turlerine_ayrilmis": True} if urun_turlerine_ayrilmis else {}),
         **({"karma_urun_turu": True} if karma_urun_turu else {}),
     }
 

@@ -48,6 +48,22 @@ SITE_KOK = su.SITE_KOK
 SITE_KOK_URL = su.SITE_KOK_URL
 HESAP_KOK = "hesap"
 
+HESAPLAYICI_KATEGORILERI = (
+    ("Fiyat ve bütçe", (
+        "alim-gucu", "butcem-yeter-mi", "aylik-tuketim-maliyeti", "yakit", "boya",
+    )),
+    ("Maaş ve çalışma", (
+        "maas", "kidem", "issizlik", "izin", "mesai", "freelancer",
+    )),
+    ("Vergi ve taşınmaz", ("kdv", "tapu", "kira")),
+    ("Yatırım ve birikim", (
+        "bilesik-faiz", "birikim", "lot", "hisse-maliyet", "kar-zarar", "temettu",
+    )),
+    ("Borç ve kredi", ("kart-borcu", "kredi")),
+    ("İş ve dijital gelir", ("icerik", "website", "basabas")),
+    ("Pratik matematik", ("yuzde",)),
+)
+
 
 # ----------------------------------------------------------
 # TANIMLAR
@@ -1396,7 +1412,8 @@ def alim_gucu_tanimi(veri_kok: Path | None = None) -> dict | None:
         "formul": "Bugünkü karşılık = tutar × (son endeks ÷ ilk endeks)",
         "kaynaklar": [
             "TCMB EVDS — TÜİK Tüketici Fiyat Endeksi (2025=100), seri TP.FE25.OKTG01",
-            f"Kullanılan seri: {aylar[0]} – {aylar[-1]}, ayda iki kez güncelleniyor",
+            f"Kullanılan seri: {aylar[0]} – {aylar[-1]}; kaynak ayın 5'i ve "
+            "20'sinde yeniden taranıyor",
         ],
         "alanlar": [
             {"id": "tutar", "etiket": "Tutar (TL)", "tip": "number",
@@ -1432,7 +1449,8 @@ def alim_gucu_tanimi(veri_kok: Path | None = None) -> dict | None:
              "düğün, ev kurma, okul, bebek gibi somut sepetlerin TL fiyatını ölçüyoruz."),
             ("Bu rakam nereden geliyor?",
              "TCMB'nin EVDS sisteminden çekilen TÜİK Tüketici Fiyat Endeksi (2025=100). "
-             "Seriyi ayda iki kez tazeliyoruz; hesapta kullanılan dönem sayfada yazılı."),
+             "Kaynağı ayın 5'i ve 20'sinde yeniden tarıyoruz; hesapta kullanılan "
+             "dönem sayfada yazılı."),
             ("Maaşıma enflasyon kadar zam alırsam alım gücüm korunur mu?",
              "Tam olarak değil. Zam yıl sonunda gelirse yıl boyunca eski maaşla daha "
              "pahalı fiyatlara alışveriş yapmış olursunuz; o kayıp geriye dönük "
@@ -2088,10 +2106,20 @@ def sayfa_uret(h: dict) -> str:
 
 def dizin_uret() -> str:
     url = f"{SITE_KOK_URL}/{HESAP_KOK}/"
-    kartlar = "".join(
-        f'    <a class="hesap-kart" href="/{HESAP_KOK}/{h["slug"]}/">'
-        f'<strong>{h["ad"]}</strong><span>{re.sub(r"<[^>]+>", "", h["ozet"])[:110]}…</span></a>\n'
-        for h in tum_hesaplayicilar()
+    hesaplayicilar = tum_hesaplayicilar()
+    gruplar = hesaplayici_gruplari(hesaplayicilar)
+    grup_html = "".join(
+        '  <section class="hesap-grup">\n'
+        f'    <h2>{baslik}</h2>\n'
+        '    <div class="hesap-izgara">\n'
+        + "".join(
+            f'      <a class="hesap-kart" href="/{HESAP_KOK}/{h["slug"]}/">'
+            f'<strong>{h["ad"]}</strong>'
+            f'<span>{re.sub(r"<[^>]+>", "", h["ozet"])[:110]}…</span></a>\n'
+            for h in hesaplar
+        )
+        + "    </div>\n  </section>\n"
+        for baslik, hesaplar in gruplar
     )
     schema = json.dumps({
         "@context": "https://schema.org",
@@ -2103,7 +2131,7 @@ def dizin_uret() -> str:
             {"@type": "ItemList", "itemListElement": [
                 {"@type": "ListItem", "position": i, "name": h["ad"],
                  "url": f"{SITE_KOK_URL}/{HESAP_KOK}/{h['slug']}/"}
-                for i, h in enumerate(tum_hesaplayicilar(), start=1)]},
+                for i, h in enumerate(hesaplayicilar, start=1)]},
             {"@type": "BreadcrumbList", "itemListElement": [
                 {"@type": "ListItem", "position": 1, "name": "Ana sayfa", "item": SITE_KOK_URL + "/"},
                 {"@type": "ListItem", "position": 2, "name": "Hesaplayıcılar", "item": url}]},
@@ -2123,8 +2151,7 @@ def dizin_uret() -> str:
     Dönem geçtiğinde sayfa sessizce eski oranı kullanmaz, uyarı gösterir.
   </div>
 
-  <div class="hesap-izgara">
-{kartlar}  </div>
+{grup_html}
 
   <section>
     <h2>Sonuç neye dayanıyor?</h2>
@@ -2158,6 +2185,27 @@ def tum_hesaplayicilar(veri_kok: Path | None = None) -> list[dict]:
     if ag:
         liste.insert(0, ag)
     return liste
+
+
+def hesaplayici_gruplari(hesaplayicilar: list[dict]) -> list[tuple[str, list[dict]]]:
+    """Dizindeki her araci tam bir kez, kullanici niyetine gore gruplar."""
+    konumlar = {}
+    for baslik, idler in HESAPLAYICI_KATEGORILERI:
+        for hesap_id in idler:
+            if hesap_id in konumlar:
+                raise ValueError(f"Hesaplayıcı iki kategoride: {hesap_id}")
+            konumlar[hesap_id] = baslik
+
+    tanimlar = {h["id"]: h for h in hesaplayicilar}
+    eksik = set(tanimlar) - set(konumlar)
+    if eksik:
+        raise ValueError(f"Kategorisiz hesaplayıcılar: {', '.join(sorted(eksik))}")
+
+    return [
+        (baslik, [tanimlar[hesap_id] for hesap_id in idler if hesap_id in tanimlar])
+        for baslik, idler in HESAPLAYICI_KATEGORILERI
+        if any(hesap_id in tanimlar for hesap_id in idler)
+    ]
 
 
 def yaz() -> list[Path]:

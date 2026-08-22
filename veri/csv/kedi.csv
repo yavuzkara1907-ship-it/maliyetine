@@ -3,7 +3,7 @@ kedi,mama-su-kabi,Mama ve Su Kabı,Beslenme,sabit,kalem_fiyati,154,356,600,99,13
 kedi,tasima-cantasi,Taşıma Çantası,Taşıma,sabit,kalem_fiyati,1134,2170,3880,212,9181,,,,,,,64,2,amazon; petzzshop,2026-08-20
 kedi,kedi-kumu,Kedi Kumu (paket),Tekrarlayan ürün,sabit,paket_fiyati,248,398,805,107,1296,29.5,1,33.99,7,,,62,2,amazon; petzzshop,2026-08-22
 kedi,kedi-mamasi,Kedi Maması (paket),Tekrarlayan ürün,sabit,paket_fiyati,772,2070,3454,118,7044,389.92,52,,,,,64,2,amazon; petzzshop,2026-08-22
-kedi,kedi-tuvaleti,Kedi Tuvaleti,Tuvalet,sabit,kalem_fiyati,372,1349,9999,300,11889,,,,,,,30,1,amazon,2026-08-20
+kedi,kedi-tuvaleti,Kedi Tuvaleti,Tuvalet,sabit,kalem_fiyati,422,1484,12217,300,23799,,,,,,,37,1,amazon,2026-08-22
 kedi,kedi-oyuncagi,Kedi Oyuncağı,Yaşam alanı,sabit,kalem_fiyati,84,138,290,50,384,,,,,,,61,2,amazon; petzzshop,2026-08-20
 kedi,kedi-yatagi,Kedi Yatağı,Yaşam alanı,sabit,kalem_fiyati,1231,1448,2206,199,3975,,,,,,,64,2,amazon; petzzshop,2026-08-20
 kedi,tirmalama,Tırmalama Tahtası,Yaşam alanı,sabit,kalem_fiyati,300,549,1017,150,1575,,,,,,,41,1,amazon,2026-08-09

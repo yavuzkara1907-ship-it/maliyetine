@@ -1,11 +1,17 @@
 {
  "vertikal": "arac",
  "uretim_tarihi": "2026-08-22",
+ "metrik": {
+  "alan": "genel_medyan",
+  "ad": "Ölçülen ürünlerin ortanca fiyatı",
+  "yontem": "Kaynak ortancalarının ortancası"
+ },
  "olcumler": [
   "2026-07-25",
   "2026-07-26",
   "2026-08-05",
-  "2026-08-20"
+  "2026-08-20",
+  "2026-08-22"
  ],
  "kalemler": {
   "bmw": {
@@ -331,6 +337,13 @@
      "urun": 23,
      "kaynak": 1,
      "veri_tarihi": "2026-08-20"
+    },
+    {
+     "tarih": "2026-08-22",
+     "medyan": 2069000,
+     "urun": 23,
+     "kaynak": 1,
+     "veri_tarihi": "2026-08-22"
     }
    ],
    "ilk": {
@@ -341,15 +354,14 @@
     "veri_tarihi": "2026-07-25"
    },
    "son": {
-    "tarih": "2026-08-20",
+    "tarih": "2026-08-22",
     "medyan": 2069000,
     "urun": 23,
     "kaynak": 1,
-    "veri_tarihi": "2026-08-20"
+    "veri_tarihi": "2026-08-22"
    },
    "degisim_yuzde": 2.9,
-   "gun_araligi": 26,
-   "aylik_degisim_yuzde": 0.0
+   "gun_araligi": 28
   },
   "fiat": {
    "seri": [

@@ -1,0 +1,257 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Kahve Makinesi"
+  ],
+  "kalem": "kahve-makinesi",
+  "vertikal": "ev-kurma",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-08-22",
+  "ham_urun_sayisi": 21,
+  "aykiri_urun_sayisi": 1,
+  "toplam_urun": 20,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 1987,
+  "segmentler": {
+    "dusuk": {
+      "min": 601,
+      "medyan": 1289,
+      "max": 1699,
+      "urun_sayisi": 7
+    },
+    "orta": {
+      "min": 1747,
+      "medyan": 2020,
+      "max": 5558,
+      "urun_sayisi": 9
+    },
+    "luks": {
+      "min": 5574,
+      "medyan": 6641,
+      "max": 9732,
+      "urun_sayisi": 4
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Sinbo SCM-9038 Elektrikli Türk Kahve Makinesi Paslanmaz Çelik Cezve 5 Fincan 500 ml",
+      "fiyat": 601.0
+    },
+    {
+      "isim": "Sinbo SCM-9039 Elektrikli Türk Kahve Makinesi 5 Fincan 500 ml Paslanmaz Çelik Cezve",
+      "fiyat": 609.0
+    },
+    {
+      "isim": "Arzum FL397 Felix Jet Türk Kahvesi Makinesi, 5 Fincan Kapasiteli, Taşma Önleyici Sistem, Bol Köpüklü Kahve",
+      "fiyat": 1288.76
+    },
+    {
+      "isim": "Emsan Közde Türk Kahve Makinesi Shiny Black 5 Fincan Kapasiteli",
+      "fiyat": 1598.99
+    },
+    {
+      "isim": "Karaca Hatır Közde Türk Kahvesi ve Türk Kahve Makinesi Krem 5 Fincan Kapasiteli Bol Köpüklü",
+      "fiyat": 1699.0
+    },
+    {
+      "isim": "Kiwi Kcm-7570 Siyah Otomatik Türk Kahve Makinesi Bol Köpüklü",
+      "fiyat": 1747.08
+    },
+    {
+      "isim": "Karaca Hatır Közde Türk Kahvesi ve Türk Kahve Makinesi Shiny Black 5 Fincan Kapasiteli Bol Köpüklü",
+      "fiyat": 1802.28
+    },
+    {
+      "isim": "Karaca Hatır Neo-S Sütlü Türk Kahve Makinesi Space Gray",
+      "fiyat": 1999.0
+    },
+    {
+      "isim": "Arzum OK004 Okka Minio Türk Kahvesi Makinesi Taşma Önleyici Sistem, 4 Fincan Kapasiteli, Bakır",
+      "fiyat": 2020.0
+    },
+    {
+      "isim": "Bosch Çift Hazneli Elektrikli Türk Kahve Makinesi 600 ML LCD Ekran /Bakır",
+      "fiyat": 2999.0
+    },
+    {
+      "isim": "Karaca Hatır Hüp Düet 10 Fincan Kapasiteli Bol Köpüklü Aromalı, Közde ve Türk Kahve Makinesi Uzay Gr",
+      "fiyat": 3833.0
+    },
+    {
+      "isim": "Sinbo SCM-2994 Pro Espresso Kahve Makinesi 20 Bar Basınçlı 6 İçecek Hazırlama Buharlı Süt Köpürtücülü",
+      "fiyat": 5558.45
+    },
+    {
+      "isim": "Sinbo Scm‑2995 Pro Kapsüllü & Toz Kahve Espresso Makinesi – 20 bar Basınç, Süt Haznesi, Dokunmatik",
+      "fiyat": 5574.0
+    },
+    {
+      "isim": "Grundig TCM 7061 ST Türk Kahve Makinesi",
+      "fiyat": 6849.0
+    },
+    {
+      "isim": "Arçelik Tkm 9961 B Telve Kahve Makinesi",
+      "fiyat": 9732.0
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 20,
+    "ozellik_eslesen_urun": 19,
+    "urun_turleri": {
+      "espresso": {
+        "ad": "Espresso makinesi",
+        "genel_medyan": 5574,
+        "urun_sayisi": 3,
+        "segmentler": {
+          "dusuk": {
+            "min": 5558.45,
+            "medyan": 5558.45,
+            "max": 5558.45,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 5574.0,
+            "medyan": 6003.23,
+            "max": 6432.45,
+            "urun_sayisi": 2
+          }
+        }
+      },
+      "turk-kahvesi": {
+        "ad": "Türk kahvesi makinesi",
+        "genel_medyan": 1775,
+        "urun_sayisi": 16,
+        "segmentler": {
+          "dusuk": {
+            "min": 601.0,
+            "medyan": 1199.0,
+            "max": 1598.99,
+            "urun_sayisi": 5
+          },
+          "orta": {
+            "min": 1699.0,
+            "medyan": 1888.64,
+            "max": 2999.0,
+            "urun_sayisi": 8
+          },
+          "luks": {
+            "min": 3347.8,
+            "medyan": 3833.0,
+            "max": 6849.0,
+            "urun_sayisi": 3
+          }
+        }
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "Sinbo SCM-9038 Elektrikli Türk Kahve Makinesi Paslanmaz Çelik Cezve 5 Fincan 500 ml",
+        "fiyat": 601.0,
+        "nitelikler": {
+          "urun_turu": "turk-kahvesi"
+        }
+      },
+      {
+        "isim": "Sinbo SCM-9039 Elektrikli Türk Kahve Makinesi 5 Fincan 500 ml Paslanmaz Çelik Cezve",
+        "fiyat": 609.0,
+        "nitelikler": {
+          "urun_turu": "turk-kahvesi"
+        }
+      },
+      {
+        "isim": "Arzum FL397 Felix Jet Türk Kahvesi Makinesi, 5 Fincan Kapasiteli, Taşma Önleyici Sistem, Bol Köpüklü Kahve",
+        "fiyat": 1288.76,
+        "nitelikler": {
+          "urun_turu": "turk-kahvesi"
+        }
+      },
+      {
+        "isim": "Emsan Közde Türk Kahve Makinesi Shiny Black 5 Fincan Kapasiteli",
+        "fiyat": 1598.99,
+        "nitelikler": {
+          "urun_turu": "turk-kahvesi"
+        }
+      },
+      {
+        "isim": "Karaca Hatır Közde Türk Kahvesi ve Türk Kahve Makinesi Krem 5 Fincan Kapasiteli Bol Köpüklü",
+        "fiyat": 1699.0,
+        "nitelikler": {
+          "urun_turu": "turk-kahvesi"
+        }
+      },
+      {
+        "isim": "Karaca Hatır Közde Türk Kahvesi ve Türk Kahve Makinesi Kırmızı 5 Fincan Kapasiteli Bol Köpüklü",
+        "fiyat": 1699.0,
+        "nitelikler": {
+          "urun_turu": "turk-kahvesi"
+        }
+      },
+      {
+        "isim": "Karaca Hatır Közde Türk Kahvesi ve Türk Kahve Makinesi Shiny Black 5 Fincan Kapasiteli Bol Köpüklü",
+        "fiyat": 1802.28,
+        "nitelikler": {
+          "urun_turu": "turk-kahvesi"
+        }
+      },
+      {
+        "isim": "Philips 5000 Serisi Türk Kahvesi Makinesi, Közde Türk Kahvesi Pişirme Fonksiyonu, HDA150/60",
+        "fiyat": 1975.0,
+        "nitelikler": {
+          "urun_turu": "turk-kahvesi"
+        }
+      },
+      {
+        "isim": "Karaca Hatır Neo-S Sütlü Türk Kahve Makinesi Space Gray",
+        "fiyat": 1999.0,
+        "nitelikler": {
+          "urun_turu": "turk-kahvesi"
+        }
+      },
+      {
+        "isim": "Bosch Çift Hazneli Elektrikli Türk Kahve Makinesi 600 ML LCD Ekran /Bakır",
+        "fiyat": 2999.0,
+        "nitelikler": {
+          "urun_turu": "turk-kahvesi"
+        }
+      },
+      {
+        "isim": "Arzum OK006 Okka Minio Duo Türk Kahvesi Makinesi Taşma Önleyici Sistem, 8 Fincan Kapasiteli, Krom",
+        "fiyat": 3347.8,
+        "nitelikler": {
+          "urun_turu": "turk-kahvesi"
+        }
+      },
+      {
+        "isim": "Karaca Hatır Hüp Düet 10 Fincan Kapasiteli Bol Köpüklü Aromalı, Közde ve Türk Kahve Makinesi Uzay Gr",
+        "fiyat": 3833.0,
+        "nitelikler": {
+          "urun_turu": "turk-kahvesi"
+        }
+      },
+      {
+        "isim": "Sinbo SCM-2994 Pro Espresso Kahve Makinesi 20 Bar Basınçlı 6 İçecek Hazırlama Buharlı Süt Köpürtücülü",
+        "fiyat": 5558.45,
+        "nitelikler": {
+          "urun_turu": "espresso"
+        }
+      },
+      {
+        "isim": "Karaca Hatır Plus Barista 6 In 1 Latte Cappucino ve Közde Türk Kahvesi Makinesi Black Silver",
+        "fiyat": 6432.45,
+        "nitelikler": {
+          "urun_turu": "espresso"
+        }
+      },
+      {
+        "isim": "Grundig TCM 7061 ST Türk Kahve Makinesi",
+        "fiyat": 6849.0,
+        "nitelikler": {
+          "urun_turu": "turk-kahvesi"
+        }
+      }
+    ]
+  }
+}

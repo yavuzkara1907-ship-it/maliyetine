@@ -1,0 +1,307 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Dikey Süpürge"
+  ],
+  "kalem": "dikey-supurge",
+  "vertikal": "ev-kurma",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-08-22",
+  "ham_urun_sayisi": 45,
+  "aykiri_urun_sayisi": 1,
+  "toplam_urun": 44,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 6935,
+  "segmentler": {
+    "dusuk": {
+      "min": 933,
+      "medyan": 1599,
+      "max": 2870,
+      "urun_sayisi": 12
+    },
+    "orta": {
+      "min": 3899,
+      "medyan": 7100,
+      "max": 12850,
+      "urun_sayisi": 22
+    },
+    "luks": {
+      "min": 13500,
+      "medyan": 16707,
+      "max": 23499,
+      "urun_sayisi": 10
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "LS8807C - Vardem Dikey Elektrik Süpürgesi Pembe 3 in1 Kapalı Kutu",
+      "fiyat": 933.0
+    },
+    {
+      "isim": "Sinbo SVC 8640 Esnek Dikey Elektrikli Süpürge, 600 W, 16 kPa Emiş Gücü, 800 ml Toz Haznesi, HEPA Filtreli, 2’si 1 Arada Kablolu Süpürge",
+      "fiyat": 1499.0
+    },
+    {
+      "isim": "Sinbo SVC-8640 Dikey Elektrikli Süpürge Katlanır Borulu, El Süpürgesi, 800 ml Toz Hazneli",
+      "fiyat": 1599.9
+    },
+    {
+      "isim": "Luster Plus KH-V600 Kablolu Dikey Süpürge Güçlü Emiş Performansı Hafif ve Ergonomik Tasarım",
+      "fiyat": 1876.0
+    },
+    {
+      "isim": "Sinbo SVC-8642 Kablosuz Dikey Süpürge",
+      "fiyat": 3899.0
+    },
+    {
+      "isim": "Arnica ET11201 Süpürgeç E-Max Mavi Şarjlı Dik Süpürge",
+      "fiyat": 4499.0
+    },
+    {
+      "isim": "Hoover HFG10P 011 Şarjlı Dikey Süpürge",
+      "fiyat": 6289.0
+    },
+    {
+      "isim": "Tineco PowerHero 11 Snap Şarjlı Dikey Süpürge",
+      "fiyat": 6999.0
+    },
+    {
+      "isim": "Ultenic FS1 Cordless Vacuum Cleaner, with Automatic Emptying Station, Powerful Suction 30KPa/450W, Removable Battery up to 60 Mins, Stick Vacuum Cleaner for Hard Floor Home Carpets",
+      "fiyat": 9404.98
+    },
+    {
+      "isim": "Dreame H12 Core Islak Kuru Şarjlı Dikey Süpürge",
+      "fiyat": 9999.0
+    },
+    {
+      "isim": "Greenote GSC50 Şarjlı Dikey Süpürge, 23000Pa Güçlü Emişli Hafif Çubuk Elektrikli Süpürge 30 dakika Uzun Çalışma Süresi, Çıkarılabilir Pil, El Araba Sert Zemin Halı Evcil Hayvan Kılı için El Süpürgesi",
+      "fiyat": 10999.99
+    },
+    {
+      "isim": "Einhell Akülü Dikey Süpürge TE-SV 18 Li (1x4,0 Ah) 2347187 | PXC | 18 V | torbasız | siklon teknolojisi | BOOST modu | 3 aşamalı filtre sistemi | 4.0 Ah akü & aksesuarlar dahil",
+      "fiyat": 13500.0
+    },
+    {
+      "isim": "Samsung Jet 60 (VS15A6031R4) Dikey/Pratik Elektrikli Süpürge - Jet Siklon",
+      "fiyat": 15999.0
+    },
+    {
+      "isim": "Philips 8000 Serisi Aqua Plus Kablosuz Dik Süpürge, 25.2 V, 80 dk'ya kadar Çalışma Süresi, XC8057/01",
+      "fiyat": 17099.0
+    },
+    {
+      "isim": "Philips 9000 Serisi AquaTrio Kablosuz Dikey Süpürge (XW9463/11) ve Philips Aqua Trio Uyumlu Zemin Temizleme Solüsyonu (XV1792/01)",
+      "fiyat": 23499.0
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 44,
+    "ozellik_eslesen_urun": 35,
+    "urun_turleri": {
+      "el-supurgesi": {
+        "ad": "El süpürgesi",
+        "genel_medyan": 1549,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 1499.0,
+            "medyan": 1499.0,
+            "max": 1499.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 1599.9,
+            "medyan": 1599.9,
+            "max": 1599.9,
+            "urun_sayisi": 1
+          }
+        }
+      },
+      "islak-kuru": {
+        "ad": "Islak-kuru dikey süpürge",
+        "genel_medyan": 9999,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 9999.0,
+            "medyan": 9999.0,
+            "max": 9999.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 9999.0,
+            "medyan": 9999.0,
+            "max": 9999.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 9999.0,
+            "medyan": 9999.0,
+            "max": 9999.0,
+            "urun_sayisi": 1
+          }
+        }
+      },
+      "kablolu": {
+        "ad": "Kablolu dikey süpürge",
+        "genel_medyan": 1599,
+        "urun_sayisi": 6,
+        "segmentler": {
+          "dusuk": {
+            "min": 1199.0,
+            "medyan": 1349.0,
+            "max": 1499.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 1599.0,
+            "medyan": 1599.99,
+            "max": 1876.0,
+            "urun_sayisi": 3
+          },
+          "luks": {
+            "min": 2869.99,
+            "medyan": 2869.99,
+            "max": 2869.99,
+            "urun_sayisi": 1
+          }
+        }
+      },
+      "sarjli": {
+        "ad": "Şarjlı dikey süpürge",
+        "genel_medyan": 9749,
+        "urun_sayisi": 26,
+        "segmentler": {
+          "dusuk": {
+            "min": 3899.0,
+            "medyan": 4499.0,
+            "max": 6289.0,
+            "urun_sayisi": 7
+          },
+          "orta": {
+            "min": 6839.05,
+            "medyan": 9799.0,
+            "max": 14520.0,
+            "urun_sayisi": 13
+          },
+          "luks": {
+            "min": 16414.5,
+            "medyan": 17549.0,
+            "max": 23499.0,
+            "urun_sayisi": 6
+          }
+        }
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "Yui Vc90 Torbasız Kablolu Dikey Süpürge Ve El Süpürgesi",
+        "fiyat": 1199.0,
+        "nitelikler": {
+          "urun_turu": "kablolu"
+        }
+      },
+      {
+        "isim": "SVC-8625 Pratic Kırmızı Dikey Elektrikli Süpürge Katlanır Borulu, El Süpürgesi, 800 ml Toz Hazneli",
+        "fiyat": 1499.0,
+        "nitelikler": {
+          "urun_turu": "el-supurgesi"
+        }
+      },
+      {
+        "isim": "Fakir Range Vector Kablolu Dik Süpürge Turbo Başlık 0,5 L Toz Hacmi",
+        "fiyat": 1599.99,
+        "nitelikler": {
+          "urun_turu": "kablolu"
+        }
+      },
+      {
+        "isim": "YUI Ks16 2'si 1 Arada Ac Motor Toz Torbasız Hepa Filtreli Kablolu Dikey Elektrikli Süpürge",
+        "fiyat": 2869.99,
+        "nitelikler": {
+          "urun_turu": "kablolu"
+        }
+      },
+      {
+        "isim": "Sinbo SVC-8634 Kablosuz Dikey Süpürge Hayvan Setli",
+        "fiyat": 4399.0,
+        "nitelikler": {
+          "urun_turu": "sarjli"
+        }
+      },
+      {
+        "isim": "Bldc Motorlu Dikey Kablosuz Şarjlı Led Aydınlatmalı Süpürge Svc-8620 - (UV LED'Lİ Mite Başlık)",
+        "fiyat": 4899.0,
+        "nitelikler": {
+          "urun_turu": "sarjli"
+        }
+      },
+      {
+        "isim": "Black + Decker BHFEA18D1-QW 2'si 1 Arada 18 V Şarjlı Dikey Süpürge (Dar Aralık Aparatı, Duvar Montaj Aparatı ve Şarj Cihazı Dahil)",
+        "fiyat": 6839.05,
+        "nitelikler": {
+          "urun_turu": "sarjli"
+        }
+      },
+      {
+        "isim": "Tineco PowerHero 11 Snap Şarjlı Dikey Süpürge",
+        "fiyat": 6999.0,
+        "nitelikler": {
+          "urun_turu": "sarjli"
+        }
+      },
+      {
+        "isim": "Ultenic FS1 Cordless Vacuum Cleaner, with Automatic Emptying Station, Powerful Suction 30KPa/450W, Removable Battery up to 60 Mins, Stick Vacuum Cleaner for Hard Floor Home Carpets",
+        "fiyat": 9404.98,
+        "nitelikler": {
+          "urun_turu": "sarjli"
+        }
+      },
+      {
+        "isim": "Dreame H12 Core Islak Kuru Şarjlı Dikey Süpürge",
+        "fiyat": 9999.0,
+        "nitelikler": {
+          "urun_turu": "islak-kuru"
+        }
+      },
+      {
+        "isim": "Philips 6000 Serisi Kablosuz Dikey Süpürge, PowerCyclone 11, 64 Dakika Kullanım Süresi, Zemin Tipini Algılayan Akıllı Başlık, Aksesurlar ile Derinlemesine Temizlik (XC6552/01)",
+        "fiyat": 9999.0,
+        "nitelikler": {
+          "urun_turu": "sarjli"
+        }
+      },
+      {
+        "isim": "Philips 8000 Serisi Aqua Plus Kablosuz Dik Süpürge, 25.2 V, 80 dk'ya kadar Çalışma Süresi, PrecisionPower Başlık, Aqua Plus Başlık, XC8053/01",
+        "fiyat": 14509.0,
+        "nitelikler": {
+          "urun_turu": "sarjli"
+        }
+      },
+      {
+        "isim": "Philips 7000 Serisi Aqua 25.2 V Kablosuz Dik Süpürge, PowerCyclone 12, 80 dk'ya Kadar Kullanım, XC7153/10",
+        "fiyat": 16414.5,
+        "nitelikler": {
+          "urun_turu": "sarjli"
+        }
+      },
+      {
+        "isim": "8000 Serisi Aqua Plus Kablosuz Dik Süpürge, 360° Güçlü Emiş, TriActive Akıllı LED Başlık, 80 dk'ya Kadar Kullanım, XC8153/10",
+        "fiyat": 17999.0,
+        "nitelikler": {
+          "urun_turu": "sarjli"
+        }
+      },
+      {
+        "isim": "Philips 9000 Serisi AquaTrio Kablosuz Dikey Süpürge (XW9463/11) ve Philips Aqua Trio Uyumlu Zemin Temizleme Solüsyonu (XV1792/01)",
+        "fiyat": 23499.0,
+        "nitelikler": {
+          "urun_turu": "sarjli"
+        }
+      }
+    ]
+  }
+}

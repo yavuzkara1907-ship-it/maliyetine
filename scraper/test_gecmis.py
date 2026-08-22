@@ -36,6 +36,8 @@ class GecmisTestleri(unittest.TestCase):
                   kayit("gelinlik", "trendyol", "2026-08-25", 11000))
         g = gecmis.vertikal_gecmisi("dugun", self.kok)
         k = g["kalemler"]["gelinlik"]
+        self.assertEqual(g["metrik"]["alan"], "genel_medyan")
+        self.assertIn("ortanca", g["metrik"]["ad"].lower())
         self.assertEqual(k["degisim_yuzde"], 10.0)
         self.assertEqual(k["gun_araligi"], 31)
         self.assertEqual(len(k["seri"]), 2)

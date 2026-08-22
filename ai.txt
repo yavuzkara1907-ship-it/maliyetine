@@ -4,7 +4,7 @@ site: https://maliyetine.com.tr
 language: tr
 country: TR
 updated: 2026-08-22
-dataset_version: 2026-08-22-f0c8be50f5ae1a98
+dataset_version: 2026-08-22-2474420e7b83fd9b
 policy: https://maliyetine.com.tr/llms.txt
 sitemap: https://maliyetine.com.tr/sitemap.xml
 license: CC BY 4.0 (ölçüm verisi)
@@ -13,7 +13,7 @@ contact: info@maliyetine.com.tr
 ## Ne yayınlıyoruz
 
 Türkiye için ölçülmüş maliyet endeksleri: Düğün, Ev Kurma, Okul, Bebek, Kedi, Köpek, 0 km Araç.
-121 aktif fiyat serisi, ayda iki kez (ayın 5'i ve 20'si) yeniden ölçülüyor.
+121 aktif fiyat serisinin kaynakları ayın 5'i ve 20'sinde yeniden taranıyor; her seri son başarılı ölçüm tarihini taşıyor.
 Ayrıca toplam 26 hesaplayıcı var: 23 formül/mevzuat
 aracı ve 3 güncel veriye dayalı araç.
 

@@ -205,6 +205,16 @@ class SayfaTesti(unittest.TestCase):
         for h in hc.tum_hesaplayicilar():
             self.assertIn(f'/{hc.HESAP_KOK}/{h["slug"]}/', dizin)
 
+    def test_dizin_her_hesaplayiciyi_tam_bir_kategoriye_koyuyor(self):
+        hesaplar = hc.tum_hesaplayicilar()
+        gruplar = hc.hesaplayici_gruplari(hesaplar)
+        gruplanan = [h["id"] for _, grup in gruplar for h in grup]
+        self.assertCountEqual(gruplanan, [h["id"] for h in hesaplar])
+        self.assertEqual(len(gruplanan), len(set(gruplanan)))
+        dizin = hc.dizin_uret()
+        for baslik, _ in gruplar:
+            self.assertIn(f"<h2>{baslik}</h2>", dizin)
+
     def test_olcum_ile_turetme_ayrimi_sayfada_yaziyor(self):
         """Kullanici bu sayfalari olculmus fiyat sanmamali - ikisi ayri
         guven turu. Dizin sayfasi bunu acikca anlatmak zorunda."""

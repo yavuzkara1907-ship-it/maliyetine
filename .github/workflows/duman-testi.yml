@@ -147,6 +147,7 @@ jobs:
             python agrega.py --vertikal "$v" >/dev/null
           done
           python gecmis.py >/dev/null
+          python arac_maliyetleri.py >/dev/null
           # Vertikal listesi sayfa_uret.VERTIKALLER ile AYNI olmali -
           # bir test bunu dogruluyor. 2026-08-03'e kadar kedi/kopek
           # eksikti; o kod yollari runner'da hic denenmiyordu.

@@ -175,7 +175,7 @@ def _degisim_metni(ad: str, degisim: float, son: dict, onceki: dict) -> str:
     kaynak = son.get("kaynak") or 1
     kaynak_notu = f"{kaynak} kaynaktan" if kaynak > 1 else "tek kaynaktan"
     return (
-        f"{ad} ortalama fiyatı {gun} günde %{abs(degisim):.1f} {yon}: "
+        f"{ad} ortanca fiyatı {gun} günde %{abs(degisim):.1f} {yon}: "
         f"{_tr_sayi(onceki['medyan'])} TL → {_tr_sayi(son['medyan'])} TL.\n\n"
         f"{son.get('urun')} üründen, {kaynak_notu} ölçüldü ({son['tarih']})."
     )

@@ -1076,7 +1076,7 @@ footer nav {
   color: var(--renk-metin);
   background: var(--renk-zemin);
   border: 1px solid var(--renk-cizgi-koyu);
-  border-radius: 10px;
+  border-radius: 8px;
 }
 
 .kalem-arama input:focus {
@@ -1337,6 +1337,8 @@ footer nav {
   gap: 1rem;
   margin: 1.5rem 0;
 }
+.hesap-grup + .hesap-grup { margin-top: 2rem; }
+.hesap-grup > h2 { margin-bottom: .75rem; }
 .hesap-kart {
   display: flex; flex-direction: column; gap: .4rem;
   padding: 1.1rem;

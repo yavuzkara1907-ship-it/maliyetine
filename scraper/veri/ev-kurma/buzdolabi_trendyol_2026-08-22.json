@@ -1,0 +1,282 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Buzdolabi"
+  ],
+  "kalem": "buzdolabi",
+  "vertikal": "ev-kurma",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-08-22",
+  "ham_urun_sayisi": 25,
+  "aykiri_urun_sayisi": 1,
+  "toplam_urun": 24,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 29324,
+  "segmentler": {
+    "dusuk": {
+      "min": 7569,
+      "medyan": 9699,
+      "max": 18589,
+      "urun_sayisi": 7
+    },
+    "orta": {
+      "min": 18690,
+      "medyan": 30370,
+      "max": 34999,
+      "urun_sayisi": 12
+    },
+    "luks": {
+      "min": 36000,
+      "medyan": 38999,
+      "max": 51899,
+      "urun_sayisi": 5
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Buz Dolabı Ev Ürünleri ve Modelleri Koleksiyonu | Trendyol",
+      "fiyat": 7569.0
+    },
+    {
+      "isim": "Dijitsu Dbd150 Buzdolabı",
+      "fiyat": 9199.0
+    },
+    {
+      "isim": "KUMTEL HTMF-90EW 87 L Çift Kapılı Mini Buzdolabı - Beyaz",
+      "fiyat": 9699.0
+    },
+    {
+      "isim": "Dijitsu Dbd200 Tmf A Statik Buzdolabı",
+      "fiyat": 15989.0
+    },
+    {
+      "isim": "Uğur BUZDOLABI UES 206 D2K R65",
+      "fiyat": 18690.0
+    },
+    {
+      "isim": "Dijitsu Dbd250k Buzdolabı",
+      "fiyat": 21690.0
+    },
+    {
+      "isim": "Vestel NF27011 251 Lt No-Frost Buzdolabı",
+      "fiyat": 25199.0
+    },
+    {
+      "isim": "Vestel NF45011 402 Lt No-Frost Buzdolabı",
+      "fiyat": 29749.0
+    },
+    {
+      "isim": "Arçelik 570471 MB Üstten Donduruculu Buzdolabı",
+      "fiyat": 30990.0
+    },
+    {
+      "isim": "Grundig GPKNE 316 Buzdolabı",
+      "fiyat": 31999.0
+    },
+    {
+      "isim": "Altus AL 375 XIE Çift Kapılı No Frost Buzdolabı",
+      "fiyat": 32999.0
+    },
+    {
+      "isim": "Bosch KDN55NWE0N Çift Kapılı No Frost Beyaz Buzdolabı",
+      "fiyat": 34999.0
+    },
+    {
+      "isim": "Profilo Bd3055wecn E Enerji Sınıfı 483 Lt Nofrost Alttan Donduruculu Buzdolabı",
+      "fiyat": 37898.0
+    },
+    {
+      "isim": "Vestel NF45011 G 402 Lt No-Frost Buzdolabı",
+      "fiyat": 38999.0
+    },
+    {
+      "isim": "Hoover HHCR3818EWPL 463 Lt Gardırop Tipi No-Frost Buzdolabı",
+      "fiyat": 51899.0
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 24,
+    "ozellik_eslesen_urun": 23,
+    "urun_turleri": {
+      "gardiroplu": {
+        "ad": "Gardırop tipi buzdolabı",
+        "genel_medyan": 51899,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 51899.0,
+            "medyan": 51899.0,
+            "max": 51899.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 51899.0,
+            "medyan": 51899.0,
+            "max": 51899.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 51899.0,
+            "medyan": 51899.0,
+            "max": 51899.0,
+            "urun_sayisi": 1
+          }
+        }
+      },
+      "mini": {
+        "ad": "Mini / tezgah altı buzdolabı",
+        "genel_medyan": 9699,
+        "urun_sayisi": 3,
+        "segmentler": {
+          "dusuk": {
+            "min": 7569.0,
+            "medyan": 7569.0,
+            "max": 7569.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 9699.0,
+            "medyan": 10019.0,
+            "max": 10339.0,
+            "urun_sayisi": 2
+          }
+        }
+      },
+      "standart": {
+        "ad": "Standart buzdolabı",
+        "genel_medyan": 30990,
+        "urun_sayisi": 19,
+        "segmentler": {
+          "dusuk": {
+            "min": 9199.0,
+            "medyan": 18589.0,
+            "max": 21690.0,
+            "urun_sayisi": 5
+          },
+          "orta": {
+            "min": 24999.0,
+            "medyan": 31195.0,
+            "max": 34999.0,
+            "urun_sayisi": 10
+          },
+          "luks": {
+            "min": 36000.0,
+            "medyan": 38448.5,
+            "max": 42599.0,
+            "urun_sayisi": 4
+          }
+        }
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "KUMTEL 93 L Beyaz Büro Tipi Mini Buzdolabı HMB-110",
+        "fiyat": 7569.0,
+        "nitelikler": {
+          "urun_turu": "mini"
+        }
+      },
+      {
+        "isim": "KUMTEL HTMF-90EW 87 L Çift Kapılı Mini Buzdolabı - Beyaz",
+        "fiyat": 9699.0,
+        "nitelikler": {
+          "urun_turu": "mini"
+        }
+      },
+      {
+        "isim": "KUMTEL HTMF-90EB 87 L Çift Kapılı Mini Buzdolabı - Siyah",
+        "fiyat": 10339.0,
+        "nitelikler": {
+          "urun_turu": "mini"
+        }
+      },
+      {
+        "isim": "KUMTEL Çift Kapılı Buzdolabı 204L HTMF-210",
+        "fiyat": 18589.0,
+        "nitelikler": {
+          "urun_turu": "standart"
+        }
+      },
+      {
+        "isim": "Uğur BUZDOLABI UES 206 D2K R65",
+        "fiyat": 18690.0,
+        "nitelikler": {
+          "urun_turu": "standart"
+        }
+      },
+      {
+        "isim": "Altus AL 333 BE Çift Kapılı Buzdolabı",
+        "fiyat": 24999.0,
+        "nitelikler": {
+          "urun_turu": "standart"
+        }
+      },
+      {
+        "isim": "Vestel NF27011 251 Lt No-Frost Buzdolabı",
+        "fiyat": 25199.0,
+        "nitelikler": {
+          "urun_turu": "standart"
+        }
+      },
+      {
+        "isim": "Vestel NF45011 402 Lt No-Frost Buzdolabı",
+        "fiyat": 29749.0,
+        "nitelikler": {
+          "urun_turu": "standart"
+        }
+      },
+      {
+        "isim": "Beko 966375 ES Çift Kapılı No Frost Siyah Buzdolabı",
+        "fiyat": 31400.0,
+        "nitelikler": {
+          "urun_turu": "standart"
+        }
+      },
+      {
+        "isim": "Grundig GPKNE 316 Buzdolabı",
+        "fiyat": 31999.0,
+        "nitelikler": {
+          "urun_turu": "standart"
+        }
+      },
+      {
+        "isim": "Beko 970508 MB 508 Litre No Frost Buzdolabı",
+        "fiyat": 34170.0,
+        "nitelikler": {
+          "urun_turu": "standart"
+        }
+      },
+      {
+        "isim": "Bosch KDN55NWE0N Çift Kapılı No Frost Beyaz Buzdolabı",
+        "fiyat": 34999.0,
+        "nitelikler": {
+          "urun_turu": "standart"
+        }
+      },
+      {
+        "isim": "Profilo Bd3055wecn E Enerji Sınıfı 483 Lt Nofrost Alttan Donduruculu Buzdolabı",
+        "fiyat": 37898.0,
+        "nitelikler": {
+          "urun_turu": "standart"
+        }
+      },
+      {
+        "isim": "Vestel NF45011 G 402 Lt No-Frost Buzdolabı",
+        "fiyat": 38999.0,
+        "nitelikler": {
+          "urun_turu": "standart"
+        }
+      },
+      {
+        "isim": "Hoover HHCR3818EWPL 463 Lt Gardırop Tipi No-Frost Buzdolabı",
+        "fiyat": 51899.0,
+        "nitelikler": {
+          "urun_turu": "gardiroplu"
+        }
+      }
+    ]
+  }
+}

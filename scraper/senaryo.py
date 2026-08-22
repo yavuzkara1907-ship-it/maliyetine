@@ -287,7 +287,7 @@ def _sayfa_html(baslik: str, soru: str, aciklama_blok: str, govde: str,
 
   <nav class="kirinti" aria-label="Sayfa yolu">{kirinti}</nav>
 
-  <span class="guncelleme-etiketi">Güncelleme: {tarih}</span>
+  <span class="guncelleme-etiketi">Son veri: {tarih}</span>
   <h1>{baslik}</h1>
 
   <div class="cevap-blok">{aciklama_blok}</div>

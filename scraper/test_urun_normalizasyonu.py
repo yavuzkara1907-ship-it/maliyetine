@@ -105,5 +105,29 @@ class FirinOzellikTestleri(unittest.TestCase):
         )
 
 
+class GenisKategoriTestleri(unittest.TestCase):
+    def test_kedi_tuvaleti_alt_turleri_ayrilir(self):
+        urunler = [
+            {"isim": "Akıllı otomatik kedi tuvaleti", "fiyat": 12000},
+            {"isim": "Filtreli kapalı kedi tuvaleti", "fiyat": 1500},
+            {"isim": "Açık kum kabı", "fiyat": 400},
+        ]
+        ozet = un.urun_ozellik_ozeti("kedi-tuvaleti", urunler)
+        self.assertEqual(
+            set(ozet["urun_turleri"]),
+            {"otomatik-tuvalet", "kapali-tuvalet", "acik-tuvalet"},
+        )
+
+    def test_kahve_makinesi_tipleri_fiyatla_tahmin_edilmez(self):
+        self.assertEqual(
+            un.genis_kategori_urun_turu("kahve-makinesi", "Kahve makinesi 49.999 TL"),
+            {},
+        )
+        self.assertEqual(
+            un.genis_kategori_urun_turu("kahve-makinesi", "Filtre kahve makinesi"),
+            {"urun_turu": "filtre"},
+        )
+
+
 if __name__ == "__main__":
     unittest.main()

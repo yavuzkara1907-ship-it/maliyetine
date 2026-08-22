@@ -1,6 +1,11 @@
 {
  "vertikal": "kedi",
  "uretim_tarihi": "2026-08-22",
+ "metrik": {
+  "alan": "genel_medyan",
+  "ad": "Ölçülen ürünlerin ortanca fiyatı",
+  "yontem": "Kaynak ortancalarının ortancası"
+ },
  "olcumler": [
   "2026-07-28",
   "2026-08-05",
@@ -176,6 +181,13 @@
      "urun": 30,
      "kaynak": 1,
      "veri_tarihi": "2026-08-20"
+    },
+    {
+     "tarih": "2026-08-22",
+     "medyan": 1349,
+     "urun": 37,
+     "kaynak": 1,
+     "veri_tarihi": "2026-08-22"
     }
    ],
    "ilk": {
@@ -186,15 +198,14 @@
     "veri_tarihi": "2026-07-28"
    },
    "son": {
-    "tarih": "2026-08-20",
-    "medyan": 1124,
-    "urun": 30,
+    "tarih": "2026-08-22",
+    "medyan": 1349,
+    "urun": 37,
     "kaynak": 1,
-    "veri_tarihi": "2026-08-20"
+    "veri_tarihi": "2026-08-22"
    },
-   "degisim_yuzde": -58.4,
-   "gun_araligi": 23,
-   "aylik_degisim_yuzde": -33.1
+   "degisim_yuzde": -50.0,
+   "gun_araligi": 25
   },
   "kedi-yatagi": {
    "seri": [
