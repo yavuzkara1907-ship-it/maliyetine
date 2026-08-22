@@ -3767,6 +3767,13 @@ tahmin gibi anlatiyordu.
 rehber, firin/ocak ve buzdolabi sayfalari 1440x900 ile 390x844 gorunumlerde
 yatay tasma olmadan tarayicida dogrulandi.
 
+**Canli dogrulama:** `9586d0b` Cloudflare uzerinden yayinda. Ev-kurma
+metodolojisinde 42 seri/9 kaynak ve 5-20 yenileme politikasi; ana sayfada
+Dacia minimumu ile marka ortancasi ayrimi; karsilastirma rehberinde
+45+12+2=59 dagilimi; firin/ocakta 59 genel urun ile 21 yapisal ornek
+aciklamasi canli HTML'de dogrulandi. Sitemap'teki **199 URL** IndexNow'a
+gonderildi ve servis `200 OK` ile kabul etti.
+
 
 ## Yapılacaklar (güncel, 2026-08-22)
 Tarihî tamamlanan işler yukarıdaki günlükte duruyor. Bu liste yalnızca
