@@ -1,29 +1,29 @@
-# Sosyal medya önizleme — 2026-08-20
+# Sosyal medya önizleme — 2026-08-22
 
-## 1. (degisim, 193 karakter)
-
-```
-Yemek / İkram (mekanın menü bedeli) ortalama fiyatı 15 günde %82.0 arttı: 250 TL → 455 TL.
-
-8 üründen, tek kaynaktan ölçüldü (2026-08-20).
-https://maliyetine.com.tr/dugun/yemek-ikram-fiyatlari/
-```
-
-## 2. (degisim, 183 karakter)
+## 1. (degisim, 180 karakter)
 
 ```
-Avize / Aydınlatma ortalama fiyatı 11 günde %66.1 arttı: 1.010 TL → 1.678 TL.
+Kahve Makinesi ortanca fiyatı 13 günde %72.4 arttı: 3.299 TL → 5.689 TL.
 
-46 üründen, tek kaynaktan ölçüldü (2026-08-20).
-https://maliyetine.com.tr/ev-kurma/aydinlatma-fiyatlari/
+78 üründen, 3 kaynaktan ölçüldü (2026-08-22).
+https://maliyetine.com.tr/ev-kurma/kahve-makinesi-fiyatlari/
 ```
 
-## 3. (degisim, 177 karakter)
+## 2. (degisim, 170 karakter)
 
 ```
-Tencere Seti ortalama fiyatı 11 günde %55.4 arttı: 3.462 TL → 5.380 TL.
+Davlumbaz ortanca fiyatı 11 günde %32.4 arttı: 3.975 TL → 5.262 TL.
 
-85 üründen, 2 kaynaktan ölçüldü (2026-08-20).
-https://maliyetine.com.tr/ev-kurma/tencere-seti-fiyatlari/
+60 üründen, 3 kaynaktan ölçüldü (2026-08-20).
+https://maliyetine.com.tr/ev-kurma/davlumbaz-fiyatlari/
+```
+
+## 3. (degisim, 179 karakter)
+
+```
+Dikey Süpürge ortanca fiyatı 13 günde %27.8 azaldı: 9.599 TL → 6.935 TL.
+
+76 üründen, 3 kaynaktan ölçüldü (2026-08-22).
+https://maliyetine.com.tr/ev-kurma/dikey-supurge-fiyatlari/
 ```
 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Maliyeti Ne? Veri Güncellemeleri</title>
+  <link>https://maliyetine.com.tr/rapor/</link>
+  <description>Türkiye maliyet endeksleri, doğrulanmış fiyat değişimleri ve yeni veri yayınları.</description>
+  <language>tr-TR</language>
+  <lastBuildDate>Sat, 22 Aug 2026 09:00:00 +0000</lastBuildDate>
+  <atom:link href="https://maliyetine.com.tr/feed.xml" rel="self" type="application/rss+xml" />
+  <item>
+    <title>Ağustos 2026 Türkiye Maliyet Raporu</title>
+    <link>https://maliyetine.com.tr/rapor/</link>
+    <guid isPermaLink="false">maliyetine-rapor-2026-08-22-57b420c28b2f83f9</guid>
+    <pubDate>Sat, 22 Aug 2026 09:00:00 +0000</pubDate>
+    <description>121 fiyat serisi ve 20 bağımsız kaynakla güncellenen Ağustos 2026 Türkiye Maliyet Raporu.</description>
+  </item>
+</channel>
+</rss>

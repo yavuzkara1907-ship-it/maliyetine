@@ -19,7 +19,7 @@
   **7 vertikal** (`dugun`, `ev-kurma`, `okul`, `bebek`, `kedi`, `kopek`,
   `arac`), **121 aktif fiyat serisi**, **26 bağımsız `/hesap/` hesaplayıcı**
   ve **27 veriyle/resmî kaynakla üretilen rehber**. Güncel yayın paketindeki
-  198 sayfa sitemap'teki 198 URL ile birebirdir; 190 sayfaya özel OG kartı
+  199 sayfa sitemap'teki 199 URL ile birebirdir; 191 sayfaya özel OG kartı
   vardır.
 - **Envanter sayacı tek sözleşmeye bağlandı.** Eski `122` sayısı gerçek
   bir yayın hatasıydı: iki salon varyantına bölündükten sonra devre dışı
@@ -86,7 +86,19 @@
   Corsa-e, Astra, Mokka, Frontera, Grandland ve Combo H3 bölümleridir.
   Kaynaktaki motor, şanzıman ve donanım ifadesi aynen korunur; ayrı ayrı
   özellik farkı uydurulmaz. Canlı QA: 121 seri, 109 kalem sayfası, 0 kritik
-  hata, 29 uyarı, 72 görünür veri sınırı; Python 413/413, JS 90/90.
+  hata, 29 uyarı, 72 görünür veri sınırı; Python 420/420, JS 90/90.
+- **Google dışı dağıtım omurgası eklendi (2026-08-22).** `/rapor/` tek
+  kanonik URL'de yedi endeksin güncel orta senaryolarını, envanter
+  sayılarını ve yalnız kalite eşiğini geçen fiyat değişimlerini yayınlar.
+  Rakamlar elle yazılmaz; `scraper/rapor.py` kanonik JSON, geçmiş ve
+  manifestten `/rapor/index.html`, `/veri/rapor.json`, `/feed.xml` ile
+  `veri/sosyal/dagitim-paketi.md` üretir. WhatsApp, LinkedIn, X, Web Share
+  ve alıntı kopyalama yolları raporda görünürdür; 199 sayfanın tamamı
+  Rapor menü bağlantısı ve RSS auto-discovery etiketi taşır. Sosyal değişim
+  iddiası artık en az iki bağımsız kaynak ister; resmî araç liste fiyatı
+  tanımlı istisnadır. CSS URL'si sürümlüdür; Cloudflare'ın yeni rapor
+  düzenine eski stil vermesi engellenir. Bu dört çıktı aylık workflow'da
+  QA'dan önce üretilir ve commit envanterine dahildir.
 - **Düğün ikinci kaynak standardı:** aynı para biriminde görünmesi iki
   kaynağı karşılaştırılabilir yapmaz. Kişi başı salon fiyatına toplam
   organizasyon teklifi; aynı mekandaki paket farkından türetilen

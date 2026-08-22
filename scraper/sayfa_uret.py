@@ -1085,6 +1085,7 @@ def genel_menu(aktif: str = "") -> str:
             continue
         ogeler.append((conf["ad"], f'/{conf["yol"]}/', v))
     ogeler += [
+        ("Rapor", "/rapor/", "rapor"),
         ("Hesaplayıcılar", "/hesap/", "hesap"),
         ("Rehber", "/rehber/", "rehber"),
         ("Veri", "/veri/", "veri"),
@@ -1735,7 +1736,8 @@ SITE_KOK_URL = "https://maliyetine.com.tr"
 # gec font degisiminin cevap blogunu asagi itip CLS uretmesini engeller.
 # Serif dosyasini preload etmek olculen CLS'yi degistirmedi, yavas 4G'de FCP'yi
 # 150 ms geciktirdi. Latin-ext dosyalari da 4-5 KB; CSS uzerinden hizla gelir.
-STIL_ETIKETLERI = """<link rel="stylesheet" href="/assets/css/style.css">
+STIL_ETIKETLERI = """<link rel="stylesheet" href="/assets/css/style.css?v=20260822-rapor">
+<link rel="alternate" type="application/rss+xml" title="Maliyeti Ne? veri güncellemeleri" href="/feed.xml">
 <link rel="preload" href="/assets/font/sans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/font/sans-600-latin.woff2" as="font" type="font/woff2" crossorigin>"""
 
@@ -3683,6 +3685,8 @@ def sitemap_uret() -> str:
     # Veri indirme merkezi - alintilanabilirligin merkezi sayfasi.
     if (SITE_KOK / "veri" / "index.html").exists():
         url_kayitlari.append(("/veri/", "monthly", "0.8"))
+    if (SITE_KOK / "rapor" / "index.html").exists():
+        url_kayitlari.append(("/rapor/", "monthly", "0.9"))
     if (SITE_KOK / "sss" / "index.html").exists():
         url_kayitlari.append(("/sss/", "monthly", "0.6"))
     # Senaryo sayfalari (100 kisilik dugun, beyaz esya butcesi...) -
@@ -4131,6 +4135,14 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
   </section>
 
 {asistan_blok}
+  <section class="rapor-cagri">
+    <p class="rapor-cagri-etiket">Yeni veri bülteni</p>
+    <h2>Türkiye Maliyet Raporu</h2>
+    <p>Yedi endeksin güncel seviyeleri, doğrulanmış fiyat değişimleri ve
+      alıntı künyesi tek sayfada. Rapor her ölçümde veriden yeniden üretilir.</p>
+    <p><a class="rapor-cagri-link" href="/rapor/">Güncel raporu inceleyin →</a></p>
+  </section>
+
   <h2>Endeksler</h2>
 
   <div class="kart-grid">
@@ -4169,7 +4181,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
 
 <footer>
   <div class="kapsayici">
-    <div>© 2026 Maliyeti Ne? · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/sss/">SSS</a> · <a href="/rehber/">Rehber</a> · <a href="/veri/">Veri</a></div>
+    <div>© 2026 Maliyeti Ne? · <a href="/rapor/">Rapor</a> · <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> · <a href="/sss/">SSS</a> · <a href="/rehber/">Rehber</a> · <a href="/veri/">Veri</a></div>
     <nav>{menu}
     </nav>
   </div>

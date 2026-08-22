@@ -76,6 +76,20 @@ class KapilarTesti(unittest.TestCase):
                     self._seri("2026-08-05", "2026-08-20", 4000, 4060, 45, 45), 1.5)
         self.assertEqual(sosyal.degisim_adaylari(self.kok), [])
 
+    def test_kapi4_tek_kaynakli_degisim_paylasilmaz(self):
+        seri = self._seri("2026-08-05", "2026-08-20", 4000, 5200, 45, 44)
+        seri[-1]["kaynak"] = 1
+        _gecmis_yaz(self.kok, "bebek", "besik", seri, 30.0)
+        self.assertEqual(sosyal.degisim_adaylari(self.kok), [])
+
+    def test_resmi_arac_liste_fiyati_tek_kaynakla_paylasilabilir(self):
+        seri = self._seri("2026-08-05", "2026-08-20", 2_000_000, 2_100_000, 20, 20)
+        seri[-1]["kaynak"] = 1
+        _gecmis_yaz(self.kok, "arac", "fiat", seri, 5.0)
+        adaylar = sosyal.degisim_adaylari(self.kok)
+        self.assertEqual(len(adaylar), 1)
+        self.assertEqual(adaylar[0]["kaynak_sayisi"], 1)
+
     def test_soylenecek_sey_yoksa_bos_doner(self):
         """Bos liste hata degil, tasarlanan davranis. Kod bu durumda
         uydurma bir gonderi URETEMEZ."""

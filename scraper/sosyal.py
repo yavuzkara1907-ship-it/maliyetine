@@ -76,6 +76,11 @@ EN_FAZLA_GONDERI = 3
 # degisimler yuvarlama kaynakli bile olabilir.
 ASGARI_DEGISIM_YUZDE = 3.0
 
+# Sosyal paylasim bir veri sayfasindan daha yuksek ispat esigi ister: tek
+# kaynaktaki kategori karmasi degisimi gercek fiyat hareketi gibi yayilmasin.
+# Arac istisna; oradaki kaynak ureticinin ilan ettigi resmi liste fiyatidir.
+ASGARI_KAYNAK_SAYISI = 2
+
 # Orneklem iki olcum arasinda bu orandan fazla degistiyse degisim
 # paylasilmaz - medyan oynamasi fiyattan degil olculen kumeden geliyor
 # olabilir ve hangisi oldugunu ayirt edemiyoruz.
@@ -153,6 +158,14 @@ def degisim_adaylari(gecmis_kok: Path = VARSAYILAN_GECMIS_KOK) -> list[dict]:
             if abs(degisim) < ASGARI_DEGISIM_YUZDE:
                 continue
 
+            # KAPI 4: kamuya dagitilacak degisim en az iki bagimsiz kaynaktan
+            # gelmeli. Resmi arac liste fiyatinda ikinci kaynak ayni ilani
+            # tekrar edecegi icin bu kural anlamli degildir.
+            kaynak_sayisi = son.get("kaynak") or 0
+            conf = _vertikal_adlari().get(vertikal) or {}
+            if kaynak_sayisi < ASGARI_KAYNAK_SAYISI and not conf.get("liste_fiyati"):
+                continue
+
             ad = _kalem_adi(vertikal, kalem_id)
             if not ad:
                 continue
@@ -162,6 +175,8 @@ def degisim_adaylari(gecmis_kok: Path = VARSAYILAN_GECMIS_KOK) -> list[dict]:
                 "onem": abs(degisim),
                 "vertikal": vertikal,
                 "kalem_id": kalem_id,
+                "kaynak_sayisi": kaynak_sayisi,
+                "olcum_tarihi": son.get("tarih"),
                 "metin": _degisim_metni(ad, degisim, son, onceki),
                 "url": _kalem_url(vertikal, kalem_id),
             })

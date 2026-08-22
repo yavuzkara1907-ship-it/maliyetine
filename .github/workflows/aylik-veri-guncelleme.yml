@@ -157,6 +157,16 @@ jobs:
         working-directory: scraper
         run: python veri_disa_aktar.py
 
+      # Google disi dagitim omurgasi: tek alintilanabilir rapor, RSS ve
+      # WhatsApp/LinkedIn/X icin veriyle kurulan yayin metinleri. Rapor
+      # olustuktan sonra ana sayfa ile sitemap yeniden kurulur; ilk yayinda
+      # bile rapor hem menuden hem sitemap'ten kesfedilebilir olsun.
+      - name: Maliyet raporu ve dağıtım akışını üret
+        working-directory: scraper
+        run: |
+          python rapor.py
+          python sayfa_uret.py --vertikal dugun
+
       # SON KAPI: JSON, gecmis, CSV ve gorunur HTML ayni kanonik veriyi
       # tasimiyorsa dis dunyaya yan etki (sosyal gonderi/commit) olusmaz.
       # qa.json hata durumunda da yazilir; yerel incelemede nedeni kaybolmaz.
@@ -205,9 +215,9 @@ jobs:
           # edilmedigi icin canlida bayat kalirdi (sessiz bayatlama,
           # bu projede daha once yasanan hata sinifi).
           git add scraper/veri scraper/kaynak_gecmisi.json veri \
-                  index.html sitemap.xml llms.txt ai.txt robots.txt \
+                  index.html sitemap.xml feed.xml llms.txt ai.txt robots.txt \
                   assets \
-                  dugun ev-kurma okul bebek kedi kopek arac evcil-hayvan rehber hesap sss
+                  dugun ev-kurma okul bebek kedi kopek arac evcil-hayvan rehber hesap sss rapor
           if git diff --cached --quiet; then
             echo "Değişiklik yok, commit atlanıyor."
             echo "degisti=false" >> "$GITHUB_OUTPUT"

@@ -467,6 +467,24 @@ def kart_karti_yaz(baslik, tutar, alt, hedef):
     return kalem_karti(baslik, tutar, alt, hedef)
 
 
+def rapor_karti_uret(veri_kok: Path | None = None) -> int:
+    """Guncel veri raporu icin baslik odakli paylasim karti."""
+    try:
+        import rapor
+        veri = rapor.rapor_verisi(veri_kok)
+    except (ImportError, ValueError, OSError, json.JSONDecodeError):
+        return 0
+    e = veri["envanter"]
+    alt = (
+        f"{e['fiyat_serisi']} fiyat serisi · {e['kaynak']} bağımsız kaynak · "
+        f"son veri {veri['tarih']}"
+    )
+    return int(bool(kart_baslikli(
+        veri["baslik"], alt, KALEM_KOK / "maliyet-raporu.png",
+        vurgu_satiri=f"{e['cok_kaynakli']} çok kaynaklı seri",
+    )))
+
+
 def tum_kartlar(veri_kok: Path | None = None) -> int:
     """Butun paylasim kartlari TEK CAGRIDAN.
 
@@ -477,7 +495,8 @@ def tum_kartlar(veri_kok: Path | None = None) -> int:
     """
     return (kalem_kartlarini_uret(veri_kok)
             + rehber_ve_hesap_kartlari(veri_kok)
-            + senaryo_ve_arac_kartlari(veri_kok))
+            + senaryo_ve_arac_kartlari(veri_kok)
+            + rapor_karti_uret(veri_kok))
 
 def main():
     yol = uret()

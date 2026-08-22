@@ -1,0 +1,250 @@
+{
+  "baslik": "Ağustos 2026 Türkiye Maliyet Raporu",
+  "url": "https://maliyetine.com.tr/rapor/",
+  "son_veri": "2026-08-22",
+  "dataset_surumu": "2026-08-22-57b420c28b2f83f9",
+  "envanter": {
+    "fiyat_serisi": 121,
+    "kaynak": 20,
+    "cok_kaynakli": 80,
+    "tek_kaynak": 41
+  },
+  "endeksler": [
+    {
+      "id": "dugun",
+      "ad": "Düğün",
+      "url": "https://maliyetine.com.tr/dugun/",
+      "orta_senaryo_tl": 438905,
+      "kapsam": "150 kişilik, orta segment bir düğün",
+      "kalem_sayisi": 12,
+      "kaynak_sayisi": 7,
+      "son_veri": "2026-08-20"
+    },
+    {
+      "id": "ev-kurma",
+      "ad": "Ev Kurma",
+      "url": "https://maliyetine.com.tr/ev-kurma/",
+      "orta_senaryo_tl": 351697,
+      "kapsam": "sıfırdan bir evi eşyalandırmak (orta segment)",
+      "kalem_sayisi": 41,
+      "kaynak_sayisi": 9,
+      "son_veri": "2026-08-22"
+    },
+    {
+      "id": "okul",
+      "ad": "Okul",
+      "url": "https://maliyetine.com.tr/okul/",
+      "orta_senaryo_tl": 6311,
+      "kapsam": "bir öğrencinin okul alışverişi",
+      "kalem_sayisi": 11,
+      "kaynak_sayisi": 4,
+      "son_veri": "2026-08-20"
+    },
+    {
+      "id": "bebek",
+      "ad": "Bebek",
+      "url": "https://maliyetine.com.tr/bebek/",
+      "orta_senaryo_tl": 48672,
+      "kapsam": "bebek hazırlığı",
+      "kalem_sayisi": 10,
+      "kaynak_sayisi": 4,
+      "son_veri": "2026-08-22"
+    },
+    {
+      "id": "kedi",
+      "ad": "Kedi",
+      "url": "https://maliyetine.com.tr/kedi/",
+      "orta_senaryo_tl": 6145,
+      "kapsam": "bir kediye başlangıç kurulumu",
+      "kalem_sayisi": 6,
+      "kaynak_sayisi": 2,
+      "son_veri": "2026-08-22"
+    },
+    {
+      "id": "kopek",
+      "ad": "Köpek",
+      "url": "https://maliyetine.com.tr/kopek/",
+      "orta_senaryo_tl": 4830,
+      "kapsam": "bir köpeğe başlangıç kurulumu",
+      "kalem_sayisi": 5,
+      "kaynak_sayisi": 2,
+      "son_veri": "2026-08-22"
+    },
+    {
+      "id": "arac",
+      "ad": "0 km Araç",
+      "url": "https://maliyetine.com.tr/arac/",
+      "orta_senaryo_tl": 2069000,
+      "kapsam": "marka giriş fiyatlarının ortancası",
+      "kalem_sayisi": 1,
+      "kaynak_sayisi": 1,
+      "son_veri": "2026-08-22"
+    }
+  ],
+  "dogrulanmis_degisimler": [
+    {
+      "vertikal": "ev-kurma",
+      "kalem_id": "kahve-makinesi",
+      "degisim_yuzde_mutlak": 72.4,
+      "kaynak_sayisi": 3,
+      "son_veri": "2026-08-22",
+      "aciklama": "Kahve Makinesi ortanca fiyatı 13 günde %72.4 arttı: 3.299 TL → 5.689 TL.\n\n78 üründen, 3 kaynaktan ölçüldü (2026-08-22).",
+      "url": "https://maliyetine.com.tr/ev-kurma/kahve-makinesi-fiyatlari/"
+    },
+    {
+      "vertikal": "ev-kurma",
+      "kalem_id": "davlumbaz",
+      "degisim_yuzde_mutlak": 32.4,
+      "kaynak_sayisi": 3,
+      "son_veri": "2026-08-20",
+      "aciklama": "Davlumbaz ortanca fiyatı 11 günde %32.4 arttı: 3.975 TL → 5.262 TL.\n\n60 üründen, 3 kaynaktan ölçüldü (2026-08-20).",
+      "url": "https://maliyetine.com.tr/ev-kurma/davlumbaz-fiyatlari/"
+    },
+    {
+      "vertikal": "ev-kurma",
+      "kalem_id": "dikey-supurge",
+      "degisim_yuzde_mutlak": 27.8,
+      "kaynak_sayisi": 3,
+      "son_veri": "2026-08-22",
+      "aciklama": "Dikey Süpürge ortanca fiyatı 13 günde %27.8 azaldı: 9.599 TL → 6.935 TL.\n\n76 üründen, 3 kaynaktan ölçüldü (2026-08-22).",
+      "url": "https://maliyetine.com.tr/ev-kurma/dikey-supurge-fiyatlari/"
+    },
+    {
+      "vertikal": "bebek",
+      "kalem_id": "bebek-bezi",
+      "degisim_yuzde_mutlak": 23.6,
+      "kaynak_sayisi": 2,
+      "son_veri": "2026-08-22",
+      "aciklama": "Bebek Bezi (paket) ortanca fiyatı 20 günde %23.6 azaldı: 576 TL → 440 TL.\n\n56 üründen, 2 kaynaktan ölçüldü (2026-08-22).",
+      "url": "https://maliyetine.com.tr/bebek/bebek-bezi-fiyatlari/"
+    },
+    {
+      "vertikal": "ev-kurma",
+      "kalem_id": "su-isitici",
+      "degisim_yuzde_mutlak": 16.3,
+      "kaynak_sayisi": 2,
+      "son_veri": "2026-08-20",
+      "aciklama": "Su Isıtıcı (Kettle) ortanca fiyatı 11 günde %16.3 azaldı: 1.266 TL → 1.060 TL.\n\n61 üründen, 2 kaynaktan ölçüldü (2026-08-20).",
+      "url": "https://maliyetine.com.tr/ev-kurma/su-isitici-fiyatlari/"
+    },
+    {
+      "vertikal": "ev-kurma",
+      "kalem_id": "catal-kasik-bicak-takimi",
+      "degisim_yuzde_mutlak": 14.2,
+      "kaynak_sayisi": 2,
+      "son_veri": "2026-08-20",
+      "aciklama": "Çatal-Kaşık-Bıçak Takımı ortanca fiyatı 11 günde %14.2 arttı: 2.024 TL → 2.312 TL.\n\n55 üründen, 2 kaynaktan ölçüldü (2026-08-20).",
+      "url": "https://maliyetine.com.tr/ev-kurma/catal-kasik-bicak-takimi-fiyatlari/"
+    },
+    {
+      "vertikal": "kopek",
+      "kalem_id": "kopek-yatagi",
+      "degisim_yuzde_mutlak": 13.7,
+      "kaynak_sayisi": 2,
+      "son_veri": "2026-08-20",
+      "aciklama": "Köpek Yatağı ortanca fiyatı 11 günde %13.7 arttı: 1.758 TL → 1.998 TL.\n\n54 üründen, 2 kaynaktan ölçüldü (2026-08-20).",
+      "url": "https://maliyetine.com.tr/kopek/kopek-yatagi-fiyatlari/"
+    },
+    {
+      "vertikal": "ev-kurma",
+      "kalem_id": "klima",
+      "degisim_yuzde_mutlak": 10.3,
+      "kaynak_sayisi": 3,
+      "son_veri": "2026-08-20",
+      "aciklama": "Klima ortanca fiyatı 11 günde %10.3 azaldı: 32.314 TL → 29.000 TL.\n\n57 üründen, 3 kaynaktan ölçüldü (2026-08-20).",
+      "url": "https://maliyetine.com.tr/ev-kurma/klima-fiyatlari/"
+    },
+    {
+      "vertikal": "okul",
+      "kalem_id": "kalem-kutusu",
+      "degisim_yuzde_mutlak": 10.0,
+      "kaynak_sayisi": 3,
+      "son_veri": "2026-08-20",
+      "aciklama": "Kalem Kutusu ortanca fiyatı 15 günde %10.0 azaldı: 600 TL → 540 TL.\n\n166 üründen, 3 kaynaktan ölçüldü (2026-08-20).",
+      "url": "https://maliyetine.com.tr/okul/kalem-kutusu-fiyatlari/"
+    },
+    {
+      "vertikal": "ev-kurma",
+      "kalem_id": "perde",
+      "degisim_yuzde_mutlak": 9.7,
+      "kaynak_sayisi": 2,
+      "son_veri": "2026-08-20",
+      "aciklama": "Perde ortanca fiyatı 11 günde %9.7 arttı: 494 TL → 542 TL.\n\n50 üründen, 2 kaynaktan ölçüldü (2026-08-20).",
+      "url": "https://maliyetine.com.tr/ev-kurma/perde-fiyatlari/"
+    },
+    {
+      "vertikal": "okul",
+      "kalem_id": "resim-malzemeleri",
+      "degisim_yuzde_mutlak": 9.6,
+      "kaynak_sayisi": 2,
+      "son_veri": "2026-08-20",
+      "aciklama": "Resim ve Sanat Malzemeleri ortanca fiyatı 15 günde %9.6 azaldı: 364 TL → 329 TL.\n\n65 üründen, 2 kaynaktan ölçüldü (2026-08-20).",
+      "url": "https://maliyetine.com.tr/okul/resim-malzemeleri-fiyatlari/"
+    },
+    {
+      "vertikal": "ev-kurma",
+      "kalem_id": "sehpa",
+      "degisim_yuzde_mutlak": 8.0,
+      "kaynak_sayisi": 2,
+      "son_veri": "2026-08-20",
+      "aciklama": "Orta Sehpa ortanca fiyatı 11 günde %8.0 azaldı: 2.539 TL → 2.336 TL.\n\n67 üründen, 2 kaynaktan ölçüldü (2026-08-20).",
+      "url": "https://maliyetine.com.tr/ev-kurma/sehpa-fiyatlari/"
+    },
+    {
+      "vertikal": "ev-kurma",
+      "kalem_id": "aydinlatma",
+      "degisim_yuzde_mutlak": 6.4,
+      "kaynak_sayisi": 2,
+      "son_veri": "2026-08-20",
+      "aciklama": "Avize / Aydınlatma ortanca fiyatı 11 günde %6.4 arttı: 1.010 TL → 1.075 TL.\n\n71 üründen, 2 kaynaktan ölçüldü (2026-08-20).",
+      "url": "https://maliyetine.com.tr/ev-kurma/aydinlatma-fiyatlari/"
+    },
+    {
+      "vertikal": "dugun",
+      "kalem_id": "davetiye",
+      "degisim_yuzde_mutlak": 6.3,
+      "kaynak_sayisi": 2,
+      "son_veri": "2026-08-05",
+      "aciklama": "Davetiye ortanca fiyatı 10 günde %6.3 arttı: 190 TL → 202 TL.\n\n30 üründen, 2 kaynaktan ölçüldü (2026-08-05).",
+      "url": "https://maliyetine.com.tr/dugun/davetiye-fiyatlari/"
+    },
+    {
+      "vertikal": "okul",
+      "kalem_id": "calisma-sandalyesi",
+      "degisim_yuzde_mutlak": 6.2,
+      "kaynak_sayisi": 2,
+      "son_veri": "2026-08-20",
+      "aciklama": "Çalışma Sandalyesi ortanca fiyatı 15 günde %6.2 azaldı: 3.717 TL → 3.488 TL.\n\n61 üründen, 2 kaynaktan ölçüldü (2026-08-20).",
+      "url": "https://maliyetine.com.tr/okul/calisma-sandalyesi-fiyatlari/"
+    },
+    {
+      "vertikal": "ev-kurma",
+      "kalem_id": "buzdolabi",
+      "degisim_yuzde_mutlak": 4.5,
+      "kaynak_sayisi": 3,
+      "son_veri": "2026-08-22",
+      "aciklama": "Buzdolabı ortanca fiyatı 13 günde %4.5 arttı: 28.054 TL → 29.324 TL.\n\n76 üründen, 3 kaynaktan ölçüldü (2026-08-22).",
+      "url": "https://maliyetine.com.tr/ev-kurma/buzdolabi-fiyatlari/"
+    },
+    {
+      "vertikal": "dugun",
+      "kalem_id": "nikah-sekeri",
+      "degisim_yuzde_mutlak": 4.1,
+      "kaynak_sayisi": 2,
+      "son_veri": "2026-08-05",
+      "aciklama": "Nikah Şekeri ortanca fiyatı 10 günde %4.1 arttı: 390 TL → 406 TL.\n\n30 üründen, 2 kaynaktan ölçüldü (2026-08-05).",
+      "url": "https://maliyetine.com.tr/dugun/"
+    },
+    {
+      "vertikal": "ev-kurma",
+      "kalem_id": "tencere-seti",
+      "degisim_yuzde_mutlak": 3.5,
+      "kaynak_sayisi": 4,
+      "son_veri": "2026-08-20",
+      "aciklama": "Tencere Seti ortanca fiyatı 11 günde %3.5 azaldı: 3.462 TL → 3.342 TL.\n\n115 üründen, 4 kaynaktan ölçüldü (2026-08-20).",
+      "url": "https://maliyetine.com.tr/ev-kurma/tencere-seti-fiyatlari/"
+    }
+  ],
+  "lisans": "CC BY 4.0",
+  "alinti_notu": "Rakamla birlikte son veri tarihini belirtin."
+}

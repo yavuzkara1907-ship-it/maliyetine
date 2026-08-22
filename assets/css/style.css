@@ -1417,6 +1417,105 @@ footer nav {
 .site-ozeti strong { color: var(--renk-metin); font-weight: 600; }
 .site-ozeti a { color: var(--renk-vurgu); }
 
+/* Ana sayfa rapor cagrisi: pazarlama karti degil, veri bulteni manseti. */
+.rapor-cagri {
+  margin: 34px 0 38px;
+  padding: 22px 0 18px;
+  border-top: 4px solid var(--renk-metin);
+  border-bottom: 1px solid var(--renk-cizgi-koyu);
+}
+.rapor-cagri h2 { margin: 2px 0 8px; }
+.rapor-cagri p { max-width: 700px; }
+.rapor-cagri-etiket {
+  margin: 0;
+  color: var(--renk-vurgu);
+  font-size: .78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+.rapor-cagri-link { font-weight: 700; }
+
+/* Aylik rapor: gazete/istatistik bulteni gibi taranabilir, kart yiginina
+   donusmeyen bir bilgi hiyerarsisi. */
+.rapor-ust {
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--renk-cizgi-koyu);
+}
+.rapor-spot {
+  max-width: 740px;
+  font-family: var(--yazi-baslik);
+  font-size: 1.35rem;
+  line-height: 1.35;
+}
+.rapor-istatistikler {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin: 24px 0 12px;
+  border-top: 1px solid var(--renk-cizgi-koyu);
+  border-bottom: 1px solid var(--renk-cizgi-koyu);
+}
+.rapor-istatistik {
+  min-width: 0;
+  padding: 14px 16px 14px 0;
+}
+.rapor-istatistik + .rapor-istatistik {
+  padding-left: 16px;
+  border-left: 1px solid var(--renk-cizgi);
+}
+.rapor-istatistik strong {
+  display: block;
+  font-family: var(--yazi-baslik);
+  font-size: 1.75rem;
+  line-height: 1.1;
+}
+.rapor-istatistik span { color: var(--renk-metin-soluk); font-size: .8rem; }
+.degisim-liste { border-top: 1px solid var(--renk-cizgi-koyu); }
+.degisim-satir {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--renk-cizgi);
+}
+.degisim-satir h3 { margin: 0 0 5px; font-size: 1.08rem; }
+.degisim-satir p { margin: 4px 0; }
+.tablo-not {
+  display: block;
+  color: var(--renk-metin-soluk);
+  font-size: .78rem;
+  line-height: 1.35;
+  margin-top: 3px;
+}
+.paylasim-araclari {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0;
+}
+.paylasim-araclari a,
+.paylasim-araclari button {
+  min-height: 42px;
+  padding: 9px 13px;
+  border: 1px solid var(--renk-cizgi-koyu);
+  border-radius: 2px;
+  background: transparent;
+  color: var(--renk-metin);
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+.paylasim-araclari a:hover,
+.paylasim-araclari button:hover { border-color: var(--renk-vurgu); color: var(--renk-vurgu); }
+.alinti-kunyesi {
+  padding: 14px 16px;
+  border-left: 4px solid var(--renk-vurgu);
+  background: var(--renk-zemin-alt);
+}
+@media (max-width: 620px) {
+  .rapor-istatistikler { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .rapor-istatistik:nth-child(3) { padding-left: 0; border-left: 0; border-top: 1px solid var(--renk-cizgi); }
+  .rapor-istatistik:nth-child(4) { border-top: 1px solid var(--renk-cizgi); }
+}
+
 /* ---------------------------------------------------------------
    TABLET TASMASI (2026-07-27 denetiminde bulundu)
    Menu 5 ogeden 8'e cikinca 673 px genisledi; logo ile birlikte
