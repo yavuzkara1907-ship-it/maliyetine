@@ -3807,6 +3807,10 @@ daha kolay alinabilir hale getirmek.
   `cevap_sayisi` hem dizi uzunluguna bagliyor. Elle yazilmis paralel sayac yok.
 - Son kalite kapilari: Python **438/438**, JavaScript **90/90**; veri merkezi
   dahil 11 kritik sayfa 320-1440 px arasindaki 14 genislikte yatay tasmasiz.
+- **Canli dogrulama:** `bf3ef77` yayinda. `/llms-full.txt` `text/plain`,
+  `/veri/cevaplar.json` `application/json` ile `200` donuyor; canli JSON
+  **121 cevap = 109 kalem baglantisi + 12 endeks baglantisi** sozlesmesini
+  ve `2026-08-22-9f06c382a78198a6` veri surumunu tasiyor.
 
 ## Yapılacaklar (güncel, 2026-08-22)
 Tarihî tamamlanan işler yukarıdaki günlükte duruyor. Bu liste yalnızca
