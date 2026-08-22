@@ -1004,7 +1004,7 @@ def _ek_kalem_sayfalari(conf: dict, kalem_verisi: dict) -> list[dict]:
     uretilen = []
     for kalem in conf["kalemler"]:
         kid = kalem["id"]
-        if kid in mevcut or kid not in KALEM_SAYFA_NOTLARI:
+        if kid in mevcut:
             continue
         veri = kalem_verisi.get(kid) or {}
         if not veri.get("genel_medyan"):
@@ -1016,6 +1016,24 @@ def _ek_kalem_sayfalari(conf: dict, kalem_verisi: dict) -> list[dict]:
         if urun < esik:
             continue
         ad = kalem["ad"]
+        if conf["yol"] == "arac" and kid != "en-ucuz-sifir-arac":
+            modeller = (veri.get("ozellik_ozeti") or {}).get("modeller") or {}
+            eslesen = (veri.get("ozellik_ozeti") or {}).get("ozellik_eslesen_urun", 0)
+            if len(modeller) < 2 or eslesen < max(2, urun // 2):
+                continue
+            uretilen.append({
+                "id": kid,
+                "slug": _slugify_kalem(kid),
+                "baslik": f"{ad} Fiyatları ve Modelleri 2026",
+                "soru": f"2026'da {ad} modelleri ve fiyatları ne kadar?",
+                "aciklama": (
+                    f"{ad} modelleri aynı marka rehberinde; motor, şanzıman ve "
+                    "donanım ifadesi kaynak satırındaki biçimiyle gösterilir."
+                ),
+            })
+            continue
+        if kid not in KALEM_SAYFA_NOTLARI:
+            continue
         uretilen.append({
             "id": kid,
             "slug": _slugify_kalem(kid),
@@ -2746,6 +2764,83 @@ def _urun_ozellik_ozeti_html(kalem_verisi: dict | None) -> str:
 '''
 
 
+def _arac_marka_rehberi_html(tanim: dict, kalem_verisi: dict | None) -> str:
+    """Tek marka URL'sinde model ve kaynak varyantlarını derinleştirir."""
+    ozet = (kalem_verisi or {}).get("ozellik_ozeti") or {}
+    modeller = list((ozet.get("modeller") or {}).items())
+    if len(modeller) < 2:
+        return ""
+
+    def fiyatlar(model):
+        return [v["fiyat"] for v in model.get("varyantlar", []) if v.get("fiyat")]
+
+    modeller = [(anahtar, model) for anahtar, model in modeller if fiyatlar(model)]
+    modeller.sort(key=lambda x: (min(fiyatlar(x[1])), x[1]["ad"].casefold()))
+    if len(modeller) < 2:
+        return ""
+
+    marka = tanim["ad"]
+    ozet_satirlari = []
+    model_bolumleri = []
+    for anahtar, model in modeller:
+        degerler = fiyatlar(model)
+        ozet_satirlari.append(
+            f'<tr><td><a href="#{html.escape(anahtar)}">{html.escape(model["ad"])}</a></td>'
+            f'<td class="sayi">{_para(min(degerler))}</td>'
+            f'<td class="sayi">{_para(model["genel_medyan"])}</td>'
+            f'<td class="sayi">{_para(max(degerler))}</td>'
+            f'<td class="sayi">{len(degerler)}</td></tr>'
+        )
+        varyant_satirlari = "".join(
+            f'<tr><td>{html.escape(v.get("isim", ""))}</td>'
+            f'<td class="sayi">{_para(v["fiyat"])}</td>'
+            f'<td>{html.escape(str(v.get("site") or "—").capitalize())}</td></tr>'
+            for v in model["varyantlar"]
+        )
+        model_bolumleri.append(f'''    <h3 id="{html.escape(anahtar)}">{html.escape(marka)} {html.escape(model["ad"])} fiyatları ve paketleri</h3>
+    <p>{len(degerler)} fiyat satırında en düşük fiyat <strong>{_para(min(degerler))}</strong>,
+      ortanca fiyat <strong>{_para(model["genel_medyan"])}</strong> ve en yüksek fiyat
+      <strong>{_para(max(degerler))}</strong>.</p>
+    <div class="tablo-sarmal"><table>
+      <thead><tr><th>Paket / motor seçeneği</th><th class="sayi">Liste fiyatı</th><th>Kaynak</th></tr></thead>
+      <tbody>{varyant_satirlari}</tbody>
+    </table></div>''')
+
+    en_ucuz = min(modeller, key=lambda x: min(fiyatlar(x[1])))[1]
+    en_ucuz_fiyat = min(fiyatlar(en_ucuz))
+    kapsam = ozet.get("ozellik_eslesen_urun", 0)
+    toplam = ozet.get("toplam_urun", 0)
+    return f'''  <section class="icerik-bolumu arac-marka-rehberi">
+    <h2>{html.escape(marka)} modelleri ve güncel fiyatları</h2>
+    <p>Ölçülen {toplam} fiyat satırının {kapsam} tanesi açık model adıyla eşleşti.
+      Aynı modelin motor, şanzıman ve donanım seçenekleri ayrı satırdır; bunlar ayrı
+      sayfalara bölünmez.</p>
+    <div class="tablo-sarmal"><table>
+      <thead><tr><th>Model</th><th class="sayi">En düşük</th><th class="sayi">Ortanca</th>
+      <th class="sayi">En yüksek</th><th class="sayi">Seçenek</th></tr></thead>
+      <tbody>{''.join(ozet_satirlari)}</tbody>
+    </table></div>
+{chr(10).join(model_bolumleri)}
+    <p class="sonuc-alt-metin">Paket ve motor adları kaynaktaki ürün satırından aynen
+      alınır. Kaynakta yazmayan donanım farkları veya özellikler tahmin edilmez.</p>
+  </section>
+
+  <section class="icerik-bolumu">
+    <h2>En ucuz {html.escape(marka)} modeli hangisi?</h2>
+    <p>Bu ölçümde en düşük liste fiyatı <strong>{html.escape(en_ucuz["ad"])}</strong>
+      seçenekleri içinde <strong>{_para(en_ucuz_fiyat)}</strong>. Bu cevap kampanyalı
+      bayi teklifini değil, kaynak tablosunda ölçülen liste fiyatını ifade eder.</p>
+  </section>
+
+  <section class="icerik-bolumu">
+    <h2>{html.escape(marka)} satın alma maliyeti</h2>
+    <p>Etiket fiyatının üzerine gelebilecek MTV, noter ve tescil harcı, trafik
+      sigortası ve kasko kalemlerini <a href="/arac/hesaplayici/">araç sahip olma
+      maliyeti hesaplayıcısında</a> ayrı ayrı hesaplayabilirsiniz.</p>
+  </section>
+'''
+
+
 def kalem_butce_payi(conf: dict, kalemler: dict, kalem_id: str) -> tuple[int, float] | None:
     """Kalemin, vertikalin ornek toplamindaki payi (tutar, yuzde).
 
@@ -2912,6 +3007,11 @@ def kalem_sayfasi_uret(
     karma_urun_turu = bool((veri or {}).get("karma_urun_turu"))
     kaynak_sayisi = len(bagimsiz_siteler({sayfa["id"]: veri or {}}, {sayfa["id"]}))
     urun_sayisi = (veri or {}).get("toplam_urun")
+    marka_modelleri = (
+        ((veri or {}).get("ozellik_ozeti") or {}).get("modeller") or {}
+        if vertikal == "arac" and sayfa["id"] != "en-ucuz-sifir-arac" else {}
+    )
+    marka_rehberi = len(marka_modelleri) >= 2
     sayfa_url = f"{SITE_KOK_URL}/{conf['yol']}/{sayfa['slug']}/"
     _kh = conf.get("hesaplayici_var", True)
     kalem_hesaplayici_menu = (
@@ -2984,6 +3084,12 @@ def kalem_sayfasi_uret(
         meta_aciklama = (
             f"{tanim['ad']} fiyatları ürün tipine göre ayrıldı ({guncelleme_tarihi}). "
             "Ankastre fırın, ocaklı fırın ve set medyanları; ürün ve kaynak sayısıyla."
+        )
+    elif marka_rehberi and ana_fiyat:
+        meta_aciklama = (
+            f"{tanim['ad']} fiyatları ve modelleri ({guncelleme_tarihi}): "
+            f"{len(marka_modelleri)} model, {urun_sayisi} paket/motor seçeneği; "
+            f"ölçülen ortanca {_para(ana_fiyat)}."
         )
     elif ana_fiyat:
         meta_aciklama = (
@@ -3058,6 +3164,17 @@ def kalem_sayfasi_uret(
                 f"Bu kalemin son başarılı ölçümü {guncelleme_tarihi}. Kaynaklar ayın "
                 "5'i ve 20'sinde yeniden taranır; veri dönmeyen veya kalite kontrolünü "
                 "geçmeyen tarama önceki başarılı ölçümün tarihini değiştirmez."
+            )},
+        })
+
+    if marka_rehberi:
+        model_adlari = [m["ad"] for m in marka_modelleri.values()]
+        sorular.append({
+            "@type": "Question",
+            "name": f"{tanim['ad']} hangi modellerle listeleniyor?",
+            "acceptedAnswer": {"@type": "Answer", "text": (
+                f"Bu ölçümde açık model adıyla eşleşen {len(model_adlari)} model: "
+                + ", ".join(model_adlari) + ". Paket ve motor seçenekleri aynı marka sayfasında gösterilir."
             )},
         })
 
@@ -3173,18 +3290,26 @@ def kalem_sayfasi_uret(
         if guncelleme_tarihi
         else '<span class="guncelleme-etiketi">Henüz ölçülmedi</span>'
     )
+    gorunen_baslik = (
+        f"{tanim['ad']} Fiyatları ve Modelleri 2026" if marka_rehberi
+        else sayfa["baslik"]
+    )
+    seo_baslik = (
+        gorunen_baslik + MARKA_SONEKI if marka_rehberi
+        else _seo_title(tanim["ad"])
+    )
 
     return f"""<!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{_seo_title(tanim["ad"])}</title>
+<title>{seo_baslik}</title>
 <meta name="description" content="{meta_aciklama}">
 <link rel="canonical" href="{sayfa_url}">
 {STIL_ETIKETLERI}
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<meta property="og:title" content="{sayfa["baslik"]}">
+<meta property="og:title" content="{gorunen_baslik}">
 <meta property="og:description" content="{meta_aciklama}">
 <meta property="og:type" content="article">
 <meta property="og:url" content="{sayfa_url}">
@@ -3206,7 +3331,7 @@ def kalem_sayfasi_uret(
 
 <main class="kapsayici">
 {_breadcrumb_html(conf, tanim["ad"])}  {olcum_etiketi}
-  <h1>{sayfa["baslik"]}</h1>
+  <h1>{gorunen_baslik}</h1>
 
   <div class="cevap-blok">
     {cevap}
@@ -3220,6 +3345,7 @@ def kalem_sayfasi_uret(
   </section>
 
 {_urun_ozellik_ozeti_html(veri)}
+{_arac_marka_rehberi_html(tanim, veri) if vertikal == "arac" and sayfa["id"] != "en-ucuz-sifir-arac" else ""}
 
   <section class="icerik-bolumu">
     <h2>Bu fiyata ne dahil?</h2>

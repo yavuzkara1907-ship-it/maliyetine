@@ -105,6 +105,47 @@ class FirinOzellikTestleri(unittest.TestCase):
         )
 
 
+class AracModelTestleri(unittest.TestCase):
+    def test_opel_satirlari_model_bazinda_gruplanir_varyant_kaybolmaz(self):
+        urunler = [
+            {"isim": "Opel Corsa 1.2 100 HP Benzin MT6 Edition", "fiyat": 1535000},
+            {"isim": "Opel Corsa Hybrid 1.2 145 e-DCT6 GS", "fiyat": 2119000},
+            {"isim": "Yeni Opel Astra 1.5 130 HP Dizel AT8 Edition", "fiyat": 2360000},
+            {"isim": "Opel Astra 1.5 130 HP Dizel AT8 GS", "fiyat": 2590000},
+            {"isim": "Opel Bilinmeyen 1.2 Paket", "fiyat": 1900000},
+        ]
+        ozet = un.arac_model_ozeti("opel", urunler)
+        self.assertEqual(ozet["toplam_urun"], 5)
+        self.assertEqual(ozet["ozellik_eslesen_urun"], 4)
+        self.assertEqual(set(ozet["modeller"]), {"corsa", "astra"})
+        self.assertEqual(ozet["modeller"]["corsa"]["urun_sayisi"], 2)
+        self.assertIn("Edition", ozet["modeller"]["corsa"]["varyantlar"][0]["isim"])
+
+    def test_katalog_disindaki_model_tahmin_edilmez(self):
+        self.assertIsNone(un._arac_modelini_bul("opel", "Opel Hayali GS 1.2"))
+        self.assertEqual(un._arac_modelini_bul("renault", "Yeni Clio evolution TCe"), "Clio")
+
+    def test_kaynak_aliasi_model_ailesine_baglanir(self):
+        self.assertEqual(un._arac_modelini_bul("mercedes", "C 200 4MATIC AMG"), "C-Serisi")
+        self.assertEqual(
+            un._arac_modelini_bul("mercedes", "Mercedes-AMG C 43 4MATIC Performance"),
+            "C-Serisi",
+        )
+        self.assertEqual(un._arac_modelini_bul("bmw", "BMW i5eDrive40 Edition"), "i5")
+
+    def test_model_varyantlari_agregada_kaynakla_korunur(self):
+        ham = un.arac_model_ozeti("opel", [
+            {"isim": "Opel Corsa 1.2 MT6 Edition", "fiyat": 1535000},
+            {"isim": "Opel Corsa Hybrid e-DCT6 GS", "fiyat": 2119000},
+        ])
+        birlesik = un.ozellik_ozetlerini_birlestir([
+            {"site": "liste", "ozellik_ozeti": ham}
+        ])
+        varyantlar = birlesik["modeller"]["corsa"]["varyantlar"]
+        self.assertEqual(len(varyantlar), 2)
+        self.assertEqual(varyantlar[0]["site"], "liste")
+
+
 class GenisKategoriTestleri(unittest.TestCase):
     def test_kedi_tuvaleti_alt_turleri_ayrilir(self):
         urunler = [

@@ -18,8 +18,8 @@
 - Site artık tek konu değil, **veri ürünü + hesaplayıcı ağı**:
   **7 vertikal** (`dugun`, `ev-kurma`, `okul`, `bebek`, `kedi`, `kopek`,
   `arac`), **121 aktif fiyat serisi**, **26 bağımsız `/hesap/` hesaplayıcı**
-  ve **27 veriyle/resmî kaynakla üretilen rehber**. Diskteki 188 yayın
-  sayfası sitemap'teki 188 URL ile birebirdir; 180 sayfaya özel OG kartı
+  ve **27 veriyle/resmî kaynakla üretilen rehber**. Yerel yayın paketindeki
+  198 sayfa sitemap'teki 198 URL ile birebirdir; 190 sayfaya özel OG kartı
   vardır.
 - **Envanter sayacı tek sözleşmeye bağlandı.** Eski `122` sayısı gerçek
   bir yayın hatasıydı: iki salon varyantına bölündükten sonra devre dışı
@@ -33,11 +33,11 @@
 - **Yayın paketi artık içerik tabanlı sürümlüdür.** `/veri/manifest.json`,
   yedi güncel JSON için gerçek dosya SHA-256 özetlerini; ilgili geçmiş JSON
   ve CSV özetlerini; ölçüm tarihi ile 121 seri sayısını birlikte yayınlar.
-  Güncel sürüm `2026-08-22-2474420e7b83fd9b`tir. Aynı kanonik JSON'lar aynı
+  Yerel güncel sürüm `2026-08-22-57b420c28b2f83f9`tir. Aynı kanonik JSON'lar aynı
   sürümü üretir; güncel veride tek bayt değişirse sürüm değişir.
 - **Yayın öncesi QA kapısı var.** `scraper/qa.py`; JSON envanteri, kaynak ve
   ürün toplamı, kalem tarihi, segment işareti, son geçmiş noktası, CSV satırı,
-  ana sayfa/dikey toplamı ve 99 görünür kalem sayfasını aynı sürüme karşı
+  ana sayfa/dikey toplamı ve 109 görünür kalem sayfasını aynı sürüme karşı
   denetler. `/veri/qa.json` sonucu makinece okunabilir yayınlar. 2026-08-22
   raporu: **0 kritik hata, 29 geliştirme uyarısı, 72 sayfada zaten görünür
   veri sınırı**. Uyarılar: 16 gerçek tek-kaynak açığı, 11 düşük örneklem ve
@@ -76,6 +76,17 @@
   marka/model/fiyat kartları döndürdü. Ancak kök sayfa yalnız sınırlı
   örnek kart gösteriyor; 25 serinin URL ve marka/model kapsamı
   doğrulanmadan üretime eklenmez.
+- **Araç marka rehberleri tek URL mimarisinde hazırlandı (yerel, henüz canlı
+  değil).** Araç snapshot'ları artık 24 markanın tüm kaynak satırlarını
+  saklıyor; açık katalog ve sınırlı alias sözleşmesi 467 satırın 466'sını
+  164 model ailesine bağladı. Model adı çıkarılamayan satır marka fiyatına
+  dahil kalır, model bölümüne tahminle sokulmaz. Yeterli örneklem ve en az
+  iki tanınan modeli olan 17 marka için tek kanonik sayfa var; model/paket
+  başına ayrı URL yok. Örneğin `/arac/opel-fiyatlari/` içinde Corsa,
+  Corsa-e, Astra, Mokka, Frontera, Grandland ve Combo H3 bölümleridir.
+  Kaynaktaki motor, şanzıman ve donanım ifadesi aynen korunur; ayrı ayrı
+  özellik farkı uydurulmaz. Yerel QA: 121 seri, 109 kalem sayfası, 0 kritik
+  hata, 29 uyarı, 72 görünür veri sınırı; Python 413/413, JS 90/90.
 - **Düğün ikinci kaynak standardı:** aynı para biriminde görünmesi iki
   kaynağı karşılaştırılabilir yapmaz. Kişi başı salon fiyatına toplam
   organizasyon teklifi; aynı mekandaki paket farkından türetilen
@@ -606,14 +617,15 @@ Hesaplayıcı bu kalemleri toplar. Her kalem: segment + kaynak + tarih.
     TOPLANMAZ. Sebep: birbirinin ALTERNATİFİ — bir kişi hem Tesla hem
     Suzuki almaz. Toplandığında 17,7 milyon TL gibi anlamsız bir sayı
     çıkıyordu (ilk çalıştırmada bu görüldü ve düzeltildi).
-- **Popüler markalar (Togg/Renault/Fiat) EKSİK:** o markaların tabloları
-  sayfada JS ile yükleniyor, ham HTML'de yok — yalnızca Tesla/BYD/Suzuki/
-  Cupra tabloları mevcut. Popüler markalar için ikinci kaynak aranmalı.
-- **Bu vertikalde HESAPLAYICI YOK** (`hesaplayici_var: False`): kalemler
-  alternatif olduğu için toplama hesabı anlamsız. sayfa_uret.py artık bu
-  bayrağa göre sitemap'e ve menülere hesaplayıcı linki eklemiyor —
-  **aksi halde sitemap'te 404 oluşuyordu ve sitemap Search Console'a
-  gönderilmişti.**
+- **Marka/model kapsamı artık render katmanından geliyor.** Togg, Renault,
+  Fiat dahil 24 marka tablosu Playwright ile yükleniyor. Snapshot marka
+  rehberleri için tüm satırları saklar; genel ürün kalemlerindeki 15
+  satırlık denetim örneği kuralı araç markalarına uygulanmaz.
+- **Araçta iki farklı hesap mantığı ayrıdır.** Marka kalemleri birbirinin
+  alternatifi olduğu için marka fiyatları toplanmaz ve hızlı bütçe toplamı
+  yoktur. Buna karşılık `/arac/hesaplayici/` etiket fiyatının üzerine gelen
+  MTV, tescil/noter, sigorta ve kasko maliyetlerini hesaplar; her marka
+  rehberi buraya bağlanır.
 - `/arac/metodoloji/` yazıldı: "neden ortalama araç fiyatı vermiyoruz",
   "marka kalemleri neden toplanmıyor", fiyata dahil olmayanlar (sigorta/
   MTV/tescil/yakıt), tek kaynak ve oynaklık uyarısı.
@@ -679,7 +691,9 @@ haklıydı, hepsi düzeltildi:
    "Sıfır\xa0Togg fiyatları" şeklinde geliyor, tam metin eşleşmesi
    tutmuyordu — başlık karşılaştırması artık boşlukları normalize ediyor.
    Togg, Renault, Dacia, Fiat, Hyundai, Toyota, VW, BMW, Mercedes dahil
-   24 marka. 8 kalem sayfası (popüler markalar).
+   24 marka. 2026-08-22 model sözleşmesi sonrasında yeterli örneklemli 17
+   marka için tek URL'li rehber sayfası; düşük örneklemli markalar sırf
+   kapsam artsın diye açılmaz.
 
 3. **"Trendyol'a bizim sitemizden gidecek insan yok, linklendirmiyoruz."**
    → Kalem sayfalarına **"Nereden bakabilirsiniz"** bölümü eklendi;

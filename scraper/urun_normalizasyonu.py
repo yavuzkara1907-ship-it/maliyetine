@@ -23,6 +23,55 @@ BIRIM_KALEMLERI = {
 
 BIRIM_ADLARI = {"kg": "TL/kg", "litre": "TL/litre", "adet": "TL/adet"}
 
+# Araç tablolarında model, motor ve donanım aynı hücrede geliyor. Modeli
+# serbest metinden tahmin etmek yerine yalnız bu açık katalogdaki adları
+# tanıyoruz. En uzun eşleşme önce denenir; böylece "Megane Sedan",
+# "Megane" altında kaybolmaz. Kaynak yeni bir model eklediğinde satır genel
+# marka istatistiğinde kalır, fakat katalog güncellenene kadar model bölümü
+# altında yanlış gruplanmaz.
+ARAC_MODEL_KATALOGU = {
+    "togg": ["T10X", "T10F"],
+    "renault": ["Megane Sedan", "Megane E-Tech", "Scenic E-Tech", "R5 E-Tech", "Clio", "Captur", "Megane", "Boreal", "Duster", "Austral", "Rafale"],
+    "chery": ["Tiggo 8", "Tiggo 7"],
+    "dacia": ["Sandero Stepway", "Sandero", "Logan", "Jogger"],
+    "citroen": ["e-C3 Aircross", "C3 Aircross", "e-C5 Aircross", "C5 Aircross", "e-C4 X", "C4 X", "e-C4", "C4", "e-C3", "C3", "Ami"],
+    "opel": ["Corsa-e", "Corsa", "Frontera", "Astra", "Mokka", "Grandland", "Combo"],
+    "peugeot": ["E-208", "e-2008", "2008", "E-3008", "3008", "E-5008", "5008", "308", "408", "Rifter"],
+    "ford": ["Focus Sedan", "Journey Courier", "Puma Gen-E", "Puma ST", "Puma", "Kuga", "Explorer", "Capri"],
+    "hyundai": ["Ioniq 5", "Ioniq 6", "Ioniq 9", "i20", "i30", "Bayon", "Kona", "Tucson", "Staria", "Santa Fe", "Inster"],
+    "kia": ["Picanto", "Stonic", "Ceed HB", "XCeed", "Sportage", "EV2", "EV3", "EV6", "Niro EV", "EV9", "Sorento"],
+    "skoda": ["Enyaq Coupe", "Octavia Combi", "Superb Combi", "Elroq", "Enyaq", "Fabia", "Scala", "Octavia", "Superb", "Kamiq", "Karoq", "Kodiaq"],
+    "seat": ["Ibiza", "Arona", "Leon", "Ateca"],
+    "honda": ["Type R", "HR-V", "CR-V", "ZR-V", "City", "Civic", "Jazz", "Prelude"],
+    "toyota": ["Corolla Cross", "Yaris Cross", "Land Cruiser", "Proace City", "Aygo X", "Corolla", "C-HR", "Yaris", "RAV4", "Hilux"],
+    "fiat": ["Grande Panda", "Egea Cross", "Egea Sedan", "Egea", "600e", "600", "500e", "Topolino", "Doblo"],
+    "volkswagen": ["T-Cross", "T-Roc", "ID.3", "ID.4", "ID.7", "Polo", "Taigo", "Golf", "Tiguan", "Tayron", "Passat", "Caravelle", "Caddy"],
+    "nissan": ["X-Trail", "Qashqai", "Juke", "Ariya"],
+    "mg": ["Marvel R", "Cyberster", "MG3", "MG4", "MG7", "ZS", "HS"],
+    "bmw": ["1 Serisi", "2 Serisi", "3 Serisi", "4 Serisi", "5 Serisi", "7 Serisi", "iX1", "iX2", "X1", "X2", "X3", "X5", "Z4", "M2", "M3", "M4", "i4", "i5", "i7", "iX"],
+    "mercedes": ["A-Serisi", "B-Serisi", "C-Serisi", "E-Serisi", "S-Serisi", "CLA", "GLA", "GLB", "GLC", "GLE", "GLS", "EQA", "EQB", "EQE", "EQS", "Vito"],
+    "byd": ["Sealion 7", "Seal U", "Dolphin", "Atto 3", "Seal", "Han", "Tang"],
+    "tesla": ["Model Y", "Model 3"],
+    "suzuki": ["S-Cross", "Swift", "Vitara", "Jimny"],
+    "cupra": ["Formentor", "Terramar", "Tavascan", "Leon", "Born"],
+}
+
+# Kaynağın ticari model adı yerine motor kodu kullandığı sınırlı durumlar.
+# Anahtar kullanıcıya gösterilen model ailesi, değerler kaynakta gerçekten
+# görülen başlangıç ifadeleridir.
+ARAC_MODEL_ALIASES = {
+    "mercedes": {
+        "A-Serisi": ["A200", "AMG A 45 S"],
+        "C-Serisi": ["C 200", "AMG C 43", "AMG C 63"],
+        "E-Serisi": ["E 180", "E 220 d", "AMG E 53"],
+        "S-Serisi": ["S 450 d", "S 580"],
+        "CLE": ["CLE 300", "CLE 53"],
+        "G-Serisi": ["G 580", "G 450 d", "G 500", "G 63"],
+        "AMG GT": ["AMG GT"],
+        "AMG SL": ["AMG SL"],
+    },
+}
+
 _COKLU_MIKTAR = re.compile(
     r"(?<![\d.,/-])(?P<carpan>\d{1,3})\s*[x×]\s*"
     r"(?P<miktar>\d+(?:[.,]\d+)?)\s*"
@@ -414,6 +463,8 @@ def urun_ozellik_ozeti(kalem: str, urunler: list[dict]) -> dict:
     kalemlerinde yalniz urun tipi cikarilir; bu kirilim ana fiyati ortadan
     kaldirmaz, kullaniciya dagilimin hangi urun tiplerinden geldigini gosterir.
     """
+    if kalem in ARAC_MODEL_KATALOGU:
+        return arac_model_ozeti(kalem, urunler)
     if kalem == "firin-ocak":
         return firin_ozellik_ozeti(kalem, urunler)
     desenler = _GENIS_KATEGORI_TURLERI.get(kalem)
@@ -437,6 +488,65 @@ def urun_ozellik_ozeti(kalem: str, urunler: list[dict]) -> dict:
         "ozellik_eslesen_urun": len(normal),
         "urun_turleri": _grup_ozeti(normal, "urun_turu", adlar),
         "ornek_urunler": _daginik_ornek(normal, "fiyat", 15),
+    }
+
+
+def _arac_modelini_bul(kalem: str, isim: str) -> str | None:
+    """Kaynak satırındaki açık model adını döndürür; tahmin yapmaz."""
+    metin = re.sub(r"\s+", " ", str(isim or "").replace("\xa0", " ")).strip()
+    metin = re.sub(r"^Yeni\s+", "", metin, flags=re.I)
+    if kalem == "mercedes":
+        metin = re.sub(r"^Mercedes-AMG\s+", "AMG ", metin, flags=re.I)
+        metin = re.sub(r"^Mercedes-Maybach\s+", "", metin, flags=re.I)
+    metin = re.sub(rf"^{re.escape(kalem)}\s+", "", metin, flags=re.I)
+    metin = re.sub(r"^(?:Yeni|Elektrikli)\s+", "", metin, flags=re.I)
+    adaylar = [(model, model) for model in ARAC_MODEL_KATALOGU.get(kalem, [])]
+    for model, aliaslar in ARAC_MODEL_ALIASES.get(kalem, {}).items():
+        adaylar.extend((alias, model) for alias in aliaslar)
+    # Bazı kaynak satırlarında model ile motor kodu arasında boşluk yok
+    # ("i5eDrive", "5 Serisi520d"). Eşleşme yalnız satırın başında ve
+    # katalogdaki açık adla yapıldığı için sonrasında sınır aramıyoruz.
+    for alias, model in sorted(adaylar, key=lambda x: len(x[0]), reverse=True):
+        if re.match(re.escape(alias), metin, re.I):
+            return model
+    return None
+
+
+def arac_model_ozeti(kalem: str, urunler: list[dict]) -> dict:
+    """Marka fiyat satırlarını model bazında, varyant metnini bozmadan özetler."""
+    gruplar: dict[str, list[dict]] = defaultdict(list)
+    normal = []
+    for urun in urunler:
+        model = _arac_modelini_bul(kalem, urun.get("isim", ""))
+        if not model:
+            continue
+        kayit = {
+            "isim": re.sub(r"\s+", " ", str(urun.get("isim", "")).replace("\xa0", " ")).strip()[:240],
+            "fiyat": round(float(urun.get("fiyat") or 0), 2),
+            "nitelikler": {"model": model},
+        }
+        normal.append(kayit)
+        gruplar[model].append(kayit)
+    if not normal:
+        return {}
+
+    modeller = {}
+    for model, liste in sorted(gruplar.items(), key=lambda x: x[0].casefold()):
+        modeller[model.casefold().replace(" ", "-")] = {
+            "ad": model,
+            "genel_medyan": round(statistics.median(u["fiyat"] for u in liste)),
+            "urun_sayisi": len(liste),
+            "segmentler": _segmentle(liste, "fiyat"),
+            "varyantlar": [
+                {"isim": u["isim"], "fiyat": u["fiyat"]}
+                for u in sorted(liste, key=lambda u: (u["fiyat"], u["isim"].casefold()))
+            ],
+        }
+    return {
+        "toplam_urun": len(urunler),
+        "ozellik_eslesen_urun": len(normal),
+        "modeller": modeller,
+        "ornek_urunler": normal,
     }
 
 
@@ -500,6 +610,19 @@ def _nitelik_gruplarini_birlestir(kayitlar: list[dict], bolum: str) -> dict:
             "kaynak_sayisi": len(ozetler),
             "segmentler": _segment_ozetlerini_birlestir(ozetler),
         }
+        varyantlar = []
+        for kaynak, ozet in zip(kayitlar, [
+            k.get("ozellik_ozeti", {}).get(bolum, {}).get(anahtar) for k in kayitlar
+        ]):
+            if not ozet:
+                continue
+            varyantlar.extend(
+                {**v, "site": kaynak.get("site")} for v in ozet.get("varyantlar", [])
+            )
+        if varyantlar:
+            sonuc[anahtar]["varyantlar"] = sorted(
+                varyantlar, key=lambda v: (v["fiyat"], v.get("isim", "").casefold())
+            )
     return sonuc
 
 
@@ -512,7 +635,7 @@ def ozellik_ozetlerini_birlestir(kayitlar: list[dict]) -> dict:
         "ozellik_eslesen_urun": sum(k["ozellik_ozeti"].get("ozellik_eslesen_urun", 0) for k in ozetli),
         "kaynak_sayisi": len(ozetli),
     }
-    for bolum in ("urun_turleri", "markalar", "enerji_siniflari", "ozellikler"):
+    for bolum in ("urun_turleri", "markalar", "enerji_siniflari", "ozellikler", "modeller"):
         gruplar = _nitelik_gruplarini_birlestir(ozetli, bolum)
         if gruplar:
             sonuc[bolum] = gruplar

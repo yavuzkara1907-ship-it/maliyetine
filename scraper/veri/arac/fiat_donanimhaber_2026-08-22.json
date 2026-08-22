@@ -1,0 +1,423 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Fiat"
+  ],
+  "kalem": "fiat",
+  "vertikal": "arac",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-08-22",
+  "ham_urun_sayisi": 15,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 15,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 1950500,
+  "segmentler": {
+    "dusuk": {
+      "min": 609900,
+      "medyan": 1064900,
+      "max": 1499900,
+      "urun_sayisi": 4
+    },
+    "orta": {
+      "min": 1599900,
+      "medyan": 1955200,
+      "max": 2029900,
+      "urun_sayisi": 8
+    },
+    "luks": {
+      "min": 2050500,
+      "medyan": 2090500,
+      "max": 2289900,
+      "urun_sayisi": 3
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "TOPOLİNO 6 kW/8 HP - 5.5kWh",
+      "fiyat": 609900.0
+    },
+    {
+      "isim": "TOPOLİNO PLUS 6 kW/8 HP - 5.5kWh",
+      "fiyat": 634900.0
+    },
+    {
+      "isim": "Fiat Grande Panda La Prima 44 kWh",
+      "fiyat": 1494900.0
+    },
+    {
+      "isim": "Egea Sedan 1.6 M.Jet 130 HP GSR Easy",
+      "fiyat": 1499900.0
+    },
+    {
+      "isim": "Egea Sedan 1.6 M.Jet 130 HP GSR Urban",
+      "fiyat": 1599900.0
+    },
+    {
+      "isim": "Egea Sedan 1.6 M.Jet 130 HP GSR Lounge",
+      "fiyat": 1674900.0
+    },
+    {
+      "isim": "Egea Sedan 1.6 M.Jet 130 HP DCT GSR Easy",
+      "fiyat": 1889900.0
+    },
+    {
+      "isim": "Egea Cross 1.6 M.Jet 130 HP DCT GSR Traction+ Street",
+      "fiyat": 1950500.0
+    },
+    {
+      "isim": "Egea Sedan 1.6 M.Jet 130 HP DCT GSR Urban",
+      "fiyat": 1959900.0
+    },
+    {
+      "isim": "Egea Cross 1.6 M.Jet 130 HP DCT GSR Traction+ Urban",
+      "fiyat": 1980500.0
+    },
+    {
+      "isim": "Fiat 600e BEV La Prima",
+      "fiyat": 1989900.0
+    },
+    {
+      "isim": "Egea Sedan 1.6 M.Jet 130 HP DCT GSR Lounge",
+      "fiyat": 2029900.0
+    },
+    {
+      "isim": "Egea Cross 1.6 M.Jet 130 HP DCT GSR Traction+ Lounge",
+      "fiyat": 2050500.0
+    },
+    {
+      "isim": "Egea Cross 1.6 M.Jet 130 HP DCT GSR Traction+ Limited",
+      "fiyat": 2090500.0
+    },
+    {
+      "isim": "Fiat 500E Giorgio Armani 42 Kwh Otomatik",
+      "fiyat": 2289900.0
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 15,
+    "ozellik_eslesen_urun": 15,
+    "modeller": {
+      "500e": {
+        "ad": "500e",
+        "genel_medyan": 2289900,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 2289900.0,
+            "medyan": 2289900.0,
+            "max": 2289900.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2289900.0,
+            "medyan": 2289900.0,
+            "max": 2289900.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 2289900.0,
+            "medyan": 2289900.0,
+            "max": 2289900.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Fiat 500E Giorgio Armani 42 Kwh Otomatik",
+            "fiyat": 2289900.0
+          }
+        ]
+      },
+      "600e": {
+        "ad": "600e",
+        "genel_medyan": 1989900,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 1989900.0,
+            "medyan": 1989900.0,
+            "max": 1989900.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 1989900.0,
+            "medyan": 1989900.0,
+            "max": 1989900.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 1989900.0,
+            "medyan": 1989900.0,
+            "max": 1989900.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Fiat 600e BEV La Prima",
+            "fiyat": 1989900.0
+          }
+        ]
+      },
+      "egea-cross": {
+        "ad": "Egea Cross",
+        "genel_medyan": 2015500,
+        "urun_sayisi": 4,
+        "segmentler": {
+          "dusuk": {
+            "min": 1950500.0,
+            "medyan": 1965500.0,
+            "max": 1980500.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 2050500.0,
+            "medyan": 2070500.0,
+            "max": 2090500.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Egea Cross 1.6 M.Jet 130 HP DCT GSR Traction+ Street",
+            "fiyat": 1950500.0
+          },
+          {
+            "isim": "Egea Cross 1.6 M.Jet 130 HP DCT GSR Traction+ Urban",
+            "fiyat": 1980500.0
+          },
+          {
+            "isim": "Egea Cross 1.6 M.Jet 130 HP DCT GSR Traction+ Lounge",
+            "fiyat": 2050500.0
+          },
+          {
+            "isim": "Egea Cross 1.6 M.Jet 130 HP DCT GSR Traction+ Limited",
+            "fiyat": 2090500.0
+          }
+        ]
+      },
+      "egea-sedan": {
+        "ad": "Egea Sedan",
+        "genel_medyan": 1782400,
+        "urun_sayisi": 6,
+        "segmentler": {
+          "dusuk": {
+            "min": 1499900.0,
+            "medyan": 1549900.0,
+            "max": 1599900.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 1674900.0,
+            "medyan": 1889900.0,
+            "max": 1959900.0,
+            "urun_sayisi": 3
+          },
+          "luks": {
+            "min": 2029900.0,
+            "medyan": 2029900.0,
+            "max": 2029900.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Egea Sedan 1.6 M.Jet 130 HP GSR Easy",
+            "fiyat": 1499900.0
+          },
+          {
+            "isim": "Egea Sedan 1.6 M.Jet 130 HP GSR Urban",
+            "fiyat": 1599900.0
+          },
+          {
+            "isim": "Egea Sedan 1.6 M.Jet 130 HP GSR Lounge",
+            "fiyat": 1674900.0
+          },
+          {
+            "isim": "Egea Sedan 1.6 M.Jet 130 HP DCT GSR Easy",
+            "fiyat": 1889900.0
+          },
+          {
+            "isim": "Egea Sedan 1.6 M.Jet 130 HP DCT GSR Urban",
+            "fiyat": 1959900.0
+          },
+          {
+            "isim": "Egea Sedan 1.6 M.Jet 130 HP DCT GSR Lounge",
+            "fiyat": 2029900.0
+          }
+        ]
+      },
+      "grande-panda": {
+        "ad": "Grande Panda",
+        "genel_medyan": 1494900,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 1494900.0,
+            "medyan": 1494900.0,
+            "max": 1494900.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 1494900.0,
+            "medyan": 1494900.0,
+            "max": 1494900.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 1494900.0,
+            "medyan": 1494900.0,
+            "max": 1494900.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Fiat Grande Panda La Prima 44 kWh",
+            "fiyat": 1494900.0
+          }
+        ]
+      },
+      "topolino": {
+        "ad": "Topolino",
+        "genel_medyan": 622400,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 609900.0,
+            "medyan": 609900.0,
+            "max": 609900.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 634900.0,
+            "medyan": 634900.0,
+            "max": 634900.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "TOPOLİNO 6 kW/8 HP - 5.5kWh",
+            "fiyat": 609900.0
+          },
+          {
+            "isim": "TOPOLİNO PLUS 6 kW/8 HP - 5.5kWh",
+            "fiyat": 634900.0
+          }
+        ]
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "Egea Sedan 1.6 M.Jet 130 HP GSR Easy",
+        "fiyat": 1499900.0,
+        "nitelikler": {
+          "model": "Egea Sedan"
+        }
+      },
+      {
+        "isim": "Egea Sedan 1.6 M.Jet 130 HP GSR Urban",
+        "fiyat": 1599900.0,
+        "nitelikler": {
+          "model": "Egea Sedan"
+        }
+      },
+      {
+        "isim": "Egea Sedan 1.6 M.Jet 130 HP GSR Lounge",
+        "fiyat": 1674900.0,
+        "nitelikler": {
+          "model": "Egea Sedan"
+        }
+      },
+      {
+        "isim": "Egea Sedan 1.6 M.Jet 130 HP DCT GSR Easy",
+        "fiyat": 1889900.0,
+        "nitelikler": {
+          "model": "Egea Sedan"
+        }
+      },
+      {
+        "isim": "Egea Sedan 1.6 M.Jet 130 HP DCT GSR Urban",
+        "fiyat": 1959900.0,
+        "nitelikler": {
+          "model": "Egea Sedan"
+        }
+      },
+      {
+        "isim": "Egea Sedan 1.6 M.Jet 130 HP DCT GSR Lounge",
+        "fiyat": 2029900.0,
+        "nitelikler": {
+          "model": "Egea Sedan"
+        }
+      },
+      {
+        "isim": "Egea Cross 1.6 M.Jet 130 HP DCT GSR Traction+ Street",
+        "fiyat": 1950500.0,
+        "nitelikler": {
+          "model": "Egea Cross"
+        }
+      },
+      {
+        "isim": "Egea Cross 1.6 M.Jet 130 HP DCT GSR Traction+ Urban",
+        "fiyat": 1980500.0,
+        "nitelikler": {
+          "model": "Egea Cross"
+        }
+      },
+      {
+        "isim": "Egea Cross 1.6 M.Jet 130 HP DCT GSR Traction+ Lounge",
+        "fiyat": 2050500.0,
+        "nitelikler": {
+          "model": "Egea Cross"
+        }
+      },
+      {
+        "isim": "Egea Cross 1.6 M.Jet 130 HP DCT GSR Traction+ Limited",
+        "fiyat": 2090500.0,
+        "nitelikler": {
+          "model": "Egea Cross"
+        }
+      },
+      {
+        "isim": "Fiat Grande Panda La Prima 44 kWh",
+        "fiyat": 1494900.0,
+        "nitelikler": {
+          "model": "Grande Panda"
+        }
+      },
+      {
+        "isim": "Fiat 500E Giorgio Armani 42 Kwh Otomatik",
+        "fiyat": 2289900.0,
+        "nitelikler": {
+          "model": "500e"
+        }
+      },
+      {
+        "isim": "Fiat 600e BEV La Prima",
+        "fiyat": 1989900.0,
+        "nitelikler": {
+          "model": "600e"
+        }
+      },
+      {
+        "isim": "TOPOLİNO 6 kW/8 HP - 5.5kWh",
+        "fiyat": 609900.0,
+        "nitelikler": {
+          "model": "Topolino"
+        }
+      },
+      {
+        "isim": "TOPOLİNO PLUS 6 kW/8 HP - 5.5kWh",
+        "fiyat": 634900.0,
+        "nitelikler": {
+          "model": "Topolino"
+        }
+      }
+    ]
+  }
+}

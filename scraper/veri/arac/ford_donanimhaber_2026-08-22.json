@@ -1,0 +1,519 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Ford"
+  ],
+  "kalem": "ford",
+  "vertikal": "arac",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-08-22",
+  "ham_urun_sayisi": 19,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 19,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 2859900,
+  "segmentler": {
+    "dusuk": {
+      "min": 2158700,
+      "medyan": 2238900,
+      "max": 2457300,
+      "urun_sayisi": 5
+    },
+    "orta": {
+      "min": 2615600,
+      "medyan": 2864900,
+      "max": 3270400,
+      "urun_sayisi": 10
+    },
+    "luks": {
+      "min": 3371600,
+      "medyan": 3836100,
+      "max": 4330000,
+      "urun_sayisi": 4
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Puma Gen-E 125kW Elektrik",
+      "fiyat": 2158700.0
+    },
+    {
+      "isim": "Ford Explorer BEV 125KW Slecet",
+      "fiyat": 2232300.0
+    },
+    {
+      "isim": "Yeni Puma 1.0L EcoBoost 125PS Titanium 7 ileri otomatik",
+      "fiyat": 2238900.0
+    },
+    {
+      "isim": "Ford Explorer BEV 140KW Slecet",
+      "fiyat": 2298900.0
+    },
+    {
+      "isim": "Ford Explorer BEV 125KW Premium",
+      "fiyat": 2457300.0
+    },
+    {
+      "isim": "Yeni Puma 1.0L EcoBoost 155PS ST-Line X 7 ileri otomatik",
+      "fiyat": 2615600.0
+    },
+    {
+      "isim": "Focus Sedan 1.5L EcoBlue 115PS yeni Titanium Stil 8 ileri otomatik",
+      "fiyat": 2720500.0
+    },
+    {
+      "isim": "Ford Journey Courier 1.0L EcoBoost 125PS, Deluxe 6 İleri Manuel, Benzin",
+      "fiyat": 2745700.0
+    },
+    {
+      "isim": "Kuga 1.5L EcoBoost 186PS Titanium 8 ileri otomatik",
+      "fiyat": 2780900.0
+    },
+    {
+      "isim": "Focus Sedan 1.5L EcoBlue 115PS yeni Titanium X 8 ileri otomatik",
+      "fiyat": 2859900.0
+    },
+    {
+      "isim": "Puma ST 1.0L EcoBoost 160PS",
+      "fiyat": 2869900.0
+    },
+    {
+      "isim": "Ford Explorer BEV 140KW Premium",
+      "fiyat": 3104800.0
+    },
+    {
+      "isim": "Kuga 1.5L EcoBoost 186PS ST-Line 8 ileri otomatik",
+      "fiyat": 3163300.0
+    },
+    {
+      "isim": "Ford Capri Premium SUV, 125KW",
+      "fiyat": 3211600.0
+    },
+    {
+      "isim": "Ford Journey Courier 1.0L EcoBoost 125PS, Titanium 7 İleri Otomatik, Benzin",
+      "fiyat": 3270400.0
+    },
+    {
+      "isim": "Ford Capri Premium SUV, 140KW",
+      "fiyat": 3371600.0
+    },
+    {
+      "isim": "Kuga 1.5L EcoBoost 186PS ST-Line X 8 ileri otomatik",
+      "fiyat": 3455000.0
+    },
+    {
+      "isim": "Ford Explorer BEV 250KW Premium",
+      "fiyat": 4217200.0
+    },
+    {
+      "isim": "Ford Capri Premium SUV, 250KW",
+      "fiyat": 4330000.0
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 19,
+    "ozellik_eslesen_urun": 19,
+    "modeller": {
+      "capri": {
+        "ad": "Capri",
+        "genel_medyan": 3371600,
+        "urun_sayisi": 3,
+        "segmentler": {
+          "dusuk": {
+            "min": 3211600.0,
+            "medyan": 3211600.0,
+            "max": 3211600.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 3371600.0,
+            "medyan": 3850800.0,
+            "max": 4330000.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Ford Capri Premium SUV, 125KW",
+            "fiyat": 3211600.0
+          },
+          {
+            "isim": "Ford Capri Premium SUV, 140KW",
+            "fiyat": 3371600.0
+          },
+          {
+            "isim": "Ford Capri Premium SUV, 250KW",
+            "fiyat": 4330000.0
+          }
+        ]
+      },
+      "explorer": {
+        "ad": "Explorer",
+        "genel_medyan": 2457300,
+        "urun_sayisi": 5,
+        "segmentler": {
+          "dusuk": {
+            "min": 2232300.0,
+            "medyan": 2265600.0,
+            "max": 2298900.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 2457300.0,
+            "medyan": 2781050.0,
+            "max": 3104800.0,
+            "urun_sayisi": 2
+          },
+          "luks": {
+            "min": 4217200.0,
+            "medyan": 4217200.0,
+            "max": 4217200.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Ford Explorer BEV 125KW Slecet",
+            "fiyat": 2232300.0
+          },
+          {
+            "isim": "Ford Explorer BEV 140KW Slecet",
+            "fiyat": 2298900.0
+          },
+          {
+            "isim": "Ford Explorer BEV 125KW Premium",
+            "fiyat": 2457300.0
+          },
+          {
+            "isim": "Ford Explorer BEV 140KW Premium",
+            "fiyat": 3104800.0
+          },
+          {
+            "isim": "Ford Explorer BEV 250KW Premium",
+            "fiyat": 4217200.0
+          }
+        ]
+      },
+      "focus-sedan": {
+        "ad": "Focus Sedan",
+        "genel_medyan": 2790200,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 2720500.0,
+            "medyan": 2720500.0,
+            "max": 2720500.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2859900.0,
+            "medyan": 2859900.0,
+            "max": 2859900.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Focus Sedan 1.5L EcoBlue 115PS yeni Titanium Stil 8 ileri otomatik",
+            "fiyat": 2720500.0
+          },
+          {
+            "isim": "Focus Sedan 1.5L EcoBlue 115PS yeni Titanium X 8 ileri otomatik",
+            "fiyat": 2859900.0
+          }
+        ]
+      },
+      "journey-courier": {
+        "ad": "Journey Courier",
+        "genel_medyan": 3008050,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 2745700.0,
+            "medyan": 2745700.0,
+            "max": 2745700.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 3270400.0,
+            "medyan": 3270400.0,
+            "max": 3270400.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Ford Journey Courier 1.0L EcoBoost 125PS, Deluxe 6 İleri Manuel, Benzin",
+            "fiyat": 2745700.0
+          },
+          {
+            "isim": "Ford Journey Courier 1.0L EcoBoost 125PS, Titanium 7 İleri Otomatik, Benzin",
+            "fiyat": 3270400.0
+          }
+        ]
+      },
+      "kuga": {
+        "ad": "Kuga",
+        "genel_medyan": 3163300,
+        "urun_sayisi": 3,
+        "segmentler": {
+          "dusuk": {
+            "min": 2780900.0,
+            "medyan": 2780900.0,
+            "max": 2780900.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 3163300.0,
+            "medyan": 3309150.0,
+            "max": 3455000.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Kuga 1.5L EcoBoost 186PS Titanium 8 ileri otomatik",
+            "fiyat": 2780900.0
+          },
+          {
+            "isim": "Kuga 1.5L EcoBoost 186PS ST-Line 8 ileri otomatik",
+            "fiyat": 3163300.0
+          },
+          {
+            "isim": "Kuga 1.5L EcoBoost 186PS ST-Line X 8 ileri otomatik",
+            "fiyat": 3455000.0
+          }
+        ]
+      },
+      "puma": {
+        "ad": "Puma",
+        "genel_medyan": 2427250,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 2238900.0,
+            "medyan": 2238900.0,
+            "max": 2238900.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2615600.0,
+            "medyan": 2615600.0,
+            "max": 2615600.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Yeni Puma 1.0L EcoBoost 125PS Titanium 7 ileri otomatik",
+            "fiyat": 2238900.0
+          },
+          {
+            "isim": "Yeni Puma 1.0L EcoBoost 155PS ST-Line X 7 ileri otomatik",
+            "fiyat": 2615600.0
+          }
+        ]
+      },
+      "puma-gen-e": {
+        "ad": "Puma Gen-E",
+        "genel_medyan": 2158700,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 2158700.0,
+            "medyan": 2158700.0,
+            "max": 2158700.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2158700.0,
+            "medyan": 2158700.0,
+            "max": 2158700.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 2158700.0,
+            "medyan": 2158700.0,
+            "max": 2158700.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Puma Gen-E 125kW Elektrik",
+            "fiyat": 2158700.0
+          }
+        ]
+      },
+      "puma-st": {
+        "ad": "Puma ST",
+        "genel_medyan": 2869900,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 2869900.0,
+            "medyan": 2869900.0,
+            "max": 2869900.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2869900.0,
+            "medyan": 2869900.0,
+            "max": 2869900.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 2869900.0,
+            "medyan": 2869900.0,
+            "max": 2869900.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Puma ST 1.0L EcoBoost 160PS",
+            "fiyat": 2869900.0
+          }
+        ]
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "Focus Sedan 1.5L EcoBlue 115PS yeni Titanium Stil 8 ileri otomatik",
+        "fiyat": 2720500.0,
+        "nitelikler": {
+          "model": "Focus Sedan"
+        }
+      },
+      {
+        "isim": "Focus Sedan 1.5L EcoBlue 115PS yeni Titanium X 8 ileri otomatik",
+        "fiyat": 2859900.0,
+        "nitelikler": {
+          "model": "Focus Sedan"
+        }
+      },
+      {
+        "isim": "Yeni Puma 1.0L EcoBoost 125PS Titanium 7 ileri otomatik",
+        "fiyat": 2238900.0,
+        "nitelikler": {
+          "model": "Puma"
+        }
+      },
+      {
+        "isim": "Yeni Puma 1.0L EcoBoost 155PS ST-Line X 7 ileri otomatik",
+        "fiyat": 2615600.0,
+        "nitelikler": {
+          "model": "Puma"
+        }
+      },
+      {
+        "isim": "Puma Gen-E 125kW Elektrik",
+        "fiyat": 2158700.0,
+        "nitelikler": {
+          "model": "Puma Gen-E"
+        }
+      },
+      {
+        "isim": "Puma ST 1.0L EcoBoost 160PS",
+        "fiyat": 2869900.0,
+        "nitelikler": {
+          "model": "Puma ST"
+        }
+      },
+      {
+        "isim": "Kuga 1.5L EcoBoost 186PS Titanium 8 ileri otomatik",
+        "fiyat": 2780900.0,
+        "nitelikler": {
+          "model": "Kuga"
+        }
+      },
+      {
+        "isim": "Kuga 1.5L EcoBoost 186PS ST-Line 8 ileri otomatik",
+        "fiyat": 3163300.0,
+        "nitelikler": {
+          "model": "Kuga"
+        }
+      },
+      {
+        "isim": "Kuga 1.5L EcoBoost 186PS ST-Line X 8 ileri otomatik",
+        "fiyat": 3455000.0,
+        "nitelikler": {
+          "model": "Kuga"
+        }
+      },
+      {
+        "isim": "Ford Journey Courier 1.0L EcoBoost 125PS, Deluxe 6 İleri Manuel, Benzin",
+        "fiyat": 2745700.0,
+        "nitelikler": {
+          "model": "Journey Courier"
+        }
+      },
+      {
+        "isim": "Ford Journey Courier 1.0L EcoBoost 125PS, Titanium 7 İleri Otomatik, Benzin",
+        "fiyat": 3270400.0,
+        "nitelikler": {
+          "model": "Journey Courier"
+        }
+      },
+      {
+        "isim": "Ford Explorer BEV 125KW Premium",
+        "fiyat": 2457300.0,
+        "nitelikler": {
+          "model": "Explorer"
+        }
+      },
+      {
+        "isim": "Ford Explorer BEV 140KW Premium",
+        "fiyat": 3104800.0,
+        "nitelikler": {
+          "model": "Explorer"
+        }
+      },
+      {
+        "isim": "Ford Explorer BEV 250KW Premium",
+        "fiyat": 4217200.0,
+        "nitelikler": {
+          "model": "Explorer"
+        }
+      },
+      {
+        "isim": "Ford Explorer BEV 125KW Slecet",
+        "fiyat": 2232300.0,
+        "nitelikler": {
+          "model": "Explorer"
+        }
+      },
+      {
+        "isim": "Ford Explorer BEV 140KW Slecet",
+        "fiyat": 2298900.0,
+        "nitelikler": {
+          "model": "Explorer"
+        }
+      },
+      {
+        "isim": "Ford Capri Premium SUV, 125KW",
+        "fiyat": 3211600.0,
+        "nitelikler": {
+          "model": "Capri"
+        }
+      },
+      {
+        "isim": "Ford Capri Premium SUV, 140KW",
+        "fiyat": 3371600.0,
+        "nitelikler": {
+          "model": "Capri"
+        }
+      },
+      {
+        "isim": "Ford Capri Premium SUV, 250KW",
+        "fiyat": 4330000.0,
+        "nitelikler": {
+          "model": "Capri"
+        }
+      }
+    ]
+  }
+}

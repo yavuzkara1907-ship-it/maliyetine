@@ -1,12 +1,12 @@
 {
-  "dataset_surumu": "2026-08-22-2474420e7b83fd9b",
+  "dataset_surumu": "2026-08-22-57b420c28b2f83f9",
   "kontrol_tarihi": "2026-08-22",
   "durum": "gecti",
   "ozet": {
     "fiyat_serisi": 121,
     "cok_kaynakli": 80,
     "tek_kaynakli": 41,
-    "kalem_sayfasi": 99,
+    "kalem_sayfasi": 109,
     "kritik_hata": 0,
     "uyari": 29,
     "bilinen_sinir": 72

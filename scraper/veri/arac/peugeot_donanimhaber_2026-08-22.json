@@ -1,0 +1,579 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Peugeot"
+  ],
+  "kalem": "peugeot",
+  "vertikal": "arac",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-08-22",
+  "ham_urun_sayisi": 21,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 21,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 2695000,
+  "segmentler": {
+    "dusuk": {
+      "min": 1624000,
+      "medyan": 2038250,
+      "max": 2308500,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 2353000,
+      "medyan": 2695000,
+      "max": 3290000,
+      "urun_sayisi": 10
+    },
+    "luks": {
+      "min": 3318000,
+      "medyan": 3514500,
+      "max": 3644000,
+      "urun_sayisi": 5
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Peugeot Rifter ALLURE 1.5 BlueHDi 130hp 6MT",
+      "fiyat": 1624000.0
+    },
+    {
+      "isim": "Peugeot Rifter ALLURE 1.5 BlueHDi 130hp EAT8",
+      "fiyat": 1905500.0
+    },
+    {
+      "isim": "Yeni Peugeot E-208 GT 100kW (Elektrikli)",
+      "fiyat": 1999500.0
+    },
+    {
+      "isim": "Peugeot Rifter GT 1.5 BlueHDi 130hp EAT8",
+      "fiyat": 2077000.0
+    },
+    {
+      "isim": "Yeni Peugeot e-2008 Allure 115 kW",
+      "fiyat": 2201500.0
+    },
+    {
+      "isim": "Yeni Peugeot e-2008 GT 115kW",
+      "fiyat": 2308500.0
+    },
+    {
+      "isim": "Yeni Peugeot 2008 ALLURE 1.2 Hybrid 145hp eDCS6",
+      "fiyat": 2353000.0
+    },
+    {
+      "isim": "Yeni 308 ALLURE 1.5 BlueHDi 130hp EAT8",
+      "fiyat": 2360000.0
+    },
+    {
+      "isim": "Peugeot 408 ALLURE 1.2 Hybrid 145hp eDCS6",
+      "fiyat": 2580000.0
+    },
+    {
+      "isim": "Yeni Peugeot 2008 GT 1.2 Hybrid 145hp eDCS6",
+      "fiyat": 2580000.0
+    },
+    {
+      "isim": "Peugeot 408 ALLURE 1.2 Hybrid 145hp eDCS6 Cam Tavan",
+      "fiyat": 2695000.0
+    },
+    {
+      "isim": "Yeni 308 GT 1.5 BlueHDi 130hp EAT8",
+      "fiyat": 2695000.0
+    },
+    {
+      "isim": "Yeni Peugeot 3008 Allure 1.2 Hybrid 136hp eDCS6",
+      "fiyat": 2851000.0
+    },
+    {
+      "isim": "Peugeot 408 GT 1.2 Hybrid 145hp* eDCS6",
+      "fiyat": 2910000.0
+    },
+    {
+      "isim": "Yeni Peugeot 3008 GT 1.2 Hybrid 136hp eDCS6",
+      "fiyat": 3259000.0
+    },
+    {
+      "isim": "5008 Allure 1.2 Hybrid 145hp eDCS6",
+      "fiyat": 3290000.0
+    },
+    {
+      "isim": "Yeni Peugeot E-3008 Allure 157kW (210hp)",
+      "fiyat": 3318000.0
+    },
+    {
+      "isim": "Elektrikli E-5008 Allure 157kW (210hp)",
+      "fiyat": 3502000.0
+    },
+    {
+      "isim": "Yeni Peugeot E-3008 GT 157kW (210hp)",
+      "fiyat": 3514500.0
+    },
+    {
+      "isim": "5008 GT 1.2 Hybrid 145hp eDCS6",
+      "fiyat": 3600000.0
+    },
+    {
+      "isim": "Elektrikli E-5008 GT 157kW (210hp)",
+      "fiyat": 3644000.0
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 21,
+    "ozellik_eslesen_urun": 21,
+    "modeller": {
+      "2008": {
+        "ad": "2008",
+        "genel_medyan": 2466500,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 2353000.0,
+            "medyan": 2353000.0,
+            "max": 2353000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2580000.0,
+            "medyan": 2580000.0,
+            "max": 2580000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Yeni Peugeot 2008 ALLURE 1.2 Hybrid 145hp eDCS6",
+            "fiyat": 2353000.0
+          },
+          {
+            "isim": "Yeni Peugeot 2008 GT 1.2 Hybrid 145hp eDCS6",
+            "fiyat": 2580000.0
+          }
+        ]
+      },
+      "3008": {
+        "ad": "3008",
+        "genel_medyan": 3055000,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 2851000.0,
+            "medyan": 2851000.0,
+            "max": 2851000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 3259000.0,
+            "medyan": 3259000.0,
+            "max": 3259000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Yeni Peugeot 3008 Allure 1.2 Hybrid 136hp eDCS6",
+            "fiyat": 2851000.0
+          },
+          {
+            "isim": "Yeni Peugeot 3008 GT 1.2 Hybrid 136hp eDCS6",
+            "fiyat": 3259000.0
+          }
+        ]
+      },
+      "308": {
+        "ad": "308",
+        "genel_medyan": 2527500,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 2360000.0,
+            "medyan": 2360000.0,
+            "max": 2360000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2695000.0,
+            "medyan": 2695000.0,
+            "max": 2695000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Yeni 308 ALLURE 1.5 BlueHDi 130hp EAT8",
+            "fiyat": 2360000.0
+          },
+          {
+            "isim": "Yeni 308 GT 1.5 BlueHDi 130hp EAT8",
+            "fiyat": 2695000.0
+          }
+        ]
+      },
+      "408": {
+        "ad": "408",
+        "genel_medyan": 2695000,
+        "urun_sayisi": 3,
+        "segmentler": {
+          "dusuk": {
+            "min": 2580000.0,
+            "medyan": 2580000.0,
+            "max": 2580000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2695000.0,
+            "medyan": 2802500.0,
+            "max": 2910000.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Peugeot 408 ALLURE 1.2 Hybrid 145hp eDCS6",
+            "fiyat": 2580000.0
+          },
+          {
+            "isim": "Peugeot 408 ALLURE 1.2 Hybrid 145hp eDCS6 Cam Tavan",
+            "fiyat": 2695000.0
+          },
+          {
+            "isim": "Peugeot 408 GT 1.2 Hybrid 145hp* eDCS6",
+            "fiyat": 2910000.0
+          }
+        ]
+      },
+      "5008": {
+        "ad": "5008",
+        "genel_medyan": 3445000,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 3290000.0,
+            "medyan": 3290000.0,
+            "max": 3290000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 3600000.0,
+            "medyan": 3600000.0,
+            "max": 3600000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "5008 Allure 1.2 Hybrid 145hp eDCS6",
+            "fiyat": 3290000.0
+          },
+          {
+            "isim": "5008 GT 1.2 Hybrid 145hp eDCS6",
+            "fiyat": 3600000.0
+          }
+        ]
+      },
+      "e-2008": {
+        "ad": "e-2008",
+        "genel_medyan": 2255000,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 2201500.0,
+            "medyan": 2201500.0,
+            "max": 2201500.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2308500.0,
+            "medyan": 2308500.0,
+            "max": 2308500.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Yeni Peugeot e-2008 Allure 115 kW",
+            "fiyat": 2201500.0
+          },
+          {
+            "isim": "Yeni Peugeot e-2008 GT 115kW",
+            "fiyat": 2308500.0
+          }
+        ]
+      },
+      "e-208": {
+        "ad": "E-208",
+        "genel_medyan": 1999500,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 1999500.0,
+            "medyan": 1999500.0,
+            "max": 1999500.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 1999500.0,
+            "medyan": 1999500.0,
+            "max": 1999500.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 1999500.0,
+            "medyan": 1999500.0,
+            "max": 1999500.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Yeni Peugeot E-208 GT 100kW (Elektrikli)",
+            "fiyat": 1999500.0
+          }
+        ]
+      },
+      "e-3008": {
+        "ad": "E-3008",
+        "genel_medyan": 3416250,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 3318000.0,
+            "medyan": 3318000.0,
+            "max": 3318000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 3514500.0,
+            "medyan": 3514500.0,
+            "max": 3514500.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Yeni Peugeot E-3008 Allure 157kW (210hp)",
+            "fiyat": 3318000.0
+          },
+          {
+            "isim": "Yeni Peugeot E-3008 GT 157kW (210hp)",
+            "fiyat": 3514500.0
+          }
+        ]
+      },
+      "e-5008": {
+        "ad": "E-5008",
+        "genel_medyan": 3573000,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 3502000.0,
+            "medyan": 3502000.0,
+            "max": 3502000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 3644000.0,
+            "medyan": 3644000.0,
+            "max": 3644000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Elektrikli E-5008 Allure 157kW (210hp)",
+            "fiyat": 3502000.0
+          },
+          {
+            "isim": "Elektrikli E-5008 GT 157kW (210hp)",
+            "fiyat": 3644000.0
+          }
+        ]
+      },
+      "rifter": {
+        "ad": "Rifter",
+        "genel_medyan": 1905500,
+        "urun_sayisi": 3,
+        "segmentler": {
+          "dusuk": {
+            "min": 1624000.0,
+            "medyan": 1624000.0,
+            "max": 1624000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 1905500.0,
+            "medyan": 1991250.0,
+            "max": 2077000.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Peugeot Rifter ALLURE 1.5 BlueHDi 130hp 6MT",
+            "fiyat": 1624000.0
+          },
+          {
+            "isim": "Peugeot Rifter ALLURE 1.5 BlueHDi 130hp EAT8",
+            "fiyat": 1905500.0
+          },
+          {
+            "isim": "Peugeot Rifter GT 1.5 BlueHDi 130hp EAT8",
+            "fiyat": 2077000.0
+          }
+        ]
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "Yeni Peugeot E-208 GT 100kW (Elektrikli)",
+        "fiyat": 1999500.0,
+        "nitelikler": {
+          "model": "E-208"
+        }
+      },
+      {
+        "isim": "Yeni 308 ALLURE 1.5 BlueHDi 130hp EAT8",
+        "fiyat": 2360000.0,
+        "nitelikler": {
+          "model": "308"
+        }
+      },
+      {
+        "isim": "Yeni 308 GT 1.5 BlueHDi 130hp EAT8",
+        "fiyat": 2695000.0,
+        "nitelikler": {
+          "model": "308"
+        }
+      },
+      {
+        "isim": "Yeni Peugeot 2008 ALLURE 1.2 Hybrid 145hp eDCS6",
+        "fiyat": 2353000.0,
+        "nitelikler": {
+          "model": "2008"
+        }
+      },
+      {
+        "isim": "Yeni Peugeot 2008 GT 1.2 Hybrid 145hp eDCS6",
+        "fiyat": 2580000.0,
+        "nitelikler": {
+          "model": "2008"
+        }
+      },
+      {
+        "isim": "Yeni Peugeot e-2008 Allure 115 kW",
+        "fiyat": 2201500.0,
+        "nitelikler": {
+          "model": "e-2008"
+        }
+      },
+      {
+        "isim": "Yeni Peugeot e-2008 GT 115kW",
+        "fiyat": 2308500.0,
+        "nitelikler": {
+          "model": "e-2008"
+        }
+      },
+      {
+        "isim": "Yeni Peugeot 3008 Allure 1.2 Hybrid 136hp eDCS6",
+        "fiyat": 2851000.0,
+        "nitelikler": {
+          "model": "3008"
+        }
+      },
+      {
+        "isim": "Yeni Peugeot 3008 GT 1.2 Hybrid 136hp eDCS6",
+        "fiyat": 3259000.0,
+        "nitelikler": {
+          "model": "3008"
+        }
+      },
+      {
+        "isim": "Yeni Peugeot E-3008 Allure 157kW (210hp)",
+        "fiyat": 3318000.0,
+        "nitelikler": {
+          "model": "E-3008"
+        }
+      },
+      {
+        "isim": "Yeni Peugeot E-3008 GT 157kW (210hp)",
+        "fiyat": 3514500.0,
+        "nitelikler": {
+          "model": "E-3008"
+        }
+      },
+      {
+        "isim": "5008 Allure 1.2 Hybrid 145hp eDCS6",
+        "fiyat": 3290000.0,
+        "nitelikler": {
+          "model": "5008"
+        }
+      },
+      {
+        "isim": "5008 GT 1.2 Hybrid 145hp eDCS6",
+        "fiyat": 3600000.0,
+        "nitelikler": {
+          "model": "5008"
+        }
+      },
+      {
+        "isim": "Elektrikli E-5008 Allure 157kW (210hp)",
+        "fiyat": 3502000.0,
+        "nitelikler": {
+          "model": "E-5008"
+        }
+      },
+      {
+        "isim": "Elektrikli E-5008 GT 157kW (210hp)",
+        "fiyat": 3644000.0,
+        "nitelikler": {
+          "model": "E-5008"
+        }
+      },
+      {
+        "isim": "Peugeot 408 ALLURE 1.2 Hybrid 145hp eDCS6",
+        "fiyat": 2580000.0,
+        "nitelikler": {
+          "model": "408"
+        }
+      },
+      {
+        "isim": "Peugeot 408 ALLURE 1.2 Hybrid 145hp eDCS6 Cam Tavan",
+        "fiyat": 2695000.0,
+        "nitelikler": {
+          "model": "408"
+        }
+      },
+      {
+        "isim": "Peugeot 408 GT 1.2 Hybrid 145hp* eDCS6",
+        "fiyat": 2910000.0,
+        "nitelikler": {
+          "model": "408"
+        }
+      },
+      {
+        "isim": "Peugeot Rifter ALLURE 1.5 BlueHDi 130hp 6MT",
+        "fiyat": 1624000.0,
+        "nitelikler": {
+          "model": "Rifter"
+        }
+      },
+      {
+        "isim": "Peugeot Rifter ALLURE 1.5 BlueHDi 130hp EAT8",
+        "fiyat": 1905500.0,
+        "nitelikler": {
+          "model": "Rifter"
+        }
+      },
+      {
+        "isim": "Peugeot Rifter GT 1.5 BlueHDi 130hp EAT8",
+        "fiyat": 2077000.0,
+        "nitelikler": {
+          "model": "Rifter"
+        }
+      }
+    ]
+  }
+}

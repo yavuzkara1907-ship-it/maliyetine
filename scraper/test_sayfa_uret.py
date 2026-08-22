@@ -371,6 +371,70 @@ class IcerikSeoTestleri(unittest.TestCase):
         self.assertIn("ortancası 2.069.000 TL", hub_cevap)
         self.assertIn("en ucuz araç cevabı değildir", hub_cevap)
 
+    def test_arac_marka_rehberi_tek_url_icinde_model_ve_paketleri_gosterir(self):
+        veri = {
+            "ozellik_ozeti": {
+                "toplam_urun": 4,
+                "ozellik_eslesen_urun": 4,
+                "modeller": {
+                    "corsa": {"ad": "Corsa", "genel_medyan": 1827000, "urun_sayisi": 2,
+                              "varyantlar": [
+                                  {"isim": "Opel Corsa 1.2 MT6 Edition", "fiyat": 1535000, "site": "liste"},
+                                  {"isim": "Opel Corsa Hybrid e-DCT6 GS", "fiyat": 2119000, "site": "liste"},
+                              ]},
+                    "astra": {"ad": "Astra", "genel_medyan": 2475000, "urun_sayisi": 2,
+                              "varyantlar": [
+                                  {"isim": "Opel Astra Dizel AT8 Edition", "fiyat": 2360000, "site": "liste"},
+                                  {"isim": "Opel Astra Dizel AT8 GS", "fiyat": 2590000, "site": "liste"},
+                              ]},
+                },
+            },
+        }
+        tanim = next(k for k in sayfa_uret.VERTIKALLER["arac"]["kalemler"] if k["id"] == "opel")
+        html = sayfa_uret._arac_marka_rehberi_html(tanim, veri)
+        self.assertIn("Opel modelleri ve güncel fiyatları", html)
+        self.assertIn('id="corsa"', html)
+        self.assertIn("Opel Corsa fiyatları ve paketleri", html)
+        self.assertIn("Opel Astra Dizel AT8 GS", html)
+        self.assertIn('/arac/hesaplayici/', html)
+        self.assertNotIn('/arac/opel/', html)
+
+    def test_arac_marka_tam_sayfasi_model_niyetini_baslikta_tasir(self):
+        veri = {
+            "vertikal": "arac", "guncelleme_tarihi": "2026-08-22",
+            "kalemler": {"fiat": {
+                "genel_medyan": 1800000, "guncelleme_tarihi": "2026-08-22",
+                "toplam_urun": 2, "kaynak_sayisi": 1,
+                "kaynaklar": [{"site": "liste", "toplam_urun": 2, "genel_medyan": 1800000}],
+                "segmentler": {
+                    "dusuk": {"min": 1500000, "medyan": 1500000, "max": 1500000, "urun_sayisi": 1},
+                    "orta": {"min": 2100000, "medyan": 2100000, "max": 2100000, "urun_sayisi": 1},
+                    "luks": {"min": 2100000, "medyan": 2100000, "max": 2100000, "urun_sayisi": 1},
+                },
+                "ozellik_ozeti": {"toplam_urun": 2, "ozellik_eslesen_urun": 2, "modeller": {
+                    "egea": {"ad": "Egea", "genel_medyan": 1500000, "urun_sayisi": 1,
+                             "varyantlar": [{"isim": "Fiat Egea Easy", "fiyat": 1500000, "site": "liste"}]},
+                    "600e": {"ad": "600e", "genel_medyan": 2100000, "urun_sayisi": 1,
+                             "varyantlar": [{"isim": "Fiat 600e La Prima", "fiyat": 2100000, "site": "liste"}]},
+                }},
+            }},
+        }
+        self.veri_dosyasi.write_text(json.dumps(veri, ensure_ascii=False), encoding="utf-8")
+        html = sayfa_uret.kalem_sayfasi_uret("arac", "fiat-fiyatlari", self.veri_dosyasi)
+        self.assertIn("<title>Fiat Fiyatları ve Modelleri 2026 | Maliyeti Ne?</title>", html)
+        self.assertIn("<h1>Fiat Fiyatları ve Modelleri 2026</h1>", html)
+        self.assertIn("2 model, 2 paket/motor seçeneği", html)
+
+    def test_arac_marka_sayfasi_model_verisi_yetersizse_acilmaz(self):
+        conf = {**sayfa_uret.VERTIKALLER["arac"], "kalem_sayfalari": []}
+        kalemler = {"opel": {
+            "genel_medyan": 2200000, "toplam_urun": 21,
+            "ozellik_ozeti": {"ozellik_eslesen_urun": 1, "modeller": {
+                "corsa": {"ad": "Corsa", "urun_sayisi": 1}
+            }},
+        }}
+        self.assertEqual(sayfa_uret._ek_kalem_sayfalari(conf, kalemler), [])
+
     def test_okul_ve_evcil_hayvan_basliklari_kapsami_asmaz(self):
         self.assertIn("Alışveriş", sayfa_uret.VERTIKALLER["okul"]["baslik"])
         self.assertIn("Başlangıç", sayfa_uret.VERTIKALLER["kedi"]["baslik"])

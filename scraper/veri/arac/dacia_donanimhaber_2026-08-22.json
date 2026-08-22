@@ -1,0 +1,324 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Dacia"
+  ],
+  "kalem": "dacia",
+  "vertikal": "arac",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-08-22",
+  "ham_urun_sayisi": 12,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 12,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 1709500,
+  "segmentler": {
+    "dusuk": {
+      "min": 1299000,
+      "medyan": 1436500,
+      "max": 1600000,
+      "urun_sayisi": 4
+    },
+    "orta": {
+      "min": 1680000,
+      "medyan": 1725000,
+      "max": 1784000,
+      "urun_sayisi": 6
+    },
+    "luks": {
+      "min": 1821000,
+      "medyan": 1835500,
+      "max": 1850000,
+      "urun_sayisi": 2
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Dacia Sandero essential TCe 100",
+      "fiyat": 1299000.0
+    },
+    {
+      "isim": "Dacia Sandero expression TCe 100",
+      "fiyat": 1433000.0
+    },
+    {
+      "isim": "Dacia Logan essential TCe 100",
+      "fiyat": 1440000.0
+    },
+    {
+      "isim": "Dacia Jogger extreme TCe 110 - 7 koltuklu",
+      "fiyat": 1600000.0
+    },
+    {
+      "isim": "Dacia Jogger expression Eco-G 120 - 5 koltuklu",
+      "fiyat": 1680000.0
+    },
+    {
+      "isim": "Dacia Logan expression Eco-G 120 otomatik",
+      "fiyat": 1709000.0
+    },
+    {
+      "isim": "Dacia Jogger extreme Eco-G 120 - 5 koltuklu",
+      "fiyat": 1710000.0
+    },
+    {
+      "isim": "Dacia Jogger expression Eco-G 120 - 7 koltuklu",
+      "fiyat": 1740000.0
+    },
+    {
+      "isim": "Dacia Sandero Stepway Expression Eco-G 120 otomatik",
+      "fiyat": 1756000.0
+    },
+    {
+      "isim": "Dacia Logan journey Eco-G 120 otomatik",
+      "fiyat": 1784000.0
+    },
+    {
+      "isim": "Dacia Sandero Stepwat Extreme Eco-G 120 otomatik",
+      "fiyat": 1821000.0
+    },
+    {
+      "isim": "Dacia Jogger extreme Eco-G 120 auto - 7 koltuklu",
+      "fiyat": 1850000.0
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 12,
+    "ozellik_eslesen_urun": 12,
+    "modeller": {
+      "jogger": {
+        "ad": "Jogger",
+        "genel_medyan": 1710000,
+        "urun_sayisi": 5,
+        "segmentler": {
+          "dusuk": {
+            "min": 1600000.0,
+            "medyan": 1640000.0,
+            "max": 1680000.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 1710000.0,
+            "medyan": 1725000.0,
+            "max": 1740000.0,
+            "urun_sayisi": 2
+          },
+          "luks": {
+            "min": 1850000.0,
+            "medyan": 1850000.0,
+            "max": 1850000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Dacia Jogger extreme TCe 110 - 7 koltuklu",
+            "fiyat": 1600000.0
+          },
+          {
+            "isim": "Dacia Jogger expression Eco-G 120 - 5 koltuklu",
+            "fiyat": 1680000.0
+          },
+          {
+            "isim": "Dacia Jogger extreme Eco-G 120 - 5 koltuklu",
+            "fiyat": 1710000.0
+          },
+          {
+            "isim": "Dacia Jogger expression Eco-G 120 - 7 koltuklu",
+            "fiyat": 1740000.0
+          },
+          {
+            "isim": "Dacia Jogger extreme Eco-G 120 auto - 7 koltuklu",
+            "fiyat": 1850000.0
+          }
+        ]
+      },
+      "logan": {
+        "ad": "Logan",
+        "genel_medyan": 1709000,
+        "urun_sayisi": 3,
+        "segmentler": {
+          "dusuk": {
+            "min": 1440000.0,
+            "medyan": 1440000.0,
+            "max": 1440000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 1709000.0,
+            "medyan": 1746500.0,
+            "max": 1784000.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Dacia Logan essential TCe 100",
+            "fiyat": 1440000.0
+          },
+          {
+            "isim": "Dacia Logan expression Eco-G 120 otomatik",
+            "fiyat": 1709000.0
+          },
+          {
+            "isim": "Dacia Logan journey Eco-G 120 otomatik",
+            "fiyat": 1784000.0
+          }
+        ]
+      },
+      "sandero": {
+        "ad": "Sandero",
+        "genel_medyan": 1433000,
+        "urun_sayisi": 3,
+        "segmentler": {
+          "dusuk": {
+            "min": 1299000.0,
+            "medyan": 1299000.0,
+            "max": 1299000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 1433000.0,
+            "medyan": 1627000.0,
+            "max": 1821000.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Dacia Sandero essential TCe 100",
+            "fiyat": 1299000.0
+          },
+          {
+            "isim": "Dacia Sandero expression TCe 100",
+            "fiyat": 1433000.0
+          },
+          {
+            "isim": "Dacia Sandero Stepwat Extreme Eco-G 120 otomatik",
+            "fiyat": 1821000.0
+          }
+        ]
+      },
+      "sandero-stepway": {
+        "ad": "Sandero Stepway",
+        "genel_medyan": 1756000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 1756000.0,
+            "medyan": 1756000.0,
+            "max": 1756000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 1756000.0,
+            "medyan": 1756000.0,
+            "max": 1756000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 1756000.0,
+            "medyan": 1756000.0,
+            "max": 1756000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Dacia Sandero Stepway Expression Eco-G 120 otomatik",
+            "fiyat": 1756000.0
+          }
+        ]
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "Dacia Sandero essential TCe 100",
+        "fiyat": 1299000.0,
+        "nitelikler": {
+          "model": "Sandero"
+        }
+      },
+      {
+        "isim": "Dacia Sandero expression TCe 100",
+        "fiyat": 1433000.0,
+        "nitelikler": {
+          "model": "Sandero"
+        }
+      },
+      {
+        "isim": "Dacia Sandero Stepway Expression Eco-G 120 otomatik",
+        "fiyat": 1756000.0,
+        "nitelikler": {
+          "model": "Sandero Stepway"
+        }
+      },
+      {
+        "isim": "Dacia Sandero Stepwat Extreme Eco-G 120 otomatik",
+        "fiyat": 1821000.0,
+        "nitelikler": {
+          "model": "Sandero"
+        }
+      },
+      {
+        "isim": "Dacia Logan essential TCe 100",
+        "fiyat": 1440000.0,
+        "nitelikler": {
+          "model": "Logan"
+        }
+      },
+      {
+        "isim": "Dacia Logan expression Eco-G 120 otomatik",
+        "fiyat": 1709000.0,
+        "nitelikler": {
+          "model": "Logan"
+        }
+      },
+      {
+        "isim": "Dacia Logan journey Eco-G 120 otomatik",
+        "fiyat": 1784000.0,
+        "nitelikler": {
+          "model": "Logan"
+        }
+      },
+      {
+        "isim": "Dacia Jogger expression Eco-G 120 - 5 koltuklu",
+        "fiyat": 1680000.0,
+        "nitelikler": {
+          "model": "Jogger"
+        }
+      },
+      {
+        "isim": "Dacia Jogger expression Eco-G 120 - 7 koltuklu",
+        "fiyat": 1740000.0,
+        "nitelikler": {
+          "model": "Jogger"
+        }
+      },
+      {
+        "isim": "Dacia Jogger extreme TCe 110 - 7 koltuklu",
+        "fiyat": 1600000.0,
+        "nitelikler": {
+          "model": "Jogger"
+        }
+      },
+      {
+        "isim": "Dacia Jogger extreme Eco-G 120 - 5 koltuklu",
+        "fiyat": 1710000.0,
+        "nitelikler": {
+          "model": "Jogger"
+        }
+      },
+      {
+        "isim": "Dacia Jogger extreme Eco-G 120 auto - 7 koltuklu",
+        "fiyat": 1850000.0,
+        "nitelikler": {
+          "model": "Jogger"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,510 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Citroen"
+  ],
+  "kalem": "citroen",
+  "vertikal": "arac",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-08-22",
+  "ham_urun_sayisi": 21,
+  "aykiri_urun_sayisi": 4,
+  "toplam_urun": 17,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 2230000,
+  "segmentler": {
+    "dusuk": {
+      "min": 1595000,
+      "medyan": 1790000,
+      "max": 1930000,
+      "urun_sayisi": 5
+    },
+    "orta": {
+      "min": 2061000,
+      "medyan": 2236000,
+      "max": 2295000,
+      "urun_sayisi": 8
+    },
+    "luks": {
+      "min": 2360000,
+      "medyan": 2570000,
+      "max": 2960000,
+      "urun_sayisi": 4
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Citroen e-C3 83 kW Elektrikli Motor Plus",
+      "fiyat": 1595000.0
+    },
+    {
+      "isim": "Citroen e-C3 83 kW Elektrikli Motor Max",
+      "fiyat": 1660000.0
+    },
+    {
+      "isim": "e-C3 Aircross83 kW Elektrikli Motor Max Standart Menzil",
+      "fiyat": 1790000.0
+    },
+    {
+      "isim": "e-C3 Aircross 83 kW Elektrikli Motor Collection Uzun Menzil",
+      "fiyat": 1900000.0
+    },
+    {
+      "isim": "e-C3 Aircross 83 kW Elektrikli Motor Max Uzun Menzil",
+      "fiyat": 1930000.0
+    },
+    {
+      "isim": "Citroen C4 1.2 Hybrid 145hp e-DCS6 You",
+      "fiyat": 2061000.0
+    },
+    {
+      "isim": "Citroen C4 X 1.2 Hybrid 145hp e-DCS6 You",
+      "fiyat": 2061000.0
+    },
+    {
+      "isim": "Citroen C3 Aircross Hybrid 145 1.2 Hybrid 145- eDCS6 Plus",
+      "fiyat": 2155000.0
+    },
+    {
+      "isim": "Citroen C3 Aircross Hybrid 145 1.2 Hybrid 145- eDCS6 Max",
+      "fiyat": 2230000.0
+    },
+    {
+      "isim": "Citroen C4 1.2 Hybrid 145hp e-DCS6 Max",
+      "fiyat": 2242000.0
+    },
+    {
+      "isim": "Citroen e-C4 X 115 kW Max",
+      "fiyat": 2255000.0
+    },
+    {
+      "isim": "Citroen C4 X 1.2 Hybrid 145hp e-DCS6 Max",
+      "fiyat": 2262000.0
+    },
+    {
+      "isim": "Citroen e-C4 115 kW Max",
+      "fiyat": 2295000.0
+    },
+    {
+      "isim": "C3 Aircross Hybrid 145 1.2 Hybrid 145- eDCS6 Max 7 Koltuk",
+      "fiyat": 2360000.0
+    },
+    {
+      "isim": "Citroen e-C5 Aircross 157 kW Plus",
+      "fiyat": 2430000.0
+    },
+    {
+      "isim": "Citroen C5 Aircross Hybrid 1.2 Hybrid 145hp e-DCS6 Plus",
+      "fiyat": 2710000.0
+    },
+    {
+      "isim": "Citroen C5 Aircross Hybrid 1.2 Hybrid 145hp e-DCS6 Max",
+      "fiyat": 2960000.0
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 17,
+    "ozellik_eslesen_urun": 17,
+    "modeller": {
+      "c3-aircross": {
+        "ad": "C3 Aircross",
+        "genel_medyan": 2230000,
+        "urun_sayisi": 3,
+        "segmentler": {
+          "dusuk": {
+            "min": 2155000.0,
+            "medyan": 2155000.0,
+            "max": 2155000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2230000.0,
+            "medyan": 2295000.0,
+            "max": 2360000.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Citroen C3 Aircross Hybrid 145 1.2 Hybrid 145- eDCS6 Plus",
+            "fiyat": 2155000.0
+          },
+          {
+            "isim": "Citroen C3 Aircross Hybrid 145 1.2 Hybrid 145- eDCS6 Max",
+            "fiyat": 2230000.0
+          },
+          {
+            "isim": "C3 Aircross Hybrid 145 1.2 Hybrid 145- eDCS6 Max 7 Koltuk",
+            "fiyat": 2360000.0
+          }
+        ]
+      },
+      "c4": {
+        "ad": "C4",
+        "genel_medyan": 2151500,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 2061000.0,
+            "medyan": 2061000.0,
+            "max": 2061000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2242000.0,
+            "medyan": 2242000.0,
+            "max": 2242000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Citroen C4 1.2 Hybrid 145hp e-DCS6 You",
+            "fiyat": 2061000.0
+          },
+          {
+            "isim": "Citroen C4 1.2 Hybrid 145hp e-DCS6 Max",
+            "fiyat": 2242000.0
+          }
+        ]
+      },
+      "c4-x": {
+        "ad": "C4 X",
+        "genel_medyan": 2161500,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 2061000.0,
+            "medyan": 2061000.0,
+            "max": 2061000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2262000.0,
+            "medyan": 2262000.0,
+            "max": 2262000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Citroen C4 X 1.2 Hybrid 145hp e-DCS6 You",
+            "fiyat": 2061000.0
+          },
+          {
+            "isim": "Citroen C4 X 1.2 Hybrid 145hp e-DCS6 Max",
+            "fiyat": 2262000.0
+          }
+        ]
+      },
+      "c5-aircross": {
+        "ad": "C5 Aircross",
+        "genel_medyan": 2835000,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 2710000.0,
+            "medyan": 2710000.0,
+            "max": 2710000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2960000.0,
+            "medyan": 2960000.0,
+            "max": 2960000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Citroen C5 Aircross Hybrid 1.2 Hybrid 145hp e-DCS6 Plus",
+            "fiyat": 2710000.0
+          },
+          {
+            "isim": "Citroen C5 Aircross Hybrid 1.2 Hybrid 145hp e-DCS6 Max",
+            "fiyat": 2960000.0
+          }
+        ]
+      },
+      "e-c3": {
+        "ad": "e-C3",
+        "genel_medyan": 1627500,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 1595000.0,
+            "medyan": 1595000.0,
+            "max": 1595000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 1660000.0,
+            "medyan": 1660000.0,
+            "max": 1660000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Citroen e-C3 83 kW Elektrikli Motor Plus",
+            "fiyat": 1595000.0
+          },
+          {
+            "isim": "Citroen e-C3 83 kW Elektrikli Motor Max",
+            "fiyat": 1660000.0
+          }
+        ]
+      },
+      "e-c3-aircross": {
+        "ad": "e-C3 Aircross",
+        "genel_medyan": 1900000,
+        "urun_sayisi": 3,
+        "segmentler": {
+          "dusuk": {
+            "min": 1790000.0,
+            "medyan": 1790000.0,
+            "max": 1790000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 1900000.0,
+            "medyan": 1915000.0,
+            "max": 1930000.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "e-C3 Aircross83 kW Elektrikli Motor Max Standart Menzil",
+            "fiyat": 1790000.0
+          },
+          {
+            "isim": "e-C3 Aircross 83 kW Elektrikli Motor Collection Uzun Menzil",
+            "fiyat": 1900000.0
+          },
+          {
+            "isim": "e-C3 Aircross 83 kW Elektrikli Motor Max Uzun Menzil",
+            "fiyat": 1930000.0
+          }
+        ]
+      },
+      "e-c4": {
+        "ad": "e-C4",
+        "genel_medyan": 2295000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 2295000.0,
+            "medyan": 2295000.0,
+            "max": 2295000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2295000.0,
+            "medyan": 2295000.0,
+            "max": 2295000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 2295000.0,
+            "medyan": 2295000.0,
+            "max": 2295000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Citroen e-C4 115 kW Max",
+            "fiyat": 2295000.0
+          }
+        ]
+      },
+      "e-c4-x": {
+        "ad": "e-C4 X",
+        "genel_medyan": 2255000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 2255000.0,
+            "medyan": 2255000.0,
+            "max": 2255000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2255000.0,
+            "medyan": 2255000.0,
+            "max": 2255000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 2255000.0,
+            "medyan": 2255000.0,
+            "max": 2255000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Citroen e-C4 X 115 kW Max",
+            "fiyat": 2255000.0
+          }
+        ]
+      },
+      "e-c5-aircross": {
+        "ad": "e-C5 Aircross",
+        "genel_medyan": 2430000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 2430000.0,
+            "medyan": 2430000.0,
+            "max": 2430000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2430000.0,
+            "medyan": 2430000.0,
+            "max": 2430000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 2430000.0,
+            "medyan": 2430000.0,
+            "max": 2430000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Citroen e-C5 Aircross 157 kW Plus",
+            "fiyat": 2430000.0
+          }
+        ]
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "Citroen e-C3 83 kW Elektrikli Motor Plus",
+        "fiyat": 1595000.0,
+        "nitelikler": {
+          "model": "e-C3"
+        }
+      },
+      {
+        "isim": "Citroen e-C3 83 kW Elektrikli Motor Max",
+        "fiyat": 1660000.0,
+        "nitelikler": {
+          "model": "e-C3"
+        }
+      },
+      {
+        "isim": "Citroen C3 Aircross Hybrid 145 1.2 Hybrid 145- eDCS6 Plus",
+        "fiyat": 2155000.0,
+        "nitelikler": {
+          "model": "C3 Aircross"
+        }
+      },
+      {
+        "isim": "Citroen C3 Aircross Hybrid 145 1.2 Hybrid 145- eDCS6 Max",
+        "fiyat": 2230000.0,
+        "nitelikler": {
+          "model": "C3 Aircross"
+        }
+      },
+      {
+        "isim": "C3 Aircross Hybrid 145 1.2 Hybrid 145- eDCS6 Max 7 Koltuk",
+        "fiyat": 2360000.0,
+        "nitelikler": {
+          "model": "C3 Aircross"
+        }
+      },
+      {
+        "isim": "e-C3 Aircross83 kW Elektrikli Motor Max Standart Menzil",
+        "fiyat": 1790000.0,
+        "nitelikler": {
+          "model": "e-C3 Aircross"
+        }
+      },
+      {
+        "isim": "e-C3 Aircross 83 kW Elektrikli Motor Collection Uzun Menzil",
+        "fiyat": 1900000.0,
+        "nitelikler": {
+          "model": "e-C3 Aircross"
+        }
+      },
+      {
+        "isim": "e-C3 Aircross 83 kW Elektrikli Motor Max Uzun Menzil",
+        "fiyat": 1930000.0,
+        "nitelikler": {
+          "model": "e-C3 Aircross"
+        }
+      },
+      {
+        "isim": "Citroen C4 1.2 Hybrid 145hp e-DCS6 You",
+        "fiyat": 2061000.0,
+        "nitelikler": {
+          "model": "C4"
+        }
+      },
+      {
+        "isim": "Citroen C4 1.2 Hybrid 145hp e-DCS6 Max",
+        "fiyat": 2242000.0,
+        "nitelikler": {
+          "model": "C4"
+        }
+      },
+      {
+        "isim": "Citroen e-C4 115 kW Max",
+        "fiyat": 2295000.0,
+        "nitelikler": {
+          "model": "e-C4"
+        }
+      },
+      {
+        "isim": "Citroen C4 X 1.2 Hybrid 145hp e-DCS6 You",
+        "fiyat": 2061000.0,
+        "nitelikler": {
+          "model": "C4 X"
+        }
+      },
+      {
+        "isim": "Citroen C4 X 1.2 Hybrid 145hp e-DCS6 Max",
+        "fiyat": 2262000.0,
+        "nitelikler": {
+          "model": "C4 X"
+        }
+      },
+      {
+        "isim": "Citroen e-C4 X 115 kW Max",
+        "fiyat": 2255000.0,
+        "nitelikler": {
+          "model": "e-C4 X"
+        }
+      },
+      {
+        "isim": "Citroen C5 Aircross Hybrid 1.2 Hybrid 145hp e-DCS6 Plus",
+        "fiyat": 2710000.0,
+        "nitelikler": {
+          "model": "C5 Aircross"
+        }
+      },
+      {
+        "isim": "Citroen C5 Aircross Hybrid 1.2 Hybrid 145hp e-DCS6 Max",
+        "fiyat": 2960000.0,
+        "nitelikler": {
+          "model": "C5 Aircross"
+        }
+      },
+      {
+        "isim": "Citroen e-C5 Aircross 157 kW Plus",
+        "fiyat": 2430000.0,
+        "nitelikler": {
+          "model": "e-C5 Aircross"
+        }
+      }
+    ]
+  }
+}

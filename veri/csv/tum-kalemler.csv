@@ -95,28 +95,28 @@ kopek,kopek-mamasi,Köpek Maması (paket),Tekrarlayan ürün,sabit,paket_fiyati,
 kopek,cis-pedi,Çiş Pedi (paket),Tekrarlayan ürün,sabit,paket_fiyati,250,366,1235,150,1470,,,,,,,43,1,amazon,2026-08-09
 kopek,kopek-oyuncagi,Köpek Oyuncağı,Yaşam alanı,sabit,kalem_fiyati,112,288,818,36,1120,,,,,,,79,2,amazon; petzzshop,2026-08-20
 kopek,kopek-yatagi,Köpek Yatağı,Yaşam alanı,sabit,kalem_fiyati,1536,2080,2920,209,3975,,,,,,,54,2,amazon; petzzshop,2026-08-20
-arac,bmw,BMW,Marka bazlı fiyatlar,sabit,kalem_fiyati,4468450,8159300,15799000,3724500,21870500,,,,,,,60,1,donanimhaber,2026-08-20
-arac,byd,BYD,Marka bazlı fiyatlar,sabit,kalem_fiyati,4133500,5145500,,4077000,,,,,,,,4,1,donanimhaber,2026-08-20
-arac,chery,Chery,Marka bazlı fiyatlar,sabit,kalem_fiyati,2377500,2820000,,2175000,,,,,,,,4,1,donanimhaber,2026-08-20
-arac,citroen,Citroen,Marka bazlı fiyatlar,sabit,kalem_fiyati,1790000,2236000,2570000,1595000,2960000,,,,,,,17,1,donanimhaber,2026-08-20
-arac,cupra,Cupra,Marka bazlı fiyatlar,sabit,kalem_fiyati,2700000,3502500,4520000,2650000,4520000,,,,,,,7,1,donanimhaber,2026-08-20
-arac,dacia,Dacia,Marka bazlı fiyatlar,sabit,kalem_fiyati,1436500,1725000,1835500,1299000,1850000,,,,,,,12,1,donanimhaber,2026-08-20
-arac,fiat,Fiat,Marka bazlı fiyatlar,sabit,kalem_fiyati,1064900,1955200,2090500,609900,2289900,,,,,,,15,1,donanimhaber,2026-08-20
-arac,ford,Ford,Marka bazlı fiyatlar,sabit,kalem_fiyati,2238900,2864900,3836100,2158700,4330000,,,,,,,19,1,donanimhaber,2026-08-20
-arac,honda,Honda,Marka bazlı fiyatlar,sabit,kalem_fiyati,2592000,4015000,6160000,2525000,6160000,,,,,,,7,1,donanimhaber,2026-08-20
-arac,hyundai,Hyundai,Marka bazlı fiyatlar,sabit,kalem_fiyati,1647000,1986500,2960500,1487000,3715000,,,,,,,35,1,donanimhaber,2026-08-20
-arac,kia,Kia,Marka bazlı fiyatlar,sabit,kalem_fiyati,1819000,2424500,3650000,1435000,3760000,,,,,,,21,1,donanimhaber,2026-08-20
-arac,mg,MG,Marka bazlı fiyatlar,sabit,kalem_fiyati,2676000,3282500,3450000,2655000,3450000,,,,,,,5,1,donanimhaber,2026-08-20
-arac,mercedes,Mercedes,Marka bazlı fiyatlar,sabit,kalem_fiyati,4873000,10108500,22726500,3222000,30448000,,,,,,,42,1,donanimhaber,2026-08-20
-arac,nissan,Nissan,Marka bazlı fiyatlar,sabit,kalem_fiyati,2757600,3808500,4755700,2270900,5615600,,,,,,,18,1,donanimhaber,2026-08-20
-arac,opel,Opel,Marka bazlı fiyatlar,sabit,kalem_fiyati,1845500,2166500,3179000,1535000,3570000,,,,,,,21,1,donanimhaber,2026-08-20
-arac,peugeot,Peugeot,Marka bazlı fiyatlar,sabit,kalem_fiyati,2038250,2695000,3514500,1624000,3644000,,,,,,,21,1,donanimhaber,2026-08-20
-arac,renault,Renault,Marka bazlı fiyatlar,sabit,kalem_fiyati,1937500,2436000,3130000,1830000,3490000,,,,,,,23,1,donanimhaber,2026-08-20
-arac,seat,Seat,Marka bazlı fiyatlar,sabit,kalem_fiyati,1912500,2470500,,1857000,,,,,,,,4,1,donanimhaber,2026-08-20
-arac,skoda,Skoda,Marka bazlı fiyatlar,sabit,kalem_fiyati,2389900,3887400,7049900,1969900,7399900,,,,,,,41,1,donanimhaber,2026-08-20
-arac,suzuki,Suzuki,Marka bazlı fiyatlar,sabit,kalem_fiyati,2108500,2474500,2731500,2079000,2783000,,,,,,,12,1,donanimhaber,2026-08-20
-arac,tesla,Tesla,Marka bazlı fiyatlar,sabit,kalem_fiyati,3078892,4583000,,2474985,,,,,,,,4,1,donanimhaber,2026-08-20
-arac,togg,Togg,Marka bazlı fiyatlar,sabit,kalem_fiyati,1909048,2411000,,1886000,,,,,,,,8,1,donanimhaber,2026-08-20
-arac,toyota,Toyota,Marka bazlı fiyatlar,sabit,kalem_fiyati,2609000,3057500,5100000,2245000,5781000,,,,,,,27,1,donanimhaber,2026-08-20
-arac,volkswagen,Volkswagen,Marka bazlı fiyatlar,sabit,kalem_fiyati,2838000,3751500,6815000,2230000,7596000,,,,,,,40,1,donanimhaber,2026-08-20
+arac,bmw,BMW,Marka bazlı fiyatlar,sabit,kalem_fiyati,4468450,8159300,15799000,3724500,21870500,,,,,,,60,1,donanimhaber,2026-08-22
+arac,byd,BYD,Marka bazlı fiyatlar,sabit,kalem_fiyati,4133500,5145500,,4077000,,,,,,,,4,1,donanimhaber,2026-08-22
+arac,chery,Chery,Marka bazlı fiyatlar,sabit,kalem_fiyati,2377500,2820000,,2175000,,,,,,,,4,1,donanimhaber,2026-08-22
+arac,citroen,Citroen,Marka bazlı fiyatlar,sabit,kalem_fiyati,1790000,2236000,2570000,1595000,2960000,,,,,,,17,1,donanimhaber,2026-08-22
+arac,cupra,Cupra,Marka bazlı fiyatlar,sabit,kalem_fiyati,2700000,3502500,4520000,2650000,4520000,,,,,,,7,1,donanimhaber,2026-08-22
+arac,dacia,Dacia,Marka bazlı fiyatlar,sabit,kalem_fiyati,1436500,1725000,1835500,1299000,1850000,,,,,,,12,1,donanimhaber,2026-08-22
+arac,fiat,Fiat,Marka bazlı fiyatlar,sabit,kalem_fiyati,1064900,1955200,2090500,609900,2289900,,,,,,,15,1,donanimhaber,2026-08-22
+arac,ford,Ford,Marka bazlı fiyatlar,sabit,kalem_fiyati,2238900,2864900,3836100,2158700,4330000,,,,,,,19,1,donanimhaber,2026-08-22
+arac,honda,Honda,Marka bazlı fiyatlar,sabit,kalem_fiyati,2592000,4015000,6160000,2525000,6160000,,,,,,,7,1,donanimhaber,2026-08-22
+arac,hyundai,Hyundai,Marka bazlı fiyatlar,sabit,kalem_fiyati,1647000,1986500,2960500,1487000,3715000,,,,,,,35,1,donanimhaber,2026-08-22
+arac,kia,Kia,Marka bazlı fiyatlar,sabit,kalem_fiyati,1819000,2424500,3650000,1435000,3760000,,,,,,,21,1,donanimhaber,2026-08-22
+arac,mg,MG,Marka bazlı fiyatlar,sabit,kalem_fiyati,2676000,3282500,3450000,2655000,3450000,,,,,,,5,1,donanimhaber,2026-08-22
+arac,mercedes,Mercedes,Marka bazlı fiyatlar,sabit,kalem_fiyati,4873000,10108500,22726500,3222000,30448000,,,,,,,42,1,donanimhaber,2026-08-22
+arac,nissan,Nissan,Marka bazlı fiyatlar,sabit,kalem_fiyati,2757600,3808500,4755700,2270900,5615600,,,,,,,18,1,donanimhaber,2026-08-22
+arac,opel,Opel,Marka bazlı fiyatlar,sabit,kalem_fiyati,1845500,2166500,3179000,1535000,3570000,,,,,,,21,1,donanimhaber,2026-08-22
+arac,peugeot,Peugeot,Marka bazlı fiyatlar,sabit,kalem_fiyati,2038250,2695000,3514500,1624000,3644000,,,,,,,21,1,donanimhaber,2026-08-22
+arac,renault,Renault,Marka bazlı fiyatlar,sabit,kalem_fiyati,1937500,2436000,3130000,1830000,3490000,,,,,,,23,1,donanimhaber,2026-08-22
+arac,seat,Seat,Marka bazlı fiyatlar,sabit,kalem_fiyati,1912500,2470500,,1857000,,,,,,,,4,1,donanimhaber,2026-08-22
+arac,skoda,Skoda,Marka bazlı fiyatlar,sabit,kalem_fiyati,2389900,3887400,7049900,1969900,7399900,,,,,,,41,1,donanimhaber,2026-08-22
+arac,suzuki,Suzuki,Marka bazlı fiyatlar,sabit,kalem_fiyati,2108500,2474500,2731500,2079000,2783000,,,,,,,12,1,donanimhaber,2026-08-22
+arac,tesla,Tesla,Marka bazlı fiyatlar,sabit,kalem_fiyati,3078892,4583000,,2474985,,,,,,,,4,1,donanimhaber,2026-08-22
+arac,togg,Togg,Marka bazlı fiyatlar,sabit,kalem_fiyati,1909048,2411000,,1886000,,,,,,,,8,1,donanimhaber,2026-08-22
+arac,toyota,Toyota,Marka bazlı fiyatlar,sabit,kalem_fiyati,2609000,3057500,5100000,2245000,5781000,,,,,,,27,1,donanimhaber,2026-08-22
+arac,volkswagen,Volkswagen,Marka bazlı fiyatlar,sabit,kalem_fiyati,2838000,3751500,6815000,2230000,7596000,,,,,,,40,1,donanimhaber,2026-08-22
 arac,en-ucuz-sifir-arac,En ucuz sıfır araç (marka giriş fiyatı),,sabit,kalem_fiyati,1517450,2113850,2772100,1299000,3724500,,,,,,,23,1,donanimhaber,2026-08-22

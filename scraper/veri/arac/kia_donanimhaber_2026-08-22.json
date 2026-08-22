@@ -1,0 +1,594 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Kia"
+  ],
+  "kalem": "kia",
+  "vertikal": "arac",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-08-22",
+  "ham_urun_sayisi": 26,
+  "aykiri_urun_sayisi": 5,
+  "toplam_urun": 21,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 2399000,
+  "segmentler": {
+    "dusuk": {
+      "min": 1435000,
+      "medyan": 1819000,
+      "max": 1960000,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 2070000,
+      "medyan": 2424500,
+      "max": 2750000,
+      "urun_sayisi": 10
+    },
+    "luks": {
+      "min": 3075000,
+      "medyan": 3650000,
+      "max": 3760000,
+      "urun_sayisi": 5
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Kia Picanto Cool 1.0L 67 PS AMT",
+      "fiyat": 1435000.0
+    },
+    {
+      "isim": "Kia Picanto Feel 1.0L 67 PS AMT",
+      "fiyat": 1460000.0
+    },
+    {
+      "isim": "Kia EV2 107,8 kW Cool",
+      "fiyat": 1719000.0
+    },
+    {
+      "isim": "Kia EV2 107,8 kW Elegance",
+      "fiyat": 1919000.0
+    },
+    {
+      "isim": "Kia Stonic 1.0L 100 PS DCT Cool",
+      "fiyat": 1960000.0
+    },
+    {
+      "isim": "Kia XCeed Mild Hibrit 1.5L 115 PS DCT Cool",
+      "fiyat": 1960000.0
+    },
+    {
+      "isim": "Kia Ceed HB 1.5L 140 PS DCT Elegance",
+      "fiyat": 2070000.0
+    },
+    {
+      "isim": "Kia EV2 99,5 kW Elegance Long Range",
+      "fiyat": 2129000.0
+    },
+    {
+      "isim": "Yeni Sportage 1.6L 150 PS DCT (Otomatik) Benzin Live",
+      "fiyat": 2249000.0
+    },
+    {
+      "isim": "Kia Niro EV 150 kW Otomatik Elegance",
+      "fiyat": 2299000.0
+    },
+    {
+      "isim": "Kia EV3 150 kW Otomatik Elektrikli Elegance Comfort",
+      "fiyat": 2399000.0
+    },
+    {
+      "isim": "Kia EV3 150 kW Otomatik Elektrikli Cool Long Range",
+      "fiyat": 2450000.0
+    },
+    {
+      "isim": "Kia EV3 150 kW Otomatik Elektrikli Elegance Long Range",
+      "fiyat": 2485000.0
+    },
+    {
+      "isim": "Kia EV3 150 kW Otomatik Elektrikli Prestige",
+      "fiyat": 2485000.0
+    },
+    {
+      "isim": "Yeni Sportage 1.6L 150 PS DCT (Otomatik) Benzin Vision",
+      "fiyat": 2550000.0
+    },
+    {
+      "isim": "Yeni Sportage 1.6L 150 PS DCT (Otomatik) Benzin Cool",
+      "fiyat": 2750000.0
+    },
+    {
+      "isim": "Yeni Sportage 1.6L 150 PS DCT (Otomatik) Benzin Elegance",
+      "fiyat": 3075000.0
+    },
+    {
+      "isim": "Yeni Sportage 1.6L 150 PS DCT (Otomatik) Benzin Prestige",
+      "fiyat": 3340000.0
+    },
+    {
+      "isim": "Yeni Sportage 1.6L 180 PS 4X4 DCT (Otomatik) Benzin GT-Line",
+      "fiyat": 3650000.0
+    },
+    {
+      "isim": "Kia EV3 150 kW Otomatik Elektrikli GT-Line Long Range",
+      "fiyat": 3760000.0
+    },
+    {
+      "isim": "Kia EV6 Elegance Standard Range 125 kW 4x2",
+      "fiyat": 3760000.0
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 21,
+    "ozellik_eslesen_urun": 21,
+    "modeller": {
+      "ceed-hb": {
+        "ad": "Ceed HB",
+        "genel_medyan": 2070000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 2070000.0,
+            "medyan": 2070000.0,
+            "max": 2070000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2070000.0,
+            "medyan": 2070000.0,
+            "max": 2070000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 2070000.0,
+            "medyan": 2070000.0,
+            "max": 2070000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Kia Ceed HB 1.5L 140 PS DCT Elegance",
+            "fiyat": 2070000.0
+          }
+        ]
+      },
+      "ev2": {
+        "ad": "EV2",
+        "genel_medyan": 1919000,
+        "urun_sayisi": 3,
+        "segmentler": {
+          "dusuk": {
+            "min": 1719000.0,
+            "medyan": 1719000.0,
+            "max": 1719000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 1919000.0,
+            "medyan": 2024000.0,
+            "max": 2129000.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Kia EV2 107,8 kW Cool",
+            "fiyat": 1719000.0
+          },
+          {
+            "isim": "Kia EV2 107,8 kW Elegance",
+            "fiyat": 1919000.0
+          },
+          {
+            "isim": "Kia EV2 99,5 kW Elegance Long Range",
+            "fiyat": 2129000.0
+          }
+        ]
+      },
+      "ev3": {
+        "ad": "EV3",
+        "genel_medyan": 2485000,
+        "urun_sayisi": 5,
+        "segmentler": {
+          "dusuk": {
+            "min": 2399000.0,
+            "medyan": 2424500.0,
+            "max": 2450000.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 2485000.0,
+            "medyan": 2485000.0,
+            "max": 2485000.0,
+            "urun_sayisi": 2
+          },
+          "luks": {
+            "min": 3760000.0,
+            "medyan": 3760000.0,
+            "max": 3760000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Kia EV3 150 kW Otomatik Elektrikli Elegance Comfort",
+            "fiyat": 2399000.0
+          },
+          {
+            "isim": "Kia EV3 150 kW Otomatik Elektrikli Cool Long Range",
+            "fiyat": 2450000.0
+          },
+          {
+            "isim": "Kia EV3 150 kW Otomatik Elektrikli Elegance Long Range",
+            "fiyat": 2485000.0
+          },
+          {
+            "isim": "Kia EV3 150 kW Otomatik Elektrikli Prestige",
+            "fiyat": 2485000.0
+          },
+          {
+            "isim": "Kia EV3 150 kW Otomatik Elektrikli GT-Line Long Range",
+            "fiyat": 3760000.0
+          }
+        ]
+      },
+      "ev6": {
+        "ad": "EV6",
+        "genel_medyan": 3760000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 3760000.0,
+            "medyan": 3760000.0,
+            "max": 3760000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 3760000.0,
+            "medyan": 3760000.0,
+            "max": 3760000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 3760000.0,
+            "medyan": 3760000.0,
+            "max": 3760000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Kia EV6 Elegance Standard Range 125 kW 4x2",
+            "fiyat": 3760000.0
+          }
+        ]
+      },
+      "niro-ev": {
+        "ad": "Niro EV",
+        "genel_medyan": 2299000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 2299000.0,
+            "medyan": 2299000.0,
+            "max": 2299000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2299000.0,
+            "medyan": 2299000.0,
+            "max": 2299000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 2299000.0,
+            "medyan": 2299000.0,
+            "max": 2299000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Kia Niro EV 150 kW Otomatik Elegance",
+            "fiyat": 2299000.0
+          }
+        ]
+      },
+      "picanto": {
+        "ad": "Picanto",
+        "genel_medyan": 1447500,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 1435000.0,
+            "medyan": 1435000.0,
+            "max": 1435000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 1460000.0,
+            "medyan": 1460000.0,
+            "max": 1460000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Kia Picanto Cool 1.0L 67 PS AMT",
+            "fiyat": 1435000.0
+          },
+          {
+            "isim": "Kia Picanto Feel 1.0L 67 PS AMT",
+            "fiyat": 1460000.0
+          }
+        ]
+      },
+      "sportage": {
+        "ad": "Sportage",
+        "genel_medyan": 2912500,
+        "urun_sayisi": 6,
+        "segmentler": {
+          "dusuk": {
+            "min": 2249000.0,
+            "medyan": 2399500.0,
+            "max": 2550000.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 2750000.0,
+            "medyan": 3075000.0,
+            "max": 3340000.0,
+            "urun_sayisi": 3
+          },
+          "luks": {
+            "min": 3650000.0,
+            "medyan": 3650000.0,
+            "max": 3650000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Yeni Sportage 1.6L 150 PS DCT (Otomatik) Benzin Live",
+            "fiyat": 2249000.0
+          },
+          {
+            "isim": "Yeni Sportage 1.6L 150 PS DCT (Otomatik) Benzin Vision",
+            "fiyat": 2550000.0
+          },
+          {
+            "isim": "Yeni Sportage 1.6L 150 PS DCT (Otomatik) Benzin Cool",
+            "fiyat": 2750000.0
+          },
+          {
+            "isim": "Yeni Sportage 1.6L 150 PS DCT (Otomatik) Benzin Elegance",
+            "fiyat": 3075000.0
+          },
+          {
+            "isim": "Yeni Sportage 1.6L 150 PS DCT (Otomatik) Benzin Prestige",
+            "fiyat": 3340000.0
+          },
+          {
+            "isim": "Yeni Sportage 1.6L 180 PS 4X4 DCT (Otomatik) Benzin GT-Line",
+            "fiyat": 3650000.0
+          }
+        ]
+      },
+      "stonic": {
+        "ad": "Stonic",
+        "genel_medyan": 1960000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 1960000.0,
+            "medyan": 1960000.0,
+            "max": 1960000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 1960000.0,
+            "medyan": 1960000.0,
+            "max": 1960000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 1960000.0,
+            "medyan": 1960000.0,
+            "max": 1960000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Kia Stonic 1.0L 100 PS DCT Cool",
+            "fiyat": 1960000.0
+          }
+        ]
+      },
+      "xceed": {
+        "ad": "XCeed",
+        "genel_medyan": 1960000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 1960000.0,
+            "medyan": 1960000.0,
+            "max": 1960000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 1960000.0,
+            "medyan": 1960000.0,
+            "max": 1960000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 1960000.0,
+            "medyan": 1960000.0,
+            "max": 1960000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Kia XCeed Mild Hibrit 1.5L 115 PS DCT Cool",
+            "fiyat": 1960000.0
+          }
+        ]
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "Kia Picanto Feel 1.0L 67 PS AMT",
+        "fiyat": 1460000.0,
+        "nitelikler": {
+          "model": "Picanto"
+        }
+      },
+      {
+        "isim": "Kia Picanto Cool 1.0L 67 PS AMT",
+        "fiyat": 1435000.0,
+        "nitelikler": {
+          "model": "Picanto"
+        }
+      },
+      {
+        "isim": "Kia Stonic 1.0L 100 PS DCT Cool",
+        "fiyat": 1960000.0,
+        "nitelikler": {
+          "model": "Stonic"
+        }
+      },
+      {
+        "isim": "Kia Ceed HB 1.5L 140 PS DCT Elegance",
+        "fiyat": 2070000.0,
+        "nitelikler": {
+          "model": "Ceed HB"
+        }
+      },
+      {
+        "isim": "Kia XCeed Mild Hibrit 1.5L 115 PS DCT Cool",
+        "fiyat": 1960000.0,
+        "nitelikler": {
+          "model": "XCeed"
+        }
+      },
+      {
+        "isim": "Yeni Sportage 1.6L 150 PS DCT (Otomatik) Benzin Live",
+        "fiyat": 2249000.0,
+        "nitelikler": {
+          "model": "Sportage"
+        }
+      },
+      {
+        "isim": "Yeni Sportage 1.6L 150 PS DCT (Otomatik) Benzin Vision",
+        "fiyat": 2550000.0,
+        "nitelikler": {
+          "model": "Sportage"
+        }
+      },
+      {
+        "isim": "Yeni Sportage 1.6L 150 PS DCT (Otomatik) Benzin Cool",
+        "fiyat": 2750000.0,
+        "nitelikler": {
+          "model": "Sportage"
+        }
+      },
+      {
+        "isim": "Yeni Sportage 1.6L 150 PS DCT (Otomatik) Benzin Elegance",
+        "fiyat": 3075000.0,
+        "nitelikler": {
+          "model": "Sportage"
+        }
+      },
+      {
+        "isim": "Yeni Sportage 1.6L 150 PS DCT (Otomatik) Benzin Prestige",
+        "fiyat": 3340000.0,
+        "nitelikler": {
+          "model": "Sportage"
+        }
+      },
+      {
+        "isim": "Yeni Sportage 1.6L 180 PS 4X4 DCT (Otomatik) Benzin GT-Line",
+        "fiyat": 3650000.0,
+        "nitelikler": {
+          "model": "Sportage"
+        }
+      },
+      {
+        "isim": "Kia EV2 107,8 kW Cool",
+        "fiyat": 1719000.0,
+        "nitelikler": {
+          "model": "EV2"
+        }
+      },
+      {
+        "isim": "Kia EV2 107,8 kW Elegance",
+        "fiyat": 1919000.0,
+        "nitelikler": {
+          "model": "EV2"
+        }
+      },
+      {
+        "isim": "Kia EV2 99,5 kW Elegance Long Range",
+        "fiyat": 2129000.0,
+        "nitelikler": {
+          "model": "EV2"
+        }
+      },
+      {
+        "isim": "Kia EV3 150 kW Otomatik Elektrikli Cool Long Range",
+        "fiyat": 2450000.0,
+        "nitelikler": {
+          "model": "EV3"
+        }
+      },
+      {
+        "isim": "Kia EV3 150 kW Otomatik Elektrikli Elegance Long Range",
+        "fiyat": 2485000.0,
+        "nitelikler": {
+          "model": "EV3"
+        }
+      },
+      {
+        "isim": "Kia EV3 150 kW Otomatik Elektrikli Elegance Comfort",
+        "fiyat": 2399000.0,
+        "nitelikler": {
+          "model": "EV3"
+        }
+      },
+      {
+        "isim": "Kia EV3 150 kW Otomatik Elektrikli Prestige",
+        "fiyat": 2485000.0,
+        "nitelikler": {
+          "model": "EV3"
+        }
+      },
+      {
+        "isim": "Kia EV3 150 kW Otomatik Elektrikli GT-Line Long Range",
+        "fiyat": 3760000.0,
+        "nitelikler": {
+          "model": "EV3"
+        }
+      },
+      {
+        "isim": "Kia EV6 Elegance Standard Range 125 kW 4x2",
+        "fiyat": 3760000.0,
+        "nitelikler": {
+          "model": "EV6"
+        }
+      },
+      {
+        "isim": "Kia Niro EV 150 kW Otomatik Elegance",
+        "fiyat": 2299000.0,
+        "nitelikler": {
+          "model": "Niro EV"
+        }
+      }
+    ]
+  }
+}

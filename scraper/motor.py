@@ -874,12 +874,12 @@ def grup_isle(vertikal: str, kalem: str, site: str, grup: dict, gecmis: dict, ci
         "kullanilan_katmanlar": sorted(grup["katmanlar"]),
         "genel_medyan": genel_medyan,
         "segmentler": segmentle(temiz),
-        # Marka giris fiyatlari rehberinde eksiksiz siralama yapabilmek icin
-        # bu kucuk tabloyu tum satirlariyla sakla. Diger kalemlerde daginik
-        # 15 satirlik denetim ornegi depo boyutunu sinirlamaya devam eder.
+        # Araç marka rehberleri model ve paket/motor satırlarını aynı URL'de
+        # gösterebilmek için kaynak tablosunun tamamına ihtiyaç duyar. Diğer
+        # kalemlerde dağınık 15 satırlık örnek depo boyutunu sınırlar.
         "ornek_urunler": denetim_ornegi(
             temiz,
-            sinir=len(temiz) if kalem == "en-ucuz-sifir-arac" else 15,
+            sinir=len(temiz) if vertikal == "arac" else 15,
         ),
         **({"birim_fiyatlari": birim_ozeti} if (
             birim_ozeti := birim_fiyat_ozeti(kalem, temiz)

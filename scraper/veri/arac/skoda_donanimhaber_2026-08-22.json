@@ -1,0 +1,945 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Skoda"
+  ],
+  "kalem": "skoda",
+  "vertikal": "arac",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-08-22",
+  "ham_urun_sayisi": 41,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 41,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 3774900,
+  "segmentler": {
+    "dusuk": {
+      "min": 1969900,
+      "medyan": 2389900,
+      "max": 2734900,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 2829900,
+      "medyan": 3887400,
+      "max": 5219900,
+      "urun_sayisi": 20
+    },
+    "luks": {
+      "min": 5499900,
+      "medyan": 7049900,
+      "max": 7399900,
+      "urun_sayisi": 10
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Skoda Fabia Premium 1.0 TSI 115 PS DSG",
+      "fiyat": 1969900.0
+    },
+    {
+      "isim": "Skoda Scala Elite 1.0 TSI 115 PS DSG",
+      "fiyat": 2014900.0
+    },
+    {
+      "isim": "Skoda Kamiq Elite 1.0 TSI 115 PS DSG",
+      "fiyat": 2099900.0
+    },
+    {
+      "isim": "Skoda Scala Premium 1.0 TSI 115 PS DSG",
+      "fiyat": 2264900.0
+    },
+    {
+      "isim": "Skoda Fabia Monte Carlo 1.5 TSI ACT 150 PS DSG",
+      "fiyat": 2269900.0
+    },
+    {
+      "isim": "Skoda Scala Premium 1.5 TSI ACT 150 PS DSG",
+      "fiyat": 2389900.0
+    },
+    {
+      "isim": "Skoda Kamiq Premium 1.0 TSI 115 PS DSG",
+      "fiyat": 2519900.0
+    },
+    {
+      "isim": "Skoda Kamiq Premium 1.5 TSI ACT 150 PS DSG",
+      "fiyat": 2659900.0
+    },
+    {
+      "isim": "Skoda Scala Monte Carlo 1.5 TSI ACT 150 PS DSG",
+      "fiyat": 2709900.0
+    },
+    {
+      "isim": "Skoda Fabia Monte Carlo 130 Edition 1.5 TSI 177 PS DSG",
+      "fiyat": 2729900.0
+    },
+    {
+      "isim": "Skoda Octavia Elite 1.5 TSI mHEV 150 PS DSG",
+      "fiyat": 2734900.0
+    },
+    {
+      "isim": "Skoda Kamiq Monte Carlo 1.5 TSI ACT 150 PS DSG",
+      "fiyat": 2829900.0
+    },
+    {
+      "isim": "Skoda Octavia Premium 1.5 TSI mHEV 150 PS DSG",
+      "fiyat": 3159900.0
+    },
+    {
+      "isim": "Skoda Karoq Premium 1.5 TSI ACT 150 PS DSG",
+      "fiyat": 3249900.0
+    },
+    {
+      "isim": "Yeni Skoda Elroq 60 e-Prestige 204 PS",
+      "fiyat": 3314900.0
+    },
+    {
+      "isim": "Skoda Octavia Prestige 1.5 TSI mHEV 150 PS DSG",
+      "fiyat": 3459900.0
+    },
+    {
+      "isim": "Skoda Octavia Sportline 1.5 TSI mHEV 150 PS DSG",
+      "fiyat": 3459900.0
+    },
+    {
+      "isim": "Skoda Octavia Combi Sportline 1.5 TSI mHEV 150 PS DSG",
+      "fiyat": 3559900.0
+    },
+    {
+      "isim": "Skoda Karoq Prestige 1.5 TSI ACT 150 PS DSG",
+      "fiyat": 3639900.0
+    },
+    {
+      "isim": "Skoda Karoq Sportline 1.5 TSI ACT 150 PS DSG",
+      "fiyat": 3739900.0
+    },
+    {
+      "isim": "Skoda Superb Premium 1.5 TSI mHEV 150 PS DSG",
+      "fiyat": 3774900.0
+    },
+    {
+      "isim": "Skoda Enyaq 60 e-Prestige 204 PS",
+      "fiyat": 3999900.0
+    },
+    {
+      "isim": "Skoda Kodiaq Premium 1.5 TSI mHEV 150 PS DSG",
+      "fiyat": 4049900.0
+    },
+    {
+      "isim": "Skoda Enyaq Coupe 60 e-Sportline 204 PS",
+      "fiyat": 4099900.0
+    },
+    {
+      "isim": "Skoda Superb Prestige 1.5 TSI mHEV 150 PS DSG",
+      "fiyat": 4649900.0
+    },
+    {
+      "isim": "Skoda Superb Sportline 1,5 TSI mHEV 150 PS DSG",
+      "fiyat": 4649900.0
+    },
+    {
+      "isim": "Skoda Kodiaq Prestige 1.5 TSI mHEV 150 PS DSG",
+      "fiyat": 4749900.0
+    },
+    {
+      "isim": "Skoda Superb Combi Prestige 1.5 TSI mHEV 150 PS DSG",
+      "fiyat": 4769900.0
+    },
+    {
+      "isim": "Skoda Kodiaq Sportline 1.5 TSI mHEV 150 PS DSG",
+      "fiyat": 4899900.0
+    },
+    {
+      "isim": "Skoda Superb L&K Crystal 1.5 TSI mHEV 150 PS DSG",
+      "fiyat": 5099900.0
+    },
+    {
+      "isim": "Skoda Superb Combi L&K Crystal 1.5 TSI mHEV 150 PS DSG",
+      "fiyat": 5219900.0
+    },
+    {
+      "isim": "Skoda Enyaq Coupe e-RS 340 PS 4x4",
+      "fiyat": 5499900.0
+    },
+    {
+      "isim": "Skoda Octavia RS 2.0 TSI 265 PS DSG",
+      "fiyat": 5669900.0
+    },
+    {
+      "isim": "Skoda Octavia Combi RS 2.0 TSI 265 PS DSG",
+      "fiyat": 5769900.0
+    },
+    {
+      "isim": "Skoda Kodiaq Prestige 2.0 TDI SCR 193 PS DSG 4x4",
+      "fiyat": 6749900.0
+    },
+    {
+      "isim": "Skoda Kodiaq Sportline 2.0 TDI SCR 193 PS DSG 4x4",
+      "fiyat": 6999900.0
+    },
+    {
+      "isim": "Skoda Superb L&K Crystal 2.0 TDI 193 PS DSG 4x4",
+      "fiyat": 7099900.0
+    },
+    {
+      "isim": "Skoda Superb L&K Crystal 2.0 TSI 265 PS DSG 4x4",
+      "fiyat": 7199900.0
+    },
+    {
+      "isim": "Skoda Superb Combi L&K Crystal 2.0 TDI SCR 193 PS DSG 4x4",
+      "fiyat": 7214900.0
+    },
+    {
+      "isim": "Skoda Superb Combi L&K Crystal 2.0 TSI 265 PS DSG 4x4",
+      "fiyat": 7319900.0
+    },
+    {
+      "isim": "Skoda Kodiaq RS 2,0 TSI 265 PS DSG 4x4",
+      "fiyat": 7399900.0
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 41,
+    "ozellik_eslesen_urun": 41,
+    "modeller": {
+      "elroq": {
+        "ad": "Elroq",
+        "genel_medyan": 3314900,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 3314900.0,
+            "medyan": 3314900.0,
+            "max": 3314900.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 3314900.0,
+            "medyan": 3314900.0,
+            "max": 3314900.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 3314900.0,
+            "medyan": 3314900.0,
+            "max": 3314900.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Yeni Skoda Elroq 60 e-Prestige 204 PS",
+            "fiyat": 3314900.0
+          }
+        ]
+      },
+      "enyaq": {
+        "ad": "Enyaq",
+        "genel_medyan": 3999900,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 3999900.0,
+            "medyan": 3999900.0,
+            "max": 3999900.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 3999900.0,
+            "medyan": 3999900.0,
+            "max": 3999900.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 3999900.0,
+            "medyan": 3999900.0,
+            "max": 3999900.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Skoda Enyaq 60 e-Prestige 204 PS",
+            "fiyat": 3999900.0
+          }
+        ]
+      },
+      "enyaq-coupe": {
+        "ad": "Enyaq Coupe",
+        "genel_medyan": 4799900,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 4099900.0,
+            "medyan": 4099900.0,
+            "max": 4099900.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 5499900.0,
+            "medyan": 5499900.0,
+            "max": 5499900.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Skoda Enyaq Coupe 60 e-Sportline 204 PS",
+            "fiyat": 4099900.0
+          },
+          {
+            "isim": "Skoda Enyaq Coupe e-RS 340 PS 4x4",
+            "fiyat": 5499900.0
+          }
+        ]
+      },
+      "fabia": {
+        "ad": "Fabia",
+        "genel_medyan": 2269900,
+        "urun_sayisi": 3,
+        "segmentler": {
+          "dusuk": {
+            "min": 1969900.0,
+            "medyan": 1969900.0,
+            "max": 1969900.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2269900.0,
+            "medyan": 2499900.0,
+            "max": 2729900.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Skoda Fabia Premium 1.0 TSI 115 PS DSG",
+            "fiyat": 1969900.0
+          },
+          {
+            "isim": "Skoda Fabia Monte Carlo 1.5 TSI ACT 150 PS DSG",
+            "fiyat": 2269900.0
+          },
+          {
+            "isim": "Skoda Fabia Monte Carlo 130 Edition 1.5 TSI 177 PS DSG",
+            "fiyat": 2729900.0
+          }
+        ]
+      },
+      "kamiq": {
+        "ad": "Kamiq",
+        "genel_medyan": 2589900,
+        "urun_sayisi": 4,
+        "segmentler": {
+          "dusuk": {
+            "min": 2099900.0,
+            "medyan": 2309900.0,
+            "max": 2519900.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 2659900.0,
+            "medyan": 2744900.0,
+            "max": 2829900.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Skoda Kamiq Elite 1.0 TSI 115 PS DSG",
+            "fiyat": 2099900.0
+          },
+          {
+            "isim": "Skoda Kamiq Premium 1.0 TSI 115 PS DSG",
+            "fiyat": 2519900.0
+          },
+          {
+            "isim": "Skoda Kamiq Premium 1.5 TSI ACT 150 PS DSG",
+            "fiyat": 2659900.0
+          },
+          {
+            "isim": "Skoda Kamiq Monte Carlo 1.5 TSI ACT 150 PS DSG",
+            "fiyat": 2829900.0
+          }
+        ]
+      },
+      "karoq": {
+        "ad": "Karoq",
+        "genel_medyan": 3639900,
+        "urun_sayisi": 3,
+        "segmentler": {
+          "dusuk": {
+            "min": 3249900.0,
+            "medyan": 3249900.0,
+            "max": 3249900.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 3639900.0,
+            "medyan": 3689900.0,
+            "max": 3739900.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Skoda Karoq Premium 1.5 TSI ACT 150 PS DSG",
+            "fiyat": 3249900.0
+          },
+          {
+            "isim": "Skoda Karoq Prestige 1.5 TSI ACT 150 PS DSG",
+            "fiyat": 3639900.0
+          },
+          {
+            "isim": "Skoda Karoq Sportline 1.5 TSI ACT 150 PS DSG",
+            "fiyat": 3739900.0
+          }
+        ]
+      },
+      "kodiaq": {
+        "ad": "Kodiaq",
+        "genel_medyan": 5824900,
+        "urun_sayisi": 6,
+        "segmentler": {
+          "dusuk": {
+            "min": 4049900.0,
+            "medyan": 4399900.0,
+            "max": 4749900.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 4899900.0,
+            "medyan": 6749900.0,
+            "max": 6999900.0,
+            "urun_sayisi": 3
+          },
+          "luks": {
+            "min": 7399900.0,
+            "medyan": 7399900.0,
+            "max": 7399900.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Skoda Kodiaq Premium 1.5 TSI mHEV 150 PS DSG",
+            "fiyat": 4049900.0
+          },
+          {
+            "isim": "Skoda Kodiaq Prestige 1.5 TSI mHEV 150 PS DSG",
+            "fiyat": 4749900.0
+          },
+          {
+            "isim": "Skoda Kodiaq Sportline 1.5 TSI mHEV 150 PS DSG",
+            "fiyat": 4899900.0
+          },
+          {
+            "isim": "Skoda Kodiaq Prestige 2.0 TDI SCR 193 PS DSG 4x4",
+            "fiyat": 6749900.0
+          },
+          {
+            "isim": "Skoda Kodiaq Sportline 2.0 TDI SCR 193 PS DSG 4x4",
+            "fiyat": 6999900.0
+          },
+          {
+            "isim": "Skoda Kodiaq RS 2,0 TSI 265 PS DSG 4x4",
+            "fiyat": 7399900.0
+          }
+        ]
+      },
+      "octavia": {
+        "ad": "Octavia",
+        "genel_medyan": 3459900,
+        "urun_sayisi": 5,
+        "segmentler": {
+          "dusuk": {
+            "min": 2734900.0,
+            "medyan": 2947400.0,
+            "max": 3159900.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 3459900.0,
+            "medyan": 3459900.0,
+            "max": 3459900.0,
+            "urun_sayisi": 2
+          },
+          "luks": {
+            "min": 5669900.0,
+            "medyan": 5669900.0,
+            "max": 5669900.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Skoda Octavia Elite 1.5 TSI mHEV 150 PS DSG",
+            "fiyat": 2734900.0
+          },
+          {
+            "isim": "Skoda Octavia Premium 1.5 TSI mHEV 150 PS DSG",
+            "fiyat": 3159900.0
+          },
+          {
+            "isim": "Skoda Octavia Prestige 1.5 TSI mHEV 150 PS DSG",
+            "fiyat": 3459900.0
+          },
+          {
+            "isim": "Skoda Octavia Sportline 1.5 TSI mHEV 150 PS DSG",
+            "fiyat": 3459900.0
+          },
+          {
+            "isim": "Skoda Octavia RS 2.0 TSI 265 PS DSG",
+            "fiyat": 5669900.0
+          }
+        ]
+      },
+      "octavia-combi": {
+        "ad": "Octavia Combi",
+        "genel_medyan": 4664900,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 3559900.0,
+            "medyan": 3559900.0,
+            "max": 3559900.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 5769900.0,
+            "medyan": 5769900.0,
+            "max": 5769900.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Skoda Octavia Combi Sportline 1.5 TSI mHEV 150 PS DSG",
+            "fiyat": 3559900.0
+          },
+          {
+            "isim": "Skoda Octavia Combi RS 2.0 TSI 265 PS DSG",
+            "fiyat": 5769900.0
+          }
+        ]
+      },
+      "scala": {
+        "ad": "Scala",
+        "genel_medyan": 2327400,
+        "urun_sayisi": 4,
+        "segmentler": {
+          "dusuk": {
+            "min": 2014900.0,
+            "medyan": 2139900.0,
+            "max": 2264900.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 2389900.0,
+            "medyan": 2549900.0,
+            "max": 2709900.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Skoda Scala Elite 1.0 TSI 115 PS DSG",
+            "fiyat": 2014900.0
+          },
+          {
+            "isim": "Skoda Scala Premium 1.0 TSI 115 PS DSG",
+            "fiyat": 2264900.0
+          },
+          {
+            "isim": "Skoda Scala Premium 1.5 TSI ACT 150 PS DSG",
+            "fiyat": 2389900.0
+          },
+          {
+            "isim": "Skoda Scala Monte Carlo 1.5 TSI ACT 150 PS DSG",
+            "fiyat": 2709900.0
+          }
+        ]
+      },
+      "superb": {
+        "ad": "Superb",
+        "genel_medyan": 4874900,
+        "urun_sayisi": 6,
+        "segmentler": {
+          "dusuk": {
+            "min": 3774900.0,
+            "medyan": 4649900.0,
+            "max": 4649900.0,
+            "urun_sayisi": 3
+          },
+          "orta": {
+            "min": 5099900.0,
+            "medyan": 6099900.0,
+            "max": 7099900.0,
+            "urun_sayisi": 2
+          },
+          "luks": {
+            "min": 7199900.0,
+            "medyan": 7199900.0,
+            "max": 7199900.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Skoda Superb Premium 1.5 TSI mHEV 150 PS DSG",
+            "fiyat": 3774900.0
+          },
+          {
+            "isim": "Skoda Superb Prestige 1.5 TSI mHEV 150 PS DSG",
+            "fiyat": 4649900.0
+          },
+          {
+            "isim": "Skoda Superb Sportline 1,5 TSI mHEV 150 PS DSG",
+            "fiyat": 4649900.0
+          },
+          {
+            "isim": "Skoda Superb L&K Crystal 1.5 TSI mHEV 150 PS DSG",
+            "fiyat": 5099900.0
+          },
+          {
+            "isim": "Skoda Superb L&K Crystal 2.0 TDI 193 PS DSG 4x4",
+            "fiyat": 7099900.0
+          },
+          {
+            "isim": "Skoda Superb L&K Crystal 2.0 TSI 265 PS DSG 4x4",
+            "fiyat": 7199900.0
+          }
+        ]
+      },
+      "superb-combi": {
+        "ad": "Superb Combi",
+        "genel_medyan": 6217400,
+        "urun_sayisi": 4,
+        "segmentler": {
+          "dusuk": {
+            "min": 4769900.0,
+            "medyan": 4994900.0,
+            "max": 5219900.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 7214900.0,
+            "medyan": 7267400.0,
+            "max": 7319900.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Skoda Superb Combi Prestige 1.5 TSI mHEV 150 PS DSG",
+            "fiyat": 4769900.0
+          },
+          {
+            "isim": "Skoda Superb Combi L&K Crystal 1.5 TSI mHEV 150 PS DSG",
+            "fiyat": 5219900.0
+          },
+          {
+            "isim": "Skoda Superb Combi L&K Crystal 2.0 TDI SCR 193 PS DSG 4x4",
+            "fiyat": 7214900.0
+          },
+          {
+            "isim": "Skoda Superb Combi L&K Crystal 2.0 TSI 265 PS DSG 4x4",
+            "fiyat": 7319900.0
+          }
+        ]
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "Yeni Skoda Elroq 60 e-Prestige 204 PS",
+        "fiyat": 3314900.0,
+        "nitelikler": {
+          "model": "Elroq"
+        }
+      },
+      {
+        "isim": "Skoda Enyaq Coupe 60 e-Sportline 204 PS",
+        "fiyat": 4099900.0,
+        "nitelikler": {
+          "model": "Enyaq Coupe"
+        }
+      },
+      {
+        "isim": "Skoda Enyaq Coupe e-RS 340 PS 4x4",
+        "fiyat": 5499900.0,
+        "nitelikler": {
+          "model": "Enyaq Coupe"
+        }
+      },
+      {
+        "isim": "Skoda Enyaq 60 e-Prestige 204 PS",
+        "fiyat": 3999900.0,
+        "nitelikler": {
+          "model": "Enyaq"
+        }
+      },
+      {
+        "isim": "Skoda Fabia Premium 1.0 TSI 115 PS DSG",
+        "fiyat": 1969900.0,
+        "nitelikler": {
+          "model": "Fabia"
+        }
+      },
+      {
+        "isim": "Skoda Fabia Monte Carlo 1.5 TSI ACT 150 PS DSG",
+        "fiyat": 2269900.0,
+        "nitelikler": {
+          "model": "Fabia"
+        }
+      },
+      {
+        "isim": "Skoda Fabia Monte Carlo 130 Edition 1.5 TSI 177 PS DSG",
+        "fiyat": 2729900.0,
+        "nitelikler": {
+          "model": "Fabia"
+        }
+      },
+      {
+        "isim": "Skoda Scala Elite 1.0 TSI 115 PS DSG",
+        "fiyat": 2014900.0,
+        "nitelikler": {
+          "model": "Scala"
+        }
+      },
+      {
+        "isim": "Skoda Scala Premium 1.0 TSI 115 PS DSG",
+        "fiyat": 2264900.0,
+        "nitelikler": {
+          "model": "Scala"
+        }
+      },
+      {
+        "isim": "Skoda Scala Premium 1.5 TSI ACT 150 PS DSG",
+        "fiyat": 2389900.0,
+        "nitelikler": {
+          "model": "Scala"
+        }
+      },
+      {
+        "isim": "Skoda Scala Monte Carlo 1.5 TSI ACT 150 PS DSG",
+        "fiyat": 2709900.0,
+        "nitelikler": {
+          "model": "Scala"
+        }
+      },
+      {
+        "isim": "Skoda Octavia Elite 1.5 TSI mHEV 150 PS DSG",
+        "fiyat": 2734900.0,
+        "nitelikler": {
+          "model": "Octavia"
+        }
+      },
+      {
+        "isim": "Skoda Octavia Premium 1.5 TSI mHEV 150 PS DSG",
+        "fiyat": 3159900.0,
+        "nitelikler": {
+          "model": "Octavia"
+        }
+      },
+      {
+        "isim": "Skoda Octavia Prestige 1.5 TSI mHEV 150 PS DSG",
+        "fiyat": 3459900.0,
+        "nitelikler": {
+          "model": "Octavia"
+        }
+      },
+      {
+        "isim": "Skoda Octavia Sportline 1.5 TSI mHEV 150 PS DSG",
+        "fiyat": 3459900.0,
+        "nitelikler": {
+          "model": "Octavia"
+        }
+      },
+      {
+        "isim": "Skoda Octavia RS 2.0 TSI 265 PS DSG",
+        "fiyat": 5669900.0,
+        "nitelikler": {
+          "model": "Octavia"
+        }
+      },
+      {
+        "isim": "Skoda Octavia Combi Sportline 1.5 TSI mHEV 150 PS DSG",
+        "fiyat": 3559900.0,
+        "nitelikler": {
+          "model": "Octavia Combi"
+        }
+      },
+      {
+        "isim": "Skoda Octavia Combi RS 2.0 TSI 265 PS DSG",
+        "fiyat": 5769900.0,
+        "nitelikler": {
+          "model": "Octavia Combi"
+        }
+      },
+      {
+        "isim": "Skoda Superb Premium 1.5 TSI mHEV 150 PS DSG",
+        "fiyat": 3774900.0,
+        "nitelikler": {
+          "model": "Superb"
+        }
+      },
+      {
+        "isim": "Skoda Superb Prestige 1.5 TSI mHEV 150 PS DSG",
+        "fiyat": 4649900.0,
+        "nitelikler": {
+          "model": "Superb"
+        }
+      },
+      {
+        "isim": "Skoda Superb Sportline 1,5 TSI mHEV 150 PS DSG",
+        "fiyat": 4649900.0,
+        "nitelikler": {
+          "model": "Superb"
+        }
+      },
+      {
+        "isim": "Skoda Superb L&K Crystal 1.5 TSI mHEV 150 PS DSG",
+        "fiyat": 5099900.0,
+        "nitelikler": {
+          "model": "Superb"
+        }
+      },
+      {
+        "isim": "Skoda Superb L&K Crystal 2.0 TDI 193 PS DSG 4x4",
+        "fiyat": 7099900.0,
+        "nitelikler": {
+          "model": "Superb"
+        }
+      },
+      {
+        "isim": "Skoda Superb L&K Crystal 2.0 TSI 265 PS DSG 4x4",
+        "fiyat": 7199900.0,
+        "nitelikler": {
+          "model": "Superb"
+        }
+      },
+      {
+        "isim": "Skoda Superb Combi Prestige 1.5 TSI mHEV 150 PS DSG",
+        "fiyat": 4769900.0,
+        "nitelikler": {
+          "model": "Superb Combi"
+        }
+      },
+      {
+        "isim": "Skoda Superb Combi L&K Crystal 1.5 TSI mHEV 150 PS DSG",
+        "fiyat": 5219900.0,
+        "nitelikler": {
+          "model": "Superb Combi"
+        }
+      },
+      {
+        "isim": "Skoda Superb Combi L&K Crystal 2.0 TDI SCR 193 PS DSG 4x4",
+        "fiyat": 7214900.0,
+        "nitelikler": {
+          "model": "Superb Combi"
+        }
+      },
+      {
+        "isim": "Skoda Superb Combi L&K Crystal 2.0 TSI 265 PS DSG 4x4",
+        "fiyat": 7319900.0,
+        "nitelikler": {
+          "model": "Superb Combi"
+        }
+      },
+      {
+        "isim": "Skoda Kamiq Elite 1.0 TSI 115 PS DSG",
+        "fiyat": 2099900.0,
+        "nitelikler": {
+          "model": "Kamiq"
+        }
+      },
+      {
+        "isim": "Skoda Kamiq Premium 1.0 TSI 115 PS DSG",
+        "fiyat": 2519900.0,
+        "nitelikler": {
+          "model": "Kamiq"
+        }
+      },
+      {
+        "isim": "Skoda Kamiq Premium 1.5 TSI ACT 150 PS DSG",
+        "fiyat": 2659900.0,
+        "nitelikler": {
+          "model": "Kamiq"
+        }
+      },
+      {
+        "isim": "Skoda Kamiq Monte Carlo 1.5 TSI ACT 150 PS DSG",
+        "fiyat": 2829900.0,
+        "nitelikler": {
+          "model": "Kamiq"
+        }
+      },
+      {
+        "isim": "Skoda Karoq Premium 1.5 TSI ACT 150 PS DSG",
+        "fiyat": 3249900.0,
+        "nitelikler": {
+          "model": "Karoq"
+        }
+      },
+      {
+        "isim": "Skoda Karoq Prestige 1.5 TSI ACT 150 PS DSG",
+        "fiyat": 3639900.0,
+        "nitelikler": {
+          "model": "Karoq"
+        }
+      },
+      {
+        "isim": "Skoda Karoq Sportline 1.5 TSI ACT 150 PS DSG",
+        "fiyat": 3739900.0,
+        "nitelikler": {
+          "model": "Karoq"
+        }
+      },
+      {
+        "isim": "Skoda Kodiaq Premium 1.5 TSI mHEV 150 PS DSG",
+        "fiyat": 4049900.0,
+        "nitelikler": {
+          "model": "Kodiaq"
+        }
+      },
+      {
+        "isim": "Skoda Kodiaq Prestige 1.5 TSI mHEV 150 PS DSG",
+        "fiyat": 4749900.0,
+        "nitelikler": {
+          "model": "Kodiaq"
+        }
+      },
+      {
+        "isim": "Skoda Kodiaq Sportline 1.5 TSI mHEV 150 PS DSG",
+        "fiyat": 4899900.0,
+        "nitelikler": {
+          "model": "Kodiaq"
+        }
+      },
+      {
+        "isim": "Skoda Kodiaq Prestige 2.0 TDI SCR 193 PS DSG 4x4",
+        "fiyat": 6749900.0,
+        "nitelikler": {
+          "model": "Kodiaq"
+        }
+      },
+      {
+        "isim": "Skoda Kodiaq Sportline 2.0 TDI SCR 193 PS DSG 4x4",
+        "fiyat": 6999900.0,
+        "nitelikler": {
+          "model": "Kodiaq"
+        }
+      },
+      {
+        "isim": "Skoda Kodiaq RS 2,0 TSI 265 PS DSG 4x4",
+        "fiyat": 7399900.0,
+        "nitelikler": {
+          "model": "Kodiaq"
+        }
+      }
+    ]
+  }
+}

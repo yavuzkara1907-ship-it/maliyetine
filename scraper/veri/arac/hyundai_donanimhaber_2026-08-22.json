@@ -1,0 +1,787 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Hyundai"
+  ],
+  "kalem": "hyundai",
+  "vertikal": "arac",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-08-22",
+  "ham_urun_sayisi": 39,
+  "aykiri_urun_sayisi": 4,
+  "toplam_urun": 35,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 1980000,
+  "segmentler": {
+    "dusuk": {
+      "min": 1487000,
+      "medyan": 1647000,
+      "max": 1790000,
+      "urun_sayisi": 9
+    },
+    "orta": {
+      "min": 1816000,
+      "medyan": 1986500,
+      "max": 2484000,
+      "urun_sayisi": 18
+    },
+    "luks": {
+      "min": 2577000,
+      "medyan": 2960500,
+      "max": 3715000,
+      "urun_sayisi": 8
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "i20 1.0 T-GDI 90PS Jump Manuel",
+      "fiyat": 1487000.0
+    },
+    {
+      "isim": "i20 1.0 T-GDI 90PS Jump (GSR2C & E-Call) Manuel",
+      "fiyat": 1507000.0
+    },
+    {
+      "isim": "INSTER Dynamic 71.1 kW",
+      "fiyat": 1550000.0
+    },
+    {
+      "isim": "Bayon 1.0 T-GDI 90 PS MT Jump",
+      "fiyat": 1587000.0
+    },
+    {
+      "isim": "Bayon 1.0 T-GDI 90 PS DCT Jump",
+      "fiyat": 1647000.0
+    },
+    {
+      "isim": "i20 1.0 T-GDI 90PS Jump DCT",
+      "fiyat": 1654000.0
+    },
+    {
+      "isim": "Bayon 1.0 T-GDI 90 PS DCT Jump (GSR2C & E-Call)",
+      "fiyat": 1667000.0
+    },
+    {
+      "isim": "i20 1.0 T-GDI 90PS Jump (GSR2C & E-Call) DCT",
+      "fiyat": 1674000.0
+    },
+    {
+      "isim": "INSTER Advance 84.5 kW",
+      "fiyat": 1790000.0
+    },
+    {
+      "isim": "i20 1.0 T-GDI 90PS Style DCT",
+      "fiyat": 1816000.0
+    },
+    {
+      "isim": "i20 1.0 T-GDI 90PS Style (GSR2C & E-Call) DCT",
+      "fiyat": 1831000.0
+    },
+    {
+      "isim": "i20 1.0 T-GDI 90PS Style GSR2C DCT",
+      "fiyat": 1831000.0
+    },
+    {
+      "isim": "INSTER Cross Advance 84.5 kW",
+      "fiyat": 1840000.0
+    },
+    {
+      "isim": "i30 1.5T-GDI MHEV 140 PS Comfort DCT",
+      "fiyat": 1944000.0
+    },
+    {
+      "isim": "Bayon 1.0 T-GDI 90 PS DCT Style",
+      "fiyat": 1965000.0
+    },
+    {
+      "isim": "i20 1.0 T-GDI 90PS Elite DCT",
+      "fiyat": 1978000.0
+    },
+    {
+      "isim": "Bayon 1.0 T-GDI 90 PS DCT Style (GSR2C & E-Call)",
+      "fiyat": 1980000.0
+    },
+    {
+      "isim": "Bayon 1.0 T-GDI 90 PS DCT Style GSR2C",
+      "fiyat": 1980000.0
+    },
+    {
+      "isim": "i20 1.0 T-GDI 90PS Elite GSR2C DCT",
+      "fiyat": 1993000.0
+    },
+    {
+      "isim": "i20 1.0 T-GDI 90PS Elite (GSR2C & E-Call) DCT",
+      "fiyat": 2003000.0
+    },
+    {
+      "isim": "Bayon 1.0 T-GDI 90 PS DCT Elite",
+      "fiyat": 2103000.0
+    },
+    {
+      "isim": "Bayon 1.0 T-GDI 90 PS DCT Elite GSR2C",
+      "fiyat": 2115000.0
+    },
+    {
+      "isim": "Bayon 1.0 T-GDI 90 PS DCT Elite (GSR2C & E-Call)",
+      "fiyat": 2125000.0
+    },
+    {
+      "isim": "i30 1.5T-GDI MHEV 140 PS Prime DCT",
+      "fiyat": 2250000.0
+    },
+    {
+      "isim": "Kona 1.6 T-GDI Prime DCT",
+      "fiyat": 2384050.0
+    },
+    {
+      "isim": "KONA Elektrik Advance 115 kW",
+      "fiyat": 2417500.0
+    },
+    {
+      "isim": "Ioniq 6 111 kW 4x2 Advance",
+      "fiyat": 2484000.0
+    },
+    {
+      "isim": "Tucson 1.6 T-GDI 180 PS 4x2 DCT Comfort",
+      "fiyat": 2577000.0
+    },
+    {
+      "isim": "Tucson 1.6 CRDi 136 PS 4x4 DCT Comfort Sunroof",
+      "fiyat": 2679000.0
+    },
+    {
+      "isim": "Staria Hibrit 1.6 T-GDI HEV Elite AT 4X2",
+      "fiyat": 2721000.0
+    },
+    {
+      "isim": "Tucson 1.6 T-GDI 180 PS 4x2 DCT Prime",
+      "fiyat": 2771000.0
+    },
+    {
+      "isim": "Ioniq Dynamic Vision Roof 125 kW 4x2",
+      "fiyat": 3150000.0
+    },
+    {
+      "isim": "Tucson 1.6 T-GDI 180 PS 4x2 DCT Elite",
+      "fiyat": 3378000.0
+    },
+    {
+      "isim": "Ioniq 5 160 kW Advance",
+      "fiyat": 3490000.0
+    },
+    {
+      "isim": "Tucson 1.6 T-GDI 180 PS 4x4 DCT Elite Plus",
+      "fiyat": 3715000.0
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 35,
+    "ozellik_eslesen_urun": 34,
+    "modeller": {
+      "bayon": {
+        "ad": "Bayon",
+        "genel_medyan": 1980000,
+        "urun_sayisi": 9,
+        "segmentler": {
+          "dusuk": {
+            "min": 1587000.0,
+            "medyan": 1647000.0,
+            "max": 1667000.0,
+            "urun_sayisi": 3
+          },
+          "orta": {
+            "min": 1965000.0,
+            "medyan": 1980000.0,
+            "max": 2103000.0,
+            "urun_sayisi": 4
+          },
+          "luks": {
+            "min": 2115000.0,
+            "medyan": 2120000.0,
+            "max": 2125000.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Bayon 1.0 T-GDI 90 PS MT Jump",
+            "fiyat": 1587000.0
+          },
+          {
+            "isim": "Bayon 1.0 T-GDI 90 PS DCT Jump",
+            "fiyat": 1647000.0
+          },
+          {
+            "isim": "Bayon 1.0 T-GDI 90 PS DCT Jump (GSR2C & E-Call)",
+            "fiyat": 1667000.0
+          },
+          {
+            "isim": "Bayon 1.0 T-GDI 90 PS DCT Style",
+            "fiyat": 1965000.0
+          },
+          {
+            "isim": "Bayon 1.0 T-GDI 90 PS DCT Style (GSR2C & E-Call)",
+            "fiyat": 1980000.0
+          },
+          {
+            "isim": "Bayon 1.0 T-GDI 90 PS DCT Style GSR2C",
+            "fiyat": 1980000.0
+          },
+          {
+            "isim": "Bayon 1.0 T-GDI 90 PS DCT Elite",
+            "fiyat": 2103000.0
+          },
+          {
+            "isim": "Bayon 1.0 T-GDI 90 PS DCT Elite GSR2C",
+            "fiyat": 2115000.0
+          },
+          {
+            "isim": "Bayon 1.0 T-GDI 90 PS DCT Elite (GSR2C & E-Call)",
+            "fiyat": 2125000.0
+          }
+        ]
+      },
+      "i20": {
+        "ad": "i20",
+        "genel_medyan": 1823500,
+        "urun_sayisi": 10,
+        "segmentler": {
+          "dusuk": {
+            "min": 1487000.0,
+            "medyan": 1507000.0,
+            "max": 1654000.0,
+            "urun_sayisi": 3
+          },
+          "orta": {
+            "min": 1674000.0,
+            "medyan": 1831000.0,
+            "max": 1978000.0,
+            "urun_sayisi": 5
+          },
+          "luks": {
+            "min": 1993000.0,
+            "medyan": 1998000.0,
+            "max": 2003000.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "i20 1.0 T-GDI 90PS Jump Manuel",
+            "fiyat": 1487000.0
+          },
+          {
+            "isim": "i20 1.0 T-GDI 90PS Jump (GSR2C & E-Call) Manuel",
+            "fiyat": 1507000.0
+          },
+          {
+            "isim": "i20 1.0 T-GDI 90PS Jump DCT",
+            "fiyat": 1654000.0
+          },
+          {
+            "isim": "i20 1.0 T-GDI 90PS Jump (GSR2C & E-Call) DCT",
+            "fiyat": 1674000.0
+          },
+          {
+            "isim": "i20 1.0 T-GDI 90PS Style DCT",
+            "fiyat": 1816000.0
+          },
+          {
+            "isim": "i20 1.0 T-GDI 90PS Style (GSR2C & E-Call) DCT",
+            "fiyat": 1831000.0
+          },
+          {
+            "isim": "i20 1.0 T-GDI 90PS Style GSR2C DCT",
+            "fiyat": 1831000.0
+          },
+          {
+            "isim": "i20 1.0 T-GDI 90PS Elite DCT",
+            "fiyat": 1978000.0
+          },
+          {
+            "isim": "i20 1.0 T-GDI 90PS Elite GSR2C DCT",
+            "fiyat": 1993000.0
+          },
+          {
+            "isim": "i20 1.0 T-GDI 90PS Elite (GSR2C & E-Call) DCT",
+            "fiyat": 2003000.0
+          }
+        ]
+      },
+      "i30": {
+        "ad": "i30",
+        "genel_medyan": 2097000,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 1944000.0,
+            "medyan": 1944000.0,
+            "max": 1944000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2250000.0,
+            "medyan": 2250000.0,
+            "max": 2250000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "i30 1.5T-GDI MHEV 140 PS Comfort DCT",
+            "fiyat": 1944000.0
+          },
+          {
+            "isim": "i30 1.5T-GDI MHEV 140 PS Prime DCT",
+            "fiyat": 2250000.0
+          }
+        ]
+      },
+      "inster": {
+        "ad": "Inster",
+        "genel_medyan": 1790000,
+        "urun_sayisi": 3,
+        "segmentler": {
+          "dusuk": {
+            "min": 1550000.0,
+            "medyan": 1550000.0,
+            "max": 1550000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 1790000.0,
+            "medyan": 1815000.0,
+            "max": 1840000.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "INSTER Dynamic 71.1 kW",
+            "fiyat": 1550000.0
+          },
+          {
+            "isim": "INSTER Advance 84.5 kW",
+            "fiyat": 1790000.0
+          },
+          {
+            "isim": "INSTER Cross Advance 84.5 kW",
+            "fiyat": 1840000.0
+          }
+        ]
+      },
+      "ioniq-5": {
+        "ad": "Ioniq 5",
+        "genel_medyan": 3490000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 3490000.0,
+            "medyan": 3490000.0,
+            "max": 3490000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 3490000.0,
+            "medyan": 3490000.0,
+            "max": 3490000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 3490000.0,
+            "medyan": 3490000.0,
+            "max": 3490000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Ioniq 5 160 kW Advance",
+            "fiyat": 3490000.0
+          }
+        ]
+      },
+      "ioniq-6": {
+        "ad": "Ioniq 6",
+        "genel_medyan": 2484000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 2484000.0,
+            "medyan": 2484000.0,
+            "max": 2484000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2484000.0,
+            "medyan": 2484000.0,
+            "max": 2484000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 2484000.0,
+            "medyan": 2484000.0,
+            "max": 2484000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Ioniq 6 111 kW 4x2 Advance",
+            "fiyat": 2484000.0
+          }
+        ]
+      },
+      "kona": {
+        "ad": "Kona",
+        "genel_medyan": 2400775,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 2384050.0,
+            "medyan": 2384050.0,
+            "max": 2384050.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2417500.0,
+            "medyan": 2417500.0,
+            "max": 2417500.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Kona 1.6 T-GDI Prime DCT",
+            "fiyat": 2384050.0
+          },
+          {
+            "isim": "KONA Elektrik Advance 115 kW",
+            "fiyat": 2417500.0
+          }
+        ]
+      },
+      "staria": {
+        "ad": "Staria",
+        "genel_medyan": 2721000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 2721000.0,
+            "medyan": 2721000.0,
+            "max": 2721000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2721000.0,
+            "medyan": 2721000.0,
+            "max": 2721000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 2721000.0,
+            "medyan": 2721000.0,
+            "max": 2721000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Staria Hibrit 1.6 T-GDI HEV Elite AT 4X2",
+            "fiyat": 2721000.0
+          }
+        ]
+      },
+      "tucson": {
+        "ad": "Tucson",
+        "genel_medyan": 2771000,
+        "urun_sayisi": 5,
+        "segmentler": {
+          "dusuk": {
+            "min": 2577000.0,
+            "medyan": 2628000.0,
+            "max": 2679000.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 2771000.0,
+            "medyan": 3074500.0,
+            "max": 3378000.0,
+            "urun_sayisi": 2
+          },
+          "luks": {
+            "min": 3715000.0,
+            "medyan": 3715000.0,
+            "max": 3715000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Tucson 1.6 T-GDI 180 PS 4x2 DCT Comfort",
+            "fiyat": 2577000.0
+          },
+          {
+            "isim": "Tucson 1.6 CRDi 136 PS 4x4 DCT Comfort Sunroof",
+            "fiyat": 2679000.0
+          },
+          {
+            "isim": "Tucson 1.6 T-GDI 180 PS 4x2 DCT Prime",
+            "fiyat": 2771000.0
+          },
+          {
+            "isim": "Tucson 1.6 T-GDI 180 PS 4x2 DCT Elite",
+            "fiyat": 3378000.0
+          },
+          {
+            "isim": "Tucson 1.6 T-GDI 180 PS 4x4 DCT Elite Plus",
+            "fiyat": 3715000.0
+          }
+        ]
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "i20 1.0 T-GDI 90PS Jump Manuel",
+        "fiyat": 1487000.0,
+        "nitelikler": {
+          "model": "i20"
+        }
+      },
+      {
+        "isim": "i20 1.0 T-GDI 90PS Jump (GSR2C & E-Call) Manuel",
+        "fiyat": 1507000.0,
+        "nitelikler": {
+          "model": "i20"
+        }
+      },
+      {
+        "isim": "i20 1.0 T-GDI 90PS Jump DCT",
+        "fiyat": 1654000.0,
+        "nitelikler": {
+          "model": "i20"
+        }
+      },
+      {
+        "isim": "i20 1.0 T-GDI 90PS Jump (GSR2C & E-Call) DCT",
+        "fiyat": 1674000.0,
+        "nitelikler": {
+          "model": "i20"
+        }
+      },
+      {
+        "isim": "i20 1.0 T-GDI 90PS Style DCT",
+        "fiyat": 1816000.0,
+        "nitelikler": {
+          "model": "i20"
+        }
+      },
+      {
+        "isim": "i20 1.0 T-GDI 90PS Style (GSR2C & E-Call) DCT",
+        "fiyat": 1831000.0,
+        "nitelikler": {
+          "model": "i20"
+        }
+      },
+      {
+        "isim": "i20 1.0 T-GDI 90PS Style GSR2C DCT",
+        "fiyat": 1831000.0,
+        "nitelikler": {
+          "model": "i20"
+        }
+      },
+      {
+        "isim": "i20 1.0 T-GDI 90PS Elite DCT",
+        "fiyat": 1978000.0,
+        "nitelikler": {
+          "model": "i20"
+        }
+      },
+      {
+        "isim": "i20 1.0 T-GDI 90PS Elite GSR2C DCT",
+        "fiyat": 1993000.0,
+        "nitelikler": {
+          "model": "i20"
+        }
+      },
+      {
+        "isim": "i20 1.0 T-GDI 90PS Elite (GSR2C & E-Call) DCT",
+        "fiyat": 2003000.0,
+        "nitelikler": {
+          "model": "i20"
+        }
+      },
+      {
+        "isim": "i30 1.5T-GDI MHEV 140 PS Comfort DCT",
+        "fiyat": 1944000.0,
+        "nitelikler": {
+          "model": "i30"
+        }
+      },
+      {
+        "isim": "i30 1.5T-GDI MHEV 140 PS Prime DCT",
+        "fiyat": 2250000.0,
+        "nitelikler": {
+          "model": "i30"
+        }
+      },
+      {
+        "isim": "Bayon 1.0 T-GDI 90 PS MT Jump",
+        "fiyat": 1587000.0,
+        "nitelikler": {
+          "model": "Bayon"
+        }
+      },
+      {
+        "isim": "Bayon 1.0 T-GDI 90 PS DCT Jump",
+        "fiyat": 1647000.0,
+        "nitelikler": {
+          "model": "Bayon"
+        }
+      },
+      {
+        "isim": "Bayon 1.0 T-GDI 90 PS DCT Jump (GSR2C & E-Call)",
+        "fiyat": 1667000.0,
+        "nitelikler": {
+          "model": "Bayon"
+        }
+      },
+      {
+        "isim": "Bayon 1.0 T-GDI 90 PS DCT Style",
+        "fiyat": 1965000.0,
+        "nitelikler": {
+          "model": "Bayon"
+        }
+      },
+      {
+        "isim": "Bayon 1.0 T-GDI 90 PS DCT Style (GSR2C & E-Call)",
+        "fiyat": 1980000.0,
+        "nitelikler": {
+          "model": "Bayon"
+        }
+      },
+      {
+        "isim": "Bayon 1.0 T-GDI 90 PS DCT Style GSR2C",
+        "fiyat": 1980000.0,
+        "nitelikler": {
+          "model": "Bayon"
+        }
+      },
+      {
+        "isim": "Bayon 1.0 T-GDI 90 PS DCT Elite",
+        "fiyat": 2103000.0,
+        "nitelikler": {
+          "model": "Bayon"
+        }
+      },
+      {
+        "isim": "Bayon 1.0 T-GDI 90 PS DCT Elite GSR2C",
+        "fiyat": 2115000.0,
+        "nitelikler": {
+          "model": "Bayon"
+        }
+      },
+      {
+        "isim": "Bayon 1.0 T-GDI 90 PS DCT Elite (GSR2C & E-Call)",
+        "fiyat": 2125000.0,
+        "nitelikler": {
+          "model": "Bayon"
+        }
+      },
+      {
+        "isim": "Kona 1.6 T-GDI Prime DCT",
+        "fiyat": 2384050.0,
+        "nitelikler": {
+          "model": "Kona"
+        }
+      },
+      {
+        "isim": "KONA Elektrik Advance 115 kW",
+        "fiyat": 2417500.0,
+        "nitelikler": {
+          "model": "Kona"
+        }
+      },
+      {
+        "isim": "Tucson 1.6 T-GDI 180 PS 4x2 DCT Comfort",
+        "fiyat": 2577000.0,
+        "nitelikler": {
+          "model": "Tucson"
+        }
+      },
+      {
+        "isim": "Tucson 1.6 CRDi 136 PS 4x4 DCT Comfort Sunroof",
+        "fiyat": 2679000.0,
+        "nitelikler": {
+          "model": "Tucson"
+        }
+      },
+      {
+        "isim": "Tucson 1.6 T-GDI 180 PS 4x2 DCT Prime",
+        "fiyat": 2771000.0,
+        "nitelikler": {
+          "model": "Tucson"
+        }
+      },
+      {
+        "isim": "Tucson 1.6 T-GDI 180 PS 4x2 DCT Elite",
+        "fiyat": 3378000.0,
+        "nitelikler": {
+          "model": "Tucson"
+        }
+      },
+      {
+        "isim": "Tucson 1.6 T-GDI 180 PS 4x4 DCT Elite Plus",
+        "fiyat": 3715000.0,
+        "nitelikler": {
+          "model": "Tucson"
+        }
+      },
+      {
+        "isim": "Ioniq 5 160 kW Advance",
+        "fiyat": 3490000.0,
+        "nitelikler": {
+          "model": "Ioniq 5"
+        }
+      },
+      {
+        "isim": "Ioniq 6 111 kW 4x2 Advance",
+        "fiyat": 2484000.0,
+        "nitelikler": {
+          "model": "Ioniq 6"
+        }
+      },
+      {
+        "isim": "Staria Hibrit 1.6 T-GDI HEV Elite AT 4X2",
+        "fiyat": 2721000.0,
+        "nitelikler": {
+          "model": "Staria"
+        }
+      },
+      {
+        "isim": "INSTER Dynamic 71.1 kW",
+        "fiyat": 1550000.0,
+        "nitelikler": {
+          "model": "Inster"
+        }
+      },
+      {
+        "isim": "INSTER Advance 84.5 kW",
+        "fiyat": 1790000.0,
+        "nitelikler": {
+          "model": "Inster"
+        }
+      },
+      {
+        "isim": "INSTER Cross Advance 84.5 kW",
+        "fiyat": 1840000.0,
+        "nitelikler": {
+          "model": "Inster"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,150 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Chery"
+  ],
+  "kalem": "chery",
+  "vertikal": "arac",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-08-22",
+  "ham_urun_sayisi": 4,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 4,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 2650000,
+  "segmentler": {
+    "dusuk": {
+      "min": 2175000,
+      "medyan": 2377500,
+      "max": 2580000,
+      "urun_sayisi": 2
+    },
+    "orta": {
+      "min": 2720000,
+      "medyan": 2820000,
+      "max": 2920000,
+      "urun_sayisi": 2
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Tiggo 7 Comfort 4x2",
+      "fiyat": 2175000.0
+    },
+    {
+      "isim": "Tiggo 7 Prestige 4x2",
+      "fiyat": 2580000.0
+    },
+    {
+      "isim": "Tiggo 7 Prestige 4x4",
+      "fiyat": 2720000.0
+    },
+    {
+      "isim": "Tiggo 8 Prestige TGDI 145hp 7DCT",
+      "fiyat": 2920000.0
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 4,
+    "ozellik_eslesen_urun": 4,
+    "modeller": {
+      "tiggo-7": {
+        "ad": "Tiggo 7",
+        "genel_medyan": 2580000,
+        "urun_sayisi": 3,
+        "segmentler": {
+          "dusuk": {
+            "min": 2175000.0,
+            "medyan": 2175000.0,
+            "max": 2175000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2580000.0,
+            "medyan": 2650000.0,
+            "max": 2720000.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Tiggo 7 Comfort 4x2",
+            "fiyat": 2175000.0
+          },
+          {
+            "isim": "Tiggo 7 Prestige 4x2",
+            "fiyat": 2580000.0
+          },
+          {
+            "isim": "Tiggo 7 Prestige 4x4",
+            "fiyat": 2720000.0
+          }
+        ]
+      },
+      "tiggo-8": {
+        "ad": "Tiggo 8",
+        "genel_medyan": 2920000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 2920000.0,
+            "medyan": 2920000.0,
+            "max": 2920000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2920000.0,
+            "medyan": 2920000.0,
+            "max": 2920000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 2920000.0,
+            "medyan": 2920000.0,
+            "max": 2920000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Tiggo 8 Prestige TGDI 145hp 7DCT",
+            "fiyat": 2920000.0
+          }
+        ]
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "Tiggo 8 Prestige TGDI 145hp 7DCT",
+        "fiyat": 2920000.0,
+        "nitelikler": {
+          "model": "Tiggo 8"
+        }
+      },
+      {
+        "isim": "Tiggo 7 Comfort 4x2",
+        "fiyat": 2175000.0,
+        "nitelikler": {
+          "model": "Tiggo 7"
+        }
+      },
+      {
+        "isim": "Tiggo 7 Prestige 4x2",
+        "fiyat": 2580000.0,
+        "nitelikler": {
+          "model": "Tiggo 7"
+        }
+      },
+      {
+        "isim": "Tiggo 7 Prestige 4x4",
+        "fiyat": 2720000.0,
+        "nitelikler": {
+          "model": "Tiggo 7"
+        }
+      }
+    ]
+  }
+}
