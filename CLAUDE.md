@@ -99,14 +99,13 @@
 - Yayın modeli: statik dosyalar Cloudflare tarafında **Worker** ile servis
   ediliyor. Eski Pages kurulum notları tarihî kayıt; bugün doğru altyapı
   "statik çıktı + Cloudflare Worker + GitHub Actions"tır.
-- Teknik veri güvence turu `002cba9` ile remote'a gönderildi ve Cloudflare
+- İçerik/veri doğruluk turu `e5d92df` ile remote'a gönderildi ve Cloudflare
   otomatik dağıtımı canlıda doğrulandı. `/veri/manifest.json` ile
   `/veri/qa.json` HTTP 200 dönüyor; ikisi de
-  `2026-08-22-f0c8be50f5ae1a98` veri sürümünü taşıyor ve canlı QA durumu
-  `gecti`.
-  Bu canlı sürüm önceki deploy'a aittir; bu turdaki yerel yayın paketi
-  `2026-08-22-2474420e7b83fd9b` olarak üretildi, push/deploy sonrasında
-  canlı doğrulama yeniden yapılmalıdır.
+  `2026-08-22-2474420e7b83fd9b` veri sürümünü taşıyor. Canlı QA durumu
+  `gecti`: 121 seri, 99 kalem sayfası, 0 kritik hata, 29 uyarı. Canlı araç
+  hub'ı Dacia 1.299.000 TL minimum cevabını, okul rehberi beş kanonik kalem
+  linkini ve araç hesaplayıcısı ortak maliyet sözleşmesini taşıyor.
 - Otomasyon ayda iki kez çalışacak şekilde tasarlandı: ayın **5'i ve
   20'si**. **20 Ağustos 2026 koşusu kontrol edildi:** GitHub Actions run
   `32339864463` başarıyla bitti, `maliyetine-bot` `75ceda9` commit'ini attı
