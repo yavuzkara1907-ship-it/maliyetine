@@ -64,13 +64,19 @@ class WorkflowTesti(unittest.TestCase):
             )
             toplam += len(json_idleri)
 
-        for yol in ("index.html", "ai.txt", "llms.txt", "veri/index.html"):
+        for yol in ("index.html", "ai.txt", "llms.txt", "llms-full.txt",
+                    "veri/index.html"):
             metin = (BASE.parent / yol).read_text(encoding="utf-8")
             self.assertRegex(
                 metin,
                 rf"{toplam}(?: aktif)? fiyat serisi",
                 f"{yol} ortak envanter sayacindan sapti",
             )
+        cevap_envanteri = json.loads(
+            (BASE.parent / "veri" / "cevaplar.json").read_text(encoding="utf-8")
+        )
+        self.assertEqual(cevap_envanteri["cevap_sayisi"], toplam)
+        self.assertEqual(len(cevap_envanteri["cevaplar"]), toplam)
         self.assertEqual(len(asistan.asistan_verisi()["kalemler"]), toplam)
 
     def test_uretilen_her_yol_commit_ediliyor(self):

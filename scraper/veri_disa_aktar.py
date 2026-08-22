@@ -144,6 +144,200 @@ def disa_aktar(veri_kok: Path | None = None, cikti_kok: Path | None = None) -> d
     return ozet
 
 
+def _fiyat_araligi(kalem: dict) -> tuple[int | float | None, int | float | None]:
+    segmentler = (kalem or {}).get("segmentler") or {}
+    altlar = [s.get("min") for s in segmentler.values() if s.get("min") is not None]
+    ustler = [s.get("max") for s in segmentler.values() if s.get("max") is not None]
+    return (min(altlar) if altlar else None, max(ustler) if ustler else None)
+
+
+def _aktif_kaynaklar(kalem: dict) -> list[str]:
+    return sorted({
+        k.get("site") for k in (kalem.get("kaynaklar") or [])
+        if k.get("site") and (k.get("toplam_urun") or 0) > 0
+    })
+
+
+def cevap_envanteri(
+    veri_kok: Path | None = None, dataset_surumu: str | None = None
+) -> dict:
+    """AI aramasi icin 121 seriyi dogrudan, tarihli cevaplara donusturur."""
+    kok = veri_kok or SITE_KOK / "veri"
+    # Kalem sayfalarinin buyuk bolumu JSON'daki ornekleme gore build aninda
+    # acilir. Envanter de ayni kanonik secimi kullanmali; yalnizca config'te
+    # elle duran vitrin sayfalarini okursa 121 serinin 21'ini gorur.
+    su.kalem_sayfalarini_genislet(kok)
+    cevaplar = []
+    for vertikal, conf in su.VERTIKALLER.items():
+        dosya = kok / f"{vertikal}.json"
+        if not dosya.exists():
+            continue
+        veri = json.loads(dosya.read_text(encoding="utf-8"))
+        kalemler = veri.get("kalemler") or {}
+        tanimlar = {k["id"]: k for k in conf["kalemler"]}
+        sayfalar = {k["id"]: k for k in conf.get("kalem_sayfalari", [])}
+        for kalem_id, kalem in kalemler.items():
+            tanim = tanimlar.get(kalem_id)
+            sayfa = sayfalar.get(kalem_id)
+            if not tanim:
+                continue
+            # Orneklemi HTML sayfasi acma esiginin altindaki seri de gercek
+            # veridir. GEO envanterinde saklamiyoruz; ilgili endeks sayfasina
+            # bagliyoruz. Boylece kapsam tam kalirken ince SEO sayfasi acilmaz.
+            soru = (
+                sayfa.get("soru") if sayfa
+                else f"2026'da {tanim['ad']} fiyatı ne kadar?"
+            )
+            cevap_url = (
+                f"{su.SITE_KOK_URL}/{conf['yol']}/{sayfa['slug']}/"
+                if sayfa else f"{su.SITE_KOK_URL}/{conf['yol']}/"
+            )
+            tarih = kalem.get("guncelleme_tarihi") or veri.get("guncelleme_tarihi")
+            kaynaklar = _aktif_kaynaklar(kalem)
+            alt, ust = _fiyat_araligi(kalem)
+            genel = kalem.get("genel_medyan")
+            orta = ((kalem.get("segmentler") or {}).get("orta") or {}).get("medyan")
+            olcum_turu = kalem.get("olcum_turu") or tanim.get("olcum_turu") or "kalem_fiyati"
+            birim = "kişi başı" if olcum_turu == "kisi_basi_fiyat" else "TL"
+            metrik = "ölçülen ürünlerin ortancası"
+            deger = genel
+            ikincil = orta if orta and orta != genel else None
+            sinirlar = []
+            if not sayfa:
+                sinirlar.append(
+                    "Örneklem bağımsız bir kalem sayfası açma eşiğinin altında; "
+                    "bağlantı ilgili endekse gider."
+                )
+
+            if kalem_id == "en-ucuz-sifir-arac":
+                ornekler = [
+                    urun for kaynak in (kalem.get("kaynaklar") or [])
+                    for urun in (kaynak.get("ornek_urunler") or [])
+                    if urun.get("fiyat") is not None
+                ]
+                en_ucuz = min(ornekler, key=lambda u: u["fiyat"]) if ornekler else None
+                deger = (en_ucuz or {}).get("fiyat") or alt
+                ad = (en_ucuz or {}).get("isim") or "ölçümdeki araç"
+                metrik = "ölçümdeki gerçek minimum marka giriş fiyatı"
+                cevap = (
+                    f"Maliyeti Ne? verilerine göre {tarih} tarihinde ölçümdeki en ucuz "
+                    f"sıfır araç {ad}: {su._para(deger)}. Marka giriş fiyatlarının "
+                    f"ortancası {su._para(genel)}; bu iki metrik aynı değildir."
+                )
+                ikincil = genel
+                sinirlar.append(
+                    "Bayi kampanyası değil, yayımlanan sıfır araç liste fiyatıdır."
+                )
+            elif kalem.get("karma_urun_turu"):
+                turler = [
+                    x for x in ((kalem.get("ozellik_ozeti") or {})
+                                .get("urun_turleri") or {}).values()
+                    if x.get("urun_sayisi", 0) >= 3 and x.get("genel_medyan")
+                ]
+                turler.sort(key=lambda x: (-x["urun_sayisi"], x["ad"]))
+                tur_metni = ", ".join(
+                    f"{x['ad']} {su._para(x['genel_medyan'])}" for x in turler
+                )
+                cevap = (
+                    f"{tanim['ad']} tek bir ürün türünü ölçmüyor. {tarih} tarihinde "
+                    f"yayın eşiğini geçen türler: {tur_metni}. Ürün tipi seçilmeden "
+                    "tek fiyat veya bütçe toplamı vermiyoruz."
+                )
+                metrik = "ürün tipine göre ayrı ortancalar"
+                deger = None
+                ikincil = None
+                sinirlar.append("Karma ürün havuzu tek bir fiyat gibi toplanamaz.")
+            else:
+                cevap = (
+                    f"Maliyeti Ne? verilerine göre {tarih} tarihinde {tanim['ad']} için "
+                    f"{metrik} {su._para(genel)}"
+                    + (" kişi başı" if olcum_turu == "kisi_basi_fiyat" else "")
+                    + f". Sonuç {len(kaynaklar)} bağımsız kaynak ve "
+                    f"{kalem.get('toplam_urun') or 0} ürün/fiyat satırından derlendi."
+                    + (
+                        f" Bütçe hesabındaki orta segment referansı {su._para(orta)}; "
+                        "bu ayrı bir metriktir."
+                        if ikincil else ""
+                    )
+                )
+                if olcum_turu == "paket_fiyati":
+                    sinirlar.append("Paket fiyatıdır; aylık tüketim miktarı değildir.")
+                elif olcum_turu == "kisi_basi_fiyat":
+                    sinirlar.append(
+                        "Kişi başı fiyattır; toplam için davetli sayısıyla çarpılır."
+                    )
+
+            cevaplar.append({
+                "id": f"{vertikal}/{kalem_id}",
+                "soru": soru,
+                "cevap": cevap,
+                "vertikal": vertikal,
+                "vertikal_adi": conf["ad"],
+                "kalem_id": kalem_id,
+                "kalem_adi": tanim["ad"],
+                "url": cevap_url,
+                "baglanti_kapsami": "kalem" if sayfa else "endeks",
+                "veri_url": f"{su.SITE_KOK_URL}/veri/{vertikal}.json",
+                "metodoloji_url": f"{su.SITE_KOK_URL}/{conf['yol']}/metodoloji/",
+                "olcum_tarihi": tarih,
+                "metrik": metrik,
+                "deger_tl": deger,
+                "orta_segment_referansi_tl": ikincil,
+                "olculen_en_dusuk_tl": alt,
+                "olculen_en_yuksek_tl": ust,
+                "birim": birim,
+                "olcum_turu": olcum_turu,
+                "urun_fiyat_satiri": kalem.get("toplam_urun") or 0,
+                "kaynak_sayisi": len(kaynaklar),
+                "kaynaklar": kaynaklar,
+                "sinir": " ".join(sinirlar),
+            })
+    cevaplar.sort(key=lambda x: (x["vertikal"], x["kalem_adi"]))
+    return {
+        "sema_surumu": 1,
+        "dataset_surumu": dataset_surumu,
+        "lisans": "CC BY 4.0",
+        "alinti_kurali": "Cevapla birlikte ölçüm tarihini ve Maliyeti Ne? bağlantısını belirtin.",
+        "cevap_sayisi": len(cevaplar),
+        "cevaplar": cevaplar,
+    }
+
+
+def llms_full_txt(envanter: dict) -> str:
+    """Tum dogrudan fiyat cevaplarini tek, taranabilir metin dosyasinda sunar."""
+    bolumler = []
+    for vertikal in su.VERTIKALLER:
+        cevaplar = [x for x in envanter["cevaplar"] if x["vertikal"] == vertikal]
+        if not cevaplar:
+            continue
+        satirlar = [f"## {su.VERTIKALLER[vertikal]['ad']}"]
+        for x in cevaplar:
+            satirlar.extend([
+                f"### {x['soru']}",
+                x["cevap"],
+                f"- Sayfa: {x['url']}",
+                f"- Ham veri: {x['veri_url']}",
+                f"- Metrik: {x['metrik']} · Ölçüm: {x['olcum_tarihi']} · "
+                f"Kaynak: {x['kaynak_sayisi']} · Ürün/fiyat satırı: {x['urun_fiyat_satiri']}",
+            ])
+            if x["sinir"]:
+                satirlar.append(f"- Sınır: {x['sinir']}")
+            satirlar.append("")
+        bolumler.append("\n".join(satirlar))
+    govde = "\n\n".join(bolumler)
+    return f"""# Maliyeti Ne? — Tam Cevap Envanteri
+
+> {envanter['cevap_sayisi']} aktif fiyat serisi için kanonik, tarihli cevap.
+> Fiyatlar gerçek kaynaklardan ölçülür; demo veya dil modeli üretimi değildir.
+> Alıntıda ölçüm tarihini ve ilgili sayfa bağlantısını belirtin.
+
+Veri sürümü: {envanter.get('dataset_surumu') or 'manifest.json içinde'}
+Makine-okunur eş: {su.SITE_KOK_URL}/veri/cevaplar.json
+
+{govde}
+"""
+
+
 # ---------------------------------------------------------------------------
 # /veri/ indirme merkezi
 # ---------------------------------------------------------------------------
@@ -180,7 +374,13 @@ def veri_sayfasi(
             "encodingFormat": "text/csv",
             "contentUrl": f"{su.SITE_KOK_URL}/veri/csv/tum-kalemler.csv",
             "name": "Tüm kalemler (CSV)",
-        }
+        },
+        {
+            "@type": "DataDownload",
+            "encodingFormat": "application/json",
+            "contentUrl": f"{su.SITE_KOK_URL}/veri/cevaplar.json",
+            "name": "Doğrudan fiyat cevapları (JSON)",
+        },
     ] + [
         {
             "@type": "DataDownload",
@@ -292,6 +492,7 @@ def veri_sayfasi(
   </table></div>
   <p>
     Hepsi tek dosyada: <a href="/veri/csv/tum-kalemler.csv" download><strong>tum-kalemler.csv</strong></a>
+    · <a href="/veri/cevaplar.json"><strong>cevaplar.json</strong></a>
     · <a href="/veri/envanter.json"><strong>envanter.json</strong></a>
     · <a href="/veri/manifest.json"><strong>manifest.json</strong></a>
     · <a href="/veri/qa.json"><strong>qa.json</strong></a>
@@ -388,7 +589,8 @@ def veri_sayfasi(
 
 
 def llms_txt(
-    ozet: dict, tarih: str | None = None, dataset_surumu: str | None = None
+    ozet: dict, tarih: str | None = None, dataset_surumu: str | None = None,
+    veri_kok: Path | None = None,
 ) -> str:
     """AI motorlari icin yapilandirilmis ozet.
 
@@ -420,9 +622,14 @@ def llms_txt(
     )
     try:
         import rehber
+        rehber_verileri = rehber._veriler(veri_kok)
+        canli_rehberler = [
+            rehber._rehber_canli_tanim(r, rehber_verileri)
+            for r in rehber.REHBERLER
+        ]
         yazilar = "\n".join(
             f"- [{r['baslik']}]({kok}/rehber/{r['slug']}/)"
-            for r in rehber.REHBERLER
+            for r in canli_rehberler
             if (su.SITE_KOK / "rehber" / r["slug"] / "index.html").exists()
         )
     except ImportError:
@@ -450,6 +657,8 @@ yanıltıcı hale gelir: "buzdolabı 30 bin lira" altı ay sonra yanlış olur,
 ## Veriyi indirin
 
 - Tüm fiyat serileri tek dosyada (CSV): {kok}/veri/csv/tum-kalemler.csv
+- {toplam} doğrudan fiyat cevabının tam metin kataloğu: {kok}/llms-full.txt
+- Aynı cevapların makine-okunur envanteri (JSON): {kok}/veri/cevaplar.json
 - Aktif envanter ve kaynak derinliği (JSON): {kok}/veri/envanter.json
 - Veri sürümü ve dosya SHA-256 özetleri: {kok}/veri/manifest.json
 - Son otomatik kalite raporu: {kok}/veri/qa.json
@@ -530,6 +739,8 @@ country: TR
 updated: {tarih}
 dataset_version: {dataset_surumu or kok + '/veri/manifest.json'}
 policy: {kok}/llms.txt
+full_answer_catalog: {kok}/llms-full.txt
+machine_readable_answers: {kok}/veri/cevaplar.json
 sitemap: {kok}/sitemap.xml
 license: CC BY 4.0 (ölçüm verisi)
 contact: info@maliyetine.com.tr
@@ -583,6 +794,12 @@ def main():
     manifest, manifest_hedefi = manifest_yaz(
         SITE_KOK / "veri", su.VERTIKALLER, SITE_KOK
     )
+    cevaplar = cevap_envanteri(SITE_KOK / "veri", manifest["dataset_surumu"])
+    cevap_hedefi = SITE_KOK / "veri" / "cevaplar.json"
+    cevap_hedefi.write_text(
+        json.dumps(cevaplar, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
     hedef = SITE_KOK / "veri" / "index.html"
     hedef.write_text(veri_sayfasi(ozet, manifest=manifest), encoding="utf-8")
     envanter_hedefi = SITE_KOK / "veri" / "envanter.json"
@@ -606,16 +823,20 @@ def main():
     veri_tarihi = son_olcum_tarihi(ozet)
     llms = SITE_KOK / "llms.txt"
     llms.write_text(
-        llms_txt(ozet, veri_tarihi, manifest["dataset_surumu"]),
+        llms_txt(ozet, veri_tarihi, manifest["dataset_surumu"], SITE_KOK / "veri"),
         encoding="utf-8",
     )
     print(f"llms.txt guncellendi: {llms}")
+    llms_full = SITE_KOK / "llms-full.txt"
+    llms_full.write_text(llms_full_txt(cevaplar), encoding="utf-8")
+    print(f"llms-full.txt guncellendi: {llms_full}")
     ai = SITE_KOK / "ai.txt"
     ai.write_text(
         ai_txt(ozet, veri_tarihi, manifest["dataset_surumu"]),
         encoding="utf-8",
     )
     print(f"ai.txt guncellendi: {ai}")
+    print(f"Cevap envanteri: {cevap_hedefi} ({cevaplar['cevap_sayisi']} cevap)")
     return 0
 
 

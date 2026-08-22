@@ -3775,6 +3775,39 @@ aciklamasi canli HTML'de dogrulandi. Sitemap'teki **199 URL** IndexNow'a
 gonderildi ve servis `200 OK` ile kabul etti.
 
 
+## GEO RAKIP / DOGRUDAN CEVAP ENVANTERI (2026-08-22)
+
+`fiyatendeksi.com` disaridan ve sitemap uzerinden denetlendi. Rakibin asil
+avantaji `llms.txt` degil, **11.662 URL'lik exact-query yuzeyi**: 9.905 fiyat,
+909 marka, 382 kategori ve bunlari tamamlayan TUFE/asgari ucret/yasam
+maliyeti/maas/rapor sayfalari. Tekil fiyat sayfalari ay + urun + guncel fiyat
+sorusuna baslik, H1, degisim, kaynak, gecmis ve yakin karsilastirma ile
+dogrudan cevap veriyor. Ancak footer'i doviz ve kripto disindaki kategorileri
+`demo veriler` diye acikliyor. Hedef bu sentetik hacmi kopyalamak degil;
+Maliyeti Ne?'nin gercek, tarihli ve denetlenebilir verisini AI motorlari icin
+daha kolay alinabilir hale getirmek.
+
+**Uygulanan kalici cevap katmani:**
+- `/llms-full.txt`, 121 aktif fiyat serisinin tamamini soru, kanonik cevap,
+  olcum tarihi, metrik, kaynak/urun sayisi, ham veri URL'si ve sinir notuyla
+  tek taranabilir metinde sunuyor.
+- `/veri/cevaplar.json` ayni 121 cevabi makine-okunur semada veriyor;
+  dataset surumu, lisans, minimum/maksimum, ortanca, orta segment referansi,
+  olcum turu ve baglanti kapsami ayri alanlar.
+- 109 seri kendi kalem sayfasina bagli. HTML acma esiginin altindaki 12 seri
+  GEO envanterinden saklanmiyor ama ince SEO sayfasi da acmiyor; ilgili endeks
+  sayfasina baglanip dusuk orneklem sinirini acikca belirtiyor.
+- En ucuz sifir arac cevabi gercek minimumu marka giris ortancasindan ayiriyor;
+  paket fiyatlari aylik tuketim diye sunulmuyor; kisi basi dugun kalemleri ve
+  karma firin/ocak havuzu kendi sinirlarini tasiyor.
+- `llms.txt`, `ai.txt`, `/veri/` DataCatalog ve aylik workflow yeni dosyalari
+  kesfediyor/uretiyor. Rehber basliklari da artik canli veriden uretiliyor;
+  Trendyol-Amazon kaydi `45` diye bayatlayamiyor, guncel **59** kalemi kullaniyor.
+- Ortak sayac testi HTML/metin dosyalarini 121'e, JSON sozlesmesini ise hem
+  `cevap_sayisi` hem dizi uzunluguna bagliyor. Elle yazilmis paralel sayac yok.
+- Son kalite kapilari: Python **438/438**, JavaScript **90/90**; veri merkezi
+  dahil 11 kritik sayfa 320-1440 px arasindaki 14 genislikte yatay tasmasiz.
+
 ## Yapılacaklar (güncel, 2026-08-22)
 Tarihî tamamlanan işler yukarıdaki günlükte duruyor. Bu liste yalnızca
 bugün gerçekten iş açan maddeleri taşımalı; biten iş burada kalmasın.

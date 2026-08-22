@@ -25,6 +25,8 @@ yanıltıcı hale gelir: "buzdolabı 30 bin lira" altı ay sonra yanlış olur,
 ## Veriyi indirin
 
 - Tüm fiyat serileri tek dosyada (CSV): https://maliyetine.com.tr/veri/csv/tum-kalemler.csv
+- 121 doğrudan fiyat cevabının tam metin kataloğu: https://maliyetine.com.tr/llms-full.txt
+- Aynı cevapların makine-okunur envanteri (JSON): https://maliyetine.com.tr/veri/cevaplar.json
 - Aktif envanter ve kaynak derinliği (JSON): https://maliyetine.com.tr/veri/envanter.json
 - Veri sürümü ve dosya SHA-256 özetleri: https://maliyetine.com.tr/veri/manifest.json
 - Son otomatik kalite raporu: https://maliyetine.com.tr/veri/qa.json
@@ -81,7 +83,7 @@ geldiği ve ölçüm tarihi bulunur; rakam bağımsız olarak doğrulanabilir.
 - [Bebek Masrafları: İlk Yıl Hesabı Nasıl Kurulur?](https://maliyetine.com.tr/rehber/bebek-masraflari-ilk-yil/)
 - [Çeyiz Ne Kadar Tutar? Tekstil, Mutfak ve Küçük Ev Aletleri](https://maliyetine.com.tr/rehber/ceyiz-masraflari/)
 - [Yatak Odası Masrafları: Sıfırdan Kurmak Ne Kadar?](https://maliyetine.com.tr/rehber/yatak-odasi-masraflari/)
-- [Trendyol mu Amazon mu Daha Ucuz? 45 Kalemde Ölçtük](https://maliyetine.com.tr/rehber/trendyol-mu-amazon-mu-ucuz/)
+- [Trendyol mu Amazon mu Daha Ucuz? 59 Kalemde Ölçtük](https://maliyetine.com.tr/rehber/trendyol-mu-amazon-mu-ucuz/)
 - [Ekonomik Düğün Nasıl Yapılır? Nereden Kısılır, Nereden Kısılmaz](https://maliyetine.com.tr/rehber/ekonomik-dugun-nasil-yapilir/)
 - [2026 Beyaz Eşya Bütçesi: Sıfırdan Bir Eve Ne Kadar?](https://maliyetine.com.tr/rehber/beyaz-esya-butcesi/)
 - [2026 Okul Alışverişi Maliyeti: Bir Öğrenciye Ne Kadar?](https://maliyetine.com.tr/rehber/okul-masrafi-ne-kadar/)

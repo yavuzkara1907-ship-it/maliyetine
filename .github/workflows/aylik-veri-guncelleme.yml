@@ -219,7 +219,7 @@ jobs:
           # edilmedigi icin canlida bayat kalirdi (sessiz bayatlama,
           # bu projede daha once yasanan hata sinifi).
           git add scraper/veri scraper/kaynak_gecmisi.json veri \
-                  index.html sitemap.xml feed.xml llms.txt ai.txt robots.txt \
+                  index.html sitemap.xml feed.xml llms.txt llms-full.txt ai.txt robots.txt \
                   assets \
                   dugun ev-kurma okul bebek kedi kopek arac evcil-hayvan rehber hesap sss rapor
           if git diff --cached --quiet; then

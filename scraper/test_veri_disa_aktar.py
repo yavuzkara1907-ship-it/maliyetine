@@ -152,6 +152,59 @@ class CsvTesti(unittest.TestCase):
         self.assertIn("aynı dosyayı yeniden satmaz", sayfa)
         self.assertIn("2026-08-05-abcdef1234567890", sayfa)
         self.assertIn("/veri/qa.json", sayfa)
+        self.assertIn("/veri/cevaplar.json", sayfa)
+
+    def test_cevap_envanteri_tarihli_kaynakli_ve_kanonik(self):
+        with TemporaryDirectory() as d:
+            kok = Path(d)
+            (kok / "ev-kurma.json").write_text(
+                json.dumps(ORNEK, ensure_ascii=False), encoding="utf-8"
+            )
+            envanter = vd.cevap_envanteri(kok, "surum-test")
+        self.assertEqual(envanter["cevap_sayisi"], 1)
+        cevap = envanter["cevaplar"][0]
+        self.assertEqual(cevap["deger_tl"], 29000)
+        self.assertEqual(cevap["kaynak_sayisi"], 2)
+        self.assertEqual(cevap["olcum_tarihi"], "2026-08-05")
+        self.assertEqual(cevap["olculen_en_dusuk_tl"], 6299)
+        self.assertEqual(cevap["olculen_en_yuksek_tl"], 61990)
+        self.assertIn("29.000 TL", cevap["cevap"])
+        self.assertIn("/ev-kurma/buzdolabi-fiyatlari/", cevap["url"])
+
+    def test_canli_cevap_envanteri_tum_serileri_kapsar(self):
+        envanter = vd.cevap_envanteri()
+        beklenen = sum(
+            len(json.loads((vd.SITE_KOK / "veri" / f"{v}.json")
+                           .read_text(encoding="utf-8"))["kalemler"])
+            for v in vd.su.VERTIKALLER
+        )
+        self.assertEqual(envanter["cevap_sayisi"], beklenen)
+        for cevap in envanter["cevaplar"]:
+            self.assertTrue(cevap["soru"])
+            self.assertTrue(cevap["olcum_tarihi"])
+            self.assertTrue(cevap["url"].startswith("https://maliyetine.com.tr/"))
+            yerel = vd.SITE_KOK / cevap["url"].split("maliyetine.com.tr/")[1] / "index.html"
+            self.assertTrue(yerel.exists(), cevap["url"])
+
+    def test_en_ucuz_arac_cevabi_ortanca_yerine_minimumu_verir(self):
+        envanter = vd.cevap_envanteri()
+        cevap = next(x for x in envanter["cevaplar"]
+                     if x["kalem_id"] == "en-ucuz-sifir-arac")
+        self.assertEqual(cevap["metrik"], "ölçümdeki gerçek minimum marka giriş fiyatı")
+        self.assertLess(cevap["deger_tl"], cevap["orta_segment_referansi_tl"])
+        self.assertIn("bu iki metrik aynı değildir", cevap["cevap"])
+
+    def test_llms_full_tum_cevaplari_ve_sinirlarini_tasir(self):
+        envanter = vd.cevap_envanteri()
+        metin = vd.llms_full_txt(envanter)
+        self.assertEqual(metin.count("\n### "), envanter["cevap_sayisi"])
+        self.assertIn("Paket fiyatıdır; aylık tüketim miktarı değildir.", metin)
+        self.assertIn("tek fiyat veya bütçe toplamı vermiyoruz", metin)
+        ince = next(x for x in envanter["cevaplar"]
+                    if x["baglanti_kapsami"] == "endeks")
+        self.assertIn("sayfası açma eşiğinin altında", ince["sinir"])
+        self.assertEqual(ince["soru"].split("'da ", 1)[1].split(" fiyatı")[0],
+                         ince["kalem_adi"])
 
     def test_ai_haritasi_veri_araclarini_formul_diye_gostermez(self):
         ozet = {"ev-kurma": {"kalem": 1, "tarih": "2026-08-05",
@@ -160,6 +213,9 @@ class CsvTesti(unittest.TestCase):
         ai = vd.ai_txt(ozet, "2026-08-05")
         self.assertIn("Bütçem Yeter mi?", llms)
         self.assertIn("İki tür araç vardır", llms)
+        self.assertIn("/llms-full.txt", llms)
+        self.assertIn("/veri/cevaplar.json", llms)
+        self.assertIn("/llms-full.txt", ai)
         import hesaplayicilar as hc
         formul = len(hc.HESAPLAYICILAR)
         veri = len(hc.tum_hesaplayicilar()) - formul
