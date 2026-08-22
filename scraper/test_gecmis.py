@@ -88,3 +88,11 @@ class GecmisTestleri(unittest.TestCase):
                   kayit("a-kalem", "site", "2026-07-25", 100))
         g = gecmis.vertikal_gecmisi("dugun", self.kok)
         self.assertEqual(list(g["kalemler"]), ["a-kalem", "z-kalem"])
+
+    def test_aktif_envanter_filtresi_eski_seriyi_yayinlamaz(self):
+        self._yaz(kayit("salon", "site", "2026-07-25", 500),
+                  kayit("salon-yemekli", "site", "2026-08-20", 1200))
+        g = gecmis.vertikal_gecmisi(
+            "dugun", self.kok, aktif_kalemler={"salon-yemekli"}
+        )
+        self.assertEqual(set(g["kalemler"]), {"salon-yemekli"})

@@ -591,48 +591,6 @@
       ],
       "capraz_dogrulama_uyarisi": null
     },
-    "salon": {
-      "olcum_turu": "kalem_fiyati",
-      "segmentler": {
-        "dusuk": {
-          "min": 200,
-          "medyan": 320,
-          "max": 400,
-          "urun_sayisi": 3,
-          "kaynak_sayisi": 1
-        },
-        "orta": {
-          "min": 500,
-          "medyan": 525,
-          "max": 550,
-          "urun_sayisi": 4,
-          "kaynak_sayisi": 1
-        },
-        "luks": {
-          "min": 750,
-          "medyan": 775,
-          "max": 800,
-          "urun_sayisi": 2,
-          "kaynak_sayisi": 1
-        }
-      },
-      "genel_medyan": 500,
-      "toplam_urun": 9,
-      "guncelleme_tarihi": "2026-07-25",
-      "kaynak_sayisi": 1,
-      "kaynaklar": [
-        {
-          "site": "dugunbuketi",
-          "kaynak_adlari": [
-            "DugunBuketi - Istanbul Dugun Mekanlari"
-          ],
-          "tarih": "2026-07-25",
-          "toplam_urun": 9,
-          "genel_medyan": 500
-        }
-      ],
-      "capraz_dogrulama_uyarisi": null
-    },
     "taki-altin": {
       "olcum_turu": "kalem_fiyati",
       "segmentler": {

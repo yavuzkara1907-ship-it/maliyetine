@@ -20,6 +20,7 @@ import json
 from datetime import date
 from pathlib import Path
 
+from envanter import envanter_ozeti
 import sayfa_uret as su
 
 SITE_KOK = su.SITE_KOK
@@ -322,25 +323,16 @@ def kalem_kartlarini_uret(veri_kok: Path | None = None) -> int:
 
 def _ozet(veri_kok: Path | None = None) -> dict:
     kok = veri_kok or SITE_KOK / "veri"
-    adlar, toplam_kalem, siteler = [], 0, set()
+    ortak = envanter_ozeti(kok, su.VERTIKALLER)
+    adlar = []
     for vertikal, conf in su.VERTIKALLER.items():
-        dosya = kok / f"{vertikal}.json"
-        if not dosya.exists():
-            continue
-        try:
-            veri = json.loads(dosya.read_text(encoding="utf-8"))
-        except (json.JSONDecodeError, OSError):
-            continue
-        kalemler = veri.get("kalemler") or {}
-        if not kalemler:
-            continue
-        adlar.append(conf["ad"])
-        toplam_kalem += len(kalemler)
-        for k in kalemler.values():
-            for kaynak in k.get("kaynaklar") or []:
-                if (kaynak.get("toplam_urun") or 0) > 0 and kaynak.get("site"):
-                    siteler.add(kaynak["site"])
-    return {"adlar": adlar, "kalem": toplam_kalem, "kaynak": len(siteler)}
+        if vertikal in ortak["vertikaller"]:
+            adlar.append(conf["ad"])
+    return {
+        "adlar": adlar,
+        "kalem": ortak["fiyat_serisi"],
+        "kaynak": ortak["kaynak"],
+    }
 
 
 def uret(hedef: Path | None = None, veri_kok: Path | None = None) -> Path | None:
@@ -388,7 +380,7 @@ def uret(hedef: Path | None = None, veri_kok: Path | None = None) -> Path | None
     # Rakamlar: soyut "guvenilir veri" iddiasi yerine olculebilir kanit
     d.text(
         (70, 480),
-        f"{o['kalem']} kalem · {o['kaynak']} bağımsız kaynak · ayda iki kez ölçülüyor",
+        f"{o['kalem']} fiyat serisi · {o['kaynak']} bağımsız kaynak · ayda iki kez ölçülüyor",
         font=yazi_tipi(30, False), fill=MUREKKEP,
     )
     d.text((70, 540), "maliyetine.com.tr", font=yazi_tipi(28, False), fill=SOLUK)
@@ -493,7 +485,7 @@ def main():
         return 1
     o = _ozet()
     print(f"OG gorseli uretildi: {yol}")
-    print(f"  {' · '.join(o['adlar'])} | {o['kalem']} kalem | {o['kaynak']} kaynak")
+    print(f"  {' · '.join(o['adlar'])} | {o['kalem']} fiyat serisi | {o['kaynak']} kaynak")
     return 0
 
 

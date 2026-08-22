@@ -45,6 +45,8 @@ from collections import defaultdict
 from datetime import date, datetime
 from pathlib import Path
 
+from envanter import aktif_kalem_idleri
+
 # Iki olcum arasinda en az bu kadar gun olmali ki "degisim" anlamli sayilsin.
 # NEDEN: 24->25 Temmuz testinde "nikah sekeri %40 dustu" ciktı - gercek bir
 # fiyat dususu degil, bir gunde kategori sayfasinda LISTELENEN URUNLERIN
@@ -122,11 +124,17 @@ def _karsilastirilabilir(a: dict, b: dict) -> bool:
     return _gun_farki(a["tarih"], b["tarih"]) >= ASGARI_GUN_ARALIGI
 
 
-def vertikal_gecmisi(vertikal: str, veri_kok: Path = VARSAYILAN_VERI_KOK) -> dict:
+def vertikal_gecmisi(
+    vertikal: str,
+    veri_kok: Path = VARSAYILAN_VERI_KOK,
+    aktif_kalemler: set[str] | None = None,
+) -> dict:
     gruplar = anlik_goruntuleri_oku(veri_kok / vertikal)
 
     kalem_serileri: dict[str, list[dict]] = defaultdict(list)
     for (kalem, tarih), kayitlar in gruplar.items():
+        if aktif_kalemler is not None and kalem not in aktif_kalemler:
+            continue
         nokta = olcum_noktasi(kayitlar)
         if nokta:
             kalem_serileri[kalem].append({"tarih": tarih, **nokta})
@@ -194,7 +202,9 @@ def main():
         import sayfa_uret
         vertikaller = list(sayfa_uret.VERTIKALLER)
     for v in vertikaller:
-        veri = vertikal_gecmisi(v, args.veri_kok)
+        veri = vertikal_gecmisi(
+            v, args.veri_kok, aktif_kalemler=aktif_kalem_idleri(v)
+        )
         hedef = yaz(veri, args.cikti_kok)
         o = veri["ozet"]
         print(

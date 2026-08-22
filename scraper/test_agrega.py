@@ -315,6 +315,20 @@ class YazTestleri(unittest.TestCase):
             self.assertEqual(veri["vertikal"], "dugun")
             self.assertIn("gelinlik", veri["kalemler"])
 
+    def test_yayin_jsonu_devre_disi_ham_kalemi_disarida_birakir(self):
+        with TemporaryDirectory() as veri_kok_str, TemporaryDirectory() as site_veri_kok_str:
+            veri_kok = Path(veri_kok_str)
+            site_veri_kok = Path(site_veri_kok_str)
+            _kayit_yaz(veri_kok / "dugun", "salon", "dugunbuketi", "2026-07-25")
+            _kayit_yaz(
+                veri_kok / "dugun", "salon-yemekli", "dugunbuketi", "2026-08-20"
+            )
+
+            hedef = agrega.yaz("dugun", veri_kok, site_veri_kok)
+            kalemler = json.loads(hedef.read_text(encoding="utf-8"))["kalemler"]
+            self.assertNotIn("salon", kalemler)
+            self.assertIn("salon-yemekli", kalemler)
+
 
 if __name__ == "__main__":
     unittest.main()

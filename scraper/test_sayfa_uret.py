@@ -719,6 +719,33 @@ class AnasayfaTestleri(unittest.TestCase):
         html = sayfa_uret.anasayfa_uret(self.veri_kok)
         self.assertIn("tamamı gerçek kaynaklı", html)
 
+    def test_toplam_envanter_fiyat_serisi_olarak_etiketlenir(self):
+        self._yaz("dugun", {"gelinlik": GELINLIK_VERISI})
+        html = sayfa_uret.anasayfa_uret(self.veri_kok)
+        self.assertIn("1 fiyat serisi", html)
+        self.assertIn("bütçeye giren kalemle aynı şey", html)
+        self.assertIn("Endeks kartlarındaki kalem sayısı", html)
+
+    def test_bos_yakinda_kartlari_yayinlanmaz(self):
+        self._yaz("dugun", {"gelinlik": GELINLIK_VERISI})
+        html = sayfa_uret.anasayfa_uret(self.veri_kok)
+        self.assertNotIn("Ev tadilatı maliyeti", html)
+        self.assertNotIn("Tatil maliyeti", html)
+
+    def test_arac_karti_tek_kaynagi_yanlis_cercevelemez(self):
+        self._yaz("arac", {"en-ucuz-sifir-arac": {
+            "genel_medyan": 1000000,
+            "segmentler": {"dusuk": {"medyan": 900000},
+                           "orta": {"medyan": 1000000},
+                           "luks": {"medyan": 1200000}},
+            "toplam_urun": 10,
+            "kaynaklar": [{"site": "liste", "toplam_urun": 10}],
+        }})
+        html = sayfa_uret.anasayfa_uret(self.veri_kok)
+        self.assertIn("üreticilerin belirlediği liste fiyatlarından", html)
+        kart = html.split('<div class="vertikal-kart kart">', 1)[1].split("</div>", 1)[0]
+        self.assertNotIn("1 bağımsız kaynaktan", kart)
+
 
 class EkKalemSayfalariTesti(unittest.TestCase):
     """Kalem sayfalarinin veriden genisletilmesi (uzun kuyruk SEO)."""
@@ -1073,7 +1100,7 @@ class SssTesti(unittest.TestCase):
             }), encoding="utf-8")
             q = sayfa_uret.sss_sorulari(kok)
             metin = " ".join(x["c"] for x in q)
-            self.assertIn("2 kalem", metin)
+            self.assertIn("2 fiyat serisi", metin)
             self.assertIn("2 farklı siteden", metin)   # z sayilmaz (0 urun)
             self.assertIn("2026-08-05", metin)
 

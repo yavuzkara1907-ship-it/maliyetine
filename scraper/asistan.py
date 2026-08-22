@@ -333,7 +333,7 @@ ASISTAN_HTML = """  <section class="asistan" id="asistan">
     <p class="asistan-alt">Uydurmam — bilmediğim şeye "bilmiyorum" derim.</p>
     <div class="as-akis" role="log" aria-live="polite">
       <div class="as-balon as-asistan">
-        Merhaba. Ölçtüğüm {kalem_sayisi} kalem hakkında soru sorabilirsiniz:
+        Merhaba. Ölçtüğüm {kalem_sayisi} fiyat serisi hakkında soru sorabilirsiniz:
         bir ürünün fiyatı, kaç kişilik bir düğünün tutarı, ya da neyi
         ölçmediğimiz.
       </div>

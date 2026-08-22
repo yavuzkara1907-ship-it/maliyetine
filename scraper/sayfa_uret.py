@@ -29,6 +29,8 @@ import json
 from datetime import date
 from pathlib import Path
 
+from envanter import envanter_ozeti
+
 BASE_DIR = Path(__file__).parent
 SITE_KOK = BASE_DIR.parent
 
@@ -3224,31 +3226,19 @@ def bayat_kalem_sayfalarini_temizle(vertikal: str) -> list[Path]:
 # bayatlamasin.
 def sss_sorulari(veri_kok: Path | None = None) -> list[dict]:
     kok = veri_kok or SITE_KOK / "veri"
-    toplam_kalem = 0
-    siteler: set[str] = set()
-    tarih = ""
-    for vertikal in VERTIKALLER:
-        dosya = kok / f"{vertikal}.json"
-        if not dosya.exists():
-            continue
-        try:
-            veri = json.loads(dosya.read_text(encoding="utf-8"))
-        except (json.JSONDecodeError, OSError):
-            continue
-        kalemler = veri.get("kalemler") or {}
-        toplam_kalem += len(kalemler)
-        tarih = max(tarih, veri.get("guncelleme_tarihi") or "")
-        for k in kalemler.values():
-            for kaynak in k.get("kaynaklar") or []:
-                if (kaynak.get("toplam_urun") or 0) > 0 and kaynak.get("site"):
-                    siteler.add(kaynak["site"])
+    envanter = envanter_ozeti(kok, VERTIKALLER)
+    tarih = max(
+        (d.get("tarih") or "" for d in envanter["vertikaller"].values()),
+        default="",
+    )
 
     return [
         {
             "s": "Bu fiyatlar nereden geliyor?",
             "c": (
-                f"Gerçek satış sayfalarından. Şu an {toplam_kalem} kalem, "
-                f"{len(siteler)} farklı siteden ölçülüyor: e-ticaret siteleri, "
+                f"Gerçek satış sayfalarından. Şu an {envanter['fiyat_serisi']} "
+                f"fiyat serisi, {envanter['kaynak']} farklı siteden ölçülüyor: "
+                "e-ticaret siteleri, "
                 "marka mağazaları ve sektör platformları. Fiyat tahmin edilmiyor, "
                 "yayınlanan listelerden okunuyor. Her kalemin yanında kaç üründen "
                 "derlendiği ve hangi tarihte ölçüldüğü yazıyor."
@@ -3569,6 +3559,7 @@ def vertikal_ozeti(vertikal: str, veri_kok: Path | None = None) -> dict | None:
     gercek = [d for d in dahil if not d["tahmini_mi"]]
     if not gercek:
         return None
+    site_sayisi = len(bagimsiz_siteler(kalemler, {d["id"] for d in gercek}))
     return {
         "vertikal": vertikal,
         "ad": conf["ad"],
@@ -3579,7 +3570,8 @@ def vertikal_ozeti(vertikal: str, veri_kok: Path | None = None) -> dict | None:
         "tahmini_toplam": sum(d["satir_toplam"] for d in dahil if d["tahmini_mi"]),
         "gercek_kalem": len(gercek),
         "tahmini_kalem": len([d for d in dahil if d["tahmini_mi"]]),
-        "site_sayisi": len(bagimsiz_siteler(kalemler, {d["id"] for d in gercek})),
+        "site_sayisi": site_sayisi,
+        "dayanak": _dayanak_ifadesi(conf, site_sayisi),
         "guncelleme_tarihi": agregali.get("guncelleme_tarihi"),
         "ornek_ifade": conf["ornek_ifade"].format(olcek=olcek),
         "anasayfa_ifade": conf.get("anasayfa_ifade", conf["ornek_ifade"]).format(olcek=olcek),
@@ -3632,21 +3624,8 @@ def _site_ozeti(ozetler: list[dict], veri_kok: Path | None = None) -> str:
     Rakamlar VERIDEN gelir, elle yazilmaz - kalem/kaynak sayisi
     degistikce cumle de degisir (llms.txt'in bayatlama dersi).
     """
-    # KALEM SAYISI TEK KAYNAKTAN: `gercek_kalem + tahmini_kalem` yalnizca
-    # VARSAYILAN TOPLAMA GIREN kalemleri sayiyor (78); oysa ai.txt ve OG
-    # gorseli OLCULEN TUM kalemleri sayiyor (107). Sitede iki farkli sayi
-    # dolasmasi, guven iddiasi rakamlarin tutarliligina dayanan bir sitede
-    # kabul edilemez - ikisi de ayni yerden sayiliyor.
     kok = veri_kok or SITE_KOK / "veri"
-    kalem = 0
-    for v in VERTIKALLER:
-        dosya = kok / f"{v}.json"
-        if not dosya.exists():
-            continue
-        try:
-            kalem += len(json.loads(dosya.read_text(encoding="utf-8")).get("kalemler") or {})
-        except (json.JSONDecodeError, OSError):
-            pass
+    envanter = envanter_ozeti(kok, VERTIKALLER)
     try:
         import hesaplayicilar as hs
         hesap = len(hs.tum_hesaplayicilar())
@@ -3665,7 +3644,7 @@ def _site_ozeti(ozetler: list[dict], veri_kok: Path | None = None) -> str:
         kapsam = kapsam[0].upper() + kapsam[1:]
     else:
         kapsam = ""
-    parcalar = [f"<strong>{kalem} kalem</strong>"]
+    parcalar = [f"<strong>{envanter['fiyat_serisi']} fiyat serisi</strong>"]
     if hesap:
         parcalar.append(f'<strong><a href="/hesap/">{hesap} hesaplayıcı</a></strong>')
     return (
@@ -3692,24 +3671,12 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
     # halde ana sayfadan 404'e link cikar.
     # Paylasim aciklamasi: soyut "guvenilir veri" iddiasi yerine
     # olculebilir kanit. X/WhatsApp kartinda gorunen tek cumle bu.
-    _og_kalem = sum(len((o.get("kalemler") or {})) for o in [
-        json.loads((( veri_kok or SITE_KOK / "veri") / f"{v}.json").read_text(encoding="utf-8"))
-        for v in VERTIKALLER
-        if (( veri_kok or SITE_KOK / "veri") / f"{v}.json").exists()
-    ])
-    _og_siteler = set()
-    for v in VERTIKALLER:
-        d = (veri_kok or SITE_KOK / "veri") / f"{v}.json"
-        if not d.exists():
-            continue
-        for k in (json.loads(d.read_text(encoding="utf-8")).get("kalemler") or {}).values():
-            for kay in k.get("kaynaklar") or []:
-                if (kay.get("toplam_urun") or 0) > 0 and kay.get("site"):
-                    _og_siteler.add(kay["site"])
+    _envanter = envanter_ozeti(veri_kok or SITE_KOK / "veri", VERTIKALLER)
     og_aciklama = (
-        f"{_og_kalem} kalem, {len(_og_siteler)} bağımsız kaynaktan ayda iki kez "
+        f"{_envanter['fiyat_serisi']} fiyat serisi, {_envanter['kaynak']} "
+        "bağımsız kaynaktan ayda iki kez "
         "ölçülüyor. Her rakamın yanında kaynak ve ölçüm tarihi var."
-    ) if _og_kalem else "Gerçek fiyat verisinden derlenmiş maliyet endeksi."
+    ) if _envanter["fiyat_serisi"] else "Gerçek fiyat verisinden derlenmiş maliyet endeksi."
 
     # Sohbet asistani: cevaplari VERIDEN secen, uydurma yapamayan yapi
     # (bkz. asistan.py - LLM yok, cumleler sabit sablon).
@@ -3789,21 +3756,8 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
       <h3><a href="/{o['yol']}/">{o['ad']} maliyeti</a></h3>
       <p class="kart-rakam">{_para(o['toplam'])}</p>
       <p class="kart-alt">{o['kart_alt']} · {o['gercek_kalem']} kalem
-        {o['site_sayisi']} bağımsız kaynaktan{", " + str(o['tahmini_kalem']) + " kalem tahmini" if o['tahmini_kalem'] else " (tamamı gerçek kaynaklı)"}</p>
+        {o['dayanak']}{", " + str(o['tahmini_kalem']) + " kalem tahmini" if o['tahmini_kalem'] else " (tamamı gerçek kaynaklı)"}</p>
       <p class="kart-linkler">{alt_linkler}</p>
-    </div>""")
-
-    # "Yakinda" kartlari SABIT LISTE DEGIL: yayina giren vertikal bu
-    # listeden dusmeli. Onceden sabitti ve 0 km arac yayina girdikten
-    # sonra da "Yakinda" kartiyla gorunmeye devam ediyordu - ayni endeks
-    # sayfada hem gercek rakamla hem "hazirlaniyor" diye iki kez cikti.
-    yayindaki = {o["yol"] for o in ozetler}
-    for yol, ad in (("ev-tadilati", "Ev tadilatı"), ("tatil", "Tatil")):
-        if yol in yayindaki:
-            continue
-        kartlar.append(f"""    <div class="kart kart-yakinda">
-      <h3>{ad} maliyeti <span class="yakinda-etiket">Yakında</span></h3>
-      <p>Hazırlanıyor.</p>
     </div>""")
 
     kurum = {
@@ -3853,14 +3807,14 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
                                 f"{_para(o['toplam'])} tutuyor. "
                                 + (
                                     f"Bunun {_para(o['gercek_toplam'])} tutarı "
-                                    f"{o['gercek_kalem']} kalem için {o['site_sayisi']} "
-                                    f"bağımsız kaynaktan derlenen güncel fiyatlara, "
+                                    f"{o['gercek_kalem']} kalem için {o['dayanak']} "
+                                    "derlenen güncel fiyatlara, "
                                     f"{_para(o['tahmini_toplam'])} tutarı ise henüz "
                                     f"kazınan bir kaynağı olmayan {o['tahmini_kalem']} "
                                     f"kalem için genel piyasa araştırmasına dayanır."
                                     if o["tahmini_kalem"] else
                                     f"Rakamın tamamı {o['gercek_kalem']} kalem için "
-                                    f"{o['site_sayisi']} bağımsız kaynaktan derlenen "
+                                    f"{o['dayanak']} derlenen "
                                     f"güncel fiyatlara dayanır."
                                 )
                             ),
@@ -3913,6 +3867,10 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
   <span class="guncelleme-etiketi">Güncelleme: {tarih}</span>
   <h1>2026 Maliyet Endeksi</h1>
   <p class="site-ozeti">{site_ozeti}</p>
+  <p class="sonuc-alt-metin">Fiyat serisi, bütçeye giren kalemle aynı şey
+    değildir: örneğin araç markaları ayrı ayrı izlenir, bütçe hesabında ise
+    tek araç seçilir. Endeks kartlarındaki kalem sayısı yalnız o varsayılan
+    bütçe senaryosuna giren satırları gösterir.</p>
 
   <div class="cevap-blok"{cevap_stil}>
     {cevap}

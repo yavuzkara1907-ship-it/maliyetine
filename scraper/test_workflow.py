@@ -46,6 +46,33 @@ def _uretilen_kok_yollar() -> set[str]:
 
 class WorkflowTesti(unittest.TestCase):
 
+    def test_yayin_envanteri_ve_tum_sayaclar_ayni_jsondan_gelir(self):
+        import json
+        import asistan
+        import sayfa_uret
+
+        toplam = 0
+        for vertikal, conf in sayfa_uret.VERTIKALLER.items():
+            veri = json.loads(
+                (BASE.parent / "veri" / f"{vertikal}.json").read_text(encoding="utf-8")
+            )
+            json_idleri = set(veri.get("kalemler") or {})
+            tanimli_idler = {k["id"] for k in conf["kalemler"]}
+            self.assertEqual(
+                json_idleri, tanimli_idler,
+                f"{vertikal}: yayinda tanimsiz ya da verisiz fiyat serisi var",
+            )
+            toplam += len(json_idleri)
+
+        for yol in ("index.html", "ai.txt", "llms.txt", "veri/index.html"):
+            metin = (BASE.parent / yol).read_text(encoding="utf-8")
+            self.assertRegex(
+                metin,
+                rf"{toplam}(?: aktif)? fiyat serisi",
+                f"{yol} ortak envanter sayacindan sapti",
+            )
+        self.assertEqual(len(asistan.asistan_verisi()["kalemler"]), toplam)
+
     def test_uretilen_her_yol_commit_ediliyor(self):
         """EN KRITIK: bir sayfa uretilip commit edilmezse canlida
         SESSIZCE bayatlar - hata vermez, sadece eski rakami gosterir."""

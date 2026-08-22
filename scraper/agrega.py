@@ -26,6 +26,7 @@ import json
 import statistics
 from pathlib import Path
 
+from envanter import aktif_kalem_idleri
 from olcum_sozlesmesi import kaynak_adi, olcum_turu
 from urun_normalizasyonu import birim_fiyatlarini_birlestir, ozellik_ozetlerini_birlestir
 
@@ -199,7 +200,11 @@ def kalem_birlestir(kaynak_kayitlari: list[dict], kalem: str = "") -> dict:
     }
 
 
-def vertikal_agregali(vertikal: str, veri_kok: Path = VARSAYILAN_VERI_KOK) -> dict:
+def vertikal_agregali(
+    vertikal: str,
+    veri_kok: Path = VARSAYILAN_VERI_KOK,
+    aktif_kalemler: set[str] | None = None,
+) -> dict:
     vertikal_klasoru = veri_kok / vertikal
     tum_kayitlar = kaynak_dosyalarini_oku(vertikal_klasoru)
     guncel_kayitlar = en_guncel_kayitlari_sec(tum_kayitlar)
@@ -207,6 +212,8 @@ def vertikal_agregali(vertikal: str, veri_kok: Path = VARSAYILAN_VERI_KOK) -> di
 
     kalemler_gruplu: dict[str, list[dict]] = {}
     for kayit in guncel_kayitlar:
+        if aktif_kalemler is not None and kayit.get("kalem") not in aktif_kalemler:
+            continue
         kalemler_gruplu.setdefault(kayit["kalem"], []).append(kayit)
 
     kalemler = {}
@@ -232,7 +239,13 @@ def vertikal_agregali(vertikal: str, veri_kok: Path = VARSAYILAN_VERI_KOK) -> di
 
 
 def yaz(vertikal: str, veri_kok: Path = VARSAYILAN_VERI_KOK, site_veri_kok: Path = VARSAYILAN_SITE_VERI_KOK) -> Path:
-    agregali = vertikal_agregali(vertikal, veri_kok)
+    # Ham arsiv eski olcumleri saklar; yayindaki JSON yalniz aktif kaynak
+    # tanimi olan kalemleri tasir. Ornegin eski belirsiz `salon` olcumu
+    # arsivde kalir ama yerini alan yemekli/kokteyl serileriyle birlikte
+    # ikinci kez sayilmaz.
+    agregali = vertikal_agregali(
+        vertikal, veri_kok, aktif_kalemler=aktif_kalem_idleri(vertikal)
+    )
     site_veri_kok.mkdir(parents=True, exist_ok=True)
     hedef = site_veri_kok / f"{vertikal}.json"
     hedef.write_text(json.dumps(agregali, ensure_ascii=False, indent=2), encoding="utf-8")

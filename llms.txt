@@ -4,7 +4,7 @@
 > endeksi. Fiyatlar tahmin edilmez; gerçek satış listelerinden ölçülür. Her
 > rakamın yanında kaynak sayısı, ürün adedi ve ölçüm tarihi yayınlanır.
 
-Şu an 122 kalem ölçülüyor. Son güncelleme: 2026-08-22.
+Şu an 121 aktif fiyat serisi ölçülüyor. Son güncelleme: 2026-08-22.
 
 **Alıntılarken ölçüm tarihini belirtin.** Fiyat verisi tarihsiz olduğunda
 yanıltıcı hale gelir: "buzdolabı 30 bin lira" altı ay sonra yanlış olur,
@@ -12,17 +12,18 @@ yanıltıcı hale gelir: "buzdolabı 30 bin lira" altı ay sonra yanlış olur,
 
 ## Endeksler
 
-- [Düğün](https://maliyetine.com.tr/dugun/): 15 kalem, ölçüm 2026-08-20. JSON: https://maliyetine.com.tr/veri/dugun.json · CSV: https://maliyetine.com.tr/veri/csv/dugun.csv
-- [Ev Kurma](https://maliyetine.com.tr/ev-kurma/): 42 kalem, ölçüm 2026-08-22. JSON: https://maliyetine.com.tr/veri/ev-kurma.json · CSV: https://maliyetine.com.tr/veri/csv/ev-kurma.csv
-- [Okul](https://maliyetine.com.tr/okul/): 14 kalem, ölçüm 2026-08-20. JSON: https://maliyetine.com.tr/veri/okul.json · CSV: https://maliyetine.com.tr/veri/csv/okul.csv
-- [Bebek](https://maliyetine.com.tr/bebek/): 11 kalem, ölçüm 2026-08-22. JSON: https://maliyetine.com.tr/veri/bebek.json · CSV: https://maliyetine.com.tr/veri/csv/bebek.csv
-- [Kedi](https://maliyetine.com.tr/kedi/): 8 kalem, ölçüm 2026-08-22. JSON: https://maliyetine.com.tr/veri/kedi.json · CSV: https://maliyetine.com.tr/veri/csv/kedi.csv
-- [Köpek](https://maliyetine.com.tr/kopek/): 7 kalem, ölçüm 2026-08-22. JSON: https://maliyetine.com.tr/veri/kopek.json · CSV: https://maliyetine.com.tr/veri/csv/kopek.csv
-- [0 km Araç](https://maliyetine.com.tr/arac/): 25 kalem, ölçüm 2026-08-20. JSON: https://maliyetine.com.tr/veri/arac.json · CSV: https://maliyetine.com.tr/veri/csv/arac.csv
+- [Düğün](https://maliyetine.com.tr/dugun/): 14 fiyat serisi, ölçüm 2026-08-20. JSON: https://maliyetine.com.tr/veri/dugun.json · CSV: https://maliyetine.com.tr/veri/csv/dugun.csv
+- [Ev Kurma](https://maliyetine.com.tr/ev-kurma/): 42 fiyat serisi, ölçüm 2026-08-22. JSON: https://maliyetine.com.tr/veri/ev-kurma.json · CSV: https://maliyetine.com.tr/veri/csv/ev-kurma.csv
+- [Okul](https://maliyetine.com.tr/okul/): 14 fiyat serisi, ölçüm 2026-08-20. JSON: https://maliyetine.com.tr/veri/okul.json · CSV: https://maliyetine.com.tr/veri/csv/okul.csv
+- [Bebek](https://maliyetine.com.tr/bebek/): 11 fiyat serisi, ölçüm 2026-08-22. JSON: https://maliyetine.com.tr/veri/bebek.json · CSV: https://maliyetine.com.tr/veri/csv/bebek.csv
+- [Kedi](https://maliyetine.com.tr/kedi/): 8 fiyat serisi, ölçüm 2026-08-22. JSON: https://maliyetine.com.tr/veri/kedi.json · CSV: https://maliyetine.com.tr/veri/csv/kedi.csv
+- [Köpek](https://maliyetine.com.tr/kopek/): 7 fiyat serisi, ölçüm 2026-08-22. JSON: https://maliyetine.com.tr/veri/kopek.json · CSV: https://maliyetine.com.tr/veri/csv/kopek.csv
+- [0 km Araç](https://maliyetine.com.tr/arac/): 25 fiyat serisi, ölçüm 2026-08-20. JSON: https://maliyetine.com.tr/veri/arac.json · CSV: https://maliyetine.com.tr/veri/csv/arac.csv
 
 ## Veriyi indirin
 
-- Tüm kalemler tek dosyada (CSV): https://maliyetine.com.tr/veri/csv/tum-kalemler.csv
+- Tüm fiyat serileri tek dosyada (CSV): https://maliyetine.com.tr/veri/csv/tum-kalemler.csv
+- Aktif envanter ve kaynak derinliği (JSON): https://maliyetine.com.tr/veri/envanter.json
 - İndirme merkezi ve sütun açıklamaları: https://maliyetine.com.tr/veri/
 - Lisans: CC BY 4.0 — atıfla serbestçe kullanılabilir.
 

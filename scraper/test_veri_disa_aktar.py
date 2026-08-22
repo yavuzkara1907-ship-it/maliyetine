@@ -122,6 +122,9 @@ class CsvTesti(unittest.TestCase):
         self.assertEqual(graf[0]["@type"], "DataCatalog")
         self.assertIn("creativecommons", graf[0]["license"])
         self.assertIn("ölçüm tarihini", sayfa)
+        self.assertIn("ücretsiz kalır", sayfa)
+        self.assertIn("sürümlenmiş sorgu API'si", sayfa)
+        self.assertIn("aynı dosyayı yeniden satmaz", sayfa)
 
     def test_ai_haritasi_veri_araclarini_formul_diye_gostermez(self):
         ozet = {"ev-kurma": {"kalem": 1, "tarih": "2026-08-05",

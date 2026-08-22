@@ -489,34 +489,6 @@
    "gun_araligi": 26,
    "aylik_degisim_yuzde": 20.0
   },
-  "salon": {
-   "seri": [
-    {
-     "tarih": "2026-07-24",
-     "medyan": 550,
-     "urun": 7,
-     "kaynak": 1
-    },
-    {
-     "tarih": "2026-07-25",
-     "medyan": 500,
-     "urun": 9,
-     "kaynak": 1
-    }
-   ],
-   "ilk": {
-    "tarih": "2026-07-24",
-    "medyan": 550,
-    "urun": 7,
-    "kaynak": 1
-   },
-   "son": {
-    "tarih": "2026-07-25",
-    "medyan": 500,
-    "urun": 9,
-    "kaynak": 1
-   }
-  },
   "taki-altin": {
    "seri": [
     {
@@ -590,7 +562,7 @@
   }
  },
  "ozet": {
-  "kalem_sayisi": 15,
+  "kalem_sayisi": 14,
   "karsilastirilabilir": 11,
   "artan": 5,
   "azalan": 4,

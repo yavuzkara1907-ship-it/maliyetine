@@ -17,8 +17,55 @@
   rehber eklendi.
 - Site artık tek konu değil, **veri ürünü + hesaplayıcı ağı**:
   **7 vertikal** (`dugun`, `ev-kurma`, `okul`, `bebek`, `kedi`, `kopek`,
-  `arac`), **122 ölçülen kalem**, **26 bağımsız `/hesap/` hesaplayıcı**,
+  `arac`), **121 aktif fiyat serisi**, **26 bağımsız `/hesap/` hesaplayıcı**,
   **25 rehber**, **186 sitemap URL'i**.
+- **Envanter sayacı tek sözleşmeye bağlandı.** Eski `122` sayısı gerçek
+  bir yayın hatasıydı: iki salon varyantına bölündükten sonra devre dışı
+  kalan eski `dugun/salon` kaydı ham arşivde doğru biçimde korunmuş, fakat
+  birleşik JSON'dan süzülmemişti. Kamusal JSON/CSV/geçmiş artık yalnız
+  `kaynaklar.yaml` içindeki aktif kimlikleri yayınlar. Doğru toplam
+  `14+42+14+11+8+7+25 = 121` **fiyat serisidir**. Ana sayfa, SSS, asistan,
+  OG, `ai.txt`, `llms.txt` ve veri merkezi bu toplamı ortak
+  `envanter_ozeti()` fonksiyonuyla JSON'dan hesaplar;
+  `/veri/envanter.json` makinece okunabilir kanonik özettir.
+- Ana sayfa kartlarındaki `12+42+11+10+6+5+1 = 87` başka bir metriktir:
+  varsayılan bütçe senaryosuna giren **bütçe satırları**. Araçta 24 marka
+  ayrı fiyat serisi olarak izlenir, fakat alternatif oldukları için
+  bütçeye yalnız tek araç girer. Kart satırları envanter diye toplanmaz;
+  arayüz bu farkı açıkça anlatır. Bundan sonra elle yazılmış site geneli
+  fiyat serisi sayısı eklenmez.
+- **Kaynak derinliği tablosu:** 121 serinin 80'i çok kaynaklı, 41'i tek
+  kaynaklıdır. Bunun 25'i üretici liste fiyatını ölçen araç serileridir;
+  bu bir pazar medyanı iddiası değil, tanımlı ölçüm yöntemidir. Gerçek
+  perakende/hizmet derinliği açığı **16 seridir:** düğün 9, bebek 2,
+  kedi 2, köpek 3. Ev 42/42 ve okul 14/14 çok kaynaklıdır. Veri kazıma
+  rastgele kapsam büyütmek için değil, önce bu 16 açığı kapatmak için
+  yapılır.
+- **Genişleme kararı:** bebek/kedi/köpek'e geçiş sürüklenme değil;
+  tekrarlanan tüketim, affiliate ve AI soru niyeti nedeniyle bilinçliydi.
+  Ancak şimdi genişlik donduruldu. Liste dışı tek kaynaklı seri sayısı
+  16'dan **8 veya altına** düşmeden, paket/birim normalizasyon açıkları
+  kapanmadan ve mevcut zaman serileri düzenli büyümeden yeni vertikal
+  açılmaz. Ev tadilatı ve tatil artık ana sayfada "yakında" sözü vermez;
+  ikisi de veri modeli kanıtlanana kadar aday havuzundadır.
+- **Kazıma sırası:** önce yüksek kullanım niyetli somut ürün açıkları
+  (`kopek/cis-pedi`, `kopek/kopek-mama-kabi`, `kopek/kopek-tasima`;
+  `kedi/kedi-tuvaleti`, `kedi/tirmalama`; `bebek/biberon-seti`,
+  `bebek/zibin-seti`), sonra düğündeki 9 tek kaynaklı hizmet/ürün serisi.
+  Araçta ikinci kaynak pazar çeşitliliği değil operasyonel yedeklilik
+  sağlar. `arabam.com` sıfır km listesi 2026-08-22 duman testinde motorun
+  robots kontrolünden geçti, düz istekle HTTP 200 ve ayrıştırılabilir
+  marka/model/fiyat kartları döndürdü. Ancak kök sayfa yalnız sınırlı
+  örnek kart gösteriyor; 25 serinin URL ve marka/model kapsamı
+  doğrulanmadan üretime eklenmez.
+- **Açık veri ile gelir modeli çakışmıyor.** Güncel JSON/CSV, tarihli
+  arşivler ve kamusal geçmiş CC BY 4.0 ile ücretsiz kalır; güven, alıntı
+  ve GEO dağıtımı bu katmanın işidir. Gelecekteki Pro/API aynı dosyaları
+  yeniden satmaz: sürümlü sorgu API'si, filtreli toplu dışa aktarım,
+  alarm/webhook, zamanlanmış rapor, ekip erişimi, yüksek limit,
+  destek/SLA ve veri kalitesi güvencesi satar. Kural: **kamusal katman
+  veriyi doğrulatır; ücretli katman iş akışında güvenilir kullanımı
+  sağlar.** Bugün açık olan dosyalar sonradan geriye dönük kapatılmaz.
 - Yayın modeli: statik dosyalar Cloudflare tarafında **Worker** ile servis
   ediliyor. Eski Pages kurulum notları tarihî kayıt; bugün doğru altyapı
   "statik çıktı + Cloudflare Worker + GitHub Actions"tır.
@@ -109,7 +156,7 @@
   `www ve HTTP -> kök HTTPS 301` olarak düzeltildi; `https://www...` ve
   `http://www...` artık `https://maliyetine.com.tr/...` adresine 301
   dönüyor, query string korunuyor, kök HTTPS 200 kalıyor.
-- Bu turun son doğrulaması: **375 Python + 90 JavaScript test PASS**.
+- Bu turun son doğrulaması: **384 Python + 90 JavaScript test PASS**.
   Tarayıcıda aylık tüketim aracı masaüstü/mobil sınandı: 60 g/gün kedi
   maması **701,86 TL/ay**, 6 bez/gün **1.674 TL/ay** verdi ve alan etiketi
   ürünle birlikte değişti. Fırın sayfasında tip tablosu, tek fiyatın
@@ -127,8 +174,9 @@
   5. Tapu, kira geliri, hisse maliyet, temettü ve işsizlik hesaplarında
      sorgu/CTR değişimi izlenmeli; örneklerin etkisi ölçülmeden aynı niyette
      ikinci sayfa açılmamalı.
-  6. Tek kaynaklı kalem oranı hâlâ takip edilmeli. EV-kurma 0/42 tek
-     kaynaklı duruma geldi; kedi/kopek kısmen kapandı ama tamamen bitmedi.
+  6. Envanterde 80 çok kaynaklı ve 41 tek kaynaklı seri var; teklerin 25'i
+     araç liste fiyatı, gerçek derinlik açığı 16. Yeni vertikal açmadan
+     önce bu 16 açık en az 8'e indirilmeli.
   7. Düğünde kalan iki tahmini kalem (`nikah-islemleri`, `orkestra-dj`)
      metodolojik karar + kaynak bulununca kapatılmalı.
   8. YouTube YPP şartları **2027-02-01** öncesi yeniden kontrol edilmeli;
@@ -1821,7 +1869,7 @@ sabitlerden alıyor; test bu ayrımı kaynak koddan yapıyor.
   165/165 · OG etiketleri ve analitik 165/165
 - 5 genişlik × 9 sayfa canlı tarama: yatay taşma yok, konsol hatası 0
 - kedi/köpek her yere işlenmiş: llms.txt, ai.txt, sitemap, CSV, geçmiş,
-  asistan (121 kalem), sosyal rotasyonu
+  asistan (121 fiyat serisi), sosyal rotasyonu
 - Sayfalardaki "veride bulunmayan" 35 rakam tek tek doğrulandı: hepsi
   meşru grup alt toplamı (köpek 2.141 = 597+1.544 Gezdirme)
 
@@ -2593,10 +2641,12 @@ Siradaki urun rotasi:
    Gemini ve Bing Webmaster AI Performance raporuyla sayfa bazinda izle;
    alinti alan sayfa kalibini veriyle cogalt.
 
-### OLCUM: TEK KAYNAKLI KALEMLER (2026-08-09)
-122 olculen kalemin **52'si (%43)** tek kaynakli:
+### OLCUM: TEK KAYNAKLI KALEMLER (2026-08-09, TARIHI SNAPSHOT)
+O tarihte yayinda sayilan 122 kaydin **52'si (%43)** tek kaynakliydi:
 arac 25 (yapisal ve dogru — uretici liste fiyati) · dugun 10 ·
 **kedi 8/8** · **kopek 7/7** · bebek 2.
+Bu sayı güncel değildir; aktif envanter ve güncel derinlik için dosyanın
+başındaki `GÜNCEL SON DURUM` ile `/veri/envanter.json` esas alınır.
 
 
 ## ABD FIYAT KARSILASTIRMASI — DENENDI, SU AN YAPILAMIYOR (2026-08-09)
@@ -2606,7 +2656,7 @@ Yavuz: *"abd'de yasam maliyeti 2026 gibi bir hesaplama araci nasil olur?"*
 ulasim rakamlari gerekir; bunlar ya Numbeo tipi KALABALIK KAYNAKLI
 (beyan, olcum degil — bizim tanimimiza uymuyor) ya da uydurma olur.
 Bunun yerine bize ait olabilecek soru: **ayni urun Turkiye'de kaca,
-ABD'de kaca?** Zaten 122 kalemi olcuyoruz; ayni motorla ABD'de olcup
+ABD'de kaca?** O tarihteki 122 yayin kaydini ayni motorla ABD'de olcup
 asgari ucrete oranlayabilirdik (TL/USD kuru icin TCMB EVDS'ye zaten
 bagliyiz — resmi, tarihli, alintilanabilir).
 
@@ -2735,7 +2785,10 @@ yerde de korunmasi gerekiyor; birini duzeltmek otekini kapsamiyor.**
 ## Gelir Modeli (sıralı)
 1. Reklam (tüketici tarafı ücretsiz)
 2. Affiliate (gerçek ürün linkleri — sadece gerçek veriyle mümkün)
-3. Pro rapor / araç aboneliği (ustalar, müteahhitler, düğün firmaları)
+3. Pro/API hizmet aboneliği (ustalar, müteahhitler, düğün firmaları).
+   Kamusal JSON/CSV/geçmiş ücretsiz kalır; ücretli ürün aynı baytları
+   kilitlemez. Sürümlü sorgu, filtreli bulk export, alarm/webhook,
+   zamanlanmış rapor, ekip erişimi, yüksek limit ve SLA satar.
 
 ## GEO Gereksinimleri (her sayfada)
 - İlk 40-60 kelimede net, alıntılanabilir cevap bloğu.
@@ -3502,9 +3555,17 @@ bugün gerçekten iş açan maddeleri taşımalı; biten iş burada kalmasın.
 - [ ] **Yeni sayfa açmadan önce cannibalization kontrolü.** KDV matrah ve
       asgari ücret örneğinde olduğu gibi, bazı "eksikler" mevcut sayfanın
       kelime eksiği olabilir. Yeni sayfa ancak ayrı niyet varsa açılır.
-- [ ] **Tek kaynaklı kalem raporu çıkar.** EV-kurma 0/42 tek kaynaklı hale
-      geldi; kedi/kopek kısmen kapandı. Kalan tek kaynaklı kalemler veri
-      dosyasından ölçülüp en yüksek trafik/etki sırasıyla kapatılmalı.
+- [ ] **16 gerçek tek kaynak açığını 8 veya altına indir.** Rapor artık
+      `/veri/envanter.json` ve veri merkezinde otomatik. İlk sıra:
+      `cis-pedi`, `kopek-mama-kabi`, `kopek-tasima`, `kedi-tuvaleti`,
+      `tirmalama`, `biberon-seti`, `zibin-seti`; ardından düğündeki 9 seri.
+      Yeni vertikal bu eşik aşılmadan açılmamalı.
+- [ ] **Araç yedek kaynağını doğrula.** `arabam.com` sıfır km listesi
+      robots ve temel HTML/fiyat kartı testini geçti. Şimdi 25 serinin
+      marka/model URL kapsamını ve fiyat aralığı semantiğini doğrula;
+      sağlık testinden sonra operasyonel yedek olabilir. Aynı üretici
+      liste fiyatını ikinci kez görmek pazar medyanı sayılmaz; arayüzde
+      kaynak derinliği diye satma.
 - [ ] **Düğünde kalan tahmini iki kalemi kapat.** `nikah-islemleri` için
       belediye/resmî tarife; `orkestra-dj` için ayrı kalem mi salon
       paketinin parçası mı önce metodolojik karar. Kaynak bulunmadan

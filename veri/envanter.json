@@ -1,0 +1,67 @@
+{
+  "guncelleme_tarihi": "2026-08-22",
+  "fiyat_serisi": 121,
+  "kaynak": 20,
+  "cok_kaynakli": 80,
+  "tek_kaynak": 41,
+  "liste_fiyati_tek_kaynak": 25,
+  "perakende_hizmet_derinlik_acigi": 16,
+  "vertikaller": {
+    "dugun": {
+      "fiyat_serisi": 14,
+      "kaynak": 7,
+      "cok_kaynakli": 5,
+      "tek_kaynak": 9,
+      "liste_fiyati": false,
+      "tarih": "2026-08-20"
+    },
+    "ev-kurma": {
+      "fiyat_serisi": 42,
+      "kaynak": 9,
+      "cok_kaynakli": 42,
+      "tek_kaynak": 0,
+      "liste_fiyati": false,
+      "tarih": "2026-08-22"
+    },
+    "okul": {
+      "fiyat_serisi": 14,
+      "kaynak": 4,
+      "cok_kaynakli": 14,
+      "tek_kaynak": 0,
+      "liste_fiyati": false,
+      "tarih": "2026-08-20"
+    },
+    "bebek": {
+      "fiyat_serisi": 11,
+      "kaynak": 4,
+      "cok_kaynakli": 9,
+      "tek_kaynak": 2,
+      "liste_fiyati": false,
+      "tarih": "2026-08-22"
+    },
+    "kedi": {
+      "fiyat_serisi": 8,
+      "kaynak": 2,
+      "cok_kaynakli": 6,
+      "tek_kaynak": 2,
+      "liste_fiyati": false,
+      "tarih": "2026-08-22"
+    },
+    "kopek": {
+      "fiyat_serisi": 7,
+      "kaynak": 2,
+      "cok_kaynakli": 4,
+      "tek_kaynak": 3,
+      "liste_fiyati": false,
+      "tarih": "2026-08-22"
+    },
+    "arac": {
+      "fiyat_serisi": 25,
+      "kaynak": 1,
+      "cok_kaynakli": 0,
+      "tek_kaynak": 25,
+      "liste_fiyati": true,
+      "tarih": "2026-08-20"
+    }
+  }
+}

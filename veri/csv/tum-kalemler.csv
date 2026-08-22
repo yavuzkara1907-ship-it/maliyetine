@@ -13,7 +13,6 @@ dugun,nikah-sekeri,Nikah Şekeri,,sabit,kalem_fiyati,250,462,714,169,980,,,,,,,3
 dugun,organizasyon,Organizasyon / Süsleme,,sabit,kalem_fiyati,16550,16550,16550,16550,16550,,,,,,,1,1,dugun-com,2026-08-20
 dugun,taki-altin,Takı — Altın Bilezik (1 adet),,sabit,kalem_fiyati,33085,85022,180340,30600,243765,,,,,,,24,1,atasay,2026-07-26
 dugun,yemek-ikram,Yemek / İkram (mekanın menü bedeli),,kisi_basi,kisi_basi_fiyat,250,500,920,150,920,,,,,,,8,1,dugunbuketi,2026-08-20
-dugun,salon,salon,,,kalem_fiyati,320,525,775,200,800,,,,,,,9,1,dugunbuketi,2026-07-25
 ev-kurma,bulasik-makinesi,Bulaşık Makinesi,Beyaz eşya,sabit,kalem_fiyati,15749,23899,32499,12999,54778,,,,,,,52,3,amazon; mediamarkt; trendyol,2026-08-20
 ev-kurma,buzdolabi,Buzdolabı,Beyaz eşya,sabit,kalem_fiyati,9000,29168,59899,4880,74799,,,,,,,57,3,amazon; mediamarkt; trendyol,2026-08-09
 ev-kurma,davlumbaz,Davlumbaz,Beyaz eşya,sabit,kalem_fiyati,3373,5295,9592,2199,15992,,,,,,,60,3,amazon; mediamarkt; trendyol,2026-08-20

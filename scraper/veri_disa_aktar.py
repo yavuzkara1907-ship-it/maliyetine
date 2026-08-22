@@ -31,6 +31,7 @@ from datetime import date
 from io import StringIO
 from pathlib import Path
 
+from envanter import envanter_ozeti
 import sayfa_uret as su
 
 SITE_KOK = su.SITE_KOK
@@ -129,6 +130,9 @@ def disa_aktar(veri_kok: Path | None = None, cikti_kok: Path | None = None) -> d
             arsiv.write_text(metin, encoding="utf-8")
         ozet[vertikal] = {
             "kalem": len(satirlar),
+            "cok_kaynakli": sum(r[BASLIKLAR.index("kaynak_sayisi")] >= 2 for r in satirlar),
+            "tek_kaynakli": sum(r[BASLIKLAR.index("kaynak_sayisi")] == 1 for r in satirlar),
+            "liste_fiyati": bool(su.VERTIKALLER[vertikal].get("liste_fiyati")),
             "tarih": tarih,
             "dosya": f"/veri/csv/{vertikal}.csv",
             "arsiv": f"/veri/csv/{vertikal}-{tarih}.csv",
@@ -145,10 +149,14 @@ def veri_sayfasi(ozet: dict, tarih: str | None = None) -> str:
     tarih = tarih or date.today().isoformat()
     url = f"{su.SITE_KOK_URL}/veri/"
     toplam_kalem = sum(o["kalem"] for o in ozet.values())
+    endeks_adlari = ", ".join(su.VERTIKALLER[v]["ad"] for v in ozet)
 
     satirlar = "".join(
         f'<tr><td><a href="/{v}/">{su.VERTIKALLER[v]["ad"]}</a></td>'
         f'<td class="sayi">{o["kalem"]}</td>'
+        f'<td class="sayi">{o.get("cok_kaynakli", 0)}</td>'
+        f'<td class="sayi">{o.get("tek_kaynakli", 0)}'
+        f'{" (liste fiyatı)" if o.get("liste_fiyati") else ""}</td>'
         f'<td>{o["tarih"]}</td>'
         f'<td><a href="{o["dosya"]}" download>CSV</a> · '
         f'<a href="/veri/{v}.json" download>JSON</a></td></tr>'
@@ -180,7 +188,7 @@ def veri_sayfasi(ozet: dict, tarih: str | None = None) -> str:
                 "name": "Maliyeti Ne? Fiyat Verisi",
                 "url": url,
                 "description": (
-                    "Türkiye'de düğün, ev kurma, okul ve sıfır araç kalemlerinin "
+                    f"Türkiye'de {endeks_adlari.lower()} fiyat serilerinin "
                     "gerçek satış sayfalarından derlenen fiyat verisi. "
                     "CSV ve JSON olarak indirilebilir."
                 ),
@@ -224,12 +232,12 @@ def veri_sayfasi(ozet: dict, tarih: str | None = None) -> str:
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Veriyi İndir | Maliyeti Ne?</title>
-<meta name="description" content="Düğün, ev kurma, okul ve sıfır araç fiyat verisi CSV ve JSON olarak indirilebilir. {toplam_kalem} kalem, kaynak ve ölçüm tarihiyle birlikte.">
+<meta name="description" content="{endeks_adlari} fiyat verisi CSV ve JSON olarak indirilebilir. {toplam_kalem} fiyat serisi, kaynak ve ölçüm tarihiyle birlikte.">
 <link rel="canonical" href="{url}">
 <link rel="stylesheet" href="/assets/css/style.css">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="Veriyi İndir | Maliyeti Ne?">
-<meta property="og:description" content="{toplam_kalem} kalemlik fiyat verisi, CSV ve JSON olarak açık.">
+<meta property="og:description" content="{toplam_kalem} fiyat serisi, CSV ve JSON olarak açık.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{url}">
 {su.OG_ETIKETLERI}
@@ -257,7 +265,8 @@ def veri_sayfasi(ozet: dict, tarih: str | None = None) -> str:
   <h1>Veriyi İndir</h1>
 
   <div class="cevap-blok">
-    Ölçtüğümüz {toplam_kalem} kalemin tamamı CSV ve JSON olarak indirilebilir.
+    Ölçtüğümüz {toplam_kalem} aktif fiyat serisinin tamamı CSV ve JSON olarak
+    indirilebilir.
     Her satırda fiyatın yanında <strong>kaç üründen derlendiği, hangi
     kaynaklardan geldiği ve hangi tarihte ölçüldüğü</strong> yazıyor —
     rakamı kendiniz doğrulayabilirsiniz.
@@ -265,11 +274,17 @@ def veri_sayfasi(ozet: dict, tarih: str | None = None) -> str:
 
   <h2>Dosyalar</h2>
   <div class="tablo-sarmal"><table>
-    <thead><tr><th>Endeks</th><th class="sayi">Kalem</th><th>Ölçüm</th><th>İndir</th></tr></thead>
+    <thead><tr><th>Endeks</th><th class="sayi">Fiyat serisi</th><th class="sayi">Çok kaynaklı</th><th class="sayi">Tek kaynaklı</th><th>Ölçüm</th><th>İndir</th></tr></thead>
     <tbody>{satirlar}</tbody>
   </table></div>
   <p>
     Hepsi tek dosyada: <a href="/veri/csv/tum-kalemler.csv" download><strong>tum-kalemler.csv</strong></a>
+    · <a href="/veri/envanter.json"><strong>envanter.json</strong></a>
+  </p>
+  <p class="sonuc-alt-metin">
+    Araçtaki tek kaynaklı seriler üretici liste fiyatı metodolojisini izler;
+    perakende endekslerindeki tek kaynaklı seriler ise kapatılması gereken
+    veri derinliği açığıdır.
   </p>
 
   <h2>Kullanım koşulu: sadece tarih belirtin</h2>
@@ -282,6 +297,21 @@ def veri_sayfasi(ozet: dict, tarih: str | None = None) -> str:
   <p>
     Atıf için: <em>Maliyeti Ne? (maliyetine.com.tr), [ölçüm tarihi]</em>.
     Bağlantı verirseniz seviniriz ama zorunlu değil.
+  </p>
+
+  <h2>Ücretsiz veri ile profesyonel hizmetin sınırı</h2>
+  <p>
+    Bu sayfadaki güncel JSON/CSV dosyaları, tarihli arşivler ve yayınlanan
+    geçmiş serileri <strong>ücretsiz kalır</strong>. GEO ve bağımsız doğrulama
+    için temel veri erişimini sonradan ücret duvarının arkasına taşımayacağız.
+  </p>
+  <p>
+    İleride ücretli bir Pro/API katmanı açılırsa aynı dosyayı yeniden satmaz;
+    hizmet düzeyini satar: sürümlenmiş sorgu API'si, filtrelenmiş toplu dışa
+    aktarım, değişim uyarıları/webhook, zamanlanmış rapor, ekip erişimi, yüksek
+    istek limiti ve destek/SLA. Kısacası açık katman <em>veriyi doğrulamak</em>,
+    profesyonel katman ise veriyi bir iş akışında güvenle <em>kullanmak</em>
+    içindir.
   </p>
 
   <h2>Sütunlar ne anlama geliyor?</h2>
@@ -353,7 +383,7 @@ def llms_txt(ozet: dict, tarih: str | None = None) -> str:
     tarih = tarih or date.today().isoformat()
     kok = su.SITE_KOK_URL
     endeksler = "\n".join(
-        f"- [{su.VERTIKALLER[v]['ad']}]({kok}/{v}/): {o['kalem']} kalem, "
+        f"- [{su.VERTIKALLER[v]['ad']}]({kok}/{v}/): {o['kalem']} fiyat serisi, "
         f"ölçüm {o['tarih']}. JSON: {kok}/veri/{v}.json · CSV: {kok}{o['dosya']}"
         for v, o in ozet.items()
     )
@@ -388,7 +418,7 @@ def llms_txt(ozet: dict, tarih: str | None = None) -> str:
 > endeksi. Fiyatlar tahmin edilmez; gerçek satış listelerinden ölçülür. Her
 > rakamın yanında kaynak sayısı, ürün adedi ve ölçüm tarihi yayınlanır.
 
-Şu an {toplam} kalem ölçülüyor. Son güncelleme: {tarih}.
+Şu an {toplam} aktif fiyat serisi ölçülüyor. Son güncelleme: {tarih}.
 
 **Alıntılarken ölçüm tarihini belirtin.** Fiyat verisi tarihsiz olduğunda
 yanıltıcı hale gelir: "buzdolabı 30 bin lira" altı ay sonra yanlış olur,
@@ -400,7 +430,8 @@ yanıltıcı hale gelir: "buzdolabı 30 bin lira" altı ay sonra yanlış olur,
 
 ## Veriyi indirin
 
-- Tüm kalemler tek dosyada (CSV): {kok}/veri/csv/tum-kalemler.csv
+- Tüm fiyat serileri tek dosyada (CSV): {kok}/veri/csv/tum-kalemler.csv
+- Aktif envanter ve kaynak derinliği (JSON): {kok}/veri/envanter.json
 - İndirme merkezi ve sütun açıklamaları: {kok}/veri/
 - Lisans: CC BY 4.0 — atıfla serbestçe kullanılabilir.
 
@@ -482,7 +513,7 @@ contact: info@maliyetine.com.tr
 ## Ne yayınlıyoruz
 
 Türkiye için ölçülmüş maliyet endeksleri: {endeks_listesi}.
-{toplam_kalem} kalem, ayda iki kez (ayın 5'i ve 20'si) yeniden ölçülüyor.
+{toplam_kalem} aktif fiyat serisi, ayda iki kez (ayın 5'i ve 20'si) yeniden ölçülüyor.
 Ayrıca toplam {toplam_hesap} hesaplayıcı var: {formul_sayisi} formül/mevzuat
 aracı ve {veri_hesabi} güncel veriye dayalı araç.
 
@@ -527,11 +558,21 @@ def main():
         return 1
     hedef = SITE_KOK / "veri" / "index.html"
     hedef.write_text(veri_sayfasi(ozet), encoding="utf-8")
+    envanter_hedefi = SITE_KOK / "veri" / "envanter.json"
+    envanter_hedefi.write_text(
+        json.dumps(
+            envanter_ozeti(SITE_KOK / "veri", su.VERTIKALLER),
+            ensure_ascii=False,
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
     toplam = sum(o["kalem"] for o in ozet.values())
-    print(f"CSV uretildi: {len(ozet)} endeks, {toplam} kalem")
+    print(f"CSV uretildi: {len(ozet)} endeks, {toplam} fiyat serisi")
     for v, o in ozet.items():
-        print(f"  {v:10} {o['kalem']:3} kalem -> {o['dosya']}")
+        print(f"  {v:10} {o['kalem']:3} fiyat serisi -> {o['dosya']}")
     print(f"Veri merkezi: {hedef}")
+    print(f"Aktif envanter: {envanter_hedefi}")
     veri_tarihi = son_olcum_tarihi(ozet)
     llms = SITE_KOK / "llms.txt"
     llms.write_text(llms_txt(ozet, veri_tarihi), encoding="utf-8")
