@@ -1,4 +1,4 @@
-name: Aylık Veri Güncelleme
+name: Fiyat Verisi Güncelleme (Ayda İki Kez)
 
 # Kazıma -> birleştirme -> statik sayfa üretimi zincirini otomatikleştirir
 # (bkz. CLAUDE.md "Modüller" -> 6. Aylık otomasyon). Sıra:

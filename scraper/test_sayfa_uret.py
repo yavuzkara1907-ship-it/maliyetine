@@ -1205,3 +1205,64 @@ class OgEtiketleriTesti(unittest.TestCase):
             elle = [sat for _, sat in gecerli
                     if 'property="og:image"' in sat and "OG_GORSEL_URL" not in sat]
             self.assertEqual(elle, [], f"{ad} icinde elle yazilmis og:image var")
+
+
+class OlcumSozlesmesiTesti(unittest.TestCase):
+    """Paket fiyati tuketim donemine sessizce donusturulemez."""
+
+    def test_aylik_etiket_yalniz_normalize_olcumde_kullanilir(self):
+        for vertikal, conf in sayfa_uret.VERTIKALLER.items():
+            for kalem in conf["kalemler"]:
+                iddia = f"{kalem['ad']} {kalem.get('grup', '')}".lower()
+                if "aylık" in iddia:
+                    self.assertEqual(
+                        kalem.get("olcum_turu"), "aylik_normalize",
+                        f"{vertikal}/{kalem['id']}: aylik iddia normalize degil",
+                    )
+
+    def test_paket_kalemleri_acikca_isaretli_ve_toplam_harici(self):
+        paketler = []
+        for conf in sayfa_uret.VERTIKALLER.values():
+            paketler.extend(
+                k for k in conf["kalemler"] if k.get("olcum_turu") == "paket_fiyati"
+            )
+        self.assertEqual(len(paketler), 5)
+        for kalem in paketler:
+            self.assertIn("paket", kalem["ad"].lower())
+            self.assertIs(kalem.get("varsayilan_dahil"), False)
+
+    def test_paket_cevabi_aylik_ve_yillik_carpim_yapmaz(self):
+        conf = sayfa_uret.VERTIKALLER["kedi"]
+        kalemler = {
+            "kedi-mamasi": {"segmentler": {"orta": {"medyan": 1000}}},
+            "kedi-kumu": {"segmentler": {"orta": {"medyan": 500}}},
+        }
+        metin = sayfa_uret._tekrarlayan_urun_ifadesi(conf, kalemler)
+        self.assertIn("birer paketlik", metin)
+        self.assertIn("1.500 TL", metin)
+        self.assertNotIn("ayda", metin)
+        self.assertNotIn("yılda", metin)
+
+    def test_paket_grubu_varsayilan_butce_sssine_girmez(self):
+        conf = sayfa_uret.VERTIKALLER["kedi"]
+        kalemler = {
+            "kedi-mamasi": {"genel_medyan": 1000},
+            "kedi-kumu": {"genel_medyan": 500},
+        }
+        sorular = sayfa_uret._grup_toplamlari(conf, kalemler, "orta")
+        self.assertFalse(any("Tekrarlayan ürün" in s["name"] for s in sorular))
+
+    def test_hesaplayici_js_tanimlari_da_paket_sozlesmesini_tasir(self):
+        for dosya in ("bebek", "kedi", "kopek"):
+            kaynak = (sayfa_uret.SITE_KOK / "assets" / "js" /
+                      f"{dosya}-kalemler.js").read_text(encoding="utf-8")
+            self.assertNotIn("(aylık)", kaynak)
+            self.assertNotIn("Aylık sarf", kaynak)
+        for kalem_id in ("bebek-bezi", "kedi-mamasi", "kedi-kumu",
+                         "kopek-mamasi", "cis-pedi"):
+            dosya = ("bebek" if kalem_id == "bebek-bezi" else
+                     "kedi" if kalem_id.startswith("kedi-") else "kopek")
+            kaynak = (sayfa_uret.SITE_KOK / "assets" / "js" /
+                      f"{dosya}-kalemler.js").read_text(encoding="utf-8")
+            satir = next(s for s in kaynak.splitlines() if f'id: "{kalem_id}"' in s)
+            self.assertIn('olcum_turu: "paket_fiyati"', satir)

@@ -5,8 +5,8 @@ const KOPEK_KALEMLERI = [
   { id: "kopek-yatagi", ad: "Köpek Yatağı", birim: "sabit", kaynak_tipi: "gercek", grup: "Yaşam alanı" },
   { id: "kopek-oyuncagi", ad: "Köpek Oyuncağı", birim: "sabit", kaynak_tipi: "gercek", grup: "Yaşam alanı" },
   { id: "kopek-mama-kabi", ad: "Köpek Mama ve Su Kabı", birim: "sabit", kaynak_tipi: "gercek", grup: "Beslenme" },
-  { id: "kopek-mamasi", ad: "Köpek Maması (aylık)", birim: "sabit", kaynak_tipi: "gercek", grup: "Aylık sarf", varsayilan_dahil: false },
-  { id: "cis-pedi", ad: "Çiş Pedi (aylık)", birim: "sabit", kaynak_tipi: "gercek", grup: "Aylık sarf", varsayilan_dahil: false },
+  { id: "kopek-mamasi", ad: "Köpek Maması (paket)", birim: "sabit", olcum_turu: "paket_fiyati", kaynak_tipi: "gercek", grup: "Tekrarlayan ürün", varsayilan_dahil: false },
+  { id: "cis-pedi", ad: "Çiş Pedi (paket)", birim: "sabit", olcum_turu: "paket_fiyati", kaynak_tipi: "gercek", grup: "Tekrarlayan ürün", varsayilan_dahil: false },
 ];
 
 if (typeof module !== "undefined" && module.exports) {

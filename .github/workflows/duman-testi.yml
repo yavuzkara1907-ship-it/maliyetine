@@ -141,6 +141,12 @@ jobs:
       - name: Sayfa üretim zinciri (commit edilmez)
         working-directory: scraper
         run: |
+          # Uretimle ayni sira: birlestir -> gecmis -> sayfalar. Runner
+          # gecici oldugu icin olusan farklar kalici veriye yazilmaz.
+          for v in dugun ev-kurma okul bebek kedi kopek arac; do
+            python agrega.py --vertikal "$v" >/dev/null
+          done
+          python gecmis.py >/dev/null
           # Vertikal listesi sayfa_uret.VERTIKALLER ile AYNI olmali -
           # bir test bunu dogruluyor. 2026-08-03'e kadar kedi/kopek
           # eksikti; o kod yollari runner'da hic denenmiyordu.
@@ -152,7 +158,6 @@ jobs:
           python rehber.py >/dev/null
           python hesaplayicilar.py >/dev/null
           python veri_disa_aktar.py >/dev/null
-          python gecmis.py --cikti-kok /tmp/duman-gecmis >/dev/null
           python sosyal.py >/dev/null
           python -c "import og_gorsel; print(og_gorsel.tum_kartlar(), 'kart')"
           echo "Zincir tamam."

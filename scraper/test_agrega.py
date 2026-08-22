@@ -60,6 +60,12 @@ class KaynakOkumaTestleri(unittest.TestCase):
         (self.vertikal_klasoru / "bozuk.json").write_text("{ gecersiz", encoding="utf-8")
         self.assertEqual(agrega.kaynak_dosyalarini_oku(self.vertikal_klasoru), [])
 
+    def test_dosya_sirasi_deterministik(self):
+        _kayit_yaz(self.vertikal_klasoru, "z-kalem", "z-site", "2026-07-24")
+        _kayit_yaz(self.vertikal_klasoru, "a-kalem", "a-site", "2026-07-24")
+        kayitlar = agrega.kaynak_dosyalarini_oku(self.vertikal_klasoru)
+        self.assertEqual([k["kalem"] for k in kayitlar], ["a-kalem", "z-kalem"])
+
 
 class EnGuncelSecimTestleri(unittest.TestCase):
     def test_sagliksiz_kayit_disarida_birakilir(self):
@@ -83,10 +89,28 @@ class EnGuncelSecimTestleri(unittest.TestCase):
 
 
 class KalemBirlestirTestleri(unittest.TestCase):
+    def test_eski_aylik_etiketi_paket_fiyati_olarak_yayinlanir(self):
+        kayit = {
+            "site": "amazon",
+            "kaynak_adlari": ["Amazon - Kedi Maması (aylık)"],
+            "kalem": "kedi-mamasi",
+            "tarih": "2026-08-09",
+            "toplam_urun": 20,
+            "genel_medyan": 1000,
+            "segmentler": {},
+        }
+        ozet = agrega.kalem_birlestir([kayit])
+        self.assertEqual(ozet["olcum_turu"], "paket_fiyati")
+        self.assertEqual(
+            ozet["kaynaklar"][0]["kaynak_adlari"],
+            ["Amazon - Kedi Maması (paket fiyatı)"],
+        )
+
     def test_tek_kaynak_dogrudan_gecer(self):
         kayit = {
             "site": "trendyol", "kaynak_adlari": ["Trendyol - Gelinlik"], "tarih": "2026-07-24",
             "toplam_urun": 23, "genel_medyan": 5000,
+            "ornek_urunler": [{"isim": "Örnek gelinlik", "fiyat": 5000}],
             "segmentler": {"orta": {"min": 4000, "medyan": 5000, "max": 6000, "urun_sayisi": 23}},
         }
         ozet = agrega.kalem_birlestir([kayit])
@@ -94,6 +118,10 @@ class KalemBirlestirTestleri(unittest.TestCase):
         self.assertEqual(ozet["segmentler"]["orta"]["kaynak_sayisi"], 1)
         self.assertEqual(ozet["kaynak_sayisi"], 1)
         self.assertEqual(ozet["genel_medyan"], 5000)
+        self.assertEqual(
+            ozet["kaynaklar"][0]["ornek_urunler"],
+            [{"isim": "Örnek gelinlik", "fiyat": 5000}],
+        )
         self.assertNotIn("dusuk", ozet["segmentler"])
 
     def test_iki_kaynak_medyan_of_medyan(self):
@@ -208,6 +236,16 @@ class VertikalAgregaliTestleri(unittest.TestCase):
         self.assertEqual(uyari["fark_yuzdesi"], 351.0)
         self.assertEqual(uyari["medyanlar"], {"atasay": 19405, "trendyol": 4298})
         self.assertIsNone(sonuc["kalemler"]["gelinlik"]["capraz_dogrulama_uyarisi"])
+
+    def test_olcum_turu_json_sozlesmesinde_kalem_bazinda_yer_alir(self):
+        _kayit_yaz(self.vertikal_klasoru, "kedi-mamasi", "amazon", "2026-08-09")
+        _kayit_yaz(self.vertikal_klasoru, "salon-yemekli", "dugunbuketi", "2026-08-09")
+        _kayit_yaz(self.vertikal_klasoru, "gelinlik", "trendyol", "2026-08-09")
+
+        sonuc = agrega.vertikal_agregali("dugun", self.veri_kok)
+        self.assertEqual(sonuc["kalemler"]["kedi-mamasi"]["olcum_turu"], "paket_fiyati")
+        self.assertEqual(sonuc["kalemler"]["salon-yemekli"]["olcum_turu"], "kisi_basi_fiyat")
+        self.assertEqual(sonuc["kalemler"]["gelinlik"]["olcum_turu"], "kalem_fiyati")
 
     def test_uyari_false_olan_rapor_yoksayilir(self):
         # motor.py, esigi asmayan kalemler icin de bir rapor dosyasi yazar

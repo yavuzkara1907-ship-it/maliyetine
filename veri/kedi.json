@@ -2,31 +2,32 @@
   "vertikal": "kedi",
   "guncelleme_tarihi": "2026-08-20",
   "kalemler": {
-    "mama-su-kabi": {
+    "kedi-kumu": {
+      "olcum_turu": "paket_fiyati",
       "segmentler": {
         "dusuk": {
-          "min": 99,
-          "medyan": 154,
-          "max": 215,
-          "urun_sayisi": 17,
+          "min": 107,
+          "medyan": 248,
+          "max": 370,
+          "urun_sayisi": 18,
           "kaynak_sayisi": 2
         },
         "orta": {
-          "min": 220,
-          "medyan": 356,
-          "max": 538,
-          "urun_sayisi": 33,
+          "min": 225,
+          "medyan": 403,
+          "max": 889,
+          "urun_sayisi": 30,
           "kaynak_sayisi": 2
         },
         "luks": {
-          "min": 449,
-          "medyan": 600,
-          "max": 1352,
-          "urun_sayisi": 12,
+          "min": 359,
+          "medyan": 805,
+          "max": 1296,
+          "urun_sayisi": 14,
           "kaynak_sayisi": 2
         }
       },
-      "genel_medyan": 342,
+      "genel_medyan": 398,
       "toplam_urun": 62,
       "guncelleme_tarihi": "2026-08-20",
       "kaynak_sayisi": 2,
@@ -34,25 +35,89 @@
         {
           "site": "amazon",
           "kaynak_adlari": [
-            "Amazon - Mama ve Su Kabı"
+            "Amazon - Kedi Kumu (paket fiyatı)"
           ],
           "tarih": "2026-08-09",
-          "toplam_urun": 42,
-          "genel_medyan": 320
+          "toplam_urun": 38,
+          "genel_medyan": 299
         },
         {
           "site": "petzzshop",
           "kaynak_adlari": [
-            "petzzshop - Kedi Mama ve Su Kaplari"
+            "petzzshop - Kedi Kumu"
           ],
           "tarih": "2026-08-20",
-          "toplam_urun": 20,
-          "genel_medyan": 363
+          "toplam_urun": 24,
+          "genel_medyan": 498
         }
       ],
-      "capraz_dogrulama_uyarisi": null
+      "capraz_dogrulama_uyarisi": {
+        "fark_yuzdesi": 58.5,
+        "medyanlar": {
+          "amazon": 299,
+          "petzzshop": 474
+        }
+      }
+    },
+    "kedi-mamasi": {
+      "olcum_turu": "paket_fiyati",
+      "segmentler": {
+        "dusuk": {
+          "min": 118,
+          "medyan": 688,
+          "max": 1147,
+          "urun_sayisi": 20,
+          "kaynak_sayisi": 2
+        },
+        "orta": {
+          "min": 744,
+          "medyan": 1902,
+          "max": 3757,
+          "urun_sayisi": 37,
+          "kaynak_sayisi": 2
+        },
+        "luks": {
+          "min": 1535,
+          "medyan": 3351,
+          "max": 7044,
+          "urun_sayisi": 17,
+          "kaynak_sayisi": 2
+        }
+      },
+      "genel_medyan": 1850,
+      "toplam_urun": 74,
+      "guncelleme_tarihi": "2026-08-20",
+      "kaynak_sayisi": 2,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Kedi Maması (paket fiyatı)"
+          ],
+          "tarih": "2026-08-09",
+          "toplam_urun": 50,
+          "genel_medyan": 1102
+        },
+        {
+          "site": "petzzshop",
+          "kaynak_adlari": [
+            "petzzshop - Kedi Mamasi"
+          ],
+          "tarih": "2026-08-20",
+          "toplam_urun": 24,
+          "genel_medyan": 2599
+        }
+      ],
+      "capraz_dogrulama_uyarisi": {
+        "fark_yuzdesi": 45.1,
+        "medyanlar": {
+          "amazon": 1102,
+          "petzzshop": 1599
+        }
+      }
     },
     "kedi-oyuncagi": {
+      "olcum_turu": "kalem_fiyati",
       "segmentler": {
         "dusuk": {
           "min": 50,
@@ -108,63 +173,50 @@
         }
       }
     },
-    "tasima-cantasi": {
+    "kedi-tuvaleti": {
+      "olcum_turu": "kalem_fiyati",
       "segmentler": {
         "dusuk": {
-          "min": 212,
-          "medyan": 1134,
-          "max": 2455,
-          "urun_sayisi": 19,
-          "kaynak_sayisi": 2
+          "min": 300,
+          "medyan": 372,
+          "max": 580,
+          "urun_sayisi": 8,
+          "kaynak_sayisi": 1
         },
         "orta": {
-          "min": 719,
-          "medyan": 2170,
-          "max": 3975,
-          "urun_sayisi": 33,
-          "kaynak_sayisi": 2
+          "min": 599,
+          "medyan": 1349,
+          "max": 2699,
+          "urun_sayisi": 15,
+          "kaynak_sayisi": 1
         },
         "luks": {
-          "min": 1699,
-          "medyan": 3880,
-          "max": 9181,
-          "urun_sayisi": 12,
-          "kaynak_sayisi": 2
+          "min": 3389,
+          "medyan": 9999,
+          "max": 11889,
+          "urun_sayisi": 7,
+          "kaynak_sayisi": 1
         }
       },
-      "genel_medyan": 2069,
-      "toplam_urun": 64,
+      "genel_medyan": 1124,
+      "toplam_urun": 30,
       "guncelleme_tarihi": "2026-08-20",
-      "kaynak_sayisi": 2,
+      "kaynak_sayisi": 1,
       "kaynaklar": [
         {
           "site": "amazon",
           "kaynak_adlari": [
-            "Amazon - Taşıma Çantası"
-          ],
-          "tarih": "2026-08-09",
-          "toplam_urun": 48,
-          "genel_medyan": 1075
-        },
-        {
-          "site": "petzzshop",
-          "kaynak_adlari": [
-            "petzzshop - Kedi Tasima Cantasi"
+            "Amazon - Kedi Tuvaleti"
           ],
           "tarih": "2026-08-20",
-          "toplam_urun": 16,
-          "genel_medyan": 3063
+          "toplam_urun": 30,
+          "genel_medyan": 1124
         }
       ],
-      "capraz_dogrulama_uyarisi": {
-        "fark_yuzdesi": 187.7,
-        "medyanlar": {
-          "amazon": 1075,
-          "petzzshop": 3093
-        }
-      }
+      "capraz_dogrulama_uyarisi": null
     },
     "kedi-yatagi": {
+      "olcum_turu": "kalem_fiyati",
       "segmentler": {
         "dusuk": {
           "min": 199,
@@ -220,72 +272,32 @@
         }
       }
     },
-    "kedi-tuvaleti": {
+    "mama-su-kabi": {
+      "olcum_turu": "kalem_fiyati",
       "segmentler": {
         "dusuk": {
-          "min": 300,
-          "medyan": 372,
-          "max": 580,
-          "urun_sayisi": 8,
-          "kaynak_sayisi": 1
-        },
-        "orta": {
-          "min": 599,
-          "medyan": 1349,
-          "max": 2699,
-          "urun_sayisi": 15,
-          "kaynak_sayisi": 1
-        },
-        "luks": {
-          "min": 3389,
-          "medyan": 9999,
-          "max": 11889,
-          "urun_sayisi": 7,
-          "kaynak_sayisi": 1
-        }
-      },
-      "genel_medyan": 1124,
-      "toplam_urun": 30,
-      "guncelleme_tarihi": "2026-08-20",
-      "kaynak_sayisi": 1,
-      "kaynaklar": [
-        {
-          "site": "amazon",
-          "kaynak_adlari": [
-            "Amazon - Kedi Tuvaleti"
-          ],
-          "tarih": "2026-08-20",
-          "toplam_urun": 30,
-          "genel_medyan": 1124
-        }
-      ],
-      "capraz_dogrulama_uyarisi": null
-    },
-    "kedi-kumu": {
-      "segmentler": {
-        "dusuk": {
-          "min": 107,
-          "medyan": 248,
-          "max": 370,
-          "urun_sayisi": 18,
+          "min": 99,
+          "medyan": 154,
+          "max": 215,
+          "urun_sayisi": 17,
           "kaynak_sayisi": 2
         },
         "orta": {
-          "min": 225,
-          "medyan": 403,
-          "max": 889,
-          "urun_sayisi": 30,
+          "min": 220,
+          "medyan": 356,
+          "max": 538,
+          "urun_sayisi": 33,
           "kaynak_sayisi": 2
         },
         "luks": {
-          "min": 359,
-          "medyan": 805,
-          "max": 1296,
-          "urun_sayisi": 14,
+          "min": 449,
+          "medyan": 600,
+          "max": 1352,
+          "urun_sayisi": 12,
           "kaynak_sayisi": 2
         }
       },
-      "genel_medyan": 398,
+      "genel_medyan": 342,
       "toplam_urun": 62,
       "guncelleme_tarihi": "2026-08-20",
       "kaynak_sayisi": 2,
@@ -293,31 +305,83 @@
         {
           "site": "amazon",
           "kaynak_adlari": [
-            "Amazon - Kedi Kumu (aylık)"
+            "Amazon - Mama ve Su Kabı"
           ],
           "tarih": "2026-08-09",
-          "toplam_urun": 38,
-          "genel_medyan": 299
+          "toplam_urun": 42,
+          "genel_medyan": 320
         },
         {
           "site": "petzzshop",
           "kaynak_adlari": [
-            "petzzshop - Kedi Kumu"
+            "petzzshop - Kedi Mama ve Su Kaplari"
           ],
           "tarih": "2026-08-20",
-          "toplam_urun": 24,
-          "genel_medyan": 498
+          "toplam_urun": 20,
+          "genel_medyan": 363
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "tasima-cantasi": {
+      "olcum_turu": "kalem_fiyati",
+      "segmentler": {
+        "dusuk": {
+          "min": 212,
+          "medyan": 1134,
+          "max": 2455,
+          "urun_sayisi": 19,
+          "kaynak_sayisi": 2
+        },
+        "orta": {
+          "min": 719,
+          "medyan": 2170,
+          "max": 3975,
+          "urun_sayisi": 33,
+          "kaynak_sayisi": 2
+        },
+        "luks": {
+          "min": 1699,
+          "medyan": 3880,
+          "max": 9181,
+          "urun_sayisi": 12,
+          "kaynak_sayisi": 2
+        }
+      },
+      "genel_medyan": 2069,
+      "toplam_urun": 64,
+      "guncelleme_tarihi": "2026-08-20",
+      "kaynak_sayisi": 2,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Taşıma Çantası"
+          ],
+          "tarih": "2026-08-09",
+          "toplam_urun": 48,
+          "genel_medyan": 1075
+        },
+        {
+          "site": "petzzshop",
+          "kaynak_adlari": [
+            "petzzshop - Kedi Tasima Cantasi"
+          ],
+          "tarih": "2026-08-20",
+          "toplam_urun": 16,
+          "genel_medyan": 3063
         }
       ],
       "capraz_dogrulama_uyarisi": {
-        "fark_yuzdesi": 58.5,
+        "fark_yuzdesi": 187.7,
         "medyanlar": {
-          "amazon": 299,
-          "petzzshop": 474
+          "amazon": 1075,
+          "petzzshop": 3093
         }
       }
     },
     "tirmalama": {
+      "olcum_turu": "kalem_fiyati",
       "segmentler": {
         "dusuk": {
           "min": 150,
@@ -357,62 +421,6 @@
         }
       ],
       "capraz_dogrulama_uyarisi": null
-    },
-    "kedi-mamasi": {
-      "segmentler": {
-        "dusuk": {
-          "min": 118,
-          "medyan": 688,
-          "max": 1147,
-          "urun_sayisi": 20,
-          "kaynak_sayisi": 2
-        },
-        "orta": {
-          "min": 744,
-          "medyan": 1902,
-          "max": 3757,
-          "urun_sayisi": 37,
-          "kaynak_sayisi": 2
-        },
-        "luks": {
-          "min": 1535,
-          "medyan": 3351,
-          "max": 7044,
-          "urun_sayisi": 17,
-          "kaynak_sayisi": 2
-        }
-      },
-      "genel_medyan": 1850,
-      "toplam_urun": 74,
-      "guncelleme_tarihi": "2026-08-20",
-      "kaynak_sayisi": 2,
-      "kaynaklar": [
-        {
-          "site": "amazon",
-          "kaynak_adlari": [
-            "Amazon - Kedi Maması (aylık)"
-          ],
-          "tarih": "2026-08-09",
-          "toplam_urun": 50,
-          "genel_medyan": 1102
-        },
-        {
-          "site": "petzzshop",
-          "kaynak_adlari": [
-            "petzzshop - Kedi Mamasi"
-          ],
-          "tarih": "2026-08-20",
-          "toplam_urun": 24,
-          "genel_medyan": 2599
-        }
-      ],
-      "capraz_dogrulama_uyarisi": {
-        "fark_yuzdesi": 45.1,
-        "medyanlar": {
-          "amazon": 1102,
-          "petzzshop": 1599
-        }
-      }
     }
   }
 }

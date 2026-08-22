@@ -42,12 +42,29 @@
   yönlendirmesi görüldü. Bu küçük sayı ama doğru yönde sinyal; artık
   içerik üretirken yalnız Google snippet'i değil, AI cevabına girecek kısa,
   kaynaklı, tarihli cevap blokları da hedeflenmeli.
-- AI/GEO ikinci turunda iki örnekten bağımsız ürün hamlesi yapıldı:
-  **114 tam segmentli ölçümle çalışan `/hesap/butcem-yeter-mi/`**, aylık
-  kedi ve köpek gider rehberleri, bebeğin aylık giderine dürüst alt sınır
-  cevabı ve **1.000 kişilik düğün senaryosu**. Özellik verisi olmayan
-  ürün sorularında (ör. buhar destekli fırın/indüksiyon) içerik uydurmak
-  yerine önce yeni veri alanı toplanacak.
+- AI/GEO ikinci turunun ilk çıktısı hacim değil **iddia denetimi** oldu.
+  Kedi/köpek maması, kedi kumu, çiş pedi ve bebek bezi verisi kategori
+  listesindeki paket medyanıyken yanlış biçimde "aylık" etiketlenmiş ve
+  bazı rehberlerde 12 ile çarpılmıştı. Bu iddia kaldırıldı; bu beş kalem
+  `paket_fiyati` olarak işaretleniyor, kurulum toplamına girmiyor ve aylık/
+  yıllık tutar türetmiyor. Ham tarihî snapshot'lar değişmez; birleşik JSON
+  eski etiketi yayın katmanında düzeltir. Eski indirilebilir CSV'lerdeki
+  hatalı ölçüm metadatası da fiyatlara dokunmadan `paket` olarak düzeltildi.
+- Veri zinciri artık yalnız fiyat özetini değil ölçüm sözleşmesini de taşır:
+  yeni snapshot'larda `olcum_turu`, `ham_urun_sayisi`, aykırı ürün sayısı
+  ve fiyat dağılımına yayılmış ürün denetim örneği saklanır. Birleşik JSON
+  ve CSV `olcum_turu` alanını yayınlar. Böylece yeni bir içerik iddiasının
+  veri tarafından gerçekten desteklenip desteklenmediği denetlenebilir.
+- Aynı sözleşme Python sayfa tanımlarında kalmadı; bebek/kedi/köpek
+  hesaplayıcılarının JavaScript kalemleri de `paket_fiyati` taşıyor.
+  Varsayılan toplam dışındaki paketler grup bütçesi SSS'sine sokulmuyor.
+  JSON ve zaman serisi dosya sırası deterministik; duman testi üretimdeki
+  `agrega → geçmiş → sayfa` sırasını gerçekten taklit ediyor.
+- Search Console'daki 306 sorgunun tamamı incelendi. Talep yalnız "liste"
+  değil; kullanıcılar en çok **tapu, kira vergisi, hisse maliyeti, temettü,
+  işsizlik, düğün/çeyiz** konularında doğrudan rakam ve örnek arıyor. Bu
+  yüzden yüksek talepli mevcut hesaplayıcılara statik, doğrulanabilir örnek
+  hesaplar eklendi. Yeni URL açmak varsayılan cevap değildir.
 - OpenAI arama görünürlüğü için `robots.txt` artık **OAI-SearchBot**'u da
   açıkça kabul ediyor. `llms.txt` bütün 25 aracı listeliyor ve formül
   araçlarıyla güncel veriye dayalı iki aracı birbirine karıştırmıyor.
@@ -57,21 +74,30 @@
   `www ve HTTP -> kök HTTPS 301` olarak düzeltildi; `https://www...` ve
   `http://www...` artık `https://maliyetine.com.tr/...` adresine 301
   dönüyor, query string korunuyor, kök HTTPS 200 kalıyor.
+- Bu turun son doğrulaması: **345 Python + 90 JavaScript test PASS**;
+  tarayıcıda kedi endeksi/hesaplayıcı, aylık kedi rehberi, veri merkezi ve
+  tapu hesaplayıcı kontrol edildi. Yedi endeksteki fiyatlar ve yedi zaman
+  serisi önceki commit ile sayısal olarak birebir aynı kaldı.
 - En yüksek kaldıraçlı açık işler:
   1. 301 sonrası Search Console'u 7-14 gün sonra tekrar kontrol et:
      sayfa tablosunda `www` sinyali düşüyor mu, kök hosta birleşiyor mu?
-  2. Search Console sorgu boşlukları: kira gelir vergisi, hisse/borsa
-     maliyet, tapu/ipotek harcı, temettü ve düşük CTR'li iyi pozisyon
-     sorguları. Yeni sayfa açmadan önce mevcut sayfanın cannibalize olup
-     olmayacağı kontrol edilmeli; aylık evcil hayvan ve 1.000 kişilik
-     düğün fırsatları bu turda kapatıldı.
-  3. Tek kaynaklı kalem oranı hâlâ takip edilmeli. EV-kurma 0/42 tek
+  2. **Aylık maliyet veri ürünü:** paket gramajı/adedi, birim fiyat ve
+     tüketim profili toplanmadan evcil hayvan/bebek için aylık toplam
+     yayınlanmayacak. Mevcut aylık isimli rehberler bu sınırı açıklar;
+     fırsat kapanmış değil, doğru veri bekliyor.
+  3. **Ürün özellik katmanı:** model adı, kapasite, enerji sınıfı, temel
+     özellikler ve satıcı normalize edilmeli. Search Console'daki uzun
+     beyaz eşya sorguları bu veri olmadan güvenilir cevaplanamaz.
+  4. Tapu, kira geliri, hisse maliyet, temettü ve işsizlik hesaplarında
+     sorgu/CTR değişimi izlenmeli; örneklerin etkisi ölçülmeden aynı niyette
+     ikinci sayfa açılmamalı.
+  5. Tek kaynaklı kalem oranı hâlâ takip edilmeli. EV-kurma 0/42 tek
      kaynaklı duruma geldi; kedi/kopek kısmen kapandı ama tamamen bitmedi.
-  4. Düğünde kalan iki tahmini kalem (`nikah-islemleri`, `orkestra-dj`)
+  6. Düğünde kalan iki tahmini kalem (`nikah-islemleri`, `orkestra-dj`)
      metodolojik karar + kaynak bulununca kapatılmalı.
-  5. YouTube YPP şartları **2027-02-01** öncesi yeniden kontrol edilmeli;
+  7. YouTube YPP şartları **2027-02-01** öncesi yeniden kontrol edilmeli;
      resmi eşik değişikliği tarihli notla sayfaya işlendi.
-  6. Sosyal/Meta tarafına geçilecekse önce sayfa bazlı ölçüm kartı
+  8. Sosyal/Meta tarafına geçilecekse önce sayfa bazlı ölçüm kartı
      üretimi korunmalı; Instagram metin değil görsel ister.
 
 ## Proje Sahibi
@@ -135,6 +161,27 @@ motorları için.
     ÇIKARILIP gerçek listeye taşınır — tahmini kalıcı bir durum değil.
   - Metodoloji sayfası bu ayrımı (`/dugun/metodoloji/` "Gerçek kaynak vs.
     tahmini kalemler" bölümü) açıkça anlatır, gizlemez.
+
+## KIRMIZI ÇİZGİ — Ölçüm Sözleşmesi (2026-08-22)
+- **URL sayısı güç değildir.** Bir sayının neyi ölçtüğü açık değilse çok
+  sayfa yalnızca aynı belirsizliği çoğaltır. Yeni içerikten önce iddia →
+  ölçüm türü → birim → kaynak → tarih zinciri kurulmalıdır.
+- Yayınlanan her kalem bir `olcum_turu` taşır:
+  - `kalem_fiyati`: kategori/listing içindeki bir ürün veya hizmet fiyatı.
+  - `paket_fiyati`: bir paket fiyatı; aylık tüketim değildir.
+  - `kisi_basi_fiyat`: ölçekle çarpılabilen kişi başı fiyat.
+  - `aylik_normalize`: yalnız miktar/birim ve tüketim dönemi gerçekten
+    normalize edildiğinde kullanılabilecek gelecek tür.
+- Yalnız `aylik_normalize` bir değer 12 ile çarpılarak yıllıklaştırılabilir.
+  Paket medyanı, kategori ortalaması veya "tekrarlayan ürün" olması bunu
+  haklı çıkarmaz.
+- Tekrarlayan ürünlerde hedef veri: paket gramajı/adedi, karşılaştırılabilir
+  birim fiyat (`TL/kg`, `TL/litre`, `TL/adet`), kullanım profili ve tüketim
+  varsayımının kaynağı. Bu alanlar yoksa aylık toplam yerine ölçüm sınırı
+  yazılır.
+- Ürün sorgularında yalnız fiyat yetmez. Ham ürün adı ve denetim örneği
+  korunur; sonraki katmanda marka/model, kapasite ve özellikler normalize
+  edilmeden "en iyi", "şu özellikte" veya model karşılaştırması yapılmaz.
 
 ## ÇOK KAYNAK KURALI (önemli)
 - **Tek kaynağa BAĞLI KALINMAZ.** Akakçe artık bırakıldı; kural bir
@@ -3399,11 +3446,18 @@ bugün gerçekten iş açan maddeleri taşımalı; biten iş burada kalmasın.
       redirect 2026-08-22'de düzeltildi ve canlı HTTP ile doğrulandı. 7-14
       gün sonra GSC sayfa tablosunda `www` gösterim/tık payı azalıyor mu
       bakılacak.
-- [ ] **Search Console içerik turu.** 2026-08-22 export'ta en büyük kümeler:
-      kira gelir vergisi (254 gösterim), damatlık/gelinlik (229),
-      hisse/borsa maliyet (171), tapu/ipotek (148), temettü (83).
-      Yeni sayfa açmadan önce mevcut sayfanın niyeti karşılayıp karşılamadığı
-      ve cannibalization riski kontrol edilecek.
+- [ ] **Normalize tüketim katmanı kur.** Mama için paket gramajı + `TL/kg`
+      + hayvan ağırlığına göre günlük tüketim; kum için `TL/kg` veya
+      `TL/litre` + değişim sıklığı; bez/ped için paket adedi + `TL/adet` +
+      günlük kullanım profili. Bunlar olmadan aylık/yıllık rakam yayınlama.
+- [ ] **Ürün özellik şemasını pilotla.** İlk pilot beyaz eşya: ürün adı,
+      marka/model, kapasite, enerji sınıfı ve ayırt edici özellik. Önce
+      `firin-ocak` veya Search Console'da uzun sorgu alan tek kalem; sonuç
+      güvenilir olursa diğer ürün kalemlerine yay.
+- [ ] **Yüksek niyetli hesaplayıcıları ölç.** Tapu, kira gelir vergisi,
+      hisse maliyet, temettü ve işsizlik sayfalarına 2026-08-22'de eklenen
+      örnek hesapların gösterim → tık etkisini 14-28 gün sonra karşılaştır.
+      CTR/konum hareketi yoksa title/cevap bloğu yeniden çalışılmalı.
 - [ ] **Yeni sayfa açmadan önce cannibalization kontrolü.** KDV matrah ve
       asgari ücret örneğinde olduğu gibi, bazı "eksikler" mevcut sayfanın
       kelime eksiği olabilir. Yeni sayfa ancak ayrı niyet varsa açılır.

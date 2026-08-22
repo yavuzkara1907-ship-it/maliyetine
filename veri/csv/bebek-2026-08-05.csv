@@ -1,5 +1,5 @@
 ﻿vertikal,kalem_id,kalem_adi,grup,birim,ekonomik_tl,orta_tl,ust_tl,en_dusuk_tl,en_yuksek_tl,urun_sayisi,kaynak_sayisi,kaynaklar,olcum_tarihi
-bebek,bebek-bezi,Bebek Bezi (aylık),Aylık sarf,sabit,286,592,940,160,1780,59,2,amazon; ebebek,2026-08-05
+bebek,bebek-bezi,Bebek Bezi (paket),Tekrarlayan ürün,paket,286,592,940,160,1780,59,2,amazon; ebebek,2026-08-05
 bebek,bebek-kuveti,Bebek Küveti,Bakım,sabit,750,1050,2336,500,3499,52,2,amazon; ebebek,2026-08-05
 bebek,biberon-seti,Biberon Seti,Beslenme,sabit,400,1015,1899,199,2499,41,1,amazon,2026-08-05
 bebek,gogus-pompasi,Göğüs Pompası,Beslenme,sabit,670,2336,4474,310,7000,50,2,amazon; ebebek,2026-08-05

@@ -1,8 +1,7 @@
 // Bebek vertikali kalem tanimlari.
 //
-// varsayilan_dahil: false -> bebek bezi. Bez SARF malzemesi, aylik
-// tekrarliyor; digerleri tek seferlik kurulum. Ikisini tek toplama
-// katmak ne oldugu belirsiz bir rakam uretirdi.
+// varsayilan_dahil: false -> bebek bezi. Olcum paket fiyatidir; paket
+// adedi ve tuketim normalize edilmedigi icin aylik gider degildir.
 
 const BEBEK_KALEMLERI = [
   { id: "bebek-arabasi", ad: "Bebek Arabası", birim: "sabit", kaynak_tipi: "gercek", grup: "Uyku ve taşıma" },
@@ -15,7 +14,7 @@ const BEBEK_KALEMLERI = [
   { id: "bebek-kuveti", ad: "Bebek Küveti", birim: "sabit", kaynak_tipi: "gercek", grup: "Bakım" },
   { id: "zibin-seti", ad: "Zıbın / Body Seti", birim: "sabit", kaynak_tipi: "gercek", grup: "Tekstil" },
   { id: "uyku-tulumu", ad: "Uyku Tulumu", birim: "sabit", kaynak_tipi: "gercek", grup: "Tekstil" },
-  { id: "bebek-bezi", ad: "Bebek Bezi (aylık)", birim: "sabit", kaynak_tipi: "gercek", grup: "Aylık sarf", varsayilan_dahil: false },
+  { id: "bebek-bezi", ad: "Bebek Bezi (paket)", birim: "sabit", olcum_turu: "paket_fiyati", kaynak_tipi: "gercek", grup: "Tekrarlayan ürün", varsayilan_dahil: false },
 ];
 
 if (typeof module !== "undefined" && module.exports) {

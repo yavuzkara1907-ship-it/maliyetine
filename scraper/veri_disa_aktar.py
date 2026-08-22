@@ -37,7 +37,7 @@ SITE_KOK = su.SITE_KOK
 CSV_KOK = SITE_KOK / "veri" / "csv"
 
 BASLIKLAR = [
-    "vertikal", "kalem_id", "kalem_adi", "grup", "birim",
+    "vertikal", "kalem_id", "kalem_adi", "grup", "birim", "olcum_turu",
     "ekonomik_tl", "orta_tl", "ust_tl",
     "en_dusuk_tl", "en_yuksek_tl",
     "urun_sayisi", "kaynak_sayisi", "kaynaklar", "olcum_tarihi",
@@ -63,6 +63,9 @@ def _satirlar(vertikal: str, veri: dict) -> list[list]:
         cikti.append([
             vertikal, kalem_id, t.get("ad", kalem_id), t.get("grup", ""),
             t.get("birim", ""),
+            k.get("olcum_turu") or t.get("olcum_turu") or (
+                "kisi_basi_fiyat" if t.get("birim") == "kisi_basi" else "kalem_fiyati"
+            ),
             s("dusuk"), s("orta"), s("luks"),
             s("dusuk", "min") or "", s("luks", "max") or "",
             k.get("toplam_urun") or "", len(kaynaklar),
@@ -271,6 +274,7 @@ def veri_sayfasi(ozet: dict, tarih: str | None = None) -> str:
     <tbody>
       <tr><td>ekonomik_tl / orta_tl / ust_tl</td><td>Segment ortalamaları. Fiyatlar sıralanıp en ucuz çeyrek ekonomik, ortadaki yarı orta, en pahalı çeyrek üst kabul edilir.</td></tr>
       <tr><td>en_dusuk_tl / en_yuksek_tl</td><td>Ölçümdeki en ucuz ve en pahalı ürün.</td></tr>
+      <tr><td>olcum_turu</td><td>Rakamın neyi temsil ettiği. <code>paket_fiyati</code> aylık tüketim değildir ve dönemle çarpılamaz.</td></tr>
       <tr><td>urun_sayisi</td><td>O kalem için kaç ürün fiyatı okundu.</td></tr>
       <tr><td>kaynak_sayisi / kaynaklar</td><td>Kaç bağımsız siteden derlendi ve hangileri.</td></tr>
       <tr><td>olcum_tarihi</td><td>Verinin çekildiği gün. Ayda iki kez yenilenir.</td></tr>

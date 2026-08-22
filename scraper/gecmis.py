@@ -70,7 +70,7 @@ def anlik_goruntuleri_oku(vertikal_klasoru: Path) -> dict[tuple[str, str], list[
     gruplar: dict[tuple[str, str], list[dict]] = defaultdict(list)
     if not vertikal_klasoru.exists():
         return gruplar
-    for dosya in vertikal_klasoru.glob("*.json"):
+    for dosya in sorted(vertikal_klasoru.glob("*.json")):
         if "capraz-dogrulama" in dosya.name:
             continue
         eslesme = DOSYA_DESENI.match(dosya.name)

@@ -54,6 +54,17 @@ class CsvTesti(unittest.TestCase):
         self.assertEqual(satir["en_dusuk_tl"], 6299)
         self.assertEqual(satir["en_yuksek_tl"], 61990)
 
+    def test_olcum_turu_csvde_acik(self):
+        satir = dict(zip(vd.BASLIKLAR, vd._satirlar("ev-kurma", ORNEK)[0]))
+        self.assertEqual(satir["olcum_turu"], "kalem_fiyati")
+
+        bebek = {
+            "guncelleme_tarihi": "2026-08-20",
+            "kalemler": {"bebek-bezi": ORNEK["kalemler"]["buzdolabi"]},
+        }
+        paket = dict(zip(vd.BASLIKLAR, vd._satirlar("bebek", bebek)[0]))
+        self.assertEqual(paket["olcum_turu"], "paket_fiyati")
+
     def test_csv_gercekten_ayristirilabilir(self):
         m = vd.csv_metni(vd._satirlar("ev-kurma", ORNEK))
         okunan = list(csv.reader(StringIO(m.lstrip("﻿"))))

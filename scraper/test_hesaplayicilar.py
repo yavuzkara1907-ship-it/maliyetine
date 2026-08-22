@@ -108,6 +108,20 @@ class TanimTesti(unittest.TestCase):
         for h in hc.HESAPLAYICILAR:
             self.assertGreaterEqual(len(h["sss"]), 3, f"{h['id']}: SSS az")
 
+    def test_yuksek_talepli_hesaplarda_dogrulanabilir_ornek_var(self):
+        """Search Console'daki ana sorgu kumeleri tek formulle birakilmaz."""
+        beklenen = {
+            "tapu": "5 milyon TL'lik evin",
+            "issizlik": "50.000 TL brüt ücretle",
+            "kira": "Yıllık 180.000 TL konut",
+            "hisse-maliyet": "1000 lot 50 TL",
+            "temettu": "50 TL'lik hisse 4 TL",
+        }
+        tanimlar = {h["id"]: h for h in hc.HESAPLAYICILAR}
+        for hesap_id, soru_parcasi in beklenen.items():
+            sorular = " ".join(s for s, _ in tanimlar[hesap_id]["sss"])
+            self.assertIn(soru_parcasi, sorular, hesap_id)
+
     def test_sss_cevaplari_dolgu_kalip_icermiyor(self):
         """rehber.py'deki ayni kural: yapay zeka kokan dolgu kaliplari."""
         yasak = ("unutmayın ki", "sonuç olarak", "kısacası", "peki ya",
@@ -181,7 +195,8 @@ class SayfaTesti(unittest.TestCase):
                 # ya resmi parametre dosyasinda ya SSS metninde aciklamali
                 self.assertTrue(
                     sayi in parametre_metni or ham in " ".join(
-                        c for _, c in h["sss"]) or ham in h["ozet"] or ham in h["meta"],
+                        f"{s} {c}" for s, c in h["sss"]
+                    ) or ham in h["ozet"] or ham in h["meta"],
                     f"{h['id']}: kaynagi belirsiz tutar {ham} TL",
                 )
 
@@ -250,7 +265,7 @@ class SayfaTesti(unittest.TestCase):
         birimler = {k["anahtar"]: k["birim"] for k in arac["_butce"]}
         self.assertEqual(birimler.get("dugun:salon-kokteyl"), "kişi başı")
         self.assertEqual(birimler.get("okul:tablet"), "adet")
-        self.assertEqual(birimler.get("kedi:kedi-mamasi"), "aylık")
+        self.assertEqual(birimler.get("kedi:kedi-mamasi"), "paket")
 
     def test_opsiyonel_alanda_required_YOK(self):
         """GERCEK BUG (tarayici testi yakaladi): YouTube hesabinda RPM

@@ -3956,7 +3956,7 @@ kaynaklar:
     aktif: true
     durum: "onaylandi"
 
-  - ad: "Amazon - Kedi Maması (aylık)"
+  - ad: "Amazon - Kedi Maması (paket fiyatı)"
     site: "amazon"
     url: "https://www.amazon.com.tr/s?k=kedi%20mamas%C4%B1"
     render_gerekli: true
@@ -3976,7 +3976,7 @@ kaynaklar:
     aktif: true
     durum: "onaylandi"
 
-  - ad: "Amazon - Kedi Kumu (aylık)"
+  - ad: "Amazon - Kedi Kumu (paket fiyatı)"
     site: "amazon"
     url: "https://www.amazon.com.tr/s?k=kedi%20kumu"
     render_gerekli: true
@@ -4003,7 +4003,7 @@ kaynaklar:
   # olurdu (arac vertikalindeki 'marka kalemleri' dersi).
   # ------------------------------------------------------------------
 
-  - ad: "Amazon - Köpek Maması (aylık)"
+  - ad: "Amazon - Köpek Maması (paket fiyatı)"
     site: "amazon"
     url: "https://www.amazon.com.tr/s?k=k%C3%B6pek%20mamas%C4%B1"
     render_gerekli: true
@@ -4123,7 +4123,7 @@ kaynaklar:
     aktif: true
     durum: "onaylandi"
 
-  - ad: "Amazon - Çiş Pedi (aylık)"
+  - ad: "Amazon - Çiş Pedi (paket fiyatı)"
     site: "amazon"
     url: "https://www.amazon.com.tr/s?k=k%C3%B6pek%20%C3%A7i%C5%9F%20pedi"
     render_gerekli: true

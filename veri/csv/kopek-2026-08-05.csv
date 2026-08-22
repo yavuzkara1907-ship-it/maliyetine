@@ -1,6 +1,6 @@
 ﻿vertikal,kalem_id,kalem_adi,grup,birim,ekonomik_tl,orta_tl,ust_tl,en_dusuk_tl,en_yuksek_tl,urun_sayisi,kaynak_sayisi,kaynaklar,olcum_tarihi
-kopek,kopek-mamasi,Köpek Maması (aylık),Aylık sarf,sabit,477,1517,4042,101,5049,47,1,amazon,2026-08-05
-kopek,cis-pedi,Çiş Pedi (aylık),Aylık sarf,sabit,259,387,1195,170,1470,43,1,amazon,2026-08-05
+kopek,kopek-mamasi,Köpek Maması (paket),Tekrarlayan ürün,paket,477,1517,4042,101,5049,47,1,amazon,2026-08-05
+kopek,cis-pedi,Çiş Pedi (paket),Tekrarlayan ürün,paket,259,387,1195,170,1470,43,1,amazon,2026-08-05
 kopek,kopek-mama-kabi,Köpek Mama ve Su Kabı,Beslenme,sabit,169,396,584,99,950,42,1,amazon,2026-08-05
 kopek,kopek-tasmasi,Köpek Tasması,Gezdirme,sabit,259,565,967,120,1398,38,1,amazon,2026-08-05
 kopek,kopek-tasima,Taşıma Çantası / Kafes,Gezdirme,sabit,750,1544,2870,300,4187,42,1,amazon,2026-08-05

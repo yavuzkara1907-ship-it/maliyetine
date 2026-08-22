@@ -2,48 +2,65 @@
   "vertikal": "dugun",
   "guncelleme_tarihi": "2026-08-20",
   "kalemler": {
-    "salon-kokteyl": {
+    "alyans": {
+      "olcum_turu": "kalem_fiyati",
       "segmentler": {
         "dusuk": {
-          "min": 250,
-          "medyan": 280,
-          "max": 499,
-          "urun_sayisi": 3,
-          "kaynak_sayisi": 1
+          "min": 1107,
+          "medyan": 8528,
+          "max": 17655,
+          "urun_sayisi": 8,
+          "kaynak_sayisi": 2
         },
         "orta": {
-          "min": 500,
-          "medyan": 500,
-          "max": 990,
-          "urun_sayisi": 5,
-          "kaynak_sayisi": 1
+          "min": 7490,
+          "medyan": 16045,
+          "max": 20615,
+          "urun_sayisi": 14,
+          "kaynak_sayisi": 2
         },
         "luks": {
-          "min": 1850,
-          "medyan": 2175,
-          "max": 2500,
-          "urun_sayisi": 2,
+          "min": 20980,
+          "medyan": 21270,
+          "max": 21460,
+          "urun_sayisi": 5,
           "kaynak_sayisi": 1
         }
       },
-      "genel_medyan": 500,
-      "toplam_urun": 10,
-      "guncelleme_tarihi": "2026-08-20",
-      "kaynak_sayisi": 1,
+      "genel_medyan": 11869,
+      "toplam_urun": 27,
+      "guncelleme_tarihi": "2026-07-26",
+      "kaynak_sayisi": 2,
       "kaynaklar": [
         {
-          "site": "dugunbuketi",
+          "site": "atasay",
           "kaynak_adlari": [
-            "DugunBuketi - Istanbul Dugun Mekanlari (kokteyl kisi basi)"
+            "Atasay - Alyans (marka magazasi)"
           ],
-          "tarih": "2026-08-20",
-          "toplam_urun": 10,
-          "genel_medyan": 500
+          "tarih": "2026-07-26",
+          "toplam_urun": 23,
+          "genel_medyan": 19440
+        },
+        {
+          "site": "trendyol",
+          "kaynak_adlari": [
+            "Trendyol - Alyans"
+          ],
+          "tarih": "2026-07-26",
+          "toplam_urun": 4,
+          "genel_medyan": 4298
         }
       ],
-      "capraz_dogrulama_uyarisi": null
+      "capraz_dogrulama_uyarisi": {
+        "fark_yuzdesi": 352.3,
+        "medyanlar": {
+          "atasay": 19440,
+          "trendyol": 4298
+        }
+      }
     },
     "damatlik": {
+      "olcum_turu": "kalem_fiyati",
       "segmentler": {
         "dusuk": {
           "min": 2508,
@@ -109,7 +126,149 @@
         }
       }
     },
+    "davetiye": {
+      "olcum_turu": "kalem_fiyati",
+      "segmentler": {
+        "dusuk": {
+          "min": 92,
+          "medyan": 150,
+          "max": 215,
+          "urun_sayisi": 9,
+          "kaynak_sayisi": 2
+        },
+        "orta": {
+          "min": 124,
+          "medyan": 254,
+          "max": 770,
+          "urun_sayisi": 15,
+          "kaynak_sayisi": 2
+        },
+        "luks": {
+          "min": 153,
+          "medyan": 1203,
+          "max": 3274,
+          "urun_sayisi": 6,
+          "kaynak_sayisi": 2
+        }
+      },
+      "genel_medyan": 202,
+      "toplam_urun": 30,
+      "guncelleme_tarihi": "2026-08-05",
+      "kaynak_sayisi": 2,
+      "kaynaklar": [
+        {
+          "site": "amazon",
+          "kaynak_adlari": [
+            "Amazon - Düğün Davetiyesi"
+          ],
+          "tarih": "2026-08-05",
+          "toplam_urun": 20,
+          "genel_medyan": 275
+        },
+        {
+          "site": "trendyol",
+          "kaynak_adlari": [
+            "Trendyol - Dugun Davetiyesi"
+          ],
+          "tarih": "2026-07-26",
+          "toplam_urun": 10,
+          "genel_medyan": 129
+        }
+      ],
+      "capraz_dogrulama_uyarisi": {
+        "fark_yuzdesi": 93.8,
+        "medyanlar": {
+          "trendyol": 129,
+          "amazon": 250
+        }
+      }
+    },
+    "fotografci": {
+      "olcum_turu": "kalem_fiyati",
+      "segmentler": {
+        "dusuk": {
+          "min": 15000,
+          "medyan": 15000,
+          "max": 15000,
+          "urun_sayisi": 1,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 15000,
+          "medyan": 15000,
+          "max": 15000,
+          "urun_sayisi": 1,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 15000,
+          "medyan": 15000,
+          "max": 15000,
+          "urun_sayisi": 1,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 15000,
+      "toplam_urun": 1,
+      "guncelleme_tarihi": "2026-08-20",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "dugun-com",
+          "kaynak_adlari": [
+            "Dugun.com - Istanbul Dugun Fotografcisi"
+          ],
+          "tarih": "2026-08-20",
+          "toplam_urun": 1,
+          "genel_medyan": 15000
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "gelin-arabasi": {
+      "olcum_turu": "kalem_fiyati",
+      "segmentler": {
+        "dusuk": {
+          "min": 9300,
+          "medyan": 9300,
+          "max": 9300,
+          "urun_sayisi": 1,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 9300,
+          "medyan": 9300,
+          "max": 9300,
+          "urun_sayisi": 1,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 9300,
+          "medyan": 9300,
+          "max": 9300,
+          "urun_sayisi": 1,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 9300,
+      "toplam_urun": 1,
+      "guncelleme_tarihi": "2026-08-20",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "dugun-com",
+          "kaynak_adlari": [
+            "Dugun.com - Istanbul Gelin Arabasi"
+          ],
+          "tarih": "2026-08-20",
+          "toplam_urun": 1,
+          "genel_medyan": 9300
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
     "gelin-ayakkabisi": {
+      "olcum_turu": "kalem_fiyati",
       "segmentler": {
         "dusuk": {
           "min": 590,
@@ -166,6 +325,7 @@
       }
     },
     "gelinlik": {
+      "olcum_turu": "kalem_fiyati",
       "segmentler": {
         "dusuk": {
           "min": 2250,
@@ -206,31 +366,32 @@
       ],
       "capraz_dogrulama_uyarisi": null
     },
-    "fotografci": {
+    "kuafor-makyaj": {
+      "olcum_turu": "kalem_fiyati",
       "segmentler": {
         "dusuk": {
-          "min": 15000,
-          "medyan": 15000,
-          "max": 15000,
+          "min": 12600,
+          "medyan": 12600,
+          "max": 12600,
           "urun_sayisi": 1,
           "kaynak_sayisi": 1
         },
         "orta": {
-          "min": 15000,
-          "medyan": 15000,
-          "max": 15000,
+          "min": 12600,
+          "medyan": 12600,
+          "max": 12600,
           "urun_sayisi": 1,
           "kaynak_sayisi": 1
         },
         "luks": {
-          "min": 15000,
-          "medyan": 15000,
-          "max": 15000,
+          "min": 12600,
+          "medyan": 12600,
+          "max": 12600,
           "urun_sayisi": 1,
           "kaynak_sayisi": 1
         }
       },
-      "genel_medyan": 15000,
+      "genel_medyan": 12600,
       "toplam_urun": 1,
       "guncelleme_tarihi": "2026-08-20",
       "kaynak_sayisi": 1,
@@ -238,16 +399,17 @@
         {
           "site": "dugun-com",
           "kaynak_adlari": [
-            "Dugun.com - Istanbul Dugun Fotografcisi"
+            "Dugun.com - Istanbul Gelin Saci ve Makyaji"
           ],
           "tarih": "2026-08-20",
           "toplam_urun": 1,
-          "genel_medyan": 15000
+          "genel_medyan": 12600
         }
       ],
       "capraz_dogrulama_uyarisi": null
     },
     "nikah-sekeri": {
+      "olcum_turu": "kalem_fiyati",
       "segmentler": {
         "dusuk": {
           "min": 169,
@@ -303,145 +465,8 @@
         }
       }
     },
-    "alyans": {
-      "segmentler": {
-        "dusuk": {
-          "min": 1107,
-          "medyan": 8528,
-          "max": 17655,
-          "urun_sayisi": 8,
-          "kaynak_sayisi": 2
-        },
-        "orta": {
-          "min": 7490,
-          "medyan": 16045,
-          "max": 20615,
-          "urun_sayisi": 14,
-          "kaynak_sayisi": 2
-        },
-        "luks": {
-          "min": 20980,
-          "medyan": 21270,
-          "max": 21460,
-          "urun_sayisi": 5,
-          "kaynak_sayisi": 1
-        }
-      },
-      "genel_medyan": 11869,
-      "toplam_urun": 27,
-      "guncelleme_tarihi": "2026-07-26",
-      "kaynak_sayisi": 2,
-      "kaynaklar": [
-        {
-          "site": "atasay",
-          "kaynak_adlari": [
-            "Atasay - Alyans (marka magazasi)"
-          ],
-          "tarih": "2026-07-26",
-          "toplam_urun": 23,
-          "genel_medyan": 19440
-        },
-        {
-          "site": "trendyol",
-          "kaynak_adlari": [
-            "Trendyol - Alyans"
-          ],
-          "tarih": "2026-07-26",
-          "toplam_urun": 4,
-          "genel_medyan": 4298
-        }
-      ],
-      "capraz_dogrulama_uyarisi": {
-        "fark_yuzdesi": 352.3,
-        "medyanlar": {
-          "atasay": 19440,
-          "trendyol": 4298
-        }
-      }
-    },
-    "yemek-ikram": {
-      "segmentler": {
-        "dusuk": {
-          "min": 150,
-          "medyan": 250,
-          "max": 250,
-          "urun_sayisi": 3,
-          "kaynak_sayisi": 1
-        },
-        "orta": {
-          "min": 410,
-          "medyan": 500,
-          "max": 650,
-          "urun_sayisi": 4,
-          "kaynak_sayisi": 1
-        },
-        "luks": {
-          "min": 920,
-          "medyan": 920,
-          "max": 920,
-          "urun_sayisi": 1,
-          "kaynak_sayisi": 1
-        }
-      },
-      "genel_medyan": 455,
-      "toplam_urun": 8,
-      "guncelleme_tarihi": "2026-08-20",
-      "kaynak_sayisi": 1,
-      "kaynaklar": [
-        {
-          "site": "dugunbuketi",
-          "kaynak_adlari": [
-            "DugunBuketi - Yemek Bedeli (yemekli - kokteyl farki)"
-          ],
-          "tarih": "2026-08-20",
-          "toplam_urun": 8,
-          "genel_medyan": 455
-        }
-      ],
-      "capraz_dogrulama_uyarisi": null
-    },
-    "salon-yemekli": {
-      "segmentler": {
-        "dusuk": {
-          "min": 250,
-          "medyan": 575,
-          "max": 750,
-          "urun_sayisi": 4,
-          "kaynak_sayisi": 1
-        },
-        "orta": {
-          "min": 1000,
-          "medyan": 1250,
-          "max": 1850,
-          "urun_sayisi": 5,
-          "kaynak_sayisi": 1
-        },
-        "luks": {
-          "min": 2500,
-          "medyan": 2500,
-          "max": 2500,
-          "urun_sayisi": 2,
-          "kaynak_sayisi": 1
-        }
-      },
-      "genel_medyan": 1200,
-      "toplam_urun": 11,
-      "guncelleme_tarihi": "2026-08-20",
-      "kaynak_sayisi": 1,
-      "kaynaklar": [
-        {
-          "site": "dugunbuketi",
-          "kaynak_adlari": [
-            "DugunBuketi - Istanbul Dugun Mekanlari (yemekli kisi basi)"
-          ],
-          "tarih": "2026-08-20",
-          "toplam_urun": 11,
-          "genel_medyan": 1200
-        }
-      ],
-      "capraz_dogrulama_uyarisi": null
-    },
     "organizasyon": {
+      "olcum_turu": "kalem_fiyati",
       "segmentler": {
         "dusuk": {
           "min": 16550,
@@ -482,145 +507,92 @@
       ],
       "capraz_dogrulama_uyarisi": null
     },
-    "davetiye": {
+    "salon-kokteyl": {
+      "olcum_turu": "kisi_basi_fiyat",
       "segmentler": {
         "dusuk": {
-          "min": 92,
-          "medyan": 150,
-          "max": 215,
-          "urun_sayisi": 9,
-          "kaynak_sayisi": 2
-        },
-        "orta": {
-          "min": 124,
-          "medyan": 254,
-          "max": 770,
-          "urun_sayisi": 15,
-          "kaynak_sayisi": 2
-        },
-        "luks": {
-          "min": 153,
-          "medyan": 1203,
-          "max": 3274,
-          "urun_sayisi": 6,
-          "kaynak_sayisi": 2
-        }
-      },
-      "genel_medyan": 202,
-      "toplam_urun": 30,
-      "guncelleme_tarihi": "2026-08-05",
-      "kaynak_sayisi": 2,
-      "kaynaklar": [
-        {
-          "site": "amazon",
-          "kaynak_adlari": [
-            "Amazon - Düğün Davetiyesi"
-          ],
-          "tarih": "2026-08-05",
-          "toplam_urun": 20,
-          "genel_medyan": 275
-        },
-        {
-          "site": "trendyol",
-          "kaynak_adlari": [
-            "Trendyol - Dugun Davetiyesi"
-          ],
-          "tarih": "2026-07-26",
-          "toplam_urun": 10,
-          "genel_medyan": 129
-        }
-      ],
-      "capraz_dogrulama_uyarisi": {
-        "fark_yuzdesi": 93.8,
-        "medyanlar": {
-          "trendyol": 129,
-          "amazon": 250
-        }
-      }
-    },
-    "gelin-arabasi": {
-      "segmentler": {
-        "dusuk": {
-          "min": 9300,
-          "medyan": 9300,
-          "max": 9300,
-          "urun_sayisi": 1,
+          "min": 250,
+          "medyan": 280,
+          "max": 499,
+          "urun_sayisi": 3,
           "kaynak_sayisi": 1
         },
         "orta": {
-          "min": 9300,
-          "medyan": 9300,
-          "max": 9300,
-          "urun_sayisi": 1,
+          "min": 500,
+          "medyan": 500,
+          "max": 990,
+          "urun_sayisi": 5,
           "kaynak_sayisi": 1
         },
         "luks": {
-          "min": 9300,
-          "medyan": 9300,
-          "max": 9300,
-          "urun_sayisi": 1,
+          "min": 1850,
+          "medyan": 2175,
+          "max": 2500,
+          "urun_sayisi": 2,
           "kaynak_sayisi": 1
         }
       },
-      "genel_medyan": 9300,
-      "toplam_urun": 1,
+      "genel_medyan": 500,
+      "toplam_urun": 10,
       "guncelleme_tarihi": "2026-08-20",
       "kaynak_sayisi": 1,
       "kaynaklar": [
         {
-          "site": "dugun-com",
+          "site": "dugunbuketi",
           "kaynak_adlari": [
-            "Dugun.com - Istanbul Gelin Arabasi"
+            "DugunBuketi - Istanbul Dugun Mekanlari (kokteyl kisi basi)"
           ],
           "tarih": "2026-08-20",
-          "toplam_urun": 1,
-          "genel_medyan": 9300
+          "toplam_urun": 10,
+          "genel_medyan": 500
         }
       ],
       "capraz_dogrulama_uyarisi": null
     },
-    "taki-altin": {
+    "salon-yemekli": {
+      "olcum_turu": "kisi_basi_fiyat",
       "segmentler": {
         "dusuk": {
-          "min": 30600,
-          "medyan": 33085,
-          "max": 36835,
-          "urun_sayisi": 7,
+          "min": 250,
+          "medyan": 575,
+          "max": 750,
+          "urun_sayisi": 4,
           "kaynak_sayisi": 1
         },
         "orta": {
-          "min": 64970,
-          "medyan": 85022,
-          "max": 128330,
-          "urun_sayisi": 12,
+          "min": 1000,
+          "medyan": 1250,
+          "max": 1850,
+          "urun_sayisi": 5,
           "kaynak_sayisi": 1
         },
         "luks": {
-          "min": 135720,
-          "medyan": 180340,
-          "max": 243765,
-          "urun_sayisi": 5,
+          "min": 2500,
+          "medyan": 2500,
+          "max": 2500,
+          "urun_sayisi": 2,
           "kaynak_sayisi": 1
         }
       },
-      "genel_medyan": 81058,
-      "toplam_urun": 24,
-      "guncelleme_tarihi": "2026-07-26",
+      "genel_medyan": 1200,
+      "toplam_urun": 11,
+      "guncelleme_tarihi": "2026-08-20",
       "kaynak_sayisi": 1,
       "kaynaklar": [
         {
-          "site": "atasay",
+          "site": "dugunbuketi",
           "kaynak_adlari": [
-            "Atasay - Altin Bilezik (marka magazasi)"
+            "DugunBuketi - Istanbul Dugun Mekanlari (yemekli kisi basi)"
           ],
-          "tarih": "2026-07-26",
-          "toplam_urun": 24,
-          "genel_medyan": 81058
+          "tarih": "2026-08-20",
+          "toplam_urun": 11,
+          "genel_medyan": 1200
         }
       ],
       "capraz_dogrulama_uyarisi": null
     },
     "salon": {
+      "olcum_turu": "kalem_fiyati",
       "segmentler": {
         "dusuk": {
           "min": 200,
@@ -661,43 +633,86 @@
       ],
       "capraz_dogrulama_uyarisi": null
     },
-    "kuafor-makyaj": {
+    "taki-altin": {
+      "olcum_turu": "kalem_fiyati",
       "segmentler": {
         "dusuk": {
-          "min": 12600,
-          "medyan": 12600,
-          "max": 12600,
-          "urun_sayisi": 1,
+          "min": 30600,
+          "medyan": 33085,
+          "max": 36835,
+          "urun_sayisi": 7,
           "kaynak_sayisi": 1
         },
         "orta": {
-          "min": 12600,
-          "medyan": 12600,
-          "max": 12600,
-          "urun_sayisi": 1,
+          "min": 64970,
+          "medyan": 85022,
+          "max": 128330,
+          "urun_sayisi": 12,
           "kaynak_sayisi": 1
         },
         "luks": {
-          "min": 12600,
-          "medyan": 12600,
-          "max": 12600,
+          "min": 135720,
+          "medyan": 180340,
+          "max": 243765,
+          "urun_sayisi": 5,
+          "kaynak_sayisi": 1
+        }
+      },
+      "genel_medyan": 81058,
+      "toplam_urun": 24,
+      "guncelleme_tarihi": "2026-07-26",
+      "kaynak_sayisi": 1,
+      "kaynaklar": [
+        {
+          "site": "atasay",
+          "kaynak_adlari": [
+            "Atasay - Altin Bilezik (marka magazasi)"
+          ],
+          "tarih": "2026-07-26",
+          "toplam_urun": 24,
+          "genel_medyan": 81058
+        }
+      ],
+      "capraz_dogrulama_uyarisi": null
+    },
+    "yemek-ikram": {
+      "olcum_turu": "kisi_basi_fiyat",
+      "segmentler": {
+        "dusuk": {
+          "min": 150,
+          "medyan": 250,
+          "max": 250,
+          "urun_sayisi": 3,
+          "kaynak_sayisi": 1
+        },
+        "orta": {
+          "min": 410,
+          "medyan": 500,
+          "max": 650,
+          "urun_sayisi": 4,
+          "kaynak_sayisi": 1
+        },
+        "luks": {
+          "min": 920,
+          "medyan": 920,
+          "max": 920,
           "urun_sayisi": 1,
           "kaynak_sayisi": 1
         }
       },
-      "genel_medyan": 12600,
-      "toplam_urun": 1,
+      "genel_medyan": 455,
+      "toplam_urun": 8,
       "guncelleme_tarihi": "2026-08-20",
       "kaynak_sayisi": 1,
       "kaynaklar": [
         {
-          "site": "dugun-com",
+          "site": "dugunbuketi",
           "kaynak_adlari": [
-            "Dugun.com - Istanbul Gelin Saci ve Makyaji"
+            "DugunBuketi - Yemek Bedeli (yemekli - kokteyl farki)"
           ],
           "tarih": "2026-08-20",
-          "toplam_urun": 1,
-          "genel_medyan": 12600
+          "toplam_urun": 8,
+          "genel_medyan": 455
         }
       ],
       "capraz_dogrulama_uyarisi": null

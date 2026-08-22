@@ -1,6 +1,6 @@
 ﻿vertikal,kalem_id,kalem_adi,grup,birim,ekonomik_tl,orta_tl,ust_tl,en_dusuk_tl,en_yuksek_tl,urun_sayisi,kaynak_sayisi,kaynaklar,olcum_tarihi
-kedi,kedi-kumu,Kedi Kumu (aylık),Aylık sarf,sabit,160,260,380,104,600,37,1,amazon,2026-07-28
-kedi,kedi-mamasi,Kedi Maması (aylık),Aylık sarf,sabit,274,1070,1846,118,3599,50,1,amazon,2026-07-28
+kedi,kedi-kumu,Kedi Kumu (paket),Tekrarlayan ürün,paket,160,260,380,104,600,37,1,amazon,2026-07-28
+kedi,kedi-mamasi,Kedi Maması (paket),Tekrarlayan ürün,paket,274,1070,1846,118,3599,50,1,amazon,2026-07-28
 kedi,mama-su-kabi,Mama ve Su Kabı,Beslenme,sabit,130,307,417,59,589,41,1,amazon,2026-07-28
 kedi,tasima-cantasi,Taşıma Çantası,Taşıma,sabit,300,1050,1789,199,2250,46,1,amazon,2026-07-28
 kedi,kedi-tuvaleti,Kedi Tuvaleti,Tuvalet,sabit,599,2761,17099,300,27999,46,1,amazon,2026-07-28

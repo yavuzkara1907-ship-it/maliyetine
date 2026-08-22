@@ -13,7 +13,8 @@ v0.2: vertikal-agnostik. Her vertikal VERTIKALLER sozlugunde tanimlanir
 (kalem listesi, basliklar, olcek alani); yeni vertikal eklemek = bir
 sozluk girdisi, kod degil.
 
-Aylik otomasyonda sirasi: motor.py -> agrega.py -> sayfa_uret.py -> commit.
+Otomatik uretimde sirasi: motor.py -> agrega.py -> gecmis.py ->
+sayfa_uret.py -> commit.
 
 Kullanim:
   python sayfa_uret.py --vertikal dugun
@@ -239,10 +240,11 @@ OKUL_KALEMLERI = [
 
 # Bebek vertikali (2026-07-26) - 5. vertikal.
 #
-# `varsayilan_dahil: False` -> bebek bezi. NEDEN: bez SARF malzemesi,
-# aylik tekrarliyor; digerleri tek seferlik kurulum. Ikisini tek toplama
-# katmak "bebek maliyeti 45.000 TL" gibi ne oldugu belirsiz bir rakam
-# uretirdi. Toplam = tek seferlik hazirlik; bez ayrica gosteriliyor.
+# `varsayilan_dahil: False` -> bebek bezi. Kaynaktan olctugumuz sey aylik
+# tuketim DEGIL, farkli adetlerdeki paketlerin kategori fiyatidir. Bu nedenle
+# paket fiyati tek seferlik hazirlik toplamindan ayrilir ve asla 12 ile
+# carpilmaz. Aylik maliyet ancak paket adedi + gunluk tuketim normalize
+# edildiginde yayinlanabilir.
 BEBEK_KALEMLERI = [
     {"id": "bebek-arabasi", "ad": "Bebek Arabası", "birim": "sabit", "grup": "Uyku ve taşıma"},
     {"id": "besik", "ad": "Beşik", "birim": "sabit", "grup": "Uyku ve taşıma"},
@@ -254,7 +256,8 @@ BEBEK_KALEMLERI = [
     {"id": "bebek-kuveti", "ad": "Bebek Küveti", "birim": "sabit", "grup": "Bakım"},
     {"id": "zibin-seti", "ad": "Zıbın / Body Seti", "birim": "sabit", "grup": "Tekstil"},
     {"id": "uyku-tulumu", "ad": "Uyku Tulumu", "birim": "sabit", "grup": "Tekstil"},
-    {"id": "bebek-bezi", "ad": "Bebek Bezi (aylık)", "birim": "sabit", "grup": "Aylık sarf",
+    {"id": "bebek-bezi", "ad": "Bebek Bezi (paket)", "birim": "sabit",
+     "grup": "Tekrarlayan ürün", "olcum_turu": "paket_fiyati",
      "varsayilan_dahil": False},
 ]
 
@@ -265,11 +268,9 @@ BEBEK_KALEMLERI = [
 # "marka kalemleri birbirinin alternatifi, toplanmaz" hatasinin
 # aynisi olurdu. Kopek ayri vertikal olarak eklenebilir.
 #
-# `varsayilan_dahil: False` -> mama ve kum. Bebek bezindeki ayrimin
-# aynisi: bunlar AYLIK SARF, digerleri tek seferlik kurulum. Ikisini
-# tek toplama katmak "kedi masrafi 5.000 TL" gibi ne oldugu belirsiz
-# bir rakam uretirdi. Toplam = kurulum; mama ve kum ayrica gosteriliyor
-# ve rehber yazisinda yillik karsiligi veriliyor.
+# `varsayilan_dahil: False` -> mama ve kum. Kaynaklar paket boyunu ve
+# tuketimi normalize etmedigi icin bunlar AYLIK SARF DEGIL, kategori paket
+# fiyatlaridir. Kurulumdan ayri gosterilir; aylik/yillik toplam turetilmez.
 KEDI_KALEMLERI = [
     {"id": "kedi-tuvaleti", "ad": "Kedi Tuvaleti", "birim": "sabit", "grup": "Tuvalet"},
     {"id": "tasima-cantasi", "ad": "Taşıma Çantası", "birim": "sabit", "grup": "Taşıma"},
@@ -277,10 +278,12 @@ KEDI_KALEMLERI = [
     {"id": "kedi-yatagi", "ad": "Kedi Yatağı", "birim": "sabit", "grup": "Yaşam alanı"},
     {"id": "mama-su-kabi", "ad": "Mama ve Su Kabı", "birim": "sabit", "grup": "Beslenme"},
     {"id": "kedi-oyuncagi", "ad": "Kedi Oyuncağı", "birim": "sabit", "grup": "Yaşam alanı"},
-    {"id": "kedi-mamasi", "ad": "Kedi Maması (aylık)", "birim": "sabit",
-     "grup": "Aylık sarf", "varsayilan_dahil": False},
-    {"id": "kedi-kumu", "ad": "Kedi Kumu (aylık)", "birim": "sabit",
-     "grup": "Aylık sarf", "varsayilan_dahil": False},
+    {"id": "kedi-mamasi", "ad": "Kedi Maması (paket)", "birim": "sabit",
+     "grup": "Tekrarlayan ürün", "olcum_turu": "paket_fiyati",
+     "varsayilan_dahil": False},
+    {"id": "kedi-kumu", "ad": "Kedi Kumu (paket)", "birim": "sabit",
+     "grup": "Tekrarlayan ürün", "olcum_turu": "paket_fiyati",
+     "varsayilan_dahil": False},
 ]
 
 # Kopek vertikali (2026-07-28). Kedi ile birlikte /evcil-hayvan/ hub'i
@@ -299,10 +302,12 @@ KOPEK_KALEMLERI = [
     {"id": "kopek-yatagi", "ad": "Köpek Yatağı", "birim": "sabit", "grup": "Yaşam alanı"},
     {"id": "kopek-oyuncagi", "ad": "Köpek Oyuncağı", "birim": "sabit", "grup": "Yaşam alanı"},
     {"id": "kopek-mama-kabi", "ad": "Köpek Mama ve Su Kabı", "birim": "sabit", "grup": "Beslenme"},
-    {"id": "kopek-mamasi", "ad": "Köpek Maması (aylık)", "birim": "sabit",
-     "grup": "Aylık sarf", "varsayilan_dahil": False},
-    {"id": "cis-pedi", "ad": "Çiş Pedi (aylık)", "birim": "sabit",
-     "grup": "Aylık sarf", "varsayilan_dahil": False},
+    {"id": "kopek-mamasi", "ad": "Köpek Maması (paket)", "birim": "sabit",
+     "grup": "Tekrarlayan ürün", "olcum_turu": "paket_fiyati",
+     "varsayilan_dahil": False},
+    {"id": "cis-pedi", "ad": "Çiş Pedi (paket)", "birim": "sabit",
+     "grup": "Tekrarlayan ürün", "olcum_turu": "paket_fiyati",
+     "varsayilan_dahil": False},
 ]
 
 VERTIKALLER = {
@@ -316,12 +321,12 @@ VERTIKALLER = {
         "sayfa_basligi": "Düğün Maliyeti 2026 — Kalem Kalem | Maliyeti Ne?",
         "meta_aciklama": (
             "Gelinlik, damatlık, alyans, salon ve daha fazlası: gerçek fiyat "
-            "verisinden derlenmiş, aylık güncellenen düğün maliyeti endeksi."
+            "verisinden derlenmiş, ayda iki kez güncellenen düğün maliyeti endeksi."
         ),
         "dataset_ad": "Maliyeti Ne? Düğün Maliyeti Endeksi",
         "dataset_aciklama": (
             "Türkiye'de düğün kalemlerinin gerçek e-ticaret ve ilan verisinden "
-            "derlenen aylık fiyat endeksi."
+            "ayda iki kez derlenen fiyat endeksi."
         ),
         # kisi_basi kalemleri carpan olcegi (davetli sayisi)
         "olcek_varsayilan": 150,
@@ -412,7 +417,7 @@ VERTIKALLER = {
         "soru": "2026'da sıfırdan ev kurmak kaça mal olur?",
         "sayfa_basligi": "Ev Kurma Maliyeti 2026 — Kalem Kalem | Maliyeti Ne?",
         "meta_aciklama": (
-            "Gerçek e-ticaret verisinden derlenmiş, aylık güncellenen ev kurma "
+            "Gerçek e-ticaret verisinden derlenmiş, ayda iki kez güncellenen ev kurma "
             "maliyeti endeksi. Beyaz eşya, mobilya, mutfak, tekstil — 42 kalem, "
             "kaynak ve tarihiyle."
         ),
@@ -420,7 +425,7 @@ VERTIKALLER = {
         "dataset_aciklama": (
             "Türkiye'de sıfırdan ev kurmak için gereken beyaz eşya, mobilya, "
             "mutfak ve tekstil kalemlerinin gerçek e-ticaret verisinden derlenen "
-            "aylık fiyat endeksi."
+            "ayda iki kez derlenen fiyat endeksi."
         ),
         "olcek_varsayilan": 1,
         "ornek_ifade": (
@@ -520,12 +525,12 @@ VERTIKALLER = {
         "sayfa_basligi": "Okul Masrafı 2026 — Kalem Kalem | Maliyeti Ne?",
         "meta_aciklama": (
             "Çanta, kırtasiye, kitap, ayakkabı: bir öğrencinin okul masrafı "
-            "kalem kalem. Gerçek fiyat verisinden, aylık güncellenen endeks."
+            "kalem kalem. Gerçek fiyat verisinden, ayda iki kez güncellenen endeks."
         ),
         "dataset_ad": "Maliyeti Ne? Okul Masrafı Endeksi",
         "dataset_aciklama": (
             "Türkiye'de bir öğrencinin okul alışverişi kalemlerinin gerçek "
-            "e-ticaret verisinden derlenen aylık fiyat endeksi."
+            "e-ticaret verisinden ayda iki kez derlenen fiyat endeksi."
         ),
         "olcek_varsayilan": 1,
         "ornek_ifade": "bir öğrencinin okul masrafının",
@@ -594,8 +599,8 @@ VERTIKALLER = {
         ],
         "dahil_olmayanlar": [
             "Doğum masrafı, hastane ve doktor ücretleri.",
-            "Bebek bezi ve mama gibi aylık sarf giderleri varsayılan toplamda "
-            "yok — tek seferlik hazırlıkla karıştırmamak için ayrı gösteriliyor.",
+            "Bebek bezi paket fiyatı varsayılan toplamda yok. Paket adedi ve "
+            "günlük tüketim normalize edilmediği için aylık gider olarak sunulmuyor.",
             "Bebek odası mobilyası (dolap, komodin) — ev kurma endeksinde.",
             "Kreş, bakıcı ve sağlık sigortası.",
             "Biberon sterilizatörü — ölçmeyi denedik, kaynakta sterilizatör "
@@ -631,8 +636,8 @@ VERTIKALLER = {
         "soru": "2026'da kedi bakım masrafı ne kadar?",
         "sayfa_basligi": "Kedi Masrafı 2026 — Kalem Kalem | Maliyeti Ne?",
         "meta_aciklama": (
-            "Kedi tuvaleti, taşıma çantası, mama ve kum: kedi bakım masrafı "
-            "kalem kalem. Kurulum ile aylık sarf ayrı ayrı, ölçülmüş fiyatlarla."
+            "Kedi tuvaleti, taşıma çantası, mama ve kum: kurulum ile paket "
+            "fiyatları ayrı ayrı, ölçülmüş verilerle."
         ),
         "dataset_ad": "Maliyeti Ne? Kedi Bakım Masrafı Endeksi",
         "dataset_aciklama": (
@@ -650,8 +655,8 @@ VERTIKALLER = {
             "Beslenme donanımı: mama ve su kabı.",
         ],
         "dahil_olmayanlar": [
-            "Mama ve kum gibi aylık sarf giderleri varsayılan toplamda yok — "
-            "tek seferlik kurulumla karıştırmamak için ayrı gösteriliyor.",
+            "Mama ve kum paketleri varsayılan toplamda yok. Paket boyu ve tüketim "
+            "normalize edilmediği için aylık gider olarak sunulmuyor.",
             "Veteriner, aşı, kısırlaştırma ve mikroçip masrafları.",
             "Kedinin kendisi (sahiplenme ücretsizdir; satın alma fiyatı "
             "ölçmediğimiz ve teşvik etmediğimiz bir şey).",
@@ -686,8 +691,8 @@ VERTIKALLER = {
         "soru": "2026'da köpek bakım masrafı ne kadar?",
         "sayfa_basligi": "Köpek Masrafı 2026 — Kalem Kalem | Maliyeti Ne?",
         "meta_aciklama": (
-            "Tasma, yatak, mama ve çiş pedi: köpek bakım masrafı kalem kalem. "
-            "Kurulum ile aylık sarf ayrı ayrı, ölçülmüş fiyatlarla."
+            "Tasma, yatak, mama ve çiş pedi: kurulum ile paket fiyatları ayrı "
+            "ayrı, ölçülmüş verilerle."
         ),
         "dataset_ad": "Maliyeti Ne? Köpek Bakım Masrafı Endeksi",
         "dataset_aciklama": (
@@ -705,8 +710,8 @@ VERTIKALLER = {
             "Beslenme donanımı: mama ve su kabı.",
         ],
         "dahil_olmayanlar": [
-            "Mama ve çiş pedi gibi aylık sarf giderleri varsayılan toplamda "
-            "yok — tek seferlik kurulumla karıştırmamak için ayrı gösteriliyor.",
+            "Mama ve çiş pedi paketleri varsayılan toplamda yok. Paket boyu ve "
+            "tüketim normalize edilmediği için aylık gider olarak sunulmuyor.",
             "Veteriner, aşı, kısırlaştırma ve mikroçip masrafları.",
             "Köpeğin kendisi (sahiplenme ücretsizdir).",
             "Eğitim, pet kuaförü, pansiyon ve seyahat giderleri.",
@@ -745,7 +750,7 @@ VERTIKALLER = {
         "dataset_ad": "Maliyeti Ne? 0 km Araç Fiyat Endeksi",
         "dataset_aciklama": (
             "Türkiye'de satılan sıfır kilometre otomobillerin marka giriş "
-            "fiyatları ve marka bazlı model fiyatlarından derlenen aylık endeks."
+            "fiyatları ve marka bazlı model fiyatlarından ayda iki kez derlenen endeks."
         ),
         # Bu vertikalde kalemler TOPLANMAZ (marka kalemleri bilgi_amacli),
         # "toplam" = marka giris fiyatlarinin medyani.
@@ -879,8 +884,8 @@ KALEM_SAYFA_NOTLARI = {
     "kopek-yatagi": "Köpek yatağı fiyatı ırk boyuna ve ortopedik sünger içerip içermediğine göre değişir.",
     "kopek-oyuncagi": "Köpek oyuncağı fiyatı çiğneme dayanıklılığına göre ayrışır; güçlü çeneli ırklarda dayanıklı modeller şart.",
     "kopek-mama-kabi": "Mama ve su kabı fiyatı malzemeye ve yükseltilmiş sehpalı olup olmamasına göre değişir.",
-    "kopek-mamasi": "Köpek maması aylık tekrarlayan bir giderdir ve ırk boyuyla doğrudan büyür; kilo fiyatı büyük pakette düşer. Tek seferlik kurulum toplamına dahil edilmez.",
-    "cis-pedi": "Çiş pedi özellikle yavru dönemde aylık tekrarlayan bir giderdir; adet fiyatı paket büyüklüğüne göre değişir. Kurulum toplamına dahil edilmez.",
+    "kopek-mamasi": "Köpek maması tekrarlayan bir giderdir; bu sayfadaki rakam aylık tüketim değil paket fiyatıdır. Kilo fiyatı büyük pakette düşer ve tüketim ırk boyuna göre değişir.",
+    "cis-pedi": "Çiş pedi özellikle yavru dönemde tekrarlayan bir giderdir; bu sayfadaki rakam aylık tüketim değil paket fiyatıdır. Adet fiyatı paket büyüklüğüne göre değişir.",
     # -- kedi --
     "kedi-tuvaleti": "Kedi tuvaleti fiyatı açık/kapalı oluşuna ve elek sistemine göre değişir; kapalı modeller koku kontrolünde daha iyi.",
     "tasima-cantasi": "Taşıma çantası fiyatı sert kafes mi yumuşak çanta mı olduğuna ve uçuş uygunluğuna göre ayrışır.",
@@ -888,8 +893,8 @@ KALEM_SAYFA_NOTLARI = {
     "kedi-yatagi": "Kedi yatağı fiyatı kapalı yuva ya da açık minder oluşuna ve kumaş cinsine göre ayrışır.",
     "mama-su-kabi": "Mama ve su kabı fiyatı seramik, çelik ve plastik arasında belirgin fark gösterir; bıyık dostu geniş tabanlılar daha pahalı.",
     "kedi-oyuncagi": "Kedi oyuncağı fiyatı tekli ürün ile set arasında ayrışır; kedi nanesi içerenler biraz daha üstte.",
-    "kedi-mamasi": "Kedi maması aylık tekrarlayan bir giderdir; kilo fiyatı büyük pakette belirgin düşer. Tek seferlik kurulum toplamına dahil edilmez.",
-    "kedi-kumu": "Kedi kumu aylık tekrarlayan bir giderdir; bentonit, silika ve doğal kum arasında hem fiyat hem tüketim farkı var. Kurulum toplamına dahil edilmez.",
+    "kedi-mamasi": "Kedi maması tekrarlayan bir giderdir; bu sayfadaki rakam aylık tüketim değil paket fiyatıdır. Kilo fiyatı büyük pakette belirgin düşer.",
+    "kedi-kumu": "Kedi kumu tekrarlayan bir giderdir; bu sayfadaki rakam aylık tüketim değil paket fiyatıdır. Bentonit, silika ve doğal kumun tüketimi farklıdır.",
     # -- bebek --
     "bebek-arabasi": "Bebek arabası fiyatı travel sistem (oto koltuğu dahil) olup olmamasına, çift yönlü kullanıma ve katlanma mekanizmasına göre ayrışır.",
     "mama-sandalyesi": "Mama sandalyesi fiyatı yükseklik ayarına, katlanabilirliğe ve masaya takılan/ayaklı tipine göre değişir.",
@@ -901,7 +906,7 @@ KALEM_SAYFA_NOTLARI = {
     "bebek-kuveti": "Bebek küveti fiyatı katlanabilir olup olmamasına ve destek aparatına göre ayrışır.",
     "zibin-seti": "Zıbın ve body seti fiyatı parça sayısına ve pamuk kalitesine göre değişir; bedenler hızlı geçildiği için çok sayıda alınır.",
     "uyku-tulumu": "Uyku tulumu fiyatı mevsime (tog değeri) ve bedene göre ayrışır.",
-    "bebek-bezi": "Bebek bezi aylık tekrarlayan bir giderdir; fiyat paket adedine ve bedene göre değişir. Tek seferlik hazırlık toplamına dahil edilmez.",
+    "bebek-bezi": "Bebek bezi tekrarlayan bir giderdir; bu sayfadaki rakam aylık tüketim değil paket fiyatıdır. Fiyat paket adedine ve bedene göre değişir.",
     # -- ev kurma: beyaz esya --
     "bulasik-makinesi": "Bulaşık makinesi fiyatı kişilik kapasitesi, kurutma tipi ve enerji sınıfına göre ayrışır.",
     "kurutma-makinesi": "Kurutma makinesinde ısı pompalı modeller elektrik gideri düşük olduğu için üst fiyat bandını oluşturur.",
@@ -1826,6 +1831,11 @@ def _grup_toplamlari(conf: dict, kalemler: dict, segment_anahtari: str) -> list[
     """Gruplu vertikallerde (ev-kurma) grup basina toplam soru/cevabi."""
     gruplar: dict[str, int] = {}
     for tanim in conf["kalemler"]:
+        # Grup butcesi, sayfanin varsayilan toplamiyla ayni kapsami
+        # kullanmali. Paket fiyati gibi toplam disi bir kalemi burada
+        # yeniden "butce" diye sunmak sayfanin kendi sinirini bozar.
+        if tanim.get("varsayilan_dahil", True) is False or tanim.get("bilgi_amacli"):
+            continue
         grup = tanim.get("grup")
         deger = kalem_deger(kalemler.get(tanim["id"]), segment_anahtari)
         if grup and deger:
@@ -2164,40 +2174,31 @@ def _resmi_gecmis_html(vertikal: str, veri_kok: Path | None = None) -> str:
     )
 
 
-def _aylik_sarf_ifadesi(conf: dict, kalemler: dict) -> str:
-    """Varsayilan toplama GIRMEYEN aylik kalemleri cevap blogunda soyler.
+def _tekrarlayan_urun_ifadesi(conf: dict, kalemler: dict) -> str:
+    """Paket fiyatini aylik maliyet gibi gostermeden cevap bloguna ekler.
 
-    2026-08-09, Search Console: "aylik kedi masrafi 2026" 7 gosterim,
-    "aylik bebek bezi masrafi" 1 — ama /kedi/ cevap blogu YALNIZCA
-    kurulumu soyluyordu ("kedi kurulumunun 5.388 TL tutmasi bekleniyor").
-    Aylik rakam VERIMIZDE VARDI, cevap blogunda yoktu.
-
-    Cevap blogu bu sitede en cok okunan yer: Google'in ve AI motorlarinin
-    alintiladigi parca burasi. Olctugumuz bir rakami oraya koymamak,
-    olcmemis gibi gorunmek demek.
-
-    Toplama KATILMIYOR - o ayrim korunuyor (tek seferlik kurulum ile her
-    ay tekrarlayan gideri toplamak "kedi masrafi 20 bin TL" gibi ne oldugu
-    belirsiz bir sayi uretirdi). Yalnizca ayrica soyleniyor.
+    Kategori medyani bir alisveris/paket fiyatidir. Paket boyu, adet ve tuketim
+    suresi normalize edilmeden "aylik" ya da "yillik" denemez. Bu yardimci
+    yalnizca birer paketlik fiyat gostergesi verir; carpma yapmaz.
     """
-    aylik = 0
+    paket_toplami = 0
     adlar = []
     for tanim in conf["kalemler"]:
-        if tanim.get("varsayilan_dahil") is not False or tanim.get("bilgi_amacli"):
+        if tanim.get("olcum_turu") != "paket_fiyati":
             continue
         m = ((kalemler.get(tanim["id"]) or {}).get("segmentler") or {}).get(
             "orta", {}).get("medyan")
         if m:
-            aylik += m
+            paket_toplami += m
             adlar.append(tanim["ad"].split("(")[0].strip().lower())
-    if not aylik:
+    if not paket_toplami:
         return ""
     liste = (", ".join(adlar[:-1]) + " ve " + adlar[-1]) if len(adlar) > 1 else adlar[0]
     return (
-        f" Buna ek olarak her ay tekrarlayan sarf gideri var: {liste} için "
-        f"<strong>ayda {_para(aylik)}</strong>, yılda {_para(aylik * 12)}. "
-        "Bu tutar üstteki toplama dahil değil — tek seferlik alınan eşyayla "
-        "her ay tekrarlayan gideri aynı rakamda birleştirmek yanıltıcı olurdu."
+        f" Tekrarlayan ürünlerde {liste} için ölçülen <strong>birer paketlik "
+        f"fiyat göstergesi toplamı {_para(paket_toplami)}</strong>. Bu aylık gider "
+        "değildir: paket boyu/adedi ve kullanım süresi henüz normalize edilmediği "
+        "için aylık ya da yıllık toplam türetmiyoruz."
     )
 
 
@@ -2319,7 +2320,7 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
                 f"Bu rakamın tamamı {len(gercek_detaylar)} kalem için "
                 f"{_dayanak_ifadesi(conf, site_sayisi)} derlenen güncel fiyatlara dayanır."
             )
-        cevap_metni += _aylik_sarf_ifadesi(conf, kalemler)
+        cevap_metni += _tekrarlayan_urun_ifadesi(conf, kalemler)
         cevap_disable = ""
     elif tahmini_detaylar:
         cevap_metni = (
@@ -2333,7 +2334,7 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
     else:
         ornek_toplam = None
         cevap_metni = (
-            "Veri toplama süreci devam ediyor — bu sayfa aylık güncellenen "
+            "Veri toplama süreci devam ediyor — bu sayfa ayda iki kez güncellenen "
             "gerçek fiyat verisiyle otomatik olarak dolacak. Şu an "
             "gösterilecek doğrulanmış bir rakam yok."
         )
@@ -2412,7 +2413,7 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
         }],
         "measurementTechnique": (
             "Gerçek e-ticaret ve sektör platformlarından robots.txt kurallarına "
-            "uygun aylık kazıma; kaynak başına medyan alınıp kaynaklar arası "
+            "uygun, ayda iki kez yapılan kazıma; kaynak başına medyan alınıp kaynaklar arası "
             "medyan-of-medyan hesaplanır, persentil bazlı segmentlenir."
         ),
         "variableMeasured": [
@@ -3583,13 +3584,13 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
             f"Maliyeti Ne? verilerine göre {tarih} itibarıyla "
             + "; ".join(cumleler)
             + " tutuyor. Rakamlar gerçek e-ticaret ve sektör "
-              "platformlarından aylık derlenir; her kalemin yanında kaynak "
+              "platformlarından ayda iki kez derlenir; her kalemin yanında kaynak "
               "sayısı ve derleme tarihi görünür."
         )
         cevap_stil = ""
     else:
         cevap = (
-            "Veri toplama süreci devam ediyor — bu sayfa aylık güncellenen "
+            "Veri toplama süreci devam ediyor — bu sayfa ayda iki kez güncellenen "
             "gerçek fiyat verisiyle otomatik olarak dolacak."
         )
         cevap_stil = ' style="color:#7a4a06"'
@@ -3710,7 +3711,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Maliyet Hesaplama ve 2026 Fiyat Endeksleri | Maliyeti Ne?</title>
-<meta name="description" content="Düğün ve ev kurma maliyeti: gerçek fiyat verisinden derlenmiş, aylık güncellenen, doğrulanabilir endeks. Kaynak, tarih ve örneklem her rakamın yanında.">
+<meta name="description" content="Düğün ve ev kurma maliyeti: gerçek fiyat verisinden derlenmiş, ayda iki kez güncellenen endeks. Kaynak, tarih ve örneklem her rakamın yanında.">
 <link rel="canonical" href="{SITE_KOK_URL}/">
 <link rel="stylesheet" href="/assets/css/style.css">
 <meta property="og:title" content="2026 Maliyet Endeksi | Maliyeti Ne?">

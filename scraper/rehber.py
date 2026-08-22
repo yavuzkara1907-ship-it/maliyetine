@@ -18,7 +18,7 @@ gercekci". Pratikte:
   - Abartma. "inanilmaz", "muhtesem", "cok onemli" YOK.
 
 RAKAMLAR ELLE YAZILMAZ: govde fonksiyonlari veriyi parametre alir, tum
-tutarlar /veri/*.json'dan gelir. Boylece aylik olcumde yazilar da
+tutarlar /veri/*.json'dan gelir. Boylece her yeni olcumde yazilar da
 kendiliginden guncellenir - bayat rakamli blog yazisi, guven kaybinin
 en hizli yolu.
 """
@@ -353,7 +353,7 @@ def _govde_ev_kurma(v: dict) -> str | None:
   <h2>Fiyatlar nereden geliyor?</h2>
   <p>
     Kalemlerin fiyatı büyük e-ticaret sitelerinden ve marka mağazalarından
-    aylık olarak derleniyor. Bir uyarı: kategori listelerinden derlediğimiz
+    ayda iki kez derleniyor. Bir uyarı: kategori listelerinden derlediğimiz
     için üst segment rakamı piyasanın en pahalısını değil, yaygın ürünler
     içindeki üst çeyreği gösteriyor. Ankastre bir premium buzdolabı
     arıyorsanız gerçek fiyat bizim "üst" sütunumuzun üzerinde olacaktır.
@@ -682,12 +682,12 @@ def _govde_beyaz_esya(v: dict) -> str | None:
 
 
 # ---------------------------------------------------------------------------
-# 9. Bebek masraflari - ILK YIL
+# 9. Bebek masraflari - ILK YIL HESABININ SINIRI
 #
-# NEDEN AYRI BIR YAZI: bebek endeksi TEK SEFERLIK hazirligi olcuyor;
-# bez `varsayilan_dahil: False` oldugu icin toplama girmiyor. "Ilk yil ne
-# kadar?" sorusunun cevabi ise ikisinin TOPLAMI - ve bu ayrimi yapan
-# baska bir kaynak yok. Rakiplerin verdigi tek rakam ikisini karistirir.
+# Bebek endeksi tek seferlik hazirligi ve bez KATEGORI PAKET fiyatini
+# olcuyor. Paket adedi/gunluk tuketim normalize edilmedigi icin bez medyani
+# 12 ile carpilamaz. Sayfa tam da bu siniri anlatir; guclu gorunen ama
+# dayanaksiz bir "ilk yil toplami" yayinlamaz.
 # ---------------------------------------------------------------------------
 def _govde_bebek_ilk_yil(v: dict) -> str | None:
     b = v.get("bebek")
@@ -699,10 +699,9 @@ def _govde_bebek_ilk_yil(v: dict) -> str | None:
     bez = _kalem(b, "bebek-bezi")
     if not (tek_seferlik and bez):
         return None
-    yillik_bez = bez * 12
-    toplam = tek_seferlik + yillik_bez
     eko, _ = su.ornek_toplam_hesapla(conf, kalemler, 1, "ekonomik")
     bez_eko = _kalem(b, "bebek-bezi", "dusuk")
+    bez_ust = _kalem(b, "bebek-bezi", "luks")
 
     en_pahali = sorted(
         ((t["ad"], _kalem(b, t["id"])) for t in conf["kalemler"]
@@ -715,21 +714,20 @@ def _govde_bebek_ilk_yil(v: dict) -> str | None:
 
     return f"""
   <p class="cevap-blok">
-    Bir bebeğin ilk yılı, ölçtüğümüz kalemlerle orta segmentte
-    <strong>{_p(toplam)}</strong> tutuyor. Bunun {_p(tek_seferlik)} kadarı
-    <strong>tek seferlik hazırlık</strong> (araba, beşik, oto koltuğu,
-    mama sandalyesi), {_p(yillik_bez)} kadarı ise <strong>yalnızca bezin
-    yıllık tutarı</strong>.
+    Mevcut verimizle bir bebeğin ilk yılı için güvenilir tek toplam
+    yayınlayamıyoruz. Ölçebildiğimiz orta segment
+    <strong>tek seferlik hazırlık {_p(tek_seferlik)}</strong>; bebek bezinde
+    ölçtüğümüz {_p(bez)} ise aylık tüketim değil, kategori listelerindeki
+    <strong>paket fiyatı</strong>.
   </p>
 
-  <h2>Neden iki rakamı ayrı tutuyoruz?</h2>
+  <h2>Neden paket fiyatını on ikiyle çarpmıyoruz?</h2>
   <p>
-    Bebek masrafı sorulduğunda verilen tek rakamlar genelde bu ikisini
-    karıştırır. Beşik bir kez alınır; bez her ay tekrar eder. İkisini
-    toplayıp tek sayı vermek, ikinci yılı planlayan biri için yanıltıcı
-    olur — ikinci yılda beşiği yeniden almazsınız ama bezi almaya devam
-    edersiniz. Bu yüzden endeksimizde bez varsayılan toplama girmez,
-    ayrıca gösterilir.
+    Paketlerde beden ve adet aynı değil; günlük kullanım da bebeğin yaşına
+    göre değişiyor. Kategori medyanını "bir aylık bez" saymak, örneğin 40'lı
+    paketle 120'li fırsat paketini aynı tüketim birimiymiş gibi ele alır.
+    Adet başı fiyat ve günlük tüketim olmadan yıllık rakam türetmek doğru
+    olmaz.
   </p>
 
   <h2>Hazırlığın en büyük dört kalemi</h2>
@@ -739,8 +737,18 @@ def _govde_bebek_ilk_yil(v: dict) -> str | None:
   </table></div>
   <p>
     Ekonomik tercihlerle tek seferlik hazırlık {_p(eko)} seviyesine
-    iniyor; bez tarafında ekonomik paket aylık {_p(bez_eko)} demek, yani
-    yılda {_p(bez_eko * 12 if bez_eko else None)}.
+    iniyor. Bez paketleri ölçümümüzde {_p(bez_eko)} ile {_p(bez_ust)}
+    bandında; bu aralık paket büyüklüğü normalize edilmeden yalnızca alışveriş
+    fiyatı göstergesidir.
+  </p>
+
+  <h2>İlk yıl hesabı nasıl kurulmalı?</h2>
+  <p>
+    Doğru formül; tek seferlik hazırlığa, kullanılan toplam bez adedinin adet
+    başı fiyatla çarpımını ve mama, ek gıda, sağlık, giyim ile bakım
+    giderlerini eklemektir. Bir sonraki veri aşamamız paket adedini ürün
+    adından ayırıp adet başı fiyat üretmek; o alan tamamlanmadan burada kesin
+    ilk yıl toplamı göstermeyeceğiz.
   </p>
 
   <h2>Bu rakama neler dahil değil</h2>
@@ -775,15 +783,15 @@ def _sss_bebek_masrafi(v: dict) -> list[tuple[str, str]]:
     return [
         (
             "Bir bebeğin aylık masrafı 2026'da ne kadar?",
-            f"{tarih} ölçümünde doğrulayabildiğimiz tekrarlayan alt sınır, aylık "
-            f"{_p(bez)} bebek bezi gideridir. Mama, ek gıda, sağlık, giyim, kreş "
-            "ve bakıcı dahil olmadığı için bu tutar tam aylık maliyet değildir."
+            f"{tarih} ölçümünde bebek bezi kategori medyanı paket başına {_p(bez)}. "
+            "Paket adedi ve günlük tüketim normalize edilmediği için bu rakam aylık "
+            "gider değildir; tam aylık maliyet henüz hesaplanamaz."
         ),
         (
             "Bir bebeğin ilk yılı ne kadar tutar?",
-            f"Ölçtüğümüz tek seferlik hazırlık {_p(tek_seferlik)}, on iki aylık "
-            f"bez gideri {_p(bez * 12)}; birlikte {_p(tek_seferlik + bez * 12)}. "
-            "Doğum ve hastane masrafı bu toplamda yoktur."
+            f"Ölçtüğümüz tek seferlik hazırlık orta segmentte {_p(tek_seferlik)}. "
+            "İlk yıl toplamı için bez adedi, mama, ek gıda, sağlık, giyim ve bakım "
+            "verileri de gerekir; mevcut paket medyanını on ikiyle çarpmıyoruz."
         ),
         (
             "Neden mama ve sağlık gideri için tahmin vermiyorsunuz?",
@@ -1282,21 +1290,24 @@ def _govde_kedi_kopek(v: dict) -> str | None:
         conf = su.VERTIKALLER[vert]
         kalemler = veri.get("kalemler") or {}
         kurulum, _ = su.ornek_toplam_hesapla(conf, kalemler, 1, "orta")
-        aylik = sum(
+        paket = sum(
             ((kalemler.get(t["id"]) or {}).get("segmentler") or {}).get("orta", {}).get("medyan", 0)
-            for t in conf["kalemler"] if t.get("varsayilan_dahil") is False)
+            for t in conf["kalemler"] if t.get("olcum_turu") == "paket_fiyati")
         if not kurulum:
             return None
-        sonuc[ad] = {"kurulum": kurulum, "aylik": aylik, "yil": kurulum + aylik * 12}
+        sonuc[ad] = {"kurulum": kurulum, "paket": paket}
     k, p = sonuc["Kedi"], sonuc["Köpek"]
+    kurulum_farki = (
+        f"Bu ölçümde kedi kurulumu {_p(k['kurulum'])}, köpek kurulumu "
+        f"{_p(p['kurulum'])}."
+    )
 
     return f"""
   <p class="cevap-blok">
-    İlk yılda <strong>köpek daha masraflı</strong>: {_p(p["yil"])} karşılık
-    kedide {_p(k["yil"])}. İlginç olan şu — <strong>kurulumda kedi daha
-    pahalı</strong> ({_p(k["kurulum"])} / {_p(p["kurulum"])}), ama köpeğin
-    aylık gideri kediyi geçiyor ({_p(p["aylik"])} / {_p(k["aylik"])}) ve
-    on iki ayda makas kapanıp tersine dönüyor.
+    Verimiz kediyle köpeğin toplam ya da ilk yıl masrafını güvenilir biçimde
+    karşılaştırmaya yetmiyor. <strong>{kurulum_farki}</strong> Mama, kum ve ped
+    tarafında ise yalnız paket fiyatlarını ölçüyoruz; tüketim ve paket boyu
+    normalize edilmeden hangisinin yıllıkta daha pahalı olduğu söylenemez.
   </p>
 
   <h2>Neden kurulumda kedi öne geçiyor?</h2>
@@ -1306,20 +1317,21 @@ def _govde_kedi_kopek(v: dict) -> str | None:
     tasma ve taşıma çantası var, ikisi birlikte daha ucuza geliyor.
   </p>
 
-  <h2>Aylıkta neden köpek öne geçiyor?</h2>
+  <h2>Tekrarlayan ürünleri neden karşılaştırmıyoruz?</h2>
   <p>
-    Mama. Köpek maması hem kilo fiyatı hem tüketim olarak kedininkinin
-    üzerinde ve ırk büyüdükçe fark açılıyor. Bizim rakamımız ortalama bir
-    tüketim varsayıyor; büyük ırk bir köpekte aylık gider bu rakamın
-    belirgin üzerine çıkar.
+    Birer paket mama/kum göstergesi kedide {_p(k['paket'])}, mama/ped
+    göstergesi köpekte {_p(p['paket'])}. Bunlar aynı miktarı temsil etmiyor:
+    mamada kilogram, kumda litre/kilogram, pedde adet ve hayvanın tüketimi
+    gerekir. Paket toplamlarını aylık kabul edip on ikiyle çarpmak sahte bir
+    kesinlik üretirdi.
   </p>
 
   <div class="tablo-sarmal"><table>
     <thead><tr><th></th><th class="sayi">Kedi</th><th class="sayi">Köpek</th></tr></thead>
     <tbody>
       <tr><td>Tek seferlik kurulum</td><td class="sayi">{_p(k["kurulum"])}</td><td class="sayi">{_p(p["kurulum"])}</td></tr>
-      <tr><td>Aylık sarf</td><td class="sayi">{_p(k["aylik"])}</td><td class="sayi">{_p(p["aylik"])}</td></tr>
-      <tr><td>İlk yıl toplam</td><td class="sayi">{_p(k["yil"])}</td><td class="sayi">{_p(p["yil"])}</td></tr>
+      <tr><td>Birer paketlik ürün göstergesi</td><td class="sayi">{_p(k["paket"])}</td><td class="sayi">{_p(p["paket"])}</td></tr>
+      <tr><td>İlk yıl toplamı</td><td class="sayi">Ölçülmedi</td><td class="sayi">Ölçülmedi</td></tr>
     </tbody>
   </table></div>
 
@@ -1327,8 +1339,8 @@ def _govde_kedi_kopek(v: dict) -> str | None:
   <p>
     Veteriner, aşı, kısırlaştırma ve mikroçip yok — bunlar hem kliniğe göre
     değişiyor hem internette liste fiyatı olarak yayınlanmıyor. Pet
-    kuaförü, pansiyon ve eğitim de dışarıda. Yani ölçtüğümüz rakam
-    <em>alt sınır</em>; gerçek yıllık gider bunun üzerinde olacak.
+    kuaförü, pansiyon ve eğitim de dışarıda. Ölçmediğimiz kalemlerle ilgili
+    alt sınır ya da yıllık toplam iddiası kurmuyoruz.
   </p>
   <p>
     Hayvanın kendisi de hesapta yok: sahiplenme ücretsizdir ve satın almayı
@@ -1337,7 +1349,7 @@ def _govde_kedi_kopek(v: dict) -> str | None:
   <p>
     Kalem kalem: <a href="/kedi/">kedi masrafı</a> ·
     <a href="/kopek/">köpek masrafı</a> ·
-    <a href="/evcil-hayvan/">ikisi bir arada</a>. Aylık sarf hesabı:
+    <a href="/evcil-hayvan/">ikisi bir arada</a>. Aylık hesabın veri sınırı:
     <a href="/rehber/aylik-kedi-masrafi/">kedi</a> ·
     <a href="/rehber/aylik-kopek-masrafi/">köpek</a>.
   </p>
@@ -1347,18 +1359,18 @@ def _govde_kedi_kopek(v: dict) -> str | None:
 # ---------------------------------------------------------------------------
 # AI SORGU KALIBI: "aylik X masrafi ne kadar?"
 #
-# Search Console'da kedi ve kopek icin bu kalip ilk sayfa sinirina geldi.
-# Cevap genel bir bakim tahmini degil; yalnizca veri setinde aylik olarak
-# isaretlenmis sarf kalemlerinin toplami. Veteriner vb. olculmeyen giderler
-# acikca disarida tutuluyor.
+# Search Console'da bu kalip ilk sayfa sinirina geldi. Ancak kategori paket
+# medyanlarini aylik diye etiketlemek talebe cevap vermek DEGIL, verinin
+# tasimadigi bir iddia kurmaktir. Sayfa soruyu dogrudan yanitlar ve gereken
+# normalizasyonu aciklar.
 # ---------------------------------------------------------------------------
-def _aylik_evcil_ozeti(v: dict, vertikal: str) -> dict | None:
+def _paket_evcil_ozeti(v: dict, vertikal: str) -> dict | None:
     veri = v.get(vertikal)
     conf = su.VERTIKALLER.get(vertikal)
     if not (veri and conf):
         return None
     kalemler = veri.get("kalemler") or {}
-    tekrar = [t for t in conf["kalemler"] if t.get("varsayilan_dahil") is False]
+    tekrar = [t for t in conf["kalemler"] if t.get("olcum_turu") == "paket_fiyati"]
     satirlar = []
     toplamlar = {"dusuk": 0, "orta": 0, "luks": 0}
     for tanim in tekrar:
@@ -1367,7 +1379,7 @@ def _aylik_evcil_ozeti(v: dict, vertikal: str) -> dict | None:
             continue
         for s, deger in degerler.items():
             toplamlar[s] += deger or 0
-        satirlar.append({"ad": tanim["ad"].replace(" (aylık)", ""), **degerler})
+        satirlar.append({"ad": tanim["ad"].replace(" (paket)", ""), **degerler})
     if not satirlar or not toplamlar["orta"]:
         return None
     return {
@@ -1379,7 +1391,7 @@ def _aylik_evcil_ozeti(v: dict, vertikal: str) -> dict | None:
 
 def _govde_aylik_evcil(vertikal: str, ad: str, ozel_not: str):
     def govde(v: dict) -> str | None:
-        ozet = _aylik_evcil_ozeti(v, vertikal)
+        ozet = _paket_evcil_ozeti(v, vertikal)
         if not ozet:
             return None
         t = ozet["toplamlar"]
@@ -1391,27 +1403,26 @@ def _govde_aylik_evcil(vertikal: str, ad: str, ozel_not: str):
         )
         return f"""
   <p class="cevap-blok">
-    {ozet['tarih']} ölçümünde bir {ad.lower()} için internette fiyatını
-    doğrulayabildiğimiz aylık sarf kalemleri orta segmentte
-    <strong>{_p(t['orta'])}</strong> tutuyor. Ekonomik bant {_p(t['dusuk'])},
-    üst bant {_p(t['luks'])}. Bu rakam <strong>tam bakım maliyeti değil,
-    ölçülebilen alt sınırdır</strong>.
+    Mevcut verimizle güvenilir bir aylık {ad.lower()} masrafı hesaplanamaz.
+    {ozet['tarih']} ölçümünde mama ve diğer tekrarlayan ürünlerden birer
+    paketlik alışveriş göstergesi orta bantta <strong>{_p(t['orta'])}</strong>;
+    ekonomik bant {_p(t['dusuk'])}, üst bant {_p(t['luks'])}. Bu rakam aylık
+    gider ya da bakım maliyeti alt sınırı değildir.
   </p>
 
-  <h2>Aylık hesapta hangi kalemler var?</h2>
+  <h2>Ölçtüğümüz paket fiyatları</h2>
   <div class="tablo-sarmal"><table>
     <thead><tr><th>Kalem</th><th class="sayi">Ekonomik</th><th class="sayi">Orta</th><th class="sayi">Üst</th></tr></thead>
     <tbody>{satirlar}</tbody>
   </table></div>
   <p>{ozel_not}</p>
 
-  <h2>On iki ayda ne olur?</h2>
+  <h2>Aylık hesap için hangi veri eksik?</h2>
   <p>
-    Fiyatlar hiç değişmese ölçebildiğimiz sarf toplamı yılda
-    <strong>{_p(t['orta'] * 12)}</strong> eder. Bu yalnızca bugünkü aylık
-    tutarın on ikiyle çarpımıdır; yıl içindeki fiyat artışını tahmin etmez.
-    Site fiyatları ayın 5'i ve 20'sinde yeniden ölçtüğü için güncel aylık
-    rakamı burada, geçmişi kalem sayfalarında görebilirsiniz.
+    Mama için kilogram başı fiyat ve aylık tüketim; kum için karşılaştırılabilir
+    litre/kilogram birimi ve değişim sıklığı; ped için adet başı fiyat ve aylık
+    adet gerekir. Ürün adlarından bu alanları güvenilir biçimde ayırıp aynı
+    birime çevirmeden paket medyanını on ikiyle çarpmıyoruz.
   </p>
 
   <h2>Bu rakama neler dahil değil?</h2>
@@ -1419,13 +1430,12 @@ def _govde_aylik_evcil(vertikal: str, ad: str, ozel_not: str):
     Veteriner muayenesi, aşı, kısırlaştırma, mikroçip, ilaç, kuaför,
     pansiyon ve eğitim dahil değil. Bunların fiyatı klinik, şehir, ırk ve
     ihtiyaca göre değişiyor; doğrulanabilir bir liste fiyatı olmadan tek
-    rakam yazmıyoruz. Gerçek aylık maliyet bu yüzden yukarıdaki ölçülmüş
-    alt sınırın üzerinde olabilir.
+    rakam yazmıyoruz. Sağlık ve hizmet kalemleri ayrıca veri toplama gerektirir.
   </p>
 
   <h2>Kendi listenizi hesaplayın</h2>
   <p>
-    Tek seferlik kurulumla aylık kalemleri birlikte görmek için
+    Tek seferlik kurulumla paket fiyatlarını birlikte görmek için
     <a href="/{vertikal}/hesaplayici/">{ad.lower()} masrafı hesaplayıcısını</a>
     kullanın. Fiyat aralıkları ve kaynaklar
     <a href="/{vertikal}/">{ad.lower()} maliyeti endeksinde</a>.
@@ -1436,7 +1446,7 @@ def _govde_aylik_evcil(vertikal: str, ad: str, ozel_not: str):
 
 def _sss_aylik_evcil(vertikal: str, ad: str):
     def sorular(v: dict) -> list[tuple[str, str]]:
-        ozet = _aylik_evcil_ozeti(v, vertikal)
+        ozet = _paket_evcil_ozeti(v, vertikal)
         if not ozet:
             return []
         orta = ozet["toplamlar"]["orta"]
@@ -1444,15 +1454,15 @@ def _sss_aylik_evcil(vertikal: str, ad: str):
         return [
             (
                 f"2026'da aylık {ad.lower()} masrafı ne kadar?",
-                f"{ozet['tarih']} ölçümünde fiyatını doğrulayabildiğimiz aylık "
-                f"sarf kalemleri orta segmentte {_p(orta)}. Bu toplam {kalem_adlari} "
-                "içerir; veteriner ve sağlık giderleri dahil değildir."
+                f"{ozet['tarih']} ölçümünde {kalem_adlari} için birer paketlik "
+                f"alışveriş göstergesi orta bantta {_p(orta)}. Paket boyu ve tüketim "
+                "normalize edilmediği için bu tutar aylık masraf değildir."
             ),
             (
                 f"Bir {ad.lower()} yılda ne kadar masraf çıkarır?",
-                f"Bugünkü ölçülebilen aylık sarf tutarı değişmezse on iki ayda "
-                f"{_p(orta * 12)} eder. Bu, fiyat artışını ve sağlık giderlerini "
-                "içermeyen alt sınırdır."
+                "Mevcut kategori verisinden güvenilir yıllık toplam çıkarılamaz. "
+                "Kilogram/adet başı fiyat, hayvanın tüketimi ve sağlık-hizmet "
+                "giderleri birlikte ölçülmelidir."
             ),
             (
                 "Veteriner ve aşı neden hesapta yok?",
@@ -1510,7 +1520,7 @@ def aralik_siralamasi(veri: dict, vertikal: str) -> list[dict]:
         cikti.append({
             "id": tanim["id"], "ad": tanim["ad"], "kat": ust / eko,
             "eko": eko, "orta": orta, "ust": ust,
-            "aylik": tanim.get("varsayilan_dahil") is False,
+            "toplam_harici": tanim.get("varsayilan_dahil") is False,
         })
     cikti.sort(key=lambda x: x["kat"], reverse=True)
     return cikti
@@ -1544,10 +1554,10 @@ def _govde_sahiplenme(vertikal: str, ad: str, oteki_yol: str, oteki_ad: str):
         kurulum, _ = su.ornek_toplam_hesapla(conf, kalemler, 1, "orta")
         if not kurulum:
             return None
-        aylik = sum(
+        paket_toplami = sum(
             ((kalemler.get(t["id"]) or {}).get("segmentler") or {}).get("orta", {}).get("medyan", 0)
-            for t in conf["kalemler"] if t.get("varsayilan_dahil") is False)
-        sira = [x for x in aralik_siralamasi(veri, vertikal) if not x["aylik"]]
+            for t in conf["kalemler"] if t.get("olcum_turu") == "paket_fiyati")
+        sira = [x for x in aralik_siralamasi(veri, vertikal) if not x["toplam_harici"]]
         if len(sira) < 3:
             return None
         en_genis, en_dar = sira[0], sira[-1]
@@ -1567,11 +1577,11 @@ def _govde_sahiplenme(vertikal: str, ad: str, oteki_yol: str, oteki_ad: str):
 
         return f"""
   <p class="cevap-blok">
-    {ad} sahiplenmeden önce bilinmesi gereken iki rakam var:
-    <strong>{_p(kurulum)}</strong> tek seferlik kurulum ve
-    <strong>ayda {_p(aylik)}</strong> tekrarlayan gider. İkincisi
-    genelde hafife alınıyor — on iki ayda {_p(aylik * 12)} ediyor, yani
-    ilk yılın büyük kısmı kurulumdan değil aylık giderden geliyor.
+    {ad} sahiplenmeden önce ölçebildiğimiz tek karşılaştırılabilir toplam
+    <strong>{_p(kurulum)}</strong> tutarındaki başlangıç kurulumudur.
+    Tekrarlayan ürünlerden birer paketlik alışveriş göstergesi
+    <strong>{_p(paket_toplami)}</strong>; paket boyu ve tüketim normalize
+    edilmediği için bu rakam aylık gider değildir.
   </p>
 
   <h2>Kurulumda parayı belirleyen tek kalem</h2>
@@ -1609,9 +1619,9 @@ def _govde_sahiplenme(vertikal: str, ad: str, oteki_yol: str, oteki_ad: str):
   <p>
     Veteriner, aşı, kısırlaştırma, mikroçip. Bunları <em>ölçmüyoruz</em>
     çünkü klinikten kliniğe değişiyor ve internette liste fiyatı olarak
-    yayınlanmıyor. Pet kuaförü, pansiyon ve eğitim de dışarıda. Yani
-    yukarıdaki tutarlar <strong>alt sınır</strong>; gerçek yıllık gider
-    bunun üzerinde olacak. Sahiplenmeden önce bir kliniğe telefon açıp
+    yayınlanmıyor. Pet kuaförü, pansiyon ve eğitim de dışarıda. Bu nedenle
+    yukarıdaki rakamlardan gerçek yıllık gider ya da alt sınır türetilemez.
+    Sahiplenmeden önce bir kliniğe telefon açıp
     kısırlaştırma ve ilk yıl aşı takvimini sormak, bu yazıdaki bütün
     rakamlardan daha çok işinize yarar.
   </p>
@@ -1745,7 +1755,7 @@ def _govde_bebek_tavsiye(v: dict) -> str | None:
     if not hazirlik:
         return None
     bez = ((kalemler.get("bebek-bezi") or {}).get("segmentler") or {}).get("orta", {}).get("medyan", 0)
-    sira = [x for x in aralik_siralamasi(veri, "bebek") if not x["aylik"]]
+    sira = [x for x in aralik_siralamasi(veri, "bebek") if not x["toplam_harici"]]
     if len(sira) < 3:
         return None
     pahali = sorted(sira, key=lambda x: x["orta"], reverse=True)[:3]
@@ -1760,14 +1770,13 @@ def _govde_bebek_tavsiye(v: dict) -> str | None:
     büyük kısmını çözüyor.
   </p>
 
-  <h2>Aylık gider ayrı hesap</h2>
+  <h2>Bez paket fiyatı ayrı ölçüm</h2>
   <p>
-    Bebek bezi tek seferlik değil, her ay tekrar eden bir gider:
-    ayda {_p(bez)}, yılda {_p(bez * 12)}. Hazırlık toplamına dahil
-    etmiyoruz çünkü ikisini birleştirmek "bebek maliyeti şu kadar" gibi
-    ne olduğu belirsiz bir rakam üretir. Bütçe kurarken de ayrı
-    düşünülmeli: hazırlık bir kerelik bir birikim işi, bez sürekli bir
-    kalem.
+    Bebek bezi tekrar alınan bir ürün; ölçümümüzdeki {_p(bez)} ise aylık
+    tüketim değil kategori paket medyanı. Paket adedi ve günlük kullanım
+    aynı birime çevrilmediği için hazırlık toplamına katmıyor, on ikiyle
+    çarpmıyoruz. Bütçe kurarken adet başı fiyatı ve kendi tüketiminizi
+    kullanmanız gerekir.
   </p>
 
   <h2>Hangi kalemde seçim bütçeyi değiştiriyor?</h2>
@@ -1900,14 +1909,15 @@ def _govde_dogum_maliyeti(v: dict) -> str | None:
   <p>
     Hastane faturası bittiğinde masraf bitmiyor. Bebeğin tek seferlik
     hazırlığı orta segmentte <strong>{_p(hazirlik)}</strong>, ekonomik
-    tercihlerle <strong>{_p(eko)}</strong>. Buna ek olarak bebek bezi
-    her ay tekrar ediyor: ayda {_p(bez)}, yılda {_p(bez * 12)}.
+    tercihlerle <strong>{_p(eko)}</strong>. Bebek bezinde ölçülen {_p(bez)}
+    kategori paket medyanıdır; paket adedi ve tüketim normalize edilmediği
+    için aylık ya da yıllık gider olarak sunulmaz.
   </p>
   <p>
     Bu rakamlar gerçek satış sitelerinden ölçülüyor ve ayda iki kez
     yenileniyor; kalem kalem dökümü
-    <a href="/bebek/">bebek masrafları endeksinde</a>, ilk yılın
-    toplamı <a href="/rehber/bebek-masraflari-ilk-yil/">şurada</a>.
+    <a href="/bebek/">bebek masrafları endeksinde</a>, ilk yıl hesabının
+    veri sınırı <a href="/rehber/bebek-masraflari-ilk-yil/">şurada</a>.
     Neye ne kadar ayırmanız gerektiğine
     <a href="/bebek/hesaplayici/">hesaplayıcıdan</a> karar
     verebilirsiniz.
@@ -1971,9 +1981,9 @@ def _govde_dogum_oncesi(v: dict) -> str | None:
     <tbody>{satir}</tbody>
   </table></div>
   <p>
-    Bunlar tek seferlik alınan şeyler. Bebek bezi gibi her ay tekrarlayan
-    giderler bu toplama girmiyor — ikisini birleştirmek "bebek maliyeti
-    şu kadar" gibi ne olduğu belirsiz bir rakam üretirdi.
+    Bunlar tek seferlik alınan şeyler. Bebek bezi gibi tekrar alınan paketli
+    ürünler bu toplama girmiyor; adet ve tüketim normalize edilmeden ikisini
+    birleştirmek ne olduğu belirsiz bir rakam üretirdi.
   </p>
 
   <h2>Hepsi doğumdan önce alınmak zorunda değil</h2>
@@ -2243,10 +2253,10 @@ REHBERLER = [
     },
     {
         "slug": "aylik-kedi-masrafi",
-        "baslik": "Aylık Kedi Masrafı 2026: Mama ve Kum Ne Kadar?",
-        "seo_baslik": "Aylık Kedi Masrafı 2026 — Mama ve Kum",
-        "meta": "Aylık kedi maması ve kum gideri ekonomik, orta ve üst fiyat "
-                "bandıyla. Veteriner dahil olmayan ölçülmüş alt sınır.",
+        "baslik": "Aylık Kedi Masrafı 2026: Verimiz Neyi Ölçüyor?",
+        "seo_baslik": "Aylık Kedi Masrafı 2026 — Paket Fiyatı Değil Tüketim",
+        "meta": "Aylık kedi masrafı neden paket fiyatından hesaplanamaz? Mama ve "
+                "kum verisinin sınırı, eksik tüketim birimleri ve doğru formül.",
         "govde": _govde_aylik_evcil(
             "kedi", "Kedi",
             "Kedide ölçebildiğimiz tekrar eden iki kalem mama ve kum. Paket "
@@ -2258,10 +2268,10 @@ REHBERLER = [
     },
     {
         "slug": "aylik-kopek-masrafi",
-        "baslik": "Aylık Köpek Masrafı 2026: Mama ve Ped Ne Kadar?",
-        "seo_baslik": "Aylık Köpek Masrafı 2026 — Mama ve Ped",
-        "meta": "Aylık köpek maması ve çiş pedi gideri ekonomik, orta ve üst "
-                "fiyat bandıyla. Veteriner dahil olmayan ölçülmüş alt sınır.",
+        "baslik": "Aylık Köpek Masrafı 2026: Verimiz Neyi Ölçüyor?",
+        "seo_baslik": "Aylık Köpek Masrafı 2026 — Paket Fiyatı Değil Tüketim",
+        "meta": "Aylık köpek masrafı neden paket fiyatından hesaplanamaz? Mama ve "
+                "ped verisinin sınırı, eksik tüketim birimleri ve doğru formül.",
         "govde": _govde_aylik_evcil(
             "kopek", "Köpek",
             "Çiş pedi her yetişkin köpekte sürekli gider değildir. Ped kullanmayan "
@@ -2302,8 +2312,8 @@ REHBERLER = [
         "slug": "kedi-sahiplenmeden-once",
         "baslik": "Kedi Sahiplenmeden Önce: Neye Ne Kadar Para Gidiyor?",
         "seo_baslik": "Kedi Sahiplenmeden Önce Bilinmesi Gerekenler — Masraf",
-        "meta": "Kedi kurulumunun büyük kısmını tek bir kalem belirliyor. "
-                "Tek seferlik ve aylık gider ayrı ayrı, ölçülmüş fiyatlarla.",
+        "meta": "Kedi kurulumunun büyük kısmını hangi kalem belirliyor? Paket "
+                "fiyatı ile aylık tüketim arasındaki fark ve ölçümün sınırı.",
         "govde": _govde_sahiplenme("kedi", "Kedi", "kopek", "Köpek"),
         "vertikal": "kedi",
     },
@@ -2311,8 +2321,8 @@ REHBERLER = [
         "slug": "kopek-sahiplenmeden-once",
         "baslik": "Köpek Sahiplenmeden Önce: Neye Ne Kadar Para Gidiyor?",
         "seo_baslik": "Köpek Sahiplenmeden Önce Bilinmesi Gerekenler — Masraf",
-        "meta": "Köpekte asıl yük aylık mamada. Tek seferlik kurulum ile "
-                "her ay tekrarlayan gider ayrı ayrı, ölçülmüş fiyatlarla.",
+        "meta": "Köpek kurulumunda bütçeyi hangi kalem belirliyor? Paket fiyatı "
+                "ile aylık tüketim arasındaki fark ve ölçümün sınırı.",
         "govde": _govde_sahiplenme("kopek", "Köpek", "kedi", "Kedi"),
         "vertikal": "kopek",
     },
@@ -2363,19 +2373,19 @@ REHBERLER = [
     },
     {
         "slug": "kedi-mi-kopek-mi-masrafli",
-        "baslik": "Kedi mi Köpek mi Daha Masraflı? İlk Yılı Hesapladık",
-        "seo_baslik": "Kedi mi Köpek mi Daha Masraflı? İlk Yıl Karşılaştırması",
-        "meta": "Kurulumda kedi, aylıkta köpek daha pahalı. On iki ayda makas "
-                "tersine dönüyor — ölçülmüş fiyatlarla kalem kalem.",
+        "baslik": "Kedi mi Köpek mi Daha Masraflı? Verinin Söylediği Sınır",
+        "seo_baslik": "Kedi mi Köpek mi Daha Masraflı? Ölçümün Sınırı",
+        "meta": "Kedi ve köpek kurulum fiyatları karşılaştırması. Paket boyu ve "
+                "tüketim verisi olmadan neden aylık ya da ilk yıl toplamı vermiyoruz?",
         "govde": _govde_kedi_kopek,
         "vertikal": "kedi",
     },
     {
         "slug": "bebek-masraflari-ilk-yil",
-        "baslik": "Bebek Masrafları: İlk Yıl Ne Kadar Tutuyor?",
-        "seo_baslik": "Bebek Masrafları 2026 — İlk Yıl Toplamı",
-        "meta": "Tek seferlik hazırlık ile aylık tekrarlayan bez masrafı ayrı ayrı, "
-                "ölçülmüş fiyatlarla. İlk yılın gerçek toplamı.",
+        "baslik": "Bebek Masrafları: İlk Yıl Hesabı Nasıl Kurulur?",
+        "seo_baslik": "Bebek Masrafları 2026 — İlk Yıl Hesabının Sınırı",
+        "meta": "Tek seferlik bebek hazırlığı ölçümü, bez paket fiyatının sınırı "
+                "ve güvenilir ilk yıl toplamı için gereken tüketim verileri.",
         "govde": _govde_bebek_ilk_yil,
         "sss": _sss_bebek_masrafi,
         "vertikal": "bebek",
@@ -2443,7 +2453,7 @@ REHBERLER = [
         "baslik": "2026 150 Kişilik Düğün Maliyeti",
         "seo_baslik": "150 Kişilik Düğün Maliyeti 2026 — Kalem Kalem",
         "meta": "150 kişilik düğünün kalem kalem maliyeti: salon, gelinlik, takı, "
-                "fotoğrafçı. Gerçek fiyat ölçümlerinden, aylık güncellenen rakamlarla.",
+                "fotoğrafçı. Gerçek fiyat ölçümlerinden, ayda iki kez güncellenen rakamlarla.",
         "govde": _govde_dugun_150,
         "vertikal": "dugun",
     },

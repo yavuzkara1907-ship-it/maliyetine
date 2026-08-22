@@ -291,10 +291,19 @@ HESAPLAYICILAR = [
         "sss": [
             ("Tapu harcını alıcı mı satıcı mı öder?",
              "Kanunen ikisi de öder: alıcı binde 20, satıcı binde 20. Uygulamada tarafların anlaşıp tamamını bir tarafa yüklediği görülür ama bu kanuni yükümlülüğü değiştirmez."),
+            ("5 milyon TL'lik evin tapu harcı ne kadar?",
+             "Gerçek satış bedeli 5.000.000 TL ise alıcı 100.000 TL, satıcı "
+             "100.000 TL; toplam 200.000 TL tapu harcı doğar. Döner sermaye "
+             "hizmet bedeli bu örneğe dahil değildir."),
             ("Harç hangi tutar üzerinden hesaplanır?",
              "Beyan edilen gerçek satış bedeli üzerinden. Beyan, taşınmazın emlak vergisi değerinin altında olamaz. Düşük beyan tespit edilirse eksik harç ile birlikte vergi ziyaı cezası istenir."),
             ("Tapuda ödenen tek masraf harç mı?",
              "Hayır. Harcın yanında döner sermaye hizmet bedeli alınır; kredili alımda ayrıca ipotek harcı ve ekspertiz ücreti doğar. Bu hesaplayıcı yalnızca tapu harcını verir."),
+            ("Bu araç ipotek, bağış, miras veya intifa harcını hesaplar mı?",
+             "Hayır. Araç yalnız Türkiye'deki bedelli gayrimenkul satışının 20/a "
+             "tapu harcını hesaplar. İpotek, bağış/hibe, miras-intikal ve intifa "
+             "hakkı farklı işlem ve matrahlara tabidir; KKTC işlemleri de bu "
+             "kapsamda değildir."),
         ],
     },
     {
@@ -346,6 +355,11 @@ HESAPLAYICILAR = [
         "sss": [
             ("İşsizlik maaşı 2026'da en fazla ne kadar?",
              "Net 26.223,44 TL. Tavan, brüt asgari ücretin %80'i olarak hesaplanır: 33.030 × 0,80 = 26.424 TL brüt, binde 7,59 damga vergisi düşülünce 26.223,44 TL net kalır."),
+            ("50.000 TL brüt ücretle işsizlik maaşı ne kadar?",
+             "Son dört ayın ortalama brüt kazancı 50.000 TL ise ödenek 20.000 TL "
+             "brüt, damga vergisi sonrası 19.848,20 TL nettir. 600 prim gününde "
+             "6 ay boyunca toplam 119.089,20 TL ödenir; diğer hak kazanma şartları "
+             "ayrıca sağlanmalıdır."),
             ("Kaç ay ödenir?",
              "Son üç yıldaki prim gün sayısına göre: 600 gün için 6 ay, 900 gün için 8 ay, 1080 gün ve üzeri için 10 ay."),
             ("İşsizlik ödeneğinden vergi kesilir mi?",
@@ -402,6 +416,10 @@ HESAPLAYICILAR = [
         "sss": [
             ("2026 kira geliri istisnası ne kadar?",
              "Konut kira gelirinde 58.000 TL. Bu tutarın altında konut kira geliri elde eden ve başka beyan gerektiren geliri olmayan kişi beyanname vermez. İşyeri kirasında mesken istisnası uygulanmaz."),
+            ("Yıllık 180.000 TL konut kirasının vergisi ne kadar?",
+             "2026 parametreleri ve götürü gider yöntemiyle: 58.000 TL istisna, "
+             "18.300 TL götürü gider sonrası matrah 103.700 TL; hesaplanan gelir "
+             "vergisi 15.555 TL'dir. Başka beyana tabi gelirler sonucu değiştirebilir."),
             ("Götürü gider mi gerçek gider mi avantajlı?",
              "Götürü yöntem, istisna sonrası kalan tutarın %15'ini belge aramadan düşer. Gerçek giderleriniz (faiz, amortisman, tamir, sigorta) bu oranın üzerindeyse gerçek gider daha avantajlıdır. Götürü seçen mükellef iki yıl geçmeden gerçek yönteme dönemez."),
             ("Kira geliri hangi tarifeden vergilendirilir?",
@@ -968,6 +986,9 @@ HESAPLAYICILAR = [
         "sss": [
             ("Maliyet düşürmek zararı kapatır mı?",
              "Hayır. Zararınız aynı kalır; sadece başa baş fiyatınız düşer ve pozisyonunuz büyür. Düşmeye devam eden bir varlıkta ekleme yapmak zararı büyütür."),
+            ("1000 lot 50 TL maliyete 500 lotu 35 TL'den eklersem ortalamam ne olur?",
+             "Toplam tutar 67.500 TL, toplam adet 1.500 olur; yeni ortalama maliyet "
+             "45 TL'ye iner. Komisyon dahil değildir."),
             ("Başa baş fiyat nedir?",
              "Yeni ortalama maliyetinizin kendisi. Bu fiyattan satarsanız (komisyon hariç) ne kâr ne zarar edersiniz."),
             ("Komisyon hesaba dahil mi?",
@@ -1049,6 +1070,9 @@ HESAPLAYICILAR = [
         ["Yatırımın temettüyle geri dönüşü", null, false, "not", s.geri_donus_yili + " yıl"],
       ];""",
         "sss": [
+            ("50 TL'lik hisse 4 TL temettü verirse temettü verimi kaçtır?",
+             "Temettü verimi %8'dir: 4 ÷ 50 × 100. 1.000 pay için brüt yıllık "
+             "temettü 4.000 TL olur; stopaj sonrası net tutar bu hesapta gösterilmez."),
             ("Yüksek temettü verimi iyi midir?",
              "Her zaman değil. Verim bir orandır: payda olan hisse fiyatı düştüğünde de yükselir. Şirketin kârı azalırken verimin artması uyarı işareti olabilir."),
             ("Temettüden vergi kesilir mi?",
@@ -1446,13 +1470,12 @@ def _butce_kalemleri(veri_kok: Path | None = None) -> list[dict]:
             degerler = su.segment_degerleri(veri)
             if not all(degerler.get(k) for k in ("dusuk", "orta", "luks")):
                 continue
-            birim = "kişi başı" if tanim.get("birim") == "kisi_basi" else "adet"
-            aylik_mi = (
-                "(aylık)" in tanim["ad"].lower()
-                or tanim.get("grup") == "Aylık sarf"
-            )
-            if aylik_mi:
-                birim = "aylık"
+            if tanim.get("birim") == "kisi_basi":
+                birim = "kişi başı"
+            elif tanim.get("olcum_turu") == "paket_fiyati":
+                birim = "paket"
+            else:
+                birim = "adet"
             kaynak_sayisi = len(
                 su.bagimsiz_siteler({tanim["id"]: veri}, {tanim["id"]})
             ) or veri.get("kaynak_sayisi", 0)

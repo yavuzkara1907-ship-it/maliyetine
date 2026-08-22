@@ -77,12 +77,14 @@ class RehberTesti(unittest.TestCase):
         self.assertIn("500 TL", html)     # kokteyl
         self.assertIn("75.000 TL", html)  # 150 kisilik fark: (1000-500)*150
 
-    def test_aylik_evcil_rehberi_yalniz_tekrarlayan_kalemleri_toplar(self):
+    def test_evcil_rehberi_paket_fiyatini_ayliklastirmaz(self):
         r = next(x for x in rehber.REHBERLER if x["slug"] == "aylik-kedi-masrafi")
         html = rehber.rehber_uret(r, {"kedi": KEDI_VERI})
         self.assertIsNotNone(html)
-        self.assertIn("1.000 TL", html)   # mama + kum
-        self.assertIn("12.000 TL", html)  # ayni aylik alt sinirin 12 ayi
+        self.assertIn("1.000 TL", html)       # birer paket mama + kum
+        self.assertNotIn("12.000 TL", html)   # paket toplami 12 ile carpilamaz
+        self.assertNotRegex(html, r"ayda\s+1\.000 TL")
+        self.assertNotRegex(html, r"yılda\s+12\.000 TL")
         cevap = re.search(r'<p class="cevap-blok">(.*?)</p>', html, re.S).group(1)
         self.assertNotIn("5.000 TL", cevap)  # tek seferlik yatak ayliga karismaz
 
@@ -194,3 +196,39 @@ class GrupYuzdesiTesti(unittest.TestCase):
         tablo = re.search(r'<h2>Para nereye gidiyor\?</h2>(.*?)</table>', html, re.S).group(1)
         self.assertNotIn("Teknoloji", tablo)
         self.assertNotIn("Çalışma alanı", tablo)
+
+
+class PaketFiyatiIddiaTesti(unittest.TestCase):
+    @staticmethod
+    def _vertikal_verisi(vertikal: str) -> dict:
+        import sayfa_uret as su
+        kalemler = {
+            k["id"]: {
+                "genel_medyan": 1000,
+                "toplam_urun": 20,
+                "segmentler": {
+                    "dusuk": {"medyan": 500},
+                    "orta": {"medyan": 1000},
+                    "luks": {"medyan": 2000},
+                },
+            }
+            for k in su.VERTIKALLER[vertikal]["kalemler"]
+        }
+        return {"kalemler": kalemler, "guncelleme_tarihi": "2026-08-20"}
+
+    def test_evcil_ve_bebek_rehberleri_paketi_ayliklastirmiyor(self):
+        veri = {
+            v: self._vertikal_verisi(v) for v in ("kedi", "kopek", "bebek")
+        }
+        for slug in (
+            "aylik-kedi-masrafi", "aylik-kopek-masrafi",
+            "kedi-mi-kopek-mi-masrafli", "bebek-masraflari-ilk-yil",
+            "kedi-sahiplenmeden-once", "kopek-sahiplenmeden-once",
+            "bebek-alisverisinde-nelere-dikkat",
+        ):
+            tanim = next(r for r in rehber.REHBERLER if r["slug"] == slug)
+            html = rehber.rehber_uret(tanim, veri)
+            self.assertIsNotNone(html, slug)
+            self.assertNotRegex(html, r"ayda\s+[\d.]+\s+TL", slug)
+            self.assertNotRegex(html, r"yılda\s+[\d.]+\s+TL", slug)
+            self.assertNotIn("12.000 TL", html, slug)

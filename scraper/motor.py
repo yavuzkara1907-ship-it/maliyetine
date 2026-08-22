@@ -49,6 +49,8 @@ import yaml
 from bs4 import BeautifulSoup
 from protego import Protego
 
+from olcum_sozlesmesi import olcum_turu
+
 BASE_DIR = Path(__file__).parent
 VARSAYILAN_KAYNAKLAR = BASE_DIR / "kaynaklar.yaml"
 VARSAYILAN_CIKTI = BASE_DIR / "veri"
@@ -652,6 +654,30 @@ def aykiri_temizle(urunler):
     return [u for u in urunler if alt <= u["fiyat"] <= ust]
 
 
+def denetim_ornegi(urunler: list[dict], sinir: int = 15) -> list[dict]:
+    """Fiyat dagilimina yayilan, kucuk ve deterministik urun kaniti.
+
+    Snapshot'larda yalniz medyan tutmak paket boyu/ozellik gibi veri
+    sorunlarini sonradan incelemeyi imkansizlastiriyordu. Tum urun listesini
+    her kosuda arsivlemek depoyu sisirir; bunun yerine en dusukten en yuksege
+    esit aralikli bir denetim ornegi sakliyoruz.
+    """
+    if not urunler or sinir <= 0:
+        return []
+    sirali = sorted(urunler, key=lambda u: (u["fiyat"], u.get("isim", "").casefold()))
+    if len(sirali) <= sinir:
+        secilen = sirali
+    elif sinir == 1:
+        secilen = [sirali[len(sirali) // 2]]
+    else:
+        indisler = [round(i * (len(sirali) - 1) / (sinir - 1)) for i in range(sinir)]
+        secilen = [sirali[i] for i in indisler]
+    return [
+        {"isim": str(u.get("isim", "")).strip()[:240], "fiyat": u["fiyat"]}
+        for u in secilen
+    ]
+
+
 # ----------------------------------------------------------
 # SEGMENTLEME - dusuk / orta / luks (persentil bazli)
 # ----------------------------------------------------------
@@ -802,6 +828,7 @@ def gruplar_halinde_topla(kaynaklar: list[dict]):
 def grup_isle(vertikal: str, kalem: str, site: str, grup: dict, gecmis: dict, cikti_kok: Path) -> dict:
     gecmis_anahtari = f"{vertikal}/{kalem}/{site}"
 
+    ham_urun_sayisi = len(grup["urunler"])
     temiz = aykiri_temizle(grup["urunler"])
     urun_sayisi = len(temiz)
 
@@ -824,12 +851,16 @@ def grup_isle(vertikal: str, kalem: str, site: str, grup: dict, gecmis: dict, ci
         "kaynak_adlari": grup["kaynak_adlari"],
         "kalem": kalem,
         "vertikal": vertikal,
+        "olcum_turu": olcum_turu(kalem),
         "tarih": date.today().isoformat(),
+        "ham_urun_sayisi": ham_urun_sayisi,
+        "aykiri_urun_sayisi": ham_urun_sayisi - urun_sayisi,
         "toplam_urun": urun_sayisi,
         "saglikli": saglikli,
         "kullanilan_katmanlar": sorted(grup["katmanlar"]),
         "genel_medyan": genel_medyan,
         "segmentler": segmentle(temiz),
+        "ornek_urunler": denetim_ornegi(temiz),
     }
 
     dosya = hedef_klasor / f"{kalem}_{ad_slug(site)}_{date.today().isoformat()}.json"

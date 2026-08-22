@@ -82,3 +82,9 @@ class GecmisTestleri(unittest.TestCase):
         k = gecmis.vertikal_gecmisi("dugun", self.kok)["kalemler"]["gelinlik"]
         self.assertIsNone(k.get("degisim_yuzde"))
         self.assertEqual(k["ilk"], k["son"])
+
+    def test_kalem_sirasi_deterministik(self):
+        self._yaz(kayit("z-kalem", "site", "2026-07-25", 200),
+                  kayit("a-kalem", "site", "2026-07-25", 100))
+        g = gecmis.vertikal_gecmisi("dugun", self.kok)
+        self.assertEqual(list(g["kalemler"]), ["a-kalem", "z-kalem"])

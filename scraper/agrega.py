@@ -26,6 +26,8 @@ import json
 import statistics
 from pathlib import Path
 
+from olcum_sozlesmesi import kaynak_adi, olcum_turu
+
 BASE_DIR = Path(__file__).parent
 VARSAYILAN_VERI_KOK = BASE_DIR / "veri"
 VARSAYILAN_SITE_VERI_KOK = BASE_DIR.parent / "veri"
@@ -40,7 +42,7 @@ def kaynak_dosyalarini_oku(vertikal_klasoru: Path) -> list[dict]:
     kayitlar = []
     if not vertikal_klasoru.exists():
         return kayitlar
-    for dosya in vertikal_klasoru.glob("*.json"):
+    for dosya in sorted(vertikal_klasoru.glob("*.json")):
         if "capraz-dogrulama" in dosya.name:
             continue
         try:
@@ -64,7 +66,7 @@ def capraz_dogrulama_raporlarini_oku(vertikal_klasoru: Path) -> dict[str, dict]:
     raporlar: dict[str, dict] = {}
     if not vertikal_klasoru.exists():
         return raporlar
-    for dosya in vertikal_klasoru.glob("*_capraz-dogrulama_*.json"):
+    for dosya in sorted(vertikal_klasoru.glob("*_capraz-dogrulama_*.json")):
         try:
             veri = json.loads(dosya.read_text(encoding="utf-8"))
         except (json.JSONDecodeError, OSError):
@@ -95,7 +97,7 @@ def en_guncel_kayitlari_sec(kayitlar: list[dict]) -> list[dict]:
     return list(en_guncel.values())
 
 
-def kalem_birlestir(kaynak_kayitlari: list[dict]) -> dict:
+def kalem_birlestir(kaynak_kayitlari: list[dict], kalem: str = "") -> dict:
     """Ayni kalemdeki N saglikli kaynagin kayitlarini tek bir ozet sozluge
     birlestirir. kaynak_kayitlari bos OLAMAZ (cagiran taraf garanti eder)."""
     segmentler: dict[str, dict] = {}
@@ -158,7 +160,10 @@ def kalem_birlestir(kaynak_kayitlari: list[dict]) -> dict:
     # gosteriyor ve birakilmis kaynaklari kullaniliyormus gibi sunuyor.
     veri_veren = [k for k in kaynak_kayitlari if (k.get("toplam_urun") or 0) > 0]
 
+    kalem_id = kalem or kaynak_kayitlari[0].get("kalem", "")
+
     return {
+        "olcum_turu": olcum_turu(kalem_id),
         "segmentler": segmentler,
         # True ise segment kirilimi guvenilir degil (bkz. yukarisi) -
         # sayfa segmentleri gostermez, yalnizca genel ortalamayi verir.
@@ -170,10 +175,13 @@ def kalem_birlestir(kaynak_kayitlari: list[dict]) -> dict:
         "kaynaklar": [
             {
                 "site": k["site"],
-                "kaynak_adlari": k["kaynak_adlari"],
+                "kaynak_adlari": [kaynak_adi(kalem_id, ad)
+                                   for ad in k["kaynak_adlari"]],
                 "tarih": k["tarih"],
                 "toplam_urun": k.get("toplam_urun", 0),
                 "genel_medyan": k.get("genel_medyan"),
+                **({"ornek_urunler": k["ornek_urunler"]}
+                   if k.get("ornek_urunler") else {}),
             }
             for k in sorted(veri_veren, key=lambda k: k["site"])
         ],
@@ -192,7 +200,7 @@ def vertikal_agregali(vertikal: str, veri_kok: Path = VARSAYILAN_VERI_KOK) -> di
 
     kalemler = {}
     for kalem, kayitlar in kalemler_gruplu.items():
-        ozet = kalem_birlestir(kayitlar)
+        ozet = kalem_birlestir(kayitlar, kalem)
         if kalem in capraz_raporlar:
             ham_rapor = capraz_raporlar[kalem]
             ozet["capraz_dogrulama_uyarisi"] = {

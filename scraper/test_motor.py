@@ -362,6 +362,18 @@ class AykiriVeSegmentTestleri(unittest.TestCase):
     def test_bos_liste_segmentleme(self):
         self.assertEqual(motor.segmentle([]), {})
 
+    def test_denetim_ornegi_fiyat_dagilimina_yayilir(self):
+        urunler = [{"isim": f"urun-{i}", "fiyat": i * 10} for i in range(100)]
+        ornek = motor.denetim_ornegi(urunler, sinir=5)
+        self.assertEqual(len(ornek), 5)
+        self.assertEqual(ornek[0]["fiyat"], 0)
+        self.assertEqual(ornek[-1]["fiyat"], 990)
+        self.assertEqual([u["fiyat"] for u in ornek], sorted(u["fiyat"] for u in ornek))
+
+    def test_denetim_ornegi_urun_adini_sinirlar(self):
+        ornek = motor.denetim_ornegi([{"isim": "x" * 500, "fiyat": 10}])
+        self.assertEqual(len(ornek[0]["isim"]), 240)
+
 
 class SaglikKontroluTestleri(unittest.TestCase):
     def test_ilk_calistirmada_her_zaman_saglikli(self):
@@ -569,6 +581,10 @@ class GrupIsleUctanUcaTestleri(unittest.TestCase):
 
         self.assertTrue(sonuc["saglikli"])
         self.assertEqual(sonuc["toplam_urun"], 3)
+        self.assertEqual(sonuc["ham_urun_sayisi"], 3)
+        self.assertEqual(sonuc["aykiri_urun_sayisi"], 0)
+        self.assertEqual(sonuc["olcum_turu"], "kalem_fiyati")
+        self.assertEqual(len(sonuc["ornek_urunler"]), 3)
         self.assertEqual(sonuc["kullanilan_katmanlar"], ["json-ld"])
         self.assertIsNotNone(sonuc["genel_medyan"])
 
@@ -577,6 +593,7 @@ class GrupIsleUctanUcaTestleri(unittest.TestCase):
         self.assertTrue(beklenen_dosya.exists())
         icerik = json.loads(beklenen_dosya.read_text(encoding="utf-8"))
         self.assertEqual(icerik["toplam_urun"], 3)
+        self.assertEqual(icerik["ornek_urunler"], sonuc["ornek_urunler"])
 
         self.assertIn("dugun/gelinlik/test-site", gecmis)
         self.assertEqual(gecmis["dugun/gelinlik/test-site"]["urun_sayilari"], [3])
