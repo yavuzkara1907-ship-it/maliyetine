@@ -3877,6 +3877,13 @@ sitemap **938 -> 1.327 URL** oldu.
 - Son kapilar: Python **451/451**, JavaScript **90/90**; QA **121 seri / 109
   kalem sayfasi / 0 kritik hata**. Sitemapte **1.327 benzersiz URL**, disinda
   yalniz `404.html` olmak uzere toplam 1.328 HTML var.
+- **Canli dogrulama:** `da26db0` Cloudflare uzerinden yayinda; marka,
+  karsilastirma ve 30 gunluk degisim ornekleri `200`, canli sitemap **1.327
+  URL**. Tam sitemap IndexNow'a gonderildi ve `200 OK` ile kabul edildi.
+  Search Console'da tam `https://maliyetine.com.tr/sitemap.xml` yeniden
+  gonderildi; Google **"Site haritasi basariyla gonderildi"** onayi verdi ve
+  gonderim tarihini 22 Agustos 2026 olarak yeniledi. GSC'deki kesfedilen 186
+  sayfa sayaci isleme tamamlanana kadar eski degeri gosterebilir.
 
 ## Yapılacaklar (güncel, 2026-08-22)
 Tarihî tamamlanan işler yukarıdaki günlükte duruyor. Bu liste yalnızca
