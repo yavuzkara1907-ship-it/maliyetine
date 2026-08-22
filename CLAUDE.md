@@ -3838,6 +3838,11 @@ Dogru karar `kalite veya hacim` degil, **gercek gozlemle hacim**.
   HTML ile sitemap birebir; title/description benzersiz, yetim sayfa yok.
   `/fiyat/`, 487 linkli arac hub'i ve tekil model sayfasi Chromium'da masaustu
   ve 390 px mobilde yatay tasmasiz, okunabilir olarak dogrulandi.
+- **Canli dogrulama:** `9220973` Cloudflare uzerinden yayinda. `/fiyat/`,
+  `/fiyat/arac/`, ornek model sayfasi ve `/veri/fiyat-gozlemleri.json` `200`
+  donuyor; canli arsiv **733 kayit**, sitemap **938 URL** tasiyor. `llms.txt`
+  ve `ai.txt` exact-query katalogunu ilan ediyor. Sitemap'teki 938 URL
+  IndexNow'a gonderildi ve servis `200 OK` ile kabul etti.
 
 ## Yapılacaklar (güncel, 2026-08-22)
 Tarihî tamamlanan işler yukarıdaki günlükte duruyor. Bu liste yalnızca
