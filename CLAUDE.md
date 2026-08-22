@@ -28,6 +28,22 @@
   OG, `ai.txt`, `llms.txt` ve veri merkezi bu toplamı ortak
   `envanter_ozeti()` fonksiyonuyla JSON'dan hesaplar;
   `/veri/envanter.json` makinece okunabilir kanonik özettir.
+- **Yayın paketi artık içerik tabanlı sürümlüdür.** `/veri/manifest.json`,
+  yedi güncel JSON için gerçek dosya SHA-256 özetlerini; ilgili geçmiş JSON
+  ve CSV özetlerini; ölçüm tarihi ile 121 seri sayısını birlikte yayınlar.
+  Güncel sürüm `2026-08-22-f0c8be50f5ae1a98`tir. Aynı kanonik JSON'lar aynı
+  sürümü üretir; güncel veride tek bayt değişirse sürüm değişir.
+- **Yayın öncesi QA kapısı var.** `scraper/qa.py`; JSON envanteri, kaynak ve
+  ürün toplamı, kalem tarihi, segment işareti, son geçmiş noktası, CSV satırı,
+  ana sayfa/dikey toplamı ve 99 görünür kalem sayfasını aynı sürüme karşı
+  denetler. `/veri/qa.json` sonucu makinece okunabilir yayınlar. 2026-08-22
+  raporu: **0 kritik hata, 28 geliştirme uyarısı, 72 sayfada zaten görünür
+  veri sınırı**. Uyarılar: 16 gerçek tek-kaynak açığı, 11 düşük örneklem ve
+  1 sert dönem değişimi; görünür sınırlar 70 kaynak farkı ve 2 tutarsız
+  segment kırılımıdır. Keyfî kalite puanı kullanılmaz.
+- Rakam taşıyan OG/paylaşım kartları da atomik paketin zorunlu parçasıdır.
+  `pillow` CI bağımlılığına eklendi; ana OG veya sayfa kartları üretilemezse
+  workflow artık eski görselle devam etmez, yayın öncesinde durur.
 - Ana sayfa kartlarındaki `12+42+11+10+6+5+1 = 87` başka bir metriktir:
   varsayılan bütçe senaryosuna giren **bütçe satırları**. Araçta 24 marka
   ayrı fiyat serisi olarak izlenir, fakat alternatif oldukları için
@@ -140,6 +156,18 @@
   kabul edilip karantinaya alındı; eski sağlıklı veri sessizce sıfırlanmadı.
   Tarihli CSV bir kez oluştuktan sonra değişmez; aynı gün tekrar build
   yalnız sabit CSV URL'sini yeniler.
+- **Tarih ve geçmiş hesabındaki iki sessiz hata kapatıldı.** Sıfır ürünlü,
+  daha yeni bir snapshot artık katkı vermediği kalemin ölçüm tarihini ileri
+  taşıyamaz; örneğin gelinlik gerçek veri tarihi `2026-07-26`dır, boş Cimri
+  kaydı yüzünden `2026-08-20` görünmez. Geçmiş de yalnız aynı gün taranan
+  kaynakları birleştirmez: her tarihte o güne kadar her kaynağın bilinen son
+  sağlıklı durumunu kanonik `agrega.kalem_birlestir()` ile yeniden oynatır.
+  Böylece her serinin son geçmiş noktası güncel JSON'daki medyan, ürün,
+  kaynak ve veri tarihiyle birebir aynıdır.
+  Aynı hata sınıfından kalan 11 tarihli CSV arşivindeki 81 yanlış ölçüm
+  tarihi de kanonik geçmişe göre düzeltildi; fiyat hücreleri değiştirilmedi.
+  QA bundan sonra sabit CSV'lerle birlikte bütün tarihli arşiv tarihlerini
+  de denetler.
 - Search Console'daki 306 sorgunun tamamı incelendi. Talep yalnız "liste"
   değil; kullanıcılar en çok **tapu, kira vergisi, hisse maliyeti, temettü,
   işsizlik, düğün/çeyiz** konularında doğrudan rakam ve örnek arıyor. Bu
@@ -156,11 +184,10 @@
   `www ve HTTP -> kök HTTPS 301` olarak düzeltildi; `https://www...` ve
   `http://www...` artık `https://maliyetine.com.tr/...` adresine 301
   dönüyor, query string korunuyor, kök HTTPS 200 kalıyor.
-- Bu turun son doğrulaması: **384 Python + 90 JavaScript test PASS**.
-  Tarayıcıda aylık tüketim aracı masaüstü/mobil sınandı: 60 g/gün kedi
-  maması **701,86 TL/ay**, 6 bez/gün **1.674 TL/ay** verdi ve alan etiketi
-  ürünle birlikte değişti. Fırın sayfasında tip tablosu, tek fiyatın
-  yokluğu, mobil taşma ve koyu tema uyarı kontrastı doğrulandı.
+- Bu turun son doğrulaması: **392 Python + 90 JavaScript test PASS**.
+  Yeni `/veri/` yüzeyi 1440×900 ve 390×844 görünümde gerçek tarayıcıyla
+  sınandı: belge yatay taşmıyor, geniş veri tablosu kendi sarmalında kayıyor,
+  sürüm bağlantısı taşıp metni kesmiyor ve konsol hatası yok.
 - En yüksek kaldıraçlı açık işler:
   1. 301 sonrası Search Console'u 7-14 gün sonra tekrar kontrol et:
      sayfa tablosunda `www` sinyali düşüyor mu, kök hosta birleşiyor mu?

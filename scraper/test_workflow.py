@@ -107,7 +107,7 @@ class WorkflowTesti(unittest.TestCase):
         """Workflow `pip install -r requirements.txt` yapiyor; kodun
         import ettigi ucuncu taraf paket orada yoksa adim coker."""
         req = (BASE / "requirements.txt").read_text(encoding="utf-8").lower()
-        for paket in ("requests", "beautifulsoup4", "pyyaml", "protego", "playwright"):
+        for paket in ("requests", "beautifulsoup4", "pyyaml", "protego", "playwright", "pillow"):
             self.assertIn(paket, req, f"{paket} requirements.txt'te yok")
         # sosyal.py X gonderimi icin kullaniyor
         if "requests_oauthlib" in (BASE / "sosyal.py").read_text(encoding="utf-8"):
@@ -252,6 +252,20 @@ class WorkflowTesti(unittest.TestCase):
             akis.rindex("python sayfa_uret.py"),
             "hesaplayici sayfalari uretildikten sonra sitemap yenilenmiyor",
         )
+
+    def test_QA_sosyal_gonderi_ve_committen_once_calisiyor(self):
+        """Tutarsiz build once dis dunyaya yan etki uretmemeli."""
+        akis = _metin()
+        qa = akis.index("python qa.py")
+        self.assertGreater(qa, akis.index("python veri_disa_aktar.py"))
+        self.assertLess(qa, akis.index("python sosyal.py"))
+        self.assertLess(qa, akis.index("git commit"))
+
+    def test_rakam_tasiyan_paylasim_kartlari_sessizce_bayat_birakilmaz(self):
+        akis = _metin()
+        self.assertNotIn("OG gorseli guncellenemedi, devam", akis)
+        self.assertNotIn("Paylasim kartlari uretilemedi, devam", akis)
+        self.assertIn("assert n > 0", akis)
 
     def test_tum_yayin_sayfalari_favicon_tasiyor(self):
         sayfalar = list(BASE.parent.rglob("index.html")) + [BASE.parent / "404.html"]

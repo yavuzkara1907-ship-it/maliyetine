@@ -200,6 +200,7 @@ class KalemBirlestirTestleri(unittest.TestCase):
         # Rakamlar etkilenmemeli: medyan ve toplam urun dogru kalmali.
         self.assertEqual(ozet["genel_medyan"], 8999)
         self.assertEqual(ozet["toplam_urun"], 21)
+        self.assertEqual(ozet["guncelleme_tarihi"], "2026-07-25")
 
     def test_tum_kaynaklar_bossa_kaynak_sayisi_sifir(self):
         # Bu durumda "veri yok" denmeli, sahte bir kaynak sayisi degil.
@@ -211,6 +212,7 @@ class KalemBirlestirTestleri(unittest.TestCase):
         self.assertEqual(ozet["kaynak_sayisi"], 0)
         self.assertEqual(ozet["kaynaklar"], [])
         self.assertIsNone(ozet["genel_medyan"])
+        self.assertIsNone(ozet["guncelleme_tarihi"])
 
     def test_guncelleme_tarihi_en_yeniyi_alir(self):
         eski = {

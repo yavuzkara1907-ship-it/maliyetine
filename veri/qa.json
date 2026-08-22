@@ -1,0 +1,619 @@
+{
+  "dataset_surumu": "2026-08-22-f0c8be50f5ae1a98",
+  "kontrol_tarihi": "2026-08-22",
+  "durum": "gecti",
+  "ozet": {
+    "fiyat_serisi": 121,
+    "cok_kaynakli": 80,
+    "tek_kaynakli": 41,
+    "kalem_sayfasi": 99,
+    "kritik_hata": 0,
+    "uyari": 28,
+    "bilinen_sinir": 72
+  },
+  "kritik_hatalar": [],
+  "uyarilar": [
+    {
+      "kod": "tek_kaynak",
+      "mesaj": "Perakende/hizmet serisi tek kaynakli",
+      "vertikal": "dugun",
+      "kalem": "fotografci"
+    },
+    {
+      "kod": "dusuk_orneklem",
+      "mesaj": "Orneklem 1 urun",
+      "vertikal": "dugun",
+      "kalem": "fotografci"
+    },
+    {
+      "kod": "tek_kaynak",
+      "mesaj": "Perakende/hizmet serisi tek kaynakli",
+      "vertikal": "dugun",
+      "kalem": "gelin-arabasi"
+    },
+    {
+      "kod": "dusuk_orneklem",
+      "mesaj": "Orneklem 1 urun",
+      "vertikal": "dugun",
+      "kalem": "gelin-arabasi"
+    },
+    {
+      "kod": "tek_kaynak",
+      "mesaj": "Perakende/hizmet serisi tek kaynakli",
+      "vertikal": "dugun",
+      "kalem": "gelinlik"
+    },
+    {
+      "kod": "tek_kaynak",
+      "mesaj": "Perakende/hizmet serisi tek kaynakli",
+      "vertikal": "dugun",
+      "kalem": "kuafor-makyaj"
+    },
+    {
+      "kod": "dusuk_orneklem",
+      "mesaj": "Orneklem 1 urun",
+      "vertikal": "dugun",
+      "kalem": "kuafor-makyaj"
+    },
+    {
+      "kod": "tek_kaynak",
+      "mesaj": "Perakende/hizmet serisi tek kaynakli",
+      "vertikal": "dugun",
+      "kalem": "organizasyon"
+    },
+    {
+      "kod": "dusuk_orneklem",
+      "mesaj": "Orneklem 1 urun",
+      "vertikal": "dugun",
+      "kalem": "organizasyon"
+    },
+    {
+      "kod": "tek_kaynak",
+      "mesaj": "Perakende/hizmet serisi tek kaynakli",
+      "vertikal": "dugun",
+      "kalem": "salon-kokteyl"
+    },
+    {
+      "kod": "tek_kaynak",
+      "mesaj": "Perakende/hizmet serisi tek kaynakli",
+      "vertikal": "dugun",
+      "kalem": "salon-yemekli"
+    },
+    {
+      "kod": "tek_kaynak",
+      "mesaj": "Perakende/hizmet serisi tek kaynakli",
+      "vertikal": "dugun",
+      "kalem": "taki-altin"
+    },
+    {
+      "kod": "tek_kaynak",
+      "mesaj": "Perakende/hizmet serisi tek kaynakli",
+      "vertikal": "dugun",
+      "kalem": "yemek-ikram"
+    },
+    {
+      "kod": "sert_degisim",
+      "mesaj": "Son karsilastirilabilir degisim %82.0",
+      "vertikal": "dugun",
+      "kalem": "yemek-ikram"
+    },
+    {
+      "kod": "tek_kaynak",
+      "mesaj": "Perakende/hizmet serisi tek kaynakli",
+      "vertikal": "bebek",
+      "kalem": "biberon-seti"
+    },
+    {
+      "kod": "tek_kaynak",
+      "mesaj": "Perakende/hizmet serisi tek kaynakli",
+      "vertikal": "bebek",
+      "kalem": "zibin-seti"
+    },
+    {
+      "kod": "tek_kaynak",
+      "mesaj": "Perakende/hizmet serisi tek kaynakli",
+      "vertikal": "kedi",
+      "kalem": "kedi-tuvaleti"
+    },
+    {
+      "kod": "tek_kaynak",
+      "mesaj": "Perakende/hizmet serisi tek kaynakli",
+      "vertikal": "kedi",
+      "kalem": "tirmalama"
+    },
+    {
+      "kod": "tek_kaynak",
+      "mesaj": "Perakende/hizmet serisi tek kaynakli",
+      "vertikal": "kopek",
+      "kalem": "cis-pedi"
+    },
+    {
+      "kod": "tek_kaynak",
+      "mesaj": "Perakende/hizmet serisi tek kaynakli",
+      "vertikal": "kopek",
+      "kalem": "kopek-mama-kabi"
+    },
+    {
+      "kod": "tek_kaynak",
+      "mesaj": "Perakende/hizmet serisi tek kaynakli",
+      "vertikal": "kopek",
+      "kalem": "kopek-tasima"
+    },
+    {
+      "kod": "dusuk_orneklem",
+      "mesaj": "Orneklem 4 urun",
+      "vertikal": "arac",
+      "kalem": "byd"
+    },
+    {
+      "kod": "dusuk_orneklem",
+      "mesaj": "Orneklem 4 urun",
+      "vertikal": "arac",
+      "kalem": "chery"
+    },
+    {
+      "kod": "dusuk_orneklem",
+      "mesaj": "Orneklem 7 urun",
+      "vertikal": "arac",
+      "kalem": "cupra"
+    },
+    {
+      "kod": "dusuk_orneklem",
+      "mesaj": "Orneklem 7 urun",
+      "vertikal": "arac",
+      "kalem": "honda"
+    },
+    {
+      "kod": "dusuk_orneklem",
+      "mesaj": "Orneklem 5 urun",
+      "vertikal": "arac",
+      "kalem": "mg"
+    },
+    {
+      "kod": "dusuk_orneklem",
+      "mesaj": "Orneklem 4 urun",
+      "vertikal": "arac",
+      "kalem": "seat"
+    },
+    {
+      "kod": "dusuk_orneklem",
+      "mesaj": "Orneklem 4 urun",
+      "vertikal": "arac",
+      "kalem": "tesla"
+    }
+  ],
+  "bilinen_sinirlar": [
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "dugun",
+      "kalem": "alyans"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "dugun",
+      "kalem": "damatlik"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "dugun",
+      "kalem": "davetiye"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "dugun",
+      "kalem": "gelin-ayakkabisi"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "dugun",
+      "kalem": "nikah-sekeri"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "airfryer"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "aydinlatma"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "bardak-takimi"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "blender"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "bornoz"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "boy-aynasi"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "bulasik-makinesi"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "buzdolabi"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "camasir-makinesi"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "davlumbaz"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "dikey-supurge"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "firin-ocak"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "gardirop"
+    },
+    {
+      "kod": "segment_tutarsiz",
+      "mesaj": "Segment kirilimi sayfada gizleniyor",
+      "vertikal": "ev-kurma",
+      "kalem": "hali"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "hali"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "havlu-takimi"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "kahvalti-takimi"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "kahve-makinesi"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "karyola"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "klima"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "koltuk-takimi"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "konsol"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "kurutma-makinesi"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "mutfak-robotu"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "nevresim-takimi"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "perde"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "sac-kurutma-makinesi"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "sehpa"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "su-isitici"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "supurge"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "tava-seti"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "televizyon"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "tencere-seti"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "tost-makinesi"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "tv-unitesi"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "utu"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "yatak"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "yemek-masasi"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "ev-kurma",
+      "kalem": "yemek-takimi"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "okul",
+      "kalem": "ayakkabi"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "okul",
+      "kalem": "beslenme-cantasi"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "okul",
+      "kalem": "boya-seti"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "okul",
+      "kalem": "calisma-masasi"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "okul",
+      "kalem": "calisma-sandalyesi"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "okul",
+      "kalem": "defter"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "okul",
+      "kalem": "ders-kitabi"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "okul",
+      "kalem": "kalem-kutusu"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "okul",
+      "kalem": "matara"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "okul",
+      "kalem": "okul-cantasi"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "okul",
+      "kalem": "sozluk"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "okul",
+      "kalem": "tablet"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "bebek",
+      "kalem": "bebek-arabasi"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "bebek",
+      "kalem": "bebek-bezi"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "bebek",
+      "kalem": "bebek-kuveti"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "bebek",
+      "kalem": "besik"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "bebek",
+      "kalem": "gogus-pompasi"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "bebek",
+      "kalem": "mama-sandalyesi"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "bebek",
+      "kalem": "oto-koltugu"
+    },
+    {
+      "kod": "segment_tutarsiz",
+      "mesaj": "Segment kirilimi sayfada gizleniyor",
+      "vertikal": "bebek",
+      "kalem": "uyku-tulumu"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "bebek",
+      "kalem": "uyku-tulumu"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "kedi",
+      "kalem": "kedi-kumu"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "kedi",
+      "kalem": "kedi-mamasi"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "kedi",
+      "kalem": "kedi-oyuncagi"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "kedi",
+      "kalem": "kedi-yatagi"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "kedi",
+      "kalem": "tasima-cantasi"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "kopek",
+      "kalem": "kopek-mamasi"
+    },
+    {
+      "kod": "kaynak_farki",
+      "mesaj": "Kaynak medyanlari arasinda gorunur fark var",
+      "vertikal": "kopek",
+      "kalem": "kopek-yatagi"
+    }
+  ]
+}

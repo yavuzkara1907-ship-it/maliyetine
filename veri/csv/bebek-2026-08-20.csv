@@ -1,12 +1,12 @@
 ﻿vertikal,kalem_id,kalem_adi,grup,birim,olcum_turu,ekonomik_tl,orta_tl,ust_tl,en_dusuk_tl,en_yuksek_tl,urun_sayisi,kaynak_sayisi,kaynaklar,olcum_tarihi
-bebek,bebek-kuveti,Bebek Küveti,Bakım,sabit,kalem_fiyati,750,1050,2336,500,3499,52,2,amazon; ebebek,2026-08-20
-bebek,biberon-seti,Biberon Seti,Beslenme,sabit,kalem_fiyati,400,1015,1899,199,2499,41,1,amazon,2026-08-20
-bebek,gogus-pompasi,Göğüs Pompası,Beslenme,sabit,kalem_fiyati,670,2336,4474,310,7000,50,2,amazon; ebebek,2026-08-20
+bebek,bebek-kuveti,Bebek Küveti,Bakım,sabit,kalem_fiyati,750,1050,2336,500,3499,52,2,amazon; ebebek,2026-08-05
+bebek,biberon-seti,Biberon Seti,Beslenme,sabit,kalem_fiyati,400,1015,1899,199,2499,41,1,amazon,2026-08-02
+bebek,gogus-pompasi,Göğüs Pompası,Beslenme,sabit,kalem_fiyati,670,2336,4474,310,7000,50,2,amazon; ebebek,2026-08-05
 bebek,mama-sandalyesi,Mama Sandalyesi,Beslenme,sabit,kalem_fiyati,1300,1910,3990,350,24742,70,3,amazon; joker; trendyol,2026-08-20
-bebek,bebek-bezi,Bebek Bezi (paket),Tekrarlayan ürün,sabit,paket_fiyati,286,592,940,160,1780,59,2,amazon; ebebek,2026-08-20
+bebek,bebek-bezi,Bebek Bezi (paket),Tekrarlayan ürün,sabit,paket_fiyati,286,592,940,160,1780,59,2,amazon; ebebek,2026-08-02
 bebek,uyku-tulumu,Uyku Tulumu,Tekstil,sabit,kalem_fiyati,947,550,2750,314,3250,50,2,amazon; joker,2026-08-20
-bebek,zibin-seti,Zıbın / Body Seti,Tekstil,sabit,kalem_fiyati,339,550,825,180,1000,48,1,amazon,2026-08-20
+bebek,zibin-seti,Zıbın / Body Seti,Tekstil,sabit,kalem_fiyati,339,550,825,180,1000,48,1,amazon,2026-08-02
 bebek,bebek-arabasi,Bebek Arabası,Uyku ve taşıma,sabit,kalem_fiyati,8150,15612,41402,1500,129990,105,4,amazon; ebebek; joker; trendyol,2026-08-20
 bebek,besik,Beşik,Uyku ve taşıma,sabit,kalem_fiyati,1599,5144,11048,872,28699,54,3,amazon; ebebek; trendyol,2026-08-20
 bebek,oto-koltugu,Oto Koltuğu,Uyku ve taşıma,sabit,kalem_fiyati,7196,14506,26041,840,44990,100,3,amazon; joker; trendyol,2026-08-20
-bebek,park-yatak,Park Yatak / Oyun Parkı,Uyku ve taşıma,sabit,kalem_fiyati,3169,5999,13074,2495,15899,38,2,amazon; ebebek,2026-08-20
+bebek,park-yatak,Park Yatak / Oyun Parkı,Uyku ve taşıma,sabit,kalem_fiyati,3169,5999,13074,2495,15899,38,2,amazon; ebebek,2026-08-05

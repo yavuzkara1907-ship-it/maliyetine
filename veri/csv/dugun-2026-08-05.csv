@@ -1,5 +1,5 @@
 ﻿vertikal,kalem_id,kalem_adi,grup,birim,ekonomik_tl,orta_tl,ust_tl,en_dusuk_tl,en_yuksek_tl,urun_sayisi,kaynak_sayisi,kaynaklar,olcum_tarihi
-dugun,alyans,Alyans,,sabit,8528,16045,21270,1107,21460,27,2,atasay; trendyol,2026-08-05
+dugun,alyans,Alyans,,sabit,8528,16045,21270,1107,21460,27,2,atasay; trendyol,2026-07-26
 dugun,damatlik,Damatlık / Takım Elbise,,sabit,23799,47950,83970,2508,164950,98,3,beymen; trendyol; vakko,2026-08-05
 dugun,davetiye,Davetiye,,sabit,150,254,1203,92,3274,30,2,amazon; trendyol,2026-08-05
 dugun,salon-kokteyl,Düğün Salonu — kokteyl (yemeksiz),,kisi_basi,500,800,1245,250,1500,10,1,dugunbuketi,2026-08-05
@@ -7,10 +7,10 @@ dugun,salon-yemekli,Düğün Salonu — yemekli (menü dahil),,kisi_basi,750,100
 dugun,fotografci,Fotoğraf ve Video,,sabit,15000,15000,15000,15000,15000,1,1,dugun-com,2026-08-05
 dugun,gelin-arabasi,Gelin Arabası,,sabit,9300,9300,9300,9300,9300,1,1,dugun-com,2026-08-05
 dugun,gelin-ayakkabisi,"Gelin Ayakkabısı, Duvak, Aksesuar",,sabit,708,1550,4500,590,6250,50,2,amazon; trendyol,2026-08-05
-dugun,gelinlik,Gelinlik,,sabit,3704,18172,43839,2250,65000,20,1,trendyol,2026-08-05
+dugun,gelinlik,Gelinlik,,sabit,3704,18172,43839,2250,65000,20,1,trendyol,2026-07-26
 dugun,kuafor-makyaj,Kuaför ve Makyaj,,sabit,12600,12600,12600,12600,12600,1,1,dugun-com,2026-08-05
 dugun,nikah-sekeri,Nikah Şekeri,,sabit,250,462,714,169,980,30,2,amazon; trendyol,2026-08-05
 dugun,organizasyon,Organizasyon / Süsleme,,sabit,16550,16550,16550,16550,16550,1,1,dugun-com,2026-08-05
-dugun,taki-altin,Takı — Altın Bilezik (1 adet),,sabit,33085,85022,180340,30600,243765,24,1,atasay,2026-08-05
+dugun,taki-altin,Takı — Altın Bilezik (1 adet),,sabit,33085,85022,180340,30600,243765,24,1,atasay,2026-07-26
 dugun,yemek-ikram,Yemek / İkram (mekanın menü bedeli),,kisi_basi,200,250,710,150,920,10,1,dugunbuketi,2026-08-05
 dugun,salon,salon,,,320,525,775,200,800,9,1,dugunbuketi,2026-08-05

@@ -45,6 +45,7 @@ from collections import defaultdict
 from datetime import date, datetime
 from pathlib import Path
 
+import agrega
 from envanter import aktif_kalem_idleri
 
 # Iki olcum arasinda en az bu kadar gun olmali ki "degisim" anlamli sayilsin.
@@ -67,9 +68,13 @@ VARSAYILAN_CIKTI_KOK = BASE_DIR.parent / "veri" / "gecmis"
 DOSYA_DESENI = re.compile(r"^(?P<kalem>.+)_(?P<site>[^_]+)_(?P<tarih>\d{4}-\d{2}-\d{2})\.json$")
 
 
-def anlik_goruntuleri_oku(vertikal_klasoru: Path) -> dict[tuple[str, str], list[dict]]:
-    """(kalem, tarih) -> o tarihte o kalemi olcen TUM site kayitlari."""
-    gruplar: dict[tuple[str, str], list[dict]] = defaultdict(list)
+def anlik_goruntuleri_oku(vertikal_klasoru: Path) -> dict[str, list[dict]]:
+    """kalem -> kronolojik kaynak snapshot'lari.
+
+    Sifir urunlu saglikli kayitlar da kaynak durumunu degistirebildigi icin
+    okunur. Fiyat noktasi olustururken katkida bulunmazlar.
+    """
+    gruplar: dict[str, list[dict]] = defaultdict(list)
     if not vertikal_klasoru.exists():
         return gruplar
     for dosya in sorted(vertikal_klasoru.glob("*.json")):
@@ -85,26 +90,49 @@ def anlik_goruntuleri_oku(vertikal_klasoru: Path) -> dict[tuple[str, str], list[
         # Saglıksız (karantina) kayitlar zaten ayri klasorde; yine de kontrol.
         if not veri.get("saglikli", True):
             continue
-        if not veri.get("toplam_urun"):
-            continue
-        gruplar[(eslesme.group("kalem"), eslesme.group("tarih"))].append(veri)
+        gruplar[eslesme.group("kalem")].append(veri)
+    for kayitlar in gruplar.values():
+        kayitlar.sort(key=lambda k: (k.get("tarih", ""), k.get("site", "")))
     return gruplar
 
 
 def olcum_noktasi(kayitlar: list[dict]) -> dict | None:
-    """Ayni kalem+tarihteki N site kaydini TEK olcum noktasina indirger.
-
-    agrega.py ile ayni ilke: siteler arasi medyan-of-medyan; ham fiyatlar
-    birbirine karistirilmaz.
-    """
-    medyanlar = [k["genel_medyan"] for k in kayitlar if k.get("genel_medyan")]
-    if not medyanlar:
+    """Secilen kaynak durumunu agrega.py ile ayni kuralla tek noktaya indirger."""
+    if not kayitlar:
+        return None
+    ozet = agrega.kalem_birlestir(kayitlar, kayitlar[0].get("kalem", ""))
+    if ozet.get("genel_medyan") is None:
         return None
     return {
-        "medyan": round(statistics.median(medyanlar)),
-        "urun": sum(k.get("toplam_urun", 0) for k in kayitlar),
-        "kaynak": len({k.get("site") for k in kayitlar}),
+        "medyan": ozet["genel_medyan"],
+        "urun": ozet["toplam_urun"],
+        "kaynak": ozet["kaynak_sayisi"],
+        "veri_tarihi": ozet["guncelleme_tarihi"],
     }
+
+
+def kalem_serisi(kayitlar: list[dict]) -> list[dict]:
+    """Her olcum gununde o ana kadar bilinen kanonik kaynak durumunu oynatir.
+
+    Kaynaklar ayni gun taranmak zorunda degildir. Bugunku endeks her kaynak
+    icin son snapshot'i kullaniyorsa gecmis de ayni ilkeyi kullanmalidir;
+    yalniz ayni tarihli dosyalari birlestirmek farkli bir metrik uretir.
+    """
+    veri_ureten_siteler = {
+        k.get("site") for k in kayitlar if (k.get("toplam_urun") or 0) > 0
+    }
+    tarihler = sorted({
+        k.get("tarih") for k in kayitlar
+        if k.get("tarih") and k.get("site") in veri_ureten_siteler
+    })
+    seri = []
+    for tarih in tarihler:
+        o_gune_kadar = [k for k in kayitlar if k.get("tarih", "") <= tarih]
+        guncel = agrega.en_guncel_kayitlari_sec(o_gune_kadar)
+        nokta = olcum_noktasi(guncel)
+        if nokta:
+            seri.append({"tarih": tarih, **nokta})
+    return seri
 
 
 def _degisim(onceki: float, sonraki: float) -> float | None:
@@ -129,19 +157,17 @@ def vertikal_gecmisi(
     veri_kok: Path = VARSAYILAN_VERI_KOK,
     aktif_kalemler: set[str] | None = None,
 ) -> dict:
-    gruplar = anlik_goruntuleri_oku(veri_kok / vertikal)
-
     kalem_serileri: dict[str, list[dict]] = defaultdict(list)
-    for (kalem, tarih), kayitlar in gruplar.items():
+    for kalem, kayitlar in anlik_goruntuleri_oku(veri_kok / vertikal).items():
         if aktif_kalemler is not None and kalem not in aktif_kalemler:
             continue
-        nokta = olcum_noktasi(kayitlar)
-        if nokta:
-            kalem_serileri[kalem].append({"tarih": tarih, **nokta})
+        kalem_serileri[kalem] = kalem_serisi(kayitlar)
 
     kalemler: dict[str, dict] = {}
     tum_tarihler: set[str] = set()
     for kalem, seri in kalem_serileri.items():
+        if not seri:
+            continue
         seri.sort(key=lambda x: x["tarih"])
         tum_tarihler.update(x["tarih"] for x in seri)
         kayit = {"seri": seri, "ilk": seri[0], "son": seri[-1]}

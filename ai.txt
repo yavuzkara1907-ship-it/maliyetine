@@ -4,6 +4,7 @@ site: https://maliyetine.com.tr
 language: tr
 country: TR
 updated: 2026-08-22
+dataset_version: 2026-08-22-f0c8be50f5ae1a98
 policy: https://maliyetine.com.tr/llms.txt
 sitemap: https://maliyetine.com.tr/sitemap.xml
 license: CC BY 4.0 (ölçüm verisi)

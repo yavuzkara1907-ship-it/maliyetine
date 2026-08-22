@@ -1,15 +1,15 @@
 ﻿vertikal,kalem_id,kalem_adi,grup,birim,ekonomik_tl,orta_tl,ust_tl,en_dusuk_tl,en_yuksek_tl,urun_sayisi,kaynak_sayisi,kaynaklar,olcum_tarihi
-okul,ayakkabi,Spor Ayakkabı,Giyim,sabit,778,1145,1512,435,2407,67,2,amazon; trendyol,2026-08-05
-okul,ders-kitabi,Ders ve Yardımcı Kitap,Kitap,sabit,174,309,515,65,882,65,2,amazon; trendyol,2026-08-05
-okul,sozluk,Sözlük,Kitap,sabit,126,269,735,56,1590,62,2,amazon; trendyol,2026-08-05
+okul,ayakkabi,Spor Ayakkabı,Giyim,sabit,778,1145,1512,435,2407,67,2,amazon; trendyol,2026-08-02
+okul,ders-kitabi,Ders ve Yardımcı Kitap,Kitap,sabit,174,309,515,65,882,65,2,amazon; trendyol,2026-08-02
+okul,sozluk,Sözlük,Kitap,sabit,126,269,735,56,1590,62,2,amazon; trendyol,2026-08-02
 okul,boya-seti,Boya Seti,Kırtasiye,sabit,111,342,670,63,1310,93,3,amazon; nezih; trendyol,2026-08-05
 okul,defter,Defter,Kırtasiye,sabit,154,288,400,40,1199,180,4,amazon; dr; nezih; trendyol,2026-08-05
 okul,kalem,Kalem,Kırtasiye,sabit,82,164,424,33,589,69,2,amazon; trendyol,2026-08-05
 okul,kalem-kutusu,Kalem Kutusu,Kırtasiye,sabit,260,610,830,80,1295,173,3,amazon; nezih; trendyol,2026-08-05
 okul,resim-malzemeleri,Resim ve Sanat Malzemeleri,Kırtasiye,sabit,132,383,572,70,900,63,2,amazon; trendyol,2026-08-05
-okul,tablet,Tablet,Teknoloji,sabit,4752,10980,17192,2457,38779,64,2,amazon; trendyol,2026-08-05
-okul,calisma-masasi,Çalışma Masası,Çalışma alanı,sabit,1444,2348,4554,1014,7599,64,2,amazon; trendyol,2026-08-05
+okul,tablet,Tablet,Teknoloji,sabit,4752,10980,17192,2457,38779,64,2,amazon; trendyol,2026-08-02
+okul,calisma-masasi,Çalışma Masası,Çalışma alanı,sabit,1444,2348,4554,1014,7599,64,2,amazon; trendyol,2026-08-02
 okul,calisma-sandalyesi,Çalışma Sandalyesi,Çalışma alanı,sabit,2361,3819,6810,1509,10142,63,2,amazon; trendyol,2026-08-05
-okul,beslenme-cantasi,Beslenme Çantası,Çanta ve beslenme,sabit,344,627,994,140,1850,81,2,amazon; trendyol,2026-08-05
+okul,beslenme-cantasi,Beslenme Çantası,Çanta ve beslenme,sabit,344,627,994,140,1850,81,2,amazon; trendyol,2026-08-02
 okul,okul-cantasi,Okul Çantası,Çanta ve beslenme,sabit,900,1472,2399,470,4200,170,3,amazon; nezih; trendyol,2026-08-05
 okul,matara,Suluk / Matara,Çanta ve beslenme,sabit,260,785,1538,75,2400,169,3,amazon; nezih; trendyol,2026-08-05

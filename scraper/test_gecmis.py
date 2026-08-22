@@ -6,11 +6,13 @@ from pathlib import Path
 from tempfile import TemporaryDirectory
 
 import gecmis
+import agrega
 
 
 def kayit(kalem, site, tarih, medyan, urun=10):
     return kalem, site, tarih, {
         "kalem": kalem, "site": site, "tarih": tarih, "saglikli": True,
+        "kaynak_adlari": [site],
         "toplam_urun": urun, "genel_medyan": medyan, "segmentler": {},
     }
 
@@ -59,6 +61,31 @@ class GecmisTestleri(unittest.TestCase):
         self.assertEqual(n["medyan"], 12000)   # medyan([20000, 4000])
         self.assertEqual(n["kaynak"], 2)
         self.assertEqual(n["urun"], 20)
+
+    def test_farkli_gunlerde_olculen_kaynaklar_son_durumda_birlesir(self):
+        self._yaz(
+            kayit("alyans", "atasay", "2026-07-25", 20000, urun=20),
+            kayit("alyans", "trendyol", "2026-08-25", 4000, urun=10),
+        )
+        seri = gecmis.vertikal_gecmisi("dugun", self.kok)["kalemler"]["alyans"]["seri"]
+        self.assertEqual(seri[0]["medyan"], 20000)
+        self.assertEqual(seri[0]["kaynak"], 1)
+        self.assertEqual(seri[1]["medyan"], 12000)
+        self.assertEqual(seri[1]["kaynak"], 2)
+        self.assertEqual(seri[1]["veri_tarihi"], "2026-08-25")
+
+    def test_son_gecmis_noktasi_guncel_agrega_ile_ayni(self):
+        self._yaz(
+            kayit("alyans", "atasay", "2026-07-25", 20000, urun=20),
+            kayit("alyans", "trendyol", "2026-08-25", 4000, urun=10),
+            kayit("alyans", "atasay", "2026-09-25", 22000, urun=24),
+        )
+        son = gecmis.vertikal_gecmisi("dugun", self.kok)["kalemler"]["alyans"]["son"]
+        guncel = agrega.vertikal_agregali("dugun", self.kok)["kalemler"]["alyans"]
+        self.assertEqual(son["medyan"], guncel["genel_medyan"])
+        self.assertEqual(son["urun"], guncel["toplam_urun"])
+        self.assertEqual(son["kaynak"], guncel["kaynak_sayisi"])
+        self.assertEqual(son["veri_tarihi"], guncel["guncelleme_tarihi"])
 
     def test_sifir_urunlu_ve_saglıksiz_kayit_seriye_girmez(self):
         _, _, _, bos = kayit("davetiye", "trendyol", "2026-07-25", None, urun=0)

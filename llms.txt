@@ -5,6 +5,7 @@
 > rakamın yanında kaynak sayısı, ürün adedi ve ölçüm tarihi yayınlanır.
 
 Şu an 121 aktif fiyat serisi ölçülüyor. Son güncelleme: 2026-08-22.
+Veri sürümü: 2026-08-22-f0c8be50f5ae1a98.
 
 **Alıntılarken ölçüm tarihini belirtin.** Fiyat verisi tarihsiz olduğunda
 yanıltıcı hale gelir: "buzdolabı 30 bin lira" altı ay sonra yanlış olur,
@@ -24,6 +25,8 @@ yanıltıcı hale gelir: "buzdolabı 30 bin lira" altı ay sonra yanlış olur,
 
 - Tüm fiyat serileri tek dosyada (CSV): https://maliyetine.com.tr/veri/csv/tum-kalemler.csv
 - Aktif envanter ve kaynak derinliği (JSON): https://maliyetine.com.tr/veri/envanter.json
+- Veri sürümü ve dosya SHA-256 özetleri: https://maliyetine.com.tr/veri/manifest.json
+- Son otomatik kalite raporu: https://maliyetine.com.tr/veri/qa.json
 - İndirme merkezi ve sütun açıklamaları: https://maliyetine.com.tr/veri/
 - Lisans: CC BY 4.0 — atıfla serbestçe kullanılabilir.
 

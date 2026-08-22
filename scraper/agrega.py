@@ -102,13 +102,20 @@ def en_guncel_kayitlari_sec(kayitlar: list[dict]) -> list[dict]:
 def kalem_birlestir(kaynak_kayitlari: list[dict], kalem: str = "") -> dict:
     """Ayni kalemdeki N saglikli kaynagin kayitlarini tek bir ozet sozluge
     birlestirir. kaynak_kayitlari bos OLAMAZ (cagiran taraf garanti eder)."""
+    # Bos snapshot bir kaynak durumudur ama fiyat olcumu degildir. Tum fiyat,
+    # orneklem ve tarih alanlari ayni katkida bulunan kaynak kumesinden
+    # hesaplanmali; aksi halde bos ama yeni bir kayit kalemi olculmus gibi
+    # ileri tarihe tasir.
+    veri_veren = [
+        k for k in kaynak_kayitlari if (k.get("toplam_urun") or 0) > 0
+    ]
     segmentler: dict[str, dict] = {}
     for segment_adi in SEGMENT_ADLARI:
         medyanlar = []
         minler = []
         maksler = []
         urun_toplam = 0
-        for kayit in kaynak_kayitlari:
+        for kayit in veri_veren:
             seg = kayit.get("segmentler", {}).get(segment_adi)
             if not seg:
                 continue
@@ -146,9 +153,12 @@ def kalem_birlestir(kaynak_kayitlari: list[dict], kalem: str = "") -> dict:
     ]
     segment_tutarsiz = sirali_degerler != sorted(sirali_degerler)
 
-    genel_medyanlar = [k["genel_medyan"] for k in kaynak_kayitlari if k.get("genel_medyan") is not None]
-    toplam_urun = sum(k.get("toplam_urun", 0) for k in kaynak_kayitlari)
-    en_guncel_tarih = max(k["tarih"] for k in kaynak_kayitlari)
+    genel_medyanlar = [
+        k["genel_medyan"] for k in veri_veren
+        if k.get("genel_medyan") is not None
+    ]
+    toplam_urun = sum(k.get("toplam_urun", 0) for k in veri_veren)
+    en_guncel_tarih = max((k["tarih"] for k in veri_veren), default=None)
 
     # SADECE GERCEKTEN URUN DONDUREN kaynaklar sayilir ve listelenir.
     # Neden: bir kaynak birakilmis/bozulmus olabilir ama eski tarihli
@@ -160,8 +170,6 @@ def kalem_birlestir(kaynak_kayitlari: list[dict], kalem: str = "") -> dict:
     # segmente. Bu yuzden listeden de cikariliyor - aksi halde kalem
     # sayfalari "X: bu calistirmada urun yok" diye anlamsiz satirlar
     # gosteriyor ve birakilmis kaynaklari kullaniliyormus gibi sunuyor.
-    veri_veren = [k for k in kaynak_kayitlari if (k.get("toplam_urun") or 0) > 0]
-
     kalem_id = kalem or kaynak_kayitlari[0].get("kalem", "")
     birim_fiyatlari = birim_fiyatlarini_birlestir(veri_veren)
     ozellik_ozeti = ozellik_ozetlerini_birlestir(veri_veren)

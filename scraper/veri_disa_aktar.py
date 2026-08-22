@@ -33,6 +33,7 @@ from pathlib import Path
 
 from envanter import envanter_ozeti
 import sayfa_uret as su
+from veri_surumu import manifest_yaz
 
 SITE_KOK = su.SITE_KOK
 CSV_KOK = SITE_KOK / "veri" / "csv"
@@ -145,11 +146,20 @@ def disa_aktar(veri_kok: Path | None = None, cikti_kok: Path | None = None) -> d
 # ---------------------------------------------------------------------------
 # /veri/ indirme merkezi
 # ---------------------------------------------------------------------------
-def veri_sayfasi(ozet: dict, tarih: str | None = None) -> str:
+def veri_sayfasi(
+    ozet: dict, tarih: str | None = None, manifest: dict | None = None
+) -> str:
     tarih = tarih or date.today().isoformat()
     url = f"{su.SITE_KOK_URL}/veri/"
     toplam_kalem = sum(o["kalem"] for o in ozet.values())
     endeks_adlari = ", ".join(su.VERTIKALLER[v]["ad"] for v in ozet)
+    dataset_surumu = (manifest or {}).get("dataset_surumu")
+    surum_satiri = (
+        '<p class="sonuc-alt-metin">Yayın sürümü: '
+        f'<a href="/veri/manifest.json"><code>{dataset_surumu}</code></a> · '
+        '<a href="/veri/qa.json">son kalite raporu</a></p>'
+        if dataset_surumu else ""
+    )
 
     satirlar = "".join(
         f'<tr><td><a href="/{v}/">{su.VERTIKALLER[v]["ad"]}</a></td>'
@@ -194,6 +204,7 @@ def veri_sayfasi(ozet: dict, tarih: str | None = None) -> str:
                 ),
                 "inLanguage": "tr-TR",
                 "license": "https://creativecommons.org/licenses/by/4.0/",
+                **({"version": dataset_surumu} if dataset_surumu else {}),
                 "creator": {"@type": "Organization", "name": "Maliyeti Ne?",
                             "url": su.SITE_KOK_URL},
                 "dataset": [
@@ -271,6 +282,7 @@ def veri_sayfasi(ozet: dict, tarih: str | None = None) -> str:
     kaynaklardan geldiği ve hangi tarihte ölçüldüğü</strong> yazıyor —
     rakamı kendiniz doğrulayabilirsiniz.
   </div>
+  {surum_satiri}
 
   <h2>Dosyalar</h2>
   <div class="tablo-sarmal"><table>
@@ -280,6 +292,8 @@ def veri_sayfasi(ozet: dict, tarih: str | None = None) -> str:
   <p>
     Hepsi tek dosyada: <a href="/veri/csv/tum-kalemler.csv" download><strong>tum-kalemler.csv</strong></a>
     · <a href="/veri/envanter.json"><strong>envanter.json</strong></a>
+    · <a href="/veri/manifest.json"><strong>manifest.json</strong></a>
+    · <a href="/veri/qa.json"><strong>qa.json</strong></a>
   </p>
   <p class="sonuc-alt-metin">
     Araçtaki tek kaynaklı seriler üretici liste fiyatı metodolojisini izler;
@@ -372,7 +386,9 @@ def veri_sayfasi(ozet: dict, tarih: str | None = None) -> str:
 
 
 
-def llms_txt(ozet: dict, tarih: str | None = None) -> str:
+def llms_txt(
+    ozet: dict, tarih: str | None = None, dataset_surumu: str | None = None
+) -> str:
     """AI motorlari icin yapilandirilmis ozet.
 
     NEDEN URETILIYOR: elle yazilmisti ve BAYATLAMISTI - okul vertikali
@@ -419,6 +435,7 @@ def llms_txt(ozet: dict, tarih: str | None = None) -> str:
 > rakamın yanında kaynak sayısı, ürün adedi ve ölçüm tarihi yayınlanır.
 
 Şu an {toplam} aktif fiyat serisi ölçülüyor. Son güncelleme: {tarih}.
+Veri sürümü: {dataset_surumu or 'manifest.json içinde'}.
 
 **Alıntılarken ölçüm tarihini belirtin.** Fiyat verisi tarihsiz olduğunda
 yanıltıcı hale gelir: "buzdolabı 30 bin lira" altı ay sonra yanlış olur,
@@ -432,6 +449,8 @@ yanıltıcı hale gelir: "buzdolabı 30 bin lira" altı ay sonra yanlış olur,
 
 - Tüm fiyat serileri tek dosyada (CSV): {kok}/veri/csv/tum-kalemler.csv
 - Aktif envanter ve kaynak derinliği (JSON): {kok}/veri/envanter.json
+- Veri sürümü ve dosya SHA-256 özetleri: {kok}/veri/manifest.json
+- Son otomatik kalite raporu: {kok}/veri/qa.json
 - İndirme merkezi ve sütun açıklamaları: {kok}/veri/
 - Lisans: CC BY 4.0 — atıfla serbestçe kullanılabilir.
 
@@ -476,7 +495,9 @@ belirtin.
 
 
 
-def ai_txt(ozet: dict, tarih: str | None = None) -> str:
+def ai_txt(
+    ozet: dict, tarih: str | None = None, dataset_surumu: str | None = None
+) -> str:
     """AI ajanlari icin kisa kunye (`/ai.txt`).
 
     NEDEN: 2026-07-27 rakip incelemesinde hesapsonuc.com'un ai.txt'i
@@ -505,6 +526,7 @@ site: {kok}
 language: tr
 country: TR
 updated: {tarih}
+dataset_version: {dataset_surumu or kok + '/veri/manifest.json'}
 policy: {kok}/llms.txt
 sitemap: {kok}/sitemap.xml
 license: CC BY 4.0 (ölçüm verisi)
@@ -556,12 +578,17 @@ def main():
     if not ozet:
         print("Veri bulunamadi - CSV uretilmedi.")
         return 1
+    manifest, manifest_hedefi = manifest_yaz(
+        SITE_KOK / "veri", su.VERTIKALLER, SITE_KOK
+    )
     hedef = SITE_KOK / "veri" / "index.html"
-    hedef.write_text(veri_sayfasi(ozet), encoding="utf-8")
+    hedef.write_text(veri_sayfasi(ozet, manifest=manifest), encoding="utf-8")
     envanter_hedefi = SITE_KOK / "veri" / "envanter.json"
+    envanter = envanter_ozeti(SITE_KOK / "veri", su.VERTIKALLER)
+    envanter["dataset_surumu"] = manifest["dataset_surumu"]
     envanter_hedefi.write_text(
         json.dumps(
-            envanter_ozeti(SITE_KOK / "veri", su.VERTIKALLER),
+            envanter,
             ensure_ascii=False,
             indent=2,
         ),
@@ -573,12 +600,19 @@ def main():
         print(f"  {v:10} {o['kalem']:3} fiyat serisi -> {o['dosya']}")
     print(f"Veri merkezi: {hedef}")
     print(f"Aktif envanter: {envanter_hedefi}")
+    print(f"Veri manifesti: {manifest_hedefi} ({manifest['dataset_surumu']})")
     veri_tarihi = son_olcum_tarihi(ozet)
     llms = SITE_KOK / "llms.txt"
-    llms.write_text(llms_txt(ozet, veri_tarihi), encoding="utf-8")
+    llms.write_text(
+        llms_txt(ozet, veri_tarihi, manifest["dataset_surumu"]),
+        encoding="utf-8",
+    )
     print(f"llms.txt guncellendi: {llms}")
     ai = SITE_KOK / "ai.txt"
-    ai.write_text(ai_txt(ozet, veri_tarihi), encoding="utf-8")
+    ai.write_text(
+        ai_txt(ozet, veri_tarihi, manifest["dataset_surumu"]),
+        encoding="utf-8",
+    )
     print(f"ai.txt guncellendi: {ai}")
     return 0
 

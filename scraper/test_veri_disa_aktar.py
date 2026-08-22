@@ -114,9 +114,12 @@ class CsvTesti(unittest.TestCase):
             self.assertEqual(vd.disa_aktar(veri_kok=Path(d), cikti_kok=Path(d) / "c"), {})
 
     def test_veri_sayfasi_datacatalog_ve_lisans(self):
-        sayfa = vd.veri_sayfasi({"ev-kurma": {"kalem": 42, "tarih": "2026-08-05",
-                                              "dosya": "/veri/csv/ev-kurma.csv",
-                                              "arsiv": "/veri/csv/ev-kurma-2026-08-05.csv"}})
+        sayfa = vd.veri_sayfasi(
+            {"ev-kurma": {"kalem": 42, "tarih": "2026-08-05",
+                           "dosya": "/veri/csv/ev-kurma.csv",
+                           "arsiv": "/veri/csv/ev-kurma-2026-08-05.csv"}},
+            manifest={"dataset_surumu": "2026-08-05-abcdef1234567890"},
+        )
         blok = sayfa.split('<script type="application/ld+json">')[1].split("</script>")[0]
         graf = json.loads(blok)["@graph"]
         self.assertEqual(graf[0]["@type"], "DataCatalog")
@@ -125,6 +128,8 @@ class CsvTesti(unittest.TestCase):
         self.assertIn("ücretsiz kalır", sayfa)
         self.assertIn("sürümlenmiş sorgu API'si", sayfa)
         self.assertIn("aynı dosyayı yeniden satmaz", sayfa)
+        self.assertIn("2026-08-05-abcdef1234567890", sayfa)
+        self.assertIn("/veri/qa.json", sayfa)
 
     def test_ai_haritasi_veri_araclarini_formul_diye_gostermez(self):
         ozet = {"ev-kurma": {"kalem": 1, "tarih": "2026-08-05",

@@ -98,18 +98,18 @@ jobs:
           fi
 
       # Paylasim gorseli: uzerinde vertikal adlari ve kalem sayisi var,
-      # veri degisince bayatlamamali. PIL yoksa adim sessizce geciyor.
+      # veri degisince bayatlamamali. Pillow requirements'ta zorunlu;
+      # gorsel uretilemezse bayat kartla devam etmek yerine build durur.
       # Kartlar HTML'den once uretilir: ayni commit'te eklenen yeni sayfa
       # ilk gunden kendi og:image'ini kullanabilsin, ikinci olcumu beklemesin.
       - name: Paylaşım görselini güncelle
         working-directory: scraper
         run: |
-          python og_gorsel.py || echo "OG gorseli guncellenemedi, devam."
+          python og_gorsel.py
           # Sayfaya OZEL paylasim kartlari (2026-08-02). Rakam tasidiklari
           # icin HER olcumde yenilenmeli - bayat kart, bayat rakam demek
           # ve WhatsApp/Facebook onbellege alir.
-          python -c "import og_gorsel; print(og_gorsel.tum_kartlar(), 'kart')" \
-            || echo "Paylasim kartlari uretilemedi, devam."
+          python -c "import og_gorsel; n=og_gorsel.tum_kartlar(); assert n > 0, 'Paylasim karti uretilmedi'; print(n, 'kart')"
 
       # Senaryo sayfalari (100 kisilik dugun, beyaz esya butcesi...).
       # sayfa_uret'ten SONRA: endeks sayfalari bu dosyalarin varligina
@@ -152,6 +152,13 @@ jobs:
       - name: Veriyi CSV olarak dışa aktar
         working-directory: scraper
         run: python veri_disa_aktar.py
+
+      # SON KAPI: JSON, gecmis, CSV ve gorunur HTML ayni kanonik veriyi
+      # tasimiyorsa dis dunyaya yan etki (sosyal gonderi/commit) olusmaz.
+      # qa.json hata durumunda da yazilir; yerel incelemede nedeni kaybolmaz.
+      - name: Yayın öncesi veri QA
+        working-directory: scraper
+        run: python qa.py
 
       # Sosyal medya: bu olcumde paylasilacak GERCEK bir sey var mi?
       #
