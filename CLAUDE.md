@@ -116,6 +116,8 @@
   niyetine çekildi. Kaynak uçurumları `%2121` gibi yanıltıcı ifadeler
   yerine `22,2 kat` olarak anlatılır. Mobil 390 px ve masaüstü 1280 px
   kontrolde taşma yok; Python 424/424, JS 90/90 ve yayın QA'sı geçti.
+  Uygulama commit'i `db2a267` Cloudflare'da canlı doğrulandı; aynı turda
+  sitemap'teki 199 URL IndexNow'a gönderildi ve servis `200 OK` döndürdü.
 - **Düğün ikinci kaynak standardı:** aynı para biriminde görünmesi iki
   kaynağı karşılaştırılabilir yapmaz. Kişi başı salon fiyatına toplam
   organizasyon teklifi; aynı mekandaki paket farkından türetilen
