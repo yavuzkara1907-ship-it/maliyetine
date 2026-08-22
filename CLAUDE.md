@@ -18,7 +18,7 @@
 - Site artık tek konu değil, **veri ürünü + hesaplayıcı ağı**:
   **7 vertikal** (`dugun`, `ev-kurma`, `okul`, `bebek`, `kedi`, `kopek`,
   `arac`), **121 aktif fiyat serisi**, **26 bağımsız `/hesap/` hesaplayıcı**
-  ve **27 veriyle/resmî kaynakla üretilen rehber**. Yerel yayın paketindeki
+  ve **27 veriyle/resmî kaynakla üretilen rehber**. Güncel yayın paketindeki
   198 sayfa sitemap'teki 198 URL ile birebirdir; 190 sayfaya özel OG kartı
   vardır.
 - **Envanter sayacı tek sözleşmeye bağlandı.** Eski `122` sayısı gerçek
@@ -33,7 +33,7 @@
 - **Yayın paketi artık içerik tabanlı sürümlüdür.** `/veri/manifest.json`,
   yedi güncel JSON için gerçek dosya SHA-256 özetlerini; ilgili geçmiş JSON
   ve CSV özetlerini; ölçüm tarihi ile 121 seri sayısını birlikte yayınlar.
-  Yerel güncel sürüm `2026-08-22-57b420c28b2f83f9`tir. Aynı kanonik JSON'lar aynı
+  Güncel sürüm `2026-08-22-57b420c28b2f83f9`tir. Aynı kanonik JSON'lar aynı
   sürümü üretir; güncel veride tek bayt değişirse sürüm değişir.
 - **Yayın öncesi QA kapısı var.** `scraper/qa.py`; JSON envanteri, kaynak ve
   ürün toplamı, kalem tarihi, segment işareti, son geçmiş noktası, CSV satırı,
@@ -76,8 +76,8 @@
   marka/model/fiyat kartları döndürdü. Ancak kök sayfa yalnız sınırlı
   örnek kart gösteriyor; 25 serinin URL ve marka/model kapsamı
   doğrulanmadan üretime eklenmez.
-- **Araç marka rehberleri tek URL mimarisinde hazırlandı (yerel, henüz canlı
-  değil).** Araç snapshot'ları artık 24 markanın tüm kaynak satırlarını
+- **Araç marka rehberleri tek URL mimarisinde canlı.** Araç snapshot'ları
+  artık 24 markanın tüm kaynak satırlarını
   saklıyor; açık katalog ve sınırlı alias sözleşmesi 467 satırın 466'sını
   164 model ailesine bağladı. Model adı çıkarılamayan satır marka fiyatına
   dahil kalır, model bölümüne tahminle sokulmaz. Yeterli örneklem ve en az
@@ -85,7 +85,7 @@
   başına ayrı URL yok. Örneğin `/arac/opel-fiyatlari/` içinde Corsa,
   Corsa-e, Astra, Mokka, Frontera, Grandland ve Combo H3 bölümleridir.
   Kaynaktaki motor, şanzıman ve donanım ifadesi aynen korunur; ayrı ayrı
-  özellik farkı uydurulmaz. Yerel QA: 121 seri, 109 kalem sayfası, 0 kritik
+  özellik farkı uydurulmaz. Canlı QA: 121 seri, 109 kalem sayfası, 0 kritik
   hata, 29 uyarı, 72 görünür veri sınırı; Python 413/413, JS 90/90.
 - **Düğün ikinci kaynak standardı:** aynı para biriminde görünmesi iki
   kaynağı karşılaştırılabilir yapmaz. Kişi başı salon fiyatına toplam
@@ -110,13 +110,14 @@
 - Yayın modeli: statik dosyalar Cloudflare tarafında **Worker** ile servis
   ediliyor. Eski Pages kurulum notları tarihî kayıt; bugün doğru altyapı
   "statik çıktı + Cloudflare Worker + GitHub Actions"tır.
-- İçerik/veri doğruluk turu `e5d92df` ile remote'a gönderildi ve Cloudflare
+- Araç marka rehberleri turu `3c45c65` ile remote'a gönderildi ve Cloudflare
   otomatik dağıtımı canlıda doğrulandı. `/veri/manifest.json` ile
   `/veri/qa.json` HTTP 200 dönüyor; ikisi de
-  `2026-08-22-2474420e7b83fd9b` veri sürümünü taşıyor. Canlı QA durumu
-  `gecti`: 121 seri, 99 kalem sayfası, 0 kritik hata, 29 uyarı. Canlı araç
-  hub'ı Dacia 1.299.000 TL minimum cevabını, okul rehberi beş kanonik kalem
-  linkini ve araç hesaplayıcısı ortak maliyet sözleşmesini taşıyor.
+  `2026-08-22-57b420c28b2f83f9` veri sürümünü taşıyor. Canlı QA durumu
+  `gecti`: 121 seri, 109 kalem sayfası, 0 kritik hata, 29 uyarı. Canlı araç
+  hub'ı Dacia 1.299.000 TL minimum cevabını; 17 marka rehberi model ve
+  paket/motor tablolarını; okul rehberi beş kanonik kalem linkini ve araç
+  hesaplayıcısı ortak maliyet sözleşmesini taşıyor.
 - Otomasyon ayda iki kez çalışacak şekilde tasarlandı: ayın **5'i ve
   20'si**. **20 Ağustos 2026 koşusu kontrol edildi:** GitHub Actions run
   `32339864463` başarıyla bitti, `maliyetine-bot` `75ceda9` commit'ini attı
