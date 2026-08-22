@@ -5,7 +5,8 @@
   "2026-07-26",
   "2026-08-02",
   "2026-08-05",
-  "2026-08-20"
+  "2026-08-20",
+  "2026-08-22"
  ],
  "kalemler": {
   "bebek-arabasi": {
@@ -64,6 +65,12 @@
      "medyan": 576,
      "urun": 59,
      "kaynak": 2
+    },
+    {
+     "tarih": "2026-08-22",
+     "medyan": 440,
+     "urun": 56,
+     "kaynak": 2
     }
    ],
    "ilk": {
@@ -73,11 +80,14 @@
     "kaynak": 1
    },
    "son": {
-    "tarih": "2026-08-02",
-    "medyan": 576,
-    "urun": 59,
+    "tarih": "2026-08-22",
+    "medyan": 440,
+    "urun": 56,
     "kaynak": 2
-   }
+   },
+   "degisim_yuzde": -20.0,
+   "gun_araligi": 27,
+   "aylik_degisim_yuzde": -23.6
   },
   "bebek-kuveti": {
    "seri": [
@@ -418,10 +428,10 @@
  },
  "ozet": {
   "kalem_sayisi": 11,
-  "karsilastirilabilir": 8,
+  "karsilastirilabilir": 9,
   "artan": 5,
-  "azalan": 3,
+  "azalan": 4,
   "sabit": 0,
-  "medyan_degisim_yuzde": 103.1
+  "medyan_degisim_yuzde": 24.2
  }
 }

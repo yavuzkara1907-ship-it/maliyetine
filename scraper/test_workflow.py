@@ -217,5 +217,20 @@ class WorkflowTesti(unittest.TestCase):
                         "gecmis.py agrega.py'den once kosuyor - o ayki "
                         "birlestirilmis veri henuz yok")
 
+    def test_hesaplayicidan_sonra_sitemap_yeniden_uretiliyor(self):
+        """Veriyle acilan yeni arac ilk build'de sitemap disinda kalmamali."""
+        akis = _metin()
+        self.assertLess(
+            akis.rindex("python hesaplayicilar.py"),
+            akis.rindex("python sayfa_uret.py"),
+            "hesaplayici sayfalari uretildikten sonra sitemap yenilenmiyor",
+        )
+
+    def test_tum_yayin_sayfalari_favicon_tasiyor(self):
+        sayfalar = list(BASE.parent.rglob("index.html")) + [BASE.parent / "404.html"]
+        eksik = [str(p.relative_to(BASE.parent)) for p in sayfalar
+                 if 'href="/favicon.svg"' not in p.read_text(encoding="utf-8")]
+        self.assertEqual(eksik, [], f"favicon baglantisi eksik sayfalar: {eksik}")
+
 if __name__ == "__main__":
     unittest.main()

@@ -1467,6 +1467,14 @@ def _butce_kalemleri(veri_kok: Path | None = None) -> list[dict]:
             veri = kalemler.get(tanim["id"]) or {}
             if veri.get("kaynak_tipi") == "tahmini":
                 continue
+            # Ayni kalemde birden cok acik urun tipi varsa tek fiyat bandi
+            # kullanicinin sectigi seyi temsil etmez. Ornek: firin-ocak
+            # havuzunda ankastre firin, ocakli firin ve set birlikteyse
+            # "butcem yeter mi" karari verilmez; tip bazli sayfa kullanilir.
+            turler = (veri.get("ozellik_ozeti") or {}).get("urun_turleri") or {}
+            guclu_turler = [o for o in turler.values() if o.get("urun_sayisi", 0) >= 3]
+            if len(guclu_turler) > 1:
+                continue
             degerler = su.segment_degerleri(veri)
             if not all(degerler.get(k) for k in ("dusuk", "orta", "luks")):
                 continue
@@ -1609,6 +1617,152 @@ def butcem_yeter_mi_tanimi(veri_kok: Path | None = None) -> dict | None:
     }
 
 
+def _tuketim_profilleri(veri_kok: Path | None = None) -> list[dict]:
+    """Normalize birim fiyatlari aylik tuketim hesabina hazirlar.
+
+    En az 5 urun ve %20 ad-eslesmesi arar. Daha zayif bir ayrisma teknik
+    olarak rakam uretebilse de kullaniciya guvenilir bir medyan vermez.
+    """
+    kok = veri_kok or SITE_KOK / "veri"
+    tanimlar = [
+        ("kedi", "kedi-mamasi", "kg", "Kedi maması", "Günlük mama tüketimi (gram)", "günlük-gram"),
+        ("kopek", "kopek-mamasi", "kg", "Köpek maması", "Günlük mama tüketimi (gram)", "günlük-gram"),
+        ("kedi", "kedi-kumu", "kg", "Kedi kumu (kg)", "Aylık kum tüketimi (kg)", "aylık"),
+        ("kedi", "kedi-kumu", "litre", "Kedi kumu (litre)", "Aylık kum tüketimi (litre)", "aylık"),
+        ("bebek", "bebek-bezi", "adet", "Bebek bezi", "Günlük bez kullanımı (adet)", "günlük-adet"),
+        ("kopek", "cis-pedi", "adet", "Çiş pedi", "Günlük ped kullanımı (adet)", "günlük-adet"),
+    ]
+    dosyalar = {}
+    profiller = []
+    for vertikal, kalem, birim, ad, girdi_etiketi, donusum in tanimlar:
+        if vertikal not in dosyalar:
+            dosya = kok / f"{vertikal}.json"
+            try:
+                dosyalar[vertikal] = json.loads(dosya.read_text(encoding="utf-8"))
+            except (json.JSONDecodeError, OSError):
+                dosyalar[vertikal] = {}
+        veri_seti = dosyalar[vertikal]
+        kalem_verisi = (veri_seti.get("kalemler") or {}).get(kalem) or {}
+        ozet = (kalem_verisi.get("birim_fiyatlari") or {}).get(birim) or {}
+        if ozet.get("eslesen_urun", 0) < 5 or ozet.get("eslesme_orani", 0) < 0.2:
+            continue
+        profiller.append({
+            "id": f"{vertikal}:{kalem}:{birim}",
+            "ad": ad,
+            "birim": birim,
+            "birim_fiyat": ozet["genel_medyan"],
+            "fiyat_etiketi": ozet.get("etiket") or f"TL/{birim}",
+            "girdi_etiketi": girdi_etiketi,
+            "donusum": donusum,
+            "eslesen_urun": ozet["eslesen_urun"],
+            "toplam_urun": ozet.get("toplam_urun", 0),
+            "kaynak_sayisi": ozet.get("kaynak_sayisi", 0),
+            "tarih": kalem_verisi.get("guncelleme_tarihi") or veri_seti.get("guncelleme_tarihi") or "—",
+            "yol": f"/{vertikal}/",
+        })
+    return profiller
+
+
+def aylik_tuketim_tanimi(veri_kok: Path | None = None) -> dict | None:
+    profiller = _tuketim_profilleri(veri_kok)
+    if not profiller:
+        return None
+    tarihler = sorted({p["tarih"] for p in profiller})
+    return {
+        "id": "aylik-tuketim-maliyeti",
+        "slug": "aylik-tuketim-maliyeti",
+        "ad": "Aylık Tüketim Maliyeti",
+        "baslik": "Mama, Kum, Bez ve Ped Aylık Maliyet Hesabı",
+        "soru": "Paket fiyatından gerçek aylık tüketim maliyeti nasıl hesaplanır?",
+        "meta": (
+            "Kedi ve köpek maması, kedi kumu, bebek bezi ve çiş pedi için "
+            "ölçülmüş TL/kg, TL/litre veya TL/adet verisiyle aylık maliyet hesabı."
+        ),
+        "ozet": (
+            f"Paket fiyatını aylık gider sanmak yerine <strong>{len(profiller)} normalize "
+            "tüketim profili</strong> kullanıyoruz. Kendi tüketiminizi girin; araç "
+            "ölçülmüş birim fiyatla aylık ve yıllık karşılığı hesaplasın."
+        ),
+        "formul": (
+            "Mama = TL/kg × günlük gram × 30 ÷ 1.000 &nbsp;·&nbsp; "
+            "Bez/ped = TL/adet × günlük adet × 30 &nbsp;·&nbsp; "
+            "Kum = TL/kg veya TL/litre × aylık miktar"
+        ),
+        "kaynaklar": [
+            f"Maliyeti Ne? normalize ürün verisi — ölçüm tarihleri {tarihler[0]} – {tarihler[-1]}",
+            "Birim fiyat yalnız ürün adında gramaj veya paket adedi açıkça yazan ürünlerden hesaplanır",
+        ],
+        "alanlar": [
+            {"id": "urun", "etiket": "Tüketim kalemi", "tip": "select",
+             "varsayilan": profiller[0]["id"],
+             "secenekler": [(p["id"], f'{p["ad"]} — {p["fiyat_etiketi"]}') for p in profiller]},
+            {"id": "tuketim", "etiket": profiller[0]["girdi_etiketi"], "tip": "number",
+             "varsayilan": "", "adim": "0.01"},
+        ],
+        "alan_notu": (
+            "Tüketimi siz girersiniz; araç hayvan ağırlığı, bez değiştirme sıklığı "
+            "veya kum yenileme alışkanlığı varsaymaz. Kedi kumunda kg ve litre "
+            "birbirine çevrilmez; ambalajda yazan birimi seçin. Mama profilleri "
+            "kaynakların kategori havuzunu ölçer ve kuru/yaş ürünleri içerebilir; "
+            "kendi ürününüzün TL/kg değeri kategori ortancasından farklı olabilir."
+        ),
+        "js": """
+      const p = TUKETIM_PROFILLERI.find((x) => x.id === deger("urun"));
+      const giris = sayi("tuketim");
+      if (!p || giris <= 0) return null;
+      let aylikMiktar, miktarMetni;
+      if (p.donusum === "günlük-gram") {
+        aylikMiktar = giris * 30 / 1000;
+        miktarMetni = aylikMiktar.toLocaleString("tr-TR", {maximumFractionDigits: 2}) + " kg/ay";
+      } else if (p.donusum === "günlük-adet") {
+        aylikMiktar = giris * 30;
+        miktarMetni = aylikMiktar.toLocaleString("tr-TR", {maximumFractionDigits: 1}) + " adet/ay";
+      } else {
+        aylikMiktar = giris;
+        miktarMetni = giris.toLocaleString("tr-TR", {maximumFractionDigits: 2}) + " " + p.birim + "/ay";
+      }
+      const aylik = p.birim_fiyat * aylikMiktar;
+      return [
+        ["Ölçülmüş birim fiyat", p.birim_fiyat, false, "not", para(p.birim_fiyat) + "/" + p.birim],
+        ["Aylık tüketim", null, false, "not", miktarMetni],
+        ["Aylık maliyet", aylik, true],
+        ["Yıllık karşılık", aylik * 12, false],
+        ["Veri dayanağı", null, false, "not", p.eslesen_urun + " eşleşen ürün, " + p.kaynak_sayisi + " kaynak · " + p.tarih],
+      ];""",
+        "sss": [
+            (
+                "Neden paket fiyatını doğrudan aylık gider kabul etmiyorsunuz?",
+                "Aynı ürün 400 gramlık, 3 kilogramlık veya çoklu paket olabilir. "
+                "Paket medyanını aylık gider saymak tüketimi ve paket boyunu birbirine "
+                "karıştırır. Bu araç önce fiyatı ortak birime çevirir."
+            ),
+            (
+                "Günlük mama miktarını nereden bulacağım?",
+                "Kullandığınız mamanın ambalajındaki besleme tablosunu ve veterinerinizin "
+                "önerisini esas alın. Site hayvanın kilosu, yaşı ve sağlık durumu hakkında "
+                "varsayım yapmaz."
+            ),
+            (
+                "Kedi kumunda kilogram mı litre mi seçmeliyim?",
+                "Ambalajda hangi birim yazıyorsa onu seçin. Kumun yoğunluğu ürüne göre "
+                "değiştiği için kilogram ile litre arasında sabit dönüşüm uygulamıyoruz."
+            ),
+            (
+                "Birim fiyat verisi nasıl denetleniyor?",
+                "Yalnız ürün adında miktarı açıkça bulunan kayıtlar kullanılır. Sonuçta "
+                "eşleşen ürün sayısı, kaynak sayısı ve ölçüm tarihi gösterilir."
+            ),
+            (
+                "Mama hesabı kuru ve yaş mamayı ayırıyor mu?",
+                "Henüz ayrı bir kuru/yaş ürün sınıflaması uygulanmıyor. TL/kg değeri "
+                "kaynağın mama kategori havuzunun ortancasıdır; bu nedenle kendi "
+                "ürününüzün paket fiyatından hesaplanan TL/kg daha isabetli olabilir."
+            ),
+        ],
+        "_tuketim": profiller,
+    }
+
+
 def _slug_haritasi() -> dict[str, dict]:
     return {h["slug"]: h for h in HESAPLAYICILAR}
 
@@ -1636,9 +1790,10 @@ def _form_html(h: dict) -> str:
             # step="50000" bug'inin ayni sinifi - form nitelikleri
             # "gorunum" degil GECERLILIK KISITI. Tarayici testi yakaladi.
             zorunlu = " required" if a.get("zorunlu", True) else ""
+            yer_tutucu = f' placeholder="{a["placeholder"]}"' if a.get("placeholder") else ""
             girdi = (
                 f'<input type="number" id="{a["id"]}" name="{a["id"]}" '
-                f'value="{a.get("varsayilan", "")}" step="{a.get("adim", "0.01")}" min="0"{zorunlu}>'
+                f'value="{a.get("varsayilan", "")}" step="{a.get("adim", "0.01")}" min="0"{yer_tutucu}{zorunlu}>'
             )
         parcalar.append(
             f'    <div class="alan"><label for="{a["id"]}">{a["etiket"]}</label>{girdi}</div>'
@@ -1770,6 +1925,7 @@ def _kabuk(baslik_etiketi: str, meta: str, kanonik: str, schema: str,
 {su.og_etiketleri(og_kart, og_alt)}
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="/assets/css/style.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script type="application/ld+json">
 {schema}
 </script>
@@ -1877,6 +2033,18 @@ def _hesap_js(h: dict) -> str:
         onek += ("<script>const BUTCE_KALEMLERI = "
                  + json.dumps(h["_butce"], ensure_ascii=False)
                  + ";</script>\n")
+    if h.get("_tuketim"):
+        onek += ("<script>const TUKETIM_PROFILLERI = "
+                 + json.dumps(h["_tuketim"], ensure_ascii=False)
+                 + ";\n(function () {\n"
+                   "  var secim = document.getElementById('urun');\n"
+                   "  var etiket = document.querySelector('label[for=\"tuketim\"]');\n"
+                   "  function yenile() {\n"
+                   "    var p = TUKETIM_PROFILLERI.find(function (x) { return x.id === secim.value; });\n"
+                   "    if (p && etiket) etiket.textContent = p.girdi_etiketi;\n"
+                   "  }\n"
+                   "  if (secim) { secim.addEventListener('change', yenile); yenile(); }\n"
+                   "})();</script>\n")
     param = "RESMI_PARAMETRELER ? Object.values(RESMI_PARAMETRELER) : []"
     if not any("Kanunu" in k or "Tebliğ" in k or "Bakanlığı" in k for k in h["kaynaklar"]):
         param = "[]"  # saf matematik - mevzuata bagli degil
@@ -1980,6 +2148,9 @@ def tum_hesaplayicilar(veri_kok: Path | None = None) -> list[dict]:
     """Sabit liste + veriyle uretilen araclar. Veri yoksa o sayfalar hic
     uretilmez ve sitemap'e de girmez."""
     liste = list(HESAPLAYICILAR)
+    tuketim = aylik_tuketim_tanimi(veri_kok)
+    if tuketim:
+        liste.insert(0, tuketim)
     butce = butcem_yeter_mi_tanimi(veri_kok)
     if butce:
         liste.insert(0, butce)

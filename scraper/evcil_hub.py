@@ -117,6 +117,7 @@ def uret(veri_kok: Path | None = None) -> str | None:
 {og}
 <meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="/assets/css/style.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script type="application/ld+json">
 {json_ld}
 </script>

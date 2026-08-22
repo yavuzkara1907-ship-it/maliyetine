@@ -89,6 +89,30 @@ class EnGuncelSecimTestleri(unittest.TestCase):
 
 
 class KalemBirlestirTestleri(unittest.TestCase):
+    def test_birim_fiyati_ve_urun_turu_ozeti_yayin_katmanina_tasinir(self):
+        kayit = {
+            "site": "ornek", "kaynak_adlari": ["Örnek"], "tarih": "2026-08-22",
+            "toplam_urun": 12, "genel_medyan": 1000, "segmentler": {},
+            "birim_fiyatlari": {"kg": {
+                "genel_medyan": 250, "eslesen_urun": 8, "toplam_urun": 12,
+                "segmentler": {}, "ornek_urunler": [],
+            }},
+            "ozellik_ozeti": {
+                "toplam_urun": 12, "ozellik_eslesen_urun": 12,
+                "urun_turleri": {
+                    "ankastre-firin": {"ad": "Ankastre fırın", "genel_medyan": 10000,
+                                        "urun_sayisi": 7, "segmentler": {}},
+                    "ocakli-firin": {"ad": "Ocaklı fırın", "genel_medyan": 20000,
+                                     "urun_sayisi": 5, "segmentler": {}},
+                },
+                "ornek_urunler": [],
+            },
+        }
+        ozet = agrega.kalem_birlestir([kayit], "firin-ocak")
+        self.assertEqual(ozet["birim_fiyatlari"]["kg"]["genel_medyan"], 250)
+        self.assertEqual(ozet["ozellik_ozeti"]["urun_turleri"]["ankastre-firin"]["urun_sayisi"], 7)
+        self.assertTrue(ozet["karma_urun_turu"])
+
     def test_eski_aylik_etiketi_paket_fiyati_olarak_yayinlanir(self):
         kayit = {
             "site": "amazon",

@@ -1,0 +1,221 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Ankastre Firin Seti"
+  ],
+  "kalem": "firin-ocak",
+  "vertikal": "ev-kurma",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-08-22",
+  "ham_urun_sayisi": 9,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 9,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 15799,
+  "segmentler": {
+    "dusuk": {
+      "min": 10759,
+      "medyan": 11399,
+      "max": 11499,
+      "urun_sayisi": 3
+    },
+    "orta": {
+      "min": 14930,
+      "medyan": 16099,
+      "max": 18650,
+      "urun_sayisi": 4
+    },
+    "luks": {
+      "min": 36334,
+      "medyan": 38159,
+      "max": 39984,
+      "urun_sayisi": 2
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Newcastle 604t 3'lü Beyaz Ankaste Set (f17 - Gls640 - Mfa604t)",
+      "fiyat": 10759.45
+    },
+    {
+      "isim": "Trend Mekanik Gri Turbo Özellikli Cam 2'li Ankastre Set (Fırın+Ocak)",
+      "fiyat": 11399.0
+    },
+    {
+      "isim": "Ankastre Set Beyaz Cam Ocaklı Mekanik Power Turbo Fanlı 2'li Set (Fırın + Ocak)",
+      "fiyat": 11499.0
+    },
+    {
+      "isim": "Dizayn Beyaz Cam Ankastre Set DA6-830+B66-S2+KO-40TAHDF",
+      "fiyat": 14930.0
+    },
+    {
+      "isim": "Trend Dijital Beyaz Turbo Özellikli Emaye Ocaklı 3'lü Ankastre Set (Fırın+Ocak+Davlumbaz)",
+      "fiyat": 15799.0
+    },
+    {
+      "isim": "Ankastre Set Beyaz Mekanik Power Turbo Fanlı Cam Ocaklı 3'lü Set (Fırın + Ocak + Davlumbaz)",
+      "fiyat": 16399.0
+    },
+    {
+      "isim": "Digital 8 Programlı Dokunmatik Beyaz Cam Ankastre Set",
+      "fiyat": 18650.0
+    },
+    {
+      "isim": "& Ferre New Daylight 3 lü Ankastre Set - Ultra Sessiz Davlumbaz - 42 dB ( HBF011BV1T - SS206 - D087-SA )",
+      "fiyat": 36334.0
+    },
+    {
+      "isim": "& Ferre New White City 3 lü Ankastre Set - Ultra Sessiz Davlumbaz - 42 dB ( HUA717BV0T - SS206 - D087-SA ) Buhar Destekli",
+      "fiyat": 39984.0
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 9,
+    "ozellik_eslesen_urun": 8,
+    "urun_turleri": {
+      "ankastre-set": {
+        "ad": "Ankastre set",
+        "genel_medyan": 16099,
+        "urun_sayisi": 8,
+        "segmentler": {
+          "dusuk": {
+            "min": 11399.0,
+            "medyan": 11499.0,
+            "max": 14930.0,
+            "urun_sayisi": 3
+          },
+          "orta": {
+            "min": 15799.0,
+            "medyan": 17524.5,
+            "max": 36334.0,
+            "urun_sayisi": 4
+          },
+          "luks": {
+            "min": 39984.0,
+            "medyan": 39984.0,
+            "max": 39984.0,
+            "urun_sayisi": 1
+          }
+        }
+      }
+    },
+    "markalar": {
+      "Ferre": {
+        "ad": "Ferre",
+        "genel_medyan": 38159,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 36334.0,
+            "medyan": 36334.0,
+            "max": 36334.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 39984.0,
+            "medyan": 39984.0,
+            "max": 39984.0,
+            "urun_sayisi": 1
+          }
+        }
+      }
+    },
+    "enerji_siniflari": {},
+    "ozellikler": {
+      "buhar-destekli": {
+        "ad": "Buhar destekli",
+        "genel_medyan": 39984,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 39984.0,
+            "medyan": 39984.0,
+            "max": 39984.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 39984.0,
+            "medyan": 39984.0,
+            "max": 39984.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 39984.0,
+            "medyan": 39984.0,
+            "max": 39984.0,
+            "urun_sayisi": 1
+          }
+        }
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "Trend Mekanik Gri Turbo Özellikli Cam 2'li Ankastre Set (Fırın+Ocak)",
+        "fiyat": 11399.0,
+        "nitelikler": {
+          "urun_turu": "ankastre-set"
+        }
+      },
+      {
+        "isim": "Ankastre Set Beyaz Cam Ocaklı Mekanik Power Turbo Fanlı 2'li Set (Fırın + Ocak)",
+        "fiyat": 11499.0,
+        "nitelikler": {
+          "urun_turu": "ankastre-set"
+        }
+      },
+      {
+        "isim": "Dizayn Beyaz Cam Ankastre Set DA6-830+B66-S2+KO-40TAHDF",
+        "fiyat": 14930.0,
+        "nitelikler": {
+          "urun_turu": "ankastre-set"
+        }
+      },
+      {
+        "isim": "Trend Dijital Beyaz Turbo Özellikli Emaye Ocaklı 3'lü Ankastre Set (Fırın+Ocak+Davlumbaz)",
+        "fiyat": 15799.0,
+        "nitelikler": {
+          "urun_turu": "ankastre-set"
+        }
+      },
+      {
+        "isim": "Ankastre Set Beyaz Mekanik Power Turbo Fanlı Cam Ocaklı 3'lü Set (Fırın + Ocak + Davlumbaz)",
+        "fiyat": 16399.0,
+        "nitelikler": {
+          "urun_turu": "ankastre-set"
+        }
+      },
+      {
+        "isim": "Digital 8 Programlı Dokunmatik Beyaz Cam Ankastre Set",
+        "fiyat": 18650.0,
+        "nitelikler": {
+          "urun_turu": "ankastre-set"
+        }
+      },
+      {
+        "isim": "& Ferre New Daylight 3 lü Ankastre Set - Ultra Sessiz Davlumbaz - 42 dB ( HBF011BV1T - SS206 - D087-SA )",
+        "fiyat": 36334.0,
+        "nitelikler": {
+          "urun_turu": "ankastre-set",
+          "marka": "Ferre",
+          "model": "HBF011BV1T"
+        }
+      },
+      {
+        "isim": "& Ferre New White City 3 lü Ankastre Set - Ultra Sessiz Davlumbaz - 42 dB ( HUA717BV0T - SS206 - D087-SA ) Buhar Destekli",
+        "fiyat": 39984.0,
+        "nitelikler": {
+          "urun_turu": "ankastre-set",
+          "marka": "Ferre",
+          "model": "HUA717BV0T",
+          "ozellikler": [
+            "buhar-destekli"
+          ]
+        }
+      }
+    ]
+  }
+}

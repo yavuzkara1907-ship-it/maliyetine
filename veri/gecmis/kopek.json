@@ -5,7 +5,8 @@
   "2026-07-28",
   "2026-08-05",
   "2026-08-09",
-  "2026-08-20"
+  "2026-08-20",
+  "2026-08-22"
  ],
  "kalemler": {
   "cis-pedi": {
@@ -105,6 +106,12 @@
      "medyan": 4208,
      "urun": 24,
      "kaynak": 1
+    },
+    {
+     "tarih": "2026-08-22",
+     "medyan": 4208,
+     "urun": 24,
+     "kaynak": 1
     }
    ],
    "ilk": {
@@ -114,14 +121,13 @@
     "kaynak": 1
    },
    "son": {
-    "tarih": "2026-08-20",
+    "tarih": "2026-08-22",
     "medyan": 4208,
     "urun": 24,
     "kaynak": 1
    },
    "degisim_yuzde": 175.8,
-   "gun_araligi": 23,
-   "aylik_degisim_yuzde": 59.6
+   "gun_araligi": 25
   },
   "kopek-oyuncagi": {
    "seri": [

@@ -376,7 +376,6 @@
   },
   "ev-kurma/firin-ocak/trendyol": {
     "urun_sayilari": [
-      2,
       3,
       3,
       3,
@@ -387,9 +386,10 @@
       2,
       0,
       3,
-      0
+      0,
+      9
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-08-22"
   },
   "ev-kurma/mikrodalga/trendyol": {
     "urun_sayilari": [
@@ -2485,9 +2485,10 @@
       44,
       47,
       0,
-      0
+      0,
+      45
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-08-22"
   },
   "bebek/zibin-seti/amazon": {
     "urun_sayilari": [
@@ -2570,9 +2571,10 @@
       50,
       0,
       50,
-      0
+      0,
+      40
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-08-22"
   },
   "kedi/kedi-kumu/amazon": {
     "urun_sayilari": [
@@ -2744,9 +2746,10 @@
       1,
       12,
       0,
-      0
+      0,
+      11
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-08-22"
   },
   "bebek/bebek-arabasi/joker": {
     "urun_sayilari": [
@@ -2826,9 +2829,10 @@
       12,
       0,
       12,
-      0
+      0,
+      12
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-08-22"
   },
   "ev-kurma/davlumbaz/mediamarkt": {
     "urun_sayilari": [
@@ -2980,16 +2984,18 @@
   "kedi/kedi-mamasi/petzzshop": {
     "urun_sayilari": [
       24,
+      24,
       24
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-08-22"
   },
   "kedi/kedi-kumu/petzzshop": {
     "urun_sayilari": [
       22,
+      24,
       24
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-08-22"
   },
   "kedi/kedi-yatagi/petzzshop": {
     "urun_sayilari": [
@@ -3022,9 +3028,10 @@
   "kopek/kopek-mamasi/petzzshop": {
     "urun_sayilari": [
       24,
+      24,
       24
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-08-22"
   },
   "kopek/kopek-yatagi/petzzshop": {
     "urun_sayilari": [

@@ -395,9 +395,16 @@ class SaglikKontroluTestleri(unittest.TestCase):
     def test_gecmis_guncelle_son_12_tutar(self):
         gecmis = {}
         for i in range(15):
-            motor.gecmis_guncelle(gecmis, "k", 100 + i)
+            motor.gecmis_guncelle(
+                gecmis, "k", 100 + i, calisma_tarihi=f"2026-08-{i + 1:02d}"
+            )
         self.assertEqual(len(gecmis["k"]["urun_sayilari"]), 12)
         self.assertEqual(gecmis["k"]["urun_sayilari"][-1], 114)
+
+    def test_ayni_gun_retry_yeni_kayit_eklemez(self):
+        gecmis = {"k": {"urun_sayilari": [10, 20], "son_calisma": "2026-08-22"}}
+        motor.gecmis_guncelle(gecmis, "k", 25, calisma_tarihi="2026-08-22")
+        self.assertEqual(gecmis["k"]["urun_sayilari"], [10, 25])
 
 
 class SahteYanit:
@@ -652,6 +659,10 @@ class GrupIsleUctanUcaTestleri(unittest.TestCase):
         normal_dosyalari = list((self.cikti_kok / "dugun").glob("*.json")) \
             if (self.cikti_kok / "dugun").exists() else []
         self.assertEqual(len(normal_dosyalari), 0)
+        self.assertEqual(
+            gecmis["dugun/gelinlik/test-site-2"]["urun_sayilari"],
+            [200, 195, 205],
+        )
 
     @patch("motor.robots_izin_var", return_value=False)
     @patch("motor.getir")

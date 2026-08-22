@@ -1,0 +1,179 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Kedi Maması (paket fiyatı)"
+  ],
+  "kalem": "kedi-mamasi",
+  "vertikal": "kedi",
+  "olcum_turu": "paket_fiyati",
+  "tarih": "2026-08-22",
+  "ham_urun_sayisi": 45,
+  "aykiri_urun_sayisi": 5,
+  "toplam_urun": 40,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 1256,
+  "segmentler": {
+    "dusuk": {
+      "min": 118,
+      "medyan": 405,
+      "max": 550,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 715,
+      "medyan": 1268,
+      "max": 1749,
+      "urun_sayisi": 20
+    },
+    "luks": {
+      "min": 1867,
+      "medyan": 2108,
+      "max": 3750,
+      "urun_sayisi": 9
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Econature Yetişkin Kedi Mamasi Tavuklu 1 Kg Sari Ambalaj",
+      "fiyat": 117.9
+    },
+    {
+      "isim": "Gourmet Gold Kıyılmış Somonlu Yaş Kedi Maması Multipack 85 gr. (8 Al 6 Öde)",
+      "fiyat": 300.0
+    },
+    {
+      "isim": "Purina ONE Sterilcat Sığır Etli Kısırlaştırılmış Kuru Kedi Maması 1.4 kg",
+      "fiyat": 459.9
+    },
+    {
+      "isim": "Purina ONE Sterilcat Somonlu Kısırlaştırılmış Kuru Kedi Maması 1.4 kg",
+      "fiyat": 499.0
+    },
+    {
+      "isim": "Pro Plan Sterilised Kisirlaştirilmiş Kediler Için Somonlu Kedi Mamasi 1,5 Kg",
+      "fiyat": 714.89
+    },
+    {
+      "isim": "Felix Somonlu Kedi Yaş Maması Avantajlı Paket (48 x 85 gr) | Somon ve Ton Balıklı Islak Kedi Maması",
+      "fiyat": 958.9
+    },
+    {
+      "isim": "Enjoy Kuru Kedi Maması, Tavuklu, Yetişkin 12 Kg",
+      "fiyat": 1112.69
+    },
+    {
+      "isim": "Trendline Kuzu Etli Yetişkin Kedi Maması 15 kg",
+      "fiyat": 1262.41
+    },
+    {
+      "isim": "Pro Plan Tavuklu Yetişkin Kuru Kedi Maması 3 kg",
+      "fiyat": 1294.32
+    },
+    {
+      "isim": "Pro Plan Sterilised Somonlu Kuru Kedi Maması 3 kg",
+      "fiyat": 1402.5
+    },
+    {
+      "isim": "Pro Plan Purina Kısırlaştırılmış Yetişkin Kediler İçin Somonlu Kedi Maması 3 Kg | Somon Zengin Yetişkin Kedi Mamaları",
+      "fiyat": 1459.0
+    },
+    {
+      "isim": "Royal Canin Sterilised 37 Kısırlaştırılmış Kedi Maması 4 Kg",
+      "fiyat": 1867.25
+    },
+    {
+      "isim": "Reflex Tavuklu Yetişkin Kedi Maması 15 kg",
+      "fiyat": 1948.05
+    },
+    {
+      "isim": "Reflex Kısırlaştırılmış Yetişkin Kedi Maması Somonlu 15 kg",
+      "fiyat": 2203.0
+    },
+    {
+      "isim": "Pro Plan Original Tavuklu Kuru Yavru Kedi Maması 10 kg",
+      "fiyat": 3750.0
+    }
+  ],
+  "birim_fiyatlari": {
+    "kg": {
+      "etiket": "TL/kg",
+      "genel_medyan": 342.47,
+      "eslesen_urun": 38,
+      "toplam_urun": 40,
+      "eslesme_orani": 0.95,
+      "segmentler": {
+        "dusuk": {
+          "min": 83.0,
+          "medyan": 88.78,
+          "max": 138.0,
+          "urun_sayisi": 10
+        },
+        "orta": {
+          "min": 146.87,
+          "medyan": 356.43,
+          "max": 481.25,
+          "urun_sayisi": 19
+        },
+        "luks": {
+          "min": 486.33,
+          "medyan": 577.03,
+          "max": 646.0,
+          "urun_sayisi": 9
+        }
+      },
+      "ornek_urunler": [
+        {
+          "isim": "Bonnie Basic Yetişkin Dana Etli Kedi Maması 10 Kg",
+          "fiyat": 829.99,
+          "miktar": 10.0,
+          "birim_fiyat": 83.0
+        },
+        {
+          "isim": "Enjoy Kuru Kedi Maması, Tavuklu, Yetişkin 12 Kg",
+          "fiyat": 1112.69,
+          "miktar": 12.0,
+          "birim_fiyat": 92.72
+        },
+        {
+          "isim": "Friskies Yetişkin Kediler İçin Kümes Hayvanlı Kuru Mama 15 Kg",
+          "fiyat": 2579.0,
+          "miktar": 15.0,
+          "birim_fiyat": 171.93
+        },
+        {
+          "isim": "Felix Somonlu Kedi Yaş Maması Avantajlı Paket (48 x 85 gr) | Somon ve Ton Balıklı Islak Kedi Maması",
+          "fiyat": 958.9,
+          "miktar": 4.08,
+          "birim_fiyat": 235.02
+        },
+        {
+          "isim": "Pro Plan Liveclear Somonlu Kısırlaştırılmış Kedi Maması 1.4 kg",
+          "fiyat": 549.9,
+          "miktar": 1.4,
+          "birim_fiyat": 392.79
+        },
+        {
+          "isim": "Pro Plan Somonlu Kuru Kedi Maması 3 kg",
+          "fiyat": 1410.0,
+          "miktar": 3.0,
+          "birim_fiyat": 470.0
+        },
+        {
+          "isim": "Royal Canin Kitten Yavru Kedi Maması 2 Kg",
+          "fiyat": 1090.0,
+          "miktar": 2.0,
+          "birim_fiyat": 545.0
+        },
+        {
+          "isim": "Hill's SP Somon Kısırlaştırılmış Yetişkin Kedi Maması 3KG Avantajlı Paket",
+          "fiyat": 1938.0,
+          "miktar": 3.0,
+          "birim_fiyat": 646.0
+        }
+      ]
+    }
+  }
+}

@@ -1,123 +1,123 @@
-﻿vertikal,kalem_id,kalem_adi,grup,birim,olcum_turu,ekonomik_tl,orta_tl,ust_tl,en_dusuk_tl,en_yuksek_tl,urun_sayisi,kaynak_sayisi,kaynaklar,olcum_tarihi
-dugun,alyans,Alyans,,sabit,kalem_fiyati,8528,16045,21270,1107,21460,27,2,atasay; trendyol,2026-08-20
-dugun,damatlik,Damatlık / Takım Elbise,,sabit,kalem_fiyati,27950,47950,83970,2508,164950,97,3,beymen; trendyol; vakko,2026-08-20
-dugun,davetiye,Davetiye,,sabit,kalem_fiyati,150,254,1203,92,3274,30,2,amazon; trendyol,2026-08-20
-dugun,salon-kokteyl,Düğün Salonu — kokteyl (yemeksiz),,kisi_basi,kisi_basi_fiyat,280,500,2175,250,2500,10,1,dugunbuketi,2026-08-20
-dugun,salon-yemekli,Düğün Salonu — yemekli (menü dahil),,kisi_basi,kisi_basi_fiyat,575,1250,2500,250,2500,11,1,dugunbuketi,2026-08-20
-dugun,fotografci,Fotoğraf ve Video,,sabit,kalem_fiyati,15000,15000,15000,15000,15000,1,1,dugun-com,2026-08-20
-dugun,gelin-arabasi,Gelin Arabası,,sabit,kalem_fiyati,9300,9300,9300,9300,9300,1,1,dugun-com,2026-08-20
-dugun,gelin-ayakkabisi,"Gelin Ayakkabısı, Duvak, Aksesuar",,sabit,kalem_fiyati,708,1550,4500,590,6250,50,2,amazon; trendyol,2026-08-20
-dugun,gelinlik,Gelinlik,,sabit,kalem_fiyati,3704,18172,43839,2250,65000,20,1,trendyol,2026-08-20
-dugun,kuafor-makyaj,Kuaför ve Makyaj,,sabit,kalem_fiyati,12600,12600,12600,12600,12600,1,1,dugun-com,2026-08-20
-dugun,nikah-sekeri,Nikah Şekeri,,sabit,kalem_fiyati,250,462,714,169,980,30,2,amazon; trendyol,2026-08-20
-dugun,organizasyon,Organizasyon / Süsleme,,sabit,kalem_fiyati,16550,16550,16550,16550,16550,1,1,dugun-com,2026-08-20
-dugun,taki-altin,Takı — Altın Bilezik (1 adet),,sabit,kalem_fiyati,33085,85022,180340,30600,243765,24,1,atasay,2026-08-20
-dugun,yemek-ikram,Yemek / İkram (mekanın menü bedeli),,kisi_basi,kisi_basi_fiyat,250,500,920,150,920,8,1,dugunbuketi,2026-08-20
-dugun,salon,salon,,,kalem_fiyati,320,525,775,200,800,9,1,dugunbuketi,2026-08-20
-ev-kurma,firin-ocak,Ankastre Fırın / Ocak Seti,Beyaz eşya,sabit,kalem_fiyati,7909,16999,40116,4049,53528,53,3,amazon; mediamarkt; trendyol,2026-08-20
-ev-kurma,bulasik-makinesi,Bulaşık Makinesi,Beyaz eşya,sabit,kalem_fiyati,15749,23899,32499,12999,54778,52,3,amazon; mediamarkt; trendyol,2026-08-20
-ev-kurma,buzdolabi,Buzdolabı,Beyaz eşya,sabit,kalem_fiyati,9000,29168,59899,4880,74799,57,3,amazon; mediamarkt; trendyol,2026-08-20
-ev-kurma,davlumbaz,Davlumbaz,Beyaz eşya,sabit,kalem_fiyati,3373,5295,9592,2199,15992,60,3,amazon; mediamarkt; trendyol,2026-08-20
-ev-kurma,klima,Klima,Beyaz eşya,sabit,kalem_fiyati,19962,29041,38799,6500,58999,57,3,amazon; mediamarkt; trendyol,2026-08-20
-ev-kurma,kurutma-makinesi,Kurutma Makinesi,Beyaz eşya,sabit,kalem_fiyati,16027,18972,28000,2999,65999,51,3,amazon; mediamarkt; trendyol,2026-08-20
-ev-kurma,mikrodalga,Mikrodalga Fırın,Beyaz eşya,sabit,kalem_fiyati,3369,5058,7757,1400,17999,69,3,amazon; mediamarkt; trendyol,2026-08-20
-ev-kurma,camasir-makinesi,Çamaşır Makinesi,Beyaz eşya,sabit,kalem_fiyati,22499,27499,42499,11699,61999,52,3,amazon; mediamarkt; trendyol,2026-08-20
-ev-kurma,dikey-supurge,Dikey Süpürge,Elektronik,sabit,kalem_fiyati,1799,9640,16499,933,36999,79,3,amazon; mediamarkt; trendyol,2026-08-20
-ev-kurma,supurge,Robot Süpürge,Elektronik,sabit,kalem_fiyati,8649,20963,39434,3499,58999,69,3,amazon; mediamarkt; trendyol,2026-08-20
-ev-kurma,televizyon,Televizyon (4K),Elektronik,sabit,kalem_fiyati,19999,37724,61740,6199,99999,63,3,amazon; mediamarkt; trendyol,2026-08-20
-ev-kurma,airfryer,Airfryer,Küçük ev aleti,sabit,kalem_fiyati,1849,3424,5499,1007,15999,66,3,amazon; mediamarkt; trendyol,2026-08-20
-ev-kurma,blender,Blender,Küçük ev aleti,sabit,kalem_fiyati,1258,3328,8099,939,11629,69,3,amazon; mediamarkt; trendyol,2026-08-20
-ev-kurma,kahve-makinesi,Kahve Makinesi,Küçük ev aleti,sabit,kalem_fiyati,1099,3420,9699,319,30999,84,3,amazon; mediamarkt; trendyol,2026-08-20
-ev-kurma,mutfak-robotu,Mutfak Robotu / Doğrayıcı,Küçük ev aleti,sabit,kalem_fiyati,1690,2854,5674,1058,10999,56,2,amazon; trendyol,2026-08-20
-ev-kurma,sac-kurutma-makinesi,Saç Kurutma Makinesi,Küçük ev aleti,sabit,kalem_fiyati,823,1339,2161,430,24999,72,3,amazon; mediamarkt; trendyol,2026-08-20
-ev-kurma,su-isitici,Su Isıtıcı (Kettle),Küçük ev aleti,sabit,kalem_fiyati,579,1108,1874,359,3329,61,2,amazon; trendyol,2026-08-20
-ev-kurma,tost-makinesi,Tost Makinesi,Küçük ev aleti,sabit,kalem_fiyati,2197,3661,5899,665,10499,74,3,amazon; mediamarkt; trendyol,2026-08-20
-ev-kurma,utu,Ütü,Küçük ev aleti,sabit,kalem_fiyati,1355,3199,6598,749,22999,86,3,amazon; mediamarkt; trendyol,2026-08-20
-ev-kurma,koltuk-takimi,Koltuk Takımı,Mobilya,sabit,kalem_fiyati,23012,34999,54869,6599,87270,129,5,amazon; bellona; dogtas; istikbal; trendyol,2026-08-20
-ev-kurma,konsol,Konsol,Mobilya,sabit,kalem_fiyati,2832,5470,7632,900,14050,63,2,amazon; trendyol,2026-08-20
-ev-kurma,sehpa,Orta Sehpa,Mobilya,sabit,kalem_fiyati,1394,2342,3124,799,4999,67,2,amazon; trendyol,2026-08-20
-ev-kurma,tv-unitesi,TV Ünitesi,Mobilya,sabit,kalem_fiyati,2674,5364,7426,1240,10399,57,2,amazon; trendyol,2026-08-20
-ev-kurma,yemek-masasi,Yemek Odası Takımı,Mobilya,sabit,kalem_fiyati,19139,22930,32695,3450,83852,69,3,amazon; dogtas; trendyol,2026-08-20
-ev-kurma,bardak-takimi,Bardak Takımı,Mutfak,sabit,kalem_fiyati,204,376,937,102,1500,64,2,amazon; trendyol,2026-08-20
-ev-kurma,kahvalti-takimi,Kahvaltı Takımı,Mutfak,sabit,kalem_fiyati,708,1212,2437,230,3829,62,2,amazon; trendyol,2026-08-20
-ev-kurma,tava-seti,Tava Seti,Mutfak,sabit,kalem_fiyati,1836,3494,3499,310,4420,50,2,amazon; trendyol,2026-08-20
-ev-kurma,tencere-seti,Tencere Seti,Mutfak,sabit,kalem_fiyati,2267,3510,5838,1260,15999,115,4,amazon; karaca; madamecoco; trendyol,2026-08-20
-ev-kurma,yemek-takimi,Yemek Takımı,Mutfak,sabit,kalem_fiyati,1702,2719,4113,1308,6850,63,2,amazon; trendyol,2026-08-20
-ev-kurma,catal-kasik-bicak-takimi,Çatal-Kaşık-Bıçak Takımı,Mutfak,sabit,kalem_fiyati,856,2554,5462,550,7000,55,2,amazon; trendyol,2026-08-20
-ev-kurma,aydinlatma,Avize / Aydınlatma,Tekstil,sabit,kalem_fiyati,574,1088,2228,157,4599,71,2,amazon; trendyol,2026-08-20
-ev-kurma,bornoz,Bornoz,Tekstil,sabit,kalem_fiyati,624,900,1573,444,2350,81,2,amazon; trendyol,2026-08-20
-ev-kurma,hali,Halı,Tekstil,sabit,kalem_fiyati,2277,3540,2104,160,3184,47,2,amazon; trendyol,2026-08-20
-ev-kurma,havlu-takimi,Havlu Takımı,Tekstil,sabit,kalem_fiyati,364,555,937,225,1558,77,2,amazon; trendyol,2026-08-20
-ev-kurma,nevresim-takimi,Nevresim Takımı,Tekstil,sabit,kalem_fiyati,500,704,1000,265,3800,104,3,amazon; englishhome; trendyol,2026-08-20
-ev-kurma,perde,Perde,Tekstil,sabit,kalem_fiyati,248,558,1130,126,1840,50,2,amazon; trendyol,2026-08-20
-ev-kurma,boy-aynasi,Boy Aynası,Yatak odası,sabit,kalem_fiyati,1606,3139,6353,270,8812,56,2,amazon; trendyol,2026-08-20
-ev-kurma,gardirop,Gardırop,Yatak odası,sabit,kalem_fiyati,4795,6245,9000,965,52805,79,3,amazon; dogtas; trendyol,2026-08-20
-ev-kurma,karyola,Karyola / Baza,Yatak odası,sabit,kalem_fiyati,3444,5070,7594,2499,12620,56,2,amazon; trendyol,2026-08-20
-ev-kurma,komodin,Komodin,Yatak odası,sabit,kalem_fiyati,861,1931,2900,449,4274,75,2,amazon; trendyol,2026-08-20
-ev-kurma,yatak,Çift Kişilik Yatak,Yatak odası,sabit,kalem_fiyati,5086,8099,13089,935,25299,112,4,amazon; bellona; istikbal; trendyol,2026-08-20
-ev-kurma,sifonyer,Şifonyer,Yatak odası,sabit,kalem_fiyati,2202,4265,7079,1045,9990,63,2,amazon; trendyol,2026-08-20
-okul,ayakkabi,Spor Ayakkabı,Giyim,sabit,kalem_fiyati,778,1145,1512,435,2407,67,2,amazon; trendyol,2026-08-20
-okul,ders-kitabi,Ders ve Yardımcı Kitap,Kitap,sabit,kalem_fiyati,174,309,515,65,882,65,2,amazon; trendyol,2026-08-20
-okul,sozluk,Sözlük,Kitap,sabit,kalem_fiyati,126,269,735,56,1590,62,2,amazon; trendyol,2026-08-20
-okul,boya-seti,Boya Seti,Kırtasiye,sabit,kalem_fiyati,149,364,775,63,1754,82,3,amazon; nezih; trendyol,2026-08-20
-okul,defter,Defter,Kırtasiye,sabit,kalem_fiyati,154,288,400,40,1199,181,4,amazon; dr; nezih; trendyol,2026-08-20
-okul,kalem,Kalem,Kırtasiye,sabit,kalem_fiyati,82,164,424,33,589,69,2,amazon; trendyol,2026-08-20
-okul,kalem-kutusu,Kalem Kutusu,Kırtasiye,sabit,kalem_fiyati,270,540,799,80,994,166,3,amazon; nezih; trendyol,2026-08-20
-okul,resim-malzemeleri,Resim ve Sanat Malzemeleri,Kırtasiye,sabit,kalem_fiyati,146,348,636,70,1200,65,2,amazon; trendyol,2026-08-20
-okul,tablet,Tablet,Teknoloji,sabit,kalem_fiyati,4752,10980,17192,2457,38779,64,2,amazon; trendyol,2026-08-20
-okul,calisma-masasi,Çalışma Masası,Çalışma alanı,sabit,kalem_fiyati,1444,2348,4554,1014,7599,64,2,amazon; trendyol,2026-08-20
-okul,calisma-sandalyesi,Çalışma Sandalyesi,Çalışma alanı,sabit,kalem_fiyati,2341,3607,6036,1509,9399,61,2,amazon; trendyol,2026-08-20
-okul,beslenme-cantasi,Beslenme Çantası,Çanta ve beslenme,sabit,kalem_fiyati,344,627,994,140,1850,81,2,amazon; trendyol,2026-08-20
-okul,okul-cantasi,Okul Çantası,Çanta ve beslenme,sabit,kalem_fiyati,900,1472,2399,260,4529,172,3,amazon; nezih; trendyol,2026-08-20
-okul,matara,Suluk / Matara,Çanta ve beslenme,sabit,kalem_fiyati,260,785,1538,75,2400,169,3,amazon; nezih; trendyol,2026-08-20
-bebek,bebek-kuveti,Bebek Küveti,Bakım,sabit,kalem_fiyati,750,1050,2336,500,3499,52,2,amazon; ebebek,2026-08-20
-bebek,biberon-seti,Biberon Seti,Beslenme,sabit,kalem_fiyati,400,1015,1899,199,2499,41,1,amazon,2026-08-20
-bebek,gogus-pompasi,Göğüs Pompası,Beslenme,sabit,kalem_fiyati,670,2336,4474,310,7000,50,2,amazon; ebebek,2026-08-20
-bebek,mama-sandalyesi,Mama Sandalyesi,Beslenme,sabit,kalem_fiyati,1300,1910,3990,350,24742,70,3,amazon; joker; trendyol,2026-08-20
-bebek,bebek-bezi,Bebek Bezi (paket),Tekrarlayan ürün,sabit,paket_fiyati,286,592,940,160,1780,59,2,amazon; ebebek,2026-08-20
-bebek,uyku-tulumu,Uyku Tulumu,Tekstil,sabit,kalem_fiyati,947,550,2750,314,3250,50,2,amazon; joker,2026-08-20
-bebek,zibin-seti,Zıbın / Body Seti,Tekstil,sabit,kalem_fiyati,339,550,825,180,1000,48,1,amazon,2026-08-20
-bebek,bebek-arabasi,Bebek Arabası,Uyku ve taşıma,sabit,kalem_fiyati,8150,15612,41402,1500,129990,105,4,amazon; ebebek; joker; trendyol,2026-08-20
-bebek,besik,Beşik,Uyku ve taşıma,sabit,kalem_fiyati,1599,5144,11048,872,28699,54,3,amazon; ebebek; trendyol,2026-08-20
-bebek,oto-koltugu,Oto Koltuğu,Uyku ve taşıma,sabit,kalem_fiyati,7196,14506,26041,840,44990,100,3,amazon; joker; trendyol,2026-08-20
-bebek,park-yatak,Park Yatak / Oyun Parkı,Uyku ve taşıma,sabit,kalem_fiyati,3169,5999,13074,2495,15899,38,2,amazon; ebebek,2026-08-20
-kedi,mama-su-kabi,Mama ve Su Kabı,Beslenme,sabit,kalem_fiyati,154,356,600,99,1352,62,2,amazon; petzzshop,2026-08-20
-kedi,tasima-cantasi,Taşıma Çantası,Taşıma,sabit,kalem_fiyati,1134,2170,3880,212,9181,64,2,amazon; petzzshop,2026-08-20
-kedi,kedi-kumu,Kedi Kumu (paket),Tekrarlayan ürün,sabit,paket_fiyati,248,403,805,107,1296,62,2,amazon; petzzshop,2026-08-20
-kedi,kedi-mamasi,Kedi Maması (paket),Tekrarlayan ürün,sabit,paket_fiyati,688,1902,3351,118,7044,74,2,amazon; petzzshop,2026-08-20
-kedi,kedi-tuvaleti,Kedi Tuvaleti,Tuvalet,sabit,kalem_fiyati,372,1349,9999,300,11889,30,1,amazon,2026-08-20
-kedi,kedi-oyuncagi,Kedi Oyuncağı,Yaşam alanı,sabit,kalem_fiyati,84,138,290,50,384,61,2,amazon; petzzshop,2026-08-20
-kedi,kedi-yatagi,Kedi Yatağı,Yaşam alanı,sabit,kalem_fiyati,1231,1448,2206,199,3975,64,2,amazon; petzzshop,2026-08-20
-kedi,tirmalama,Tırmalama Tahtası,Yaşam alanı,sabit,kalem_fiyati,300,549,1017,150,1575,41,1,amazon,2026-08-20
-kopek,kopek-mama-kabi,Köpek Mama ve Su Kabı,Beslenme,sabit,kalem_fiyati,207,409,699,129,975,47,1,amazon,2026-08-20
-kopek,kopek-tasmasi,Köpek Tasması,Gezdirme,sabit,kalem_fiyati,178,421,1104,76,1656,62,2,amazon; petzzshop,2026-08-20
-kopek,kopek-tasima,Taşıma Çantası / Kafes,Gezdirme,sabit,kalem_fiyati,844,1632,3014,411,4720,44,1,amazon,2026-08-20
-kopek,kopek-mamasi,Köpek Maması (paket),Tekrarlayan ürün,sabit,paket_fiyati,990,3202,5288,105,7087,69,2,amazon; petzzshop,2026-08-20
-kopek,cis-pedi,Çiş Pedi (paket),Tekrarlayan ürün,sabit,paket_fiyati,250,366,1235,150,1470,43,1,amazon,2026-08-20
-kopek,kopek-oyuncagi,Köpek Oyuncağı,Yaşam alanı,sabit,kalem_fiyati,112,288,818,36,1120,79,2,amazon; petzzshop,2026-08-20
-kopek,kopek-yatagi,Köpek Yatağı,Yaşam alanı,sabit,kalem_fiyati,1536,2080,2920,209,3975,54,2,amazon; petzzshop,2026-08-20
-arac,bmw,BMW,Marka bazlı fiyatlar,sabit,kalem_fiyati,4468450,8159300,15799000,3724500,21870500,60,1,donanimhaber,2026-08-20
-arac,byd,BYD,Marka bazlı fiyatlar,sabit,kalem_fiyati,4133500,5145500,,4077000,,4,1,donanimhaber,2026-08-20
-arac,chery,Chery,Marka bazlı fiyatlar,sabit,kalem_fiyati,2377500,2820000,,2175000,,4,1,donanimhaber,2026-08-20
-arac,citroen,Citroen,Marka bazlı fiyatlar,sabit,kalem_fiyati,1790000,2236000,2570000,1595000,2960000,17,1,donanimhaber,2026-08-20
-arac,cupra,Cupra,Marka bazlı fiyatlar,sabit,kalem_fiyati,2700000,3502500,4520000,2650000,4520000,7,1,donanimhaber,2026-08-20
-arac,dacia,Dacia,Marka bazlı fiyatlar,sabit,kalem_fiyati,1436500,1725000,1835500,1299000,1850000,12,1,donanimhaber,2026-08-20
-arac,fiat,Fiat,Marka bazlı fiyatlar,sabit,kalem_fiyati,1064900,1955200,2090500,609900,2289900,15,1,donanimhaber,2026-08-20
-arac,ford,Ford,Marka bazlı fiyatlar,sabit,kalem_fiyati,2238900,2864900,3836100,2158700,4330000,19,1,donanimhaber,2026-08-20
-arac,honda,Honda,Marka bazlı fiyatlar,sabit,kalem_fiyati,2592000,4015000,6160000,2525000,6160000,7,1,donanimhaber,2026-08-20
-arac,hyundai,Hyundai,Marka bazlı fiyatlar,sabit,kalem_fiyati,1647000,1986500,2960500,1487000,3715000,35,1,donanimhaber,2026-08-20
-arac,kia,Kia,Marka bazlı fiyatlar,sabit,kalem_fiyati,1819000,2424500,3650000,1435000,3760000,21,1,donanimhaber,2026-08-20
-arac,mg,MG,Marka bazlı fiyatlar,sabit,kalem_fiyati,2676000,3282500,3450000,2655000,3450000,5,1,donanimhaber,2026-08-20
-arac,mercedes,Mercedes,Marka bazlı fiyatlar,sabit,kalem_fiyati,4873000,10108500,22726500,3222000,30448000,42,1,donanimhaber,2026-08-20
-arac,nissan,Nissan,Marka bazlı fiyatlar,sabit,kalem_fiyati,2757600,3808500,4755700,2270900,5615600,18,1,donanimhaber,2026-08-20
-arac,opel,Opel,Marka bazlı fiyatlar,sabit,kalem_fiyati,1845500,2166500,3179000,1535000,3570000,21,1,donanimhaber,2026-08-20
-arac,peugeot,Peugeot,Marka bazlı fiyatlar,sabit,kalem_fiyati,2038250,2695000,3514500,1624000,3644000,21,1,donanimhaber,2026-08-20
-arac,renault,Renault,Marka bazlı fiyatlar,sabit,kalem_fiyati,1937500,2436000,3130000,1830000,3490000,23,1,donanimhaber,2026-08-20
-arac,seat,Seat,Marka bazlı fiyatlar,sabit,kalem_fiyati,1912500,2470500,,1857000,,4,1,donanimhaber,2026-08-20
-arac,skoda,Skoda,Marka bazlı fiyatlar,sabit,kalem_fiyati,2389900,3887400,7049900,1969900,7399900,41,1,donanimhaber,2026-08-20
-arac,suzuki,Suzuki,Marka bazlı fiyatlar,sabit,kalem_fiyati,2108500,2474500,2731500,2079000,2783000,12,1,donanimhaber,2026-08-20
-arac,tesla,Tesla,Marka bazlı fiyatlar,sabit,kalem_fiyati,3078892,4583000,,2474985,,4,1,donanimhaber,2026-08-20
-arac,togg,Togg,Marka bazlı fiyatlar,sabit,kalem_fiyati,1909048,2411000,,1886000,,8,1,donanimhaber,2026-08-20
-arac,toyota,Toyota,Marka bazlı fiyatlar,sabit,kalem_fiyati,2609000,3057500,5100000,2245000,5781000,27,1,donanimhaber,2026-08-20
-arac,volkswagen,Volkswagen,Marka bazlı fiyatlar,sabit,kalem_fiyati,2838000,3751500,6815000,2230000,7596000,40,1,donanimhaber,2026-08-20
-arac,en-ucuz-sifir-arac,En ucuz sıfır araç (marka giriş fiyatı),,sabit,kalem_fiyati,1517450,2113850,2772100,1299000,3724500,23,1,donanimhaber,2026-08-20
+﻿vertikal,kalem_id,kalem_adi,grup,birim,olcum_turu,ekonomik_tl,orta_tl,ust_tl,en_dusuk_tl,en_yuksek_tl,tl_kg,kg_urun_sayisi,tl_litre,litre_urun_sayisi,tl_adet,adet_urun_sayisi,urun_sayisi,kaynak_sayisi,kaynaklar,olcum_tarihi
+dugun,alyans,Alyans,,sabit,kalem_fiyati,8528,16045,21270,1107,21460,,,,,,,27,2,atasay; trendyol,2026-07-26
+dugun,damatlik,Damatlık / Takım Elbise,,sabit,kalem_fiyati,27950,47950,83970,2508,164950,,,,,,,97,3,beymen; trendyol; vakko,2026-08-20
+dugun,davetiye,Davetiye,,sabit,kalem_fiyati,150,254,1203,92,3274,,,,,,,30,2,amazon; trendyol,2026-08-05
+dugun,salon-kokteyl,Düğün Salonu — kokteyl (yemeksiz),,kisi_basi,kisi_basi_fiyat,280,500,2175,250,2500,,,,,,,10,1,dugunbuketi,2026-08-20
+dugun,salon-yemekli,Düğün Salonu — yemekli (menü dahil),,kisi_basi,kisi_basi_fiyat,575,1250,2500,250,2500,,,,,,,11,1,dugunbuketi,2026-08-20
+dugun,fotografci,Fotoğraf ve Video,,sabit,kalem_fiyati,15000,15000,15000,15000,15000,,,,,,,1,1,dugun-com,2026-08-20
+dugun,gelin-arabasi,Gelin Arabası,,sabit,kalem_fiyati,9300,9300,9300,9300,9300,,,,,,,1,1,dugun-com,2026-08-20
+dugun,gelin-ayakkabisi,"Gelin Ayakkabısı, Duvak, Aksesuar",,sabit,kalem_fiyati,708,1550,4500,590,6250,,,,,,,50,2,amazon; trendyol,2026-08-05
+dugun,gelinlik,Gelinlik,,sabit,kalem_fiyati,3704,18172,43839,2250,65000,,,,,,,20,1,trendyol,2026-08-20
+dugun,kuafor-makyaj,Kuaför ve Makyaj,,sabit,kalem_fiyati,12600,12600,12600,12600,12600,,,,,,,1,1,dugun-com,2026-08-20
+dugun,nikah-sekeri,Nikah Şekeri,,sabit,kalem_fiyati,250,462,714,169,980,,,,,,,30,2,amazon; trendyol,2026-08-05
+dugun,organizasyon,Organizasyon / Süsleme,,sabit,kalem_fiyati,16550,16550,16550,16550,16550,,,,,,,1,1,dugun-com,2026-08-20
+dugun,taki-altin,Takı — Altın Bilezik (1 adet),,sabit,kalem_fiyati,33085,85022,180340,30600,243765,,,,,,,24,1,atasay,2026-07-26
+dugun,yemek-ikram,Yemek / İkram (mekanın menü bedeli),,kisi_basi,kisi_basi_fiyat,250,500,920,150,920,,,,,,,8,1,dugunbuketi,2026-08-20
+dugun,salon,salon,,,kalem_fiyati,320,525,775,200,800,,,,,,,9,1,dugunbuketi,2026-07-25
+ev-kurma,bulasik-makinesi,Bulaşık Makinesi,Beyaz eşya,sabit,kalem_fiyati,15749,23899,32499,12999,54778,,,,,,,52,3,amazon; mediamarkt; trendyol,2026-08-20
+ev-kurma,buzdolabi,Buzdolabı,Beyaz eşya,sabit,kalem_fiyati,9000,29168,59899,4880,74799,,,,,,,57,3,amazon; mediamarkt; trendyol,2026-08-09
+ev-kurma,davlumbaz,Davlumbaz,Beyaz eşya,sabit,kalem_fiyati,3373,5295,9592,2199,15992,,,,,,,60,3,amazon; mediamarkt; trendyol,2026-08-20
+ev-kurma,firin-ocak,Fırın / Ocak (ürün tipine göre),Beyaz eşya,sabit,kalem_fiyati,11399,16999,38159,4049,51175,,,,,,,59,3,amazon; mediamarkt; trendyol,2026-08-22
+ev-kurma,klima,Klima,Beyaz eşya,sabit,kalem_fiyati,19962,29041,38799,6500,58999,,,,,,,57,3,amazon; mediamarkt; trendyol,2026-08-20
+ev-kurma,kurutma-makinesi,Kurutma Makinesi,Beyaz eşya,sabit,kalem_fiyati,16027,18972,28000,2999,65999,,,,,,,51,3,amazon; mediamarkt; trendyol,2026-08-09
+ev-kurma,mikrodalga,Mikrodalga Fırın,Beyaz eşya,sabit,kalem_fiyati,3369,5058,7757,1400,17999,,,,,,,69,3,amazon; mediamarkt; trendyol,2026-08-09
+ev-kurma,camasir-makinesi,Çamaşır Makinesi,Beyaz eşya,sabit,kalem_fiyati,22499,27499,42499,11699,61999,,,,,,,52,3,amazon; mediamarkt; trendyol,2026-08-09
+ev-kurma,dikey-supurge,Dikey Süpürge,Elektronik,sabit,kalem_fiyati,1799,9640,16499,933,36999,,,,,,,79,3,amazon; mediamarkt; trendyol,2026-08-09
+ev-kurma,supurge,Robot Süpürge,Elektronik,sabit,kalem_fiyati,8649,20963,39434,3499,58999,,,,,,,69,3,amazon; mediamarkt; trendyol,2026-08-09
+ev-kurma,televizyon,Televizyon (4K),Elektronik,sabit,kalem_fiyati,19999,37724,61740,6199,99999,,,,,,,63,3,amazon; mediamarkt; trendyol,2026-08-09
+ev-kurma,airfryer,Airfryer,Küçük ev aleti,sabit,kalem_fiyati,1849,3424,5499,1007,15999,,,,,,,66,3,amazon; mediamarkt; trendyol,2026-08-09
+ev-kurma,blender,Blender,Küçük ev aleti,sabit,kalem_fiyati,1258,3328,8099,939,11629,,,,,,,69,3,amazon; mediamarkt; trendyol,2026-08-09
+ev-kurma,kahve-makinesi,Kahve Makinesi,Küçük ev aleti,sabit,kalem_fiyati,1099,3420,9699,319,30999,,,,,,,84,3,amazon; mediamarkt; trendyol,2026-08-09
+ev-kurma,mutfak-robotu,Mutfak Robotu / Doğrayıcı,Küçük ev aleti,sabit,kalem_fiyati,1690,2854,5674,1058,10999,,,,,,,56,2,amazon; trendyol,2026-08-09
+ev-kurma,sac-kurutma-makinesi,Saç Kurutma Makinesi,Küçük ev aleti,sabit,kalem_fiyati,823,1339,2161,430,24999,,,,,,,72,3,amazon; mediamarkt; trendyol,2026-08-09
+ev-kurma,su-isitici,Su Isıtıcı (Kettle),Küçük ev aleti,sabit,kalem_fiyati,579,1108,1874,359,3329,,,,,,,61,2,amazon; trendyol,2026-08-20
+ev-kurma,tost-makinesi,Tost Makinesi,Küçük ev aleti,sabit,kalem_fiyati,2197,3661,5899,665,10499,,,,,,,74,3,amazon; mediamarkt; trendyol,2026-08-20
+ev-kurma,utu,Ütü,Küçük ev aleti,sabit,kalem_fiyati,1355,3199,6598,749,22999,,,,,,,86,3,amazon; mediamarkt; trendyol,2026-08-09
+ev-kurma,koltuk-takimi,Koltuk Takımı,Mobilya,sabit,kalem_fiyati,23012,34999,54869,6599,87270,,,,,,,129,5,amazon; bellona; dogtas; istikbal; trendyol,2026-08-09
+ev-kurma,konsol,Konsol,Mobilya,sabit,kalem_fiyati,2832,5470,7632,900,14050,,,,,,,63,2,amazon; trendyol,2026-08-20
+ev-kurma,sehpa,Orta Sehpa,Mobilya,sabit,kalem_fiyati,1394,2342,3124,799,4999,,,,,,,67,2,amazon; trendyol,2026-08-20
+ev-kurma,tv-unitesi,TV Ünitesi,Mobilya,sabit,kalem_fiyati,2674,5364,7426,1240,10399,,,,,,,57,2,amazon; trendyol,2026-08-09
+ev-kurma,yemek-masasi,Yemek Odası Takımı,Mobilya,sabit,kalem_fiyati,19139,22930,32695,3450,83852,,,,,,,69,3,amazon; dogtas; trendyol,2026-08-09
+ev-kurma,bardak-takimi,Bardak Takımı,Mutfak,sabit,kalem_fiyati,204,376,937,102,1500,,,,,,,64,2,amazon; trendyol,2026-08-09
+ev-kurma,kahvalti-takimi,Kahvaltı Takımı,Mutfak,sabit,kalem_fiyati,708,1212,2437,230,3829,,,,,,,62,2,amazon; trendyol,2026-08-09
+ev-kurma,tava-seti,Tava Seti,Mutfak,sabit,kalem_fiyati,1836,3494,3499,310,4420,,,,,,,50,2,amazon; trendyol,2026-08-09
+ev-kurma,tencere-seti,Tencere Seti,Mutfak,sabit,kalem_fiyati,2267,3510,5838,1260,15999,,,,,,,115,4,amazon; karaca; madamecoco; trendyol,2026-08-20
+ev-kurma,yemek-takimi,Yemek Takımı,Mutfak,sabit,kalem_fiyati,1702,2719,4113,1308,6850,,,,,,,63,2,amazon; trendyol,2026-08-09
+ev-kurma,catal-kasik-bicak-takimi,Çatal-Kaşık-Bıçak Takımı,Mutfak,sabit,kalem_fiyati,856,2554,5462,550,7000,,,,,,,55,2,amazon; trendyol,2026-08-20
+ev-kurma,aydinlatma,Avize / Aydınlatma,Tekstil,sabit,kalem_fiyati,574,1088,2228,157,4599,,,,,,,71,2,amazon; trendyol,2026-08-20
+ev-kurma,bornoz,Bornoz,Tekstil,sabit,kalem_fiyati,624,900,1573,444,2350,,,,,,,81,2,amazon; trendyol,2026-08-09
+ev-kurma,hali,Halı,Tekstil,sabit,kalem_fiyati,2277,3540,2104,160,3184,,,,,,,47,2,amazon; trendyol,2026-08-09
+ev-kurma,havlu-takimi,Havlu Takımı,Tekstil,sabit,kalem_fiyati,364,555,937,225,1558,,,,,,,77,2,amazon; trendyol,2026-08-09
+ev-kurma,nevresim-takimi,Nevresim Takımı,Tekstil,sabit,kalem_fiyati,500,704,1000,265,3800,,,,,,,104,3,amazon; englishhome; trendyol,2026-08-20
+ev-kurma,perde,Perde,Tekstil,sabit,kalem_fiyati,248,558,1130,126,1840,,,,,,,50,2,amazon; trendyol,2026-08-20
+ev-kurma,boy-aynasi,Boy Aynası,Yatak odası,sabit,kalem_fiyati,1606,3139,6353,270,8812,,,,,,,56,2,amazon; trendyol,2026-08-09
+ev-kurma,gardirop,Gardırop,Yatak odası,sabit,kalem_fiyati,4795,6245,9000,965,52805,,,,,,,79,3,amazon; dogtas; trendyol,2026-08-20
+ev-kurma,karyola,Karyola / Baza,Yatak odası,sabit,kalem_fiyati,3444,5070,7594,2499,12620,,,,,,,56,2,amazon; trendyol,2026-08-20
+ev-kurma,komodin,Komodin,Yatak odası,sabit,kalem_fiyati,861,1931,2900,449,4274,,,,,,,75,2,amazon; trendyol,2026-08-09
+ev-kurma,yatak,Çift Kişilik Yatak,Yatak odası,sabit,kalem_fiyati,5086,8099,13089,935,25299,,,,,,,112,4,amazon; bellona; istikbal; trendyol,2026-08-20
+ev-kurma,sifonyer,Şifonyer,Yatak odası,sabit,kalem_fiyati,2202,4265,7079,1045,9990,,,,,,,63,2,amazon; trendyol,2026-08-09
+okul,ayakkabi,Spor Ayakkabı,Giyim,sabit,kalem_fiyati,778,1145,1512,435,2407,,,,,,,67,2,amazon; trendyol,2026-08-02
+okul,ders-kitabi,Ders ve Yardımcı Kitap,Kitap,sabit,kalem_fiyati,174,309,515,65,882,,,,,,,65,2,amazon; trendyol,2026-08-02
+okul,sozluk,Sözlük,Kitap,sabit,kalem_fiyati,126,269,735,56,1590,,,,,,,62,2,amazon; trendyol,2026-08-02
+okul,boya-seti,Boya Seti,Kırtasiye,sabit,kalem_fiyati,149,364,775,63,1754,,,,,,,82,3,amazon; nezih; trendyol,2026-08-20
+okul,defter,Defter,Kırtasiye,sabit,kalem_fiyati,154,288,400,40,1199,,,,,,,181,4,amazon; dr; nezih; trendyol,2026-08-20
+okul,kalem,Kalem,Kırtasiye,sabit,kalem_fiyati,82,164,424,33,589,,,,,,,69,2,amazon; trendyol,2026-08-05
+okul,kalem-kutusu,Kalem Kutusu,Kırtasiye,sabit,kalem_fiyati,270,540,799,80,994,,,,,,,166,3,amazon; nezih; trendyol,2026-08-20
+okul,resim-malzemeleri,Resim ve Sanat Malzemeleri,Kırtasiye,sabit,kalem_fiyati,146,348,636,70,1200,,,,,,,65,2,amazon; trendyol,2026-08-20
+okul,tablet,Tablet,Teknoloji,sabit,kalem_fiyati,4752,10980,17192,2457,38779,,,,,,,64,2,amazon; trendyol,2026-08-02
+okul,calisma-masasi,Çalışma Masası,Çalışma alanı,sabit,kalem_fiyati,1444,2348,4554,1014,7599,,,,,,,64,2,amazon; trendyol,2026-08-02
+okul,calisma-sandalyesi,Çalışma Sandalyesi,Çalışma alanı,sabit,kalem_fiyati,2341,3607,6036,1509,9399,,,,,,,61,2,amazon; trendyol,2026-08-20
+okul,beslenme-cantasi,Beslenme Çantası,Çanta ve beslenme,sabit,kalem_fiyati,344,627,994,140,1850,,,,,,,81,2,amazon; trendyol,2026-08-02
+okul,okul-cantasi,Okul Çantası,Çanta ve beslenme,sabit,kalem_fiyati,900,1472,2399,260,4529,,,,,,,172,3,amazon; nezih; trendyol,2026-08-20
+okul,matara,Suluk / Matara,Çanta ve beslenme,sabit,kalem_fiyati,260,785,1538,75,2400,,,,,,,169,3,amazon; nezih; trendyol,2026-08-20
+bebek,bebek-kuveti,Bebek Küveti,Bakım,sabit,kalem_fiyati,750,1050,2336,500,3499,,,,,,,52,2,amazon; ebebek,2026-08-05
+bebek,biberon-seti,Biberon Seti,Beslenme,sabit,kalem_fiyati,400,1015,1899,199,2499,,,,,,,41,1,amazon,2026-08-02
+bebek,gogus-pompasi,Göğüs Pompası,Beslenme,sabit,kalem_fiyati,670,2336,4474,310,7000,,,,,,,50,2,amazon; ebebek,2026-08-05
+bebek,mama-sandalyesi,Mama Sandalyesi,Beslenme,sabit,kalem_fiyati,1300,1910,3990,350,24742,,,,,,,70,3,amazon; joker; trendyol,2026-08-20
+bebek,bebek-bezi,Bebek Bezi (paket),Tekrarlayan ürün,sabit,paket_fiyati,230,479,1146,136,1700,,,,,9.3,55,56,2,amazon; ebebek,2026-08-22
+bebek,uyku-tulumu,Uyku Tulumu,Tekstil,sabit,kalem_fiyati,947,550,2750,314,3250,,,,,,,50,2,amazon; joker,2026-08-20
+bebek,zibin-seti,Zıbın / Body Seti,Tekstil,sabit,kalem_fiyati,339,550,825,180,1000,,,,,,,48,1,amazon,2026-08-02
+bebek,bebek-arabasi,Bebek Arabası,Uyku ve taşıma,sabit,kalem_fiyati,8150,15612,41402,1500,129990,,,,,,,105,4,amazon; ebebek; joker; trendyol,2026-08-20
+bebek,besik,Beşik,Uyku ve taşıma,sabit,kalem_fiyati,1599,5144,11048,872,28699,,,,,,,54,3,amazon; ebebek; trendyol,2026-08-20
+bebek,oto-koltugu,Oto Koltuğu,Uyku ve taşıma,sabit,kalem_fiyati,7196,14506,26041,840,44990,,,,,,,100,3,amazon; joker; trendyol,2026-08-20
+bebek,park-yatak,Park Yatak / Oyun Parkı,Uyku ve taşıma,sabit,kalem_fiyati,3169,5999,13074,2495,15899,,,,,,,38,2,amazon; ebebek,2026-08-05
+kedi,mama-su-kabi,Mama ve Su Kabı,Beslenme,sabit,kalem_fiyati,154,356,600,99,1352,,,,,,,62,2,amazon; petzzshop,2026-08-20
+kedi,tasima-cantasi,Taşıma Çantası,Taşıma,sabit,kalem_fiyati,1134,2170,3880,212,9181,,,,,,,64,2,amazon; petzzshop,2026-08-20
+kedi,kedi-kumu,Kedi Kumu (paket),Tekrarlayan ürün,sabit,paket_fiyati,248,398,805,107,1296,29.5,1,33.99,7,,,62,2,amazon; petzzshop,2026-08-22
+kedi,kedi-mamasi,Kedi Maması (paket),Tekrarlayan ürün,sabit,paket_fiyati,772,2070,3454,118,7044,389.92,52,,,,,64,2,amazon; petzzshop,2026-08-22
+kedi,kedi-tuvaleti,Kedi Tuvaleti,Tuvalet,sabit,kalem_fiyati,372,1349,9999,300,11889,,,,,,,30,1,amazon,2026-08-20
+kedi,kedi-oyuncagi,Kedi Oyuncağı,Yaşam alanı,sabit,kalem_fiyati,84,138,290,50,384,,,,,,,61,2,amazon; petzzshop,2026-08-20
+kedi,kedi-yatagi,Kedi Yatağı,Yaşam alanı,sabit,kalem_fiyati,1231,1448,2206,199,3975,,,,,,,64,2,amazon; petzzshop,2026-08-20
+kedi,tirmalama,Tırmalama Tahtası,Yaşam alanı,sabit,kalem_fiyati,300,549,1017,150,1575,,,,,,,41,1,amazon,2026-08-09
+kopek,kopek-mama-kabi,Köpek Mama ve Su Kabı,Beslenme,sabit,kalem_fiyati,207,409,699,129,975,,,,,,,47,1,amazon,2026-08-09
+kopek,kopek-tasmasi,Köpek Tasması,Gezdirme,sabit,kalem_fiyati,178,421,1104,76,1656,,,,,,,62,2,amazon; petzzshop,2026-08-20
+kopek,kopek-tasima,Taşıma Çantası / Kafes,Gezdirme,sabit,kalem_fiyati,844,1632,3014,411,4720,,,,,,,44,1,amazon,2026-08-09
+kopek,kopek-mamasi,Köpek Maması (paket),Tekrarlayan ürün,sabit,paket_fiyati,990,3202,5288,105,7087,388.69,20,,,,,69,2,amazon; petzzshop,2026-08-22
+kopek,cis-pedi,Çiş Pedi (paket),Tekrarlayan ürün,sabit,paket_fiyati,250,366,1235,150,1470,,,,,,,43,1,amazon,2026-08-09
+kopek,kopek-oyuncagi,Köpek Oyuncağı,Yaşam alanı,sabit,kalem_fiyati,112,288,818,36,1120,,,,,,,79,2,amazon; petzzshop,2026-08-20
+kopek,kopek-yatagi,Köpek Yatağı,Yaşam alanı,sabit,kalem_fiyati,1536,2080,2920,209,3975,,,,,,,54,2,amazon; petzzshop,2026-08-20
+arac,bmw,BMW,Marka bazlı fiyatlar,sabit,kalem_fiyati,4468450,8159300,15799000,3724500,21870500,,,,,,,60,1,donanimhaber,2026-08-20
+arac,byd,BYD,Marka bazlı fiyatlar,sabit,kalem_fiyati,4133500,5145500,,4077000,,,,,,,,4,1,donanimhaber,2026-08-20
+arac,chery,Chery,Marka bazlı fiyatlar,sabit,kalem_fiyati,2377500,2820000,,2175000,,,,,,,,4,1,donanimhaber,2026-08-20
+arac,citroen,Citroen,Marka bazlı fiyatlar,sabit,kalem_fiyati,1790000,2236000,2570000,1595000,2960000,,,,,,,17,1,donanimhaber,2026-08-20
+arac,cupra,Cupra,Marka bazlı fiyatlar,sabit,kalem_fiyati,2700000,3502500,4520000,2650000,4520000,,,,,,,7,1,donanimhaber,2026-08-20
+arac,dacia,Dacia,Marka bazlı fiyatlar,sabit,kalem_fiyati,1436500,1725000,1835500,1299000,1850000,,,,,,,12,1,donanimhaber,2026-08-20
+arac,fiat,Fiat,Marka bazlı fiyatlar,sabit,kalem_fiyati,1064900,1955200,2090500,609900,2289900,,,,,,,15,1,donanimhaber,2026-08-20
+arac,ford,Ford,Marka bazlı fiyatlar,sabit,kalem_fiyati,2238900,2864900,3836100,2158700,4330000,,,,,,,19,1,donanimhaber,2026-08-20
+arac,honda,Honda,Marka bazlı fiyatlar,sabit,kalem_fiyati,2592000,4015000,6160000,2525000,6160000,,,,,,,7,1,donanimhaber,2026-08-20
+arac,hyundai,Hyundai,Marka bazlı fiyatlar,sabit,kalem_fiyati,1647000,1986500,2960500,1487000,3715000,,,,,,,35,1,donanimhaber,2026-08-20
+arac,kia,Kia,Marka bazlı fiyatlar,sabit,kalem_fiyati,1819000,2424500,3650000,1435000,3760000,,,,,,,21,1,donanimhaber,2026-08-20
+arac,mg,MG,Marka bazlı fiyatlar,sabit,kalem_fiyati,2676000,3282500,3450000,2655000,3450000,,,,,,,5,1,donanimhaber,2026-08-20
+arac,mercedes,Mercedes,Marka bazlı fiyatlar,sabit,kalem_fiyati,4873000,10108500,22726500,3222000,30448000,,,,,,,42,1,donanimhaber,2026-08-20
+arac,nissan,Nissan,Marka bazlı fiyatlar,sabit,kalem_fiyati,2757600,3808500,4755700,2270900,5615600,,,,,,,18,1,donanimhaber,2026-08-20
+arac,opel,Opel,Marka bazlı fiyatlar,sabit,kalem_fiyati,1845500,2166500,3179000,1535000,3570000,,,,,,,21,1,donanimhaber,2026-08-20
+arac,peugeot,Peugeot,Marka bazlı fiyatlar,sabit,kalem_fiyati,2038250,2695000,3514500,1624000,3644000,,,,,,,21,1,donanimhaber,2026-08-20
+arac,renault,Renault,Marka bazlı fiyatlar,sabit,kalem_fiyati,1937500,2436000,3130000,1830000,3490000,,,,,,,23,1,donanimhaber,2026-08-20
+arac,seat,Seat,Marka bazlı fiyatlar,sabit,kalem_fiyati,1912500,2470500,,1857000,,,,,,,,4,1,donanimhaber,2026-08-20
+arac,skoda,Skoda,Marka bazlı fiyatlar,sabit,kalem_fiyati,2389900,3887400,7049900,1969900,7399900,,,,,,,41,1,donanimhaber,2026-08-20
+arac,suzuki,Suzuki,Marka bazlı fiyatlar,sabit,kalem_fiyati,2108500,2474500,2731500,2079000,2783000,,,,,,,12,1,donanimhaber,2026-08-20
+arac,tesla,Tesla,Marka bazlı fiyatlar,sabit,kalem_fiyati,3078892,4583000,,2474985,,,,,,,,4,1,donanimhaber,2026-08-20
+arac,togg,Togg,Marka bazlı fiyatlar,sabit,kalem_fiyati,1909048,2411000,,1886000,,,,,,,,8,1,donanimhaber,2026-08-20
+arac,toyota,Toyota,Marka bazlı fiyatlar,sabit,kalem_fiyati,2609000,3057500,5100000,2245000,5781000,,,,,,,27,1,donanimhaber,2026-08-20
+arac,volkswagen,Volkswagen,Marka bazlı fiyatlar,sabit,kalem_fiyati,2838000,3751500,6815000,2230000,7596000,,,,,,,40,1,donanimhaber,2026-08-20
+arac,en-ucuz-sifir-arac,En ucuz sıfır araç (marka giriş fiyatı),,sabit,kalem_fiyati,1517450,2113850,2772100,1299000,3724500,,,,,,,23,1,donanimhaber,2026-08-20

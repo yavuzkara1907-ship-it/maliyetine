@@ -1,0 +1,179 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Bebek Bezi Fırsat Paketi"
+  ],
+  "kalem": "bebek-bezi",
+  "vertikal": "bebek",
+  "olcum_turu": "paket_fiyati",
+  "tarih": "2026-08-22",
+  "ham_urun_sayisi": 46,
+  "aykiri_urun_sayisi": 1,
+  "toplam_urun": 45,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 639,
+  "segmentler": {
+    "dusuk": {
+      "min": 230,
+      "medyan": 320,
+      "max": 430,
+      "urun_sayisi": 13
+    },
+    "orta": {
+      "min": 439,
+      "medyan": 682,
+      "max": 1025,
+      "urun_sayisi": 21
+    },
+    "luks": {
+      "min": 1045,
+      "medyan": 1577,
+      "max": 1700,
+      "urun_sayisi": 11
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Sleepy Extra Günlük Aktivite Fırsat Paketi Bebek Bezi 3 Numara Midi 42 Adet",
+      "fiyat": 229.99
+    },
+    {
+      "isim": "Molfix 3D Bebek Bezi 4+ Beden (9-16 Kg) Maxiplus, Fırsat Paketi, 52 Adet",
+      "fiyat": 309.0
+    },
+    {
+      "isim": "Baby Turco Doğadan Ekonomik Fırsat Paketi Pofuduk Bebek Bezi 1 Numara Newborn 100 Adet",
+      "fiyat": 320.0
+    },
+    {
+      "isim": "Sleepy Bio Natural 2'li Fırsat Paketi Bebek Bezi 4 Numara Maxi 82 Adet Cırtlı Bez",
+      "fiyat": 330.3
+    },
+    {
+      "isim": "Molfix Bebek Bezi 3D Junior 5 Beden Aylık Paket 78 Adet, Beyaz",
+      "fiyat": 439.0
+    },
+    {
+      "isim": "Bebem Natural 6 Beden Xlarge Fırsat Paketi Bebek Bezi (1 x 32 Adet)",
+      "fiyat": 450.0
+    },
+    {
+      "isim": "Molfix Maxi 4 Beden Aylık Bebek Bezi (1 x 100 Adet)",
+      "fiyat": 499.99
+    },
+    {
+      "isim": "Prima Bebek Bezi Aktif Bebek 4 Beden 54 Adet Fırsat Paketi",
+      "fiyat": 638.9
+    },
+    {
+      "isim": "Sleepy Natural Double Soft Ultra Fırsat Paketi Bebek Bezi 4 Numara Maxi 200 Adet",
+      "fiyat": 807.77
+    },
+    {
+      "isim": "Sleepy Natural Double Soft Ultra Fırsat Paketi Bebek Bezi 7 Numara Xxlarge 96 Adet",
+      "fiyat": 944.81
+    },
+    {
+      "isim": "Prima Bebek Bezi Aktif Bebek Mega Fırsat Paketi 3 Beden 116 Adet",
+      "fiyat": 989.01
+    },
+    {
+      "isim": "Prima Bebek Bezi Premium Care 6 Numara 62 Adet Ultra Fırsat Paketi",
+      "fiyat": 1101.87
+    },
+    {
+      "isim": "Prima Bebek Bezi Premium Care 4 Numara 84 Adet Ultra Fırsat Paketi",
+      "fiyat": 1159.12
+    },
+    {
+      "isim": "Prima Bebek Bezi Premium Care 5 Numara 108 Adet Aylık Fırsat Paketi",
+      "fiyat": 1599.0
+    },
+    {
+      "isim": "Prima Premium Care Bebek Bezi 3 Numara 144 Adet Aylık Fırsat Paketi",
+      "fiyat": 1699.9
+    }
+  ],
+  "birim_fiyatlari": {
+    "adet": {
+      "etiket": "TL/adet",
+      "genel_medyan": 7.56,
+      "eslesen_urun": 45,
+      "toplam_urun": 45,
+      "eslesme_orani": 1.0,
+      "segmentler": {
+        "dusuk": {
+          "min": 3.19,
+          "medyan": 3.79,
+          "max": 4.3,
+          "urun_sayisi": 12
+        },
+        "orta": {
+          "min": 4.46,
+          "medyan": 7.97,
+          "max": 11.83,
+          "urun_sayisi": 22
+        },
+        "luks": {
+          "min": 12.51,
+          "medyan": 14.96,
+          "max": 22.0,
+          "urun_sayisi": 11
+        }
+      },
+      "ornek_urunler": [
+        {
+          "isim": "Önlem Botanika Bebek Bezi Fırsat Paketi Mini 96 Adet",
+          "fiyat": 306.6,
+          "miktar": 96.0,
+          "birim_fiyat": 3.19
+        },
+        {
+          "isim": "Baby Turco Doğadan Ekonomik Fırsat Paketi Pofuduk Bebek Bezi 3 Numara Midi 84 Adet",
+          "fiyat": 320.0,
+          "miktar": 84.0,
+          "birim_fiyat": 3.81
+        },
+        {
+          "isim": "Sleepy Natural Double Soft Ultra Fırsat Paketi Bebek Bezi 2 Numara Mini 96 Adet",
+          "fiyat": 430.0,
+          "miktar": 96.0,
+          "birim_fiyat": 4.48
+        },
+        {
+          "isim": "Baby Turco Doğadan Fırsat Paketi Bebek Bezi 2 Numara Mini 48 Adet",
+          "fiyat": 299.0,
+          "miktar": 48.0,
+          "birim_fiyat": 6.23
+        },
+        {
+          "isim": "Prima Bebek Bezi Aktif Bebek Mega Fırsat Paketi 3 Beden 116 Adet",
+          "fiyat": 989.01,
+          "miktar": 116.0,
+          "birim_fiyat": 8.53
+        },
+        {
+          "isim": "Prima Bebek Bezi Premium Care 3 Numara 96 Adet Ultra Fırsat Paketi",
+          "fiyat": 1106.91,
+          "miktar": 96.0,
+          "birim_fiyat": 11.53
+        },
+        {
+          "isim": "Prima Bebek Bezi Premium Care 5 Numara 108 Adet Aylık Fırsat Paketi",
+          "fiyat": 1599.0,
+          "miktar": 108.0,
+          "birim_fiyat": 14.81
+        },
+        {
+          "isim": "Prima Bebek Bezi Aktif Bebek 8 Beden 31 Adet Fırsat Paketi",
+          "fiyat": 681.9,
+          "miktar": 31.0,
+          "birim_fiyat": 22.0
+        }
+      ]
+    }
+  }
+}

@@ -1,6 +1,6 @@
 {
   "vertikal": "ev-kurma",
-  "guncelleme_tarihi": "2026-08-20",
+  "guncelleme_tarihi": "2026-08-22",
   "kalemler": {
     "airfryer": {
       "olcum_turu": "kalem_fiyati",
@@ -755,29 +755,29 @@
       "segmentler": {
         "dusuk": {
           "min": 4049,
-          "medyan": 7909,
-          "max": 23699,
-          "urun_sayisi": 15,
+          "medyan": 11399,
+          "max": 23799,
+          "urun_sayisi": 18,
           "kaynak_sayisi": 3
         },
         "orta": {
           "min": 13956,
           "medyan": 16999,
           "max": 39999,
-          "urun_sayisi": 27,
+          "urun_sayisi": 28,
           "kaynak_sayisi": 3
         },
         "luks": {
           "min": 22499,
-          "medyan": 40116,
-          "max": 53528,
-          "urun_sayisi": 11,
-          "kaynak_sayisi": 2
+          "medyan": 38159,
+          "max": 51175,
+          "urun_sayisi": 13,
+          "kaynak_sayisi": 3
         }
       },
       "genel_medyan": 16784,
-      "toplam_urun": 53,
-      "guncelleme_tarihi": "2026-08-20",
+      "toplam_urun": 59,
+      "guncelleme_tarihi": "2026-08-22",
       "kaynak_sayisi": 3,
       "kaynaklar": [
         {
@@ -794,26 +794,599 @@
           "kaynak_adlari": [
             "MediaMarkt - Ocakli Firinlar"
           ],
-          "tarih": "2026-08-09",
+          "tarih": "2026-08-22",
           "toplam_urun": 12,
-          "genel_medyan": 27548
+          "genel_medyan": 28399,
+          "ornek_urunler": [
+            {
+              "isim": "BOSCH HXA663D21T 66L Gazlı/Elektrikli Solo Fırın",
+              "fiyat": 21999.0
+            },
+            {
+              "isim": "SIMFER 1260 Ocaklı Tam Boy Fırın Gri",
+              "fiyat": 22499.0
+            },
+            {
+              "isim": "ALTUS AL 5556 G 65 LT LPG Solo 65 l Fırın Beyaz",
+              "fiyat": 22599.0
+            },
+            {
+              "isim": "SIMFER 1223 4 Gözü Gazlı Multi Turbo Ocaklı Tam Boy Fırın Beyaz",
+              "fiyat": 23799.0
+            },
+            {
+              "isim": "SIMFER 1261 3G+1 Wok Multi Turbo Ocaklı Tam Boy Fırın Gri",
+              "fiyat": 23799.0
+            },
+            {
+              "isim": "ALTUS AL 5756 GTD Ocaklı 72 l Fırın Beyaz",
+              "fiyat": 26699.0
+            },
+            {
+              "isim": "SIMFER 1226 Cam Yüzeyli 4 Gözü Gazlı Multi Turbo Ocaklı Tam Boy Fırın Gri",
+              "fiyat": 30099.0
+            },
+            {
+              "isim": "BOSCH HXA090H21T 66L Gazlı/Elektrikli Solo Fırın",
+              "fiyat": 30999.0
+            },
+            {
+              "isim": "BOSCH HXR390H21T 66L Gazlı/Elektrikli Solo Fırın",
+              "fiyat": 34999.0
+            },
+            {
+              "isim": "BOSCH HXR391H51T 66L Gazlı/Elektrikli Solo Fırın",
+              "fiyat": 39999.0
+            },
+            {
+              "isim": "ARCELIK CK 90 I 111 Litre Ocaklı Fırın Gri",
+              "fiyat": 49998.82
+            },
+            {
+              "isim": "ARCELIK F 8542 EBG Ocaklı Fırın Gri",
+              "fiyat": 51175.29
+            }
+          ]
         },
         {
           "site": "trendyol",
           "kaynak_adlari": [
             "Trendyol - Ankastre Firin Seti"
           ],
-          "tarih": "2026-08-09",
-          "toplam_urun": 3,
-          "genel_medyan": 14085
+          "tarih": "2026-08-22",
+          "toplam_urun": 9,
+          "genel_medyan": 15799,
+          "ornek_urunler": [
+            {
+              "isim": "Newcastle 604t 3'lü Beyaz Ankaste Set (f17 - Gls640 - Mfa604t)",
+              "fiyat": 10759.45
+            },
+            {
+              "isim": "Trend Mekanik Gri Turbo Özellikli Cam 2'li Ankastre Set (Fırın+Ocak)",
+              "fiyat": 11399.0
+            },
+            {
+              "isim": "Ankastre Set Beyaz Cam Ocaklı Mekanik Power Turbo Fanlı 2'li Set (Fırın + Ocak)",
+              "fiyat": 11499.0
+            },
+            {
+              "isim": "Dizayn Beyaz Cam Ankastre Set DA6-830+B66-S2+KO-40TAHDF",
+              "fiyat": 14930.0
+            },
+            {
+              "isim": "Trend Dijital Beyaz Turbo Özellikli Emaye Ocaklı 3'lü Ankastre Set (Fırın+Ocak+Davlumbaz)",
+              "fiyat": 15799.0
+            },
+            {
+              "isim": "Ankastre Set Beyaz Mekanik Power Turbo Fanlı Cam Ocaklı 3'lü Set (Fırın + Ocak + Davlumbaz)",
+              "fiyat": 16399.0
+            },
+            {
+              "isim": "Digital 8 Programlı Dokunmatik Beyaz Cam Ankastre Set",
+              "fiyat": 18650.0
+            },
+            {
+              "isim": "& Ferre New Daylight 3 lü Ankastre Set - Ultra Sessiz Davlumbaz - 42 dB ( HBF011BV1T - SS206 - D087-SA )",
+              "fiyat": 36334.0
+            },
+            {
+              "isim": "& Ferre New White City 3 lü Ankastre Set - Ultra Sessiz Davlumbaz - 42 dB ( HUA717BV0T - SS206 - D087-SA ) Buhar Destekli",
+              "fiyat": 39984.0
+            }
+          ]
         }
       ],
+      "ozellik_ozeti": {
+        "toplam_urun": 21,
+        "ozellik_eslesen_urun": 20,
+        "kaynak_sayisi": 2,
+        "urun_turleri": {
+          "ankastre-set": {
+            "ad": "Ankastre set",
+            "genel_medyan": 16099,
+            "urun_sayisi": 8,
+            "kaynak_sayisi": 1,
+            "segmentler": {
+              "dusuk": {
+                "min": 11399.0,
+                "medyan": 11499.0,
+                "max": 14930.0,
+                "urun_sayisi": 3,
+                "kaynak_sayisi": 1
+              },
+              "orta": {
+                "min": 15799.0,
+                "medyan": 17524.5,
+                "max": 36334.0,
+                "urun_sayisi": 4,
+                "kaynak_sayisi": 1
+              },
+              "luks": {
+                "min": 39984.0,
+                "medyan": 39984.0,
+                "max": 39984.0,
+                "urun_sayisi": 1,
+                "kaynak_sayisi": 1
+              }
+            }
+          },
+          "ocakli-firin": {
+            "ad": "Ocaklı fırın",
+            "genel_medyan": 26699,
+            "urun_sayisi": 7,
+            "kaynak_sayisi": 1,
+            "segmentler": {
+              "dusuk": {
+                "min": 22499.0,
+                "medyan": 23799.0,
+                "max": 23799.0,
+                "urun_sayisi": 3,
+                "kaynak_sayisi": 1
+              },
+              "orta": {
+                "min": 26699.0,
+                "medyan": 30099.0,
+                "max": 49998.82,
+                "urun_sayisi": 3,
+                "kaynak_sayisi": 1
+              },
+              "luks": {
+                "min": 51175.29,
+                "medyan": 51175.29,
+                "max": 51175.29,
+                "urun_sayisi": 1,
+                "kaynak_sayisi": 1
+              }
+            }
+          },
+          "solo-firin": {
+            "ad": "Solo fırın",
+            "genel_medyan": 30999,
+            "urun_sayisi": 5,
+            "kaynak_sayisi": 1,
+            "segmentler": {
+              "dusuk": {
+                "min": 21999.0,
+                "medyan": 22299.0,
+                "max": 22599.0,
+                "urun_sayisi": 2,
+                "kaynak_sayisi": 1
+              },
+              "orta": {
+                "min": 30999.0,
+                "medyan": 32999.0,
+                "max": 34999.0,
+                "urun_sayisi": 2,
+                "kaynak_sayisi": 1
+              },
+              "luks": {
+                "min": 39999.0,
+                "medyan": 39999.0,
+                "max": 39999.0,
+                "urun_sayisi": 1,
+                "kaynak_sayisi": 1
+              }
+            }
+          }
+        },
+        "markalar": {
+          "Altus": {
+            "ad": "Altus",
+            "genel_medyan": 24649,
+            "urun_sayisi": 2,
+            "kaynak_sayisi": 1,
+            "segmentler": {
+              "dusuk": {
+                "min": 22599.0,
+                "medyan": 22599.0,
+                "max": 22599.0,
+                "urun_sayisi": 1,
+                "kaynak_sayisi": 1
+              },
+              "orta": {
+                "min": 26699.0,
+                "medyan": 26699.0,
+                "max": 26699.0,
+                "urun_sayisi": 1,
+                "kaynak_sayisi": 1
+              }
+            }
+          },
+          "Bosch": {
+            "ad": "Bosch",
+            "genel_medyan": 32999,
+            "urun_sayisi": 4,
+            "kaynak_sayisi": 1,
+            "segmentler": {
+              "dusuk": {
+                "min": 21999.0,
+                "medyan": 26499.0,
+                "max": 30999.0,
+                "urun_sayisi": 2,
+                "kaynak_sayisi": 1
+              },
+              "orta": {
+                "min": 34999.0,
+                "medyan": 37499.0,
+                "max": 39999.0,
+                "urun_sayisi": 2,
+                "kaynak_sayisi": 1
+              }
+            }
+          },
+          "Ferre": {
+            "ad": "Ferre",
+            "genel_medyan": 38159,
+            "urun_sayisi": 2,
+            "kaynak_sayisi": 1,
+            "segmentler": {
+              "dusuk": {
+                "min": 36334.0,
+                "medyan": 36334.0,
+                "max": 36334.0,
+                "urun_sayisi": 1,
+                "kaynak_sayisi": 1
+              },
+              "orta": {
+                "min": 39984.0,
+                "medyan": 39984.0,
+                "max": 39984.0,
+                "urun_sayisi": 1,
+                "kaynak_sayisi": 1
+              }
+            }
+          },
+          "Simfer": {
+            "ad": "Simfer",
+            "genel_medyan": 23799,
+            "urun_sayisi": 4,
+            "kaynak_sayisi": 1,
+            "segmentler": {
+              "dusuk": {
+                "min": 22499.0,
+                "medyan": 23799.0,
+                "max": 23799.0,
+                "urun_sayisi": 3,
+                "kaynak_sayisi": 1
+              },
+              "orta": {
+                "min": 30099.0,
+                "medyan": 30099.0,
+                "max": 30099.0,
+                "urun_sayisi": 1,
+                "kaynak_sayisi": 1
+              }
+            }
+          }
+        },
+        "ozellikler": {
+          "buhar-destekli": {
+            "ad": "Buhar destekli",
+            "genel_medyan": 39984,
+            "urun_sayisi": 1,
+            "kaynak_sayisi": 1,
+            "segmentler": {
+              "dusuk": {
+                "min": 39984.0,
+                "medyan": 39984.0,
+                "max": 39984.0,
+                "urun_sayisi": 1,
+                "kaynak_sayisi": 1
+              },
+              "orta": {
+                "min": 39984.0,
+                "medyan": 39984.0,
+                "max": 39984.0,
+                "urun_sayisi": 1,
+                "kaynak_sayisi": 1
+              },
+              "luks": {
+                "min": 39984.0,
+                "medyan": 39984.0,
+                "max": 39984.0,
+                "urun_sayisi": 1,
+                "kaynak_sayisi": 1
+              }
+            }
+          },
+          "elektrikli": {
+            "ad": "Elektrikli",
+            "genel_medyan": 32999,
+            "urun_sayisi": 4,
+            "kaynak_sayisi": 1,
+            "segmentler": {
+              "dusuk": {
+                "min": 21999.0,
+                "medyan": 26499.0,
+                "max": 30999.0,
+                "urun_sayisi": 2,
+                "kaynak_sayisi": 1
+              },
+              "orta": {
+                "min": 34999.0,
+                "medyan": 37499.0,
+                "max": 39999.0,
+                "urun_sayisi": 2,
+                "kaynak_sayisi": 1
+              }
+            }
+          },
+          "gazli": {
+            "ad": "Gazlı",
+            "genel_medyan": 30549,
+            "urun_sayisi": 6,
+            "kaynak_sayisi": 1,
+            "segmentler": {
+              "dusuk": {
+                "min": 21999.0,
+                "medyan": 22899.0,
+                "max": 23799.0,
+                "urun_sayisi": 2,
+                "kaynak_sayisi": 1
+              },
+              "orta": {
+                "min": 30099.0,
+                "medyan": 30999.0,
+                "max": 34999.0,
+                "urun_sayisi": 3,
+                "kaynak_sayisi": 1
+              },
+              "luks": {
+                "min": 39999.0,
+                "medyan": 39999.0,
+                "max": 39999.0,
+                "urun_sayisi": 1,
+                "kaynak_sayisi": 1
+              }
+            }
+          }
+        },
+        "kapasite_litre": {
+          "min": 65,
+          "medyan": 66,
+          "max": 111,
+          "urun_sayisi": 7,
+          "kaynak_sayisi": 1
+        },
+        "ornek_urunler": [
+          {
+            "isim": "Trend Mekanik Gri Turbo Özellikli Cam 2'li Ankastre Set (Fırın+Ocak)",
+            "fiyat": 11399.0,
+            "nitelikler": {
+              "urun_turu": "ankastre-set"
+            },
+            "site": "trendyol"
+          },
+          {
+            "isim": "Ankastre Set Beyaz Cam Ocaklı Mekanik Power Turbo Fanlı 2'li Set (Fırın + Ocak)",
+            "fiyat": 11499.0,
+            "nitelikler": {
+              "urun_turu": "ankastre-set"
+            },
+            "site": "trendyol"
+          },
+          {
+            "isim": "Dizayn Beyaz Cam Ankastre Set DA6-830+B66-S2+KO-40TAHDF",
+            "fiyat": 14930.0,
+            "nitelikler": {
+              "urun_turu": "ankastre-set"
+            },
+            "site": "trendyol"
+          },
+          {
+            "isim": "Trend Dijital Beyaz Turbo Özellikli Emaye Ocaklı 3'lü Ankastre Set (Fırın+Ocak+Davlumbaz)",
+            "fiyat": 15799.0,
+            "nitelikler": {
+              "urun_turu": "ankastre-set"
+            },
+            "site": "trendyol"
+          },
+          {
+            "isim": "Ankastre Set Beyaz Mekanik Power Turbo Fanlı Cam Ocaklı 3'lü Set (Fırın + Ocak + Davlumbaz)",
+            "fiyat": 16399.0,
+            "nitelikler": {
+              "urun_turu": "ankastre-set"
+            },
+            "site": "trendyol"
+          },
+          {
+            "isim": "Digital 8 Programlı Dokunmatik Beyaz Cam Ankastre Set",
+            "fiyat": 18650.0,
+            "nitelikler": {
+              "urun_turu": "ankastre-set"
+            },
+            "site": "trendyol"
+          },
+          {
+            "isim": "BOSCH HXA663D21T 66L Gazlı/Elektrikli Solo Fırın",
+            "fiyat": 21999.0,
+            "nitelikler": {
+              "urun_turu": "solo-firin",
+              "marka": "Bosch",
+              "model": "HXA663D21T",
+              "kapasite_litre": 66,
+              "ozellikler": [
+                "gazli",
+                "elektrikli"
+              ]
+            },
+            "site": "mediamarkt"
+          },
+          {
+            "isim": "SIMFER 1260 Ocaklı Tam Boy Fırın Gri",
+            "fiyat": 22499.0,
+            "nitelikler": {
+              "urun_turu": "ocakli-firin",
+              "marka": "Simfer"
+            },
+            "site": "mediamarkt"
+          },
+          {
+            "isim": "ALTUS AL 5556 G 65 LT LPG Solo 65 l Fırın Beyaz",
+            "fiyat": 22599.0,
+            "nitelikler": {
+              "urun_turu": "solo-firin",
+              "marka": "Altus",
+              "kapasite_litre": 65
+            },
+            "site": "mediamarkt"
+          },
+          {
+            "isim": "SIMFER 1223 4 Gözü Gazlı Multi Turbo Ocaklı Tam Boy Fırın Beyaz",
+            "fiyat": 23799.0,
+            "nitelikler": {
+              "urun_turu": "ocakli-firin",
+              "marka": "Simfer",
+              "ozellikler": [
+                "gazli"
+              ]
+            },
+            "site": "mediamarkt"
+          },
+          {
+            "isim": "SIMFER 1261 3G+1 Wok Multi Turbo Ocaklı Tam Boy Fırın Gri",
+            "fiyat": 23799.0,
+            "nitelikler": {
+              "urun_turu": "ocakli-firin",
+              "marka": "Simfer"
+            },
+            "site": "mediamarkt"
+          },
+          {
+            "isim": "ALTUS AL 5756 GTD Ocaklı 72 l Fırın Beyaz",
+            "fiyat": 26699.0,
+            "nitelikler": {
+              "urun_turu": "ocakli-firin",
+              "marka": "Altus",
+              "kapasite_litre": 72
+            },
+            "site": "mediamarkt"
+          },
+          {
+            "isim": "SIMFER 1226 Cam Yüzeyli 4 Gözü Gazlı Multi Turbo Ocaklı Tam Boy Fırın Gri",
+            "fiyat": 30099.0,
+            "nitelikler": {
+              "urun_turu": "ocakli-firin",
+              "marka": "Simfer",
+              "ozellikler": [
+                "gazli"
+              ]
+            },
+            "site": "mediamarkt"
+          },
+          {
+            "isim": "BOSCH HXA090H21T 66L Gazlı/Elektrikli Solo Fırın",
+            "fiyat": 30999.0,
+            "nitelikler": {
+              "urun_turu": "solo-firin",
+              "marka": "Bosch",
+              "model": "HXA090H21T",
+              "kapasite_litre": 66,
+              "ozellikler": [
+                "gazli",
+                "elektrikli"
+              ]
+            },
+            "site": "mediamarkt"
+          },
+          {
+            "isim": "BOSCH HXR390H21T 66L Gazlı/Elektrikli Solo Fırın",
+            "fiyat": 34999.0,
+            "nitelikler": {
+              "urun_turu": "solo-firin",
+              "marka": "Bosch",
+              "model": "HXR390H21T",
+              "kapasite_litre": 66,
+              "ozellikler": [
+                "gazli",
+                "elektrikli"
+              ]
+            },
+            "site": "mediamarkt"
+          },
+          {
+            "isim": "& Ferre New Daylight 3 lü Ankastre Set - Ultra Sessiz Davlumbaz - 42 dB ( HBF011BV1T - SS206 - D087-SA )",
+            "fiyat": 36334.0,
+            "nitelikler": {
+              "urun_turu": "ankastre-set",
+              "marka": "Ferre",
+              "model": "HBF011BV1T"
+            },
+            "site": "trendyol"
+          },
+          {
+            "isim": "& Ferre New White City 3 lü Ankastre Set - Ultra Sessiz Davlumbaz - 42 dB ( HUA717BV0T - SS206 - D087-SA ) Buhar Destekli",
+            "fiyat": 39984.0,
+            "nitelikler": {
+              "urun_turu": "ankastre-set",
+              "marka": "Ferre",
+              "model": "HUA717BV0T",
+              "ozellikler": [
+                "buhar-destekli"
+              ]
+            },
+            "site": "trendyol"
+          },
+          {
+            "isim": "BOSCH HXR391H51T 66L Gazlı/Elektrikli Solo Fırın",
+            "fiyat": 39999.0,
+            "nitelikler": {
+              "urun_turu": "solo-firin",
+              "marka": "Bosch",
+              "model": "HXR391H51T",
+              "kapasite_litre": 66,
+              "ozellikler": [
+                "gazli",
+                "elektrikli"
+              ]
+            },
+            "site": "mediamarkt"
+          },
+          {
+            "isim": "ARCELIK CK 90 I 111 Litre Ocaklı Fırın Gri",
+            "fiyat": 49998.82,
+            "nitelikler": {
+              "urun_turu": "ocakli-firin",
+              "kapasite_litre": 111
+            },
+            "site": "mediamarkt"
+          },
+          {
+            "isim": "ARCELIK F 8542 EBG Ocaklı Fırın Gri",
+            "fiyat": 51175.29,
+            "nitelikler": {
+              "urun_turu": "ocakli-firin"
+            },
+            "site": "mediamarkt"
+          }
+        ]
+      },
+      "karma_urun_turu": true,
       "capraz_dogrulama_uyarisi": {
-        "fark_yuzdesi": 95.6,
+        "fark_yuzdesi": 79.8,
         "medyanlar": {
-          "trendyol": 14085,
-          "amazon": 16570,
-          "mediamarkt": 27548
+          "trendyol": 15799,
+          "mediamarkt": 28399
         }
       }
     },

@@ -40,6 +40,8 @@ BASLIKLAR = [
     "vertikal", "kalem_id", "kalem_adi", "grup", "birim", "olcum_turu",
     "ekonomik_tl", "orta_tl", "ust_tl",
     "en_dusuk_tl", "en_yuksek_tl",
+    "tl_kg", "kg_urun_sayisi", "tl_litre", "litre_urun_sayisi",
+    "tl_adet", "adet_urun_sayisi",
     "urun_sayisi", "kaynak_sayisi", "kaynaklar", "olcum_tarihi",
 ]
 
@@ -60,6 +62,11 @@ def _satirlar(vertikal: str, veri: dict) -> list[list]:
             x.get("site") for x in (k.get("kaynaklar") or [])
             if (x.get("toplam_urun") or 0) > 0 and x.get("site")
         })
+        birim_fiyatlari = k.get("birim_fiyatlari") or {}
+
+        def bf(birim, alan):
+            return (birim_fiyatlari.get(birim) or {}).get(alan) or ""
+
         cikti.append([
             vertikal, kalem_id, t.get("ad", kalem_id), t.get("grup", ""),
             t.get("birim", ""),
@@ -68,8 +75,11 @@ def _satirlar(vertikal: str, veri: dict) -> list[list]:
             ),
             s("dusuk"), s("orta"), s("luks"),
             s("dusuk", "min") or "", s("luks", "max") or "",
+            bf("kg", "genel_medyan"), bf("kg", "eslesen_urun"),
+            bf("litre", "genel_medyan"), bf("litre", "eslesen_urun"),
+            bf("adet", "genel_medyan"), bf("adet", "eslesen_urun"),
             k.get("toplam_urun") or "", len(kaynaklar),
-            "; ".join(kaynaklar), tarih,
+            "; ".join(kaynaklar), k.get("guncelleme_tarihi") or tarih,
         ])
     cikti.sort(key=lambda r: (r[3] or "zzz", r[2]))
     return cikti
@@ -111,7 +121,12 @@ def disa_aktar(veri_kok: Path | None = None, cikti_kok: Path | None = None) -> d
         metin = csv_metni(satirlar)
         tarih = veri.get("guncelleme_tarihi") or date.today().isoformat()
         (hedef / f"{vertikal}.csv").write_text(metin, encoding="utf-8")
-        (hedef / f"{vertikal}-{tarih}.csv").write_text(metin, encoding="utf-8")
+        arsiv = hedef / f"{vertikal}-{tarih}.csv"
+        # Tarihli URL yayinlandiktan sonra o olcumun kanitidir. Ayni gun
+        # tekrar build almak sabit URL'yi yenileyebilir ama arsivi sessizce
+        # degistiremez.
+        if not arsiv.exists():
+            arsiv.write_text(metin, encoding="utf-8")
         ozet[vertikal] = {
             "kalem": len(satirlar),
             "tarih": tarih,
@@ -212,6 +227,7 @@ def veri_sayfasi(ozet: dict, tarih: str | None = None) -> str:
 <meta name="description" content="Düğün, ev kurma, okul ve sıfır araç fiyat verisi CSV ve JSON olarak indirilebilir. {toplam_kalem} kalem, kaynak ve ölçüm tarihiyle birlikte.">
 <link rel="canonical" href="{url}">
 <link rel="stylesheet" href="/assets/css/style.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="Veriyi İndir | Maliyeti Ne?">
 <meta property="og:description" content="{toplam_kalem} kalemlik fiyat verisi, CSV ve JSON olarak açık.">
 <meta property="og:type" content="website">
@@ -275,6 +291,8 @@ def veri_sayfasi(ozet: dict, tarih: str | None = None) -> str:
       <tr><td>ekonomik_tl / orta_tl / ust_tl</td><td>Segment ortalamaları. Fiyatlar sıralanıp en ucuz çeyrek ekonomik, ortadaki yarı orta, en pahalı çeyrek üst kabul edilir.</td></tr>
       <tr><td>en_dusuk_tl / en_yuksek_tl</td><td>Ölçümdeki en ucuz ve en pahalı ürün.</td></tr>
       <tr><td>olcum_turu</td><td>Rakamın neyi temsil ettiği. <code>paket_fiyati</code> aylık tüketim değildir ve dönemle çarpılamaz.</td></tr>
+      <tr><td>tl_kg / tl_litre / tl_adet</td><td>Ürün adında miktarı açıkça bulunan paketlerden hesaplanan normalize ortanca birim fiyat.</td></tr>
+      <tr><td>kg_urun_sayisi / litre_urun_sayisi / adet_urun_sayisi</td><td>İlgili birim fiyat hesabına kaç ürünün girdiği.</td></tr>
       <tr><td>urun_sayisi</td><td>O kalem için kaç ürün fiyatı okundu.</td></tr>
       <tr><td>kaynak_sayisi / kaynaklar</td><td>Kaç bağımsız siteden derlendi ve hangileri.</td></tr>
       <tr><td>olcum_tarihi</td><td>Verinin çekildiği gün. Ayda iki kez yenilenir.</td></tr>
@@ -346,7 +364,6 @@ def llms_txt(ozet: dict, tarih: str | None = None) -> str:
             f"- [{h['ad']}]({kok}/{hs.HESAP_KOK}/{h['slug']}/): "
             + ", ".join(h["kaynaklar"])
             for h in tum_hesaplar
-            if (su.SITE_KOK / hs.HESAP_KOK / h["slug"] / "index.html").exists()
         )
     except ImportError:
         hesaplar = ""

@@ -27,6 +27,7 @@ import statistics
 from pathlib import Path
 
 from olcum_sozlesmesi import kaynak_adi, olcum_turu
+from urun_normalizasyonu import birim_fiyatlarini_birlestir, ozellik_ozetlerini_birlestir
 
 BASE_DIR = Path(__file__).parent
 VARSAYILAN_VERI_KOK = BASE_DIR / "veri"
@@ -161,6 +162,13 @@ def kalem_birlestir(kaynak_kayitlari: list[dict], kalem: str = "") -> dict:
     veri_veren = [k for k in kaynak_kayitlari if (k.get("toplam_urun") or 0) > 0]
 
     kalem_id = kalem or kaynak_kayitlari[0].get("kalem", "")
+    birim_fiyatlari = birim_fiyatlarini_birlestir(veri_veren)
+    ozellik_ozeti = ozellik_ozetlerini_birlestir(veri_veren)
+    guclu_urun_turleri = [
+        o for o in (ozellik_ozeti.get("urun_turleri") or {}).values()
+        if o.get("urun_sayisi", 0) >= 3
+    ]
+    karma_urun_turu = len(guclu_urun_turleri) > 1
 
     return {
         "olcum_turu": olcum_turu(kalem_id),
@@ -185,6 +193,9 @@ def kalem_birlestir(kaynak_kayitlari: list[dict], kalem: str = "") -> dict:
             }
             for k in sorted(veri_veren, key=lambda k: k["site"])
         ],
+        **({"birim_fiyatlari": birim_fiyatlari} if birim_fiyatlari else {}),
+        **({"ozellik_ozeti": ozellik_ozeti} if ozellik_ozeti else {}),
+        **({"karma_urun_turu": True} if karma_urun_turu else {}),
     }
 
 

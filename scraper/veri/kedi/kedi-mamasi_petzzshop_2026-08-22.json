@@ -1,0 +1,179 @@
+{
+  "site": "petzzshop",
+  "kaynak_adlari": [
+    "petzzshop - Kedi Mamasi"
+  ],
+  "kalem": "kedi-mamasi",
+  "vertikal": "kedi",
+  "olcum_turu": "paket_fiyati",
+  "tarih": "2026-08-22",
+  "ham_urun_sayisi": 24,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 24,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 2703,
+  "segmentler": {
+    "dusuk": {
+      "min": 270,
+      "medyan": 1139,
+      "max": 1202,
+      "urun_sayisi": 7
+    },
+    "orta": {
+      "min": 1225,
+      "medyan": 2871,
+      "max": 4351,
+      "urun_sayisi": 12
+    },
+    "luks": {
+      "min": 4396,
+      "medyan": 4800,
+      "max": 7044,
+      "urun_sayisi": 5
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Royal Canin Sterilised Yetişkin Kısırlaştırılmış Kedi Maması",
+      "fiyat": 269.79
+    },
+    {
+      "isim": "Exclusion Monoprotein Tavuklu Narlı ve Yaban Mersinli Düşük Tahıllı Yavru Kedi Maması - 1,5 Kg",
+      "fiyat": 882.0
+    },
+    {
+      "isim": "Royal Canin Kitten Yavru Kedi Maması",
+      "fiyat": 1139.39
+    },
+    {
+      "isim": "Royal Canin Sterilised Bundle 37 Kısırlaştırılmış Yetişkin Kedi Maması + 2 Adet Sterilised Yaş Mama - 2 Kg",
+      "fiyat": 1193.73
+    },
+    {
+      "isim": "Royal Canin Sensible 33 Hassas Yetişkin Kedi Maması",
+      "fiyat": 1225.26
+    },
+    {
+      "isim": "Pro Plan Tavuklu Pirinçli Yetişkin Kedi Maması - 3 Kg",
+      "fiyat": 1503.97
+    },
+    {
+      "isim": "Lavital Sensitive Somonlu Yetişkin Kedi Maması - 12 Kg",
+      "fiyat": 2527.45
+    },
+    {
+      "isim": "Hill's SCIENCE PLAN Somonlu Yavru Kedi Maması - 7 Kg",
+      "fiyat": 2735.67
+    },
+    {
+      "isim": "Hills Kitten Ton Balıklı Yavru Kedi Maması - 5+2 Kg Hediyeli",
+      "fiyat": 3006.54
+    },
+    {
+      "isim": "Platinum MeatCrisp Balıklı Yavru Kedi Maması - 3 Kg",
+      "fiyat": 3646.4
+    },
+    {
+      "isim": "Exclusion Monoprotein Tavuklu ve Narlı Düşük Tahıllı Yetişkin Kedi Maması - 12 Kg",
+      "fiyat": 3732.9
+    },
+    {
+      "isim": "Pro Plan Tavuklu Pirinçli Yavru Kedi Maması - 10 Kg",
+      "fiyat": 4351.25
+    },
+    {
+      "isim": "Hills Young Sterilised Tavuklu Kısırlaştırılmış Kedi Maması",
+      "fiyat": 4798.77
+    },
+    {
+      "isim": "Advance Sensitive Somonlu Hassas Kısırlaştırılmış Kedi Maması - 10 Kg",
+      "fiyat": 4800.0
+    },
+    {
+      "isim": "Hills Somonlu Kısırlaştırılmış Yetişkin Kedi Maması",
+      "fiyat": 7043.76
+    }
+  ],
+  "birim_fiyatlari": {
+    "kg": {
+      "etiket": "TL/kg",
+      "genel_medyan": 437.36,
+      "eslesen_urun": 14,
+      "toplam_urun": 24,
+      "eslesme_orani": 0.583,
+      "segmentler": {
+        "dusuk": {
+          "min": 210.62,
+          "medyan": 266.81,
+          "max": 313.04,
+          "urun_sayisi": 4
+        },
+        "orta": {
+          "min": 390.81,
+          "medyan": 439.59,
+          "max": 588.0,
+          "urun_sayisi": 7
+        },
+        "luks": {
+          "min": 764.65,
+          "medyan": 1012.89,
+          "max": 1215.47,
+          "urun_sayisi": 3
+        }
+      },
+      "ornek_urunler": [
+        {
+          "isim": "Lavital Sensitive Somonlu Yetişkin Kedi Maması - 12 Kg",
+          "fiyat": 2527.45,
+          "miktar": 12.0,
+          "birim_fiyat": 210.62
+        },
+        {
+          "isim": "Exclusion Monoprotein Tavuklu ve Narlı Düşük Tahıllı Yetişkin Kedi Maması - 12 Kg",
+          "fiyat": 3732.9,
+          "miktar": 12.0,
+          "birim_fiyat": 311.07
+        },
+        {
+          "isim": "Hill's SCIENCE PLAN Somonlu Yavru Kedi Maması - 7 Kg",
+          "fiyat": 2735.67,
+          "miktar": 7.0,
+          "birim_fiyat": 390.81
+        },
+        {
+          "isim": "Pro Plan Tavuklu Pirinçli Yavru Kedi Maması - 10 Kg",
+          "fiyat": 4351.25,
+          "miktar": 10.0,
+          "birim_fiyat": 435.12
+        },
+        {
+          "isim": "Nutri Feline Sterilized Somonlu Tahılsız Kısırlaştırılmış Kedi Maması - 10 Kg",
+          "fiyat": 4395.85,
+          "miktar": 10.0,
+          "birim_fiyat": 439.59
+        },
+        {
+          "isim": "Pro Plan Tavuklu Pirinçli Yetişkin Kedi Maması - 3 Kg",
+          "fiyat": 1503.97,
+          "miktar": 3.0,
+          "birim_fiyat": 501.32
+        },
+        {
+          "isim": "Hill's Science Plan Somonlu Yetişkin Kedi Maması - 1,5 Kg",
+          "fiyat": 1146.97,
+          "miktar": 1.5,
+          "birim_fiyat": 764.65
+        },
+        {
+          "isim": "Platinum MeatCrisp Balıklı Yavru Kedi Maması - 3 Kg",
+          "fiyat": 3646.4,
+          "miktar": 3.0,
+          "birim_fiyat": 1215.47
+        }
+      ]
+    }
+  }
+}

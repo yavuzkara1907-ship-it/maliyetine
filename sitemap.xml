@@ -253,6 +253,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://maliyetine.com.tr/hesap/aylik-tuketim-maliyeti/</loc>
+    <lastmod>2026-08-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://maliyetine.com.tr/hesap/kdv-hesaplama/</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>yearly</changefreq>

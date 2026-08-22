@@ -49,7 +49,7 @@ class TanimTesti(unittest.TestCase):
                      "yakit", "boya", "basabas"}
     # RPM resmi olarak yayinlanmiyor - kullanicidan alinir, aralik gosterilir
     KULLANICI_PARAMETRESI = {"icerik", "website"}
-    OLCULEN_VERI = {"alim-gucu", "butcem-yeter-mi"}
+    OLCULEN_VERI = {"alim-gucu", "butcem-yeter-mi", "aylik-tuketim-maliyeti"}
 
     def test_her_hesaplayici_bir_tipe_giriyor(self):
         """Siniflandirilmamis hesaplayici olmasin - yenisi eklenirken
@@ -256,7 +256,7 @@ class SayfaTesti(unittest.TestCase):
         self.assertNotIn('"kaynak_tipi": "tahmini"', html)
         # Varsayilan secim formda gercekten secili olmali; yalnizca veri
         # taniminda yazmasi tarayici deneyimini degistirmez.
-        self.assertRegex(html, r'value="ev-kurma:firin-ocak" selected')
+        self.assertRegex(html, r'<option value="[^"]+" selected>')
 
     def test_butce_araci_opsiyonel_kalemi_aylik_sanmiyor(self):
         arac = hc.butcem_yeter_mi_tanimi()
@@ -266,6 +266,57 @@ class SayfaTesti(unittest.TestCase):
         self.assertEqual(birimler.get("dugun:salon-kokteyl"), "kişi başı")
         self.assertEqual(birimler.get("okul:tablet"), "adet")
         self.assertEqual(birimler.get("kedi:kedi-mamasi"), "paket")
+
+    def test_karma_urun_turu_butce_aracindan_cikarilir(self):
+        with TemporaryDirectory() as gecici:
+            kok = Path(gecici)
+            (kok / "ev-kurma.json").write_text(json.dumps({
+                "guncelleme_tarihi": "2026-08-22",
+                "kalemler": {"firin-ocak": {
+                    "segmentler": {ad: {"medyan": fiyat} for ad, fiyat in
+                                   (("dusuk", 10000), ("orta", 20000), ("luks", 30000))},
+                    "ozellik_ozeti": {"urun_turleri": {
+                        "ankastre-firin": {"urun_sayisi": 8},
+                        "ocakli-firin": {"urun_sayisi": 5},
+                    }},
+                }},
+            }), encoding="utf-8")
+            arac = hc.butcem_yeter_mi_tanimi(kok)
+            self.assertIsNone(arac)
+
+    def test_aylik_tuketim_araci_yalniz_guclu_eslesmeyle_uretilir(self):
+        with TemporaryDirectory() as gecici:
+            kok = Path(gecici)
+            (kok / "kedi.json").write_text(json.dumps({
+                "guncelleme_tarihi": "2026-08-22",
+                "kalemler": {"kedi-mamasi": {
+                    "guncelleme_tarihi": "2026-08-22",
+                    "birim_fiyatlari": {"kg": {
+                        "genel_medyan": 320.5, "etiket": "TL/kg",
+                        "eslesen_urun": 12, "toplam_urun": 20,
+                        "eslesme_orani": 0.6, "kaynak_sayisi": 2,
+                    }},
+                }},
+            }), encoding="utf-8")
+            arac = hc.aylik_tuketim_tanimi(kok)
+            self.assertIsNotNone(arac)
+            html = hc.sayfa_uret(arac)
+            self.assertIn("TUKETIM_PROFILLERI", html)
+            self.assertIn("320.5", html)
+            self.assertIn('"eslesen_urun": 12', html)
+            self.assertIn("eşleşen ürün", html)
+            self.assertIn("kuru/yaş ürünleri içerebilir", html)
+
+    def test_aylik_tuketim_araci_zayif_eslesmede_uretilmez(self):
+        with TemporaryDirectory() as gecici:
+            kok = Path(gecici)
+            (kok / "kedi.json").write_text(json.dumps({
+                "kalemler": {"kedi-mamasi": {"birim_fiyatlari": {"kg": {
+                    "genel_medyan": 300, "eslesen_urun": 3, "toplam_urun": 30,
+                    "eslesme_orani": 0.1, "kaynak_sayisi": 1,
+                }}}},
+            }), encoding="utf-8")
+            self.assertIsNone(hc.aylik_tuketim_tanimi(kok))
 
     def test_opsiyonel_alanda_required_YOK(self):
         """GERCEK BUG (tarayici testi yakaladi): YouTube hesabinda RPM

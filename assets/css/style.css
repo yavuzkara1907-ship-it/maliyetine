@@ -350,11 +350,11 @@ p {
 
 .uyari-kutu {
   background: var(--renk-uyari-zemin);
-  border: 1px solid #f4d792;
+  border: 1px solid var(--renk-uyari);
   border-radius: var(--radius);
   padding: 14px 18px;
   font-size: 0.92rem;
-  color: #7a4a06;
+  color: var(--renk-uyari);
   margin: 18px 0;
 }
 

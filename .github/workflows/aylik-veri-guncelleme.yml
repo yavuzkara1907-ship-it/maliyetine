@@ -135,18 +135,23 @@ jobs:
           python rehber.py
           python sayfa_uret.py --vertikal dugun   # sitemap + ana sayfa tazelensin
 
-      # CSV disa aktarim + /veri/ indirme merkezi. Alintilanabilirligin
-      # merkezi: gazeteci/arastirmaci hazir dosya ariyor.
+      # Hesaplayicilar (/hesap/...). Cogunlugu mevzuat ya da matematikten
+      # turetir; alim gucu ve "Butcem Yeter mi?" araclari ise guncel veri
+      # dosyalarini okur. Veri birlestirildikten ve llms.txt'ten once uretilir.
+      # Ardindan sitemap yeniden kurulur; yeni veri araci ilk yayinda da
+      # arama motorlarina bildirilir.
+      - name: Formül hesaplayıcılarını üret
+        working-directory: scraper
+        run: |
+          python hesaplayicilar.py
+          python sayfa_uret.py --vertikal dugun
+
+      # CSV disa aktarim + /veri/ indirme merkezi + AI haritalari.
+      # Hesaplayicidan sonra calisir; llms.txt ilk build'de de yeni araclari
+      # eksiksiz listelemeli.
       - name: Veriyi CSV olarak dışa aktar
         working-directory: scraper
         run: python veri_disa_aktar.py
-
-      # Hesaplayicilar (/hesap/...). Cogunlugu mevzuat ya da matematikten
-      # turetir; alim gucu ve "Butcem Yeter mi?" araclari ise guncel veri
-      # dosyalarini okur. Bu nedenle veri birlestirildikten sonra uretilir.
-      - name: Formül hesaplayıcılarını üret
-        working-directory: scraper
-        run: python hesaplayicilar.py
 
       # Sosyal medya: bu olcumde paylasilacak GERCEK bir sey var mi?
       #

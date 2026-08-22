@@ -15,6 +15,7 @@ ORNEK = {
     "kalemler": {
         "buzdolabi": {
             "genel_medyan": 29000, "toplam_urun": 53,
+            "birim_fiyatlari": {"kg": {"genel_medyan": 245.5, "eslesen_urun": 11}},
             "segmentler": {"dusuk": {"medyan": 15196, "min": 6299},
                            "orta": {"medyan": 30552},
                            "luks": {"medyan": 47734, "max": 61990}},
@@ -42,6 +43,14 @@ class CsvTesti(unittest.TestCase):
         self.assertEqual(satir["kaynaklar"], "amazon; trendyol")
         self.assertEqual(satir["kaynak_sayisi"], 2)
 
+    def test_satir_dikey_tarihi_yerine_kalem_olcum_tarihini_kullanir(self):
+        """Hedefli yenileme tum dikeyde ayni gun olcum yapilmis gibi gorunmemeli."""
+        veri = json.loads(json.dumps(ORNEK))
+        veri["guncelleme_tarihi"] = "2026-08-22"
+        veri["kalemler"]["buzdolabi"]["guncelleme_tarihi"] = "2026-08-20"
+        satir = dict(zip(vd.BASLIKLAR, vd._satirlar("ev-kurma", veri)[0]))
+        self.assertEqual(satir["olcum_tarihi"], "2026-08-20")
+
     def test_urun_dondurmeyen_kaynak_sayilmaz(self):
         s = vd._satirlar("ev-kurma", ORNEK)
         self.assertNotIn("bos-kaynak", dict(zip(vd.BASLIKLAR, s[0]))["kaynaklar"])
@@ -65,6 +74,12 @@ class CsvTesti(unittest.TestCase):
         paket = dict(zip(vd.BASLIKLAR, vd._satirlar("bebek", bebek)[0]))
         self.assertEqual(paket["olcum_turu"], "paket_fiyati")
 
+    def test_normalize_birim_fiyati_csvde_acik(self):
+        satir = dict(zip(vd.BASLIKLAR, vd._satirlar("ev-kurma", ORNEK)[0]))
+        self.assertEqual(satir["tl_kg"], 245.5)
+        self.assertEqual(satir["kg_urun_sayisi"], 11)
+        self.assertEqual(satir["tl_litre"], "")
+
     def test_csv_gercekten_ayristirilabilir(self):
         m = vd.csv_metni(vd._satirlar("ev-kurma", ORNEK))
         okunan = list(csv.reader(StringIO(m.lstrip("﻿"))))
@@ -82,6 +97,17 @@ class CsvTesti(unittest.TestCase):
             self.assertTrue((cikti / "ev-kurma.csv").exists())
             self.assertTrue((cikti / "ev-kurma-2026-08-05.csv").exists())
             self.assertTrue((cikti / "tum-kalemler.csv").exists())
+
+    def test_tarihli_arsiv_ayni_tarihte_yeniden_yazilmaz(self):
+        with TemporaryDirectory() as d:
+            kok = Path(d) / "veri"; kok.mkdir()
+            (kok / "ev-kurma.json").write_text(json.dumps(ORNEK), encoding="utf-8")
+            cikti = Path(d) / "csv"; cikti.mkdir()
+            arsiv = cikti / "ev-kurma-2026-08-05.csv"
+            arsiv.write_text("yayindaki-degismez-surum", encoding="utf-8")
+            vd.disa_aktar(veri_kok=kok, cikti_kok=cikti)
+            self.assertEqual(arsiv.read_text(encoding="utf-8"), "yayindaki-degismez-surum")
+            self.assertIn("buzdolabi", (cikti / "ev-kurma.csv").read_text(encoding="utf-8"))
 
     def test_veri_yoksa_dosya_uretilmez(self):
         with TemporaryDirectory() as d:
@@ -104,8 +130,20 @@ class CsvTesti(unittest.TestCase):
         ai = vd.ai_txt(ozet, "2026-08-05")
         self.assertIn("Bütçem Yeter mi?", llms)
         self.assertIn("İki tür araç vardır", llms)
-        self.assertIn("23 formül/mevzuat", ai)
-        self.assertIn("2 güncel veriye dayalı", ai)
+        import hesaplayicilar as hc
+        formul = len(hc.HESAPLAYICILAR)
+        veri = len(hc.tum_hesaplayicilar()) - formul
+        self.assertIn(f"{formul} formül/mevzuat", ai)
+        self.assertIn(f"{veri} güncel veriye dayalı", ai)
+
+    def test_llms_hesaplayici_dosyasi_henuz_yokken_de_tam_listeyi_verir(self):
+        """AI haritasi build adimi sirasina bagli olmamali."""
+        ozet = {"ev-kurma": {"kalem": 1, "tarih": "2026-08-05",
+                              "dosya": "/veri/csv/ev-kurma.csv"}}
+        llms = vd.llms_txt(ozet, "2026-08-05")
+        import hesaplayicilar as hc
+        for hesap in hc.tum_hesaplayicilar():
+            self.assertIn(f"/{hc.HESAP_KOK}/{hesap['slug']}/", llms)
 
     def test_ai_haritasi_build_gununu_olcum_tarihi_diye_yazmaz(self):
         ozet = {

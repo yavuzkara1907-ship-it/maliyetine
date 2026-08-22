@@ -12,7 +12,7 @@ const EV_KURMA_KALEMLERI = [
   { id: "camasir-makinesi", ad: "Çamaşır Makinesi", birim: "sabit", grup: "Beyaz eşya", kaynak_tipi: "gercek" },
   { id: "kurutma-makinesi", ad: "Kurutma Makinesi", birim: "sabit", grup: "Beyaz eşya", kaynak_tipi: "gercek" },
   { id: "bulasik-makinesi", ad: "Bulaşık Makinesi", birim: "sabit", grup: "Beyaz eşya", kaynak_tipi: "gercek" },
-  { id: "firin-ocak", ad: "Ankastre Fırın / Ocak Seti", birim: "sabit", grup: "Beyaz eşya", kaynak_tipi: "gercek" },
+  { id: "firin-ocak", ad: "Fırın / Ocak (ürün tipine göre)", birim: "sabit", grup: "Beyaz eşya", kaynak_tipi: "gercek", varsayilan_dahil: false },
   { id: "davlumbaz", ad: "Davlumbaz", birim: "sabit", grup: "Beyaz eşya", kaynak_tipi: "gercek" },
   { id: "mikrodalga", ad: "Mikrodalga Fırın", birim: "sabit", grup: "Beyaz eşya", kaynak_tipi: "gercek" },
   { id: "klima", ad: "Klima", birim: "sabit", grup: "Beyaz eşya", kaynak_tipi: "gercek" },

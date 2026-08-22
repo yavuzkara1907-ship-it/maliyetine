@@ -50,6 +50,7 @@ from bs4 import BeautifulSoup
 from protego import Protego
 
 from olcum_sozlesmesi import olcum_turu
+from urun_normalizasyonu import birim_fiyat_ozeti, firin_ozellik_ozeti
 
 BASE_DIR = Path(__file__).parent
 VARSAYILAN_KAYNAKLAR = BASE_DIR / "kaynaklar.yaml"
@@ -751,11 +752,24 @@ def saglik_kontrolu(ad: str, urun_sayisi: int, gecmis: dict, esik_oran: float = 
     return True, ortalama
 
 
-def gecmis_guncelle(gecmis: dict, ad: str, urun_sayisi: int, en_fazla_kayit: int = 12) -> None:
+def gecmis_guncelle(
+    gecmis: dict,
+    ad: str,
+    urun_sayisi: int,
+    en_fazla_kayit: int = 12,
+    calisma_tarihi: str | None = None,
+) -> None:
     kayit = gecmis.setdefault(ad, {"urun_sayilari": []})
-    kayit["urun_sayilari"].append(urun_sayisi)
+    bugun = calisma_tarihi or date.today().isoformat()
+    if kayit.get("son_calisma") == bugun and kayit["urun_sayilari"]:
+        # Ayni hedef gun icinde yeniden kosulduysa iki ayri olcum degildir.
+        # Son deneme oncekinin yerini alir; aksi halde manuel retry gecmis
+        # ortalamasinda sahte bir ay gibi agirlik kazanir.
+        kayit["urun_sayilari"][-1] = urun_sayisi
+    else:
+        kayit["urun_sayilari"].append(urun_sayisi)
     kayit["urun_sayilari"] = kayit["urun_sayilari"][-en_fazla_kayit:]
-    kayit["son_calisma"] = date.today().isoformat()
+    kayit["son_calisma"] = bugun
 
 
 # ----------------------------------------------------------
@@ -861,13 +875,23 @@ def grup_isle(vertikal: str, kalem: str, site: str, grup: dict, gecmis: dict, ci
         "genel_medyan": genel_medyan,
         "segmentler": segmentle(temiz),
         "ornek_urunler": denetim_ornegi(temiz),
+        **({"birim_fiyatlari": birim_ozeti} if (
+            birim_ozeti := birim_fiyat_ozeti(kalem, temiz)
+        ) else {}),
+        **({"ozellik_ozeti": ozellik_ozeti} if (
+            ozellik_ozeti := firin_ozellik_ozeti(kalem, temiz)
+        ) else {}),
     }
 
     dosya = hedef_klasor / f"{kalem}_{ad_slug(site)}_{date.today().isoformat()}.json"
     dosya.write_text(json.dumps(ozet, ensure_ascii=False, indent=2), encoding="utf-8")
     logger.info("[%s/%s] kaydedildi: %s", kalem, site, dosya)
 
-    gecmis_guncelle(gecmis, gecmis_anahtari, urun_sayisi)
+    # Karantinadaki sayi baseline'a yazilirsa arka arkaya bozuk kosular
+    # saglik esigini asagi ceker ve kaynak zamanla kendi hatasini normal
+    # kabul etmeye baslar. Yalniz saglikli kosu gecmisi gunceller.
+    if saglikli:
+        gecmis_guncelle(gecmis, gecmis_anahtari, urun_sayisi)
     return ozet
 
 
@@ -935,12 +959,16 @@ def calistir(
     cikti_kok: Path = VARSAYILAN_CIKTI,
     gecmis_dosyasi: Path = GECMIS_DOSYA,
     vertikal_filtresi: str | None = None,
+    kalem_filtresi: set[str] | None = None,
 ):
     veri = yaml.safe_load(kaynaklar_dosyasi.read_text(encoding="utf-8"))
     kaynaklar = veri.get("kaynaklar", [])
     if vertikal_filtresi:
         kaynaklar = [k for k in kaynaklar if k.get("vertikal") == vertikal_filtresi]
         logger.info("Vertikal filtresi: %s (%d kaynak)", vertikal_filtresi, len(kaynaklar))
+    if kalem_filtresi:
+        kaynaklar = [k for k in kaynaklar if k.get("kalem") in kalem_filtresi]
+        logger.info("Kalem filtresi: %s (%d kaynak)", ", ".join(sorted(kalem_filtresi)), len(kaynaklar))
 
     gecmis = gecmisi_yukle(gecmis_dosyasi)
     gruplar = gruplar_halinde_topla(kaynaklar)
@@ -977,6 +1005,10 @@ def main():
         help="yalnizca bu vertikalin kaynaklarini calistir. Tam tur 196 kaynakla "
              "~50 dakika suruyor; tek vertikali tazelemek icin bunu kullan.",
     )
+    ayristirici.add_argument(
+        "--kalem", action="append", default=None,
+        help="yalnizca bu kalemi calistir; birden cok kalem icin bayragi tekrarlayin.",
+    )
     ayristirici.add_argument("--log-seviyesi", default="INFO")
     args = ayristirici.parse_args()
 
@@ -988,7 +1020,10 @@ def main():
             logging.FileHandler(BASE_DIR / "kazima.log", encoding="utf-8"),
         ],
     )
-    calistir(args.kaynaklar, args.cikti, args.gecmis, args.vertikal)
+    calistir(
+        args.kaynaklar, args.cikti, args.gecmis, args.vertikal,
+        set(args.kalem) if args.kalem else None,
+    )
 
 
 if __name__ == "__main__":

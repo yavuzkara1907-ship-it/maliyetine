@@ -88,6 +88,19 @@ class RehberTesti(unittest.TestCase):
         cevap = re.search(r'<p class="cevap-blok">(.*?)</p>', html, re.S).group(1)
         self.assertNotIn("5.000 TL", cevap)  # tek seferlik yatak ayliga karismaz
 
+    def test_evcil_rehberi_normalize_birim_fiyatini_ve_araci_gosterir(self):
+        veri = json.loads(json.dumps(KEDI_VERI))
+        veri["kalemler"]["kedi-mamasi"]["birim_fiyatlari"] = {"kg": {
+            "etiket": "TL/kg", "genel_medyan": 321.45, "eslesen_urun": 12,
+            "toplam_urun": 20, "eslesme_orani": 0.6, "kaynak_sayisi": 2,
+        }}
+        r = next(x for x in rehber.REHBERLER if x["slug"] == "aylik-kedi-masrafi")
+        html = rehber.rehber_uret(r, {"kedi": veri})
+        self.assertIn("321,45 TL", html)
+        self.assertIn("12</td>", html)
+        self.assertIn('/hesap/aylik-tuketim-maliyeti/', html)
+        self.assertNotIn("paket boyu ile tüketim normalize edilmediği", html)
+
     def test_veriden_uretilen_sss_gorunur_ve_schema_ile_ayni(self):
         r = next(x for x in rehber.REHBERLER if x["slug"] == "aylik-kedi-masrafi")
         html = rehber.rehber_uret(r, {"kedi": KEDI_VERI})

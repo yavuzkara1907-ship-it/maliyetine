@@ -5,7 +5,8 @@
   "2026-07-28",
   "2026-08-05",
   "2026-08-09",
-  "2026-08-20"
+  "2026-08-20",
+  "2026-08-22"
  ],
  "kalemler": {
   "kedi-kumu": {
@@ -27,6 +28,12 @@
      "medyan": 498,
      "urun": 24,
      "kaynak": 1
+    },
+    {
+     "tarih": "2026-08-22",
+     "medyan": 489,
+     "urun": 24,
+     "kaynak": 1
     }
    ],
    "ilk": {
@@ -36,14 +43,13 @@
     "kaynak": 1
    },
    "son": {
-    "tarih": "2026-08-20",
-    "medyan": 498,
+    "tarih": "2026-08-22",
+    "medyan": 489,
     "urun": 24,
     "kaynak": 1
    },
-   "degisim_yuzde": 102.4,
-   "gun_araligi": 23,
-   "aylik_degisim_yuzde": 29.0
+   "degisim_yuzde": 98.8,
+   "gun_araligi": 25
   },
   "kedi-mamasi": {
    "seri": [
@@ -64,6 +70,12 @@
      "medyan": 2599,
      "urun": 24,
      "kaynak": 1
+    },
+    {
+     "tarih": "2026-08-22",
+     "medyan": 1980,
+     "urun": 64,
+     "kaynak": 2
     }
    ],
    "ilk": {
@@ -73,14 +85,13 @@
     "kaynak": 1
    },
    "son": {
-    "tarih": "2026-08-20",
-    "medyan": 2599,
-    "urun": 24,
-    "kaynak": 1
+    "tarih": "2026-08-22",
+    "medyan": 1980,
+    "urun": 64,
+    "kaynak": 2
    },
-   "degisim_yuzde": 145.4,
-   "gun_araligi": 23,
-   "aylik_degisim_yuzde": 92.5
+   "degisim_yuzde": 87.0,
+   "gun_araligi": 25
   },
   "kedi-oyuncagi": {
    "seri": [
@@ -322,6 +333,6 @@
   "artan": 5,
   "azalan": 3,
   "sabit": 0,
-  "medyan_degisim_yuzde": 61.7
+  "medyan_degisim_yuzde": 54.0
  }
 }

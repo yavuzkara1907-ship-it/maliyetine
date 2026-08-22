@@ -1,6 +1,6 @@
 {
   "vertikal": "bebek",
-  "guncelleme_tarihi": "2026-08-20",
+  "guncelleme_tarihi": "2026-08-22",
   "kalemler": {
     "bebek-arabasi": {
       "olcum_turu": "kalem_fiyati",
@@ -81,30 +81,30 @@
       "olcum_turu": "paket_fiyati",
       "segmentler": {
         "dusuk": {
-          "min": 160,
-          "medyan": 286,
-          "max": 325,
-          "urun_sayisi": 17,
+          "min": 136,
+          "medyan": 230,
+          "max": 430,
+          "urun_sayisi": 16,
           "kaynak_sayisi": 2
         },
         "orta": {
-          "min": 380,
-          "medyan": 592,
-          "max": 950,
-          "urun_sayisi": 29,
+          "min": 240,
+          "medyan": 479,
+          "max": 1025,
+          "urun_sayisi": 27,
           "kaynak_sayisi": 2
         },
         "luks": {
-          "min": 720,
-          "medyan": 940,
-          "max": 1780,
+          "min": 560,
+          "medyan": 1146,
+          "max": 1700,
           "urun_sayisi": 13,
           "kaynak_sayisi": 2
         }
       },
-      "genel_medyan": 576,
-      "toplam_urun": 59,
-      "guncelleme_tarihi": "2026-08-02",
+      "genel_medyan": 440,
+      "toplam_urun": 56,
+      "guncelleme_tarihi": "2026-08-22",
       "kaynak_sayisi": 2,
       "kaynaklar": [
         {
@@ -112,25 +112,252 @@
           "kaynak_adlari": [
             "Amazon - Bebek Bezi Fırsat Paketi"
           ],
-          "tarih": "2026-08-02",
-          "toplam_urun": 47,
-          "genel_medyan": 720
+          "tarih": "2026-08-22",
+          "toplam_urun": 45,
+          "genel_medyan": 639,
+          "ornek_urunler": [
+            {
+              "isim": "Sleepy Extra Günlük Aktivite Fırsat Paketi Bebek Bezi 3 Numara Midi 42 Adet",
+              "fiyat": 229.99
+            },
+            {
+              "isim": "Molfix 3D Bebek Bezi 4+ Beden (9-16 Kg) Maxiplus, Fırsat Paketi, 52 Adet",
+              "fiyat": 309.0
+            },
+            {
+              "isim": "Baby Turco Doğadan Ekonomik Fırsat Paketi Pofuduk Bebek Bezi 1 Numara Newborn 100 Adet",
+              "fiyat": 320.0
+            },
+            {
+              "isim": "Sleepy Bio Natural 2'li Fırsat Paketi Bebek Bezi 4 Numara Maxi 82 Adet Cırtlı Bez",
+              "fiyat": 330.3
+            },
+            {
+              "isim": "Molfix Bebek Bezi 3D Junior 5 Beden Aylık Paket 78 Adet, Beyaz",
+              "fiyat": 439.0
+            },
+            {
+              "isim": "Bebem Natural 6 Beden Xlarge Fırsat Paketi Bebek Bezi (1 x 32 Adet)",
+              "fiyat": 450.0
+            },
+            {
+              "isim": "Molfix Maxi 4 Beden Aylık Bebek Bezi (1 x 100 Adet)",
+              "fiyat": 499.99
+            },
+            {
+              "isim": "Prima Bebek Bezi Aktif Bebek 4 Beden 54 Adet Fırsat Paketi",
+              "fiyat": 638.9
+            },
+            {
+              "isim": "Sleepy Natural Double Soft Ultra Fırsat Paketi Bebek Bezi 4 Numara Maxi 200 Adet",
+              "fiyat": 807.77
+            },
+            {
+              "isim": "Sleepy Natural Double Soft Ultra Fırsat Paketi Bebek Bezi 7 Numara Xxlarge 96 Adet",
+              "fiyat": 944.81
+            },
+            {
+              "isim": "Prima Bebek Bezi Aktif Bebek Mega Fırsat Paketi 3 Beden 116 Adet",
+              "fiyat": 989.01
+            },
+            {
+              "isim": "Prima Bebek Bezi Premium Care 6 Numara 62 Adet Ultra Fırsat Paketi",
+              "fiyat": 1101.87
+            },
+            {
+              "isim": "Prima Bebek Bezi Premium Care 4 Numara 84 Adet Ultra Fırsat Paketi",
+              "fiyat": 1159.12
+            },
+            {
+              "isim": "Prima Bebek Bezi Premium Care 5 Numara 108 Adet Aylık Fırsat Paketi",
+              "fiyat": 1599.0
+            },
+            {
+              "isim": "Prima Premium Care Bebek Bezi 3 Numara 144 Adet Aylık Fırsat Paketi",
+              "fiyat": 1699.9
+            }
+          ]
         },
         {
           "site": "ebebek",
           "kaynak_adlari": [
             "ebebek - Bebek Bezleri"
           ],
-          "tarih": "2026-08-02",
-          "toplam_urun": 12,
-          "genel_medyan": 431
+          "tarih": "2026-08-22",
+          "toplam_urun": 11,
+          "genel_medyan": 240,
+          "ornek_urunler": [
+            {
+              "isim": "Ekonomik Paket Prematüre 0 Beden 30 Adet",
+              "fiyat": 135.99
+            },
+            {
+              "isim": "Little Swimmers Mayo Bebek Bezi 12-18 kg 11 adet",
+              "fiyat": 139.99
+            },
+            {
+              "isim": "Little Swimmers Mayo Bebek Bezi 7-15 kg 12 adet",
+              "fiyat": 139.99
+            },
+            {
+              "isim": "Mayo Bez Junior 4-5 Beden 7-18 kg 17 Adet",
+              "fiyat": 239.99
+            },
+            {
+              "isim": "Mayo Bez Maxi 3-4 Beden 4-14 kg 20 Adet",
+              "fiyat": 239.99
+            },
+            {
+              "isim": "Mayo Bez XLarge 5-6 Beden 11-25 kg 14 Adet",
+              "fiyat": 239.99
+            },
+            {
+              "isim": "Fırsat Paketi 7 Beden, 30 Adet",
+              "fiyat": 311.99
+            },
+            {
+              "isim": "Fırsat Paketi Extra Large 6 Beden 38 Adet",
+              "fiyat": 311.99
+            },
+            {
+              "isim": "D.S Natural Külot Bez 6 Beden 62 Adet",
+              "fiyat": 463.99
+            },
+            {
+              "isim": "D.S Natural Mega 6 Beden,80 Adet",
+              "fiyat": 559.99
+            },
+            {
+              "isim": "Natural 7 Beden 100 Adet",
+              "fiyat": 869.99
+            }
+          ]
         }
       ],
+      "birim_fiyatlari": {
+        "adet": {
+          "etiket": "TL/adet",
+          "genel_medyan": 9.3,
+          "eslesen_urun": 55,
+          "toplam_urun": 56,
+          "kaynak_sayisi": 2,
+          "segmentler": {
+            "dusuk": {
+              "min": 3.19,
+              "medyan": 5.63,
+              "max": 8.21,
+              "urun_sayisi": 15,
+              "kaynak_sayisi": 2
+            },
+            "orta": {
+              "min": 4.46,
+              "medyan": 9.82,
+              "max": 12.73,
+              "urun_sayisi": 27,
+              "kaynak_sayisi": 2
+            },
+            "luks": {
+              "min": 12.51,
+              "medyan": 15.3,
+              "max": 22.0,
+              "urun_sayisi": 13,
+              "kaynak_sayisi": 2
+            }
+          },
+          "ornek_urunler": [
+            {
+              "isim": "Önlem Botanika Bebek Bezi Fırsat Paketi Mini 96 Adet",
+              "fiyat": 306.6,
+              "miktar": 96.0,
+              "birim_fiyat": 3.19,
+              "site": "amazon"
+            },
+            {
+              "isim": "Baby Turco Doğadan Ekonomik Fırsat Paketi Pofuduk Bebek Bezi 3 Numara Midi 84 Adet",
+              "fiyat": 320.0,
+              "miktar": 84.0,
+              "birim_fiyat": 3.81,
+              "site": "amazon"
+            },
+            {
+              "isim": "Ekonomik Paket Prematüre 0 Beden 30 Adet",
+              "fiyat": 135.99,
+              "miktar": 30.0,
+              "birim_fiyat": 4.53,
+              "site": "ebebek"
+            },
+            {
+              "isim": "Baby Turco Doğadan Fırsat Paketi Bebek Bezi 2 Numara Mini 48 Adet",
+              "fiyat": 299.0,
+              "miktar": 48.0,
+              "birim_fiyat": 6.23,
+              "site": "amazon"
+            },
+            {
+              "isim": "D.S Natural Külot Bez 6 Beden 62 Adet",
+              "fiyat": 463.99,
+              "miktar": 62.0,
+              "birim_fiyat": 7.48,
+              "site": "ebebek"
+            },
+            {
+              "isim": "Natural 7 Beden 100 Adet",
+              "fiyat": 869.99,
+              "miktar": 100.0,
+              "birim_fiyat": 8.7,
+              "site": "ebebek"
+            },
+            {
+              "isim": "Fırsat Paketi 7 Beden, 30 Adet",
+              "fiyat": 311.99,
+              "miktar": 30.0,
+              "birim_fiyat": 10.4,
+              "site": "ebebek"
+            },
+            {
+              "isim": "Little Swimmers Mayo Bebek Bezi 7-15 kg 12 adet",
+              "fiyat": 139.99,
+              "miktar": 12.0,
+              "birim_fiyat": 11.67,
+              "site": "ebebek"
+            },
+            {
+              "isim": "Mayo Bez Maxi 3-4 Beden 4-14 kg 20 Adet",
+              "fiyat": 239.99,
+              "miktar": 20.0,
+              "birim_fiyat": 12.0,
+              "site": "ebebek"
+            },
+            {
+              "isim": "Mayo Bez Junior 4-5 Beden 7-18 kg 17 Adet",
+              "fiyat": 239.99,
+              "miktar": 17.0,
+              "birim_fiyat": 14.12,
+              "site": "ebebek"
+            },
+            {
+              "isim": "Mayo Bez XLarge 5-6 Beden 11-25 kg 14 Adet",
+              "fiyat": 239.99,
+              "miktar": 14.0,
+              "birim_fiyat": 17.14,
+              "site": "ebebek"
+            },
+            {
+              "isim": "Prima Bebek Bezi Aktif Bebek 8 Beden 31 Adet Fırsat Paketi",
+              "fiyat": 681.9,
+              "miktar": 31.0,
+              "birim_fiyat": 22.0,
+              "site": "amazon"
+            }
+          ],
+          "eslesme_orani": 0.982
+        }
+      },
       "capraz_dogrulama_uyarisi": {
-        "fark_yuzdesi": 67.1,
+        "fark_yuzdesi": 166.3,
         "medyanlar": {
-          "amazon": 720,
-          "ebebek": 431
+          "amazon": 639,
+          "ebebek": 240
         }
       }
     },

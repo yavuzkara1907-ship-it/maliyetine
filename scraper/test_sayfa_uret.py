@@ -311,6 +311,77 @@ class IcerikSeoTestleri(unittest.TestCase):
         self.assertIn("28.930 TL", html)
         self.assertIn("/ev-kurma/hesaplayici/", html)
 
+    def test_kalem_sayfasi_hedefli_yenilemede_kendi_olcum_tarihini_gosterir(self):
+        buzdolabi = json.loads(json.dumps(BUZDOLABI_VERISI))
+        buzdolabi["guncelleme_tarihi"] = "2026-08-20"
+        agregali = {
+            "vertikal": "ev-kurma",
+            "guncelleme_tarihi": "2026-08-22",
+            "kalemler": {"buzdolabi": buzdolabi},
+        }
+        self.veri_dosyasi.write_text(json.dumps(agregali, ensure_ascii=False), encoding="utf-8")
+        html = sayfa_uret.kalem_sayfasi_uret(
+            "ev-kurma", "buzdolabi-fiyatlari", self.veri_dosyasi
+        )
+        self.assertIn("Güncelleme: 2026-08-20", html)
+        self.assertNotIn("Güncelleme: 2026-08-22", html)
+
+    def test_karma_firin_havuzu_tip_bazinda_gosterilir(self):
+        firin = {
+            "genel_medyan": 22000,
+            "guncelleme_tarihi": "2026-08-22",
+            "toplam_urun": 15,
+            "kaynak_sayisi": 2,
+            "kaynaklar": [
+                {"site": "trendyol", "toplam_urun": 8, "genel_medyan": 16099},
+                {"site": "mediamarkt", "toplam_urun": 7, "genel_medyan": 26699},
+            ],
+            "segmentler": {
+                "dusuk": {"min": 10000, "medyan": 16099, "max": 18000, "urun_sayisi": 4},
+                "orta": {"min": 18001, "medyan": 22000, "max": 27000, "urun_sayisi": 7},
+                "luks": {"min": 27001, "medyan": 30999, "max": 40000, "urun_sayisi": 4},
+            },
+            "karma_urun_turu": True,
+            "ozellik_ozeti": {
+                "toplam_urun": 15,
+                "ozellik_eslesen_urun": 15,
+                "urun_turleri": {
+                    "ankastre-set": {"ad": "Ankastre set", "genel_medyan": 16099,
+                                     "urun_sayisi": 8, "kaynak_sayisi": 1},
+                    "ocakli-firin": {"ad": "Ocaklı fırın", "genel_medyan": 26699,
+                                     "urun_sayisi": 7, "kaynak_sayisi": 1},
+                },
+            },
+        }
+        agregali = {"vertikal": "ev-kurma", "guncelleme_tarihi": "2026-08-22",
+                    "kalemler": {"firin-ocak": firin}}
+        self.veri_dosyasi.write_text(json.dumps(agregali, ensure_ascii=False), encoding="utf-8")
+        conf = sayfa_uret.VERTIKALLER["ev-kurma"]
+        eski_sayfalar = list(conf.get("kalem_sayfalari", []))
+        try:
+            conf["kalem_sayfalari"] = eski_sayfalar + sayfa_uret._ek_kalem_sayfalari(
+                conf, agregali["kalemler"]
+            )
+            html = sayfa_uret.kalem_sayfasi_uret(
+                "ev-kurma", "firin-ocak-fiyatlari", self.veri_dosyasi
+            )
+        finally:
+            conf["kalem_sayfalari"] = eski_sayfalar
+        self.assertIn("Ürün tipine göre fiyatlar", html)
+        self.assertIn("Ankastre set", html)
+        self.assertIn("Ocaklı fırın", html)
+        self.assertIn("Tek bir set ortalaması vermiyoruz", html)
+        self.assertNotIn('"@type": "Product"', html)
+        self.assertNotIn("Fiyat aralığı ve örneklem", html)
+        self.assertNotIn("Fiyat geçmişi", html)
+        self.assertNotIn("Hangi mağaza kaça satıyor?", html)
+        self.assertNotIn("Kaynaklar arasında neden fark var?", html)
+        self.assertIn("ayın 5'i ve 20'sinde yenilenir", html)
+        self.assertIn(
+            'property="og:image:alt" content="Fırın / Ocak (ürün tipine göre) ürün tipi fiyatları"',
+            html,
+        )
+
     def test_sitemap_kalem_sayfalarini_icerir(self):
         sitemap = sayfa_uret.sitemap_uret()
         self.assertIn("https://maliyetine.com.tr/dugun/gelinlik-fiyatlari/", sitemap)
@@ -1180,6 +1251,20 @@ class OgEtiketleriTesti(unittest.TestCase):
             self.assertNotIn(
                 '"index.html").exists()', inspect.getsource(fonksiyon),
                 f"{fonksiyon.__name__} yeni sayfayi kart uretiminden once ariyor")
+
+    def test_kalem_karti_kendi_olcum_tarihini_kullanir(self):
+        import inspect
+        import og_gorsel
+        kaynak = inspect.getsource(og_gorsel.kalem_kartlarini_uret)
+        self.assertIn('k.get("guncelleme_tarihi") or tarih', kaynak)
+        self.assertNotIn("k.get('tarih') or tarih", kaynak)
+
+    def test_karma_urun_karti_tek_fiyat_yazmaz(self):
+        import inspect
+        import og_gorsel
+        kaynak = inspect.getsource(og_gorsel.kalem_kartlarini_uret)
+        self.assertIn('k.get("karma_urun_turu")', kaynak)
+        self.assertIn("Ürün tipine göre ayrı medyanlar", kaynak)
 
     def test_sablonlarda_elle_yazilmis_og_image_yok(self):
         """Sekiz sablonda ayri ayri yaziliydi; biri guncellenip otekiler

@@ -1,6 +1,6 @@
 {
   "vertikal": "kopek",
-  "guncelleme_tarihi": "2026-08-20",
+  "guncelleme_tarihi": "2026-08-22",
   "kalemler": {
     "cis-pedi": {
       "olcum_turu": "paket_fiyati",
@@ -92,7 +92,7 @@
         "dusuk": {
           "min": 105,
           "medyan": 990,
-          "max": 2090,
+          "max": 2894,
           "urun_sayisi": 19,
           "kaynak_sayisi": 2
         },
@@ -113,7 +113,7 @@
       },
       "genel_medyan": 3018,
       "toplam_urun": 69,
-      "guncelleme_tarihi": "2026-08-20",
+      "guncelleme_tarihi": "2026-08-22",
       "kaynak_sayisi": 2,
       "kaynaklar": [
         {
@@ -130,11 +130,164 @@
           "kaynak_adlari": [
             "petzzshop - Kopek Mamasi"
           ],
-          "tarih": "2026-08-20",
+          "tarih": "2026-08-22",
           "toplam_urun": 24,
-          "genel_medyan": 4208
+          "genel_medyan": 4208,
+          "ornek_urunler": [
+            {
+              "isim": "Molly Düşük Tahıllı Hypoallergenic Tavuklu ve Yaban Mersinli Küçük Irk Anne ve Yavru Köpek Maması - 2 Kg",
+              "fiyat": 700.0
+            },
+            {
+              "isim": "N&D Tropical Selection Domuzlu ve Kivili Orta ve Büyük Irk Yetişkin Köpek Maması",
+              "fiyat": 1132.84
+            },
+            {
+              "isim": "N&D Tropical Selection Kuzu Etli Orta ve Büyük Irk Yavru Köpek Maması",
+              "fiyat": 1232.44
+            },
+            {
+              "isim": "Exclusion Monoprotein Kuzulu ve Narlı Düşük Tahıllı Küçük Irk Yetişkin Köpek Maması - 7 Kg",
+              "fiyat": 2090.44
+            },
+            {
+              "isim": "N&D Tropical Selection Tavuklu ve Tropical Meyveli Orta ve Büyük Irk Yetişkin Köpek Maması - 10 Kg",
+              "fiyat": 3061.8
+            },
+            {
+              "isim": "N&D Tropical Selection Somonlu ve Tropical Meyveli Orta ve Büyük Irk Yetişkin Köpek Maması - 10 Kg",
+              "fiyat": 3339.36
+            },
+            {
+              "isim": "Profine Glutensiz Somonlu Büyük Irk Yavru Köpek Maması 12 kg",
+              "fiyat": 3946.21
+            },
+            {
+              "isim": "Profine Glutensiz Somonlu Büyük Irk Yetişkin Köpek Maması - 12 Kg",
+              "fiyat": 4282.93
+            },
+            {
+              "isim": "N&D Düşük Tahıllı Kuzu Etli Orta ve Büyük Irk Yetişkin Köpek Maması - 12 Kg",
+              "fiyat": 4526.28
+            },
+            {
+              "isim": "Wanpy Sığır Etli Tahılsız Yetişkin Köpek Maması - 12 Kg",
+              "fiyat": 4802.28
+            },
+            {
+              "isim": "N&D Ocean Düşük Tahıllı Balıklı Orta ve Büyük Irk Yetişkin Köpek Maması - 12 Kg",
+              "fiyat": 5082.48
+            },
+            {
+              "isim": "N&D Ocean Balıklı ve Balkabaklı Orta ve Büyük Irk Köpek Maması - 12 Kg",
+              "fiyat": 6262.92
+            },
+            {
+              "isim": "N&D Prime Domuzlu Orta ve Büyük Irk Yetişkin Köpek Maması - 12 Kg",
+              "fiyat": 6298.56
+            },
+            {
+              "isim": "N&D Prime Kuzu Etli ve Yaban Mersinli Orta Irk Yetişkin Köpek Maması - 12 Kg",
+              "fiyat": 6298.56
+            },
+            {
+              "isim": "N&D Quinoa Ördekli Orta ve Büyük Irk Kısırlaştırılmış Köpek Maması - 12 Kg",
+              "fiyat": 7086.96
+            }
+          ]
         }
       ],
+      "birim_fiyatlari": {
+        "kg": {
+          "etiket": "TL/kg",
+          "genel_medyan": 388.69,
+          "eslesen_urun": 20,
+          "toplam_urun": 24,
+          "kaynak_sayisi": 1,
+          "segmentler": {
+            "dusuk": {
+              "min": 241.13,
+              "medyan": 302.84,
+              "max": 333.94,
+              "urun_sayisi": 6,
+              "kaynak_sayisi": 1
+            },
+            "orta": {
+              "min": 350.0,
+              "medyan": 423.54,
+              "max": 524.88,
+              "urun_sayisi": 11,
+              "kaynak_sayisi": 1
+            },
+            "luks": {
+              "min": 554.85,
+              "medyan": 590.58,
+              "max": 710.2,
+              "urun_sayisi": 3,
+              "kaynak_sayisi": 1
+            }
+          },
+          "ornek_urunler": [
+            {
+              "isim": "Exclusion Monoprotein Kuzu Etli ve Narlı Düşük Tahıllı Orta Irk Yetişkin Köpek Maması - 12 Kg",
+              "fiyat": 2893.6,
+              "miktar": 12.0,
+              "birim_fiyat": 241.13,
+              "site": "petzzshop"
+            },
+            {
+              "isim": "N&D Tropical Selection Tavuklu ve Tropical Meyveli Orta ve Büyük Irk Yetişkin Köpek Maması - 10 Kg",
+              "fiyat": 3061.8,
+              "miktar": 10.0,
+              "birim_fiyat": 306.18,
+              "site": "petzzshop"
+            },
+            {
+              "isim": "N&D Tropical Selection Somonlu ve Tropical Meyveli Orta ve Büyük Irk Yetişkin Köpek Maması - 10 Kg",
+              "fiyat": 3339.36,
+              "miktar": 10.0,
+              "birim_fiyat": 333.94,
+              "site": "petzzshop"
+            },
+            {
+              "isim": "N&D Düşük Tahıllı Kuzu Etli Orta ve Büyük Irk Yetişkin Köpek Maması - 12 Kg",
+              "fiyat": 4526.28,
+              "miktar": 12.0,
+              "birim_fiyat": 377.19,
+              "site": "petzzshop"
+            },
+            {
+              "isim": "N&D Ocean Düşük Tahıllı Balıklı Orta ve Büyük Irk Yetişkin Köpek Maması - 12 Kg",
+              "fiyat": 5082.48,
+              "miktar": 12.0,
+              "birim_fiyat": 423.54,
+              "site": "petzzshop"
+            },
+            {
+              "isim": "N&D Ocean Balıklı ve Portakallı Orta ve Büyük Irk Köpek Maması - 12 Kg",
+              "fiyat": 6262.92,
+              "miktar": 12.0,
+              "birim_fiyat": 521.91,
+              "site": "petzzshop"
+            },
+            {
+              "isim": "N&D Prime Kuzu Etli ve Yaban Mersinli Orta Irk Yetişkin Köpek Maması - 12 Kg",
+              "fiyat": 6298.56,
+              "miktar": 12.0,
+              "birim_fiyat": 524.88,
+              "site": "petzzshop"
+            },
+            {
+              "isim": "N&D White Levrek Rezene ve Spirulina Küçük Irk Beyaz Köpek Maması - 5 kg",
+              "fiyat": 3551.0,
+              "miktar": 5.0,
+              "birim_fiyat": 710.2,
+              "site": "petzzshop"
+            }
+          ],
+          "eslesme_orani": 0.833
+        }
+      },
       "capraz_dogrulama_uyarisi": {
         "fark_yuzdesi": 88.4,
         "medyanlar": {

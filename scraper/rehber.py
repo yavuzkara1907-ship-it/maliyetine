@@ -62,6 +62,15 @@ def _p(n) -> str:
     return su._para(n) if n else "—"
 
 
+def _pb(n) -> str:
+    """Birim fiyatlarda kurusu koruyan Turkce para bicimi."""
+    if n is None:
+        return "—"
+    metin = f"{float(n):,.2f}"
+    metin = metin.replace(",", "_").replace(".", ",").replace("_", ".")
+    return metin + " TL"
+
+
 def _tufe(v: dict, vertikal: str) -> str:
     """Resmi TUFE referansi cumlesi. Veri yoksa BOS doner (uydurma yok).
 
@@ -702,6 +711,32 @@ def _govde_bebek_ilk_yil(v: dict) -> str | None:
     eko, _ = su.ornek_toplam_hesapla(conf, kalemler, 1, "ekonomik")
     bez_eko = _kalem(b, "bebek-bezi", "dusuk")
     bez_ust = _kalem(b, "bebek-bezi", "luks")
+    bez_birim = ((kalemler.get("bebek-bezi") or {}).get("birim_fiyatlari") or {}).get("adet") or {}
+    bez_birim_gecerli = (bez_birim.get("eslesen_urun", 0) >= 5
+                          and bez_birim.get("eslesme_orani", 0) >= 0.2)
+    if bez_birim_gecerli:
+        bez_birim_blok = f"""
+  <h2>Bez için normalize birim fiyat</h2>
+  <p>
+    {b.get('guncelleme_tarihi') or '—'} ölçümünde ürün adında paket adedi
+    açıkça bulunan <strong>{bez_birim['eslesen_urun']} bez paketinden</strong>
+    hesaplanan ortanca fiyat <strong>adet başına {_pb(bez_birim['genel_medyan'])}</strong>.
+    Günlük kullanımınızı <a href="/hesap/aylik-tuketim-maliyeti/">aylık tüketim
+    maliyeti hesaplayıcısına</a> girerek aylık ve yıllık bez karşılığını
+    bulabilirsiniz.
+  </p>
+"""
+        ilk_yil_aciklama = (
+            "Bez için adet başı fiyat artık ölçülüyor; kişisel günlük kullanım "
+            "hesaplayıcıda kullanıcıdan alınıyor. Mama, ek gıda, sağlık, giyim ve "
+            "bakım verileri tamamlanmadan burada tek bir ilk yıl toplamı yine yayınlanmaz."
+        )
+    else:
+        bez_birim_blok = ""
+        ilk_yil_aciklama = (
+            "Bir sonraki veri aşamamız paket adedini ürün adından ayırıp adet başı "
+            "fiyat üretmek; o alan tamamlanmadan burada kesin ilk yıl toplamı göstermeyeceğiz."
+        )
 
     en_pahali = sorted(
         ((t["ad"], _kalem(b, t["id"])) for t in conf["kalemler"]
@@ -742,13 +777,13 @@ def _govde_bebek_ilk_yil(v: dict) -> str | None:
     fiyatı göstergesidir.
   </p>
 
+{bez_birim_blok}
+
   <h2>İlk yıl hesabı nasıl kurulmalı?</h2>
   <p>
     Doğru formül; tek seferlik hazırlığa, kullanılan toplam bez adedinin adet
     başı fiyatla çarpımını ve mama, ek gıda, sağlık, giyim ile bakım
-    giderlerini eklemektir. Bir sonraki veri aşamamız paket adedini ürün
-    adından ayırıp adet başı fiyat üretmek; o alan tamamlanmadan burada kesin
-    ilk yıl toplamı göstermeyeceğiz.
+    giderlerini eklemektir. {ilk_yil_aciklama}
   </p>
 
   <h2>Bu rakama neler dahil değil</h2>
@@ -780,12 +815,24 @@ def _sss_bebek_masrafi(v: dict) -> list[tuple[str, str]]:
     if not (tek_seferlik and bez):
         return []
     tarih = b.get("guncelleme_tarihi") or "—"
-    return [
-        (
-            "Bir bebeğin aylık masrafı 2026'da ne kadar?",
+    bez_birim = ((kalemler.get("bebek-bezi") or {}).get("birim_fiyatlari") or {}).get("adet") or {}
+    if bez_birim.get("eslesen_urun", 0) >= 5 and bez_birim.get("eslesme_orani", 0) >= 0.2:
+        aylik_cevap = (
+            f"{tarih} ölçümünde bebek bezi kategori medyanı paket başına {_p(bez)}, "
+            f"normalize ortanca fiyat ise adet başına {_pb(bez_birim['genel_medyan'])}. "
+            "Aylık tüketim kişisel günlük bez adedi girilerek hesaplanır; mama, sağlık "
+            "ve bakım giderleri bu sonuçta yoktur."
+        )
+    else:
+        aylik_cevap = (
             f"{tarih} ölçümünde bebek bezi kategori medyanı paket başına {_p(bez)}. "
             "Paket adedi ve günlük tüketim normalize edilmediği için bu rakam aylık "
             "gider değildir; tam aylık maliyet henüz hesaplanamaz."
+        )
+    return [
+        (
+            "Bir bebeğin aylık masrafı 2026'da ne kadar?",
+            aylik_cevap,
         ),
         (
             "Bir bebeğin ilk yılı ne kadar tutar?",
@@ -1389,6 +1436,33 @@ def _paket_evcil_ozeti(v: dict, vertikal: str) -> dict | None:
     }
 
 
+def _normalize_evcil_ozeti(v: dict, vertikal: str) -> list[dict]:
+    veri = v.get(vertikal) or {}
+    kalemler = veri.get("kalemler") or {}
+    adlar = {
+        "kedi-mamasi": "Kedi maması",
+        "kedi-kumu": "Kedi kumu",
+        "kopek-mamasi": "Köpek maması",
+        "cis-pedi": "Çiş pedi",
+    }
+    satirlar = []
+    for kalem_id, ad in adlar.items():
+        kalem = kalemler.get(kalem_id) or {}
+        for birim, ozet in (kalem.get("birim_fiyatlari") or {}).items():
+            if ozet.get("eslesen_urun", 0) < 5 or ozet.get("eslesme_orani", 0) < 0.2:
+                continue
+            satirlar.append({
+                "ad": ad,
+                "birim": birim,
+                "etiket": ozet.get("etiket") or f"TL/{birim}",
+                "fiyat": ozet["genel_medyan"],
+                "urun": ozet["eslesen_urun"],
+                "kaynak": ozet.get("kaynak_sayisi", 0),
+                "tarih": kalem.get("guncelleme_tarihi") or veri.get("guncelleme_tarihi") or "—",
+            })
+    return satirlar
+
+
 def _govde_aylik_evcil(vertikal: str, ad: str, ozel_not: str):
     def govde(v: dict) -> str | None:
         ozet = _paket_evcil_ozeti(v, vertikal)
@@ -1401,13 +1475,55 @@ def _govde_aylik_evcil(vertikal: str, ad: str, ozel_not: str):
             f'<td class="sayi">{_p(x["luks"])}</td></tr>'
             for x in ozet["satirlar"]
         )
+        normalize = _normalize_evcil_ozeti(v, vertikal)
+        if normalize:
+            normalize_satirlari = "".join(
+                f'<tr><td>{x["ad"]}</td><td>{x["etiket"]}</td>'
+                f'<td class="sayi">{_pb(x["fiyat"])}</td>'
+                f'<td class="sayi">{x["urun"]}</td>'
+                f'<td class="sayi">{x["kaynak"]}</td><td>{x["tarih"]}</td></tr>'
+                for x in normalize
+            )
+            normalize_blok = f"""
+  <h2>Normalize birim fiyatları</h2>
+  <div class="tablo-sarmal"><table>
+    <thead><tr><th>Kalem</th><th>Birim</th><th class="sayi">Ortanca</th>
+    <th class="sayi">Eşleşen ürün</th><th class="sayi">Kaynak</th><th>Ölçüm</th></tr></thead>
+    <tbody>{normalize_satirlari}</tbody>
+  </table></div>
+  <p>
+    Artık paket büyüklüğünü ortak birime çevirebiliyoruz. Geriye kişisel
+    tüketim kalıyor: <a href="/hesap/aylik-tuketim-maliyeti/"><strong>aylık
+    tüketim maliyeti hesaplayıcısına</strong></a> günlük mama gramını veya
+    aylık kum/ped miktarını girerek kendi rakamınızı çıkarın.
+  </p>
+"""
+            cevap = (
+                f"{ozet['tarih']} ölçümünde paket fiyatlarının yanında normalize "
+                f"birim fiyatlar da hazır. Tek bir aylık {ad.lower()} masrafı yok; "
+                "kendi tüketiminizi girerek ölçülmüş TL/kg, TL/litre veya TL/adet "
+                "değeriyle hesaplayabilirsiniz."
+            )
+        else:
+            normalize_blok = """
+  <h2>Aylık hesap için hangi veri eksik?</h2>
+  <p>
+    Mama için kilogram başı fiyat ve aylık tüketim; kum için karşılaştırılabilir
+    litre/kilogram birimi ve değişim sıklığı; ped için adet başı fiyat ve aylık
+    adet gerekir. Ürün adlarından bu alanları güvenilir biçimde ayırıp aynı
+    birime çevirmeden paket medyanını on ikiyle çarpmıyoruz.
+  </p>
+"""
+            cevap = (
+                f"Mevcut verimizle güvenilir bir aylık {ad.lower()} masrafı hesaplanamaz. "
+                f"{ozet['tarih']} ölçümünde mama ve diğer tekrarlayan ürünlerden birer "
+                f"paketlik alışveriş göstergesi orta bantta <strong>{_p(t['orta'])}</strong>; "
+                f"ekonomik bant {_p(t['dusuk'])}, üst bant {_p(t['luks'])}. Bu rakam aylık "
+                "gider ya da bakım maliyeti alt sınırı değildir."
+            )
         return f"""
   <p class="cevap-blok">
-    Mevcut verimizle güvenilir bir aylık {ad.lower()} masrafı hesaplanamaz.
-    {ozet['tarih']} ölçümünde mama ve diğer tekrarlayan ürünlerden birer
-    paketlik alışveriş göstergesi orta bantta <strong>{_p(t['orta'])}</strong>;
-    ekonomik bant {_p(t['dusuk'])}, üst bant {_p(t['luks'])}. Bu rakam aylık
-    gider ya da bakım maliyeti alt sınırı değildir.
+    {cevap}
   </p>
 
   <h2>Ölçtüğümüz paket fiyatları</h2>
@@ -1417,13 +1533,7 @@ def _govde_aylik_evcil(vertikal: str, ad: str, ozel_not: str):
   </table></div>
   <p>{ozel_not}</p>
 
-  <h2>Aylık hesap için hangi veri eksik?</h2>
-  <p>
-    Mama için kilogram başı fiyat ve aylık tüketim; kum için karşılaştırılabilir
-    litre/kilogram birimi ve değişim sıklığı; ped için adet başı fiyat ve aylık
-    adet gerekir. Ürün adlarından bu alanları güvenilir biçimde ayırıp aynı
-    birime çevirmeden paket medyanını on ikiyle çarpmıyoruz.
-  </p>
+{normalize_blok}
 
   <h2>Bu rakama neler dahil değil?</h2>
   <p>
@@ -1451,18 +1561,41 @@ def _sss_aylik_evcil(vertikal: str, ad: str):
             return []
         orta = ozet["toplamlar"]["orta"]
         kalem_adlari = ", ".join(x["ad"].lower() for x in ozet["satirlar"])
-        return [
-            (
-                f"2026'da aylık {ad.lower()} masrafı ne kadar?",
+        normalize = _normalize_evcil_ozeti(v, vertikal)
+        if normalize:
+            birimler = ", ".join(
+                f'{x["ad"].lower()} için {x["etiket"]} {_pb(x["fiyat"])}'
+                for x in normalize
+            )
+            aylik_cevap = (
+                f"{ozet['tarih']} ölçümünde {birimler}. Tek aylık rakam tüketim "
+                "bilinmeden verilemez; aylık tüketim hesaplayıcısına günlük gram/adet "
+                "veya aylık kum miktarınızı girerek kişisel sonucu bulabilirsiniz."
+            )
+            yillik_cevap = (
+                "Hesaplayıcı ölçülmüş birim fiyatı kişisel aylık tüketimle çarpar ve "
+                "yıllık karşılığı da gösterir. Veteriner ve diğer hizmet giderleri "
+                "bu sarf ürünü hesabına dahil değildir."
+            )
+        else:
+            aylik_cevap = (
                 f"{ozet['tarih']} ölçümünde {kalem_adlari} için birer paketlik "
                 f"alışveriş göstergesi orta bantta {_p(orta)}. Paket boyu ve tüketim "
                 "normalize edilmediği için bu tutar aylık masraf değildir."
-            ),
-            (
-                f"Bir {ad.lower()} yılda ne kadar masraf çıkarır?",
+            )
+            yillik_cevap = (
                 "Mevcut kategori verisinden güvenilir yıllık toplam çıkarılamaz. "
                 "Kilogram/adet başı fiyat, hayvanın tüketimi ve sağlık-hizmet "
                 "giderleri birlikte ölçülmelidir."
+            )
+        return [
+            (
+                f"2026'da aylık {ad.lower()} masrafı ne kadar?",
+                aylik_cevap,
+            ),
+            (
+                f"Bir {ad.lower()} yılda ne kadar masraf çıkarır?",
+                yillik_cevap,
             ),
             (
                 "Veteriner ve aşı neden hesapta yok?",
@@ -2698,6 +2831,7 @@ def rehber_uret(rehber: dict, veriler: dict, tarih: str | None = None) -> str | 
 <meta name="description" content="{rehber["meta"]}">
 <link rel="canonical" href="{url}">
 <link rel="stylesheet" href="/assets/css/style.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="{rehber["baslik"]}">
 <meta property="og:description" content="{rehber["meta"]}">
 <meta property="og:type" content="article">
@@ -2765,6 +2899,7 @@ def rehber_dizini_uret(yazilanlar: list[dict], tarih: str | None = None) -> str:
 <meta name="description" content="Düğün, ev kurma ve sıfır araç bütçesi üzerine, gerçek fiyat ölçümlerine dayanan rehberler.">
 <link rel="canonical" href="{SITE_KOK_URL}/rehber/">
 <link rel="stylesheet" href="/assets/css/style.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="Rehber | Maliyeti Ne?">
 <meta property="og:description" content="Gerçek fiyat ölçümlerine dayanan bütçe rehberleri.">
 <meta property="og:type" content="website">

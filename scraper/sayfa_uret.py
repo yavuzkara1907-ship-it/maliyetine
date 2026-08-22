@@ -24,6 +24,7 @@ Kullanim:
 from __future__ import annotations
 
 import argparse
+import html
 import json
 from datetime import date
 from pathlib import Path
@@ -128,7 +129,8 @@ EV_KURMA_KALEMLERI = [
     {"id": "camasir-makinesi", "ad": "Çamaşır Makinesi", "birim": "sabit", "grup": "Beyaz eşya"},
     {"id": "kurutma-makinesi", "ad": "Kurutma Makinesi", "birim": "sabit", "grup": "Beyaz eşya"},
     {"id": "bulasik-makinesi", "ad": "Bulaşık Makinesi", "birim": "sabit", "grup": "Beyaz eşya"},
-    {"id": "firin-ocak", "ad": "Ankastre Fırın / Ocak Seti", "birim": "sabit", "grup": "Beyaz eşya"},
+    {"id": "firin-ocak", "ad": "Fırın / Ocak (ürün tipine göre)", "birim": "sabit",
+     "grup": "Beyaz eşya", "varsayilan_dahil": False},
     {"id": "davlumbaz", "ad": "Davlumbaz", "birim": "sabit", "grup": "Beyaz eşya"},
     {"id": "mikrodalga", "ad": "Mikrodalga Fırın", "birim": "sabit", "grup": "Beyaz eşya"},
     {"id": "klima", "ad": "Klima", "birim": "sabit", "grup": "Beyaz eşya"},
@@ -910,7 +912,7 @@ KALEM_SAYFA_NOTLARI = {
     # -- ev kurma: beyaz esya --
     "bulasik-makinesi": "Bulaşık makinesi fiyatı kişilik kapasitesi, kurutma tipi ve enerji sınıfına göre ayrışır.",
     "kurutma-makinesi": "Kurutma makinesinde ısı pompalı modeller elektrik gideri düşük olduğu için üst fiyat bandını oluşturur.",
-    "firin-ocak": "Ankastre fırın ve ocak çoğu zaman set olarak alınır; tekil fiyatlar set fiyatının altında kalır.",
+    "firin-ocak": "Bu havuz ankastre fırın, ocaklı fırın ve ankastre setleri tip bazında ayırır; karma kategori medyanı set fiyatı diye sunulmaz.",
     "davlumbaz": "Davlumbaz fiyatı emiş gücü (m³/saat) ve bacalı/bacasız oluşuna göre değişir.",
     "mikrodalga": "Mikrodalga fırında hacim ve ızgara özelliği fiyatı belirleyen iki ana etkendir.",
     "klima": "Klima fiyatı BTU değerine göre ayrışır; montaj bedeli bu rakama dahil değildir.",
@@ -1466,7 +1468,9 @@ def ornek_toplam_hesapla(conf: dict, kalemler: dict, olcek: int, segment: str) -
         carpan = olcek if tanim["birim"] == "kisi_basi" else 1
         satir_toplam = round(deger * carpan)
         # bilgi_amacli kalemler HICBIR senaryoda toplanmaz (bkz. yemek-ikram).
-        dahil = tanim.get("varsayilan_dahil", True) and not tanim.get("bilgi_amacli")
+        dahil = (tanim.get("varsayilan_dahil", True)
+                 and not tanim.get("bilgi_amacli")
+                 and not (veri or {}).get("karma_urun_turu"))
         if dahil:
             toplam += satir_toplam
         detaylar.append({
@@ -1515,6 +1519,8 @@ def _kalem_satirlari_html(conf: dict, kalemler: dict) -> str:
         # sonuca ulasir ve bu guveni zedeler.
         if tanim.get("bilgi_amacli"):
             not_etiketi = ' <span class="tahmini-etiket">Bilgi amaçlı — toplamda değil</span>'
+        elif (veri or {}).get("karma_urun_turu"):
+            not_etiketi = ' <span class="tahmini-etiket">Ürün tipi seçilmeden toplamda değil</span>'
         elif not tanim.get("varsayilan_dahil", True):
             not_etiketi = ' <span class="tahmini-etiket">Toplamda değil</span>'
         elif tanim.get("tek_deger"):
@@ -1834,7 +1840,9 @@ def _grup_toplamlari(conf: dict, kalemler: dict, segment_anahtari: str) -> list[
         # Grup butcesi, sayfanin varsayilan toplamiyla ayni kapsami
         # kullanmali. Paket fiyati gibi toplam disi bir kalemi burada
         # yeniden "butce" diye sunmak sayfanin kendi sinirini bozar.
-        if tanim.get("varsayilan_dahil", True) is False or tanim.get("bilgi_amacli"):
+        if (tanim.get("varsayilan_dahil", True) is False
+                or tanim.get("bilgi_amacli")
+                or (kalemler.get(tanim["id"]) or {}).get("karma_urun_turu")):
             continue
         grup = tanim.get("grup")
         deger = kalem_deger(kalemler.get(tanim["id"]), segment_anahtari)
@@ -2457,6 +2465,7 @@ def sayfa_uret(vertikal: str = "dugun", veri_dosyasi: Path | None = None) -> str
 <meta name="description" content="{conf["meta_aciklama"]}">
 <link rel="canonical" href="https://maliyetine.com.tr/{yol}/">
 <link rel="stylesheet" href="/assets/css/style.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="{conf["baslik"]}">
 <meta property="og:description" content="{conf["meta_aciklama"]}">
 <meta property="og:type" content="website">
@@ -2587,6 +2596,105 @@ def _segment_detay_tablosu_html(kalem_verisi: dict | None) -> str:
         '<th class="sayi">En yüksek</th><th class="sayi">Ürün</th></tr></thead>\n'
         "<tbody>\n" + "\n".join(satirlar) + "\n</tbody>\n</table>"
     )
+
+
+def _urun_ozellik_ozeti_html(kalem_verisi: dict | None) -> str:
+    """Fiyat havuzundaki acik urun niteliklerini statik HTML'e donusturur."""
+    ozet = (kalem_verisi or {}).get("ozellik_ozeti") or {}
+    if not ozet:
+        return ""
+    turler = [o for o in (ozet.get("urun_turleri") or {}).values()
+              if o.get("urun_sayisi", 0) >= 3]
+    turler.sort(key=lambda o: (-o["urun_sayisi"], o["ad"]))
+    if not turler:
+        return ""
+
+    tur_satirlari = "".join(
+        f'<tr><td>{html.escape(o["ad"])}</td>'
+        f'<td class="sayi">{_para(o["genel_medyan"])}</td>'
+        f'<td class="sayi">{o["urun_sayisi"]}</td>'
+        f'<td class="sayi">{o.get("kaynak_sayisi", 0)}</td></tr>'
+        for o in turler
+    )
+    ekler = []
+    kapasite = ozet.get("kapasite_litre") or {}
+    if kapasite.get("urun_sayisi", 0) >= 3:
+        ekler.append(
+            f'<li><strong>Kapasite:</strong> {kapasite["urun_sayisi"]} üründe '
+            f'{kapasite["min"]}–{kapasite["max"]} litre; ortanca '
+            f'{kapasite["medyan"]} litre.</li>'
+        )
+    markalar = [o for o in (ozet.get("markalar") or {}).values()
+                if o.get("urun_sayisi", 0) >= 2]
+    markalar.sort(key=lambda o: (-o["urun_sayisi"], o["ad"]))
+    if markalar:
+        ekler.append(
+            "<li><strong>En çok eşleşen markalar:</strong> "
+            + ", ".join(f'{html.escape(o["ad"])} ({o["urun_sayisi"]})' for o in markalar[:8])
+            + ".</li>"
+        )
+    ozellikler = [o for o in (ozet.get("ozellikler") or {}).values()
+                  if o.get("urun_sayisi", 0) >= 3]
+    ozellikler.sort(key=lambda o: (-o["urun_sayisi"], o["ad"]))
+    if ozellikler:
+        ekler.append(
+            "<li><strong>Ürün adında açıkça geçen özellikler:</strong> "
+            + ", ".join(
+                f'{html.escape(o["ad"])} ({o["urun_sayisi"]} ürün, ortanca {_para(o["genel_medyan"])})'
+                for o in ozellikler
+            )
+            + ".</li>"
+        )
+
+    ornekler = ozet.get("ornek_urunler") or []
+    ornek_satirlari = []
+    for urun in ornekler[:8]:
+        n = urun.get("nitelikler") or {}
+        nitelikler = []
+        if n.get("urun_turu"):
+            tur = (ozet.get("urun_turleri") or {}).get(n["urun_turu"], {})
+            nitelikler.append(tur.get("ad") or n["urun_turu"])
+        if n.get("marka"):
+            nitelikler.append(n["marka"])
+        if n.get("model"):
+            nitelikler.append(n["model"])
+        if n.get("kapasite_litre"):
+            nitelikler.append(f'{n["kapasite_litre"]} L')
+        ornek_satirlari.append(
+            f'<tr><td>{html.escape(urun.get("isim", ""))}</td>'
+            f'<td>{html.escape(" · ".join(map(str, nitelikler)) or "—")}</td>'
+            f'<td class="sayi">{_para(urun.get("fiyat", 0))}</td>'
+            f'<td>{html.escape(str(urun.get("site") or "—"))}</td></tr>'
+        )
+    ornek_tablo = ""
+    if ornek_satirlari:
+        ornek_tablo = (
+            '<h3>Yapısal alanı çıkarılan ürün örnekleri</h3>'
+            '<div class="tablo-sarmal"><table><thead><tr><th>Ürün adı</th>'
+            '<th>Çıkarılan alanlar</th><th class="sayi">Fiyat</th><th>Kaynak</th>'
+            '</tr></thead><tbody>' + "".join(ornek_satirlari) + '</tbody></table></div>'
+        )
+    kapsam = (
+        f'{ozet.get("toplam_urun", 0)} ürünün '
+        f'{ozet.get("ozellik_eslesen_urun", 0)} tanesinde en az bir yapısal alan bulundu.'
+    )
+    return f'''  <section class="icerik-bolumu">
+    <h2>Ürün tipine göre fiyatlar</h2>
+    <p>{kapsam} Aynı alışveriş kalemi gibi görünseler de ankastre fırın,
+      ocaklı fırın ve ankastre set aynı ürün değildir; bu nedenle aşağıdaki
+      fiyatlar tip bazında ayrı gösterilir.</p>
+    <div class="tablo-sarmal"><table>
+      <thead><tr><th>Ürün tipi</th><th class="sayi">Ortanca fiyat</th>
+      <th class="sayi">Ürün</th><th class="sayi">Kaynak</th></tr></thead>
+      <tbody>{tur_satirlari}</tbody>
+    </table></div>
+    {('<ul>' + ''.join(ekler) + '</ul>') if ekler else ''}
+    {ornek_tablo}
+    <p class="sonuc-alt-metin">Yalnız ürün adında açıkça yazan marka, model,
+      kapasite, enerji sınıfı ve özellikler ayrıştırılır. Eksik alan tahmin edilmez;
+      düşük örneklemli kırılımlar yayınlanmaz.</p>
+  </section>
+'''
 
 
 def kalem_butce_payi(conf: dict, kalemler: dict, kalem_id: str) -> tuple[int, float] | None:
@@ -2731,9 +2839,17 @@ def kalem_sayfasi_uret(
     kalemler = agregali.get("kalemler", {})
     veri = kalemler.get(sayfa["id"])
     bugun = date.today().isoformat()
-    guncelleme_tarihi = agregali.get("guncelleme_tarihi") or bugun
+    # Hedefli kazima yalnizca bir kalemi yenileyebilir. Dikey dosyasinin
+    # tarihi en yeni kalemi temsil eder; detay sayfasi ise kendi olcum
+    # tarihini gostermeli.
+    guncelleme_tarihi = (
+        (veri or {}).get("guncelleme_tarihi")
+        or agregali.get("guncelleme_tarihi")
+        or bugun
+    )
     degerler = segment_degerleri(veri)
     orta = degerler["orta"] or kalem_deger(veri, "orta")
+    karma_urun_turu = bool((veri or {}).get("karma_urun_turu"))
     kaynak_sayisi = len(bagimsiz_siteler({sayfa["id"]: veri or {}}, {sayfa["id"]}))
     urun_sayisi = (veri or {}).get("toplam_urun")
     sayfa_url = f"{SITE_KOK_URL}/{conf['yol']}/{sayfa['slug']}/"
@@ -2747,7 +2863,21 @@ def kalem_sayfasi_uret(
     )
     birim = " kişi başı" if tanim["birim"] == "kisi_basi" else ""
 
-    if orta:
+    if karma_urun_turu:
+        turler = [
+            o for o in ((veri or {}).get("ozellik_ozeti", {}).get("urun_turleri") or {}).values()
+            if o.get("urun_sayisi", 0) >= 3
+        ]
+        turler.sort(key=lambda o: (-o["urun_sayisi"], o["ad"]))
+        tur_ifadesi = ", ".join(
+            f'{o["ad"]} için {_para(o["genel_medyan"])}' for o in turler
+        )
+        cevap = (
+            f"Bu veri havuzu tek bir ürün türünü ölçmüyor. {guncelleme_tarihi} "
+            f"itibarıyla {tur_ifadesi}. <strong>Tek bir set ortalaması vermiyoruz</strong>; "
+            "ürün tipi seçilmeden bu kalem ev kurma toplamına dahil edilmiyor."
+        )
+    elif orta:
         cevap = (
             f"Maliyeti Ne? verilerine göre {guncelleme_tarihi} itibarıyla {tanim['ad']} "
             f"{'ortalama fiyatı' if (veri or {}).get('segment_tutarsiz') else 'orta segment ortalama fiyatı'} {birim} <strong>{_para(orta)}</strong>. "
@@ -2765,7 +2895,12 @@ def kalem_sayfasi_uret(
 
     # Meta aciklama SERP'te gorunur: GERCEK RAKAM icersin, 160 karakteri
     # asmasin (Google keser).
-    if orta:
+    if karma_urun_turu:
+        meta_aciklama = (
+            f"{tanim['ad']} fiyatları ürün tipine göre ayrıldı ({guncelleme_tarihi}). "
+            "Ankastre fırın, ocaklı fırın ve set medyanları; ürün ve kaynak sayısıyla."
+        )
+    elif orta:
         meta_aciklama = (
             f"{tanim['ad']} {'ortalama fiyatı' if (veri or {}).get('segment_tutarsiz') else 'orta segment ortalama fiyatı'}{birim} {_para(orta)} "
             f"({guncelleme_tarihi}). Ekonomik, orta ve üst fiyat aralığı; "
@@ -2799,6 +2934,8 @@ def kalem_sayfasi_uret(
     }]
 
     pay = kalem_butce_payi(conf, kalemler, sayfa["id"])
+    if karma_urun_turu:
+        pay = None
     if pay:
         tutar, yuzde = pay
         birim_notu = (
@@ -2815,7 +2952,7 @@ def kalem_sayfasi_uret(
             )},
         })
 
-    if degerler.get("dusuk") and degerler.get("luks"):
+    if not karma_urun_turu and degerler.get("dusuk") and degerler.get("luks"):
         kat = degerler["luks"] / degerler["dusuk"]
         sorular.append({
             "@type": "Question",
@@ -2833,7 +2970,7 @@ def kalem_sayfasi_uret(
         "name": "Fiyatlar ne zaman güncellendi?",
         "acceptedAnswer": {"@type": "Answer", "text": (
             f"Bu sayfadaki fiyatlar {guncelleme_tarihi} tarihinde ölçüldü ve "
-            "ayda bir yenilenir."
+            "ayın 5'i ve 20'sinde yenilenir."
         )},
     })
 
@@ -2843,7 +2980,7 @@ def kalem_sayfasi_uret(
     )
 
     uyari = (veri or {}).get("capraz_dogrulama_uyarisi")
-    if uyari:
+    if uyari and not karma_urun_turu:
         sorular.append({
             "@type": "Question",
             "name": "Kaynaklar arasında neden fark var?",
@@ -2893,7 +3030,8 @@ def kalem_sayfasi_uret(
     # yerde olcmedigimiz bir sey iddia edilmiyor, semada da
     # edilmemeli. AggregateOffer icin zorunlu alan da degil
     # (zorunlu olan lowPrice + priceCurrency).
-    if orta and degerler.get("dusuk") and degerler.get("luks"):
+    if (not karma_urun_turu and orta and degerler.get("dusuk")
+            and degerler.get("luks")):
         json_ld["@graph"].append({
             "@type": "Product",
             "name": f"{tanim['ad']} fiyatları ({guncelleme_tarihi})",
@@ -2908,6 +3046,41 @@ def kalem_sayfasi_uret(
             },
         })
 
+    if karma_urun_turu:
+        fiyat_bolumu_basligi = "Karma fiyat havuzu neden tek rakam değil?"
+        fiyat_bolumu_icerigi = (
+            '    <div class="uyari-kutu"><strong>Karşılaştırılamayan ürünler '
+            "tek medyanda sunulmaz.</strong> Ürün tipi tablosu aşağıdadır.</div>"
+        )
+        fiyat_bolumu_alt = (
+            "Ürün tipi fiyatları kendi grubu içindeki ortancayı gösterir; "
+            "farklı tiplerin fiyatları tek bir set fiyatına dönüştürülmez."
+        )
+        fiyat_gecmisi_ve_kaynaklar = ""
+    else:
+        fiyat_bolumu_basligi = "Fiyat aralığı ve örneklem"
+        fiyat_bolumu_icerigi = (
+            _segment_tutarsiz_notu(veri)
+            + _segment_grafigi(
+                degerler, " (kişi başı)" if tanim["birim"] == "kisi_basi" else ""
+            )
+            + _segment_detay_tablosu_html(veri)
+        )
+        fiyat_bolumu_alt = (
+            'Segmentler persentil bazlı ayrılır: en ucuz çeyrek ekonomik, '
+            'ortadaki yarı orta, en pahalı çeyrek üst. "Ürün" sütunu o '
+            "segmentte kaç ürünün ölçüldüğünü gösterir."
+        )
+        fiyat_gecmisi_ve_kaynaklar = (
+            _fiyat_gecmisi_html(vertikal, sayfa["id"])
+            + _kaynak_fiyat_tablosu_html(vertikal, sayfa["id"], veri)
+        )
+
+    og_alt = (
+        tanim["ad"] + " ürün tipi fiyatları"
+        if karma_urun_turu else tanim["ad"] + " ortalama fiyatı"
+    )
+
     return f"""<!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -2917,11 +3090,12 @@ def kalem_sayfasi_uret(
 <meta name="description" content="{meta_aciklama}">
 <link rel="canonical" href="{sayfa_url}">
 <link rel="stylesheet" href="/assets/css/style.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="{sayfa["baslik"]}">
 <meta property="og:description" content="{meta_aciklama}">
 <meta property="og:type" content="article">
 <meta property="og:url" content="{sayfa_url}">
-{og_etiketleri("/assets/og/" + vertikal + "-" + sayfa["slug"] + ".png", tanim["ad"] + " ortalama fiyatı")}
+{og_etiketleri("/assets/og/" + vertikal + "-" + sayfa["slug"] + ".png", og_alt)}
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {json.dumps(json_ld, ensure_ascii=False, indent=2)}
@@ -2946,15 +3120,13 @@ def kalem_sayfasi_uret(
   </div>
 
   <section class="icerik-bolumu">
-    <h2>Fiyat aralığı ve örneklem</h2>
+    <h2>{fiyat_bolumu_basligi}</h2>
     <p>{sayfa["aciklama"]}</p>
-{_segment_tutarsiz_notu(veri)}
-{_segment_grafigi(degerler, " (kişi başı)" if tanim["birim"] == "kisi_basi" else "")}
-    {_segment_detay_tablosu_html(veri)}
-    <p class="sonuc-alt-metin">Segmentler persentil bazlı ayrılır: en ucuz
-      çeyrek ekonomik, ortadaki yarı orta, en pahalı çeyrek üst. "Ürün"
-      sütunu o segmentte kaç ürünün ölçüldüğünü gösterir.</p>
+{fiyat_bolumu_icerigi}
+    <p class="sonuc-alt-metin">{fiyat_bolumu_alt}</p>
   </section>
+
+{_urun_ozellik_ozeti_html(veri)}
 
   <section class="icerik-bolumu">
     <h2>Bu fiyata ne dahil?</h2>
@@ -2964,7 +3136,7 @@ def kalem_sayfasi_uret(
   </section>
 
 {_sss_html(sorular)}
-{_fiyat_gecmisi_html(vertikal, sayfa['id'])}{_kaynak_fiyat_tablosu_html(vertikal, sayfa['id'], veri)}{_nereden_alinir_html(vertikal, sayfa['id'], tanim['ad'])}{_kunye_html(conf, veri, guncelleme_tarihi)}{_ilgili_kalemler_html(conf, sayfa["slug"])}</main>
+{fiyat_gecmisi_ve_kaynaklar}{_nereden_alinir_html(vertikal, sayfa['id'], tanim['ad'])}{_kunye_html(conf, veri, guncelleme_tarihi)}{_ilgili_kalemler_html(conf, sayfa["slug"])}</main>
 
 <footer>
   <div class="kapsayici">
@@ -3192,6 +3364,7 @@ def sss_sayfasi_uret(veri_kok: Path | None = None, tarih: str | None = None) -> 
 <meta name="description" content="Fiyatlar nereden geliyor, ne sıklıkla güncelleniyor, veriyi kullanabilir miyim? Maliyeti Ne? hakkında sık sorulan sorular ve yanıtları.">
 <link rel="canonical" href="{url}">
 <link rel="stylesheet" href="/assets/css/style.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="Sık Sorulan Sorular | Maliyeti Ne?">
 <meta property="og:description" content="Fiyatlar nereden geliyor, ne sıklıkla güncelleniyor, veriyi kullanabilir miyim?">
 <meta property="og:type" content="website">
@@ -3714,6 +3887,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
 <meta name="description" content="Düğün ve ev kurma maliyeti: gerçek fiyat verisinden derlenmiş, ayda iki kez güncellenen endeks. Kaynak, tarih ve örneklem her rakamın yanında.">
 <link rel="canonical" href="{SITE_KOK_URL}/">
 <link rel="stylesheet" href="/assets/css/style.css">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <meta property="og:title" content="2026 Maliyet Endeksi | Maliyeti Ne?">
 <meta property="og:description" content="{og_aciklama}">
 <meta property="og:type" content="website">

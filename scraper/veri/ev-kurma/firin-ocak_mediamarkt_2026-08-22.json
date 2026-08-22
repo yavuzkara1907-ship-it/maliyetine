@@ -1,0 +1,385 @@
+{
+  "site": "mediamarkt",
+  "kaynak_adlari": [
+    "MediaMarkt - Ocakli Firinlar"
+  ],
+  "kalem": "firin-ocak",
+  "vertikal": "ev-kurma",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-08-22",
+  "ham_urun_sayisi": 12,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 12,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 28399,
+  "segmentler": {
+    "dusuk": {
+      "min": 21999,
+      "medyan": 22599,
+      "max": 23799,
+      "urun_sayisi": 5
+    },
+    "orta": {
+      "min": 26699,
+      "medyan": 30999,
+      "max": 39999,
+      "urun_sayisi": 5
+    },
+    "luks": {
+      "min": 49999,
+      "medyan": 50587,
+      "max": 51175,
+      "urun_sayisi": 2
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "BOSCH HXA663D21T 66L Gazlı/Elektrikli Solo Fırın",
+      "fiyat": 21999.0
+    },
+    {
+      "isim": "SIMFER 1260 Ocaklı Tam Boy Fırın Gri",
+      "fiyat": 22499.0
+    },
+    {
+      "isim": "ALTUS AL 5556 G 65 LT LPG Solo 65 l Fırın Beyaz",
+      "fiyat": 22599.0
+    },
+    {
+      "isim": "SIMFER 1223 4 Gözü Gazlı Multi Turbo Ocaklı Tam Boy Fırın Beyaz",
+      "fiyat": 23799.0
+    },
+    {
+      "isim": "SIMFER 1261 3G+1 Wok Multi Turbo Ocaklı Tam Boy Fırın Gri",
+      "fiyat": 23799.0
+    },
+    {
+      "isim": "ALTUS AL 5756 GTD Ocaklı 72 l Fırın Beyaz",
+      "fiyat": 26699.0
+    },
+    {
+      "isim": "SIMFER 1226 Cam Yüzeyli 4 Gözü Gazlı Multi Turbo Ocaklı Tam Boy Fırın Gri",
+      "fiyat": 30099.0
+    },
+    {
+      "isim": "BOSCH HXA090H21T 66L Gazlı/Elektrikli Solo Fırın",
+      "fiyat": 30999.0
+    },
+    {
+      "isim": "BOSCH HXR390H21T 66L Gazlı/Elektrikli Solo Fırın",
+      "fiyat": 34999.0
+    },
+    {
+      "isim": "BOSCH HXR391H51T 66L Gazlı/Elektrikli Solo Fırın",
+      "fiyat": 39999.0
+    },
+    {
+      "isim": "ARCELIK CK 90 I 111 Litre Ocaklı Fırın Gri",
+      "fiyat": 49998.82
+    },
+    {
+      "isim": "ARCELIK F 8542 EBG Ocaklı Fırın Gri",
+      "fiyat": 51175.29
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 12,
+    "ozellik_eslesen_urun": 12,
+    "urun_turleri": {
+      "ocakli-firin": {
+        "ad": "Ocaklı fırın",
+        "genel_medyan": 26699,
+        "urun_sayisi": 7,
+        "segmentler": {
+          "dusuk": {
+            "min": 22499.0,
+            "medyan": 23799.0,
+            "max": 23799.0,
+            "urun_sayisi": 3
+          },
+          "orta": {
+            "min": 26699.0,
+            "medyan": 30099.0,
+            "max": 49998.82,
+            "urun_sayisi": 3
+          },
+          "luks": {
+            "min": 51175.29,
+            "medyan": 51175.29,
+            "max": 51175.29,
+            "urun_sayisi": 1
+          }
+        }
+      },
+      "solo-firin": {
+        "ad": "Solo fırın",
+        "genel_medyan": 30999,
+        "urun_sayisi": 5,
+        "segmentler": {
+          "dusuk": {
+            "min": 21999.0,
+            "medyan": 22299.0,
+            "max": 22599.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 30999.0,
+            "medyan": 32999.0,
+            "max": 34999.0,
+            "urun_sayisi": 2
+          },
+          "luks": {
+            "min": 39999.0,
+            "medyan": 39999.0,
+            "max": 39999.0,
+            "urun_sayisi": 1
+          }
+        }
+      }
+    },
+    "markalar": {
+      "Altus": {
+        "ad": "Altus",
+        "genel_medyan": 24649,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 22599.0,
+            "medyan": 22599.0,
+            "max": 22599.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 26699.0,
+            "medyan": 26699.0,
+            "max": 26699.0,
+            "urun_sayisi": 1
+          }
+        }
+      },
+      "Bosch": {
+        "ad": "Bosch",
+        "genel_medyan": 32999,
+        "urun_sayisi": 4,
+        "segmentler": {
+          "dusuk": {
+            "min": 21999.0,
+            "medyan": 26499.0,
+            "max": 30999.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 34999.0,
+            "medyan": 37499.0,
+            "max": 39999.0,
+            "urun_sayisi": 2
+          }
+        }
+      },
+      "Simfer": {
+        "ad": "Simfer",
+        "genel_medyan": 23799,
+        "urun_sayisi": 4,
+        "segmentler": {
+          "dusuk": {
+            "min": 22499.0,
+            "medyan": 23799.0,
+            "max": 23799.0,
+            "urun_sayisi": 3
+          },
+          "orta": {
+            "min": 30099.0,
+            "medyan": 30099.0,
+            "max": 30099.0,
+            "urun_sayisi": 1
+          }
+        }
+      }
+    },
+    "enerji_siniflari": {},
+    "ozellikler": {
+      "elektrikli": {
+        "ad": "Elektrikli",
+        "genel_medyan": 32999,
+        "urun_sayisi": 4,
+        "segmentler": {
+          "dusuk": {
+            "min": 21999.0,
+            "medyan": 26499.0,
+            "max": 30999.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 34999.0,
+            "medyan": 37499.0,
+            "max": 39999.0,
+            "urun_sayisi": 2
+          }
+        }
+      },
+      "gazli": {
+        "ad": "Gazlı",
+        "genel_medyan": 30549,
+        "urun_sayisi": 6,
+        "segmentler": {
+          "dusuk": {
+            "min": 21999.0,
+            "medyan": 22899.0,
+            "max": 23799.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 30099.0,
+            "medyan": 30999.0,
+            "max": 34999.0,
+            "urun_sayisi": 3
+          },
+          "luks": {
+            "min": 39999.0,
+            "medyan": 39999.0,
+            "max": 39999.0,
+            "urun_sayisi": 1
+          }
+        }
+      }
+    },
+    "kapasite_litre": {
+      "min": 65,
+      "medyan": 66,
+      "max": 111,
+      "urun_sayisi": 7
+    },
+    "ornek_urunler": [
+      {
+        "isim": "BOSCH HXA663D21T 66L Gazlı/Elektrikli Solo Fırın",
+        "fiyat": 21999.0,
+        "nitelikler": {
+          "urun_turu": "solo-firin",
+          "marka": "Bosch",
+          "model": "HXA663D21T",
+          "kapasite_litre": 66,
+          "ozellikler": [
+            "gazli",
+            "elektrikli"
+          ]
+        }
+      },
+      {
+        "isim": "SIMFER 1260 Ocaklı Tam Boy Fırın Gri",
+        "fiyat": 22499.0,
+        "nitelikler": {
+          "urun_turu": "ocakli-firin",
+          "marka": "Simfer"
+        }
+      },
+      {
+        "isim": "ALTUS AL 5556 G 65 LT LPG Solo 65 l Fırın Beyaz",
+        "fiyat": 22599.0,
+        "nitelikler": {
+          "urun_turu": "solo-firin",
+          "marka": "Altus",
+          "kapasite_litre": 65
+        }
+      },
+      {
+        "isim": "SIMFER 1223 4 Gözü Gazlı Multi Turbo Ocaklı Tam Boy Fırın Beyaz",
+        "fiyat": 23799.0,
+        "nitelikler": {
+          "urun_turu": "ocakli-firin",
+          "marka": "Simfer",
+          "ozellikler": [
+            "gazli"
+          ]
+        }
+      },
+      {
+        "isim": "SIMFER 1261 3G+1 Wok Multi Turbo Ocaklı Tam Boy Fırın Gri",
+        "fiyat": 23799.0,
+        "nitelikler": {
+          "urun_turu": "ocakli-firin",
+          "marka": "Simfer"
+        }
+      },
+      {
+        "isim": "ALTUS AL 5756 GTD Ocaklı 72 l Fırın Beyaz",
+        "fiyat": 26699.0,
+        "nitelikler": {
+          "urun_turu": "ocakli-firin",
+          "marka": "Altus",
+          "kapasite_litre": 72
+        }
+      },
+      {
+        "isim": "SIMFER 1226 Cam Yüzeyli 4 Gözü Gazlı Multi Turbo Ocaklı Tam Boy Fırın Gri",
+        "fiyat": 30099.0,
+        "nitelikler": {
+          "urun_turu": "ocakli-firin",
+          "marka": "Simfer",
+          "ozellikler": [
+            "gazli"
+          ]
+        }
+      },
+      {
+        "isim": "BOSCH HXA090H21T 66L Gazlı/Elektrikli Solo Fırın",
+        "fiyat": 30999.0,
+        "nitelikler": {
+          "urun_turu": "solo-firin",
+          "marka": "Bosch",
+          "model": "HXA090H21T",
+          "kapasite_litre": 66,
+          "ozellikler": [
+            "gazli",
+            "elektrikli"
+          ]
+        }
+      },
+      {
+        "isim": "BOSCH HXR390H21T 66L Gazlı/Elektrikli Solo Fırın",
+        "fiyat": 34999.0,
+        "nitelikler": {
+          "urun_turu": "solo-firin",
+          "marka": "Bosch",
+          "model": "HXR390H21T",
+          "kapasite_litre": 66,
+          "ozellikler": [
+            "gazli",
+            "elektrikli"
+          ]
+        }
+      },
+      {
+        "isim": "BOSCH HXR391H51T 66L Gazlı/Elektrikli Solo Fırın",
+        "fiyat": 39999.0,
+        "nitelikler": {
+          "urun_turu": "solo-firin",
+          "marka": "Bosch",
+          "model": "HXR391H51T",
+          "kapasite_litre": 66,
+          "ozellikler": [
+            "gazli",
+            "elektrikli"
+          ]
+        }
+      },
+      {
+        "isim": "ARCELIK CK 90 I 111 Litre Ocaklı Fırın Gri",
+        "fiyat": 49998.82,
+        "nitelikler": {
+          "urun_turu": "ocakli-firin",
+          "kapasite_litre": 111
+        }
+      },
+      {
+        "isim": "ARCELIK F 8542 EBG Ocaklı Fırın Gri",
+        "fiyat": 51175.29,
+        "nitelikler": {
+          "urun_turu": "ocakli-firin"
+        }
+      }
+    ]
+  }
+}

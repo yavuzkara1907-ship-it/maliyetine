@@ -297,10 +297,23 @@ def kalem_kartlarini_uret(veri_kok: Path | None = None) -> int:
             n = len({x["site"] for x in (k.get("kaynaklar") or [])
                      if x.get("toplam_urun")})
             urun = k.get("toplam_urun") or 0
-            alt = f"orta segment · {n} kaynak · {urun} üründen · {k.get('tarih') or tarih}"
+            kalem_tarihi = k.get("guncelleme_tarihi") or tarih
             ad = adlar.get(sayfa["id"])
             if not ad:
                 continue
+            if k.get("karma_urun_turu"):
+                ozellik_ozeti = k.get("ozellik_ozeti") or {}
+                turler = [o for o in (ozellik_ozeti.get("urun_turleri") or {}).values()
+                          if o.get("urun_sayisi", 0) >= 3]
+                eslesen = ozellik_ozeti.get("ozellik_eslesen_urun", 0)
+                alt = (f"{len(turler)} ürün tipi · {eslesen} ayrıştırılmış ürün · "
+                       f"{kalem_tarihi}")
+                if kart_baslikli(ad + " fiyatları", alt,
+                                 KALEM_KOK / f"{vertikal}-{sayfa['slug']}.png",
+                                 vurgu_satiri="Ürün tipine göre ayrı medyanlar"):
+                    sayi += 1
+                continue
+            alt = f"orta segment · {n} kaynak · {urun} üründen · {kalem_tarihi}"
             if kalem_karti(ad + " fiyatları", int(orta), alt,
                            KALEM_KOK / f"{vertikal}-{sayfa['slug']}.png"):
                 sayi += 1
@@ -445,7 +458,8 @@ def senaryo_ve_arac_kartlari(veri_kok: Path | None = None) -> int:
                 .get("orta", {}).get("medyan", 0)
                 for tn in conf["kalemler"]
                 if tn.get("grup") in gruplar and tn.get("varsayilan_dahil") is not False
-                and not tn.get("bilgi_amacli"))
+                and not tn.get("bilgi_amacli")
+                and not (kalemler.get(tn["id"]) or {}).get("karma_urun_turu"))
             if not t:
                 continue
             if kart_karti_yaz(x["baslik"], int(t),

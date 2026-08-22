@@ -17,8 +17,8 @@
   rehber eklendi.
 - Site artık tek konu değil, **veri ürünü + hesaplayıcı ağı**:
   **7 vertikal** (`dugun`, `ev-kurma`, `okul`, `bebek`, `kedi`, `kopek`,
-  `arac`), **122 ölçülen kalem**, **25 bağımsız `/hesap/` hesaplayıcı**,
-  **25 rehber**, **185 sitemap URL'i**.
+  `arac`), **122 ölçülen kalem**, **26 bağımsız `/hesap/` hesaplayıcı**,
+  **25 rehber**, **186 sitemap URL'i**.
 - Yayın modeli: statik dosyalar Cloudflare tarafında **Worker** ile servis
   ediliyor. Eski Pages kurulum notları tarihî kayıt; bugün doğru altyapı
   "statik çıktı + Cloudflare Worker + GitHub Actions"tır.
@@ -60,44 +60,80 @@
   Varsayılan toplam dışındaki paketler grup bütçesi SSS'sine sokulmuyor.
   JSON ve zaman serisi dosya sırası deterministik; duman testi üretimdeki
   `agrega → geçmiş → sayfa` sırasını gerçekten taklit ediyor.
+- **Normalize tüketim katmanı artık çalışıyor.** Ürün adındaki `kg`, gram,
+  litre ve paket adedi ortak birime çevriliyor; çoklu paket (`12 x 85 g`,
+  `2 paket 40 adet`) ve promosyon (`15 kg + 2 kg`) biçimleri testli.
+  `/hesap/aylik-tuketim-maliyeti/` yalnız en az 5 eşleşme ve %20 eşleşme
+  oranını geçen profilleri açıyor. 2026-08-22 ölçümü: kedi maması
+  **389,92 TL/kg (52 ürün, 2 kaynak)**, köpek maması **388,69 TL/kg
+  (20 ürün, 1 kaynak)**, kedi kumu **33,99 TL/litre (7 ürün, 1 kaynak)**,
+  bebek bezi **9,30 TL/adet (55 ürün, 2 kaynak)**. Tüketim varsayımı
+  yapılmıyor; günlük gram/adet veya aylık litreyi kullanıcı giriyor.
+  Mama kategori havuzu kuru/yaş ürünü henüz ayırmadığı için bu sınır
+  araçta görünür biçimde yazıyor. Çiş pedi ve zayıf kedi kumu/kg profili
+  kalite eşiğini geçmediği için yayınlanmıyor.
+- Aylık kedi/köpek ve ilk yıl bebek rehberleri normalize birim fiyat
+  tablosuna ve kişisel tüketim aracına bağlandı. Paket medyanı hâlâ aylık
+  gider diye sunulmuyor; aylık/yıllık sonuç ölçülmüş birim fiyat ile
+  kullanıcının girdiği tüketimden türetiliyor.
+- **Ürün özellik şeması `firin-ocak` pilotunda yayında.** Marka, açık model
+  kodu, kapasite, enerji sınıfı ve ayırt edici özellik yalnız ürün adında
+  yazıyorsa ayrıştırılıyor. Eski havuz ankastre set, ocaklı fırın ve solo
+  fırını karıştırdığı için tek fiyat iddiası kaldırıldı: 2026-08-22'de
+  ankastre set **16.099 TL (8 ürün)**, ocaklı fırın **26.699 TL (7 ürün)**,
+  solo fırın **30.999 TL (5 ürün)**. Bu kalem ev kurma toplamından,
+  `Bütçem Yeter mi?` aracından, genel fiyat geçmişinden ve karma kaynak
+  medyanı karşılaştırmasından çıkarıldı; Product/AggregateOffer schema da
+  üretilmiyor. Paylaşım kartı tek rakam yerine ürün tipi ayrımını taşıyor.
+- Hedefli kazıma güvenliği güçlendirildi: `motor.py --kalem` filtresi var;
+  karantinaya düşen koşu kaynak geçmişini değiştirmiyor ve aynı gün tekrar
+  denemesi sahte ikinci dönem oluşturmuyor. CSV, kalem detay sayfası ve
+  paylaşım kartı artık dikeyin en yeni tarihi yerine kalemin kendi ölçüm
+  tarihini kullanıyor. Amazon'un indirme yanıtı veren hedefleri sağlıksız
+  kabul edilip karantinaya alındı; eski sağlıklı veri sessizce sıfırlanmadı.
+  Tarihli CSV bir kez oluştuktan sonra değişmez; aynı gün tekrar build
+  yalnız sabit CSV URL'sini yeniler.
 - Search Console'daki 306 sorgunun tamamı incelendi. Talep yalnız "liste"
   değil; kullanıcılar en çok **tapu, kira vergisi, hisse maliyeti, temettü,
   işsizlik, düğün/çeyiz** konularında doğrudan rakam ve örnek arıyor. Bu
   yüzden yüksek talepli mevcut hesaplayıcılara statik, doğrulanabilir örnek
   hesaplar eklendi. Yeni URL açmak varsayılan cevap değildir.
 - OpenAI arama görünürlüğü için `robots.txt` artık **OAI-SearchBot**'u da
-  açıkça kabul ediyor. `llms.txt` bütün 25 aracı listeliyor ve formül
-  araçlarıyla güncel veriye dayalı iki aracı birbirine karıştırmıyor.
+  açıkça kabul ediyor. `llms.txt` bütün 26 aracı listeliyor ve 23 formül/
+  mevzuat aracıyla güncel veriye dayalı 3 aracı birbirine karıştırmıyor.
+  Build sırası hesaplayıcıdan sonra sitemap'i yeniden üretiyor; yeni veri
+  aracı ilk yayında hem sitemap'e hem AI haritasına giriyor.
 - Cloudflare `www` → kök domain 301 redirect **tamamlandı ve canlıda
   doğrulandı** (2026-08-22). Eski kural aktif görünüyordu ama expression,
   `URI Full wildcard` alanına yazıldığı için çalışmıyordu. Kural
   `www ve HTTP -> kök HTTPS 301` olarak düzeltildi; `https://www...` ve
   `http://www...` artık `https://maliyetine.com.tr/...` adresine 301
   dönüyor, query string korunuyor, kök HTTPS 200 kalıyor.
-- Bu turun son doğrulaması: **345 Python + 90 JavaScript test PASS**;
-  tarayıcıda kedi endeksi/hesaplayıcı, aylık kedi rehberi, veri merkezi ve
-  tapu hesaplayıcı kontrol edildi. Yedi endeksteki fiyatlar ve yedi zaman
-  serisi önceki commit ile sayısal olarak birebir aynı kaldı.
+- Bu turun son doğrulaması: **375 Python + 90 JavaScript test PASS**.
+  Tarayıcıda aylık tüketim aracı masaüstü/mobil sınandı: 60 g/gün kedi
+  maması **701,86 TL/ay**, 6 bez/gün **1.674 TL/ay** verdi ve alan etiketi
+  ürünle birlikte değişti. Fırın sayfasında tip tablosu, tek fiyatın
+  yokluğu, mobil taşma ve koyu tema uyarı kontrastı doğrulandı.
 - En yüksek kaldıraçlı açık işler:
   1. 301 sonrası Search Console'u 7-14 gün sonra tekrar kontrol et:
      sayfa tablosunda `www` sinyali düşüyor mu, kök hosta birleşiyor mu?
-  2. **Aylık maliyet veri ürünü:** paket gramajı/adedi, birim fiyat ve
-     tüketim profili toplanmadan evcil hayvan/bebek için aylık toplam
-     yayınlanmayacak. Mevcut aylık isimli rehberler bu sınırı açıklar;
-     fırsat kapanmış değil, doğru veri bekliyor.
-  3. **Ürün özellik katmanı:** model adı, kapasite, enerji sınıfı, temel
-     özellikler ve satıcı normalize edilmeli. Search Console'daki uzun
-     beyaz eşya sorguları bu veri olmadan güvenilir cevaplanamaz.
-  4. Tapu, kira geliri, hisse maliyet, temettü ve işsizlik hesaplarında
+  2. Mama havuzunda kuru/yaş ürün alt türü açık ad sinyaliyle ayrılmalı;
+     yeterli örneklem oluşmadan ayrı medyan yayınlanmamalı.
+  3. Çiş pedi için ikinci çalışan kaynak bulunmalı; kedi kumu `TL/kg`
+     profili 1/24 eşleşmeden kalite eşiğine çıkarılmalı.
+  4. Fırın pilotundaki özellik şeması önce buzdolabı/çamaşır makinesi gibi
+     açık kapasite-model alanlı tek kaleme uygulanmalı; pilot testleri
+     geçmeden 42 ev kalemine topluca yayılmamalı.
+  5. Tapu, kira geliri, hisse maliyet, temettü ve işsizlik hesaplarında
      sorgu/CTR değişimi izlenmeli; örneklerin etkisi ölçülmeden aynı niyette
      ikinci sayfa açılmamalı.
-  5. Tek kaynaklı kalem oranı hâlâ takip edilmeli. EV-kurma 0/42 tek
+  6. Tek kaynaklı kalem oranı hâlâ takip edilmeli. EV-kurma 0/42 tek
      kaynaklı duruma geldi; kedi/kopek kısmen kapandı ama tamamen bitmedi.
-  6. Düğünde kalan iki tahmini kalem (`nikah-islemleri`, `orkestra-dj`)
+  7. Düğünde kalan iki tahmini kalem (`nikah-islemleri`, `orkestra-dj`)
      metodolojik karar + kaynak bulununca kapatılmalı.
-  7. YouTube YPP şartları **2027-02-01** öncesi yeniden kontrol edilmeli;
+  8. YouTube YPP şartları **2027-02-01** öncesi yeniden kontrol edilmeli;
      resmi eşik değişikliği tarihli notla sayfaya işlendi.
-  8. Sosyal/Meta tarafına geçilecekse önce sayfa bazlı ölçüm kartı
+  9. Sosyal/Meta tarafına geçilecekse önce sayfa bazlı ölçüm kartı
      üretimi korunmalı; Instagram metin değil görsel ister.
 
 ## Proje Sahibi
@@ -175,6 +211,9 @@ motorları için.
 - Yalnız `aylik_normalize` bir değer 12 ile çarpılarak yıllıklaştırılabilir.
   Paket medyanı, kategori ortalaması veya "tekrarlayan ürün" olması bunu
   haklı çıkarmaz.
+- Ölçülmüş `TL/kg`, `TL/litre` veya `TL/adet` ile kullanıcının kendi
+  tüketim girdisinden türetilen kişisel aylık sonuç yıllıklaştırılabilir;
+  bu, paket kaleminin ölçüm türünü `aylik_normalize` yapmaz.
 - Tekrarlayan ürünlerde hedef veri: paket gramajı/adedi, karşılaştırılabilir
   birim fiyat (`TL/kg`, `TL/litre`, `TL/adet`), kullanım profili ve tüketim
   varsayımının kaynağı. Bu alanlar yoksa aylık toplam yerine ölçüm sınırı
@@ -3446,14 +3485,16 @@ bugün gerçekten iş açan maddeleri taşımalı; biten iş burada kalmasın.
       redirect 2026-08-22'de düzeltildi ve canlı HTTP ile doğrulandı. 7-14
       gün sonra GSC sayfa tablosunda `www` gösterim/tık payı azalıyor mu
       bakılacak.
-- [ ] **Normalize tüketim katmanı kur.** Mama için paket gramajı + `TL/kg`
-      + hayvan ağırlığına göre günlük tüketim; kum için `TL/kg` veya
-      `TL/litre` + değişim sıklığı; bez/ped için paket adedi + `TL/adet` +
-      günlük kullanım profili. Bunlar olmadan aylık/yıllık rakam yayınlama.
-- [ ] **Ürün özellik şemasını pilotla.** İlk pilot beyaz eşya: ürün adı,
-      marka/model, kapasite, enerji sınıfı ve ayırt edici özellik. Önce
-      `firin-ocak` veya Search Console'da uzun sorgu alan tek kalem; sonuç
-      güvenilir olursa diğer ürün kalemlerine yay.
+- [ ] **Mama alt türünü ayır.** Kuru/yaş mama yalnız ürün adında açıkça
+      yazıyorsa sınıflandırılsın; her alt tür en az 5 ürün ve %20 eşleşme
+      eşiğini geçmeden ayrı `TL/kg` profili yayınlanmasın.
+- [ ] **Eksik tüketim profillerini güçlendir.** Çiş pedi için ikinci çalışan
+      kaynak bul; kedi kumu `TL/kg` eşleşmesini 1/24 seviyesinden kalite
+      eşiğine çıkar. Eşiği düşürerek sayfa açma.
+- [ ] **Ürün özellik şemasını kontrollü genişlet.** `firin-ocak` pilotu
+      tamamlandı. Sonraki aday buzdolabı veya çamaşır makinesi; kapasite,
+      model ve enerji sınıfı testleri geçmeden tüm ev-kurma kalemlerine
+      toplu yayma.
 - [ ] **Yüksek niyetli hesaplayıcıları ölç.** Tapu, kira gelir vergisi,
       hisse maliyet, temettü ve işsizlik sayfalarına 2026-08-22'de eklenen
       örnek hesapların gösterim → tık etkisini 14-28 gün sonra karşılaştır.

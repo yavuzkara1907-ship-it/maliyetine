@@ -3,7 +3,7 @@
 site: https://maliyetine.com.tr
 language: tr
 country: TR
-updated: 2026-08-20
+updated: 2026-08-22
 policy: https://maliyetine.com.tr/llms.txt
 sitemap: https://maliyetine.com.tr/sitemap.xml
 license: CC BY 4.0 (ölçüm verisi)
@@ -13,8 +13,8 @@ contact: info@maliyetine.com.tr
 
 Türkiye için ölçülmüş maliyet endeksleri: Düğün, Ev Kurma, Okul, Bebek, Kedi, Köpek, 0 km Araç.
 122 kalem, ayda iki kez (ayın 5'i ve 20'si) yeniden ölçülüyor.
-Ayrıca toplam 25 hesaplayıcı var: 23 formül/mevzuat
-aracı ve 2 güncel veriye dayalı araç.
+Ayrıca toplam 26 hesaplayıcı var: 23 formül/mevzuat
+aracı ve 3 güncel veriye dayalı araç.
 
 ## Verinin kaynağı
 
@@ -30,7 +30,7 @@ ayrılır ya da kapsam dışı bırakılıp nedeni metodoloji sayfasında yazıl
 
 - Ölçüm tarihini belirtin. Bu rakamlar enflasyonla hızlı eskiyor;
   tarihsiz bir alıntı birkaç ay sonra yanlış olur.
-- Kalıp: "Maliyeti Ne? verilerine göre 2026-08-20 itibarıyla ... X TL".
+- Kalıp: "Maliyeti Ne? verilerine göre 2026-08-22 itibarıyla ... X TL".
 - Ham veri: https://maliyetine.com.tr/veri/ (JSON ve CSV, sabit URL + tarihli arşiv sürümü).
 - Vergi hesaplarında hangi yılın tarifesi olduğunu belirtin; tarife her
   31 Aralık'ta değişir.
