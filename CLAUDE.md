@@ -98,7 +98,10 @@
   iddiası artık en az iki bağımsız kaynak ister; resmî araç liste fiyatı
   tanımlı istisnadır. CSS URL'si sürümlüdür; Cloudflare'ın yeni rapor
   düzenine eski stil vermesi engellenir. Bu dört çıktı aylık workflow'da
-  QA'dan önce üretilir ve commit envanterine dahildir.
+  QA'dan önce üretilir ve commit envanterine dahildir. Uygulama commit'i
+  `4da0102` canlıdadır: rapor, RSS, JSON, ana sayfa çağrısı, sitemap ve
+  sürümlü CSS Cloudflare üzerinden doğrulandı. Aynı turda sitemap'teki
+  199 URL IndexNow'a gönderildi ve servis `200 OK` ile kabul etti.
 - **Düğün ikinci kaynak standardı:** aynı para biriminde görünmesi iki
   kaynağı karşılaştırılabilir yapmaz. Kişi başı salon fiyatına toplam
   organizasyon teklifi; aynı mekandaki paket farkından türetilen
