@@ -84,6 +84,10 @@ jobs:
             python sayfa_uret.py --vertikal "$vertikal"
           done
 
+      - name: Metodoloji sayfalarını canlı veriden üret
+        working-directory: scraper
+        run: python metodoloji.py
+
       # Resmi TUFE verisi (TCMB EVDS). Rehber yazilari bunu okuyup
       # "resmi enflasyonla karsilastirma" bolumunu uretiyor, o yuzden
       # rehber.py'den ONCE calismali. Anahtar repoda DEGIL - GitHub

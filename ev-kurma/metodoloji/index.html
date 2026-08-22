@@ -3,25 +3,96 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ev Kurma Maliyeti Metodolojisi | Maliyeti Ne?</title>
-<meta name="description" content="Ev kurma maliyeti verisi nereden, nasıl ve hangi kurallarla derleniyor? Kaynaklar, segment tanımı, sağlık kontrolü ve bilinen sınırlar.">
+<title>Ev Kurma Fiyat Metodolojisi | Maliyeti Ne?</title>
+<meta name="description" content="Ev Kurma fiyatları nasıl ölçülüyor? Güncel seri, kaynak, örneklem, kapsam ve hesaplama yöntemi.">
 <link rel="canonical" href="https://maliyetine.com.tr/ev-kurma/metodoloji/">
 <link rel="stylesheet" href="/assets/css/style.css?v=20260822-guven">
 <link rel="alternate" type="application/rss+xml" title="Maliyeti Ne? veri güncellemeleri" href="/feed.xml">
 <link rel="preload" href="/assets/font/sans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/font/sans-600-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<meta property="og:title" content="Ev Kurma Maliyeti Metodolojisi">
-<meta property="og:description" content="Ev kurma maliyeti verisi nereden, nasıl ve hangi kurallarla derleniyor? Kaynaklar, segment tanımı, sağlık kontrolü ve bilinen sınırlar.">
-<meta property="og:type" content="article">
+<meta property="og:title" content="Ev Kurma Fiyat Metodolojisi">
+<meta property="og:description" content="Ev Kurma fiyatları nasıl ölçülüyor? Güncel seri, kaynak, örneklem, kapsam ve hesaplama yöntemi.">
+<meta property="og:type" content="website">
 <meta property="og:url" content="https://maliyetine.com.tr/ev-kurma/metodoloji/">
 <meta property="og:image" content="https://maliyetine.com.tr/assets/og/ev-kurma-metodoloji.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Ev Kurma metodoloji">
+<meta property="og:image:alt" content="Ev Kurma fiyat metodolojisi">
 <meta property="og:site_name" content="Maliyeti Ne?">
 <meta property="og:locale" content="tr_TR">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://maliyetine.com.tr/#kurum",
+      "name": "Maliyeti Ne?",
+      "url": "https://maliyetine.com.tr",
+      "description": "Türkiye için canlı, doğrulanabilir maliyet endeksi.",
+      "foundingDate": "2026",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Türkiye"
+      },
+      "knowsLanguage": "tr-TR",
+      "publishingPrinciples": "https://maliyetine.com.tr/hakkimizda/",
+      "correctionsPolicy": "https://maliyetine.com.tr/hakkimizda/#hata-bildirimi",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "editorial",
+        "email": "info@maliyetine.com.tr",
+        "availableLanguage": "Turkish"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://maliyetine.com.tr/ev-kurma/metodoloji/#webpage",
+      "url": "https://maliyetine.com.tr/ev-kurma/metodoloji/",
+      "name": "Ev Kurma Fiyat Metodolojisi",
+      "dateModified": "2026-08-22",
+      "inLanguage": "tr-TR",
+      "publisher": {
+        "@id": "https://maliyetine.com.tr/#kurum"
+      },
+      "about": {
+        "@id": "https://maliyetine.com.tr/ev-kurma/#dataset"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Ev Kurma endeksinde kaç fiyat serisi var?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "2026-08-22 itibarıyla 42 ölçülmüş fiyat serisi var. Bunların 42 tanesi çok, 0 tanesi tek kaynaklıdır."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Veriler ne zaman yenileniyor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Kaynaklar ayın 5'i ve 20'sinde yeniden taranır. Bir tarama başarısız olursa eski sağlıklı ölçüm korunur; son veri tarihi ilerletilmez."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Neden aritmetik ortalama değil ortanca kullanılıyor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Az sayıdaki aşırı pahalı veya ucuz ürünün bütün kategoriyi çekmesini önlemek için kaynak ve seri özetlerinde ortanca fiyat kullanılır."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JP07XQLV0L"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -31,159 +102,70 @@
 </script>
 </head>
 <body>
-
-<header class="ust-bar">
-  <div class="kapsayici">
-    <a href="/" class="logo">Maliyeti <span>Ne?</span></a>
-    <nav class="ust-menu"><a href="/dugun/">Düğün</a><a href="/ev-kurma/" aria-current="page">Ev Kurma</a><a href="/okul/">Okul</a><a href="/bebek/">Bebek</a><a href="/evcil-hayvan/">Evcil Hayvan</a><a href="/arac/">0 km Araç</a><a href="/rapor/">Rapor</a><a href="/hesap/" class="menu-one-cikan">Hesaplayıcılar</a><a href="/rehber/">Rehber</a><a href="/veri/">Veri</a></nav>
-  </div>
-</header>
-
+<header class="ust-bar"><div class="kapsayici">
+  <a href="/" class="logo">Maliyeti <span>Ne?</span></a>
+  <nav class="ust-menu"><a href="/dugun/">Düğün</a><a href="/ev-kurma/" aria-current="page">Ev Kurma</a><a href="/okul/">Okul</a><a href="/bebek/">Bebek</a><a href="/evcil-hayvan/">Evcil Hayvan</a><a href="/arac/">0 km Araç</a><a href="/rapor/">Rapor</a><a href="/hesap/" class="menu-one-cikan">Hesaplayıcılar</a><a href="/rehber/">Rehber</a><a href="/veri/">Veri</a></nav>
+</div></header>
 <main class="kapsayici">
+  <nav class="kirinti" aria-label="Sayfa yolu"><a href="/">Ana sayfa</a> ›
+    <a href="/ev-kurma/">Ev Kurma</a> › <span>Metodoloji</span></nav>
+  <span class="guncelleme-etiketi">Son veri: 2026-08-22</span>
+  <h1>Ev Kurma fiyatlarını nasıl ölçüyoruz?</h1>
+  <div class="cevap-blok">Ev Kurma endeksi 2026-08-22 itibarıyla <strong>42 fiyat serisini</strong>, <strong>9 bağımsız kaynaktan</strong> derlenen 2896 ürün/fiyat satırıyla izliyor. 42 seri çok kaynaklı, 0 seri tek kaynaklıdır.</div>
+  <aside class="yayin-kunyesi" aria-label="Yayın doğrulama bilgileri"><p class="yayin-kunyesi-baslik"><span aria-hidden="true"></span>Bu sayfanın canlı kapsamı</p><dl><div><dt>Fiyat serisi</dt><dd>42</dd></div><div><dt>Bağımsız kaynak</dt><dd>9</dd></div><div><dt>Çok kaynaklı seri</dt><dd>42</dd></div><div><dt>Son veri</dt><dd>2026-08-22</dd></div></dl><p class="yayin-kunyesi-linkler"><a href="/veri/ev-kurma.json">Ham veri</a> · <a href="/veri/qa.json">QA raporu</a> · <a href="/iletisim/">Hata bildir</a></p></aside>
 
-  <h1>Bu Rakamlar Nereden Geliyor?</h1>
+  <section class="icerik-bolumu">
+    <h2>Neyi ölçüyor, neyi ölçmüyor?</h2>
+    <p>Bir ev için her üründen bir adetlik sepet ölçülür. Fırın/ocak gibi aynı listede set, ocaklı fırın ve solo fırın bulunan karma kategoriler tek fiyatla bütçeye sokulmaz; ürün tipleri ayrı gösterilir. Adet ihtiyacı haneye göre değişen ürünler hesaplayıcıda artırılabilir.</p>
+    <h3>Dahil olanlar</h3><ul><li>Beyaz eşya, mobilya, yatak odası, elektronik, küçük ev aleti, mutfak ve tekstil kalemleri.</li><li>Her kalemden bir adet veya bir standart takım varsayımı.</li><li>Gerçek e-ticaret kategori verisinden derlenen ekonomik, orta ve üst segment fiyatları.</li></ul>
+    <h3>Dahil olmayanlar</h3><ul><li>Konut satın alma veya kira bedeli.</li><li>Tadilat, işçilik, nakliye, montaj ve kurulum hizmetleri.</li><li>Temizlik malzemesi, sarf ürünleri ve kişisel zevke göre değişen dekorasyon parçaları.</li></ul>
+    <p><strong>Varsayılan toplama girmeyen seriler:</strong> Fırın / Ocak (ürün tipine göre). Bunlar ölçülür ve yayımlanır; ancak alternatif, dönemsel ya da tüketim bilgisi gerektiren kalemler oldukları için otomatik bütçe toplamına eklenmez.</p>
+  </section>
 
-  <div class="cevap-blok">
-    Ev kurma endeksindeki fiyatların <strong>tamamı</strong> gerçek
-    e-ticaret sitelerinden,  aylık
-    olarak derlenir — fiyatlar tahmin edilmez, kaynaktan ölçülür. Bu endekste
-    <span class="tahmini-etiket">Tahmini</span> kalem <strong>yoktur</strong>:
-    42 kalemin hepsi tek tek fiziksel bir ürüne karşılık geldiği için,
-    her birinin fiyatı doğrudan gerçek ürün listelerinden ölçülebiliyor.
-  </div>
+  <section class="icerik-bolumu">
+    <h2>Kaynak kapsamı</h2>
+    <p>Yayındaki bütün seriler en az iki bağımsız kaynaktan besleniyor.</p>
+    <div class="tablo-sarmal"><table>
+      <thead><tr><th>Kaynak</th><th class="sayi">Beslediği seri</th>
+      <th class="sayi">Ürün/fiyat satırı</th></tr></thead>
+      <tbody><tr><td>Amazon</td><td class="sayi">42</td><td class="sayi">1640</td></tr><tr><td>Bellona</td><td class="sayi">2</td><td class="sayi">46</td></tr><tr><td>Dogtas</td><td class="sayi">3</td><td class="sayi">63</td></tr><tr><td>Englishhome</td><td class="sayi">1</td><td class="sayi">44</td></tr><tr><td>Istikbal</td><td class="sayi">2</td><td class="sayi">54</td></tr><tr><td>Karaca</td><td class="sayi">1</td><td class="sayi">44</td></tr><tr><td>Madamecoco</td><td class="sayi">1</td><td class="sayi">18</td></tr><tr><td>Mediamarkt</td><td class="sayi">17</td><td class="sayi">203</td></tr><tr><td>Trendyol</td><td class="sayi">42</td><td class="sayi">784</td></tr></tbody>
+    </table></div>
+    <p class="sonuc-alt-metin">Aynı site birden fazla seriyi besleyebilir.
+      Ürün/fiyat satırı toplamı benzersiz ürün iddiası değildir; her
+      kaynak-kategori ölçümündeki geçerli satırların toplamıdır.</p>
 
-  <div class="uyari-kutu">
-    <strong>Bilinen sınır — tek kaynak.</strong> Bu endeks şu an tek bir
-    bağımsız kaynaktan (Trendyol) besleniyor. Kendi
-    <a href="#cok-kaynak">çok kaynak kuralımıza</a> göre bu yeterli değil:
-    tek kaynak, o sitenin fiyat politikasını yansıtır — piyasanın
-    tamamını değil. İkinci bağımsız kaynak eklenene kadar bu rakamları
-    bir <em>gösterge</em> olarak okuyun. Bunu gizlemek yerine burada ve
-    endeks sayfasının en üstünde açıkça belirtiyoruz.
-  </div>
+  </section>
 
-  <h2 id="cok-kaynak">Neden tek kaynağa güvenmiyoruz?</h2>
-  <p>
-    Tek bir siteye dayanan bir rakam, aslında piyasayı değil o sitenin
-    kendi fiyat politikasını yansıtır. Ayrıca kırılgandır: site tasarımını
-    değiştirdiğinde ya da erişimi engellediğinde endeks tamamen durur.
-    Bu yüzden her kalem için mümkün olduğunca çok
-    <strong>bağımsız</strong> kaynağı (hedef: en az 2, ideal 3) bir araya
-    getirmeyi hedefliyoruz. Ev kurma vertikali bu hedefe
-    <strong>henüz ulaşmadı</strong> — düğün vertikalinde ise 10 bağımsız
-    kaynak kullanılıyor.
-  </p>
+  <section class="icerik-bolumu">
+    <h2>Fiyat nasıl hesaplanıyor?</h2>
+    <ol>
+      <li>Ürün adı ve satış fiyatı, robots.txt izni bulunan açık liste sayfalarından alınır.</li>
+      <li>Fiyatı olmayan, yanlış ürün türündeki ve sağlık kontrolünü geçmeyen satırlar elenir.</li>
+      <li>Her kaynağın kendi ürün havuzunda ortanca ve fiyat bantları hesaplanır.</li>
+      <li>Birden fazla kaynak varsa kaynak ortancalarının ortancası ana fiyat olur; büyük ürün havuzuna sahip tek site diğerlerini ezmez.</li>
+      <li>Ekonomik, orta ve üst bantlar kaynak içindeki fiyat dağılımından kurulur. Sıralama bozulursa segmentler gizlenir ve sınır açıkça yazılır.</li>
+    </ol>
+    <p>Geniş kategori sayfalarında yalnız ürün adında açıkça yazan tür,
+      kapasite, model veya özellik ayrıştırılır. Eksik alan tahmin edilmez;
+      düşük örneklemli alt kırılım yayımlanmaz.</p>
+  </section>
 
+  <section class="icerik-bolumu">
+    <h2>Yenileme ve kalite kontrolü</h2>
+    <p>Kaynaklar ayın <strong>5'i ve 20'sinde</strong> yeniden taranır.
+      Son veri tarihi son başarılı ölçümdür; başarısız veya karantinaya
+      alınan tarama tarihi ilerletmez. Ürün sayısı geçmiş ortalamanın çok
+      altına düşerse kaynak sessizce kabul edilmez.</p>
+    <p>Yayın öncesinde seri sayısı, kaynak ve ürün toplamı, geçmiş noktası,
+      CSV, HTML ve veri sürümü birlikte denetlenir. Güncel sonuç
+      <a href="/veri/qa.json">makinece okunabilir QA raporunda</a>, ham
+      seri ise <a href="/veri/ev-kurma.json">JSON dosyasında</a> açıktır.</p>
+  </section>
 
-  <h2>Çapraz doğrulama</h2>
-  <p>
-    Bir kalem için ≥2 sağlıklı bağımsız kaynak olduğunda, genel
-    ortalamalarını karşılaştırırız. Aradaki fark %30'u aşarsa bunu
-    <strong>gizlemeyiz</strong> — endeks sayfasında açıkça bir uyarı
-    olarak gösterilir. Ev kurma endeksinde şu an tek kaynak olduğu için
-    çapraz doğrulama <strong>çalışmıyor</strong>; ikinci kaynak eklendiğinde
-    otomatik devreye girecek.
-  </p>
-
-  <h2>Segment tanımı</h2>
-  <p>Her kalem için toplanan tüm fiyatlar üç segmente ayrılır (persentil bazlı):</p>
-  <table>
-    <thead><tr><th>Segment</th><th>Tanım</th></tr></thead>
-    <tbody>
-      <tr><td>Ekonomik</td><td>≤ 25. persentil (P25)</td></tr>
-      <tr><td>Orta</td><td>P25 – P75 arası</td></tr>
-      <tr><td>Üst</td><td>&gt; 75. persentil (P75)</td></tr>
-    </tbody>
-  </table>
-  <p>Birden fazla kaynak olan kalemlerde, segment değeri her kaynağın
-    kendi orta değerinin ortası alınarak hesaplanır — ham fiyat noktaları
-    kaynaklar arasında karıştırılmaz, tek bir sapkın kaynağın sonucu
-    domine etmesi engellenir.</p>
-
-
-
-  <div class="uyari-kutu">
-    <strong>Örneklem sınırı:</strong> fiyatlar kategori listelerindeki
-    yaygın modellerden derlenir. Niş, ithal ya da üst-premium modeller
-    bu listelere girmeyebilir; dolayısıyla "üst segment" rakamı
-    piyasadaki en pahalı ürünü değil, <em>yaygın ürünler içindeki üst
-    çeyreği</em> gösterir.
-  </div>
-
-  <h2>Neyi ölçmüyoruz?</h2>
-  <p>
-    Bu endeks <strong>taşınabilir eşyayı</strong> ölçer: beyaz eşya,
-    mobilya, elektronik, mutfak ve tekstil. Kapsam dışında kalanlar:
-  </p>
-  <ul>
-    <li>Konutun kendisi (satın alma / kira / depozito).</li>
-    <li>Tadilat, boya, tesisat, dolap gibi işçilik gerektiren kalemler —
-      bunlar ayrı bir vertikal olarak planlanıyor.</li>
-    <li>Nakliye ve montaj ücretleri.</li>
-    <li>Temizlik malzemesi, saklama kutusu gibi tek bir net ürün
-      karşılığı olmayan sarf kalemleri.</li>
-  </ul>
-  <p>Ayrıca endeks, her kalemden <strong>bir adet</strong> alındığını
-    varsayar. İki komodin ya da üç halı alacaksanız gerçek maliyetiniz
-    daha yüksek olur.</p>
-
-  <h2>"Ortalama fiyat" derken</h2>
-  <p>
-    Sayfalarda <em>ortalama fiyat</em> dediğimiz değer, aritmetik ortalama
-    değil <strong>ortanca</strong> değerdir: bulduğumuz fiyatları küçükten
-    büyüğe sıralayıp tam ortadakini alıyoruz.
-  </p>
-  <p>
-    Nedeni basit. Bir kategoride tek bir çok pahalı ürün, aritmetik
-    ortalamayı tek başına yukarı çeker ve gerçekte kimsenin ödemediği bir
-    rakam çıkar. Ortanca değer bundan etkilenmez, o yüzden "tipik fiyat"
-    sorusuna daha dürüst cevap verir.
-  </p>
-
-  <h2>Neden kaynaklar arasında fark çıkıyor?</h2>
-  <p>
-    Aynı kalemi birden fazla siteden ölçtüğümüzde çoğu zaman farklı
-    rakamlar buluyoruz — bazen iki katına varan farklar. Bunu gizlemiyoruz;
-    fark %30'u aştığında sayfada uyarı olarak gösteriyoruz.
-  </p>
-  <p>
-    Sebep genelde veri hatası değil, <strong>ürün karması farkı</strong>.
-    Örnek: su ısıtıcıda bir pazaryerinin listesinde jenerik, ucuz modeller
-    ağırlıktayken diğerinde Philips, Tefal gibi markalar öne çıkıyor. İki
-    liste de gerçek, ama farklı bir pazarı gösteriyor.
-  </p>
-  <p>
-    Bu yüzden kaynakların ham fiyatlarını birbirine karıştırmıyoruz. Her
-    kaynağın kendi orta değerini alıp <em>onların</em> ortasını hesaplıyoruz.
-    Böylece tek bir kaynağın fiyat politikası sonucu tek başına
-    belirleyemiyor — tek kaynakla çalışsaydık rakam ya olduğundan ucuz ya
-    olduğundan pahalı çıkardı.
-  </p>
-
-  <h2>Güncelleme sıklığı</h2>
-  <p>Veri ayda bir otomatik olarak yenilenir. Her sayfada son güncelleme
-    tarihi görünür. Yıl değiştikçe endeks o yılın verisini yansıtacak
-    şekilde güncellenir.</p>
-
-  <p><a href="/ev-kurma/">← Ev kurma endeksine dön</a></p>
-
+  <section class="icerik-bolumu"><h2>Sık sorulan sorular</h2><h3>Ev Kurma endeksinde kaç fiyat serisi var?</h3><p>2026-08-22 itibarıyla 42 ölçülmüş fiyat serisi var. Bunların 42 tanesi çok, 0 tanesi tek kaynaklıdır.</p><h3>Veriler ne zaman yenileniyor?</h3><p>Kaynaklar ayın 5'i ve 20'sinde yeniden taranır. Bir tarama başarısız olursa eski sağlıklı ölçüm korunur; son veri tarihi ilerletilmez.</p><h3>Neden aritmetik ortalama değil ortanca kullanılıyor?</h3><p>Az sayıdaki aşırı pahalı veya ucuz ürünün bütün kategoriyi çekmesini önlemek için kaynak ve seri özetlerinde ortanca fiyat kullanılır.</p></section>
 </main>
-
-<footer>
-  <div class="kapsayici">
-    <div>© 2026 Maliyeti Ne?</div>
-    <nav>
-      <a href="/ev-kurma/">Ev Kurma Endeksi</a>
-      <a href="/ev-kurma/hesaplayici/">Hesaplayıcı</a>
-    </nav>
-    <nav class="footer-endeksler" aria-label="Tüm endeksler">
-      <a href="/dugun/">Düğün</a>
-      <a href="/ev-kurma/">Ev Kurma</a>
-      <a href="/okul/">Okul</a>
-      <a href="/arac/">0 km Araç</a><a href="/rapor/">Rapor</a>
-    </nav>
-  </div>
-</footer>
-
+<footer><div class="kapsayici">© 2026 Maliyeti Ne? ·
+  <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> ·
+  <a href="/veri/">Veri</a></div></footer>
 </body>
 </html>

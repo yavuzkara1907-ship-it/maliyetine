@@ -3,25 +3,96 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Düğün Maliyeti Metodolojisi | Maliyeti Ne?</title>
-<meta name="description" content="Düğün maliyeti verisi nereden, nasıl ve hangi kurallarla derleniyor? Kaynaklar, çapraz doğrulama, segment tanımı ve bilinen sınırlar.">
+<title>Düğün Fiyat Metodolojisi | Maliyeti Ne?</title>
+<meta name="description" content="Düğün fiyatları nasıl ölçülüyor? Güncel seri, kaynak, örneklem, kapsam ve hesaplama yöntemi.">
 <link rel="canonical" href="https://maliyetine.com.tr/dugun/metodoloji/">
 <link rel="stylesheet" href="/assets/css/style.css?v=20260822-guven">
 <link rel="alternate" type="application/rss+xml" title="Maliyeti Ne? veri güncellemeleri" href="/feed.xml">
 <link rel="preload" href="/assets/font/sans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/font/sans-600-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<meta property="og:title" content="Düğün Maliyeti Metodolojisi">
-<meta property="og:description" content="Düğün maliyeti verisi nereden, nasıl ve hangi kurallarla derleniyor? Kaynaklar, çapraz doğrulama, segment tanımı ve bilinen sınırlar.">
-<meta property="og:type" content="article">
+<meta property="og:title" content="Düğün Fiyat Metodolojisi">
+<meta property="og:description" content="Düğün fiyatları nasıl ölçülüyor? Güncel seri, kaynak, örneklem, kapsam ve hesaplama yöntemi.">
+<meta property="og:type" content="website">
 <meta property="og:url" content="https://maliyetine.com.tr/dugun/metodoloji/">
 <meta property="og:image" content="https://maliyetine.com.tr/assets/og/dugun-metodoloji.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Dugun metodoloji">
+<meta property="og:image:alt" content="Düğün fiyat metodolojisi">
 <meta property="og:site_name" content="Maliyeti Ne?">
 <meta property="og:locale" content="tr_TR">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://maliyetine.com.tr/#kurum",
+      "name": "Maliyeti Ne?",
+      "url": "https://maliyetine.com.tr",
+      "description": "Türkiye için canlı, doğrulanabilir maliyet endeksi.",
+      "foundingDate": "2026",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Türkiye"
+      },
+      "knowsLanguage": "tr-TR",
+      "publishingPrinciples": "https://maliyetine.com.tr/hakkimizda/",
+      "correctionsPolicy": "https://maliyetine.com.tr/hakkimizda/#hata-bildirimi",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "editorial",
+        "email": "info@maliyetine.com.tr",
+        "availableLanguage": "Turkish"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://maliyetine.com.tr/dugun/metodoloji/#webpage",
+      "url": "https://maliyetine.com.tr/dugun/metodoloji/",
+      "name": "Düğün Fiyat Metodolojisi",
+      "dateModified": "2026-08-20",
+      "inLanguage": "tr-TR",
+      "publisher": {
+        "@id": "https://maliyetine.com.tr/#kurum"
+      },
+      "about": {
+        "@id": "https://maliyetine.com.tr/dugun/#dataset"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Düğün endeksinde kaç fiyat serisi var?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "2026-08-20 itibarıyla 14 ölçülmüş fiyat serisi var. Bunların 5 tanesi çok, 9 tanesi tek kaynaklıdır."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Veriler ne zaman yenileniyor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Kaynaklar ayın 5'i ve 20'sinde yeniden taranır. Bir tarama başarısız olursa eski sağlıklı ölçüm korunur; son veri tarihi ilerletilmez."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Neden aritmetik ortalama değil ortanca kullanılıyor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Az sayıdaki aşırı pahalı veya ucuz ürünün bütün kategoriyi çekmesini önlemek için kaynak ve seri özetlerinde ortanca fiyat kullanılır."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JP07XQLV0L"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -31,279 +102,75 @@
 </script>
 </head>
 <body>
-
-<header class="ust-bar">
-  <div class="kapsayici">
-    <a href="/" class="logo">Maliyeti <span>Ne?</span></a>
-    <nav class="ust-menu"><a href="/dugun/" aria-current="page">Düğün</a><a href="/ev-kurma/">Ev Kurma</a><a href="/okul/">Okul</a><a href="/bebek/">Bebek</a><a href="/evcil-hayvan/">Evcil Hayvan</a><a href="/arac/">0 km Araç</a><a href="/rapor/">Rapor</a><a href="/hesap/" class="menu-one-cikan">Hesaplayıcılar</a><a href="/rehber/">Rehber</a><a href="/veri/">Veri</a></nav>
-  </div>
-</header>
-
+<header class="ust-bar"><div class="kapsayici">
+  <a href="/" class="logo">Maliyeti <span>Ne?</span></a>
+  <nav class="ust-menu"><a href="/dugun/" aria-current="page">Düğün</a><a href="/ev-kurma/">Ev Kurma</a><a href="/okul/">Okul</a><a href="/bebek/">Bebek</a><a href="/evcil-hayvan/">Evcil Hayvan</a><a href="/arac/">0 km Araç</a><a href="/rapor/">Rapor</a><a href="/hesap/" class="menu-one-cikan">Hesaplayıcılar</a><a href="/rehber/">Rehber</a><a href="/veri/">Veri</a></nav>
+</div></header>
 <main class="kapsayici">
+  <nav class="kirinti" aria-label="Sayfa yolu"><a href="/">Ana sayfa</a> ›
+    <a href="/dugun/">Düğün</a> › <span>Metodoloji</span></nav>
+  <span class="guncelleme-etiketi">Son veri: 2026-08-20</span>
+  <h1>Düğün fiyatlarını nasıl ölçüyoruz?</h1>
+  <div class="cevap-blok">Düğün endeksi 2026-08-20 itibarıyla <strong>14 fiyat serisini</strong>, <strong>7 bağımsız kaynaktan</strong> derlenen 311 ürün/fiyat satırıyla izliyor. 5 seri çok kaynaklı, 9 seri tek kaynaklıdır.</div>
+  <aside class="yayin-kunyesi" aria-label="Yayın doğrulama bilgileri"><p class="yayin-kunyesi-baslik"><span aria-hidden="true"></span>Bu sayfanın canlı kapsamı</p><dl><div><dt>Fiyat serisi</dt><dd>14</dd></div><div><dt>Bağımsız kaynak</dt><dd>7</dd></div><div><dt>Çok kaynaklı seri</dt><dd>5</dd></div><div><dt>Son veri</dt><dd>2026-08-20</dd></div></dl><p class="yayin-kunyesi-linkler"><a href="/veri/dugun.json">Ham veri</a> · <a href="/veri/qa.json">QA raporu</a> · <a href="/iletisim/">Hata bildir</a></p></aside>
 
-  <h1>Bu Rakamlar Nereden Geliyor?</h1>
+  <section class="icerik-bolumu">
+    <h2>Neyi ölçüyor, neyi ölçmüyor?</h2>
+    <p>Ürün fiyatları Türkiye'deki çevrim içi satış listelerinden; salon ve hizmet kalemleri kapsamı açık, karşılaştırılabilir İstanbul ölçümlerinden gelir. Kişi başı kalemler varsayılan 150 davetliyle çarpılır; sabit kalemler bir kez eklenir. Yemekli ve kokteyl salon birbirinin alternatifidir, aynı bütçede birlikte toplanmaz.</p>
+    <h3>Dahil olanlar</h3><ul><li>Gelinlik, damatlık, alyans ve ölçülebilen temel ürün kalemleri.</li><li>Yemekli düğün salonu için kişi başı mekan/menü bedeli.</li><li>Kaynak bulunamayan hizmet kalemleri için açıkça etiketlenmiş tahmini kalemler.</li></ul>
+    <h3>Dahil olmayanlar</h3><ul><li>Balayı, ayrı tatil vertikaliyle ele alınacak.</li><li>Davetlilerin taktığı toplam altın; bunun yerine ölçülebilir bir bilezik fiyatı izlenir.</li><li>Şehir dışı ulaşım, konaklama ve kişiye özel ekstra talepler.</li></ul>
+    <p><strong>Varsayılan toplama girmeyen seriler:</strong> Düğün Salonu — kokteyl (yemeksiz), Yemek / İkram (mekanın menü bedeli). Bunlar ölçülür ve yayımlanır; ancak alternatif, dönemsel ya da tüketim bilgisi gerektiren kalemler oldukları için otomatik bütçe toplamına eklenmez.</p>
+  </section>
 
-  <div class="cevap-blok">
-    Maliyeti Ne?'deki fiyatların büyük çoğunluğu gerçek e-ticaret
-    sitelerinden, marka mağazalarından ve ilan platformlarından
-    aylık olarak derlenir — yapay
-    zeka burada sadece ham veriyi temizler, fiyatı asla üretmez. Henüz
-    doğrulanmış bir kaynağı olmayan az sayıda kalem için ise, kaynak
-    bulunana kadar <span class="tahmini-etiket">Tahmini</span> etiketiyle
-    açıkça işaretlenmiş, genel piyasa araştırmasından türetilmiş geçici
-    bir değer kullanılır — bu ikisi hiçbir yerde karıştırılmaz.
-  </div>
+  <section class="icerik-bolumu">
+    <h2>Kaynak kapsamı</h2>
+    <p>9 seri şu anda tek kaynaklıdır: Fotoğraf ve Video, Gelin Arabası, Gelinlik, Kuaför ve Makyaj, Organizasyon / Süsleme, Düğün Salonu — kokteyl (yemeksiz), Düğün Salonu — yemekli (menü dahil), Takı — Altın Bilezik (1 adet), Yemek / İkram (mekanın menü bedeli). Bu seriler sayfada tek kaynak sınırıyla birlikte gösterilir; ikinci kaynak varmış gibi sunulmaz.</p>
+    <div class="tablo-sarmal"><table>
+      <thead><tr><th>Kaynak</th><th class="sayi">Beslediği seri</th>
+      <th class="sayi">Ürün/fiyat satırı</th></tr></thead>
+      <tbody><tr><td>Amazon</td><td class="sayi">3</td><td class="sayi">90</td></tr><tr><td>Atasay</td><td class="sayi">2</td><td class="sayi">47</td></tr><tr><td>Beymen</td><td class="sayi">1</td><td class="sayi">40</td></tr><tr><td>Dugun Com</td><td class="sayi">4</td><td class="sayi">4</td></tr><tr><td>Dugunbuketi</td><td class="sayi">3</td><td class="sayi">29</td></tr><tr><td>Trendyol</td><td class="sayi">6</td><td class="sayi">61</td></tr><tr><td>Vakko</td><td class="sayi">1</td><td class="sayi">40</td></tr></tbody>
+    </table></div>
+    <p class="sonuc-alt-metin">Aynı site birden fazla seriyi besleyebilir.
+      Ürün/fiyat satırı toplamı benzersiz ürün iddiası değildir; her
+      kaynak-kategori ölçümündeki geçerli satırların toplamıdır.</p>
 
-  <h2>Neden tek kaynağa güvenmiyoruz?</h2>
-  <p>
-    Tek bir fiyat karşılaştırma sitesine dayanan bir rakam, aslında
-    piyasayı değil o sitenin kendi fiyat politikasını yansıtır. Bu yüzden
-    her kalem için mümkün olduğunca çok <strong>bağımsız</strong> kaynağı
-    (hedef: en az 2, ideal 3) bir araya getiriyoruz — hem daha dayanıklı
-    hem daha gerçekçi bir tablo için.
-  </p>
+    <h3>Tahmini bütçe kalemleri</h3>
+    <p><strong>Orkestra / DJ, Nikah İşlemleri (resmi harçlar)</strong> için sürekli ve karşılaştırılabilir bir
+      fiyat akışı henüz yoktur. Bunlar 2026-07-24
+      tarihli piyasa araştırmasıdır, fiyat serisi sayısına dahil edilmez ve
+      sayfada <span class="tahmini-etiket">Tahmini</span> diye ayrılır.</p>
+  </section>
 
+  <section class="icerik-bolumu">
+    <h2>Fiyat nasıl hesaplanıyor?</h2>
+    <ol>
+      <li>Ürün adı ve satış fiyatı, robots.txt izni bulunan açık liste sayfalarından alınır.</li>
+      <li>Fiyatı olmayan, yanlış ürün türündeki ve sağlık kontrolünü geçmeyen satırlar elenir.</li>
+      <li>Her kaynağın kendi ürün havuzunda ortanca ve fiyat bantları hesaplanır.</li>
+      <li>Birden fazla kaynak varsa kaynak ortancalarının ortancası ana fiyat olur; büyük ürün havuzuna sahip tek site diğerlerini ezmez.</li>
+      <li>Ekonomik, orta ve üst bantlar kaynak içindeki fiyat dağılımından kurulur. Sıralama bozulursa segmentler gizlenir ve sınır açıkça yazılır.</li>
+    </ol>
+    <p>Geniş kategori sayfalarında yalnız ürün adında açıkça yazan tür,
+      kapasite, model veya özellik ayrıştırılır. Eksik alan tahmin edilmez;
+      düşük örneklemli alt kırılım yayımlanmaz.</p>
+  </section>
 
-  <h2>Çapraz doğrulama</h2>
-  <p>
-    Bir kalem için ≥2 sağlıklı bağımsız kaynak varsa, genel ortalamalarını
-    karşılaştırırız. Aradaki fark %30'u aşarsa bunu <strong>gizlemeyiz</strong>
-    — endeks sayfasında açıkça bir uyarı olarak gösterilir. Böyle bir fark
-    genellikle veri hatası değil, kaynakların farklı segmentleri (ör.
-    kitlesel pazaryeri ile ultra-lüks tasarımcı markası) temsil ettiği
-    anlamına gelir.
-  </p>
+  <section class="icerik-bolumu">
+    <h2>Yenileme ve kalite kontrolü</h2>
+    <p>Kaynaklar ayın <strong>5'i ve 20'sinde</strong> yeniden taranır.
+      Son veri tarihi son başarılı ölçümdür; başarısız veya karantinaya
+      alınan tarama tarihi ilerletmez. Ürün sayısı geçmiş ortalamanın çok
+      altına düşerse kaynak sessizce kabul edilmez.</p>
+    <p>Yayın öncesinde seri sayısı, kaynak ve ürün toplamı, geçmiş noktası,
+      CSV, HTML ve veri sürümü birlikte denetlenir. Güncel sonuç
+      <a href="/veri/qa.json">makinece okunabilir QA raporunda</a>, ham
+      seri ise <a href="/veri/dugun.json">JSON dosyasında</a> açıktır.</p>
+  </section>
 
-  <h2>Segment tanımı</h2>
-  <p>Her kalem için toplanan tüm fiyatlar üç segmente ayrılır (persentil bazlı):</p>
-  <table>
-    <thead><tr><th>Segment</th><th>Tanım</th></tr></thead>
-    <tbody>
-      <tr><td>Ekonomik</td><td>≤ 25. persentil (P25)</td></tr>
-      <tr><td>Orta</td><td>P25 – P75 arası</td></tr>
-      <tr><td>Üst</td><td>&gt; 75. persentil (P75)</td></tr>
-    </tbody>
-  </table>
-  <p>Birden fazla kaynak olan kalemlerde, segment değeri her kaynağın
-    kendi orta değerinin ortası alınarak hesaplanır — ham fiyat noktaları
-    kaynaklar arasında karıştırılmaz, tek bir sapkın kaynağın sonucu
-    domine etmesi engellenir.</p>
-
-
-
-  <h2>Gerçek kaynak vs. tahmini kalemler</h2>
-  <p>
-    Bazı kalemler için (ör. fotoğrafçı, kuaför, orkestra, gelin arabası,
-    organizasyon, nikah harçları) henüz
-    güvenilir, sürekli izlenebilen bir kaynak
-    bulunamadı — bazı platformlar bu tür fiyatları üyelik arkasında
-    gizliyor. Bu kalemler için, kaynak bulunana kadar,
-    <strong>tek seferlik bir genel piyasa araştırmasından</strong>
-    (birden fazla fiyat/ilan sitesi taranarak) türetilmiş bir tahmini
-    değer kullanılır.
-  </p>
-  <p>Bu tahmini değerler, düzenli olarak ölçtüğümüz gerçek kaynak
-    verisinden temelde farklıdır:</p>
-  <table>
-    <thead><tr><th></th><th>Gerçek kaynak</th><th>Tahmini kalem</th></tr></thead>
-    <tbody>
-      <tr><td>Kaynak</td><td>Belirli, isimli site(ler)</td><td>Genel piyasa araştırması</td></tr>
-      <tr><td>Güncelleme</td><td>Otomatik, aylık</td><td>Elle, düzensiz</td></tr>
-      <tr><td>Örneklem</td><td>Ürün sayısı belirtilir</td><td>Yok</td></tr>
-      <tr><td>Çapraz doğrulama</td><td>Evet</td><td>Hayır</td></tr>
-      <tr><td>İşaret</td><td>Kaynak sayısı</td><td><span class="tahmini-etiket">Tahmini</span> etiketi</td></tr>
-    </tbody>
-  </table>
-  <p>Hesaplayıcı ve endeks sayfasında bu iki tür kalem her zaman ayrı
-    gösterilir ve toplam tutarın ne kadarının gerçek kaynaklardan, ne
-    kadarının tahminden geldiği açıkça belirtilir. Gerçek bir kaynak
-    bulunduğunda, o kalem tahmini listeden çıkarılıp gerçek kaynak
-    listesine taşınır.</p>
-
-  <h2>Düğün salonu: yemekli mi, kokteyl mi?</h2>
-  <p>
-    Düğün mekanları fiyatı <strong>kişi başı</strong> verir ve genellikle
-    iki ayrı seçenek sunar: <strong>yemekli</strong> (menü dahil) ve
-    <strong>kokteyl</strong> (yemeksiz). Bu ikisi aynı şey değildir ve
-    karıştırılırsa toplam ciddi şekilde yanlış çıkar.
-  </p>
-  <p>
-    Önceden bu kalem için mekan listeleme sayfasındaki
-    "başlangıç fiyatı" kullanılıyordu — ancak bu rakam mekanın
-    <em>en düşük</em> seçeneğidir, çoğu mekanda yemeksiz kokteyl fiyatına
-    denk gelir ve ne ölçtüğü belirsizdir. Bunu düzelttik: artık her
-    mekanın kendi sayfasındaki
-    <strong>tanımlı iki fiyat ayrı ayrı</strong> derleniyor.
-  </p>
-  <table>
-    <thead><tr><th>Seçenek</th><th>Ne içerir</th><th>Yemek ayrıca eklenir mi?</th></tr></thead>
-    <tbody>
-      <tr><td>Yemekli kişi başı</td><td>Salon + menü</td><td>Menü fiyata dahil</td></tr>
-      <tr><td>Kokteyl kişi başı</td><td>Salon, yemek yok</td><td>Yemek toplama katılmaz</td></tr>
-    </tbody>
-  </table>
-  <p>
-    Hesaplayıcıda hangisini istediğinizi seçebilirsiniz — toplama
-    <strong>yalnızca seçtiğiniz</strong> girer. Yemekli seçerseniz menü
-    kişi başı fiyata dahildir, ayrıca yemek eklenmez. Kokteyl seçerseniz
-    yemek maliyeti toplama dahil edilmez; mekanların menü bedeli ortalaması
-    (kişi başı 410 TL) size bilgi olarak gösterilir.
-  </p>
-  <p>
-    Endeks sayfasındaki tabloda her iki seçenek de fiyatıyla görünür, ama
-    toplama yalnızca biri girer; girmeyen satırlar
-    <span class="tahmini-etiket">Toplamda değil</span> ya da
-    <span class="tahmini-etiket">Bilgi amaçlı — toplamda değil</span>
-    etiketiyle işaretlenir. Böylece tablodaki satırları kendiniz
-    toplarsanız gösterdiğimiz rakama ulaşırsınız.
-  </p>
-
-  <h2>Takı ve altın: neyi ölçüyoruz?</h2>
-  <p>
-    Bir düğünde takılan <strong>toplam</strong> altın ölçülebilir bir şey
-    değil — davetli sayısına, yakınlık derecesine ve yerel geleneğe göre
-    kat kat değişir. Ölçülebilen şey <strong>tek bir takı kaleminin
-    fiyatı</strong>. Bu yüzden kalemi bilinçli olarak daralttık:
-    <strong>bir altın bilezik</strong>.
-  </p>
-  <p>
-    Bu kalem daha önce <span class="tahmini-etiket">Tahmini</span>
-    etiketliydi (gram altın fiyatından türetilmiş 40.000 TL). Gerçek
-    ölçüme geçince tahminin <strong>düşük</strong> olduğu görüldü —
-    marka mağazası verisinde ortalama bunun yaklaşık iki katı. Gram altın
-    6.000 TL bandındayken bu, 13 gram civarı bir bileziğe denk geliyor.
-  </p>
-  <p>
-    <strong>Sınır:</strong> bu kalem şu an tek bir marka mağazasından
-    derleniyor; o mağaza üst segmenti temsil ediyor. Kuyumcudan gram
-    hesabıyla alınan sade bir bilezik daha düşük tutabilir. İkinci,
-    daha ekonomik bir kaynak eklendiğinde segment dağılımı genişleyecek.
-    Ayrıca altın en oynak kalemimiz: gram fiyatı değiştikçe bu rakam da
-    ay içinde değişir.
-  </p>
-
-  <h3>Menü bedeli: ölçülüyor, ama toplama eklenmiyor</h3>
-  <p>
-    Yemeğin kişi başı bedelini <strong>ölçüyoruz</strong>: her mekanın
-    <em>kendi</em> yemekli ve kokteyl fiyatı arasındaki fark alınır, sonra
-    bu farkların ortası hesaplanır. 25 Temmuz 2026'da 9 mekandan derlenen
-    değer <strong>kişi başı 410 TL</strong> (orta segment). Örnek satırlar:
-  </p>
-  <table>
-    <thead><tr><th>Mekan</th><th class="sayi">Yemekli</th><th class="sayi">Kokteyl</th><th class="sayi">Yemek bedeli</th></tr></thead>
-    <tbody>
-      <tr><td>Bambi Garden</td><td class="sayi">750</td><td class="sayi">500</td><td class="sayi">250</td></tr>
-      <tr><td>Boğaz Garden</td><td class="sayi">1.200</td><td class="sayi">280</td><td class="sayi">920</td></tr>
-      <tr><td>Grand Anka Otel</td><td class="sayi">1.000</td><td class="sayi">800</td><td class="sayi">200</td></tr>
-      <tr><td>Kır Kubbe</td><td class="sayi">1.400</td><td class="sayi">990</td><td class="sayi">410</td></tr>
-      <tr><td>İncisu Yatı</td><td class="sayi">2.250</td><td class="sayi">2.000</td><td class="sayi">250</td></tr>
-    </tbody>
-  </table>
-  <p>
-    Farkı <strong>aynı mekan içinde</strong> almak önemli: iki ayrı
-    listenin ortalamalarını çıkarmak yanıltıcı olurdu, çünkü her mekan
-    kokteyl seçeneği sunmuyor ve farkların ortası, ortalamaların farkına
-    eşit değil.
-  </p>
-  <p>
-    Bu değer daha önce <span class="tahmini-etiket">Tahmini</span>
-    etiketliydi (genel piyasa araştırmasından 700 TL/kişi). Ölçülebilir
-    hale gelince tahminin <strong>1,7 kat yüksek</strong> olduğu ortaya
-    çıktı. Bir kalem için gerçek kaynak bulunduğunda tahmini değeri her
-    zaman böyle çıkarırız.
-  </p>
-  <p>
-    <strong>Ama bu değer toplama eklenmez</strong> — yalnızca bilgi olarak
-    gösterilir. Nedeni: menü bedeli tanım gereği "yemekli − kokteyl"
-    farkıdır, yani kokteyl fiyatına eklendiğinde zaten yemekli fiyatını
-    verir. Ayrı bir kalem gibi toplamak, aynı sayıya dolambaçlı yoldan
-    gitmek olurdu. Üstelik pratikte birebir tutmaz: her kalemin segmenti
-    <em>bağımsız</em> hesaplanır, dolayısıyla "orta segment yemekli mekan"
-    ile "orta segment kokteyl mekan" aynı mekanlar değildir. Bu yüzden
-    hesaplayıcıda yemekli ya da kokteyl fiyatından <strong>yalnızca
-    biri</strong> toplanır.
-  </p>
-  <p>
-    <strong>Sınır:</strong> bu, mekanın <em>kendi menü</em> bedelidir —
-    dışarıdan bağımsız bir catering firmasıyla çalışırsanız tutar farklı
-    olabilir. Onu henüz ölçmüyoruz.
-  </p>
-
-  <div class="uyari-kutu">
-    Mekan fiyatları <strong>başlangıç fiyatı</strong>dır: o seçeneğin
-    asgari kişi başı tutarıdır, nihai teklif değil. Tarih, gün (hafta içi
-    / hafta sonu), menü içeriği ve ek hizmetler tutarı yükseltir.
-  </div>
-
-  <h2>Segment kırılımı olmayan kalemler</h2>
-  <p>
-    Fotoğraf ve video, organizasyon/süsleme, kuaför ve makyaj, gelin
-    arabası kalemlerinde tek bir İstanbul rakamı gösteriyoruz; ekonomik,
-    orta ve üst sütunlarında aynı değeri görürsünüz. Bu satırlar
-    <span class="tahmini-etiket">Tek ölçüm — segment kırılımı yok</span>
-    etiketiyle işaretlidir.
-  </p>
-  <p>
-    Nedeni: bu kalemlerin kaynağı il bazlı bir fiyat tablosu — 27 ilin
-    rakamı var, ama tek bir ilin içinde üç fiyat bandı yok. İllerin
-    tamamını alıp yüzdelik dilime bölebilirdik; bunu kasten yapmadık,
-    çünkü <strong>coğrafi fark bir fiyat segmenti değildir</strong>.
-    "Ekonomik fotoğrafçı" ucuz bir ilde çalışan fotoğrafçı demek olmaz.
-    Bandı olmayan bir yerde bant uydurmaktansa tek ve tanımlı bir ölçümü
-    tercih ediyoruz.
-  </p>
-  <p>
-    Bu dört kalem daha önce <span class="tahmini-etiket">Tahmini</span>
-    etiketliydi. Ölçüme geçince tahminlerin <strong>iki yöne birden</strong>
-    saptığı görüldü: fotoğrafçı tahmini yaklaşık 3 kat yüksek, gelin
-    arabası ise yaklaşık 3 kat düşük çıktı.
-  </p>
-
-  <div class="uyari-kutu">
-    <strong>Örneklem sınırı:</strong> fiyatlar kategori listelerindeki
-    yaygın modellerden derlenir. Niş, ithal ya da üst-premium modeller
-    bu listelere girmeyebilir; dolayısıyla "üst segment" rakamı
-    piyasadaki en pahalı ürünü değil, <em>yaygın ürünler içindeki üst
-    çeyreği</em> gösterir.
-  </div>
-
-  <h2>"Ortalama fiyat" derken</h2>
-  <p>
-    Sayfalarda <em>ortalama fiyat</em> dediğimiz değer, aritmetik ortalama
-    değil <strong>ortanca</strong> değerdir: bulduğumuz fiyatları küçükten
-    büyüğe sıralayıp tam ortadakini alıyoruz.
-  </p>
-  <p>
-    Nedeni basit. Bir kategoride tek bir çok pahalı ürün, aritmetik
-    ortalamayı tek başına yukarı çeker ve gerçekte kimsenin ödemediği bir
-    rakam çıkar. Ortanca değer bundan etkilenmez, o yüzden "tipik fiyat"
-    sorusuna daha dürüst cevap verir.
-  </p>
-
-  <h2>Güncelleme sıklığı</h2>
-  <p>Veri ayda bir otomatik olarak yenilenir. Her sayfada son güncelleme
-    tarihi görünür. Yıl değiştikçe endeks o yılın verisini yansıtacak
-    şekilde güncellenir.</p>
-
-  <p><a href="/dugun/">← Düğün endeksine dön</a></p>
-
+  <section class="icerik-bolumu"><h2>Sık sorulan sorular</h2><h3>Düğün endeksinde kaç fiyat serisi var?</h3><p>2026-08-20 itibarıyla 14 ölçülmüş fiyat serisi var. Bunların 5 tanesi çok, 9 tanesi tek kaynaklıdır.</p><h3>Veriler ne zaman yenileniyor?</h3><p>Kaynaklar ayın 5'i ve 20'sinde yeniden taranır. Bir tarama başarısız olursa eski sağlıklı ölçüm korunur; son veri tarihi ilerletilmez.</p><h3>Neden aritmetik ortalama değil ortanca kullanılıyor?</h3><p>Az sayıdaki aşırı pahalı veya ucuz ürünün bütün kategoriyi çekmesini önlemek için kaynak ve seri özetlerinde ortanca fiyat kullanılır.</p></section>
 </main>
-
-<footer>
-  <div class="kapsayici">
-    <div>© 2026 Maliyeti Ne?</div>
-    <nav>
-      <a href="/dugun/">Düğün Endeksi</a>
-      <a href="/dugun/hesaplayici/">Hesaplayıcı</a>
-    </nav>
-    <nav class="footer-endeksler" aria-label="Tüm endeksler">
-      <a href="/dugun/">Düğün</a>
-      <a href="/ev-kurma/">Ev Kurma</a>
-      <a href="/okul/">Okul</a>
-      <a href="/arac/">0 km Araç</a><a href="/rapor/">Rapor</a>
-    </nav>
-  </div>
-</footer>
-
+<footer><div class="kapsayici">© 2026 Maliyeti Ne? ·
+  <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> ·
+  <a href="/veri/">Veri</a></div></footer>
 </body>
 </html>

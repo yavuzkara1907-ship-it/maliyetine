@@ -212,6 +212,33 @@ class RehberTesti(unittest.TestCase):
                     "{}/{} icinde gomulu para tutari var: {!r}".format(
                         r["slug"], alan, metin))
 
+    def test_trendyol_amazon_sayilari_tek_hesaptan_gelir(self):
+        veriler = rehber._veriler()
+        r = next(x for x in rehber.REHBERLER
+                 if x["slug"] == "trendyol-mu-amazon-mu-ucuz")
+        html = rehber.rehber_uret(r, veriler)
+        sayi = len(rehber._kaynak_karsilastirma_kayitlari(veriler))
+        self.assertIn(f"{sayi} Kalemde Ölçtük", html)
+        self.assertIn(f"Aynı {sayi} kalemi", html)
+        m = re.search(
+            rf"Toplamda (\d+) kalemde Trendyol.*?(\d+)\s+kalemde Amazon.*?"
+            rf"(\d+) kalemde fark.*?{sayi} kalemin tamamını",
+            html, re.S,
+        )
+        self.assertIsNotNone(m)
+        self.assertEqual(sum(map(int, m.groups())), sayi)
+
+    def test_diger_rehber_linki_de_canli_sayiyi_kullanir(self):
+        veriler = rehber._veriler()
+        aday = next(r for r in rehber.REHBERLER
+                    if r["slug"] == "beyaz-esya-butcesi")
+        html = rehber.rehber_uret(aday, veriler)
+        sayi = len(rehber._kaynak_karsilastirma_kayitlari(veriler))
+        self.assertIn(
+            f"Trendyol mu Amazon mu Daha Ucuz? {sayi} Kalemde Ölçtük",
+            html,
+        )
+
 if __name__ == "__main__":
     unittest.main()
 

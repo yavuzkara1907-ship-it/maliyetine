@@ -49,7 +49,7 @@ KAPSAM_DISI = [
      "dışında bırakıyoruz."},
     {"anahtar": ["balayi", "balayı", "tatil", "otel"], "cevap":
      "Balayı ve tatil henüz kapsamda değil. Dinamik fiyatlı oldukları için "
-     "(aynı otel gün içinde bile değişiyor) aylık ölçüm modelimize uymuyor."},
+     "(aynı otel gün içinde bile değişiyor) standart fiyat serisi modelimize uymuyor."},
     {"anahtar": ["yakit", "yakıt", "benzin", "mazot"], "cevap":
      "Yakıt fiyatı ölçmüyoruz. Araç endeksimiz satın alma anını kapsıyor; "
      "kullanım giderleri ayrı bir konu."},

@@ -450,6 +450,10 @@ def genis_kategori_urun_turu(kalem: str, isim: str) -> dict:
     if not desenler:
         return {}
     metin = str(isim or "").casefold()
+    if kalem == "buzdolabi" and re.search(
+            r"\boto\b|outdoor|portatif|kamp|karavan|12\s*/?\s*24\s*v|"
+            r"12\s*volt|24\s*volt|ak[üu]l[üu]", metin, re.I):
+        return {}
     for anahtar, _ad, desen in desenler:
         if re.search(desen, metin, re.I):
             return {"urun_turu": anahtar}

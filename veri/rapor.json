@@ -2,7 +2,7 @@
   "baslik": "Ağustos 2026 Türkiye Maliyet Raporu",
   "url": "https://maliyetine.com.tr/rapor/",
   "son_veri": "2026-08-22",
-  "dataset_surumu": "2026-08-22-57b420c28b2f83f9",
+  "dataset_surumu": "2026-08-22-9f06c382a78198a6",
   "envanter": {
     "fiyat_serisi": 121,
     "kaynak": 20,
@@ -24,7 +24,7 @@
       "id": "ev-kurma",
       "ad": "Ev Kurma",
       "url": "https://maliyetine.com.tr/ev-kurma/",
-      "orta_senaryo_tl": 351697,
+      "orta_senaryo_tl": 363226,
       "kapsam": "sıfırdan bir evi eşyalandırmak (orta segment)",
       "kalem_sayisi": 41,
       "kaynak_sayisi": 9,
@@ -90,6 +90,15 @@
       "son_veri": "2026-08-22",
       "aciklama": "Kahve Makinesi ortanca fiyatı 13 günde %72.4 arttı: 3.299 TL → 5.689 TL.\n\n78 üründen, 3 kaynaktan ölçüldü (2026-08-22).",
       "url": "https://maliyetine.com.tr/ev-kurma/kahve-makinesi-fiyatlari/"
+    },
+    {
+      "vertikal": "ev-kurma",
+      "kalem_id": "buzdolabi",
+      "degisim_yuzde_mutlak": 40.8,
+      "kaynak_sayisi": 3,
+      "son_veri": "2026-08-22",
+      "aciklama": "Buzdolabı ortanca fiyatı 13 günde %40.8 arttı: 28.054 TL → 39.499 TL.\n\n61 üründen, 3 kaynaktan ölçüldü (2026-08-22).",
+      "url": "https://maliyetine.com.tr/ev-kurma/buzdolabi-fiyatlari/"
     },
     {
       "vertikal": "ev-kurma",
@@ -216,15 +225,6 @@
       "son_veri": "2026-08-20",
       "aciklama": "Çalışma Sandalyesi ortanca fiyatı 15 günde %6.2 azaldı: 3.717 TL → 3.488 TL.\n\n61 üründen, 2 kaynaktan ölçüldü (2026-08-20).",
       "url": "https://maliyetine.com.tr/okul/calisma-sandalyesi-fiyatlari/"
-    },
-    {
-      "vertikal": "ev-kurma",
-      "kalem_id": "buzdolabi",
-      "degisim_yuzde_mutlak": 4.5,
-      "kaynak_sayisi": 3,
-      "son_veri": "2026-08-22",
-      "aciklama": "Buzdolabı ortanca fiyatı 13 günde %4.5 arttı: 28.054 TL → 29.324 TL.\n\n76 üründen, 3 kaynaktan ölçüldü (2026-08-22).",
-      "url": "https://maliyetine.com.tr/ev-kurma/buzdolabi-fiyatlari/"
     },
     {
       "vertikal": "dugun",

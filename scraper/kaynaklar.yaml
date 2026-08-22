@@ -903,6 +903,7 @@ kaynaklar:
       isim_secici: ".product-name"
       fiyat_secici: ".price-value, .seller-store-default-price-value, .sale-price"
     min_fiyat: 3000
+    ad_dislama: "\\boto\\b|outdoor|portatif|kamp|karavan|12\\s*/?\\s*24\\s*v|12\\s*volt|24\\s*volt|akülü"
     bekleme_sn: 3
     aktif: true
     durum: "arastirildi"
@@ -2482,6 +2483,7 @@ kaynaklar:
       isim_secici: "h2"
       fiyat_secici: ".a-price .a-offscreen"
     min_fiyat: 4350
+    ad_dislama: "\\boto\\b|outdoor|portatif|kamp|karavan|12\\s*/?\\s*24\\s*v|12\\s*volt|24\\s*volt|akülü"
     bekleme_sn: 3
     aktif: true
     durum: "arastirildi"
@@ -4511,6 +4513,7 @@ kaynaklar:
     aktif: true
     durum: onaylandi
     min_fiyat: 5000
+    ad_dislama: "\\boto\\b|outdoor|portatif|kamp|karavan|12\\s*/?\\s*24\\s*v|12\\s*volt|24\\s*volt|akülü"
     bekleme_sn: 3
     sayfa_sayisi: 1
 

@@ -154,6 +154,7 @@ jobs:
           for v in dugun ev-kurma okul bebek kedi kopek arac; do
             python sayfa_uret.py --vertikal "$v" >/dev/null
           done
+          python metodoloji.py >/dev/null
           python senaryo.py >/dev/null
           python evcil_hub.py >/dev/null
           python rehber.py >/dev/null

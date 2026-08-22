@@ -2835,9 +2835,16 @@ def _urun_ozellik_ozeti_html(kalem_verisi: dict | None) -> str:
             '<th>Çıkarılan alanlar</th><th class="sayi">Fiyat</th><th>Kaynak</th>'
             '</tr></thead><tbody>' + "".join(ornek_satirlari) + '</tbody></table></div>'
         )
+    kalem_toplam = (kalem_verisi or {}).get("toplam_urun", 0)
+    kalem_kaynak = (kalem_verisi or {}).get("kaynak_sayisi", 0)
+    yapisal_toplam = ozet.get("toplam_urun", 0)
+    yapisal_kaynak = ozet.get("kaynak_sayisi", 0)
+    siniflanan = sum(o.get("urun_sayisi", 0) for o in turler)
     kapsam = (
-        f'{ozet.get("toplam_urun", 0)} ürünün '
-        f'{ozet.get("ozellik_eslesen_urun", 0)} tanesinde en az bir yapısal alan bulundu.'
+        f'Genel fiyat ölçümü {kalem_toplam} ürünü ve {kalem_kaynak} kaynağı kapsıyor. '
+        f'Yapısal ürün tipi verisi {yapisal_kaynak} kaynakta {yapisal_toplam} ürün için '
+        f'mevcut; bunların {ozet.get("ozellik_eslesen_urun", 0)} tanesinde en az bir '
+        f'alan bulundu ve yayın eşiğini geçen tipler {siniflanan} ürünü kapsıyor.'
     )
     ekler_html = f"    <ul>{''.join(ekler)}</ul>\n" if ekler else ""
     ornekler_html = f"    {ornek_tablo}\n" if ornek_tablo else ""
@@ -3893,7 +3900,7 @@ def vertikal_ozeti(vertikal: str, veri_kok: Path | None = None) -> dict | None:
     if not gercek:
         return None
     site_sayisi = len(bagimsiz_siteler(kalemler, {d["id"] for d in gercek}))
-    return {
+    ozet = {
         "vertikal": vertikal,
         "ad": conf["ad"],
         "yol": conf["yol"],
@@ -3929,6 +3936,43 @@ def vertikal_ozeti(vertikal: str, veri_kok: Path | None = None) -> dict | None:
             for k in conf.get("kalem_sayfalari", [])
         ],
     }
+    if vertikal == "arac":
+        giris = kalemler.get("en-ucuz-sifir-arac") or {}
+        adaylar = [
+            urun for kaynak in giris.get("kaynaklar", [])
+            for urun in kaynak.get("ornek_urunler", [])
+            if urun.get("fiyat") is not None
+        ]
+        if adaylar:
+            en_ucuz = min(adaylar, key=lambda urun: urun["fiyat"])
+            ozet["en_ucuz_fiyat"] = round(en_ucuz["fiyat"])
+            ozet["en_ucuz_ad"] = en_ucuz.get("isim") or "ölçümdeki araç"
+    return ozet
+
+
+def _anasayfa_faq_cevabi(o: dict, bugun: str) -> str:
+    """Gorunur FAQ ve schema ayni, vertikale uygun cevabi kullanir."""
+    tarih = o["guncelleme_tarihi"] or bugun
+    if o["vertikal"] == "arac" and o.get("en_ucuz_fiyat"):
+        return (
+            f"Maliyeti Ne? verilerine göre {tarih} itibarıyla ölçümdeki en ucuz "
+            f"sıfır araç {o['en_ucuz_ad']}: {_para(o['en_ucuz_fiyat'])}. "
+            f"23 markanın giriş fiyatı ortancası ise {_para(o['toplam'])}. "
+            "İlki gerçek minimumu, ikincisi tipik marka giriş seviyesini gösterir."
+        )
+    return (
+        f"Maliyeti Ne? verilerine göre {tarih} itibarıyla {o['anasayfa_ifade']} "
+        f"{_para(o['toplam'])} tutuyor. "
+        + (
+            f"Bunun {_para(o['gercek_toplam'])} tutarı {o['gercek_kalem']} kalem "
+            f"için {o['dayanak']} derlenen güncel fiyatlara, "
+            f"{_para(o['tahmini_toplam'])} tutarı ise henüz kazınan bir kaynağı "
+            f"olmayan {o['tahmini_kalem']} kalem için genel piyasa araştırmasına dayanır."
+            if o["tahmini_kalem"] else
+            f"Rakamın tamamı {o['gercek_kalem']} kalem için {o['dayanak']} "
+            "derlenen güncel fiyatlara dayanır."
+        )
+    )
 
 
 def _hesap_linkleri_html() -> str:
@@ -4053,10 +4097,15 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
         import rehber
         # veri_kok'u AKTAR: aksi halde yazi her zaman canli dosyalari
         # okur, cagirana verilen veri kokunu yok sayar (test bunu yakaladi).
-        anasayfa_yazi = rehber.anasayfa_yazisi(rehber._veriler(veri_kok))
+        rehber_verileri = rehber._veriler(veri_kok)
+        anasayfa_yazi = rehber.anasayfa_yazisi(rehber_verileri)
+        canli_rehberler = [
+            rehber._rehber_canli_tanim(r, rehber_verileri)
+            for r in rehber.REHBERLER
+        ]
         rehber_linkleri = "".join(
             f'<a href="/rehber/{r["slug"]}/">{r["baslik"]}</a>'
-            for r in rehber.REHBERLER
+            for r in canli_rehberler
             if (SITE_KOK / "rehber" / r["slug"] / "index.html").exists()
         )
     except ImportError:
@@ -4142,23 +4191,7 @@ def anasayfa_uret(veri_kok: Path | None = None) -> str:
                         "name": o["soru"],
                         "acceptedAnswer": {
                             "@type": "Answer",
-                            "text": (
-                                f"Maliyeti Ne? verilerine göre {o['guncelleme_tarihi'] or bugun} "
-                                f"itibarıyla {o['anasayfa_ifade']} "
-                                f"{_para(o['toplam'])} tutuyor. "
-                                + (
-                                    f"Bunun {_para(o['gercek_toplam'])} tutarı "
-                                    f"{o['gercek_kalem']} kalem için {o['dayanak']} "
-                                    "derlenen güncel fiyatlara, "
-                                    f"{_para(o['tahmini_toplam'])} tutarı ise henüz "
-                                    f"kazınan bir kaynağı olmayan {o['tahmini_kalem']} "
-                                    f"kalem için genel piyasa araştırmasına dayanır."
-                                    if o["tahmini_kalem"] else
-                                    f"Rakamın tamamı {o['gercek_kalem']} kalem için "
-                                    f"{o['dayanak']} derlenen "
-                                    f"güncel fiyatlara dayanır."
-                                )
-                            ),
+                            "text": _anasayfa_faq_cevabi(o, bugun),
                         },
                     }
                     for o in ozetler

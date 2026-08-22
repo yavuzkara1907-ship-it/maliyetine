@@ -1,6 +1,6 @@
 {
   "sema_surumu": 1,
-  "dataset_surumu": "2026-08-22-57b420c28b2f83f9",
+  "dataset_surumu": "2026-08-22-9f06c382a78198a6",
   "olcum_tarihi_sonu": "2026-08-22",
   "fiyat_serisi": 121,
   "dikeyler": {
@@ -33,18 +33,18 @@
       "dosyalar": {
         "guncel_json": {
           "yol": "/veri/ev-kurma.json",
-          "sha256": "0c15df61181e3449df034acb7eb684f00a3442185d7ea8b2ab7acf50bccf7c82",
-          "bayt": 125973
+          "sha256": "b3949dfba646da2a043759fe386d103a51deef1662d8f566e3c60dcddda0689d",
+          "bayt": 125764
         },
         "gecmis_json": {
           "yol": "/veri/gecmis/ev-kurma.json",
-          "sha256": "8de3bf49a184762abb1bb26fced8de7fab15b3fbdc698fc5cc8ba4b7cbfc7519",
-          "bayt": 42383
+          "sha256": "b2d8dadf24ce5cf428e87296690c61bd751fec38714ee59c7f1e9991d09f3078",
+          "bayt": 42385
         },
         "guncel_csv": {
           "yol": "/veri/csv/ev-kurma.csv",
-          "sha256": "acc542cdb8982b5350dd4558cc0b468fcd2d93685fe9811019b96b9a8f518e1d",
-          "bayt": 6006
+          "sha256": "0040ad6aa7ec4a2d3efa7a395f760a5f6db01cd4cd00c2d32718873b836da3f0",
+          "bayt": 6007
         }
       }
     },

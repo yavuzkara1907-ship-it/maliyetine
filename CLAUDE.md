@@ -1036,7 +1036,7 @@ görünmüyor (uydurma rakam yok).
 **Neden şimdi:** Ağustos'ta "okul alışverişi ne kadar" aramaları başlıyor,
 Eylül'de zirve yapıyor. İndekslenme 3-4 hafta aldığı için pencere şimdi.
 Diğer adaylar elendi: ev tadilatı işçilik ağırlıklı (fiyatlar internette
-yok), tatil dinamik fiyatlı (aylık ölçüm modelimize uymuyor).
+yok), tatil dinamik fiyatlı (standart fiyat serisi modelimize uymuyor).
 
 **14 kalem, 5 grup:** Çanta ve beslenme (okul çantası, beslenme çantası,
 suluk) · Kırtasiye (kalem kutusu, defter, kalem, boya seti, resim
@@ -3725,6 +3725,47 @@ LCP **3,6 -> 2,0 sn**, CLS **0,246 -> 0**. Ajan Tabanli Tarama da ayni CLS
 nedeni kalkinca **2/3 -> 3/3** oldu. Erisilebilirlik/Best Practices/SEO
 **100/100/100** kaldi. Hala gercek kullanici CrUX verisi yok; Search Console
 CWV olusunca laboratuvar sonucundan ayri izlenecek.
+
+## METODOLOJI / SAYISAL TUTARLILIK P0 (2026-08-22)
+
+Dis denetimde metodoloji sayfalarinin canli veriden geride kaldigi bulundu:
+ev-kurma ve okul eski kaynak/seri sayilarini, bebek-kedi-kopek ise kopya
+sablondan kalan `42 kalem`, `bir ogrencinin...` ve komodin/hali ornegini
+tasiyordu. Dugun metodolojisi de artik gercek kaynaga baglanan dort seriyi
+tahmin gibi anlatiyordu.
+
+**Kalici karar ve uygulama:**
+- `scraper/metodoloji.py` yedi metodoloji sayfasini `/veri/{vertikal}.json`
+  ve `sayfa_uret.VERTIKALLER` tanimindan uretiyor. Seri, bagimsiz kaynak,
+  cok/tek kaynak, urun/fiyat satiri, tek kaynakli seri adlari, tahminler ve
+  varsayilan disi seriler HTML'ye elle yazilmiyor.
+- Her vertikal kendi kapsam metnini tasiyor. Yenileme politikasi ayin 5'i ve
+  20'si; basarisiz taramada veri tarihi ilerlemiyor. Ham JSON ve QA raporu
+  sayfadan dogrudan bagli.
+- Aylik veri workflow'u ile duman testi metodolojileri yeniden uretiyor.
+  `test_metodoloji.py` canli JSON esligini, eski sablon cumlelerinin yoklugunu,
+  dugundeki gercek tahmin listesini ve vertikale ozel OG kartlarini zorluyor.
+- Guncel envanter **7 endeks / 121 fiyat serisi**: dugun 14, ev-kurma 42,
+  okul 14, bebek 11, kedi 8, kopek 7, arac 25. Bu sayilarin baska bir elle
+  yazilmis toplami olmamali.
+
+**Ayni turda kapatilan sayisal/semantik aciklar:**
+- Ana sayfa arac FAQ'i gercek minimumu (**Dacia 1.299.000 TL**) ve 23 marka
+  giris fiyati ortancasini (**2.069.000 TL**) ayri kavramlar olarak veriyor.
+- Trendyol-Amazon rehberi kayitlari bir kez hesapliyor; baslik, giris ve sonuc
+  ayni canli toplamdan geliyor. Guncel dagilim 45 Trendyol + 12 Amazon + 2
+  yakin fiyat = 59 karsilastirma.
+- Firin/ocak urun tipi metni genel 59 urun/3 kaynak ile yapisal alani bulunan
+  21 urun/2 kaynak ve yayinlanan 20 eslesmeyi acikca ayiriyor.
+- Oto/outdoor/kamp/karavan/12-24V buzdolaplari hem kaynak filtresinde hem urun
+  tipi normalizasyonunda ev buzdolabi havuzundan dislaniyor. Buzdolabi uc
+  kaynaktan yeniden tarandi ve turetilen veri, gecmis, CSV, rapor ve OG
+  kartlari yeniden uretildi.
+
+**Son kalite kapilari:** Python **434/434**, JavaScript **90/90**; QA
+**121 seri / 109 kalem sayfasi / 0 kritik hata**. Metodoloji, ana sayfa,
+rehber, firin/ocak ve buzdolabi sayfalari 1440x900 ile 390x844 gorunumlerde
+yatay tasma olmadan tarayicida dogrulandi.
 
 
 ## Yapılacaklar (güncel, 2026-08-22)

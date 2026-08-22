@@ -7,32 +7,32 @@
   "vertikal": "ev-kurma",
   "olcum_turu": "kalem_fiyati",
   "tarih": "2026-08-22",
-  "ham_urun_sayisi": 42,
-  "aykiri_urun_sayisi": 2,
-  "toplam_urun": 40,
+  "ham_urun_sayisi": 26,
+  "aykiri_urun_sayisi": 1,
+  "toplam_urun": 25,
   "saglikli": true,
   "kullanilan_katmanlar": [
     "css"
   ],
-  "genel_medyan": 27199,
+  "genel_medyan": 41799,
   "segmentler": {
     "dusuk": {
       "min": 4874,
-      "medyan": 9750,
-      "max": 15000,
-      "urun_sayisi": 11
+      "medyan": 13989,
+      "max": 26699,
+      "urun_sayisi": 7
     },
     "orta": {
-      "min": 15499,
-      "medyan": 28724,
-      "max": 43999,
-      "urun_sayisi": 20
+      "min": 27699,
+      "medyan": 41899,
+      "max": 53699,
+      "urun_sayisi": 12
     },
     "luks": {
-      "min": 44999,
-      "medyan": 59899,
-      "max": 76057,
-      "urun_sayisi": 9
+      "min": 56999,
+      "medyan": 72749,
+      "max": 95899,
+      "urun_sayisi": 6
     }
   },
   "ornek_urunler": [
@@ -41,24 +41,12 @@
       "fiyat": 4874.0
     },
     {
-      "isim": "Outwell ECOcool Lite Dark Blue 24 Litre 12V/230V Portatif Buz Dolabı",
-      "fiyat": 8549.05
+      "isim": "Onvo OVBZD90 90 Litre Mini Buzdolabı",
+      "fiyat": 6635.0
     },
     {
       "isim": "Uğur Ues 204 D2K Statik Buzdolabı",
       "fiyat": 13989.0
-    },
-    {
-      "isim": "ICECO MCD40D 12/24Volt 40 Litre Kompresörlü Outdoor Oto Buzdolabı",
-      "fiyat": 14559.22
-    },
-    {
-      "isim": "Vestel SB9011 89 Lt Statik Buzdolabı",
-      "fiyat": 15499.0
-    },
-    {
-      "isim": "Evacool EVA55L 12/24V/220V 55 Litre Kompresörlü Oto Buzdolabı",
-      "fiyat": 16600.0
     },
     {
       "isim": "Vestel NF27011 251 Lt No-Frost Buzdolabı",
@@ -69,59 +57,71 @@
       "fiyat": 27699.0
     },
     {
-      "isim": "Vestel SC47011 Buzdolabı",
-      "fiyat": 30199.0
+      "isim": "Vestel NF45011 G Buzdolabı",
+      "fiyat": 30749.0
     },
     {
-      "isim": "Vestel SC55011 500 Lt Statik Buzdolabı",
+      "isim": "Uğur Ues 470 D2K Nf Dgt R65 Çift Kapılı No Frost Buzdolabı",
       "fiyat": 35999.0
+    },
+    {
+      "isim": "Vestel NF52111 E DuoMode 451 Lt No-Frost Buzdolabı",
+      "fiyat": 41799.0
     },
     {
       "isim": "Vestel RETRO SC32211 Bej 311 Lt Statik Buzdolabı",
       "fiyat": 43599.0
     },
     {
-      "isim": "Vestel NFK37111 G Buzdolabı",
-      "fiyat": 44999.0
+      "isim": "Vestel NFK48011 Buzdolabı",
+      "fiyat": 43999.0
     },
     {
-      "isim": "Arçelik 270475 MB Alttan Donduruculu Buzdolabı",
-      "fiyat": 47939.0
+      "isim": "Arçelik 574509 MB No Frost Buzdolabı",
+      "fiyat": 52189.0
+    },
+    {
+      "isim": "ARCELIK 278550 Eb Fit Kombi No Frost Buzdolabı Beyaz",
+      "fiyat": 56999.0
     },
     {
       "isim": "Vestel NFK64022 EX WIFI 588 Lt No-Frost Buzdolabı",
       "fiyat": 71999.0
     },
     {
-      "isim": "Arçelik 274532 Eı No Frost Buzdolabı",
-      "fiyat": 76056.55
+      "isim": "Vestel RETRO FD56011 SİYAH 487 Lt No-Frost Buzdolabı",
+      "fiyat": 73499.0
+    },
+    {
+      "isim": "Samsung RF57C510ESR/TR Gardırop Tipi No Frost Buzdolabı",
+      "fiyat": 95899.0
     }
   ],
   "ozellik_ozeti": {
-    "toplam_urun": 40,
-    "ozellik_eslesen_urun": 39,
+    "toplam_urun": 25,
+    "ozellik_eslesen_urun": 25,
     "urun_turleri": {
       "gardiroplu": {
         "ad": "Gardırop tipi buzdolabı",
-        "genel_medyan": 74799,
+        "genel_medyan": 95899,
         "urun_sayisi": 1,
         "segmentler": {
           "dusuk": {
-            "min": 74799.0,
-            "medyan": 74799.0,
-            "max": 74799.0,
+            "min": 95899.0,
+            "medyan": 95899.0,
+            "max": 95899.0,
             "urun_sayisi": 1
           },
           "orta": {
-            "min": 74799.0,
-            "medyan": 74799.0,
-            "max": 74799.0,
+            "min": 95899.0,
+            "medyan": 95899.0,
+            "max": 95899.0,
             "urun_sayisi": 1
           },
           "luks": {
-            "min": 74799.0,
-            "medyan": 74799.0,
-            "max": 74799.0,
+            "min": 95899.0,
+            "medyan": 95899.0,
+            "max": 95899.0,
             "urun_sayisi": 1
           }
         }
@@ -147,26 +147,26 @@
       },
       "standart": {
         "ad": "Standart buzdolabı",
-        "genel_medyan": 28724,
-        "urun_sayisi": 36,
+        "genel_medyan": 41899,
+        "urun_sayisi": 22,
         "segmentler": {
           "dusuk": {
             "min": 6299.0,
-            "medyan": 14504.18,
-            "max": 15500.0,
-            "urun_sayisi": 10
+            "medyan": 20349.0,
+            "max": 27699.0,
+            "urun_sayisi": 6
           },
           "orta": {
-            "min": 16500.0,
-            "medyan": 29974.0,
-            "max": 43999.0,
-            "urun_sayisi": 18
+            "min": 30199.0,
+            "medyan": 41999.0,
+            "max": 53699.0,
+            "urun_sayisi": 11
           },
           "luks": {
-            "min": 44999.0,
-            "medyan": 58449.0,
+            "min": 56999.0,
+            "medyan": 71999.0,
             "max": 76056.55,
-            "urun_sayisi": 8
+            "urun_sayisi": 5
           }
         }
       }
@@ -180,36 +180,15 @@
         }
       },
       {
-        "isim": "Coolist CLK25B 12/24Volt/ 220Volt 25 Litre Kompresörlü Bluetooth Bağlantılı Oto Buzdolabı",
-        "fiyat": 9532.73,
+        "isim": "Onvo OVBZD90 90 Litre Mini Buzdolabı",
+        "fiyat": 6635.0,
         "nitelikler": {
-          "urun_turu": "standart"
+          "urun_turu": "mini"
         }
       },
       {
         "isim": "Uğur Ues 204 D2K Statik Buzdolabı",
         "fiyat": 13989.0,
-        "nitelikler": {
-          "urun_turu": "standart"
-        }
-      },
-      {
-        "isim": "Acopower V18 12/24/220Volt 18Litre Kompresörlü Outdoor Oto Buzdolabı (Akü Dahil Değildir)",
-        "fiyat": 14927.66,
-        "nitelikler": {
-          "urun_turu": "standart"
-        }
-      },
-      {
-        "isim": "Evacool Eva Marin 45 lt Karavan Buzdolabı",
-        "fiyat": 15500.0,
-        "nitelikler": {
-          "urun_turu": "standart"
-        }
-      },
-      {
-        "isim": "Acopower V28 12/24/220Volt 28Litre Kompresörlü Outdoor Oto Buzdolabı (Akü Dahil Değildir)",
-        "fiyat": 18409.0,
         "nitelikler": {
           "urun_turu": "standart"
         }
@@ -236,8 +215,15 @@
         }
       },
       {
-        "isim": "Vestel SC55011 500 Lt Statik Buzdolabı",
+        "isim": "Uğur Ues 470 D2K Nf Dgt R65 Çift Kapılı No Frost Buzdolabı",
         "fiyat": 35999.0,
+        "nitelikler": {
+          "urun_turu": "standart"
+        }
+      },
+      {
+        "isim": "Vestel NF52111 E DuoMode 451 Lt No-Frost Buzdolabı",
+        "fiyat": 41799.0,
         "nitelikler": {
           "urun_turu": "standart"
         }
@@ -250,8 +236,15 @@
         }
       },
       {
-        "isim": "Vestel NFK37111 G Buzdolabı",
-        "fiyat": 44999.0,
+        "isim": "Vestel NFK48011 Buzdolabı",
+        "fiyat": 43999.0,
+        "nitelikler": {
+          "urun_turu": "standart"
+        }
+      },
+      {
+        "isim": "Arçelik 574509 MB No Frost Buzdolabı",
+        "fiyat": 52189.0,
         "nitelikler": {
           "urun_turu": "standart"
         }
@@ -271,10 +264,17 @@
         }
       },
       {
-        "isim": "Arçelik 274532 Eı No Frost Buzdolabı",
-        "fiyat": 76056.55,
+        "isim": "Vestel RETRO FD56011 SİYAH 487 Lt No-Frost Buzdolabı",
+        "fiyat": 73499.0,
         "nitelikler": {
           "urun_turu": "standart"
+        }
+      },
+      {
+        "isim": "Samsung RF57C510ESR/TR Gardırop Tipi No Frost Buzdolabı",
+        "fiyat": 95899.0,
+        "nitelikler": {
+          "urun_turu": "gardiroplu"
         }
       }
     ]

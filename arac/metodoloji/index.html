@@ -3,25 +3,96 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sıfır Araç Fiyat Metodolojisi | Maliyeti Ne?</title>
-<meta name="description" content="Sıfır araç fiyat verisi nereden, nasıl ve hangi kurallarla derleniyor? Neden ortalama araç fiyatı vermiyoruz, marka giriş fiyatı ne anlama geliyor?">
+<title>0 km Araç Fiyat Metodolojisi | Maliyeti Ne?</title>
+<meta name="description" content="0 km Araç fiyatları nasıl ölçülüyor? Güncel seri, kaynak, örneklem, kapsam ve hesaplama yöntemi.">
 <link rel="canonical" href="https://maliyetine.com.tr/arac/metodoloji/">
 <link rel="stylesheet" href="/assets/css/style.css?v=20260822-guven">
 <link rel="alternate" type="application/rss+xml" title="Maliyeti Ne? veri güncellemeleri" href="/feed.xml">
 <link rel="preload" href="/assets/font/sans-400-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/font/sans-600-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<meta property="og:title" content="Sıfır Araç Fiyat Metodolojisi">
-<meta property="og:description" content="Sıfır araç fiyat verisi nereden, nasıl ve hangi kurallarla derleniyor? Neden ortalama araç fiyatı vermiyoruz?">
-<meta property="og:type" content="article">
+<meta property="og:title" content="0 km Araç Fiyat Metodolojisi">
+<meta property="og:description" content="0 km Araç fiyatları nasıl ölçülüyor? Güncel seri, kaynak, örneklem, kapsam ve hesaplama yöntemi.">
+<meta property="og:type" content="website">
 <meta property="og:url" content="https://maliyetine.com.tr/arac/metodoloji/">
 <meta property="og:image" content="https://maliyetine.com.tr/assets/og/arac-metodoloji.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Arac metodoloji">
+<meta property="og:image:alt" content="0 km Araç fiyat metodolojisi">
 <meta property="og:site_name" content="Maliyeti Ne?">
 <meta property="og:locale" content="tr_TR">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://maliyetine.com.tr/#kurum",
+      "name": "Maliyeti Ne?",
+      "url": "https://maliyetine.com.tr",
+      "description": "Türkiye için canlı, doğrulanabilir maliyet endeksi.",
+      "foundingDate": "2026",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Türkiye"
+      },
+      "knowsLanguage": "tr-TR",
+      "publishingPrinciples": "https://maliyetine.com.tr/hakkimizda/",
+      "correctionsPolicy": "https://maliyetine.com.tr/hakkimizda/#hata-bildirimi",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "editorial",
+        "email": "info@maliyetine.com.tr",
+        "availableLanguage": "Turkish"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://maliyetine.com.tr/arac/metodoloji/#webpage",
+      "url": "https://maliyetine.com.tr/arac/metodoloji/",
+      "name": "0 km Araç Fiyat Metodolojisi",
+      "dateModified": "2026-08-22",
+      "inLanguage": "tr-TR",
+      "publisher": {
+        "@id": "https://maliyetine.com.tr/#kurum"
+      },
+      "about": {
+        "@id": "https://maliyetine.com.tr/arac/#dataset"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "0 km Araç endeksinde kaç fiyat serisi var?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "2026-08-22 itibarıyla 25 ölçülmüş fiyat serisi var. Bunların 0 tanesi çok, 25 tanesi tek kaynaklıdır."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Veriler ne zaman yenileniyor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Kaynaklar ayın 5'i ve 20'sinde yeniden taranır. Bir tarama başarısız olursa eski sağlıklı ölçüm korunur; son veri tarihi ilerletilmez."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Neden aritmetik ortalama değil ortanca kullanılıyor?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Az sayıdaki aşırı pahalı veya ucuz ürünün bütün kategoriyi çekmesini önlemek için kaynak ve seri özetlerinde ortanca fiyat kullanılır."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JP07XQLV0L"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -31,201 +102,70 @@
 </script>
 </head>
 <body>
-
-<header class="ust-bar">
-  <div class="kapsayici">
-    <a href="/" class="logo">Maliyeti <span>Ne?</span></a>
-    <nav class="ust-menu"><a href="/dugun/">Düğün</a><a href="/ev-kurma/">Ev Kurma</a><a href="/okul/">Okul</a><a href="/bebek/">Bebek</a><a href="/evcil-hayvan/">Evcil Hayvan</a><a href="/arac/" aria-current="page">0 km Araç</a><a href="/rapor/">Rapor</a><a href="/hesap/" class="menu-one-cikan">Hesaplayıcılar</a><a href="/rehber/">Rehber</a><a href="/veri/">Veri</a></nav>
-  </div>
-</header>
-
+<header class="ust-bar"><div class="kapsayici">
+  <a href="/" class="logo">Maliyeti <span>Ne?</span></a>
+  <nav class="ust-menu"><a href="/dugun/">Düğün</a><a href="/ev-kurma/">Ev Kurma</a><a href="/okul/">Okul</a><a href="/bebek/">Bebek</a><a href="/evcil-hayvan/">Evcil Hayvan</a><a href="/arac/" aria-current="page">0 km Araç</a><a href="/rapor/">Rapor</a><a href="/hesap/" class="menu-one-cikan">Hesaplayıcılar</a><a href="/rehber/">Rehber</a><a href="/veri/">Veri</a></nav>
+</div></header>
 <main class="kapsayici">
+  <nav class="kirinti" aria-label="Sayfa yolu"><a href="/">Ana sayfa</a> ›
+    <a href="/arac/">0 km Araç</a> › <span>Metodoloji</span></nav>
+  <span class="guncelleme-etiketi">Son veri: 2026-08-22</span>
+  <h1>0 km Araç fiyatlarını nasıl ölçüyoruz?</h1>
+  <div class="cevap-blok">0 km Araç endeksi 2026-08-22 itibarıyla <strong>25 fiyat serisini</strong>, <strong>1 bağımsız kaynaktan</strong> derlenen 490 ürün/fiyat satırıyla izliyor. 0 seri çok kaynaklı, 25 seri tek kaynaklıdır.</div>
+  <aside class="yayin-kunyesi" aria-label="Yayın doğrulama bilgileri"><p class="yayin-kunyesi-baslik"><span aria-hidden="true"></span>Bu sayfanın canlı kapsamı</p><dl><div><dt>Fiyat serisi</dt><dd>25</dd></div><div><dt>Bağımsız kaynak</dt><dd>1</dd></div><div><dt>Çok kaynaklı seri</dt><dd>0</dd></div><div><dt>Son veri</dt><dd>2026-08-22</dd></div></dl><p class="yayin-kunyesi-linkler"><a href="/veri/arac.json">Ham veri</a> · <a href="/veri/qa.json">QA raporu</a> · <a href="/iletisim/">Hata bildir</a></p></aside>
 
-  <h1>Sıfır Araç Fiyatları: Bu Rakamlar Nereden Geliyor?</h1>
+  <section class="icerik-bolumu">
+    <h2>Neyi ölçüyor, neyi ölçmüyor?</h2>
+    <p>Endeks Türkiye'de satışta olan sıfır kilometre araçların yayımlanmış liste fiyatlarını ölçer. Markalar birbirinin alternatifidir ve toplanmaz. En ucuz araç gerçek minimum fiyatı; giriş fiyatları ortancası ise 23 markanın tipik başlangıç seviyesini anlatır. Bayi kampanyası, kredi, sigorta, MTV ve kullanım giderleri dahil değildir.</p>
+    <h3>Dahil olanlar</h3><ul><li>Markaların Türkiye'de satılan sıfır kilometre modellerinin liste fiyatları.</li><li>Marka giriş fiyatı: her markanın en ucuz modelinin anahtar teslim fiyatı.</li><li>Marka bazlı model listeleri (donanım/motor seçeneğine göre ayrı satırlar).</li></ul>
+    <h3>Dahil olmayanlar</h3><ul><li>Trafik sigortası, kasko, MTV ve tescil masrafları.</li><li>Bayi kampanyaları, kredi/taksit farkları ve opsiyonel donanım paketleri. Taksitli alacaksanız <a href="/hesap/kredi-taksit-hesaplama/">kredi taksit hesaplayıcısıyla</a> aylık yükü ve toplam faizi görebilirsiniz.</li><li>İkinci el araç fiyatları — bu endeks yalnızca sıfır kilometre araçları kapsar.</li><li>Yakıt, bakım, lastik gibi kullanım giderleri.</li></ul>
+    <p><strong>Varsayılan toplama girmeyen seriler:</strong> Togg, Renault, Chery, Dacia, Citroen, Opel, Peugeot, Ford, Hyundai, Kia, Skoda, Seat, Honda, Toyota, Fiat, Volkswagen, Nissan, MG, BMW, Mercedes, BYD, Tesla, Suzuki, Cupra. Bunlar ölçülür ve yayımlanır; ancak alternatif, dönemsel ya da tüketim bilgisi gerektiren kalemler oldukları için otomatik bütçe toplamına eklenmez.</p>
+  </section>
 
-  <div class="cevap-blok">
-    Sıfır araç fiyatları, aylık güncellenen bir fiyat listesi kaynağından
-    aylık olarak derlenir. Fiyatlar tahmin edilmez, kaynaktan ölçülür.
-    Her rakamın yanında kaynak sayısı ve derleme tarihi görünür.
-  </div>
+  <section class="icerik-bolumu">
+    <h2>Kaynak kapsamı</h2>
+    <p>Araç serileri üreticilerin belirlediği liste fiyatını izler; ikinci bir site aynı fiyatı tekrar ettiği için pazar çeşitliliği sayılmaz. Buradaki tek kaynaklılık bir fiyat ortalaması iddiası değil, tanımlı liste fiyatı ölçümüdür.</p>
+    <div class="tablo-sarmal"><table>
+      <thead><tr><th>Kaynak</th><th class="sayi">Beslediği seri</th>
+      <th class="sayi">Ürün/fiyat satırı</th></tr></thead>
+      <tbody><tr><td>Donanimhaber</td><td class="sayi">25</td><td class="sayi">490</td></tr></tbody>
+    </table></div>
+    <p class="sonuc-alt-metin">Aynı site birden fazla seriyi besleyebilir.
+      Ürün/fiyat satırı toplamı benzersiz ürün iddiası değildir; her
+      kaynak-kategori ölçümündeki geçerli satırların toplamıdır.</p>
 
-  <h2>Neden "ortalama araç fiyatı" vermiyoruz?</h2>
-  <p>
-    Bu, bu endeksin en önemli metodoloji kararı. Piyasadaki tüm sıfır
-    model fiyatlarının ortalamasını almak
-    <strong>yanıltıcı olurdu</strong>: böyle bir listede Porsche ile Fiat
-    eşit ağırlıkta sayılır. Bizim ölçümümüzde tüm modellerin ham ortalaması
-    <strong>3,2 milyon TL</strong> çıkıyordu — oysa Türkiye'de gerçekte
-    satın alınan araçların büyük çoğunluğu bunun çok altında.
-  </p>
-  <p>
-    Sorun şu: <strong>liste ağırlığı, satış ağırlığı değildir.</strong>
-    Bir markanın 40 modeli listede olması, o modellerin 40 kat daha çok
-    satıldığı anlamına gelmez. Satış adedine göre ağırlıklandırma yapmadan
-    tek bir "ortalama araç fiyatı" yayınlamak, okuyucuyu yanlış yönlendirir.
-  </p>
+  </section>
 
-  <h2>Bunun yerine ne ölçüyoruz?</h2>
-  <table>
-    <thead><tr><th>Kalem</th><th>Ne ölçer</th><th>Toplama girer mi?</th></tr></thead>
-    <tbody>
-      <tr>
-        <td>En ucuz sıfır araç</td>
-        <td>Her markanın <strong>giriş seviyesi</strong> (en ucuz) modelinin fiyatı — 24 marka</td>
-        <td><strong>Evet</strong></td>
-      </tr>
-      <tr>
-        <td>Marka bazlı kalemler</td>
-        <td>O markanın kendi model yelpazesindeki fiyat dağılımı</td>
-        <td>Hayır — bilgi amaçlı</td>
-      </tr>
-    </tbody>
-  </table>
-  <p>
-    "En ucuz sıfır araç" net tanımlı bir ölçüdür: her markanın giriş
-    modelinin fiyatını alıp bunların dağılımına bakarız. "Bir marka sıfır
-    araca başlamak için en az ne ister?" sorusunun cevabıdır.
-  </p>
+  <section class="icerik-bolumu">
+    <h2>Fiyat nasıl hesaplanıyor?</h2>
+    <ol>
+      <li>Ürün adı ve satış fiyatı, robots.txt izni bulunan açık liste sayfalarından alınır.</li>
+      <li>Fiyatı olmayan, yanlış ürün türündeki ve sağlık kontrolünü geçmeyen satırlar elenir.</li>
+      <li>Her kaynağın kendi ürün havuzunda ortanca ve fiyat bantları hesaplanır.</li>
+      <li>Birden fazla kaynak varsa kaynak ortancalarının ortancası ana fiyat olur; büyük ürün havuzuna sahip tek site diğerlerini ezmez.</li>
+      <li>Ekonomik, orta ve üst bantlar kaynak içindeki fiyat dağılımından kurulur. Sıralama bozulursa segmentler gizlenir ve sınır açıkça yazılır.</li>
+    </ol>
+    <p>Geniş kategori sayfalarında yalnız ürün adında açıkça yazan tür,
+      kapasite, model veya özellik ayrıştırılır. Eksik alan tahmin edilmez;
+      düşük örneklemli alt kırılım yayımlanmaz.</p>
+  </section>
 
-  <h2>Marka kalemleri neden toplanmıyor?</h2>
-  <p>
-    Çünkü <strong>birbirinin alternatifidir</strong>. Bir kişi hem Tesla
-    hem Suzuki almaz. Bunları toplamak 17,7 milyon TL gibi anlamsız bir
-    sayı üretirdi. Bu yüzden marka kalemleri tabloda
-    <span class="tahmini-etiket">Bilgi amaçlı — toplamda değil</span>
-    etiketiyle işaretlenir ve endeksin toplamına katılmaz.
-  </p>
+  <section class="icerik-bolumu">
+    <h2>Yenileme ve kalite kontrolü</h2>
+    <p>Kaynaklar ayın <strong>5'i ve 20'sinde</strong> yeniden taranır.
+      Son veri tarihi son başarılı ölçümdür; başarısız veya karantinaya
+      alınan tarama tarihi ilerletmez. Ürün sayısı geçmiş ortalamanın çok
+      altına düşerse kaynak sessizce kabul edilmez.</p>
+    <p>Yayın öncesinde seri sayısı, kaynak ve ürün toplamı, geçmiş noktası,
+      CSV, HTML ve veri sürümü birlikte denetlenir. Güncel sonuç
+      <a href="/veri/qa.json">makinece okunabilir QA raporunda</a>, ham
+      seri ise <a href="/veri/arac.json">JSON dosyasında</a> açıktır.</p>
+  </section>
 
-  <h2>Yola çıkarma maliyeti: etiket fiyatı yetmez</h2>
-  <p>
-    Bir sıfır aracın etiket fiyatı, o aracın size maliyeti değildir.
-    Yola çıkarmak için ayrıca <strong>MTV, ilk tescil harcı,
-    plaka/ruhsat ve zorunlu trafik sigortası</strong> ödersiniz; çoğu kişi
-    buna kasko da ekler.
-    <a href="/arac/hesaplayici/">Hesaplayıcı</a> bu toplamı gösterir.
-  </p>
-  <p>Bu kalemlerin bir kısmı <strong>resmî tarife</strong>, bir kısmı
-    tahminidir — ikisi karıştırılmaz, toplamda ayrı ayrı belirtilir:</p>
-  <table>
-    <thead><tr><th>Kalem</th><th>Nasıl hesaplanır</th><th>Tür</th></tr></thead>
-    <tbody>
-      <tr>
-        <td>MTV (ilk yıl)</td>
-        <td>1-3 yaş, motor silindir hacmi ve üst taşıt değeri kademesine göre</td>
-        <td><strong>Resmî</strong></td>
-      </tr>
-      <tr>
-        <td>İlk tescil harcı</td>
-        <td>Satış bedelinin binde 2'si (asgari 1.000 TL); değişken noter hizmet ve belge giderleri hariç</td>
-        <td><strong>Resmî</strong></td>
-      </tr>
-      <tr><td>Plaka + ruhsat</td><td>Sabit tutar</td><td>Tahmini</td></tr>
-      <tr><td>Zorunlu trafik sigortası</td><td>Ortalama profil varsayımı</td><td>Tahmini</td></tr>
-      <tr><td>Kasko (ilk yıl)</td><td>Araç değerinin ~%3'ü</td><td>Tahmini</td></tr>
-    </tbody>
-  </table>
-  <p>
-    <strong>Kaynak:</strong> MTV tutarları
-    <a href="https://www.gib.gov.tr/mevzuat/kanun/441/teblig/11860">58 Seri
-    No.lu MTV Genel Tebliği'ne</a> dayanır. İlk tescil harcı,
-    <a href="https://www.gib.gov.tr/mevzuat/kanun/439/ozelge/38881">492
-    sayılı Harçlar Kanunu tarifesindeki</a> 2026 düzenlemesinden gelir.
-    Bu tarifeler yılda bir kez, genellikle
-    31 Aralık'ta güncellenir; yeni tarife yayımlandığında bu sayfa ve
-    hesaplayıcı elle güncellenir.
-  </p>
-  <p>
-    <strong>Sınırlar:</strong> MTV'nin gerçek tarifesi motor hacmi,
-    araç değeri, yaş ve tescil tarihine göre kademelidir. Hesaplayıcı sıfır
-    araç senaryosu için 1-3 yaş ve üst taşıt değeri kademesini kullanır.
-    Elektrikli araçlarda MTV motor gücüne (kW) göre hesaplanır —
-    hesaplayıcı içten yanmalı motorları kapsar. Trafik sigortası ve kasko
-    ile; araç tipine, hasarsızlık basamağına ve sürücü profiline göre
-    ciddi değişir.
-  </p>
-
-  <h2>Segment tanımı</h2>
-  <p>Her kalem için toplanan fiyatlar üç segmente ayrılır (persentil bazlı):</p>
-  <table>
-    <thead><tr><th>Segment</th><th>Tanım</th></tr></thead>
-    <tbody>
-      <tr><td>Ekonomik</td><td>≤ 25. persentil (P25)</td></tr>
-      <tr><td>Orta</td><td>P25 – P75 arası</td></tr>
-      <tr><td>Üst</td><td>&gt; 75. persentil (P75)</td></tr>
-    </tbody>
-  </table>
-  <p>
-    Marka bazlı kalemlerde segmentler <em>o markanın kendi</em> model
-    yelpazesi içindeki dağılımı yansıtır — markalar arası kıyas için
-    değil, marka içi aralığı görmek içindir.
-  </p>
-
-  <h2>Endeks fiyatına neler dahil değil?</h2>
-  <p>
-    <strong>Endeks sayfasındaki</strong> rakamlar aracın liste fiyatıdır.
-    Şunları içermez:
-  </p>
-  <ul>
-    <li>MTV, noter/tescil harcı, plaka, trafik sigortası ve kasko —
-      bunlar <a href="/arac/hesaplayici/">hesaplayıcıda</a> ayrıca eklenir.</li>
-    <li>Bayi kampanyaları, kredi/taksit farkları, opsiyonel donanım paketleri.</li>
-    <li>İkinci el araç fiyatları — bu endeks yalnızca sıfır kilometre araçları kapsar.</li>
-    <li>Yakıt, bakım, lastik ve otopark gibi kullanım giderleri (hesaplayıcıya da dahil değil).</li>
-  </ul>
-  <p>
-    Kısacası: <strong>endeks</strong> etiket fiyatını,
-    <strong>hesaplayıcı</strong> yola çıkarma maliyetini gösterir.
-    İkisi de kullanım giderlerini kapsamaz.
-  </p>
-
-  <div class="uyari-kutu">
-    <strong>Fiyatlar neden tek kaynaktan?</strong> Sıfır araçta fiyat,
-    üreticinin ilan ettiği liste fiyatıdır — aynı model her yetkili
-    bayide aynı fiyata satılır. Bu yüzden diğer endekslerimizde
-    uyguladığımız çok kaynaklı karşılaştırma burada anlamlı değil;
-    ikinci bir kaynak aynı sayıyı tekrarlar. Buna karşılık sıfır araç
-    fiyatları kur, vergi (ÖTV/MTV) ve kampanya değişikliklerinden çok
-    hızlı etkilenir — <strong>en oynak endeksimiz budur</strong> ve
-    ayın ilk günlerinde güncellenir.
-  </div>
-
-
-
-  <h2>"Ortalama fiyat" derken</h2>
-  <p>
-    Sayfalarda <em>ortalama fiyat</em> dediğimiz değer, aritmetik ortalama
-    değil <strong>ortanca</strong> değerdir: bulduğumuz fiyatları küçükten
-    büyüğe sıralayıp tam ortadakini alıyoruz.
-  </p>
-  <p>
-    Nedeni basit. Bir kategoride tek bir çok pahalı ürün, aritmetik
-    ortalamayı tek başına yukarı çeker ve gerçekte kimsenin ödemediği bir
-    rakam çıkar. Ortanca değer bundan etkilenmez, o yüzden "tipik fiyat"
-    sorusuna daha dürüst cevap verir.
-  </p>
-
-  <h2>Güncelleme sıklığı</h2>
-  <p>Veri ayda bir otomatik yenilenir; her sayfada son güncelleme tarihi görünür.</p>
-
-  <p><a href="/arac/">← 0 km araç endeksine dön</a></p>
-
+  <section class="icerik-bolumu"><h2>Sık sorulan sorular</h2><h3>0 km Araç endeksinde kaç fiyat serisi var?</h3><p>2026-08-22 itibarıyla 25 ölçülmüş fiyat serisi var. Bunların 0 tanesi çok, 25 tanesi tek kaynaklıdır.</p><h3>Veriler ne zaman yenileniyor?</h3><p>Kaynaklar ayın 5'i ve 20'sinde yeniden taranır. Bir tarama başarısız olursa eski sağlıklı ölçüm korunur; son veri tarihi ilerletilmez.</p><h3>Neden aritmetik ortalama değil ortanca kullanılıyor?</h3><p>Az sayıdaki aşırı pahalı veya ucuz ürünün bütün kategoriyi çekmesini önlemek için kaynak ve seri özetlerinde ortanca fiyat kullanılır.</p></section>
 </main>
-
-<footer>
-  <div class="kapsayici">
-    <div>© 2026 Maliyeti Ne?</div>
-    <nav>
-      <a href="/arac/">0 km Araç Endeksi</a>
-      <a href="/">Ana sayfa</a>
-    </nav>
-    <nav class="footer-endeksler" aria-label="Tüm endeksler">
-      <a href="/dugun/">Düğün</a>
-      <a href="/ev-kurma/">Ev Kurma</a>
-      <a href="/okul/">Okul</a>
-      <a href="/arac/">0 km Araç</a><a href="/rapor/">Rapor</a>
-    </nav>
-  </div>
-</footer>
-
+<footer><div class="kapsayici">© 2026 Maliyeti Ne? ·
+  <a href="/hakkimizda/">Hakkımızda</a> · <a href="/iletisim/">İletişim</a> ·
+  <a href="/veri/">Veri</a></div></footer>
 </body>
 </html>

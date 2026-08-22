@@ -1011,16 +1011,8 @@ def _govde_yatak_odasi(v: dict) -> str | None:
 # ---------------------------------------------------------------------------
 # 8. Kaynak karsilastirmasi (Trendyol vs Amazon)
 # ---------------------------------------------------------------------------
-def _govde_kaynak_karsilastirma(v: dict) -> str | None:
-    """Iki kaynagi da olctugumuz kalemlerde fiyat bandi karsilastirmasi.
-
-    DURUST CERCEVE: bu "hangi site ucuz" listesi DEGIL. Olctugumuz sey
-    kategori sayfalarindaki URUN KARMASI - Amazon'da markali urunler,
-    pazaryerinde jenerik urunler agirlikta olabiliyor. Ayni urunun iki
-    sitedeki fiyatini karsilastirmiyoruz; oyle bir iddiada bulunmak
-    yaniltici olur ve yazi bunu acikca soyluyor.
-    """
-    import statistics
+def _kaynak_karsilastirma_kayitlari(v: dict) -> list[dict]:
+    """Iki sitede de gercek veri bulunan karsilastirilabilir kalemler."""
     kayitlar = []
     for vert in ("ev-kurma", "okul", "dugun"):
         d = v.get(vert)
@@ -1039,11 +1031,26 @@ def _govde_kaynak_karsilastirma(v: dict) -> str | None:
                     "ad": (tanimlar.get(kid) or {}).get("ad", kid),
                     "t": t, "a": a, "fark": (a - t) / t * 100,
                 })
+    return kayitlar
+
+
+def _govde_kaynak_karsilastirma(v: dict) -> str | None:
+    """Iki kaynagi da olctugumuz kalemlerde fiyat bandi karsilastirmasi.
+
+    DURUST CERCEVE: bu "hangi site ucuz" listesi DEGIL. Olctugumuz sey
+    kategori sayfalarindaki URUN KARMASI - Amazon'da markali urunler,
+    pazaryerinde jenerik urunler agirlikta olabiliyor. Ayni urunun iki
+    sitedeki fiyatini karsilastirmiyoruz; oyle bir iddiada bulunmak
+    yaniltici olur ve yazi bunu acikca soyluyor.
+    """
+    import statistics
+    kayitlar = _kaynak_karsilastirma_kayitlari(v)
     if len(kayitlar) < 10:
         return None
 
     pazar_ucuz = [x for x in kayitlar if x["fark"] > 5]
     amazon_ucuz = [x for x in kayitlar if x["fark"] < -5]
+    yakin = len(kayitlar) - len(pazar_ucuz) - len(amazon_ucuz)
     medyan_fark = statistics.median([x["fark"] for x in kayitlar])
 
     def tablo(kayit_listesi, ters=False):
@@ -1095,9 +1102,10 @@ def _govde_kaynak_karsilastirma(v: dict) -> str | None:
   </table></div>
   <p>
     Kitap, defter ve bazı mobilya kalemlerinde yön tersine dönüyor.
-    Toplamda {len(pazar_ucuz)} kalemde bir liste, {len(amazon_ucuz)} kalemde
-    diğeri daha aşağıda kalıyor — yani tek bir siteyi "ucuz site" diye
-    işaretlemek mümkün değil.
+    Toplamda {len(pazar_ucuz)} kalemde Trendyol listesi, {len(amazon_ucuz)}
+    kalemde Amazon listesi daha aşağıda; {yakin} kalemde fark %5 eşiğinin
+    içinde. Bu üç sayı karşılaştırılan {len(kayitlar)} kalemin tamamını verir.
+    Tek bir siteyi "ucuz site" diye işaretlemek mümkün değil.
   </p>
 
   <h2>Pratikte ne işe yarar?</h2>
@@ -2701,8 +2709,8 @@ REHBERLER = [
     },
     {
         "slug": "trendyol-mu-amazon-mu-ucuz",
-        "baslik": "Trendyol mu Amazon mu Daha Ucuz? 45 Kalemde Ölçtük",
-        "seo_baslik": "Trendyol mu Amazon mu Daha Ucuz? 45 Ürün Karşılaştırması",
+        "baslik": "Trendyol mu Amazon mu Daha Ucuz? Verilerle Karşılaştırdık",
+        "seo_baslik": "Trendyol mu Amazon mu Daha Ucuz? Veri Karşılaştırması",
         "meta": "Aynı kalemleri iki siteden ayrı ayrı ölçtük. Hangi kategoride "
                 "hangi liste daha aşağıda kalıyor ve bu neden 'ucuz site' demek değil?",
         "govde": _govde_kaynak_karsilastirma,
@@ -2919,8 +2927,26 @@ def _rehber_sss_html(sorular: list[tuple[str, str]]) -> str:
     return f'<section class="sss">\n  <h2>Sıkça sorulan sorular</h2>\n{govde}</section>\n'
 
 
+def _rehber_canli_tanim(rehber: dict, veriler: dict) -> dict:
+    """Basliktaki veri sayisini govdeyle ayni hesaplamadan kurar."""
+    if rehber.get("slug") != "trendyol-mu-amazon-mu-ucuz":
+        return rehber
+    sayi = len(_kaynak_karsilastirma_kayitlari(veriler))
+    if not sayi:
+        return rehber
+    canli = dict(rehber)
+    canli["baslik"] = f"Trendyol mu Amazon mu Daha Ucuz? {sayi} Kalemde Ölçtük"
+    canli["seo_baslik"] = f"Trendyol mu Amazon mu Daha Ucuz? {sayi} Kalem"
+    canli["meta"] = (
+        f"{sayi} kalemi Trendyol ve Amazon kategori listelerinden ayrı ayrı "
+        "ölçtük. Ürün karması farkı hangi listeyi nasıl etkiliyor?"
+    )
+    return canli
+
+
 def rehber_uret(rehber: dict, veriler: dict, tarih: str | None = None) -> str | None:
     """Tek bir rehber sayfasi. Veri yoksa None - bos sayfa YAYINLANMAZ."""
+    rehber = _rehber_canli_tanim(rehber, veriler)
     govde = rehber["govde"](veriler)
     if not govde:
         return None
@@ -2974,9 +3000,10 @@ def rehber_uret(rehber: dict, veriler: dict, tarih: str | None = None) -> str | 
             ],
         })
 
+    canli_rehberler = [_rehber_canli_tanim(r, veriler) for r in REHBERLER]
     digerleri = "".join(
         f'<a href="/rehber/{r["slug"]}/">{r["baslik"]}</a>'
-        for r in REHBERLER if r["slug"] != rehber["slug"]
+        for r in canli_rehberler if r["slug"] != rehber["slug"]
     )
     kaynaklar_html = _rehber_kaynaklari_html(rehber)
     sss_html = _rehber_sss_html(sss_sorulari)
@@ -3133,14 +3160,15 @@ def rehberleri_yaz(veri_kok: Path | None = None, hedef_kok: Path | None = None) 
     kok = hedef_kok or SITE_KOK / "rehber"
     yazilanlar = []
     for r in REHBERLER:
-        html = rehber_uret(r, veriler)
+        canli_r = _rehber_canli_tanim(r, veriler)
+        html = rehber_uret(canli_r, veriler)
         if not html:
             print(f"  ATLANDI (veri yok): {r['slug']}")
             continue
         hedef = kok / r["slug"] / "index.html"
         hedef.parent.mkdir(parents=True, exist_ok=True)
         hedef.write_text(html, encoding="utf-8")
-        yazilanlar.append(r)
+        yazilanlar.append(canli_r)
     if yazilanlar:
         (kok / "index.html").parent.mkdir(parents=True, exist_ok=True)
         (kok / "index.html").write_text(rehber_dizini_uret(yazilanlar), encoding="utf-8")

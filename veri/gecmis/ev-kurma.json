@@ -428,8 +428,8 @@
     },
     {
      "tarih": "2026-08-22",
-     "medyan": 29324,
-     "urun": 76,
+     "medyan": 39499,
+     "urun": 61,
      "kaynak": 3,
      "veri_tarihi": "2026-08-22"
     }
@@ -443,14 +443,14 @@
    },
    "son": {
     "tarih": "2026-08-22",
-    "medyan": 29324,
-    "urun": 76,
+    "medyan": 39499,
+    "urun": 61,
     "kaynak": 3,
     "veri_tarihi": "2026-08-22"
    },
-   "degisim_yuzde": 1.6,
+   "degisim_yuzde": 36.9,
    "gun_araligi": 28,
-   "aylik_degisim_yuzde": 4.5
+   "aylik_degisim_yuzde": 40.8
   },
   "camasir-makinesi": {
    "seri": [
@@ -2316,6 +2316,6 @@
   "artan": 30,
   "azalan": 11,
   "sabit": 1,
-  "medyan_degisim_yuzde": 18.6
+  "medyan_degisim_yuzde": 20.0
  }
 }

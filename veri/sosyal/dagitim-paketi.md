@@ -22,7 +22,7 @@ Ağustos 2026 Türkiye Maliyet Raporu yayımlandı: 121 fiyat serisi, 20 bağım
 
 - Kahve Makinesi ortanca fiyatı 13 günde %72.4 arttı: 3.299 TL → 5.689 TL. (3 kaynak)
   https://maliyetine.com.tr/ev-kurma/kahve-makinesi-fiyatlari/
+- Buzdolabı ortanca fiyatı 13 günde %40.8 arttı: 28.054 TL → 39.499 TL. (3 kaynak)
+  https://maliyetine.com.tr/ev-kurma/buzdolabi-fiyatlari/
 - Davlumbaz ortanca fiyatı 11 günde %32.4 arttı: 3.975 TL → 5.262 TL. (3 kaynak)
   https://maliyetine.com.tr/ev-kurma/davlumbaz-fiyatlari/
-- Dikey Süpürge ortanca fiyatı 13 günde %27.8 azaldı: 9.599 TL → 6.935 TL. (3 kaynak)
-  https://maliyetine.com.tr/ev-kurma/dikey-supurge-fiyatlari/

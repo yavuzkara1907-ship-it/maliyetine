@@ -14,7 +14,7 @@
   "kullanilan_katmanlar": [
     "json-ld"
   ],
-  "genel_medyan": 29324,
+  "genel_medyan": 28950,
   "segmentler": {
     "dusuk": {
       "min": 7569,
@@ -24,7 +24,7 @@
     },
     "orta": {
       "min": 18690,
-      "medyan": 30370,
+      "medyan": 29995,
       "max": 34999,
       "urun_sayisi": 12
     },
@@ -61,12 +61,12 @@
       "fiyat": 21690.0
     },
     {
-      "isim": "Vestel NF27011 251 Lt No-Frost Buzdolabı",
-      "fiyat": 25199.0
+      "isim": "Vestel NF45011 402 Lt No-Frost Buzdolabı",
+      "fiyat": 25605.0
     },
     {
-      "isim": "Vestel NF45011 402 Lt No-Frost Buzdolabı",
-      "fiyat": 29749.0
+      "isim": "Grundig GRNE No-Frost Çift Kapılı Buzdolabı",
+      "fiyat": 29000.0
     },
     {
       "isim": "Arçelik 570471 MB Üstten Donduruculu Buzdolabı",
@@ -157,7 +157,7 @@
             "urun_sayisi": 5
           },
           "orta": {
-            "min": 24999.0,
+            "min": 25199.0,
             "medyan": 31195.0,
             "max": 34999.0,
             "urun_sayisi": 10
@@ -208,13 +208,6 @@
         }
       },
       {
-        "isim": "Altus AL 333 BE Çift Kapılı Buzdolabı",
-        "fiyat": 24999.0,
-        "nitelikler": {
-          "urun_turu": "standart"
-        }
-      },
-      {
         "isim": "Vestel NF27011 251 Lt No-Frost Buzdolabı",
         "fiyat": 25199.0,
         "nitelikler": {
@@ -223,7 +216,14 @@
       },
       {
         "isim": "Vestel NF45011 402 Lt No-Frost Buzdolabı",
-        "fiyat": 29749.0,
+        "fiyat": 25605.0,
+        "nitelikler": {
+          "urun_turu": "standart"
+        }
+      },
+      {
+        "isim": "Grundig GRNE No-Frost Çift Kapılı Buzdolabı",
+        "fiyat": 29000.0,
         "nitelikler": {
           "urun_turu": "standart"
         }

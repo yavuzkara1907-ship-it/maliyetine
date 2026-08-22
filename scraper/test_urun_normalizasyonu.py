@@ -147,6 +147,17 @@ class AracModelTestleri(unittest.TestCase):
 
 
 class GenisKategoriTestleri(unittest.TestCase):
+    def test_oto_ve_outdoor_buzdolabi_ev_tipi_sayilmaz(self):
+        for ad in (
+            "ICECO 12/24Volt Kompresörlü Outdoor Oto Buzdolabı",
+            "Portatif kamp buzdolabı",
+        ):
+            self.assertEqual(un.genis_kategori_urun_turu("buzdolabi", ad), {})
+        self.assertEqual(
+            un.genis_kategori_urun_turu("buzdolabi", "Bosch No Frost Buzdolabı"),
+            {"urun_turu": "standart"},
+        )
+
     def test_kedi_tuvaleti_alt_turleri_ayrilir(self):
         urunler = [
             {"isim": "Akıllı otomatik kedi tuvaleti", "fiyat": 12000},

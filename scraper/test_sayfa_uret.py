@@ -459,6 +459,7 @@ class IcerikSeoTestleri(unittest.TestCase):
             "ozellik_ozeti": {
                 "toplam_urun": 15,
                 "ozellik_eslesen_urun": 15,
+                "kaynak_sayisi": 2,
                 "urun_turleri": {
                     "ankastre-set": {"ad": "Ankastre set", "genel_medyan": 16099,
                                      "urun_sayisi": 8, "kaynak_sayisi": 1},
@@ -482,6 +483,12 @@ class IcerikSeoTestleri(unittest.TestCase):
         finally:
             conf["kalem_sayfalari"] = eski_sayfalar
         self.assertIn("Ürün tipine göre fiyatlar", html)
+        self.assertIn(
+            "Genel fiyat ölçümü 15 ürünü ve 2 kaynağı kapsıyor", html
+        )
+        self.assertIn(
+            "Yapısal ürün tipi verisi 2 kaynakta 15 ürün için mevcut", html
+        )
         self.assertIn("Ankastre set", html)
         self.assertIn("Ocaklı fırın", html)
         self.assertIn("Tek bir set ortalaması vermiyoruz", html)
@@ -822,6 +829,26 @@ class AnasayfaTestleri(unittest.TestCase):
         beklenen = 5000 + 1100 * DUGUN["olcek_varsayilan"] + 28500
         self.assertIn(sayfa_uret._para(beklenen), html)
         self.assertIn("Son veri: 2026-07-25", html)
+
+    def test_arac_faq_minimumu_ortancadan_ayirir(self):
+        self._yaz("arac", {"en-ucuz-sifir-arac": {
+            "genel_medyan": 2069000,
+            "toplam_urun": 23,
+            "guncelleme_tarihi": "2026-08-22",
+            "segmentler": {"orta": {"medyan": 2069000}},
+            "kaynaklar": [{
+                "site": "liste", "toplam_urun": 23, "genel_medyan": 2069000,
+                "ornek_urunler": [
+                    {"isim": "Dacia", "fiyat": 1299000},
+                    {"isim": "Kia", "fiyat": 1460000},
+                ],
+            }],
+        }}, "2026-08-22")
+        html = sayfa_uret.anasayfa_uret(self.veri_kok)
+        faq = re.search(r'<h3>2026.da en ucuz sıfır araba.*?</p>', html, re.S).group(0)
+        self.assertIn("Dacia: 1.299.000 TL", faq)
+        self.assertIn("23 markanın giriş fiyatı ortancası ise 2.069.000 TL", faq)
+        self.assertIn("gerçek minimumu", faq)
 
     def test_kalem_sayfalarina_ic_link_verir(self):
         # Yetim sayfa riskini azaltir: sitemap tek basina zayif sinyal.

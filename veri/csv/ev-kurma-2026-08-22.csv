@@ -1,6 +1,6 @@
 ﻿vertikal,kalem_id,kalem_adi,grup,birim,olcum_turu,ekonomik_tl,orta_tl,ust_tl,en_dusuk_tl,en_yuksek_tl,tl_kg,kg_urun_sayisi,tl_litre,litre_urun_sayisi,tl_adet,adet_urun_sayisi,urun_sayisi,kaynak_sayisi,kaynaklar,olcum_tarihi
 ev-kurma,bulasik-makinesi,Bulaşık Makinesi,Beyaz eşya,sabit,kalem_fiyati,15749,23899,32499,12999,54778,,,,,,,52,3,amazon; mediamarkt; trendyol,2026-08-20
-ev-kurma,buzdolabi,Buzdolabı,Beyaz eşya,sabit,kalem_fiyati,9750,30370,59899,4874,76057,,,,,,,76,3,amazon; mediamarkt; trendyol,2026-08-22
+ev-kurma,buzdolabi,Buzdolabı,Beyaz eşya,sabit,kalem_fiyati,13989,41899,66499,4874,95899,,,,,,,61,3,amazon; mediamarkt; trendyol,2026-08-22
 ev-kurma,davlumbaz,Davlumbaz,Beyaz eşya,sabit,kalem_fiyati,3373,5295,9592,2199,15992,,,,,,,60,3,amazon; mediamarkt; trendyol,2026-08-20
 ev-kurma,firin-ocak,Fırın / Ocak (ürün tipine göre),Beyaz eşya,sabit,kalem_fiyati,11399,16999,38159,4049,51175,,,,,,,59,3,amazon; mediamarkt; trendyol,2026-08-22
 ev-kurma,klima,Klima,Beyaz eşya,sabit,kalem_fiyati,19962,29041,38799,6500,58999,,,,,,,57,3,amazon; mediamarkt; trendyol,2026-08-20

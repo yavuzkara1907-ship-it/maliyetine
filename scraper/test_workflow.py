@@ -118,6 +118,17 @@ class WorkflowTesti(unittest.TestCase):
         seride kalici delik olusur."""
         self.assertIn('cron: "0 6 5,20 * *"', _metin())
 
+    def test_buzdolabi_kaynaklari_oto_urunleri_dislar(self):
+        import yaml
+        veri = yaml.safe_load((BASE / "kaynaklar.yaml").read_text(encoding="utf-8"))
+        kaynaklar = [k for k in veri["kaynaklar"]
+                     if k.get("kalem") == "buzdolabi" and k.get("aktif")]
+        self.assertGreaterEqual(len(kaynaklar), 2)
+        for kaynak in kaynaklar:
+            desen = kaynak.get("ad_dislama", "").lower()
+            self.assertIn("oto", desen, kaynak["ad"])
+            self.assertIn("outdoor", desen, kaynak["ad"])
+
     def test_indexnow_yalnizca_degisiklik_varsa(self):
         """Bos bildirim gondermek arama motorlarinda guven kaybettirir."""
         self.assertIn("steps.commit.outputs.degisti == 'true'", _metin())

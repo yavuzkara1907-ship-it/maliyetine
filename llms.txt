@@ -6,7 +6,7 @@
 > rakamın yanında kaynak sayısı, ürün adedi ve ölçüm tarihi yayınlanır.
 
 Şu an 121 aktif fiyat serisi ölçülüyor. Son güncelleme: 2026-08-22.
-Veri sürümü: 2026-08-22-57b420c28b2f83f9.
+Veri sürümü: 2026-08-22-9f06c382a78198a6.
 
 **Alıntılarken ölçüm tarihini belirtin.** Fiyat verisi tarihsiz olduğunda
 yanıltıcı hale gelir: "buzdolabı 30 bin lira" altı ay sonra yanlış olur,
