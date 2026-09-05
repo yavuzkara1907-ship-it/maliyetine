@@ -1,0 +1,84 @@
+{
+  "site": "petzzshop",
+  "kaynak_adlari": [
+    "petzzshop - Kedi Tasima Cantasi"
+  ],
+  "kalem": "tasima-cantasi",
+  "vertikal": "kedi",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 11,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 11,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 2618,
+  "segmentler": {
+    "dusuk": {
+      "min": 545,
+      "medyan": 1543,
+      "max": 1716,
+      "urun_sayisi": 3
+    },
+    "orta": {
+      "min": 2122,
+      "medyan": 2849,
+      "max": 3718,
+      "urun_sayisi": 6
+    },
+    "luks": {
+      "min": 3975,
+      "medyan": 4818,
+      "max": 5662,
+      "urun_sayisi": 2
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Şenyayla Kedi Köpek Taşıma Çantası 49 Cm - 49 Cm",
+      "fiyat": 545.0
+    },
+    {
+      "isim": "M-Pets Eco Giro Carrier Kedi ve Küçük Irk Köpek Taşıma Çantası",
+      "fiyat": 1542.96
+    },
+    {
+      "isim": "Ferplast Atlas 20 Kedi ve Köpekler için Taşıma Çantası - Mavi",
+      "fiyat": 1716.2
+    },
+    {
+      "isim": "Mps  IATA Kedi ve Köpek Taşıma Çantası - Skudo-2",
+      "fiyat": 2122.23
+    },
+    {
+      "isim": "Lepus Mesh Bag Omuz Askılı Kedi ve Küçük Irk Taşıma Çantası",
+      "fiyat": 2455.0
+    },
+    {
+      "isim": "Lepus Cool Kedi ve Küçük Irk Köpek Taşıma Sırt Çantası",
+      "fiyat": 2618.0
+    },
+    {
+      "isim": "Mps IATA Üstü Açılabilen Kedi ve Küçük Irk Köpek Taşıma Çantası - 55x36x35 Cm",
+      "fiyat": 3079.57
+    },
+    {
+      "isim": "M-Pets Urban Style Freestyle Evcil Hayvan Aksesuar Taşıma Çantası - Karışık Renkli",
+      "fiyat": 3093.39
+    },
+    {
+      "isim": "Ferplast Trolley Tekerlekli Sırt Taşıma Çantası 32x28x51 cm",
+      "fiyat": 3718.5
+    },
+    {
+      "isim": "Lepus Wheel Bag Tekerlekli Kedi ve Köpek Taşıma Çantası",
+      "fiyat": 3975.0
+    },
+    {
+      "isim": "M-Pets Sixties Classic Kedi ve Küçük Irk Köpek Taşıma Çantası",
+      "fiyat": 5661.9
+    }
+  ]
+}

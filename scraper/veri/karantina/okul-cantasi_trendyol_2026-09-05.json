@@ -1,0 +1,20 @@
+{
+  "site": "trendyol",
+  "kaynak_adlari": [
+    "Trendyol - Okul Cantasi"
+  ],
+  "kalem": "okul-cantasi",
+  "vertikal": "okul",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 0,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 0,
+  "saglikli": false,
+  "kullanilan_katmanlar": [
+    "hicbiri"
+  ],
+  "genel_medyan": null,
+  "segmentler": {},
+  "ornek_urunler": []
+}

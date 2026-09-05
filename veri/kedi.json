@@ -1,21 +1,21 @@
 {
   "vertikal": "kedi",
-  "guncelleme_tarihi": "2026-08-22",
+  "guncelleme_tarihi": "2026-09-05",
   "kalemler": {
     "kedi-kumu": {
       "olcum_turu": "paket_fiyati",
       "segmentler": {
         "dusuk": {
           "min": 107,
-          "medyan": 248,
-          "max": 370,
+          "medyan": 256,
+          "max": 459,
           "urun_sayisi": 18,
           "kaynak_sayisi": 2
         },
         "orta": {
           "min": 225,
-          "medyan": 398,
-          "max": 889,
+          "medyan": 408,
+          "max": 893,
           "urun_sayisi": 30,
           "kaynak_sayisi": 2
         },
@@ -27,9 +27,9 @@
           "kaynak_sayisi": 2
         }
       },
-      "genel_medyan": 394,
+      "genel_medyan": 406,
       "toplam_urun": 62,
-      "guncelleme_tarihi": "2026-08-22",
+      "guncelleme_tarihi": "2026-09-05",
       "kaynak_sayisi": 2,
       "kaynaklar": [
         {
@@ -46,29 +46,21 @@
           "kaynak_adlari": [
             "petzzshop - Kedi Kumu"
           ],
-          "tarih": "2026-08-22",
+          "tarih": "2026-09-05",
           "toplam_urun": 24,
-          "genel_medyan": 489,
+          "genel_medyan": 512,
           "ornek_urunler": [
             {
-              "isim": "Toi Moi Marsilya Sabunlu İnce Taneli Topaklanan Bentonit Kedi Kumu - 10 Kg",
-              "fiyat": 295.0
-            },
-            {
-              "isim": "Van Cat Naturel Kokusuz İnce Taneli Topaklanan Bentonit Kedi Kumu - 10 Lt",
+              "isim": "Van Cat Bebek Pudralı Parfümlü İnce Taneli Topaklanan Bentonit Kedi Kumu - 10 Lt",
               "fiyat": 312.25
             },
             {
-              "isim": "Animal World Aktif Karbonlu Topaklanan Bentonit Kedi Kumu - 10 Lt",
-              "fiyat": 323.6
+              "isim": "Van Cat Aktif Karbonlu İnce Taneli Topaklanan Bentonit Kedi Kumu - 10 Lt",
+              "fiyat": 339.9
             },
             {
               "isim": "Kiko Cat Premium Litter Grey Karbon Kedi Kumu - 10 Lt",
               "fiyat": 341.94
-            },
-            {
-              "isim": "Lindocat Advanced Light Ultra Hafif Diatomit Topaklanan Kedi Kumu",
-              "fiyat": 404.6
             },
             {
               "isim": "Molly Aktif Karbonlu Topaklanan Bentonit Kedi Kumu - 10 Lt",
@@ -79,24 +71,32 @@
               "fiyat": 459.81
             },
             {
-              "isim": "Lindocat Super Premium Pudra Kokulu Extra Güçlü Tozsuz Topaklanan Kedi Kumu",
-              "fiyat": 490.01
+              "isim": "Lindocat Super Premium Bikarbonatlı Koku Önleyici Extra Güçlü Tozsuz Topaklanan Kedi Kumu",
+              "fiyat": 488.77
             },
             {
               "isim": "Sanicat Essential Oils Kokusuz Kedi Kumu",
               "fiyat": 506.68
             },
             {
-              "isim": "Lindocat Double Action Argan Yağı ve Lavanta Kokulu Topaklanan Kedi Kumu",
-              "fiyat": 595.16
+              "isim": "Feles Aktif Karbonlu Tozsuz Topaklanan Kedi Kumu - 10 Lt",
+              "fiyat": 517.52
             },
             {
-              "isim": "Lindocat Advanced Multicat Koku Önleyici Ekstra Güçlü Topaklanan Kedi Kumu",
-              "fiyat": 607.81
+              "isim": "Feles Ultra Light Aktif Karbonlu Tozsuz Topaklanan Kedi Kumu - 8 lt",
+              "fiyat": 517.52
             },
             {
-              "isim": "Lindocat Natural Kokusuz Topaklanan Kedi Kumu",
-              "fiyat": 889.36
+              "isim": "Van Cat Aktif Karbonlu İnce Taneli Topaklanan Bentonit Kedi Kumu - 2 X 10 lt",
+              "fiyat": 696.0
+            },
+            {
+              "isim": "Lindocat Soaply Marsilya Sabunlu İnce Taneli Kedi Kumu",
+              "fiyat": 874.82
+            },
+            {
+              "isim": "Lindocat Charme Amber Kokulu Kedi Kumu",
+              "fiyat": 893.1
             },
             {
               "isim": "Lindocat Original Kokusuz Topaklanan Kedi Kumu",
@@ -114,85 +114,38 @@
         }
       ],
       "birim_fiyatlari": {
-        "kg": {
-          "etiket": "TL/kg",
-          "genel_medyan": 29.5,
-          "eslesen_urun": 1,
-          "toplam_urun": 24,
-          "kaynak_sayisi": 1,
-          "segmentler": {
-            "dusuk": {
-              "min": 29.5,
-              "medyan": 29.5,
-              "max": 29.5,
-              "urun_sayisi": 1,
-              "kaynak_sayisi": 1
-            },
-            "orta": {
-              "min": 29.5,
-              "medyan": 29.5,
-              "max": 29.5,
-              "urun_sayisi": 1,
-              "kaynak_sayisi": 1
-            },
-            "luks": {
-              "min": 29.5,
-              "medyan": 29.5,
-              "max": 29.5,
-              "urun_sayisi": 1,
-              "kaynak_sayisi": 1
-            }
-          },
-          "ornek_urunler": [
-            {
-              "isim": "Toi Moi Marsilya Sabunlu İnce Taneli Topaklanan Bentonit Kedi Kumu - 10 Kg",
-              "fiyat": 295.0,
-              "miktar": 10.0,
-              "birim_fiyat": 29.5,
-              "site": "petzzshop"
-            }
-          ],
-          "eslesme_orani": 0.042
-        },
         "litre": {
           "etiket": "TL/litre",
-          "genel_medyan": 33.99,
-          "eslesen_urun": 7,
+          "genel_medyan": 34.8,
+          "eslesen_urun": 9,
           "toplam_urun": 24,
           "kaynak_sayisi": 1,
           "segmentler": {
             "dusuk": {
               "min": 31.23,
-              "medyan": 31.23,
-              "max": 31.23,
-              "urun_sayisi": 2,
+              "medyan": 32.36,
+              "max": 33.99,
+              "urun_sayisi": 3,
               "kaynak_sayisi": 1
             },
             "orta": {
-              "min": 32.36,
-              "medyan": 34.09,
-              "max": 45.42,
+              "min": 34.19,
+              "medyan": 40.11,
+              "max": 45.98,
               "urun_sayisi": 4,
               "kaynak_sayisi": 1
             },
             "luks": {
-              "min": 45.98,
-              "medyan": 45.98,
-              "max": 45.98,
-              "urun_sayisi": 1,
+              "min": 51.75,
+              "medyan": 58.22,
+              "max": 64.69,
+              "urun_sayisi": 2,
               "kaynak_sayisi": 1
             }
           },
           "ornek_urunler": [
             {
               "isim": "Van Cat Bebek Pudralı Parfümlü İnce Taneli Topaklanan Bentonit Kedi Kumu - 10 Lt",
-              "fiyat": 312.25,
-              "miktar": 10.0,
-              "birim_fiyat": 31.23,
-              "site": "petzzshop"
-            },
-            {
-              "isim": "Van Cat Naturel Kokusuz İnce Taneli Topaklanan Bentonit Kedi Kumu - 10 Lt",
               "fiyat": 312.25,
               "miktar": 10.0,
               "birim_fiyat": 31.23,
@@ -232,9 +185,23 @@
               "miktar": 10.0,
               "birim_fiyat": 45.98,
               "site": "petzzshop"
+            },
+            {
+              "isim": "Feles Aktif Karbonlu Tozsuz Topaklanan Kedi Kumu - 10 Lt",
+              "fiyat": 517.52,
+              "miktar": 10.0,
+              "birim_fiyat": 51.75,
+              "site": "petzzshop"
+            },
+            {
+              "isim": "Feles Ultra Light Aktif Karbonlu Tozsuz Topaklanan Kedi Kumu - 8 lt",
+              "fiyat": 517.52,
+              "miktar": 8.0,
+              "birim_fiyat": 64.69,
+              "site": "petzzshop"
             }
           ],
-          "eslesme_orani": 0.292
+          "eslesme_orani": 0.375
         }
       },
       "capraz_dogrulama_uyarisi": {
@@ -250,29 +217,29 @@
       "segmentler": {
         "dusuk": {
           "min": 118,
-          "medyan": 772,
-          "max": 1202,
-          "urun_sayisi": 18,
+          "medyan": 493,
+          "max": 677,
+          "urun_sayisi": 17,
           "kaynak_sayisi": 2
         },
         "orta": {
           "min": 715,
-          "medyan": 2070,
-          "max": 4351,
+          "medyan": 1388,
+          "max": 2671,
           "urun_sayisi": 32,
           "kaynak_sayisi": 2
         },
         "luks": {
           "min": 1867,
           "medyan": 3454,
-          "max": 7044,
+          "max": 5900,
           "urun_sayisi": 14,
           "kaynak_sayisi": 2
         }
       },
-      "genel_medyan": 1980,
-      "toplam_urun": 64,
-      "guncelleme_tarihi": "2026-08-22",
+      "genel_medyan": 1376,
+      "toplam_urun": 63,
+      "guncelleme_tarihi": "2026-09-05",
       "kaynak_sayisi": 2,
       "kaynaklar": [
         {
@@ -351,69 +318,69 @@
           "kaynak_adlari": [
             "petzzshop - Kedi Mamasi"
           ],
-          "tarih": "2026-08-22",
-          "toplam_urun": 24,
-          "genel_medyan": 2703,
+          "tarih": "2026-09-05",
+          "toplam_urun": 23,
+          "genel_medyan": 1497,
           "ornek_urunler": [
             {
               "isim": "Royal Canin Sterilised Yetişkin Kısırlaştırılmış Kedi Maması",
               "fiyat": 269.79
             },
             {
-              "isim": "Exclusion Monoprotein Tavuklu Narlı ve Yaban Mersinli Düşük Tahıllı Yavru Kedi Maması - 1,5 Kg",
-              "fiyat": 882.0
+              "isim": "Lavital Sterilised Kuzu Etli Kısırlaştırılmış Kedi Maması - 1.5 Kg",
+              "fiyat": 497.88
             },
             {
-              "isim": "Royal Canin Kitten Yavru Kedi Maması",
-              "fiyat": 1139.39
+              "isim": "Felicia Tavuklu Kısırlaştırılmış Kedi Maması - 2 Kg",
+              "fiyat": 664.65
             },
             {
-              "isim": "Royal Canin Sterilised Bundle 37 Kısırlaştırılmış Yetişkin Kedi Maması + 2 Adet Sterilised Yaş Mama - 2 Kg",
-              "fiyat": 1193.73
+              "isim": "Caviara Tavuklu Yetişkin Kedi Maması - 1,5 Kg",
+              "fiyat": 677.2
             },
             {
-              "isim": "Royal Canin Sensible 33 Hassas Yetişkin Kedi Maması",
-              "fiyat": 1225.26
+              "isim": "Caviara Kilo Kontrol Destekli Tavuklu Yetişkin Kedi Maması - 1,5 Kg",
+              "fiyat": 740.3
             },
             {
-              "isim": "Pro Plan Tavuklu Pirinçli Yetişkin Kedi Maması - 3 Kg",
-              "fiyat": 1503.97
+              "isim": "Felicia Somonlu Yetişkin Kedi Maması - 5 Kg",
+              "fiyat": 1149.0
+            },
+            {
+              "isim": "Royal Canin Fit 32 Yetişkin Kedi Maması",
+              "fiyat": 1202.06
+            },
+            {
+              "isim": "Royal Canin British Shorthair Adult Yetişkin Kedi Maması",
+              "fiyat": 1496.68
+            },
+            {
+              "isim": "Pro Nutrition Protect Veterinary Obesite Kilo Kontrolü İçin Kedi Maması - 2 Kg",
+              "fiyat": 1518.75
+            },
+            {
+              "isim": "Pro Nutrition Protect Veterinary Care 8+ Böbrek Yetmezliği Olan Kediler İçin Kedi Maması - 2 Kg",
+              "fiyat": 1579.5
             },
             {
               "isim": "Lavital Sensitive Somonlu Yetişkin Kedi Maması - 12 Kg",
               "fiyat": 2527.45
             },
             {
-              "isim": "Hill's SCIENCE PLAN Somonlu Yavru Kedi Maması - 7 Kg",
-              "fiyat": 2735.67
-            },
-            {
-              "isim": "Hills Kitten Ton Balıklı Yavru Kedi Maması - 5+2 Kg Hediyeli",
-              "fiyat": 3006.54
-            },
-            {
-              "isim": "Platinum MeatCrisp Balıklı Yavru Kedi Maması - 3 Kg",
-              "fiyat": 3646.4
-            },
-            {
-              "isim": "Exclusion Monoprotein Tavuklu ve Narlı Düşük Tahıllı Yetişkin Kedi Maması - 12 Kg",
-              "fiyat": 3732.9
-            },
-            {
-              "isim": "Pro Plan Tavuklu Pirinçli Yavru Kedi Maması - 10 Kg",
-              "fiyat": 4351.25
+              "isim": "Lavital Kitten Somonlu Yavru Kedi Maması - 12 Kg",
+              "fiyat": 2670.58
             },
             {
               "isim": "Hills Young Sterilised Tavuklu Kısırlaştırılmış Kedi Maması",
-              "fiyat": 4798.77
+              "fiyat": 4798.0
             },
             {
               "isim": "Advance Sensitive Somonlu Hassas Kısırlaştırılmış Kedi Maması - 10 Kg",
               "fiyat": 4800.0
             },
             {
-              "isim": "Hills Somonlu Kısırlaştırılmış Yetişkin Kedi Maması",
-              "fiyat": 7043.76
+              "isim": "Pro Plan Sterilised Somonlu Kısırlaştırılmış Kedi Maması",
+              "fiyat": 5900.0
             }
           ]
         }
@@ -421,30 +388,30 @@
       "birim_fiyatlari": {
         "kg": {
           "etiket": "TL/kg",
-          "genel_medyan": 389.92,
-          "eslesen_urun": 52,
-          "toplam_urun": 64,
+          "genel_medyan": 411.24,
+          "eslesen_urun": 53,
+          "toplam_urun": 63,
           "kaynak_sayisi": 2,
           "segmentler": {
             "dusuk": {
               "min": 83.0,
-              "medyan": 177.8,
-              "max": 313.04,
+              "medyan": 157.48,
+              "max": 331.92,
               "urun_sayisi": 14,
               "kaynak_sayisi": 2
             },
             "orta": {
               "min": 146.87,
-              "medyan": 398.01,
-              "max": 588.0,
-              "urun_sayisi": 26,
+              "medyan": 424.98,
+              "max": 759.38,
+              "urun_sayisi": 28,
               "kaynak_sayisi": 2
             },
             "luks": {
               "min": 486.33,
-              "medyan": 794.96,
-              "max": 1215.47,
-              "urun_sayisi": 12,
+              "medyan": 705.33,
+              "max": 877.5,
+              "urun_sayisi": 11,
               "kaynak_sayisi": 2
             }
           },
@@ -471,18 +438,18 @@
               "site": "petzzshop"
             },
             {
+              "isim": "Felicia Somonlu Yetişkin Kedi Maması - 5 Kg",
+              "fiyat": 1149.0,
+              "miktar": 5.0,
+              "birim_fiyat": 229.8,
+              "site": "petzzshop"
+            },
+            {
               "isim": "Felix Somonlu Kedi Yaş Maması Avantajlı Paket (48 x 85 gr) | Somon ve Ton Balıklı Islak Kedi Maması",
               "fiyat": 958.9,
               "miktar": 4.08,
               "birim_fiyat": 235.02,
               "site": "amazon"
-            },
-            {
-              "isim": "Exclusion Monoprotein Tavuklu ve Narlı Düşük Tahıllı Yetişkin Kedi Maması - 12 Kg",
-              "fiyat": 3732.9,
-              "miktar": 12.0,
-              "birim_fiyat": 311.07,
-              "site": "petzzshop"
             },
             {
               "isim": "Pro Plan Liveclear Somonlu Kısırlaştırılmış Kedi Maması 1.4 kg",
@@ -492,24 +459,17 @@
               "site": "amazon"
             },
             {
-              "isim": "Pro Plan Tavuklu Pirinçli Yavru Kedi Maması - 10 Kg",
-              "fiyat": 4351.25,
-              "miktar": 10.0,
-              "birim_fiyat": 435.12,
+              "isim": "Caviara Tavuklu Yetişkin Kedi Maması - 1,5 Kg",
+              "fiyat": 677.2,
+              "miktar": 1.5,
+              "birim_fiyat": 451.47,
               "site": "petzzshop"
             },
             {
-              "isim": "Pro Plan Somonlu Kuru Kedi Maması 3 kg",
-              "fiyat": 1410.0,
-              "miktar": 3.0,
-              "birim_fiyat": 470.0,
-              "site": "amazon"
-            },
-            {
-              "isim": "Pro Plan Tavuklu Pirinçli Yetişkin Kedi Maması - 3 Kg",
-              "fiyat": 1503.97,
-              "miktar": 3.0,
-              "birim_fiyat": 501.32,
+              "isim": "Caviara Kilo Kontrol Destekli Tavuklu Yetişkin Kedi Maması - 1,5 Kg",
+              "fiyat": 740.3,
+              "miktar": 1.5,
+              "birim_fiyat": 493.53,
               "site": "petzzshop"
             },
             {
@@ -520,21 +480,28 @@
               "site": "amazon"
             },
             {
-              "isim": "Hill's Science Plan Somonlu Yetişkin Kedi Maması - 1,5 Kg",
-              "fiyat": 1146.97,
-              "miktar": 1.5,
-              "birim_fiyat": 764.65,
+              "isim": "Pro Nutrition Protect Veterinary Urinary İdrar Yolu Sağlığı Destekleyici Kedi Maması - 8 Kg",
+              "fiyat": 5103.0,
+              "miktar": 8.0,
+              "birim_fiyat": 637.88,
               "site": "petzzshop"
             },
             {
-              "isim": "Platinum MeatCrisp Balıklı Yavru Kedi Maması - 3 Kg",
-              "fiyat": 3646.4,
-              "miktar": 3.0,
-              "birim_fiyat": 1215.47,
+              "isim": "Pro Nutrition Protect Veterinary Obesite Kilo Kontrolü İçin Kedi Maması - 2 Kg",
+              "fiyat": 1518.75,
+              "miktar": 2.0,
+              "birim_fiyat": 759.38,
+              "site": "petzzshop"
+            },
+            {
+              "isim": "Pro Nutrition Protect Veterinary Tüy ve Cilt Bakımı Kedi Maması - 2 Kg",
+              "fiyat": 1755.0,
+              "miktar": 2.0,
+              "birim_fiyat": 877.5,
               "site": "petzzshop"
             }
           ],
-          "eslesme_orani": 0.812
+          "eslesme_orani": 0.841
         }
       },
       "capraz_dogrulama_uyarisi": {
@@ -549,30 +516,30 @@
       "olcum_turu": "kalem_fiyati",
       "segmentler": {
         "dusuk": {
-          "min": 50,
-          "medyan": 84,
-          "max": 119,
-          "urun_sayisi": 17,
+          "min": 69,
+          "medyan": 275,
+          "max": 496,
+          "urun_sayisi": 16,
           "kaynak_sayisi": 2
         },
         "orta": {
-          "min": 90,
-          "medyan": 138,
-          "max": 214,
-          "urun_sayisi": 30,
+          "min": 120,
+          "medyan": 362,
+          "max": 588,
+          "urun_sayisi": 32,
           "kaynak_sayisi": 2
         },
         "luks": {
-          "min": 144,
-          "medyan": 290,
-          "max": 384,
-          "urun_sayisi": 14,
+          "min": 219,
+          "medyan": 464,
+          "max": 691,
+          "urun_sayisi": 13,
           "kaynak_sayisi": 2
         }
       },
-      "genel_medyan": 132,
+      "genel_medyan": 354,
       "toplam_urun": 61,
-      "guncelleme_tarihi": "2026-08-20",
+      "guncelleme_tarihi": "2026-09-05",
       "kaynak_sayisi": 2,
       "kaynaklar": [
         {
@@ -589,9 +556,71 @@
           "kaynak_adlari": [
             "petzzshop - Kedi Oyuncaklari"
           ],
-          "tarih": "2026-08-20",
+          "tarih": "2026-09-05",
           "toplam_urun": 22,
-          "genel_medyan": 106
+          "genel_medyan": 550,
+          "ornek_urunler": [
+            {
+              "isim": "Kong Zilli Tenis Topu Kedi Oyuncağı 3'lü - 1",
+              "fiyat": 380.72
+            },
+            {
+              "isim": "Kong Hareketli Tırtıl Peluş Kedi Oyuncağı - 1",
+              "fiyat": 415.46
+            },
+            {
+              "isim": "Kong Catnipli Ejderha Peluş Kedi Oyuncağı - 1",
+              "fiyat": 485.45
+            },
+            {
+              "isim": "Kong Flingaroo Yusufçuk Peluş Kedi Oyuncağı - 1",
+              "fiyat": 485.45
+            },
+            {
+              "isim": "Kong Catnipli Top Yumurta Peluş Kedi Oyuncağı 2'li - 1",
+              "fiyat": 509.59
+            },
+            {
+              "isim": "Kong Wrangler Catnipli Avokado Kedi Oyuncağı - 1",
+              "fiyat": 530.64
+            },
+            {
+              "isim": "Kong Catnipli Unicorn Peluş Kedi Oyuncağı - 1",
+              "fiyat": 545.01
+            },
+            {
+              "isim": "Kong Pencere Yapışkanlı Tüylü Kuş Kedi Oltası Oyuncağı - 1",
+              "fiyat": 545.01
+            },
+            {
+              "isim": "Kong Luvs Fare Peluş Kedi Oyuncağı - 1",
+              "fiyat": 555.28
+            },
+            {
+              "isim": "Kong Connects Magnicat Mıknatıslı Peluş Kedi Oyuncağı - 1",
+              "fiyat": 571.71
+            },
+            {
+              "isim": "Kong Teaser İpli Kelebek Kedi Oyuncağı - 1",
+              "fiyat": 581.98
+            },
+            {
+              "isim": "Kong Scrattles Panda ve Bambu Peluş Kedi Oyuncağı 2'li - 1",
+              "fiyat": 588.14
+            },
+            {
+              "isim": "Kong Teaser Loopz Kedi Olta Oyuncağı - 1",
+              "fiyat": 608.67
+            },
+            {
+              "isim": "Kong Naturals Catnipli Balık Kedi Oltası Oyuncağı - 1",
+              "fiyat": 635.03
+            },
+            {
+              "isim": "Kong Connects Tavus Kuşu Peluş Kedi Oyuncağı - 1",
+              "fiyat": 690.82
+            }
+          ]
         }
       ],
       "capraz_dogrulama_uyarisi": {
@@ -943,7 +972,7 @@
       },
       "genel_medyan": 1395,
       "toplam_urun": 64,
-      "guncelleme_tarihi": "2026-08-20",
+      "guncelleme_tarihi": "2026-09-05",
       "kaynak_sayisi": 2,
       "kaynaklar": [
         {
@@ -960,9 +989,71 @@
           "kaynak_adlari": [
             "petzzshop - Kedi Yataklari"
           ],
-          "tarih": "2026-08-20",
+          "tarih": "2026-09-05",
           "toplam_urun": 23,
-          "genel_medyan": 2400
+          "genel_medyan": 2400,
+          "ornek_urunler": [
+            {
+              "isim": "Afp Classic Comfort Kedi Mağarası Seti",
+              "fiyat": 1033.75
+            },
+            {
+              "isim": "Lepus Keops Piramit Kedi ve Köpek Yatağı",
+              "fiyat": 1950.0
+            },
+            {
+              "isim": "Lepus Trio Küp Yuva Küçük Irk Köpek ve Kedi Yatağı",
+              "fiyat": 1950.0
+            },
+            {
+              "isim": "Lepus Dolunay Asmalı Petek Kedi ve Küçük Irk Köpek Yatağı -",
+              "fiyat": 2250.0
+            },
+            {
+              "isim": "Lepus Gezegen Vantuzlu Cam Kedi ve Küçük Irk Köpek Yatağı - Beyaz",
+              "fiyat": 2250.0
+            },
+            {
+              "isim": "Lepus Olips Model Asmalı Petek Kedi ve Küçük Irk Köpek Yatağı -",
+              "fiyat": 2250.0
+            },
+            {
+              "isim": "Lepus Yay Asmalı Petek Kedi ve Küçük Irk Köpek Yatağı -",
+              "fiyat": 2250.0
+            },
+            {
+              "isim": "Lepus Kulak Asmalı Petek Kedi ve Küçük Irk Köpek Yatağı - Gri",
+              "fiyat": 2400.0
+            },
+            {
+              "isim": "Lepus Caramio Kedi ve Köpek Yatağı",
+              "fiyat": 2455.0
+            },
+            {
+              "isim": "Lepus Lifos Model Hasır Sepet Kedi ve Küçük Irk Köpek Yatağı - Kahverengi",
+              "fiyat": 2550.0
+            },
+            {
+              "isim": "Lepus Saksı Model Kedi ve Küçük Irk Köpek Yatağı - Gri",
+              "fiyat": 3000.0
+            },
+            {
+              "isim": "Lepus Galaxi Model Kedi Kedi ve Küçük Irk Köpek Yatağı -",
+              "fiyat": 3075.0
+            },
+            {
+              "isim": "Lepus Corner Seat Kedi ve Köpek Yatağı - Gri",
+              "fiyat": 3300.0
+            },
+            {
+              "isim": "Lepus Ranza Kedi ve Küçük Irk Köpek Yatağı - Kahverengi",
+              "fiyat": 3300.0
+            },
+            {
+              "isim": "Lepus Comfort Kedi ve Köpek Yatağı",
+              "fiyat": 3975.0
+            }
+          ]
         }
       ],
       "capraz_dogrulama_uyarisi": {
@@ -978,29 +1069,29 @@
       "segmentler": {
         "dusuk": {
           "min": 99,
-          "medyan": 154,
+          "medyan": 150,
           "max": 215,
           "urun_sayisi": 17,
           "kaynak_sayisi": 2
         },
         "orta": {
-          "min": 220,
-          "medyan": 356,
-          "max": 538,
+          "min": 174,
+          "medyan": 351,
+          "max": 486,
           "urun_sayisi": 33,
           "kaynak_sayisi": 2
         },
         "luks": {
           "min": 449,
-          "medyan": 600,
-          "max": 1352,
+          "medyan": 590,
+          "max": 718,
           "urun_sayisi": 12,
           "kaynak_sayisi": 2
         }
       },
-      "genel_medyan": 342,
+      "genel_medyan": 332,
       "toplam_urun": 62,
-      "guncelleme_tarihi": "2026-08-20",
+      "guncelleme_tarihi": "2026-09-05",
       "kaynak_sayisi": 2,
       "kaynaklar": [
         {
@@ -1017,9 +1108,71 @@
           "kaynak_adlari": [
             "petzzshop - Kedi Mama ve Su Kaplari"
           ],
-          "tarih": "2026-08-20",
+          "tarih": "2026-09-05",
           "toplam_urun": 20,
-          "genel_medyan": 363
+          "genel_medyan": 343,
+          "ornek_urunler": [
+            {
+              "isim": "Moderna Smart Plastik Kedi ve Köpek Mama ve Su Kabı - 210 Ml",
+              "fiyat": 105.32
+            },
+            {
+              "isim": "Flip Kedi ve Küçük Irk Köpek Figürlü Çelik Mama ve Su Kabı - 235 ml",
+              "fiyat": 117.57
+            },
+            {
+              "isim": "M-Pets Fresh Cover Plastik Konserve Kapağı",
+              "fiyat": 131.29
+            },
+            {
+              "isim": "Demirhan Desenli Kediler İçin Çelik Mama Kabı 12 cm",
+              "fiyat": 145.0
+            },
+            {
+              "isim": "Natura Kedi Köpek Mama Saklama Kabı 6 lt",
+              "fiyat": 173.61
+            },
+            {
+              "isim": "Şenyayla Hazneli Kedi ve Köpekler İçin Mama ve Su Kabı - Karışık Renk",
+              "fiyat": 260.0
+            },
+            {
+              "isim": "Demirhan Desenli Kediler İçin Çelik Mama Kabı 14 cm",
+              "fiyat": 296.15
+            },
+            {
+              "isim": "Ally Paws Single Üçgen Kedi ve Köpek Mama ve Su Kabı - 900 Ml",
+              "fiyat": 360.1
+            },
+            {
+              "isim": "Flip Kedi ve Köpekler İçin Paslanmaz Çelik İkili Mama ve Su Kabı 2x240ml - 240 ml",
+              "fiyat": 366.32
+            },
+            {
+              "isim": "Ally Paws Single İkili Kedi ve Köpek Mama ve Su Kabı 400Ml +320 Ml",
+              "fiyat": 377.44
+            },
+            {
+              "isim": "Ally Paws Single Kedi ve Köpek Mama ve Su Kabı",
+              "fiyat": 459.0
+            },
+            {
+              "isim": "İmac Ciottoli Kedi ve Köpek Plastik Mama ve Su Kabı - 1 Lt",
+              "fiyat": 486.3
+            },
+            {
+              "isim": "Afp Lifestyle 4 Pets Kedi ve Köpek Dış Mekan El Suluğu",
+              "fiyat": 537.52
+            },
+            {
+              "isim": "Ferplast Jolie Kedi ve Köpekler için Çelik Mama ve Su Kabı",
+              "fiyat": 681.91
+            },
+            {
+              "isim": "Moderna Kedi Desenli Kedi ve Küçük Irk Köpek için Plastik Su Kabı - Lacivert",
+              "fiyat": 718.32
+            }
+          ]
         }
       ],
       "capraz_dogrulama_uyarisi": null
@@ -1029,29 +1182,29 @@
       "segmentler": {
         "dusuk": {
           "min": 212,
-          "medyan": 1134,
-          "max": 2455,
-          "urun_sayisi": 19,
+          "medyan": 944,
+          "max": 1716,
+          "urun_sayisi": 17,
           "kaynak_sayisi": 2
         },
         "orta": {
           "min": 719,
-          "medyan": 2170,
-          "max": 3975,
-          "urun_sayisi": 33,
+          "medyan": 1974,
+          "max": 3718,
+          "urun_sayisi": 31,
           "kaynak_sayisi": 2
         },
         "luks": {
           "min": 1699,
-          "medyan": 3880,
-          "max": 9181,
-          "urun_sayisi": 12,
+          "medyan": 3458,
+          "max": 5662,
+          "urun_sayisi": 11,
           "kaynak_sayisi": 2
         }
       },
-      "genel_medyan": 2069,
-      "toplam_urun": 64,
-      "guncelleme_tarihi": "2026-08-20",
+      "genel_medyan": 1846,
+      "toplam_urun": 59,
+      "guncelleme_tarihi": "2026-09-05",
       "kaynak_sayisi": 2,
       "kaynaklar": [
         {
@@ -1068,9 +1221,55 @@
           "kaynak_adlari": [
             "petzzshop - Kedi Tasima Cantasi"
           ],
-          "tarih": "2026-08-20",
-          "toplam_urun": 16,
-          "genel_medyan": 3063
+          "tarih": "2026-09-05",
+          "toplam_urun": 11,
+          "genel_medyan": 2618,
+          "ornek_urunler": [
+            {
+              "isim": "Şenyayla Kedi Köpek Taşıma Çantası 49 Cm - 49 Cm",
+              "fiyat": 545.0
+            },
+            {
+              "isim": "M-Pets Eco Giro Carrier Kedi ve Küçük Irk Köpek Taşıma Çantası",
+              "fiyat": 1542.96
+            },
+            {
+              "isim": "Ferplast Atlas 20 Kedi ve Köpekler için Taşıma Çantası - Mavi",
+              "fiyat": 1716.2
+            },
+            {
+              "isim": "Mps  IATA Kedi ve Köpek Taşıma Çantası - Skudo-2",
+              "fiyat": 2122.23
+            },
+            {
+              "isim": "Lepus Mesh Bag Omuz Askılı Kedi ve Küçük Irk Taşıma Çantası",
+              "fiyat": 2455.0
+            },
+            {
+              "isim": "Lepus Cool Kedi ve Küçük Irk Köpek Taşıma Sırt Çantası",
+              "fiyat": 2618.0
+            },
+            {
+              "isim": "Mps IATA Üstü Açılabilen Kedi ve Küçük Irk Köpek Taşıma Çantası - 55x36x35 Cm",
+              "fiyat": 3079.57
+            },
+            {
+              "isim": "M-Pets Urban Style Freestyle Evcil Hayvan Aksesuar Taşıma Çantası - Karışık Renkli",
+              "fiyat": 3093.39
+            },
+            {
+              "isim": "Ferplast Trolley Tekerlekli Sırt Taşıma Çantası 32x28x51 cm",
+              "fiyat": 3718.5
+            },
+            {
+              "isim": "Lepus Wheel Bag Tekerlekli Kedi ve Köpek Taşıma Çantası",
+              "fiyat": 3975.0
+            },
+            {
+              "isim": "M-Pets Sixties Classic Kedi ve Küçük Irk Köpek Taşıma Çantası",
+              "fiyat": 5661.9
+            }
+          ]
         }
       ],
       "capraz_dogrulama_uyarisi": {

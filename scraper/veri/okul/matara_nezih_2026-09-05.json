@@ -1,0 +1,100 @@
+{
+  "site": "nezih",
+  "kaynak_adlari": [
+    "Nezih - Mataralar"
+  ],
+  "kalem": "matara",
+  "vertikal": "okul",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 100,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 100,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 1100,
+  "segmentler": {
+    "dusuk": {
+      "min": 150,
+      "medyan": 260,
+      "max": 470,
+      "urun_sayisi": 26
+    },
+    "orta": {
+      "min": 480,
+      "medyan": 1100,
+      "max": 1500,
+      "urun_sayisi": 53
+    },
+    "luks": {
+      "min": 1665,
+      "medyan": 1800,
+      "max": 2300,
+      "urun_sayisi": 21
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Dolphin Aluminyum Matara 500ml ALM G-50",
+      "fiyat": 149.9
+    },
+    {
+      "isim": "Gıpta Lıfe İs Good Tritan Matara 730Cc K750900",
+      "fiyat": 259.9
+    },
+    {
+      "isim": "Hakan Frozen Şeffaf Matara 97830",
+      "fiyat": 259.9
+    },
+    {
+      "isim": "Hakan Spiderman, Batman,Cars, Pj Mask Metal Matara 2019 97871",
+      "fiyat": 309.9
+    },
+    {
+      "isim": "Me Galatasaray Parçalı 500 Ml Plastik Matara 25571",
+      "fiyat": 479.9
+    },
+    {
+      "isim": "Beşiktaş Tritan Matara 25388",
+      "fiyat": 864.9
+    },
+    {
+      "isim": "Contigo Gizmo Flip Dino Tritan Çocuk Suluğu 420ml Yeşil 2115035",
+      "fiyat": 1049.9
+    },
+    {
+      "isim": "Minnie Çelik Matara Salto Iconıc 500Ml 42661",
+      "fiyat": 1099.9
+    },
+    {
+      "isim": "Contigo Ashland Autospout Tren Suluk 720ml Mor 2191382",
+      "fiyat": 1249.9
+    },
+    {
+      "isim": "Contigo Cortland Autoseal Tren Suluk 720ml Mor 2191389",
+      "fiyat": 1249.9
+    },
+    {
+      "isim": "Contigo Jackson Autopop Tritan Suluk 720ml Pembe 2156439",
+      "fiyat": 1249.9
+    },
+    {
+      "isim": "Contigo Huron Pro Snapseal Termos Bardak 470ml Latte 2205182",
+      "fiyat": 1499.9
+    },
+    {
+      "isim": "Contigo Streeterville Vakumlu Masa Termos Kupa 470ml Siyah 2208260",
+      "fiyat": 1749.9
+    },
+    {
+      "isim": "Globox Termos Matara Siyah 750ml 3974",
+      "fiyat": 1899.9
+    },
+    {
+      "isim": "Contigo Gizmo Flip Dragon Çelik 380Ml Pembe 2178083",
+      "fiyat": 2299.9
+    }
+  ]
+}

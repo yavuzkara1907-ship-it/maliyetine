@@ -1,6 +1,6 @@
 {
  "vertikal": "okul",
- "uretim_tarihi": "2026-08-22",
+ "uretim_tarihi": "2026-09-05",
  "metrik": {
   "alan": "genel_medyan",
   "ad": "Ölçülen ürünlerin ortanca fiyatı",
@@ -10,7 +10,8 @@
   "2026-07-26",
   "2026-08-02",
   "2026-08-05",
-  "2026-08-20"
+  "2026-08-20",
+  "2026-09-05"
  ],
  "kalemler": {
   "ayakkabi": {
@@ -106,6 +107,13 @@
      "urun": 82,
      "kaynak": 3,
      "veri_tarihi": "2026-08-20"
+    },
+    {
+     "tarih": "2026-09-05",
+     "medyan": 350,
+     "urun": 80,
+     "kaynak": 3,
+     "veri_tarihi": "2026-09-05"
     }
    ],
    "ilk": {
@@ -116,15 +124,15 @@
     "veri_tarihi": "2026-07-26"
    },
    "son": {
-    "tarih": "2026-08-20",
+    "tarih": "2026-09-05",
     "medyan": 350,
-    "urun": 82,
+    "urun": 80,
     "kaynak": 3,
-    "veri_tarihi": "2026-08-20"
+    "veri_tarihi": "2026-09-05"
    },
    "degisim_yuzde": 17.1,
-   "gun_araligi": 25,
-   "aylik_degisim_yuzde": 2.9
+   "gun_araligi": 41,
+   "aylik_degisim_yuzde": 0.0
   },
   "calisma-masasi": {
    "seri": [
@@ -236,6 +244,13 @@
      "urun": 181,
      "kaynak": 4,
      "veri_tarihi": "2026-08-20"
+    },
+    {
+     "tarih": "2026-09-05",
+     "medyan": 263,
+     "urun": 179,
+     "kaynak": 4,
+     "veri_tarihi": "2026-09-05"
     }
    ],
    "ilk": {
@@ -246,15 +261,15 @@
     "veri_tarihi": "2026-07-26"
    },
    "son": {
-    "tarih": "2026-08-20",
-    "medyan": 270,
-    "urun": 181,
+    "tarih": "2026-09-05",
+    "medyan": 263,
+    "urun": 179,
     "kaynak": 4,
-    "veri_tarihi": "2026-08-20"
+    "veri_tarihi": "2026-09-05"
    },
-   "degisim_yuzde": 26.2,
-   "gun_araligi": 25,
-   "aylik_degisim_yuzde": 0.0
+   "degisim_yuzde": 22.9,
+   "gun_araligi": 41,
+   "aylik_degisim_yuzde": -2.6
   },
   "ders-kitabi": {
    "seri": [
@@ -317,6 +332,13 @@
      "urun": 166,
      "kaynak": 3,
      "veri_tarihi": "2026-08-20"
+    },
+    {
+     "tarih": "2026-09-05",
+     "medyan": 450,
+     "urun": 166,
+     "kaynak": 3,
+     "veri_tarihi": "2026-09-05"
     }
    ],
    "ilk": {
@@ -327,15 +349,15 @@
     "veri_tarihi": "2026-07-26"
    },
    "son": {
-    "tarih": "2026-08-20",
-    "medyan": 540,
+    "tarih": "2026-09-05",
+    "medyan": 450,
     "urun": 166,
     "kaynak": 3,
-    "veri_tarihi": "2026-08-20"
+    "veri_tarihi": "2026-09-05"
    },
-   "degisim_yuzde": 18.9,
-   "gun_araligi": 25,
-   "aylik_degisim_yuzde": -10.0
+   "degisim_yuzde": -0.9,
+   "gun_araligi": 41,
+   "aylik_degisim_yuzde": -16.7
   },
   "kalem": {
    "seri": [
@@ -407,6 +429,13 @@
      "urun": 169,
      "kaynak": 3,
      "veri_tarihi": "2026-08-20"
+    },
+    {
+     "tarih": "2026-09-05",
+     "medyan": 890,
+     "urun": 173,
+     "kaynak": 3,
+     "veri_tarihi": "2026-09-05"
     }
    ],
    "ilk": {
@@ -417,15 +446,15 @@
     "veri_tarihi": "2026-07-26"
    },
    "son": {
-    "tarih": "2026-08-20",
-    "medyan": 735,
-    "urun": 169,
+    "tarih": "2026-09-05",
+    "medyan": 890,
+    "urun": 173,
     "kaynak": 3,
-    "veri_tarihi": "2026-08-20"
+    "veri_tarihi": "2026-09-05"
    },
-   "degisim_yuzde": 267.5,
-   "gun_araligi": 25,
-   "aylik_degisim_yuzde": 0.0
+   "degisim_yuzde": 345.0,
+   "gun_araligi": 41,
+   "aylik_degisim_yuzde": 21.1
   },
   "okul-cantasi": {
    "seri": [
@@ -456,6 +485,13 @@
      "urun": 172,
      "kaynak": 3,
      "veri_tarihi": "2026-08-20"
+    },
+    {
+     "tarih": "2026-09-05",
+     "medyan": 1442,
+     "urun": 171,
+     "kaynak": 3,
+     "veri_tarihi": "2026-09-05"
     }
    ],
    "ilk": {
@@ -466,14 +502,14 @@
     "veri_tarihi": "2026-07-26"
    },
    "son": {
-    "tarih": "2026-08-20",
+    "tarih": "2026-09-05",
     "medyan": 1442,
-    "urun": 172,
+    "urun": 171,
     "kaynak": 3,
-    "veri_tarihi": "2026-08-20"
+    "veri_tarihi": "2026-09-05"
    },
    "degisim_yuzde": 5.5,
-   "gun_araligi": 25,
+   "gun_araligi": 41,
    "aylik_degisim_yuzde": 0.0
   },
   "resim-malzemeleri": {
@@ -593,9 +629,9 @@
  "ozet": {
   "kalem_sayisi": 14,
   "karsilastirilabilir": 8,
-  "artan": 5,
-  "azalan": 3,
+  "artan": 4,
+  "azalan": 4,
   "sabit": 0,
-  "medyan_degisim_yuzde": 11.3
+  "medyan_degisim_yuzde": 2.3
  }
 }

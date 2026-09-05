@@ -1,0 +1,179 @@
+{
+  "site": "petzzshop",
+  "kaynak_adlari": [
+    "petzzshop - Kedi Mamasi"
+  ],
+  "kalem": "kedi-mamasi",
+  "vertikal": "kedi",
+  "olcum_turu": "paket_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 24,
+  "aykiri_urun_sayisi": 1,
+  "toplam_urun": 23,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 1497,
+  "segmentler": {
+    "dusuk": {
+      "min": 270,
+      "medyan": 581,
+      "max": 677,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 740,
+      "medyan": 1508,
+      "max": 2671,
+      "urun_sayisi": 12
+    },
+    "luks": {
+      "min": 3007,
+      "medyan": 4800,
+      "max": 5900,
+      "urun_sayisi": 5
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Royal Canin Sterilised Yetişkin Kısırlaştırılmış Kedi Maması",
+      "fiyat": 269.79
+    },
+    {
+      "isim": "Lavital Sterilised Kuzu Etli Kısırlaştırılmış Kedi Maması - 1.5 Kg",
+      "fiyat": 497.88
+    },
+    {
+      "isim": "Felicia Tavuklu Kısırlaştırılmış Kedi Maması - 2 Kg",
+      "fiyat": 664.65
+    },
+    {
+      "isim": "Caviara Tavuklu Yetişkin Kedi Maması - 1,5 Kg",
+      "fiyat": 677.2
+    },
+    {
+      "isim": "Caviara Kilo Kontrol Destekli Tavuklu Yetişkin Kedi Maması - 1,5 Kg",
+      "fiyat": 740.3
+    },
+    {
+      "isim": "Felicia Somonlu Yetişkin Kedi Maması - 5 Kg",
+      "fiyat": 1149.0
+    },
+    {
+      "isim": "Royal Canin Fit 32 Yetişkin Kedi Maması",
+      "fiyat": 1202.06
+    },
+    {
+      "isim": "Royal Canin British Shorthair Adult Yetişkin Kedi Maması",
+      "fiyat": 1496.68
+    },
+    {
+      "isim": "Pro Nutrition Protect Veterinary Obesite Kilo Kontrolü İçin Kedi Maması - 2 Kg",
+      "fiyat": 1518.75
+    },
+    {
+      "isim": "Pro Nutrition Protect Veterinary Care 8+ Böbrek Yetmezliği Olan Kediler İçin Kedi Maması - 2 Kg",
+      "fiyat": 1579.5
+    },
+    {
+      "isim": "Lavital Sensitive Somonlu Yetişkin Kedi Maması - 12 Kg",
+      "fiyat": 2527.45
+    },
+    {
+      "isim": "Lavital Kitten Somonlu Yavru Kedi Maması - 12 Kg",
+      "fiyat": 2670.58
+    },
+    {
+      "isim": "Hills Young Sterilised Tavuklu Kısırlaştırılmış Kedi Maması",
+      "fiyat": 4798.0
+    },
+    {
+      "isim": "Advance Sensitive Somonlu Hassas Kısırlaştırılmış Kedi Maması - 10 Kg",
+      "fiyat": 4800.0
+    },
+    {
+      "isim": "Pro Plan Sterilised Somonlu Kısırlaştırılmış Kedi Maması",
+      "fiyat": 5900.0
+    }
+  ],
+  "birim_fiyatlari": {
+    "kg": {
+      "etiket": "TL/kg",
+      "genel_medyan": 480.0,
+      "eslesen_urun": 15,
+      "toplam_urun": 23,
+      "eslesme_orani": 0.652,
+      "segmentler": {
+        "dusuk": {
+          "min": 210.62,
+          "medyan": 226.18,
+          "max": 331.92,
+          "urun_sayisi": 4
+        },
+        "orta": {
+          "min": 332.32,
+          "medyan": 493.53,
+          "max": 759.38,
+          "urun_sayisi": 9
+        },
+        "luks": {
+          "min": 789.75,
+          "medyan": 833.62,
+          "max": 877.5,
+          "urun_sayisi": 2
+        }
+      },
+      "ornek_urunler": [
+        {
+          "isim": "Lavital Sensitive Somonlu Yetişkin Kedi Maması - 12 Kg",
+          "fiyat": 2527.45,
+          "miktar": 12.0,
+          "birim_fiyat": 210.62
+        },
+        {
+          "isim": "Felicia Somonlu Yetişkin Kedi Maması - 5 Kg",
+          "fiyat": 1149.0,
+          "miktar": 5.0,
+          "birim_fiyat": 229.8
+        },
+        {
+          "isim": "Felicia Tavuklu Kısırlaştırılmış Kedi Maması - 2 Kg",
+          "fiyat": 664.65,
+          "miktar": 2.0,
+          "birim_fiyat": 332.32
+        },
+        {
+          "isim": "Caviara Tavuklu Yetişkin Kedi Maması - 1,5 Kg",
+          "fiyat": 677.2,
+          "miktar": 1.5,
+          "birim_fiyat": 451.47
+        },
+        {
+          "isim": "Caviara Kilo Kontrol Destekli Tavuklu Yetişkin Kedi Maması - 1,5 Kg",
+          "fiyat": 740.3,
+          "miktar": 1.5,
+          "birim_fiyat": 493.53
+        },
+        {
+          "isim": "Pro Nutrition Protect Veterinary Urinary İdrar Yolu Sağlığı Destekleyici Kedi Maması - 8 Kg",
+          "fiyat": 5103.0,
+          "miktar": 8.0,
+          "birim_fiyat": 637.88
+        },
+        {
+          "isim": "Pro Nutrition Protect Veterinary Obesite Kilo Kontrolü İçin Kedi Maması - 2 Kg",
+          "fiyat": 1518.75,
+          "miktar": 2.0,
+          "birim_fiyat": 759.38
+        },
+        {
+          "isim": "Pro Nutrition Protect Veterinary Tüy ve Cilt Bakımı Kedi Maması - 2 Kg",
+          "fiyat": 1755.0,
+          "miktar": 2.0,
+          "birim_fiyat": 877.5
+        }
+      ]
+    }
+  }
+}

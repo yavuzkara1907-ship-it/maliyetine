@@ -1,0 +1,100 @@
+{
+  "site": "joker",
+  "kaynak_adlari": [
+    "Joker - Bebek Oto Koltugu"
+  ],
+  "kalem": "oto-koltugu",
+  "vertikal": "bebek",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 32,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 32,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 33742,
+  "segmentler": {
+    "dusuk": {
+      "min": 7495,
+      "medyan": 22492,
+      "max": 22493,
+      "urun_sayisi": 13
+    },
+    "orta": {
+      "min": 24990,
+      "medyan": 33742,
+      "max": 33742,
+      "urun_sayisi": 16
+    },
+    "luks": {
+      "min": 33743,
+      "medyan": 33743,
+      "max": 44990,
+      "urun_sayisi": 3
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Inglesina Huggy Gr 0 Ana Kucağı & Oto Koltuğu - Santorini",
+      "fiyat": 7495.0
+    },
+    {
+      "isim": "Inglesina Darwin Infant i-Size Gr 0+ Bebek Ana Kucağı ve Oto Koltuğu 40-75 cm - Battery Beige",
+      "fiyat": 22492.5
+    },
+    {
+      "isim": "Inglesina Darwin Infant i-Size Gr 0+ Bebek Ana Kucağı ve Oto Koltuğu 40-75 cm - Murray Green",
+      "fiyat": 22492.5
+    },
+    {
+      "isim": "Inglesina Darwin Infant i-Size Gr 0+ Bebek Ana Kucağı ve Oto Koltuğu 40-75 cm - Opal Ivory",
+      "fiyat": 22492.5
+    },
+    {
+      "isim": "Inglesina Darwin Infant i-Size Gr 0+ Bebek Ana Kucağı ve Oto Koltuğu 40-75 cm - Hangar Beige",
+      "fiyat": 22493.0
+    },
+    {
+      "isim": "Inglesina Darwin Infant i-Size Gr 0+ Bebek Ana Kucağı ve Oto Koltuğu 40-75 cm - Rooftop Blue",
+      "fiyat": 22493.0
+    },
+    {
+      "isim": "Inglesina Darwin Infant i-Size Gr 0+ Bebek Ana Kucağı ve Oto Koltuğu 40-75 cm - Magnet Grey YENİ",
+      "fiyat": 24990.0
+    },
+    {
+      "isim": "Inglesina Darwin Infant Recline Evo i-Size Gr 0+ Yatırılabilen Bebek Ana Kucağı ve Oto Koltuğu 40-87 cm - Sapphire Blue",
+      "fiyat": 33742.0
+    },
+    {
+      "isim": "Inglesina Darwin Infant Recline i-Size Gr 0+ Yatırılabilen Bebek Ana Kucağı ve Oto Koltuğu 40-75 cm - Battery Beige",
+      "fiyat": 33742.5
+    },
+    {
+      "isim": "Inglesina Darwin Infant Recline i-Size Gr 0+ Yatırılabilen Bebek Ana Kucağı ve Oto Koltuğu 40-75 cm - Emerald Green",
+      "fiyat": 33742.5
+    },
+    {
+      "isim": "Inglesina Darwin Infant Recline i-Size Gr 0+ Yatırılabilen Bebek Ana Kucağı ve Oto Koltuğu 40-75 cm - Pashmina Beige",
+      "fiyat": 33742.5
+    },
+    {
+      "isim": "Inglesina Darwin Infant Recline i-Size Gr 0+ Yatırılabilen Bebek Ana Kucağı ve Oto Koltuğu 40-75 cm - Soho Blue",
+      "fiyat": 33742.5
+    },
+    {
+      "isim": "Inglesina Darwin Infant Recline i-Size Gr 0+ Yatırılabilen Bebek Ana Kucağı ve Oto Koltuğu 40-75 cm - Upper Black",
+      "fiyat": 33742.5
+    },
+    {
+      "isim": "Inglesina Darwin Infant Recline Evo i-Size Gr 0+ Yatırılabilen Bebek Ana Kucağı ve Oto Koltuğu 40-87 cm - Ivy Green",
+      "fiyat": 33743.0
+    },
+    {
+      "isim": "Inglesina Darwin Infant Recline i-Size Gr 0+ Yatırılabilen Bebek Ana Kucağı ve Oto Koltuğu 40-75 cm - Tundra Beige",
+      "fiyat": 44990.0
+    }
+  ]
+}

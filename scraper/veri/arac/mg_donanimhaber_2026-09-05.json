@@ -1,0 +1,192 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - MG"
+  ],
+  "kalem": "mg",
+  "vertikal": "arac",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 5,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 5,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 3265000,
+  "segmentler": {
+    "dusuk": {
+      "min": 2655000,
+      "medyan": 2676000,
+      "max": 2697000,
+      "urun_sayisi": 2
+    },
+    "orta": {
+      "min": 3265000,
+      "medyan": 3282500,
+      "max": 3300000,
+      "urun_sayisi": 2
+    },
+    "luks": {
+      "min": 3480000,
+      "medyan": 3480000,
+      "max": 3480000,
+      "urun_sayisi": 1
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "MG ZS Hybrid+ Luxury Cam Tavanlı",
+      "fiyat": 2655000.0
+    },
+    {
+      "isim": "MG HS Luxury",
+      "fiyat": 2697000.0
+    },
+    {
+      "isim": "MG HS Hybrid+ Luxury",
+      "fiyat": 3265000.0
+    },
+    {
+      "isim": "MG7 Excellence Benzin",
+      "fiyat": 3300000.0
+    },
+    {
+      "isim": "MG7 Excellence Red Edition Benzin",
+      "fiyat": 3480000.0
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 5,
+    "ozellik_eslesen_urun": 5,
+    "modeller": {
+      "hs": {
+        "ad": "HS",
+        "genel_medyan": 2981000,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 2697000.0,
+            "medyan": 2697000.0,
+            "max": 2697000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 3265000.0,
+            "medyan": 3265000.0,
+            "max": 3265000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "MG HS Luxury",
+            "fiyat": 2697000.0
+          },
+          {
+            "isim": "MG HS Hybrid+ Luxury",
+            "fiyat": 3265000.0
+          }
+        ]
+      },
+      "mg7": {
+        "ad": "MG7",
+        "genel_medyan": 3390000,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 3300000.0,
+            "medyan": 3300000.0,
+            "max": 3300000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 3480000.0,
+            "medyan": 3480000.0,
+            "max": 3480000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "MG7 Excellence Benzin",
+            "fiyat": 3300000.0
+          },
+          {
+            "isim": "MG7 Excellence Red Edition Benzin",
+            "fiyat": 3480000.0
+          }
+        ]
+      },
+      "zs": {
+        "ad": "ZS",
+        "genel_medyan": 2655000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 2655000.0,
+            "medyan": 2655000.0,
+            "max": 2655000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2655000.0,
+            "medyan": 2655000.0,
+            "max": 2655000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 2655000.0,
+            "medyan": 2655000.0,
+            "max": 2655000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "MG ZS Hybrid+ Luxury Cam Tavanlı",
+            "fiyat": 2655000.0
+          }
+        ]
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "MG ZS Hybrid+ Luxury Cam Tavanlı",
+        "fiyat": 2655000.0,
+        "nitelikler": {
+          "model": "ZS"
+        }
+      },
+      {
+        "isim": "MG HS Hybrid+ Luxury",
+        "fiyat": 3265000.0,
+        "nitelikler": {
+          "model": "HS"
+        }
+      },
+      {
+        "isim": "MG HS Luxury",
+        "fiyat": 2697000.0,
+        "nitelikler": {
+          "model": "HS"
+        }
+      },
+      {
+        "isim": "MG7 Excellence Benzin",
+        "fiyat": 3300000.0,
+        "nitelikler": {
+          "model": "MG7"
+        }
+      },
+      {
+        "isim": "MG7 Excellence Red Edition Benzin",
+        "fiyat": 3480000.0,
+        "nitelikler": {
+          "model": "MG7"
+        }
+      }
+    ]
+  }
+}

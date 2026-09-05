@@ -1,0 +1,100 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Avize   Aydınlatma"
+  ],
+  "kalem": "aydinlatma",
+  "vertikal": "ev-kurma",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 47,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 47,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 1575,
+  "segmentler": {
+    "dusuk": {
+      "min": 425,
+      "medyan": 852,
+      "max": 950,
+      "urun_sayisi": 12
+    },
+    "orta": {
+      "min": 989,
+      "medyan": 1587,
+      "max": 2699,
+      "urun_sayisi": 24
+    },
+    "luks": {
+      "min": 2699,
+      "medyan": 3134,
+      "max": 3799,
+      "urun_sayisi": 11
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "AG LightDesign Beyaz Sarkıt Avize Yatak Odası Salon Mutfak Koridor Lamba 22 AGnm44",
+      "fiyat": 425.0
+    },
+    {
+      "isim": "AG LightDesign Bal Rengi Sarkıt Avize Yatak Odası Salon Mutfak Koridor Lamba 22 AGnm29",
+      "fiyat": 579.9
+    },
+    {
+      "isim": "Pentagone Handmade Eskitme Avize | Vintage & Modern Tasarım | 30×60 cm | 20–34 cm Ayarlanabilir Yükseklik | E27 Duy Uyumlu | Dayanıklı Plastik Gövde | Kolay Temizlenebilir | HMY Handmade",
+      "fiyat": 854.05
+    },
+    {
+      "isim": "Beton Görünümlü Siyah Renk Plafonyer Avize E27 Duylu Tavana Sıfır Modern Tavan Lambası",
+      "fiyat": 949.0
+    },
+    {
+      "isim": "LEGACY Duru Modern Tasarım Beyaz Renk Salon Mutfak Hol Beyaz Led 2 Li Avize Beyaz 55 x 35",
+      "fiyat": 1029.8
+    },
+    {
+      "isim": "Livora Handmade Karbon Beton Avize | Salon Avize Modelleri | E27 Tekli Sarkıt | Modern & Minimal Tasarım",
+      "fiyat": 1282.47
+    },
+    {
+      "isim": "3 Renkli Krom Kaos LED Avize – Modern Sarkıt Lamba, Ayarlanabilir Yükseklik, 30x70 cm, Uzun Ömürlü Enerji Tasarruflu Aydınlatma, Salon, Oturma ve Yatak Odası için Uygun",
+      "fiyat": 1499.0
+    },
+    {
+      "isim": "Sole Modern Tasarım Salon - Mutfak - Hol Beyaz Led 3 Lü Avize (Beyaz)",
+      "fiyat": 1575.1
+    },
+    {
+      "isim": "Vanella Handmade Tekli Sarkıt Avize | Salon Avize Modelleri | E27 | Modern & Minimal Tasarım",
+      "fiyat": 1614.05
+    },
+    {
+      "isim": "Dolunay 3’lü Avize Modern Sarkıt Bohem Beyaz Yuvarlak Salon Mutfak Yemek Masası Aydınlatma",
+      "fiyat": 1962.25
+    },
+    {
+      "isim": "Handmade Modern Karbon Beton Avize | E27 Uyumlu | Ayarlanabilir Yükseklik | Minimal İç Mekân Aydınlatması – ARIVIENNE",
+      "fiyat": 2374.05
+    },
+    {
+      "isim": "Lucea Zerf Q350 Tekli Siyah Avize",
+      "fiyat": 2699.4
+    },
+    {
+      "isim": "Sedra Handmade Karbon Beton Avize | Salon Avize Modelleri | E27 3’lü Sarkıt | Modern Tasarım:",
+      "fiyat": 3039.05
+    },
+    {
+      "isim": "Lzy Avize Store Kristal 3'lü Halka Avize, Modern Tasarım, Salon, Yemek Masası ve Mutfak için LED Tavan Aydınlatması",
+      "fiyat": 3599.0
+    },
+    {
+      "isim": "Modern Çift Yuvarlak Plafonyer Kumandalı Led Tavan Avize",
+      "fiyat": 3799.0
+    }
+  ]
+}

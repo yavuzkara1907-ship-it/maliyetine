@@ -1,0 +1,1126 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Mercedes"
+  ],
+  "kalem": "mercedes",
+  "vertikal": "arac",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 49,
+  "aykiri_urun_sayisi": 3,
+  "toplam_urun": 46,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 9898250,
+  "segmentler": {
+    "dusuk": {
+      "min": 3320000,
+      "medyan": 5007250,
+      "max": 6978500,
+      "urun_sayisi": 12
+    },
+    "orta": {
+      "min": 7058000,
+      "medyan": 10108500,
+      "max": 15715000,
+      "urun_sayisi": 23
+    },
+    "luks": {
+      "min": 17175000,
+      "medyan": 23546000,
+      "max": 31361000,
+      "urun_sayisi": 11
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "A200 AMG",
+      "fiyat": 3320000.0
+    },
+    {
+      "isim": "Mercedes CLA 200+ AMG",
+      "fiyat": 4318500.0
+    },
+    {
+      "isim": "EQA 250+ Night Edition",
+      "fiyat": 4477000.0
+    },
+    {
+      "isim": "Mercedes GLB 200+ AMG",
+      "fiyat": 4524000.0
+    },
+    {
+      "isim": "GLA 200 AMG",
+      "fiyat": 4760000.0
+    },
+    {
+      "isim": "Mercedes CLA 220 4MATIC AMG",
+      "fiyat": 4873000.0
+    },
+    {
+      "isim": "Mercedes GLB 220 4MATIC AMG",
+      "fiyat": 5141500.0
+    },
+    {
+      "isim": "Yeni GLC 200 AMG",
+      "fiyat": 5720000.0
+    },
+    {
+      "isim": "EQE 280 AMG",
+      "fiyat": 6108500.0
+    },
+    {
+      "isim": "C 200 4MATIC AMG",
+      "fiyat": 6485000.0
+    },
+    {
+      "isim": "Yeni GLC 400 4MATIC AMG",
+      "fiyat": 6850000.0
+    },
+    {
+      "isim": "EQE 350 4MATIC AMG",
+      "fiyat": 6978500.0
+    },
+    {
+      "isim": "AMG A 45 S 4MATIC+",
+      "fiyat": 7058000.0
+    },
+    {
+      "isim": "Yeni GLC 400 4MATIC Edition 1 AMG",
+      "fiyat": 7159000.0
+    },
+    {
+      "isim": "GLC 180 AMG",
+      "fiyat": 7169000.0
+    },
+    {
+      "isim": "C 200 4MATIC 140th Year Edition",
+      "fiyat": 7278500.0
+    },
+    {
+      "isim": "GLC 180 Coupe AMG",
+      "fiyat": 7561000.0
+    },
+    {
+      "isim": "E 180 Exclusive",
+      "fiyat": 8601500.0
+    },
+    {
+      "isim": "Mercedes-AMG C 43 4MATIC Performance",
+      "fiyat": 8620000.0
+    },
+    {
+      "isim": "CLE 300 4MATIC Coupe AMG",
+      "fiyat": 8641000.0
+    },
+    {
+      "isim": "E 180 AMG",
+      "fiyat": 8668500.0
+    },
+    {
+      "isim": "GLC 300 d 4MATIC AMG",
+      "fiyat": 9241000.0
+    },
+    {
+      "isim": "Yeni CLE 300 4MATIC Cabriolet AMG",
+      "fiyat": 9688000.0
+    },
+    {
+      "isim": "EQS 450 4MATIC Inspiration",
+      "fiyat": 10108500.0
+    },
+    {
+      "isim": "GLC 43 4MATIC Performance",
+      "fiyat": 10526000.0
+    },
+    {
+      "isim": "GLC 43 4MATIC Coupe Performance",
+      "fiyat": 10672000.0
+    },
+    {
+      "isim": "E 220 d 4MATIC Exclusive",
+      "fiyat": 11367500.0
+    },
+    {
+      "isim": "E 220 d 4MATIC AMG",
+      "fiyat": 11450500.0
+    },
+    {
+      "isim": "Mercedes-AMG C 63 S E Performance",
+      "fiyat": 13357000.0
+    },
+    {
+      "isim": "GLE 300 d 4MATIC AMG",
+      "fiyat": 13869000.0
+    },
+    {
+      "isim": "CLE 53 4MATIC+Performance",
+      "fiyat": 14103000.0
+    },
+    {
+      "isim": "GLE 300 d 4MATIC Coupe AMG",
+      "fiyat": 14358000.0
+    },
+    {
+      "isim": "GLC 63 S E-PERFORMANCE",
+      "fiyat": 15135000.0
+    },
+    {
+      "isim": "GLC 63 S E-PERFORMANCE Coupe",
+      "fiyat": 15295000.0
+    },
+    {
+      "isim": "G 580 Heritage",
+      "fiyat": 15715000.0
+    },
+    {
+      "isim": "AMG GT 43 Performance",
+      "fiyat": 17175000.0
+    },
+    {
+      "isim": "AMG SL 43 Performance",
+      "fiyat": 17276000.0
+    },
+    {
+      "isim": "AMG E 53 Hybrid 4MATIC Performance",
+      "fiyat": 20839000.0
+    },
+    {
+      "isim": "GLS 450 d 4MATIC AMG",
+      "fiyat": 21954000.0
+    },
+    {
+      "isim": "G 450 d Heritage",
+      "fiyat": 22678000.0
+    },
+    {
+      "isim": "S 450 d 4MATIC L Inspiration",
+      "fiyat": 23546000.0
+    },
+    {
+      "isim": "S 500 4MATIC L Inspiration",
+      "fiyat": 24061000.0
+    },
+    {
+      "isim": "G 500 Heritage",
+      "fiyat": 24139000.0
+    },
+    {
+      "isim": "AMG SL 63 4MATIC+ Performance",
+      "fiyat": 28655000.0
+    },
+    {
+      "isim": "AMG GT 63 4MATIC+ Performance",
+      "fiyat": 29499000.0
+    },
+    {
+      "isim": "G 63 Performance",
+      "fiyat": 31361000.0
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 46,
+    "ozellik_eslesen_urun": 45,
+    "modeller": {
+      "a-serisi": {
+        "ad": "A-Serisi",
+        "genel_medyan": 5189000,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 3320000.0,
+            "medyan": 3320000.0,
+            "max": 3320000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 7058000.0,
+            "medyan": 7058000.0,
+            "max": 7058000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "A200 AMG",
+            "fiyat": 3320000.0
+          },
+          {
+            "isim": "AMG A 45 S 4MATIC+",
+            "fiyat": 7058000.0
+          }
+        ]
+      },
+      "amg-gt": {
+        "ad": "AMG GT",
+        "genel_medyan": 23337000,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 17175000.0,
+            "medyan": 17175000.0,
+            "max": 17175000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 29499000.0,
+            "medyan": 29499000.0,
+            "max": 29499000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "AMG GT 43 Performance",
+            "fiyat": 17175000.0
+          },
+          {
+            "isim": "AMG GT 63 4MATIC+ Performance",
+            "fiyat": 29499000.0
+          }
+        ]
+      },
+      "amg-sl": {
+        "ad": "AMG SL",
+        "genel_medyan": 22965500,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 17276000.0,
+            "medyan": 17276000.0,
+            "max": 17276000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 28655000.0,
+            "medyan": 28655000.0,
+            "max": 28655000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "AMG SL 43 Performance",
+            "fiyat": 17276000.0
+          },
+          {
+            "isim": "AMG SL 63 4MATIC+ Performance",
+            "fiyat": 28655000.0
+          }
+        ]
+      },
+      "c-serisi": {
+        "ad": "C-Serisi",
+        "genel_medyan": 7949250,
+        "urun_sayisi": 4,
+        "segmentler": {
+          "dusuk": {
+            "min": 6485000.0,
+            "medyan": 6881750.0,
+            "max": 7278500.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 8620000.0,
+            "medyan": 10988500.0,
+            "max": 13357000.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "C 200 4MATIC AMG",
+            "fiyat": 6485000.0
+          },
+          {
+            "isim": "C 200 4MATIC 140th Year Edition",
+            "fiyat": 7278500.0
+          },
+          {
+            "isim": "Mercedes-AMG C 43 4MATIC Performance",
+            "fiyat": 8620000.0
+          },
+          {
+            "isim": "Mercedes-AMG C 63 S E Performance",
+            "fiyat": 13357000.0
+          }
+        ]
+      },
+      "cla": {
+        "ad": "CLA",
+        "genel_medyan": 4595750,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 4318500.0,
+            "medyan": 4318500.0,
+            "max": 4318500.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 4873000.0,
+            "medyan": 4873000.0,
+            "max": 4873000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Mercedes CLA 200+ AMG",
+            "fiyat": 4318500.0
+          },
+          {
+            "isim": "Mercedes CLA 220 4MATIC AMG",
+            "fiyat": 4873000.0
+          }
+        ]
+      },
+      "cle": {
+        "ad": "CLE",
+        "genel_medyan": 9688000,
+        "urun_sayisi": 3,
+        "segmentler": {
+          "dusuk": {
+            "min": 8641000.0,
+            "medyan": 8641000.0,
+            "max": 8641000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 9688000.0,
+            "medyan": 11895500.0,
+            "max": 14103000.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "CLE 300 4MATIC Coupe AMG",
+            "fiyat": 8641000.0
+          },
+          {
+            "isim": "Yeni CLE 300 4MATIC Cabriolet AMG",
+            "fiyat": 9688000.0
+          },
+          {
+            "isim": "CLE 53 4MATIC+Performance",
+            "fiyat": 14103000.0
+          }
+        ]
+      },
+      "e-serisi": {
+        "ad": "E-Serisi",
+        "genel_medyan": 11367500,
+        "urun_sayisi": 5,
+        "segmentler": {
+          "dusuk": {
+            "min": 8601500.0,
+            "medyan": 8635000.0,
+            "max": 8668500.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 11367500.0,
+            "medyan": 11409000.0,
+            "max": 11450500.0,
+            "urun_sayisi": 2
+          },
+          "luks": {
+            "min": 20839000.0,
+            "medyan": 20839000.0,
+            "max": 20839000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "E 180 Exclusive",
+            "fiyat": 8601500.0
+          },
+          {
+            "isim": "E 180 AMG",
+            "fiyat": 8668500.0
+          },
+          {
+            "isim": "E 220 d 4MATIC Exclusive",
+            "fiyat": 11367500.0
+          },
+          {
+            "isim": "E 220 d 4MATIC AMG",
+            "fiyat": 11450500.0
+          },
+          {
+            "isim": "AMG E 53 Hybrid 4MATIC Performance",
+            "fiyat": 20839000.0
+          }
+        ]
+      },
+      "eqa": {
+        "ad": "EQA",
+        "genel_medyan": 4477000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 4477000.0,
+            "medyan": 4477000.0,
+            "max": 4477000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 4477000.0,
+            "medyan": 4477000.0,
+            "max": 4477000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 4477000.0,
+            "medyan": 4477000.0,
+            "max": 4477000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "EQA 250+ Night Edition",
+            "fiyat": 4477000.0
+          }
+        ]
+      },
+      "eqe": {
+        "ad": "EQE",
+        "genel_medyan": 6543500,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 6108500.0,
+            "medyan": 6108500.0,
+            "max": 6108500.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 6978500.0,
+            "medyan": 6978500.0,
+            "max": 6978500.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "EQE 280 AMG",
+            "fiyat": 6108500.0
+          },
+          {
+            "isim": "EQE 350 4MATIC AMG",
+            "fiyat": 6978500.0
+          }
+        ]
+      },
+      "eqs": {
+        "ad": "EQS",
+        "genel_medyan": 10108500,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 10108500.0,
+            "medyan": 10108500.0,
+            "max": 10108500.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 10108500.0,
+            "medyan": 10108500.0,
+            "max": 10108500.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 10108500.0,
+            "medyan": 10108500.0,
+            "max": 10108500.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "EQS 450 4MATIC Inspiration",
+            "fiyat": 10108500.0
+          }
+        ]
+      },
+      "g-serisi": {
+        "ad": "G-Serisi",
+        "genel_medyan": 23408500,
+        "urun_sayisi": 4,
+        "segmentler": {
+          "dusuk": {
+            "min": 15715000.0,
+            "medyan": 19196500.0,
+            "max": 22678000.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 24139000.0,
+            "medyan": 27750000.0,
+            "max": 31361000.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "G 580 Heritage",
+            "fiyat": 15715000.0
+          },
+          {
+            "isim": "G 450 d Heritage",
+            "fiyat": 22678000.0
+          },
+          {
+            "isim": "G 500 Heritage",
+            "fiyat": 24139000.0
+          },
+          {
+            "isim": "G 63 Performance",
+            "fiyat": 31361000.0
+          }
+        ]
+      },
+      "gla": {
+        "ad": "GLA",
+        "genel_medyan": 4760000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 4760000.0,
+            "medyan": 4760000.0,
+            "max": 4760000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 4760000.0,
+            "medyan": 4760000.0,
+            "max": 4760000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 4760000.0,
+            "medyan": 4760000.0,
+            "max": 4760000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "GLA 200 AMG",
+            "fiyat": 4760000.0
+          }
+        ]
+      },
+      "glb": {
+        "ad": "GLB",
+        "genel_medyan": 4832750,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 4524000.0,
+            "medyan": 4524000.0,
+            "max": 4524000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 5141500.0,
+            "medyan": 5141500.0,
+            "max": 5141500.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Mercedes GLB 200+ AMG",
+            "fiyat": 4524000.0
+          },
+          {
+            "isim": "Mercedes GLB 220 4MATIC AMG",
+            "fiyat": 5141500.0
+          }
+        ]
+      },
+      "glc": {
+        "ad": "GLC",
+        "genel_medyan": 8401000,
+        "urun_sayisi": 10,
+        "segmentler": {
+          "dusuk": {
+            "min": 5720000.0,
+            "medyan": 6850000.0,
+            "max": 7159000.0,
+            "urun_sayisi": 3
+          },
+          "orta": {
+            "min": 7169000.0,
+            "medyan": 9241000.0,
+            "max": 10672000.0,
+            "urun_sayisi": 5
+          },
+          "luks": {
+            "min": 15135000.0,
+            "medyan": 15215000.0,
+            "max": 15295000.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Yeni GLC 200 AMG",
+            "fiyat": 5720000.0
+          },
+          {
+            "isim": "Yeni GLC 400 4MATIC AMG",
+            "fiyat": 6850000.0
+          },
+          {
+            "isim": "Yeni GLC 400 4MATIC Edition 1 AMG",
+            "fiyat": 7159000.0
+          },
+          {
+            "isim": "GLC 180 AMG",
+            "fiyat": 7169000.0
+          },
+          {
+            "isim": "GLC 180 Coupe AMG",
+            "fiyat": 7561000.0
+          },
+          {
+            "isim": "GLC 300 d 4MATIC AMG",
+            "fiyat": 9241000.0
+          },
+          {
+            "isim": "GLC 43 4MATIC Performance",
+            "fiyat": 10526000.0
+          },
+          {
+            "isim": "GLC 43 4MATIC Coupe Performance",
+            "fiyat": 10672000.0
+          },
+          {
+            "isim": "GLC 63 S E-PERFORMANCE",
+            "fiyat": 15135000.0
+          },
+          {
+            "isim": "GLC 63 S E-PERFORMANCE Coupe",
+            "fiyat": 15295000.0
+          }
+        ]
+      },
+      "gle": {
+        "ad": "GLE",
+        "genel_medyan": 14113500,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 13869000.0,
+            "medyan": 13869000.0,
+            "max": 13869000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 14358000.0,
+            "medyan": 14358000.0,
+            "max": 14358000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "GLE 300 d 4MATIC AMG",
+            "fiyat": 13869000.0
+          },
+          {
+            "isim": "GLE 300 d 4MATIC Coupe AMG",
+            "fiyat": 14358000.0
+          }
+        ]
+      },
+      "gls": {
+        "ad": "GLS",
+        "genel_medyan": 21954000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 21954000.0,
+            "medyan": 21954000.0,
+            "max": 21954000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 21954000.0,
+            "medyan": 21954000.0,
+            "max": 21954000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 21954000.0,
+            "medyan": 21954000.0,
+            "max": 21954000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "GLS 450 d 4MATIC AMG",
+            "fiyat": 21954000.0
+          }
+        ]
+      },
+      "s-serisi": {
+        "ad": "S-Serisi",
+        "genel_medyan": 23546000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 23546000.0,
+            "medyan": 23546000.0,
+            "max": 23546000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 23546000.0,
+            "medyan": 23546000.0,
+            "max": 23546000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 23546000.0,
+            "medyan": 23546000.0,
+            "max": 23546000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "S 450 d 4MATIC L Inspiration",
+            "fiyat": 23546000.0
+          }
+        ]
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "A200 AMG",
+        "fiyat": 3320000.0,
+        "nitelikler": {
+          "model": "A-Serisi"
+        }
+      },
+      {
+        "isim": "AMG A 45 S 4MATIC+",
+        "fiyat": 7058000.0,
+        "nitelikler": {
+          "model": "A-Serisi"
+        }
+      },
+      {
+        "isim": "C 200 4MATIC AMG",
+        "fiyat": 6485000.0,
+        "nitelikler": {
+          "model": "C-Serisi"
+        }
+      },
+      {
+        "isim": "C 200 4MATIC 140th Year Edition",
+        "fiyat": 7278500.0,
+        "nitelikler": {
+          "model": "C-Serisi"
+        }
+      },
+      {
+        "isim": "Mercedes-AMG C 63 S E Performance",
+        "fiyat": 13357000.0,
+        "nitelikler": {
+          "model": "C-Serisi"
+        }
+      },
+      {
+        "isim": "Mercedes-AMG C 43 4MATIC Performance",
+        "fiyat": 8620000.0,
+        "nitelikler": {
+          "model": "C-Serisi"
+        }
+      },
+      {
+        "isim": "E 180 Exclusive",
+        "fiyat": 8601500.0,
+        "nitelikler": {
+          "model": "E-Serisi"
+        }
+      },
+      {
+        "isim": "E 180 AMG",
+        "fiyat": 8668500.0,
+        "nitelikler": {
+          "model": "E-Serisi"
+        }
+      },
+      {
+        "isim": "E 220 d 4MATIC Exclusive",
+        "fiyat": 11367500.0,
+        "nitelikler": {
+          "model": "E-Serisi"
+        }
+      },
+      {
+        "isim": "E 220 d 4MATIC AMG",
+        "fiyat": 11450500.0,
+        "nitelikler": {
+          "model": "E-Serisi"
+        }
+      },
+      {
+        "isim": "AMG E 53 Hybrid 4MATIC Performance",
+        "fiyat": 20839000.0,
+        "nitelikler": {
+          "model": "E-Serisi"
+        }
+      },
+      {
+        "isim": "S 450 d 4MATIC L Inspiration",
+        "fiyat": 23546000.0,
+        "nitelikler": {
+          "model": "S-Serisi"
+        }
+      },
+      {
+        "isim": "Mercedes CLA 200+ AMG",
+        "fiyat": 4318500.0,
+        "nitelikler": {
+          "model": "CLA"
+        }
+      },
+      {
+        "isim": "Mercedes CLA 220 4MATIC AMG",
+        "fiyat": 4873000.0,
+        "nitelikler": {
+          "model": "CLA"
+        }
+      },
+      {
+        "isim": "CLE 300 4MATIC Coupe AMG",
+        "fiyat": 8641000.0,
+        "nitelikler": {
+          "model": "CLE"
+        }
+      },
+      {
+        "isim": "CLE 53 4MATIC+Performance",
+        "fiyat": 14103000.0,
+        "nitelikler": {
+          "model": "CLE"
+        }
+      },
+      {
+        "isim": "Yeni CLE 300 4MATIC Cabriolet AMG",
+        "fiyat": 9688000.0,
+        "nitelikler": {
+          "model": "CLE"
+        }
+      },
+      {
+        "isim": "GLA 200 AMG",
+        "fiyat": 4760000.0,
+        "nitelikler": {
+          "model": "GLA"
+        }
+      },
+      {
+        "isim": "Mercedes GLB 200+ AMG",
+        "fiyat": 4524000.0,
+        "nitelikler": {
+          "model": "GLB"
+        }
+      },
+      {
+        "isim": "Mercedes GLB 220 4MATIC AMG",
+        "fiyat": 5141500.0,
+        "nitelikler": {
+          "model": "GLB"
+        }
+      },
+      {
+        "isim": "GLC 180 AMG",
+        "fiyat": 7169000.0,
+        "nitelikler": {
+          "model": "GLC"
+        }
+      },
+      {
+        "isim": "GLC 300 d 4MATIC AMG",
+        "fiyat": 9241000.0,
+        "nitelikler": {
+          "model": "GLC"
+        }
+      },
+      {
+        "isim": "GLC 43 4MATIC Performance",
+        "fiyat": 10526000.0,
+        "nitelikler": {
+          "model": "GLC"
+        }
+      },
+      {
+        "isim": "GLC 63 S E-PERFORMANCE",
+        "fiyat": 15135000.0,
+        "nitelikler": {
+          "model": "GLC"
+        }
+      },
+      {
+        "isim": "Yeni GLC 200 AMG",
+        "fiyat": 5720000.0,
+        "nitelikler": {
+          "model": "GLC"
+        }
+      },
+      {
+        "isim": "Yeni GLC 400 4MATIC AMG",
+        "fiyat": 6850000.0,
+        "nitelikler": {
+          "model": "GLC"
+        }
+      },
+      {
+        "isim": "Yeni GLC 400 4MATIC Edition 1 AMG",
+        "fiyat": 7159000.0,
+        "nitelikler": {
+          "model": "GLC"
+        }
+      },
+      {
+        "isim": "GLC 180 Coupe AMG",
+        "fiyat": 7561000.0,
+        "nitelikler": {
+          "model": "GLC"
+        }
+      },
+      {
+        "isim": "GLC 43 4MATIC Coupe Performance",
+        "fiyat": 10672000.0,
+        "nitelikler": {
+          "model": "GLC"
+        }
+      },
+      {
+        "isim": "GLC 63 S E-PERFORMANCE Coupe",
+        "fiyat": 15295000.0,
+        "nitelikler": {
+          "model": "GLC"
+        }
+      },
+      {
+        "isim": "GLE 300 d 4MATIC AMG",
+        "fiyat": 13869000.0,
+        "nitelikler": {
+          "model": "GLE"
+        }
+      },
+      {
+        "isim": "GLE 300 d 4MATIC Coupe AMG",
+        "fiyat": 14358000.0,
+        "nitelikler": {
+          "model": "GLE"
+        }
+      },
+      {
+        "isim": "GLS 450 d 4MATIC AMG",
+        "fiyat": 21954000.0,
+        "nitelikler": {
+          "model": "GLS"
+        }
+      },
+      {
+        "isim": "G 450 d Heritage",
+        "fiyat": 22678000.0,
+        "nitelikler": {
+          "model": "G-Serisi"
+        }
+      },
+      {
+        "isim": "G 500 Heritage",
+        "fiyat": 24139000.0,
+        "nitelikler": {
+          "model": "G-Serisi"
+        }
+      },
+      {
+        "isim": "G 580 Heritage",
+        "fiyat": 15715000.0,
+        "nitelikler": {
+          "model": "G-Serisi"
+        }
+      },
+      {
+        "isim": "G 63 Performance",
+        "fiyat": 31361000.0,
+        "nitelikler": {
+          "model": "G-Serisi"
+        }
+      },
+      {
+        "isim": "AMG SL 43 Performance",
+        "fiyat": 17276000.0,
+        "nitelikler": {
+          "model": "AMG SL"
+        }
+      },
+      {
+        "isim": "AMG SL 63 4MATIC+ Performance",
+        "fiyat": 28655000.0,
+        "nitelikler": {
+          "model": "AMG SL"
+        }
+      },
+      {
+        "isim": "AMG GT 43 Performance",
+        "fiyat": 17175000.0,
+        "nitelikler": {
+          "model": "AMG GT"
+        }
+      },
+      {
+        "isim": "AMG GT 63 4MATIC+ Performance",
+        "fiyat": 29499000.0,
+        "nitelikler": {
+          "model": "AMG GT"
+        }
+      },
+      {
+        "isim": "EQA 250+ Night Edition",
+        "fiyat": 4477000.0,
+        "nitelikler": {
+          "model": "EQA"
+        }
+      },
+      {
+        "isim": "EQE 280 AMG",
+        "fiyat": 6108500.0,
+        "nitelikler": {
+          "model": "EQE"
+        }
+      },
+      {
+        "isim": "EQE 350 4MATIC AMG",
+        "fiyat": 6978500.0,
+        "nitelikler": {
+          "model": "EQE"
+        }
+      },
+      {
+        "isim": "EQS 450 4MATIC Inspiration",
+        "fiyat": 10108500.0,
+        "nitelikler": {
+          "model": "EQS"
+        }
+      }
+    ]
+  }
+}

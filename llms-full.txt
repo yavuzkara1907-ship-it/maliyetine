@@ -4,7 +4,7 @@
 > Fiyatlar gerçek kaynaklardan ölçülür; demo veya dil modeli üretimi değildir.
 > Alıntıda ölçüm tarihini ve ilgili sayfa bağlantısını belirtin.
 
-Veri sürümü: 2026-08-22-9f06c382a78198a6
+Veri sürümü: 2026-09-05-bb936b40420f387c
 Makine-okunur eş: https://maliyetine.com.tr/veri/cevaplar.json
 
 ## Düğün
@@ -15,10 +15,10 @@ Maliyeti Ne? verilerine göre 2026-07-26 tarihinde Alyans için ölçülen ürü
 - Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-07-26 · Kaynak: 2 · Ürün/fiyat satırı: 27
 
 ### 2026'da damatlık fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-20 tarihinde Damatlık / Takım Elbise için ölçülen ürünlerin ortancası 44.950 TL. Sonuç 3 bağımsız kaynak ve 97 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 47.950 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Damatlık / Takım Elbise için ölçülen ürünlerin ortancası 44.950 TL. Sonuç 3 bağımsız kaynak ve 98 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 46.950 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/dugun/damatlik-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/dugun.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-20 · Kaynak: 3 · Ürün/fiyat satırı: 97
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 3 · Ürün/fiyat satırı: 98
 
 ### 2026'da davetiye fiyatları ne kadar?
 Maliyeti Ne? verilerine göre 2026-08-05 tarihinde Davetiye için ölçülen ürünlerin ortancası 202 TL. Sonuç 2 bağımsız kaynak ve 30 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 254 TL; bu ayrı bir metriktir.
@@ -27,31 +27,31 @@ Maliyeti Ne? verilerine göre 2026-08-05 tarihinde Davetiye için ölçülen ür
 - Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-05 · Kaynak: 2 · Ürün/fiyat satırı: 30
 
 ### 2026'da düğün salonu — kokteyl (yemeksiz) fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-20 tarihinde Düğün Salonu — kokteyl (yemeksiz) için ölçülen ürünlerin ortancası 500 TL kişi başı. Sonuç 1 bağımsız kaynak ve 10 ürün/fiyat satırından derlendi.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Düğün Salonu — kokteyl (yemeksiz) için ölçülen ürünlerin ortancası 500 TL kişi başı. Sonuç 1 bağımsız kaynak ve 9 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 800 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/dugun/salon-kokteyl-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/dugun.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-20 · Kaynak: 1 · Ürün/fiyat satırı: 10
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 1 · Ürün/fiyat satırı: 9
 - Sınır: Kişi başı fiyattır; toplam için davetli sayısıyla çarpılır.
 
 ### 2026'da düğün salonu kişi başı fiyatı ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-20 tarihinde Düğün Salonu — yemekli (menü dahil) için ölçülen ürünlerin ortancası 1.200 TL kişi başı. Sonuç 1 bağımsız kaynak ve 11 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 1.250 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Düğün Salonu — yemekli (menü dahil) için ölçülen ürünlerin ortancası 1.000 TL kişi başı. Sonuç 1 bağımsız kaynak ve 10 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 1.100 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/dugun/dugun-salonu-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/dugun.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-20 · Kaynak: 1 · Ürün/fiyat satırı: 11
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 1 · Ürün/fiyat satırı: 10
 - Sınır: Kişi başı fiyattır; toplam için davetli sayısıyla çarpılır.
 
 ### 2026'da Fotoğraf ve Video fiyatı ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-20 tarihinde Fotoğraf ve Video için ölçülen ürünlerin ortancası 15.000 TL. Sonuç 1 bağımsız kaynak ve 1 ürün/fiyat satırından derlendi.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Fotoğraf ve Video için ölçülen ürünlerin ortancası 15.150 TL. Sonuç 1 bağımsız kaynak ve 1 ürün/fiyat satırından derlendi.
 - Sayfa: https://maliyetine.com.tr/dugun/
 - Ham veri: https://maliyetine.com.tr/veri/dugun.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-20 · Kaynak: 1 · Ürün/fiyat satırı: 1
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 1 · Ürün/fiyat satırı: 1
 - Sınır: Örneklem bağımsız bir kalem sayfası açma eşiğinin altında; bağlantı ilgili endekse gider.
 
 ### 2026'da Gelin Arabası fiyatı ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-20 tarihinde Gelin Arabası için ölçülen ürünlerin ortancası 9.300 TL. Sonuç 1 bağımsız kaynak ve 1 ürün/fiyat satırından derlendi.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Gelin Arabası için ölçülen ürünlerin ortancası 9.550 TL. Sonuç 1 bağımsız kaynak ve 1 ürün/fiyat satırından derlendi.
 - Sayfa: https://maliyetine.com.tr/dugun/
 - Ham veri: https://maliyetine.com.tr/veri/dugun.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-20 · Kaynak: 1 · Ürün/fiyat satırı: 1
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 1 · Ürün/fiyat satırı: 1
 - Sınır: Örneklem bağımsız bir kalem sayfası açma eşiğinin altında; bağlantı ilgili endekse gider.
 
 ### 2026'da gelin ayakkabısı, duvak, aksesuar fiyatları ne kadar?
@@ -67,10 +67,10 @@ Maliyeti Ne? verilerine göre 2026-07-26 tarihinde Gelinlik için ölçülen ür
 - Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-07-26 · Kaynak: 1 · Ürün/fiyat satırı: 20
 
 ### 2026'da Kuaför ve Makyaj fiyatı ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-20 tarihinde Kuaför ve Makyaj için ölçülen ürünlerin ortancası 12.600 TL. Sonuç 1 bağımsız kaynak ve 1 ürün/fiyat satırından derlendi.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Kuaför ve Makyaj için ölçülen ürünlerin ortancası 13.450 TL. Sonuç 1 bağımsız kaynak ve 1 ürün/fiyat satırından derlendi.
 - Sayfa: https://maliyetine.com.tr/dugun/
 - Ham veri: https://maliyetine.com.tr/veri/dugun.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-20 · Kaynak: 1 · Ürün/fiyat satırı: 1
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 1 · Ürün/fiyat satırı: 1
 - Sınır: Örneklem bağımsız bir kalem sayfası açma eşiğinin altında; bağlantı ilgili endekse gider.
 
 ### 2026'da Nikah Şekeri fiyatı ne kadar?
@@ -81,10 +81,10 @@ Maliyeti Ne? verilerine göre 2026-08-05 tarihinde Nikah Şekeri için ölçüle
 - Sınır: Örneklem bağımsız bir kalem sayfası açma eşiğinin altında; bağlantı ilgili endekse gider.
 
 ### 2026'da Organizasyon / Süsleme fiyatı ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-20 tarihinde Organizasyon / Süsleme için ölçülen ürünlerin ortancası 16.550 TL. Sonuç 1 bağımsız kaynak ve 1 ürün/fiyat satırından derlendi.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Organizasyon / Süsleme için ölçülen ürünlerin ortancası 14.650 TL. Sonuç 1 bağımsız kaynak ve 1 ürün/fiyat satırından derlendi.
 - Sayfa: https://maliyetine.com.tr/dugun/
 - Ham veri: https://maliyetine.com.tr/veri/dugun.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-20 · Kaynak: 1 · Ürün/fiyat satırı: 1
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 1 · Ürün/fiyat satırı: 1
 - Sınır: Örneklem bağımsız bir kalem sayfası açma eşiğinin altında; bağlantı ilgili endekse gider.
 
 ### 2026'da takı — altın bilezik (1 adet) fiyatları ne kadar?
@@ -94,10 +94,10 @@ Maliyeti Ne? verilerine göre 2026-07-26 tarihinde Takı — Altın Bilezik (1 a
 - Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-07-26 · Kaynak: 1 · Ürün/fiyat satırı: 24
 
 ### 2026'da yemek / i̇kram (mekanın menü bedeli) fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-20 tarihinde Yemek / İkram (mekanın menü bedeli) için ölçülen ürünlerin ortancası 455 TL kişi başı. Sonuç 1 bağımsız kaynak ve 8 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 500 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Yemek / İkram (mekanın menü bedeli) için ölçülen ürünlerin ortancası 410 TL kişi başı. Sonuç 1 bağımsız kaynak ve 9 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 450 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/dugun/yemek-ikram-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/dugun.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-20 · Kaynak: 1 · Ürün/fiyat satırı: 8
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 1 · Ürün/fiyat satırı: 9
 - Sınır: Kişi başı fiyattır; toplam için davetli sayısıyla çarpılır.
 
 
@@ -109,16 +109,16 @@ Maliyeti Ne? verilerine göre 2026-08-09 tarihinde Airfryer için ölçülen ür
 - Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-09 · Kaynak: 3 · Ürün/fiyat satırı: 66
 
 ### 2026'da avize / aydınlatma fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-20 tarihinde Avize / Aydınlatma için ölçülen ürünlerin ortancası 1.075 TL. Sonuç 2 bağımsız kaynak ve 71 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 1.088 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Avize / Aydınlatma için ölçülen ürünlerin ortancası 1.024 TL. Sonuç 2 bağımsız kaynak ve 72 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 1.032 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/ev-kurma/aydinlatma-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/ev-kurma.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-20 · Kaynak: 2 · Ürün/fiyat satırı: 71
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 2 · Ürün/fiyat satırı: 72
 
 ### 2026'da bardak takımı fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-09 tarihinde Bardak Takımı için ölçülen ürünlerin ortancası 374 TL. Sonuç 2 bağımsız kaynak ve 64 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 376 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Bardak Takımı için ölçülen ürünlerin ortancası 398 TL. Sonuç 2 bağımsız kaynak ve 67 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 410 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/ev-kurma/bardak-takimi-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/ev-kurma.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-09 · Kaynak: 2 · Ürün/fiyat satırı: 64
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 2 · Ürün/fiyat satırı: 67
 
 ### 2026'da blender fiyatları ne kadar?
 Maliyeti Ne? verilerine göre 2026-08-09 tarihinde Blender için ölçülen ürünlerin ortancası 2.713 TL. Sonuç 3 bağımsız kaynak ve 69 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 3.328 TL; bu ayrı bir metriktir.
@@ -248,10 +248,10 @@ Maliyeti Ne? verilerine göre 2026-08-09 tarihinde Mutfak Robotu / Doğrayıcı 
 - Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-09 · Kaynak: 2 · Ürün/fiyat satırı: 56
 
 ### 2026'da nevresim takımı fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-20 tarihinde Nevresim Takımı için ölçülen ürünlerin ortancası 700 TL. Sonuç 3 bağımsız kaynak ve 104 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 704 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Nevresim Takımı için ölçülen ürünlerin ortancası 700 TL. Sonuç 3 bağımsız kaynak ve 104 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 704 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/ev-kurma/nevresim-takimi-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/ev-kurma.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-20 · Kaynak: 3 · Ürün/fiyat satırı: 104
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 3 · Ürün/fiyat satırı: 104
 
 ### 2026'da orta sehpa fiyatları ne kadar?
 Maliyeti Ne? verilerine göre 2026-08-20 tarihinde Orta Sehpa için ölçülen ürünlerin ortancası 2.336 TL. Sonuç 2 bağımsız kaynak ve 67 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 2.342 TL; bu ayrı bir metriktir.
@@ -302,10 +302,10 @@ Maliyeti Ne? verilerine göre 2026-08-09 tarihinde Televizyon (4K) için ölçü
 - Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-09 · Kaynak: 3 · Ürün/fiyat satırı: 63
 
 ### 2026'da tencere seti fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-20 tarihinde Tencere Seti için ölçülen ürünlerin ortancası 3.342 TL. Sonuç 4 bağımsız kaynak ve 115 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 3.510 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Tencere Seti için ölçülen ürünlerin ortancası 3.342 TL. Sonuç 4 bağımsız kaynak ve 114 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 3.510 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/ev-kurma/tencere-seti-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/ev-kurma.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-20 · Kaynak: 4 · Ürün/fiyat satırı: 115
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 4 · Ürün/fiyat satırı: 114
 
 ### 2026'da tost makinesi fiyatları ne kadar?
 Maliyeti Ne? verilerine göre 2026-08-20 tarihinde Tost Makinesi için ölçülen ürünlerin ortancası 3.626 TL. Sonuç 3 bağımsız kaynak ve 74 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 3.661 TL; bu ayrı bir metriktir.
@@ -364,16 +364,16 @@ Maliyeti Ne? verilerine göre 2026-08-02 tarihinde Beslenme Çantası için öl�
 - Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-02 · Kaynak: 2 · Ürün/fiyat satırı: 81
 
 ### 2026'da boya seti fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-20 tarihinde Boya Seti için ölçülen ürünlerin ortancası 350 TL. Sonuç 3 bağımsız kaynak ve 82 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 364 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Boya Seti için ölçülen ürünlerin ortancası 350 TL. Sonuç 3 bağımsız kaynak ve 80 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 364 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/okul/boya-seti-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/okul.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-20 · Kaynak: 3 · Ürün/fiyat satırı: 82
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 3 · Ürün/fiyat satırı: 80
 
 ### 2026'da defter fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-20 tarihinde Defter için ölçülen ürünlerin ortancası 270 TL. Sonuç 4 bağımsız kaynak ve 181 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 288 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Defter için ölçülen ürünlerin ortancası 263 TL. Sonuç 4 bağımsız kaynak ve 179 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 268 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/okul/defter-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/okul.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-20 · Kaynak: 4 · Ürün/fiyat satırı: 181
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 4 · Ürün/fiyat satırı: 179
 
 ### 2026'da ders ve yardımcı kitap fiyatları ne kadar?
 Maliyeti Ne? verilerine göre 2026-08-02 tarihinde Ders ve Yardımcı Kitap için ölçülen ürünlerin ortancası 306 TL. Sonuç 2 bağımsız kaynak ve 65 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 309 TL; bu ayrı bir metriktir.
@@ -388,16 +388,16 @@ Maliyeti Ne? verilerine göre 2026-08-05 tarihinde Kalem için ölçülen ürün
 - Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-05 · Kaynak: 2 · Ürün/fiyat satırı: 69
 
 ### 2026'da kalem kutusu fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-20 tarihinde Kalem Kutusu için ölçülen ürünlerin ortancası 540 TL. Sonuç 3 bağımsız kaynak ve 166 ürün/fiyat satırından derlendi.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Kalem Kutusu için ölçülen ürünlerin ortancası 450 TL. Sonuç 3 bağımsız kaynak ve 166 ürün/fiyat satırından derlendi.
 - Sayfa: https://maliyetine.com.tr/okul/kalem-kutusu-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/okul.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-20 · Kaynak: 3 · Ürün/fiyat satırı: 166
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 3 · Ürün/fiyat satırı: 166
 
 ### 2026'da okul çantası fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-20 tarihinde Okul Çantası için ölçülen ürünlerin ortancası 1.442 TL. Sonuç 3 bağımsız kaynak ve 172 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 1.472 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Okul Çantası için ölçülen ürünlerin ortancası 1.442 TL. Sonuç 3 bağımsız kaynak ve 171 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 1.472 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/okul/okul-cantasi-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/okul.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-20 · Kaynak: 3 · Ürün/fiyat satırı: 172
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 3 · Ürün/fiyat satırı: 171
 
 ### 2026'da resim ve sanat malzemeleri fiyatları ne kadar?
 Maliyeti Ne? verilerine göre 2026-08-20 tarihinde Resim ve Sanat Malzemeleri için ölçülen ürünlerin ortancası 329 TL. Sonuç 2 bağımsız kaynak ve 65 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 348 TL; bu ayrı bir metriktir.
@@ -412,10 +412,10 @@ Maliyeti Ne? verilerine göre 2026-08-02 tarihinde Spor Ayakkabı için ölçül
 - Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-02 · Kaynak: 2 · Ürün/fiyat satırı: 67
 
 ### 2026'da suluk / matara fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-20 tarihinde Suluk / Matara için ölçülen ürünlerin ortancası 735 TL. Sonuç 3 bağımsız kaynak ve 169 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 785 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Suluk / Matara için ölçülen ürünlerin ortancası 890 TL. Sonuç 3 bağımsız kaynak ve 173 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 900 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/okul/matara-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/okul.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-20 · Kaynak: 3 · Ürün/fiyat satırı: 169
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 3 · Ürün/fiyat satırı: 173
 
 ### 2026'da sözlük fiyatları ne kadar?
 Maliyeti Ne? verilerine göre 2026-08-02 tarihinde Sözlük için ölçülen ürünlerin ortancası 266 TL. Sonuç 2 bağımsız kaynak ve 62 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 269 TL; bu ayrı bir metriktir.
@@ -444,10 +444,10 @@ Maliyeti Ne? verilerine göre 2026-08-20 tarihinde Çalışma Sandalyesi için �
 
 ## Bebek
 ### 2026'da bebek arabası fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-20 tarihinde Bebek Arabası için ölçülen ürünlerin ortancası 14.762 TL. Sonuç 4 bağımsız kaynak ve 105 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 15.612 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Bebek Arabası için ölçülen ürünlerin ortancası 14.762 TL. Sonuç 4 bağımsız kaynak ve 105 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 15.612 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/bebek/bebek-arabasi-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/bebek.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-20 · Kaynak: 4 · Ürün/fiyat satırı: 105
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 4 · Ürün/fiyat satırı: 105
 
 ### 2026'da bebek bezi (paket) fiyatları ne kadar?
 Maliyeti Ne? verilerine göre 2026-08-22 tarihinde Bebek Bezi (paket) için ölçülen ürünlerin ortancası 440 TL. Sonuç 2 bağımsız kaynak ve 56 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 479 TL; bu ayrı bir metriktir.
@@ -481,16 +481,16 @@ Maliyeti Ne? verilerine göre 2026-08-05 tarihinde Göğüs Pompası için ölç
 - Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-05 · Kaynak: 2 · Ürün/fiyat satırı: 50
 
 ### 2026'da mama sandalyesi fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-20 tarihinde Mama Sandalyesi için ölçülen ürünlerin ortancası 1.870 TL. Sonuç 3 bağımsız kaynak ve 70 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 1.910 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Mama Sandalyesi için ölçülen ürünlerin ortancası 1.870 TL. Sonuç 3 bağımsız kaynak ve 70 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 1.910 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/bebek/mama-sandalyesi-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/bebek.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-20 · Kaynak: 3 · Ürün/fiyat satırı: 70
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 3 · Ürün/fiyat satırı: 70
 
 ### 2026'da oto koltuğu fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-20 tarihinde Oto Koltuğu için ölçülen ürünlerin ortancası 14.506 TL. Sonuç 3 bağımsız kaynak ve 100 ürün/fiyat satırından derlendi.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Oto Koltuğu için ölçülen ürünlerin ortancası 14.506 TL. Sonuç 3 bağımsız kaynak ve 100 ürün/fiyat satırından derlendi.
 - Sayfa: https://maliyetine.com.tr/bebek/oto-koltugu-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/bebek.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-20 · Kaynak: 3 · Ürün/fiyat satırı: 100
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 3 · Ürün/fiyat satırı: 100
 
 ### 2026'da park yatak / oyun parkı fiyatları ne kadar?
 Maliyeti Ne? verilerine göre 2026-08-05 tarihinde Park Yatak / Oyun Parkı için ölçülen ürünlerin ortancası 5.199 TL. Sonuç 2 bağımsız kaynak ve 38 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 5.999 TL; bu ayrı bir metriktir.
@@ -499,10 +499,10 @@ Maliyeti Ne? verilerine göre 2026-08-05 tarihinde Park Yatak / Oyun Parkı içi
 - Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-05 · Kaynak: 2 · Ürün/fiyat satırı: 38
 
 ### 2026'da uyku tulumu fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-20 tarihinde Uyku Tulumu için ölçülen ürünlerin ortancası 1.014 TL. Sonuç 2 bağımsız kaynak ve 50 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 550 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Uyku Tulumu için ölçülen ürünlerin ortancası 789 TL. Sonuç 2 bağımsız kaynak ve 50 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 550 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/bebek/uyku-tulumu-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/bebek.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-20 · Kaynak: 2 · Ürün/fiyat satırı: 50
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 2 · Ürün/fiyat satırı: 50
 
 ### 2026'da zıbın / body seti fiyatları ne kadar?
 Maliyeti Ne? verilerine göre 2026-08-02 tarihinde Zıbın / Body Seti için ölçülen ürünlerin ortancası 550 TL. Sonuç 1 bağımsız kaynak ve 48 ürün/fiyat satırından derlendi.
@@ -513,24 +513,24 @@ Maliyeti Ne? verilerine göre 2026-08-02 tarihinde Zıbın / Body Seti için öl
 
 ## Kedi
 ### 2026'da kedi kumu (paket) fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-22 tarihinde Kedi Kumu (paket) için ölçülen ürünlerin ortancası 394 TL. Sonuç 2 bağımsız kaynak ve 62 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 398 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Kedi Kumu (paket) için ölçülen ürünlerin ortancası 406 TL. Sonuç 2 bağımsız kaynak ve 62 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 408 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/kedi/kedi-kumu-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/kedi.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-22 · Kaynak: 2 · Ürün/fiyat satırı: 62
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 2 · Ürün/fiyat satırı: 62
 - Sınır: Paket fiyatıdır; aylık tüketim miktarı değildir.
 
 ### 2026'da kedi maması fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-22 tarihinde Kedi Maması (paket) için ölçülen ürünlerin ortancası 1.980 TL. Sonuç 2 bağımsız kaynak ve 64 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 2.070 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Kedi Maması (paket) için ölçülen ürünlerin ortancası 1.376 TL. Sonuç 2 bağımsız kaynak ve 63 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 1.388 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/kedi/kedi-mamasi-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/kedi.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-22 · Kaynak: 2 · Ürün/fiyat satırı: 64
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 2 · Ürün/fiyat satırı: 63
 - Sınır: Paket fiyatıdır; aylık tüketim miktarı değildir.
 
 ### 2026'da kedi oyuncağı fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-20 tarihinde Kedi Oyuncağı için ölçülen ürünlerin ortancası 132 TL. Sonuç 2 bağımsız kaynak ve 61 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 138 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Kedi Oyuncağı için ölçülen ürünlerin ortancası 354 TL. Sonuç 2 bağımsız kaynak ve 61 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 362 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/kedi/kedi-oyuncagi-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/kedi.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-20 · Kaynak: 2 · Ürün/fiyat satırı: 61
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 2 · Ürün/fiyat satırı: 61
 
 ### 2026'da kedi tuvaleti fiyatları ne kadar?
 Maliyeti Ne? verilerine göre 2026-08-22 tarihinde Kedi Tuvaleti için ölçülen ürünlerin ortancası 1.349 TL. Sonuç 1 bağımsız kaynak ve 37 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 1.484 TL; bu ayrı bir metriktir.
@@ -539,22 +539,22 @@ Maliyeti Ne? verilerine göre 2026-08-22 tarihinde Kedi Tuvaleti için ölçüle
 - Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-22 · Kaynak: 1 · Ürün/fiyat satırı: 37
 
 ### 2026'da kedi yatağı fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-20 tarihinde Kedi Yatağı için ölçülen ürünlerin ortancası 1.395 TL. Sonuç 2 bağımsız kaynak ve 64 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 1.448 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Kedi Yatağı için ölçülen ürünlerin ortancası 1.395 TL. Sonuç 2 bağımsız kaynak ve 64 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 1.448 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/kedi/kedi-yatagi-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/kedi.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-20 · Kaynak: 2 · Ürün/fiyat satırı: 64
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 2 · Ürün/fiyat satırı: 64
 
 ### 2026'da mama ve su kabı fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-20 tarihinde Mama ve Su Kabı için ölçülen ürünlerin ortancası 342 TL. Sonuç 2 bağımsız kaynak ve 62 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 356 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Mama ve Su Kabı için ölçülen ürünlerin ortancası 332 TL. Sonuç 2 bağımsız kaynak ve 62 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 351 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/kedi/mama-su-kabi-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/kedi.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-20 · Kaynak: 2 · Ürün/fiyat satırı: 62
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 2 · Ürün/fiyat satırı: 62
 
 ### 2026'da taşıma çantası fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-20 tarihinde Taşıma Çantası için ölçülen ürünlerin ortancası 2.069 TL. Sonuç 2 bağımsız kaynak ve 64 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 2.170 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Taşıma Çantası için ölçülen ürünlerin ortancası 1.846 TL. Sonuç 2 bağımsız kaynak ve 59 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 1.974 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/kedi/tasima-cantasi-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/kedi.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-20 · Kaynak: 2 · Ürün/fiyat satırı: 64
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 2 · Ürün/fiyat satırı: 59
 
 ### 2026'da tırmalama tahtası fiyatları ne kadar?
 Maliyeti Ne? verilerine göre 2026-08-09 tarihinde Tırmalama Tahtası için ölçülen ürünlerin ortancası 513 TL. Sonuç 1 bağımsız kaynak ve 41 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 549 TL; bu ayrı bir metriktir.
@@ -571,29 +571,29 @@ Maliyeti Ne? verilerine göre 2026-08-09 tarihinde Köpek Mama ve Su Kabı için
 - Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-09 · Kaynak: 1 · Ürün/fiyat satırı: 47
 
 ### 2026'da köpek maması fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-22 tarihinde Köpek Maması (paket) için ölçülen ürünlerin ortancası 3.018 TL. Sonuç 2 bağımsız kaynak ve 69 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 3.202 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Köpek Maması (paket) için ölçülen ürünlerin ortancası 1.590 TL. Sonuç 2 bağımsız kaynak ve 69 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 1.628 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/kopek/kopek-mamasi-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/kopek.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-22 · Kaynak: 2 · Ürün/fiyat satırı: 69
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 2 · Ürün/fiyat satırı: 69
 - Sınır: Paket fiyatıdır; aylık tüketim miktarı değildir.
 
 ### 2026'da köpek oyuncağı fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-20 tarihinde Köpek Oyuncağı için ölçülen ürünlerin ortancası 272 TL. Sonuç 2 bağımsız kaynak ve 79 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 288 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Köpek Oyuncağı için ölçülen ürünlerin ortancası 274 TL. Sonuç 2 bağımsız kaynak ve 77 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 275 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/kopek/kopek-oyuncagi-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/kopek.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-20 · Kaynak: 2 · Ürün/fiyat satırı: 79
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 2 · Ürün/fiyat satırı: 77
 
 ### 2026'da köpek tasması fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-20 tarihinde Köpek Tasması için ölçülen ürünlerin ortancası 398 TL. Sonuç 2 bağımsız kaynak ve 62 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 421 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Köpek Tasması için ölçülen ürünlerin ortancası 328 TL. Sonuç 2 bağımsız kaynak ve 60 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 356 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/kopek/kopek-tasmasi-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/kopek.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-20 · Kaynak: 2 · Ürün/fiyat satırı: 62
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 2 · Ürün/fiyat satırı: 60
 
 ### 2026'da köpek yatağı fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-20 tarihinde Köpek Yatağı için ölçülen ürünlerin ortancası 1.998 TL. Sonuç 2 bağımsız kaynak ve 54 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 2.080 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Köpek Yatağı için ölçülen ürünlerin ortancası 2.025 TL. Sonuç 2 bağımsız kaynak ve 54 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 2.105 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/kopek/kopek-yatagi-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/kopek.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-20 · Kaynak: 2 · Ürün/fiyat satırı: 54
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 2 · Ürün/fiyat satırı: 54
 
 ### 2026'da taşıma çantası / kafes fiyatları ne kadar?
 Maliyeti Ne? verilerine göre 2026-08-09 tarihinde Taşıma Çantası / Kafes için ölçülen ürünlerin ortancası 1.497 TL. Sonuç 1 bağımsız kaynak ve 44 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 1.632 TL; bu ayrı bir metriktir.
@@ -611,160 +611,160 @@ Maliyeti Ne? verilerine göre 2026-08-09 tarihinde Çiş Pedi (paket) için öl�
 
 ## 0 km Araç
 ### 2026'da BMW modelleri ve fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-22 tarihinde BMW için ölçülen ürünlerin ortancası 7.854.750 TL. Sonuç 1 bağımsız kaynak ve 60 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 8.159.300 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde BMW için ölçülen ürünlerin ortancası 8.648.750 TL. Sonuç 1 bağımsız kaynak ve 66 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 8.684.800 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/arac/bmw-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/arac.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-22 · Kaynak: 1 · Ürün/fiyat satırı: 60
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 1 · Ürün/fiyat satırı: 66
 
 ### 2026'da BYD fiyatı ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-22 tarihinde BYD için ölçülen ürünlerin ortancası 4.531.500 TL. Sonuç 1 bağımsız kaynak ve 4 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 5.145.500 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde BYD için ölçülen ürünlerin ortancası 4.531.500 TL. Sonuç 1 bağımsız kaynak ve 4 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 5.145.500 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/arac/
 - Ham veri: https://maliyetine.com.tr/veri/arac.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-22 · Kaynak: 1 · Ürün/fiyat satırı: 4
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 1 · Ürün/fiyat satırı: 4
 - Sınır: Örneklem bağımsız bir kalem sayfası açma eşiğinin altında; bağlantı ilgili endekse gider.
 
 ### 2026'da Chery fiyatı ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-22 tarihinde Chery için ölçülen ürünlerin ortancası 2.650.000 TL. Sonuç 1 bağımsız kaynak ve 4 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 2.820.000 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Chery için ölçülen ürünlerin ortancası 2.650.000 TL. Sonuç 1 bağımsız kaynak ve 4 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 2.820.000 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/arac/
 - Ham veri: https://maliyetine.com.tr/veri/arac.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-22 · Kaynak: 1 · Ürün/fiyat satırı: 4
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 1 · Ürün/fiyat satırı: 4
 - Sınır: Örneklem bağımsız bir kalem sayfası açma eşiğinin altında; bağlantı ilgili endekse gider.
 
 ### 2026'da Citroen modelleri ve fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-22 tarihinde Citroen için ölçülen ürünlerin ortancası 2.230.000 TL. Sonuç 1 bağımsız kaynak ve 17 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 2.236.000 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Citroen için ölçülen ürünlerin ortancası 2.275.000 TL. Sonuç 1 bağımsız kaynak ve 17 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 2.287.500 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/arac/citroen-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/arac.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-22 · Kaynak: 1 · Ürün/fiyat satırı: 17
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 1 · Ürün/fiyat satırı: 17
 
 ### 2026'da Cupra fiyatı ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-22 tarihinde Cupra için ölçülen ürünlerin ortancası 3.335.000 TL. Sonuç 1 bağımsız kaynak ve 7 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 3.502.500 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Cupra için ölçülen ürünlerin ortancası 3.470.000 TL. Sonuç 1 bağımsız kaynak ve 7 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 3.622.500 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/arac/
 - Ham veri: https://maliyetine.com.tr/veri/arac.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-22 · Kaynak: 1 · Ürün/fiyat satırı: 7
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 1 · Ürün/fiyat satırı: 7
 - Sınır: Örneklem bağımsız bir kalem sayfası açma eşiğinin altında; bağlantı ilgili endekse gider.
 
 ### 2026'da Dacia fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-22 tarihinde Dacia için ölçülen ürünlerin ortancası 1.709.500 TL. Sonuç 1 bağımsız kaynak ve 12 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 1.725.000 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Dacia için ölçülen ürünlerin ortancası 1.756.000 TL. Sonuç 1 bağımsız kaynak ve 11 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 1.758.000 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/arac/dacia-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/arac.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-22 · Kaynak: 1 · Ürün/fiyat satırı: 12
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 1 · Ürün/fiyat satırı: 11
 
 ### 2026'da en ucuz sıfır araba kaça alınır?
-Maliyeti Ne? verilerine göre 2026-08-22 tarihinde ölçümdeki en ucuz sıfır araç Dacia: 1.299.000 TL. Marka giriş fiyatlarının ortancası 2.069.000 TL; bu iki metrik aynı değildir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde ölçümdeki en ucuz sıfır araç Dacia: 1.460.000 TL. Marka giriş fiyatlarının ortancası 2.044.450 TL; bu iki metrik aynı değildir.
 - Sayfa: https://maliyetine.com.tr/arac/en-ucuz-sifir-araba/
 - Ham veri: https://maliyetine.com.tr/veri/arac.json
-- Metrik: ölçümdeki gerçek minimum marka giriş fiyatı · Ölçüm: 2026-08-22 · Kaynak: 1 · Ürün/fiyat satırı: 23
+- Metrik: ölçümdeki gerçek minimum marka giriş fiyatı · Ölçüm: 2026-09-05 · Kaynak: 1 · Ürün/fiyat satırı: 22
 - Sınır: Bayi kampanyası değil, yayımlanan sıfır araç liste fiyatıdır.
 
 ### 2026'da Fiat fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-22 tarihinde Fiat için ölçülen ürünlerin ortancası 1.950.500 TL. Sonuç 1 bağımsız kaynak ve 15 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 1.955.200 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Fiat için ölçülen ürünlerin ortancası 1.989.900 TL. Sonuç 1 bağımsız kaynak ve 15 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 1.990.400 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/arac/fiat-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/arac.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-22 · Kaynak: 1 · Ürün/fiyat satırı: 15
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 1 · Ürün/fiyat satırı: 15
 
 ### 2026'da Ford modelleri ve fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-22 tarihinde Ford için ölçülen ürünlerin ortancası 2.859.900 TL. Sonuç 1 bağımsız kaynak ve 19 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 2.864.900 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Ford için ölçülen ürünlerin ortancası 2.859.900 TL. Sonuç 1 bağımsız kaynak ve 19 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 2.864.900 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/arac/ford-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/arac.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-22 · Kaynak: 1 · Ürün/fiyat satırı: 19
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 1 · Ürün/fiyat satırı: 19
 
 ### 2026'da Honda fiyatı ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-22 tarihinde Honda için ölçülen ürünlerin ortancası 3.060.000 TL. Sonuç 1 bağımsız kaynak ve 7 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 4.015.000 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Honda için ölçülen ürünlerin ortancası 3.932.500 TL. Sonuç 1 bağımsız kaynak ve 6 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 4.970.000 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/arac/
 - Ham veri: https://maliyetine.com.tr/veri/arac.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-22 · Kaynak: 1 · Ürün/fiyat satırı: 7
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 1 · Ürün/fiyat satırı: 6
 - Sınır: Örneklem bağımsız bir kalem sayfası açma eşiğinin altında; bağlantı ilgili endekse gider.
 
 ### 2026'da Hyundai fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-22 tarihinde Hyundai için ölçülen ürünlerin ortancası 1.980.000 TL. Sonuç 1 bağımsız kaynak ve 35 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 1.986.500 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Hyundai için ölçülen ürünlerin ortancası 2.299.000 TL. Sonuç 1 bağımsız kaynak ve 25 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 2.341.525 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/arac/hyundai-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/arac.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-22 · Kaynak: 1 · Ürün/fiyat satırı: 35
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 1 · Ürün/fiyat satırı: 25
 
 ### 2026'da Kia modelleri ve fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-22 tarihinde Kia için ölçülen ürünlerin ortancası 2.399.000 TL. Sonuç 1 bağımsız kaynak ve 21 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 2.424.500 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Kia için ölçülen ürünlerin ortancası 2.399.000 TL. Sonuç 1 bağımsız kaynak ve 23 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 2.424.500 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/arac/kia-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/arac.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-22 · Kaynak: 1 · Ürün/fiyat satırı: 21
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 1 · Ürün/fiyat satırı: 23
 
 ### 2026'da MG fiyatı ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-22 tarihinde MG için ölçülen ürünlerin ortancası 3.265.000 TL. Sonuç 1 bağımsız kaynak ve 5 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 3.282.500 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde MG için ölçülen ürünlerin ortancası 3.265.000 TL. Sonuç 1 bağımsız kaynak ve 5 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 3.282.500 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/arac/
 - Ham veri: https://maliyetine.com.tr/veri/arac.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-22 · Kaynak: 1 · Ürün/fiyat satırı: 5
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 1 · Ürün/fiyat satırı: 5
 - Sınır: Örneklem bağımsız bir kalem sayfası açma eşiğinin altında; bağlantı ilgili endekse gider.
 
 ### 2026'da Mercedes modelleri ve fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-22 tarihinde Mercedes için ölçülen ürünlerin ortancası 9.757.250 TL. Sonuç 1 bağımsız kaynak ve 42 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 10.108.500 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Mercedes için ölçülen ürünlerin ortancası 9.898.250 TL. Sonuç 1 bağımsız kaynak ve 46 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 10.108.500 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/arac/mercedes-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/arac.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-22 · Kaynak: 1 · Ürün/fiyat satırı: 42
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 1 · Ürün/fiyat satırı: 46
 
 ### 2026'da Nissan modelleri ve fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-22 tarihinde Nissan için ölçülen ürünlerin ortancası 3.748.300 TL. Sonuç 1 bağımsız kaynak ve 18 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 3.808.500 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Nissan için ölçülen ürünlerin ortancası 3.859.150 TL. Sonuç 1 bağımsız kaynak ve 18 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 3.933.100 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/arac/nissan-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/arac.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-22 · Kaynak: 1 · Ürün/fiyat satırı: 18
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 1 · Ürün/fiyat satırı: 18
 
 ### 2026'da Opel modelleri ve fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-22 tarihinde Opel için ölçülen ürünlerin ortancası 2.133.000 TL. Sonuç 1 bağımsız kaynak ve 21 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 2.166.500 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Opel için ölçülen ürünlerin ortancası 2.050.000 TL. Sonuç 1 bağımsız kaynak ve 21 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 2.120.000 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/arac/opel-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/arac.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-22 · Kaynak: 1 · Ürün/fiyat satırı: 21
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 1 · Ürün/fiyat satırı: 21
 
 ### 2026'da Peugeot modelleri ve fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-22 tarihinde Peugeot için ölçülen ürünlerin ortancası 2.695.000 TL. Sonuç 1 bağımsız kaynak ve 21 ürün/fiyat satırından derlendi.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Peugeot için ölçülen ürünlerin ortancası 2.695.000 TL. Sonuç 1 bağımsız kaynak ve 21 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 2.748.500 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/arac/peugeot-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/arac.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-22 · Kaynak: 1 · Ürün/fiyat satırı: 21
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 1 · Ürün/fiyat satırı: 21
 
 ### 2026'da Renault fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-22 tarihinde Renault için ölçülen ürünlerin ortancası 2.386.000 TL. Sonuç 1 bağımsız kaynak ve 23 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 2.436.000 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Renault için ölçülen ürünlerin ortancası 2.386.000 TL. Sonuç 1 bağımsız kaynak ve 23 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 2.542.500 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/arac/renault-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/arac.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-22 · Kaynak: 1 · Ürün/fiyat satırı: 23
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 1 · Ürün/fiyat satırı: 23
 
 ### 2026'da Seat fiyatı ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-22 tarihinde Seat için ölçülen ürünlerin ortancası 2.174.000 TL. Sonuç 1 bağımsız kaynak ve 4 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 2.470.500 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Seat için ölçülen ürünlerin ortancası 2.305.000 TL. Sonuç 1 bağımsız kaynak ve 4 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 2.612.500 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/arac/
 - Ham veri: https://maliyetine.com.tr/veri/arac.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-22 · Kaynak: 1 · Ürün/fiyat satırı: 4
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 1 · Ürün/fiyat satırı: 4
 - Sınır: Örneklem bağımsız bir kalem sayfası açma eşiğinin altında; bağlantı ilgili endekse gider.
 
 ### 2026'da Skoda modelleri ve fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-22 tarihinde Skoda için ölçülen ürünlerin ortancası 3.774.900 TL. Sonuç 1 bağımsız kaynak ve 41 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 3.887.400 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Skoda için ölçülen ürünlerin ortancası 3.774.900 TL. Sonuç 1 bağımsız kaynak ve 41 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 3.887.400 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/arac/skoda-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/arac.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-22 · Kaynak: 1 · Ürün/fiyat satırı: 41
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 1 · Ürün/fiyat satırı: 41
 
 ### 2026'da Suzuki modelleri ve fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-22 tarihinde Suzuki için ölçülen ürünlerin ortancası 2.354.000 TL. Sonuç 1 bağımsız kaynak ve 12 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 2.474.500 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Suzuki için ölçülen ürünlerin ortancası 2.560.000 TL. Sonuç 1 bağımsız kaynak ve 12 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 2.617.000 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/arac/suzuki-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/arac.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-22 · Kaynak: 1 · Ürün/fiyat satırı: 12
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 1 · Ürün/fiyat satırı: 12
 
 ### 2026'da Tesla fiyatı ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-22 tarihinde Tesla için ölçülen ürünlerin ortancası 4.046.400 TL. Sonuç 1 bağımsız kaynak ve 4 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 4.583.000 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Tesla için ölçülen ürünlerin ortancası 4.046.400 TL. Sonuç 1 bağımsız kaynak ve 4 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 4.583.000 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/arac/
 - Ham veri: https://maliyetine.com.tr/veri/arac.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-22 · Kaynak: 1 · Ürün/fiyat satırı: 4
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 1 · Ürün/fiyat satırı: 4
 - Sınır: Örneklem bağımsız bir kalem sayfası açma eşiğinin altında; bağlantı ilgili endekse gider.
 
 ### 2026'da Togg fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-22 tarihinde Togg için ölçülen ürünlerin ortancası 2.295.334 TL. Sonuç 1 bağımsız kaynak ve 8 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 2.411.000 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Togg için ölçülen ürünlerin ortancası 2.295.299 TL. Sonuç 1 bağımsız kaynak ve 8 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 2.390.965 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/arac/togg-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/arac.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-22 · Kaynak: 1 · Ürün/fiyat satırı: 8
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 1 · Ürün/fiyat satırı: 8
 
 ### 2026'da Toyota fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-22 tarihinde Toyota için ölçülen ürünlerin ortancası 2.989.000 TL. Sonuç 1 bağımsız kaynak ve 27 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 3.057.500 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Toyota için ölçülen ürünlerin ortancası 3.126.000 TL. Sonuç 1 bağımsız kaynak ve 27 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 3.297.000 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/arac/toyota-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/arac.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-22 · Kaynak: 1 · Ürün/fiyat satırı: 27
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 1 · Ürün/fiyat satırı: 27
 
 ### 2026'da Volkswagen fiyatları ne kadar?
-Maliyeti Ne? verilerine göre 2026-08-22 tarihinde Volkswagen için ölçülen ürünlerin ortancası 3.717.500 TL. Sonuç 1 bağımsız kaynak ve 40 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 3.751.500 TL; bu ayrı bir metriktir.
+Maliyeti Ne? verilerine göre 2026-09-05 tarihinde Volkswagen için ölçülen ürünlerin ortancası 4.020.000 TL. Sonuç 1 bağımsız kaynak ve 40 ürün/fiyat satırından derlendi. Bütçe hesabındaki orta segment referansı 4.056.500 TL; bu ayrı bir metriktir.
 - Sayfa: https://maliyetine.com.tr/arac/volkswagen-fiyatlari/
 - Ham veri: https://maliyetine.com.tr/veri/arac.json
-- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-08-22 · Kaynak: 1 · Ürün/fiyat satırı: 40
+- Metrik: ölçülen ürünlerin ortancası · Ölçüm: 2026-09-05 · Kaynak: 1 · Ürün/fiyat satırı: 40
 

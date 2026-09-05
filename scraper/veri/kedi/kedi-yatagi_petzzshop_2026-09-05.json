@@ -1,0 +1,100 @@
+{
+  "site": "petzzshop",
+  "kaynak_adlari": [
+    "petzzshop - Kedi Yataklari"
+  ],
+  "kalem": "kedi-yatagi",
+  "vertikal": "kedi",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 24,
+  "aykiri_urun_sayisi": 1,
+  "toplam_urun": 23,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 2400,
+  "segmentler": {
+    "dusuk": {
+      "min": 1034,
+      "medyan": 2212,
+      "max": 2250,
+      "urun_sayisi": 10
+    },
+    "orta": {
+      "min": 2340,
+      "medyan": 2502,
+      "max": 3075,
+      "urun_sayisi": 8
+    },
+    "luks": {
+      "min": 3225,
+      "medyan": 3300,
+      "max": 3975,
+      "urun_sayisi": 5
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Afp Classic Comfort Kedi Mağarası Seti",
+      "fiyat": 1033.75
+    },
+    {
+      "isim": "Lepus Keops Piramit Kedi ve Köpek Yatağı",
+      "fiyat": 1950.0
+    },
+    {
+      "isim": "Lepus Trio Küp Yuva Küçük Irk Köpek ve Kedi Yatağı",
+      "fiyat": 1950.0
+    },
+    {
+      "isim": "Lepus Dolunay Asmalı Petek Kedi ve Küçük Irk Köpek Yatağı -",
+      "fiyat": 2250.0
+    },
+    {
+      "isim": "Lepus Gezegen Vantuzlu Cam Kedi ve Küçük Irk Köpek Yatağı - Beyaz",
+      "fiyat": 2250.0
+    },
+    {
+      "isim": "Lepus Olips Model Asmalı Petek Kedi ve Küçük Irk Köpek Yatağı -",
+      "fiyat": 2250.0
+    },
+    {
+      "isim": "Lepus Yay Asmalı Petek Kedi ve Küçük Irk Köpek Yatağı -",
+      "fiyat": 2250.0
+    },
+    {
+      "isim": "Lepus Kulak Asmalı Petek Kedi ve Küçük Irk Köpek Yatağı - Gri",
+      "fiyat": 2400.0
+    },
+    {
+      "isim": "Lepus Caramio Kedi ve Köpek Yatağı",
+      "fiyat": 2455.0
+    },
+    {
+      "isim": "Lepus Lifos Model Hasır Sepet Kedi ve Küçük Irk Köpek Yatağı - Kahverengi",
+      "fiyat": 2550.0
+    },
+    {
+      "isim": "Lepus Saksı Model Kedi ve Küçük Irk Köpek Yatağı - Gri",
+      "fiyat": 3000.0
+    },
+    {
+      "isim": "Lepus Galaxi Model Kedi Kedi ve Küçük Irk Köpek Yatağı -",
+      "fiyat": 3075.0
+    },
+    {
+      "isim": "Lepus Corner Seat Kedi ve Köpek Yatağı - Gri",
+      "fiyat": 3300.0
+    },
+    {
+      "isim": "Lepus Ranza Kedi ve Küçük Irk Köpek Yatağı - Kahverengi",
+      "fiyat": 3300.0
+    },
+    {
+      "isim": "Lepus Comfort Kedi ve Köpek Yatağı",
+      "fiyat": 3975.0
+    }
+  ]
+}

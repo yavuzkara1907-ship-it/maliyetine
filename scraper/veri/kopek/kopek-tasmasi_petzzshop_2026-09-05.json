@@ -1,0 +1,100 @@
+{
+  "site": "petzzshop",
+  "kaynak_adlari": [
+    "petzzshop - Kopek Tasmalari"
+  ],
+  "kalem": "kopek-tasmasi",
+  "vertikal": "kopek",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 24,
+  "aykiri_urun_sayisi": 4,
+  "toplam_urun": 20,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 256,
+  "segmentler": {
+    "dusuk": {
+      "min": 76,
+      "medyan": 107,
+      "max": 157,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 201,
+      "medyan": 271,
+      "max": 392,
+      "urun_sayisi": 10
+    },
+    "luks": {
+      "min": 400,
+      "medyan": 452,
+      "max": 916,
+      "urun_sayisi": 4
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Doglife Eğitim Amaçlı Zincir Köpek Boyun Tasması 4 x 70 Cm - 4x70 cm",
+      "fiyat": 76.39
+    },
+    {
+      "isim": "Doglife Eğitim Amaçlı Zincir Köpek Boyun Tasması 4 x 60 Cm - 4x60 Cm",
+      "fiyat": 89.58
+    },
+    {
+      "isim": "Nunbell Köpek Boyun Tasması 1.5 cm",
+      "fiyat": 111.11
+    },
+    {
+      "isim": "Nunbell Boyun Tasması 2,5cm",
+      "fiyat": 145.83
+    },
+    {
+      "isim": "M-Pets Urban Style Lava Köpek Boyun Tasması - S",
+      "fiyat": 157.15
+    },
+    {
+      "isim": "Nunbell Boyun Tasması 2,5cm",
+      "fiyat": 218.06
+    },
+    {
+      "isim": "M-Pets Wild Jungle Collar Köpek Boyun Tasması L",
+      "fiyat": 242.84
+    },
+    {
+      "isim": "Nunbell Köpek Gögüs Tasması No: 1",
+      "fiyat": 270.0
+    },
+    {
+      "isim": "M-Pets Wild Safari Collar Köpek Boyun Tasması XL",
+      "fiyat": 272.69
+    },
+    {
+      "isim": "M-Pets Urban Style Freestyle Köpek Boyun Tasması L",
+      "fiyat": 273.82
+    },
+    {
+      "isim": "Nunbell Köpek Gögüs Tasması No: 3",
+      "fiyat": 290.0
+    },
+    {
+      "isim": "Nunbell Plastik Dikenli Eğtim Tasması 3.5mm",
+      "fiyat": 391.67
+    },
+    {
+      "isim": "M-Pets Hiking Soft Köpek Boyun Tasması Kamuflaj L - Kamuflaj",
+      "fiyat": 400.21
+    },
+    {
+      "isim": "Nunbell Köpek Göğüs Tasması XL",
+      "fiyat": 494.44
+    },
+    {
+      "isim": "M-Pets Wıld Jungle Köpek Göğüs Tasması M",
+      "fiyat": 916.39
+    }
+  ]
+}

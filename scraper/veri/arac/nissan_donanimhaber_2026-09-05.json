@@ -1,0 +1,387 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Nissan"
+  ],
+  "kalem": "nissan",
+  "vertikal": "arac",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 18,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 18,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 3859150,
+  "segmentler": {
+    "dusuk": {
+      "min": 2328700,
+      "medyan": 2828400,
+      "max": 3278500,
+      "urun_sayisi": 5
+    },
+    "orta": {
+      "min": 3489200,
+      "medyan": 3933100,
+      "max": 4250700,
+      "urun_sayisi": 9
+    },
+    "luks": {
+      "min": 4381400,
+      "medyan": 4813750,
+      "max": 5615600,
+      "urun_sayisi": 4
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Juke 1.0 DIG-T 115PS DCT Tekna Plus",
+      "fiyat": 2328700.0
+    },
+    {
+      "isim": "Juke 1.0 DIG-T 115PS DCT Platinum",
+      "fiyat": 2456100.0
+    },
+    {
+      "isim": "Juke 1.0 DIG-T 115PS DCT Platinum Premium",
+      "fiyat": 2828400.0
+    },
+    {
+      "isim": "Qashqai 1.3 DIG-T Mild Hybrid 158PS Auto Designpack",
+      "fiyat": 2844500.0
+    },
+    {
+      "isim": "Qashqai 1.3 DIG-T Mild Hybrid 158PS Auto Skypack",
+      "fiyat": 3278500.0
+    },
+    {
+      "isim": "Qashqai 1.3 DIG-T Mild Hybrid 158PS Auto Skypack 4x4",
+      "fiyat": 3489200.0
+    },
+    {
+      "isim": "Qashqai e-POWER 190PS Designpack",
+      "fiyat": 3668400.0
+    },
+    {
+      "isim": "Qashqai 1.3 DIG-T Mild Hybrid 158PS Auto N-Design",
+      "fiyat": 3743500.0
+    },
+    {
+      "isim": "Qashqai 1.3 DIG-T Mild Hybrid 158PS Auto Platinum",
+      "fiyat": 3785200.0
+    },
+    {
+      "isim": "Qashqai 1.3 DIG-T Mild Hybrid 158PS Auto Platinum 4x4",
+      "fiyat": 3933100.0
+    },
+    {
+      "isim": "Qashqai 1.3 DIG-T Mild Hybrid 158PS Auto Platinum Premium",
+      "fiyat": 3937400.0
+    },
+    {
+      "isim": "Qashqai 1.3 DIG-T Mild Hybrid 158PS Auto Platinum Premium 4x4",
+      "fiyat": 4058600.0
+    },
+    {
+      "isim": "Qashqai e-POWER 190PS Skypack",
+      "fiyat": 4115200.0
+    },
+    {
+      "isim": "Qashqai e-POWER 190PS N-Design",
+      "fiyat": 4250700.0
+    },
+    {
+      "isim": "Qashqai e-POWER 190PS Platinum",
+      "fiyat": 4381400.0
+    },
+    {
+      "isim": "Qashqai e-POWER 190PS Platinum Premium",
+      "fiyat": 4529200.0
+    },
+    {
+      "isim": "X-Trail 1.5 VC-T Mild Hybrid 163PS Auto Platinum",
+      "fiyat": 5098300.0
+    },
+    {
+      "isim": "X-Trail 1.5 DIG-T 163PS X-Tronic CVT Platinum Premium",
+      "fiyat": 5615600.0
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 18,
+    "ozellik_eslesen_urun": 18,
+    "modeller": {
+      "juke": {
+        "ad": "Juke",
+        "genel_medyan": 2456100,
+        "urun_sayisi": 3,
+        "segmentler": {
+          "dusuk": {
+            "min": 2328700.0,
+            "medyan": 2328700.0,
+            "max": 2328700.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2456100.0,
+            "medyan": 2642250.0,
+            "max": 2828400.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Juke 1.0 DIG-T 115PS DCT Tekna Plus",
+            "fiyat": 2328700.0
+          },
+          {
+            "isim": "Juke 1.0 DIG-T 115PS DCT Platinum",
+            "fiyat": 2456100.0
+          },
+          {
+            "isim": "Juke 1.0 DIG-T 115PS DCT Platinum Premium",
+            "fiyat": 2828400.0
+          }
+        ]
+      },
+      "qashqai": {
+        "ad": "Qashqai",
+        "genel_medyan": 3933100,
+        "urun_sayisi": 13,
+        "segmentler": {
+          "dusuk": {
+            "min": 2844500.0,
+            "medyan": 3383850.0,
+            "max": 3668400.0,
+            "urun_sayisi": 4
+          },
+          "orta": {
+            "min": 3743500.0,
+            "medyan": 3935250.0,
+            "max": 4115200.0,
+            "urun_sayisi": 6
+          },
+          "luks": {
+            "min": 4250700.0,
+            "medyan": 4381400.0,
+            "max": 4529200.0,
+            "urun_sayisi": 3
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Qashqai 1.3 DIG-T Mild Hybrid 158PS Auto Designpack",
+            "fiyat": 2844500.0
+          },
+          {
+            "isim": "Qashqai 1.3 DIG-T Mild Hybrid 158PS Auto Skypack",
+            "fiyat": 3278500.0
+          },
+          {
+            "isim": "Qashqai 1.3 DIG-T Mild Hybrid 158PS Auto Skypack 4x4",
+            "fiyat": 3489200.0
+          },
+          {
+            "isim": "Qashqai e-POWER 190PS Designpack",
+            "fiyat": 3668400.0
+          },
+          {
+            "isim": "Qashqai 1.3 DIG-T Mild Hybrid 158PS Auto N-Design",
+            "fiyat": 3743500.0
+          },
+          {
+            "isim": "Qashqai 1.3 DIG-T Mild Hybrid 158PS Auto Platinum",
+            "fiyat": 3785200.0
+          },
+          {
+            "isim": "Qashqai 1.3 DIG-T Mild Hybrid 158PS Auto Platinum 4x4",
+            "fiyat": 3933100.0
+          },
+          {
+            "isim": "Qashqai 1.3 DIG-T Mild Hybrid 158PS Auto Platinum Premium",
+            "fiyat": 3937400.0
+          },
+          {
+            "isim": "Qashqai 1.3 DIG-T Mild Hybrid 158PS Auto Platinum Premium 4x4",
+            "fiyat": 4058600.0
+          },
+          {
+            "isim": "Qashqai e-POWER 190PS Skypack",
+            "fiyat": 4115200.0
+          },
+          {
+            "isim": "Qashqai e-POWER 190PS N-Design",
+            "fiyat": 4250700.0
+          },
+          {
+            "isim": "Qashqai e-POWER 190PS Platinum",
+            "fiyat": 4381400.0
+          },
+          {
+            "isim": "Qashqai e-POWER 190PS Platinum Premium",
+            "fiyat": 4529200.0
+          }
+        ]
+      },
+      "x-trail": {
+        "ad": "X-Trail",
+        "genel_medyan": 5356950,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 5098300.0,
+            "medyan": 5098300.0,
+            "max": 5098300.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 5615600.0,
+            "medyan": 5615600.0,
+            "max": 5615600.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "X-Trail 1.5 VC-T Mild Hybrid 163PS Auto Platinum",
+            "fiyat": 5098300.0
+          },
+          {
+            "isim": "X-Trail 1.5 DIG-T 163PS X-Tronic CVT Platinum Premium",
+            "fiyat": 5615600.0
+          }
+        ]
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "Qashqai 1.3 DIG-T Mild Hybrid 158PS Auto Designpack",
+        "fiyat": 2844500.0,
+        "nitelikler": {
+          "model": "Qashqai"
+        }
+      },
+      {
+        "isim": "Qashqai 1.3 DIG-T Mild Hybrid 158PS Auto Skypack",
+        "fiyat": 3278500.0,
+        "nitelikler": {
+          "model": "Qashqai"
+        }
+      },
+      {
+        "isim": "Qashqai 1.3 DIG-T Mild Hybrid 158PS Auto Skypack 4x4",
+        "fiyat": 3489200.0,
+        "nitelikler": {
+          "model": "Qashqai"
+        }
+      },
+      {
+        "isim": "Qashqai 1.3 DIG-T Mild Hybrid 158PS Auto N-Design",
+        "fiyat": 3743500.0,
+        "nitelikler": {
+          "model": "Qashqai"
+        }
+      },
+      {
+        "isim": "Qashqai 1.3 DIG-T Mild Hybrid 158PS Auto Platinum",
+        "fiyat": 3785200.0,
+        "nitelikler": {
+          "model": "Qashqai"
+        }
+      },
+      {
+        "isim": "Qashqai 1.3 DIG-T Mild Hybrid 158PS Auto Platinum 4x4",
+        "fiyat": 3933100.0,
+        "nitelikler": {
+          "model": "Qashqai"
+        }
+      },
+      {
+        "isim": "Qashqai 1.3 DIG-T Mild Hybrid 158PS Auto Platinum Premium",
+        "fiyat": 3937400.0,
+        "nitelikler": {
+          "model": "Qashqai"
+        }
+      },
+      {
+        "isim": "Qashqai 1.3 DIG-T Mild Hybrid 158PS Auto Platinum Premium 4x4",
+        "fiyat": 4058600.0,
+        "nitelikler": {
+          "model": "Qashqai"
+        }
+      },
+      {
+        "isim": "Qashqai e-POWER 190PS Designpack",
+        "fiyat": 3668400.0,
+        "nitelikler": {
+          "model": "Qashqai"
+        }
+      },
+      {
+        "isim": "Qashqai e-POWER 190PS Skypack",
+        "fiyat": 4115200.0,
+        "nitelikler": {
+          "model": "Qashqai"
+        }
+      },
+      {
+        "isim": "Qashqai e-POWER 190PS N-Design",
+        "fiyat": 4250700.0,
+        "nitelikler": {
+          "model": "Qashqai"
+        }
+      },
+      {
+        "isim": "Qashqai e-POWER 190PS Platinum",
+        "fiyat": 4381400.0,
+        "nitelikler": {
+          "model": "Qashqai"
+        }
+      },
+      {
+        "isim": "Qashqai e-POWER 190PS Platinum Premium",
+        "fiyat": 4529200.0,
+        "nitelikler": {
+          "model": "Qashqai"
+        }
+      },
+      {
+        "isim": "Juke 1.0 DIG-T 115PS DCT Tekna Plus",
+        "fiyat": 2328700.0,
+        "nitelikler": {
+          "model": "Juke"
+        }
+      },
+      {
+        "isim": "Juke 1.0 DIG-T 115PS DCT Platinum",
+        "fiyat": 2456100.0,
+        "nitelikler": {
+          "model": "Juke"
+        }
+      },
+      {
+        "isim": "Juke 1.0 DIG-T 115PS DCT Platinum Premium",
+        "fiyat": 2828400.0,
+        "nitelikler": {
+          "model": "Juke"
+        }
+      },
+      {
+        "isim": "X-Trail 1.5 VC-T Mild Hybrid 163PS Auto Platinum",
+        "fiyat": 5098300.0,
+        "nitelikler": {
+          "model": "X-Trail"
+        }
+      },
+      {
+        "isim": "X-Trail 1.5 DIG-T 163PS X-Tronic CVT Platinum Premium",
+        "fiyat": 5615600.0,
+        "nitelikler": {
+          "model": "X-Trail"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Bardak Takımı"
+  ],
+  "kalem": "bardak-takimi",
+  "vertikal": "ev-kurma",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 50,
+  "aykiri_urun_sayisi": 2,
+  "toplam_urun": 48,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 540,
+  "segmentler": {
+    "dusuk": {
+      "min": 169,
+      "medyan": 320,
+      "max": 423,
+      "urun_sayisi": 13
+    },
+    "orta": {
+      "min": 429,
+      "medyan": 564,
+      "max": 926,
+      "urun_sayisi": 24
+    },
+    "luks": {
+      "min": 932,
+      "medyan": 1251,
+      "max": 1508,
+      "urun_sayisi": 11
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Paşabahçe Linka Çay Bardağı 6 Adet 42471",
+      "fiyat": 168.99
+    },
+    {
+      "isim": "Paşabahçe ARDA TÜRKMEN BARDAK TK D PK Paşabahçe BA",
+      "fiyat": 269.1
+    },
+    {
+      "isim": "Paşabahçe ICONIC MEŞRUBAT-LONG DRINK 0 6",
+      "fiyat": 343.99
+    },
+    {
+      "isim": "Paşabahçe Irmak Cay Takimi, 6 Tabak 6 Bardak",
+      "fiyat": 378.0
+    },
+    {
+      "isim": "Lav Aras 6'lı Meşrubat Bardağı",
+      "fiyat": 429.0
+    },
+    {
+      "isim": "Paşabahçe Otto 18 Parca Bardak Seti",
+      "fiyat": 490.0
+    },
+    {
+      "isim": "LAV Galata 12'li Bardak Seti",
+      "fiyat": 499.0
+    },
+    {
+      "isim": "Deconox 6'lı Kristal Kesme Görünümlü Cam Bardak Seti - Meşrubat, Su, Kahve ve Viski Bardağı Takımı (320 ml)",
+      "fiyat": 539.85
+    },
+    {
+      "isim": "Lav, Tokyo 12'Li Bardak Seti, 8692952211317, Şeffaf",
+      "fiyat": 636.32
+    },
+    {
+      "isim": "Deconox 6 Adet Borosilikat Cam Bardak 6'lı Set 500 ml Su ve Meşrubat Bardağı, Kokteyl Bardağı",
+      "fiyat": 692.95
+    },
+    {
+      "isim": "Paşabahçe LINKA BARDAK TK HEDİYELİK KUTU",
+      "fiyat": 899.0
+    },
+    {
+      "isim": "Paşabahçe 12 Parça Allegra Su Ve Meşrubat Takımı P41536 & P420015-1030378",
+      "fiyat": 932.4
+    },
+    {
+      "isim": "Pasabahce Nova Su Ve Meşrubat Bardak Takımı 12 Parça Set 01cagtann23",
+      "fiyat": 1071.0
+    },
+    {
+      "isim": "Paşabahçe allegra su bardak takımı - su bardağı seti 18 prç.",
+      "fiyat": 1420.25
+    },
+    {
+      "isim": "Paşabahçe Allegra Su Meşrubat Bardak Takımı - Su Bardağı Seti 18 Prç.",
+      "fiyat": 1508.4
+    }
+  ]
+}

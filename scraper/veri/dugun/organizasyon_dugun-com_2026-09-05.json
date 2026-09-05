@@ -1,0 +1,44 @@
+{
+  "site": "dugun-com",
+  "kaynak_adlari": [
+    "Dugun.com - Istanbul Dugun Organizasyon"
+  ],
+  "kalem": "organizasyon",
+  "vertikal": "dugun",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 1,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 1,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 14650,
+  "segmentler": {
+    "dusuk": {
+      "min": 14650,
+      "medyan": 14650,
+      "max": 14650,
+      "urun_sayisi": 1
+    },
+    "orta": {
+      "min": 14650,
+      "medyan": 14650,
+      "max": 14650,
+      "urun_sayisi": 1
+    },
+    "luks": {
+      "min": 14650,
+      "medyan": 14650,
+      "max": 14650,
+      "urun_sayisi": 1
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "İstanbul Düğün Organizasyon Fiyatları",
+      "fiyat": 14650.0
+    }
+  ]
+}

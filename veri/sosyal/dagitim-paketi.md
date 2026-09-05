@@ -1,28 +1,28 @@
-# Dağıtım paketi — 2026-08-22
+# Dağıtım paketi — 2026-09-05
 
 ## WhatsApp / kısa paylaşım
 
-Ağustos 2026 Türkiye Maliyet Raporu yayımlandı: 121 fiyat serisi, 20 bağımsız kaynak, 80 çok kaynaklı seri. https://maliyetine.com.tr/rapor/
+Eylül 2026 Türkiye Maliyet Raporu yayımlandı: 121 fiyat serisi, 20 bağımsız kaynak, 80 çok kaynaklı seri. https://maliyetine.com.tr/rapor/
 
 ## LinkedIn
 
-Ağustos 2026 Türkiye Maliyet Raporu yayımlandı.
+Eylül 2026 Türkiye Maliyet Raporu yayımlandı.
 
 Bu sürümde 121 fiyat serisini 20 bağımsız kaynakla izliyoruz. 80 seri birden fazla kaynakla çapraz doğrulanıyor. Rapor; yedi endeksin güncel orta senaryolarını, yalnız kalite eşiğini geçen fiyat değişimlerini ve doğrudan kullanılabilir alıntı künyesini tek sayfada topluyor.
 
-Veriyi kullanırken ölçüm tarihini belirtin: 2026-08-22.
+Veriyi kullanırken ölçüm tarihini belirtin: 2026-09-05.
 
 https://maliyetine.com.tr/rapor/
 
 ## X / Bluesky
 
-Ağustos 2026 Türkiye Maliyet Raporu yayımlandı: 121 fiyat serisi, 20 bağımsız kaynak, 80 çok kaynaklı seri. https://maliyetine.com.tr/rapor/
+Eylül 2026 Türkiye Maliyet Raporu yayımlandı: 121 fiyat serisi, 20 bağımsız kaynak, 80 çok kaynaklı seri. https://maliyetine.com.tr/rapor/
 
 ## Doğrulanmış değişim adayları
 
+- Kedi Oyuncağı ortanca fiyatı 16 günde %168.2 arttı: 132 TL → 354 TL. (2 kaynak)
+  https://maliyetine.com.tr/kedi/kedi-oyuncagi-fiyatlari/
 - Kahve Makinesi ortanca fiyatı 13 günde %72.4 arttı: 3.299 TL → 5.689 TL. (3 kaynak)
   https://maliyetine.com.tr/ev-kurma/kahve-makinesi-fiyatlari/
-- Buzdolabı ortanca fiyatı 13 günde %40.8 arttı: 28.054 TL → 39.499 TL. (3 kaynak)
-  https://maliyetine.com.tr/ev-kurma/buzdolabi-fiyatlari/
-- Davlumbaz ortanca fiyatı 11 günde %32.4 arttı: 3.975 TL → 5.262 TL. (3 kaynak)
-  https://maliyetine.com.tr/ev-kurma/davlumbaz-fiyatlari/
+- Köpek Maması (paket) ortanca fiyatı 14 günde %47.3 azaldı: 3.018 TL → 1.590 TL. (2 kaynak)
+  https://maliyetine.com.tr/kopek/kopek-mamasi-fiyatlari/

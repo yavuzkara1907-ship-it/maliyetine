@@ -1,0 +1,100 @@
+{
+  "site": "nezih",
+  "kaynak_adlari": [
+    "Nezih - Sulu Boya"
+  ],
+  "kalem": "boya-seti",
+  "vertikal": "okul",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 20,
+  "aykiri_urun_sayisi": 1,
+  "toplam_urun": 19,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 345,
+  "segmentler": {
+    "dusuk": {
+      "min": 135,
+      "medyan": 207,
+      "max": 250,
+      "urun_sayisi": 5
+    },
+    "orta": {
+      "min": 300,
+      "medyan": 361,
+      "max": 410,
+      "urun_sayisi": 10
+    },
+    "luks": {
+      "min": 480,
+      "medyan": 605,
+      "max": 730,
+      "urun_sayisi": 4
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Pritt Suluboya 12 Renk Küçük Tablet",
+      "fiyat": 134.9
+    },
+    {
+      "isim": "Adel Sulu Boya 12 Renk 24mm 2290933001",
+      "fiyat": 179.9
+    },
+    {
+      "isim": "Carioca Sulu Boya 30 Mm 12’li Neon 42406",
+      "fiyat": 209.9
+    },
+    {
+      "isim": "Faber Castell Sulu Boya 12 Renk 125011",
+      "fiyat": 249.9
+    },
+    {
+      "isim": "Giotto 352300 Suluboya 12 Renk",
+      "fiyat": 299.9
+    },
+    {
+      "isim": "Pelikan Sulu Boya 12'li F355 P12",
+      "fiyat": 319.41
+    },
+    {
+      "isim": "Carioca Sulu Boya 30mm 24 Renk Tablet Fırçalı 42405",
+      "fiyat": 339.9
+    },
+    {
+      "isim": "Eberhard Sulu Boya Kalemi 12 Renk 516012",
+      "fiyat": 344.9
+    },
+    {
+      "isim": "Adel Sulu Boya 21 Renk Büyük Boy 931001",
+      "fiyat": 377.91
+    },
+    {
+      "isim": "Faber Castell Büyük Boy Suluboya 12 Renk",
+      "fiyat": 389.9
+    },
+    {
+      "isim": "Faber Castell Büyük Boy Suluboya 21 Renk",
+      "fiyat": 401.94
+    },
+    {
+      "isim": "Giotto Suluboya 12’li 351200",
+      "fiyat": 409.9
+    },
+    {
+      "isim": "Giotto 352600 Suluboya 24 Renk",
+      "fiyat": 479.9
+    },
+    {
+      "isim": "Giotto Sulu Boya 36’lı 352700",
+      "fiyat": 709.9
+    },
+    {
+      "isim": "Giotto Sulu Boya 24'lü 332000",
+      "fiyat": 729.9
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "guncelleme_tarihi": "2026-08-22",
+  "guncelleme_tarihi": "2026-09-05",
   "fiyat_serisi": 121,
   "kaynak": 20,
   "cok_kaynakli": 80,
@@ -13,7 +13,7 @@
       "cok_kaynakli": 5,
       "tek_kaynak": 9,
       "liste_fiyati": false,
-      "tarih": "2026-08-20"
+      "tarih": "2026-09-05"
     },
     "ev-kurma": {
       "fiyat_serisi": 42,
@@ -21,7 +21,7 @@
       "cok_kaynakli": 42,
       "tek_kaynak": 0,
       "liste_fiyati": false,
-      "tarih": "2026-08-22"
+      "tarih": "2026-09-05"
     },
     "okul": {
       "fiyat_serisi": 14,
@@ -29,7 +29,7 @@
       "cok_kaynakli": 14,
       "tek_kaynak": 0,
       "liste_fiyati": false,
-      "tarih": "2026-08-20"
+      "tarih": "2026-09-05"
     },
     "bebek": {
       "fiyat_serisi": 11,
@@ -37,7 +37,7 @@
       "cok_kaynakli": 9,
       "tek_kaynak": 2,
       "liste_fiyati": false,
-      "tarih": "2026-08-22"
+      "tarih": "2026-09-05"
     },
     "kedi": {
       "fiyat_serisi": 8,
@@ -45,7 +45,7 @@
       "cok_kaynakli": 6,
       "tek_kaynak": 2,
       "liste_fiyati": false,
-      "tarih": "2026-08-22"
+      "tarih": "2026-09-05"
     },
     "kopek": {
       "fiyat_serisi": 7,
@@ -53,7 +53,7 @@
       "cok_kaynakli": 4,
       "tek_kaynak": 3,
       "liste_fiyati": false,
-      "tarih": "2026-08-22"
+      "tarih": "2026-09-05"
     },
     "arac": {
       "fiyat_serisi": 25,
@@ -61,8 +61,8 @@
       "cok_kaynakli": 0,
       "tek_kaynak": 25,
       "liste_fiyati": true,
-      "tarih": "2026-08-22"
+      "tarih": "2026-09-05"
     }
   },
-  "dataset_surumu": "2026-08-22-9f06c382a78198a6"
+  "dataset_surumu": "2026-09-05-bb936b40420f387c"
 }

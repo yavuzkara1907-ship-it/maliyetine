@@ -1,0 +1,210 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Togg"
+  ],
+  "kalem": "togg",
+  "vertikal": "arac",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 8,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 8,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 2295299,
+  "segmentler": {
+    "dusuk": {
+      "min": 1884980,
+      "medyan": 1909048,
+      "max": 2195600,
+      "urun_sayisi": 3
+    },
+    "orta": {
+      "min": 2219668,
+      "medyan": 2390965,
+      "max": 3217937,
+      "urun_sayisi": 4
+    },
+    "luks": {
+      "min": 3218137,
+      "medyan": 3218137,
+      "max": 3218137,
+      "urun_sayisi": 1
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Togg T10F V1 RWD Standart Menzil",
+      "fiyat": 1884980.0
+    },
+    {
+      "isim": "Togg T10X V1 RWD standart menzil",
+      "fiyat": 1909048.0
+    },
+    {
+      "isim": "Togg T10F V1 RWD Uzun Menzil",
+      "fiyat": 2195600.0
+    },
+    {
+      "isim": "Togg T10X V1 RWD uzun menzil",
+      "fiyat": 2219668.0
+    },
+    {
+      "isim": "Togg T10F V2 RWD Uzun Menzil",
+      "fiyat": 2370930.0
+    },
+    {
+      "isim": "Togg T10X V2 RWD uzun menzil",
+      "fiyat": 2411000.0
+    },
+    {
+      "isim": "Togg T10F V2 4More",
+      "fiyat": 3217937.0
+    },
+    {
+      "isim": "Togg T10X V2 4More Obsidiyen",
+      "fiyat": 3218137.0
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 8,
+    "ozellik_eslesen_urun": 8,
+    "modeller": {
+      "t10f": {
+        "ad": "T10F",
+        "genel_medyan": 2283265,
+        "urun_sayisi": 4,
+        "segmentler": {
+          "dusuk": {
+            "min": 1884980.0,
+            "medyan": 2040290.0,
+            "max": 2195600.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 2370930.0,
+            "medyan": 2794433.5,
+            "max": 3217937.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Togg T10F V1 RWD Standart Menzil",
+            "fiyat": 1884980.0
+          },
+          {
+            "isim": "Togg T10F V1 RWD Uzun Menzil",
+            "fiyat": 2195600.0
+          },
+          {
+            "isim": "Togg T10F V2 RWD Uzun Menzil",
+            "fiyat": 2370930.0
+          },
+          {
+            "isim": "Togg T10F V2 4More",
+            "fiyat": 3217937.0
+          }
+        ]
+      },
+      "t10x": {
+        "ad": "T10X",
+        "genel_medyan": 2315334,
+        "urun_sayisi": 4,
+        "segmentler": {
+          "dusuk": {
+            "min": 1909048.0,
+            "medyan": 2064358.0,
+            "max": 2219668.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 2411000.0,
+            "medyan": 2814568.5,
+            "max": 3218137.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Togg T10X V1 RWD standart menzil",
+            "fiyat": 1909048.0
+          },
+          {
+            "isim": "Togg T10X V1 RWD uzun menzil",
+            "fiyat": 2219668.0
+          },
+          {
+            "isim": "Togg T10X V2 RWD uzun menzil",
+            "fiyat": 2411000.0
+          },
+          {
+            "isim": "Togg T10X V2 4More Obsidiyen",
+            "fiyat": 3218137.0
+          }
+        ]
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "Togg T10X V1 RWD standart menzil",
+        "fiyat": 1909048.0,
+        "nitelikler": {
+          "model": "T10X"
+        }
+      },
+      {
+        "isim": "Togg T10X V1 RWD uzun menzil",
+        "fiyat": 2219668.0,
+        "nitelikler": {
+          "model": "T10X"
+        }
+      },
+      {
+        "isim": "Togg T10X V2 RWD uzun menzil",
+        "fiyat": 2411000.0,
+        "nitelikler": {
+          "model": "T10X"
+        }
+      },
+      {
+        "isim": "Togg T10X V2 4More Obsidiyen",
+        "fiyat": 3218137.0,
+        "nitelikler": {
+          "model": "T10X"
+        }
+      },
+      {
+        "isim": "Togg T10F V1 RWD Standart Menzil",
+        "fiyat": 1884980.0,
+        "nitelikler": {
+          "model": "T10F"
+        }
+      },
+      {
+        "isim": "Togg T10F V1 RWD Uzun Menzil",
+        "fiyat": 2195600.0,
+        "nitelikler": {
+          "model": "T10F"
+        }
+      },
+      {
+        "isim": "Togg T10F V2 RWD Uzun Menzil",
+        "fiyat": 2370930.0,
+        "nitelikler": {
+          "model": "T10F"
+        }
+      },
+      {
+        "isim": "Togg T10F V2 4More",
+        "fiyat": 3217937.0,
+        "nitelikler": {
+          "model": "T10F"
+        }
+      }
+    ]
+  }
+}

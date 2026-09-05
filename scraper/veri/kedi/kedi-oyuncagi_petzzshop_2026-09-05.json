@@ -1,0 +1,100 @@
+{
+  "site": "petzzshop",
+  "kaynak_adlari": [
+    "petzzshop - Kedi Oyuncaklari"
+  ],
+  "kalem": "kedi-oyuncagi",
+  "vertikal": "kedi",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 24,
+  "aykiri_urun_sayisi": 2,
+  "toplam_urun": 22,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 550,
+  "segmentler": {
+    "dusuk": {
+      "min": 381,
+      "medyan": 450,
+      "max": 496,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 510,
+      "medyan": 555,
+      "max": 588,
+      "urun_sayisi": 12
+    },
+    "luks": {
+      "min": 609,
+      "medyan": 629,
+      "max": 691,
+      "urun_sayisi": 4
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Kong Zilli Tenis Topu Kedi Oyuncağı 3'lü - 1",
+      "fiyat": 380.72
+    },
+    {
+      "isim": "Kong Hareketli Tırtıl Peluş Kedi Oyuncağı - 1",
+      "fiyat": 415.46
+    },
+    {
+      "isim": "Kong Catnipli Ejderha Peluş Kedi Oyuncağı - 1",
+      "fiyat": 485.45
+    },
+    {
+      "isim": "Kong Flingaroo Yusufçuk Peluş Kedi Oyuncağı - 1",
+      "fiyat": 485.45
+    },
+    {
+      "isim": "Kong Catnipli Top Yumurta Peluş Kedi Oyuncağı 2'li - 1",
+      "fiyat": 509.59
+    },
+    {
+      "isim": "Kong Wrangler Catnipli Avokado Kedi Oyuncağı - 1",
+      "fiyat": 530.64
+    },
+    {
+      "isim": "Kong Catnipli Unicorn Peluş Kedi Oyuncağı - 1",
+      "fiyat": 545.01
+    },
+    {
+      "isim": "Kong Pencere Yapışkanlı Tüylü Kuş Kedi Oltası Oyuncağı - 1",
+      "fiyat": 545.01
+    },
+    {
+      "isim": "Kong Luvs Fare Peluş Kedi Oyuncağı - 1",
+      "fiyat": 555.28
+    },
+    {
+      "isim": "Kong Connects Magnicat Mıknatıslı Peluş Kedi Oyuncağı - 1",
+      "fiyat": 571.71
+    },
+    {
+      "isim": "Kong Teaser İpli Kelebek Kedi Oyuncağı - 1",
+      "fiyat": 581.98
+    },
+    {
+      "isim": "Kong Scrattles Panda ve Bambu Peluş Kedi Oyuncağı 2'li - 1",
+      "fiyat": 588.14
+    },
+    {
+      "isim": "Kong Teaser Loopz Kedi Olta Oyuncağı - 1",
+      "fiyat": 608.67
+    },
+    {
+      "isim": "Kong Naturals Catnipli Balık Kedi Oltası Oyuncağı - 1",
+      "fiyat": 635.03
+    },
+    {
+      "isim": "Kong Connects Tavus Kuşu Peluş Kedi Oyuncağı - 1",
+      "fiyat": 690.82
+    }
+  ]
+}

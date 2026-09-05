@@ -1,6 +1,6 @@
 {
-  "dataset_surumu": "2026-08-22-9f06c382a78198a6",
-  "kontrol_tarihi": "2026-08-22",
+  "dataset_surumu": "2026-09-05-bb936b40420f387c",
+  "kontrol_tarihi": "2026-09-05",
   "durum": "gecti",
   "ozet": {
     "fiyat_serisi": 121,
@@ -93,12 +93,6 @@
     },
     {
       "kod": "sert_degisim",
-      "mesaj": "Son karsilastirilabilir degisim %82.0",
-      "vertikal": "dugun",
-      "kalem": "yemek-ikram"
-    },
-    {
-      "kod": "sert_degisim",
       "mesaj": "Son karsilastirilabilir degisim %72.4",
       "vertikal": "ev-kurma",
       "kalem": "kahve-makinesi"
@@ -114,6 +108,12 @@
       "mesaj": "Perakende/hizmet serisi tek kaynakli",
       "vertikal": "bebek",
       "kalem": "zibin-seti"
+    },
+    {
+      "kod": "sert_degisim",
+      "mesaj": "Son karsilastirilabilir degisim %168.2",
+      "vertikal": "kedi",
+      "kalem": "kedi-oyuncagi"
     },
     {
       "kod": "tek_kaynak",
@@ -165,7 +165,7 @@
     },
     {
       "kod": "dusuk_orneklem",
-      "mesaj": "Orneklem 7 urun",
+      "mesaj": "Orneklem 6 urun",
       "vertikal": "arac",
       "kalem": "honda"
     },

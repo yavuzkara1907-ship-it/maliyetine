@@ -1,6 +1,6 @@
 {
   "vertikal": "okul",
-  "guncelleme_tarihi": "2026-08-20",
+  "guncelleme_tarihi": "2026-09-05",
   "kalemler": {
     "ayakkabi": {
       "olcum_turu": "kalem_fiyati",
@@ -123,7 +123,7 @@
           "min": 63,
           "medyan": 149,
           "max": 250,
-          "urun_sayisi": 23,
+          "urun_sayisi": 22,
           "kaynak_sayisi": 3
         },
         "orta": {
@@ -137,13 +137,13 @@
           "min": 480,
           "medyan": 775,
           "max": 1754,
-          "urun_sayisi": 19,
+          "urun_sayisi": 18,
           "kaynak_sayisi": 3
         }
       },
       "genel_medyan": 350,
-      "toplam_urun": 82,
-      "guncelleme_tarihi": "2026-08-20",
+      "toplam_urun": 80,
+      "guncelleme_tarihi": "2026-09-05",
       "kaynak_sayisi": 3,
       "kaynaklar": [
         {
@@ -160,9 +160,71 @@
           "kaynak_adlari": [
             "Nezih - Sulu Boya"
           ],
-          "tarih": "2026-08-20",
-          "toplam_urun": 21,
-          "genel_medyan": 340
+          "tarih": "2026-09-05",
+          "toplam_urun": 19,
+          "genel_medyan": 345,
+          "ornek_urunler": [
+            {
+              "isim": "Pritt Suluboya 12 Renk Küçük Tablet",
+              "fiyat": 134.9
+            },
+            {
+              "isim": "Adel Sulu Boya 12 Renk 24mm 2290933001",
+              "fiyat": 179.9
+            },
+            {
+              "isim": "Carioca Sulu Boya 30 Mm 12’li Neon 42406",
+              "fiyat": 209.9
+            },
+            {
+              "isim": "Faber Castell Sulu Boya 12 Renk 125011",
+              "fiyat": 249.9
+            },
+            {
+              "isim": "Giotto 352300 Suluboya 12 Renk",
+              "fiyat": 299.9
+            },
+            {
+              "isim": "Pelikan Sulu Boya 12'li F355 P12",
+              "fiyat": 319.41
+            },
+            {
+              "isim": "Carioca Sulu Boya 30mm 24 Renk Tablet Fırçalı 42405",
+              "fiyat": 339.9
+            },
+            {
+              "isim": "Eberhard Sulu Boya Kalemi 12 Renk 516012",
+              "fiyat": 344.9
+            },
+            {
+              "isim": "Adel Sulu Boya 21 Renk Büyük Boy 931001",
+              "fiyat": 377.91
+            },
+            {
+              "isim": "Faber Castell Büyük Boy Suluboya 12 Renk",
+              "fiyat": 389.9
+            },
+            {
+              "isim": "Faber Castell Büyük Boy Suluboya 21 Renk",
+              "fiyat": 401.94
+            },
+            {
+              "isim": "Giotto Suluboya 12’li 351200",
+              "fiyat": 409.9
+            },
+            {
+              "isim": "Giotto 352600 Suluboya 24 Renk",
+              "fiyat": 479.9
+            },
+            {
+              "isim": "Giotto Sulu Boya 36’lı 352700",
+              "fiyat": 709.9
+            },
+            {
+              "isim": "Giotto Sulu Boya 24'lü 332000",
+              "fiyat": 729.9
+            }
+          ]
         },
         {
           "site": "trendyol",
@@ -302,29 +364,29 @@
       "segmentler": {
         "dusuk": {
           "min": 40,
-          "medyan": 154,
+          "medyan": 129,
           "max": 310,
-          "urun_sayisi": 59,
+          "urun_sayisi": 51,
           "kaynak_sayisi": 4
         },
         "orta": {
-          "min": 115,
-          "medyan": 288,
+          "min": 99,
+          "medyan": 268,
           "max": 680,
-          "urun_sayisi": 90,
+          "urun_sayisi": 85,
           "kaynak_sayisi": 4
         },
         "luks": {
-          "min": 302,
-          "medyan": 400,
+          "min": 289,
+          "medyan": 383,
           "max": 1199,
-          "urun_sayisi": 32,
+          "urun_sayisi": 43,
           "kaynak_sayisi": 4
         }
       },
-      "genel_medyan": 270,
-      "toplam_urun": 181,
-      "guncelleme_tarihi": "2026-08-20",
+      "genel_medyan": 263,
+      "toplam_urun": 179,
+      "guncelleme_tarihi": "2026-09-05",
       "kaynak_sayisi": 4,
       "kaynaklar": [
         {
@@ -332,9 +394,71 @@
           "kaynak_adlari": [
             "Amazon - Okul Defteri"
           ],
-          "tarih": "2026-08-20",
-          "toplam_urun": 46,
-          "genel_medyan": 213
+          "tarih": "2026-09-05",
+          "toplam_urun": 45,
+          "genel_medyan": 200,
+          "ornek_urunler": [
+            {
+              "isim": "Meteksan A5 Kareli Okul Defteri Pembe Kamuflaj 60 Yaprak, Kareli",
+              "fiyat": 49.01
+            },
+            {
+              "isim": "Meteksan Colors A5 60 Yaprak Kareli Defter, Sarı",
+              "fiyat": 64.45
+            },
+            {
+              "isim": "Meteksan Colors A5 60 Yaprak Çizgili Defter, Somon",
+              "fiyat": 68.02
+            },
+            {
+              "isim": "Meteksan A4 Kareli Okul Defteri Pembe Kamuflaj 80 Yaprak",
+              "fiyat": 86.84
+            },
+            {
+              "isim": "Faber-Castell Grafiti Desenli Spiralli Defter, A4, 80 Yaprak, 70g Kağıt, Çizgili, Dayanıklı Kapak, Kolay Açılan Spiral Cilt, Asorti Renkler",
+              "fiyat": 107.59
+            },
+            {
+              "isim": "Faber-Castell Grafiti Spiralli Defter, A4, 120 Yaprak, 70g Kağıt, Çizgili, 500 Mikron PP Kapak, PET Spiralli, Dayanıklı ve Kullanışlı",
+              "fiyat": 141.25
+            },
+            {
+              "isim": "Faber-Castell Spiralli Defter, 100 Yaprak, 70g Kağıt, A4, Çizgili, 500 Mikron PP Kapak, Dayanıklı ve Çevre Dostu, Asorti Renkler",
+              "fiyat": 166.94
+            },
+            {
+              "isim": "Vincent Van Gogh/Almond Blossom,1890 | Spiralli Defter 21 | A5 | Çizgili | 100 Sayfa | Okul (Düz)",
+              "fiyat": 199.9
+            },
+            {
+              "isim": "A5 Spiralli Karton Kapak 2’li Set Kareli Okul Defteri 80 yaprak, Ders Programlı Leopar",
+              "fiyat": 240.0
+            },
+            {
+              "isim": "Etika A4 Dikişli Okul Defteri 6'lı PAKET – 3 Çizgili & 3 Kareli | Kaliteli kağıt, tel dikiş cilt 120 sayfa - 60 yp., set 720 sayfa 2'si 1 arada set okul, ofis tüm ihtiyaçlarınıza cevap verir",
+              "fiyat": 255.0
+            },
+            {
+              "isim": "A5 Spiralli Karton Kapak 2’li Set Kareli Okul Defteri 80 yaprak, Ders Programlı Mavi Krem Kalp",
+              "fiyat": 269.1
+            },
+            {
+              "isim": "Matt Notebook A5 Spiralli Okul Defteri 80 yaprak 2'li Set – Çizgili & Kareli",
+              "fiyat": 299.0
+            },
+            {
+              "isim": "Etika A4 60 Yaprak PP Kapaklı Tel Dikişli Defter – 6'lı Karma Paket | 3 çizgili + 3 kareli, suya dayanıklı PP kapak, 120 sayfa, kaliteli beyaz kağıt, okul ve ofis için ideal, hafif & taşınabilir.",
+              "fiyat": 339.0
+            },
+            {
+              "isim": "A4 Okul Defteri 60 Yaprak 8 Adet 4 Kareli 4 Çizgili Telsiz Plastik Kapak",
+              "fiyat": 399.0
+            },
+            {
+              "isim": "Etika A4 Okul Defteri Spiralli 144 Sayfa Dayanıklı PP Kapak 8'li Paket",
+              "fiyat": 449.0
+            }
+          ]
         },
         {
           "site": "dr",
@@ -350,9 +474,71 @@
           "kaynak_adlari": [
             "Nezih - Defter ve Bloknotlar"
           ],
-          "tarih": "2026-08-20",
-          "toplam_urun": 87,
-          "genel_medyan": 245
+          "tarih": "2026-09-05",
+          "toplam_urun": 86,
+          "genel_medyan": 230,
+          "ornek_urunler": [
+            {
+              "isim": "Gıpta A5 80yp. Canvas Tel Dikişli Pp Kapak Defter Kareli 6671000",
+              "fiyat": 39.9
+            },
+            {
+              "isim": "Mynote Text Pastel A5 Dikişli PP Kapak Defter 60yp. Çizgili MTXPA-A560-Ç",
+              "fiyat": 79.9
+            },
+            {
+              "isim": "Deffter Just A7 Bloknot Sert Kapak Spiralli Defter 70yp. Seeds Çizgisiz 644780",
+              "fiyat": 99.9
+            },
+            {
+              "isim": "Multi Notebook 150 Yp 4+2 Seperatörlü Defter",
+              "fiyat": 144.9
+            },
+            {
+              "isim": "Papirüs İndigo Spiralli Pp Kapak A4 80yp. Kareli",
+              "fiyat": 169.9
+            },
+            {
+              "isim": "Wenote Yapışkan Notluklu Küp Defter 6-220 Yaprak 8x8",
+              "fiyat": 179.9
+            },
+            {
+              "isim": "Wenote Yapışkan Notluklu Spiralli Not Defteri 6-60 Yaprak 13x9,5",
+              "fiyat": 179.9
+            },
+            {
+              "isim": "Papirüs Note Case Simli Spiralli Sert Kapak 14x19 120yp. Çizgili",
+              "fiyat": 229.9
+            },
+            {
+              "isim": "Papirüs Miyav Spiralli Sert Kapak 16x23 120yp. Çizgili Defter",
+              "fiyat": 269.9
+            },
+            {
+              "isim": "Keskin 16,5x22,5cm 80yp. Spiralli Pp Kapak Gemi Çizgili 324241-99",
+              "fiyat": 274.9
+            },
+            {
+              "isim": "Deffter Just Art-Ifıcıal Defter Leon",
+              "fiyat": 279.9
+            },
+            {
+              "isim": "Deffter 643875 Art Of Word Jules David Don Quixote 643875 14x20 Çizgili 96yp.",
+              "fiyat": 299.9
+            },
+            {
+              "isim": "Deffter Art Of Word / Mihrap - Osman Hamdi Bey",
+              "fiyat": 299.9
+            },
+            {
+              "isim": "Victoria’s Journals Kuromi 365 Gün A7 Günlük, 368sf. , 80gr.",
+              "fiyat": 359.9
+            },
+            {
+              "isim": "Victoria’s Journal Kuromi Smyth Flexy Esnek Vegan Deri Kapaklı Defter 13x18cm 80gr. 80yp. Çizgili 52",
+              "fiyat": 419.9
+            }
+          ]
         },
         {
           "site": "trendyol",
@@ -434,29 +620,29 @@
       "segmentler": {
         "dusuk": {
           "min": 80,
-          "medyan": 270,
+          "medyan": 260,
           "max": 399,
           "urun_sayisi": 43,
           "kaynak_sayisi": 3
         },
         "orta": {
           "min": 266,
-          "medyan": 540,
-          "max": 735,
+          "medyan": 450,
+          "max": 693,
           "urun_sayisi": 84,
           "kaynak_sayisi": 3
         },
         "luks": {
           "min": 475,
           "medyan": 799,
-          "max": 994,
+          "max": 1000,
           "urun_sayisi": 39,
           "kaynak_sayisi": 3
         }
       },
-      "genel_medyan": 540,
+      "genel_medyan": 450,
       "toplam_urun": 166,
-      "guncelleme_tarihi": "2026-08-20",
+      "guncelleme_tarihi": "2026-09-05",
       "kaynak_sayisi": 3,
       "kaynaklar": [
         {
@@ -473,9 +659,71 @@
           "kaynak_adlari": [
             "Nezih - Kalem Kutulari"
           ],
-          "tarih": "2026-08-20",
+          "tarih": "2026-09-05",
           "toplam_urun": 99,
-          "genel_medyan": 540
+          "genel_medyan": 450,
+          "ornek_urunler": [
+            {
+              "isim": "Brons Sosis Kalemlik Br-3001",
+              "fiyat": 79.9
+            },
+            {
+              "isim": "Cambridge Polo Urban Çift Bölmeli Kalem Çantası Siyah 3023",
+              "fiyat": 229.9
+            },
+            {
+              "isim": "Endbag Stella Tek Gözlü Kalem Çantası Mor",
+              "fiyat": 259.9
+            },
+            {
+              "isim": "Unicus Simli Rugan Klasik Kalem Kutu XL UNCS-907",
+              "fiyat": 299.9
+            },
+            {
+              "isim": "Okapi Kalem Çantası Karışık Renk Okp-135As",
+              "fiyat": 374.9
+            },
+            {
+              "isim": "Endbag Nova İkili Kalem Çantası Koyu Gri",
+              "fiyat": 399.9
+            },
+            {
+              "isim": "Gap Kalem Çantası 12841",
+              "fiyat": 414.9
+            },
+            {
+              "isim": "Faber Kalem Çantası Tek Gözlü Knights 5177000104",
+              "fiyat": 449.9
+            },
+            {
+              "isim": "Gap Kids Kalem Çantası Organizer Bölmeli Siyah 12789",
+              "fiyat": 519.9
+            },
+            {
+              "isim": "Gap Kalem Çantası 3 Bölmeli Lacivert 12871",
+              "fiyat": 574.9
+            },
+            {
+              "isim": "Dolphin Studio Pets Eva Kalem Çantası Küçük PT-7784",
+              "fiyat": 609.9
+            },
+            {
+              "isim": "Mickey Mouse Kalem Çantası Bymcky 48652",
+              "fiyat": 719.9
+            },
+            {
+              "isim": "Mickey Mouse Kalem Çantası Ice-Lx Run 49348",
+              "fiyat": 799.9
+            },
+            {
+              "isim": "Dolphin Studio Pets Eva Kalem Çantası Büyük PT-7785",
+              "fiyat": 874.9
+            },
+            {
+              "isim": "Globox 4023 Hesap Makineli Vintage Kalemlik",
+              "fiyat": 999.9
+            }
+          ]
         },
         {
           "site": "trendyol",
@@ -553,28 +801,28 @@
         "dusuk": {
           "min": 75,
           "medyan": 260,
-          "max": 502,
-          "urun_sayisi": 45,
+          "max": 620,
+          "urun_sayisi": 46,
           "kaynak_sayisi": 3
         },
         "orta": {
           "min": 195,
-          "medyan": 785,
-          "max": 1380,
-          "urun_sayisi": 85,
+          "medyan": 900,
+          "max": 1500,
+          "urun_sayisi": 90,
           "kaynak_sayisi": 3
         },
         "luks": {
           "min": 371,
-          "medyan": 1538,
-          "max": 2400,
-          "urun_sayisi": 39,
+          "medyan": 1580,
+          "max": 2300,
+          "urun_sayisi": 37,
           "kaynak_sayisi": 3
         }
       },
-      "genel_medyan": 735,
-      "toplam_urun": 169,
-      "guncelleme_tarihi": "2026-08-20",
+      "genel_medyan": 890,
+      "toplam_urun": 173,
+      "guncelleme_tarihi": "2026-09-05",
       "kaynak_sayisi": 3,
       "kaynaklar": [
         {
@@ -582,18 +830,142 @@
           "kaynak_adlari": [
             "Amazon - Çelik Matara Suluk"
           ],
-          "tarih": "2026-08-05",
-          "toplam_urun": 44,
-          "genel_medyan": 735
+          "tarih": "2026-09-05",
+          "toplam_urun": 48,
+          "genel_medyan": 890,
+          "ornek_urunler": [
+            {
+              "isim": "Busstier 12 oz (355 ml) Paslanmaz Çelik Cep Matarası, Su ve Cold Brew İçin Metal Matara, Kamp Seyahat Piknik ve Günlük Kullanım İçin Vidalı Kapaklı Taşınabilir Şişe, Gümüş",
+              "fiyat": 224.9
+            },
+            {
+              "isim": "Çelik Siyah Kapak 750 ml Sporcu Matara Suluk (SICAK-SOĞUK TUTMAZ) cin426",
+              "fiyat": 358.13
+            },
+            {
+              "isim": "Paslanmaz 304 Çelik Matara Pipetli Motivasyon Matarası Suluğu 304 Çelik Suluk Pembe 750 ml 1156",
+              "fiyat": 429.0
+            },
+            {
+              "isim": "Ikea ENKELSPÄRIG Su şişesi paslanmaz çelik/bej 0,5 l",
+              "fiyat": 499.0
+            },
+            {
+              "isim": "Frocx Minnie Mouse Çelik Matara, 500 ml, Salto Kapak, Taşıma Askılı",
+              "fiyat": 645.0
+            },
+            {
+              "isim": "Deconox 650 ml Paslanmaz Çelik Termos Matara - 4 Renk (Krem, Yeşil, Siyah, Mavi) - Sıcak ve Soğuk Tutan Sporcu Suluk ve Ofis Şişesi (SİYAH)",
+              "fiyat": 719.85
+            },
+            {
+              "isim": "400 ML 316L Paslanmaz Çelik Pipetli Çocuk Termosu Taşıma Kulplu Askılı Çift Duvar -FFR400ML4011 Turuncu",
+              "fiyat": 799.9
+            },
+            {
+              "isim": "Deconox Paslanmaz Çelik Termos Matara - 1000 ML (1 Litre) Kapasiteli, Renk Seçenekli Isı Yalıtımlı Çelik Suluk (BEYAZ)",
+              "fiyat": 899.85
+            },
+            {
+              "isim": "1 Hand Leak-Proof Sızdırmaz Çelik Termos 500 Ml Ice Melt ST-223",
+              "fiyat": 949.0
+            },
+            {
+              "isim": "Zwilling Thermo Matara, 7 Saat Sıcak 12 Saat Soğuk Tutar, Paslanmaz Çelik, Beyaz-Gri, 450 ml",
+              "fiyat": 1062.9
+            },
+            {
+              "isim": "Vagonlife Paslanmaz Çelik Su Matarası - 550 ml Tek Kapak Çift Kullanım Taşıma Kulplu Termos (Bej)",
+              "fiyat": 1379.0
+            },
+            {
+              "isim": "1 Hand Leak-Proof Sızdırmaz Çelik Termos 1500 ML Black ST-235",
+              "fiyat": 1410.78
+            },
+            {
+              "isim": "420 ml Yeşil Dinazor Baskılı Erkek Çocuk Paslanmaz Çelik Suluk Matara - 60004",
+              "fiyat": 1513.5
+            },
+            {
+              "isim": "Coral High 650 ml Erkek Çocuk Turuncu Kamyon Desenli Çelik Suluk/Matara (Pipetli) 38343",
+              "fiyat": 1699.95
+            },
+            {
+              "isim": "STANLEY Quick-Flip Termos 1.06 Litre - Pembe Kuvars (Rose Quartz) | Paslanmaz Çelik",
+              "fiyat": 2074.17
+            }
+          ]
         },
         {
           "site": "nezih",
           "kaynak_adlari": [
             "Nezih - Mataralar"
           ],
-          "tarih": "2026-08-20",
+          "tarih": "2026-09-05",
           "toplam_urun": 100,
-          "genel_medyan": 1050
+          "genel_medyan": 1100,
+          "ornek_urunler": [
+            {
+              "isim": "Dolphin Aluminyum Matara 500ml ALM G-50",
+              "fiyat": 149.9
+            },
+            {
+              "isim": "Gıpta Lıfe İs Good Tritan Matara 730Cc K750900",
+              "fiyat": 259.9
+            },
+            {
+              "isim": "Hakan Frozen Şeffaf Matara 97830",
+              "fiyat": 259.9
+            },
+            {
+              "isim": "Hakan Spiderman, Batman,Cars, Pj Mask Metal Matara 2019 97871",
+              "fiyat": 309.9
+            },
+            {
+              "isim": "Me Galatasaray Parçalı 500 Ml Plastik Matara 25571",
+              "fiyat": 479.9
+            },
+            {
+              "isim": "Beşiktaş Tritan Matara 25388",
+              "fiyat": 864.9
+            },
+            {
+              "isim": "Contigo Gizmo Flip Dino Tritan Çocuk Suluğu 420ml Yeşil 2115035",
+              "fiyat": 1049.9
+            },
+            {
+              "isim": "Minnie Çelik Matara Salto Iconıc 500Ml 42661",
+              "fiyat": 1099.9
+            },
+            {
+              "isim": "Contigo Ashland Autospout Tren Suluk 720ml Mor 2191382",
+              "fiyat": 1249.9
+            },
+            {
+              "isim": "Contigo Cortland Autoseal Tren Suluk 720ml Mor 2191389",
+              "fiyat": 1249.9
+            },
+            {
+              "isim": "Contigo Jackson Autopop Tritan Suluk 720ml Pembe 2156439",
+              "fiyat": 1249.9
+            },
+            {
+              "isim": "Contigo Huron Pro Snapseal Termos Bardak 470ml Latte 2205182",
+              "fiyat": 1499.9
+            },
+            {
+              "isim": "Contigo Streeterville Vakumlu Masa Termos Kupa 470ml Siyah 2208260",
+              "fiyat": 1749.9
+            },
+            {
+              "isim": "Globox Termos Matara Siyah 750ml 3974",
+              "fiyat": 1899.9
+            },
+            {
+              "isim": "Contigo Gizmo Flip Dragon Çelik 380Ml Pembe 2178083",
+              "fiyat": 2299.9
+            }
+          ]
         },
         {
           "site": "trendyol",
@@ -618,29 +990,29 @@
       "segmentler": {
         "dusuk": {
           "min": 260,
-          "medyan": 900,
-          "max": 1500,
-          "urun_sayisi": 47,
+          "medyan": 800,
+          "max": 1147,
+          "urun_sayisi": 48,
           "kaynak_sayisi": 3
         },
         "orta": {
           "min": 1000,
           "medyan": 1472,
-          "max": 2750,
-          "urun_sayisi": 86,
+          "max": 2550,
+          "urun_sayisi": 83,
           "kaynak_sayisi": 3
         },
         "luks": {
           "min": 1499,
           "medyan": 2399,
           "max": 4529,
-          "urun_sayisi": 39,
+          "urun_sayisi": 40,
           "kaynak_sayisi": 3
         }
       },
       "genel_medyan": 1442,
-      "toplam_urun": 172,
-      "guncelleme_tarihi": "2026-08-20",
+      "toplam_urun": 171,
+      "guncelleme_tarihi": "2026-09-05",
       "kaynak_sayisi": 3,
       "kaynaklar": [
         {
@@ -657,9 +1029,71 @@
           "kaynak_adlari": [
             "Nezih - Sirt Cantalari"
           ],
-          "tarih": "2026-08-20",
-          "toplam_urun": 100,
-          "genel_medyan": 2325
+          "tarih": "2026-09-05",
+          "toplam_urun": 99,
+          "genel_medyan": 1800,
+          "ornek_urunler": [
+            {
+              "isim": "Okapi (Okp-112 Yama ) Çanta",
+              "fiyat": 259.96
+            },
+            {
+              "isim": "Mikro Okul Çantası 707Ç",
+              "fiyat": 790.0
+            },
+            {
+              "isim": "Cambridge Polo Tactical II Ön Bölmeli Sırt Çantası Kamuflaj 4027",
+              "fiyat": 799.9
+            },
+            {
+              "isim": "No Fear Siyah-Beyaz Çift Bölme Sırt Çantası 03574",
+              "fiyat": 999.9
+            },
+            {
+              "isim": "Faber Sırt Çantası Basic 1 Kırmızı-Siyah 5177190139",
+              "fiyat": 1054.9
+            },
+            {
+              "isim": "Slazenger Kıds Shark Okul Çantası 23058",
+              "fiyat": 1390.72
+            },
+            {
+              "isim": "Faber Sırt Çantası King Pack 1 Pembe-Mor 5177190154",
+              "fiyat": 1755.0
+            },
+            {
+              "isim": "Jacbag Jac-56 Campus Deri Tabanlı İki Bölmeli Sırt Çantası Gri",
+              "fiyat": 1799.9
+            },
+            {
+              "isim": "Muggle Süper Girl Koleksiyonu İlkokul Çantası MU-9039",
+              "fiyat": 1999.9
+            },
+            {
+              "isim": "U.S Polo Sırt Çantası PLÇAN23140",
+              "fiyat": 2499.9
+            },
+            {
+              "isim": "Gap Kids Sırt Çantası 2 bölmeli Pembe 12800",
+              "fiyat": 2549.9
+            },
+            {
+              "isim": "Gap Sırt Çantası 2 Bölmeli Antrasit 13399",
+              "fiyat": 2649.9
+            },
+            {
+              "isim": "Gap Kids Sırt Çantası Siyah 12787",
+              "fiyat": 2749.9
+            },
+            {
+              "isim": "Obm Gabbys Dollhouse Okul Çantası 3314",
+              "fiyat": 3099.9
+            },
+            {
+              "isim": "Belmil Ergonomik Mıknatıslı Okul Çantası Swimming Girl 405-83/AG",
+              "fiyat": 4528.93
+            }
+          ]
         },
         {
           "site": "trendyol",

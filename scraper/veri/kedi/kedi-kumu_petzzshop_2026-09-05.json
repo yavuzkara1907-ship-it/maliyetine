@@ -1,0 +1,179 @@
+{
+  "site": "petzzshop",
+  "kaynak_adlari": [
+    "petzzshop - Kedi Kumu"
+  ],
+  "kalem": "kedi-kumu",
+  "vertikal": "kedi",
+  "olcum_turu": "paket_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 24,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 24,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 512,
+  "segmentler": {
+    "dusuk": {
+      "min": 312,
+      "medyan": 342,
+      "max": 459,
+      "urun_sayisi": 7
+    },
+    "orta": {
+      "min": 460,
+      "medyan": 518,
+      "max": 893,
+      "urun_sayisi": 12
+    },
+    "luks": {
+      "min": 901,
+      "medyan": 1211,
+      "max": 1296,
+      "urun_sayisi": 5
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Van Cat Bebek Pudralı Parfümlü İnce Taneli Topaklanan Bentonit Kedi Kumu - 10 Lt",
+      "fiyat": 312.25
+    },
+    {
+      "isim": "Van Cat Aktif Karbonlu İnce Taneli Topaklanan Bentonit Kedi Kumu - 10 Lt",
+      "fiyat": 339.9
+    },
+    {
+      "isim": "Kiko Cat Premium Litter Grey Karbon Kedi Kumu - 10 Lt",
+      "fiyat": 341.94
+    },
+    {
+      "isim": "Molly Aktif Karbonlu Topaklanan Bentonit Kedi Kumu - 10 Lt",
+      "fiyat": 454.22
+    },
+    {
+      "isim": "Molly Aktif Karbon Granüllü Topaklanan Bentonit Kedi Kumu - 10 Lt",
+      "fiyat": 459.81
+    },
+    {
+      "isim": "Lindocat Super Premium Bikarbonatlı Koku Önleyici Extra Güçlü Tozsuz Topaklanan Kedi Kumu",
+      "fiyat": 488.77
+    },
+    {
+      "isim": "Sanicat Essential Oils Kokusuz Kedi Kumu",
+      "fiyat": 506.68
+    },
+    {
+      "isim": "Feles Aktif Karbonlu Tozsuz Topaklanan Kedi Kumu - 10 Lt",
+      "fiyat": 517.52
+    },
+    {
+      "isim": "Feles Ultra Light Aktif Karbonlu Tozsuz Topaklanan Kedi Kumu - 8 lt",
+      "fiyat": 517.52
+    },
+    {
+      "isim": "Van Cat Aktif Karbonlu İnce Taneli Topaklanan Bentonit Kedi Kumu - 2 X 10 lt",
+      "fiyat": 696.0
+    },
+    {
+      "isim": "Lindocat Soaply Marsilya Sabunlu İnce Taneli Kedi Kumu",
+      "fiyat": 874.82
+    },
+    {
+      "isim": "Lindocat Charme Amber Kokulu Kedi Kumu",
+      "fiyat": 893.1
+    },
+    {
+      "isim": "Lindocat Original Kokusuz Topaklanan Kedi Kumu",
+      "fiyat": 900.68
+    },
+    {
+      "isim": "Lindocat Super Premium Pudra Kokulu Extra Güçlü Topaklanan Kedi Kumu",
+      "fiyat": 1210.66
+    },
+    {
+      "isim": "Lindocat Prestige Bebek Pudralı Kedi Kumu",
+      "fiyat": 1295.96
+    }
+  ],
+  "birim_fiyatlari": {
+    "litre": {
+      "etiket": "TL/litre",
+      "genel_medyan": 34.8,
+      "eslesen_urun": 9,
+      "toplam_urun": 24,
+      "eslesme_orani": 0.375,
+      "segmentler": {
+        "dusuk": {
+          "min": 31.23,
+          "medyan": 32.36,
+          "max": 33.99,
+          "urun_sayisi": 3
+        },
+        "orta": {
+          "min": 34.19,
+          "medyan": 40.11,
+          "max": 45.98,
+          "urun_sayisi": 4
+        },
+        "luks": {
+          "min": 51.75,
+          "medyan": 58.22,
+          "max": 64.69,
+          "urun_sayisi": 2
+        }
+      },
+      "ornek_urunler": [
+        {
+          "isim": "Van Cat Bebek Pudralı Parfümlü İnce Taneli Topaklanan Bentonit Kedi Kumu - 10 Lt",
+          "fiyat": 312.25,
+          "miktar": 10.0,
+          "birim_fiyat": 31.23
+        },
+        {
+          "isim": "Animal World Aktif Karbonlu Topaklanan Bentonit Kedi Kumu - 10 Lt",
+          "fiyat": 323.6,
+          "miktar": 10.0,
+          "birim_fiyat": 32.36
+        },
+        {
+          "isim": "Van Cat Aktif Karbonlu İnce Taneli Topaklanan Bentonit Kedi Kumu - 10 Lt",
+          "fiyat": 339.9,
+          "miktar": 10.0,
+          "birim_fiyat": 33.99
+        },
+        {
+          "isim": "Kiko Cat Premium Litter Grey Karbon Kedi Kumu - 10 Lt",
+          "fiyat": 341.94,
+          "miktar": 10.0,
+          "birim_fiyat": 34.19
+        },
+        {
+          "isim": "Molly Aktif Karbonlu Topaklanan Bentonit Kedi Kumu - 10 Lt",
+          "fiyat": 454.22,
+          "miktar": 10.0,
+          "birim_fiyat": 45.42
+        },
+        {
+          "isim": "Molly Aktif Karbon Granüllü Topaklanan Bentonit Kedi Kumu - 10 Lt",
+          "fiyat": 459.81,
+          "miktar": 10.0,
+          "birim_fiyat": 45.98
+        },
+        {
+          "isim": "Feles Aktif Karbonlu Tozsuz Topaklanan Kedi Kumu - 10 Lt",
+          "fiyat": 517.52,
+          "miktar": 10.0,
+          "birim_fiyat": 51.75
+        },
+        {
+          "isim": "Feles Ultra Light Aktif Karbonlu Tozsuz Topaklanan Kedi Kumu - 8 lt",
+          "fiyat": 517.52,
+          "miktar": 8.0,
+          "birim_fiyat": 64.69
+        }
+      ]
+    }
+  }
+}

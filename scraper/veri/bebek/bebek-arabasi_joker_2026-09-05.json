@@ -1,0 +1,100 @@
+{
+  "site": "joker",
+  "kaynak_adlari": [
+    "Joker - Bebek Arabasi / Puset"
+  ],
+  "kalem": "bebek-arabasi",
+  "vertikal": "bebek",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 32,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 32,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 48370,
+  "segmentler": {
+    "dusuk": {
+      "min": 2495,
+      "medyan": 11700,
+      "max": 19494,
+      "urun_sayisi": 10
+    },
+    "orta": {
+      "min": 33742,
+      "medyan": 59992,
+      "max": 119990,
+      "urun_sayisi": 17
+    },
+    "luks": {
+      "min": 129990,
+      "medyan": 129990,
+      "max": 134990,
+      "urun_sayisi": 5
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Inglesina Aptica Bebek Arabası Yazlık Örtü",
+      "fiyat": 2495.0
+    },
+    {
+      "isim": "Inglesina Electa+ Dual Anne Bebek Bakım Çantası - Garage Grey",
+      "fiyat": 8993.0
+    },
+    {
+      "isim": "Doona X Omuz Pedi & Tente Set - Nitro Black",
+      "fiyat": 11700.0
+    },
+    {
+      "isim": "Doona X Omuz Pedi & Tente Set - Terracotta",
+      "fiyat": 11700.0
+    },
+    {
+      "isim": "Inglesina Now Kendiliğinden Katlanan Tek Hamlede Açılan Kabin Boy Bebek Arabası - Sprint Green",
+      "fiyat": 19493.5
+    },
+    {
+      "isim": "Inglesina Quid3 Tek El Tek Hamle ile Katlanıp Açılan Kabin Boy Bebek Arabası Galaxy Grey",
+      "fiyat": 33742.5
+    },
+    {
+      "isim": "Inglesina Zippy Light Bebek Arabası + Huggy Ana Kucağı Seti - Blue",
+      "fiyat": 40870.0
+    },
+    {
+      "isim": "Inglesina Trilogy Tek El Katlanır Bebek Arabası + Darwin Recline Yatabilen Ana Kucağı - Union Grey",
+      "fiyat": 48370.0
+    },
+    {
+      "isim": "Inglesina Electa+ Tek El Tek Hamle ile Katlanıp Açılan Çift Yön Bebek Arabası - Battery Beige",
+      "fiyat": 59992.5
+    },
+    {
+      "isim": "Inglesina Aptica Glam Tek El Tek Hamle ile Katlanıp Açılan Çift Yön Bebek Arabası - Resort Blue",
+      "fiyat": 67492.5
+    },
+    {
+      "isim": "Inglesina Aptica XT Glam Tek El Tek Hamle ile Katlanıp Açılan Çift Yön Bebek Arabası - Taiga Green",
+      "fiyat": 67492.5
+    },
+    {
+      "isim": "Inglesina Electa Plus Bebek Arabası & Darwin Recline Evo Ana Kucaklı 4'lü Sistem - Garage Grey",
+      "fiyat": 119990.0
+    },
+    {
+      "isim": "Inglesina Aptica Glam Bebek Arabası & Darwin Recline Ana Kucaklı 4'lü Sistem - Emerald Green",
+      "fiyat": 129990.0
+    },
+    {
+      "isim": "Inglesina Aptica Glam Bebek Arabası & Darwin Recline Evo Ana Kucaklı 4'lü Sistem - Vicuna Beige",
+      "fiyat": 129990.0
+    },
+    {
+      "isim": "Inglesina Aptica XT Glam Bebek Arabası & Darwin Recline Evo Ana Kucaklı 4'lü Sistem - Tundra Beige",
+      "fiyat": 134990.0
+    }
+  ]
+}

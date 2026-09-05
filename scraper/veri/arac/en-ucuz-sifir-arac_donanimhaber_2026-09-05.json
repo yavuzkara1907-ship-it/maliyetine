@@ -1,0 +1,128 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Marka Giris Fiyatlari"
+  ],
+  "kalem": "en-ucuz-sifir-arac",
+  "vertikal": "arac",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 24,
+  "aykiri_urun_sayisi": 2,
+  "toplam_urun": 22,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 2044450,
+  "segmentler": {
+    "dusuk": {
+      "min": 1460000,
+      "medyan": 1517450,
+      "max": 1595000,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 1830000,
+      "medyan": 2079000,
+      "max": 2350000,
+      "urun_sayisi": 11
+    },
+    "luks": {
+      "min": 2474985,
+      "medyan": 2650000,
+      "max": 3320000,
+      "urun_sayisi": 5
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Dacia",
+      "fiyat": 1460000.0
+    },
+    {
+      "isim": "Kia",
+      "fiyat": 1460000.0
+    },
+    {
+      "isim": "Fiat",
+      "fiyat": 1499900.0
+    },
+    {
+      "isim": "Opel",
+      "fiyat": 1535000.0
+    },
+    {
+      "isim": "Hyundai",
+      "fiyat": 1562000.0
+    },
+    {
+      "isim": "Citroen",
+      "fiyat": 1595000.0
+    },
+    {
+      "isim": "Renault",
+      "fiyat": 1830000.0
+    },
+    {
+      "isim": "Seat",
+      "fiyat": 1857000.0
+    },
+    {
+      "isim": "Togg",
+      "fiyat": 1884980.0
+    },
+    {
+      "isim": "Peugeot",
+      "fiyat": 1999500.0
+    },
+    {
+      "isim": "Skoda",
+      "fiyat": 2009900.0
+    },
+    {
+      "isim": "Suzuki",
+      "fiyat": 2079000.0
+    },
+    {
+      "isim": "Ford",
+      "fiyat": 2158700.0
+    },
+    {
+      "isim": "Chery",
+      "fiyat": 2175000.0
+    },
+    {
+      "isim": "Volkswagen",
+      "fiyat": 2292000.0
+    },
+    {
+      "isim": "Nissan",
+      "fiyat": 2328700.0
+    },
+    {
+      "isim": "Toyota",
+      "fiyat": 2350000.0
+    },
+    {
+      "isim": "Tesla",
+      "fiyat": 2474985.0
+    },
+    {
+      "isim": "Honda",
+      "fiyat": 2600000.0
+    },
+    {
+      "isim": "Cupra",
+      "fiyat": 2650000.0
+    },
+    {
+      "isim": "MG",
+      "fiyat": 2655000.0
+    },
+    {
+      "isim": "Mercedes",
+      "fiyat": 3320000.0
+    }
+  ]
+}

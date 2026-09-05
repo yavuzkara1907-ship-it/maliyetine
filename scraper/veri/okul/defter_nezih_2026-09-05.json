@@ -1,0 +1,100 @@
+{
+  "site": "nezih",
+  "kaynak_adlari": [
+    "Nezih - Defter ve Bloknotlar"
+  ],
+  "kalem": "defter",
+  "vertikal": "okul",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 100,
+  "aykiri_urun_sayisi": 14,
+  "toplam_urun": 86,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 230,
+  "segmentler": {
+    "dusuk": {
+      "min": 40,
+      "medyan": 100,
+      "max": 170,
+      "urun_sayisi": 25
+    },
+    "orta": {
+      "min": 180,
+      "medyan": 237,
+      "max": 280,
+      "urun_sayisi": 40
+    },
+    "luks": {
+      "min": 290,
+      "medyan": 300,
+      "max": 420,
+      "urun_sayisi": 21
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Gıpta A5 80yp. Canvas Tel Dikişli Pp Kapak Defter Kareli 6671000",
+      "fiyat": 39.9
+    },
+    {
+      "isim": "Mynote Text Pastel A5 Dikişli PP Kapak Defter 60yp. Çizgili MTXPA-A560-Ç",
+      "fiyat": 79.9
+    },
+    {
+      "isim": "Deffter Just A7 Bloknot Sert Kapak Spiralli Defter 70yp. Seeds Çizgisiz 644780",
+      "fiyat": 99.9
+    },
+    {
+      "isim": "Multi Notebook 150 Yp 4+2 Seperatörlü Defter",
+      "fiyat": 144.9
+    },
+    {
+      "isim": "Papirüs İndigo Spiralli Pp Kapak A4 80yp. Kareli",
+      "fiyat": 169.9
+    },
+    {
+      "isim": "Wenote Yapışkan Notluklu Küp Defter 6-220 Yaprak 8x8",
+      "fiyat": 179.9
+    },
+    {
+      "isim": "Wenote Yapışkan Notluklu Spiralli Not Defteri 6-60 Yaprak 13x9,5",
+      "fiyat": 179.9
+    },
+    {
+      "isim": "Papirüs Note Case Simli Spiralli Sert Kapak 14x19 120yp. Çizgili",
+      "fiyat": 229.9
+    },
+    {
+      "isim": "Papirüs Miyav Spiralli Sert Kapak 16x23 120yp. Çizgili Defter",
+      "fiyat": 269.9
+    },
+    {
+      "isim": "Keskin 16,5x22,5cm 80yp. Spiralli Pp Kapak Gemi Çizgili 324241-99",
+      "fiyat": 274.9
+    },
+    {
+      "isim": "Deffter Just Art-Ifıcıal Defter Leon",
+      "fiyat": 279.9
+    },
+    {
+      "isim": "Deffter 643875 Art Of Word Jules David Don Quixote 643875 14x20 Çizgili 96yp.",
+      "fiyat": 299.9
+    },
+    {
+      "isim": "Deffter Art Of Word / Mihrap - Osman Hamdi Bey",
+      "fiyat": 299.9
+    },
+    {
+      "isim": "Victoria’s Journals Kuromi 365 Gün A7 Günlük, 368sf. , 80gr.",
+      "fiyat": 359.9
+    },
+    {
+      "isim": "Victoria’s Journal Kuromi Smyth Flexy Esnek Vegan Deri Kapaklı Defter 13x18cm 80gr. 80yp. Çizgili 52",
+      "fiyat": 419.9
+    }
+  ]
+}

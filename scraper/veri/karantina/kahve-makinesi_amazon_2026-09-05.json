@@ -1,0 +1,18 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Kahve Makinesi"
+  ],
+  "kalem": "kahve-makinesi",
+  "vertikal": "ev-kurma",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 0,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 0,
+  "saglikli": false,
+  "kullanilan_katmanlar": [],
+  "genel_medyan": null,
+  "segmentler": {},
+  "ornek_urunler": []
+}

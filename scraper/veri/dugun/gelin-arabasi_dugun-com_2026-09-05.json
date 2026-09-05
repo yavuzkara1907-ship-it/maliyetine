@@ -1,0 +1,44 @@
+{
+  "site": "dugun-com",
+  "kaynak_adlari": [
+    "Dugun.com - Istanbul Gelin Arabasi"
+  ],
+  "kalem": "gelin-arabasi",
+  "vertikal": "dugun",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 1,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 1,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 9550,
+  "segmentler": {
+    "dusuk": {
+      "min": 9550,
+      "medyan": 9550,
+      "max": 9550,
+      "urun_sayisi": 1
+    },
+    "orta": {
+      "min": 9550,
+      "medyan": 9550,
+      "max": 9550,
+      "urun_sayisi": 1
+    },
+    "luks": {
+      "min": 9550,
+      "medyan": 9550,
+      "max": 9550,
+      "urun_sayisi": 1
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "İstanbul Gelin Arabası Fiyatları",
+      "fiyat": 9550.0
+    }
+  ]
+}

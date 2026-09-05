@@ -1,0 +1,297 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Suzuki"
+  ],
+  "kalem": "suzuki",
+  "vertikal": "arac",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 12,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 12,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 2560000,
+  "segmentler": {
+    "dusuk": {
+      "min": 2079000,
+      "medyan": 2108500,
+      "max": 2158000,
+      "urun_sayisi": 4
+    },
+    "orta": {
+      "min": 2325000,
+      "medyan": 2617000,
+      "max": 2735000,
+      "urun_sayisi": 6
+    },
+    "luks": {
+      "min": 2753000,
+      "medyan": 2778000,
+      "max": 2803000,
+      "urun_sayisi": 2
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Suzuki Yeni Swift 1.2 MHEV CVT Life (Tek Renk)",
+      "fiyat": 2079000.0
+    },
+    {
+      "isim": "Suzuki Vitara Hibrit 1.4 MHEV 6AT GL Elegance (Tek Renk)",
+      "fiyat": 2108000.0
+    },
+    {
+      "isim": "Suzuki Yeni Swift 1.2 MHEV CVT Life (Çift Renk)",
+      "fiyat": 2109000.0
+    },
+    {
+      "isim": "Suzuki Vitara Hibrit 1.4 MHEV 6AT GL Elegance (Çift Renk)",
+      "fiyat": 2158000.0
+    },
+    {
+      "isim": "Suzuki S-CROSS Hibrit 1.4 MHEV 6AT GL Elegance",
+      "fiyat": 2325000.0
+    },
+    {
+      "isim": "Suzuki Vitara Hibrit 1.4 MHEV 6AT AllGrip GL Elegance (Tek Renk)",
+      "fiyat": 2535000.0
+    },
+    {
+      "isim": "Suzuki Vitara Hibrit 1.4 MHEV 6AT AllGrip GL Elegance (Çift Renk)",
+      "fiyat": 2585000.0
+    },
+    {
+      "isim": "Suzuki S-CROSS Hibrit 1.4 MHEV 6AT AllGrip 4x4 GL Elegance",
+      "fiyat": 2649000.0
+    },
+    {
+      "isim": "Suzuki Vitara 1.4 MHEV 6AT GLX Black Edition (Çift Renk)",
+      "fiyat": 2655000.0
+    },
+    {
+      "isim": "Suzuki S-Cross 1.4 MHEV 6AT GLX Black Edition",
+      "fiyat": 2735000.0
+    },
+    {
+      "isim": "Suzuki Vitara 1.4 MHEV 6AT AllGrip GLX Black Edition (Çift Renk)",
+      "fiyat": 2753000.0
+    },
+    {
+      "isim": "Suzuki S-Cross 1.4 MHEV 6AT AllGrip GLX Black Edition",
+      "fiyat": 2803000.0
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 12,
+    "ozellik_eslesen_urun": 12,
+    "modeller": {
+      "s-cross": {
+        "ad": "S-Cross",
+        "genel_medyan": 2692000,
+        "urun_sayisi": 4,
+        "segmentler": {
+          "dusuk": {
+            "min": 2325000.0,
+            "medyan": 2487000.0,
+            "max": 2649000.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 2735000.0,
+            "medyan": 2769000.0,
+            "max": 2803000.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Suzuki S-CROSS Hibrit 1.4 MHEV 6AT GL Elegance",
+            "fiyat": 2325000.0
+          },
+          {
+            "isim": "Suzuki S-CROSS Hibrit 1.4 MHEV 6AT AllGrip 4x4 GL Elegance",
+            "fiyat": 2649000.0
+          },
+          {
+            "isim": "Suzuki S-Cross 1.4 MHEV 6AT GLX Black Edition",
+            "fiyat": 2735000.0
+          },
+          {
+            "isim": "Suzuki S-Cross 1.4 MHEV 6AT AllGrip GLX Black Edition",
+            "fiyat": 2803000.0
+          }
+        ]
+      },
+      "swift": {
+        "ad": "Swift",
+        "genel_medyan": 2094000,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 2079000.0,
+            "medyan": 2079000.0,
+            "max": 2079000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2109000.0,
+            "medyan": 2109000.0,
+            "max": 2109000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Suzuki Yeni Swift 1.2 MHEV CVT Life (Tek Renk)",
+            "fiyat": 2079000.0
+          },
+          {
+            "isim": "Suzuki Yeni Swift 1.2 MHEV CVT Life (Çift Renk)",
+            "fiyat": 2109000.0
+          }
+        ]
+      },
+      "vitara": {
+        "ad": "Vitara",
+        "genel_medyan": 2560000,
+        "urun_sayisi": 6,
+        "segmentler": {
+          "dusuk": {
+            "min": 2108000.0,
+            "medyan": 2133000.0,
+            "max": 2158000.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 2535000.0,
+            "medyan": 2585000.0,
+            "max": 2655000.0,
+            "urun_sayisi": 3
+          },
+          "luks": {
+            "min": 2753000.0,
+            "medyan": 2753000.0,
+            "max": 2753000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Suzuki Vitara Hibrit 1.4 MHEV 6AT GL Elegance (Tek Renk)",
+            "fiyat": 2108000.0
+          },
+          {
+            "isim": "Suzuki Vitara Hibrit 1.4 MHEV 6AT GL Elegance (Çift Renk)",
+            "fiyat": 2158000.0
+          },
+          {
+            "isim": "Suzuki Vitara Hibrit 1.4 MHEV 6AT AllGrip GL Elegance (Tek Renk)",
+            "fiyat": 2535000.0
+          },
+          {
+            "isim": "Suzuki Vitara Hibrit 1.4 MHEV 6AT AllGrip GL Elegance (Çift Renk)",
+            "fiyat": 2585000.0
+          },
+          {
+            "isim": "Suzuki Vitara 1.4 MHEV 6AT GLX Black Edition (Çift Renk)",
+            "fiyat": 2655000.0
+          },
+          {
+            "isim": "Suzuki Vitara 1.4 MHEV 6AT AllGrip GLX Black Edition (Çift Renk)",
+            "fiyat": 2753000.0
+          }
+        ]
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "Suzuki Yeni Swift 1.2 MHEV CVT Life (Tek Renk)",
+        "fiyat": 2079000.0,
+        "nitelikler": {
+          "model": "Swift"
+        }
+      },
+      {
+        "isim": "Suzuki Yeni Swift 1.2 MHEV CVT Life (Çift Renk)",
+        "fiyat": 2109000.0,
+        "nitelikler": {
+          "model": "Swift"
+        }
+      },
+      {
+        "isim": "Suzuki S-CROSS Hibrit 1.4 MHEV 6AT GL Elegance",
+        "fiyat": 2325000.0,
+        "nitelikler": {
+          "model": "S-Cross"
+        }
+      },
+      {
+        "isim": "Suzuki S-CROSS Hibrit 1.4 MHEV 6AT AllGrip 4x4 GL Elegance",
+        "fiyat": 2649000.0,
+        "nitelikler": {
+          "model": "S-Cross"
+        }
+      },
+      {
+        "isim": "Suzuki S-Cross 1.4 MHEV 6AT GLX Black Edition",
+        "fiyat": 2735000.0,
+        "nitelikler": {
+          "model": "S-Cross"
+        }
+      },
+      {
+        "isim": "Suzuki S-Cross 1.4 MHEV 6AT AllGrip GLX Black Edition",
+        "fiyat": 2803000.0,
+        "nitelikler": {
+          "model": "S-Cross"
+        }
+      },
+      {
+        "isim": "Suzuki Vitara Hibrit 1.4 MHEV 6AT GL Elegance (Tek Renk)",
+        "fiyat": 2108000.0,
+        "nitelikler": {
+          "model": "Vitara"
+        }
+      },
+      {
+        "isim": "Suzuki Vitara Hibrit 1.4 MHEV 6AT GL Elegance (Çift Renk)",
+        "fiyat": 2158000.0,
+        "nitelikler": {
+          "model": "Vitara"
+        }
+      },
+      {
+        "isim": "Suzuki Vitara Hibrit 1.4 MHEV 6AT AllGrip GL Elegance (Tek Renk)",
+        "fiyat": 2535000.0,
+        "nitelikler": {
+          "model": "Vitara"
+        }
+      },
+      {
+        "isim": "Suzuki Vitara Hibrit 1.4 MHEV 6AT AllGrip GL Elegance (Çift Renk)",
+        "fiyat": 2585000.0,
+        "nitelikler": {
+          "model": "Vitara"
+        }
+      },
+      {
+        "isim": "Suzuki Vitara 1.4 MHEV 6AT GLX Black Edition (Çift Renk)",
+        "fiyat": 2655000.0,
+        "nitelikler": {
+          "model": "Vitara"
+        }
+      },
+      {
+        "isim": "Suzuki Vitara 1.4 MHEV 6AT AllGrip GLX Black Edition (Çift Renk)",
+        "fiyat": 2753000.0,
+        "nitelikler": {
+          "model": "Vitara"
+        }
+      }
+    ]
+  }
+}

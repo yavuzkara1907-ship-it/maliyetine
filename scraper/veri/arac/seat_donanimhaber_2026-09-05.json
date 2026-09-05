@@ -1,0 +1,210 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Seat"
+  ],
+  "kalem": "seat",
+  "vertikal": "arac",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 4,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 4,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 2305000,
+  "segmentler": {
+    "dusuk": {
+      "min": 1985000,
+      "medyan": 2017500,
+      "max": 2050000,
+      "urun_sayisi": 2
+    },
+    "orta": {
+      "min": 2560000,
+      "medyan": 2612500,
+      "max": 2665000,
+      "urun_sayisi": 2
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "IBIZA 1.0 EcoTSI 116 PS DSG Style Plus",
+      "fiyat": 1985000.0
+    },
+    {
+      "isim": "ARONA 1.0 TSI 116 PS DSG Style Plus",
+      "fiyat": 2050000.0
+    },
+    {
+      "isim": "LEON 1.5 eTSI 116 PS DSG Style",
+      "fiyat": 2560000.0
+    },
+    {
+      "isim": "ATECA 1.5 EcoTSI ACT 150 PS DSG Style Plus",
+      "fiyat": 2665000.0
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 4,
+    "ozellik_eslesen_urun": 4,
+    "modeller": {
+      "arona": {
+        "ad": "Arona",
+        "genel_medyan": 2050000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 2050000.0,
+            "medyan": 2050000.0,
+            "max": 2050000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2050000.0,
+            "medyan": 2050000.0,
+            "max": 2050000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 2050000.0,
+            "medyan": 2050000.0,
+            "max": 2050000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "ARONA 1.0 TSI 116 PS DSG Style Plus",
+            "fiyat": 2050000.0
+          }
+        ]
+      },
+      "ateca": {
+        "ad": "Ateca",
+        "genel_medyan": 2665000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 2665000.0,
+            "medyan": 2665000.0,
+            "max": 2665000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2665000.0,
+            "medyan": 2665000.0,
+            "max": 2665000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 2665000.0,
+            "medyan": 2665000.0,
+            "max": 2665000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "ATECA 1.5 EcoTSI ACT 150 PS DSG Style Plus",
+            "fiyat": 2665000.0
+          }
+        ]
+      },
+      "ibiza": {
+        "ad": "Ibiza",
+        "genel_medyan": 1985000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 1985000.0,
+            "medyan": 1985000.0,
+            "max": 1985000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 1985000.0,
+            "medyan": 1985000.0,
+            "max": 1985000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 1985000.0,
+            "medyan": 1985000.0,
+            "max": 1985000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "IBIZA 1.0 EcoTSI 116 PS DSG Style Plus",
+            "fiyat": 1985000.0
+          }
+        ]
+      },
+      "leon": {
+        "ad": "Leon",
+        "genel_medyan": 2560000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 2560000.0,
+            "medyan": 2560000.0,
+            "max": 2560000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2560000.0,
+            "medyan": 2560000.0,
+            "max": 2560000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 2560000.0,
+            "medyan": 2560000.0,
+            "max": 2560000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "LEON 1.5 eTSI 116 PS DSG Style",
+            "fiyat": 2560000.0
+          }
+        ]
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "IBIZA 1.0 EcoTSI 116 PS DSG Style Plus",
+        "fiyat": 1985000.0,
+        "nitelikler": {
+          "model": "Ibiza"
+        }
+      },
+      {
+        "isim": "LEON 1.5 eTSI 116 PS DSG Style",
+        "fiyat": 2560000.0,
+        "nitelikler": {
+          "model": "Leon"
+        }
+      },
+      {
+        "isim": "ARONA 1.0 TSI 116 PS DSG Style Plus",
+        "fiyat": 2050000.0,
+        "nitelikler": {
+          "model": "Arona"
+        }
+      },
+      {
+        "isim": "ATECA 1.5 EcoTSI ACT 150 PS DSG Style Plus",
+        "fiyat": 2665000.0,
+        "nitelikler": {
+          "model": "Ateca"
+        }
+      }
+    ]
+  }
+}

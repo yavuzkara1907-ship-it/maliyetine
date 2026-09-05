@@ -1,0 +1,76 @@
+{
+  "site": "dugunbuketi",
+  "kaynak_adlari": [
+    "DugunBuketi - Yemek Bedeli (yemekli - kokteyl farki)"
+  ],
+  "kalem": "yemek-ikram",
+  "vertikal": "dugun",
+  "olcum_turu": "kisi_basi_fiyat",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 9,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 9,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "detay"
+  ],
+  "genel_medyan": 410,
+  "segmentler": {
+    "dusuk": {
+      "min": 250,
+      "medyan": 250,
+      "max": 250,
+      "urun_sayisi": 3
+    },
+    "orta": {
+      "min": 400,
+      "medyan": 450,
+      "max": 500,
+      "urun_sayisi": 5
+    },
+    "luks": {
+      "min": 920,
+      "medyan": 920,
+      "max": 920,
+      "urun_sayisi": 1
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "bambi-garden-o-agacin-alti-kir-dugunu-mekanlari-uskudar-istanbul",
+      "fiyat": 250.0
+    },
+    {
+      "isim": "o-agacin-alti-bambi-garden-dugun-salonlari-uskudar-istanbul",
+      "fiyat": 250.0
+    },
+    {
+      "isim": "saray-muhallebicisi-dugun-salonlari-gungoren-istanbul",
+      "fiyat": 250.0
+    },
+    {
+      "isim": "serdivan-restaurant-kir-dugunu-mekanlari-sancaktepe-istanbul",
+      "fiyat": 400.0
+    },
+    {
+      "isim": "kir-kubbe-gokturk-kir-dugunu-mekanlari-eyup-istanbul",
+      "fiyat": 410.0
+    },
+    {
+      "isim": "bta-tekne-organizasyon-teknede-dugun-besiktas-istanbul",
+      "fiyat": 450.0
+    },
+    {
+      "isim": "ani-garden-kir-bahcesi-kir-dugunu-mekanlari-avcilar-istanbul",
+      "fiyat": 500.0
+    },
+    {
+      "isim": "sporkoy-tuzla-kir-dugunu-mekanlari-tuzla-istanbul",
+      "fiyat": 500.0
+    },
+    {
+      "isim": "bogaz-garden-kir-dugunu-mekanlari-beykoz-istanbul",
+      "fiyat": 920.0
+    }
+  ]
+}

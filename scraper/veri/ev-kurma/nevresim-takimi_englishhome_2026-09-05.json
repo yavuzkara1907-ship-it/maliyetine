@@ -1,0 +1,100 @@
+{
+  "site": "englishhome",
+  "kaynak_adlari": [
+    "English Home - Nevresim Takimi"
+  ],
+  "kalem": "nevresim-takimi",
+  "vertikal": "ev-kurma",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 44,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 44,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 1800,
+  "segmentler": {
+    "dusuk": {
+      "min": 500,
+      "medyan": 1400,
+      "max": 1500,
+      "urun_sayisi": 18
+    },
+    "orta": {
+      "min": 1590,
+      "medyan": 2000,
+      "max": 2500,
+      "urun_sayisi": 16
+    },
+    "luks": {
+      "min": 2800,
+      "medyan": 3000,
+      "max": 3300,
+      "urun_sayisi": 10
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Chirping Bloom Kolay Ütülenir Tek Kişilik Nevresim Seti 160x220 cm Mavi - Yeşil - Nevresim Takımı",
+      "fiyat": 499.99
+    },
+    {
+      "isim": "Symetra Kolay Ütülenir Çift Kişilik Çarşaflı Nevresim Takımı 200x220 cm Gri - Nevresim Takımı",
+      "fiyat": 1079.99
+    },
+    {
+      "isim": "Imaginary Garden Kolay Ütülenir Çift Kişilik Çarşaflı Nevresim Takımı 200x220 cm Pembe - Mavi - Nevresim Takımı",
+      "fiyat": 1299.99
+    },
+    {
+      "isim": "Elegance Fleure Pamuklu Tek Kişilik Çarşaflı Nevresim Takımı 160x220 cm Bej - Nevresim Takımı",
+      "fiyat": 1499.99
+    },
+    {
+      "isim": "Petite Lace Pamuklu Tek Kişilik Çarşaflı Nevresim Takımı 160x220 cm Bej - Nevresim Takımı",
+      "fiyat": 1499.99
+    },
+    {
+      "isim": "Pure %100 Pamuklu Tek Kişilik Çarşaflı Nevresim Takımı 160x220 cm Toz Pembe - Nevresim Takımı",
+      "fiyat": 1499.99
+    },
+    {
+      "isim": "Imaginary Garden Kolay Ütülenir Tek Kişilik Çarşaflı Nevresim Takımı 160x220 cm Pembe - Mavi - Nevresim Takımı",
+      "fiyat": 1589.99
+    },
+    {
+      "isim": "Petite Lace Pamuklu Çift Kişilik Çarşaflı Nevresim Takımı 200x220 cm Bej - Nevresim Takımı",
+      "fiyat": 1799.99
+    },
+    {
+      "isim": "Garden Swirl Pamuklu Çift Kişilik Çarşaflı Nevresim Takımı 200x220 cm Bej - Nevresim Takımı",
+      "fiyat": 1999.99
+    },
+    {
+      "isim": "Pure %100 Pamuklu Çift Kişilik Çarşaflı Nevresim Takımı 200x220 cm Koyu Mavi - Nevresim Takımı",
+      "fiyat": 1999.99
+    },
+    {
+      "isim": "Bloomy Lines Pamuk Çift Kişilik Çarşaflı Nevresim Takımı 200x220 cm Sarı - Nevresim Takımı",
+      "fiyat": 2199.99
+    },
+    {
+      "isim": "Serenity Bambu Saten Çift Kişilik Çarşaflı Nevresim Takımı 200x220 cm Beyaz - Nevresim Takımı",
+      "fiyat": 2799.99
+    },
+    {
+      "isim": "Micell Lyocell Saten Çift Kişilik Çarşaflı Nevresim Takımı 200x220 cm Fildişi - Nevresim Takımı",
+      "fiyat": 2999.99
+    },
+    {
+      "isim": "Micell Lyocell Saten Çift Kişilik Çarşaflı Nevresim Takımı 200x220 cm Yeşil - Nevresim Takımı",
+      "fiyat": 2999.99
+    },
+    {
+      "isim": "Deluxe Çizgili Pamuk Saten Çift Kişilik Çarşaflı Nevresim Takımı 200x220 cm Fildişi - Nevresim Takımı",
+      "fiyat": 3299.99
+    }
+  ]
+}

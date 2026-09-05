@@ -1,0 +1,606 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Toyota"
+  ],
+  "kalem": "toyota",
+  "vertikal": "arac",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 28,
+  "aykiri_urun_sayisi": 1,
+  "toplam_urun": 27,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 3126000,
+  "segmentler": {
+    "dusuk": {
+      "min": 2350000,
+      "medyan": 2778500,
+      "max": 2905000,
+      "urun_sayisi": 8
+    },
+    "orta": {
+      "min": 2968000,
+      "medyan": 3297000,
+      "max": 3625000,
+      "urun_sayisi": 13
+    },
+    "luks": {
+      "min": 4195000,
+      "medyan": 5100000,
+      "max": 5781000,
+      "urun_sayisi": 6
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Yaris Hybrid 1.5 Hybrid Flame e-CVT",
+      "fiyat": 2350000.0
+    },
+    {
+      "isim": "Corolla 1.5 Vision Plus Multidrive S",
+      "fiyat": 2545500.0
+    },
+    {
+      "isim": "Corolla 1.5 Dream Multidrive S",
+      "fiyat": 2753500.0
+    },
+    {
+      "isim": "Yaris Hybrid 1.5 Hybrid Passion X-Pack Siyah Tavan e-CVT",
+      "fiyat": 2760000.0
+    },
+    {
+      "isim": "C-HR Hibrit 1.8 Hybrid Flame e-CVT",
+      "fiyat": 2797000.0
+    },
+    {
+      "isim": "Yaris Cross Hybrid 1.5 Hybrid Dream 130 HP e-CVT",
+      "fiyat": 2820000.0
+    },
+    {
+      "isim": "Corolla 1.5 Dream X-Pack Multidrive S",
+      "fiyat": 2905000.0
+    },
+    {
+      "isim": "Corolla HB Hybrid 1.8 Hybrid Flame e-CVT",
+      "fiyat": 2905000.0
+    },
+    {
+      "isim": "Corolla Hibrit 1.8 Hybrid Dream e-CVT",
+      "fiyat": 2968000.0
+    },
+    {
+      "isim": "C-HR Hibrit 1.8 Hybrid Passion e-CVT",
+      "fiyat": 3045000.0
+    },
+    {
+      "isim": "Corolla HB Hybrid 1.8 Hybrid GR SPORT e-CVT",
+      "fiyat": 3050000.0
+    },
+    {
+      "isim": "Corolla HB Hybrid 1.8 Hybrid Passion X-Pack e-CVT",
+      "fiyat": 3050000.0
+    },
+    {
+      "isim": "Corolla Hibrit 1.8 Hybrid Dream-X-Pack e-CVT",
+      "fiyat": 3053000.0
+    },
+    {
+      "isim": "Corolla 1.5 Flame X-Pack Multidrive S",
+      "fiyat": 3126000.0
+    },
+    {
+      "isim": "Corolla Hibrit 1.8 Hybrid Flame X-Pack e-CVT",
+      "fiyat": 3297000.0
+    },
+    {
+      "isim": "Corolla 1.5 Passion X-Pack Multidrive S",
+      "fiyat": 3297500.0
+    },
+    {
+      "isim": "C-HR Hibrit 1.8 Hybrid Passion X-Sport e-CVT",
+      "fiyat": 3345000.0
+    },
+    {
+      "isim": "Yaris Cross Hybrid 1.5 Hybrid Flame 130 HP e-CVT",
+      "fiyat": 3345000.0
+    },
+    {
+      "isim": "Corolla Cross 1.8 Hybrid Flame e-CVT",
+      "fiyat": 3385000.0
+    },
+    {
+      "isim": "C-HR Hibrit 1.8 Hybrid GR SPORT e-CVT",
+      "fiyat": 3500000.0
+    },
+    {
+      "isim": "Corolla Cross 1.8 Hybrid Passion e-CVT",
+      "fiyat": 3625000.0
+    },
+    {
+      "isim": "Corolla Cross 1.8 Hybrid Passion X-Pack e-CVT",
+      "fiyat": 4195000.0
+    },
+    {
+      "isim": "Hilux 2.8 D-4D Mild Hybrid Power 4X4 Adventure A/T",
+      "fiyat": 4200000.0
+    },
+    {
+      "isim": "Hilux 2.8 D-4D Mild Hybrid Power 4X4 Hi-Cruiser A/T",
+      "fiyat": 4850000.0
+    },
+    {
+      "isim": "Hilux 2.8 D-4D Mild Hybrid Power 4x4 Invincible A/T",
+      "fiyat": 5350000.0
+    },
+    {
+      "isim": "RAV4 Hybrid 2.5 Hybrid 4x4 Passion X-Pack e-CVT",
+      "fiyat": 5639000.0
+    },
+    {
+      "isim": "RAV4 Hybrid 2.5 Hybrid 4x4 GR SPORT e-CVT",
+      "fiyat": 5781000.0
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 27,
+    "ozellik_eslesen_urun": 27,
+    "modeller": {
+      "c-hr": {
+        "ad": "C-HR",
+        "genel_medyan": 3195000,
+        "urun_sayisi": 4,
+        "segmentler": {
+          "dusuk": {
+            "min": 2797000.0,
+            "medyan": 2921000.0,
+            "max": 3045000.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 3345000.0,
+            "medyan": 3422500.0,
+            "max": 3500000.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "C-HR Hibrit 1.8 Hybrid Flame e-CVT",
+            "fiyat": 2797000.0
+          },
+          {
+            "isim": "C-HR Hibrit 1.8 Hybrid Passion e-CVT",
+            "fiyat": 3045000.0
+          },
+          {
+            "isim": "C-HR Hibrit 1.8 Hybrid Passion X-Sport e-CVT",
+            "fiyat": 3345000.0
+          },
+          {
+            "isim": "C-HR Hibrit 1.8 Hybrid GR SPORT e-CVT",
+            "fiyat": 3500000.0
+          }
+        ]
+      },
+      "corolla": {
+        "ad": "Corolla",
+        "genel_medyan": 3050000,
+        "urun_sayisi": 11,
+        "segmentler": {
+          "dusuk": {
+            "min": 2545500.0,
+            "medyan": 2829250.0,
+            "max": 2905000.0,
+            "urun_sayisi": 4
+          },
+          "orta": {
+            "min": 2968000.0,
+            "medyan": 3050000.0,
+            "max": 3126000.0,
+            "urun_sayisi": 5
+          },
+          "luks": {
+            "min": 3297000.0,
+            "medyan": 3297250.0,
+            "max": 3297500.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Corolla 1.5 Vision Plus Multidrive S",
+            "fiyat": 2545500.0
+          },
+          {
+            "isim": "Corolla 1.5 Dream Multidrive S",
+            "fiyat": 2753500.0
+          },
+          {
+            "isim": "Corolla 1.5 Dream X-Pack Multidrive S",
+            "fiyat": 2905000.0
+          },
+          {
+            "isim": "Corolla HB Hybrid 1.8 Hybrid Flame e-CVT",
+            "fiyat": 2905000.0
+          },
+          {
+            "isim": "Corolla Hibrit 1.8 Hybrid Dream e-CVT",
+            "fiyat": 2968000.0
+          },
+          {
+            "isim": "Corolla HB Hybrid 1.8 Hybrid GR SPORT e-CVT",
+            "fiyat": 3050000.0
+          },
+          {
+            "isim": "Corolla HB Hybrid 1.8 Hybrid Passion X-Pack e-CVT",
+            "fiyat": 3050000.0
+          },
+          {
+            "isim": "Corolla Hibrit 1.8 Hybrid Dream-X-Pack e-CVT",
+            "fiyat": 3053000.0
+          },
+          {
+            "isim": "Corolla 1.5 Flame X-Pack Multidrive S",
+            "fiyat": 3126000.0
+          },
+          {
+            "isim": "Corolla Hibrit 1.8 Hybrid Flame X-Pack e-CVT",
+            "fiyat": 3297000.0
+          },
+          {
+            "isim": "Corolla 1.5 Passion X-Pack Multidrive S",
+            "fiyat": 3297500.0
+          }
+        ]
+      },
+      "corolla-cross": {
+        "ad": "Corolla Cross",
+        "genel_medyan": 3625000,
+        "urun_sayisi": 3,
+        "segmentler": {
+          "dusuk": {
+            "min": 3385000.0,
+            "medyan": 3385000.0,
+            "max": 3385000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 3625000.0,
+            "medyan": 3910000.0,
+            "max": 4195000.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Corolla Cross 1.8 Hybrid Flame e-CVT",
+            "fiyat": 3385000.0
+          },
+          {
+            "isim": "Corolla Cross 1.8 Hybrid Passion e-CVT",
+            "fiyat": 3625000.0
+          },
+          {
+            "isim": "Corolla Cross 1.8 Hybrid Passion X-Pack e-CVT",
+            "fiyat": 4195000.0
+          }
+        ]
+      },
+      "hilux": {
+        "ad": "Hilux",
+        "genel_medyan": 4850000,
+        "urun_sayisi": 3,
+        "segmentler": {
+          "dusuk": {
+            "min": 4200000.0,
+            "medyan": 4200000.0,
+            "max": 4200000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 4850000.0,
+            "medyan": 5100000.0,
+            "max": 5350000.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Hilux 2.8 D-4D Mild Hybrid Power 4X4 Adventure A/T",
+            "fiyat": 4200000.0
+          },
+          {
+            "isim": "Hilux 2.8 D-4D Mild Hybrid Power 4X4 Hi-Cruiser A/T",
+            "fiyat": 4850000.0
+          },
+          {
+            "isim": "Hilux 2.8 D-4D Mild Hybrid Power 4x4 Invincible A/T",
+            "fiyat": 5350000.0
+          }
+        ]
+      },
+      "rav4": {
+        "ad": "RAV4",
+        "genel_medyan": 5710000,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 5639000.0,
+            "medyan": 5639000.0,
+            "max": 5639000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 5781000.0,
+            "medyan": 5781000.0,
+            "max": 5781000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "RAV4 Hybrid 2.5 Hybrid 4x4 Passion X-Pack e-CVT",
+            "fiyat": 5639000.0
+          },
+          {
+            "isim": "RAV4 Hybrid 2.5 Hybrid 4x4 GR SPORT e-CVT",
+            "fiyat": 5781000.0
+          }
+        ]
+      },
+      "yaris": {
+        "ad": "Yaris",
+        "genel_medyan": 2555000,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 2350000.0,
+            "medyan": 2350000.0,
+            "max": 2350000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2760000.0,
+            "medyan": 2760000.0,
+            "max": 2760000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Yaris Hybrid 1.5 Hybrid Flame e-CVT",
+            "fiyat": 2350000.0
+          },
+          {
+            "isim": "Yaris Hybrid 1.5 Hybrid Passion X-Pack Siyah Tavan e-CVT",
+            "fiyat": 2760000.0
+          }
+        ]
+      },
+      "yaris-cross": {
+        "ad": "Yaris Cross",
+        "genel_medyan": 3082500,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 2820000.0,
+            "medyan": 2820000.0,
+            "max": 2820000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 3345000.0,
+            "medyan": 3345000.0,
+            "max": 3345000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Yaris Cross Hybrid 1.5 Hybrid Dream 130 HP e-CVT",
+            "fiyat": 2820000.0
+          },
+          {
+            "isim": "Yaris Cross Hybrid 1.5 Hybrid Flame 130 HP e-CVT",
+            "fiyat": 3345000.0
+          }
+        ]
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "Corolla 1.5 Vision Plus Multidrive S",
+        "fiyat": 2545500.0,
+        "nitelikler": {
+          "model": "Corolla"
+        }
+      },
+      {
+        "isim": "Corolla 1.5 Dream Multidrive S",
+        "fiyat": 2753500.0,
+        "nitelikler": {
+          "model": "Corolla"
+        }
+      },
+      {
+        "isim": "Corolla 1.5 Dream X-Pack Multidrive S",
+        "fiyat": 2905000.0,
+        "nitelikler": {
+          "model": "Corolla"
+        }
+      },
+      {
+        "isim": "Corolla 1.5 Flame X-Pack Multidrive S",
+        "fiyat": 3126000.0,
+        "nitelikler": {
+          "model": "Corolla"
+        }
+      },
+      {
+        "isim": "Corolla 1.5 Passion X-Pack Multidrive S",
+        "fiyat": 3297500.0,
+        "nitelikler": {
+          "model": "Corolla"
+        }
+      },
+      {
+        "isim": "Corolla Hibrit 1.8 Hybrid Dream e-CVT",
+        "fiyat": 2968000.0,
+        "nitelikler": {
+          "model": "Corolla"
+        }
+      },
+      {
+        "isim": "Corolla Hibrit 1.8 Hybrid Dream-X-Pack e-CVT",
+        "fiyat": 3053000.0,
+        "nitelikler": {
+          "model": "Corolla"
+        }
+      },
+      {
+        "isim": "Corolla Hibrit 1.8 Hybrid Flame X-Pack e-CVT",
+        "fiyat": 3297000.0,
+        "nitelikler": {
+          "model": "Corolla"
+        }
+      },
+      {
+        "isim": "Corolla Cross 1.8 Hybrid Flame e-CVT",
+        "fiyat": 3385000.0,
+        "nitelikler": {
+          "model": "Corolla Cross"
+        }
+      },
+      {
+        "isim": "Corolla Cross 1.8 Hybrid Passion e-CVT",
+        "fiyat": 3625000.0,
+        "nitelikler": {
+          "model": "Corolla Cross"
+        }
+      },
+      {
+        "isim": "Corolla Cross 1.8 Hybrid Passion X-Pack e-CVT",
+        "fiyat": 4195000.0,
+        "nitelikler": {
+          "model": "Corolla Cross"
+        }
+      },
+      {
+        "isim": "C-HR Hibrit 1.8 Hybrid Flame e-CVT",
+        "fiyat": 2797000.0,
+        "nitelikler": {
+          "model": "C-HR"
+        }
+      },
+      {
+        "isim": "C-HR Hibrit 1.8 Hybrid Passion e-CVT",
+        "fiyat": 3045000.0,
+        "nitelikler": {
+          "model": "C-HR"
+        }
+      },
+      {
+        "isim": "C-HR Hibrit 1.8 Hybrid Passion X-Sport e-CVT",
+        "fiyat": 3345000.0,
+        "nitelikler": {
+          "model": "C-HR"
+        }
+      },
+      {
+        "isim": "C-HR Hibrit 1.8 Hybrid GR SPORT e-CVT",
+        "fiyat": 3500000.0,
+        "nitelikler": {
+          "model": "C-HR"
+        }
+      },
+      {
+        "isim": "Corolla HB Hybrid 1.8 Hybrid Flame e-CVT",
+        "fiyat": 2905000.0,
+        "nitelikler": {
+          "model": "Corolla"
+        }
+      },
+      {
+        "isim": "Corolla HB Hybrid 1.8 Hybrid Passion X-Pack e-CVT",
+        "fiyat": 3050000.0,
+        "nitelikler": {
+          "model": "Corolla"
+        }
+      },
+      {
+        "isim": "Corolla HB Hybrid 1.8 Hybrid GR SPORT e-CVT",
+        "fiyat": 3050000.0,
+        "nitelikler": {
+          "model": "Corolla"
+        }
+      },
+      {
+        "isim": "Yaris Cross Hybrid 1.5 Hybrid Dream 130 HP e-CVT",
+        "fiyat": 2820000.0,
+        "nitelikler": {
+          "model": "Yaris Cross"
+        }
+      },
+      {
+        "isim": "Yaris Cross Hybrid 1.5 Hybrid Flame 130 HP e-CVT",
+        "fiyat": 3345000.0,
+        "nitelikler": {
+          "model": "Yaris Cross"
+        }
+      },
+      {
+        "isim": "Yaris Hybrid 1.5 Hybrid Flame e-CVT",
+        "fiyat": 2350000.0,
+        "nitelikler": {
+          "model": "Yaris"
+        }
+      },
+      {
+        "isim": "Yaris Hybrid 1.5 Hybrid Passion X-Pack Siyah Tavan e-CVT",
+        "fiyat": 2760000.0,
+        "nitelikler": {
+          "model": "Yaris"
+        }
+      },
+      {
+        "isim": "RAV4 Hybrid 2.5 Hybrid 4x4 Passion X-Pack e-CVT",
+        "fiyat": 5639000.0,
+        "nitelikler": {
+          "model": "RAV4"
+        }
+      },
+      {
+        "isim": "RAV4 Hybrid 2.5 Hybrid 4x4 GR SPORT e-CVT",
+        "fiyat": 5781000.0,
+        "nitelikler": {
+          "model": "RAV4"
+        }
+      },
+      {
+        "isim": "Hilux 2.8 D-4D Mild Hybrid Power 4X4 Adventure A/T",
+        "fiyat": 4200000.0,
+        "nitelikler": {
+          "model": "Hilux"
+        }
+      },
+      {
+        "isim": "Hilux 2.8 D-4D Mild Hybrid Power 4X4 Hi-Cruiser A/T",
+        "fiyat": 4850000.0,
+        "nitelikler": {
+          "model": "Hilux"
+        }
+      },
+      {
+        "isim": "Hilux 2.8 D-4D Mild Hybrid Power 4x4 Invincible A/T",
+        "fiyat": 5350000.0,
+        "nitelikler": {
+          "model": "Hilux"
+        }
+      }
+    ]
+  }
+}

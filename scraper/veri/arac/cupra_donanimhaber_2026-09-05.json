@@ -1,0 +1,222 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Cupra"
+  ],
+  "kalem": "cupra",
+  "vertikal": "arac",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 7,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 7,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 3470000,
+  "segmentler": {
+    "dusuk": {
+      "min": 2755000,
+      "medyan": 2807500,
+      "max": 2860000,
+      "urun_sayisi": 2
+    },
+    "orta": {
+      "min": 3400000,
+      "medyan": 3622500,
+      "max": 4280000,
+      "urun_sayisi": 4
+    },
+    "luks": {
+      "min": 4700000,
+      "medyan": 4700000,
+      "max": 4700000,
+      "urun_sayisi": 1
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "CUPRA Leon 1.5 eTSI ACT 150 PS DSG Impulse",
+      "fiyat": 2755000.0
+    },
+    {
+      "isim": "Yeni CUPRA Formentor 1.5 eTSI (mHEV) 150 PS DSG Impulse",
+      "fiyat": 2860000.0
+    },
+    {
+      "isim": "Yeni CUPRA Formentor 1.5 eTSI (mHEV) 150 PS DSG Supreme",
+      "fiyat": 3400000.0
+    },
+    {
+      "isim": "CUPRA Terramar 1.5 eTSI (mHEV) 150 PS DSG Impulse",
+      "fiyat": 3470000.0
+    },
+    {
+      "isim": "Yeni CUPRA Formentor 1.5 eTSI (mHEV) 150 PS DSG VZ-Line",
+      "fiyat": 3775000.0
+    },
+    {
+      "isim": "CUPRA Terramar 1.5 eTSI (mHEV) 150 PS DSG Supreme",
+      "fiyat": 4280000.0
+    },
+    {
+      "isim": "CUPRA Terramar 1.5 eTSI (mHEV) 150 PS DSG VZ-Line",
+      "fiyat": 4700000.0
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 7,
+    "ozellik_eslesen_urun": 7,
+    "modeller": {
+      "formentor": {
+        "ad": "Formentor",
+        "genel_medyan": 3400000,
+        "urun_sayisi": 3,
+        "segmentler": {
+          "dusuk": {
+            "min": 2860000.0,
+            "medyan": 2860000.0,
+            "max": 2860000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 3400000.0,
+            "medyan": 3587500.0,
+            "max": 3775000.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Yeni CUPRA Formentor 1.5 eTSI (mHEV) 150 PS DSG Impulse",
+            "fiyat": 2860000.0
+          },
+          {
+            "isim": "Yeni CUPRA Formentor 1.5 eTSI (mHEV) 150 PS DSG Supreme",
+            "fiyat": 3400000.0
+          },
+          {
+            "isim": "Yeni CUPRA Formentor 1.5 eTSI (mHEV) 150 PS DSG VZ-Line",
+            "fiyat": 3775000.0
+          }
+        ]
+      },
+      "leon": {
+        "ad": "Leon",
+        "genel_medyan": 2755000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 2755000.0,
+            "medyan": 2755000.0,
+            "max": 2755000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2755000.0,
+            "medyan": 2755000.0,
+            "max": 2755000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 2755000.0,
+            "medyan": 2755000.0,
+            "max": 2755000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "CUPRA Leon 1.5 eTSI ACT 150 PS DSG Impulse",
+            "fiyat": 2755000.0
+          }
+        ]
+      },
+      "terramar": {
+        "ad": "Terramar",
+        "genel_medyan": 4280000,
+        "urun_sayisi": 3,
+        "segmentler": {
+          "dusuk": {
+            "min": 3470000.0,
+            "medyan": 3470000.0,
+            "max": 3470000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 4280000.0,
+            "medyan": 4490000.0,
+            "max": 4700000.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "CUPRA Terramar 1.5 eTSI (mHEV) 150 PS DSG Impulse",
+            "fiyat": 3470000.0
+          },
+          {
+            "isim": "CUPRA Terramar 1.5 eTSI (mHEV) 150 PS DSG Supreme",
+            "fiyat": 4280000.0
+          },
+          {
+            "isim": "CUPRA Terramar 1.5 eTSI (mHEV) 150 PS DSG VZ-Line",
+            "fiyat": 4700000.0
+          }
+        ]
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "Yeni CUPRA Formentor 1.5 eTSI (mHEV) 150 PS DSG Supreme",
+        "fiyat": 3400000.0,
+        "nitelikler": {
+          "model": "Formentor"
+        }
+      },
+      {
+        "isim": "Yeni CUPRA Formentor 1.5 eTSI (mHEV) 150 PS DSG VZ-Line",
+        "fiyat": 3775000.0,
+        "nitelikler": {
+          "model": "Formentor"
+        }
+      },
+      {
+        "isim": "Yeni CUPRA Formentor 1.5 eTSI (mHEV) 150 PS DSG Impulse",
+        "fiyat": 2860000.0,
+        "nitelikler": {
+          "model": "Formentor"
+        }
+      },
+      {
+        "isim": "CUPRA Leon 1.5 eTSI ACT 150 PS DSG Impulse",
+        "fiyat": 2755000.0,
+        "nitelikler": {
+          "model": "Leon"
+        }
+      },
+      {
+        "isim": "CUPRA Terramar 1.5 eTSI (mHEV) 150 PS DSG Impulse",
+        "fiyat": 3470000.0,
+        "nitelikler": {
+          "model": "Terramar"
+        }
+      },
+      {
+        "isim": "CUPRA Terramar 1.5 eTSI (mHEV) 150 PS DSG Supreme",
+        "fiyat": 4280000.0,
+        "nitelikler": {
+          "model": "Terramar"
+        }
+      },
+      {
+        "isim": "CUPRA Terramar 1.5 eTSI (mHEV) 150 PS DSG VZ-Line",
+        "fiyat": 4700000.0,
+        "nitelikler": {
+          "model": "Terramar"
+        }
+      }
+    ]
+  }
+}

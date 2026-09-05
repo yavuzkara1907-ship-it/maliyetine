@@ -1,0 +1,179 @@
+{
+  "site": "petzzshop",
+  "kaynak_adlari": [
+    "petzzshop - Kopek Mamasi"
+  ],
+  "kalem": "kopek-mamasi",
+  "vertikal": "kopek",
+  "olcum_turu": "paket_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 24,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 24,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 1350,
+  "segmentler": {
+    "dusuk": {
+      "min": 688,
+      "medyan": 761,
+      "max": 809,
+      "urun_sayisi": 7
+    },
+    "orta": {
+      "min": 845,
+      "medyan": 1377,
+      "max": 4050,
+      "urun_sayisi": 12
+    },
+    "luks": {
+      "min": 4860,
+      "medyan": 5062,
+      "max": 6250,
+      "urun_sayisi": 5
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Caviara Tavuklu Mini ve Küçük Irk Yavru Köpek Maması - 2 Kg",
+      "fiyat": 687.72
+    },
+    {
+      "isim": "Caviara Hipoalerjenik Somonlu ve Pirinçli Orta ve Büyük Irk Yetişkin Köpek Maması - 2 Kg",
+      "fiyat": 761.33
+    },
+    {
+      "isim": "Caviara Somonlu Mini ve Küçük Irk Yetişkin Köpek Maması - 2 Kg",
+      "fiyat": 761.33
+    },
+    {
+      "isim": "Wanpy Tahılsız Kuzulu Yetişkin Köpek Maması - 1,5 Kg",
+      "fiyat": 809.0
+    },
+    {
+      "isim": "Caviara Kuzu Etli ve Pirinçli Mini ve Küçük Irk Yaşlı Köpek Maması - 2 Kg",
+      "fiyat": 845.47
+    },
+    {
+      "isim": "Caviara Kuzu Etli ve Pirinçli Orta ve Büyük Irk Yaşlı Köpek Maması - 2 Kg",
+      "fiyat": 845.47
+    },
+    {
+      "isim": "Pro Nutrition Protect Veterinary Obesite Kilo Kontrolü İçin Köpek Maması",
+      "fiyat": 1350.0
+    },
+    {
+      "isim": "Pro Nutrition Protect Veterinary Urinary İdrar Yolu Sağlığı Destekleyici Köpek Maması",
+      "fiyat": 1350.0
+    },
+    {
+      "isim": "Pro Nutrition Protect Veterinary Dermato Hypo-Allergenic Köpek Maması - 2 Kg",
+      "fiyat": 1404.0
+    },
+    {
+      "isim": "Natura Premium Kuzu Etli Narlı Düşük Tahıllı Yavru Köpek Maması 12 +2 kg - 12 Kg + 2 Kg",
+      "fiyat": 2469.67
+    },
+    {
+      "isim": "N&D White Levrek Rezene ve Spirulina Küçük Irk Beyaz Köpek Maması - 5 kg",
+      "fiyat": 3877.2
+    },
+    {
+      "isim": "Pro Nutrition Prestige Orta Irk Yetişkin Köpek Maması",
+      "fiyat": 4050.0
+    },
+    {
+      "isim": "Pro Nutrition Prestige Tahılsız Somonlu Yetişkin Köpek Maması",
+      "fiyat": 4860.0
+    },
+    {
+      "isim": "Pro Nutrition Elite 25/16 Çiftlik Serisi Yetişkin Köpek Maması - 20 Kg",
+      "fiyat": 5062.5
+    },
+    {
+      "isim": "Pro Nutrition Elite Çiftlik Serisi Büyük Irk Yavru Köpek Maması - 20 Kg",
+      "fiyat": 6250.0
+    }
+  ],
+  "birim_fiyatlari": {
+    "kg": {
+      "etiket": "TL/kg",
+      "genel_medyan": 401.71,
+      "eslesen_urun": 18,
+      "toplam_urun": 24,
+      "eslesme_orani": 0.75,
+      "segmentler": {
+        "dusuk": {
+          "min": 253.12,
+          "medyan": 300.89,
+          "max": 343.86,
+          "urun_sayisi": 6
+        },
+        "orta": {
+          "min": 347.14,
+          "medyan": 422.74,
+          "max": 539.33,
+          "urun_sayisi": 8
+        },
+        "luks": {
+          "min": 675.0,
+          "medyan": 738.72,
+          "max": 1234.84,
+          "urun_sayisi": 4
+        }
+      },
+      "ornek_urunler": [
+        {
+          "isim": "Pro Nutrition Elite 25/16 Çiftlik Serisi Yetişkin Köpek Maması - 20 Kg",
+          "fiyat": 5062.5,
+          "miktar": 20.0,
+          "birim_fiyat": 253.12
+        },
+        {
+          "isim": "Pro Nutrition Prestige Büyük Irk Yetişkin Köpek Maması - 14 Kg",
+          "fiyat": 4050.0,
+          "miktar": 14.0,
+          "birim_fiyat": 289.29
+        },
+        {
+          "isim": "Caviara Tavuklu Orta ve Büyük Irk Yavru Köpek Maması - 2 Kg",
+          "fiyat": 687.72,
+          "miktar": 2.0,
+          "birim_fiyat": 343.86
+        },
+        {
+          "isim": "Caviara Hipoalerjenik Somonlu ve Pirinçli Orta ve Büyük Irk Yetişkin Köpek Maması - 2 Kg",
+          "fiyat": 761.33,
+          "miktar": 2.0,
+          "birim_fiyat": 380.67
+        },
+        {
+          "isim": "Caviara Kuzu Etli ve Pirinçli Orta ve Büyük Irk Yaşlı Köpek Maması - 2 Kg",
+          "fiyat": 845.47,
+          "miktar": 2.0,
+          "birim_fiyat": 422.74
+        },
+        {
+          "isim": "Wanpy Tahılsız Kuzulu Yetişkin Köpek Maması - 1,5 Kg",
+          "fiyat": 809.0,
+          "miktar": 1.5,
+          "birim_fiyat": 539.33
+        },
+        {
+          "isim": "Pro Nutrition Protect Veterinary Dermato Hypo-Allergenic Köpek Maması - 2 Kg",
+          "fiyat": 1404.0,
+          "miktar": 2.0,
+          "birim_fiyat": 702.0
+        },
+        {
+          "isim": "Natura Premium Kuzu Etli Narlı Düşük Tahıllı Yavru Köpek Maması 12 +2 kg - 12 Kg + 2 Kg",
+          "fiyat": 2469.67,
+          "miktar": 2.0,
+          "birim_fiyat": 1234.84
+        }
+      ]
+    }
+  }
+}

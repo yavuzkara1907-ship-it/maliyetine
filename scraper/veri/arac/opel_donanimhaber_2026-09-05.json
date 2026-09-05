@@ -1,0 +1,522 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Opel"
+  ],
+  "kalem": "opel",
+  "vertikal": "arac",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 22,
+  "aykiri_urun_sayisi": 1,
+  "toplam_urun": 21,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 2050000,
+  "segmentler": {
+    "dusuk": {
+      "min": 1535000,
+      "medyan": 1807500,
+      "max": 1895000,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 1925000,
+      "medyan": 2120000,
+      "max": 2350000,
+      "urun_sayisi": 10
+    },
+    "luks": {
+      "min": 2590000,
+      "medyan": 3050000,
+      "max": 3570000,
+      "urun_sayisi": 5
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Opel Corsa 1.2 100 HP Benzin MT6 Edition",
+      "fiyat": 1535000.0
+    },
+    {
+      "isim": "Opel Combo 1.5 130 HP Dizel MT6 Essential",
+      "fiyat": 1630000.0
+    },
+    {
+      "isim": "Opel Combo 1.5 130 HP Dizel AT8 Essential",
+      "fiyat": 1795000.0
+    },
+    {
+      "isim": "Opel Corsa Hybrid 1.2 110 (100HP) e-DCT6 Edition",
+      "fiyat": 1820000.0
+    },
+    {
+      "isim": "Opel Corsa-e 100 kW GS (Elektrikli)",
+      "fiyat": 1890000.0
+    },
+    {
+      "isim": "Opel Frontera Elektrik 100 kW GS",
+      "fiyat": 1895000.0
+    },
+    {
+      "isim": "Opel Combo 1.5 130 HP Dizel AT8 Edition",
+      "fiyat": 1925000.0
+    },
+    {
+      "isim": "Opel Corsa Hybrid 1.2 145 (136HP) e-DCT6 GS",
+      "fiyat": 1955000.0
+    },
+    {
+      "isim": "Opel Mokka 1.2 136 HP Benzin MT6 Edition",
+      "fiyat": 1990000.0
+    },
+    {
+      "isim": "Opel Frontera Elektrik 100 kW GS Uzun Menzil",
+      "fiyat": 2010000.0
+    },
+    {
+      "isim": "Opel Combo 1.5 130 HP Dizel AT8 Ultimate",
+      "fiyat": 2050000.0
+    },
+    {
+      "isim": "Opel Frontera Hybrid 1.2 145 (136HP) Edition",
+      "fiyat": 2190000.0
+    },
+    {
+      "isim": "Opel Frontera Hybrid 1.2 145 (136HP) GS",
+      "fiyat": 2290000.0
+    },
+    {
+      "isim": "Yeni Opel Astra 1.5 130 HP Dizel AT8 Edition",
+      "fiyat": 2330000.0
+    },
+    {
+      "isim": "Opel Combo 100 kW Edition",
+      "fiyat": 2345000.0
+    },
+    {
+      "isim": "Opel Mokka Hybrid 1.2 145 (136 HP) e-DCT6 GS",
+      "fiyat": 2350000.0
+    },
+    {
+      "isim": "Yeni Opel Astra 1.5 130 HP Dizel AT8 GS",
+      "fiyat": 2590000.0
+    },
+    {
+      "isim": "Opel Grandland Hybrid 1.2 136 HP e-DCT6 Edition",
+      "fiyat": 2850000.0
+    },
+    {
+      "isim": "Opel Grandland Hybrid 1.2 136 HP e-DCT6 GS",
+      "fiyat": 3050000.0
+    },
+    {
+      "isim": "Opel Grandland Elektrik 157 kW Edition",
+      "fiyat": 3200000.0
+    },
+    {
+      "isim": "Opel Mokka GSE",
+      "fiyat": 3570000.0
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 21,
+    "ozellik_eslesen_urun": 21,
+    "modeller": {
+      "astra": {
+        "ad": "Astra",
+        "genel_medyan": 2460000,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 2330000.0,
+            "medyan": 2330000.0,
+            "max": 2330000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2590000.0,
+            "medyan": 2590000.0,
+            "max": 2590000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Yeni Opel Astra 1.5 130 HP Dizel AT8 Edition",
+            "fiyat": 2330000.0
+          },
+          {
+            "isim": "Yeni Opel Astra 1.5 130 HP Dizel AT8 GS",
+            "fiyat": 2590000.0
+          }
+        ]
+      },
+      "combo": {
+        "ad": "Combo",
+        "genel_medyan": 1925000,
+        "urun_sayisi": 5,
+        "segmentler": {
+          "dusuk": {
+            "min": 1630000.0,
+            "medyan": 1712500.0,
+            "max": 1795000.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 1925000.0,
+            "medyan": 1987500.0,
+            "max": 2050000.0,
+            "urun_sayisi": 2
+          },
+          "luks": {
+            "min": 2345000.0,
+            "medyan": 2345000.0,
+            "max": 2345000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Opel Combo 1.5 130 HP Dizel MT6 Essential",
+            "fiyat": 1630000.0
+          },
+          {
+            "isim": "Opel Combo 1.5 130 HP Dizel AT8 Essential",
+            "fiyat": 1795000.0
+          },
+          {
+            "isim": "Opel Combo 1.5 130 HP Dizel AT8 Edition",
+            "fiyat": 1925000.0
+          },
+          {
+            "isim": "Opel Combo 1.5 130 HP Dizel AT8 Ultimate",
+            "fiyat": 2050000.0
+          },
+          {
+            "isim": "Opel Combo 100 kW Edition",
+            "fiyat": 2345000.0
+          }
+        ]
+      },
+      "corsa": {
+        "ad": "Corsa",
+        "genel_medyan": 1820000,
+        "urun_sayisi": 3,
+        "segmentler": {
+          "dusuk": {
+            "min": 1535000.0,
+            "medyan": 1535000.0,
+            "max": 1535000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 1820000.0,
+            "medyan": 1887500.0,
+            "max": 1955000.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Opel Corsa 1.2 100 HP Benzin MT6 Edition",
+            "fiyat": 1535000.0
+          },
+          {
+            "isim": "Opel Corsa Hybrid 1.2 110 (100HP) e-DCT6 Edition",
+            "fiyat": 1820000.0
+          },
+          {
+            "isim": "Opel Corsa Hybrid 1.2 145 (136HP) e-DCT6 GS",
+            "fiyat": 1955000.0
+          }
+        ]
+      },
+      "corsa-e": {
+        "ad": "Corsa-e",
+        "genel_medyan": 1890000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 1890000.0,
+            "medyan": 1890000.0,
+            "max": 1890000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 1890000.0,
+            "medyan": 1890000.0,
+            "max": 1890000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 1890000.0,
+            "medyan": 1890000.0,
+            "max": 1890000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Opel Corsa-e 100 kW GS (Elektrikli)",
+            "fiyat": 1890000.0
+          }
+        ]
+      },
+      "frontera": {
+        "ad": "Frontera",
+        "genel_medyan": 2100000,
+        "urun_sayisi": 4,
+        "segmentler": {
+          "dusuk": {
+            "min": 1895000.0,
+            "medyan": 1952500.0,
+            "max": 2010000.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 2190000.0,
+            "medyan": 2240000.0,
+            "max": 2290000.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Opel Frontera Elektrik 100 kW GS",
+            "fiyat": 1895000.0
+          },
+          {
+            "isim": "Opel Frontera Elektrik 100 kW GS Uzun Menzil",
+            "fiyat": 2010000.0
+          },
+          {
+            "isim": "Opel Frontera Hybrid 1.2 145 (136HP) Edition",
+            "fiyat": 2190000.0
+          },
+          {
+            "isim": "Opel Frontera Hybrid 1.2 145 (136HP) GS",
+            "fiyat": 2290000.0
+          }
+        ]
+      },
+      "grandland": {
+        "ad": "Grandland",
+        "genel_medyan": 3050000,
+        "urun_sayisi": 3,
+        "segmentler": {
+          "dusuk": {
+            "min": 2850000.0,
+            "medyan": 2850000.0,
+            "max": 2850000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 3050000.0,
+            "medyan": 3125000.0,
+            "max": 3200000.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Opel Grandland Hybrid 1.2 136 HP e-DCT6 Edition",
+            "fiyat": 2850000.0
+          },
+          {
+            "isim": "Opel Grandland Hybrid 1.2 136 HP e-DCT6 GS",
+            "fiyat": 3050000.0
+          },
+          {
+            "isim": "Opel Grandland Elektrik 157 kW Edition",
+            "fiyat": 3200000.0
+          }
+        ]
+      },
+      "mokka": {
+        "ad": "Mokka",
+        "genel_medyan": 2350000,
+        "urun_sayisi": 3,
+        "segmentler": {
+          "dusuk": {
+            "min": 1990000.0,
+            "medyan": 1990000.0,
+            "max": 1990000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2350000.0,
+            "medyan": 2960000.0,
+            "max": 3570000.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Opel Mokka 1.2 136 HP Benzin MT6 Edition",
+            "fiyat": 1990000.0
+          },
+          {
+            "isim": "Opel Mokka Hybrid 1.2 145 (136 HP) e-DCT6 GS",
+            "fiyat": 2350000.0
+          },
+          {
+            "isim": "Opel Mokka GSE",
+            "fiyat": 3570000.0
+          }
+        ]
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "Opel Corsa 1.2 100 HP Benzin MT6 Edition",
+        "fiyat": 1535000.0,
+        "nitelikler": {
+          "model": "Corsa"
+        }
+      },
+      {
+        "isim": "Opel Corsa Hybrid 1.2 110 (100HP) e-DCT6 Edition",
+        "fiyat": 1820000.0,
+        "nitelikler": {
+          "model": "Corsa"
+        }
+      },
+      {
+        "isim": "Opel Corsa Hybrid 1.2 145 (136HP) e-DCT6 GS",
+        "fiyat": 1955000.0,
+        "nitelikler": {
+          "model": "Corsa"
+        }
+      },
+      {
+        "isim": "Opel Corsa-e 100 kW GS (Elektrikli)",
+        "fiyat": 1890000.0,
+        "nitelikler": {
+          "model": "Corsa-e"
+        }
+      },
+      {
+        "isim": "Opel Frontera Hybrid 1.2 145 (136HP) Edition",
+        "fiyat": 2190000.0,
+        "nitelikler": {
+          "model": "Frontera"
+        }
+      },
+      {
+        "isim": "Opel Frontera Hybrid 1.2 145 (136HP) GS",
+        "fiyat": 2290000.0,
+        "nitelikler": {
+          "model": "Frontera"
+        }
+      },
+      {
+        "isim": "Opel Frontera Elektrik 100 kW GS",
+        "fiyat": 1895000.0,
+        "nitelikler": {
+          "model": "Frontera"
+        }
+      },
+      {
+        "isim": "Opel Frontera Elektrik 100 kW GS Uzun Menzil",
+        "fiyat": 2010000.0,
+        "nitelikler": {
+          "model": "Frontera"
+        }
+      },
+      {
+        "isim": "Yeni Opel Astra 1.5 130 HP Dizel AT8 Edition",
+        "fiyat": 2330000.0,
+        "nitelikler": {
+          "model": "Astra"
+        }
+      },
+      {
+        "isim": "Yeni Opel Astra 1.5 130 HP Dizel AT8 GS",
+        "fiyat": 2590000.0,
+        "nitelikler": {
+          "model": "Astra"
+        }
+      },
+      {
+        "isim": "Opel Mokka 1.2 136 HP Benzin MT6 Edition",
+        "fiyat": 1990000.0,
+        "nitelikler": {
+          "model": "Mokka"
+        }
+      },
+      {
+        "isim": "Opel Mokka Hybrid 1.2 145 (136 HP) e-DCT6 GS",
+        "fiyat": 2350000.0,
+        "nitelikler": {
+          "model": "Mokka"
+        }
+      },
+      {
+        "isim": "Opel Mokka GSE",
+        "fiyat": 3570000.0,
+        "nitelikler": {
+          "model": "Mokka"
+        }
+      },
+      {
+        "isim": "Opel Grandland Hybrid 1.2 136 HP e-DCT6 Edition",
+        "fiyat": 2850000.0,
+        "nitelikler": {
+          "model": "Grandland"
+        }
+      },
+      {
+        "isim": "Opel Grandland Hybrid 1.2 136 HP e-DCT6 GS",
+        "fiyat": 3050000.0,
+        "nitelikler": {
+          "model": "Grandland"
+        }
+      },
+      {
+        "isim": "Opel Grandland Elektrik 157 kW Edition",
+        "fiyat": 3200000.0,
+        "nitelikler": {
+          "model": "Grandland"
+        }
+      },
+      {
+        "isim": "Opel Combo 1.5 130 HP Dizel MT6 Essential",
+        "fiyat": 1630000.0,
+        "nitelikler": {
+          "model": "Combo"
+        }
+      },
+      {
+        "isim": "Opel Combo 1.5 130 HP Dizel AT8 Essential",
+        "fiyat": 1795000.0,
+        "nitelikler": {
+          "model": "Combo"
+        }
+      },
+      {
+        "isim": "Opel Combo 1.5 130 HP Dizel AT8 Edition",
+        "fiyat": 1925000.0,
+        "nitelikler": {
+          "model": "Combo"
+        }
+      },
+      {
+        "isim": "Opel Combo 1.5 130 HP Dizel AT8 Ultimate",
+        "fiyat": 2050000.0,
+        "nitelikler": {
+          "model": "Combo"
+        }
+      },
+      {
+        "isim": "Opel Combo 100 kW Edition",
+        "fiyat": 2345000.0,
+        "nitelikler": {
+          "model": "Combo"
+        }
+      }
+    ]
+  }
+}

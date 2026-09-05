@@ -1,6 +1,6 @@
 {
   "vertikal": "kopek",
-  "guncelleme_tarihi": "2026-08-22",
+  "guncelleme_tarihi": "2026-09-05",
   "kalemler": {
     "cis-pedi": {
       "olcum_turu": "paket_fiyati",
@@ -91,29 +91,29 @@
       "segmentler": {
         "dusuk": {
           "min": 105,
-          "medyan": 990,
-          "max": 2894,
+          "medyan": 755,
+          "max": 1035,
           "urun_sayisi": 19,
           "kaynak_sayisi": 2
         },
         "orta": {
-          "min": 1120,
-          "medyan": 3202,
-          "max": 6263,
-          "urun_sayisi": 35,
+          "min": 845,
+          "medyan": 1628,
+          "max": 4050,
+          "urun_sayisi": 34,
           "kaynak_sayisi": 2
         },
         "luks": {
           "min": 3685,
-          "medyan": 5288,
-          "max": 7087,
-          "urun_sayisi": 15,
+          "medyan": 4580,
+          "max": 6250,
+          "urun_sayisi": 16,
           "kaynak_sayisi": 2
         }
       },
-      "genel_medyan": 3018,
+      "genel_medyan": 1590,
       "toplam_urun": 69,
-      "guncelleme_tarihi": "2026-08-22",
+      "guncelleme_tarihi": "2026-09-05",
       "kaynak_sayisi": 2,
       "kaynaklar": [
         {
@@ -130,69 +130,69 @@
           "kaynak_adlari": [
             "petzzshop - Kopek Mamasi"
           ],
-          "tarih": "2026-08-22",
+          "tarih": "2026-09-05",
           "toplam_urun": 24,
-          "genel_medyan": 4208,
+          "genel_medyan": 1350,
           "ornek_urunler": [
             {
-              "isim": "Molly Düşük Tahıllı Hypoallergenic Tavuklu ve Yaban Mersinli Küçük Irk Anne ve Yavru Köpek Maması - 2 Kg",
-              "fiyat": 700.0
+              "isim": "Caviara Tavuklu Mini ve Küçük Irk Yavru Köpek Maması - 2 Kg",
+              "fiyat": 687.72
             },
             {
-              "isim": "N&D Tropical Selection Domuzlu ve Kivili Orta ve Büyük Irk Yetişkin Köpek Maması",
-              "fiyat": 1132.84
+              "isim": "Caviara Hipoalerjenik Somonlu ve Pirinçli Orta ve Büyük Irk Yetişkin Köpek Maması - 2 Kg",
+              "fiyat": 761.33
             },
             {
-              "isim": "N&D Tropical Selection Kuzu Etli Orta ve Büyük Irk Yavru Köpek Maması",
-              "fiyat": 1232.44
+              "isim": "Caviara Somonlu Mini ve Küçük Irk Yetişkin Köpek Maması - 2 Kg",
+              "fiyat": 761.33
             },
             {
-              "isim": "Exclusion Monoprotein Kuzulu ve Narlı Düşük Tahıllı Küçük Irk Yetişkin Köpek Maması - 7 Kg",
-              "fiyat": 2090.44
+              "isim": "Wanpy Tahılsız Kuzulu Yetişkin Köpek Maması - 1,5 Kg",
+              "fiyat": 809.0
             },
             {
-              "isim": "N&D Tropical Selection Tavuklu ve Tropical Meyveli Orta ve Büyük Irk Yetişkin Köpek Maması - 10 Kg",
-              "fiyat": 3061.8
+              "isim": "Caviara Kuzu Etli ve Pirinçli Mini ve Küçük Irk Yaşlı Köpek Maması - 2 Kg",
+              "fiyat": 845.47
             },
             {
-              "isim": "N&D Tropical Selection Somonlu ve Tropical Meyveli Orta ve Büyük Irk Yetişkin Köpek Maması - 10 Kg",
-              "fiyat": 3339.36
+              "isim": "Caviara Kuzu Etli ve Pirinçli Orta ve Büyük Irk Yaşlı Köpek Maması - 2 Kg",
+              "fiyat": 845.47
             },
             {
-              "isim": "Profine Glutensiz Somonlu Büyük Irk Yavru Köpek Maması 12 kg",
-              "fiyat": 3946.21
+              "isim": "Pro Nutrition Protect Veterinary Obesite Kilo Kontrolü İçin Köpek Maması",
+              "fiyat": 1350.0
             },
             {
-              "isim": "Profine Glutensiz Somonlu Büyük Irk Yetişkin Köpek Maması - 12 Kg",
-              "fiyat": 4282.93
+              "isim": "Pro Nutrition Protect Veterinary Urinary İdrar Yolu Sağlığı Destekleyici Köpek Maması",
+              "fiyat": 1350.0
             },
             {
-              "isim": "N&D Düşük Tahıllı Kuzu Etli Orta ve Büyük Irk Yetişkin Köpek Maması - 12 Kg",
-              "fiyat": 4526.28
+              "isim": "Pro Nutrition Protect Veterinary Dermato Hypo-Allergenic Köpek Maması - 2 Kg",
+              "fiyat": 1404.0
             },
             {
-              "isim": "Wanpy Sığır Etli Tahılsız Yetişkin Köpek Maması - 12 Kg",
-              "fiyat": 4802.28
+              "isim": "Natura Premium Kuzu Etli Narlı Düşük Tahıllı Yavru Köpek Maması 12 +2 kg - 12 Kg + 2 Kg",
+              "fiyat": 2469.67
             },
             {
-              "isim": "N&D Ocean Düşük Tahıllı Balıklı Orta ve Büyük Irk Yetişkin Köpek Maması - 12 Kg",
-              "fiyat": 5082.48
+              "isim": "N&D White Levrek Rezene ve Spirulina Küçük Irk Beyaz Köpek Maması - 5 kg",
+              "fiyat": 3877.2
             },
             {
-              "isim": "N&D Ocean Balıklı ve Balkabaklı Orta ve Büyük Irk Köpek Maması - 12 Kg",
-              "fiyat": 6262.92
+              "isim": "Pro Nutrition Prestige Orta Irk Yetişkin Köpek Maması",
+              "fiyat": 4050.0
             },
             {
-              "isim": "N&D Prime Domuzlu Orta ve Büyük Irk Yetişkin Köpek Maması - 12 Kg",
-              "fiyat": 6298.56
+              "isim": "Pro Nutrition Prestige Tahılsız Somonlu Yetişkin Köpek Maması",
+              "fiyat": 4860.0
             },
             {
-              "isim": "N&D Prime Kuzu Etli ve Yaban Mersinli Orta Irk Yetişkin Köpek Maması - 12 Kg",
-              "fiyat": 6298.56
+              "isim": "Pro Nutrition Elite 25/16 Çiftlik Serisi Yetişkin Köpek Maması - 20 Kg",
+              "fiyat": 5062.5
             },
             {
-              "isim": "N&D Quinoa Ördekli Orta ve Büyük Irk Kısırlaştırılmış Köpek Maması - 12 Kg",
-              "fiyat": 7086.96
+              "isim": "Pro Nutrition Elite Çiftlik Serisi Büyük Irk Yavru Köpek Maması - 20 Kg",
+              "fiyat": 6250.0
             }
           ]
         }
@@ -200,92 +200,92 @@
       "birim_fiyatlari": {
         "kg": {
           "etiket": "TL/kg",
-          "genel_medyan": 388.69,
-          "eslesen_urun": 20,
+          "genel_medyan": 401.71,
+          "eslesen_urun": 18,
           "toplam_urun": 24,
           "kaynak_sayisi": 1,
           "segmentler": {
             "dusuk": {
-              "min": 241.13,
-              "medyan": 302.84,
-              "max": 333.94,
+              "min": 253.12,
+              "medyan": 300.89,
+              "max": 343.86,
               "urun_sayisi": 6,
               "kaynak_sayisi": 1
             },
             "orta": {
-              "min": 350.0,
-              "medyan": 423.54,
-              "max": 524.88,
-              "urun_sayisi": 11,
+              "min": 347.14,
+              "medyan": 422.74,
+              "max": 539.33,
+              "urun_sayisi": 8,
               "kaynak_sayisi": 1
             },
             "luks": {
-              "min": 554.85,
-              "medyan": 590.58,
-              "max": 710.2,
-              "urun_sayisi": 3,
+              "min": 675.0,
+              "medyan": 738.72,
+              "max": 1234.84,
+              "urun_sayisi": 4,
               "kaynak_sayisi": 1
             }
           },
           "ornek_urunler": [
             {
-              "isim": "Exclusion Monoprotein Kuzu Etli ve Narlı Düşük Tahıllı Orta Irk Yetişkin Köpek Maması - 12 Kg",
-              "fiyat": 2893.6,
-              "miktar": 12.0,
-              "birim_fiyat": 241.13,
+              "isim": "Pro Nutrition Elite 25/16 Çiftlik Serisi Yetişkin Köpek Maması - 20 Kg",
+              "fiyat": 5062.5,
+              "miktar": 20.0,
+              "birim_fiyat": 253.12,
               "site": "petzzshop"
             },
             {
-              "isim": "N&D Tropical Selection Tavuklu ve Tropical Meyveli Orta ve Büyük Irk Yetişkin Köpek Maması - 10 Kg",
-              "fiyat": 3061.8,
-              "miktar": 10.0,
-              "birim_fiyat": 306.18,
+              "isim": "Pro Nutrition Prestige Büyük Irk Yetişkin Köpek Maması - 14 Kg",
+              "fiyat": 4050.0,
+              "miktar": 14.0,
+              "birim_fiyat": 289.29,
               "site": "petzzshop"
             },
             {
-              "isim": "N&D Tropical Selection Somonlu ve Tropical Meyveli Orta ve Büyük Irk Yetişkin Köpek Maması - 10 Kg",
-              "fiyat": 3339.36,
-              "miktar": 10.0,
-              "birim_fiyat": 333.94,
+              "isim": "Caviara Tavuklu Orta ve Büyük Irk Yavru Köpek Maması - 2 Kg",
+              "fiyat": 687.72,
+              "miktar": 2.0,
+              "birim_fiyat": 343.86,
               "site": "petzzshop"
             },
             {
-              "isim": "N&D Düşük Tahıllı Kuzu Etli Orta ve Büyük Irk Yetişkin Köpek Maması - 12 Kg",
-              "fiyat": 4526.28,
-              "miktar": 12.0,
-              "birim_fiyat": 377.19,
+              "isim": "Caviara Hipoalerjenik Somonlu ve Pirinçli Orta ve Büyük Irk Yetişkin Köpek Maması - 2 Kg",
+              "fiyat": 761.33,
+              "miktar": 2.0,
+              "birim_fiyat": 380.67,
               "site": "petzzshop"
             },
             {
-              "isim": "N&D Ocean Düşük Tahıllı Balıklı Orta ve Büyük Irk Yetişkin Köpek Maması - 12 Kg",
-              "fiyat": 5082.48,
-              "miktar": 12.0,
-              "birim_fiyat": 423.54,
+              "isim": "Caviara Kuzu Etli ve Pirinçli Orta ve Büyük Irk Yaşlı Köpek Maması - 2 Kg",
+              "fiyat": 845.47,
+              "miktar": 2.0,
+              "birim_fiyat": 422.74,
               "site": "petzzshop"
             },
             {
-              "isim": "N&D Ocean Balıklı ve Portakallı Orta ve Büyük Irk Köpek Maması - 12 Kg",
-              "fiyat": 6262.92,
-              "miktar": 12.0,
-              "birim_fiyat": 521.91,
+              "isim": "Wanpy Tahılsız Kuzulu Yetişkin Köpek Maması - 1,5 Kg",
+              "fiyat": 809.0,
+              "miktar": 1.5,
+              "birim_fiyat": 539.33,
               "site": "petzzshop"
             },
             {
-              "isim": "N&D Prime Kuzu Etli ve Yaban Mersinli Orta Irk Yetişkin Köpek Maması - 12 Kg",
-              "fiyat": 6298.56,
-              "miktar": 12.0,
-              "birim_fiyat": 524.88,
+              "isim": "Pro Nutrition Protect Veterinary Dermato Hypo-Allergenic Köpek Maması - 2 Kg",
+              "fiyat": 1404.0,
+              "miktar": 2.0,
+              "birim_fiyat": 702.0,
               "site": "petzzshop"
             },
             {
-              "isim": "N&D White Levrek Rezene ve Spirulina Küçük Irk Beyaz Köpek Maması - 5 kg",
-              "fiyat": 3551.0,
-              "miktar": 5.0,
-              "birim_fiyat": 710.2,
+              "isim": "Natura Premium Kuzu Etli Narlı Düşük Tahıllı Yavru Köpek Maması 12 +2 kg - 12 Kg + 2 Kg",
+              "fiyat": 2469.67,
+              "miktar": 2.0,
+              "birim_fiyat": 1234.84,
               "site": "petzzshop"
             }
           ],
-          "eslesme_orani": 0.833
+          "eslesme_orani": 0.75
         }
       },
       "capraz_dogrulama_uyarisi": {
@@ -300,30 +300,30 @@
       "olcum_turu": "kalem_fiyati",
       "segmentler": {
         "dusuk": {
-          "min": 36,
-          "medyan": 112,
-          "max": 171,
-          "urun_sayisi": 21,
+          "min": 65,
+          "medyan": 126,
+          "max": 169,
+          "urun_sayisi": 20,
           "kaynak_sayisi": 2
         },
         "orta": {
           "min": 179,
-          "medyan": 288,
-          "max": 985,
-          "urun_sayisi": 40,
+          "medyan": 275,
+          "max": 469,
+          "urun_sayisi": 39,
           "kaynak_sayisi": 2
         },
         "luks": {
-          "min": 474,
-          "medyan": 818,
-          "max": 1120,
+          "min": 425,
+          "medyan": 492,
+          "max": 914,
           "urun_sayisi": 18,
           "kaynak_sayisi": 2
         }
       },
-      "genel_medyan": 272,
-      "toplam_urun": 79,
-      "guncelleme_tarihi": "2026-08-20",
+      "genel_medyan": 274,
+      "toplam_urun": 77,
+      "guncelleme_tarihi": "2026-09-05",
       "kaynak_sayisi": 2,
       "kaynaklar": [
         {
@@ -340,9 +340,71 @@
           "kaynak_adlari": [
             "petzzshop - Kopek Oyuncaklari"
           ],
-          "tarih": "2026-08-20",
-          "toplam_urun": 24,
-          "genel_medyan": 274
+          "tarih": "2026-09-05",
+          "toplam_urun": 22,
+          "genel_medyan": 280,
+          "ornek_urunler": [
+            {
+              "isim": "Euro Dog Beş Düğümlü Örümcek Diş Kaşıma İpi Köpek Oyuncağı - Beyaz/Kırmızı",
+              "fiyat": 71.95
+            },
+            {
+              "isim": "Nunbell Köpek Oyuncagı Top Small",
+              "fiyat": 112.64
+            },
+            {
+              "isim": "M-Pets Squeaky Köpekler İçin Oyun Topu - 6.3 Cm",
+              "fiyat": 139.65
+            },
+            {
+              "isim": "M-Pets Venus Ödül Hazneli Kauçuk Köpek Oyuncağı",
+              "fiyat": 147.43
+            },
+            {
+              "isim": "Nunbell Köpek Oyuncağı Top - Large",
+              "fiyat": 179.36
+            },
+            {
+              "isim": "M-Pets Power Chew Kauçuk Köpek Ödül Oyuncağı Ruby - XS",
+              "fiyat": 230.07
+            },
+            {
+              "isim": "Nunbell Plastik Işıklı Top Köpek Oyuncağı - 7 Cm",
+              "fiyat": 252.38
+            },
+            {
+              "isim": "Eastland Öten Peluş Fil 25 cm -",
+              "fiyat": 278.24
+            },
+            {
+              "isim": "M-Pets On/Off Shelly Köpek Oyuncağı",
+              "fiyat": 283.06
+            },
+            {
+              "isim": "Eastland Öten Peluş Bezelye 30,5 cm - 30,5 cm",
+              "fiyat": 355.57
+            },
+            {
+              "isim": "M-Pets Power Chew Kauçuk Köpek Ödül Oyuncağı Ruby - M",
+              "fiyat": 363.26
+            },
+            {
+              "isim": "M-Pets Air Toss Whell Suda Yüzen Sarı Köpek Oyuncağı",
+              "fiyat": 371.04
+            },
+            {
+              "isim": "Nunbell Köpek Oyuncağı Pelüş Ördek 32 Cm",
+              "fiyat": 424.74
+            },
+            {
+              "isim": "Eastland Öten Tilki 42 cm -",
+              "fiyat": 441.0
+            },
+            {
+              "isim": "Nunbell  Dayanıklı Kumaştan Ördek Köpek Oyuncağı 35 cm",
+              "fiyat": 593.08
+            }
+          ]
         }
       ],
       "capraz_dogrulama_uyarisi": null
@@ -400,23 +462,23 @@
           "kaynak_sayisi": 2
         },
         "orta": {
-          "min": 270,
-          "medyan": 421,
+          "min": 201,
+          "medyan": 356,
           "max": 835,
-          "urun_sayisi": 31,
+          "urun_sayisi": 30,
           "kaynak_sayisi": 2
         },
         "luks": {
-          "min": 673,
-          "medyan": 1104,
-          "max": 1656,
-          "urun_sayisi": 14,
+          "min": 400,
+          "medyan": 747,
+          "max": 1647,
+          "urun_sayisi": 13,
           "kaynak_sayisi": 2
         }
       },
-      "genel_medyan": 398,
-      "toplam_urun": 62,
-      "guncelleme_tarihi": "2026-08-20",
+      "genel_medyan": 328,
+      "toplam_urun": 60,
+      "guncelleme_tarihi": "2026-09-05",
       "kaynak_sayisi": 2,
       "kaynaklar": [
         {
@@ -433,9 +495,71 @@
           "kaynak_adlari": [
             "petzzshop - Kopek Tasmalari"
           ],
-          "tarih": "2026-08-20",
-          "toplam_urun": 22,
-          "genel_medyan": 396
+          "tarih": "2026-09-05",
+          "toplam_urun": 20,
+          "genel_medyan": 256,
+          "ornek_urunler": [
+            {
+              "isim": "Doglife Eğitim Amaçlı Zincir Köpek Boyun Tasması 4 x 70 Cm - 4x70 cm",
+              "fiyat": 76.39
+            },
+            {
+              "isim": "Doglife Eğitim Amaçlı Zincir Köpek Boyun Tasması 4 x 60 Cm - 4x60 Cm",
+              "fiyat": 89.58
+            },
+            {
+              "isim": "Nunbell Köpek Boyun Tasması 1.5 cm",
+              "fiyat": 111.11
+            },
+            {
+              "isim": "Nunbell Boyun Tasması 2,5cm",
+              "fiyat": 145.83
+            },
+            {
+              "isim": "M-Pets Urban Style Lava Köpek Boyun Tasması - S",
+              "fiyat": 157.15
+            },
+            {
+              "isim": "Nunbell Boyun Tasması 2,5cm",
+              "fiyat": 218.06
+            },
+            {
+              "isim": "M-Pets Wild Jungle Collar Köpek Boyun Tasması L",
+              "fiyat": 242.84
+            },
+            {
+              "isim": "Nunbell Köpek Gögüs Tasması No: 1",
+              "fiyat": 270.0
+            },
+            {
+              "isim": "M-Pets Wild Safari Collar Köpek Boyun Tasması XL",
+              "fiyat": 272.69
+            },
+            {
+              "isim": "M-Pets Urban Style Freestyle Köpek Boyun Tasması L",
+              "fiyat": 273.82
+            },
+            {
+              "isim": "Nunbell Köpek Gögüs Tasması No: 3",
+              "fiyat": 290.0
+            },
+            {
+              "isim": "Nunbell Plastik Dikenli Eğtim Tasması 3.5mm",
+              "fiyat": 391.67
+            },
+            {
+              "isim": "M-Pets Hiking Soft Köpek Boyun Tasması Kamuflaj L - Kamuflaj",
+              "fiyat": 400.21
+            },
+            {
+              "isim": "Nunbell Köpek Göğüs Tasması XL",
+              "fiyat": 494.44
+            },
+            {
+              "isim": "M-Pets Wıld Jungle Köpek Göğüs Tasması M",
+              "fiyat": 916.39
+            }
+          ]
         }
       ],
       "capraz_dogrulama_uyarisi": null
@@ -447,14 +571,14 @@
           "min": 209,
           "medyan": 1536,
           "max": 2250,
-          "urun_sayisi": 17,
+          "urun_sayisi": 16,
           "kaynak_sayisi": 2
         },
         "orta": {
           "min": 1120,
-          "medyan": 2080,
+          "medyan": 2105,
           "max": 3075,
-          "urun_sayisi": 25,
+          "urun_sayisi": 26,
           "kaynak_sayisi": 2
         },
         "luks": {
@@ -465,9 +589,9 @@
           "kaynak_sayisi": 2
         }
       },
-      "genel_medyan": 1998,
+      "genel_medyan": 2025,
       "toplam_urun": 54,
-      "guncelleme_tarihi": "2026-08-20",
+      "guncelleme_tarihi": "2026-09-05",
       "kaynak_sayisi": 2,
       "kaynaklar": [
         {
@@ -484,9 +608,71 @@
           "kaynak_adlari": [
             "petzzshop - Kopek Yataklari"
           ],
-          "tarih": "2026-08-20",
+          "tarih": "2026-09-05",
           "toplam_urun": 23,
-          "genel_medyan": 2400
+          "genel_medyan": 2455,
+          "ornek_urunler": [
+            {
+              "isim": "Lepus Trio Küp Yuva Küçük Irk Köpek ve Kedi Yatağı",
+              "fiyat": 1950.0
+            },
+            {
+              "isim": "Lepus Winter Bed Kedi ve Köpek Yatağı - Medium",
+              "fiyat": 2175.0
+            },
+            {
+              "isim": "Lepus Dolunay Asmalı Petek Kedi ve Küçük Irk Köpek Yatağı -",
+              "fiyat": 2250.0
+            },
+            {
+              "isim": "Lepus Hilal Vantuzlu Cam Kedi ve Küçük Irk Köpek Yatağı -",
+              "fiyat": 2250.0
+            },
+            {
+              "isim": "Lepus Olips Model Asmalı Petek Kedi ve Küçük Irk Köpek Yatağı -",
+              "fiyat": 2250.0
+            },
+            {
+              "isim": "Lepus Kedi ve Küçük Irk Köpek Salıncağı - Gri",
+              "fiyat": 2340.0
+            },
+            {
+              "isim": "Lepus Kulak Asmalı Petek Kedi ve Küçük Irk Köpek Yatağı - Gri",
+              "fiyat": 2400.0
+            },
+            {
+              "isim": "Lepus Caramio Kedi ve Köpek Yatağı",
+              "fiyat": 2455.0
+            },
+            {
+              "isim": "Pawise Araba Bagaj Koruma Örtüsü 185x103 Cm - 1",
+              "fiyat": 2650.0
+            },
+            {
+              "isim": "Lepus Dolcemera Kedi ve Köpek Yatağı",
+              "fiyat": 2700.0
+            },
+            {
+              "isim": "Lepus Saksı Model Kedi ve Küçük Irk Köpek Yatağı - Gri",
+              "fiyat": 3000.0
+            },
+            {
+              "isim": "Lepus Galaxi Model Kedi Kedi ve Küçük Irk Köpek Yatağı -",
+              "fiyat": 3075.0
+            },
+            {
+              "isim": "Lepus Corner Seat Kedi ve Köpek Yatağı - Gri",
+              "fiyat": 3300.0
+            },
+            {
+              "isim": "Lepus Ranza Kedi ve Küçük Irk Köpek Yatağı - Kahverengi",
+              "fiyat": 3300.0
+            },
+            {
+              "isim": "Lepus Comfort Kedi ve Köpek Yatağı",
+              "fiyat": 3975.0
+            }
+          ]
         }
       ],
       "capraz_dogrulama_uyarisi": {

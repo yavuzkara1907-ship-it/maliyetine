@@ -1,0 +1,100 @@
+{
+  "site": "petzzshop",
+  "kaynak_adlari": [
+    "petzzshop - Kedi Mama ve Su Kaplari"
+  ],
+  "kalem": "mama-su-kabi",
+  "vertikal": "kedi",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 23,
+  "aykiri_urun_sayisi": 3,
+  "toplam_urun": 20,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 343,
+  "segmentler": {
+    "dusuk": {
+      "min": 105,
+      "medyan": 131,
+      "max": 174,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 174,
+      "medyan": 363,
+      "max": 486,
+      "urun_sayisi": 10
+    },
+    "luks": {
+      "min": 538,
+      "medyan": 682,
+      "max": 718,
+      "urun_sayisi": 4
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Moderna Smart Plastik Kedi ve Köpek Mama ve Su Kabı - 210 Ml",
+      "fiyat": 105.32
+    },
+    {
+      "isim": "Flip Kedi ve Küçük Irk Köpek Figürlü Çelik Mama ve Su Kabı - 235 ml",
+      "fiyat": 117.57
+    },
+    {
+      "isim": "M-Pets Fresh Cover Plastik Konserve Kapağı",
+      "fiyat": 131.29
+    },
+    {
+      "isim": "Demirhan Desenli Kediler İçin Çelik Mama Kabı 12 cm",
+      "fiyat": 145.0
+    },
+    {
+      "isim": "Natura Kedi Köpek Mama Saklama Kabı 6 lt",
+      "fiyat": 173.61
+    },
+    {
+      "isim": "Şenyayla Hazneli Kedi ve Köpekler İçin Mama ve Su Kabı - Karışık Renk",
+      "fiyat": 260.0
+    },
+    {
+      "isim": "Demirhan Desenli Kediler İçin Çelik Mama Kabı 14 cm",
+      "fiyat": 296.15
+    },
+    {
+      "isim": "Ally Paws Single Üçgen Kedi ve Köpek Mama ve Su Kabı - 900 Ml",
+      "fiyat": 360.1
+    },
+    {
+      "isim": "Flip Kedi ve Köpekler İçin Paslanmaz Çelik İkili Mama ve Su Kabı 2x240ml - 240 ml",
+      "fiyat": 366.32
+    },
+    {
+      "isim": "Ally Paws Single İkili Kedi ve Köpek Mama ve Su Kabı 400Ml +320 Ml",
+      "fiyat": 377.44
+    },
+    {
+      "isim": "Ally Paws Single Kedi ve Köpek Mama ve Su Kabı",
+      "fiyat": 459.0
+    },
+    {
+      "isim": "İmac Ciottoli Kedi ve Köpek Plastik Mama ve Su Kabı - 1 Lt",
+      "fiyat": 486.3
+    },
+    {
+      "isim": "Afp Lifestyle 4 Pets Kedi ve Köpek Dış Mekan El Suluğu",
+      "fiyat": 537.52
+    },
+    {
+      "isim": "Ferplast Jolie Kedi ve Köpekler için Çelik Mama ve Su Kabı",
+      "fiyat": 681.91
+    },
+    {
+      "isim": "Moderna Kedi Desenli Kedi ve Küçük Irk Köpek için Plastik Su Kabı - Lacivert",
+      "fiyat": 718.32
+    }
+  ]
+}

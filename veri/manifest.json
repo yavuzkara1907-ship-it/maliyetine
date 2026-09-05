@@ -1,49 +1,49 @@
 {
   "sema_surumu": 1,
-  "dataset_surumu": "2026-08-22-9f06c382a78198a6",
-  "olcum_tarihi_sonu": "2026-08-22",
+  "dataset_surumu": "2026-09-05-bb936b40420f387c",
+  "olcum_tarihi_sonu": "2026-09-05",
   "fiyat_serisi": 121,
   "dikeyler": {
     "dugun": {
       "fiyat_serisi": 14,
       "olcum_baslangici": "2026-07-26",
-      "olcum_sonu": "2026-08-20",
+      "olcum_sonu": "2026-09-05",
       "dosyalar": {
         "guncel_json": {
           "yol": "/veri/dugun.json",
-          "sha256": "39314448a42c2a13b69413b274a4874019521c3f40612dd1f02dbf54778a97a8",
-          "bayt": 16009
+          "sha256": "3a70100bc96ff8570701f0475204521fe267f665be295547f49e4da817e8d7f5",
+          "bayt": 22476
         },
         "gecmis_json": {
           "yol": "/veri/gecmis/dugun.json",
-          "sha256": "073096ce96c8a302b1e4a100b1d936f0422dba648b547d534f093622144fd949",
-          "bayt": 11884
+          "sha256": "83062bb6cad8e52a0289ebac929e21a673d2688e9eec44d1cf245c77dabddc20",
+          "bayt": 12936
         },
         "guncel_csv": {
           "yol": "/veri/csv/dugun.csv",
-          "sha256": "d2d5dd298f69e52ccc2bcf31faafda590704e6e93dcbece1eb601acb8aa3bfd7",
-          "bayt": 1961
+          "sha256": "aecdae6e9e5cc3e2ea214b9765d9ecdfacc9b9b99fdcae5732b05bf6d5fd9059",
+          "bayt": 1960
         }
       }
     },
     "ev-kurma": {
       "fiyat_serisi": 42,
       "olcum_baslangici": "2026-08-09",
-      "olcum_sonu": "2026-08-22",
+      "olcum_sonu": "2026-09-05",
       "dosyalar": {
         "guncel_json": {
           "yol": "/veri/ev-kurma.json",
-          "sha256": "b3949dfba646da2a043759fe386d103a51deef1662d8f566e3c60dcddda0689d",
-          "bayt": 125764
+          "sha256": "2d358d6a4d33ccbc22c41cc88ea0f17e1ac58b5f66b3c2ff36fafbcb1f2bf573",
+          "bayt": 136070
         },
         "gecmis_json": {
           "yol": "/veri/gecmis/ev-kurma.json",
-          "sha256": "b2d8dadf24ce5cf428e87296690c61bd751fec38714ee59c7f1e9991d09f3078",
-          "bayt": 42385
+          "sha256": "9a320f9f87099771502ee414d77f69e19e2f12d6ef0f9d635177bd42c1e648d0",
+          "bayt": 42952
         },
         "guncel_csv": {
           "yol": "/veri/csv/ev-kurma.csv",
-          "sha256": "0040ad6aa7ec4a2d3efa7a395f760a5f6db01cd4cd00c2d32718873b836da3f0",
+          "sha256": "c97d958d91c85c48f3e52ea0c0286d75facc69186f868619a3dacb5457ab3c2a",
           "bayt": 6007
         }
       }
@@ -51,43 +51,43 @@
     "okul": {
       "fiyat_serisi": 14,
       "olcum_baslangici": "2026-08-02",
-      "olcum_sonu": "2026-08-20",
+      "olcum_sonu": "2026-09-05",
       "dosyalar": {
         "guncel_json": {
           "yol": "/veri/okul.json",
-          "sha256": "e540ef210294ff79538d4c1d9ad223cea3923282120ff537e62054d65532e20c",
-          "bayt": 19743
+          "sha256": "04fe24d44c298af503afd6136fff2c64751c4104a13219d8e5df05b273e7b716",
+          "bayt": 35597
         },
         "gecmis_json": {
           "yol": "/veri/gecmis/okul.json",
-          "sha256": "351d3e2a3f79381d604c09cb84fb934c99f1a102d66402daf67e61e10a8b56b4",
-          "bayt": 10808
+          "sha256": "461ccc12ec9453bbd48dc6ad7347c5a63536ad2d3e09e93a9824edf9ceb87a1b",
+          "bayt": 11475
         },
         "guncel_csv": {
           "yol": "/veri/csv/okul.csv",
-          "sha256": "d4fbef93607a79c00e1451d1212cc224e85c195c75b68fe2a27e73e7d4c19175",
-          "bayt": 1999
+          "sha256": "12853ac8d6d2fd7c4d874ada461e53feeb520dedbe9ca425a916ee8ac4db07cf",
+          "bayt": 2000
         }
       }
     },
     "bebek": {
       "fiyat_serisi": 11,
       "olcum_baslangici": "2026-08-02",
-      "olcum_sonu": "2026-08-22",
+      "olcum_sonu": "2026-09-05",
       "dosyalar": {
         "guncel_json": {
           "yol": "/veri/bebek.json",
-          "sha256": "6ab9db8d32436f31af9ab1e177c008cf61e30f8299efe0ae38fc4d29c9073709",
-          "bayt": 22483
+          "sha256": "02ad85148c8b371baf37b2fc1727fe1da72de48f86cb97439438dee060eeecc8",
+          "bayt": 31544
         },
         "gecmis_json": {
           "yol": "/veri/gecmis/bebek.json",
-          "sha256": "8272f70812bfbf253cae2eae06c1e26662e6a1f0a32074d9fd9ca950f693b622",
-          "bayt": 9071
+          "sha256": "4506aa8b47473cbcc78af312e3dfdba6c0339cf53ab85253c98a6908cc28c5fd",
+          "bayt": 9608
         },
         "guncel_csv": {
           "yol": "/veri/csv/bebek.csv",
-          "sha256": "e8e43422fd9d8f58a769791fcfa0d905bd3663ffcbf61ed7b0a17fe0e4bc63be",
+          "sha256": "4b4d1a0e805e0e4c788777841c561fc08f6aa5dfa4f574de8bc7a2ccfd0d0031",
           "bayt": 1654
         }
       }
@@ -95,66 +95,66 @@
     "kedi": {
       "fiyat_serisi": 8,
       "olcum_baslangici": "2026-08-09",
-      "olcum_sonu": "2026-08-22",
+      "olcum_sonu": "2026-09-05",
       "dosyalar": {
         "guncel_json": {
           "yol": "/veri/kedi.json",
-          "sha256": "944828c9391c5e1b6dfce17bb31535a8d60eda0f5ff18f0c30652216edfcdfe8",
-          "bayt": 34002
+          "sha256": "b3ee7aa7cdd1d8f62112c59b3aabccb2255f493c81fd0fab4a1d880c786a9d38",
+          "bayt": 41376
         },
         "gecmis_json": {
           "yol": "/veri/gecmis/kedi.json",
-          "sha256": "d151148dba84571f96e16363ce5408bf8401c6399231162c4431e97566582b5e",
-          "bayt": 7121
+          "sha256": "4c753df0002a8fd7f22030e5a5ed40495aff9c2ea64fdbfd8224af2468e0403b",
+          "bayt": 7981
         },
         "guncel_csv": {
           "yol": "/veri/csv/kedi.csv",
-          "sha256": "3ae007be24a03bfe35dec6038a83e0a15801748a48a5bccf623bb74235ecddbb",
-          "bayt": 1258
+          "sha256": "c4b6de3e57c6d212e1f43e2ce1767b2f099b21a62b5b2e643f09b9c29beca085",
+          "bayt": 1251
         }
       }
     },
     "kopek": {
       "fiyat_serisi": 7,
       "olcum_baslangici": "2026-08-09",
-      "olcum_sonu": "2026-08-22",
+      "olcum_sonu": "2026-09-05",
       "dosyalar": {
         "guncel_json": {
           "yol": "/veri/kopek.json",
-          "sha256": "c51d5463873130a1456cb7481c72c96bf6557d78c2520013e8754f171aaeb821",
-          "bayt": 13842
+          "sha256": "f9aa518e08b3b0e93b4e7e624c2b850ac7e9ac298a5c0f77fcdb47f0550e8b59",
+          "bayt": 19788
         },
         "gecmis_json": {
           "yol": "/veri/gecmis/kopek.json",
-          "sha256": "95f42a14337847c2ac37678e0eee45d9d0a605fe611dce687923a0093e50c9a0",
-          "bayt": 6128
+          "sha256": "4fc761d8da32e257273b70c42d09e8eed9bfc6fb97b698e8358012eeb1a969a3",
+          "bayt": 6695
         },
         "guncel_csv": {
           "yol": "/veri/csv/kopek.csv",
-          "sha256": "742d496cb6464475abc04bb2638f119e60404c05946d5f13e0683866ddf89a57",
-          "bayt": 1139
+          "sha256": "79ce67d7652e1619fe01fa9707311785a371ce30e85a5ff4b9c1f9a1e7124622",
+          "bayt": 1137
         }
       }
     },
     "arac": {
       "fiyat_serisi": 25,
-      "olcum_baslangici": "2026-08-22",
-      "olcum_sonu": "2026-08-22",
+      "olcum_baslangici": "2026-09-05",
+      "olcum_sonu": "2026-09-05",
       "dosyalar": {
         "guncel_json": {
           "yol": "/veri/arac.json",
-          "sha256": "1dc92b120171011cd13b8a597317d2566f65fad4d9a62415432f372b8a1eee2e",
-          "bayt": 375389
+          "sha256": "18ea9230444c1c7d2bbdb2247fd400095678b4755d0fb174e58bdd584324ef3c",
+          "bayt": 375563
         },
         "gecmis_json": {
           "yol": "/veri/gecmis/arac.json",
-          "sha256": "260819b658c7f9deb003d6dab6aabb35ce0f1d03ffedc9c6564b701d48151672",
-          "bayt": 25749
+          "sha256": "50952302a7c32094d3b6380530ffdfab55d46621ecca1d33227beabff617f2cb",
+          "bayt": 29861
         },
         "guncel_csv": {
           "yol": "/veri/csv/arac.csv",
-          "sha256": "3ed93f1de465af05cf8e1bffce1bf8ee6461510a007aad4d27ef3b0510000f3b",
-          "bayt": 3519
+          "sha256": "257dc68d49fa4fba0b2f4b967ea95a67a8d1555a16cf3e239eea014206c4fd9a",
+          "bayt": 3533
         }
       }
     }

@@ -1,8 +1,8 @@
 {
-  "baslik": "Ağustos 2026 Türkiye Maliyet Raporu",
+  "baslik": "Eylül 2026 Türkiye Maliyet Raporu",
   "url": "https://maliyetine.com.tr/rapor/",
-  "son_veri": "2026-08-22",
-  "dataset_surumu": "2026-08-22-9f06c382a78198a6",
+  "son_veri": "2026-09-05",
+  "dataset_surumu": "2026-09-05-bb936b40420f387c",
   "envanter": {
     "fiyat_serisi": 121,
     "kaynak": 20,
@@ -14,31 +14,31 @@
       "id": "dugun",
       "ad": "Düğün",
       "url": "https://maliyetine.com.tr/dugun/",
-      "orta_senaryo_tl": 438905,
+      "orta_senaryo_tl": 414755,
       "kapsam": "150 kişilik, orta segment bir düğün",
       "kalem_sayisi": 12,
       "kaynak_sayisi": 7,
-      "son_veri": "2026-08-20"
+      "son_veri": "2026-09-05"
     },
     {
       "id": "ev-kurma",
       "ad": "Ev Kurma",
       "url": "https://maliyetine.com.tr/ev-kurma/",
-      "orta_senaryo_tl": 363226,
+      "orta_senaryo_tl": 363204,
       "kapsam": "sıfırdan bir evi eşyalandırmak (orta segment)",
       "kalem_sayisi": 41,
       "kaynak_sayisi": 9,
-      "son_veri": "2026-08-22"
+      "son_veri": "2026-09-05"
     },
     {
       "id": "okul",
       "ad": "Okul",
       "url": "https://maliyetine.com.tr/okul/",
-      "orta_senaryo_tl": 6311,
+      "orta_senaryo_tl": 6316,
       "kapsam": "bir öğrencinin okul alışverişi",
       "kalem_sayisi": 11,
       "kaynak_sayisi": 4,
-      "son_veri": "2026-08-20"
+      "son_veri": "2026-09-05"
     },
     {
       "id": "bebek",
@@ -48,40 +48,49 @@
       "kapsam": "bebek hazırlığı",
       "kalem_sayisi": 10,
       "kaynak_sayisi": 4,
-      "son_veri": "2026-08-22"
+      "son_veri": "2026-09-05"
     },
     {
       "id": "kedi",
       "ad": "Kedi",
       "url": "https://maliyetine.com.tr/kedi/",
-      "orta_senaryo_tl": 6145,
+      "orta_senaryo_tl": 6168,
       "kapsam": "bir kediye başlangıç kurulumu",
       "kalem_sayisi": 6,
       "kaynak_sayisi": 2,
-      "son_veri": "2026-08-22"
+      "son_veri": "2026-09-05"
     },
     {
       "id": "kopek",
       "ad": "Köpek",
       "url": "https://maliyetine.com.tr/kopek/",
-      "orta_senaryo_tl": 4830,
+      "orta_senaryo_tl": 4777,
       "kapsam": "bir köpeğe başlangıç kurulumu",
       "kalem_sayisi": 5,
       "kaynak_sayisi": 2,
-      "son_veri": "2026-08-22"
+      "son_veri": "2026-09-05"
     },
     {
       "id": "arac",
       "ad": "0 km Araç",
       "url": "https://maliyetine.com.tr/arac/",
-      "orta_senaryo_tl": 2069000,
+      "orta_senaryo_tl": 2044450,
       "kapsam": "marka giriş fiyatlarının ortancası",
       "kalem_sayisi": 1,
       "kaynak_sayisi": 1,
-      "son_veri": "2026-08-22"
+      "son_veri": "2026-09-05"
     }
   ],
   "dogrulanmis_degisimler": [
+    {
+      "vertikal": "kedi",
+      "kalem_id": "kedi-oyuncagi",
+      "degisim_yuzde_mutlak": 168.2,
+      "kaynak_sayisi": 2,
+      "son_veri": "2026-09-05",
+      "aciklama": "Kedi Oyuncağı ortanca fiyatı 16 günde %168.2 arttı: 132 TL → 354 TL.\n\n61 üründen, 2 kaynaktan ölçüldü (2026-09-05).",
+      "url": "https://maliyetine.com.tr/kedi/kedi-oyuncagi-fiyatlari/"
+    },
     {
       "vertikal": "ev-kurma",
       "kalem_id": "kahve-makinesi",
@@ -90,6 +99,15 @@
       "son_veri": "2026-08-22",
       "aciklama": "Kahve Makinesi ortanca fiyatı 13 günde %72.4 arttı: 3.299 TL → 5.689 TL.\n\n78 üründen, 3 kaynaktan ölçüldü (2026-08-22).",
       "url": "https://maliyetine.com.tr/ev-kurma/kahve-makinesi-fiyatlari/"
+    },
+    {
+      "vertikal": "kopek",
+      "kalem_id": "kopek-mamasi",
+      "degisim_yuzde_mutlak": 47.3,
+      "kaynak_sayisi": 2,
+      "son_veri": "2026-09-05",
+      "aciklama": "Köpek Maması (paket) ortanca fiyatı 14 günde %47.3 azaldı: 3.018 TL → 1.590 TL.\n\n69 üründen, 2 kaynaktan ölçüldü (2026-09-05).",
+      "url": "https://maliyetine.com.tr/kopek/kopek-mamasi-fiyatlari/"
     },
     {
       "vertikal": "ev-kurma",
@@ -110,6 +128,24 @@
       "url": "https://maliyetine.com.tr/ev-kurma/davlumbaz-fiyatlari/"
     },
     {
+      "vertikal": "kedi",
+      "kalem_id": "kedi-mamasi",
+      "degisim_yuzde_mutlak": 30.5,
+      "kaynak_sayisi": 2,
+      "son_veri": "2026-09-05",
+      "aciklama": "Kedi Maması (paket) ortanca fiyatı 14 günde %30.5 azaldı: 1.980 TL → 1.376 TL.\n\n63 üründen, 2 kaynaktan ölçüldü (2026-09-05).",
+      "url": "https://maliyetine.com.tr/kedi/kedi-mamasi-fiyatlari/"
+    },
+    {
+      "vertikal": "arac",
+      "kalem_id": "honda",
+      "degisim_yuzde_mutlak": 28.5,
+      "kaynak_sayisi": 1,
+      "son_veri": "2026-09-05",
+      "aciklama": "Honda ortanca fiyatı 14 günde %28.5 arttı: 3.060.000 TL → 3.932.500 TL.\n\n6 üründen, tek kaynaktan ölçüldü (2026-09-05).",
+      "url": "https://maliyetine.com.tr/arac/"
+    },
+    {
       "vertikal": "ev-kurma",
       "kalem_id": "dikey-supurge",
       "degisim_yuzde_mutlak": 27.8,
@@ -128,6 +164,42 @@
       "url": "https://maliyetine.com.tr/bebek/bebek-bezi-fiyatlari/"
     },
     {
+      "vertikal": "bebek",
+      "kalem_id": "uyku-tulumu",
+      "degisim_yuzde_mutlak": 22.2,
+      "kaynak_sayisi": 2,
+      "son_veri": "2026-09-05",
+      "aciklama": "Uyku Tulumu ortanca fiyatı 16 günde %22.2 azaldı: 1.014 TL → 789 TL.\n\n50 üründen, 2 kaynaktan ölçüldü (2026-09-05).",
+      "url": "https://maliyetine.com.tr/bebek/uyku-tulumu-fiyatlari/"
+    },
+    {
+      "vertikal": "okul",
+      "kalem_id": "matara",
+      "degisim_yuzde_mutlak": 21.1,
+      "kaynak_sayisi": 3,
+      "son_veri": "2026-09-05",
+      "aciklama": "Suluk / Matara ortanca fiyatı 16 günde %21.1 arttı: 735 TL → 890 TL.\n\n173 üründen, 3 kaynaktan ölçüldü (2026-09-05).",
+      "url": "https://maliyetine.com.tr/okul/matara-fiyatlari/"
+    },
+    {
+      "vertikal": "kopek",
+      "kalem_id": "kopek-tasmasi",
+      "degisim_yuzde_mutlak": 17.6,
+      "kaynak_sayisi": 2,
+      "son_veri": "2026-09-05",
+      "aciklama": "Köpek Tasması ortanca fiyatı 16 günde %17.6 azaldı: 398 TL → 328 TL.\n\n60 üründen, 2 kaynaktan ölçüldü (2026-09-05).",
+      "url": "https://maliyetine.com.tr/kopek/kopek-tasmasi-fiyatlari/"
+    },
+    {
+      "vertikal": "okul",
+      "kalem_id": "kalem-kutusu",
+      "degisim_yuzde_mutlak": 16.7,
+      "kaynak_sayisi": 3,
+      "son_veri": "2026-09-05",
+      "aciklama": "Kalem Kutusu ortanca fiyatı 16 günde %16.7 azaldı: 540 TL → 450 TL.\n\n166 üründen, 3 kaynaktan ölçüldü (2026-09-05).",
+      "url": "https://maliyetine.com.tr/okul/kalem-kutusu-fiyatlari/"
+    },
+    {
       "vertikal": "ev-kurma",
       "kalem_id": "su-isitici",
       "degisim_yuzde_mutlak": 16.3,
@@ -135,6 +207,15 @@
       "son_veri": "2026-08-20",
       "aciklama": "Su Isıtıcı (Kettle) ortanca fiyatı 11 günde %16.3 azaldı: 1.266 TL → 1.060 TL.\n\n61 üründen, 2 kaynaktan ölçüldü (2026-08-20).",
       "url": "https://maliyetine.com.tr/ev-kurma/su-isitici-fiyatlari/"
+    },
+    {
+      "vertikal": "arac",
+      "kalem_id": "hyundai",
+      "degisim_yuzde_mutlak": 16.1,
+      "kaynak_sayisi": 1,
+      "son_veri": "2026-09-05",
+      "aciklama": "Hyundai ortanca fiyatı 14 günde %16.1 arttı: 1.980.000 TL → 2.299.000 TL.\n\n25 üründen, tek kaynaktan ölçüldü (2026-09-05).",
+      "url": "https://maliyetine.com.tr/arac/hyundai-fiyatlari/"
     },
     {
       "vertikal": "ev-kurma",
@@ -146,13 +227,13 @@
       "url": "https://maliyetine.com.tr/ev-kurma/catal-kasik-bicak-takimi-fiyatlari/"
     },
     {
-      "vertikal": "kopek",
-      "kalem_id": "kopek-yatagi",
-      "degisim_yuzde_mutlak": 13.7,
+      "vertikal": "kedi",
+      "kalem_id": "tasima-cantasi",
+      "degisim_yuzde_mutlak": 10.8,
       "kaynak_sayisi": 2,
-      "son_veri": "2026-08-20",
-      "aciklama": "Köpek Yatağı ortanca fiyatı 11 günde %13.7 arttı: 1.758 TL → 1.998 TL.\n\n54 üründen, 2 kaynaktan ölçüldü (2026-08-20).",
-      "url": "https://maliyetine.com.tr/kopek/kopek-yatagi-fiyatlari/"
+      "son_veri": "2026-09-05",
+      "aciklama": "Taşıma Çantası ortanca fiyatı 16 günde %10.8 azaldı: 2.069 TL → 1.846 TL.\n\n59 üründen, 2 kaynaktan ölçüldü (2026-09-05).",
+      "url": "https://maliyetine.com.tr/kedi/tasima-cantasi-fiyatlari/"
     },
     {
       "vertikal": "ev-kurma",
@@ -164,13 +245,13 @@
       "url": "https://maliyetine.com.tr/ev-kurma/klima-fiyatlari/"
     },
     {
-      "vertikal": "okul",
-      "kalem_id": "kalem-kutusu",
-      "degisim_yuzde_mutlak": 10.0,
-      "kaynak_sayisi": 3,
-      "son_veri": "2026-08-20",
-      "aciklama": "Kalem Kutusu ortanca fiyatı 15 günde %10.0 azaldı: 600 TL → 540 TL.\n\n166 üründen, 3 kaynaktan ölçüldü (2026-08-20).",
-      "url": "https://maliyetine.com.tr/okul/kalem-kutusu-fiyatlari/"
+      "vertikal": "arac",
+      "kalem_id": "bmw",
+      "degisim_yuzde_mutlak": 10.1,
+      "kaynak_sayisi": 1,
+      "son_veri": "2026-09-05",
+      "aciklama": "BMW ortanca fiyatı 14 günde %10.1 arttı: 7.854.750 TL → 8.648.750 TL.\n\n66 üründen, tek kaynaktan ölçüldü (2026-09-05).",
+      "url": "https://maliyetine.com.tr/arac/bmw-fiyatlari/"
     },
     {
       "vertikal": "ev-kurma",
@@ -191,6 +272,24 @@
       "url": "https://maliyetine.com.tr/okul/resim-malzemeleri-fiyatlari/"
     },
     {
+      "vertikal": "arac",
+      "kalem_id": "suzuki",
+      "degisim_yuzde_mutlak": 8.8,
+      "kaynak_sayisi": 1,
+      "son_veri": "2026-09-05",
+      "aciklama": "Suzuki ortanca fiyatı 14 günde %8.8 arttı: 2.354.000 TL → 2.560.000 TL.\n\n12 üründen, tek kaynaktan ölçüldü (2026-09-05).",
+      "url": "https://maliyetine.com.tr/arac/suzuki-fiyatlari/"
+    },
+    {
+      "vertikal": "arac",
+      "kalem_id": "volkswagen",
+      "degisim_yuzde_mutlak": 8.1,
+      "kaynak_sayisi": 1,
+      "son_veri": "2026-09-05",
+      "aciklama": "Volkswagen ortanca fiyatı 14 günde %8.1 arttı: 3.717.500 TL → 4.020.000 TL.\n\n40 üründen, tek kaynaktan ölçüldü (2026-09-05).",
+      "url": "https://maliyetine.com.tr/arac/volkswagen-fiyatlari/"
+    },
+    {
       "vertikal": "ev-kurma",
       "kalem_id": "sehpa",
       "degisim_yuzde_mutlak": 8.0,
@@ -201,12 +300,12 @@
     },
     {
       "vertikal": "ev-kurma",
-      "kalem_id": "aydinlatma",
+      "kalem_id": "bardak-takimi",
       "degisim_yuzde_mutlak": 6.4,
       "kaynak_sayisi": 2,
-      "son_veri": "2026-08-20",
-      "aciklama": "Avize / Aydınlatma ortanca fiyatı 11 günde %6.4 arttı: 1.010 TL → 1.075 TL.\n\n71 üründen, 2 kaynaktan ölçüldü (2026-08-20).",
-      "url": "https://maliyetine.com.tr/ev-kurma/aydinlatma-fiyatlari/"
+      "son_veri": "2026-09-05",
+      "aciklama": "Bardak Takımı ortanca fiyatı 27 günde %6.4 arttı: 374 TL → 398 TL.\n\n67 üründen, 2 kaynaktan ölçüldü (2026-09-05).",
+      "url": "https://maliyetine.com.tr/ev-kurma/bardak-takimi-fiyatlari/"
     },
     {
       "vertikal": "dugun",
@@ -227,6 +326,33 @@
       "url": "https://maliyetine.com.tr/okul/calisma-sandalyesi-fiyatlari/"
     },
     {
+      "vertikal": "arac",
+      "kalem_id": "seat",
+      "degisim_yuzde_mutlak": 6.0,
+      "kaynak_sayisi": 1,
+      "son_veri": "2026-09-05",
+      "aciklama": "Seat ortanca fiyatı 14 günde %6.0 arttı: 2.174.000 TL → 2.305.000 TL.\n\n4 üründen, tek kaynaktan ölçüldü (2026-09-05).",
+      "url": "https://maliyetine.com.tr/arac/"
+    },
+    {
+      "vertikal": "ev-kurma",
+      "kalem_id": "aydinlatma",
+      "degisim_yuzde_mutlak": 4.7,
+      "kaynak_sayisi": 2,
+      "son_veri": "2026-09-05",
+      "aciklama": "Avize / Aydınlatma ortanca fiyatı 16 günde %4.7 azaldı: 1.075 TL → 1.024 TL.\n\n72 üründen, 2 kaynaktan ölçüldü (2026-09-05).",
+      "url": "https://maliyetine.com.tr/ev-kurma/aydinlatma-fiyatlari/"
+    },
+    {
+      "vertikal": "arac",
+      "kalem_id": "toyota",
+      "degisim_yuzde_mutlak": 4.6,
+      "kaynak_sayisi": 1,
+      "son_veri": "2026-09-05",
+      "aciklama": "Toyota ortanca fiyatı 14 günde %4.6 arttı: 2.989.000 TL → 3.126.000 TL.\n\n27 üründen, tek kaynaktan ölçüldü (2026-09-05).",
+      "url": "https://maliyetine.com.tr/arac/toyota-fiyatlari/"
+    },
+    {
       "vertikal": "dugun",
       "kalem_id": "nikah-sekeri",
       "degisim_yuzde_mutlak": 4.1,
@@ -236,13 +362,40 @@
       "url": "https://maliyetine.com.tr/dugun/"
     },
     {
-      "vertikal": "ev-kurma",
-      "kalem_id": "tencere-seti",
-      "degisim_yuzde_mutlak": 3.5,
-      "kaynak_sayisi": 4,
-      "son_veri": "2026-08-20",
-      "aciklama": "Tencere Seti ortanca fiyatı 11 günde %3.5 azaldı: 3.462 TL → 3.342 TL.\n\n115 üründen, 4 kaynaktan ölçüldü (2026-08-20).",
-      "url": "https://maliyetine.com.tr/ev-kurma/tencere-seti-fiyatlari/"
+      "vertikal": "arac",
+      "kalem_id": "cupra",
+      "degisim_yuzde_mutlak": 4.0,
+      "kaynak_sayisi": 1,
+      "son_veri": "2026-09-05",
+      "aciklama": "Cupra ortanca fiyatı 14 günde %4.0 arttı: 3.335.000 TL → 3.470.000 TL.\n\n7 üründen, tek kaynaktan ölçüldü (2026-09-05).",
+      "url": "https://maliyetine.com.tr/arac/"
+    },
+    {
+      "vertikal": "arac",
+      "kalem_id": "opel",
+      "degisim_yuzde_mutlak": 3.9,
+      "kaynak_sayisi": 1,
+      "son_veri": "2026-09-05",
+      "aciklama": "Opel ortanca fiyatı 14 günde %3.9 azaldı: 2.133.000 TL → 2.050.000 TL.\n\n21 üründen, tek kaynaktan ölçüldü (2026-09-05).",
+      "url": "https://maliyetine.com.tr/arac/opel-fiyatlari/"
+    },
+    {
+      "vertikal": "kedi",
+      "kalem_id": "kedi-kumu",
+      "degisim_yuzde_mutlak": 3.0,
+      "kaynak_sayisi": 2,
+      "son_veri": "2026-09-05",
+      "aciklama": "Kedi Kumu (paket) ortanca fiyatı 14 günde %3.0 arttı: 394 TL → 406 TL.\n\n62 üründen, 2 kaynaktan ölçüldü (2026-09-05).",
+      "url": "https://maliyetine.com.tr/kedi/kedi-kumu-fiyatlari/"
+    },
+    {
+      "vertikal": "arac",
+      "kalem_id": "nissan",
+      "degisim_yuzde_mutlak": 3.0,
+      "kaynak_sayisi": 1,
+      "son_veri": "2026-09-05",
+      "aciklama": "Nissan ortanca fiyatı 14 günde %3.0 arttı: 3.748.300 TL → 3.859.150 TL.\n\n18 üründen, tek kaynaktan ölçüldü (2026-09-05).",
+      "url": "https://maliyetine.com.tr/arac/nissan-fiyatlari/"
     }
   ],
   "lisans": "CC BY 4.0",

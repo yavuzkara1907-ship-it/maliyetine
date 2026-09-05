@@ -1,0 +1,660 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Renault"
+  ],
+  "kalem": "renault",
+  "vertikal": "arac",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 23,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 23,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 2386000,
+  "segmentler": {
+    "dusuk": {
+      "min": 1830000,
+      "medyan": 1937500,
+      "max": 2080000,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 2099000,
+      "medyan": 2542500,
+      "max": 2920000,
+      "urun_sayisi": 12
+    },
+    "luks": {
+      "min": 3049000,
+      "medyan": 3399000,
+      "max": 4050000,
+      "urun_sayisi": 5
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Yeni Clio evolution plus TCe 115 EDC",
+      "fiyat": 1830000.0
+    },
+    {
+      "isim": "Megane Touch 1.3 TCe 140 bg",
+      "fiyat": 1841000.0
+    },
+    {
+      "isim": "Duster evolution Eco-G 120 hp",
+      "fiyat": 1865000.0
+    },
+    {
+      "isim": "Duster evolution Turbo Tce EDC 145 hp",
+      "fiyat": 2010000.0
+    },
+    {
+      "isim": "Yeni Clio esprit alpine TCe 115 EDC",
+      "fiyat": 2035000.0
+    },
+    {
+      "isim": "Duster techno Turbo Tce EDC 145 hp",
+      "fiyat": 2080000.0
+    },
+    {
+      "isim": "R5 E-Tech Techno EV52 150hp",
+      "fiyat": 2099000.0
+    },
+    {
+      "isim": "Megane Sedan Touch 1.3 TCe EDC 140 bg",
+      "fiyat": 2199000.0
+    },
+    {
+      "isim": "Captur techno mild hybrid EDC 140 hp",
+      "fiyat": 2325000.0
+    },
+    {
+      "isim": "Megane Sedan Icon 1.3 TCe EDC 140 bg",
+      "fiyat": 2349000.0
+    },
+    {
+      "isim": "Boreal evolution Turbo TCe EDC 145 hp",
+      "fiyat": 2379000.0
+    },
+    {
+      "isim": "Megane E-Tech Techno EV60 220 hp",
+      "fiyat": 2386000.0
+    },
+    {
+      "isim": "Megane Icon 1.5 Blue dCi EDC 115 bg",
+      "fiyat": 2699000.0
+    },
+    {
+      "isim": "Duster techno Full hybrid E-Tech 160 hp",
+      "fiyat": 2725000.0
+    },
+    {
+      "isim": "Duster evolution hybrid 4x4 LPG 150 hp",
+      "fiyat": 2850000.0
+    },
+    {
+      "isim": "Austral Techno mild hybrid 160 hp auto",
+      "fiyat": 2875000.0
+    },
+    {
+      "isim": "Boreal techno Turbo TCe EDC 145 hp",
+      "fiyat": 2899000.0
+    },
+    {
+      "isim": "Duster techno hybrid 4x4 LPG 150 hp",
+      "fiyat": 2920000.0
+    },
+    {
+      "isim": "Boreal iconic Turbo TCe EDC 145 hp",
+      "fiyat": 3049000.0
+    },
+    {
+      "isim": "Austral Techno esprit alpine mild hybrid 160 hp auto",
+      "fiyat": 3130000.0
+    },
+    {
+      "isim": "Boreal iconic Full hybrid E-Tech 160 hp",
+      "fiyat": 3399000.0
+    },
+    {
+      "isim": "Scenic E-Tech Esprit Alpine EV87 220 hp",
+      "fiyat": 3490000.0
+    },
+    {
+      "isim": "Rafale esprit alpine E-Tech full hybrid 200 hp",
+      "fiyat": 4050000.0
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 23,
+    "ozellik_eslesen_urun": 23,
+    "modeller": {
+      "austral": {
+        "ad": "Austral",
+        "genel_medyan": 3002500,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 2875000.0,
+            "medyan": 2875000.0,
+            "max": 2875000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 3130000.0,
+            "medyan": 3130000.0,
+            "max": 3130000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Austral Techno mild hybrid 160 hp auto",
+            "fiyat": 2875000.0
+          },
+          {
+            "isim": "Austral Techno esprit alpine mild hybrid 160 hp auto",
+            "fiyat": 3130000.0
+          }
+        ]
+      },
+      "boreal": {
+        "ad": "Boreal",
+        "genel_medyan": 2974000,
+        "urun_sayisi": 4,
+        "segmentler": {
+          "dusuk": {
+            "min": 2379000.0,
+            "medyan": 2639000.0,
+            "max": 2899000.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 3049000.0,
+            "medyan": 3224000.0,
+            "max": 3399000.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Boreal evolution Turbo TCe EDC 145 hp",
+            "fiyat": 2379000.0
+          },
+          {
+            "isim": "Boreal techno Turbo TCe EDC 145 hp",
+            "fiyat": 2899000.0
+          },
+          {
+            "isim": "Boreal iconic Turbo TCe EDC 145 hp",
+            "fiyat": 3049000.0
+          },
+          {
+            "isim": "Boreal iconic Full hybrid E-Tech 160 hp",
+            "fiyat": 3399000.0
+          }
+        ]
+      },
+      "captur": {
+        "ad": "Captur",
+        "genel_medyan": 2325000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 2325000.0,
+            "medyan": 2325000.0,
+            "max": 2325000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2325000.0,
+            "medyan": 2325000.0,
+            "max": 2325000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 2325000.0,
+            "medyan": 2325000.0,
+            "max": 2325000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Captur techno mild hybrid EDC 140 hp",
+            "fiyat": 2325000.0
+          }
+        ]
+      },
+      "clio": {
+        "ad": "Clio",
+        "genel_medyan": 1932500,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 1830000.0,
+            "medyan": 1830000.0,
+            "max": 1830000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2035000.0,
+            "medyan": 2035000.0,
+            "max": 2035000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Yeni Clio evolution plus TCe 115 EDC",
+            "fiyat": 1830000.0
+          },
+          {
+            "isim": "Yeni Clio esprit alpine TCe 115 EDC",
+            "fiyat": 2035000.0
+          }
+        ]
+      },
+      "duster": {
+        "ad": "Duster",
+        "genel_medyan": 2402500,
+        "urun_sayisi": 6,
+        "segmentler": {
+          "dusuk": {
+            "min": 1865000.0,
+            "medyan": 1937500.0,
+            "max": 2010000.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 2080000.0,
+            "medyan": 2725000.0,
+            "max": 2850000.0,
+            "urun_sayisi": 3
+          },
+          "luks": {
+            "min": 2920000.0,
+            "medyan": 2920000.0,
+            "max": 2920000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Duster evolution Eco-G 120 hp",
+            "fiyat": 1865000.0
+          },
+          {
+            "isim": "Duster evolution Turbo Tce EDC 145 hp",
+            "fiyat": 2010000.0
+          },
+          {
+            "isim": "Duster techno Turbo Tce EDC 145 hp",
+            "fiyat": 2080000.0
+          },
+          {
+            "isim": "Duster techno Full hybrid E-Tech 160 hp",
+            "fiyat": 2725000.0
+          },
+          {
+            "isim": "Duster evolution hybrid 4x4 LPG 150 hp",
+            "fiyat": 2850000.0
+          },
+          {
+            "isim": "Duster techno hybrid 4x4 LPG 150 hp",
+            "fiyat": 2920000.0
+          }
+        ]
+      },
+      "megane": {
+        "ad": "Megane",
+        "genel_medyan": 2270000,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 1841000.0,
+            "medyan": 1841000.0,
+            "max": 1841000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2699000.0,
+            "medyan": 2699000.0,
+            "max": 2699000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Megane Touch 1.3 TCe 140 bg",
+            "fiyat": 1841000.0
+          },
+          {
+            "isim": "Megane Icon 1.5 Blue dCi EDC 115 bg",
+            "fiyat": 2699000.0
+          }
+        ]
+      },
+      "megane-e-tech": {
+        "ad": "Megane E-Tech",
+        "genel_medyan": 2386000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 2386000.0,
+            "medyan": 2386000.0,
+            "max": 2386000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2386000.0,
+            "medyan": 2386000.0,
+            "max": 2386000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 2386000.0,
+            "medyan": 2386000.0,
+            "max": 2386000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Megane E-Tech Techno EV60 220 hp",
+            "fiyat": 2386000.0
+          }
+        ]
+      },
+      "megane-sedan": {
+        "ad": "Megane Sedan",
+        "genel_medyan": 2274000,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 2199000.0,
+            "medyan": 2199000.0,
+            "max": 2199000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2349000.0,
+            "medyan": 2349000.0,
+            "max": 2349000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Megane Sedan Touch 1.3 TCe EDC 140 bg",
+            "fiyat": 2199000.0
+          },
+          {
+            "isim": "Megane Sedan Icon 1.3 TCe EDC 140 bg",
+            "fiyat": 2349000.0
+          }
+        ]
+      },
+      "r5-e-tech": {
+        "ad": "R5 E-Tech",
+        "genel_medyan": 2099000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 2099000.0,
+            "medyan": 2099000.0,
+            "max": 2099000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2099000.0,
+            "medyan": 2099000.0,
+            "max": 2099000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 2099000.0,
+            "medyan": 2099000.0,
+            "max": 2099000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "R5 E-Tech Techno EV52 150hp",
+            "fiyat": 2099000.0
+          }
+        ]
+      },
+      "rafale": {
+        "ad": "Rafale",
+        "genel_medyan": 4050000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 4050000.0,
+            "medyan": 4050000.0,
+            "max": 4050000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 4050000.0,
+            "medyan": 4050000.0,
+            "max": 4050000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 4050000.0,
+            "medyan": 4050000.0,
+            "max": 4050000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Rafale esprit alpine E-Tech full hybrid 200 hp",
+            "fiyat": 4050000.0
+          }
+        ]
+      },
+      "scenic-e-tech": {
+        "ad": "Scenic E-Tech",
+        "genel_medyan": 3490000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 3490000.0,
+            "medyan": 3490000.0,
+            "max": 3490000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 3490000.0,
+            "medyan": 3490000.0,
+            "max": 3490000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 3490000.0,
+            "medyan": 3490000.0,
+            "max": 3490000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Scenic E-Tech Esprit Alpine EV87 220 hp",
+            "fiyat": 3490000.0
+          }
+        ]
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "Yeni Clio evolution plus TCe 115 EDC",
+        "fiyat": 1830000.0,
+        "nitelikler": {
+          "model": "Clio"
+        }
+      },
+      {
+        "isim": "Yeni Clio esprit alpine TCe 115 EDC",
+        "fiyat": 2035000.0,
+        "nitelikler": {
+          "model": "Clio"
+        }
+      },
+      {
+        "isim": "R5 E-Tech Techno EV52 150hp",
+        "fiyat": 2099000.0,
+        "nitelikler": {
+          "model": "R5 E-Tech"
+        }
+      },
+      {
+        "isim": "Captur techno mild hybrid EDC 140 hp",
+        "fiyat": 2325000.0,
+        "nitelikler": {
+          "model": "Captur"
+        }
+      },
+      {
+        "isim": "Megane Touch 1.3 TCe 140 bg",
+        "fiyat": 1841000.0,
+        "nitelikler": {
+          "model": "Megane"
+        }
+      },
+      {
+        "isim": "Megane Sedan Touch 1.3 TCe EDC 140 bg",
+        "fiyat": 2199000.0,
+        "nitelikler": {
+          "model": "Megane Sedan"
+        }
+      },
+      {
+        "isim": "Megane Sedan Icon 1.3 TCe EDC 140 bg",
+        "fiyat": 2349000.0,
+        "nitelikler": {
+          "model": "Megane Sedan"
+        }
+      },
+      {
+        "isim": "Megane Icon 1.5 Blue dCi EDC 115 bg",
+        "fiyat": 2699000.0,
+        "nitelikler": {
+          "model": "Megane"
+        }
+      },
+      {
+        "isim": "Megane E-Tech Techno EV60 220 hp",
+        "fiyat": 2386000.0,
+        "nitelikler": {
+          "model": "Megane E-Tech"
+        }
+      },
+      {
+        "isim": "Boreal evolution Turbo TCe EDC 145 hp",
+        "fiyat": 2379000.0,
+        "nitelikler": {
+          "model": "Boreal"
+        }
+      },
+      {
+        "isim": "Boreal techno Turbo TCe EDC 145 hp",
+        "fiyat": 2899000.0,
+        "nitelikler": {
+          "model": "Boreal"
+        }
+      },
+      {
+        "isim": "Boreal iconic Turbo TCe EDC 145 hp",
+        "fiyat": 3049000.0,
+        "nitelikler": {
+          "model": "Boreal"
+        }
+      },
+      {
+        "isim": "Boreal iconic Full hybrid E-Tech 160 hp",
+        "fiyat": 3399000.0,
+        "nitelikler": {
+          "model": "Boreal"
+        }
+      },
+      {
+        "isim": "Duster evolution Eco-G 120 hp",
+        "fiyat": 1865000.0,
+        "nitelikler": {
+          "model": "Duster"
+        }
+      },
+      {
+        "isim": "Duster evolution Turbo Tce EDC 145 hp",
+        "fiyat": 2010000.0,
+        "nitelikler": {
+          "model": "Duster"
+        }
+      },
+      {
+        "isim": "Duster evolution hybrid 4x4 LPG 150 hp",
+        "fiyat": 2850000.0,
+        "nitelikler": {
+          "model": "Duster"
+        }
+      },
+      {
+        "isim": "Duster techno Turbo Tce EDC 145 hp",
+        "fiyat": 2080000.0,
+        "nitelikler": {
+          "model": "Duster"
+        }
+      },
+      {
+        "isim": "Duster techno Full hybrid E-Tech 160 hp",
+        "fiyat": 2725000.0,
+        "nitelikler": {
+          "model": "Duster"
+        }
+      },
+      {
+        "isim": "Duster techno hybrid 4x4 LPG 150 hp",
+        "fiyat": 2920000.0,
+        "nitelikler": {
+          "model": "Duster"
+        }
+      },
+      {
+        "isim": "Austral Techno mild hybrid 160 hp auto",
+        "fiyat": 2875000.0,
+        "nitelikler": {
+          "model": "Austral"
+        }
+      },
+      {
+        "isim": "Austral Techno esprit alpine mild hybrid 160 hp auto",
+        "fiyat": 3130000.0,
+        "nitelikler": {
+          "model": "Austral"
+        }
+      },
+      {
+        "isim": "Scenic E-Tech Esprit Alpine EV87 220 hp",
+        "fiyat": 3490000.0,
+        "nitelikler": {
+          "model": "Scenic E-Tech"
+        }
+      },
+      {
+        "isim": "Rafale esprit alpine E-Tech full hybrid 200 hp",
+        "fiyat": 4050000.0,
+        "nitelikler": {
+          "model": "Rafale"
+        }
+      }
+    ]
+  }
+}

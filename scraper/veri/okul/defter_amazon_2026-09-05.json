@@ -1,0 +1,100 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Okul Defteri"
+  ],
+  "kalem": "defter",
+  "vertikal": "okul",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 45,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 45,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 200,
+  "segmentler": {
+    "dusuk": {
+      "min": 49,
+      "medyan": 68,
+      "max": 90,
+      "urun_sayisi": 12
+    },
+    "orta": {
+      "min": 99,
+      "medyan": 205,
+      "max": 269,
+      "urun_sayisi": 22
+    },
+    "luks": {
+      "min": 289,
+      "medyan": 377,
+      "max": 449,
+      "urun_sayisi": 11
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Meteksan A5 Kareli Okul Defteri Pembe Kamuflaj 60 Yaprak, Kareli",
+      "fiyat": 49.01
+    },
+    {
+      "isim": "Meteksan Colors A5 60 Yaprak Kareli Defter, Sarı",
+      "fiyat": 64.45
+    },
+    {
+      "isim": "Meteksan Colors A5 60 Yaprak Çizgili Defter, Somon",
+      "fiyat": 68.02
+    },
+    {
+      "isim": "Meteksan A4 Kareli Okul Defteri Pembe Kamuflaj 80 Yaprak",
+      "fiyat": 86.84
+    },
+    {
+      "isim": "Faber-Castell Grafiti Desenli Spiralli Defter, A4, 80 Yaprak, 70g Kağıt, Çizgili, Dayanıklı Kapak, Kolay Açılan Spiral Cilt, Asorti Renkler",
+      "fiyat": 107.59
+    },
+    {
+      "isim": "Faber-Castell Grafiti Spiralli Defter, A4, 120 Yaprak, 70g Kağıt, Çizgili, 500 Mikron PP Kapak, PET Spiralli, Dayanıklı ve Kullanışlı",
+      "fiyat": 141.25
+    },
+    {
+      "isim": "Faber-Castell Spiralli Defter, 100 Yaprak, 70g Kağıt, A4, Çizgili, 500 Mikron PP Kapak, Dayanıklı ve Çevre Dostu, Asorti Renkler",
+      "fiyat": 166.94
+    },
+    {
+      "isim": "Vincent Van Gogh/Almond Blossom,1890 | Spiralli Defter 21 | A5 | Çizgili | 100 Sayfa | Okul (Düz)",
+      "fiyat": 199.9
+    },
+    {
+      "isim": "A5 Spiralli Karton Kapak 2’li Set Kareli Okul Defteri 80 yaprak, Ders Programlı Leopar",
+      "fiyat": 240.0
+    },
+    {
+      "isim": "Etika A4 Dikişli Okul Defteri 6'lı PAKET – 3 Çizgili & 3 Kareli | Kaliteli kağıt, tel dikiş cilt 120 sayfa - 60 yp., set 720 sayfa 2'si 1 arada set okul, ofis tüm ihtiyaçlarınıza cevap verir",
+      "fiyat": 255.0
+    },
+    {
+      "isim": "A5 Spiralli Karton Kapak 2’li Set Kareli Okul Defteri 80 yaprak, Ders Programlı Mavi Krem Kalp",
+      "fiyat": 269.1
+    },
+    {
+      "isim": "Matt Notebook A5 Spiralli Okul Defteri 80 yaprak 2'li Set – Çizgili & Kareli",
+      "fiyat": 299.0
+    },
+    {
+      "isim": "Etika A4 60 Yaprak PP Kapaklı Tel Dikişli Defter – 6'lı Karma Paket | 3 çizgili + 3 kareli, suya dayanıklı PP kapak, 120 sayfa, kaliteli beyaz kağıt, okul ve ofis için ideal, hafif & taşınabilir.",
+      "fiyat": 339.0
+    },
+    {
+      "isim": "A4 Okul Defteri 60 Yaprak 8 Adet 4 Kareli 4 Çizgili Telsiz Plastik Kapak",
+      "fiyat": 399.0
+    },
+    {
+      "isim": "Etika A4 Okul Defteri Spiralli 144 Sayfa Dayanıklı PP Kapak 8'li Paket",
+      "fiyat": 449.0
+    }
+  ]
+}

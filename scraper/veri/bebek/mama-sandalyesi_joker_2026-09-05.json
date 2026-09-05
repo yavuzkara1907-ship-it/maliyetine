@@ -1,0 +1,100 @@
+{
+  "site": "joker",
+  "kaynak_adlari": [
+    "Joker - Mama Sandalyesi"
+  ],
+  "kalem": "mama-sandalyesi",
+  "vertikal": "bebek",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 17,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 17,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 7192,
+  "segmentler": {
+    "dusuk": {
+      "min": 2242,
+      "medyan": 7192,
+      "max": 7192,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 7492,
+      "medyan": 8741,
+      "max": 9990,
+      "urun_sayisi": 2
+    },
+    "luks": {
+      "min": 24742,
+      "medyan": 24742,
+      "max": 24742,
+      "urun_sayisi": 4
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Inglesina Zuma Mama Sandalyesi Tepsi Kapağı",
+      "fiyat": 2242.5
+    },
+    {
+      "isim": "Inglesina Fast Mama Sandalyesi Tepsi",
+      "fiyat": 3217.5
+    },
+    {
+      "isim": "Inglesina Zuma Mama Sandalyesi Tepsi",
+      "fiyat": 3742.5
+    },
+    {
+      "isim": "Inglesina Fast Masaya Takılan Taşınabilir Mama Sandalyesi - Charcoal Gray",
+      "fiyat": 7192.5
+    },
+    {
+      "isim": "Inglesina Fast Masaya Takılan Taşınabilir Mama Sandalyesi - Lime",
+      "fiyat": 7192.5
+    },
+    {
+      "isim": "Inglesina Fast Masaya Takılan Taşınabilir Mama Sandalyesi - Ocean Navy",
+      "fiyat": 7192.5
+    },
+    {
+      "isim": "Inglesina Fast Masaya Takılan Taşınabilir Mama Sandalyesi - Orange",
+      "fiyat": 7192.5
+    },
+    {
+      "isim": "Inglesina Fast Masaya Takılan Taşınabilir Mama Sandalyesi - Pine Green",
+      "fiyat": 7192.5
+    },
+    {
+      "isim": "Inglesina Fast Masaya Takılan Taşınabilir Mama Sandalyesi - Red",
+      "fiyat": 7192.5
+    },
+    {
+      "isim": "Inglesina Fast Masaya Takılan Taşınabilir Mama Sandalyesi - Stone Gray",
+      "fiyat": 7192.5
+    },
+    {
+      "isim": "Inglesina Fast Masaya Takılan Taşınabilir Mama Sandalyesi - Desert Beige",
+      "fiyat": 7492.5
+    },
+    {
+      "isim": "Inglesina My Time Ayarlanabilir Katlanabilir Bebek Mama Sandalyesi - Butter",
+      "fiyat": 24742.5
+    },
+    {
+      "isim": "Inglesina My Time Ayarlanabilir Katlanabilir Bebek Mama Sandalyesi - Mint",
+      "fiyat": 24742.5
+    },
+    {
+      "isim": "Inglesina My Time Ayarlanabilir Katlanabilir Bebek Mama Sandalyesi - Pepper",
+      "fiyat": 24742.5
+    },
+    {
+      "isim": "Inglesina My Time Ayarlanabilir Katlanabilir Bebek Mama Sandalyesi - Sugar",
+      "fiyat": 24742.5
+    }
+  ]
+}

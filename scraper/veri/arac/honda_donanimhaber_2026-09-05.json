@@ -1,0 +1,267 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Honda"
+  ],
+  "kalem": "honda",
+  "vertikal": "arac",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 6,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 6,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 3932500,
+  "segmentler": {
+    "dusuk": {
+      "min": 2600000,
+      "medyan": 2670000,
+      "max": 2740000,
+      "urun_sayisi": 2
+    },
+    "orta": {
+      "min": 2895000,
+      "medyan": 4970000,
+      "max": 5600000,
+      "urun_sayisi": 3
+    },
+    "luks": {
+      "min": 6160000,
+      "medyan": 6160000,
+      "max": 6160000,
+      "urun_sayisi": 1
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Honda Jazz 1.5L e:HEV Hibrit Otomatik Crosstar",
+      "fiyat": 2600000.0
+    },
+    {
+      "isim": "Honda HR-V 1.5L e:HEV Hibrit Otomatik Elegance",
+      "fiyat": 2740000.0
+    },
+    {
+      "isim": "Honda HR-V 1.5L e:HEV Hibrit Otomatik Advance",
+      "fiyat": 2895000.0
+    },
+    {
+      "isim": "Honda ZR-V 2.0L Hibrit Otomatik Advance",
+      "fiyat": 4970000.0
+    },
+    {
+      "isim": "Honda Prelude 2.0L e:HEV Hibrit Otomatik Advance",
+      "fiyat": 5600000.0
+    },
+    {
+      "isim": "Honda CR-V 2.0L Hibrit Otomatik Advance",
+      "fiyat": 6160000.0
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 6,
+    "ozellik_eslesen_urun": 6,
+    "modeller": {
+      "cr-v": {
+        "ad": "CR-V",
+        "genel_medyan": 6160000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 6160000.0,
+            "medyan": 6160000.0,
+            "max": 6160000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 6160000.0,
+            "medyan": 6160000.0,
+            "max": 6160000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 6160000.0,
+            "medyan": 6160000.0,
+            "max": 6160000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Honda CR-V 2.0L Hibrit Otomatik Advance",
+            "fiyat": 6160000.0
+          }
+        ]
+      },
+      "hr-v": {
+        "ad": "HR-V",
+        "genel_medyan": 2817500,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 2740000.0,
+            "medyan": 2740000.0,
+            "max": 2740000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2895000.0,
+            "medyan": 2895000.0,
+            "max": 2895000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Honda HR-V 1.5L e:HEV Hibrit Otomatik Elegance",
+            "fiyat": 2740000.0
+          },
+          {
+            "isim": "Honda HR-V 1.5L e:HEV Hibrit Otomatik Advance",
+            "fiyat": 2895000.0
+          }
+        ]
+      },
+      "jazz": {
+        "ad": "Jazz",
+        "genel_medyan": 2600000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 2600000.0,
+            "medyan": 2600000.0,
+            "max": 2600000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 2600000.0,
+            "medyan": 2600000.0,
+            "max": 2600000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 2600000.0,
+            "medyan": 2600000.0,
+            "max": 2600000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Honda Jazz 1.5L e:HEV Hibrit Otomatik Crosstar",
+            "fiyat": 2600000.0
+          }
+        ]
+      },
+      "prelude": {
+        "ad": "Prelude",
+        "genel_medyan": 5600000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 5600000.0,
+            "medyan": 5600000.0,
+            "max": 5600000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 5600000.0,
+            "medyan": 5600000.0,
+            "max": 5600000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 5600000.0,
+            "medyan": 5600000.0,
+            "max": 5600000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Honda Prelude 2.0L e:HEV Hibrit Otomatik Advance",
+            "fiyat": 5600000.0
+          }
+        ]
+      },
+      "zr-v": {
+        "ad": "ZR-V",
+        "genel_medyan": 4970000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 4970000.0,
+            "medyan": 4970000.0,
+            "max": 4970000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 4970000.0,
+            "medyan": 4970000.0,
+            "max": 4970000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 4970000.0,
+            "medyan": 4970000.0,
+            "max": 4970000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Honda ZR-V 2.0L Hibrit Otomatik Advance",
+            "fiyat": 4970000.0
+          }
+        ]
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "Honda Jazz 1.5L e:HEV Hibrit Otomatik Crosstar",
+        "fiyat": 2600000.0,
+        "nitelikler": {
+          "model": "Jazz"
+        }
+      },
+      {
+        "isim": "Honda Prelude 2.0L e:HEV Hibrit Otomatik Advance",
+        "fiyat": 5600000.0,
+        "nitelikler": {
+          "model": "Prelude"
+        }
+      },
+      {
+        "isim": "Honda HR-V 1.5L e:HEV Hibrit Otomatik Elegance",
+        "fiyat": 2740000.0,
+        "nitelikler": {
+          "model": "HR-V"
+        }
+      },
+      {
+        "isim": "Honda HR-V 1.5L e:HEV Hibrit Otomatik Advance",
+        "fiyat": 2895000.0,
+        "nitelikler": {
+          "model": "HR-V"
+        }
+      },
+      {
+        "isim": "Honda CR-V 2.0L Hibrit Otomatik Advance",
+        "fiyat": 6160000.0,
+        "nitelikler": {
+          "model": "CR-V"
+        }
+      },
+      {
+        "isim": "Honda ZR-V 2.0L Hibrit Otomatik Advance",
+        "fiyat": 4970000.0,
+        "nitelikler": {
+          "model": "ZR-V"
+        }
+      }
+    ]
+  }
+}

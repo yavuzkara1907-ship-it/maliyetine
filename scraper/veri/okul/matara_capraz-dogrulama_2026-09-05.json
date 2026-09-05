@@ -1,0 +1,12 @@
+{
+  "vertikal": "okul",
+  "kalem": "matara",
+  "tarih": "2026-09-05",
+  "site_medyanlari": {
+    "amazon": 890,
+    "nezih": 1100
+  },
+  "fark_orani": 0.236,
+  "esik_orani": 0.3,
+  "uyari": false
+}

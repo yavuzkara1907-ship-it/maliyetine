@@ -1,0 +1,100 @@
+{
+  "site": "petzzshop",
+  "kaynak_adlari": [
+    "petzzshop - Kopek Oyuncaklari"
+  ],
+  "kalem": "kopek-oyuncagi",
+  "vertikal": "kopek",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 24,
+  "aykiri_urun_sayisi": 2,
+  "toplam_urun": 22,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 280,
+  "segmentler": {
+    "dusuk": {
+      "min": 72,
+      "medyan": 126,
+      "max": 166,
+      "urun_sayisi": 6
+    },
+    "orta": {
+      "min": 179,
+      "medyan": 281,
+      "max": 371,
+      "urun_sayisi": 11
+    },
+    "luks": {
+      "min": 425,
+      "medyan": 434,
+      "max": 593,
+      "urun_sayisi": 5
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Euro Dog Beş Düğümlü Örümcek Diş Kaşıma İpi Köpek Oyuncağı - Beyaz/Kırmızı",
+      "fiyat": 71.95
+    },
+    {
+      "isim": "Nunbell Köpek Oyuncagı Top Small",
+      "fiyat": 112.64
+    },
+    {
+      "isim": "M-Pets Squeaky Köpekler İçin Oyun Topu - 6.3 Cm",
+      "fiyat": 139.65
+    },
+    {
+      "isim": "M-Pets Venus Ödül Hazneli Kauçuk Köpek Oyuncağı",
+      "fiyat": 147.43
+    },
+    {
+      "isim": "Nunbell Köpek Oyuncağı Top - Large",
+      "fiyat": 179.36
+    },
+    {
+      "isim": "M-Pets Power Chew Kauçuk Köpek Ödül Oyuncağı Ruby - XS",
+      "fiyat": 230.07
+    },
+    {
+      "isim": "Nunbell Plastik Işıklı Top Köpek Oyuncağı - 7 Cm",
+      "fiyat": 252.38
+    },
+    {
+      "isim": "Eastland Öten Peluş Fil 25 cm -",
+      "fiyat": 278.24
+    },
+    {
+      "isim": "M-Pets On/Off Shelly Köpek Oyuncağı",
+      "fiyat": 283.06
+    },
+    {
+      "isim": "Eastland Öten Peluş Bezelye 30,5 cm - 30,5 cm",
+      "fiyat": 355.57
+    },
+    {
+      "isim": "M-Pets Power Chew Kauçuk Köpek Ödül Oyuncağı Ruby - M",
+      "fiyat": 363.26
+    },
+    {
+      "isim": "M-Pets Air Toss Whell Suda Yüzen Sarı Köpek Oyuncağı",
+      "fiyat": 371.04
+    },
+    {
+      "isim": "Nunbell Köpek Oyuncağı Pelüş Ördek 32 Cm",
+      "fiyat": 424.74
+    },
+    {
+      "isim": "Eastland Öten Tilki 42 cm -",
+      "fiyat": 441.0
+    },
+    {
+      "isim": "Nunbell  Dayanıklı Kumaştan Ördek Köpek Oyuncağı 35 cm",
+      "fiyat": 593.08
+    }
+  ]
+}

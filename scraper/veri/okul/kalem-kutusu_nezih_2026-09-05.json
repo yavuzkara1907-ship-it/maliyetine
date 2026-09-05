@@ -1,0 +1,100 @@
+{
+  "site": "nezih",
+  "kaynak_adlari": [
+    "Nezih - Kalem Kutulari"
+  ],
+  "kalem": "kalem-kutusu",
+  "vertikal": "okul",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 100,
+  "aykiri_urun_sayisi": 1,
+  "toplam_urun": 99,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 450,
+  "segmentler": {
+    "dusuk": {
+      "min": 80,
+      "medyan": 260,
+      "max": 320,
+      "urun_sayisi": 25
+    },
+    "orta": {
+      "min": 325,
+      "medyan": 450,
+      "max": 655,
+      "urun_sayisi": 50
+    },
+    "luks": {
+      "min": 670,
+      "medyan": 815,
+      "max": 1000,
+      "urun_sayisi": 24
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Brons Sosis Kalemlik Br-3001",
+      "fiyat": 79.9
+    },
+    {
+      "isim": "Cambridge Polo Urban Çift Bölmeli Kalem Çantası Siyah 3023",
+      "fiyat": 229.9
+    },
+    {
+      "isim": "Endbag Stella Tek Gözlü Kalem Çantası Mor",
+      "fiyat": 259.9
+    },
+    {
+      "isim": "Unicus Simli Rugan Klasik Kalem Kutu XL UNCS-907",
+      "fiyat": 299.9
+    },
+    {
+      "isim": "Okapi Kalem Çantası Karışık Renk Okp-135As",
+      "fiyat": 374.9
+    },
+    {
+      "isim": "Endbag Nova İkili Kalem Çantası Koyu Gri",
+      "fiyat": 399.9
+    },
+    {
+      "isim": "Gap Kalem Çantası 12841",
+      "fiyat": 414.9
+    },
+    {
+      "isim": "Faber Kalem Çantası Tek Gözlü Knights 5177000104",
+      "fiyat": 449.9
+    },
+    {
+      "isim": "Gap Kids Kalem Çantası Organizer Bölmeli Siyah 12789",
+      "fiyat": 519.9
+    },
+    {
+      "isim": "Gap Kalem Çantası 3 Bölmeli Lacivert 12871",
+      "fiyat": 574.9
+    },
+    {
+      "isim": "Dolphin Studio Pets Eva Kalem Çantası Küçük PT-7784",
+      "fiyat": 609.9
+    },
+    {
+      "isim": "Mickey Mouse Kalem Çantası Bymcky 48652",
+      "fiyat": 719.9
+    },
+    {
+      "isim": "Mickey Mouse Kalem Çantası Ice-Lx Run 49348",
+      "fiyat": 799.9
+    },
+    {
+      "isim": "Dolphin Studio Pets Eva Kalem Çantası Büyük PT-7785",
+      "fiyat": 874.9
+    },
+    {
+      "isim": "Globox 4023 Hesap Makineli Vintage Kalemlik",
+      "fiyat": 999.9
+    }
+  ]
+}

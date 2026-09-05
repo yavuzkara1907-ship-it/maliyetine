@@ -1,0 +1,1353 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - BMW"
+  ],
+  "kalem": "bmw",
+  "vertikal": "arac",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 66,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 66,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 8648750,
+  "segmentler": {
+    "dusuk": {
+      "min": 4037800,
+      "medyan": 4699900,
+      "max": 5797800,
+      "urun_sayisi": 17
+    },
+    "orta": {
+      "min": 5821300,
+      "medyan": 8684800,
+      "max": 14709200,
+      "urun_sayisi": 33
+    },
+    "luks": {
+      "min": 15136900,
+      "medyan": 20272400,
+      "max": 26503300,
+      "urun_sayisi": 16
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "BMW 1 Serisi 120 Sport Line",
+      "fiyat": 4037800.0
+    },
+    {
+      "isim": "BMW iX1 eDrive20 Sport Line",
+      "fiyat": 4261800.0
+    },
+    {
+      "isim": "BMW 2 Serisi 220 Gran Coupe Luxury Line",
+      "fiyat": 4329700.0
+    },
+    {
+      "isim": "BMW 1 Serisi 120 M Sport",
+      "fiyat": 4412300.0
+    },
+    {
+      "isim": "BMW iX1 eDrive20 X-Line",
+      "fiyat": 4486000.0
+    },
+    {
+      "isim": "BMW 2 Serisi 220i Active Tourer Luxury Line",
+      "fiyat": 4514200.0
+    },
+    {
+      "isim": "BMW 2 Serisi 220 Gran Coupe M Sport",
+      "fiyat": 4616600.0
+    },
+    {
+      "isim": "BMW iX1 eDrive20 M Sport",
+      "fiyat": 4654200.0
+    },
+    {
+      "isim": "BMW iX2 eDrive20 M Sport",
+      "fiyat": 4699900.0
+    },
+    {
+      "isim": "BMW 2 Serisi 220i Active Tourer M Sport",
+      "fiyat": 4755100.0
+    },
+    {
+      "isim": "BMW X1 xDrive25e X-Line",
+      "fiyat": 4850800.0
+    },
+    {
+      "isim": "BMW X1 xDrive25e M Sport",
+      "fiyat": 5117800.0
+    },
+    {
+      "isim": "BMW 2 Serisi 230e xDrive Active Tourer Luxury Line",
+      "fiyat": 5187100.0
+    },
+    {
+      "isim": "BMW 2 Serisi 230e xDrive Active Tourer M Sport",
+      "fiyat": 5537500.0
+    },
+    {
+      "isim": "BMW X1 sDrive20i X-Line",
+      "fiyat": 5579000.0
+    },
+    {
+      "isim": "BMW i4 eDrive40 Sport Line",
+      "fiyat": 5630700.0
+    },
+    {
+      "isim": "BMW X2 sDrive20i M Sport",
+      "fiyat": 5797800.0
+    },
+    {
+      "isim": "BMW 3 Serisi 320i Sedan Sport Line",
+      "fiyat": 5821300.0
+    },
+    {
+      "isim": "BMW X1 sDrive20i M Sport",
+      "fiyat": 5854800.0
+    },
+    {
+      "isim": "BMW i4 eDrive40 M Sport",
+      "fiyat": 6230400.0
+    },
+    {
+      "isim": "BMW 3 Serisi 320i Sedan M Sport",
+      "fiyat": 6307600.0
+    },
+    {
+      "isim": "BMW 4 Serisi Yeni 420i Gran Coupe M Sport",
+      "fiyat": 6786900.0
+    },
+    {
+      "isim": "BMW  iX3 50 xDrive M Sport",
+      "fiyat": 6819500.0
+    },
+    {
+      "isim": "BMW i4 eDrive40 Edition M Sport",
+      "fiyat": 6861100.0
+    },
+    {
+      "isim": "BMW 4 Serisi 420i Coupe M Sport",
+      "fiyat": 7193800.0
+    },
+    {
+      "isim": "BMW X3 20 X-Line",
+      "fiyat": 7303900.0
+    },
+    {
+      "isim": "BMW 4 Serisi Yeni 420i Gran Coupe Edition M Sport",
+      "fiyat": 7621800.0
+    },
+    {
+      "isim": "BMW X3 20 M Sport",
+      "fiyat": 7635700.0
+    },
+    {
+      "isim": "BMW i5 eDrive40 M Sport",
+      "fiyat": 7842600.0
+    },
+    {
+      "isim": "BMW 4 Serisi 420i Coupe Edition M Sport",
+      "fiyat": 8034100.0
+    },
+    {
+      "isim": "BMW i5eDrive40 Edition M Sport",
+      "fiyat": 8048700.0
+    },
+    {
+      "isim": "BMW i5 xDrive40 M Sport",
+      "fiyat": 8403100.0
+    },
+    {
+      "isim": "BMW X1 M35i xDrive",
+      "fiyat": 8612700.0
+    },
+    {
+      "isim": "BMW X2 M35i xDrive",
+      "fiyat": 8684800.0
+    },
+    {
+      "isim": "BMW i5xDrive40 Edition M Sport",
+      "fiyat": 8831700.0
+    },
+    {
+      "isim": "BMW 5 Serisi Sedan 520i M Sport",
+      "fiyat": 9290400.0
+    },
+    {
+      "isim": "BMW 5 Serisi Sedan 520i Edition M Sport",
+      "fiyat": 9443400.0
+    },
+    {
+      "isim": "BMW i5 M60 xDrive",
+      "fiyat": 10360800.0
+    },
+    {
+      "isim": "BMW i5 M60 xDrive",
+      "fiyat": 10360800.0
+    },
+    {
+      "isim": "BMW i5 M60 xDrive Touring",
+      "fiyat": 10424700.0
+    },
+    {
+      "isim": "BMW i5 M60 xDrive Touring",
+      "fiyat": 10424700.0
+    },
+    {
+      "isim": "BMW 4 Serisi 430i xDrive Cabrio M Sport",
+      "fiyat": 10434900.0
+    },
+    {
+      "isim": "BMW iX xDrive60 M Sport",
+      "fiyat": 10783400.0
+    },
+    {
+      "isim": "BMW iX M70 xDrive60 M",
+      "fiyat": 11504200.0
+    },
+    {
+      "isim": "Yeni BMW iX M70 xDrive",
+      "fiyat": 11504200.0
+    },
+    {
+      "isim": "BMW 5 Serisi Sedan 520d xDrive Sedan M Sport",
+      "fiyat": 11594400.0
+    },
+    {
+      "isim": "BMW 5 Serisi 520d xDrive Sedan Edition M Sport",
+      "fiyat": 12761200.0
+    },
+    {
+      "isim": "BMW xDrive60 Pure Excellence",
+      "fiyat": 14188000.0
+    },
+    {
+      "isim": "BMW i7 60 xDrive Pure Excellence",
+      "fiyat": 14370400.0
+    },
+    {
+      "isim": "BMW xDrive60 M Excellence",
+      "fiyat": 14709200.0
+    },
+    {
+      "isim": "BMW i7 60 xDrive M Excellence",
+      "fiyat": 15136900.0
+    },
+    {
+      "isim": "Yeni BMW M2",
+      "fiyat": 15172000.0
+    },
+    {
+      "isim": "BMW i7 M70",
+      "fiyat": 16000000.0
+    },
+    {
+      "isim": "BMW i7 M70 xDrive M",
+      "fiyat": 16000000.0
+    },
+    {
+      "isim": "Yeni BMW M3 Sedan Competition M xDrive",
+      "fiyat": 18654400.0
+    },
+    {
+      "isim": "Yeni BMW M3 Touring M xDrive",
+      "fiyat": 18970300.0
+    },
+    {
+      "isim": "Yeni BMW M4 Competition Coupé M xDrive",
+      "fiyat": 19308500.0
+    },
+    {
+      "isim": "Yeni BMW M4 Competition Cabrio M xDrive",
+      "fiyat": 19726600.0
+    },
+    {
+      "isim": "BMW 740d xDrive Sedan Pure Excellence",
+      "fiyat": 20818200.0
+    },
+    {
+      "isim": "BMW 740 xDrive Pure Excellence",
+      "fiyat": 21526200.0
+    },
+    {
+      "isim": "BMW 740d xDrive Sedan M Excellence",
+      "fiyat": 21870500.0
+    },
+    {
+      "isim": "BMW 740 xDrive M Excellence",
+      "fiyat": 22966800.0
+    },
+    {
+      "isim": "Yeni BMW M5 Sedan",
+      "fiyat": 25136400.0
+    },
+    {
+      "isim": "Yeni BMW M5 Touring",
+      "fiyat": 25468900.0
+    },
+    {
+      "isim": "BMW X5 M Competition",
+      "fiyat": 26116500.0
+    },
+    {
+      "isim": "BMW X6 M Competition",
+      "fiyat": 26503300.0
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 66,
+    "ozellik_eslesen_urun": 57,
+    "modeller": {
+      "1-serisi": {
+        "ad": "1 Serisi",
+        "genel_medyan": 4225050,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 4037800.0,
+            "medyan": 4037800.0,
+            "max": 4037800.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 4412300.0,
+            "medyan": 4412300.0,
+            "max": 4412300.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "BMW 1 Serisi 120 Sport Line",
+            "fiyat": 4037800.0
+          },
+          {
+            "isim": "BMW 1 Serisi 120 M Sport",
+            "fiyat": 4412300.0
+          }
+        ]
+      },
+      "2-serisi": {
+        "ad": "2 Serisi",
+        "genel_medyan": 4685850,
+        "urun_sayisi": 6,
+        "segmentler": {
+          "dusuk": {
+            "min": 4329700.0,
+            "medyan": 4421950.0,
+            "max": 4514200.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 4616600.0,
+            "medyan": 4755100.0,
+            "max": 5187100.0,
+            "urun_sayisi": 3
+          },
+          "luks": {
+            "min": 5537500.0,
+            "medyan": 5537500.0,
+            "max": 5537500.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "BMW 2 Serisi 220 Gran Coupe Luxury Line",
+            "fiyat": 4329700.0
+          },
+          {
+            "isim": "BMW 2 Serisi 220i Active Tourer Luxury Line",
+            "fiyat": 4514200.0
+          },
+          {
+            "isim": "BMW 2 Serisi 220 Gran Coupe M Sport",
+            "fiyat": 4616600.0
+          },
+          {
+            "isim": "BMW 2 Serisi 220i Active Tourer M Sport",
+            "fiyat": 4755100.0
+          },
+          {
+            "isim": "BMW 2 Serisi 230e xDrive Active Tourer Luxury Line",
+            "fiyat": 5187100.0
+          },
+          {
+            "isim": "BMW 2 Serisi 230e xDrive Active Tourer M Sport",
+            "fiyat": 5537500.0
+          }
+        ]
+      },
+      "3-serisi": {
+        "ad": "3 Serisi",
+        "genel_medyan": 6064450,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 5821300.0,
+            "medyan": 5821300.0,
+            "max": 5821300.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 6307600.0,
+            "medyan": 6307600.0,
+            "max": 6307600.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "BMW 3 Serisi 320i Sedan Sport Line",
+            "fiyat": 5821300.0
+          },
+          {
+            "isim": "BMW 3 Serisi 320i Sedan M Sport",
+            "fiyat": 6307600.0
+          }
+        ]
+      },
+      "4-serisi": {
+        "ad": "4 Serisi",
+        "genel_medyan": 7621800,
+        "urun_sayisi": 5,
+        "segmentler": {
+          "dusuk": {
+            "min": 6786900.0,
+            "medyan": 6990350.0,
+            "max": 7193800.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 7621800.0,
+            "medyan": 7827950.0,
+            "max": 8034100.0,
+            "urun_sayisi": 2
+          },
+          "luks": {
+            "min": 10434900.0,
+            "medyan": 10434900.0,
+            "max": 10434900.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "BMW 4 Serisi Yeni 420i Gran Coupe M Sport",
+            "fiyat": 6786900.0
+          },
+          {
+            "isim": "BMW 4 Serisi 420i Coupe M Sport",
+            "fiyat": 7193800.0
+          },
+          {
+            "isim": "BMW 4 Serisi Yeni 420i Gran Coupe Edition M Sport",
+            "fiyat": 7621800.0
+          },
+          {
+            "isim": "BMW 4 Serisi 420i Coupe Edition M Sport",
+            "fiyat": 8034100.0
+          },
+          {
+            "isim": "BMW 4 Serisi 430i xDrive Cabrio M Sport",
+            "fiyat": 10434900.0
+          }
+        ]
+      },
+      "5-serisi": {
+        "ad": "5 Serisi",
+        "genel_medyan": 10518900,
+        "urun_sayisi": 4,
+        "segmentler": {
+          "dusuk": {
+            "min": 9290400.0,
+            "medyan": 9366900.0,
+            "max": 9443400.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 11594400.0,
+            "medyan": 12177800.0,
+            "max": 12761200.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "BMW 5 Serisi Sedan 520i M Sport",
+            "fiyat": 9290400.0
+          },
+          {
+            "isim": "BMW 5 Serisi Sedan 520i Edition M Sport",
+            "fiyat": 9443400.0
+          },
+          {
+            "isim": "BMW 5 Serisi Sedan 520d xDrive Sedan M Sport",
+            "fiyat": 11594400.0
+          },
+          {
+            "isim": "BMW 5 Serisi 520d xDrive Sedan Edition M Sport",
+            "fiyat": 12761200.0
+          }
+        ]
+      },
+      "i4": {
+        "ad": "i4",
+        "genel_medyan": 6230400,
+        "urun_sayisi": 3,
+        "segmentler": {
+          "dusuk": {
+            "min": 5630700.0,
+            "medyan": 5630700.0,
+            "max": 5630700.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 6230400.0,
+            "medyan": 6545750.0,
+            "max": 6861100.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "BMW i4 eDrive40 Sport Line",
+            "fiyat": 5630700.0
+          },
+          {
+            "isim": "BMW i4 eDrive40 M Sport",
+            "fiyat": 6230400.0
+          },
+          {
+            "isim": "BMW i4 eDrive40 Edition M Sport",
+            "fiyat": 6861100.0
+          }
+        ]
+      },
+      "i5": {
+        "ad": "i5",
+        "genel_medyan": 9596250,
+        "urun_sayisi": 8,
+        "segmentler": {
+          "dusuk": {
+            "min": 7842600.0,
+            "medyan": 8048700.0,
+            "max": 8403100.0,
+            "urun_sayisi": 3
+          },
+          "orta": {
+            "min": 8831700.0,
+            "medyan": 10360800.0,
+            "max": 10424700.0,
+            "urun_sayisi": 5
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "BMW i5 eDrive40 M Sport",
+            "fiyat": 7842600.0
+          },
+          {
+            "isim": "BMW i5eDrive40 Edition M Sport",
+            "fiyat": 8048700.0
+          },
+          {
+            "isim": "BMW i5 xDrive40 M Sport",
+            "fiyat": 8403100.0
+          },
+          {
+            "isim": "BMW i5xDrive40 Edition M Sport",
+            "fiyat": 8831700.0
+          },
+          {
+            "isim": "BMW i5 M60 xDrive",
+            "fiyat": 10360800.0
+          },
+          {
+            "isim": "BMW i5 M60 xDrive",
+            "fiyat": 10360800.0
+          },
+          {
+            "isim": "BMW i5 M60 xDrive Touring",
+            "fiyat": 10424700.0
+          },
+          {
+            "isim": "BMW i5 M60 xDrive Touring",
+            "fiyat": 10424700.0
+          }
+        ]
+      },
+      "i7": {
+        "ad": "i7",
+        "genel_medyan": 15568450,
+        "urun_sayisi": 4,
+        "segmentler": {
+          "dusuk": {
+            "min": 14370400.0,
+            "medyan": 14753650.0,
+            "max": 15136900.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 16000000.0,
+            "medyan": 16000000.0,
+            "max": 16000000.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "BMW i7 60 xDrive Pure Excellence",
+            "fiyat": 14370400.0
+          },
+          {
+            "isim": "BMW i7 60 xDrive M Excellence",
+            "fiyat": 15136900.0
+          },
+          {
+            "isim": "BMW i7 M70",
+            "fiyat": 16000000.0
+          },
+          {
+            "isim": "BMW i7 M70 xDrive M",
+            "fiyat": 16000000.0
+          }
+        ]
+      },
+      "ix": {
+        "ad": "iX",
+        "genel_medyan": 11143800,
+        "urun_sayisi": 4,
+        "segmentler": {
+          "dusuk": {
+            "min": 6819500.0,
+            "medyan": 8801450.0,
+            "max": 10783400.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 11504200.0,
+            "medyan": 11504200.0,
+            "max": 11504200.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "BMW iX3 50 xDrive M Sport",
+            "fiyat": 6819500.0
+          },
+          {
+            "isim": "BMW iX xDrive60 M Sport",
+            "fiyat": 10783400.0
+          },
+          {
+            "isim": "BMW iX M70 xDrive60 M",
+            "fiyat": 11504200.0
+          },
+          {
+            "isim": "Yeni BMW iX M70 xDrive",
+            "fiyat": 11504200.0
+          }
+        ]
+      },
+      "ix1": {
+        "ad": "iX1",
+        "genel_medyan": 4486000,
+        "urun_sayisi": 3,
+        "segmentler": {
+          "dusuk": {
+            "min": 4261800.0,
+            "medyan": 4261800.0,
+            "max": 4261800.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 4486000.0,
+            "medyan": 4570100.0,
+            "max": 4654200.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "BMW iX1 eDrive20 Sport Line",
+            "fiyat": 4261800.0
+          },
+          {
+            "isim": "BMW iX1 eDrive20 X-Line",
+            "fiyat": 4486000.0
+          },
+          {
+            "isim": "BMW iX1 eDrive20 M Sport",
+            "fiyat": 4654200.0
+          }
+        ]
+      },
+      "ix2": {
+        "ad": "iX2",
+        "genel_medyan": 4699900,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 4699900.0,
+            "medyan": 4699900.0,
+            "max": 4699900.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 4699900.0,
+            "medyan": 4699900.0,
+            "max": 4699900.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 4699900.0,
+            "medyan": 4699900.0,
+            "max": 4699900.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "BMW iX2 eDrive20 M Sport",
+            "fiyat": 4699900.0
+          }
+        ]
+      },
+      "m2": {
+        "ad": "M2",
+        "genel_medyan": 15172000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 15172000.0,
+            "medyan": 15172000.0,
+            "max": 15172000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 15172000.0,
+            "medyan": 15172000.0,
+            "max": 15172000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 15172000.0,
+            "medyan": 15172000.0,
+            "max": 15172000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Yeni BMW M2",
+            "fiyat": 15172000.0
+          }
+        ]
+      },
+      "m3": {
+        "ad": "M3",
+        "genel_medyan": 18812350,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 18654400.0,
+            "medyan": 18654400.0,
+            "max": 18654400.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 18970300.0,
+            "medyan": 18970300.0,
+            "max": 18970300.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Yeni BMW M3 Sedan Competition M xDrive",
+            "fiyat": 18654400.0
+          },
+          {
+            "isim": "Yeni BMW M3 Touring M xDrive",
+            "fiyat": 18970300.0
+          }
+        ]
+      },
+      "m4": {
+        "ad": "M4",
+        "genel_medyan": 19517550,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 19308500.0,
+            "medyan": 19308500.0,
+            "max": 19308500.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 19726600.0,
+            "medyan": 19726600.0,
+            "max": 19726600.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Yeni BMW M4 Competition Coupé M xDrive",
+            "fiyat": 19308500.0
+          },
+          {
+            "isim": "Yeni BMW M4 Competition Cabrio M xDrive",
+            "fiyat": 19726600.0
+          }
+        ]
+      },
+      "x1": {
+        "ad": "X1",
+        "genel_medyan": 5579000,
+        "urun_sayisi": 5,
+        "segmentler": {
+          "dusuk": {
+            "min": 4850800.0,
+            "medyan": 4984300.0,
+            "max": 5117800.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 5579000.0,
+            "medyan": 5716900.0,
+            "max": 5854800.0,
+            "urun_sayisi": 2
+          },
+          "luks": {
+            "min": 8612700.0,
+            "medyan": 8612700.0,
+            "max": 8612700.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "BMW X1 xDrive25e X-Line",
+            "fiyat": 4850800.0
+          },
+          {
+            "isim": "BMW X1 xDrive25e M Sport",
+            "fiyat": 5117800.0
+          },
+          {
+            "isim": "BMW X1 sDrive20i X-Line",
+            "fiyat": 5579000.0
+          },
+          {
+            "isim": "BMW X1 sDrive20i M Sport",
+            "fiyat": 5854800.0
+          },
+          {
+            "isim": "BMW X1 M35i xDrive",
+            "fiyat": 8612700.0
+          }
+        ]
+      },
+      "x2": {
+        "ad": "X2",
+        "genel_medyan": 7241300,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 5797800.0,
+            "medyan": 5797800.0,
+            "max": 5797800.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 8684800.0,
+            "medyan": 8684800.0,
+            "max": 8684800.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "BMW X2 sDrive20i M Sport",
+            "fiyat": 5797800.0
+          },
+          {
+            "isim": "BMW X2 M35i xDrive",
+            "fiyat": 8684800.0
+          }
+        ]
+      },
+      "x3": {
+        "ad": "X3",
+        "genel_medyan": 7469800,
+        "urun_sayisi": 2,
+        "segmentler": {
+          "dusuk": {
+            "min": 7303900.0,
+            "medyan": 7303900.0,
+            "max": 7303900.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 7635700.0,
+            "medyan": 7635700.0,
+            "max": 7635700.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "BMW X3 20 X-Line",
+            "fiyat": 7303900.0
+          },
+          {
+            "isim": "BMW X3 20 M Sport",
+            "fiyat": 7635700.0
+          }
+        ]
+      },
+      "x5": {
+        "ad": "X5",
+        "genel_medyan": 26116500,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 26116500.0,
+            "medyan": 26116500.0,
+            "max": 26116500.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 26116500.0,
+            "medyan": 26116500.0,
+            "max": 26116500.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 26116500.0,
+            "medyan": 26116500.0,
+            "max": 26116500.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "BMW X5 M Competition",
+            "fiyat": 26116500.0
+          }
+        ]
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "BMW 1 Serisi 120 Sport Line",
+        "fiyat": 4037800.0,
+        "nitelikler": {
+          "model": "1 Serisi"
+        }
+      },
+      {
+        "isim": "BMW 1 Serisi 120 M Sport",
+        "fiyat": 4412300.0,
+        "nitelikler": {
+          "model": "1 Serisi"
+        }
+      },
+      {
+        "isim": "BMW 2 Serisi 220 Gran Coupe Luxury Line",
+        "fiyat": 4329700.0,
+        "nitelikler": {
+          "model": "2 Serisi"
+        }
+      },
+      {
+        "isim": "BMW 2 Serisi 220 Gran Coupe M Sport",
+        "fiyat": 4616600.0,
+        "nitelikler": {
+          "model": "2 Serisi"
+        }
+      },
+      {
+        "isim": "BMW 2 Serisi 220i Active Tourer Luxury Line",
+        "fiyat": 4514200.0,
+        "nitelikler": {
+          "model": "2 Serisi"
+        }
+      },
+      {
+        "isim": "BMW 2 Serisi 220i Active Tourer M Sport",
+        "fiyat": 4755100.0,
+        "nitelikler": {
+          "model": "2 Serisi"
+        }
+      },
+      {
+        "isim": "BMW 2 Serisi 230e xDrive Active Tourer Luxury Line",
+        "fiyat": 5187100.0,
+        "nitelikler": {
+          "model": "2 Serisi"
+        }
+      },
+      {
+        "isim": "BMW 2 Serisi 230e xDrive Active Tourer M Sport",
+        "fiyat": 5537500.0,
+        "nitelikler": {
+          "model": "2 Serisi"
+        }
+      },
+      {
+        "isim": "BMW 3 Serisi 320i Sedan Sport Line",
+        "fiyat": 5821300.0,
+        "nitelikler": {
+          "model": "3 Serisi"
+        }
+      },
+      {
+        "isim": "BMW 3 Serisi 320i Sedan M Sport",
+        "fiyat": 6307600.0,
+        "nitelikler": {
+          "model": "3 Serisi"
+        }
+      },
+      {
+        "isim": "BMW 4 Serisi 420i Coupe M Sport",
+        "fiyat": 7193800.0,
+        "nitelikler": {
+          "model": "4 Serisi"
+        }
+      },
+      {
+        "isim": "BMW 4 Serisi 420i Coupe Edition M Sport",
+        "fiyat": 8034100.0,
+        "nitelikler": {
+          "model": "4 Serisi"
+        }
+      },
+      {
+        "isim": "BMW 4 Serisi 430i xDrive Cabrio M Sport",
+        "fiyat": 10434900.0,
+        "nitelikler": {
+          "model": "4 Serisi"
+        }
+      },
+      {
+        "isim": "BMW 4 Serisi Yeni 420i Gran Coupe M Sport",
+        "fiyat": 6786900.0,
+        "nitelikler": {
+          "model": "4 Serisi"
+        }
+      },
+      {
+        "isim": "BMW 4 Serisi Yeni 420i Gran Coupe Edition M Sport",
+        "fiyat": 7621800.0,
+        "nitelikler": {
+          "model": "4 Serisi"
+        }
+      },
+      {
+        "isim": "BMW i4 eDrive40 Sport Line",
+        "fiyat": 5630700.0,
+        "nitelikler": {
+          "model": "i4"
+        }
+      },
+      {
+        "isim": "BMW i4 eDrive40 M Sport",
+        "fiyat": 6230400.0,
+        "nitelikler": {
+          "model": "i4"
+        }
+      },
+      {
+        "isim": "BMW i4 eDrive40 Edition M Sport",
+        "fiyat": 6861100.0,
+        "nitelikler": {
+          "model": "i4"
+        }
+      },
+      {
+        "isim": "BMW 5 Serisi Sedan 520i M Sport",
+        "fiyat": 9290400.0,
+        "nitelikler": {
+          "model": "5 Serisi"
+        }
+      },
+      {
+        "isim": "BMW 5 Serisi Sedan 520i Edition M Sport",
+        "fiyat": 9443400.0,
+        "nitelikler": {
+          "model": "5 Serisi"
+        }
+      },
+      {
+        "isim": "BMW 5 Serisi Sedan 520d xDrive Sedan M Sport",
+        "fiyat": 11594400.0,
+        "nitelikler": {
+          "model": "5 Serisi"
+        }
+      },
+      {
+        "isim": "BMW 5 Serisi 520d xDrive Sedan Edition M Sport",
+        "fiyat": 12761200.0,
+        "nitelikler": {
+          "model": "5 Serisi"
+        }
+      },
+      {
+        "isim": "BMW i5 eDrive40 M Sport",
+        "fiyat": 7842600.0,
+        "nitelikler": {
+          "model": "i5"
+        }
+      },
+      {
+        "isim": "BMW i5eDrive40 Edition M Sport",
+        "fiyat": 8048700.0,
+        "nitelikler": {
+          "model": "i5"
+        }
+      },
+      {
+        "isim": "BMW i5 xDrive40 M Sport",
+        "fiyat": 8403100.0,
+        "nitelikler": {
+          "model": "i5"
+        }
+      },
+      {
+        "isim": "BMW i5xDrive40 Edition M Sport",
+        "fiyat": 8831700.0,
+        "nitelikler": {
+          "model": "i5"
+        }
+      },
+      {
+        "isim": "BMW i5 M60 xDrive",
+        "fiyat": 10360800.0,
+        "nitelikler": {
+          "model": "i5"
+        }
+      },
+      {
+        "isim": "BMW i5 M60 xDrive Touring",
+        "fiyat": 10424700.0,
+        "nitelikler": {
+          "model": "i5"
+        }
+      },
+      {
+        "isim": "BMW i7 60 xDrive Pure Excellence",
+        "fiyat": 14370400.0,
+        "nitelikler": {
+          "model": "i7"
+        }
+      },
+      {
+        "isim": "BMW i7 60 xDrive M Excellence",
+        "fiyat": 15136900.0,
+        "nitelikler": {
+          "model": "i7"
+        }
+      },
+      {
+        "isim": "BMW i7 M70 xDrive M",
+        "fiyat": 16000000.0,
+        "nitelikler": {
+          "model": "i7"
+        }
+      },
+      {
+        "isim": "BMW X1 sDrive20i X-Line",
+        "fiyat": 5579000.0,
+        "nitelikler": {
+          "model": "X1"
+        }
+      },
+      {
+        "isim": "BMW X1 sDrive20i M Sport",
+        "fiyat": 5854800.0,
+        "nitelikler": {
+          "model": "X1"
+        }
+      },
+      {
+        "isim": "BMW X1 xDrive25e X-Line",
+        "fiyat": 4850800.0,
+        "nitelikler": {
+          "model": "X1"
+        }
+      },
+      {
+        "isim": "BMW X1 xDrive25e M Sport",
+        "fiyat": 5117800.0,
+        "nitelikler": {
+          "model": "X1"
+        }
+      },
+      {
+        "isim": "BMW iX1 eDrive20 Sport Line",
+        "fiyat": 4261800.0,
+        "nitelikler": {
+          "model": "iX1"
+        }
+      },
+      {
+        "isim": "BMW iX1 eDrive20 X-Line",
+        "fiyat": 4486000.0,
+        "nitelikler": {
+          "model": "iX1"
+        }
+      },
+      {
+        "isim": "BMW iX1 eDrive20 M Sport",
+        "fiyat": 4654200.0,
+        "nitelikler": {
+          "model": "iX1"
+        }
+      },
+      {
+        "isim": "BMW X2 sDrive20i M Sport",
+        "fiyat": 5797800.0,
+        "nitelikler": {
+          "model": "X2"
+        }
+      },
+      {
+        "isim": "BMW iX2 eDrive20 M Sport",
+        "fiyat": 4699900.0,
+        "nitelikler": {
+          "model": "iX2"
+        }
+      },
+      {
+        "isim": "BMW X3 20 X-Line",
+        "fiyat": 7303900.0,
+        "nitelikler": {
+          "model": "X3"
+        }
+      },
+      {
+        "isim": "BMW X3 20 M Sport",
+        "fiyat": 7635700.0,
+        "nitelikler": {
+          "model": "X3"
+        }
+      },
+      {
+        "isim": "BMW iX3 50 xDrive M Sport",
+        "fiyat": 6819500.0,
+        "nitelikler": {
+          "model": "iX"
+        }
+      },
+      {
+        "isim": "BMW iX xDrive60 M Sport",
+        "fiyat": 10783400.0,
+        "nitelikler": {
+          "model": "iX"
+        }
+      },
+      {
+        "isim": "BMW iX M70 xDrive60 M",
+        "fiyat": 11504200.0,
+        "nitelikler": {
+          "model": "iX"
+        }
+      },
+      {
+        "isim": "Yeni BMW M2",
+        "fiyat": 15172000.0,
+        "nitelikler": {
+          "model": "M2"
+        }
+      },
+      {
+        "isim": "Yeni BMW M3 Sedan Competition M xDrive",
+        "fiyat": 18654400.0,
+        "nitelikler": {
+          "model": "M3"
+        }
+      },
+      {
+        "isim": "Yeni BMW M3 Touring M xDrive",
+        "fiyat": 18970300.0,
+        "nitelikler": {
+          "model": "M3"
+        }
+      },
+      {
+        "isim": "Yeni BMW M4 Competition Coupé M xDrive",
+        "fiyat": 19308500.0,
+        "nitelikler": {
+          "model": "M4"
+        }
+      },
+      {
+        "isim": "Yeni BMW M4 Competition Cabrio M xDrive",
+        "fiyat": 19726600.0,
+        "nitelikler": {
+          "model": "M4"
+        }
+      },
+      {
+        "isim": "BMW i5 M60 xDrive",
+        "fiyat": 10360800.0,
+        "nitelikler": {
+          "model": "i5"
+        }
+      },
+      {
+        "isim": "BMW i5 M60 xDrive Touring",
+        "fiyat": 10424700.0,
+        "nitelikler": {
+          "model": "i5"
+        }
+      },
+      {
+        "isim": "BMW X5 M Competition",
+        "fiyat": 26116500.0,
+        "nitelikler": {
+          "model": "X5"
+        }
+      },
+      {
+        "isim": "BMW i7 M70",
+        "fiyat": 16000000.0,
+        "nitelikler": {
+          "model": "i7"
+        }
+      },
+      {
+        "isim": "BMW X1 M35i xDrive",
+        "fiyat": 8612700.0,
+        "nitelikler": {
+          "model": "X1"
+        }
+      },
+      {
+        "isim": "BMW X2 M35i xDrive",
+        "fiyat": 8684800.0,
+        "nitelikler": {
+          "model": "X2"
+        }
+      },
+      {
+        "isim": "Yeni BMW iX M70 xDrive",
+        "fiyat": 11504200.0,
+        "nitelikler": {
+          "model": "iX"
+        }
+      }
+    ]
+  }
+}

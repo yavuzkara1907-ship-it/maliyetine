@@ -1,0 +1,210 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - BYD"
+  ],
+  "kalem": "byd",
+  "vertikal": "arac",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 4,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 4,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 4531500,
+  "segmentler": {
+    "dusuk": {
+      "min": 4077000,
+      "medyan": 4133500,
+      "max": 4190000,
+      "urun_sayisi": 2
+    },
+    "orta": {
+      "min": 4873000,
+      "medyan": 5145500,
+      "max": 5418000,
+      "urun_sayisi": 2
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "BYD SEAL EXCELLENCE",
+      "fiyat": 4077000.0
+    },
+    {
+      "isim": "BYD Sealion 7 Excellence",
+      "fiyat": 4190000.0
+    },
+    {
+      "isim": "BYD HAN EXECUTIVE",
+      "fiyat": 4873000.0
+    },
+    {
+      "isim": "BYD TANG FLAGSHIP",
+      "fiyat": 5418000.0
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 4,
+    "ozellik_eslesen_urun": 4,
+    "modeller": {
+      "han": {
+        "ad": "Han",
+        "genel_medyan": 4873000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 4873000.0,
+            "medyan": 4873000.0,
+            "max": 4873000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 4873000.0,
+            "medyan": 4873000.0,
+            "max": 4873000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 4873000.0,
+            "medyan": 4873000.0,
+            "max": 4873000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "BYD HAN EXECUTIVE",
+            "fiyat": 4873000.0
+          }
+        ]
+      },
+      "seal": {
+        "ad": "Seal",
+        "genel_medyan": 4077000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 4077000.0,
+            "medyan": 4077000.0,
+            "max": 4077000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 4077000.0,
+            "medyan": 4077000.0,
+            "max": 4077000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 4077000.0,
+            "medyan": 4077000.0,
+            "max": 4077000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "BYD SEAL EXCELLENCE",
+            "fiyat": 4077000.0
+          }
+        ]
+      },
+      "sealion-7": {
+        "ad": "Sealion 7",
+        "genel_medyan": 4190000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 4190000.0,
+            "medyan": 4190000.0,
+            "max": 4190000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 4190000.0,
+            "medyan": 4190000.0,
+            "max": 4190000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 4190000.0,
+            "medyan": 4190000.0,
+            "max": 4190000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "BYD Sealion 7 Excellence",
+            "fiyat": 4190000.0
+          }
+        ]
+      },
+      "tang": {
+        "ad": "Tang",
+        "genel_medyan": 5418000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 5418000.0,
+            "medyan": 5418000.0,
+            "max": 5418000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 5418000.0,
+            "medyan": 5418000.0,
+            "max": 5418000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 5418000.0,
+            "medyan": 5418000.0,
+            "max": 5418000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "BYD TANG FLAGSHIP",
+            "fiyat": 5418000.0
+          }
+        ]
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "BYD SEAL EXCELLENCE",
+        "fiyat": 4077000.0,
+        "nitelikler": {
+          "model": "Seal"
+        }
+      },
+      {
+        "isim": "BYD Sealion 7 Excellence",
+        "fiyat": 4190000.0,
+        "nitelikler": {
+          "model": "Sealion 7"
+        }
+      },
+      {
+        "isim": "BYD HAN EXECUTIVE",
+        "fiyat": 4873000.0,
+        "nitelikler": {
+          "model": "Han"
+        }
+      },
+      {
+        "isim": "BYD TANG FLAGSHIP",
+        "fiyat": 5418000.0,
+        "nitelikler": {
+          "model": "Tang"
+        }
+      }
+    ]
+  }
+}

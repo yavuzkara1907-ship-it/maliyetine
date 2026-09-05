@@ -54,7 +54,7 @@
       0,
       0
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "dugun/alyans/atasay": {
     "urun_sayilari": [
@@ -261,7 +261,7 @@
       0,
       0
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "dugun/damatlik/beymen": {
     "urun_sayilari": [
@@ -275,10 +275,10 @@
       41,
       41,
       41,
-      41,
-      40
+      40,
+      41
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "dugun/damatlik/boyner": {
     "urun_sayilari": [
@@ -295,7 +295,7 @@
       0,
       0
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "dugun/damatlik/vakko": {
     "urun_sayilari": [
@@ -1040,7 +1040,6 @@
   "ev-kurma/tencere-seti/karaca": {
     "urun_sayilari": [
       40,
-      40,
       41,
       41,
       41,
@@ -1050,9 +1049,10 @@
       42,
       43,
       45,
-      44
+      44,
+      43
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "ev-kurma/nevresim-takimi/englishhome": {
     "urun_sayilari": [
@@ -1062,14 +1062,14 @@
       39,
       39,
       39,
-      39,
+      44,
       44,
       44,
       44,
       44,
       44
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "dugun/salon-yemekli/dugunbuketi": {
     "urun_sayilari": [
@@ -1080,9 +1080,10 @@
       11,
       10,
       10,
-      11
+      11,
+      10
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "dugun/salon-kokteyl/dugunbuketi": {
     "urun_sayilari": [
@@ -1093,9 +1094,10 @@
       11,
       10,
       10,
-      10
+      10,
+      9
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "dugun/yemek-ikram/dugunbuketi": {
     "urun_sayilari": [
@@ -1106,9 +1108,10 @@
       9,
       9,
       10,
-      8
+      8,
+      9
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "dugun/taki-altin/atasay": {
     "urun_sayilari": [
@@ -1134,9 +1137,10 @@
       22,
       23,
       23,
-      23
+      23,
+      22
     ],
-    "son_calisma": "2026-08-22"
+    "son_calisma": "2026-09-05"
   },
   "arac/tesla/donanimhaber": {
     "urun_sayilari": [
@@ -1149,9 +1153,10 @@
       4,
       4,
       4,
+      4,
       4
     ],
-    "son_calisma": "2026-08-22"
+    "son_calisma": "2026-09-05"
   },
   "arac/byd/donanimhaber": {
     "urun_sayilari": [
@@ -1164,9 +1169,10 @@
       4,
       4,
       4,
+      4,
       4
     ],
-    "son_calisma": "2026-08-22"
+    "son_calisma": "2026-09-05"
   },
   "arac/suzuki/donanimhaber": {
     "urun_sayilari": [
@@ -1179,9 +1185,10 @@
       18,
       12,
       12,
+      12,
       12
     ],
-    "son_calisma": "2026-08-22"
+    "son_calisma": "2026-09-05"
   },
   "arac/cupra/donanimhaber": {
     "urun_sayilari": [
@@ -1194,9 +1201,10 @@
       7,
       7,
       7,
+      7,
       7
     ],
-    "son_calisma": "2026-08-22"
+    "son_calisma": "2026-09-05"
   },
   "arac/togg/donanimhaber": {
     "urun_sayilari": [
@@ -1208,9 +1216,10 @@
       8,
       8,
       8,
+      8,
       8
     ],
-    "son_calisma": "2026-08-22"
+    "son_calisma": "2026-09-05"
   },
   "arac/renault/donanimhaber": {
     "urun_sayilari": [
@@ -1222,9 +1231,10 @@
       21,
       23,
       23,
+      23,
       23
     ],
-    "son_calisma": "2026-08-22"
+    "son_calisma": "2026-09-05"
   },
   "arac/chery/donanimhaber": {
     "urun_sayilari": [
@@ -1236,9 +1246,10 @@
       3,
       3,
       4,
+      4,
       4
     ],
-    "son_calisma": "2026-08-22"
+    "son_calisma": "2026-09-05"
   },
   "arac/dacia/donanimhaber": {
     "urun_sayilari": [
@@ -1250,9 +1261,10 @@
       10,
       12,
       12,
-      12
+      12,
+      11
     ],
-    "son_calisma": "2026-08-22"
+    "son_calisma": "2026-09-05"
   },
   "arac/citroen/donanimhaber": {
     "urun_sayilari": [
@@ -1264,9 +1276,10 @@
       19,
       17,
       17,
+      17,
       17
     ],
-    "son_calisma": "2026-08-22"
+    "son_calisma": "2026-09-05"
   },
   "arac/opel/donanimhaber": {
     "urun_sayilari": [
@@ -1278,9 +1291,10 @@
       20,
       21,
       21,
+      21,
       21
     ],
-    "son_calisma": "2026-08-22"
+    "son_calisma": "2026-09-05"
   },
   "arac/peugeot/donanimhaber": {
     "urun_sayilari": [
@@ -1292,9 +1306,10 @@
       20,
       20,
       21,
+      21,
       21
     ],
-    "son_calisma": "2026-08-22"
+    "son_calisma": "2026-09-05"
   },
   "arac/ford/donanimhaber": {
     "urun_sayilari": [
@@ -1306,9 +1321,10 @@
       17,
       17,
       19,
+      19,
       19
     ],
-    "son_calisma": "2026-08-22"
+    "son_calisma": "2026-09-05"
   },
   "arac/hyundai/donanimhaber": {
     "urun_sayilari": [
@@ -1320,9 +1336,10 @@
       28,
       28,
       35,
-      35
+      35,
+      25
     ],
-    "son_calisma": "2026-08-22"
+    "son_calisma": "2026-09-05"
   },
   "arac/kia/donanimhaber": {
     "urun_sayilari": [
@@ -1334,9 +1351,10 @@
       20,
       18,
       21,
-      21
+      21,
+      23
     ],
-    "son_calisma": "2026-08-22"
+    "son_calisma": "2026-09-05"
   },
   "arac/skoda/donanimhaber": {
     "urun_sayilari": [
@@ -1348,9 +1366,10 @@
       41,
       41,
       41,
+      41,
       41
     ],
-    "son_calisma": "2026-08-22"
+    "son_calisma": "2026-09-05"
   },
   "arac/seat/donanimhaber": {
     "urun_sayilari": [
@@ -1362,9 +1381,10 @@
       4,
       4,
       4,
+      4,
       4
     ],
-    "son_calisma": "2026-08-22"
+    "son_calisma": "2026-09-05"
   },
   "arac/honda/donanimhaber": {
     "urun_sayilari": [
@@ -1376,9 +1396,10 @@
       6,
       7,
       7,
-      7
+      7,
+      6
     ],
-    "son_calisma": "2026-08-22"
+    "son_calisma": "2026-09-05"
   },
   "arac/toyota/donanimhaber": {
     "urun_sayilari": [
@@ -1390,9 +1411,10 @@
       24,
       24,
       27,
+      27,
       27
     ],
-    "son_calisma": "2026-08-22"
+    "son_calisma": "2026-09-05"
   },
   "arac/fiat/donanimhaber": {
     "urun_sayilari": [
@@ -1404,9 +1426,10 @@
       15,
       15,
       15,
+      15,
       15
     ],
-    "son_calisma": "2026-08-22"
+    "son_calisma": "2026-09-05"
   },
   "arac/volkswagen/donanimhaber": {
     "urun_sayilari": [
@@ -1418,9 +1441,10 @@
       40,
       40,
       40,
+      40,
       40
     ],
-    "son_calisma": "2026-08-22"
+    "son_calisma": "2026-09-05"
   },
   "arac/nissan/donanimhaber": {
     "urun_sayilari": [
@@ -1432,9 +1456,10 @@
       18,
       18,
       18,
+      18,
       18
     ],
-    "son_calisma": "2026-08-22"
+    "son_calisma": "2026-09-05"
   },
   "arac/mg/donanimhaber": {
     "urun_sayilari": [
@@ -1446,9 +1471,10 @@
       5,
       5,
       5,
+      5,
       5
     ],
-    "son_calisma": "2026-08-22"
+    "son_calisma": "2026-09-05"
   },
   "arac/bmw/donanimhaber": {
     "urun_sayilari": [
@@ -1460,9 +1486,10 @@
       60,
       60,
       60,
-      60
+      60,
+      66
     ],
-    "son_calisma": "2026-08-22"
+    "son_calisma": "2026-09-05"
   },
   "arac/mercedes/donanimhaber": {
     "urun_sayilari": [
@@ -1474,9 +1501,10 @@
       42,
       42,
       42,
-      42
+      42,
+      46
     ],
-    "son_calisma": "2026-08-22"
+    "son_calisma": "2026-09-05"
   },
   "dugun/fotografci/dugun-com": {
     "urun_sayilari": [
@@ -1486,9 +1514,10 @@
       0,
       1,
       1,
+      1,
       1
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "dugun/organizasyon/dugun-com": {
     "urun_sayilari": [
@@ -1498,9 +1527,10 @@
       0,
       1,
       1,
+      1,
       1
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "dugun/gelin-arabasi/dugun-com": {
     "urun_sayilari": [
@@ -1510,9 +1540,10 @@
       0,
       1,
       1,
+      1,
       1
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "dugun/kuafor-makyaj/dugun-com": {
     "urun_sayilari": [
@@ -1522,9 +1553,10 @@
       0,
       1,
       1,
+      1,
       1
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "ev-kurma/tencere-seti/madamecoco": {
     "urun_sayilari": [
@@ -2125,9 +2157,10 @@
       50,
       39,
       45,
-      0
+      0,
+      48
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "ev-kurma/nevresim-takimi/amazon": {
     "urun_sayilari": [
@@ -2197,9 +2230,10 @@
       43,
       0,
       45,
-      46
+      46,
+      47
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "okul/okul-cantasi/amazon": {
     "urun_sayilari": [
@@ -2227,9 +2261,10 @@
       0,
       45,
       44,
-      0
+      0,
+      48
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "okul/kalem-kutusu/amazon": {
     "urun_sayilari": [
@@ -2247,9 +2282,10 @@
       0,
       46,
       45,
-      46
+      46,
+      45
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "okul/kalem/amazon": {
     "urun_sayilari": [
@@ -2681,41 +2717,46 @@
     "urun_sayilari": [
       87,
       87,
-      87
+      87,
+      86
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "okul/kalem-kutusu/nezih": {
     "urun_sayilari": [
       97,
       97,
+      99,
       99
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "okul/boya-seti/nezih": {
     "urun_sayilari": [
       21,
       21,
-      21
+      21,
+      19
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "okul/okul-cantasi/nezih": {
     "urun_sayilari": [
       98,
       98,
-      100
+      100,
+      99
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "okul/matara/nezih": {
     "urun_sayilari": [
       100,
       100,
+      100,
       100
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "okul/defter/dr": {
     "urun_sayilari": [
@@ -2784,33 +2825,37 @@
     "urun_sayilari": [
       32,
       32,
+      32,
       32
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "bebek/oto-koltugu/joker": {
     "urun_sayilari": [
       30,
       30,
+      32,
       32
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "bebek/mama-sandalyesi/joker": {
     "urun_sayilari": [
       17,
       17,
+      17,
       17
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "bebek/uyku-tulumu/joker": {
     "urun_sayilari": [
       8,
       8,
+      8,
       8
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "ev-kurma/buzdolabi/mediamarkt": {
     "urun_sayilari": [
@@ -3017,74 +3062,84 @@
     "urun_sayilari": [
       24,
       24,
-      24
+      24,
+      23
     ],
-    "son_calisma": "2026-08-22"
+    "son_calisma": "2026-09-05"
   },
   "kedi/kedi-kumu/petzzshop": {
     "urun_sayilari": [
       22,
       24,
+      24,
       24
     ],
-    "son_calisma": "2026-08-22"
+    "son_calisma": "2026-09-05"
   },
   "kedi/kedi-yatagi/petzzshop": {
     "urun_sayilari": [
       23,
+      23,
       23
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "kedi/kedi-oyuncagi/petzzshop": {
     "urun_sayilari": [
       20,
+      22,
       22
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "kedi/mama-su-kabi/petzzshop": {
     "urun_sayilari": [
       20,
+      20,
       20
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "kedi/tasima-cantasi/petzzshop": {
     "urun_sayilari": [
       15,
-      16
+      16,
+      11
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "kopek/kopek-mamasi/petzzshop": {
     "urun_sayilari": [
       24,
       24,
+      24,
       24
     ],
-    "son_calisma": "2026-08-22"
+    "son_calisma": "2026-09-05"
   },
   "kopek/kopek-yatagi/petzzshop": {
     "urun_sayilari": [
       23,
+      23,
       23
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "kopek/kopek-tasmasi/petzzshop": {
     "urun_sayilari": [
       22,
-      22
+      22,
+      20
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "kopek/kopek-oyuncagi/petzzshop": {
     "urun_sayilari": [
       24,
-      24
+      24,
+      22
     ],
-    "son_calisma": "2026-08-20"
+    "son_calisma": "2026-09-05"
   },
   "ev-kurma/koltuk-takimi/bellona": {
     "urun_sayilari": [

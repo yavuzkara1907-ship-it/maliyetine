@@ -1,0 +1,100 @@
+{
+  "site": "amazon",
+  "kaynak_adlari": [
+    "Amazon - Çelik Matara Suluk"
+  ],
+  "kalem": "matara",
+  "vertikal": "okul",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 48,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 48,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 890,
+  "segmentler": {
+    "dusuk": {
+      "min": 225,
+      "medyan": 417,
+      "max": 620,
+      "urun_sayisi": 13
+    },
+    "orta": {
+      "min": 645,
+      "medyan": 900,
+      "max": 1399,
+      "urun_sayisi": 24
+    },
+    "luks": {
+      "min": 1411,
+      "medyan": 1580,
+      "max": 2074,
+      "urun_sayisi": 11
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Busstier 12 oz (355 ml) Paslanmaz Çelik Cep Matarası, Su ve Cold Brew İçin Metal Matara, Kamp Seyahat Piknik ve Günlük Kullanım İçin Vidalı Kapaklı Taşınabilir Şişe, Gümüş",
+      "fiyat": 224.9
+    },
+    {
+      "isim": "Çelik Siyah Kapak 750 ml Sporcu Matara Suluk (SICAK-SOĞUK TUTMAZ) cin426",
+      "fiyat": 358.13
+    },
+    {
+      "isim": "Paslanmaz 304 Çelik Matara Pipetli Motivasyon Matarası Suluğu 304 Çelik Suluk Pembe 750 ml 1156",
+      "fiyat": 429.0
+    },
+    {
+      "isim": "Ikea ENKELSPÄRIG Su şişesi paslanmaz çelik/bej 0,5 l",
+      "fiyat": 499.0
+    },
+    {
+      "isim": "Frocx Minnie Mouse Çelik Matara, 500 ml, Salto Kapak, Taşıma Askılı",
+      "fiyat": 645.0
+    },
+    {
+      "isim": "Deconox 650 ml Paslanmaz Çelik Termos Matara - 4 Renk (Krem, Yeşil, Siyah, Mavi) - Sıcak ve Soğuk Tutan Sporcu Suluk ve Ofis Şişesi (SİYAH)",
+      "fiyat": 719.85
+    },
+    {
+      "isim": "400 ML 316L Paslanmaz Çelik Pipetli Çocuk Termosu Taşıma Kulplu Askılı Çift Duvar -FFR400ML4011 Turuncu",
+      "fiyat": 799.9
+    },
+    {
+      "isim": "Deconox Paslanmaz Çelik Termos Matara - 1000 ML (1 Litre) Kapasiteli, Renk Seçenekli Isı Yalıtımlı Çelik Suluk (BEYAZ)",
+      "fiyat": 899.85
+    },
+    {
+      "isim": "1 Hand Leak-Proof Sızdırmaz Çelik Termos 500 Ml Ice Melt ST-223",
+      "fiyat": 949.0
+    },
+    {
+      "isim": "Zwilling Thermo Matara, 7 Saat Sıcak 12 Saat Soğuk Tutar, Paslanmaz Çelik, Beyaz-Gri, 450 ml",
+      "fiyat": 1062.9
+    },
+    {
+      "isim": "Vagonlife Paslanmaz Çelik Su Matarası - 550 ml Tek Kapak Çift Kullanım Taşıma Kulplu Termos (Bej)",
+      "fiyat": 1379.0
+    },
+    {
+      "isim": "1 Hand Leak-Proof Sızdırmaz Çelik Termos 1500 ML Black ST-235",
+      "fiyat": 1410.78
+    },
+    {
+      "isim": "420 ml Yeşil Dinazor Baskılı Erkek Çocuk Paslanmaz Çelik Suluk Matara - 60004",
+      "fiyat": 1513.5
+    },
+    {
+      "isim": "Coral High 650 ml Erkek Çocuk Turuncu Kamyon Desenli Çelik Suluk/Matara (Pipetli) 38343",
+      "fiyat": 1699.95
+    },
+    {
+      "isim": "STANLEY Quick-Flip Termos 1.06 Litre - Pembe Kuvars (Rose Quartz) | Paslanmaz Çelik",
+      "fiyat": 2074.17
+    }
+  ]
+}

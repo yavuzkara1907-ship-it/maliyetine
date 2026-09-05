@@ -1,0 +1,123 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Tesla"
+  ],
+  "kalem": "tesla",
+  "vertikal": "arac",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 4,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 4,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 4046400,
+  "segmentler": {
+    "dusuk": {
+      "min": 2474985,
+      "medyan": 3078892,
+      "max": 3682800,
+      "urun_sayisi": 2
+    },
+    "orta": {
+      "min": 4410000,
+      "medyan": 4583000,
+      "max": 4756000,
+      "urun_sayisi": 2
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Tesla Model Y Standart Range Arkadan Çekiş",
+      "fiyat": 2474985.0
+    },
+    {
+      "isim": "Tesla Model Y Long Range Arkadan Çekiş",
+      "fiyat": 3682800.0
+    },
+    {
+      "isim": "Tesla Model Y Long Range Dört Çeker",
+      "fiyat": 4410000.0
+    },
+    {
+      "isim": "Tesla Model Y Performance Dört Çeker",
+      "fiyat": 4756000.0
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 4,
+    "ozellik_eslesen_urun": 4,
+    "modeller": {
+      "model-y": {
+        "ad": "Model Y",
+        "genel_medyan": 4046400,
+        "urun_sayisi": 4,
+        "segmentler": {
+          "dusuk": {
+            "min": 2474985.0,
+            "medyan": 3078892.5,
+            "max": 3682800.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 4410000.0,
+            "medyan": 4583000.0,
+            "max": 4756000.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Tesla Model Y Standart Range Arkadan Çekiş",
+            "fiyat": 2474985.0
+          },
+          {
+            "isim": "Tesla Model Y Long Range Arkadan Çekiş",
+            "fiyat": 3682800.0
+          },
+          {
+            "isim": "Tesla Model Y Long Range Dört Çeker",
+            "fiyat": 4410000.0
+          },
+          {
+            "isim": "Tesla Model Y Performance Dört Çeker",
+            "fiyat": 4756000.0
+          }
+        ]
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "Tesla Model Y Standart Range Arkadan Çekiş",
+        "fiyat": 2474985.0,
+        "nitelikler": {
+          "model": "Model Y"
+        }
+      },
+      {
+        "isim": "Tesla Model Y Long Range Arkadan Çekiş",
+        "fiyat": 3682800.0,
+        "nitelikler": {
+          "model": "Model Y"
+        }
+      },
+      {
+        "isim": "Tesla Model Y Long Range Dört Çeker",
+        "fiyat": 4410000.0,
+        "nitelikler": {
+          "model": "Model Y"
+        }
+      },
+      {
+        "isim": "Tesla Model Y Performance Dört Çeker",
+        "fiyat": 4756000.0,
+        "nitelikler": {
+          "model": "Model Y"
+        }
+      }
+    ]
+  }
+}

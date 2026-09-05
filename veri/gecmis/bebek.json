@@ -1,6 +1,6 @@
 {
  "vertikal": "bebek",
- "uretim_tarihi": "2026-08-22",
+ "uretim_tarihi": "2026-09-05",
  "metrik": {
   "alan": "genel_medyan",
   "ad": "Ölçülen ürünlerin ortanca fiyatı",
@@ -11,7 +11,8 @@
   "2026-08-02",
   "2026-08-05",
   "2026-08-20",
-  "2026-08-22"
+  "2026-08-22",
+  "2026-09-05"
  ],
  "kalemler": {
   "bebek-arabasi": {
@@ -43,6 +44,13 @@
      "urun": 105,
      "kaynak": 4,
      "veri_tarihi": "2026-08-20"
+    },
+    {
+     "tarih": "2026-09-05",
+     "medyan": 14762,
+     "urun": 105,
+     "kaynak": 4,
+     "veri_tarihi": "2026-09-05"
     }
    ],
    "ilk": {
@@ -53,15 +61,15 @@
     "veri_tarihi": "2026-07-26"
    },
    "son": {
-    "tarih": "2026-08-20",
+    "tarih": "2026-09-05",
     "medyan": 14762,
     "urun": 105,
     "kaynak": 4,
-    "veri_tarihi": "2026-08-20"
+    "veri_tarihi": "2026-09-05"
    },
    "degisim_yuzde": 109.3,
-   "gun_araligi": 25,
-   "aylik_degisim_yuzde": -2.3
+   "gun_araligi": 41,
+   "aylik_degisim_yuzde": 0.0
   },
   "bebek-bezi": {
    "seri": [
@@ -297,6 +305,13 @@
      "urun": 70,
      "kaynak": 3,
      "veri_tarihi": "2026-08-20"
+    },
+    {
+     "tarih": "2026-09-05",
+     "medyan": 1870,
+     "urun": 70,
+     "kaynak": 3,
+     "veri_tarihi": "2026-09-05"
     }
    ],
    "ilk": {
@@ -307,15 +322,15 @@
     "veri_tarihi": "2026-07-26"
    },
    "son": {
-    "tarih": "2026-08-20",
+    "tarih": "2026-09-05",
     "medyan": 1870,
     "urun": 70,
     "kaynak": 3,
-    "veri_tarihi": "2026-08-20"
+    "veri_tarihi": "2026-09-05"
    },
    "degisim_yuzde": 16.4,
-   "gun_araligi": 25,
-   "aylik_degisim_yuzde": -2.6
+   "gun_araligi": 41,
+   "aylik_degisim_yuzde": 0.0
   },
   "oto-koltugu": {
    "seri": [
@@ -346,6 +361,13 @@
      "urun": 100,
      "kaynak": 3,
      "veri_tarihi": "2026-08-20"
+    },
+    {
+     "tarih": "2026-09-05",
+     "medyan": 14506,
+     "urun": 100,
+     "kaynak": 3,
+     "veri_tarihi": "2026-09-05"
     }
    ],
    "ilk": {
@@ -356,14 +378,14 @@
     "veri_tarihi": "2026-07-26"
    },
    "son": {
-    "tarih": "2026-08-20",
+    "tarih": "2026-09-05",
     "medyan": 14506,
     "urun": 100,
     "kaynak": 3,
-    "veri_tarihi": "2026-08-20"
+    "veri_tarihi": "2026-09-05"
    },
    "degisim_yuzde": 69.2,
-   "gun_araligi": 25,
+   "gun_araligi": 41,
    "aylik_degisim_yuzde": 0.0
   },
   "park-yatak": {
@@ -436,6 +458,13 @@
      "urun": 50,
      "kaynak": 2,
      "veri_tarihi": "2026-08-20"
+    },
+    {
+     "tarih": "2026-09-05",
+     "medyan": 789,
+     "urun": 50,
+     "kaynak": 2,
+     "veri_tarihi": "2026-09-05"
     }
    ],
    "ilk": {
@@ -446,15 +475,15 @@
     "veri_tarihi": "2026-07-26"
    },
    "son": {
-    "tarih": "2026-08-20",
-    "medyan": 1014,
+    "tarih": "2026-09-05",
+    "medyan": 789,
     "urun": 50,
     "kaynak": 2,
-    "veri_tarihi": "2026-08-20"
+    "veri_tarihi": "2026-09-05"
    },
-   "degisim_yuzde": 103.2,
-   "gun_araligi": 25,
-   "aylik_degisim_yuzde": 0.0
+   "degisim_yuzde": 58.1,
+   "gun_araligi": 41,
+   "aylik_degisim_yuzde": -22.2
   },
   "zibin-seti": {
    "seri": [

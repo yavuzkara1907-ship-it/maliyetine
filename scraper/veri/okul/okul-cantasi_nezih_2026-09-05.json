@@ -1,0 +1,100 @@
+{
+  "site": "nezih",
+  "kaynak_adlari": [
+    "Nezih - Sirt Cantalari"
+  ],
+  "kalem": "okul-cantasi",
+  "vertikal": "okul",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 100,
+  "aykiri_urun_sayisi": 1,
+  "toplam_urun": 99,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "css"
+  ],
+  "genel_medyan": 1800,
+  "segmentler": {
+    "dusuk": {
+      "min": 260,
+      "medyan": 800,
+      "max": 1000,
+      "urun_sayisi": 28
+    },
+    "orta": {
+      "min": 1055,
+      "medyan": 1855,
+      "max": 2550,
+      "urun_sayisi": 47
+    },
+    "luks": {
+      "min": 2565,
+      "medyan": 2900,
+      "max": 4529,
+      "urun_sayisi": 24
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Okapi (Okp-112 Yama ) Çanta",
+      "fiyat": 259.96
+    },
+    {
+      "isim": "Mikro Okul Çantası 707Ç",
+      "fiyat": 790.0
+    },
+    {
+      "isim": "Cambridge Polo Tactical II Ön Bölmeli Sırt Çantası Kamuflaj 4027",
+      "fiyat": 799.9
+    },
+    {
+      "isim": "No Fear Siyah-Beyaz Çift Bölme Sırt Çantası 03574",
+      "fiyat": 999.9
+    },
+    {
+      "isim": "Faber Sırt Çantası Basic 1 Kırmızı-Siyah 5177190139",
+      "fiyat": 1054.9
+    },
+    {
+      "isim": "Slazenger Kıds Shark Okul Çantası 23058",
+      "fiyat": 1390.72
+    },
+    {
+      "isim": "Faber Sırt Çantası King Pack 1 Pembe-Mor 5177190154",
+      "fiyat": 1755.0
+    },
+    {
+      "isim": "Jacbag Jac-56 Campus Deri Tabanlı İki Bölmeli Sırt Çantası Gri",
+      "fiyat": 1799.9
+    },
+    {
+      "isim": "Muggle Süper Girl Koleksiyonu İlkokul Çantası MU-9039",
+      "fiyat": 1999.9
+    },
+    {
+      "isim": "U.S Polo Sırt Çantası PLÇAN23140",
+      "fiyat": 2499.9
+    },
+    {
+      "isim": "Gap Kids Sırt Çantası 2 bölmeli Pembe 12800",
+      "fiyat": 2549.9
+    },
+    {
+      "isim": "Gap Sırt Çantası 2 Bölmeli Antrasit 13399",
+      "fiyat": 2649.9
+    },
+    {
+      "isim": "Gap Kids Sırt Çantası Siyah 12787",
+      "fiyat": 2749.9
+    },
+    {
+      "isim": "Obm Gabbys Dollhouse Okul Çantası 3314",
+      "fiyat": 3099.9
+    },
+    {
+      "isim": "Belmil Ergonomik Mıknatıslı Okul Çantası Swimming Girl 405-83/AG",
+      "fiyat": 4528.93
+    }
+  ]
+}

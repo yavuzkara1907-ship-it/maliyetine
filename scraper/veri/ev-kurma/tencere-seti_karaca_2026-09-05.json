@@ -1,0 +1,100 @@
+{
+  "site": "karaca",
+  "kaynak_adlari": [
+    "Karaca - Tencere Seti"
+  ],
+  "kalem": "tencere-seti",
+  "vertikal": "ev-kurma",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 46,
+  "aykiri_urun_sayisi": 3,
+  "toplam_urun": 43,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "json-ld"
+  ],
+  "genel_medyan": 5999,
+  "segmentler": {
+    "dusuk": {
+      "min": 2299,
+      "medyan": 3299,
+      "max": 3999,
+      "urun_sayisi": 15
+    },
+    "orta": {
+      "min": 4999,
+      "medyan": 7499,
+      "max": 9999,
+      "urun_sayisi": 22
+    },
+    "luks": {
+      "min": 10999,
+      "medyan": 14999,
+      "max": 15999,
+      "urun_sayisi": 6
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Emsan Cemre İndüksiyon Tabanlı 6 Parça Midi Paslanmaz Çelik Tencere Seti",
+      "fiyat": 2299.0
+    },
+    {
+      "isim": "Karaca x Refika Swiss Crystal Almond Cream İndüksiyon Tabanlı Midi 4 Parça Set",
+      "fiyat": 2599.0
+    },
+    {
+      "isim": "Emsan Emirgan 8 Parça Çelik Tencere Seti",
+      "fiyat": 2999.0
+    },
+    {
+      "isim": "Bernardo Mayasa 7 Parça Seramik Tencere Seti Fil Dişi",
+      "fiyat": 3799.0
+    },
+    {
+      "isim": "Emsan Biogranit Defne 7 Parça Tencere ve Tava Seti",
+      "fiyat": 3999.0
+    },
+    {
+      "isim": "Emsan Biogranit Power Inox 8 Parça Tencere Seti",
+      "fiyat": 4999.0
+    },
+    {
+      "isim": "Karaca Biodiamond Pro İndüksiyon Tabanlı 6 Parça Tencere Seti",
+      "fiyat": 5999.0
+    },
+    {
+      "isim": "Karaca x Refika Swiss Crystal Creamy Metal Kulplu 7 Parça Tencere ve Tava Seti Krem",
+      "fiyat": 5999.0
+    },
+    {
+      "isim": "Karaca x Refika Swiss Crystal Pureline İndüksiyon Tabanlı 12 Parça Tencere Seti Almond Cream",
+      "fiyat": 6999.0
+    },
+    {
+      "isim": "Jumbo New Assos 6 Parça İndüksiyon Tabanlı Çelik Midi Tencere Seti",
+      "fiyat": 7999.0
+    },
+    {
+      "isim": "Karaca Swiss Crystal Neocast 7 Parça Döküm Tencere ve Tava Seti Yeşil",
+      "fiyat": 7999.0
+    },
+    {
+      "isim": "Karaca Power Steel 316+ 3Ply Akita İndüksiyon Tabanlı 7 Parça Çelik Tencere ve Tava Seti",
+      "fiyat": 9999.0
+    },
+    {
+      "isim": "Karaca Powersteel 316+ 3Ply Onyx İndüksiyon Tabanlı Çelik 8 Parça Tencere Seti",
+      "fiyat": 9999.0
+    },
+    {
+      "isim": "Jumbo Swiss Crystal Light Grey 7 Parça Tencere Seti",
+      "fiyat": 14999.0
+    },
+    {
+      "isim": "Jumbo Modena 8 Parça İndüksiyon Tabanlı Çelik Tencere Seti",
+      "fiyat": 15999.0
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "site": "dugunbuketi",
+  "kaynak_adlari": [
+    "DugunBuketi - Istanbul Dugun Mekanlari (yemekli kisi basi)"
+  ],
+  "kalem": "salon-yemekli",
+  "vertikal": "dugun",
+  "olcum_turu": "kisi_basi_fiyat",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 10,
+  "aykiri_urun_sayisi": 0,
+  "toplam_urun": 10,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "detay"
+  ],
+  "genel_medyan": 1000,
+  "segmentler": {
+    "dusuk": {
+      "min": 650,
+      "medyan": 725,
+      "max": 750,
+      "urun_sayisi": 4
+    },
+    "orta": {
+      "min": 1000,
+      "medyan": 1100,
+      "max": 1400,
+      "urun_sayisi": 4
+    },
+    "luks": {
+      "min": 1850,
+      "medyan": 2175,
+      "max": 2500,
+      "urun_sayisi": 2
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "akturk-dugun-salonu-dugun-salonlari-uskudar-istanbul",
+      "fiyat": 650.0
+    },
+    {
+      "isim": "suslubahce-cafe-restaurant-davet-alanlari-cekmekoy-istanbul",
+      "fiyat": 700.0
+    },
+    {
+      "isim": "bambi-garden-o-agacin-alti-kir-dugunu-mekanlari-uskudar-istanbul",
+      "fiyat": 750.0
+    },
+    {
+      "isim": "o-agacin-alti-bambi-garden-dugun-salonlari-uskudar-istanbul",
+      "fiyat": 750.0
+    },
+    {
+      "isim": "grand-anka-otel-otelde-dugun-fatih-istanbul",
+      "fiyat": 1000.0
+    },
+    {
+      "isim": "sporkoy-tuzla-kir-dugunu-mekanlari-tuzla-istanbul",
+      "fiyat": 1000.0
+    },
+    {
+      "isim": "bogaz-garden-kir-dugunu-mekanlari-beykoz-istanbul",
+      "fiyat": 1200.0
+    },
+    {
+      "isim": "kir-kubbe-gokturk-kir-dugunu-mekanlari-eyup-istanbul",
+      "fiyat": 1400.0
+    },
+    {
+      "isim": "hermes-country-club-kir-dugunu-mekanlari-beykoz-istanbul",
+      "fiyat": 1850.0
+    },
+    {
+      "isim": "doubletree-by-hilton-istanbul-tuzla-otelde-dugun-tuzla-istanbul",
+      "fiyat": 2500.0
+    }
+  ]
+}

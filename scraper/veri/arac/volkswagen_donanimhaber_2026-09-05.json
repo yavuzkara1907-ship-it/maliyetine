@@ -1,0 +1,879 @@
+{
+  "site": "donanimhaber",
+  "kaynak_adlari": [
+    "DonanimHaber - Volkswagen"
+  ],
+  "kalem": "volkswagen",
+  "vertikal": "arac",
+  "olcum_turu": "kalem_fiyati",
+  "tarih": "2026-09-05",
+  "ham_urun_sayisi": 41,
+  "aykiri_urun_sayisi": 1,
+  "toplam_urun": 40,
+  "saglikli": true,
+  "kullanilan_katmanlar": [
+    "tablo"
+  ],
+  "genel_medyan": 4020000,
+  "segmentler": {
+    "dusuk": {
+      "min": 2292000,
+      "medyan": 2916000,
+      "max": 3126000,
+      "urun_sayisi": 11
+    },
+    "orta": {
+      "min": 3231000,
+      "medyan": 4056500,
+      "max": 5193000,
+      "urun_sayisi": 20
+    },
+    "luks": {
+      "min": 5295000,
+      "medyan": 7002000,
+      "max": 7805000,
+      "urun_sayisi": 9
+    }
+  },
+  "ornek_urunler": [
+    {
+      "isim": "Taigo 1.0 TSI 95 PS Manuel Life",
+      "fiyat": 2292000.0
+    },
+    {
+      "isim": "Golf 1.5 TSI 116 PS Manuel Impression",
+      "fiyat": 2390000.0
+    },
+    {
+      "isim": "T-Cross 1.0 TSI 116 PS Manuel Life",
+      "fiyat": 2541000.0
+    },
+    {
+      "isim": "Taigo 1.0 TSI 116 PS DSG Life",
+      "fiyat": 2748000.0
+    },
+    {
+      "isim": "T-Cross 1.0 TSI 116 PS DSG Life",
+      "fiyat": 2840000.0
+    },
+    {
+      "isim": "T-Roc 1.5 TSI 150 PS DSG Life",
+      "fiyat": 2916000.0
+    },
+    {
+      "isim": "Golf 1.5 eTSI 116 PS DSG Life",
+      "fiyat": 2994000.0
+    },
+    {
+      "isim": "T-Cross 1.0 TSI 116 PS DSG Style",
+      "fiyat": 3008000.0
+    },
+    {
+      "isim": "Taigo 1.0 TSI 116 PS DSG Style",
+      "fiyat": 3098000.0
+    },
+    {
+      "isim": "T-Cross 1.0 TSI 116 PS DSG R-Line",
+      "fiyat": 3123000.0
+    },
+    {
+      "isim": "ID.4 125 kW 170 PS Otomatik",
+      "fiyat": 3126000.0
+    },
+    {
+      "isim": "Taigo 1.0 TSI 116 PS DSG R-Line",
+      "fiyat": 3231000.0
+    },
+    {
+      "isim": "Taigo 1.5 TSI 150 PS DSG Style",
+      "fiyat": 3295000.0
+    },
+    {
+      "isim": "Golf 1.5 eTSI 116 PS DSG Style",
+      "fiyat": 3378000.0
+    },
+    {
+      "isim": "T-Roc 1.5 TSI 150 PS DSG Style",
+      "fiyat": 3505000.0
+    },
+    {
+      "isim": "Taigo 1.5 TSI 150 PS DSG R-Line",
+      "fiyat": 3525000.0
+    },
+    {
+      "isim": "Golf 1.5 eTSI 150 PS DSG Style",
+      "fiyat": 3591000.0
+    },
+    {
+      "isim": "Tiguan 1.5 eTSI ACT 150 PS DSG Life",
+      "fiyat": 3600000.0
+    },
+    {
+      "isim": "T-Roc 1.5 TSI 150 PS DSG R-Line",
+      "fiyat": 3620000.0
+    },
+    {
+      "isim": "Passat 1.5 eTSI 150 PS DSG Impression",
+      "fiyat": 4010000.0
+    },
+    {
+      "isim": "Golf 1.5 eTSI 150 PS DSG R-Line",
+      "fiyat": 4030000.0
+    },
+    {
+      "isim": "Yeni Tayron 1.5 eTSI ACT 150 PS DSG Life",
+      "fiyat": 4083000.0
+    },
+    {
+      "isim": "Yeni Tayron 1.5 eTSI ACT 150 PS (7 koltuklu) DSG Life",
+      "fiyat": 4194000.0
+    },
+    {
+      "isim": "ID.7 210 kW 286 PS Otomatik",
+      "fiyat": 4415000.0
+    },
+    {
+      "isim": "Passat 1.5 eTSI 150 PS DSG Business",
+      "fiyat": 4553000.0
+    },
+    {
+      "isim": "Tiguan 1.5 eTSI ACT 150 PS DSG Elegance",
+      "fiyat": 4629000.0
+    },
+    {
+      "isim": "Tiguan 1.5 eTSI ACT 150 PS DSG R-Line",
+      "fiyat": 4938000.0
+    },
+    {
+      "isim": "Yeni Tayron 1.5 eTSI ACT 150 PS DSG Elegance",
+      "fiyat": 4962000.0
+    },
+    {
+      "isim": "Passat 1.5 eTSI 150 PS DSG Elegance",
+      "fiyat": 5053000.0
+    },
+    {
+      "isim": "Yeni Tayron 1.5 eTSI ACT 150 PS (7 koltuklu) DSG Elegance",
+      "fiyat": 5074000.0
+    },
+    {
+      "isim": "Passat 1.5 eTSI 150 PS DSG R-Line",
+      "fiyat": 5193000.0
+    },
+    {
+      "isim": "Yeni Tayron 1.5 eTSI ACT 150 PS DSG R-Line",
+      "fiyat": 5295000.0
+    },
+    {
+      "isim": "Yeni Tayron 1.5 eTSI ACT 150 PS(7 koltuklu) DSG R-Line",
+      "fiyat": 5402000.0
+    },
+    {
+      "isim": "Golf GTI 2.0 TSI 265 PS GTI DSG",
+      "fiyat": 5936000.0
+    },
+    {
+      "isim": "Tiguan 2.0 TDI SCR 193 PS 4MOTION DSG Elegance",
+      "fiyat": 6618000.0
+    },
+    {
+      "isim": "Tiguan 2.0 TDI SCR 193 PS 4MOTION DSG R-Line",
+      "fiyat": 7002000.0
+    },
+    {
+      "isim": "Golf R 2.0 TSI 333 PS R DSG",
+      "fiyat": 7462000.0
+    },
+    {
+      "isim": "Passat 2.0 TDI SCR 193 PS 4MOTION DSG Elegance",
+      "fiyat": 7623000.0
+    },
+    {
+      "isim": "Passat 2.0 TSI 265 PS 4MOTION DSG R-Line",
+      "fiyat": 7666000.0
+    },
+    {
+      "isim": "Passat 2.0 TDI SCR 193 PS 4MOTION DSG R-Line",
+      "fiyat": 7805000.0
+    }
+  ],
+  "ozellik_ozeti": {
+    "toplam_urun": 40,
+    "ozellik_eslesen_urun": 40,
+    "modeller": {
+      "golf": {
+        "ad": "Golf",
+        "genel_medyan": 3591000,
+        "urun_sayisi": 7,
+        "segmentler": {
+          "dusuk": {
+            "min": 2390000.0,
+            "medyan": 2692000.0,
+            "max": 2994000.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 3378000.0,
+            "medyan": 3810500.0,
+            "max": 5936000.0,
+            "urun_sayisi": 4
+          },
+          "luks": {
+            "min": 7462000.0,
+            "medyan": 7462000.0,
+            "max": 7462000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Golf 1.5 TSI 116 PS Manuel Impression",
+            "fiyat": 2390000.0
+          },
+          {
+            "isim": "Golf 1.5 eTSI 116 PS DSG Life",
+            "fiyat": 2994000.0
+          },
+          {
+            "isim": "Golf 1.5 eTSI 116 PS DSG Style",
+            "fiyat": 3378000.0
+          },
+          {
+            "isim": "Golf 1.5 eTSI 150 PS DSG Style",
+            "fiyat": 3591000.0
+          },
+          {
+            "isim": "Golf 1.5 eTSI 150 PS DSG R-Line",
+            "fiyat": 4030000.0
+          },
+          {
+            "isim": "Golf GTI 2.0 TSI 265 PS GTI DSG",
+            "fiyat": 5936000.0
+          },
+          {
+            "isim": "Golf R 2.0 TSI 333 PS R DSG",
+            "fiyat": 7462000.0
+          }
+        ]
+      },
+      "id.4": {
+        "ad": "ID.4",
+        "genel_medyan": 3126000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 3126000.0,
+            "medyan": 3126000.0,
+            "max": 3126000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 3126000.0,
+            "medyan": 3126000.0,
+            "max": 3126000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 3126000.0,
+            "medyan": 3126000.0,
+            "max": 3126000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "ID.4 125 kW 170 PS Otomatik",
+            "fiyat": 3126000.0
+          }
+        ]
+      },
+      "id.7": {
+        "ad": "ID.7",
+        "genel_medyan": 4415000,
+        "urun_sayisi": 1,
+        "segmentler": {
+          "dusuk": {
+            "min": 4415000.0,
+            "medyan": 4415000.0,
+            "max": 4415000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 4415000.0,
+            "medyan": 4415000.0,
+            "max": 4415000.0,
+            "urun_sayisi": 1
+          },
+          "luks": {
+            "min": 4415000.0,
+            "medyan": 4415000.0,
+            "max": 4415000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "ID.7 210 kW 286 PS Otomatik",
+            "fiyat": 4415000.0
+          }
+        ]
+      },
+      "passat": {
+        "ad": "Passat",
+        "genel_medyan": 5193000,
+        "urun_sayisi": 7,
+        "segmentler": {
+          "dusuk": {
+            "min": 4010000.0,
+            "medyan": 4281500.0,
+            "max": 4553000.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 5053000.0,
+            "medyan": 6408000.0,
+            "max": 7666000.0,
+            "urun_sayisi": 4
+          },
+          "luks": {
+            "min": 7805000.0,
+            "medyan": 7805000.0,
+            "max": 7805000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Passat 1.5 eTSI 150 PS DSG Impression",
+            "fiyat": 4010000.0
+          },
+          {
+            "isim": "Passat 1.5 eTSI 150 PS DSG Business",
+            "fiyat": 4553000.0
+          },
+          {
+            "isim": "Passat 1.5 eTSI 150 PS DSG Elegance",
+            "fiyat": 5053000.0
+          },
+          {
+            "isim": "Passat 1.5 eTSI 150 PS DSG R-Line",
+            "fiyat": 5193000.0
+          },
+          {
+            "isim": "Passat 2.0 TDI SCR 193 PS 4MOTION DSG Elegance",
+            "fiyat": 7623000.0
+          },
+          {
+            "isim": "Passat 2.0 TSI 265 PS 4MOTION DSG R-Line",
+            "fiyat": 7666000.0
+          },
+          {
+            "isim": "Passat 2.0 TDI SCR 193 PS 4MOTION DSG R-Line",
+            "fiyat": 7805000.0
+          }
+        ]
+      },
+      "t-cross": {
+        "ad": "T-Cross",
+        "genel_medyan": 2924000,
+        "urun_sayisi": 4,
+        "segmentler": {
+          "dusuk": {
+            "min": 2541000.0,
+            "medyan": 2690500.0,
+            "max": 2840000.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 3008000.0,
+            "medyan": 3065500.0,
+            "max": 3123000.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "T-Cross 1.0 TSI 116 PS Manuel Life",
+            "fiyat": 2541000.0
+          },
+          {
+            "isim": "T-Cross 1.0 TSI 116 PS DSG Life",
+            "fiyat": 2840000.0
+          },
+          {
+            "isim": "T-Cross 1.0 TSI 116 PS DSG Style",
+            "fiyat": 3008000.0
+          },
+          {
+            "isim": "T-Cross 1.0 TSI 116 PS DSG R-Line",
+            "fiyat": 3123000.0
+          }
+        ]
+      },
+      "t-roc": {
+        "ad": "T-Roc",
+        "genel_medyan": 3505000,
+        "urun_sayisi": 3,
+        "segmentler": {
+          "dusuk": {
+            "min": 2916000.0,
+            "medyan": 2916000.0,
+            "max": 2916000.0,
+            "urun_sayisi": 1
+          },
+          "orta": {
+            "min": 3505000.0,
+            "medyan": 3562500.0,
+            "max": 3620000.0,
+            "urun_sayisi": 2
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "T-Roc 1.5 TSI 150 PS DSG Life",
+            "fiyat": 2916000.0
+          },
+          {
+            "isim": "T-Roc 1.5 TSI 150 PS DSG Style",
+            "fiyat": 3505000.0
+          },
+          {
+            "isim": "T-Roc 1.5 TSI 150 PS DSG R-Line",
+            "fiyat": 3620000.0
+          }
+        ]
+      },
+      "taigo": {
+        "ad": "Taigo",
+        "genel_medyan": 3164500,
+        "urun_sayisi": 6,
+        "segmentler": {
+          "dusuk": {
+            "min": 2292000.0,
+            "medyan": 2520000.0,
+            "max": 2748000.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 3098000.0,
+            "medyan": 3231000.0,
+            "max": 3295000.0,
+            "urun_sayisi": 3
+          },
+          "luks": {
+            "min": 3525000.0,
+            "medyan": 3525000.0,
+            "max": 3525000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Taigo 1.0 TSI 95 PS Manuel Life",
+            "fiyat": 2292000.0
+          },
+          {
+            "isim": "Taigo 1.0 TSI 116 PS DSG Life",
+            "fiyat": 2748000.0
+          },
+          {
+            "isim": "Taigo 1.0 TSI 116 PS DSG Style",
+            "fiyat": 3098000.0
+          },
+          {
+            "isim": "Taigo 1.0 TSI 116 PS DSG R-Line",
+            "fiyat": 3231000.0
+          },
+          {
+            "isim": "Taigo 1.5 TSI 150 PS DSG Style",
+            "fiyat": 3295000.0
+          },
+          {
+            "isim": "Taigo 1.5 TSI 150 PS DSG R-Line",
+            "fiyat": 3525000.0
+          }
+        ]
+      },
+      "tayron": {
+        "ad": "Tayron",
+        "genel_medyan": 5018000,
+        "urun_sayisi": 6,
+        "segmentler": {
+          "dusuk": {
+            "min": 4083000.0,
+            "medyan": 4138500.0,
+            "max": 4194000.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 4962000.0,
+            "medyan": 5074000.0,
+            "max": 5295000.0,
+            "urun_sayisi": 3
+          },
+          "luks": {
+            "min": 5402000.0,
+            "medyan": 5402000.0,
+            "max": 5402000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Yeni Tayron 1.5 eTSI ACT 150 PS DSG Life",
+            "fiyat": 4083000.0
+          },
+          {
+            "isim": "Yeni Tayron 1.5 eTSI ACT 150 PS (7 koltuklu) DSG Life",
+            "fiyat": 4194000.0
+          },
+          {
+            "isim": "Yeni Tayron 1.5 eTSI ACT 150 PS DSG Elegance",
+            "fiyat": 4962000.0
+          },
+          {
+            "isim": "Yeni Tayron 1.5 eTSI ACT 150 PS (7 koltuklu) DSG Elegance",
+            "fiyat": 5074000.0
+          },
+          {
+            "isim": "Yeni Tayron 1.5 eTSI ACT 150 PS DSG R-Line",
+            "fiyat": 5295000.0
+          },
+          {
+            "isim": "Yeni Tayron 1.5 eTSI ACT 150 PS(7 koltuklu) DSG R-Line",
+            "fiyat": 5402000.0
+          }
+        ]
+      },
+      "tiguan": {
+        "ad": "Tiguan",
+        "genel_medyan": 4938000,
+        "urun_sayisi": 5,
+        "segmentler": {
+          "dusuk": {
+            "min": 3600000.0,
+            "medyan": 4114500.0,
+            "max": 4629000.0,
+            "urun_sayisi": 2
+          },
+          "orta": {
+            "min": 4938000.0,
+            "medyan": 5778000.0,
+            "max": 6618000.0,
+            "urun_sayisi": 2
+          },
+          "luks": {
+            "min": 7002000.0,
+            "medyan": 7002000.0,
+            "max": 7002000.0,
+            "urun_sayisi": 1
+          }
+        },
+        "varyantlar": [
+          {
+            "isim": "Tiguan 1.5 eTSI ACT 150 PS DSG Life",
+            "fiyat": 3600000.0
+          },
+          {
+            "isim": "Tiguan 1.5 eTSI ACT 150 PS DSG Elegance",
+            "fiyat": 4629000.0
+          },
+          {
+            "isim": "Tiguan 1.5 eTSI ACT 150 PS DSG R-Line",
+            "fiyat": 4938000.0
+          },
+          {
+            "isim": "Tiguan 2.0 TDI SCR 193 PS 4MOTION DSG Elegance",
+            "fiyat": 6618000.0
+          },
+          {
+            "isim": "Tiguan 2.0 TDI SCR 193 PS 4MOTION DSG R-Line",
+            "fiyat": 7002000.0
+          }
+        ]
+      }
+    },
+    "ornek_urunler": [
+      {
+        "isim": "T-Cross 1.0 TSI 116 PS Manuel Life",
+        "fiyat": 2541000.0,
+        "nitelikler": {
+          "model": "T-Cross"
+        }
+      },
+      {
+        "isim": "T-Cross 1.0 TSI 116 PS DSG Life",
+        "fiyat": 2840000.0,
+        "nitelikler": {
+          "model": "T-Cross"
+        }
+      },
+      {
+        "isim": "T-Cross 1.0 TSI 116 PS DSG Style",
+        "fiyat": 3008000.0,
+        "nitelikler": {
+          "model": "T-Cross"
+        }
+      },
+      {
+        "isim": "T-Cross 1.0 TSI 116 PS DSG R-Line",
+        "fiyat": 3123000.0,
+        "nitelikler": {
+          "model": "T-Cross"
+        }
+      },
+      {
+        "isim": "Taigo 1.0 TSI 95 PS Manuel Life",
+        "fiyat": 2292000.0,
+        "nitelikler": {
+          "model": "Taigo"
+        }
+      },
+      {
+        "isim": "Taigo 1.0 TSI 116 PS DSG Life",
+        "fiyat": 2748000.0,
+        "nitelikler": {
+          "model": "Taigo"
+        }
+      },
+      {
+        "isim": "Taigo 1.0 TSI 116 PS DSG Style",
+        "fiyat": 3098000.0,
+        "nitelikler": {
+          "model": "Taigo"
+        }
+      },
+      {
+        "isim": "Taigo 1.0 TSI 116 PS DSG R-Line",
+        "fiyat": 3231000.0,
+        "nitelikler": {
+          "model": "Taigo"
+        }
+      },
+      {
+        "isim": "Taigo 1.5 TSI 150 PS DSG Style",
+        "fiyat": 3295000.0,
+        "nitelikler": {
+          "model": "Taigo"
+        }
+      },
+      {
+        "isim": "Taigo 1.5 TSI 150 PS DSG R-Line",
+        "fiyat": 3525000.0,
+        "nitelikler": {
+          "model": "Taigo"
+        }
+      },
+      {
+        "isim": "T-Roc 1.5 TSI 150 PS DSG Life",
+        "fiyat": 2916000.0,
+        "nitelikler": {
+          "model": "T-Roc"
+        }
+      },
+      {
+        "isim": "T-Roc 1.5 TSI 150 PS DSG Style",
+        "fiyat": 3505000.0,
+        "nitelikler": {
+          "model": "T-Roc"
+        }
+      },
+      {
+        "isim": "T-Roc 1.5 TSI 150 PS DSG R-Line",
+        "fiyat": 3620000.0,
+        "nitelikler": {
+          "model": "T-Roc"
+        }
+      },
+      {
+        "isim": "Golf 1.5 TSI 116 PS Manuel Impression",
+        "fiyat": 2390000.0,
+        "nitelikler": {
+          "model": "Golf"
+        }
+      },
+      {
+        "isim": "Golf 1.5 eTSI 116 PS DSG Life",
+        "fiyat": 2994000.0,
+        "nitelikler": {
+          "model": "Golf"
+        }
+      },
+      {
+        "isim": "Golf 1.5 eTSI 116 PS DSG Style",
+        "fiyat": 3378000.0,
+        "nitelikler": {
+          "model": "Golf"
+        }
+      },
+      {
+        "isim": "Golf 1.5 eTSI 150 PS DSG Style",
+        "fiyat": 3591000.0,
+        "nitelikler": {
+          "model": "Golf"
+        }
+      },
+      {
+        "isim": "Golf 1.5 eTSI 150 PS DSG R-Line",
+        "fiyat": 4030000.0,
+        "nitelikler": {
+          "model": "Golf"
+        }
+      },
+      {
+        "isim": "Golf GTI 2.0 TSI 265 PS GTI DSG",
+        "fiyat": 5936000.0,
+        "nitelikler": {
+          "model": "Golf"
+        }
+      },
+      {
+        "isim": "Golf R 2.0 TSI 333 PS R DSG",
+        "fiyat": 7462000.0,
+        "nitelikler": {
+          "model": "Golf"
+        }
+      },
+      {
+        "isim": "Tiguan 1.5 eTSI ACT 150 PS DSG Life",
+        "fiyat": 3600000.0,
+        "nitelikler": {
+          "model": "Tiguan"
+        }
+      },
+      {
+        "isim": "Tiguan 1.5 eTSI ACT 150 PS DSG Elegance",
+        "fiyat": 4629000.0,
+        "nitelikler": {
+          "model": "Tiguan"
+        }
+      },
+      {
+        "isim": "Tiguan 1.5 eTSI ACT 150 PS DSG R-Line",
+        "fiyat": 4938000.0,
+        "nitelikler": {
+          "model": "Tiguan"
+        }
+      },
+      {
+        "isim": "Tiguan 2.0 TDI SCR 193 PS 4MOTION DSG Elegance",
+        "fiyat": 6618000.0,
+        "nitelikler": {
+          "model": "Tiguan"
+        }
+      },
+      {
+        "isim": "Tiguan 2.0 TDI SCR 193 PS 4MOTION DSG R-Line",
+        "fiyat": 7002000.0,
+        "nitelikler": {
+          "model": "Tiguan"
+        }
+      },
+      {
+        "isim": "Passat 1.5 eTSI 150 PS DSG Impression",
+        "fiyat": 4010000.0,
+        "nitelikler": {
+          "model": "Passat"
+        }
+      },
+      {
+        "isim": "Passat 1.5 eTSI 150 PS DSG Business",
+        "fiyat": 4553000.0,
+        "nitelikler": {
+          "model": "Passat"
+        }
+      },
+      {
+        "isim": "Passat 1.5 eTSI 150 PS DSG Elegance",
+        "fiyat": 5053000.0,
+        "nitelikler": {
+          "model": "Passat"
+        }
+      },
+      {
+        "isim": "Passat 1.5 eTSI 150 PS DSG R-Line",
+        "fiyat": 5193000.0,
+        "nitelikler": {
+          "model": "Passat"
+        }
+      },
+      {
+        "isim": "Passat 2.0 TDI SCR 193 PS 4MOTION DSG Elegance",
+        "fiyat": 7623000.0,
+        "nitelikler": {
+          "model": "Passat"
+        }
+      },
+      {
+        "isim": "Passat 2.0 TSI 265 PS 4MOTION DSG R-Line",
+        "fiyat": 7666000.0,
+        "nitelikler": {
+          "model": "Passat"
+        }
+      },
+      {
+        "isim": "Passat 2.0 TDI SCR 193 PS 4MOTION DSG R-Line",
+        "fiyat": 7805000.0,
+        "nitelikler": {
+          "model": "Passat"
+        }
+      },
+      {
+        "isim": "Yeni Tayron 1.5 eTSI ACT 150 PS DSG Life",
+        "fiyat": 4083000.0,
+        "nitelikler": {
+          "model": "Tayron"
+        }
+      },
+      {
+        "isim": "Yeni Tayron 1.5 eTSI ACT 150 PS (7 koltuklu) DSG Life",
+        "fiyat": 4194000.0,
+        "nitelikler": {
+          "model": "Tayron"
+        }
+      },
+      {
+        "isim": "Yeni Tayron 1.5 eTSI ACT 150 PS DSG Elegance",
+        "fiyat": 4962000.0,
+        "nitelikler": {
+          "model": "Tayron"
+        }
+      },
+      {
+        "isim": "Yeni Tayron 1.5 eTSI ACT 150 PS (7 koltuklu) DSG Elegance",
+        "fiyat": 5074000.0,
+        "nitelikler": {
+          "model": "Tayron"
+        }
+      },
+      {
+        "isim": "Yeni Tayron 1.5 eTSI ACT 150 PS DSG R-Line",
+        "fiyat": 5295000.0,
+        "nitelikler": {
+          "model": "Tayron"
+        }
+      },
+      {
+        "isim": "Yeni Tayron 1.5 eTSI ACT 150 PS(7 koltuklu) DSG R-Line",
+        "fiyat": 5402000.0,
+        "nitelikler": {
+          "model": "Tayron"
+        }
+      },
+      {
+        "isim": "ID.4 125 kW 170 PS Otomatik",
+        "fiyat": 3126000.0,
+        "nitelikler": {
+          "model": "ID.4"
+        }
+      },
+      {
+        "isim": "ID.7 210 kW 286 PS Otomatik",
+        "fiyat": 4415000.0,
+        "nitelikler": {
+          "model": "ID.7"
+        }
+      }
+    ]
+  }
+}
